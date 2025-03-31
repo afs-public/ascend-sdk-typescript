@@ -1,0 +1,19 @@
+# Sweep
+
+Used to record sweeps from a cash balance to an alternative asset or vice versa and details related to the sweep
+
+## Example Usage
+
+```typescript
+import { Sweep } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: Sweep = {};
+```
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        | Example                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                                           | [components.EntrySweepAction](../../models/components/entrysweepaction.md)                                                         | :heavy_minus_sign:                                                                                                                 | Indicates purchase or redemption of the sweep asset                                                                                | PURCHASE                                                                                                                           |
+| `eodRedemption`                                                                                                                    | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | Indicates the sweep was performed books were closed to prevent an investor account from carrying a negative cash balance overnight | false                                                                                                                              |
+| `type`                                                                                                                             | [components.EntrySweepType](../../models/components/entrysweeptype.md)                                                             | :heavy_minus_sign:                                                                                                                 | Sweep program that cash is being swept to/ from                                                                                    | FDIC                                                                                                                               |

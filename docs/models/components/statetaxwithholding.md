@@ -1,0 +1,18 @@
+# StateTaxWithholding
+
+The state tax withholding.
+
+## Example Usage
+
+```typescript
+import { StateTaxWithholding } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: StateTaxWithholding = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                              | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `amount`                                                                                                                                                           | [components.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount](../../models/components/achwithdrawalretirementdistributionstatetaxwithholdingamount.md) | :heavy_minus_sign:                                                                                                                                                 | Fixed USD amount to withhold for taxes.                                                                                                                            | {<br/>"value": "1.23"<br/>}                                                                                                                                        |
+| `percentage`                                                                                                                                                       | [components.AchWithdrawalRetirementDistributionPercentage](../../models/components/achwithdrawalretirementdistributionpercentage.md)                               | :heavy_minus_sign:                                                                                                                                                 | Percentage of total disbursement amount to withhold for taxes.                                                                                                     | {<br/>"value": "11.25"<br/>}                                                                                                                                       |

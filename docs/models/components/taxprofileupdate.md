@@ -1,0 +1,20 @@
+# TaxProfileUpdate
+
+Tax Profile pertaining to the Legal Entity or Natural Person.
+
+## Example Usage
+
+```typescript
+import { TaxProfileUpdate } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: TaxProfileUpdate = {};
+```
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                | Example                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `federalTaxClassification`                                                                                                 | [components.TaxProfileUpdateFederalTaxClassification](../../models/components/taxprofileupdatefederaltaxclassification.md) | :heavy_minus_sign:                                                                                                         | Federal tax classification.                                                                                                | C_CORPORATION                                                                                                              |
+| `irsFormType`                                                                                                              | [components.TaxProfileUpdateIrsFormType](../../models/components/taxprofileupdateirsformtype.md)                           | :heavy_minus_sign:                                                                                                         | IRS form type.                                                                                                             | W_8                                                                                                                        |
+| `legalTaxRegionCode`                                                                                                       | *string*                                                                                                                   | :heavy_minus_sign:                                                                                                         | Legal tax region must be "US" if provided W-9, otherwise must be a non-US country.                                         | US                                                                                                                         |
+| `usTinStatus`                                                                                                              | [components.TaxProfileUpdateUsTinStatus](../../models/components/taxprofileupdateustinstatus.md)                           | :heavy_minus_sign:                                                                                                         | United States Individual Taxpayer Identification Number (ITIN) status.                                                     | PASSING                                                                                                                    |

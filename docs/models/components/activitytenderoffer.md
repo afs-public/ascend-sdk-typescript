@@ -1,0 +1,18 @@
+# ActivityTenderOffer
+
+Used to record the sale of securities for a specified price due to an offer from the issuer or a third party and details related to the tender offer
+
+## Example Usage
+
+```typescript
+import { ActivityTenderOffer } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: ActivityTenderOffer = {};
+```
+
+## Fields
+
+| Field                                                                                                                                              | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        | Example                                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cashRate`                                                                                                                                         | [components.ActivityTenderOfferCashRate](../../models/components/activitytenderoffercashrate.md)                                                   | :heavy_minus_sign:                                                                                                                                 | The rate (raw value, not a percentage, example: 50% will be .5 in this field) at which cash will be disbursed to the shareholder                   | {<br/>"value": "0.25"<br/>}                                                                                                                        |
+| `corporateActionGeneralInformation`                                                                                                                | [components.ActivityTenderOfferCorporateActionGeneralInformation](../../models/components/activitytenderoffercorporateactiongeneralinformation.md) | :heavy_minus_sign:                                                                                                                                 | Common fields for corporate actions                                                                                                                |                                                                                                                                                    |

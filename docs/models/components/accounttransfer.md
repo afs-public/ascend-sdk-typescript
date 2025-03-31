@@ -1,0 +1,24 @@
+# AccountTransfer
+
+Used to record the movement of funds or shares during the bookkeeping phase of an account transfer and details related to the account transfer
+
+## Example Usage
+
+```typescript
+import { AccountTransfer } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: AccountTransfer = {};
+```
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `acatsAssetSequenceNumber`                                                            | *string*                                                                              | :heavy_minus_sign:                                                                    | sequence number assigned by the DTCC ACATS transfer system for each asset transferred | 20240424178509                                                                        |
+| `acatsControlNumber`                                                                  | *string*                                                                              | :heavy_minus_sign:                                                                    | the unique transfer Identifier assigned by NSCC                                       | 20240360002172                                                                        |
+| `action`                                                                              | [components.Action](../../models/components/action.md)                                | :heavy_minus_sign:                                                                    | Indicates whether the account transfer is incoming or outgoing                        | INCOMING                                                                              |
+| `additionalInstructions`                                                              | *string*                                                                              | :heavy_minus_sign:                                                                    | Free form text field                                                                  | Account Transfer instruction                                                          |
+| `contraPartyAccountNumber`                                                            | *string*                                                                              | :heavy_minus_sign:                                                                    | account number at the contra firm                                                     | DBtvTOGIqBu5Pmz9Y14laM6G5jWTACMvwCV22nLYteo                                           |
+| `contraPartyId`                                                                       | *string*                                                                              | :heavy_minus_sign:                                                                    | contra party identifier                                                               | 9999                                                                                  |
+| `institution`                                                                         | *string*                                                                              | :heavy_minus_sign:                                                                    | Contra party institution for the account transfer                                     | Schwab                                                                                |
+| `method`                                                                              | [components.Method](../../models/components/method.md)                                | :heavy_minus_sign:                                                                    | the method used for the account transfer                                              | ACATS                                                                                 |

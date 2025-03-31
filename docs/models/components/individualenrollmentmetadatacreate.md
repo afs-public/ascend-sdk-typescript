@@ -1,0 +1,18 @@
+# IndividualEnrollmentMetadataCreate
+
+Enrollment metadata for Individual accounts enrollment type
+
+## Example Usage
+
+```typescript
+import { IndividualEnrollmentMetadataCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: IndividualEnrollmentMetadataCreate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                          | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    | Example                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dividendReinvestmentPlan`                                                                                                                                     | [components.IndividualEnrollmentMetadataCreateDividendReinvestmentPlan](../../models/components/individualenrollmentmetadatacreatedividendreinvestmentplan.md) | :heavy_minus_sign:                                                                                                                                             | Option to auto-enroll in Dividend Reinvestment; defaults to true                                                                                               | DIVIDEND_REINVESTMENT_ENROLL                                                                                                                                   |
+| `fdicCashSweep`                                                                                                                                                | [components.IndividualEnrollmentMetadataCreateFdicCashSweep](../../models/components/individualenrollmentmetadatacreatefdiccashsweep.md)                       | :heavy_minus_sign:                                                                                                                                             | Option to auto-enroll in FDIC cash sweep; defaults to true                                                                                                     | FDIC_CASH_SWEEP_ENROLL                                                                                                                                         |

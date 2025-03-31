@@ -1,0 +1,20 @@
+# AchWithdrawalScheduleScheduleDetails
+
+The transfer schedule details
+
+## Example Usage
+
+```typescript
+import { AchWithdrawalScheduleScheduleDetails } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: AchWithdrawalScheduleScheduleDetails = {};
+```
+
+## Fields
+
+| Field                                                                                                                     | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               | Example                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `amount`                                                                                                                  | [components.AchWithdrawalScheduleAmount](../../models/components/achwithdrawalscheduleamount.md)                          | :heavy_minus_sign:                                                                                                        | A cash amount in the format of decimal value (mutually exclusive with 'full_disbursement')                                | {<br/>"value": "100.00"<br/>}                                                                                             |
+| `clientScheduleId`                                                                                                        | *string*                                                                                                                  | :heavy_minus_sign:                                                                                                        | External identifier supplied by the API caller. Each request must have a unique pairing of client_schedule_id and account | ABC-123                                                                                                                   |
+| `fullDisbursement`                                                                                                        | *boolean*                                                                                                                 | :heavy_minus_sign:                                                                                                        | Flag to indicate a full disbursement transfer (mutually exclusive with 'amount')                                          | false                                                                                                                     |
+| `scheduleProperties`                                                                                                      | [components.AchWithdrawalScheduleScheduleProperties](../../models/components/achwithdrawalschedulescheduleproperties.md)  | :heavy_minus_sign:                                                                                                        | Common schedule properties                                                                                                |                                                                                                                           |

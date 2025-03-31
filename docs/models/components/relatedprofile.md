@@ -1,0 +1,25 @@
+# RelatedProfile
+
+Profiles related to dow jones profile
+
+## Example Usage
+
+```typescript
+import { RelatedProfile } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: RelatedProfile = {};
+```
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `descriptionDetails`                                                               | [components.DescriptionDetail](../../models/components/descriptiondetail.md)[]     | :heavy_minus_sign:                                                                 | Description details                                                                |                                                                                    |
+| `dowJonesPersonId`                                                                 | *number*                                                                           | :heavy_minus_sign:                                                                 | Dow Jones person id                                                                | 123456                                                                             |
+| `givenName`                                                                        | *string*                                                                           | :heavy_minus_sign:                                                                 | Given name relating to profile                                                     | Jane                                                                               |
+| `middleNames`                                                                      | *string*                                                                           | :heavy_minus_sign:                                                                 | Middle names relating to profile                                                   | Juliet                                                                             |
+| `nameSuffix`                                                                       | *string*                                                                           | :heavy_minus_sign:                                                                 | Surname relating to profile                                                        | Jr                                                                                 |
+| `relationshipType`                                                                 | *string*                                                                           | :heavy_minus_sign:                                                                 | Relationship type                                                                  | Daughter                                                                           |
+| `sanctionsListDetails`                                                             | [components.SanctionsListDetail](../../models/components/sanctionslistdetail.md)[] | :heavy_minus_sign:                                                                 | Sanctions list details                                                             |                                                                                    |
+| `surname`                                                                          | *string*                                                                           | :heavy_minus_sign:                                                                 | Surname relating to profile                                                        | Dough                                                                              |
+| `titleHonorific`                                                                   | *string*                                                                           | :heavy_minus_sign:                                                                 | Dow Jones persons title                                                            | Mrs                                                                                |

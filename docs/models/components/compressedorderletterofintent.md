@@ -1,0 +1,18 @@
+# CompressedOrderLetterOfIntent
+
+Letter of Intent (LOI). An LOI allows investors to receive sales charge discounts based on a commitment to buy a specified monetary amount of shares over a period of time, usually 13 months. Either ROA or LOI may be specified, but not both.
+
+## Example Usage
+
+```typescript
+import { CompressedOrderLetterOfIntent } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: CompressedOrderLetterOfIntent = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                     | Type                                                                                                                                                      | Required                                                                                                                                                  | Description                                                                                                                                               | Example                                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `amount`                                                                                                                                                  | [components.CompressedOrderAmount](../../models/components/compressedorderamount.md)                                                                      | :heavy_minus_sign:                                                                                                                                        | The amount of the LOI. This is a monetary value in the same currency as the order.                                                                        | {<br/>"value": "30.57"<br/>}                                                                                                                              |
+| `periodStartDate`                                                                                                                                         | [components.CompressedOrderPeriodStartDate](../../models/components/compressedorderperiodstartdate.md)                                                    | :heavy_minus_sign:                                                                                                                                        | The period start date, specific to the US Eastern Time Zone, of the LOI. Date range: 90 days in the past and 13 months in the future from the order_date. | {<br/>"day": 25,<br/>"month": 4,<br/>"year": 2024<br/>}                                                                                                   |

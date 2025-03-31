@@ -1,0 +1,18 @@
+# AchWithdrawalScheduleFederalTaxWithholding
+
+The federal tax withholding.
+
+## Example Usage
+
+```typescript
+import { AchWithdrawalScheduleFederalTaxWithholding } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: AchWithdrawalScheduleFederalTaxWithholding = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                    | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              | Example                                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `amount`                                                                                                                                                                 | [components.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount](../../models/components/achwithdrawalscheduleiradistributionfederaltaxwithholdingamount.md) | :heavy_minus_sign:                                                                                                                                                       | Fixed USD amount to withhold for taxes.                                                                                                                                  | {<br/>"value": "1.23"<br/>}                                                                                                                                              |
+| `percentage`                                                                                                                                                             | [components.AchWithdrawalSchedulePercentage](../../models/components/achwithdrawalschedulepercentage.md)                                                                 | :heavy_minus_sign:                                                                                                                                                       | Percentage of total disbursement amount to withhold for taxes.                                                                                                           | {<br/>"value": "11.25"<br/>}                                                                                                                                             |

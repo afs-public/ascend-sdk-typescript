@@ -1,0 +1,17 @@
+# InvestorCommunicationServiceListDocumentsRequest
+
+## Example Usage
+
+```typescript
+import { InvestorCommunicationServiceListDocumentsRequest } from "@apexfintechsolutions/ascend-sdk/models/operations";
+
+let value: InvestorCommunicationServiceListDocumentsRequest = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                 | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pageSize`                                                                                                                                            | *number*                                                                                                                                              | :heavy_minus_sign:                                                                                                                                    | The maximum number of items to return; The service may return fewer than this value                                                                   |
+| `pageToken`                                                                                                                                           | *string*                                                                                                                                              | :heavy_minus_sign:                                                                                                                                    | Token used to get a specific page of results                                                                                                          |
+| `filter`                                                                                                                                              | *string*                                                                                                                                              | :heavy_minus_sign:                                                                                                                                    | CEL filter to be applied against the documents; Providing a correspondent to search for is required; Only one correspondent can be searched at a time |

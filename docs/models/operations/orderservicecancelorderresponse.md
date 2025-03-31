@@ -1,0 +1,24 @@
+# OrderServiceCancelOrderResponse
+
+## Example Usage
+
+```typescript
+import { OrderServiceCancelOrderResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
+
+let value: OrderServiceCancelOrderResponse = {
+  httpMeta: {
+    response: new Response("{\"message\": \"hello world\"}", {
+      headers: { "Content-Type": "application/json" },
+    }),
+    request: new Request("https://example.com"),
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                 | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `httpMeta`                                                                                                                                            | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                                                    | :heavy_check_mark:                                                                                                                                    | N/A                                                                                                                                                   |
+| `order`                                                                                                                                               | [components.Order](../../models/components/order.md)                                                                                                  | :heavy_minus_sign:                                                                                                                                    | OK                                                                                                                                                    |
+| `status`                                                                                                                                              | [components.Status](../../models/components/status.md)                                                                                                | :heavy_minus_sign:                                                                                                                                    | INVALID_ARGUMENT: The account_id or the order_id could not be determined for the request.<br/>FAILED_PRECONDITION: The order is not in a cancelable state |
