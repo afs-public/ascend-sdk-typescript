@@ -1,0 +1,21 @@
+# WatchlistItem
+
+Watchlist details response
+
+## Example Usage
+
+```typescript
+import { WatchlistItem } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: WatchlistItem = {};
+```
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       | Example                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `dndbDetails`                                                                                                     | [components.DndbDetails](../../models/components/dndbdetails.md)                                                  | :heavy_minus_sign:                                                                                                | Dndb details                                                                                                      |                                                                                                                   |
+| `dowJonesDetails`                                                                                                 | [components.DowJonesDetails](../../models/components/dowjonesdetails.md)                                          | :heavy_minus_sign:                                                                                                | Dow Jones details                                                                                                 |                                                                                                                   |
+| `name`                                                                                                            | *string*                                                                                                          | :heavy_minus_sign:                                                                                                | The resource identifier for the WatchlistItem The format is "watchlists/{watchlist_id}/items/{watchlist_item_id}" | watchlists/DOWJONES/items/123456                                                                                  |
+| `watchlist`                                                                                                       | *string*                                                                                                          | :heavy_minus_sign:                                                                                                | Indicates the watchlist source for a given match                                                                  | DOWJONES                                                                                                          |
+| `watchlistItem`                                                                                                   | *number*                                                                                                          | :heavy_minus_sign:                                                                                                | Identification number for the watchlist item that was matched                                                     | 123456                                                                                                            |

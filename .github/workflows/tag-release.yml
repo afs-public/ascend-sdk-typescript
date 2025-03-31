@@ -1,0 +1,38 @@
+name: Tag Release
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Git config
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+
+      - name: Install yq
+        run: |
+          sudo snap install yq
+
+      - name: Extract Version with yq
+        id: vars
+        run: |
+          version=$(yq eval '.typescript.version' gen.yaml)
+          echo "Extracted version: $version"
+          echo "version=$version" >> $GITHUB_ENV
+          echo ::set-output name=version::$version
+
+      - name: Create and Push Tag
+        run: |
+          echo "Create and push a new tag based on the extracted version"
+          git tag -a v${{ steps.vars.outputs.version }} -m "Release v${{ steps.vars.outputs.version }}"
+          git push origin v${{ steps.vars.outputs.version }}

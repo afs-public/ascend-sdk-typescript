@@ -1,0 +1,18 @@
+# IRATraditionalEnrollmentMetadataCreate
+
+Enrollment metadata for Traditional IRA accounts enrollment type
+
+## Example Usage
+
+```typescript
+import { IRATraditionalEnrollmentMetadataCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: IRATraditionalEnrollmentMetadataCreate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                  | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            | Example                                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dividendReinvestmentPlan`                                                                                                                                             | [components.IRATraditionalEnrollmentMetadataCreateDividendReinvestmentPlan](../../models/components/iratraditionalenrollmentmetadatacreatedividendreinvestmentplan.md) | :heavy_minus_sign:                                                                                                                                                     | Option to auto-enroll in Dividend Reinvestment; defaults to true                                                                                                       | DIVIDEND_REINVESTMENT_ENROLL                                                                                                                                           |
+| `fdicCashSweep`                                                                                                                                                        | [components.IRATraditionalEnrollmentMetadataCreateFdicCashSweep](../../models/components/iratraditionalenrollmentmetadatacreatefdiccashsweep.md)                       | :heavy_minus_sign:                                                                                                                                                     | Option to auto-enroll in FDIC cash sweep; defaults to true                                                                                                             | FDIC_CASH_SWEEP_ENROLL                                                                                                                                                 |

@@ -1,0 +1,18 @@
+# CustodialEnrollmentMetadataCreate
+
+Enrollment metadata for the CUSTODIAL enrollment type
+
+## Example Usage
+
+```typescript
+import { CustodialEnrollmentMetadataCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: CustodialEnrollmentMetadataCreate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                        | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  | Example                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dividendReinvestmentPlan`                                                                                                                                   | [components.CustodialEnrollmentMetadataCreateDividendReinvestmentPlan](../../models/components/custodialenrollmentmetadatacreatedividendreinvestmentplan.md) | :heavy_minus_sign:                                                                                                                                           | Option to auto-enroll in Dividend Reinvestment; defaults to true                                                                                             | DIVIDEND_REINVESTMENT_ENROLL                                                                                                                                 |
+| `fdicCashSweep`                                                                                                                                              | [components.CustodialEnrollmentMetadataCreateFdicCashSweep](../../models/components/custodialenrollmentmetadatacreatefdiccashsweep.md)                       | :heavy_minus_sign:                                                                                                                                           | Option to auto-enroll in FDIC cash sweep; defaults to true                                                                                                   | FDIC_CASH_SWEEP_ENROLL                                                                                                                                       |

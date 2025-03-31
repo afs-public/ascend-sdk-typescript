@@ -1,0 +1,20 @@
+# PhoneNumberShortCodeCreate
+
+An object representing a short code, which is a phone number that is typically much shorter than regular phone numbers and can be used to address messages in MMS and SMS systems, as well as for abbreviated dialing (e.g. "Text 611 to see how many minutes you have remaining on your plan.").
+
+ Short codes are restricted to a region and are not internationally dialable, which means the same short code can exist in different regions, with different usage and pricing, even if those regions share the same country calling code (e.g. US and CA).
+
+## Example Usage
+
+```typescript
+import { PhoneNumberShortCodeCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: PhoneNumberShortCodeCreate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                             | Type                                                                                                                                                                                              | Required                                                                                                                                                                                          | Description                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `number`                                                                                                                                                                                          | *string*                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                | Required. The short code digits, without a leading plus ('+') or country calling code, e.g. "611".                                                                                                |
+| `regionCode`                                                                                                                                                                                      | *string*                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                | Required. The BCP-47 region code of the location where calls to this short code can be made, such as "US" and "BB".<br/><br/> Reference(s):<br/> - http://www.unicode.org/reports/tr35/#unicode_region_subtag |

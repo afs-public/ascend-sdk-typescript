@@ -1,0 +1,23 @@
+# AuditTrail
+
+Audit trail details
+
+## Example Usage
+
+```typescript
+import { AuditTrail } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: AuditTrail = {};
+```
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `auditType`                                                                                   | [components.AuditType](../../models/components/audittype.md)                                  | :heavy_minus_sign:                                                                            | The type of audit that was performed on the investigation                                     | INVESTIGATION_REQUEST_UPDATE                                                                  |
+| `comment`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | Comment relating to why the audit was saved                                                   | Updating family name                                                                          |
+| `field`                                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | The name of the field that has been updated                                                   | investigation_request.person_investigation.family_name                                        |
+| `newValue`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The new value for the field that was updated                                                  | Doe                                                                                           |
+| `oldValue`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | The prior value for the field that was updated                                                | Dough                                                                                         |
+| `updateTime`                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The date the user updated the investigation                                                   | 2023-06-13 23:48:58.343 +0000 UTC                                                             |
+| `updateUser`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | The user that made the update to the investigation                                            | jsmith                                                                                        |

@@ -1,0 +1,18 @@
+# IctWithdrawalStateTaxWithholding
+
+The state tax withholding.
+
+## Example Usage
+
+```typescript
+import { IctWithdrawalStateTaxWithholding } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: IctWithdrawalStateTaxWithholding = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                              | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `amount`                                                                                                                                                           | [components.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount](../../models/components/ictwithdrawalretirementdistributionstatetaxwithholdingamount.md) | :heavy_minus_sign:                                                                                                                                                 | Fixed USD amount to withhold for taxes.                                                                                                                            | {<br/>"value": "1.23"<br/>}                                                                                                                                        |
+| `percentage`                                                                                                                                                       | [components.IctWithdrawalRetirementDistributionPercentage](../../models/components/ictwithdrawalretirementdistributionpercentage.md)                               | :heavy_minus_sign:                                                                                                                                                 | Percentage of total disbursement amount to withhold for taxes.                                                                                                     | {<br/>"value": "11.25"<br/>}                                                                                                                                       |

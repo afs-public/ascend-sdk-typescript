@@ -1,0 +1,18 @@
+# IraSimpleEnrollmentMetadata
+
+Metadata for the SIMPLE_IRA_REGISTRATION enrollment type
+
+## Example Usage
+
+```typescript
+import { IraSimpleEnrollmentMetadata } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: IraSimpleEnrollmentMetadata = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                | Type                                                                                                                                                                 | Required                                                                                                                                                             | Description                                                                                                                                                          | Example                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dividendReinvestmentPlan`                                                                                                                                           | [components.EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlan](../../models/components/enrollmentirasimpleenrollmentmetadatadividendreinvestmentplan.md) | :heavy_minus_sign:                                                                                                                                                   | Option to auto-enroll in Dividend Reinvestment; defaults to true                                                                                                     | DIVIDEND_REINVESTMENT_ENROLL                                                                                                                                         |
+| `fdicCashSweep`                                                                                                                                                      | [components.EnrollmentIraSimpleEnrollmentMetadataFdicCashSweep](../../models/components/enrollmentirasimpleenrollmentmetadatafdiccashsweep.md)                       | :heavy_minus_sign:                                                                                                                                                   | Option to auto-enroll in FDIC cash sweep; defaults to true                                                                                                           | FDIC_CASH_SWEEP_ENROLL                                                                                                                                               |

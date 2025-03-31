@@ -1,0 +1,18 @@
+# IRARothEnrollmentMetadataCreate
+
+Enrollment metadata for ROTH IRA accounts enrollment type
+
+## Example Usage
+
+```typescript
+import { IRARothEnrollmentMetadataCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: IRARothEnrollmentMetadataCreate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                    | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              | Example                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dividendReinvestmentPlan`                                                                                                                               | [components.IRARothEnrollmentMetadataCreateDividendReinvestmentPlan](../../models/components/irarothenrollmentmetadatacreatedividendreinvestmentplan.md) | :heavy_minus_sign:                                                                                                                                       | Option to auto-enroll in Dividend Reinvestment; defaults to true                                                                                         | DIVIDEND_REINVESTMENT_ENROLL                                                                                                                             |
+| `fdicCashSweep`                                                                                                                                          | [components.IRARothEnrollmentMetadataCreateFdicCashSweep](../../models/components/irarothenrollmentmetadatacreatefdiccashsweep.md)                       | :heavy_minus_sign:                                                                                                                                       | Option to auto-enroll in FDIC cash sweep; defaults to true                                                                                               | FDIC_CASH_SWEEP_ENROLL                                                                                                                                   |

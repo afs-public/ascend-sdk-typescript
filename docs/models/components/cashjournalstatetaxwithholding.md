@@ -1,0 +1,18 @@
+# CashJournalStateTaxWithholding
+
+The state tax withholding.
+
+## Example Usage
+
+```typescript
+import { CashJournalStateTaxWithholding } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: CashJournalStateTaxWithholding = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                          | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    | Example                                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `amount`                                                                                                                                                       | [components.CashJournalRetirementDistributionStateTaxWithholdingAmount](../../models/components/cashjournalretirementdistributionstatetaxwithholdingamount.md) | :heavy_minus_sign:                                                                                                                                             | Fixed USD amount to withhold for taxes.                                                                                                                        | {<br/>"value": "1.23"<br/>}                                                                                                                                    |
+| `percentage`                                                                                                                                                   | [components.CashJournalRetirementDistributionPercentage](../../models/components/cashjournalretirementdistributionpercentage.md)                               | :heavy_minus_sign:                                                                                                                                             | Percentage of total disbursement amount to withhold for taxes.                                                                                                 | {<br/>"value": "11.25"<br/>}                                                                                                                                   |

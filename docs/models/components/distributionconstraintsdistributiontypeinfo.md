@@ -1,0 +1,19 @@
+# DistributionConstraintsDistributionTypeInfo
+
+Retirement distribution type info
+
+## Example Usage
+
+```typescript
+import { DistributionConstraintsDistributionTypeInfo } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: DistributionConstraintsDistributionTypeInfo = {};
+```
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              | Example                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `federalWithholdingEnabled`                                                                                                              | *boolean*                                                                                                                                | :heavy_minus_sign:                                                                                                                       | Whether federal withholding is enabled                                                                                                   |                                                                                                                                          |
+| `stateWithholdingEnabled`                                                                                                                | *boolean*                                                                                                                                | :heavy_minus_sign:                                                                                                                       | Whether state withholding is enabled                                                                                                     |                                                                                                                                          |
+| `type`                                                                                                                                   | [components.DistributionConstraintsDistributionTypeInfoType](../../models/components/distributionconstraintsdistributiontypeinfotype.md) | :heavy_minus_sign:                                                                                                                       | Retirement distribution type                                                                                                             | NORMAL                                                                                                                                   |

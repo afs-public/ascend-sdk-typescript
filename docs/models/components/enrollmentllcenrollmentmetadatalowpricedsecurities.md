@@ -1,0 +1,18 @@
+# EnrollmentLlcEnrollmentMetadataLowPricedSecurities
+
+The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
+
+## Example Usage
+
+```typescript
+import { EnrollmentLlcEnrollmentMetadataLowPricedSecurities } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: EnrollmentLlcEnrollmentMetadataLowPricedSecurities = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                              | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        | Example                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `lowPricedSecurities`                                                                                                                                              | *boolean*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                 | The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets            | true                                                                                                                                                               |
+| `lowPricedSecuritiesPercentage`                                                                                                                                    | [components.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage](../../models/components/enrollmentllcenrollmentmetadatalowpricedsecuritiespercentage.md) | :heavy_minus_sign:                                                                                                                                                 | The percentage, by volume, of the account's trades which will involve low priced securities                                                                        | 90.2                                                                                                                                                               |
