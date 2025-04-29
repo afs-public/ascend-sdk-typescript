@@ -1,13 +1,13 @@
 # Direction
 
-The direction of the transfer
+Flag indicating whether this is a deposit or withdrawal transfer
 
 ## Example Usage
 
 ```typescript
 import { Direction } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: Direction = Direction.Outgoing;
+let value: Direction = Direction.Deposit;
 ```
 
 ## Values
@@ -17,6 +17,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
 | `DirectionUnspecified` | DIRECTION_UNSPECIFIED  |
-| `Outgoing`             | OUTGOING               |
-| `Incoming`             | INCOMING               |
+| `Deposit`              | DEPOSIT                |
+| `Withdrawal`           | WITHDRAWAL             |
 | -                      | `Unrecognized<string>` |

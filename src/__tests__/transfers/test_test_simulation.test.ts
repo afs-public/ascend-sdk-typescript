@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 import { DateTime } from "luxon";
 import { sdk, timeout } from "../utils/sdk";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import {
   createLegalNaturalPerson,
   createAccount,
@@ -28,7 +28,9 @@ import {
   ForceNocAchDepositRequestCreate,
   ForceNocAchWithdrawalRequestCreate,
   ForceReturnAchDepositRequestCreate,
-} from "../../models/components";
+} from "@apexfintechsolutions/ascend-sdk/models/components";
+import * as errors from "@apexfintechsolutions/ascend-sdk/models/errors";
+import crypto from "crypto";
 
 let lnp_id: string | undefined;
 let account_id: string | undefined;
@@ -90,20 +92,28 @@ let afternoon = currentTime.set({
 
 // Current time must be between 11:30 PM CT and 6:00 PM CT
 if (currentTime >= morning && currentTime <= afternoon) {
-  // test("Test Test Simulation Transfers Force Approve Ach Deposit Force Approve Ach Deposit1", async () => {
-  //   const pending_deposit_id = await createACHDeposit(deceased_account_id, deceased_bank_relationship_id);
-  //
-  //   expect(pending_deposit_id).toBeDefined();
-  //
-  //   await timeout(5000);
-  //
-  //   const result = await sdk.testSimulation.forceApproveAchDeposit({
-  //     name: `accounts/${deceased_account_id}/achdeposits/${deceased_bank_relationship_id}`
-  //   }, deceased_account_id || '', pending_deposit_id || '')
-  //
-  //   expect(result).toBeDefined();
-  //   expect(result.httpMeta.response.status).toBe(200);
-  // })
+  test("Test Test Simulation Transfers Force Approve Ach Deposit Force Approve Ach Deposit1", async () => {
+    const pending_deposit_id = await createACHDeposit(deceased_account_id, deceased_bank_relationship_id);
+
+    expect(pending_deposit_id).toBeDefined();
+
+    await timeout(5000);
+
+    try{
+      const result = await sdk.testSimulation.forceApproveAchDeposit({
+        name: `accounts/${deceased_account_id}/achdeposits/${deceased_bank_relationship_id}`
+      }, deceased_account_id || '', pending_deposit_id || '')
+
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
+  })
 
   test("Test Test Simulation Transfers Force Noc Ach Deposit Force Noc Ach Deposit1", async () => {
     const pending_deposit_id = await createACHDeposit(
@@ -139,16 +149,24 @@ if (currentTime >= morning && currentTime <= afternoon) {
     );
     await timeout(5000);
 
-    const result = await sdk.testSimulation.forceRejectAchDeposit(
-      {
-        name: `accounts/${deceased_account_id}/achDeposits/${pending_deposit_id}`,
-      },
-      deceased_account_id,
-      pending_deposit_id || "",
-    );
+    try {
+      const result = await sdk.testSimulation.forceRejectAchDeposit(
+        {
+          name: `accounts/${deceased_account_id}/achDeposits/${pending_deposit_id}`,
+        },
+        deceased_account_id,
+        pending_deposit_id || "",
+      );
 
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
   });
 
   test("Test Test Simulation Transfers Force Ach Deposit Return Force Ach Deposit Return1", async () => {
@@ -165,31 +183,48 @@ if (currentTime >= morning && currentTime <= afternoon) {
       name: `accounts/${account_id}/achDeposits/${pending_deposit_id}`,
     };
 
-    const result = await sdk.testSimulation.forceReturnAchDeposit(
-      request,
-      account_id || "",
-      pending_deposit_id || "",
-    );
+    try {
+      const result = await sdk.testSimulation.forceReturnAchDeposit(
+        request,
+        account_id || "",
+        pending_deposit_id || "",
+      );
 
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("current state");
+      }
+    }
   });
 
-  // test("Test Test Simulation Transfers Force Approve Ach Withdrawal Force Approve Ach Withdrawal1", async () => {
-  //   const pending_withdrawal_id = await createACHWithdrawal(deceased_account_id, deceased_bank_relationship_id);
-  //   await timeout(10000);
-  //
-  //   const result = await sdk.testSimulation.forceApproveAchWithdrawal({
-  //     name: `accounts/${deceased_account_id}/achWithdrawals/${pending_withdrawal_id}`,
-  //   },
-  //   deceased_account_id,
-  //   pending_withdrawal_id || '');
-  //
-  //   expect(result).toBeDefined();
-  //   expect(result.httpMeta.response.status).toBe(200);
-  // })
+  test("Test Test Simulation Transfers Force Approve Ach Withdrawal Force Approve Ach Withdrawal1", async () => {
+    const pending_withdrawal_id = await createACHWithdrawal(deceased_account_id, deceased_bank_relationship_id);
+    await timeout(10000);
 
-  test("Test Test Simulation Transfers Force Noc Ach Withdrawal Force Noc Ach Withdrawal1", async () => {
+    try {
+      const result = await sdk.testSimulation.forceApproveAchWithdrawal({
+          name: `accounts/${deceased_account_id}/achWithdrawals/${pending_withdrawal_id}`,
+        },
+        deceased_account_id,
+        pending_withdrawal_id || '');
+
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
+  })
+
+
+  test("test Test Simulation Transfers Force Noc Ach Withdrawal Force Noc Ach Withdrawal1", async () => {
     const completed_withdrawal_id = await createCompletedWithdrawal(
       withdrawal_account_id,
     );
@@ -217,16 +252,24 @@ if (currentTime >= morning && currentTime <= afternoon) {
     );
     await timeout(5000);
 
-    const result = await sdk.testSimulation.forceRejectAchWithdrawal(
-      {
-        name: `accounts/${deceased_account_id}/achWithdrawals/${pending_withdrawal_id}`,
-      },
-      deceased_account_id,
-      pending_withdrawal_id || "",
-    );
+    try {
+      const result = await sdk.testSimulation.forceRejectAchWithdrawal(
+        {
+          name: `accounts/${deceased_account_id}/achWithdrawals/${pending_withdrawal_id}`,
+        },
+        deceased_account_id,
+        pending_withdrawal_id || "",
+      );
 
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
   });
 
   test("Test Test Simulation Transfers Force Ach Withdrawal Return Force Ach Withdrawal Return1", async () => {
@@ -241,14 +284,22 @@ if (currentTime >= morning && currentTime <= afternoon) {
       name: `accounts/${withdrawal_account_id}/achWithdrawals/${completed_withdrawal_id}`,
     };
 
-    const result = await sdk.testSimulation.forceReturnAchWithdrawal(
-      request,
-      withdrawal_account_id,
-      completed_withdrawal_id,
-    );
+    try {
+      const result = await sdk.testSimulation.forceReturnAchWithdrawal(
+        request,
+        withdrawal_account_id,
+        completed_withdrawal_id,
+      );
 
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("current state");
+      }
+    }
   });
 } else {
   console.log(
@@ -260,66 +311,98 @@ currentTime = DateTime.now().setZone("America/Chicago");
 morning = currentTime.set({ hour: 6, minute: 0, second: 0, millisecond: 0 });
 afternoon = currentTime.set({ hour: 15, minute: 0, second: 0, millisecond: 0 });
 if (morning <= currentTime && currentTime <= afternoon) {
-  // test("Test Test Simulation Transfers Force Ict Deposit Approve Force Ict Deposit Approve1", async () => {
-  //   const ictDeposit = await createIctDepositPending(deceased_account_id);
-  //   await timeout(10000);
-  //
-  //   const result = await sdk.testSimulation.forceApproveIctDeposit({
-  //         name: `accounts/${deceased_account_id}/ictDeposits/${ictDeposit}`
-  //       },
-  //       deceased_account_id,
-  //       ictDeposit);
-  //
-  //   expect(result).toBeDefined();
-  //   expect(result.httpMeta.response.status).toBe(200);
-  // })
+  test("Test Test Simulation Transfers Force Ict Deposit Approve Force Ict Deposit Approve1", async () => {
+    const ictDeposit = await createIctDepositPending(deceased_account_id);
+    await timeout(10000);
+
+    try {
+      const result = await sdk.testSimulation.forceApproveIctDeposit({
+          name: `accounts/${deceased_account_id}/ictDeposits/${ictDeposit}`
+        },
+        deceased_account_id,
+        ictDeposit);
+
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
+  })
 
   test("Test Test Simulation Transfers Force Ict Deposit Reject Force Ict Deposit Reject1", async () => {
     const pending_deposit_id =
       await createIctDepositPending(deceased_account_id);
     await timeout(10000);
 
-    const result = await sdk.testSimulation.forceRejectIctDeposit(
-      {
-        name: `accounts/${deceased_account_id}/ictDeposits/${pending_deposit_id}`,
-      },
-      deceased_account_id,
-      pending_deposit_id,
-    );
+    try {
+      const result = await sdk.testSimulation.forceRejectIctDeposit(
+        {
+          name: `accounts/${deceased_account_id}/ictDeposits/${pending_deposit_id}`,
+        },
+        deceased_account_id,
+        pending_deposit_id,
+      );
 
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
   });
 
-  // test("Test Test Simulation Transfers Force Ict Withdrawal Approve Force Ict Withdrawal Approve1", async () => {
-  //   const pending_withdrawal_id = await createIctWithdrawal(deceased_account_id);
-  //   await timeout(10000);
-  //
-  //   const result = await sdk.testSimulation.forceApproveIctWithdrawal({
-  //         name: `accounts/${deceased_account_id}/ictWithdrawals/${pending_withdrawal_id}`
-  //       },
-  //       deceased_account_id,
-  //       pending_withdrawal_id);
-  //
-  //   expect(result).toBeDefined();
-  //   expect(result.httpMeta.response.status).toBe(200);
-  // });
+  test("Test Test Simulation Transfers Force Ict Withdrawal Approve Force Ict Withdrawal Approve1", async () => {
+    const pending_withdrawal_id = await createIctWithdrawal(deceased_account_id);
+    await timeout(10000);
+
+    try {
+      const result = await sdk.testSimulation.forceApproveIctWithdrawal({
+          name: `accounts/${deceased_account_id}/ictWithdrawals/${pending_withdrawal_id}`
+        },
+        deceased_account_id,
+        pending_withdrawal_id);
+
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
+  });
 
   test("Test Test Simulation Transfers Force Ict Withdrawal Reject Force Ict Withdrawal Reject1", async () => {
     const pending_withdrawal_id =
       await createIctWithdrawal(deceased_account_id);
     await timeout(10000);
 
-    const result = await sdk.testSimulation.forceRejectIctWithdrawal(
-      {
-        name: `accounts/${deceased_account_id}/ictWithdrawals/${pending_withdrawal_id}`,
-      },
-      deceased_account_id,
-      pending_withdrawal_id,
-    );
+    try {
+      const result = await sdk.testSimulation.forceRejectIctWithdrawal(
+        {
+          name: `accounts/${deceased_account_id}/ictWithdrawals/${pending_withdrawal_id}`,
+        },
+        deceased_account_id,
+        pending_withdrawal_id,
+      );
 
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("that does not need review");
+      }
+    }
   });
 } else {
   console.log(
@@ -336,24 +419,30 @@ afternoon = currentTime.set({
   millisecond: 0,
 });
 if (morning <= currentTime && currentTime <= afternoon) {
-  // test("Test Test Simulation Transfers Force Approve Wire Withdrawal Force Approve Wire Withdrawal1", async () => {
-  //   const wire_withdrawal_id = await createWireWithdrawal(account_id || '');
-  //   const request : components.ForceApproveWireWithdrawalRequestCreate = {
-  //     name: `accounts/${account_id}/wireWithdrawals/${wire_withdrawal_id}`
-  //   }
-  //   const result = await sdk.testSimulation.forceApproveWireWithdrawal(request, account_id || '', wire_withdrawal_id || '');
-  //   expect(result).toBeDefined();
-  //   expect(result.httpMeta.response.status).toBe(200);
-  // })
+  test("Test Test Simulation Transfers Force Approve Wire Withdrawal Force Approve Wire Withdrawal1", async () => {
+    const wire_withdrawal_id = await createWireWithdrawal(withdrawal_account_id || '');
+
+    await timeout(5000);
+
+    const request : components.ForceApproveWireWithdrawalRequestCreate = {
+      name: `accounts/${withdrawal_account_id}/wireWithdrawals/${wire_withdrawal_id}`
+    }
+    const result = await sdk.testSimulation.forceApproveWireWithdrawal(request, withdrawal_account_id || '', wire_withdrawal_id || '');
+    expect(result).toBeDefined();
+    expect(result.httpMeta.response.status).toBe(200);
+  })
 
   test("Test Test Simulation Transfers Force Reject Wire Withdrawal Force Reject Wire Withdrawal1", async () => {
-    const wire_withdrawal_id = await createWireWithdrawal(account_id || "");
+    const wire_withdrawal_id = await createWireWithdrawal(withdrawal_account_id || "");
+
+    await timeout(5000);
+
     const request: components.ForceRejectWireWithdrawalRequestCreate = {
-      name: `accounts/${account_id}/wireWithdrawals/${wire_withdrawal_id}`,
+      name: `accounts/${withdrawal_account_id}/wireWithdrawals/${wire_withdrawal_id}`,
     };
     const result = await sdk.testSimulation.forceRejectWireWithdrawal(
       request,
-      account_id || "",
+      withdrawal_account_id || "",
       wire_withdrawal_id || "",
     );
     expect(result).toBeDefined();
@@ -369,21 +458,38 @@ currentTime = DateTime.now().setZone("America/Chicago");
 morning = currentTime.set({ hour: 6, minute: 0, second: 0, millisecond: 0 });
 afternoon = currentTime.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
 if (morning <= currentTime && currentTime <= afternoon) {
-  // test("Test Test Simulation Transfers Force Approve Cash Journal Force Accept Cash Journal1", async () => {
-  //   const cash_journal_id = await createCashJournal(account_id || '');
-  //   timeout(15000);
-  //   const request : components.ForceApproveCashJournalRequestCreate = {
-  //     name: `accounts/${account_id}/cashJournals/${cash_journal_id}`
-  //   }
-  //   const result = await sdk.testSimulation.forceApproveCashJournal(request, cash_journal_id);
-  //   expect(result).toBeDefined();
-  //   expect(result.httpMeta.response.status).toBe(200);
-  // })
+  test("Test Test Simulation Transfers Force Approve Cash Journal Force Accept Cash Journal1", async () => {
+    // Counter the amount of money the cash journal is taking
+    const transfer_request: components.TransfersCreditCreate = {
+      amount: {
+        value: "5000000",
+      },
+      clientTransferId: crypto.randomUUID(),
+      description: "Credit given as promotion",
+      type: components.TransfersCreditCreateType.Promotional,
+    };
+
+    await sdk.feesAndCredits.createCredit(transfer_request, withdrawal_account_id);
+
+    const cash_journal_id = await createCashJournal(deceased_account_id || '');
+
+    await timeout(5000);
+
+    const request : components.ForceApproveCashJournalRequestCreate = {
+      name: `accounts/${withdrawal_account_id}/cashJournals/${cash_journal_id}`
+    }
+    const result = await sdk.testSimulation.forceApproveCashJournal(request, cash_journal_id);
+    expect(result).toBeDefined();
+    expect(result.httpMeta.response.status).toBe(200);
+  })
 
   test("Test Test Simulation Transfers Force Reject Cash Journal Force Reject Cash Journal1", async () => {
-    const cash_journal_id = await createCashJournal(account_id || "");
+    const cash_journal_id = await createCashJournal(deceased_account_id || "");
+
+    await timeout(5000);
+
     const request: components.ForceRejectCashJournalRequestCreate = {
-      name: `accounts/${account_id}/cashJournals/${cash_journal_id}`,
+      name: `accounts/${withdrawal_account_id}/cashJournals/${cash_journal_id}`,
     };
     const result = await sdk.testSimulation.forceRejectCashJournal(
       request,

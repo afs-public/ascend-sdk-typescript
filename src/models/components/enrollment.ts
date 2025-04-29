@@ -58,7 +58,7 @@ export enum ConsentMethod {
 export type ConsentMethodOpen = OpenEnum<typeof ConsentMethod>;
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentCorporationEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -67,7 +67,7 @@ export enum EnrollmentCorporationEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentCorporationEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -299,7 +299,7 @@ export type EddAccountEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentCorporationEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -308,7 +308,7 @@ export enum EnrollmentCorporationEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentCorporationEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentCorporationEnrollmentMetadataFdicCashSweep
@@ -319,7 +319,7 @@ export type EnrollmentCorporationEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
  */
 export type CorporationEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentCorporationEnrollmentMetadataDividendReinvestmentPlanOpen
@@ -332,7 +332,7 @@ export type CorporationEnrollmentMetadata = {
     | null
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentCorporationEnrollmentMetadataFdicCashSweepOpen
@@ -340,7 +340,7 @@ export type CorporationEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -349,14 +349,14 @@ export enum EnrollmentDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentDividendReinvestmentPlanOpen = OpenEnum<
   typeof EnrollmentDividendReinvestmentPlan
 >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -365,7 +365,7 @@ export enum EnrollmentFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentFdicCashSweep
@@ -376,17 +376,17 @@ export type EnrollmentFdicCashSweepOpen = OpenEnum<
  */
 export type CustodialEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?: EnrollmentDividendReinvestmentPlanOpen | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: EnrollmentFdicCashSweepOpen | undefined;
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -395,7 +395,7 @@ export enum EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<typeof EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan>;
@@ -409,7 +409,7 @@ export type EstateEnrollmentMetadata = {
    */
   certificateOfAppointmentDocumentId?: string | undefined;
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlanOpen
@@ -417,7 +417,7 @@ export type EstateEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -426,7 +426,7 @@ export enum EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvest
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -434,7 +434,7 @@ export type EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvest
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentForeignIndividualAccountEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -443,7 +443,7 @@ export enum EnrollmentForeignIndividualAccountEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentForeignIndividualAccountEnrollmentMetadataFdicCashSweepOpen =
   OpenEnum<
@@ -652,13 +652,13 @@ export type ForeignNaturalPersonAccountEnrollmentMetadata = {
  */
 export type ForeignIndividualAccountEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentForeignIndividualAccountEnrollmentMetadataFdicCashSweepOpen
@@ -668,6 +668,289 @@ export type ForeignIndividualAccountEnrollmentMetadata = {
    */
   foreignNaturalPersonAccountEnrollmentMetadata?:
     | ForeignNaturalPersonAccountEnrollmentMetadata
+    | null
+    | undefined;
+};
+
+/**
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
+ */
+export enum EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan {
+  AutoEnrollDividendReinvestmentUnspecified =
+    "AUTO_ENROLL_DIVIDEND_REINVESTMENT_UNSPECIFIED",
+  DividendReinvestmentEnroll = "DIVIDEND_REINVESTMENT_ENROLL",
+  DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
+}
+/**
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlanOpen =
+  OpenEnum<
+    typeof EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan
+  >;
+
+/**
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
+ */
+export enum EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep {
+  AutoEnrollFdicCashSweepUnspecified =
+    "AUTO_ENROLL_FDIC_CASH_SWEEP_UNSPECIFIED",
+  FdicCashSweepEnroll = "FDIC_CASH_SWEEP_ENROLL",
+  FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweepOpen =
+  OpenEnum<typeof EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep>;
+
+/**
+ * The initial deposit amount in USD
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount =
+  {
+    /**
+     * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+     */
+    value?: string | undefined;
+  };
+
+/**
+ * The initial amount of money placed into the account by the entity upon or after the account's establishment.
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds = {
+  /**
+   * The initial deposit amount in USD
+   */
+  initialDepositAmount?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount
+    | null
+    | undefined;
+  /**
+   * The source of the initial deposit
+   */
+  initialDepositSource?: string | undefined;
+};
+
+/**
+ * A customer-disclosed list of other Apex-held accounts owned by the Entity applicant at the time of this account's application; expressed as zero, one, or many account numbers
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts = {
+  /**
+   * Other account names held at Apex
+   */
+  accountNames?: Array<string> | undefined;
+  /**
+   * Other account numbers held at Apex
+   */
+  accountNumbers?: Array<string> | undefined;
+  /**
+   * The owner has other accounts at Apex
+   */
+  ownerHasOtherAccountsAtApex?: boolean | undefined;
+};
+
+/**
+ * Disclosure of the entity account owner's financial relationships and source of brokerage funds; facilitates the creation of the overall customer risk profile
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile = {
+  /**
+   * Bank names with whom the entity maintains a relationship with (e.g., accounts held with the bank)
+   */
+  bankingRelationships?: Array<string> | undefined;
+  /**
+   * A customer-disclosed list of other Apex-held accounts owned by the Entity applicant at the time of this account's application; expressed as zero, one, or many account numbers
+   */
+  otherAccounts?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts
+    | null
+    | undefined;
+  /**
+   * The primary source of funds that will be deposited to this account
+   */
+  primarySourceOfDepositedFunds?: string | undefined;
+};
+
+/**
+ * The foreign bond trading countries details
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails =
+  {
+    /**
+     * Does the account anticipate trading in foreign bonds
+     */
+    foreignBondTrading?: boolean | undefined;
+    /**
+     * The foreign bond trading countries details. If yes, than please provide details
+     */
+    foreignBondTradingDetail?: Array<ForeignBondTradingDetail> | undefined;
+  };
+
+/**
+ * The percentage, by volume, of the account's trades which will involve low priced securities
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage =
+  {
+    /**
+     * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+     */
+    value?: string | undefined;
+  };
+
+/**
+ * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities =
+  {
+    /**
+     * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
+     */
+    lowPricedSecurities?: boolean | undefined;
+    /**
+     * The percentage, by volume, of the account's trades which will involve low priced securities
+     */
+    lowPricedSecuritiesPercentage?:
+      | EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage
+      | null
+      | undefined;
+  };
+
+/**
+ * The primary account activity type
+ */
+export enum EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType {
+  PrimaryAccountActivityTypeUnspecified =
+    "PRIMARY_ACCOUNT_ACTIVITY_TYPE_UNSPECIFIED",
+  ActiveTrading = "ACTIVE_TRADING",
+  ShortTermInvesting = "SHORT_TERM_INVESTING",
+  LongTermInvesting = "LONG_TERM_INVESTING",
+}
+/**
+ * The primary account activity type
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityTypeOpen =
+  OpenEnum<
+    typeof EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType
+  >;
+
+/**
+ * The frequency by which cash is anticipated to be withdrawn from the account
+ */
+export enum EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency {
+  WithdrawalFrequencyUnspecified = "WITHDRAWAL_FREQUENCY_UNSPECIFIED",
+  Frequent = "FREQUENT",
+  Occasional = "OCCASIONAL",
+  Rare = "RARE",
+}
+/**
+ * The frequency by which cash is anticipated to be withdrawn from the account
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequencyOpen =
+  OpenEnum<
+    typeof EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency
+  >;
+
+/**
+ * Details the customer's intended trading and banking-related activities at the time of account application; informs risk checks and forms a baseline for anomalous activity detection
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity = {
+  /**
+   * The foreign bond trading countries details
+   */
+  foreignBondTradingDetails?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails
+    | null
+    | undefined;
+  /**
+   * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
+   */
+  lowPricedSecurities?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities
+    | null
+    | undefined;
+  /**
+   * The primary account activity type
+   */
+  primaryAccountActivityType?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityTypeOpen
+    | undefined;
+  /**
+   * The frequency by which cash is anticipated to be withdrawn from the account
+   */
+  withdrawalFrequency?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequencyOpen
+    | undefined;
+};
+
+/**
+ * Information about the related politically exposed persons
+ */
+export type EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails = {
+  /**
+   * Indication as to whether or not an account has direct or indirect related politically exposed persons
+   */
+  directOrIndirectRelatedPeps?: boolean | undefined;
+  /**
+   * Related Peps
+   */
+  relatedPeps?: Array<RelatedPep> | undefined;
+};
+
+/**
+ * Enrollment metadata for Accounts that have a foreign Legal Natural Person owner.
+ */
+export type EnrollmentForeignNaturalPersonAccountEnrollmentMetadata = {
+  /**
+   * The initial amount of money placed into the account by the entity upon or after the account's establishment.
+   */
+  depositedFunds?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds
+    | null
+    | undefined;
+  /**
+   * Disclosure of the entity account owner's financial relationships and source of brokerage funds; facilitates the creation of the overall customer risk profile
+   */
+  financialProfile?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile
+    | null
+    | undefined;
+  /**
+   * Details the customer's intended trading and banking-related activities at the time of account application; informs risk checks and forms a baseline for anomalous activity detection
+   */
+  plannedActivity?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity
+    | null
+    | undefined;
+  /**
+   * Information about the related politically exposed persons
+   */
+  relatedPepDetails?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails
+    | null
+    | undefined;
+};
+
+/**
+ * Metadata for the REGISTRATION_JOINT_FOREIGN_WROS type
+ */
+export type ForeignJointAccountEnrollmentMetadata = {
+  /**
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
+   */
+  dividendReinvestmentPlan?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlanOpen
+    | undefined;
+  /**
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
+   */
+  fdicCashSweep?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweepOpen
+    | undefined;
+  /**
+   * Enrollment metadata for Accounts that have a foreign Legal Natural Person owner.
+   */
+  foreignNaturalPersonAccountEnrollmentMetadata?:
+    | EnrollmentForeignNaturalPersonAccountEnrollmentMetadata
     | null
     | undefined;
 };
@@ -695,7 +978,7 @@ export type FpslEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -704,7 +987,7 @@ export enum EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -712,7 +995,7 @@ export type EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlanOpen =
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentIndividualEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -721,7 +1004,7 @@ export enum EnrollmentIndividualEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentIndividualEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentIndividualEnrollmentMetadataFdicCashSweep
@@ -732,13 +1015,13 @@ export type EnrollmentIndividualEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
  */
 export type IndividualEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentIndividualEnrollmentMetadataFdicCashSweepOpen
@@ -746,7 +1029,7 @@ export type IndividualEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in dividend reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -755,7 +1038,7 @@ export enum EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in dividend reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -763,7 +1046,7 @@ export type EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlanOp
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentIraBeneficiaryEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -772,7 +1055,7 @@ export enum EnrollmentIraBeneficiaryEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentIraBeneficiaryEnrollmentMetadataFdicCashSweepOpen =
   OpenEnum<typeof EnrollmentIraBeneficiaryEnrollmentMetadataFdicCashSweep>;
@@ -818,13 +1101,13 @@ export type InheritedFromOwnerDeathDate = {
  */
 export type IraBeneficiaryEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in dividend reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentIraBeneficiaryEnrollmentMetadataFdicCashSweepOpen
@@ -848,7 +1131,7 @@ export type IraBeneficiaryEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -857,7 +1140,7 @@ export enum EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -865,7 +1148,7 @@ export type EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlanOpen 
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentIraRolloverEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -874,7 +1157,7 @@ export enum EnrollmentIraRolloverEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentIraRolloverEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentIraRolloverEnrollmentMetadataFdicCashSweep
@@ -885,13 +1168,13 @@ export type EnrollmentIraRolloverEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
  */
 export type IraRolloverEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentIraRolloverEnrollmentMetadataFdicCashSweepOpen
@@ -899,7 +1182,7 @@ export type IraRolloverEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -908,13 +1191,13 @@ export enum EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<typeof EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlan>;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentIraRothEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -923,7 +1206,7 @@ export enum EnrollmentIraRothEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentIraRothEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentIraRothEnrollmentMetadataFdicCashSweep
@@ -934,13 +1217,13 @@ export type EnrollmentIraRothEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
  */
 export type IraRothEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentIraRothEnrollmentMetadataFdicCashSweepOpen
@@ -948,7 +1231,7 @@ export type IraRothEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -957,13 +1240,13 @@ export enum EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<typeof EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlan>;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentIraSepEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -972,7 +1255,7 @@ export enum EnrollmentIraSepEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentIraSepEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentIraSepEnrollmentMetadataFdicCashSweep
@@ -983,13 +1266,13 @@ export type EnrollmentIraSepEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
  */
 export type IraSepEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentIraSepEnrollmentMetadataFdicCashSweepOpen
@@ -997,7 +1280,7 @@ export type IraSepEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1006,7 +1289,7 @@ export enum EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -1014,7 +1297,7 @@ export type EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlanOpen =
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentIraSimpleEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1023,7 +1306,7 @@ export enum EnrollmentIraSimpleEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentIraSimpleEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentIraSimpleEnrollmentMetadataFdicCashSweep
@@ -1034,13 +1317,13 @@ export type EnrollmentIraSimpleEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
  */
 export type IraSimpleEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentIraSimpleEnrollmentMetadataFdicCashSweepOpen
@@ -1048,7 +1331,7 @@ export type IraSimpleEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1057,7 +1340,7 @@ export enum EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -1065,7 +1348,7 @@ export type EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlanOp
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentIraTraditionalEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1074,7 +1357,7 @@ export enum EnrollmentIraTraditionalEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentIraTraditionalEnrollmentMetadataFdicCashSweepOpen =
   OpenEnum<typeof EnrollmentIraTraditionalEnrollmentMetadataFdicCashSweep>;
@@ -1084,13 +1367,13 @@ export type EnrollmentIraTraditionalEnrollmentMetadataFdicCashSweepOpen =
  */
 export type IraTraditionalEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentIraTraditionalEnrollmentMetadataFdicCashSweepOpen
@@ -1098,7 +1381,7 @@ export type IraTraditionalEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1107,7 +1390,7 @@ export enum EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestme
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -1115,7 +1398,7 @@ export type EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestme
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentJointCommunityPropertyEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1124,7 +1407,7 @@ export enum EnrollmentJointCommunityPropertyEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentJointCommunityPropertyEnrollmentMetadataFdicCashSweepOpen =
   OpenEnum<
@@ -1185,13 +1468,13 @@ export type EnrollmentJointCommunityPropertyEnrollmentMetadataLegalResidencyStat
  */
 export type JointCommunityPropertyEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentJointCommunityPropertyEnrollmentMetadataFdicCashSweepOpen
@@ -1205,7 +1488,7 @@ export type JointCommunityPropertyEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1214,7 +1497,7 @@ export enum EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestme
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -1222,7 +1505,7 @@ export type EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestme
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentJointTenantsByEntiretyEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1231,7 +1514,7 @@ export enum EnrollmentJointTenantsByEntiretyEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentJointTenantsByEntiretyEnrollmentMetadataFdicCashSweepOpen =
   OpenEnum<
@@ -1291,13 +1574,13 @@ export type EnrollmentLegalResidencyStateOfMarriedCoupleOpen = OpenEnum<
  */
 export type JointTenantsByEntiretyEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentJointTenantsByEntiretyEnrollmentMetadataFdicCashSweepOpen
@@ -1311,7 +1594,7 @@ export type JointTenantsByEntiretyEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1320,7 +1603,7 @@ export enum EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestment
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -1328,7 +1611,7 @@ export type EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestment
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1337,7 +1620,7 @@ export enum EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweepOpen =
   OpenEnum<
@@ -1349,13 +1632,13 @@ export type EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweepOpen =
  */
 export type JointTenantsInCommonEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweepOpen
@@ -1363,7 +1646,7 @@ export type JointTenantsInCommonEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1372,7 +1655,7 @@ export enum EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendRei
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -1380,7 +1663,7 @@ export type EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendRei
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1389,7 +1672,7 @@ export enum EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSwe
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSweepOpen =
   OpenEnum<
@@ -1401,13 +1684,13 @@ export type EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSwe
  */
 export type JointWithRightsOfSurvivorshipEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSweepOpen
@@ -1415,7 +1698,7 @@ export type JointWithRightsOfSurvivorshipEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to `DIVIDEND_REINVESTMENT_ENROLL`
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1424,7 +1707,7 @@ export enum EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to `DIVIDEND_REINVESTMENT_ENROLL`
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<typeof EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan>;
@@ -1676,7 +1959,7 @@ export type EnrollmentEddAccountEnrollmentMetadata = {
 };
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to `FDIC_CASH_SWEEP_ENROLL`
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentLlcEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1685,7 +1968,7 @@ export enum EnrollmentLlcEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to `FDIC_CASH_SWEEP_ENROLL`
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentLlcEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentLlcEnrollmentMetadataFdicCashSweep
@@ -1696,7 +1979,7 @@ export type EnrollmentLlcEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
  */
 export type LlcEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to `DIVIDEND_REINVESTMENT_ENROLL`
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlanOpen
@@ -1709,7 +1992,7 @@ export type LlcEnrollmentMetadata = {
     | null
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to `FDIC_CASH_SWEEP_ENROLL`
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: EnrollmentLlcEnrollmentMetadataFdicCashSweepOpen | undefined;
 };
@@ -1860,6 +2143,80 @@ export type OperatingEnrollmentMetadata = {
 };
 
 /**
+ * This captures a user's experience with investment vehicles. It includes details such as the user's average annual trade count for various investment vehicles
+ */
+export type InvestmentVehicleExperience = {
+  /**
+   * The number of average annual trades of commodities
+   */
+  commoditiesAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades of corporate bonds
+   */
+  corporateBondsAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades of funds
+   */
+  fundsAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades of government bonds
+   */
+  governmentBondsAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades in margin accounts
+   */
+  marginAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades of municipal bonds
+   */
+  municipalBondsAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades of options
+   */
+  optionsAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades of stocks
+   */
+  stocksAverageAnnualTradeCount?: number | undefined;
+  /**
+   * The number of average annual trades in tax sheltered accounts
+   */
+  taxSheltersAverageAnnualTradeCount?: number | undefined;
+};
+
+/**
+ * Requested options level
+ */
+export enum EnrollmentOptionsLevel {
+  OptionsLevelUnspecified = "OPTIONS_LEVEL_UNSPECIFIED",
+  Level1BasicDirectionalTrades = "LEVEL_1_BASIC_DIRECTIONAL_TRADES",
+}
+/**
+ * Requested options level
+ */
+export type EnrollmentOptionsLevelOpen = OpenEnum<
+  typeof EnrollmentOptionsLevel
+>;
+
+/**
+ * Metadata for the ORDERS_OPTIONS_TRADING enrollment type
+ */
+export type OrdersOptionsTradingEnrollmentMetadata = {
+  /**
+   * This captures a user's experience with investment vehicles. It includes details such as the user's average annual trade count for various investment vehicles
+   */
+  investmentVehicleExperience?: InvestmentVehicleExperience | null | undefined;
+  /**
+   * Requested options level
+   */
+  optionsLevel?: EnrollmentOptionsLevelOpen | undefined;
+  /**
+   * Total years of options trading experience
+   */
+  totalYearsOptionsTradingExperience?: number | undefined;
+};
+
+/**
  * Indicates where in the enrollment is in the process; May be `PENDING_AGREEMENT`, `ACTIVE`, `INACTIVE`, `PROCESSING`, or `EXPIRED`
  */
 export enum EnrollmentState {
@@ -1876,7 +2233,7 @@ export enum EnrollmentState {
 export type EnrollmentStateOpen = OpenEnum<typeof EnrollmentState>;
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -1885,13 +2242,13 @@ export enum EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<typeof EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlan>;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum EnrollmentTrustEnrollmentMetadataFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -1900,7 +2257,7 @@ export enum EnrollmentTrustEnrollmentMetadataFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type EnrollmentTrustEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
   typeof EnrollmentTrustEnrollmentMetadataFdicCashSweep
@@ -1927,13 +2284,13 @@ export type EnrollmentOpenedOnBehalfOfOpen = OpenEnum<
  */
 export type TrustEnrollmentMetadata = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | EnrollmentTrustEnrollmentMetadataFdicCashSweepOpen
@@ -1964,6 +2321,7 @@ export enum EnrollmentType1 {
   RegistrationIraRollover = "REGISTRATION_IRA_ROLLOVER",
   RegistrationTrust = "REGISTRATION_TRUST",
   RegistrationCorporation = "REGISTRATION_CORPORATION",
+  RegistrationLlc = "REGISTRATION_LLC",
   CashFdicCashSweep = "CASH_FDIC_CASH_SWEEP",
   RetirementBeneficiaryDesignation = "RETIREMENT_BENEFICIARY_DESIGNATION",
   DividendReinvestmentPlan = "DIVIDEND_REINVESTMENT_PLAN",
@@ -1972,11 +2330,26 @@ export enum EnrollmentType1 {
   RegistrationIraBeneficiaryRoth = "REGISTRATION_IRA_BENEFICIARY_ROTH",
   RegistrationIndividualForeign = "REGISTRATION_INDIVIDUAL_FOREIGN",
   RegistrationCustodial = "REGISTRATION_CUSTODIAL",
+  VirtualAccountNumber = "VIRTUAL_ACCOUNT_NUMBER",
 }
 /**
  * Describes the name of the enrollment; Expressed as an enum
  */
 export type EnrollmentType1Open = OpenEnum<typeof EnrollmentType1>;
+
+/**
+ * Metadata for the VIRTUAL_ACCOUNT_NUMBER type
+ */
+export type VirtualAccountNumberEnrollmentMetadata = {
+  /**
+   * The routing number for the account. This value is system-generated
+   */
+  routingNumber?: string | undefined;
+  /**
+   * The virtual account number for the account. This value is system-generated
+   */
+  virtualAccountNumber?: string | undefined;
+};
 
 /**
  * An Enrollment represents programs the account may enroll in.
@@ -2021,6 +2394,13 @@ export type Enrollment = {
    */
   foreignIndividualAccountEnrollmentMetadata?:
     | ForeignIndividualAccountEnrollmentMetadata
+    | null
+    | undefined;
+  /**
+   * Metadata for the REGISTRATION_JOINT_FOREIGN_WROS type
+   */
+  foreignJointAccountEnrollmentMetadata?:
+    | ForeignJointAccountEnrollmentMetadata
     | null
     | undefined;
   /**
@@ -2108,6 +2488,13 @@ export type Enrollment = {
    */
   operatingEnrollmentMetadata?: OperatingEnrollmentMetadata | null | undefined;
   /**
+   * Metadata for the ORDERS_OPTIONS_TRADING enrollment type
+   */
+  ordersOptionsTradingEnrollmentMetadata?:
+    | OrdersOptionsTradingEnrollmentMetadata
+    | null
+    | undefined;
+  /**
    * The ULID is associated with the approver of a given enrollment. The approver you create will contain the CRD Number issued to the person by FINRA. As an RIA, you should use the ULID associated with Apex's approver.
    */
   principalApproverId?: string | undefined;
@@ -2127,6 +2514,13 @@ export type Enrollment = {
    * The time an unenrollment request was processed and the enrollment transitioned to `INACTIVE`
    */
   unenrollmentTime?: Date | null | undefined;
+  /**
+   * Metadata for the VIRTUAL_ACCOUNT_NUMBER type
+   */
+  virtualAccountNumberEnrollmentMetadata?:
+    | VirtualAccountNumberEnrollmentMetadata
+    | null
+    | undefined;
 };
 
 /** @internal */
@@ -4006,6 +4400,905 @@ export namespace ForeignIndividualAccountEnrollmentMetadata$ {
     ForeignIndividualAccountEnrollmentMetadata$outboundSchema;
   /** @deprecated use `ForeignIndividualAccountEnrollmentMetadata$Outbound` instead. */
   export type Outbound = ForeignIndividualAccountEnrollmentMetadata$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlanOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlanOpen,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlanOpen
+  > = z.union([
+    z.nativeEnum(
+      EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan,
+    ),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweepOpen,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweepOpen
+  > = z.union([
+    z.nativeEnum(EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound =
+  {
+    value?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    initial_deposit_amount: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$inboundSchema
+      ),
+    ).optional(),
+    initial_deposit_source: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "initial_deposit_amount": "initialDepositAmount",
+      "initial_deposit_source": "initialDepositSource",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound =
+  {
+    initial_deposit_amount?:
+      | EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound
+      | null
+      | undefined;
+    initial_deposit_source?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds
+  > = z.object({
+    initialDepositAmount: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema
+      ),
+    ).optional(),
+    initialDepositSource: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      initialDepositAmount: "initial_deposit_amount",
+      initialDepositSource: "initial_deposit_source",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    account_names: z.array(z.string()).optional(),
+    account_numbers: z.array(z.string()).optional(),
+    owner_has_other_accounts_at_apex: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "account_names": "accountNames",
+      "account_numbers": "accountNumbers",
+      "owner_has_other_accounts_at_apex": "ownerHasOtherAccountsAtApex",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound =
+  {
+    account_names?: Array<string> | undefined;
+    account_numbers?: Array<string> | undefined;
+    owner_has_other_accounts_at_apex?: boolean | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts
+  > = z.object({
+    accountNames: z.array(z.string()).optional(),
+    accountNumbers: z.array(z.string()).optional(),
+    ownerHasOtherAccountsAtApex: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      accountNames: "account_names",
+      accountNumbers: "account_numbers",
+      ownerHasOtherAccountsAtApex: "owner_has_other_accounts_at_apex",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    banking_relationships: z.array(z.string()).optional(),
+    other_accounts: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema
+      ),
+    ).optional(),
+    primary_source_of_deposited_funds: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "banking_relationships": "bankingRelationships",
+      "other_accounts": "otherAccounts",
+      "primary_source_of_deposited_funds": "primarySourceOfDepositedFunds",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound =
+  {
+    banking_relationships?: Array<string> | undefined;
+    other_accounts?:
+      | EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound
+      | null
+      | undefined;
+    primary_source_of_deposited_funds?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile
+  > = z.object({
+    bankingRelationships: z.array(z.string()).optional(),
+    otherAccounts: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema
+      ),
+    ).optional(),
+    primarySourceOfDepositedFunds: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      bankingRelationships: "banking_relationships",
+      otherAccounts: "other_accounts",
+      primarySourceOfDepositedFunds: "primary_source_of_deposited_funds",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    foreign_bond_trading: z.boolean().optional(),
+    foreign_bond_trading_detail: z.array(ForeignBondTradingDetail$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "foreign_bond_trading": "foreignBondTrading",
+      "foreign_bond_trading_detail": "foreignBondTradingDetail",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound =
+  {
+    foreign_bond_trading?: boolean | undefined;
+    foreign_bond_trading_detail?:
+      | Array<ForeignBondTradingDetail$Outbound>
+      | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails
+  > = z.object({
+    foreignBondTrading: z.boolean().optional(),
+    foreignBondTradingDetail: z.array(ForeignBondTradingDetail$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      foreignBondTrading: "foreign_bond_trading",
+      foreignBondTradingDetail: "foreign_bond_trading_detail",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound =
+  {
+    value?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    low_priced_securities: z.boolean().optional(),
+    low_priced_securities_percentage: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
+      ),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "low_priced_securities": "lowPricedSecurities",
+      "low_priced_securities_percentage": "lowPricedSecuritiesPercentage",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound =
+  {
+    low_priced_securities?: boolean | undefined;
+    low_priced_securities_percentage?:
+      | EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound
+      | null
+      | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities
+  > = z.object({
+    lowPricedSecurities: z.boolean().optional(),
+    lowPricedSecuritiesPercentage: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
+      ),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      lowPricedSecurities: "low_priced_securities",
+      lowPricedSecuritiesPercentage: "low_priced_securities_percentage",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityTypeOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityTypeOpen,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityTypeOpen
+  > = z.union([
+    z.nativeEnum(
+      EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType,
+    ),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequencyOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequencyOpen,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequencyOpen
+  > = z.union([
+    z.nativeEnum(
+      EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency,
+    ),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    foreign_bond_trading_details: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema
+      ),
+    ).optional(),
+    low_priced_securities: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema
+      ),
+    ).optional(),
+    primary_account_activity_type:
+      EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$inboundSchema
+        .optional(),
+    withdrawal_frequency:
+      EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$inboundSchema
+        .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "foreign_bond_trading_details": "foreignBondTradingDetails",
+      "low_priced_securities": "lowPricedSecurities",
+      "primary_account_activity_type": "primaryAccountActivityType",
+      "withdrawal_frequency": "withdrawalFrequency",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound =
+  {
+    foreign_bond_trading_details?:
+      | EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound
+      | null
+      | undefined;
+    low_priced_securities?:
+      | EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound
+      | null
+      | undefined;
+    primary_account_activity_type?: string | undefined;
+    withdrawal_frequency?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity
+  > = z.object({
+    foreignBondTradingDetails: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema
+      ),
+    ).optional(),
+    lowPricedSecurities: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema
+      ),
+    ).optional(),
+    primaryAccountActivityType:
+      EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$outboundSchema
+        .optional(),
+    withdrawalFrequency:
+      EnrollmentForeignJointAccountEnrollmentMetadataWithdrawalFrequency$outboundSchema
+        .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      foreignBondTradingDetails: "foreign_bond_trading_details",
+      lowPricedSecurities: "low_priced_securities",
+      primaryAccountActivityType: "primary_account_activity_type",
+      withdrawalFrequency: "withdrawal_frequency",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    direct_or_indirect_related_peps: z.boolean().optional(),
+    related_peps: z.array(RelatedPep$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "direct_or_indirect_related_peps": "directOrIndirectRelatedPeps",
+      "related_peps": "relatedPeps",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound =
+  {
+    direct_or_indirect_related_peps?: boolean | undefined;
+    related_peps?: Array<RelatedPep$Outbound> | undefined;
+  };
+
+/** @internal */
+export const EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails
+  > = z.object({
+    directOrIndirectRelatedPeps: z.boolean().optional(),
+    relatedPeps: z.array(RelatedPep$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      directOrIndirectRelatedPeps: "direct_or_indirect_related_peps",
+      relatedPeps: "related_peps",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$ {
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema;
+  /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound;
+}
+
+/** @internal */
+export const EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema:
+  z.ZodType<
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    deposited_funds: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema
+      ),
+    ).optional(),
+    financial_profile: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema
+      ),
+    ).optional(),
+    planned_activity: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$inboundSchema
+      ),
+    ).optional(),
+    related_pep_details: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema
+      ),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "deposited_funds": "depositedFunds",
+      "financial_profile": "financialProfile",
+      "planned_activity": "plannedActivity",
+      "related_pep_details": "relatedPepDetails",
+    });
+  });
+
+/** @internal */
+export type EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound = {
+  deposited_funds?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound
+    | null
+    | undefined;
+  financial_profile?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound
+    | null
+    | undefined;
+  planned_activity?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound
+    | null
+    | undefined;
+  related_pep_details?:
+    | EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound
+    | null
+    | undefined;
+};
+
+/** @internal */
+export const EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema:
+  z.ZodType<
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound,
+    z.ZodTypeDef,
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata
+  > = z.object({
+    depositedFunds: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema
+      ),
+    ).optional(),
+    financialProfile: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema
+      ),
+    ).optional(),
+    plannedActivity: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema
+      ),
+    ).optional(),
+    relatedPepDetails: z.nullable(
+      z.lazy(() =>
+        EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema
+      ),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      depositedFunds: "deposited_funds",
+      financialProfile: "financial_profile",
+      plannedActivity: "planned_activity",
+      relatedPepDetails: "related_pep_details",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$ {
+  /** @deprecated use `EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema;
+  /** @deprecated use `EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema;
+  /** @deprecated use `EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound` instead. */
+  export type Outbound =
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound;
+}
+
+/** @internal */
+export const ForeignJointAccountEnrollmentMetadata$inboundSchema: z.ZodType<
+  ForeignJointAccountEnrollmentMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dividend_reinvestment_plan:
+    EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema
+      .optional(),
+  fdic_cash_sweep:
+    EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$inboundSchema
+      .optional(),
+  foreign_natural_person_account_enrollment_metadata: z.nullable(
+    z.lazy(() =>
+      EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema
+    ),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "dividend_reinvestment_plan": "dividendReinvestmentPlan",
+    "fdic_cash_sweep": "fdicCashSweep",
+    "foreign_natural_person_account_enrollment_metadata":
+      "foreignNaturalPersonAccountEnrollmentMetadata",
+  });
+});
+
+/** @internal */
+export type ForeignJointAccountEnrollmentMetadata$Outbound = {
+  dividend_reinvestment_plan?: string | undefined;
+  fdic_cash_sweep?: string | undefined;
+  foreign_natural_person_account_enrollment_metadata?:
+    | EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound
+    | null
+    | undefined;
+};
+
+/** @internal */
+export const ForeignJointAccountEnrollmentMetadata$outboundSchema: z.ZodType<
+  ForeignJointAccountEnrollmentMetadata$Outbound,
+  z.ZodTypeDef,
+  ForeignJointAccountEnrollmentMetadata
+> = z.object({
+  dividendReinvestmentPlan:
+    EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$outboundSchema
+      .optional(),
+  fdicCashSweep:
+    EnrollmentForeignJointAccountEnrollmentMetadataFdicCashSweep$outboundSchema
+      .optional(),
+  foreignNaturalPersonAccountEnrollmentMetadata: z.nullable(
+    z.lazy(() =>
+      EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema
+    ),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    dividendReinvestmentPlan: "dividend_reinvestment_plan",
+    fdicCashSweep: "fdic_cash_sweep",
+    foreignNaturalPersonAccountEnrollmentMetadata:
+      "foreign_natural_person_account_enrollment_metadata",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ForeignJointAccountEnrollmentMetadata$ {
+  /** @deprecated use `ForeignJointAccountEnrollmentMetadata$inboundSchema` instead. */
+  export const inboundSchema =
+    ForeignJointAccountEnrollmentMetadata$inboundSchema;
+  /** @deprecated use `ForeignJointAccountEnrollmentMetadata$outboundSchema` instead. */
+  export const outboundSchema =
+    ForeignJointAccountEnrollmentMetadata$outboundSchema;
+  /** @deprecated use `ForeignJointAccountEnrollmentMetadata$Outbound` instead. */
+  export type Outbound = ForeignJointAccountEnrollmentMetadata$Outbound;
 }
 
 /** @internal */
@@ -6851,6 +8144,197 @@ export namespace OperatingEnrollmentMetadata$ {
 }
 
 /** @internal */
+export const InvestmentVehicleExperience$inboundSchema: z.ZodType<
+  InvestmentVehicleExperience,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  commodities_average_annual_trade_count: z.number().int().optional(),
+  corporate_bonds_average_annual_trade_count: z.number().int().optional(),
+  funds_average_annual_trade_count: z.number().int().optional(),
+  government_bonds_average_annual_trade_count: z.number().int().optional(),
+  margin_average_annual_trade_count: z.number().int().optional(),
+  municipal_bonds_average_annual_trade_count: z.number().int().optional(),
+  options_average_annual_trade_count: z.number().int().optional(),
+  stocks_average_annual_trade_count: z.number().int().optional(),
+  tax_shelters_average_annual_trade_count: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "commodities_average_annual_trade_count":
+      "commoditiesAverageAnnualTradeCount",
+    "corporate_bonds_average_annual_trade_count":
+      "corporateBondsAverageAnnualTradeCount",
+    "funds_average_annual_trade_count": "fundsAverageAnnualTradeCount",
+    "government_bonds_average_annual_trade_count":
+      "governmentBondsAverageAnnualTradeCount",
+    "margin_average_annual_trade_count": "marginAverageAnnualTradeCount",
+    "municipal_bonds_average_annual_trade_count":
+      "municipalBondsAverageAnnualTradeCount",
+    "options_average_annual_trade_count": "optionsAverageAnnualTradeCount",
+    "stocks_average_annual_trade_count": "stocksAverageAnnualTradeCount",
+    "tax_shelters_average_annual_trade_count":
+      "taxSheltersAverageAnnualTradeCount",
+  });
+});
+
+/** @internal */
+export type InvestmentVehicleExperience$Outbound = {
+  commodities_average_annual_trade_count?: number | undefined;
+  corporate_bonds_average_annual_trade_count?: number | undefined;
+  funds_average_annual_trade_count?: number | undefined;
+  government_bonds_average_annual_trade_count?: number | undefined;
+  margin_average_annual_trade_count?: number | undefined;
+  municipal_bonds_average_annual_trade_count?: number | undefined;
+  options_average_annual_trade_count?: number | undefined;
+  stocks_average_annual_trade_count?: number | undefined;
+  tax_shelters_average_annual_trade_count?: number | undefined;
+};
+
+/** @internal */
+export const InvestmentVehicleExperience$outboundSchema: z.ZodType<
+  InvestmentVehicleExperience$Outbound,
+  z.ZodTypeDef,
+  InvestmentVehicleExperience
+> = z.object({
+  commoditiesAverageAnnualTradeCount: z.number().int().optional(),
+  corporateBondsAverageAnnualTradeCount: z.number().int().optional(),
+  fundsAverageAnnualTradeCount: z.number().int().optional(),
+  governmentBondsAverageAnnualTradeCount: z.number().int().optional(),
+  marginAverageAnnualTradeCount: z.number().int().optional(),
+  municipalBondsAverageAnnualTradeCount: z.number().int().optional(),
+  optionsAverageAnnualTradeCount: z.number().int().optional(),
+  stocksAverageAnnualTradeCount: z.number().int().optional(),
+  taxSheltersAverageAnnualTradeCount: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    commoditiesAverageAnnualTradeCount:
+      "commodities_average_annual_trade_count",
+    corporateBondsAverageAnnualTradeCount:
+      "corporate_bonds_average_annual_trade_count",
+    fundsAverageAnnualTradeCount: "funds_average_annual_trade_count",
+    governmentBondsAverageAnnualTradeCount:
+      "government_bonds_average_annual_trade_count",
+    marginAverageAnnualTradeCount: "margin_average_annual_trade_count",
+    municipalBondsAverageAnnualTradeCount:
+      "municipal_bonds_average_annual_trade_count",
+    optionsAverageAnnualTradeCount: "options_average_annual_trade_count",
+    stocksAverageAnnualTradeCount: "stocks_average_annual_trade_count",
+    taxSheltersAverageAnnualTradeCount:
+      "tax_shelters_average_annual_trade_count",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InvestmentVehicleExperience$ {
+  /** @deprecated use `InvestmentVehicleExperience$inboundSchema` instead. */
+  export const inboundSchema = InvestmentVehicleExperience$inboundSchema;
+  /** @deprecated use `InvestmentVehicleExperience$outboundSchema` instead. */
+  export const outboundSchema = InvestmentVehicleExperience$outboundSchema;
+  /** @deprecated use `InvestmentVehicleExperience$Outbound` instead. */
+  export type Outbound = InvestmentVehicleExperience$Outbound;
+}
+
+/** @internal */
+export const EnrollmentOptionsLevel$inboundSchema: z.ZodType<
+  EnrollmentOptionsLevelOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(EnrollmentOptionsLevel),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const EnrollmentOptionsLevel$outboundSchema: z.ZodType<
+  EnrollmentOptionsLevelOpen,
+  z.ZodTypeDef,
+  EnrollmentOptionsLevelOpen
+> = z.union([
+  z.nativeEnum(EnrollmentOptionsLevel),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentOptionsLevel$ {
+  /** @deprecated use `EnrollmentOptionsLevel$inboundSchema` instead. */
+  export const inboundSchema = EnrollmentOptionsLevel$inboundSchema;
+  /** @deprecated use `EnrollmentOptionsLevel$outboundSchema` instead. */
+  export const outboundSchema = EnrollmentOptionsLevel$outboundSchema;
+}
+
+/** @internal */
+export const OrdersOptionsTradingEnrollmentMetadata$inboundSchema: z.ZodType<
+  OrdersOptionsTradingEnrollmentMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  investment_vehicle_experience: z.nullable(
+    z.lazy(() => InvestmentVehicleExperience$inboundSchema),
+  ).optional(),
+  options_level: EnrollmentOptionsLevel$inboundSchema.optional(),
+  total_years_options_trading_experience: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "investment_vehicle_experience": "investmentVehicleExperience",
+    "options_level": "optionsLevel",
+    "total_years_options_trading_experience":
+      "totalYearsOptionsTradingExperience",
+  });
+});
+
+/** @internal */
+export type OrdersOptionsTradingEnrollmentMetadata$Outbound = {
+  investment_vehicle_experience?:
+    | InvestmentVehicleExperience$Outbound
+    | null
+    | undefined;
+  options_level?: string | undefined;
+  total_years_options_trading_experience?: number | undefined;
+};
+
+/** @internal */
+export const OrdersOptionsTradingEnrollmentMetadata$outboundSchema: z.ZodType<
+  OrdersOptionsTradingEnrollmentMetadata$Outbound,
+  z.ZodTypeDef,
+  OrdersOptionsTradingEnrollmentMetadata
+> = z.object({
+  investmentVehicleExperience: z.nullable(
+    z.lazy(() => InvestmentVehicleExperience$outboundSchema),
+  ).optional(),
+  optionsLevel: EnrollmentOptionsLevel$outboundSchema.optional(),
+  totalYearsOptionsTradingExperience: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    investmentVehicleExperience: "investment_vehicle_experience",
+    optionsLevel: "options_level",
+    totalYearsOptionsTradingExperience:
+      "total_years_options_trading_experience",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OrdersOptionsTradingEnrollmentMetadata$ {
+  /** @deprecated use `OrdersOptionsTradingEnrollmentMetadata$inboundSchema` instead. */
+  export const inboundSchema =
+    OrdersOptionsTradingEnrollmentMetadata$inboundSchema;
+  /** @deprecated use `OrdersOptionsTradingEnrollmentMetadata$outboundSchema` instead. */
+  export const outboundSchema =
+    OrdersOptionsTradingEnrollmentMetadata$outboundSchema;
+  /** @deprecated use `OrdersOptionsTradingEnrollmentMetadata$Outbound` instead. */
+  export type Outbound = OrdersOptionsTradingEnrollmentMetadata$Outbound;
+}
+
+/** @internal */
 export const EnrollmentState$inboundSchema: z.ZodType<
   EnrollmentStateOpen,
   z.ZodTypeDef,
@@ -7079,6 +8563,57 @@ export namespace EnrollmentType1$ {
 }
 
 /** @internal */
+export const VirtualAccountNumberEnrollmentMetadata$inboundSchema: z.ZodType<
+  VirtualAccountNumberEnrollmentMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  routing_number: z.string().optional(),
+  virtual_account_number: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "routing_number": "routingNumber",
+    "virtual_account_number": "virtualAccountNumber",
+  });
+});
+
+/** @internal */
+export type VirtualAccountNumberEnrollmentMetadata$Outbound = {
+  routing_number?: string | undefined;
+  virtual_account_number?: string | undefined;
+};
+
+/** @internal */
+export const VirtualAccountNumberEnrollmentMetadata$outboundSchema: z.ZodType<
+  VirtualAccountNumberEnrollmentMetadata$Outbound,
+  z.ZodTypeDef,
+  VirtualAccountNumberEnrollmentMetadata
+> = z.object({
+  routingNumber: z.string().optional(),
+  virtualAccountNumber: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    routingNumber: "routing_number",
+    virtualAccountNumber: "virtual_account_number",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace VirtualAccountNumberEnrollmentMetadata$ {
+  /** @deprecated use `VirtualAccountNumberEnrollmentMetadata$inboundSchema` instead. */
+  export const inboundSchema =
+    VirtualAccountNumberEnrollmentMetadata$inboundSchema;
+  /** @deprecated use `VirtualAccountNumberEnrollmentMetadata$outboundSchema` instead. */
+  export const outboundSchema =
+    VirtualAccountNumberEnrollmentMetadata$outboundSchema;
+  /** @deprecated use `VirtualAccountNumberEnrollmentMetadata$Outbound` instead. */
+  export type Outbound = VirtualAccountNumberEnrollmentMetadata$Outbound;
+}
+
+/** @internal */
 export const Enrollment$inboundSchema: z.ZodType<
   Enrollment,
   z.ZodTypeDef,
@@ -7103,6 +8638,9 @@ export const Enrollment$inboundSchema: z.ZodType<
   ).optional(),
   foreign_individual_account_enrollment_metadata: z.nullable(
     z.lazy(() => ForeignIndividualAccountEnrollmentMetadata$inboundSchema),
+  ).optional(),
+  foreign_joint_account_enrollment_metadata: z.nullable(
+    z.lazy(() => ForeignJointAccountEnrollmentMetadata$inboundSchema),
   ).optional(),
   fpsl_enrollment_metadata: z.nullable(
     z.lazy(() => FpslEnrollmentMetadata$inboundSchema),
@@ -7147,6 +8685,9 @@ export const Enrollment$inboundSchema: z.ZodType<
   operating_enrollment_metadata: z.nullable(
     z.lazy(() => OperatingEnrollmentMetadata$inboundSchema),
   ).optional(),
+  orders_options_trading_enrollment_metadata: z.nullable(
+    z.lazy(() => OrdersOptionsTradingEnrollmentMetadata$inboundSchema),
+  ).optional(),
   principal_approver_id: z.string().optional(),
   state: EnrollmentState$inboundSchema.optional(),
   trust_enrollment_metadata: z.nullable(
@@ -7155,6 +8696,9 @@ export const Enrollment$inboundSchema: z.ZodType<
   type: EnrollmentType1$inboundSchema.optional(),
   unenrollment_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  virtual_account_number_enrollment_metadata: z.nullable(
+    z.lazy(() => VirtualAccountNumberEnrollmentMetadata$inboundSchema),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -7167,6 +8711,8 @@ export const Enrollment$inboundSchema: z.ZodType<
     "estate_enrollment_metadata": "estateEnrollmentMetadata",
     "foreign_individual_account_enrollment_metadata":
       "foreignIndividualAccountEnrollmentMetadata",
+    "foreign_joint_account_enrollment_metadata":
+      "foreignJointAccountEnrollmentMetadata",
     "fpsl_enrollment_metadata": "fpslEnrollmentMetadata",
     "individual_enrollment_metadata": "individualEnrollmentMetadata",
     "ira_beneficiary_enrollment_metadata": "iraBeneficiaryEnrollmentMetadata",
@@ -7185,9 +8731,13 @@ export const Enrollment$inboundSchema: z.ZodType<
       "jointWithRightsOfSurvivorshipEnrollmentMetadata",
     "llc_enrollment_metadata": "llcEnrollmentMetadata",
     "operating_enrollment_metadata": "operatingEnrollmentMetadata",
+    "orders_options_trading_enrollment_metadata":
+      "ordersOptionsTradingEnrollmentMetadata",
     "principal_approver_id": "principalApproverId",
     "trust_enrollment_metadata": "trustEnrollmentMetadata",
     "unenrollment_time": "unenrollmentTime",
+    "virtual_account_number_enrollment_metadata":
+      "virtualAccountNumberEnrollmentMetadata",
   });
 });
 
@@ -7214,6 +8764,10 @@ export type Enrollment$Outbound = {
     | undefined;
   foreign_individual_account_enrollment_metadata?:
     | ForeignIndividualAccountEnrollmentMetadata$Outbound
+    | null
+    | undefined;
+  foreign_joint_account_enrollment_metadata?:
+    | ForeignJointAccountEnrollmentMetadata$Outbound
     | null
     | undefined;
   fpsl_enrollment_metadata?: FpslEnrollmentMetadata$Outbound | null | undefined;
@@ -7267,6 +8821,10 @@ export type Enrollment$Outbound = {
     | OperatingEnrollmentMetadata$Outbound
     | null
     | undefined;
+  orders_options_trading_enrollment_metadata?:
+    | OrdersOptionsTradingEnrollmentMetadata$Outbound
+    | null
+    | undefined;
   principal_approver_id?: string | undefined;
   state?: string | undefined;
   trust_enrollment_metadata?:
@@ -7275,6 +8833,10 @@ export type Enrollment$Outbound = {
     | undefined;
   type?: string | undefined;
   unenrollment_time?: string | null | undefined;
+  virtual_account_number_enrollment_metadata?:
+    | VirtualAccountNumberEnrollmentMetadata$Outbound
+    | null
+    | undefined;
 };
 
 /** @internal */
@@ -7301,6 +8863,9 @@ export const Enrollment$outboundSchema: z.ZodType<
   ).optional(),
   foreignIndividualAccountEnrollmentMetadata: z.nullable(
     z.lazy(() => ForeignIndividualAccountEnrollmentMetadata$outboundSchema),
+  ).optional(),
+  foreignJointAccountEnrollmentMetadata: z.nullable(
+    z.lazy(() => ForeignJointAccountEnrollmentMetadata$outboundSchema),
   ).optional(),
   fpslEnrollmentMetadata: z.nullable(
     z.lazy(() => FpslEnrollmentMetadata$outboundSchema),
@@ -7347,6 +8912,9 @@ export const Enrollment$outboundSchema: z.ZodType<
   operatingEnrollmentMetadata: z.nullable(
     z.lazy(() => OperatingEnrollmentMetadata$outboundSchema),
   ).optional(),
+  ordersOptionsTradingEnrollmentMetadata: z.nullable(
+    z.lazy(() => OrdersOptionsTradingEnrollmentMetadata$outboundSchema),
+  ).optional(),
   principalApproverId: z.string().optional(),
   state: EnrollmentState$outboundSchema.optional(),
   trustEnrollmentMetadata: z.nullable(
@@ -7355,6 +8923,9 @@ export const Enrollment$outboundSchema: z.ZodType<
   type: EnrollmentType1$outboundSchema.optional(),
   unenrollmentTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
+  virtualAccountNumberEnrollmentMetadata: z.nullable(
+    z.lazy(() => VirtualAccountNumberEnrollmentMetadata$outboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     beneficiaryEnrollmentMetadata: "beneficiary_enrollment_metadata",
@@ -7366,6 +8937,8 @@ export const Enrollment$outboundSchema: z.ZodType<
     estateEnrollmentMetadata: "estate_enrollment_metadata",
     foreignIndividualAccountEnrollmentMetadata:
       "foreign_individual_account_enrollment_metadata",
+    foreignJointAccountEnrollmentMetadata:
+      "foreign_joint_account_enrollment_metadata",
     fpslEnrollmentMetadata: "fpsl_enrollment_metadata",
     individualEnrollmentMetadata: "individual_enrollment_metadata",
     iraBeneficiaryEnrollmentMetadata: "ira_beneficiary_enrollment_metadata",
@@ -7384,9 +8957,13 @@ export const Enrollment$outboundSchema: z.ZodType<
       "joint_with_rights_of_survivorship_enrollment_metadata",
     llcEnrollmentMetadata: "llc_enrollment_metadata",
     operatingEnrollmentMetadata: "operating_enrollment_metadata",
+    ordersOptionsTradingEnrollmentMetadata:
+      "orders_options_trading_enrollment_metadata",
     principalApproverId: "principal_approver_id",
     trustEnrollmentMetadata: "trust_enrollment_metadata",
     unenrollmentTime: "unenrollment_time",
+    virtualAccountNumberEnrollmentMetadata:
+      "virtual_account_number_enrollment_metadata",
   });
 });
 

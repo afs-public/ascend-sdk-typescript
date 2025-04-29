@@ -1009,7 +1009,7 @@ export type EntryFlipPrevailingMarketPrice = {
 /**
  * Total monetary value of the price_adjustment
  */
-export type EntryPriceAdjustmentAmount = {
+export type EntryFlipPriceAdjustmentAmount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -1019,7 +1019,7 @@ export type EntryPriceAdjustmentAmount = {
 /**
  * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
  */
-export type EntryPriceAdjustmentPercent = {
+export type EntryFlipPriceAdjustmentPercent = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -1029,7 +1029,7 @@ export type EntryPriceAdjustmentPercent = {
 /**
  * The type of price adjustment being applied by the broker to the net price of the security
  */
-export enum EntryPriceAdjustmentType {
+export enum EntryFlipPriceAdjustmentType {
   PriceAdjustmentTypeUnspecified = "PRICE_ADJUSTMENT_TYPE_UNSPECIFIED",
   Markup = "MARKUP",
   Markdown = "MARKDOWN",
@@ -1038,26 +1038,26 @@ export enum EntryPriceAdjustmentType {
 /**
  * The type of price adjustment being applied by the broker to the net price of the security
  */
-export type EntryPriceAdjustmentTypeOpen = OpenEnum<
-  typeof EntryPriceAdjustmentType
+export type EntryFlipPriceAdjustmentTypeOpen = OpenEnum<
+  typeof EntryFlipPriceAdjustmentType
 >;
 
 /**
  * Information about any price adjustments applied to the security
  */
-export type EntryPriceAdjustmentRecord = {
+export type EntryFlipPriceAdjustmentRecord = {
   /**
    * Total monetary value of the price_adjustment
    */
-  priceAdjustmentAmount?: EntryPriceAdjustmentAmount | null | undefined;
+  priceAdjustmentAmount?: EntryFlipPriceAdjustmentAmount | null | undefined;
   /**
    * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
    */
-  priceAdjustmentPercent?: EntryPriceAdjustmentPercent | null | undefined;
+  priceAdjustmentPercent?: EntryFlipPriceAdjustmentPercent | null | undefined;
   /**
    * The type of price adjustment being applied by the broker to the net price of the security
    */
-  priceAdjustmentType?: EntryPriceAdjustmentTypeOpen | undefined;
+  priceAdjustmentType?: EntryFlipPriceAdjustmentTypeOpen | undefined;
 };
 
 /**
@@ -1151,7 +1151,7 @@ export type Detail = {
   /**
    * Information about any price adjustments applied to the security
    */
-  priceAdjustmentRecord?: EntryPriceAdjustmentRecord | null | undefined;
+  priceAdjustmentRecord?: EntryFlipPriceAdjustmentRecord | null | undefined;
   /**
    * The execution route Apex used for this trade
    */
@@ -1206,7 +1206,7 @@ export type Fpsl = {
 /**
  * The monetary value of an activity, exclusive of any fees (First money)
  */
-export type GrossAmount = {
+export type EntryGrossAmount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -2109,7 +2109,7 @@ export type EntryPrice = {
 /**
  * The date that the entry was booked on
  */
-export type ProcessDate = {
+export type EntryProcessDate = {
   /**
    * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
@@ -2884,7 +2884,7 @@ export type EntrySideOpen = OpenEnum<typeof EntrySide>;
 /**
  * Additional information about a trade Should be populated if possible for trades; the side modifier for the trade
  */
-export enum SideModifier {
+export enum EntrySideModifier {
   SideModifierUnspecified = "SIDE_MODIFIER_UNSPECIFIED",
   Short = "SHORT",
   ShortExempt = "SHORT_EXEMPT",
@@ -2895,7 +2895,7 @@ export enum SideModifier {
 /**
  * Additional information about a trade Should be populated if possible for trades; the side modifier for the trade
  */
-export type SideModifierOpen = OpenEnum<typeof SideModifier>;
+export type EntrySideModifierOpen = OpenEnum<typeof EntrySideModifier>;
 
 /**
  * Common fields for corporate actions
@@ -3414,7 +3414,7 @@ export type EntryPrevailingMarketPrice = {
 /**
  * Total monetary value of the price_adjustment
  */
-export type PriceAdjustmentAmount = {
+export type EntryPriceAdjustmentAmount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -3424,7 +3424,7 @@ export type PriceAdjustmentAmount = {
 /**
  * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
  */
-export type PriceAdjustmentPercent = {
+export type EntryPriceAdjustmentPercent = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -3434,7 +3434,7 @@ export type PriceAdjustmentPercent = {
 /**
  * The type of price adjustment being applied by the broker to the net price of the security
  */
-export enum PriceAdjustmentType {
+export enum EntryPriceAdjustmentType {
   PriceAdjustmentTypeUnspecified = "PRICE_ADJUSTMENT_TYPE_UNSPECIFIED",
   Markup = "MARKUP",
   Markdown = "MARKDOWN",
@@ -3443,30 +3443,32 @@ export enum PriceAdjustmentType {
 /**
  * The type of price adjustment being applied by the broker to the net price of the security
  */
-export type PriceAdjustmentTypeOpen = OpenEnum<typeof PriceAdjustmentType>;
+export type EntryPriceAdjustmentTypeOpen = OpenEnum<
+  typeof EntryPriceAdjustmentType
+>;
 
 /**
  * Information about any price adjustments applied to the security
  */
-export type PriceAdjustmentRecord = {
+export type EntryPriceAdjustmentRecord = {
   /**
    * Total monetary value of the price_adjustment
    */
-  priceAdjustmentAmount?: PriceAdjustmentAmount | null | undefined;
+  priceAdjustmentAmount?: EntryPriceAdjustmentAmount | null | undefined;
   /**
    * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
    */
-  priceAdjustmentPercent?: PriceAdjustmentPercent | null | undefined;
+  priceAdjustmentPercent?: EntryPriceAdjustmentPercent | null | undefined;
   /**
    * The type of price adjustment being applied by the broker to the net price of the security
    */
-  priceAdjustmentType?: PriceAdjustmentTypeOpen | undefined;
+  priceAdjustmentType?: EntryPriceAdjustmentTypeOpen | undefined;
 };
 
 /**
  * Used to record the the execution of a buy or sell transaction resulting in the transfer of securities and corresponding payment and details related to the trade
  */
-export type Trade = {
+export type EntryTrade = {
   /**
    * To be populated by the submitter of the trade detail
    */
@@ -3554,7 +3556,7 @@ export type Trade = {
   /**
    * Information about any price adjustments applied to the security
    */
-  priceAdjustmentRecord?: PriceAdjustmentRecord | null | undefined;
+  priceAdjustmentRecord?: EntryPriceAdjustmentRecord | null | undefined;
   /**
    * The execution route Apex used for this trade
    */
@@ -4179,7 +4181,7 @@ export type Entry = {
   /**
    * The monetary value of an activity, exclusive of any fees (First money)
    */
-  grossAmount?: GrossAmount | null | undefined;
+  grossAmount?: EntryGrossAmount | null | undefined;
   /**
    * Used to record the payment of interest to accounts that have maintained a cash balance or the charging of interest to accounts that have used margin and details related to the interest
    */
@@ -4227,7 +4229,7 @@ export type Entry = {
   /**
    * The date that the entry was booked on
    */
-  processDate?: ProcessDate | null | undefined;
+  processDate?: EntryProcessDate | null | undefined;
   /**
    * The quantity of shares bought, sold, or moved. For entries/ activities involving Fixed Income assets, quantity is expressed as par value Required for trades and memos, optional for movements.
    */
@@ -4279,7 +4281,7 @@ export type Entry = {
   /**
    * Additional information about a trade Should be populated if possible for trades; the side modifier for the trade
    */
-  sideModifier?: SideModifierOpen | undefined;
+  sideModifier?: EntrySideModifierOpen | undefined;
   /**
    * Used to record a distribution of subsidiary securities to the shareholders of the parent company without a surrender of securities or payment and details related to the spinoff. A spin-off represents a form of divestiture resulting in an independent company
    */
@@ -4311,7 +4313,7 @@ export type Entry = {
   /**
    * Used to record the the execution of a buy or sell transaction resulting in the transfer of securities and corresponding payment and details related to the trade
    */
-  trade?: Trade | null | undefined;
+  trade?: EntryTrade | null | undefined;
   /**
    * Used to record more generic transfers of funds or securities and details related to the transfer. The transfer type and activity_description can be used to provide more specific context
    */
@@ -6690,8 +6692,8 @@ export namespace EntryFlipPrevailingMarketPrice$ {
 }
 
 /** @internal */
-export const EntryPriceAdjustmentAmount$inboundSchema: z.ZodType<
-  EntryPriceAdjustmentAmount,
+export const EntryFlipPriceAdjustmentAmount$inboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentAmount,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -6699,15 +6701,15 @@ export const EntryPriceAdjustmentAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EntryPriceAdjustmentAmount$Outbound = {
+export type EntryFlipPriceAdjustmentAmount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const EntryPriceAdjustmentAmount$outboundSchema: z.ZodType<
-  EntryPriceAdjustmentAmount$Outbound,
+export const EntryFlipPriceAdjustmentAmount$outboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentAmount$Outbound,
   z.ZodTypeDef,
-  EntryPriceAdjustmentAmount
+  EntryFlipPriceAdjustmentAmount
 > = z.object({
   value: z.string().optional(),
 });
@@ -6716,18 +6718,18 @@ export const EntryPriceAdjustmentAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EntryPriceAdjustmentAmount$ {
-  /** @deprecated use `EntryPriceAdjustmentAmount$inboundSchema` instead. */
-  export const inboundSchema = EntryPriceAdjustmentAmount$inboundSchema;
-  /** @deprecated use `EntryPriceAdjustmentAmount$outboundSchema` instead. */
-  export const outboundSchema = EntryPriceAdjustmentAmount$outboundSchema;
-  /** @deprecated use `EntryPriceAdjustmentAmount$Outbound` instead. */
-  export type Outbound = EntryPriceAdjustmentAmount$Outbound;
+export namespace EntryFlipPriceAdjustmentAmount$ {
+  /** @deprecated use `EntryFlipPriceAdjustmentAmount$inboundSchema` instead. */
+  export const inboundSchema = EntryFlipPriceAdjustmentAmount$inboundSchema;
+  /** @deprecated use `EntryFlipPriceAdjustmentAmount$outboundSchema` instead. */
+  export const outboundSchema = EntryFlipPriceAdjustmentAmount$outboundSchema;
+  /** @deprecated use `EntryFlipPriceAdjustmentAmount$Outbound` instead. */
+  export type Outbound = EntryFlipPriceAdjustmentAmount$Outbound;
 }
 
 /** @internal */
-export const EntryPriceAdjustmentPercent$inboundSchema: z.ZodType<
-  EntryPriceAdjustmentPercent,
+export const EntryFlipPriceAdjustmentPercent$inboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentPercent,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -6735,15 +6737,15 @@ export const EntryPriceAdjustmentPercent$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EntryPriceAdjustmentPercent$Outbound = {
+export type EntryFlipPriceAdjustmentPercent$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const EntryPriceAdjustmentPercent$outboundSchema: z.ZodType<
-  EntryPriceAdjustmentPercent$Outbound,
+export const EntryFlipPriceAdjustmentPercent$outboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentPercent$Outbound,
   z.ZodTypeDef,
-  EntryPriceAdjustmentPercent
+  EntryFlipPriceAdjustmentPercent
 > = z.object({
   value: z.string().optional(),
 });
@@ -6752,33 +6754,33 @@ export const EntryPriceAdjustmentPercent$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EntryPriceAdjustmentPercent$ {
-  /** @deprecated use `EntryPriceAdjustmentPercent$inboundSchema` instead. */
-  export const inboundSchema = EntryPriceAdjustmentPercent$inboundSchema;
-  /** @deprecated use `EntryPriceAdjustmentPercent$outboundSchema` instead. */
-  export const outboundSchema = EntryPriceAdjustmentPercent$outboundSchema;
-  /** @deprecated use `EntryPriceAdjustmentPercent$Outbound` instead. */
-  export type Outbound = EntryPriceAdjustmentPercent$Outbound;
+export namespace EntryFlipPriceAdjustmentPercent$ {
+  /** @deprecated use `EntryFlipPriceAdjustmentPercent$inboundSchema` instead. */
+  export const inboundSchema = EntryFlipPriceAdjustmentPercent$inboundSchema;
+  /** @deprecated use `EntryFlipPriceAdjustmentPercent$outboundSchema` instead. */
+  export const outboundSchema = EntryFlipPriceAdjustmentPercent$outboundSchema;
+  /** @deprecated use `EntryFlipPriceAdjustmentPercent$Outbound` instead. */
+  export type Outbound = EntryFlipPriceAdjustmentPercent$Outbound;
 }
 
 /** @internal */
-export const EntryPriceAdjustmentType$inboundSchema: z.ZodType<
-  EntryPriceAdjustmentTypeOpen,
+export const EntryFlipPriceAdjustmentType$inboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentTypeOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(EntryPriceAdjustmentType),
+    z.nativeEnum(EntryFlipPriceAdjustmentType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const EntryPriceAdjustmentType$outboundSchema: z.ZodType<
-  EntryPriceAdjustmentTypeOpen,
+export const EntryFlipPriceAdjustmentType$outboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentTypeOpen,
   z.ZodTypeDef,
-  EntryPriceAdjustmentTypeOpen
+  EntryFlipPriceAdjustmentTypeOpen
 > = z.union([
-  z.nativeEnum(EntryPriceAdjustmentType),
+  z.nativeEnum(EntryFlipPriceAdjustmentType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -6786,26 +6788,26 @@ export const EntryPriceAdjustmentType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EntryPriceAdjustmentType$ {
-  /** @deprecated use `EntryPriceAdjustmentType$inboundSchema` instead. */
-  export const inboundSchema = EntryPriceAdjustmentType$inboundSchema;
-  /** @deprecated use `EntryPriceAdjustmentType$outboundSchema` instead. */
-  export const outboundSchema = EntryPriceAdjustmentType$outboundSchema;
+export namespace EntryFlipPriceAdjustmentType$ {
+  /** @deprecated use `EntryFlipPriceAdjustmentType$inboundSchema` instead. */
+  export const inboundSchema = EntryFlipPriceAdjustmentType$inboundSchema;
+  /** @deprecated use `EntryFlipPriceAdjustmentType$outboundSchema` instead. */
+  export const outboundSchema = EntryFlipPriceAdjustmentType$outboundSchema;
 }
 
 /** @internal */
-export const EntryPriceAdjustmentRecord$inboundSchema: z.ZodType<
-  EntryPriceAdjustmentRecord,
+export const EntryFlipPriceAdjustmentRecord$inboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentRecord,
   z.ZodTypeDef,
   unknown
 > = z.object({
   price_adjustment_amount: z.nullable(
-    z.lazy(() => EntryPriceAdjustmentAmount$inboundSchema),
+    z.lazy(() => EntryFlipPriceAdjustmentAmount$inboundSchema),
   ).optional(),
   price_adjustment_percent: z.nullable(
-    z.lazy(() => EntryPriceAdjustmentPercent$inboundSchema),
+    z.lazy(() => EntryFlipPriceAdjustmentPercent$inboundSchema),
   ).optional(),
-  price_adjustment_type: EntryPriceAdjustmentType$inboundSchema.optional(),
+  price_adjustment_type: EntryFlipPriceAdjustmentType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "price_adjustment_amount": "priceAdjustmentAmount",
@@ -6815,31 +6817,31 @@ export const EntryPriceAdjustmentRecord$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EntryPriceAdjustmentRecord$Outbound = {
+export type EntryFlipPriceAdjustmentRecord$Outbound = {
   price_adjustment_amount?:
-    | EntryPriceAdjustmentAmount$Outbound
+    | EntryFlipPriceAdjustmentAmount$Outbound
     | null
     | undefined;
   price_adjustment_percent?:
-    | EntryPriceAdjustmentPercent$Outbound
+    | EntryFlipPriceAdjustmentPercent$Outbound
     | null
     | undefined;
   price_adjustment_type?: string | undefined;
 };
 
 /** @internal */
-export const EntryPriceAdjustmentRecord$outboundSchema: z.ZodType<
-  EntryPriceAdjustmentRecord$Outbound,
+export const EntryFlipPriceAdjustmentRecord$outboundSchema: z.ZodType<
+  EntryFlipPriceAdjustmentRecord$Outbound,
   z.ZodTypeDef,
-  EntryPriceAdjustmentRecord
+  EntryFlipPriceAdjustmentRecord
 > = z.object({
   priceAdjustmentAmount: z.nullable(
-    z.lazy(() => EntryPriceAdjustmentAmount$outboundSchema),
+    z.lazy(() => EntryFlipPriceAdjustmentAmount$outboundSchema),
   ).optional(),
   priceAdjustmentPercent: z.nullable(
-    z.lazy(() => EntryPriceAdjustmentPercent$outboundSchema),
+    z.lazy(() => EntryFlipPriceAdjustmentPercent$outboundSchema),
   ).optional(),
-  priceAdjustmentType: EntryPriceAdjustmentType$outboundSchema.optional(),
+  priceAdjustmentType: EntryFlipPriceAdjustmentType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     priceAdjustmentAmount: "price_adjustment_amount",
@@ -6852,13 +6854,13 @@ export const EntryPriceAdjustmentRecord$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EntryPriceAdjustmentRecord$ {
-  /** @deprecated use `EntryPriceAdjustmentRecord$inboundSchema` instead. */
-  export const inboundSchema = EntryPriceAdjustmentRecord$inboundSchema;
-  /** @deprecated use `EntryPriceAdjustmentRecord$outboundSchema` instead. */
-  export const outboundSchema = EntryPriceAdjustmentRecord$outboundSchema;
-  /** @deprecated use `EntryPriceAdjustmentRecord$Outbound` instead. */
-  export type Outbound = EntryPriceAdjustmentRecord$Outbound;
+export namespace EntryFlipPriceAdjustmentRecord$ {
+  /** @deprecated use `EntryFlipPriceAdjustmentRecord$inboundSchema` instead. */
+  export const inboundSchema = EntryFlipPriceAdjustmentRecord$inboundSchema;
+  /** @deprecated use `EntryFlipPriceAdjustmentRecord$outboundSchema` instead. */
+  export const outboundSchema = EntryFlipPriceAdjustmentRecord$outboundSchema;
+  /** @deprecated use `EntryFlipPriceAdjustmentRecord$Outbound` instead. */
+  export type Outbound = EntryFlipPriceAdjustmentRecord$Outbound;
 }
 
 /** @internal */
@@ -6888,7 +6890,7 @@ export const Detail$inboundSchema: z.ZodType<Detail, z.ZodTypeDef, unknown> = z
       z.lazy(() => EntryFlipPrevailingMarketPrice$inboundSchema),
     ).optional(),
     price_adjustment_record: z.nullable(
-      z.lazy(() => EntryPriceAdjustmentRecord$inboundSchema),
+      z.lazy(() => EntryFlipPriceAdjustmentRecord$inboundSchema),
     ).optional(),
     route: z.string().optional(),
     special_instructions: z.array(z.string()).optional(),
@@ -6947,7 +6949,7 @@ export type Detail$Outbound = {
     | null
     | undefined;
   price_adjustment_record?:
-    | EntryPriceAdjustmentRecord$Outbound
+    | EntryFlipPriceAdjustmentRecord$Outbound
     | null
     | undefined;
   route?: string | undefined;
@@ -6986,7 +6988,7 @@ export const Detail$outboundSchema: z.ZodType<
     z.lazy(() => EntryFlipPrevailingMarketPrice$outboundSchema),
   ).optional(),
   priceAdjustmentRecord: z.nullable(
-    z.lazy(() => EntryPriceAdjustmentRecord$outboundSchema),
+    z.lazy(() => EntryFlipPriceAdjustmentRecord$outboundSchema),
   ).optional(),
   route: z.string().optional(),
   specialInstructions: z.array(z.string()).optional(),
@@ -7124,8 +7126,8 @@ export namespace Fpsl$ {
 }
 
 /** @internal */
-export const GrossAmount$inboundSchema: z.ZodType<
-  GrossAmount,
+export const EntryGrossAmount$inboundSchema: z.ZodType<
+  EntryGrossAmount,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -7133,15 +7135,15 @@ export const GrossAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GrossAmount$Outbound = {
+export type EntryGrossAmount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const GrossAmount$outboundSchema: z.ZodType<
-  GrossAmount$Outbound,
+export const EntryGrossAmount$outboundSchema: z.ZodType<
+  EntryGrossAmount$Outbound,
   z.ZodTypeDef,
-  GrossAmount
+  EntryGrossAmount
 > = z.object({
   value: z.string().optional(),
 });
@@ -7150,13 +7152,13 @@ export const GrossAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GrossAmount$ {
-  /** @deprecated use `GrossAmount$inboundSchema` instead. */
-  export const inboundSchema = GrossAmount$inboundSchema;
-  /** @deprecated use `GrossAmount$outboundSchema` instead. */
-  export const outboundSchema = GrossAmount$outboundSchema;
-  /** @deprecated use `GrossAmount$Outbound` instead. */
-  export type Outbound = GrossAmount$Outbound;
+export namespace EntryGrossAmount$ {
+  /** @deprecated use `EntryGrossAmount$inboundSchema` instead. */
+  export const inboundSchema = EntryGrossAmount$inboundSchema;
+  /** @deprecated use `EntryGrossAmount$outboundSchema` instead. */
+  export const outboundSchema = EntryGrossAmount$outboundSchema;
+  /** @deprecated use `EntryGrossAmount$Outbound` instead. */
+  export type Outbound = EntryGrossAmount$Outbound;
 }
 
 /** @internal */
@@ -9443,8 +9445,8 @@ export namespace EntryPrice$ {
 }
 
 /** @internal */
-export const ProcessDate$inboundSchema: z.ZodType<
-  ProcessDate,
+export const EntryProcessDate$inboundSchema: z.ZodType<
+  EntryProcessDate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -9454,17 +9456,17 @@ export const ProcessDate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ProcessDate$Outbound = {
+export type EntryProcessDate$Outbound = {
   day?: number | undefined;
   month?: number | undefined;
   year?: number | undefined;
 };
 
 /** @internal */
-export const ProcessDate$outboundSchema: z.ZodType<
-  ProcessDate$Outbound,
+export const EntryProcessDate$outboundSchema: z.ZodType<
+  EntryProcessDate$Outbound,
   z.ZodTypeDef,
-  ProcessDate
+  EntryProcessDate
 > = z.object({
   day: z.number().int().optional(),
   month: z.number().int().optional(),
@@ -9475,13 +9477,13 @@ export const ProcessDate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ProcessDate$ {
-  /** @deprecated use `ProcessDate$inboundSchema` instead. */
-  export const inboundSchema = ProcessDate$inboundSchema;
-  /** @deprecated use `ProcessDate$outboundSchema` instead. */
-  export const outboundSchema = ProcessDate$outboundSchema;
-  /** @deprecated use `ProcessDate$Outbound` instead. */
-  export type Outbound = ProcessDate$Outbound;
+export namespace EntryProcessDate$ {
+  /** @deprecated use `EntryProcessDate$inboundSchema` instead. */
+  export const inboundSchema = EntryProcessDate$inboundSchema;
+  /** @deprecated use `EntryProcessDate$outboundSchema` instead. */
+  export const outboundSchema = EntryProcessDate$outboundSchema;
+  /** @deprecated use `EntryProcessDate$Outbound` instead. */
+  export type Outbound = EntryProcessDate$Outbound;
 }
 
 /** @internal */
@@ -11450,23 +11452,23 @@ export namespace EntrySide$ {
 }
 
 /** @internal */
-export const SideModifier$inboundSchema: z.ZodType<
-  SideModifierOpen,
+export const EntrySideModifier$inboundSchema: z.ZodType<
+  EntrySideModifierOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(SideModifier),
+    z.nativeEnum(EntrySideModifier),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const SideModifier$outboundSchema: z.ZodType<
-  SideModifierOpen,
+export const EntrySideModifier$outboundSchema: z.ZodType<
+  EntrySideModifierOpen,
   z.ZodTypeDef,
-  SideModifierOpen
+  EntrySideModifierOpen
 > = z.union([
-  z.nativeEnum(SideModifier),
+  z.nativeEnum(EntrySideModifier),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -11474,11 +11476,11 @@ export const SideModifier$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SideModifier$ {
-  /** @deprecated use `SideModifier$inboundSchema` instead. */
-  export const inboundSchema = SideModifier$inboundSchema;
-  /** @deprecated use `SideModifier$outboundSchema` instead. */
-  export const outboundSchema = SideModifier$outboundSchema;
+export namespace EntrySideModifier$ {
+  /** @deprecated use `EntrySideModifier$inboundSchema` instead. */
+  export const inboundSchema = EntrySideModifier$inboundSchema;
+  /** @deprecated use `EntrySideModifier$outboundSchema` instead. */
+  export const outboundSchema = EntrySideModifier$outboundSchema;
 }
 
 /** @internal */
@@ -12843,8 +12845,8 @@ export namespace EntryPrevailingMarketPrice$ {
 }
 
 /** @internal */
-export const PriceAdjustmentAmount$inboundSchema: z.ZodType<
-  PriceAdjustmentAmount,
+export const EntryPriceAdjustmentAmount$inboundSchema: z.ZodType<
+  EntryPriceAdjustmentAmount,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -12852,15 +12854,15 @@ export const PriceAdjustmentAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PriceAdjustmentAmount$Outbound = {
+export type EntryPriceAdjustmentAmount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const PriceAdjustmentAmount$outboundSchema: z.ZodType<
-  PriceAdjustmentAmount$Outbound,
+export const EntryPriceAdjustmentAmount$outboundSchema: z.ZodType<
+  EntryPriceAdjustmentAmount$Outbound,
   z.ZodTypeDef,
-  PriceAdjustmentAmount
+  EntryPriceAdjustmentAmount
 > = z.object({
   value: z.string().optional(),
 });
@@ -12869,18 +12871,18 @@ export const PriceAdjustmentAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PriceAdjustmentAmount$ {
-  /** @deprecated use `PriceAdjustmentAmount$inboundSchema` instead. */
-  export const inboundSchema = PriceAdjustmentAmount$inboundSchema;
-  /** @deprecated use `PriceAdjustmentAmount$outboundSchema` instead. */
-  export const outboundSchema = PriceAdjustmentAmount$outboundSchema;
-  /** @deprecated use `PriceAdjustmentAmount$Outbound` instead. */
-  export type Outbound = PriceAdjustmentAmount$Outbound;
+export namespace EntryPriceAdjustmentAmount$ {
+  /** @deprecated use `EntryPriceAdjustmentAmount$inboundSchema` instead. */
+  export const inboundSchema = EntryPriceAdjustmentAmount$inboundSchema;
+  /** @deprecated use `EntryPriceAdjustmentAmount$outboundSchema` instead. */
+  export const outboundSchema = EntryPriceAdjustmentAmount$outboundSchema;
+  /** @deprecated use `EntryPriceAdjustmentAmount$Outbound` instead. */
+  export type Outbound = EntryPriceAdjustmentAmount$Outbound;
 }
 
 /** @internal */
-export const PriceAdjustmentPercent$inboundSchema: z.ZodType<
-  PriceAdjustmentPercent,
+export const EntryPriceAdjustmentPercent$inboundSchema: z.ZodType<
+  EntryPriceAdjustmentPercent,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -12888,15 +12890,15 @@ export const PriceAdjustmentPercent$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PriceAdjustmentPercent$Outbound = {
+export type EntryPriceAdjustmentPercent$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const PriceAdjustmentPercent$outboundSchema: z.ZodType<
-  PriceAdjustmentPercent$Outbound,
+export const EntryPriceAdjustmentPercent$outboundSchema: z.ZodType<
+  EntryPriceAdjustmentPercent$Outbound,
   z.ZodTypeDef,
-  PriceAdjustmentPercent
+  EntryPriceAdjustmentPercent
 > = z.object({
   value: z.string().optional(),
 });
@@ -12905,33 +12907,33 @@ export const PriceAdjustmentPercent$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PriceAdjustmentPercent$ {
-  /** @deprecated use `PriceAdjustmentPercent$inboundSchema` instead. */
-  export const inboundSchema = PriceAdjustmentPercent$inboundSchema;
-  /** @deprecated use `PriceAdjustmentPercent$outboundSchema` instead. */
-  export const outboundSchema = PriceAdjustmentPercent$outboundSchema;
-  /** @deprecated use `PriceAdjustmentPercent$Outbound` instead. */
-  export type Outbound = PriceAdjustmentPercent$Outbound;
+export namespace EntryPriceAdjustmentPercent$ {
+  /** @deprecated use `EntryPriceAdjustmentPercent$inboundSchema` instead. */
+  export const inboundSchema = EntryPriceAdjustmentPercent$inboundSchema;
+  /** @deprecated use `EntryPriceAdjustmentPercent$outboundSchema` instead. */
+  export const outboundSchema = EntryPriceAdjustmentPercent$outboundSchema;
+  /** @deprecated use `EntryPriceAdjustmentPercent$Outbound` instead. */
+  export type Outbound = EntryPriceAdjustmentPercent$Outbound;
 }
 
 /** @internal */
-export const PriceAdjustmentType$inboundSchema: z.ZodType<
-  PriceAdjustmentTypeOpen,
+export const EntryPriceAdjustmentType$inboundSchema: z.ZodType<
+  EntryPriceAdjustmentTypeOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(PriceAdjustmentType),
+    z.nativeEnum(EntryPriceAdjustmentType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const PriceAdjustmentType$outboundSchema: z.ZodType<
-  PriceAdjustmentTypeOpen,
+export const EntryPriceAdjustmentType$outboundSchema: z.ZodType<
+  EntryPriceAdjustmentTypeOpen,
   z.ZodTypeDef,
-  PriceAdjustmentTypeOpen
+  EntryPriceAdjustmentTypeOpen
 > = z.union([
-  z.nativeEnum(PriceAdjustmentType),
+  z.nativeEnum(EntryPriceAdjustmentType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -12939,26 +12941,26 @@ export const PriceAdjustmentType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PriceAdjustmentType$ {
-  /** @deprecated use `PriceAdjustmentType$inboundSchema` instead. */
-  export const inboundSchema = PriceAdjustmentType$inboundSchema;
-  /** @deprecated use `PriceAdjustmentType$outboundSchema` instead. */
-  export const outboundSchema = PriceAdjustmentType$outboundSchema;
+export namespace EntryPriceAdjustmentType$ {
+  /** @deprecated use `EntryPriceAdjustmentType$inboundSchema` instead. */
+  export const inboundSchema = EntryPriceAdjustmentType$inboundSchema;
+  /** @deprecated use `EntryPriceAdjustmentType$outboundSchema` instead. */
+  export const outboundSchema = EntryPriceAdjustmentType$outboundSchema;
 }
 
 /** @internal */
-export const PriceAdjustmentRecord$inboundSchema: z.ZodType<
-  PriceAdjustmentRecord,
+export const EntryPriceAdjustmentRecord$inboundSchema: z.ZodType<
+  EntryPriceAdjustmentRecord,
   z.ZodTypeDef,
   unknown
 > = z.object({
   price_adjustment_amount: z.nullable(
-    z.lazy(() => PriceAdjustmentAmount$inboundSchema),
+    z.lazy(() => EntryPriceAdjustmentAmount$inboundSchema),
   ).optional(),
   price_adjustment_percent: z.nullable(
-    z.lazy(() => PriceAdjustmentPercent$inboundSchema),
+    z.lazy(() => EntryPriceAdjustmentPercent$inboundSchema),
   ).optional(),
-  price_adjustment_type: PriceAdjustmentType$inboundSchema.optional(),
+  price_adjustment_type: EntryPriceAdjustmentType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "price_adjustment_amount": "priceAdjustmentAmount",
@@ -12968,25 +12970,31 @@ export const PriceAdjustmentRecord$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PriceAdjustmentRecord$Outbound = {
-  price_adjustment_amount?: PriceAdjustmentAmount$Outbound | null | undefined;
-  price_adjustment_percent?: PriceAdjustmentPercent$Outbound | null | undefined;
+export type EntryPriceAdjustmentRecord$Outbound = {
+  price_adjustment_amount?:
+    | EntryPriceAdjustmentAmount$Outbound
+    | null
+    | undefined;
+  price_adjustment_percent?:
+    | EntryPriceAdjustmentPercent$Outbound
+    | null
+    | undefined;
   price_adjustment_type?: string | undefined;
 };
 
 /** @internal */
-export const PriceAdjustmentRecord$outboundSchema: z.ZodType<
-  PriceAdjustmentRecord$Outbound,
+export const EntryPriceAdjustmentRecord$outboundSchema: z.ZodType<
+  EntryPriceAdjustmentRecord$Outbound,
   z.ZodTypeDef,
-  PriceAdjustmentRecord
+  EntryPriceAdjustmentRecord
 > = z.object({
   priceAdjustmentAmount: z.nullable(
-    z.lazy(() => PriceAdjustmentAmount$outboundSchema),
+    z.lazy(() => EntryPriceAdjustmentAmount$outboundSchema),
   ).optional(),
   priceAdjustmentPercent: z.nullable(
-    z.lazy(() => PriceAdjustmentPercent$outboundSchema),
+    z.lazy(() => EntryPriceAdjustmentPercent$outboundSchema),
   ).optional(),
-  priceAdjustmentType: PriceAdjustmentType$outboundSchema.optional(),
+  priceAdjustmentType: EntryPriceAdjustmentType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     priceAdjustmentAmount: "price_adjustment_amount",
@@ -12999,76 +13007,79 @@ export const PriceAdjustmentRecord$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PriceAdjustmentRecord$ {
-  /** @deprecated use `PriceAdjustmentRecord$inboundSchema` instead. */
-  export const inboundSchema = PriceAdjustmentRecord$inboundSchema;
-  /** @deprecated use `PriceAdjustmentRecord$outboundSchema` instead. */
-  export const outboundSchema = PriceAdjustmentRecord$outboundSchema;
-  /** @deprecated use `PriceAdjustmentRecord$Outbound` instead. */
-  export type Outbound = PriceAdjustmentRecord$Outbound;
+export namespace EntryPriceAdjustmentRecord$ {
+  /** @deprecated use `EntryPriceAdjustmentRecord$inboundSchema` instead. */
+  export const inboundSchema = EntryPriceAdjustmentRecord$inboundSchema;
+  /** @deprecated use `EntryPriceAdjustmentRecord$outboundSchema` instead. */
+  export const outboundSchema = EntryPriceAdjustmentRecord$outboundSchema;
+  /** @deprecated use `EntryPriceAdjustmentRecord$Outbound` instead. */
+  export type Outbound = EntryPriceAdjustmentRecord$Outbound;
 }
 
 /** @internal */
-export const Trade$inboundSchema: z.ZodType<Trade, z.ZodTypeDef, unknown> = z
-  .object({
-    additional_instructions: z.array(z.string()).optional(),
-    alternate_order_id: z.string().optional(),
-    booking_api_booking_execution_id: z.string().optional(),
-    booking_api_trade_allocation_id: z.string().optional(),
-    booking_api_trade_id: z.string().optional(),
-    broker: z.string().optional(),
-    broker_capacity: EntryBrokerCapacity$inboundSchema.optional(),
-    client_memo: z.string().optional(),
-    client_order_id: z.string().optional(),
-    exchange: z.string().optional(),
-    execution_id: z.string().optional(),
-    execution_only: z.boolean().optional(),
-    external_id: z.string().optional(),
-    fund_confirmation_number: z.string().optional(),
-    gateway_client_order_id: z.string().optional(),
-    internal_error: z.boolean().optional(),
-    is_writeoff: z.boolean().optional(),
-    lots: z.array(Lot$inboundSchema).optional(),
-    market: z.string().optional(),
-    order_id: z.string().optional(),
-    prevailing_market_price: z.nullable(
-      z.lazy(() => EntryPrevailingMarketPrice$inboundSchema),
-    ).optional(),
-    price_adjustment_record: z.nullable(
-      z.lazy(() => PriceAdjustmentRecord$inboundSchema),
-    ).optional(),
-    route: z.string().optional(),
-    special_instructions: z.array(z.string()).optional(),
-    when_issued: z.boolean().optional(),
-    yield_records: z.array(YieldRecord$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "additional_instructions": "additionalInstructions",
-      "alternate_order_id": "alternateOrderId",
-      "booking_api_booking_execution_id": "bookingApiBookingExecutionId",
-      "booking_api_trade_allocation_id": "bookingApiTradeAllocationId",
-      "booking_api_trade_id": "bookingApiTradeId",
-      "broker_capacity": "brokerCapacity",
-      "client_memo": "clientMemo",
-      "client_order_id": "clientOrderId",
-      "execution_id": "executionId",
-      "execution_only": "executionOnly",
-      "external_id": "externalId",
-      "fund_confirmation_number": "fundConfirmationNumber",
-      "gateway_client_order_id": "gatewayClientOrderId",
-      "internal_error": "internalError",
-      "is_writeoff": "isWriteoff",
-      "order_id": "orderId",
-      "prevailing_market_price": "prevailingMarketPrice",
-      "price_adjustment_record": "priceAdjustmentRecord",
-      "special_instructions": "specialInstructions",
-      "when_issued": "whenIssued",
-      "yield_records": "yieldRecords",
-    });
+export const EntryTrade$inboundSchema: z.ZodType<
+  EntryTrade,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  additional_instructions: z.array(z.string()).optional(),
+  alternate_order_id: z.string().optional(),
+  booking_api_booking_execution_id: z.string().optional(),
+  booking_api_trade_allocation_id: z.string().optional(),
+  booking_api_trade_id: z.string().optional(),
+  broker: z.string().optional(),
+  broker_capacity: EntryBrokerCapacity$inboundSchema.optional(),
+  client_memo: z.string().optional(),
+  client_order_id: z.string().optional(),
+  exchange: z.string().optional(),
+  execution_id: z.string().optional(),
+  execution_only: z.boolean().optional(),
+  external_id: z.string().optional(),
+  fund_confirmation_number: z.string().optional(),
+  gateway_client_order_id: z.string().optional(),
+  internal_error: z.boolean().optional(),
+  is_writeoff: z.boolean().optional(),
+  lots: z.array(Lot$inboundSchema).optional(),
+  market: z.string().optional(),
+  order_id: z.string().optional(),
+  prevailing_market_price: z.nullable(
+    z.lazy(() => EntryPrevailingMarketPrice$inboundSchema),
+  ).optional(),
+  price_adjustment_record: z.nullable(
+    z.lazy(() => EntryPriceAdjustmentRecord$inboundSchema),
+  ).optional(),
+  route: z.string().optional(),
+  special_instructions: z.array(z.string()).optional(),
+  when_issued: z.boolean().optional(),
+  yield_records: z.array(YieldRecord$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "additional_instructions": "additionalInstructions",
+    "alternate_order_id": "alternateOrderId",
+    "booking_api_booking_execution_id": "bookingApiBookingExecutionId",
+    "booking_api_trade_allocation_id": "bookingApiTradeAllocationId",
+    "booking_api_trade_id": "bookingApiTradeId",
+    "broker_capacity": "brokerCapacity",
+    "client_memo": "clientMemo",
+    "client_order_id": "clientOrderId",
+    "execution_id": "executionId",
+    "execution_only": "executionOnly",
+    "external_id": "externalId",
+    "fund_confirmation_number": "fundConfirmationNumber",
+    "gateway_client_order_id": "gatewayClientOrderId",
+    "internal_error": "internalError",
+    "is_writeoff": "isWriteoff",
+    "order_id": "orderId",
+    "prevailing_market_price": "prevailingMarketPrice",
+    "price_adjustment_record": "priceAdjustmentRecord",
+    "special_instructions": "specialInstructions",
+    "when_issued": "whenIssued",
+    "yield_records": "yieldRecords",
   });
+});
 
 /** @internal */
-export type Trade$Outbound = {
+export type EntryTrade$Outbound = {
   additional_instructions?: Array<string> | undefined;
   alternate_order_id?: string | undefined;
   booking_api_booking_execution_id?: string | undefined;
@@ -13093,7 +13104,10 @@ export type Trade$Outbound = {
     | EntryPrevailingMarketPrice$Outbound
     | null
     | undefined;
-  price_adjustment_record?: PriceAdjustmentRecord$Outbound | null | undefined;
+  price_adjustment_record?:
+    | EntryPriceAdjustmentRecord$Outbound
+    | null
+    | undefined;
   route?: string | undefined;
   special_instructions?: Array<string> | undefined;
   when_issued?: boolean | undefined;
@@ -13101,10 +13115,10 @@ export type Trade$Outbound = {
 };
 
 /** @internal */
-export const Trade$outboundSchema: z.ZodType<
-  Trade$Outbound,
+export const EntryTrade$outboundSchema: z.ZodType<
+  EntryTrade$Outbound,
   z.ZodTypeDef,
-  Trade
+  EntryTrade
 > = z.object({
   additionalInstructions: z.array(z.string()).optional(),
   alternateOrderId: z.string().optional(),
@@ -13130,7 +13144,7 @@ export const Trade$outboundSchema: z.ZodType<
     z.lazy(() => EntryPrevailingMarketPrice$outboundSchema),
   ).optional(),
   priceAdjustmentRecord: z.nullable(
-    z.lazy(() => PriceAdjustmentRecord$outboundSchema),
+    z.lazy(() => EntryPriceAdjustmentRecord$outboundSchema),
   ).optional(),
   route: z.string().optional(),
   specialInstructions: z.array(z.string()).optional(),
@@ -13166,13 +13180,13 @@ export const Trade$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Trade$ {
-  /** @deprecated use `Trade$inboundSchema` instead. */
-  export const inboundSchema = Trade$inboundSchema;
-  /** @deprecated use `Trade$outboundSchema` instead. */
-  export const outboundSchema = Trade$outboundSchema;
-  /** @deprecated use `Trade$Outbound` instead. */
-  export type Outbound = Trade$Outbound;
+export namespace EntryTrade$ {
+  /** @deprecated use `EntryTrade$inboundSchema` instead. */
+  export const inboundSchema = EntryTrade$inboundSchema;
+  /** @deprecated use `EntryTrade$outboundSchema` instead. */
+  export const outboundSchema = EntryTrade$outboundSchema;
+  /** @deprecated use `EntryTrade$Outbound` instead. */
+  export type Outbound = EntryTrade$Outbound;
 }
 
 /** @internal */
@@ -14290,7 +14304,7 @@ export const Entry$inboundSchema: z.ZodType<Entry, z.ZodTypeDef, unknown> = z
     fee: z.nullable(z.lazy(() => EntryFee$inboundSchema)).optional(),
     flip: z.nullable(z.lazy(() => Flip$inboundSchema)).optional(),
     fpsl: z.nullable(z.lazy(() => Fpsl$inboundSchema)).optional(),
-    gross_amount: z.nullable(z.lazy(() => GrossAmount$inboundSchema))
+    gross_amount: z.nullable(z.lazy(() => EntryGrossAmount$inboundSchema))
       .optional(),
     interest: z.nullable(z.lazy(() => Interest$inboundSchema)).optional(),
     interest_payment: z.nullable(z.lazy(() => InterestPayment$inboundSchema))
@@ -14307,7 +14321,7 @@ export const Entry$inboundSchema: z.ZodType<Entry, z.ZodTypeDef, unknown> = z
     payment_in_kind: z.nullable(z.lazy(() => PaymentInKind$inboundSchema))
       .optional(),
     price: z.nullable(z.lazy(() => EntryPrice$inboundSchema)).optional(),
-    process_date: z.nullable(z.lazy(() => ProcessDate$inboundSchema))
+    process_date: z.nullable(z.lazy(() => EntryProcessDate$inboundSchema))
       .optional(),
     quantity: z.nullable(z.lazy(() => EntryQuantity$inboundSchema)).optional(),
     receive: z.nullable(z.lazy(() => Receive$inboundSchema)).optional(),
@@ -14333,7 +14347,7 @@ export const Entry$inboundSchema: z.ZodType<Entry, z.ZodTypeDef, unknown> = z
       .optional(),
     settle_date: z.nullable(z.lazy(() => SettleDate$inboundSchema)).optional(),
     side: EntrySide$inboundSchema.optional(),
-    side_modifier: SideModifier$inboundSchema.optional(),
+    side_modifier: EntrySideModifier$inboundSchema.optional(),
     spin_off: z.nullable(z.lazy(() => SpinOff$inboundSchema)).optional(),
     state: EntryState$inboundSchema.optional(),
     stock_dividend: z.nullable(z.lazy(() => StockDividend$inboundSchema))
@@ -14343,7 +14357,7 @@ export const Entry$inboundSchema: z.ZodType<Entry, z.ZodTypeDef, unknown> = z
     sweep: z.nullable(z.lazy(() => Sweep$inboundSchema)).optional(),
     tender_offer: z.nullable(z.lazy(() => TenderOffer$inboundSchema))
       .optional(),
-    trade: z.nullable(z.lazy(() => Trade$inboundSchema)).optional(),
+    trade: z.nullable(z.lazy(() => EntryTrade$inboundSchema)).optional(),
     transfer: z.nullable(z.lazy(() => Transfer$inboundSchema)).optional(),
     type: EntryType$inboundSchema.optional(),
     unit_split: z.nullable(z.lazy(() => UnitSplit$inboundSchema)).optional(),
@@ -14431,7 +14445,7 @@ export type Entry$Outbound = {
   fee?: EntryFee$Outbound | null | undefined;
   flip?: Flip$Outbound | null | undefined;
   fpsl?: Fpsl$Outbound | null | undefined;
-  gross_amount?: GrossAmount$Outbound | null | undefined;
+  gross_amount?: EntryGrossAmount$Outbound | null | undefined;
   interest?: Interest$Outbound | null | undefined;
   interest_payment?: InterestPayment$Outbound | null | undefined;
   liquidation?: Liquidation$Outbound | null | undefined;
@@ -14443,7 +14457,7 @@ export type Entry$Outbound = {
   original_process_date?: OriginalProcessDate$Outbound | null | undefined;
   payment_in_kind?: PaymentInKind$Outbound | null | undefined;
   price?: EntryPrice$Outbound | null | undefined;
-  process_date?: ProcessDate$Outbound | null | undefined;
+  process_date?: EntryProcessDate$Outbound | null | undefined;
   quantity?: EntryQuantity$Outbound | null | undefined;
   receive?: Receive$Outbound | null | undefined;
   redemption_full?: RedemptionFull$Outbound | null | undefined;
@@ -14464,7 +14478,7 @@ export type Entry$Outbound = {
   subtype_category?: string | undefined;
   sweep?: Sweep$Outbound | null | undefined;
   tender_offer?: TenderOffer$Outbound | null | undefined;
-  trade?: Trade$Outbound | null | undefined;
+  trade?: EntryTrade$Outbound | null | undefined;
   transfer?: Transfer$Outbound | null | undefined;
   type?: string | undefined;
   unit_split?: UnitSplit$Outbound | null | undefined;
@@ -14519,7 +14533,8 @@ export const Entry$outboundSchema: z.ZodType<
   fee: z.nullable(z.lazy(() => EntryFee$outboundSchema)).optional(),
   flip: z.nullable(z.lazy(() => Flip$outboundSchema)).optional(),
   fpsl: z.nullable(z.lazy(() => Fpsl$outboundSchema)).optional(),
-  grossAmount: z.nullable(z.lazy(() => GrossAmount$outboundSchema)).optional(),
+  grossAmount: z.nullable(z.lazy(() => EntryGrossAmount$outboundSchema))
+    .optional(),
   interest: z.nullable(z.lazy(() => Interest$outboundSchema)).optional(),
   interestPayment: z.nullable(z.lazy(() => InterestPayment$outboundSchema))
     .optional(),
@@ -14535,7 +14550,8 @@ export const Entry$outboundSchema: z.ZodType<
   paymentInKind: z.nullable(z.lazy(() => PaymentInKind$outboundSchema))
     .optional(),
   price: z.nullable(z.lazy(() => EntryPrice$outboundSchema)).optional(),
-  processDate: z.nullable(z.lazy(() => ProcessDate$outboundSchema)).optional(),
+  processDate: z.nullable(z.lazy(() => EntryProcessDate$outboundSchema))
+    .optional(),
   quantity: z.nullable(z.lazy(() => EntryQuantity$outboundSchema)).optional(),
   receive: z.nullable(z.lazy(() => Receive$outboundSchema)).optional(),
   redemptionFull: z.nullable(z.lazy(() => RedemptionFull$outboundSchema))
@@ -14558,7 +14574,7 @@ export const Entry$outboundSchema: z.ZodType<
     .optional(),
   settleDate: z.nullable(z.lazy(() => SettleDate$outboundSchema)).optional(),
   side: EntrySide$outboundSchema.optional(),
-  sideModifier: SideModifier$outboundSchema.optional(),
+  sideModifier: EntrySideModifier$outboundSchema.optional(),
   spinOff: z.nullable(z.lazy(() => SpinOff$outboundSchema)).optional(),
   state: EntryState$outboundSchema.optional(),
   stockDividend: z.nullable(z.lazy(() => StockDividend$outboundSchema))
@@ -14567,7 +14583,7 @@ export const Entry$outboundSchema: z.ZodType<
   subtypeCategory: z.string().optional(),
   sweep: z.nullable(z.lazy(() => Sweep$outboundSchema)).optional(),
   tenderOffer: z.nullable(z.lazy(() => TenderOffer$outboundSchema)).optional(),
-  trade: z.nullable(z.lazy(() => Trade$outboundSchema)).optional(),
+  trade: z.nullable(z.lazy(() => EntryTrade$outboundSchema)).optional(),
   transfer: z.nullable(z.lazy(() => Transfer$outboundSchema)).optional(),
   type: EntryType$outboundSchema.optional(),
   unitSplit: z.nullable(z.lazy(() => UnitSplit$outboundSchema)).optional(),

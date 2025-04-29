@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { sdk, timeout } from "../utils/sdk";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import {
   createLegalNaturalPerson,
   assignLargeTrader,
@@ -51,7 +51,7 @@ test("Person Management Accounts Update Legal Natural Person update Legal Natura
   };
   const result = await sdk.personManagement.updateLegalNaturalPerson(
     request,
-    lnp_id
+    lnp_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
 });
@@ -69,7 +69,7 @@ test("Person Management Accounts End Large Trader End Large Trader1", async () =
   };
   const result = await sdk.personManagement.endLargeTraderLegalNaturalPerson(
     request,
-    lnp_id
+    lnp_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
 });
@@ -95,7 +95,7 @@ test("Person Management Accounts Update Legal Entity Update Legal Entity1", asyn
   };
   const result = await sdk.personManagement.updateLegalEntity(
     request,
-    legal_entity_id
+    legal_entity_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
 });
@@ -112,7 +112,7 @@ test("Person Management Accounts Assign Large Trader Legal Entity Assign Large T
   };
   const result = await sdk.personManagement.assignLargeTraderLegalEntity(
     request,
-    legal_entity_id
+    legal_entity_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
 });
@@ -126,7 +126,7 @@ test("Person Management Accounts End Large Trader Legal Entity End Large Trader 
   };
   const result = await sdk.personManagement.endLargeTrader(
     request,
-    legal_entity_id
+    legal_entity_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
 });

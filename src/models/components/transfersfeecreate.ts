@@ -57,6 +57,10 @@ export type TransfersFeeCreate = {
    */
   description?: string | undefined;
   /**
+   * Optional account field to denote where the fee amount should be deposited into. If provided, the account must be a fee operating account. In the case of multiple fee operating accounts under the same correspondent, this field must be provided. If not provided, this will be looked up asynchronously (therefore will not be in the initial response)
+   */
+  feeOperatingAccount?: string | undefined;
+  /**
    * The type of the fee being charged
    */
   type: TransfersFeeCreateTypeOpen;
@@ -103,10 +107,12 @@ export const TransfersFeeCreate$inboundSchema: z.ZodType<
   amount: DecimalCreate$inboundSchema,
   client_transfer_id: z.string(),
   description: z.string().optional(),
+  fee_operating_account: z.string().optional(),
   type: TransfersFeeCreateType$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "client_transfer_id": "clientTransferId",
+    "fee_operating_account": "feeOperatingAccount",
   });
 });
 
@@ -115,6 +121,7 @@ export type TransfersFeeCreate$Outbound = {
   amount: DecimalCreate$Outbound;
   client_transfer_id: string;
   description?: string | undefined;
+  fee_operating_account?: string | undefined;
   type: string;
 };
 
@@ -127,10 +134,12 @@ export const TransfersFeeCreate$outboundSchema: z.ZodType<
   amount: DecimalCreate$outboundSchema,
   clientTransferId: z.string(),
   description: z.string().optional(),
+  feeOperatingAccount: z.string().optional(),
   type: TransfersFeeCreateType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     clientTransferId: "client_transfer_id",
+    feeOperatingAccount: "fee_operating_account",
   });
 });
 

@@ -1646,7 +1646,7 @@ export type ActivityNameChange = {
 /**
  * The monetary value of an activity, inclusive of fees, withholding, commisions, etc (Second Money)
  */
-export type NetAmount = {
+export type ActivityNetAmount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -3856,7 +3856,7 @@ export type Activity = {
   /**
    * The monetary value of an activity, inclusive of fees, withholding, commisions, etc (Second Money)
    */
-  netAmount?: NetAmount | null | undefined;
+  netAmount?: ActivityNetAmount | null | undefined;
   /**
    * can be an empty string if there is no next activity is populated when there is a modification resulting in a new activity
    */
@@ -7992,8 +7992,8 @@ export namespace ActivityNameChange$ {
 }
 
 /** @internal */
-export const NetAmount$inboundSchema: z.ZodType<
-  NetAmount,
+export const ActivityNetAmount$inboundSchema: z.ZodType<
+  ActivityNetAmount,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -8001,15 +8001,15 @@ export const NetAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type NetAmount$Outbound = {
+export type ActivityNetAmount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const NetAmount$outboundSchema: z.ZodType<
-  NetAmount$Outbound,
+export const ActivityNetAmount$outboundSchema: z.ZodType<
+  ActivityNetAmount$Outbound,
   z.ZodTypeDef,
-  NetAmount
+  ActivityNetAmount
 > = z.object({
   value: z.string().optional(),
 });
@@ -8018,13 +8018,13 @@ export const NetAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace NetAmount$ {
-  /** @deprecated use `NetAmount$inboundSchema` instead. */
-  export const inboundSchema = NetAmount$inboundSchema;
-  /** @deprecated use `NetAmount$outboundSchema` instead. */
-  export const outboundSchema = NetAmount$outboundSchema;
-  /** @deprecated use `NetAmount$Outbound` instead. */
-  export type Outbound = NetAmount$Outbound;
+export namespace ActivityNetAmount$ {
+  /** @deprecated use `ActivityNetAmount$inboundSchema` instead. */
+  export const inboundSchema = ActivityNetAmount$inboundSchema;
+  /** @deprecated use `ActivityNetAmount$outboundSchema` instead. */
+  export const outboundSchema = ActivityNetAmount$outboundSchema;
+  /** @deprecated use `ActivityNetAmount$Outbound` instead. */
+  export type Outbound = ActivityNetAmount$Outbound;
 }
 
 /** @internal */
@@ -13272,7 +13272,8 @@ export const Activity$inboundSchema: z.ZodType<
   name: z.string().optional(),
   name_change: z.nullable(z.lazy(() => ActivityNameChange$inboundSchema))
     .optional(),
-  net_amount: z.nullable(z.lazy(() => NetAmount$inboundSchema)).optional(),
+  net_amount: z.nullable(z.lazy(() => ActivityNetAmount$inboundSchema))
+    .optional(),
   next_activity_id: z.string().optional(),
   next_activity_process_date: z.nullable(
     z.lazy(() => NextActivityProcessDate$inboundSchema),
@@ -13438,7 +13439,7 @@ export type Activity$Outbound = {
   merger?: ActivityMerger$Outbound | null | undefined;
   name?: string | undefined;
   name_change?: ActivityNameChange$Outbound | null | undefined;
-  net_amount?: NetAmount$Outbound | null | undefined;
+  net_amount?: ActivityNetAmount$Outbound | null | undefined;
   next_activity_id?: string | undefined;
   next_activity_process_date?:
     | NextActivityProcessDate$Outbound
@@ -13550,7 +13551,8 @@ export const Activity$outboundSchema: z.ZodType<
   name: z.string().optional(),
   nameChange: z.nullable(z.lazy(() => ActivityNameChange$outboundSchema))
     .optional(),
-  netAmount: z.nullable(z.lazy(() => NetAmount$outboundSchema)).optional(),
+  netAmount: z.nullable(z.lazy(() => ActivityNetAmount$outboundSchema))
+    .optional(),
   nextActivityId: z.string().optional(),
   nextActivityProcessDate: z.nullable(
     z.lazy(() => NextActivityProcessDate$outboundSchema),

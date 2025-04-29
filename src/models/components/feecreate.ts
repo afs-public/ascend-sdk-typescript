@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
@@ -16,19 +17,29 @@ import {
 } from "./decimalcreate.js";
 
 /**
- * The type of fee being specified. Only the type of "BROKER_FEE" is supported.
+ * The type of fee
  */
 export enum FeeCreateType {
   FeeTypeUnspecified = "FEE_TYPE_UNSPECIFIED",
+  ClientClearing = "CLIENT_CLEARING",
+  Liquidity = "LIQUIDITY",
+  TradeActivity = "TRADE_ACTIVITY",
+  FinancialTransactionTax = "FINANCIAL_TRANSACTION_TAX",
+  IndexOptionFee = "INDEX_OPTION_FEE",
+  SecFee = "SEC_FEE",
+  OptionsRegulatory = "OPTIONS_REGULATORY",
+  GeneralPurposeFee = "GENERAL_PURPOSE_FEE",
   BrokerFee = "BROKER_FEE",
+  ContractFee = "CONTRACT_FEE",
+  OccFee = "OCC_FEE",
 }
 /**
- * The type of fee being specified. Only the type of "BROKER_FEE" is supported.
+ * The type of fee
  */
 export type FeeCreateTypeOpen = OpenEnum<typeof FeeCreateType>;
 
 /**
- * A fee that applies to an order
+ * Fee message includes both fee type as well as the fee amount
  */
 export type FeeCreate = {
   /**
@@ -40,11 +51,15 @@ export type FeeCreate = {
    *  https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html
    *  [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
    */
-  amount: DecimalCreate;
+  amount?: DecimalCreate | undefined;
   /**
-   * The type of fee being specified. Only the type of "BROKER_FEE" is supported.
+   * Indicates whether to explicitly suppress this fee type. If the trade would normally calculate fees (e.g., for TRADE_ACTIVITY), the client can add a fee with this boolean value set to true, and the Booking Service will not calculate or assess that fee on the trade.
    */
-  type: FeeCreateTypeOpen;
+  suppressFee?: boolean | undefined;
+  /**
+   * The type of fee
+   */
+  type?: FeeCreateTypeOpen | undefined;
 };
 
 /** @internal */
@@ -85,14 +100,20 @@ export const FeeCreate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: DecimalCreate$inboundSchema,
-  type: FeeCreateType$inboundSchema,
+  amount: DecimalCreate$inboundSchema.optional(),
+  suppress_fee: z.boolean().optional(),
+  type: FeeCreateType$inboundSchema.optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "suppress_fee": "suppressFee",
+  });
 });
 
 /** @internal */
 export type FeeCreate$Outbound = {
-  amount: DecimalCreate$Outbound;
-  type: string;
+  amount?: DecimalCreate$Outbound | undefined;
+  suppress_fee?: boolean | undefined;
+  type?: string | undefined;
 };
 
 /** @internal */
@@ -101,8 +122,13 @@ export const FeeCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FeeCreate
 > = z.object({
-  amount: DecimalCreate$outboundSchema,
-  type: FeeCreateType$outboundSchema,
+  amount: DecimalCreate$outboundSchema.optional(),
+  suppressFee: z.boolean().optional(),
+  type: FeeCreateType$outboundSchema.optional(),
+}).transform((v) => {
+  return remap$(v, {
+    suppressFee: "suppress_fee",
+  });
 });
 
 /**

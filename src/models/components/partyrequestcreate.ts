@@ -62,8 +62,6 @@ export enum RelationType {
   PrimaryOwner = "PRIMARY_OWNER",
   JointOwner = "JOINT_OWNER",
   Custodian = "CUSTODIAN",
-  GuardianConservator = "GUARDIAN_CONSERVATOR",
-  PowerOfAttorney = "POWER_OF_ATTORNEY",
   Executor = "EXECUTOR",
   AuthorizedSigner = "AUTHORIZED_SIGNER",
   BeneficialOwner = "BENEFICIAL_OWNER",

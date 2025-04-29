@@ -184,7 +184,7 @@ export type IctWithdrawalRetirementDistribution = {
  * - `RETURNED` - The transfer was returned.
  * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
  */
-export enum IctWithdrawalState {
+export enum IctWithdrawalStateState {
   StateUnspecified = "STATE_UNSPECIFIED",
   Processing = "PROCESSING",
   PendingReview = "PENDING_REVIEW",
@@ -208,10 +208,95 @@ export enum IctWithdrawalState {
  * - `RETURNED` - The transfer was returned.
  * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
  */
-export type IctWithdrawalStateOpen = OpenEnum<typeof IctWithdrawalState>;
+export type IctWithdrawalStateStateOpen = OpenEnum<
+  typeof IctWithdrawalStateState
+>;
 
 /**
  * The state of the ICT withdrawal
+ */
+export type IctWithdrawalState = {
+  /**
+   * The user or service that triggered the state update.
+   */
+  actor?: string | undefined;
+  /**
+   * Additional description of the transfer state.
+   */
+  message?: string | undefined;
+  /**
+   * Additional metadata relating to the transfer state. Included data depends on the state, e.g.:
+   *
+   * @remarks
+   *  - Rejection reasons are included when the `state` is `REJECTED`
+   *  - Reason and comment are included when `state` is `CANCELED`
+   */
+  metadata?: { [k: string]: any } | null | undefined;
+  /**
+   * The high level state of a transfer, one of:
+   *
+   * @remarks
+   * - `PROCESSING` - The transfer is being processed and will be posted if successful.
+   * - `PENDING_REVIEW` - The transfer is pending review and will continue processing if approved.
+   * - `POSTED` - The transfer has been posted to the ledger and will be completed at the end of the processing window if not canceled first.
+   * - `COMPLETED` - The transfer has been batched and completed.
+   * - `REJECTED` - The transfer was rejected.
+   * - `CANCELED` - The transfer was canceled.
+   * - `RETURNED` - The transfer was returned.
+   * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
+   */
+  state?: IctWithdrawalStateStateOpen | undefined;
+  /**
+   * The time of the state update.
+   */
+  updateTime?: Date | null | undefined;
+};
+
+/**
+ * The high level state of a transfer, one of:
+ *
+ * @remarks
+ * - `PROCESSING` - The transfer is being processed and will be posted if successful.
+ * - `PENDING_REVIEW` - The transfer is pending review and will continue processing if approved.
+ * - `POSTED` - The transfer has been posted to the ledger and will be completed at the end of the processing window if not canceled first.
+ * - `COMPLETED` - The transfer has been batched and completed.
+ * - `REJECTED` - The transfer was rejected.
+ * - `CANCELED` - The transfer was canceled.
+ * - `RETURNED` - The transfer was returned.
+ * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
+ */
+export enum IctWithdrawalTransferStateState {
+  StateUnspecified = "STATE_UNSPECIFIED",
+  Processing = "PROCESSING",
+  PendingReview = "PENDING_REVIEW",
+  Posted = "POSTED",
+  Completed = "COMPLETED",
+  Rejected = "REJECTED",
+  Canceled = "CANCELED",
+  Returned = "RETURNED",
+  Postponed = "POSTPONED",
+}
+/**
+ * The high level state of a transfer, one of:
+ *
+ * @remarks
+ * - `PROCESSING` - The transfer is being processed and will be posted if successful.
+ * - `PENDING_REVIEW` - The transfer is pending review and will continue processing if approved.
+ * - `POSTED` - The transfer has been posted to the ledger and will be completed at the end of the processing window if not canceled first.
+ * - `COMPLETED` - The transfer has been batched and completed.
+ * - `REJECTED` - The transfer was rejected.
+ * - `CANCELED` - The transfer was canceled.
+ * - `RETURNED` - The transfer was returned.
+ * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
+ */
+export type IctWithdrawalTransferStateStateOpen = OpenEnum<
+  typeof IctWithdrawalTransferStateState
+>;
+
+/**
+ * Deprecated, use state instead
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type IctWithdrawalTransferState = {
   /**
@@ -243,7 +328,7 @@ export type IctWithdrawalTransferState = {
    * - `RETURNED` - The transfer was returned.
    * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
    */
-  state?: IctWithdrawalStateOpen | undefined;
+  state?: IctWithdrawalTransferStateStateOpen | undefined;
   /**
    * The time of the state update.
    */
@@ -700,6 +785,12 @@ export type IctWithdrawal = {
   /**
    * The state of the ICT withdrawal
    */
+  state?: IctWithdrawalState | null | undefined;
+  /**
+   * Deprecated, use state instead
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   transferState?: IctWithdrawalTransferState | null | undefined;
   /**
    * The travel rule information for the ICT withdrawal
@@ -1154,25 +1245,81 @@ export namespace IctWithdrawalRetirementDistribution$ {
 }
 
 /** @internal */
-export const IctWithdrawalState$inboundSchema: z.ZodType<
-  IctWithdrawalStateOpen,
+export const IctWithdrawalStateState$inboundSchema: z.ZodType<
+  IctWithdrawalStateStateOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(IctWithdrawalState),
+    z.nativeEnum(IctWithdrawalStateState),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const IctWithdrawalState$outboundSchema: z.ZodType<
-  IctWithdrawalStateOpen,
+export const IctWithdrawalStateState$outboundSchema: z.ZodType<
+  IctWithdrawalStateStateOpen,
   z.ZodTypeDef,
-  IctWithdrawalStateOpen
+  IctWithdrawalStateStateOpen
 > = z.union([
-  z.nativeEnum(IctWithdrawalState),
+  z.nativeEnum(IctWithdrawalStateState),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IctWithdrawalStateState$ {
+  /** @deprecated use `IctWithdrawalStateState$inboundSchema` instead. */
+  export const inboundSchema = IctWithdrawalStateState$inboundSchema;
+  /** @deprecated use `IctWithdrawalStateState$outboundSchema` instead. */
+  export const outboundSchema = IctWithdrawalStateState$outboundSchema;
+}
+
+/** @internal */
+export const IctWithdrawalState$inboundSchema: z.ZodType<
+  IctWithdrawalState,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  actor: z.string().optional(),
+  message: z.string().optional(),
+  metadata: z.nullable(z.record(z.any())).optional(),
+  state: IctWithdrawalStateState$inboundSchema.optional(),
+  update_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "update_time": "updateTime",
+  });
+});
+
+/** @internal */
+export type IctWithdrawalState$Outbound = {
+  actor?: string | undefined;
+  message?: string | undefined;
+  metadata?: { [k: string]: any } | null | undefined;
+  state?: string | undefined;
+  update_time?: string | null | undefined;
+};
+
+/** @internal */
+export const IctWithdrawalState$outboundSchema: z.ZodType<
+  IctWithdrawalState$Outbound,
+  z.ZodTypeDef,
+  IctWithdrawalState
+> = z.object({
+  actor: z.string().optional(),
+  message: z.string().optional(),
+  metadata: z.nullable(z.record(z.any())).optional(),
+  state: IctWithdrawalStateState$outboundSchema.optional(),
+  updateTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    updateTime: "update_time",
+  });
+});
 
 /**
  * @internal
@@ -1183,6 +1330,40 @@ export namespace IctWithdrawalState$ {
   export const inboundSchema = IctWithdrawalState$inboundSchema;
   /** @deprecated use `IctWithdrawalState$outboundSchema` instead. */
   export const outboundSchema = IctWithdrawalState$outboundSchema;
+  /** @deprecated use `IctWithdrawalState$Outbound` instead. */
+  export type Outbound = IctWithdrawalState$Outbound;
+}
+
+/** @internal */
+export const IctWithdrawalTransferStateState$inboundSchema: z.ZodType<
+  IctWithdrawalTransferStateStateOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(IctWithdrawalTransferStateState),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const IctWithdrawalTransferStateState$outboundSchema: z.ZodType<
+  IctWithdrawalTransferStateStateOpen,
+  z.ZodTypeDef,
+  IctWithdrawalTransferStateStateOpen
+> = z.union([
+  z.nativeEnum(IctWithdrawalTransferStateState),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IctWithdrawalTransferStateState$ {
+  /** @deprecated use `IctWithdrawalTransferStateState$inboundSchema` instead. */
+  export const inboundSchema = IctWithdrawalTransferStateState$inboundSchema;
+  /** @deprecated use `IctWithdrawalTransferStateState$outboundSchema` instead. */
+  export const outboundSchema = IctWithdrawalTransferStateState$outboundSchema;
 }
 
 /** @internal */
@@ -1194,7 +1375,7 @@ export const IctWithdrawalTransferState$inboundSchema: z.ZodType<
   actor: z.string().optional(),
   message: z.string().optional(),
   metadata: z.nullable(z.record(z.any())).optional(),
-  state: IctWithdrawalState$inboundSchema.optional(),
+  state: IctWithdrawalTransferStateState$inboundSchema.optional(),
   update_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -1222,7 +1403,7 @@ export const IctWithdrawalTransferState$outboundSchema: z.ZodType<
   actor: z.string().optional(),
   message: z.string().optional(),
   metadata: z.nullable(z.record(z.any())).optional(),
-  state: IctWithdrawalState$outboundSchema.optional(),
+  state: IctWithdrawalTransferStateState$outboundSchema.optional(),
   updateTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -2051,6 +2232,7 @@ export const IctWithdrawal$inboundSchema: z.ZodType<
   retirement_distribution: z.nullable(
     z.lazy(() => IctWithdrawalRetirementDistribution$inboundSchema),
   ).optional(),
+  state: z.nullable(z.lazy(() => IctWithdrawalState$inboundSchema)).optional(),
   transfer_state: z.nullable(
     z.lazy(() => IctWithdrawalTransferState$inboundSchema),
   ).optional(),
@@ -2075,6 +2257,7 @@ export type IctWithdrawal$Outbound = {
     | IctWithdrawalRetirementDistribution$Outbound
     | null
     | undefined;
+  state?: IctWithdrawalState$Outbound | null | undefined;
   transfer_state?: IctWithdrawalTransferState$Outbound | null | undefined;
   travel_rule?: IctWithdrawalTravelRule$Outbound | null | undefined;
 };
@@ -2093,6 +2276,7 @@ export const IctWithdrawal$outboundSchema: z.ZodType<
   retirementDistribution: z.nullable(
     z.lazy(() => IctWithdrawalRetirementDistribution$outboundSchema),
   ).optional(),
+  state: z.nullable(z.lazy(() => IctWithdrawalState$outboundSchema)).optional(),
   transferState: z.nullable(
     z.lazy(() => IctWithdrawalTransferState$outboundSchema),
   ).optional(),

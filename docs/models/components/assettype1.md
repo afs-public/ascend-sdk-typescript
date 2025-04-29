@@ -24,5 +24,4 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `FdicSynthetic`        | FDIC_SYNTHETIC         |
 | `FixedIncome`          | FIXED_INCOME           |
 | `MutualFund`           | MUTUAL_FUND            |
-| `AltInvestment`        | ALT_INVESTMENT         |
 | -                      | `Unrecognized<string>` |

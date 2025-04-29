@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { sdk, timeout } from "../utils/sdk";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import {
   createLegalNaturalPerson,
   createAccount,

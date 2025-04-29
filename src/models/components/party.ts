@@ -503,7 +503,7 @@ export type PartyLegalEntity = {
    */
   exemptCustomerReason?: PartyExemptCustomerReasonOpen | undefined;
   /**
-   * Indicates whether the entity is exempt from verifying beneficial owners. By default, this is set to `false`.
+   * Indicates whether the entity is exempt from verifying beneficial owners and Enhanced Due Diligence. By default, this is set to `false`
    */
   exemptVerifyingBeneficialOwners?: boolean | undefined;
   /**
@@ -754,7 +754,7 @@ export type PartyEmployment = {
    */
   employmentStatus?: PartyEmploymentStatusOpen | undefined;
   /**
-   * The nature of work performed at an investor's place of employment.
+   * The nature of work performed at an investor's place of employment. Required if the employment_status is `EMPLOYED` or `SELF_EMPLOYED`.
    */
   occupation?: string | undefined;
   /**
@@ -1692,8 +1692,6 @@ export enum PartyRelationType {
   PrimaryOwner = "PRIMARY_OWNER",
   JointOwner = "JOINT_OWNER",
   Custodian = "CUSTODIAN",
-  GuardianConservator = "GUARDIAN_CONSERVATOR",
-  PowerOfAttorney = "POWER_OF_ATTORNEY",
   Executor = "EXECUTOR",
   AuthorizedSigner = "AUTHORIZED_SIGNER",
   BeneficialOwner = "BENEFICIAL_OWNER",

@@ -55,6 +55,10 @@ export type TransfersCreditCreate = {
    */
   description?: string | undefined;
   /**
+   * Optional account field to denote where the credit amount should be withdrawn from. If provided, the account must be a fee operating account. In the case of multiple fee operating accounts under the same correspondent, this field must be provided. If not provided, this will be looked up asynchronously (therefore will not be in the initial response)
+   */
+  feeOperatingAccount?: string | undefined;
+  /**
    * The type of the credit being issued
    */
   type: TransfersCreditCreateTypeOpen;
@@ -101,10 +105,12 @@ export const TransfersCreditCreate$inboundSchema: z.ZodType<
   amount: DecimalCreate$inboundSchema,
   client_transfer_id: z.string(),
   description: z.string().optional(),
+  fee_operating_account: z.string().optional(),
   type: TransfersCreditCreateType$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "client_transfer_id": "clientTransferId",
+    "fee_operating_account": "feeOperatingAccount",
   });
 });
 
@@ -113,6 +119,7 @@ export type TransfersCreditCreate$Outbound = {
   amount: DecimalCreate$Outbound;
   client_transfer_id: string;
   description?: string | undefined;
+  fee_operating_account?: string | undefined;
   type: string;
 };
 
@@ -125,10 +132,12 @@ export const TransfersCreditCreate$outboundSchema: z.ZodType<
   amount: DecimalCreate$outboundSchema,
   clientTransferId: z.string(),
   description: z.string().optional(),
+  feeOperatingAccount: z.string().optional(),
   type: TransfersCreditCreateType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     clientTransferId: "client_transfer_id",
+    feeOperatingAccount: "fee_operating_account",
   });
 });
 

@@ -17,32 +17,28 @@ import {
 } from "./postaladdresscreate.js";
 
 /**
- * Delivery method instruction for account statements for a given Interested Party; Can be `DIGITAL`, `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
+ * Delivery method instruction for account statements for a given Interested Party; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
  */
 export enum StatementDeliveryPreference {
-  DeliveryPreferenceUnspecified = "DELIVERY_PREFERENCE_UNSPECIFIED",
-  Digital = "DIGITAL",
   Physical = "PHYSICAL",
   Suppress = "SUPPRESS",
 }
 /**
- * Delivery method instruction for account statements for a given Interested Party; Can be `DIGITAL`, `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
+ * Delivery method instruction for account statements for a given Interested Party; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
  */
 export type StatementDeliveryPreferenceOpen = OpenEnum<
   typeof StatementDeliveryPreference
 >;
 
 /**
- * Delivery method instruction for trade confirmations for a given Interested Party record; Can be `DIGITAL`, `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
+ * Delivery method instruction for trade confirmations for a given Interested Party record; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
  */
 export enum TradeConfirmationDeliveryPreference {
-  DeliveryPreferenceUnspecified = "DELIVERY_PREFERENCE_UNSPECIFIED",
-  Digital = "DIGITAL",
   Physical = "PHYSICAL",
   Suppress = "SUPPRESS",
 }
 /**
- * Delivery method instruction for trade confirmations for a given Interested Party record; Can be `DIGITAL`, `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
+ * Delivery method instruction for trade confirmations for a given Interested Party record; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
  */
 export type TradeConfirmationDeliveryPreferenceOpen = OpenEnum<
   typeof TradeConfirmationDeliveryPreference
@@ -69,11 +65,11 @@ export type InterestedPartyCreate = {
    */
   recipient: string;
   /**
-   * Delivery method instruction for account statements for a given Interested Party; Can be `DIGITAL`, `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
+   * Delivery method instruction for account statements for a given Interested Party; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
    */
   statementDeliveryPreference?: StatementDeliveryPreferenceOpen | undefined;
   /**
-   * Delivery method instruction for trade confirmations for a given Interested Party record; Can be `DIGITAL`, `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
+   * Delivery method instruction for trade confirmations for a given Interested Party record; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
    */
   tradeConfirmationDeliveryPreference?:
     | TradeConfirmationDeliveryPreferenceOpen

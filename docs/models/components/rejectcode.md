@@ -7,7 +7,7 @@ The reject code
 ```typescript
 import { RejectCode } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: RejectCode = RejectCode.RejectCodePartialTransferDeliverer;
+let value: RejectCode = RejectCode.RejectCodeMissingAuthorizationSignature;
 ```
 
 ## Values

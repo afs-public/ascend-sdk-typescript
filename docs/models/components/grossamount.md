@@ -1,6 +1,6 @@
 # GrossAmount
 
-The monetary value of an activity, exclusive of any fees (First money)
+Gross amount is calculated by the Booking service by multiplying price and quantity and fixing it to 2 fractional precision. Requirement of 11 or less integral number and 2 or less fractional precision. Optionally specifiable. If present, will override the gross_amount calculated above.
 
 ## Example Usage
 

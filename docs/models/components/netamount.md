@@ -1,6 +1,6 @@
 # NetAmount
 
-The monetary value of an activity, inclusive of fees, withholding, commisions, etc (Second Money)
+The net amount of the trade in USD. This value is always positive.
 
 ## Example Usage
 

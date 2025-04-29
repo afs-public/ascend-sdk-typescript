@@ -17,7 +17,7 @@ import {
 } from "./eddaccountenrollmentmetadatacreate.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to `DIVIDEND_REINVESTMENT_ENROLL`
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum LLCEnrollmentMetadataCreateDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -26,14 +26,14 @@ export enum LLCEnrollmentMetadataCreateDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to `DIVIDEND_REINVESTMENT_ENROLL`
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type LLCEnrollmentMetadataCreateDividendReinvestmentPlanOpen = OpenEnum<
   typeof LLCEnrollmentMetadataCreateDividendReinvestmentPlan
 >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to `FDIC_CASH_SWEEP_ENROLL`
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum LLCEnrollmentMetadataCreateFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -42,7 +42,7 @@ export enum LLCEnrollmentMetadataCreateFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to `FDIC_CASH_SWEEP_ENROLL`
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type LLCEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
   typeof LLCEnrollmentMetadataCreateFdicCashSweep
@@ -50,7 +50,7 @@ export type LLCEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
 
 export type LLCEnrollmentMetadataCreate = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to `DIVIDEND_REINVESTMENT_ENROLL`
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | LLCEnrollmentMetadataCreateDividendReinvestmentPlanOpen
@@ -60,7 +60,7 @@ export type LLCEnrollmentMetadataCreate = {
    */
   eddAccountEnrollmentMetadata?: EddAccountEnrollmentMetadataCreate | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to `FDIC_CASH_SWEEP_ENROLL`
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: LLCEnrollmentMetadataCreateFdicCashSweepOpen | undefined;
 };

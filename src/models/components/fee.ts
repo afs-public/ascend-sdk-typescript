@@ -12,7 +12,7 @@ import {
 /**
  * Monetary amount associated with the fee
  */
-export type Amount = {
+export type FeeAmount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -64,7 +64,7 @@ export type Fee = {
   /**
    * Monetary amount associated with the fee
    */
-  amount?: Amount | null | undefined;
+  amount?: FeeAmount | null | undefined;
   /**
    * The type of fee being assessed
    */
@@ -72,21 +72,24 @@ export type Fee = {
 };
 
 /** @internal */
-export const Amount$inboundSchema: z.ZodType<Amount, z.ZodTypeDef, unknown> = z
-  .object({
-    value: z.string().optional(),
-  });
+export const FeeAmount$inboundSchema: z.ZodType<
+  FeeAmount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
 
 /** @internal */
-export type Amount$Outbound = {
+export type FeeAmount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const Amount$outboundSchema: z.ZodType<
-  Amount$Outbound,
+export const FeeAmount$outboundSchema: z.ZodType<
+  FeeAmount$Outbound,
   z.ZodTypeDef,
-  Amount
+  FeeAmount
 > = z.object({
   value: z.string().optional(),
 });
@@ -95,13 +98,13 @@ export const Amount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Amount$ {
-  /** @deprecated use `Amount$inboundSchema` instead. */
-  export const inboundSchema = Amount$inboundSchema;
-  /** @deprecated use `Amount$outboundSchema` instead. */
-  export const outboundSchema = Amount$outboundSchema;
-  /** @deprecated use `Amount$Outbound` instead. */
-  export type Outbound = Amount$Outbound;
+export namespace FeeAmount$ {
+  /** @deprecated use `FeeAmount$inboundSchema` instead. */
+  export const inboundSchema = FeeAmount$inboundSchema;
+  /** @deprecated use `FeeAmount$outboundSchema` instead. */
+  export const outboundSchema = FeeAmount$outboundSchema;
+  /** @deprecated use `FeeAmount$Outbound` instead. */
+  export type Outbound = FeeAmount$Outbound;
 }
 
 /** @internal */
@@ -139,20 +142,20 @@ export namespace FeeType$ {
 /** @internal */
 export const Fee$inboundSchema: z.ZodType<Fee, z.ZodTypeDef, unknown> = z
   .object({
-    amount: z.nullable(z.lazy(() => Amount$inboundSchema)).optional(),
+    amount: z.nullable(z.lazy(() => FeeAmount$inboundSchema)).optional(),
     type: FeeType$inboundSchema.optional(),
   });
 
 /** @internal */
 export type Fee$Outbound = {
-  amount?: Amount$Outbound | null | undefined;
+  amount?: FeeAmount$Outbound | null | undefined;
   type?: string | undefined;
 };
 
 /** @internal */
 export const Fee$outboundSchema: z.ZodType<Fee$Outbound, z.ZodTypeDef, Fee> = z
   .object({
-    amount: z.nullable(z.lazy(() => Amount$outboundSchema)).optional(),
+    amount: z.nullable(z.lazy(() => FeeAmount$outboundSchema)).optional(),
     type: FeeType$outboundSchema.optional(),
   });
 

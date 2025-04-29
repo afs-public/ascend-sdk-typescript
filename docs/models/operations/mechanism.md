@@ -26,3 +26,4 @@ let value: Mechanism = Mechanism.Ach;
 | `Rtp`                  | RTP                    |
 | `Tpj`                  | TPJ                    |
 | `Wire`                 | WIRE                   |
+| `ExternalAch`          | EXTERNAL_ACH           |

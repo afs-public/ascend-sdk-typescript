@@ -23,7 +23,7 @@ export type YieldPercent = {
 /**
  * Characterization of a yield percentage
  */
-export enum YieldType {
+export enum YieldRecordYieldType {
   YieldTypeUnspecified = "YIELD_TYPE_UNSPECIFIED",
   YieldToCall = "YIELD_TO_CALL",
   YieldToMaturity = "YIELD_TO_MATURITY",
@@ -33,7 +33,7 @@ export enum YieldType {
 /**
  * Characterization of a yield percentage
  */
-export type YieldTypeOpen = OpenEnum<typeof YieldType>;
+export type YieldRecordYieldTypeOpen = OpenEnum<typeof YieldRecordYieldType>;
 
 /**
  * Contains details about the yields associated with a trade in fixed income instruments
@@ -46,7 +46,7 @@ export type YieldRecord = {
   /**
    * Characterization of a yield percentage
    */
-  yieldType?: YieldTypeOpen | undefined;
+  yieldType?: YieldRecordYieldTypeOpen | undefined;
 };
 
 /** @internal */
@@ -86,23 +86,23 @@ export namespace YieldPercent$ {
 }
 
 /** @internal */
-export const YieldType$inboundSchema: z.ZodType<
-  YieldTypeOpen,
+export const YieldRecordYieldType$inboundSchema: z.ZodType<
+  YieldRecordYieldTypeOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(YieldType),
+    z.nativeEnum(YieldRecordYieldType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const YieldType$outboundSchema: z.ZodType<
-  YieldTypeOpen,
+export const YieldRecordYieldType$outboundSchema: z.ZodType<
+  YieldRecordYieldTypeOpen,
   z.ZodTypeDef,
-  YieldTypeOpen
+  YieldRecordYieldTypeOpen
 > = z.union([
-  z.nativeEnum(YieldType),
+  z.nativeEnum(YieldRecordYieldType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -110,11 +110,11 @@ export const YieldType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace YieldType$ {
-  /** @deprecated use `YieldType$inboundSchema` instead. */
-  export const inboundSchema = YieldType$inboundSchema;
-  /** @deprecated use `YieldType$outboundSchema` instead. */
-  export const outboundSchema = YieldType$outboundSchema;
+export namespace YieldRecordYieldType$ {
+  /** @deprecated use `YieldRecordYieldType$inboundSchema` instead. */
+  export const inboundSchema = YieldRecordYieldType$inboundSchema;
+  /** @deprecated use `YieldRecordYieldType$outboundSchema` instead. */
+  export const outboundSchema = YieldRecordYieldType$outboundSchema;
 }
 
 /** @internal */
@@ -125,7 +125,7 @@ export const YieldRecord$inboundSchema: z.ZodType<
 > = z.object({
   yield_percent: z.nullable(z.lazy(() => YieldPercent$inboundSchema))
     .optional(),
-  yield_type: YieldType$inboundSchema.optional(),
+  yield_type: YieldRecordYieldType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "yield_percent": "yieldPercent",
@@ -147,7 +147,7 @@ export const YieldRecord$outboundSchema: z.ZodType<
 > = z.object({
   yieldPercent: z.nullable(z.lazy(() => YieldPercent$outboundSchema))
     .optional(),
-  yieldType: YieldType$outboundSchema.optional(),
+  yieldType: YieldRecordYieldType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     yieldPercent: "yield_percent",

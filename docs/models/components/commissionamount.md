@@ -1,6 +1,6 @@
 # CommissionAmount
 
-Monetary amount associated with the commission
+Commission amount of the execution. Requirement of 11 or less integral number and 2 or less fractional precision.
 
 ## Example Usage
 

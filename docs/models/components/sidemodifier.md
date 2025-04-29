@@ -1,13 +1,13 @@
 # SideModifier
 
-Additional information about a trade Should be populated if possible for trades; the side modifier for the trade
+Side modifier for the trade.
 
 ## Example Usage
 
 ```typescript
 import { SideModifier } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: SideModifier = SideModifier.Short;
+let value: SideModifier = SideModifier.Open;
 ```
 
 ## Values

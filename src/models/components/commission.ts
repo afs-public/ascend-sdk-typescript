@@ -7,7 +7,7 @@ import * as z from "zod";
 /**
  * Monetary amount associated with the commission
  */
-export type CommissionAmount = {
+export type CommissionAmount1 = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -18,12 +18,12 @@ export type Commission = {
   /**
    * Monetary amount associated with the commission
    */
-  amount?: CommissionAmount | null | undefined;
+  amount?: CommissionAmount1 | null | undefined;
 };
 
 /** @internal */
-export const CommissionAmount$inboundSchema: z.ZodType<
-  CommissionAmount,
+export const CommissionAmount1$inboundSchema: z.ZodType<
+  CommissionAmount1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -31,15 +31,15 @@ export const CommissionAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CommissionAmount$Outbound = {
+export type CommissionAmount1$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const CommissionAmount$outboundSchema: z.ZodType<
-  CommissionAmount$Outbound,
+export const CommissionAmount1$outboundSchema: z.ZodType<
+  CommissionAmount1$Outbound,
   z.ZodTypeDef,
-  CommissionAmount
+  CommissionAmount1
 > = z.object({
   value: z.string().optional(),
 });
@@ -48,13 +48,13 @@ export const CommissionAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CommissionAmount$ {
-  /** @deprecated use `CommissionAmount$inboundSchema` instead. */
-  export const inboundSchema = CommissionAmount$inboundSchema;
-  /** @deprecated use `CommissionAmount$outboundSchema` instead. */
-  export const outboundSchema = CommissionAmount$outboundSchema;
-  /** @deprecated use `CommissionAmount$Outbound` instead. */
-  export type Outbound = CommissionAmount$Outbound;
+export namespace CommissionAmount1$ {
+  /** @deprecated use `CommissionAmount1$inboundSchema` instead. */
+  export const inboundSchema = CommissionAmount1$inboundSchema;
+  /** @deprecated use `CommissionAmount1$outboundSchema` instead. */
+  export const outboundSchema = CommissionAmount1$outboundSchema;
+  /** @deprecated use `CommissionAmount1$Outbound` instead. */
+  export type Outbound = CommissionAmount1$Outbound;
 }
 
 /** @internal */
@@ -63,12 +63,12 @@ export const Commission$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: z.nullable(z.lazy(() => CommissionAmount$inboundSchema)).optional(),
+  amount: z.nullable(z.lazy(() => CommissionAmount1$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type Commission$Outbound = {
-  amount?: CommissionAmount$Outbound | null | undefined;
+  amount?: CommissionAmount1$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -77,7 +77,7 @@ export const Commission$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Commission
 > = z.object({
-  amount: z.nullable(z.lazy(() => CommissionAmount$outboundSchema)).optional(),
+  amount: z.nullable(z.lazy(() => CommissionAmount1$outboundSchema)).optional(),
 });
 
 /**

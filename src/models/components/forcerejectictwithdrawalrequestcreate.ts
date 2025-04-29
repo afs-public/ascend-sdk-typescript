@@ -12,6 +12,10 @@ export type ForceRejectIctWithdrawalRequestCreate = {
    * Full name of the ICT withdrawal resource to force a rejection on. Contains account id and ICT withdrawal id.
    */
   name: string;
+  /**
+   * Reason why the ICT withdrawal is being rejected
+   */
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -21,11 +25,13 @@ export const ForceRejectIctWithdrawalRequestCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /** @internal */
 export type ForceRejectIctWithdrawalRequestCreate$Outbound = {
   name: string;
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +41,7 @@ export const ForceRejectIctWithdrawalRequestCreate$outboundSchema: z.ZodType<
   ForceRejectIctWithdrawalRequestCreate
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /**

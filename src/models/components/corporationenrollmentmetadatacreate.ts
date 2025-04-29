@@ -17,7 +17,7 @@ import {
 } from "./eddaccountenrollmentmetadatacreate.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum DividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -26,14 +26,14 @@ export enum DividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type DividendReinvestmentPlanOpen = OpenEnum<
   typeof DividendReinvestmentPlan
 >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum FdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -42,13 +42,13 @@ export enum FdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type FdicCashSweepOpen = OpenEnum<typeof FdicCashSweep>;
 
 export type CorporationEnrollmentMetadataCreate = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?: DividendReinvestmentPlanOpen | undefined;
   /**
@@ -56,7 +56,7 @@ export type CorporationEnrollmentMetadataCreate = {
    */
   eddAccountEnrollmentMetadata?: EddAccountEnrollmentMetadataCreate | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: FdicCashSweepOpen | undefined;
 };

@@ -1,7 +1,7 @@
 import { beforeAll, expect, test } from "vitest";
 import { sdk, timeout } from "../utils/sdk";
-import * as components from "../../models/components";
-import { RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType } from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
+import { RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
 import {
   affirmAgreement,
   createAccount,
@@ -91,7 +91,7 @@ test("Fixed Income Pricing Orders Retrieve Fixed Income Marks", async () => {
   };
   const result = await sdk.fixedIncomePricing.retrieveFixedIncomeMarks(
     request,
-    process.env['CORRESPONDENT_ID'] || "",
+    process.env["CORRESPONDENT_ID"] || "",
   );
   expect(result.httpMeta.response.status).toBe(200);
 });

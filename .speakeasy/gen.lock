@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: 43e872172449444de28d9d4445f001c9
-  docVersion: v1:20250314:uat:ca7557d0f350
+  docChecksum: 4a628865de94d7e7e887e078a8338829
+  docVersion: v1:20250425:uat:4e9cbfb617ca
   speakeasyVersion: 1.414.1
   generationVersion: 2.437.1
-  releaseVersion: 1.5.4
-  configChecksum: 71b2203d3c4ba9acb2b8c63e2d2d24b2
+  releaseVersion: 1.5.5
+  configChecksum: 0df1161ef5401dacfdb48a16cba93be5
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -46,6 +46,7 @@ generatedFiles:
   - docs/models/components/acatsassettype.md
   - docs/models/components/acatspendingout.md
   - docs/models/components/acatstransfer.md
+  - docs/models/components/acatstransferdirection.md
   - docs/models/components/acatstransferexternalaccount.md
   - docs/models/components/acatstransferstate.md
   - docs/models/components/account.md
@@ -84,7 +85,6 @@ generatedFiles:
   - docs/models/components/accruedinterestamount1.md
   - docs/models/components/accruedinterestdesc.md
   - docs/models/components/achdeposit.md
-  - docs/models/components/achdepositamount.md
   - docs/models/components/achdepositcreate.md
   - docs/models/components/achdepositschedule.md
   - docs/models/components/achdepositscheduleamount.md
@@ -214,6 +214,7 @@ generatedFiles:
   - docs/models/components/activitynamechangecorporateactiongeneralinformation.md
   - docs/models/components/activitynamechangeeffectivedate.md
   - docs/models/components/activitynamechangequantity.md
+  - docs/models/components/activitynetamount.md
   - docs/models/components/activitypaydate.md
   - docs/models/components/activitypaymentdate.md
   - docs/models/components/activitypaymentinkind.md
@@ -324,6 +325,7 @@ generatedFiles:
   - docs/models/components/agreement.md
   - docs/models/components/agreementsource.md
   - docs/models/components/agreementstate.md
+  - docs/models/components/allocationpercentage.md
   - docs/models/components/amount.md
   - docs/models/components/amount1.md
   - docs/models/components/amount2.md
@@ -335,6 +337,7 @@ generatedFiles:
   - docs/models/components/assetcreate.md
   - docs/models/components/assetcreatetype.md
   - docs/models/components/assetequitytype.md
+  - docs/models/components/assetexpirationdate.md
   - docs/models/components/assetissuedate.md
   - docs/models/components/assettype.md
   - docs/models/components/assettype1.md
@@ -361,7 +364,6 @@ generatedFiles:
   - docs/models/components/basket.md
   - docs/models/components/basketcreate.md
   - docs/models/components/basketorder.md
-  - docs/models/components/basketorderamount.md
   - docs/models/components/basketorderassettype.md
   - docs/models/components/basketordercreate.md
   - docs/models/components/basketordercreateassettype.md
@@ -372,15 +374,11 @@ generatedFiles:
   - docs/models/components/basketordercumulativenotionalvalue.md
   - docs/models/components/basketorderfilledquantity.md
   - docs/models/components/basketorderidentifiertype.md
-  - docs/models/components/basketorderletterofintent.md
   - docs/models/components/basketordernotionalvalue.md
   - docs/models/components/basketorderorderrejectedreason.md
   - docs/models/components/basketorderorderstatus.md
   - docs/models/components/basketorderordertype.md
-  - docs/models/components/basketorderperiodstartdate.md
   - docs/models/components/basketorderquantity.md
-  - docs/models/components/basketorderrightsofaccumulation.md
-  - docs/models/components/basketorderrightsofaccumulationamount.md
   - docs/models/components/basketorderside.md
   - docs/models/components/basketordertimeinforce.md
   - docs/models/components/basketstate.md
@@ -404,6 +402,9 @@ generatedFiles:
   - docs/models/components/bidquantity.md
   - docs/models/components/birthdate.md
   - docs/models/components/birthdateverified.md
+  - docs/models/components/bondyield.md
+  - docs/models/components/bondyieldcreate.md
+  - docs/models/components/bondyieldyieldtype.md
   - docs/models/components/brokercapacity.md
   - docs/models/components/businessindustrialclassification.md
   - docs/models/components/buyingpower.md
@@ -411,10 +412,10 @@ generatedFiles:
   - docs/models/components/calculatecashbalanceresponse.md
   - docs/models/components/calculatecashbalanceresponseopenordersummary.md
   - docs/models/components/calculatecashbalanceresponsetradesummary.md
-  - docs/models/components/calculatecashbalanceresponsetradesummarynetamount.md
   - docs/models/components/calculatecashbalanceresponsetransfersummary.md
   - docs/models/components/calculatecashbalanceresponsetransfersummaryamount.md
   - docs/models/components/calculatecashbalanceresponsetransfersummarymechanism.md
+  - docs/models/components/callput.md
   - docs/models/components/calltype.md
   - docs/models/components/cancelachdepositrequestcreate.md
   - docs/models/components/cancelachdepositschedulerequestcreate.md
@@ -423,14 +424,58 @@ generatedFiles:
   - docs/models/components/cancelbankrelationshiprequestcreate.md
   - docs/models/components/cancelcashjournalrequestcreate.md
   - docs/models/components/cancelcreditrequestcreate.md
+  - docs/models/components/cancelexecutionrequestcreate.md
+  - docs/models/components/cancelexecutionresponse.md
+  - docs/models/components/cancelexecutionresponseaccruedinterestamount.md
+  - docs/models/components/cancelexecutionresponsecommissionamount.md
+  - docs/models/components/cancelexecutionresponseexecution.md
+  - docs/models/components/cancelexecutionresponsegrossamount.md
+  - docs/models/components/cancelexecutionresponseprevailingmarketprice.md
+  - docs/models/components/cancelexecutionresponseprice.md
+  - docs/models/components/cancelexecutionresponsepriceadjustment.md
+  - docs/models/components/cancelexecutionresponsepriceadjustmentamount.md
+  - docs/models/components/cancelexecutionresponsepriceadjustmenttype.md
+  - docs/models/components/cancelexecutionresponsequantity.md
+  - docs/models/components/cancelexecutionresponsestate.md
   - docs/models/components/cancelfeerequestcreate.md
   - docs/models/components/cancelictdepositrequestcreate.md
   - docs/models/components/cancelictwithdrawalrequestcreate.md
   - docs/models/components/cancelorderrequestcreate.md
   - docs/models/components/cancelrejectedreason.md
+  - docs/models/components/canceltradeallocationrequestcreate.md
+  - docs/models/components/canceltradeallocationresponse.md
+  - docs/models/components/canceltradeallocationresponseaccruedinterestamount.md
+  - docs/models/components/canceltradeallocationresponseassettype.md
+  - docs/models/components/canceltradeallocationresponsebrokercapacity.md
+  - docs/models/components/canceltradeallocationresponsecommissionamount.md
+  - docs/models/components/canceltradeallocationresponsegrossamount.md
+  - docs/models/components/canceltradeallocationresponseidentifiertype.md
+  - docs/models/components/canceltradeallocationresponseprevailingmarketprice.md
+  - docs/models/components/canceltradeallocationresponseprice.md
+  - docs/models/components/canceltradeallocationresponsepriceadjustment.md
+  - docs/models/components/canceltradeallocationresponsepriceadjustmentamount.md
+  - docs/models/components/canceltradeallocationresponsepriceadjustmenttype.md
+  - docs/models/components/canceltradeallocationresponsequantity.md
+  - docs/models/components/canceltradeallocationresponsesettlementdate.md
+  - docs/models/components/canceltradeallocationresponsesidemodifier.md
+  - docs/models/components/canceltradeallocationresponsespecialinstructions.md
+  - docs/models/components/canceltradeallocationresponsestate.md
+  - docs/models/components/canceltradeallocationresponsetoside.md
+  - docs/models/components/canceltradeallocationresponsetradeallocation.md
+  - docs/models/components/canceltradeallocationresponsewhenissued.md
+  - docs/models/components/canceltraderequestcreate.md
+  - docs/models/components/canceltraderesponse.md
+  - docs/models/components/canceltraderesponsebrokercapacity.md
+  - docs/models/components/canceltraderesponseprevailingmarketprice.md
+  - docs/models/components/canceltraderesponsepriceadjustmentamount.md
+  - docs/models/components/canceltraderesponsepriceadjustmentpercent.md
+  - docs/models/components/canceltraderesponsepriceadjustmentrecord.md
+  - docs/models/components/canceltraderesponsepriceadjustmenttype.md
+  - docs/models/components/canceltraderesponsetrade.md
   - docs/models/components/cancelwirewithdrawalrequestcreate.md
   - docs/models/components/cancelwirewithdrawalschedulerequestcreate.md
   - docs/models/components/capitalgains.md
+  - docs/models/components/cashamount.md
   - docs/models/components/cashdividend.md
   - docs/models/components/cashjournal.md
   - docs/models/components/cashjournalamount.md
@@ -451,33 +496,40 @@ generatedFiles:
   - docs/models/components/cashjournalstatetaxwithholding.md
   - docs/models/components/cashjournaltype.md
   - docs/models/components/cashrate.md
+  - docs/models/components/cashtype.md
   - docs/models/components/cataccountholdertype.md
   - docs/models/components/checkpartytyperequestcreate.md
   - docs/models/components/checkpartytyperesponse.md
   - docs/models/components/checkpartytyperesponsepartytype.md
   - docs/models/components/checktypes.md
+  - docs/models/components/classification.md
   - docs/models/components/closeaccountrequestcreate.md
   - docs/models/components/cnoticedate.md
   - docs/models/components/code.md
   - docs/models/components/commission.md
   - docs/models/components/commissionamount.md
+  - docs/models/components/commissionamount1.md
   - docs/models/components/commissioncreate.md
   - docs/models/components/commissioncreatetype.md
+  - docs/models/components/completetraderequestcreate.md
+  - docs/models/components/completetraderesponse.md
+  - docs/models/components/completetraderesponsebrokercapacity.md
+  - docs/models/components/completetraderesponseprevailingmarketprice.md
+  - docs/models/components/completetraderesponsepriceadjustmentamount.md
+  - docs/models/components/completetraderesponsepriceadjustmentpercent.md
+  - docs/models/components/completetraderesponsepriceadjustmentrecord.md
+  - docs/models/components/completetraderesponsepriceadjustmenttype.md
+  - docs/models/components/completetraderesponsetrade.md
   - docs/models/components/compressedorder.md
-  - docs/models/components/compressedorderamount.md
   - docs/models/components/compressedorderassettype.md
   - docs/models/components/compressedordercumulativenotionalvalue.md
   - docs/models/components/compressedorderfilledquantity.md
   - docs/models/components/compressedorderidentifiertype.md
-  - docs/models/components/compressedorderletterofintent.md
   - docs/models/components/compressedordernotionalvalue.md
   - docs/models/components/compressedorderorderrejectedreason.md
   - docs/models/components/compressedorderorderstatus.md
   - docs/models/components/compressedorderordertype.md
-  - docs/models/components/compressedorderperiodstartdate.md
   - docs/models/components/compressedorderquantity.md
-  - docs/models/components/compressedorderrightsofaccumulation.md
-  - docs/models/components/compressedorderrightsofaccumulationamount.md
   - docs/models/components/compressedorderside.md
   - docs/models/components/compressedordertimeinforce.md
   - docs/models/components/consentmethod.md
@@ -601,6 +653,20 @@ generatedFiles:
   - docs/models/components/enrollmentforeignbondtradingdetails.md
   - docs/models/components/enrollmentforeignindividualaccountenrollmentmetadatadividendreinvestmentplan.md
   - docs/models/components/enrollmentforeignindividualaccountenrollmentmetadatafdiccashsweep.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatadepositedfunds.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatadividendreinvestmentplan.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatafdiccashsweep.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatafinancialprofile.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadataforeignbondtradingdetails.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatainitialdepositamount.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatalowpricedsecurities.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatalowpricedsecuritiespercentage.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadataotheraccounts.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadataplannedactivity.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadataprimaryaccountactivitytype.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatarelatedpepdetails.md
+  - docs/models/components/enrollmentforeignjointaccountenrollmentmetadatawithdrawalfrequency.md
+  - docs/models/components/enrollmentforeignnaturalpersonaccountenrollmentmetadata.md
   - docs/models/components/enrollmentindividualenrollmentmetadatadividendreinvestmentplan.md
   - docs/models/components/enrollmentindividualenrollmentmetadatafdiccashsweep.md
   - docs/models/components/enrollmentinitialdepositamount.md
@@ -643,6 +709,7 @@ generatedFiles:
   - docs/models/components/enrollmentlowpricedsecuritiespercentage.md
   - docs/models/components/enrollmentopenedonbehalfof.md
   - docs/models/components/enrollmentoperatingpurpose.md
+  - docs/models/components/enrollmentoptionslevel.md
   - docs/models/components/enrollmentotheraccounts.md
   - docs/models/components/enrollmentplannedactivity.md
   - docs/models/components/enrollmentprimaryaccountactivitytype.md
@@ -692,9 +759,14 @@ generatedFiles:
   - docs/models/components/entryfeetype.md
   - docs/models/components/entryflipbrokercapacity.md
   - docs/models/components/entryflipprevailingmarketprice.md
+  - docs/models/components/entryflippriceadjustmentamount.md
+  - docs/models/components/entryflippriceadjustmentpercent.md
+  - docs/models/components/entryflippriceadjustmentrecord.md
+  - docs/models/components/entryflippriceadjustmenttype.md
   - docs/models/components/entryfpsl.md
   - docs/models/components/entryfpslaction.md
   - docs/models/components/entryfree.md
+  - docs/models/components/entrygrossamount.md
   - docs/models/components/entryinterestpaymentcashrate.md
   - docs/models/components/entryinterestpaymentcorporateactiongeneralinformation.md
   - docs/models/components/entryinterestpaymentpaymentdate.md
@@ -734,6 +806,7 @@ generatedFiles:
   - docs/models/components/entrypriceadjustmentpercent.md
   - docs/models/components/entrypriceadjustmentrecord.md
   - docs/models/components/entrypriceadjustmenttype.md
+  - docs/models/components/entryprocessdate.md
   - docs/models/components/entryquantity.md
   - docs/models/components/entryrate.md
   - docs/models/components/entryrecorddate.md
@@ -765,6 +838,7 @@ generatedFiles:
   - docs/models/components/entrysaleofrightssettled.md
   - docs/models/components/entrysettled.md
   - docs/models/components/entryside.md
+  - docs/models/components/entrysidemodifier.md
   - docs/models/components/entryspinoffcorporateactiongeneralinformation.md
   - docs/models/components/entryspinoffquantity.md
   - docs/models/components/entryspinoffrate.md
@@ -783,6 +857,7 @@ generatedFiles:
   - docs/models/components/entrysweeptype.md
   - docs/models/components/entrytenderoffercashrate.md
   - docs/models/components/entrytenderoffercorporateactiongeneralinformation.md
+  - docs/models/components/entrytrade.md
   - docs/models/components/entrytransfertype.md
   - docs/models/components/entrytype.md
   - docs/models/components/entryunitsplitcorporateactiongeneralinformation.md
@@ -808,9 +883,19 @@ generatedFiles:
   - docs/models/components/exchange.md
   - docs/models/components/executedprice.md
   - docs/models/components/executedpricetype.md
+  - docs/models/components/execution.md
+  - docs/models/components/executionaccruedinterestamount.md
+  - docs/models/components/executioncreate.md
   - docs/models/components/executiondate.md
+  - docs/models/components/executionprevailingmarketprice.md
+  - docs/models/components/executionprice.md
+  - docs/models/components/executionpriceadjustmentamount.md
+  - docs/models/components/executionpriceadjustmenttype.md
+  - docs/models/components/executionquantity.md
   - docs/models/components/executions.md
+  - docs/models/components/executionstate.md
   - docs/models/components/exemptcustomerreason.md
+  - docs/models/components/exercisestyle.md
   - docs/models/components/expectednotionalceilingamount.md
   - docs/models/components/expirationdate.md
   - docs/models/components/externalaccount.md
@@ -821,6 +906,7 @@ generatedFiles:
   - docs/models/components/federaltaxclassification.md
   - docs/models/components/federaltaxwithholding.md
   - docs/models/components/fee.md
+  - docs/models/components/feeamount.md
   - docs/models/components/feecreate.md
   - docs/models/components/feecreatetype.md
   - docs/models/components/feetype.md
@@ -864,6 +950,10 @@ generatedFiles:
   - docs/models/components/foreignindividualaccountenrollmentmetadatacreate.md
   - docs/models/components/foreignindividualaccountenrollmentmetadatacreatedividendreinvestmentplan.md
   - docs/models/components/foreignindividualaccountenrollmentmetadatacreatefdiccashsweep.md
+  - docs/models/components/foreignjointaccountenrollmentmetadata.md
+  - docs/models/components/foreignjointaccountenrollmentmetadatacreate.md
+  - docs/models/components/foreignjointaccountenrollmentmetadatacreatedividendreinvestmentplan.md
+  - docs/models/components/foreignjointaccountenrollmentmetadatacreatefdiccashsweep.md
   - docs/models/components/foreignnaturalpersonaccountenrollmentmetadata.md
   - docs/models/components/foreignnaturalpersonaccountenrollmentmetadatacreate.md
   - docs/models/components/formationdate.md
@@ -888,6 +978,8 @@ generatedFiles:
   - docs/models/components/ictdepositprogram.md
   - docs/models/components/ictdepositretirementcontribution.md
   - docs/models/components/ictdepositstate.md
+  - docs/models/components/ictdepositstatestate.md
+  - docs/models/components/ictdeposittransferstatestate.md
   - docs/models/components/ictdeposittravelruleaddress.md
   - docs/models/components/ictdeposittravelrulecreate.md
   - docs/models/components/ictdeposittravelruleentityoriginatingpartyaddress.md
@@ -912,8 +1004,10 @@ generatedFiles:
   - docs/models/components/ictwithdrawalretirementdistributionpercentage.md
   - docs/models/components/ictwithdrawalretirementdistributionstatetaxwithholdingamount.md
   - docs/models/components/ictwithdrawalstate.md
+  - docs/models/components/ictwithdrawalstatestate.md
   - docs/models/components/ictwithdrawalstatetaxwithholding.md
   - docs/models/components/ictwithdrawaltransferstate.md
+  - docs/models/components/ictwithdrawaltransferstatestate.md
   - docs/models/components/ictwithdrawaltravelrule.md
   - docs/models/components/ictwithdrawaltravelruleaddress.md
   - docs/models/components/ictwithdrawaltravelrulecreate.md
@@ -980,6 +1074,8 @@ generatedFiles:
   - docs/models/components/investmentprofile.md
   - docs/models/components/investmentprofilecreate.md
   - docs/models/components/investmentprofileupdate.md
+  - docs/models/components/investmentvehicleexperience.md
+  - docs/models/components/investmentvehicleexperiencecreate.md
   - docs/models/components/investordocument.md
   - docs/models/components/irabeneficiaryenrollmentmetadata.md
   - docs/models/components/irabeneficiaryenrollmentmetadatacreate.md
@@ -1128,9 +1224,10 @@ generatedFiles:
   - docs/models/components/llcenrollmentmetadatacreatedividendreinvestmentplan.md
   - docs/models/components/llcenrollmentmetadatacreatefdiccashsweep.md
   - docs/models/components/locateictreportresponse.md
-  - docs/models/components/locateictreportresponseprocessdate.md
   - docs/models/components/locateictreportresponseprogram.md
   - docs/models/components/lot.md
+  - docs/models/components/lotcreate.md
+  - docs/models/components/lotmoney.md
   - docs/models/components/lotprice.md
   - docs/models/components/lotquantity.md
   - docs/models/components/lowpricedsecurities.md
@@ -1170,6 +1267,8 @@ generatedFiles:
   - docs/models/components/negativenewscreate.md
   - docs/models/components/negativenewsupdate.md
   - docs/models/components/netamount.md
+  - docs/models/components/newtrade.md
+  - docs/models/components/newtradeallocation.md
   - docs/models/components/nextactivityprocessdate.md
   - docs/models/components/nextcalldate.md
   - docs/models/components/nextcoupondate.md
@@ -1186,6 +1285,12 @@ generatedFiles:
   - docs/models/components/operatingenrollmentmetadata.md
   - docs/models/components/operatingenrollmentmetadatacreate.md
   - docs/models/components/operatingpurpose.md
+  - docs/models/components/option.md
+  - docs/models/components/optiondeliverable.md
+  - docs/models/components/optiondeliverablequantity.md
+  - docs/models/components/optionroot.md
+  - docs/models/components/optionslevel.md
+  - docs/models/components/optiontype.md
   - docs/models/components/order.md
   - docs/models/components/orderamount.md
   - docs/models/components/orderassettype.md
@@ -1215,6 +1320,8 @@ generatedFiles:
   - docs/models/components/orderrejectedreason.md
   - docs/models/components/orderrightsofaccumulationamount.md
   - docs/models/components/orderside.md
+  - docs/models/components/ordersoptionstradingenrollmentmetadata.md
+  - docs/models/components/ordersoptionstradingenrollmentmetadatacreate.md
   - docs/models/components/orderspecialreportinginstructions.md
   - docs/models/components/orderstatus.md
   - docs/models/components/orderstoppriceprice.md
@@ -1222,6 +1329,8 @@ generatedFiles:
   - docs/models/components/ordertimeinforce.md
   - docs/models/components/ordertype.md
   - docs/models/components/originalprocessdate.md
+  - docs/models/components/originaltrade.md
+  - docs/models/components/originaltradeallocation.md
   - docs/models/components/originatinginstitution.md
   - docs/models/components/otheraccounts.md
   - docs/models/components/otheraccountscreate.md
@@ -1315,6 +1424,8 @@ generatedFiles:
   - docs/models/components/pendingdrip.md
   - docs/models/components/pendingoutgoingacat.md
   - docs/models/components/pendingwithdrawal.md
+  - docs/models/components/pennypilotindicator.md
+  - docs/models/components/percent.md
   - docs/models/components/percentage.md
   - docs/models/components/periodstartdate.md
   - docs/models/components/person.md
@@ -1332,6 +1443,7 @@ generatedFiles:
   - docs/models/components/position.md
   - docs/models/components/positioncreate.md
   - docs/models/components/positionfpsl.md
+  - docs/models/components/positionlimit.md
   - docs/models/components/positionmarketvalueamount.md
   - docs/models/components/positiontrade.md
   - docs/models/components/postaladdress.md
@@ -1341,7 +1453,9 @@ generatedFiles:
   - docs/models/components/previousprocessdate.md
   - docs/models/components/previousyeardeadline.md
   - docs/models/components/price.md
+  - docs/models/components/priceadjustment.md
   - docs/models/components/priceadjustmentamount.md
+  - docs/models/components/priceadjustmentcreate.md
   - docs/models/components/priceadjustmentpercent.md
   - docs/models/components/priceadjustmentrecord.md
   - docs/models/components/priceadjustmenttype.md
@@ -1359,6 +1473,71 @@ generatedFiles:
   - docs/models/components/pushsubscriptionupdate.md
   - docs/models/components/quantity.md
   - docs/models/components/rate.md
+  - docs/models/components/rebookexecutionrequestcreate.md
+  - docs/models/components/rebookexecutionresponse.md
+  - docs/models/components/rebookexecutionresponseaccruedinterestamount.md
+  - docs/models/components/rebookexecutionresponsecommissionamount.md
+  - docs/models/components/rebookexecutionresponseexecution.md
+  - docs/models/components/rebookexecutionresponsegrossamount.md
+  - docs/models/components/rebookexecutionresponseprevailingmarketprice.md
+  - docs/models/components/rebookexecutionresponseprice.md
+  - docs/models/components/rebookexecutionresponsepriceadjustment.md
+  - docs/models/components/rebookexecutionresponsepriceadjustmentamount.md
+  - docs/models/components/rebookexecutionresponsepriceadjustmenttype.md
+  - docs/models/components/rebookexecutionresponsequantity.md
+  - docs/models/components/rebookexecutionresponsestate.md
+  - docs/models/components/rebooktradeallocationrequestcreate.md
+  - docs/models/components/rebooktradeallocationresponse.md
+  - docs/models/components/rebooktradeallocationresponseaccruedinterestamount.md
+  - docs/models/components/rebooktradeallocationresponseassettype.md
+  - docs/models/components/rebooktradeallocationresponsebrokercapacity.md
+  - docs/models/components/rebooktradeallocationresponsecommissionamount.md
+  - docs/models/components/rebooktradeallocationresponsegrossamount.md
+  - docs/models/components/rebooktradeallocationresponseidentifiertype.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationaccruedinterestamount.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationassettype.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationbrokercapacity.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationcommissionamount.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationgrossamount.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationidentifiertype.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationprevailingmarketprice.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationprice.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationpriceadjustment.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationpriceadjustmentamount.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationpriceadjustmenttype.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationquantity.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationsettlementdate.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationsidemodifier.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationspecialinstructions.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationstate.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationtoside.md
+  - docs/models/components/rebooktradeallocationresponseoriginaltradeallocationwhenissued.md
+  - docs/models/components/rebooktradeallocationresponseprevailingmarketprice.md
+  - docs/models/components/rebooktradeallocationresponseprice.md
+  - docs/models/components/rebooktradeallocationresponsepriceadjustment.md
+  - docs/models/components/rebooktradeallocationresponsepriceadjustmentamount.md
+  - docs/models/components/rebooktradeallocationresponsepriceadjustmenttype.md
+  - docs/models/components/rebooktradeallocationresponsequantity.md
+  - docs/models/components/rebooktradeallocationresponsesettlementdate.md
+  - docs/models/components/rebooktradeallocationresponsesidemodifier.md
+  - docs/models/components/rebooktradeallocationresponsespecialinstructions.md
+  - docs/models/components/rebooktradeallocationresponsestate.md
+  - docs/models/components/rebooktradeallocationresponsetoside.md
+  - docs/models/components/rebooktradeallocationresponsewhenissued.md
+  - docs/models/components/rebooktraderequestcreate.md
+  - docs/models/components/rebooktraderesponse.md
+  - docs/models/components/rebooktraderesponsebrokercapacity.md
+  - docs/models/components/rebooktraderesponseoriginaltradebrokercapacity.md
+  - docs/models/components/rebooktraderesponseoriginaltradeprevailingmarketprice.md
+  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmentamount.md
+  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmentpercent.md
+  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmentrecord.md
+  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmenttype.md
+  - docs/models/components/rebooktraderesponseprevailingmarketprice.md
+  - docs/models/components/rebooktraderesponsepriceadjustmentamount.md
+  - docs/models/components/rebooktraderesponsepriceadjustmentpercent.md
+  - docs/models/components/rebooktraderesponsepriceadjustmentrecord.md
+  - docs/models/components/rebooktraderesponsepriceadjustmenttype.md
   - docs/models/components/receive.md
   - docs/models/components/receiver.md
   - docs/models/components/recipientbank.md
@@ -1379,6 +1558,8 @@ generatedFiles:
   - docs/models/components/relatedpepdetailscreate.md
   - docs/models/components/relatedprofile.md
   - docs/models/components/relationtype.md
+  - docs/models/components/remainingcontributionallowed.md
+  - docs/models/components/remainingdistributionrequired.md
   - docs/models/components/removepartyrequestcreate.md
   - docs/models/components/replacepartyrequestcreate.md
   - docs/models/components/reportingeligibility.md
@@ -1427,6 +1608,7 @@ generatedFiles:
   - docs/models/components/rolloveramount.md
   - docs/models/components/roundingadjustment.md
   - docs/models/components/roundingamount.md
+  - docs/models/components/routetype.md
   - docs/models/components/saleofrights.md
   - docs/models/components/sanctionslistdetail.md
   - docs/models/components/scheduledetails.md
@@ -1436,15 +1618,23 @@ generatedFiles:
   - docs/models/components/schedulepropertiescreate.md
   - docs/models/components/security.md
   - docs/models/components/selfieverified.md
+  - docs/models/components/seriesdate.md
   - docs/models/components/serviceaccountcreds.md
   - docs/models/components/settled.md
   - docs/models/components/settledate.md
+  - docs/models/components/settlementconvention.md
+  - docs/models/components/settlementdate.md
+  - docs/models/components/settlementmethod.md
+  - docs/models/components/settlementstatus.md
+  - docs/models/components/settlementstyle.md
+  - docs/models/components/settlementtype.md
   - docs/models/components/shortcode.md
   - docs/models/components/side.md
   - docs/models/components/sidemodifier.md
   - docs/models/components/smaamount.md
   - docs/models/components/snapshot.md
   - docs/models/components/snapshotprocessdate.md
+  - docs/models/components/specialinstructions.md
   - docs/models/components/specialreportinginstructions.md
   - docs/models/components/spinoff.md
   - docs/models/components/sprating.md
@@ -1460,6 +1650,9 @@ generatedFiles:
   - docs/models/components/stopprice.md
   - docs/models/components/stoppricecreate.md
   - docs/models/components/stoppricecreatetype.md
+  - docs/models/components/strikemultiplier.md
+  - docs/models/components/strikeprice.md
+  - docs/models/components/strikepricemultiplier.md
   - docs/models/components/submitbasketrequestcreate.md
   - docs/models/components/subtype.md
   - docs/models/components/sweep.md
@@ -1482,18 +1675,52 @@ generatedFiles:
   - docs/models/components/timeinforce.md
   - docs/models/components/timeunit.md
   - docs/models/components/token.md
+  - docs/models/components/toside.md
   - docs/models/components/totalexcessamount.md
   - docs/models/components/totalnetworthrangeusd.md
   - docs/models/components/totalrequirementsamount.md
   - docs/models/components/trade.md
+  - docs/models/components/tradeallocation.md
+  - docs/models/components/tradeallocationaccruedinterestamount.md
+  - docs/models/components/tradeallocationassettype.md
+  - docs/models/components/tradeallocationbrokercapacity.md
+  - docs/models/components/tradeallocationcommissionamount.md
+  - docs/models/components/tradeallocationcreate.md
+  - docs/models/components/tradeallocationcreateassettype.md
+  - docs/models/components/tradeallocationcreatebrokercapacity.md
+  - docs/models/components/tradeallocationcreateidentifiertype.md
+  - docs/models/components/tradeallocationcreatesidemodifier.md
+  - docs/models/components/tradeallocationcreatespecialinstructions.md
+  - docs/models/components/tradeallocationcreatewhenissued.md
+  - docs/models/components/tradeallocationgrossamount.md
+  - docs/models/components/tradeallocationidentifiertype.md
+  - docs/models/components/tradeallocationprevailingmarketprice.md
+  - docs/models/components/tradeallocationprice.md
+  - docs/models/components/tradeallocationpriceadjustment.md
+  - docs/models/components/tradeallocationpriceadjustmentamount.md
+  - docs/models/components/tradeallocationpriceadjustmenttype.md
+  - docs/models/components/tradeallocationquantity.md
+  - docs/models/components/tradeallocationsidemodifier.md
+  - docs/models/components/tradeallocationspecialinstructions.md
+  - docs/models/components/tradeallocationstate.md
+  - docs/models/components/tradeallocationtoside.md
+  - docs/models/components/tradeallocationwhenissued.md
+  - docs/models/components/tradebrokercapacity.md
   - docs/models/components/tradeconfirmationdeliverypreference.md
+  - docs/models/components/tradecreate.md
+  - docs/models/components/tradecreateassettype.md
+  - docs/models/components/tradecreatebrokercapacity.md
+  - docs/models/components/tradecreateidentifiertype.md
+  - docs/models/components/tradecreateside.md
   - docs/models/components/tradedate.md
+  - docs/models/components/tradeprevailingmarketprice.md
+  - docs/models/components/tradepriceadjustmenttype.md
+  - docs/models/components/tradevaluemultiplier.md
   - docs/models/components/transfer.md
   - docs/models/components/transferaccountcreate.md
   - docs/models/components/transfercreate.md
   - docs/models/components/transferschedulesummary.md
   - docs/models/components/transferschedulesummaryamount.md
-  - docs/models/components/transferschedulesummarydirection.md
   - docs/models/components/transferschedulesummaryfederaltaxwithholding.md
   - docs/models/components/transferschedulesummarymechanism.md
   - docs/models/components/transferschedulesummarypercentage.md
@@ -1546,14 +1773,18 @@ generatedFiles:
   - docs/models/components/uploadlink.md
   - docs/models/components/ustinstatus.md
   - docs/models/components/value.md
+  - docs/models/components/venue.md
   - docs/models/components/verificationmethod.md
   - docs/models/components/verifymicrodepositsrequestcreate.md
+  - docs/models/components/virtualaccountnumberenrollmentmetadata.md
+  - docs/models/components/virtualaccountnumberenrollmentmetadatacreate.md
   - docs/models/components/warrantexercise.md
   - docs/models/components/watchlistitem.md
   - docs/models/components/watchlistmatch.md
   - docs/models/components/watchlistmatchupdate.md
   - docs/models/components/watchlistmatchupdatematchstate.md
   - docs/models/components/watchlistscreen.md
+  - docs/models/components/whenissued.md
   - docs/models/components/wiredeposit.md
   - docs/models/components/wiredepositamount.md
   - docs/models/components/wiredepositretirementcontribution.md
@@ -1624,6 +1855,7 @@ generatedFiles:
   - docs/models/components/worthless.md
   - docs/models/components/yieldpercent.md
   - docs/models/components/yieldrecord.md
+  - docs/models/components/yieldrecordyieldtype.md
   - docs/models/components/yieldtype.md
   - docs/models/errors/status.md
   - docs/models/operations/accountsaddpartyrequest.md
@@ -1792,6 +2024,32 @@ generatedFiles:
   - docs/models/operations/basketordersservicelistcompressedordersresponse.md
   - docs/models/operations/basketordersservicesubmitbasketrequest.md
   - docs/models/operations/basketordersservicesubmitbasketresponse.md
+  - docs/models/operations/bookingcancelexecutionrequest.md
+  - docs/models/operations/bookingcancelexecutionresponse.md
+  - docs/models/operations/bookingcanceltradeallocationrequest.md
+  - docs/models/operations/bookingcanceltradeallocationresponse.md
+  - docs/models/operations/bookingcanceltraderequest.md
+  - docs/models/operations/bookingcanceltraderesponse.md
+  - docs/models/operations/bookingcompletetraderequest.md
+  - docs/models/operations/bookingcompletetraderesponse.md
+  - docs/models/operations/bookingcreateexecutionrequest.md
+  - docs/models/operations/bookingcreateexecutionresponse.md
+  - docs/models/operations/bookingcreatetradeallocationrequest.md
+  - docs/models/operations/bookingcreatetradeallocationresponse.md
+  - docs/models/operations/bookingcreatetraderequest.md
+  - docs/models/operations/bookingcreatetraderesponse.md
+  - docs/models/operations/bookinggetexecutionrequest.md
+  - docs/models/operations/bookinggetexecutionresponse.md
+  - docs/models/operations/bookinggettradeallocationrequest.md
+  - docs/models/operations/bookinggettradeallocationresponse.md
+  - docs/models/operations/bookinggettraderequest.md
+  - docs/models/operations/bookinggettraderesponse.md
+  - docs/models/operations/bookingrebookexecutionrequest.md
+  - docs/models/operations/bookingrebookexecutionresponse.md
+  - docs/models/operations/bookingrebooktradeallocationrequest.md
+  - docs/models/operations/bookingrebooktradeallocationresponse.md
+  - docs/models/operations/bookingrebooktraderequest.md
+  - docs/models/operations/bookingrebooktraderesponse.md
   - docs/models/operations/cashbalancescalculatecashbalancerequest.md
   - docs/models/operations/cashbalancescalculatecashbalanceresponse.md
   - docs/models/operations/cashjournalscancelcashjournalrequest.md
@@ -1962,6 +2220,8 @@ generatedFiles:
   - docs/sdks/scheduletransfers/README.md
   - docs/sdks/subscriber/README.md
   - docs/sdks/testsimulation/README.md
+  - docs/sdks/tradeallocation/README.md
+  - docs/sdks/tradebooking/README.md
   - docs/sdks/wires/README.md
   - jsr.json
   - package.json
@@ -2125,6 +2385,19 @@ generatedFiles:
   - src/funcs/testSimulationForceReturnAchDeposit.ts
   - src/funcs/testSimulationForceReturnAchWithdrawal.ts
   - src/funcs/testSimulationGetMicroDepositAmounts.ts
+  - src/funcs/tradeAllocationCancelTradeAllocation.ts
+  - src/funcs/tradeAllocationCreateTradeAllocation.ts
+  - src/funcs/tradeAllocationGetTradeAllocation.ts
+  - src/funcs/tradeAllocationRebookTradeAllocation.ts
+  - src/funcs/tradeBookingCancelExecution.ts
+  - src/funcs/tradeBookingCancelTrade.ts
+  - src/funcs/tradeBookingCompleteTrade.ts
+  - src/funcs/tradeBookingCreateExecution.ts
+  - src/funcs/tradeBookingCreateTrade.ts
+  - src/funcs/tradeBookingGetExecution.ts
+  - src/funcs/tradeBookingGetTrade.ts
+  - src/funcs/tradeBookingRebookExecution.ts
+  - src/funcs/tradeBookingRebookTrade.ts
   - src/funcs/wiresCancelWireWithdrawal.ts
   - src/funcs/wiresCreateWireWithdrawal.ts
   - src/funcs/wiresGetWireDeposit.ts
@@ -2198,6 +2471,8 @@ generatedFiles:
   - src/models/components/beneficiarycreate.ts
   - src/models/components/beneficiaryenrollmentmetadatacreate.ts
   - src/models/components/bidaskprice.ts
+  - src/models/components/bondyield.ts
+  - src/models/components/bondyieldcreate.ts
   - src/models/components/buyingpower.ts
   - src/models/components/calculatecashbalanceresponse.ts
   - src/models/components/calculatecashbalanceresponseopenordersummary.ts
@@ -2210,10 +2485,16 @@ generatedFiles:
   - src/models/components/cancelbankrelationshiprequestcreate.ts
   - src/models/components/cancelcashjournalrequestcreate.ts
   - src/models/components/cancelcreditrequestcreate.ts
+  - src/models/components/cancelexecutionrequestcreate.ts
+  - src/models/components/cancelexecutionresponse.ts
   - src/models/components/cancelfeerequestcreate.ts
   - src/models/components/cancelictdepositrequestcreate.ts
   - src/models/components/cancelictwithdrawalrequestcreate.ts
   - src/models/components/cancelorderrequestcreate.ts
+  - src/models/components/canceltradeallocationrequestcreate.ts
+  - src/models/components/canceltradeallocationresponse.ts
+  - src/models/components/canceltraderequestcreate.ts
+  - src/models/components/canceltraderesponse.ts
   - src/models/components/cancelwirewithdrawalrequestcreate.ts
   - src/models/components/cancelwirewithdrawalschedulerequestcreate.ts
   - src/models/components/cashjournal.ts
@@ -2224,6 +2505,8 @@ generatedFiles:
   - src/models/components/closeaccountrequestcreate.ts
   - src/models/components/commission.ts
   - src/models/components/commissioncreate.ts
+  - src/models/components/completetraderequestcreate.ts
+  - src/models/components/completetraderesponse.ts
   - src/models/components/compressedorder.ts
   - src/models/components/contributionconstraints.ts
   - src/models/components/contributionconstraintscontributiontypeinfo.ts
@@ -2269,6 +2552,8 @@ generatedFiles:
   - src/models/components/estateenrollmentmetadatacreate.ts
   - src/models/components/eventmessage.ts
   - src/models/components/executedprice.ts
+  - src/models/components/execution.ts
+  - src/models/components/executioncreate.ts
   - src/models/components/executions.ts
   - src/models/components/externalaccountcreate.ts
   - src/models/components/fee.ts
@@ -2296,6 +2581,7 @@ generatedFiles:
   - src/models/components/foreignidentificationcreate.ts
   - src/models/components/foreignidentificationupdate.ts
   - src/models/components/foreignindividualaccountenrollmentmetadatacreate.ts
+  - src/models/components/foreignjointaccountenrollmentmetadatacreate.ts
   - src/models/components/foreignnaturalpersonaccountenrollmentmetadatacreate.ts
   - src/models/components/fpslenrollmentmetadatacreate.ts
   - src/models/components/generateserviceaccounttokenrequestcreate.ts
@@ -2329,6 +2615,7 @@ generatedFiles:
   - src/models/components/investigationupdate.ts
   - src/models/components/investmentprofilecreate.ts
   - src/models/components/investmentprofileupdate.ts
+  - src/models/components/investmentvehicleexperiencecreate.ts
   - src/models/components/irabeneficiaryenrollmentmetadatacreate.ts
   - src/models/components/irarolloverenrollmentmetadatacreate.ts
   - src/models/components/irarothenrollmentmetadatacreate.ts
@@ -2384,6 +2671,7 @@ generatedFiles:
   - src/models/components/llcenrollmentmetadatacreate.ts
   - src/models/components/locateictreportresponse.ts
   - src/models/components/lot.ts
+  - src/models/components/lotcreate.ts
   - src/models/components/lowpricedsecuritiescreate.ts
   - src/models/components/markprice.ts
   - src/models/components/microdepositamounts.ts
@@ -2398,10 +2686,12 @@ generatedFiles:
   - src/models/components/noncitizenresidencycreate.ts
   - src/models/components/noncitizenresidencyupdate.ts
   - src/models/components/operatingenrollmentmetadatacreate.ts
+  - src/models/components/optiondeliverable.ts
   - src/models/components/order.ts
   - src/models/components/ordercostpreviewrequestcreate.ts
   - src/models/components/ordercostpreviewresponse.ts
   - src/models/components/ordercreate.ts
+  - src/models/components/ordersoptionstradingenrollmentmetadatacreate.ts
   - src/models/components/otheraccountscreate.ts
   - src/models/components/othersourcesofwealthcreate.ts
   - src/models/components/othersourcesofwealthupdate.ts
@@ -2419,10 +2709,17 @@ generatedFiles:
   - src/models/components/postaladdress.ts
   - src/models/components/postaladdresscreate.ts
   - src/models/components/postaladdressupdate.ts
+  - src/models/components/priceadjustmentcreate.ts
   - src/models/components/pushsubscription.ts
   - src/models/components/pushsubscriptioncreate.ts
   - src/models/components/pushsubscriptiondelivery.ts
   - src/models/components/pushsubscriptionupdate.ts
+  - src/models/components/rebookexecutionrequestcreate.ts
+  - src/models/components/rebookexecutionresponse.ts
+  - src/models/components/rebooktradeallocationrequestcreate.ts
+  - src/models/components/rebooktradeallocationresponse.ts
+  - src/models/components/rebooktraderequestcreate.ts
+  - src/models/components/rebooktraderesponse.ts
   - src/models/components/recipientbankbankdetailscreate.ts
   - src/models/components/recipientbankbankidcreate.ts
   - src/models/components/reissuemicrodepositsrequestcreate.ts
@@ -2460,6 +2757,10 @@ generatedFiles:
   - src/models/components/taxprofileupdate.ts
   - src/models/components/taxwithholdingmetadatacreate.ts
   - src/models/components/token.ts
+  - src/models/components/trade.ts
+  - src/models/components/tradeallocation.ts
+  - src/models/components/tradeallocationcreate.ts
+  - src/models/components/tradecreate.ts
   - src/models/components/transferaccountcreate.ts
   - src/models/components/transfercreate.ts
   - src/models/components/transferschedulesummary.ts
@@ -2475,6 +2776,7 @@ generatedFiles:
   - src/models/components/trustenrollmentmetadatacreate.ts
   - src/models/components/uploadlink.ts
   - src/models/components/verifymicrodepositsrequestcreate.ts
+  - src/models/components/virtualaccountnumberenrollmentmetadatacreate.ts
   - src/models/components/watchlistitem.ts
   - src/models/components/watchlistmatch.ts
   - src/models/components/watchlistmatchupdate.ts
@@ -2581,6 +2883,19 @@ generatedFiles:
   - src/models/operations/basketordersservicelistbasketorders.ts
   - src/models/operations/basketordersservicelistcompressedorders.ts
   - src/models/operations/basketordersservicesubmitbasket.ts
+  - src/models/operations/bookingcancelexecution.ts
+  - src/models/operations/bookingcanceltrade.ts
+  - src/models/operations/bookingcanceltradeallocation.ts
+  - src/models/operations/bookingcompletetrade.ts
+  - src/models/operations/bookingcreateexecution.ts
+  - src/models/operations/bookingcreatetrade.ts
+  - src/models/operations/bookingcreatetradeallocation.ts
+  - src/models/operations/bookinggetexecution.ts
+  - src/models/operations/bookinggettrade.ts
+  - src/models/operations/bookinggettradeallocation.ts
+  - src/models/operations/bookingrebookexecution.ts
+  - src/models/operations/bookingrebooktrade.ts
+  - src/models/operations/bookingrebooktradeallocation.ts
   - src/models/operations/cashbalancescalculatecashbalance.ts
   - src/models/operations/cashjournalscancelcashjournal.ts
   - src/models/operations/cashjournalscheckpartytype.ts
@@ -2681,6 +2996,8 @@ generatedFiles:
   - src/sdk/sdk.ts
   - src/sdk/subscriber.ts
   - src/sdk/testsimulation.ts
+  - src/sdk/tradeallocation.ts
+  - src/sdk/tradebooking.ts
   - src/sdk/wires.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
@@ -2874,10 +3191,10 @@ examples:
   Accounts_CreateLegalEntity:
     speakeasy-default-accounts-create-legal-entity:
       requestBody:
-        application/json: {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_financial_institution": false, "large_trader": {"large_trader_id": "123412341234"}, "lei_code": "12340012345678911000", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "subject_to_backup_withholding": false, "tax_id": "987-65-4321", "tax_id_type": "TAX_ID_TYPE_ITIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_9", "legal_tax_region_code": "US", "us_tin_status": "PASSING"}}
+        application/json: {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_financial_institution": false, "large_trader": {"large_trader_id": "123412341234"}, "lei_code": "12340012345678911000", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "subject_to_backup_withholding": false, "tax_id": "987-65-4321", "tax_id_type": "TAX_ID_TYPE_ITIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_9", "legal_tax_region_code": "US", "us_tin_status": "PASSING"}}
       responses:
         "200":
-          application/json: {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_entity": false, "foreign_financial_institution": false, "global_person_id": "2F6C45338A9890F0F63093EBEE0C3E15764AEA87D4E0C8264EE79A3FA8E8C6E4", "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "lei_code": "12340012345678911000", "name": "legalEntities/42567868-9373-4872-9d24-2e33f6c19b75", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_EIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_8BEN", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}
+          application/json: {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_entity": false, "foreign_financial_institution": false, "global_person_id": "2F6C45338A9890F0F63093EBEE0C3E15764AEA87D4E0C8264EE79A3FA8E8C6E4", "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "lei_code": "12340012345678911000", "name": "legalEntities/42567868-9373-4872-9d24-2e33f6c19b75", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_EIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_8BEN", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}
         "400": {}
         default: {}
   Accounts_ListLegalEntities:
@@ -2975,7 +3292,7 @@ examples:
           account_id: "01HC3MAQ4DR9QN1V8MJ4CN1HMK"
         query: {}
       requestBody:
-        application/json: {"accepts_issuer_direct_communication": false, "advised": true, "cat_account_holder_type": "I_INDIVIDUAL", "identifiers": [], "interested_parties": [{"recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}], "investment_profile": {"account_goals": {"investment_objective": "GROWTH", "liquidity_needs": "VERY_IMPORTANT", "risk_tolerance": "MEDIUM", "time_horizon": "AVERAGE"}, "customer_profile": {"annual_income_range_usd": "FROM_100K_TO_200K", "federal_tax_bracket": 1.5, "investment_experience": "GOOD", "liquid_net_worth_range_usd": "FROM_100K_TO_200K", "total_net_worth_range_usd": "FROM_100K_TO_200K"}}, "managed": true, "parties": [{"email_address": "example@domain.com", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"email_address": "example@domain.com", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"email_address": "example@domain.com", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}], "primary_registered_rep_id": "01HB7N66WW02WG3B6B9W29K0HF", "tax_profile": {"cost_basis_lot_disposal_method": "COST_BASIS_LOT_DISPOSAL_FIFO", "section_475_election": true}, "trusted_contacts": [{"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry"}, {"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry"}], "wrap_fee_billed": true}
+        application/json: {"accepts_issuer_direct_communication": false, "advised": true, "cat_account_holder_type": "I_INDIVIDUAL", "identifiers": [], "interested_parties": [{"recipient": "John Dough", "statement_delivery_preference": "PHYSICAL", "trade_confirmation_delivery_preference": "SUPPRESS"}, {"recipient": "John Dough", "statement_delivery_preference": "SUPPRESS", "trade_confirmation_delivery_preference": "SUPPRESS"}, {"recipient": "John Dough", "statement_delivery_preference": "PHYSICAL", "trade_confirmation_delivery_preference": "SUPPRESS"}], "investment_profile": {"account_goals": {"investment_objective": "GROWTH", "liquidity_needs": "VERY_IMPORTANT", "risk_tolerance": "MEDIUM", "time_horizon": "AVERAGE"}, "customer_profile": {"annual_income_range_usd": "FROM_100K_TO_200K", "federal_tax_bracket": 1.5, "investment_experience": "GOOD", "liquid_net_worth_range_usd": "FROM_100K_TO_200K", "total_net_worth_range_usd": "FROM_100K_TO_200K"}}, "managed": true, "parties": [{"email_address": "example@domain.com", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"email_address": "example@domain.com", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"email_address": "example@domain.com", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}], "primary_registered_rep_id": "01HB7N66WW02WG3B6B9W29K0HF", "tax_profile": {"cost_basis_lot_disposal_method": "COST_BASIS_LOT_DISPOSAL_FIFO", "section_475_election": true}, "trusted_contacts": [{"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry"}, {"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry"}], "wrap_fee_billed": true}
       responses:
         "200":
           application/json: {"accepts_issuer_direct_communication": false, "account_group_id": "01ARZ3NDEKTSV4RRFFQ69G5FAV", "account_id": "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "account_number": "N6D8ZJP", "active_restrictions": ["AML_PARTIES_PENDING_INITIAL_KYC"], "advised": true, "agreements": [{"agreement_id": "fa2f181c-f2fb-4bc2-b75a-79302c634ae5", "agreement_name": "Standard Customer Account Agreement - IBD (EN)", "agreement_source": "ACCOUNTS_SERVICE", "agreement_state": "AFFIRMED", "agreement_uri": "https://public-documents.apexapis.com/account-agreements/SCAA-IBD-20230525-EN.pdf", "agreement_version": "20230525", "enrollment_id": "cd47a802-5a6b-4d32-b497-c4f6d5ce0be8", "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/agreements/fa2f181c-f2fb-4bc2-b75a-79302c634ae5"}], "cat_account_holder_type": "I_INDIVIDUAL", "close_time": "2023-10-13T15:30:25.457378Z", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "create_time": "2023-10-13T15:28:17.262732Z", "domicile": "FOREIGN", "enrollments": [{"beneficiary_enrollment_metadata": {"contingent_beneficiaries": [{"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_SSN"}, {"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_SSN"}, {"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_UNSPECIFIED"}], "primary_beneficiaries": [{"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_SSN"}, {"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_UNSPECIFIED"}]}, "consent_method": "NEGATIVE_CONSENT_CONVERSION", "corporation_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "custodial_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "enrollment_id": "22951598-70e2-46f1-bb32-38e8da7a5cdb", "estate_enrollment_metadata": {"certificate_of_appointment_document_id": "c401f3b2-cdb5-4a6c-9f5f-aa393cf12583", "dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL"}, "foreign_individual_account_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "foreign_natural_person_account_enrollment_metadata": {"deposited_funds": {"initial_deposit_amount": {}, "initial_deposit_source": "Product Revenue"}, "financial_profile": {"other_accounts": {"owner_has_other_accounts_at_apex": true}, "primary_source_of_deposited_funds": "Corporate Income"}, "planned_activity": {"foreign_bond_trading_details": {"foreign_bond_trading": true, "foreign_bond_trading_detail": [{"percentage": {}, "region_code": "CA"}, {"percentage": {}, "region_code": "CA"}]}, "low_priced_securities": {"low_priced_securities": true, "low_priced_securities_percentage": {}}, "primary_account_activity_type": "ACTIVE_TRADING", "withdrawal_frequency": "FREQUENT"}, "related_pep_details": {"direct_or_indirect_related_peps": true, "related_peps": [{"immediate_family_members": [{"family_member_name": "Ellen Chen", "relationship": "Daughter"}, {"family_member_name": "Ellen Chen", "relationship": "Daughter"}], "organization": "U.S. Embassy", "pep_name": "Juan Octavio", "title": "U.S. Ambassador to Japan"}]}}}, "fpsl_enrollment_metadata": {"customer_percentage": 6.1, "firm_percentage": 3.7, "fpsl_msla_minimum_rate": 1, "introducing_broker_percentage": 44}, "individual_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_beneficiary_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_rollover_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_roth_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_sep_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_simple_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_traditional_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "joint_community_property_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "legal_residency_state_of_married_couple": "TX"}, "joint_tenants_by_entirety_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "legal_residency_state_of_married_couple": "TX"}, "joint_tenants_in_common_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "joint_with_rights_of_survivorship_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "llc_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/enrollments/22951598-70e2-46f1-bb32-38e8da7a5cdb", "operating_enrollment_metadata": {"operating_purpose": "CUSTODY", "subtitle": "C/F Optionality Securities", "tax_withholding_metadata": {"tax_authority": "TX", "withholding_type": "BACKUP"}}, "principal_approver_id": "02HB7N66WW02WL3B6B9W29K0HW", "state": "ACTIVE", "trust_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "opened_on_behalf_of": "PERSONAL_TRUST"}, "type": "REGISTRATION_INDIVIDUAL"}, {"beneficiary_enrollment_metadata": {"contingent_beneficiaries": [{"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_EIN"}], "primary_beneficiaries": [{"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_UNSPECIFIED"}, {"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_SSN"}]}, "consent_method": "NEGATIVE_CONSENT_CONVERSION", "corporation_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "custodial_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "enrollment_id": "22951598-70e2-46f1-bb32-38e8da7a5cdb", "estate_enrollment_metadata": {"certificate_of_appointment_document_id": "c401f3b2-cdb5-4a6c-9f5f-aa393cf12583", "dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL"}, "foreign_individual_account_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "foreign_natural_person_account_enrollment_metadata": {"deposited_funds": {"initial_deposit_amount": {}, "initial_deposit_source": "Product Revenue"}, "financial_profile": {"other_accounts": {"owner_has_other_accounts_at_apex": true}, "primary_source_of_deposited_funds": "Corporate Income"}, "planned_activity": {"foreign_bond_trading_details": {"foreign_bond_trading": true, "foreign_bond_trading_detail": [{"percentage": {}, "region_code": "CA"}, {"percentage": {}, "region_code": "CA"}]}, "low_priced_securities": {"low_priced_securities": true, "low_priced_securities_percentage": {}}, "primary_account_activity_type": "ACTIVE_TRADING", "withdrawal_frequency": "FREQUENT"}, "related_pep_details": {"direct_or_indirect_related_peps": true, "related_peps": []}}}, "fpsl_enrollment_metadata": {"customer_percentage": 6.1, "firm_percentage": 3.7, "fpsl_msla_minimum_rate": 1, "introducing_broker_percentage": 44}, "individual_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_beneficiary_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_rollover_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_roth_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_sep_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_simple_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_traditional_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "joint_community_property_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "legal_residency_state_of_married_couple": "TX"}, "joint_tenants_by_entirety_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "legal_residency_state_of_married_couple": "TX"}, "joint_tenants_in_common_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "joint_with_rights_of_survivorship_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "llc_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/enrollments/22951598-70e2-46f1-bb32-38e8da7a5cdb", "operating_enrollment_metadata": {"operating_purpose": "CUSTODY", "subtitle": "C/F Optionality Securities", "tax_withholding_metadata": {"tax_authority": "TX", "withholding_type": "BACKUP"}}, "principal_approver_id": "02HB7N66WW02WL3B6B9W29K0HW", "state": "ACTIVE", "trust_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "opened_on_behalf_of": "PERSONAL_TRUST"}, "type": "REGISTRATION_INDIVIDUAL"}, {"beneficiary_enrollment_metadata": {"contingent_beneficiaries": [{"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_UNSPECIFIED"}, {"beneficiary_percentage": 100, "email": "example@email.com", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "family_name": "Smith", "given_name": "Bob", "middle_names": "Robert", "relation_type": "SPOUSE", "tax_id": "123456789", "tax_id_type": "TAX_ID_TYPE_UNSPECIFIED"}], "primary_beneficiaries": []}, "consent_method": "NEGATIVE_CONSENT_CONVERSION", "corporation_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "custodial_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "enrollment_id": "22951598-70e2-46f1-bb32-38e8da7a5cdb", "estate_enrollment_metadata": {"certificate_of_appointment_document_id": "c401f3b2-cdb5-4a6c-9f5f-aa393cf12583", "dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL"}, "foreign_individual_account_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "foreign_natural_person_account_enrollment_metadata": {"deposited_funds": {"initial_deposit_amount": {}, "initial_deposit_source": "Product Revenue"}, "financial_profile": {"other_accounts": {"owner_has_other_accounts_at_apex": true}, "primary_source_of_deposited_funds": "Corporate Income"}, "planned_activity": {"foreign_bond_trading_details": {"foreign_bond_trading": true, "foreign_bond_trading_detail": []}, "low_priced_securities": {"low_priced_securities": true, "low_priced_securities_percentage": {}}, "primary_account_activity_type": "ACTIVE_TRADING", "withdrawal_frequency": "FREQUENT"}, "related_pep_details": {"direct_or_indirect_related_peps": true, "related_peps": [{"immediate_family_members": [{"family_member_name": "Ellen Chen", "relationship": "Daughter"}, {"family_member_name": "Ellen Chen", "relationship": "Daughter"}, {"family_member_name": "Ellen Chen", "relationship": "Daughter"}], "organization": "U.S. Embassy", "pep_name": "Juan Octavio", "title": "U.S. Ambassador to Japan"}, {"immediate_family_members": [{"family_member_name": "Ellen Chen", "relationship": "Daughter"}, {"family_member_name": "Ellen Chen", "relationship": "Daughter"}], "organization": "U.S. Embassy", "pep_name": "Juan Octavio", "title": "U.S. Ambassador to Japan"}, {"immediate_family_members": [{"family_member_name": "Ellen Chen", "relationship": "Daughter"}, {"family_member_name": "Ellen Chen", "relationship": "Daughter"}, {"family_member_name": "Ellen Chen", "relationship": "Daughter"}], "organization": "U.S. Embassy", "pep_name": "Juan Octavio", "title": "U.S. Ambassador to Japan"}]}}}, "fpsl_enrollment_metadata": {"customer_percentage": 6.1, "firm_percentage": 3.7, "fpsl_msla_minimum_rate": 1, "introducing_broker_percentage": 44}, "individual_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_beneficiary_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_rollover_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_roth_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_sep_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_simple_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "ira_traditional_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "joint_community_property_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "legal_residency_state_of_married_couple": "TX"}, "joint_tenants_by_entirety_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "legal_residency_state_of_married_couple": "TX"}, "joint_tenants_in_common_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "joint_with_rights_of_survivorship_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "llc_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL"}, "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/enrollments/22951598-70e2-46f1-bb32-38e8da7a5cdb", "operating_enrollment_metadata": {"operating_purpose": "CUSTODY", "subtitle": "C/F Optionality Securities", "tax_withholding_metadata": {"tax_authority": "TX", "withholding_type": "BACKUP"}}, "principal_approver_id": "02HB7N66WW02WL3B6B9W29K0HW", "state": "ACTIVE", "trust_enrollment_metadata": {"dividend_reinvestment_plan": "DIVIDEND_REINVESTMENT_ENROLL", "fdic_cash_sweep": "FDIC_CASH_SWEEP_ENROLL", "opened_on_behalf_of": "PERSONAL_TRUST"}, "type": "REGISTRATION_INDIVIDUAL"}], "fdid": "JY3E1OC2J3IA", "finra_coa_code": "CAT_08_CUSTOMER", "funding_type": "CASH", "identifiers": [{"type": "ORIGINATING_ACCOUNT_ID", "value": "12345678"}, {"type": "ORIGINATING_ACCOUNT_ID", "value": "12345678"}], "interested_parties": [], "investment_profile": {"account_goals": {"investment_objective": "GROWTH", "liquidity_needs": "VERY_IMPORTANT", "risk_tolerance": "MEDIUM", "time_horizon": "AVERAGE"}, "customer_profile": {"annual_income_range_usd": "FROM_100K_TO_200K", "federal_tax_bracket": 1.5, "investment_experience": "GOOD", "liquid_net_worth_range_usd": "FROM_100K_TO_200K", "total_net_worth_range_usd": "FROM_100K_TO_200K"}, "investment_profile_id": "8a111faf-2923-44e4-9e1b-59328e72467b"}, "managed": true, "margin_group_id": "d6a89a63-1066-4305-8df6-62a8294470d9", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK", "open_time": "2023-10-13T15:28:25.457378Z", "ownership_type": "INDIVIDUAL", "parties": [], "pattern_day_trader": false, "primary_registered_rep_id": "01HB7N66WW02WG3B6B9W29K0HF", "registration_type": "INDIVIDUAL_REGISTRATION", "reserve_class": "CUSTOMER", "state": "OPEN", "tax_profile": {"cost_basis_lot_disposal_method": "COST_BASIS_LOT_DISPOSAL_FIFO", "section_475_election": true}, "title": "Firstname Lastname", "trusted_contacts": [{"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/trustedContacts/8096110d-fb55-4f9d-b883-b84f0b70d3ea", "trusted_contact_id": "8096110d-fb55-4f9d-b883-b84f0b70d3ea"}, {"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/trustedContacts/8096110d-fb55-4f9d-b883-b84f0b70d3ea", "trusted_contact_id": "8096110d-fb55-4f9d-b883-b84f0b70d3ea"}], "wrap_fee_billed": true}
@@ -3037,7 +3354,7 @@ examples:
         application/json: {"replaced_fdid": "JY3E1OC2J3IA"}
       responses:
         "200":
-          application/json: {"accepts_issuer_direct_communication": false, "account_group_id": "01ARZ3NDEKTSV4RRFFQ69G5FAV", "account_id": "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "account_number": "N6D8ZJP", "active_restrictions": ["AML_PARTIES_PENDING_INITIAL_KYC"], "advised": true, "agreements": [{"agreement_id": "fa2f181c-f2fb-4bc2-b75a-79302c634ae5", "agreement_name": "Standard Customer Account Agreement - IBD (EN)", "agreement_source": "ACCOUNTS_SERVICE", "agreement_state": "AFFIRMED", "agreement_uri": "https://public-documents.apexapis.com/account-agreements/SCAA-IBD-20230525-EN.pdf", "agreement_version": "20230525", "enrollment_id": "cd47a802-5a6b-4d32-b497-c4f6d5ce0be8", "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/agreements/fa2f181c-f2fb-4bc2-b75a-79302c634ae5"}, {"agreement_id": "fa2f181c-f2fb-4bc2-b75a-79302c634ae5", "agreement_name": "Standard Customer Account Agreement - IBD (EN)", "agreement_source": "ACCOUNTS_SERVICE", "agreement_state": "AFFIRMED", "agreement_uri": "https://public-documents.apexapis.com/account-agreements/SCAA-IBD-20230525-EN.pdf", "agreement_version": "20230525", "enrollment_id": "cd47a802-5a6b-4d32-b497-c4f6d5ce0be8", "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/agreements/fa2f181c-f2fb-4bc2-b75a-79302c634ae5"}], "cat_account_holder_type": "I_INDIVIDUAL", "close_time": "2023-10-13T15:30:25.457378Z", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "create_time": "2023-10-13T15:28:17.262732Z", "domicile": "FOREIGN", "enrollments": [], "fdid": "JY3E1OC2J3IA", "finra_coa_code": "CAT_08_CUSTOMER", "funding_type": "CASH", "identifiers": [], "interested_parties": [{"interested_party_id": "ecf44f2f-7030-48ed-b937-c40891ee10c8", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/interestedParties/ecf44f2f-7030-48ed-b937-c40891ee10c8", "recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}], "investment_profile": {"account_goals": {"investment_objective": "GROWTH", "liquidity_needs": "VERY_IMPORTANT", "risk_tolerance": "MEDIUM", "time_horizon": "AVERAGE"}, "customer_profile": {"annual_income_range_usd": "FROM_100K_TO_200K", "federal_tax_bracket": 1.5, "investment_experience": "GOOD", "liquid_net_worth_range_usd": "FROM_100K_TO_200K", "total_net_worth_range_usd": "FROM_100K_TO_200K"}, "investment_profile_id": "8a111faf-2923-44e4-9e1b-59328e72467b"}, "managed": true, "margin_group_id": "d6a89a63-1066-4305-8df6-62a8294470d9", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK", "open_time": "2023-10-13T15:28:25.457378Z", "ownership_type": "INDIVIDUAL", "parties": [{"email_address": "example@domain.com", "legal_entity": {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_entity": false, "foreign_financial_institution": false, "global_person_id": "2F6C45338A9890F0F63093EBEE0C3E15764AEA87D4E0C8264EE79A3FA8E8C6E4", "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "lei_code": "12340012345678911000", "name": "legalEntities/42567868-9373-4872-9d24-2e33f6c19b75", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_ITIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "IRS_FORM_TYPE_UNSPECIFIED", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "legal_natural_person": {"citizenship_countries": ["US", "CA"], "control_person_company_symbols": "AAPL, GOOL", "correspondent_employee": false, "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "custodian_employee": false, "employment": {"employer": "Apex Fintech Solutions", "employment_id": "45b39d95-6650-4952-a5c4-cab1858312f1", "employment_status": "EMPLOYED", "occupation": "Software Engineer", "start_year": 2019}, "family_name": "Doe", "finra_associated_entity": "Entity Name", "foreign_identification": {"ftin": true, "identification_number": "M1C1W7GQSK", "issuing_region_code": "CA", "type": "PASSPORT"}, "given_name": "John", "global_person_id": "0B4127F7C8C9DD8F4A33FEE7E3C2C620814B9AA0369BDECD0A02556F49D79C22", "identity_verification_result": {"address_verified": true, "birth_date_verified": true, "external_case_id": "6526280", "identity_verification_document_ids": ["d257c455-f355-493d-9c8f-06f8ace5d5fd", "6ace3020-24a2-45c4-9f3b-752101073127"], "identity_verification_result_id": "b6d7e963-230b-4a9e-98f8-e53e06917b84", "name_verified": true, "raw_vendor_data_document_id": "7a63073a-e694-4a38-b6e0-552044b503f2", "tax_id_verified": true, "vendor": "Super Security Service"}, "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "marital_status": "SINGLE", "middle_names": "Smith", "name": "legalNaturalPersons/e6716139-da77-46d1-9f15-13599161db0b", "name_suffix": "JR", "natural_person_fdd": {"customer_non_referral_source": "Introduced through mobile app.", "customer_referral_source": {"name": "John Doe", "relationship_to_applicant": "Friend", "relationship_years_with_applicant": 5, "relationship_years_with_broker": 2}, "employment_and_employer_description": "I am a line cook at a fine dining restaurant with 55 employees.", "negative_news": {"negative_news_against_related_parties": true, "negative_news_against_related_parties_description": "Juan was indicated in numerous publications but not involved with Japan's misappropriation of taxpayer funds in 2013."}, "other_sources_of_wealth": {"applicant_has_other_sources_of_wealth": true, "other_sources_of_wealth": "I also have a small business selling handmade jewelry.", "other_sources_of_wealth_verification": "I have a business license and tax returns to verify my business."}}, "non_citizen_residency": {"residency_status": "US_PERMANENT_RESIDENT"}, "politically_exposed_immediate_family_names": ["Sue Doe"], "politically_exposed_organization": "PEAK6, Apex Clearing", "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_EIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "IRS_FORM_TYPE_UNSPECIFIED", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/parties/a58ddb02-3954-4249-a7d5-1d408def12cf", "party_id": "a58ddb02-3954-4249-a7d5-1d408def12cf", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"email_address": "example@domain.com", "legal_entity": {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_entity": false, "foreign_financial_institution": false, "global_person_id": "2F6C45338A9890F0F63093EBEE0C3E15764AEA87D4E0C8264EE79A3FA8E8C6E4", "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "lei_code": "12340012345678911000", "name": "legalEntities/42567868-9373-4872-9d24-2e33f6c19b75", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_UNSPECIFIED", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_9", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "legal_natural_person": {"citizenship_countries": ["US", "CA"], "control_person_company_symbols": "AAPL, GOOL", "correspondent_employee": false, "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "custodian_employee": false, "employment": {"employer": "Apex Fintech Solutions", "employment_id": "45b39d95-6650-4952-a5c4-cab1858312f1", "employment_status": "EMPLOYED", "occupation": "Software Engineer", "start_year": 2019}, "family_name": "Doe", "finra_associated_entity": "Entity Name", "foreign_identification": {"ftin": true, "identification_number": "M1C1W7GQSK", "issuing_region_code": "CA", "type": "PASSPORT"}, "given_name": "John", "global_person_id": "0B4127F7C8C9DD8F4A33FEE7E3C2C620814B9AA0369BDECD0A02556F49D79C22", "identity_verification_result": {"address_verified": true, "birth_date_verified": true, "external_case_id": "6526280", "identity_verification_document_ids": ["d257c455-f355-493d-9c8f-06f8ace5d5fd", "6ace3020-24a2-45c4-9f3b-752101073127"], "identity_verification_result_id": "b6d7e963-230b-4a9e-98f8-e53e06917b84", "name_verified": true, "raw_vendor_data_document_id": "7a63073a-e694-4a38-b6e0-552044b503f2", "tax_id_verified": true, "vendor": "Super Security Service"}, "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "marital_status": "SINGLE", "middle_names": "Smith", "name": "legalNaturalPersons/e6716139-da77-46d1-9f15-13599161db0b", "name_suffix": "JR", "natural_person_fdd": {"customer_non_referral_source": "Introduced through mobile app.", "customer_referral_source": {"name": "John Doe", "relationship_to_applicant": "Friend", "relationship_years_with_applicant": 5, "relationship_years_with_broker": 2}, "employment_and_employer_description": "I am a line cook at a fine dining restaurant with 55 employees.", "negative_news": {"negative_news_against_related_parties": true, "negative_news_against_related_parties_description": "Juan was indicated in numerous publications but not involved with Japan's misappropriation of taxpayer funds in 2013."}, "other_sources_of_wealth": {"applicant_has_other_sources_of_wealth": true, "other_sources_of_wealth": "I also have a small business selling handmade jewelry.", "other_sources_of_wealth_verification": "I have a business license and tax returns to verify my business."}}, "non_citizen_residency": {"residency_status": "US_PERMANENT_RESIDENT"}, "politically_exposed_immediate_family_names": ["Sue Doe"], "politically_exposed_organization": "PEAK6, Apex Clearing", "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_EIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_9", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/parties/a58ddb02-3954-4249-a7d5-1d408def12cf", "party_id": "a58ddb02-3954-4249-a7d5-1d408def12cf", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}], "pattern_day_trader": false, "primary_registered_rep_id": "01HB7N66WW02WG3B6B9W29K0HF", "registration_type": "INDIVIDUAL_REGISTRATION", "reserve_class": "CUSTOMER", "state": "OPEN", "tax_profile": {"cost_basis_lot_disposal_method": "COST_BASIS_LOT_DISPOSAL_FIFO", "section_475_election": true}, "title": "Firstname Lastname", "trusted_contacts": [{"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/trustedContacts/8096110d-fb55-4f9d-b883-b84f0b70d3ea", "trusted_contact_id": "8096110d-fb55-4f9d-b883-b84f0b70d3ea"}], "wrap_fee_billed": true}
+          application/json: {"accepts_issuer_direct_communication": false, "account_group_id": "01ARZ3NDEKTSV4RRFFQ69G5FAV", "account_id": "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "account_number": "N6D8ZJP", "active_restrictions": ["AML_PARTIES_PENDING_INITIAL_KYC"], "advised": true, "agreements": [{"agreement_id": "fa2f181c-f2fb-4bc2-b75a-79302c634ae5", "agreement_name": "Standard Customer Account Agreement - IBD (EN)", "agreement_source": "ACCOUNTS_SERVICE", "agreement_state": "AFFIRMED", "agreement_uri": "https://public-documents.apexapis.com/account-agreements/SCAA-IBD-20230525-EN.pdf", "agreement_version": "20230525", "enrollment_id": "cd47a802-5a6b-4d32-b497-c4f6d5ce0be8", "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/agreements/fa2f181c-f2fb-4bc2-b75a-79302c634ae5"}, {"agreement_id": "fa2f181c-f2fb-4bc2-b75a-79302c634ae5", "agreement_name": "Standard Customer Account Agreement - IBD (EN)", "agreement_source": "ACCOUNTS_SERVICE", "agreement_state": "AFFIRMED", "agreement_uri": "https://public-documents.apexapis.com/account-agreements/SCAA-IBD-20230525-EN.pdf", "agreement_version": "20230525", "enrollment_id": "cd47a802-5a6b-4d32-b497-c4f6d5ce0be8", "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/agreements/fa2f181c-f2fb-4bc2-b75a-79302c634ae5"}], "cat_account_holder_type": "I_INDIVIDUAL", "close_time": "2023-10-13T15:30:25.457378Z", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "create_time": "2023-10-13T15:28:17.262732Z", "domicile": "FOREIGN", "enrollments": [], "fdid": "JY3E1OC2J3IA", "finra_coa_code": "CAT_08_CUSTOMER", "funding_type": "CASH", "identifiers": [], "interested_parties": [{"interested_party_id": "ecf44f2f-7030-48ed-b937-c40891ee10c8", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/interestedParties/ecf44f2f-7030-48ed-b937-c40891ee10c8", "recipient": "John Dough", "statement_delivery_preference": "SUPPRESS", "trade_confirmation_delivery_preference": "PHYSICAL"}], "investment_profile": {"account_goals": {"investment_objective": "GROWTH", "liquidity_needs": "VERY_IMPORTANT", "risk_tolerance": "MEDIUM", "time_horizon": "AVERAGE"}, "customer_profile": {"annual_income_range_usd": "FROM_100K_TO_200K", "federal_tax_bracket": 1.5, "investment_experience": "GOOD", "liquid_net_worth_range_usd": "FROM_100K_TO_200K", "total_net_worth_range_usd": "FROM_100K_TO_200K"}, "investment_profile_id": "8a111faf-2923-44e4-9e1b-59328e72467b"}, "managed": true, "margin_group_id": "d6a89a63-1066-4305-8df6-62a8294470d9", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK", "open_time": "2023-10-13T15:28:25.457378Z", "ownership_type": "INDIVIDUAL", "parties": [{"email_address": "example@domain.com", "legal_entity": {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_entity": false, "foreign_financial_institution": false, "global_person_id": "2F6C45338A9890F0F63093EBEE0C3E15764AEA87D4E0C8264EE79A3FA8E8C6E4", "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "lei_code": "12340012345678911000", "name": "legalEntities/42567868-9373-4872-9d24-2e33f6c19b75", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_ITIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "IRS_FORM_TYPE_UNSPECIFIED", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "legal_natural_person": {"citizenship_countries": ["US", "CA"], "control_person_company_symbols": "AAPL, GOOL", "correspondent_employee": false, "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "custodian_employee": false, "employment": {"employer": "Apex Fintech Solutions", "employment_id": "45b39d95-6650-4952-a5c4-cab1858312f1", "employment_status": "EMPLOYED", "occupation": "Software Engineer", "start_year": 2019}, "family_name": "Doe", "finra_associated_entity": "Entity Name", "foreign_identification": {"ftin": true, "identification_number": "M1C1W7GQSK", "issuing_region_code": "CA", "type": "PASSPORT"}, "given_name": "John", "global_person_id": "0B4127F7C8C9DD8F4A33FEE7E3C2C620814B9AA0369BDECD0A02556F49D79C22", "identity_verification_result": {"address_verified": true, "birth_date_verified": true, "external_case_id": "6526280", "identity_verification_document_ids": ["d257c455-f355-493d-9c8f-06f8ace5d5fd", "6ace3020-24a2-45c4-9f3b-752101073127"], "identity_verification_result_id": "b6d7e963-230b-4a9e-98f8-e53e06917b84", "name_verified": true, "raw_vendor_data_document_id": "7a63073a-e694-4a38-b6e0-552044b503f2", "tax_id_verified": true, "vendor": "Super Security Service"}, "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "marital_status": "SINGLE", "middle_names": "Smith", "name": "legalNaturalPersons/e6716139-da77-46d1-9f15-13599161db0b", "name_suffix": "JR", "natural_person_fdd": {"customer_non_referral_source": "Introduced through mobile app.", "customer_referral_source": {"name": "John Doe", "relationship_to_applicant": "Friend", "relationship_years_with_applicant": 5, "relationship_years_with_broker": 2}, "employment_and_employer_description": "I am a line cook at a fine dining restaurant with 55 employees.", "negative_news": {"negative_news_against_related_parties": true, "negative_news_against_related_parties_description": "Juan was indicated in numerous publications but not involved with Japan's misappropriation of taxpayer funds in 2013."}, "other_sources_of_wealth": {"applicant_has_other_sources_of_wealth": true, "other_sources_of_wealth": "I also have a small business selling handmade jewelry.", "other_sources_of_wealth_verification": "I have a business license and tax returns to verify my business."}}, "non_citizen_residency": {"residency_status": "US_PERMANENT_RESIDENT"}, "politically_exposed_immediate_family_names": ["Sue Doe"], "politically_exposed_organization": "PEAK6, Apex Clearing", "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_EIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "IRS_FORM_TYPE_UNSPECIFIED", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/parties/a58ddb02-3954-4249-a7d5-1d408def12cf", "party_id": "a58ddb02-3954-4249-a7d5-1d408def12cf", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}, {"email_address": "example@domain.com", "legal_entity": {"accredited_investor": false, "adviser": false, "broker_dealer": false, "corporate_structure": "CORPORATION_C_CORP", "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "entity_name": "Acme, Inc.", "entity_type": "CORPORATION", "exempt_customer_reason": "NON_BANK_LISTED_ENTITY", "exempt_verifying_beneficial_owners": false, "for_the_benefit_of": "John Dough", "foreign_entity": false, "foreign_financial_institution": false, "global_person_id": "2F6C45338A9890F0F63093EBEE0C3E15764AEA87D4E0C8264EE79A3FA8E8C6E4", "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_entity_id": "42567868-9373-4872-9d24-2e33f6c19b75", "lei_code": "12340012345678911000", "name": "legalEntities/42567868-9373-4872-9d24-2e33f6c19b75", "operating_regions": ["US", "CA"], "registration_region": "US", "regulated_investment_company": false, "related_document_ids": ["fb3f181c-f2fb-4bc2-b75a-79302c634ae5"], "revocable_trust": false, "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_UNSPECIFIED", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_9", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "legal_natural_person": {"citizenship_countries": ["US", "CA"], "control_person_company_symbols": "AAPL, GOOL", "correspondent_employee": false, "correspondent_id": "01HPMZZM6RKMVZA1JQ63RQKJRP", "custodian_employee": false, "employment": {"employer": "Apex Fintech Solutions", "employment_id": "45b39d95-6650-4952-a5c4-cab1858312f1", "employment_status": "EMPLOYED", "occupation": "Software Engineer", "start_year": 2019}, "family_name": "Doe", "finra_associated_entity": "Entity Name", "foreign_identification": {"ftin": true, "identification_number": "M1C1W7GQSK", "issuing_region_code": "CA", "type": "PASSPORT"}, "given_name": "John", "global_person_id": "0B4127F7C8C9DD8F4A33FEE7E3C2C620814B9AA0369BDECD0A02556F49D79C22", "identity_verification_result": {"address_verified": true, "birth_date_verified": true, "external_case_id": "6526280", "identity_verification_document_ids": ["d257c455-f355-493d-9c8f-06f8ace5d5fd", "6ace3020-24a2-45c4-9f3b-752101073127"], "identity_verification_result_id": "b6d7e963-230b-4a9e-98f8-e53e06917b84", "name_verified": true, "raw_vendor_data_document_id": "7a63073a-e694-4a38-b6e0-552044b503f2", "tax_id_verified": true, "vendor": "Super Security Service"}, "investigation_id": "01HXPXSFA4JMKVK1D3R1X75ZGZ", "large_trader": {"large_trader_id": "123412341234"}, "legal_natural_person_id": "e6716139-da77-46d1-9f15-13599161db0b", "marital_status": "SINGLE", "middle_names": "Smith", "name": "legalNaturalPersons/e6716139-da77-46d1-9f15-13599161db0b", "name_suffix": "JR", "natural_person_fdd": {"customer_non_referral_source": "Introduced through mobile app.", "customer_referral_source": {"name": "John Doe", "relationship_to_applicant": "Friend", "relationship_years_with_applicant": 5, "relationship_years_with_broker": 2}, "employment_and_employer_description": "I am a line cook at a fine dining restaurant with 55 employees.", "negative_news": {"negative_news_against_related_parties": true, "negative_news_against_related_parties_description": "Juan was indicated in numerous publications but not involved with Japan's misappropriation of taxpayer funds in 2013."}, "other_sources_of_wealth": {"applicant_has_other_sources_of_wealth": true, "other_sources_of_wealth": "I also have a small business selling handmade jewelry.", "other_sources_of_wealth_verification": "I have a business license and tax returns to verify my business."}}, "non_citizen_residency": {"residency_status": "US_PERMANENT_RESIDENT"}, "politically_exposed_immediate_family_names": ["Sue Doe"], "politically_exposed_organization": "PEAK6, Apex Clearing", "tax_id": "987-65-4321", "tax_id_last_four": "6789", "tax_id_type": "TAX_ID_TYPE_EIN", "tax_profile": {"federal_tax_classification": "C_CORPORATION", "irs_form_type": "W_9", "legal_tax_region_code": "US", "reporting_eligibility": "ELIGIBLE", "taxpayer_certification_state": "CERTIFIED", "us_tin_status": "PASSING", "withholding_state": "FIRST_B_NOTICE_RECEIVED"}}, "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/parties/a58ddb02-3954-4249-a7d5-1d408def12cf", "party_id": "a58ddb02-3954-4249-a7d5-1d408def12cf", "prospectus_delivery_preference": "DIGITAL", "proxy_delivery_preference": "DIGITAL", "relation_type": "PRIMARY_OWNER", "statement_delivery_preference": "DIGITAL", "tax_document_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}], "pattern_day_trader": false, "primary_registered_rep_id": "01HB7N66WW02WG3B6B9W29K0HF", "registration_type": "INDIVIDUAL_REGISTRATION", "reserve_class": "CUSTOMER", "state": "OPEN", "tax_profile": {"cost_basis_lot_disposal_method": "COST_BASIS_LOT_DISPOSAL_FIFO", "section_475_election": true}, "title": "Firstname Lastname", "trusted_contacts": [{"email_address": "example@email.com", "family_name": "Doe", "given_name": "John", "middle_names": "Larry", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/trustedContacts/8096110d-fb55-4f9d-b883-b84f0b70d3ea", "trusted_contact_id": "8096110d-fb55-4f9d-b883-b84f0b70d3ea"}], "wrap_fee_billed": true}
         "400": {}
         default: {}
   Accounts_CreateTrustedContact:
@@ -3078,10 +3395,10 @@ examples:
         path:
           account_id: "01HC3MAQ4DR9QN1V8MJ4CN1HMK"
       requestBody:
-        application/json: {"recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}
+        application/json: {"recipient": "John Dough", "statement_delivery_preference": "SUPPRESS", "trade_confirmation_delivery_preference": "PHYSICAL"}
       responses:
         "200":
-          application/json: {"interested_party_id": "ecf44f2f-7030-48ed-b937-c40891ee10c8", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/interestedParties/ecf44f2f-7030-48ed-b937-c40891ee10c8", "recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}
+          application/json: {"interested_party_id": "ecf44f2f-7030-48ed-b937-c40891ee10c8", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/interestedParties/ecf44f2f-7030-48ed-b937-c40891ee10c8", "recipient": "John Dough", "statement_delivery_preference": "PHYSICAL", "trade_confirmation_delivery_preference": "PHYSICAL"}
         "400": {}
         default: {}
   Accounts_UpdateInterestedParty:
@@ -3092,10 +3409,10 @@ examples:
           interestedParty_id: "ecf44f2f-7030-48ed-b937-c40891ee10c8"
         query: {}
       requestBody:
-        application/json: {"recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}
+        application/json: {"recipient": "John Dough", "statement_delivery_preference": "SUPPRESS", "trade_confirmation_delivery_preference": "SUPPRESS"}
       responses:
         "200":
-          application/json: {"interested_party_id": "ecf44f2f-7030-48ed-b937-c40891ee10c8", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/interestedParties/ecf44f2f-7030-48ed-b937-c40891ee10c8", "recipient": "John Dough", "statement_delivery_preference": "DIGITAL", "trade_confirmation_delivery_preference": "DIGITAL"}
+          application/json: {"interested_party_id": "ecf44f2f-7030-48ed-b937-c40891ee10c8", "name": "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/interestedParties/ecf44f2f-7030-48ed-b937-c40891ee10c8", "recipient": "John Dough", "statement_delivery_preference": "PHYSICAL", "trade_confirmation_delivery_preference": "SUPPRESS"}
         "400": {}
         default: {}
   Accounts_DeleteInterestedParty:
@@ -4562,3 +4879,104 @@ examples:
         path:
           account_id: "01H8FB90ZRRFWXB4XC2JPJ1D4Y"
           wireDeposit_id: "20230817000319"
+  Booking_CreateTrade:
+    "":
+      parameters:
+        path:
+          account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
+      requestBody:
+        application/json: {"account_id": "02HASWB2DTMRT3DAM45P56J2T2", "broker_capacity": "AGENCY", "client_order_id": "00be5285-0623-4560-8c58-f05af2c56ba0", "executions": [{"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}, {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}, {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}], "identifier": "AAPL", "identifier_type": "SYMBOL", "route_type": "MNGD", "side": "BUY", "source_application": "Trading-App"}
+  Booking_GetTrade:
+    "":
+      parameters:
+        path:
+          account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
+          trade_id: "01FAKETRADEIDPROVIDEDFROMCREATETRADE"
+  Booking_CompleteTrade:
+    "":
+      parameters:
+        path:
+          account_id: "02HASWB2DTMRT3DAM45P56J2T2"
+          trade_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
+      requestBody:
+        application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM"}
+  Booking_CancelTrade:
+    "":
+      parameters:
+        path:
+          account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
+          trade_id: "01FAKETRADEIDPROVIDEDFROMCREATETRADE"
+      requestBody:
+        application/json: {"name": "accounts/01FAKEACCOUNT1TYKWEYRH8S2K/trades/01FAKETRADEIDPROVIDEDFROMCREATETRADE"}
+  Booking_RebookTrade:
+    "":
+      parameters:
+        path:
+          account_id: "02HASWB2DTMRT3DAM45P56J2T2"
+          trade_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
+      requestBody:
+        application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM", "trade": {"account_id": "02HASWB2DTMRT3DAM45P56J2T2", "broker_capacity": "AGENCY", "client_order_id": "00be5285-0623-4560-8c58-f05af2c56ba0", "executions": [{"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}, {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}, {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}], "identifier": "AAPL", "identifier_type": "SYMBOL", "route_type": "MNGD", "side": "BUY", "source_application": "Trading-App"}}
+  Booking_CreateExecution:
+    "":
+      parameters:
+        path:
+          account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
+          trade_id: "01FAKETRADEIDPROVIDEDFROMCREATETRADE"
+      requestBody:
+        application/json: {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}
+  Booking_GetExecution:
+    "":
+      parameters:
+        path:
+          account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
+          trade_id: "01FAKETRADEIDPROVIDEDFROMCREATETRADE"
+          execution_id: "01FAKEEXECUTONIDPROVIDEDFROMBOOKINGAPI"
+  Booking_CancelExecution:
+    "":
+      parameters:
+        path:
+          account_id: "02HASWB2DTMRT3DAM45P56J2T2"
+          trade_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
+          execution_id: "02G0XX2KDN3M9QKFKRE2HYSCMY"
+      requestBody:
+        application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY"}
+  Booking_RebookExecution:
+    "":
+      parameters:
+        path:
+          account_id: "02HASWB2DTMRT3DAM45P56J2T2"
+          trade_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
+          execution_id: "02G0XX2KDN3M9QKFKRE2HYSCMY"
+      requestBody:
+        application/json: {"execution": {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y"}, "name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY"}
+  Booking_CreateTradeAllocation:
+    "":
+      parameters:
+        path:
+          account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
+        query:
+          request_id: "8a0d35c0-428c-439e-9b03-b611530fe06f"
+      requestBody:
+        application/json: {"broker_capacity": "AGENCY", "execution_time": "2024-07-17T12:00:00Z", "from_account_id": "01HASWB2DTMRT3DAM45P56J2H3", "identifier": "AAPL", "identifier_type": "SYMBOL", "source_application": "Trading-App", "to_account_id": "02HASWB2DTMRT3DAM45P56J2T2", "to_side": "BUY"}
+  Booking_GetTradeAllocation:
+    "":
+      parameters:
+        path:
+          account_id: "02HASWB2DTMRT3DAM45P56J2T2"
+          tradeAllocation_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
+  Booking_CancelTradeAllocation:
+    "":
+      parameters:
+        path:
+          account_id: "02HASWB2DTMRT3DAM45P56J2T2"
+          tradeAllocation_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
+      requestBody:
+        application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM"}
+  Booking_RebookTradeAllocation:
+    "":
+      parameters:
+        path:
+          account_id: "02HASWB2DTMRT3DAM45P56J2T2"
+          tradeAllocation_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
+      requestBody:
+        application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM", "request_id": "8a0d35c0-428c-439e-9b03-b611530fe06f", "trade_allocation": {"broker_capacity": "AGENCY", "execution_time": "2024-07-17T12:00:00Z", "from_account_id": "01HASWB2DTMRT3DAM45P56J2H3", "identifier": "AAPL", "identifier_type": "SYMBOL", "source_application": "Trading-App", "to_account_id": "02HASWB2DTMRT3DAM45P56J2T2", "to_side": "BUY"}}

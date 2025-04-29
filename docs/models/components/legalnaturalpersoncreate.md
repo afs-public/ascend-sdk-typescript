@@ -22,7 +22,6 @@ let value: LegalNaturalPersonCreate = {
   correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
   employment: {
     employmentStatus: EmploymentStatus.Employed,
-    occupation: "Software Engineer",
   },
   familyName: "Doe",
   givenName: "John",

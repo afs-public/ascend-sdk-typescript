@@ -11,7 +11,7 @@ import {
   CancelCashJournalRequestCreate,
   CheckPartyTypeRequestCreate,
   RetrieveCashJournalConstraintsRequestCreate,
-} from "../../models/components";
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let lnp_id: string | undefined;
 let account_id: string | undefined;

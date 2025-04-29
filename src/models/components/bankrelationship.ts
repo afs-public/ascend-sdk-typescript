@@ -99,7 +99,6 @@ export enum BankRelationshipVerificationMethod {
   Giact = "GIACT",
   Synapse = "SYNAPSE",
   Sophtron = "SOPHTRON",
-  UseExisting = "USE_EXISTING",
   InternalBank = "INTERNAL_BANK",
   Mx = "MX",
   Fiserv = "FISERV",

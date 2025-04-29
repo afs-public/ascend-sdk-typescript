@@ -13,7 +13,7 @@ import {
 /**
  * The process date of the batch associated with the report.
  */
-export type LocateIctReportResponseProcessDate = {
+export type ProcessDate = {
   /**
    * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
@@ -66,7 +66,7 @@ export type LocateIctReportResponse = {
   /**
    * The process date of the batch associated with the report.
    */
-  processDate?: LocateIctReportResponseProcessDate | null | undefined;
+  processDate?: ProcessDate | null | undefined;
   /**
    * The ICT program associated with the report.
    */
@@ -74,8 +74,8 @@ export type LocateIctReportResponse = {
 };
 
 /** @internal */
-export const LocateIctReportResponseProcessDate$inboundSchema: z.ZodType<
-  LocateIctReportResponseProcessDate,
+export const ProcessDate$inboundSchema: z.ZodType<
+  ProcessDate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -85,17 +85,17 @@ export const LocateIctReportResponseProcessDate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type LocateIctReportResponseProcessDate$Outbound = {
+export type ProcessDate$Outbound = {
   day?: number | undefined;
   month?: number | undefined;
   year?: number | undefined;
 };
 
 /** @internal */
-export const LocateIctReportResponseProcessDate$outboundSchema: z.ZodType<
-  LocateIctReportResponseProcessDate$Outbound,
+export const ProcessDate$outboundSchema: z.ZodType<
+  ProcessDate$Outbound,
   z.ZodTypeDef,
-  LocateIctReportResponseProcessDate
+  ProcessDate
 > = z.object({
   day: z.number().int().optional(),
   month: z.number().int().optional(),
@@ -106,14 +106,13 @@ export const LocateIctReportResponseProcessDate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LocateIctReportResponseProcessDate$ {
-  /** @deprecated use `LocateIctReportResponseProcessDate$inboundSchema` instead. */
-  export const inboundSchema = LocateIctReportResponseProcessDate$inboundSchema;
-  /** @deprecated use `LocateIctReportResponseProcessDate$outboundSchema` instead. */
-  export const outboundSchema =
-    LocateIctReportResponseProcessDate$outboundSchema;
-  /** @deprecated use `LocateIctReportResponseProcessDate$Outbound` instead. */
-  export type Outbound = LocateIctReportResponseProcessDate$Outbound;
+export namespace ProcessDate$ {
+  /** @deprecated use `ProcessDate$inboundSchema` instead. */
+  export const inboundSchema = ProcessDate$inboundSchema;
+  /** @deprecated use `ProcessDate$outboundSchema` instead. */
+  export const outboundSchema = ProcessDate$outboundSchema;
+  /** @deprecated use `ProcessDate$Outbound` instead. */
+  export type Outbound = ProcessDate$Outbound;
 }
 
 /** @internal */
@@ -159,9 +158,7 @@ export const LocateIctReportResponse$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   download_uri: z.string().optional(),
-  process_date: z.nullable(
-    z.lazy(() => LocateIctReportResponseProcessDate$inboundSchema),
-  ).optional(),
+  process_date: z.nullable(z.lazy(() => ProcessDate$inboundSchema)).optional(),
   program: LocateIctReportResponseProgram$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -177,7 +174,7 @@ export type LocateIctReportResponse$Outbound = {
   batch_id?: string | undefined;
   create_time?: string | null | undefined;
   download_uri?: string | undefined;
-  process_date?: LocateIctReportResponseProcessDate$Outbound | null | undefined;
+  process_date?: ProcessDate$Outbound | null | undefined;
   program?: string | undefined;
 };
 
@@ -190,9 +187,7 @@ export const LocateIctReportResponse$outboundSchema: z.ZodType<
   batchId: z.string().optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   downloadUri: z.string().optional(),
-  processDate: z.nullable(
-    z.lazy(() => LocateIctReportResponseProcessDate$outboundSchema),
-  ).optional(),
+  processDate: z.nullable(z.lazy(() => ProcessDate$outboundSchema)).optional(),
   program: LocateIctReportResponseProgram$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {

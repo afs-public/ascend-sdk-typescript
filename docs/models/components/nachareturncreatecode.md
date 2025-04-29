@@ -7,7 +7,7 @@ The cause of the return.
 ```typescript
 import { NachaReturnCreateCode } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: NachaReturnCreateCode = NachaReturnCreateCode.R82;
+let value: NachaReturnCreateCode = NachaReturnCreateCode.R31;
 ```
 
 ## Values

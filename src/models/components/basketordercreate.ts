@@ -15,24 +15,6 @@ import {
   DecimalCreate$Outbound,
   DecimalCreate$outboundSchema,
 } from "./decimalcreate.js";
-import {
-  FeeCreate,
-  FeeCreate$inboundSchema,
-  FeeCreate$Outbound,
-  FeeCreate$outboundSchema,
-} from "./feecreate.js";
-import {
-  LetterOfIntentCreate,
-  LetterOfIntentCreate$inboundSchema,
-  LetterOfIntentCreate$Outbound,
-  LetterOfIntentCreate$outboundSchema,
-} from "./letterofintentcreate.js";
-import {
-  RightsOfAccumulationCreate,
-  RightsOfAccumulationCreate$inboundSchema,
-  RightsOfAccumulationCreate$Outbound,
-  RightsOfAccumulationCreate$outboundSchema,
-} from "./rightsofaccumulationcreate.js";
 
 /**
  * The type of the asset in this order
@@ -130,10 +112,6 @@ export type BasketOrderCreate = {
    */
   currencyCode?: string | undefined;
   /**
-   * Fees that will be applied to this order.
-   */
-  fees?: Array<FeeCreate> | undefined;
-  /**
    * Identifier of the asset (of the type specified in `identifier_type`).
    */
   identifier: string;
@@ -141,10 +119,6 @@ export type BasketOrderCreate = {
    * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported
    */
   identifierType: BasketOrderCreateIdentifierTypeOpen;
-  /**
-   * Letter of Intent (LOI). An LOI allows investors to receive sales charge discounts based on a commitment to buy a specified monetary amount of shares over a period of time, usually 13 months.
-   */
-  letterOfIntent?: LetterOfIntentCreate | undefined;
   /**
    * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
    *
@@ -169,10 +143,6 @@ export type BasketOrderCreate = {
    *  [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
    */
   quantity?: DecimalCreate | undefined;
-  /**
-   * Rights of Accumulation (ROA). An ROA allows an investor to aggregate their own fund shares with the holdings of certain related parties toward achieving the investment thresholds at which sales charge discounts become available.
-   */
-  rightsOfAccumulation?: RightsOfAccumulationCreate | undefined;
   /**
    * The side of this order.
    */
@@ -356,14 +326,11 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   currency_code: z.string().optional(),
-  fees: z.array(FeeCreate$inboundSchema).optional(),
   identifier: z.string(),
   identifier_type: BasketOrderCreateIdentifierType$inboundSchema,
-  letter_of_intent: LetterOfIntentCreate$inboundSchema.optional(),
   notional_value: DecimalCreate$inboundSchema.optional(),
   order_type: BasketOrderCreateOrderType$inboundSchema,
   quantity: DecimalCreate$inboundSchema.optional(),
-  rights_of_accumulation: RightsOfAccumulationCreate$inboundSchema.optional(),
   side: BasketOrderCreateSide$inboundSchema,
   time_in_force: BasketOrderCreateTimeInForce$inboundSchema,
 }).transform((v) => {
@@ -374,10 +341,8 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
     "client_order_received_time": "clientOrderReceivedTime",
     "currency_code": "currencyCode",
     "identifier_type": "identifierType",
-    "letter_of_intent": "letterOfIntent",
     "notional_value": "notionalValue",
     "order_type": "orderType",
-    "rights_of_accumulation": "rightsOfAccumulation",
     "time_in_force": "timeInForce",
   });
 });
@@ -389,14 +354,11 @@ export type BasketOrderCreate$Outbound = {
   client_order_id: string;
   client_order_received_time?: string | null | undefined;
   currency_code?: string | undefined;
-  fees?: Array<FeeCreate$Outbound> | undefined;
   identifier: string;
   identifier_type: string;
-  letter_of_intent?: LetterOfIntentCreate$Outbound | undefined;
   notional_value?: DecimalCreate$Outbound | undefined;
   order_type: string;
   quantity?: DecimalCreate$Outbound | undefined;
-  rights_of_accumulation?: RightsOfAccumulationCreate$Outbound | undefined;
   side: string;
   time_in_force: string;
 };
@@ -413,14 +375,11 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
   clientOrderReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   currencyCode: z.string().optional(),
-  fees: z.array(FeeCreate$outboundSchema).optional(),
   identifier: z.string(),
   identifierType: BasketOrderCreateIdentifierType$outboundSchema,
-  letterOfIntent: LetterOfIntentCreate$outboundSchema.optional(),
   notionalValue: DecimalCreate$outboundSchema.optional(),
   orderType: BasketOrderCreateOrderType$outboundSchema,
   quantity: DecimalCreate$outboundSchema.optional(),
-  rightsOfAccumulation: RightsOfAccumulationCreate$outboundSchema.optional(),
   side: BasketOrderCreateSide$outboundSchema,
   timeInForce: BasketOrderCreateTimeInForce$outboundSchema,
 }).transform((v) => {
@@ -431,10 +390,8 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
     clientOrderReceivedTime: "client_order_received_time",
     currencyCode: "currency_code",
     identifierType: "identifier_type",
-    letterOfIntent: "letter_of_intent",
     notionalValue: "notional_value",
     orderType: "order_type",
-    rightsOfAccumulation: "rights_of_accumulation",
     timeInForce: "time_in_force",
   });
 });

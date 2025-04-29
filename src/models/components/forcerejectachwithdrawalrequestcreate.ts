@@ -12,6 +12,10 @@ export type ForceRejectAchWithdrawalRequestCreate = {
    * The name of the ACH withdrawal to force reject.
    */
   name: string;
+  /**
+   * Reason why the ACH withdrawal is being rejected.
+   */
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -21,11 +25,13 @@ export const ForceRejectAchWithdrawalRequestCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /** @internal */
 export type ForceRejectAchWithdrawalRequestCreate$Outbound = {
   name: string;
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +41,7 @@ export const ForceRejectAchWithdrawalRequestCreate$outboundSchema: z.ZodType<
   ForceRejectAchWithdrawalRequestCreate
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /**

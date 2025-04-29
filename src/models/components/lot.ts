@@ -18,7 +18,7 @@ export type LotPrice = {
 /**
  * Object containing currency/ price information for the trade lot
  */
-export type Money = {
+export type LotMoney = {
   /**
    * Currency code of the price
    */
@@ -65,7 +65,7 @@ export type Lot = {
   /**
    * Object containing currency/ price information for the trade lot
    */
-  money?: Money | null | undefined;
+  money?: LotMoney | null | undefined;
   /**
    * Quantity of the trade lot
    */
@@ -113,27 +113,30 @@ export namespace LotPrice$ {
 }
 
 /** @internal */
-export const Money$inboundSchema: z.ZodType<Money, z.ZodTypeDef, unknown> = z
-  .object({
-    currency_code: z.string().optional(),
-    price: z.nullable(z.lazy(() => LotPrice$inboundSchema)).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "currency_code": "currencyCode",
-    });
+export const LotMoney$inboundSchema: z.ZodType<
+  LotMoney,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency_code: z.string().optional(),
+  price: z.nullable(z.lazy(() => LotPrice$inboundSchema)).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "currency_code": "currencyCode",
   });
+});
 
 /** @internal */
-export type Money$Outbound = {
+export type LotMoney$Outbound = {
   currency_code?: string | undefined;
   price?: LotPrice$Outbound | null | undefined;
 };
 
 /** @internal */
-export const Money$outboundSchema: z.ZodType<
-  Money$Outbound,
+export const LotMoney$outboundSchema: z.ZodType<
+  LotMoney$Outbound,
   z.ZodTypeDef,
-  Money
+  LotMoney
 > = z.object({
   currencyCode: z.string().optional(),
   price: z.nullable(z.lazy(() => LotPrice$outboundSchema)).optional(),
@@ -147,13 +150,13 @@ export const Money$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Money$ {
-  /** @deprecated use `Money$inboundSchema` instead. */
-  export const inboundSchema = Money$inboundSchema;
-  /** @deprecated use `Money$outboundSchema` instead. */
-  export const outboundSchema = Money$outboundSchema;
-  /** @deprecated use `Money$Outbound` instead. */
-  export type Outbound = Money$Outbound;
+export namespace LotMoney$ {
+  /** @deprecated use `LotMoney$inboundSchema` instead. */
+  export const inboundSchema = LotMoney$inboundSchema;
+  /** @deprecated use `LotMoney$outboundSchema` instead. */
+  export const outboundSchema = LotMoney$outboundSchema;
+  /** @deprecated use `LotMoney$Outbound` instead. */
+  export type Outbound = LotMoney$Outbound;
 }
 
 /** @internal */
@@ -238,7 +241,7 @@ export namespace TradeDate$ {
 export const Lot$inboundSchema: z.ZodType<Lot, z.ZodTypeDef, unknown> = z
   .object({
     id: z.string().optional(),
-    money: z.nullable(z.lazy(() => Money$inboundSchema)).optional(),
+    money: z.nullable(z.lazy(() => LotMoney$inboundSchema)).optional(),
     quantity: z.nullable(z.lazy(() => LotQuantity$inboundSchema)).optional(),
     trade_date: z.nullable(z.lazy(() => TradeDate$inboundSchema)).optional(),
   }).transform((v) => {
@@ -250,7 +253,7 @@ export const Lot$inboundSchema: z.ZodType<Lot, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Lot$Outbound = {
   id?: string | undefined;
-  money?: Money$Outbound | null | undefined;
+  money?: LotMoney$Outbound | null | undefined;
   quantity?: LotQuantity$Outbound | null | undefined;
   trade_date?: TradeDate$Outbound | null | undefined;
 };
@@ -259,7 +262,7 @@ export type Lot$Outbound = {
 export const Lot$outboundSchema: z.ZodType<Lot$Outbound, z.ZodTypeDef, Lot> = z
   .object({
     id: z.string().optional(),
-    money: z.nullable(z.lazy(() => Money$outboundSchema)).optional(),
+    money: z.nullable(z.lazy(() => LotMoney$outboundSchema)).optional(),
     quantity: z.nullable(z.lazy(() => LotQuantity$outboundSchema)).optional(),
     tradeDate: z.nullable(z.lazy(() => TradeDate$outboundSchema)).optional(),
   }).transform((v) => {

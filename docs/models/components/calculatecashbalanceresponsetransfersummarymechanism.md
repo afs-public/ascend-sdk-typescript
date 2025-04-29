@@ -29,4 +29,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Rtp`                  | RTP                    |
 | `Tpj`                  | TPJ                    |
 | `Wire`                 | WIRE                   |
+| `ExternalAch`          | EXTERNAL_ACH           |
 | -                      | `Unrecognized<string>` |

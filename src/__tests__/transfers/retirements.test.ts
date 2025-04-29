@@ -1,11 +1,11 @@
 import { beforeAll, expect, test } from "vitest";
 import { sdk, timeout } from "../utils/sdk";
 import { createAccount, createLegalNaturalPerson } from "../accounts";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import {
   Mechanism,
   RetrieveDistributionConstraintsRequestCreateMechanism,
-} from "../../models/components";
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let lnp_id: string | undefined;
 let account_id: string | undefined;

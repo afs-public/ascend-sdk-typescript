@@ -8,7 +8,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 /**
  * The net amount of the trade in USD. This value is always positive.
  */
-export type CalculateCashBalanceResponseTradeSummaryNetAmount = {
+export type NetAmount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -30,51 +30,43 @@ export type CalculateCashBalanceResponseTradeSummary = {
   /**
    * The net amount of the trade in USD. This value is always positive.
    */
-  netAmount?:
-    | CalculateCashBalanceResponseTradeSummaryNetAmount
-    | null
-    | undefined;
+  netAmount?: NetAmount | null | undefined;
 };
 
 /** @internal */
-export const CalculateCashBalanceResponseTradeSummaryNetAmount$inboundSchema:
-  z.ZodType<
-    CalculateCashBalanceResponseTradeSummaryNetAmount,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    value: z.string().optional(),
-  });
+export const NetAmount$inboundSchema: z.ZodType<
+  NetAmount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
 
 /** @internal */
-export type CalculateCashBalanceResponseTradeSummaryNetAmount$Outbound = {
+export type NetAmount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const CalculateCashBalanceResponseTradeSummaryNetAmount$outboundSchema:
-  z.ZodType<
-    CalculateCashBalanceResponseTradeSummaryNetAmount$Outbound,
-    z.ZodTypeDef,
-    CalculateCashBalanceResponseTradeSummaryNetAmount
-  > = z.object({
-    value: z.string().optional(),
-  });
+export const NetAmount$outboundSchema: z.ZodType<
+  NetAmount$Outbound,
+  z.ZodTypeDef,
+  NetAmount
+> = z.object({
+  value: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CalculateCashBalanceResponseTradeSummaryNetAmount$ {
-  /** @deprecated use `CalculateCashBalanceResponseTradeSummaryNetAmount$inboundSchema` instead. */
-  export const inboundSchema =
-    CalculateCashBalanceResponseTradeSummaryNetAmount$inboundSchema;
-  /** @deprecated use `CalculateCashBalanceResponseTradeSummaryNetAmount$outboundSchema` instead. */
-  export const outboundSchema =
-    CalculateCashBalanceResponseTradeSummaryNetAmount$outboundSchema;
-  /** @deprecated use `CalculateCashBalanceResponseTradeSummaryNetAmount$Outbound` instead. */
-  export type Outbound =
-    CalculateCashBalanceResponseTradeSummaryNetAmount$Outbound;
+export namespace NetAmount$ {
+  /** @deprecated use `NetAmount$inboundSchema` instead. */
+  export const inboundSchema = NetAmount$inboundSchema;
+  /** @deprecated use `NetAmount$outboundSchema` instead. */
+  export const outboundSchema = NetAmount$outboundSchema;
+  /** @deprecated use `NetAmount$Outbound` instead. */
+  export type Outbound = NetAmount$Outbound;
 }
 
 /** @internal */
@@ -85,11 +77,7 @@ export const CalculateCashBalanceResponseTradeSummary$inboundSchema: z.ZodType<
 > = z.object({
   activity: z.string().optional(),
   asset: z.string().optional(),
-  net_amount: z.nullable(
-    z.lazy(() =>
-      CalculateCashBalanceResponseTradeSummaryNetAmount$inboundSchema
-    ),
-  ).optional(),
+  net_amount: z.nullable(z.lazy(() => NetAmount$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "net_amount": "netAmount",
@@ -100,10 +88,7 @@ export const CalculateCashBalanceResponseTradeSummary$inboundSchema: z.ZodType<
 export type CalculateCashBalanceResponseTradeSummary$Outbound = {
   activity?: string | undefined;
   asset?: string | undefined;
-  net_amount?:
-    | CalculateCashBalanceResponseTradeSummaryNetAmount$Outbound
-    | null
-    | undefined;
+  net_amount?: NetAmount$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -114,11 +99,7 @@ export const CalculateCashBalanceResponseTradeSummary$outboundSchema: z.ZodType<
 > = z.object({
   activity: z.string().optional(),
   asset: z.string().optional(),
-  netAmount: z.nullable(
-    z.lazy(() =>
-      CalculateCashBalanceResponseTradeSummaryNetAmount$outboundSchema
-    ),
-  ).optional(),
+  netAmount: z.nullable(z.lazy(() => NetAmount$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     netAmount: "net_amount",

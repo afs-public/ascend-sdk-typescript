@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { sdk } from "../utils/sdk";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import { investigation_id } from "./index";
 import * as crypto from "crypto";
 
@@ -36,13 +36,17 @@ test("Test Investigations Investigations Get Identify Verification", async () =>
   }
 
   if (!results || results.length === 0) {
-    throw new Error("Failed to get identity verification results or results array is empty");
+    throw new Error(
+      "Failed to get identity verification results or results array is empty",
+    );
   }
 
   const first_id_result = results[0];
 
   if (!first_id_result?.customerIdentificationId) {
-    throw new Error("Customer Identification ID is missing in the first identity verification result");
+    throw new Error(
+      "Customer Identification ID is missing in the first identity verification result",
+    );
   }
 
   const result = await sdk.investigations.getCustomerIdentification(

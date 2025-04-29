@@ -12,6 +12,10 @@ export type ForceRejectIctDepositRequestCreate = {
    * Full name of the ICT deposit resource to force a rejection on. Contains account id and ICT deposit id.
    */
   name: string;
+  /**
+   * Reason why the ICT deposit is being rejected
+   */
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -21,11 +25,13 @@ export const ForceRejectIctDepositRequestCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /** @internal */
 export type ForceRejectIctDepositRequestCreate$Outbound = {
   name: string;
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +41,7 @@ export const ForceRejectIctDepositRequestCreate$outboundSchema: z.ZodType<
   ForceRejectIctDepositRequestCreate
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /**

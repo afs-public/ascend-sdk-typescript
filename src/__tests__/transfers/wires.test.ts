@@ -7,7 +7,7 @@ import {
   wire_deposit_id,
   withdrawal_account_id,
 } from "./index";
-import { CancelWireWithdrawalRequestCreate } from "../../models/components";
+import { CancelWireWithdrawalRequestCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let lnp_id: string | undefined;
 let account_id: string | undefined;

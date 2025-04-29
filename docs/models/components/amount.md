@@ -1,6 +1,6 @@
 # Amount
 
-Monetary amount associated with the fee
+The amount to deposit in USD.
 
 ## Example Usage
 

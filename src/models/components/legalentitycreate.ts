@@ -183,7 +183,7 @@ export type LegalEntityCreate = {
    */
   exemptCustomerReason?: ExemptCustomerReasonOpen | undefined;
   /**
-   * Indicates whether the entity is exempt from verifying beneficial owners. By default, this is set to `false`.
+   * Indicates whether the entity is exempt from verifying beneficial owners and Enhanced Due Diligence. By default, this is set to `false`
    */
   exemptVerifyingBeneficialOwners?: boolean | undefined;
   /**

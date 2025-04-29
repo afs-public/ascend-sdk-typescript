@@ -1,6 +1,6 @@
 # ProcessDate
 
-The date that the entry was booked on
+The process date of the batch associated with the report.
 
 ## Example Usage
 

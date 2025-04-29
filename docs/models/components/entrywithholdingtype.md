@@ -7,7 +7,7 @@ The type of withholding
 ```typescript
 import { EntryWithholdingType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: EntryWithholdingType = EntryWithholdingType.FederalIra;
+let value: EntryWithholdingType = EntryWithholdingType.Federal;
 ```
 
 ## Values

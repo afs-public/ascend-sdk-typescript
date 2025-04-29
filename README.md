@@ -540,6 +540,25 @@ const sdk = new Apexascend({ httpClient });
 * [forceApproveCashJournal](docs/sdks/testsimulation/README.md#forceapprovecashjournal) - Force Approve Cash Journal
 * [forceRejectCashJournal](docs/sdks/testsimulation/README.md#forcerejectcashjournal) - Force Reject Cash Journal
 
+### [tradeAllocation](docs/sdks/tradeallocation/README.md)
+
+* [createTradeAllocation](docs/sdks/tradeallocation/README.md#createtradeallocation) - Create Trade Allocation
+* [getTradeAllocation](docs/sdks/tradeallocation/README.md#gettradeallocation) - Get Trade Allocation
+* [cancelTradeAllocation](docs/sdks/tradeallocation/README.md#canceltradeallocation) - Cancel Trade Allocation
+* [rebookTradeAllocation](docs/sdks/tradeallocation/README.md#rebooktradeallocation) - Rebook Trade Allocation
+
+### [tradeBooking](docs/sdks/tradebooking/README.md)
+
+* [createTrade](docs/sdks/tradebooking/README.md#createtrade) - Create Trade
+* [getTrade](docs/sdks/tradebooking/README.md#gettrade) - Get Trade
+* [completeTrade](docs/sdks/tradebooking/README.md#completetrade) - Complete Trade
+* [cancelTrade](docs/sdks/tradebooking/README.md#canceltrade) - Cancel Trade
+* [rebookTrade](docs/sdks/tradebooking/README.md#rebooktrade) - Rebook Trade
+* [createExecution](docs/sdks/tradebooking/README.md#createexecution) - Create Execution
+* [getExecution](docs/sdks/tradebooking/README.md#getexecution) - Get Execution
+* [cancelExecution](docs/sdks/tradebooking/README.md#cancelexecution) - Cancel Execution
+* [rebookExecution](docs/sdks/tradebooking/README.md#rebookexecution) - Rebook Execution
+
 ### [wires](docs/sdks/wires/README.md)
 
 * [getWireDeposit](docs/sdks/wires/README.md#getwiredeposit) - Get Wire Deposit

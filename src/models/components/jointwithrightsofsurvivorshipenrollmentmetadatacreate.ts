@@ -11,7 +11,7 @@ import {
 } from "../../types/enums.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -20,7 +20,7 @@ export enum JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinves
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -28,7 +28,7 @@ export type JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinves
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -37,7 +37,7 @@ export enum JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweepOpen =
   OpenEnum<
@@ -49,13 +49,13 @@ export type JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweepOp
  */
 export type JointWithRightsOfSurvivorshipEnrollmentMetadataCreate = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweepOpen

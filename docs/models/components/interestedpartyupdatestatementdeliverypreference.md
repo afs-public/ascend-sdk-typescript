@@ -1,6 +1,6 @@
 # InterestedPartyUpdateStatementDeliveryPreference
 
-Delivery method instruction for account statements for a given Interested Party; Can be `DIGITAL`, `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
+Delivery method instruction for account statements for a given Interested Party; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
 
 ## Example Usage
 
@@ -8,17 +8,15 @@ Delivery method instruction for account statements for a given Interested Party;
 import { InterestedPartyUpdateStatementDeliveryPreference } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: InterestedPartyUpdateStatementDeliveryPreference =
-  InterestedPartyUpdateStatementDeliveryPreference.Digital;
+  InterestedPartyUpdateStatementDeliveryPreference.Physical;
 ```
 
 ## Values
 
 This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
-| Name                            | Value                           |
-| ------------------------------- | ------------------------------- |
-| `DeliveryPreferenceUnspecified` | DELIVERY_PREFERENCE_UNSPECIFIED |
-| `Digital`                       | DIGITAL                         |
-| `Physical`                      | PHYSICAL                        |
-| `Suppress`                      | SUPPRESS                        |
-| -                               | `Unrecognized<string>`          |
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `Physical`             | PHYSICAL               |
+| `Suppress`             | SUPPRESS               |
+| -                      | `Unrecognized<string>` |

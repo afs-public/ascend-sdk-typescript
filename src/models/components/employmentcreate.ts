@@ -57,9 +57,9 @@ export type EmploymentCreate = {
    */
   employmentStatus: EmploymentStatusOpen;
   /**
-   * The nature of work performed at an investor's place of employment.
+   * The nature of work performed at an investor's place of employment. Required if the employment_status is `EMPLOYED` or `SELF_EMPLOYED`.
    */
-  occupation: string;
+  occupation?: string | undefined;
   /**
    * The start year of employment related to a person's stated employer Must be from birth year to current year, or 0 to clear start year value
    */
@@ -107,7 +107,7 @@ export const EmploymentCreate$inboundSchema: z.ZodType<
   employer: z.string().optional(),
   employer_address: PostalAddressCreate$inboundSchema.optional(),
   employment_status: EmploymentStatus$inboundSchema,
-  occupation: z.string(),
+  occupation: z.string().optional(),
   start_year: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -122,7 +122,7 @@ export type EmploymentCreate$Outbound = {
   employer?: string | undefined;
   employer_address?: PostalAddressCreate$Outbound | undefined;
   employment_status: string;
-  occupation: string;
+  occupation?: string | undefined;
   start_year?: number | undefined;
 };
 
@@ -135,7 +135,7 @@ export const EmploymentCreate$outboundSchema: z.ZodType<
   employer: z.string().optional(),
   employerAddress: PostalAddressCreate$outboundSchema.optional(),
   employmentStatus: EmploymentStatus$outboundSchema,
-  occupation: z.string(),
+  occupation: z.string().optional(),
   startYear: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {

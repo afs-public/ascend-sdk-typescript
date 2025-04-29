@@ -1,5 +1,5 @@
 import { sdk, timeout } from "../utils/sdk";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import crypto from "crypto";
 
 export const identifier_cusp = "912810SX7";

@@ -40,6 +40,12 @@ import {
   ForeignIndividualAccountEnrollmentMetadataCreate$outboundSchema,
 } from "./foreignindividualaccountenrollmentmetadatacreate.js";
 import {
+  ForeignJointAccountEnrollmentMetadataCreate,
+  ForeignJointAccountEnrollmentMetadataCreate$inboundSchema,
+  ForeignJointAccountEnrollmentMetadataCreate$Outbound,
+  ForeignJointAccountEnrollmentMetadataCreate$outboundSchema,
+} from "./foreignjointaccountenrollmentmetadatacreate.js";
+import {
   FPSLEnrollmentMetaDataCreate,
   FPSLEnrollmentMetaDataCreate$inboundSchema,
   FPSLEnrollmentMetaDataCreate$Outbound,
@@ -124,11 +130,23 @@ import {
   OperatingEnrollmentMetadataCreate$outboundSchema,
 } from "./operatingenrollmentmetadatacreate.js";
 import {
+  OrdersOptionsTradingEnrollmentMetadataCreate,
+  OrdersOptionsTradingEnrollmentMetadataCreate$inboundSchema,
+  OrdersOptionsTradingEnrollmentMetadataCreate$Outbound,
+  OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema,
+} from "./ordersoptionstradingenrollmentmetadatacreate.js";
+import {
   TrustEnrollmentMetadataCreate,
   TrustEnrollmentMetadataCreate$inboundSchema,
   TrustEnrollmentMetadataCreate$Outbound,
   TrustEnrollmentMetadataCreate$outboundSchema,
 } from "./trustenrollmentmetadatacreate.js";
+import {
+  VirtualAccountNumberEnrollmentMetadataCreate,
+  VirtualAccountNumberEnrollmentMetadataCreate$inboundSchema,
+  VirtualAccountNumberEnrollmentMetadataCreate$Outbound,
+  VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema,
+} from "./virtualaccountnumberenrollmentmetadatacreate.js";
 
 /**
  * The consent method for the enrollment. Defaults to ESIGNATURE.
@@ -167,6 +185,7 @@ export enum EnrollmentCreateType {
   RegistrationIraRollover = "REGISTRATION_IRA_ROLLOVER",
   RegistrationTrust = "REGISTRATION_TRUST",
   RegistrationCorporation = "REGISTRATION_CORPORATION",
+  RegistrationLlc = "REGISTRATION_LLC",
   CashFdicCashSweep = "CASH_FDIC_CASH_SWEEP",
   RetirementBeneficiaryDesignation = "RETIREMENT_BENEFICIARY_DESIGNATION",
   DividendReinvestmentPlan = "DIVIDEND_REINVESTMENT_PLAN",
@@ -175,6 +194,7 @@ export enum EnrollmentCreateType {
   RegistrationIraBeneficiaryRoth = "REGISTRATION_IRA_BENEFICIARY_ROTH",
   RegistrationIndividualForeign = "REGISTRATION_INDIVIDUAL_FOREIGN",
   RegistrationCustodial = "REGISTRATION_CUSTODIAL",
+  VirtualAccountNumber = "VIRTUAL_ACCOUNT_NUMBER",
 }
 /**
  * Describes the name of the enrollment; Expressed as an enum
@@ -208,6 +228,12 @@ export type EnrollmentCreate = {
   estateEnrollmentMetadata?: EstateEnrollmentMetadataCreate | undefined;
   foreignIndividualAccountEnrollmentMetadata?:
     | ForeignIndividualAccountEnrollmentMetadataCreate
+    | undefined;
+  /**
+   * Enrollment metadata for the FOREIGN_JOINT_WROS enrollment type
+   */
+  foreignJointAccountEnrollmentMetadata?:
+    | ForeignJointAccountEnrollmentMetadataCreate
     | undefined;
   /**
    * Percentages for FPSL Enrollment, must equal 100
@@ -277,6 +303,12 @@ export type EnrollmentCreate = {
    */
   operatingEnrollmentMetadata?: OperatingEnrollmentMetadataCreate | undefined;
   /**
+   * Enrollment metadata for the ORDERS_OPTIONS_TRADING enrollment type
+   */
+  ordersOptionsTradingEnrollmentMetadata?:
+    | OrdersOptionsTradingEnrollmentMetadataCreate
+    | undefined;
+  /**
    * The ULID is associated with the approver of a given enrollment. The approver you create will contain the CRD Number issued to the person by FINRA. As an RIA, you should use the ULID associated with Apex's approver.
    */
   principalApproverId: string;
@@ -285,6 +317,12 @@ export type EnrollmentCreate = {
    * Describes the name of the enrollment; Expressed as an enum
    */
   type: EnrollmentCreateTypeOpen;
+  /**
+   * Enrollment metadata for the VIRTUAL_ACCOUNT_NUMBER enrollment type
+   */
+  virtualAccountNumberEnrollmentMetadata?:
+    | VirtualAccountNumberEnrollmentMetadataCreate
+    | undefined;
 };
 
 /** @internal */
@@ -368,6 +406,8 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     .optional(),
   foreign_individual_account_enrollment_metadata:
     ForeignIndividualAccountEnrollmentMetadataCreate$inboundSchema.optional(),
+  foreign_joint_account_enrollment_metadata:
+    ForeignJointAccountEnrollmentMetadataCreate$inboundSchema.optional(),
   fpsl_enrollment_metadata: FPSLEnrollmentMetaDataCreate$inboundSchema
     .optional(),
   individual_enrollment_metadata:
@@ -396,10 +436,14 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
   llc_enrollment_metadata: LLCEnrollmentMetadataCreate$inboundSchema.optional(),
   operating_enrollment_metadata: OperatingEnrollmentMetadataCreate$inboundSchema
     .optional(),
+  orders_options_trading_enrollment_metadata:
+    OrdersOptionsTradingEnrollmentMetadataCreate$inboundSchema.optional(),
   principal_approver_id: z.string(),
   trust_enrollment_metadata: TrustEnrollmentMetadataCreate$inboundSchema
     .optional(),
   type: EnrollmentCreateType$inboundSchema,
+  virtual_account_number_enrollment_metadata:
+    VirtualAccountNumberEnrollmentMetadataCreate$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "beneficiary_enrollment_metadata": "beneficiaryEnrollmentMetadata",
@@ -409,6 +453,8 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     "estate_enrollment_metadata": "estateEnrollmentMetadata",
     "foreign_individual_account_enrollment_metadata":
       "foreignIndividualAccountEnrollmentMetadata",
+    "foreign_joint_account_enrollment_metadata":
+      "foreignJointAccountEnrollmentMetadata",
     "fpsl_enrollment_metadata": "fpslEnrollmentMetadata",
     "individual_enrollment_metadata": "individualEnrollmentMetadata",
     "ira_beneficiary_enrollment_metadata": "iraBeneficiaryEnrollmentMetadata",
@@ -427,8 +473,12 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
       "jointWithRightsOfSurvivorshipEnrollmentMetadata",
     "llc_enrollment_metadata": "llcEnrollmentMetadata",
     "operating_enrollment_metadata": "operatingEnrollmentMetadata",
+    "orders_options_trading_enrollment_metadata":
+      "ordersOptionsTradingEnrollmentMetadata",
     "principal_approver_id": "principalApproverId",
     "trust_enrollment_metadata": "trustEnrollmentMetadata",
+    "virtual_account_number_enrollment_metadata":
+      "virtualAccountNumberEnrollmentMetadata",
   });
 });
 
@@ -449,6 +499,9 @@ export type EnrollmentCreate$Outbound = {
     | undefined;
   foreign_individual_account_enrollment_metadata?:
     | ForeignIndividualAccountEnrollmentMetadataCreate$Outbound
+    | undefined;
+  foreign_joint_account_enrollment_metadata?:
+    | ForeignJointAccountEnrollmentMetadataCreate$Outbound
     | undefined;
   fpsl_enrollment_metadata?: FPSLEnrollmentMetaDataCreate$Outbound | undefined;
   individual_enrollment_metadata?:
@@ -488,11 +541,17 @@ export type EnrollmentCreate$Outbound = {
   operating_enrollment_metadata?:
     | OperatingEnrollmentMetadataCreate$Outbound
     | undefined;
+  orders_options_trading_enrollment_metadata?:
+    | OrdersOptionsTradingEnrollmentMetadataCreate$Outbound
+    | undefined;
   principal_approver_id: string;
   trust_enrollment_metadata?:
     | TrustEnrollmentMetadataCreate$Outbound
     | undefined;
   type: string;
+  virtual_account_number_enrollment_metadata?:
+    | VirtualAccountNumberEnrollmentMetadataCreate$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -512,6 +571,8 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     .optional(),
   foreignIndividualAccountEnrollmentMetadata:
     ForeignIndividualAccountEnrollmentMetadataCreate$outboundSchema.optional(),
+  foreignJointAccountEnrollmentMetadata:
+    ForeignJointAccountEnrollmentMetadataCreate$outboundSchema.optional(),
   fpslEnrollmentMetadata: FPSLEnrollmentMetaDataCreate$outboundSchema
     .optional(),
   individualEnrollmentMetadata:
@@ -540,10 +601,14 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
   llcEnrollmentMetadata: LLCEnrollmentMetadataCreate$outboundSchema.optional(),
   operatingEnrollmentMetadata: OperatingEnrollmentMetadataCreate$outboundSchema
     .optional(),
+  ordersOptionsTradingEnrollmentMetadata:
+    OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema.optional(),
   principalApproverId: z.string(),
   trustEnrollmentMetadata: TrustEnrollmentMetadataCreate$outboundSchema
     .optional(),
   type: EnrollmentCreateType$outboundSchema,
+  virtualAccountNumberEnrollmentMetadata:
+    VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     beneficiaryEnrollmentMetadata: "beneficiary_enrollment_metadata",
@@ -553,6 +618,8 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     estateEnrollmentMetadata: "estate_enrollment_metadata",
     foreignIndividualAccountEnrollmentMetadata:
       "foreign_individual_account_enrollment_metadata",
+    foreignJointAccountEnrollmentMetadata:
+      "foreign_joint_account_enrollment_metadata",
     fpslEnrollmentMetadata: "fpsl_enrollment_metadata",
     individualEnrollmentMetadata: "individual_enrollment_metadata",
     iraBeneficiaryEnrollmentMetadata: "ira_beneficiary_enrollment_metadata",
@@ -571,8 +638,12 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
       "joint_with_rights_of_survivorship_enrollment_metadata",
     llcEnrollmentMetadata: "llc_enrollment_metadata",
     operatingEnrollmentMetadata: "operating_enrollment_metadata",
+    ordersOptionsTradingEnrollmentMetadata:
+      "orders_options_trading_enrollment_metadata",
     principalApproverId: "principal_approver_id",
     trustEnrollmentMetadata: "trust_enrollment_metadata",
+    virtualAccountNumberEnrollmentMetadata:
+      "virtual_account_number_enrollment_metadata",
   });
 });
 

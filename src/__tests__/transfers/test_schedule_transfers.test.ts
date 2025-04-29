@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { sdk, timeout } from "../utils/sdk";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import {
   createLegalNaturalPerson,
   createAccount,
@@ -268,12 +268,11 @@ test("Test Schedule Transfers Transfers Cancel Wire Withdrawal Schedule Cancel W
     account_id || "",
     withdrawal_id,
   );
-
   expect(result).toBeDefined();
   expect(result.httpMeta.response.status).toBe(200);
 });
 
-test.skip("Skip for now - Test Schedule Transfers Transfers List Schedule Summaries List Schedule Summaries1", async () => {
+test("Test Schedule Transfers Transfers List Schedule Summaries List Schedule Summaries1", async () => {
   const result = await sdk.scheduleTransfers.listScheduleSummaries();
   expect(result).toBeDefined();
   expect(result.httpMeta.response.status).toBe(200);
