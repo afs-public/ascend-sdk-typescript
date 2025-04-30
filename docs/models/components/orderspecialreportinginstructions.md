@@ -6,7 +6,7 @@
 import { OrderSpecialReportingInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: OrderSpecialReportingInstructions =
-  OrderSpecialReportingInstructions.XDividend;
+  OrderSpecialReportingInstructions.ActingAsPrincipal;
 ```
 
 ## Values

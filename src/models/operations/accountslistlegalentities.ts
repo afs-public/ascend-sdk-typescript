@@ -24,7 +24,13 @@ export type AccountsListLegalEntitiesRequest = {
    */
   orderBy?: string | undefined;
   /**
-   * A CEL string to filter results; Use `upperAscii()` for case-insensitive searches; E.g. `entity_name.upperAscii()=="AcMe,InC".upperAscii()`; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information;
+   * A CEL string to filter results; Use `upperAscii()` for case-insensitive searches; E.g. `entity_name.upperAscii()=="AcMe,InC".upperAscii()`; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; Filter options include:
+   *
+   * @remarks
+   *  `legal_entity_id`
+   *  `investigation_id`
+   *  `exempt_customer_reason`
+   *  `exempt_verifying_beneficial_owners`
    */
   filter?: string | undefined;
 };

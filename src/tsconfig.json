@@ -33,7 +33,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["jsonwebtoken", "node"],
+    "types": ["jsonwebtoken", "node"]
   },
   "include": ["hooks", "lib", "models", "sdk", "types", "index.ts", "scripts", "__tests__"],
   "exclude": ["node_modules"]

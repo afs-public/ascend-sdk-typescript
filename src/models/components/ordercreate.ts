@@ -59,16 +59,21 @@ import {
 } from "./stoppricecreate.js";
 
 /**
- * The type of the asset in this order
+ * The type of the asset in this order, which must be one of the following:
+ *
+ * @remarks
+ *  EQUITY, MUTUAL_FUND, and FIXED_INCOME.
  */
 export enum AssetType {
-  AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
   Equity = "EQUITY",
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
 }
 /**
- * The type of the asset in this order
+ * The type of the asset in this order, which must be one of the following:
+ *
+ * @remarks
+ *  EQUITY, MUTUAL_FUND, and FIXED_INCOME.
  */
 export type AssetTypeOpen = OpenEnum<typeof AssetType>;
 
@@ -173,7 +178,10 @@ export type TimeInForceOpen = OpenEnum<typeof TimeInForce>;
  */
 export type OrderCreate = {
   /**
-   * The type of the asset in this order
+   * The type of the asset in this order, which must be one of the following:
+   *
+   * @remarks
+   *  EQUITY, MUTUAL_FUND, and FIXED_INCOME.
    */
   assetType: AssetTypeOpen;
   /**
@@ -197,7 +205,7 @@ export type OrderCreate = {
    */
   currencyCode?: string | undefined;
   /**
-   * Fees that will be applied to this order.
+   * Fees that will be applied to this order. Only the BROKER_FEE type is supported.
    */
   fees?: Array<FeeCreate> | undefined;
   /**

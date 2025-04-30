@@ -32,6 +32,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `RegistrationIraRollover`                | REGISTRATION_IRA_ROLLOVER                |
 | `RegistrationTrust`                      | REGISTRATION_TRUST                       |
 | `RegistrationCorporation`                | REGISTRATION_CORPORATION                 |
+| `RegistrationLlc`                        | REGISTRATION_LLC                         |
 | `CashFdicCashSweep`                      | CASH_FDIC_CASH_SWEEP                     |
 | `RetirementBeneficiaryDesignation`       | RETIREMENT_BENEFICIARY_DESIGNATION       |
 | `DividendReinvestmentPlan`               | DIVIDEND_REINVESTMENT_PLAN               |
@@ -39,4 +40,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `RegistrationIraBeneficiaryRoth`         | REGISTRATION_IRA_BENEFICIARY_ROTH        |
 | `RegistrationIndividualForeign`          | REGISTRATION_INDIVIDUAL_FOREIGN          |
 | `RegistrationCustodial`                  | REGISTRATION_CUSTODIAL                   |
+| `VirtualAccountNumber`                   | VIRTUAL_ACCOUNT_NUMBER                   |
 | -                                        | `Unrecognized<string>`                   |

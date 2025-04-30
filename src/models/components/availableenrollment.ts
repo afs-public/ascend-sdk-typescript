@@ -36,6 +36,7 @@ export enum EnrollmentType {
   RegistrationIraRollover = "REGISTRATION_IRA_ROLLOVER",
   RegistrationTrust = "REGISTRATION_TRUST",
   RegistrationCorporation = "REGISTRATION_CORPORATION",
+  RegistrationLlc = "REGISTRATION_LLC",
   CashFdicCashSweep = "CASH_FDIC_CASH_SWEEP",
   RetirementBeneficiaryDesignation = "RETIREMENT_BENEFICIARY_DESIGNATION",
   DividendReinvestmentPlan = "DIVIDEND_REINVESTMENT_PLAN",
@@ -44,6 +45,7 @@ export enum EnrollmentType {
   RegistrationIraBeneficiaryRoth = "REGISTRATION_IRA_BENEFICIARY_ROTH",
   RegistrationIndividualForeign = "REGISTRATION_INDIVIDUAL_FOREIGN",
   RegistrationCustodial = "REGISTRATION_CUSTODIAL",
+  VirtualAccountNumber = "VIRTUAL_ACCOUNT_NUMBER",
 }
 /**
  * The enrollment type.

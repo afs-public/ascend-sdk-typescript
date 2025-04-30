@@ -41,4 +41,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `StockTradesDisabled`                                     | STOCK_TRADES_DISABLED                                     |
 | `AssetNotSetUpToTrade`                                    | ASSET_NOT_SET_UP_TO_TRADE                                 |
 | `AnotherBasketOrderForAccountHasFailedRiskChecks`         | ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS   |
+| `InsufficientPosition`                                    | INSUFFICIENT_POSITION                                     |
+| `FailedBuyingPower`                                       | FAILED_BUYING_POWER                                       |
 | -                                                         | `Unrecognized<string>`                                    |

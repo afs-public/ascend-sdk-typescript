@@ -46,6 +46,16 @@ export type PriorYearEndAccountBalance = {
 };
 
 /**
+ * The remaining amount required to be distributed for the tax year. Calculated as the difference between the RMD for the account and its regular distribution total to date. This will return zero if the account is not required to make a distribution during the tax year or has already met its distribution requirement.
+ */
+export type RemainingDistributionRequired = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
  * The required minimum distribution (RMD). Will be unset if the account is not required to make a distribution during the tax year. Distributions are only required for some account registrations and when the account owner reaches a certain age.
  */
 export type RequiredMinimumDistribution = {
@@ -61,6 +71,13 @@ export type RequiredMinimumDistribution = {
    * The account balance at the end of the prior year in USD. This value is used to calculate the RMD amount.
    */
   priorYearEndAccountBalance?: PriorYearEndAccountBalance | null | undefined;
+  /**
+   * The remaining amount required to be distributed for the tax year. Calculated as the difference between the RMD for the account and its regular distribution total to date. This will return zero if the account is not required to make a distribution during the tax year or has already met its distribution requirement.
+   */
+  remainingDistributionRequired?:
+    | RemainingDistributionRequired
+    | null
+    | undefined;
 };
 
 /**
@@ -244,6 +261,42 @@ export namespace PriorYearEndAccountBalance$ {
 }
 
 /** @internal */
+export const RemainingDistributionRequired$inboundSchema: z.ZodType<
+  RemainingDistributionRequired,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type RemainingDistributionRequired$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const RemainingDistributionRequired$outboundSchema: z.ZodType<
+  RemainingDistributionRequired$Outbound,
+  z.ZodTypeDef,
+  RemainingDistributionRequired
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RemainingDistributionRequired$ {
+  /** @deprecated use `RemainingDistributionRequired$inboundSchema` instead. */
+  export const inboundSchema = RemainingDistributionRequired$inboundSchema;
+  /** @deprecated use `RemainingDistributionRequired$outboundSchema` instead. */
+  export const outboundSchema = RemainingDistributionRequired$outboundSchema;
+  /** @deprecated use `RemainingDistributionRequired$Outbound` instead. */
+  export type Outbound = RemainingDistributionRequired$Outbound;
+}
+
+/** @internal */
 export const RequiredMinimumDistribution$inboundSchema: z.ZodType<
   RequiredMinimumDistribution,
   z.ZodTypeDef,
@@ -257,10 +310,14 @@ export const RequiredMinimumDistribution$inboundSchema: z.ZodType<
   prior_year_end_account_balance: z.nullable(
     z.lazy(() => PriorYearEndAccountBalance$inboundSchema),
   ).optional(),
+  remaining_distribution_required: z.nullable(
+    z.lazy(() => RemainingDistributionRequired$inboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "life_expectancy_factor": "lifeExpectancyFactor",
     "prior_year_end_account_balance": "priorYearEndAccountBalance",
+    "remaining_distribution_required": "remainingDistributionRequired",
   });
 });
 
@@ -270,6 +327,10 @@ export type RequiredMinimumDistribution$Outbound = {
   life_expectancy_factor?: LifeExpectancyFactor$Outbound | null | undefined;
   prior_year_end_account_balance?:
     | PriorYearEndAccountBalance$Outbound
+    | null
+    | undefined;
+  remaining_distribution_required?:
+    | RemainingDistributionRequired$Outbound
     | null
     | undefined;
 };
@@ -288,10 +349,14 @@ export const RequiredMinimumDistribution$outboundSchema: z.ZodType<
   priorYearEndAccountBalance: z.nullable(
     z.lazy(() => PriorYearEndAccountBalance$outboundSchema),
   ).optional(),
+  remainingDistributionRequired: z.nullable(
+    z.lazy(() => RemainingDistributionRequired$outboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     lifeExpectancyFactor: "life_expectancy_factor",
     priorYearEndAccountBalance: "prior_year_end_account_balance",
+    remainingDistributionRequired: "remaining_distribution_required",
   });
 });
 

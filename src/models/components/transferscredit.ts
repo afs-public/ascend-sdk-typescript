@@ -132,6 +132,10 @@ export type TransfersCredit = {
    */
   description?: string | undefined;
   /**
+   * Optional account field to denote where the credit amount should be withdrawn from. If provided, the account must be a fee operating account. In the case of multiple fee operating accounts under the same correspondent, this field must be provided. If not provided, this will be looked up asynchronously (therefore will not be in the initial response)
+   */
+  feeOperatingAccount?: string | undefined;
+  /**
    * Full name of the credit resource, which contains account id and credit transaction id
    */
   name?: string | undefined;
@@ -313,6 +317,7 @@ export const TransfersCredit$inboundSchema: z.ZodType<
     .optional(),
   client_transfer_id: z.string().optional(),
   description: z.string().optional(),
+  fee_operating_account: z.string().optional(),
   name: z.string().optional(),
   state: z.nullable(z.lazy(() => TransfersCreditState$inboundSchema))
     .optional(),
@@ -320,6 +325,7 @@ export const TransfersCredit$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "client_transfer_id": "clientTransferId",
+    "fee_operating_account": "feeOperatingAccount",
   });
 });
 
@@ -328,6 +334,7 @@ export type TransfersCredit$Outbound = {
   amount?: TransfersCreditAmount$Outbound | null | undefined;
   client_transfer_id?: string | undefined;
   description?: string | undefined;
+  fee_operating_account?: string | undefined;
   name?: string | undefined;
   state?: TransfersCreditState$Outbound | null | undefined;
   type?: string | undefined;
@@ -343,6 +350,7 @@ export const TransfersCredit$outboundSchema: z.ZodType<
     .optional(),
   clientTransferId: z.string().optional(),
   description: z.string().optional(),
+  feeOperatingAccount: z.string().optional(),
   name: z.string().optional(),
   state: z.nullable(z.lazy(() => TransfersCreditState$outboundSchema))
     .optional(),
@@ -350,6 +358,7 @@ export const TransfersCredit$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     clientTransferId: "client_transfer_id",
+    feeOperatingAccount: "fee_operating_account",
   });
 });
 

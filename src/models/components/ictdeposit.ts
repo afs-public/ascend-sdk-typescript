@@ -86,7 +86,7 @@ export type IctDepositRetirementContribution = {
  * - `RETURNED` - The transfer was returned.
  * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
  */
-export enum IctDepositState {
+export enum IctDepositStateState {
   StateUnspecified = "STATE_UNSPECIFIED",
   Processing = "PROCESSING",
   PendingReview = "PENDING_REVIEW",
@@ -110,10 +110,93 @@ export enum IctDepositState {
  * - `RETURNED` - The transfer was returned.
  * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
  */
-export type IctDepositStateOpen = OpenEnum<typeof IctDepositState>;
+export type IctDepositStateStateOpen = OpenEnum<typeof IctDepositStateState>;
 
 /**
  * The state of the ICT deposit
+ */
+export type IctDepositState = {
+  /**
+   * The user or service that triggered the state update.
+   */
+  actor?: string | undefined;
+  /**
+   * Additional description of the transfer state.
+   */
+  message?: string | undefined;
+  /**
+   * Additional metadata relating to the transfer state. Included data depends on the state, e.g.:
+   *
+   * @remarks
+   *  - Rejection reasons are included when the `state` is `REJECTED`
+   *  - Reason and comment are included when `state` is `CANCELED`
+   */
+  metadata?: { [k: string]: any } | null | undefined;
+  /**
+   * The high level state of a transfer, one of:
+   *
+   * @remarks
+   * - `PROCESSING` - The transfer is being processed and will be posted if successful.
+   * - `PENDING_REVIEW` - The transfer is pending review and will continue processing if approved.
+   * - `POSTED` - The transfer has been posted to the ledger and will be completed at the end of the processing window if not canceled first.
+   * - `COMPLETED` - The transfer has been batched and completed.
+   * - `REJECTED` - The transfer was rejected.
+   * - `CANCELED` - The transfer was canceled.
+   * - `RETURNED` - The transfer was returned.
+   * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
+   */
+  state?: IctDepositStateStateOpen | undefined;
+  /**
+   * The time of the state update.
+   */
+  updateTime?: Date | null | undefined;
+};
+
+/**
+ * The high level state of a transfer, one of:
+ *
+ * @remarks
+ * - `PROCESSING` - The transfer is being processed and will be posted if successful.
+ * - `PENDING_REVIEW` - The transfer is pending review and will continue processing if approved.
+ * - `POSTED` - The transfer has been posted to the ledger and will be completed at the end of the processing window if not canceled first.
+ * - `COMPLETED` - The transfer has been batched and completed.
+ * - `REJECTED` - The transfer was rejected.
+ * - `CANCELED` - The transfer was canceled.
+ * - `RETURNED` - The transfer was returned.
+ * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
+ */
+export enum IctDepositTransferStateState {
+  StateUnspecified = "STATE_UNSPECIFIED",
+  Processing = "PROCESSING",
+  PendingReview = "PENDING_REVIEW",
+  Posted = "POSTED",
+  Completed = "COMPLETED",
+  Rejected = "REJECTED",
+  Canceled = "CANCELED",
+  Returned = "RETURNED",
+  Postponed = "POSTPONED",
+}
+/**
+ * The high level state of a transfer, one of:
+ *
+ * @remarks
+ * - `PROCESSING` - The transfer is being processed and will be posted if successful.
+ * - `PENDING_REVIEW` - The transfer is pending review and will continue processing if approved.
+ * - `POSTED` - The transfer has been posted to the ledger and will be completed at the end of the processing window if not canceled first.
+ * - `COMPLETED` - The transfer has been batched and completed.
+ * - `REJECTED` - The transfer was rejected.
+ * - `CANCELED` - The transfer was canceled.
+ * - `RETURNED` - The transfer was returned.
+ * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
+ */
+export type IctDepositTransferStateStateOpen = OpenEnum<
+  typeof IctDepositTransferStateState
+>;
+
+/**
+ * Deprecated, use state instead
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type TransferState = {
   /**
@@ -145,7 +228,7 @@ export type TransferState = {
    * - `RETURNED` - The transfer was returned.
    * - `POSTPONED` - The transfer is postponed and will resume processing during the next processing window.
    */
-  state?: IctDepositStateOpen | undefined;
+  state?: IctDepositTransferStateStateOpen | undefined;
   /**
    * The time of the state update.
    */
@@ -587,6 +670,12 @@ export type IctDeposit = {
   /**
    * The state of the ICT deposit
    */
+  state?: IctDepositState | null | undefined;
+  /**
+   * Deprecated, use state instead
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   transferState?: TransferState | null | undefined;
   /**
    * The travel rule information for the ICT deposit
@@ -742,25 +831,81 @@ export namespace IctDepositRetirementContribution$ {
 }
 
 /** @internal */
-export const IctDepositState$inboundSchema: z.ZodType<
-  IctDepositStateOpen,
+export const IctDepositStateState$inboundSchema: z.ZodType<
+  IctDepositStateStateOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(IctDepositState),
+    z.nativeEnum(IctDepositStateState),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const IctDepositState$outboundSchema: z.ZodType<
-  IctDepositStateOpen,
+export const IctDepositStateState$outboundSchema: z.ZodType<
+  IctDepositStateStateOpen,
   z.ZodTypeDef,
-  IctDepositStateOpen
+  IctDepositStateStateOpen
 > = z.union([
-  z.nativeEnum(IctDepositState),
+  z.nativeEnum(IctDepositStateState),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IctDepositStateState$ {
+  /** @deprecated use `IctDepositStateState$inboundSchema` instead. */
+  export const inboundSchema = IctDepositStateState$inboundSchema;
+  /** @deprecated use `IctDepositStateState$outboundSchema` instead. */
+  export const outboundSchema = IctDepositStateState$outboundSchema;
+}
+
+/** @internal */
+export const IctDepositState$inboundSchema: z.ZodType<
+  IctDepositState,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  actor: z.string().optional(),
+  message: z.string().optional(),
+  metadata: z.nullable(z.record(z.any())).optional(),
+  state: IctDepositStateState$inboundSchema.optional(),
+  update_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "update_time": "updateTime",
+  });
+});
+
+/** @internal */
+export type IctDepositState$Outbound = {
+  actor?: string | undefined;
+  message?: string | undefined;
+  metadata?: { [k: string]: any } | null | undefined;
+  state?: string | undefined;
+  update_time?: string | null | undefined;
+};
+
+/** @internal */
+export const IctDepositState$outboundSchema: z.ZodType<
+  IctDepositState$Outbound,
+  z.ZodTypeDef,
+  IctDepositState
+> = z.object({
+  actor: z.string().optional(),
+  message: z.string().optional(),
+  metadata: z.nullable(z.record(z.any())).optional(),
+  state: IctDepositStateState$outboundSchema.optional(),
+  updateTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    updateTime: "update_time",
+  });
+});
 
 /**
  * @internal
@@ -771,6 +916,40 @@ export namespace IctDepositState$ {
   export const inboundSchema = IctDepositState$inboundSchema;
   /** @deprecated use `IctDepositState$outboundSchema` instead. */
   export const outboundSchema = IctDepositState$outboundSchema;
+  /** @deprecated use `IctDepositState$Outbound` instead. */
+  export type Outbound = IctDepositState$Outbound;
+}
+
+/** @internal */
+export const IctDepositTransferStateState$inboundSchema: z.ZodType<
+  IctDepositTransferStateStateOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(IctDepositTransferStateState),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const IctDepositTransferStateState$outboundSchema: z.ZodType<
+  IctDepositTransferStateStateOpen,
+  z.ZodTypeDef,
+  IctDepositTransferStateStateOpen
+> = z.union([
+  z.nativeEnum(IctDepositTransferStateState),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IctDepositTransferStateState$ {
+  /** @deprecated use `IctDepositTransferStateState$inboundSchema` instead. */
+  export const inboundSchema = IctDepositTransferStateState$inboundSchema;
+  /** @deprecated use `IctDepositTransferStateState$outboundSchema` instead. */
+  export const outboundSchema = IctDepositTransferStateState$outboundSchema;
 }
 
 /** @internal */
@@ -782,7 +961,7 @@ export const TransferState$inboundSchema: z.ZodType<
   actor: z.string().optional(),
   message: z.string().optional(),
   metadata: z.nullable(z.record(z.any())).optional(),
-  state: IctDepositState$inboundSchema.optional(),
+  state: IctDepositTransferStateState$inboundSchema.optional(),
   update_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -810,7 +989,7 @@ export const TransferState$outboundSchema: z.ZodType<
   actor: z.string().optional(),
   message: z.string().optional(),
   metadata: z.nullable(z.record(z.any())).optional(),
-  state: IctDepositState$outboundSchema.optional(),
+  state: IctDepositTransferStateState$outboundSchema.optional(),
   updateTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -1612,6 +1791,7 @@ export const IctDeposit$inboundSchema: z.ZodType<
   retirement_contribution: z.nullable(
     z.lazy(() => IctDepositRetirementContribution$inboundSchema),
   ).optional(),
+  state: z.nullable(z.lazy(() => IctDepositState$inboundSchema)).optional(),
   transfer_state: z.nullable(z.lazy(() => TransferState$inboundSchema))
     .optional(),
   travel_rule: z.nullable(z.lazy(() => TravelRule$inboundSchema)).optional(),
@@ -1634,6 +1814,7 @@ export type IctDeposit$Outbound = {
     | IctDepositRetirementContribution$Outbound
     | null
     | undefined;
+  state?: IctDepositState$Outbound | null | undefined;
   transfer_state?: TransferState$Outbound | null | undefined;
   travel_rule?: TravelRule$Outbound | null | undefined;
 };
@@ -1651,6 +1832,7 @@ export const IctDeposit$outboundSchema: z.ZodType<
   retirementContribution: z.nullable(
     z.lazy(() => IctDepositRetirementContribution$outboundSchema),
   ).optional(),
+  state: z.nullable(z.lazy(() => IctDepositState$outboundSchema)).optional(),
   transferState: z.nullable(z.lazy(() => TransferState$outboundSchema))
     .optional(),
   travelRule: z.nullable(z.lazy(() => TravelRule$outboundSchema)).optional(),

@@ -59,7 +59,7 @@ export type EmploymentUpdate = {
    */
   employmentStatus?: EmploymentUpdateEmploymentStatusOpen | undefined;
   /**
-   * The nature of work performed at an investor's place of employment.
+   * The nature of work performed at an investor's place of employment. Required if the employment_status is `EMPLOYED` or `SELF_EMPLOYED`.
    */
   occupation?: string | undefined;
   /**

@@ -9,7 +9,7 @@ import { ForceReturnAchDepositRequestCreate, NachaReturnCreateCode } from "@apex
 
 let value: ForceReturnAchDepositRequestCreate = {
   nachaReturn: {
-    code: NachaReturnCreateCode.R42,
+    code: NachaReturnCreateCode.R67,
   },
   name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
 };

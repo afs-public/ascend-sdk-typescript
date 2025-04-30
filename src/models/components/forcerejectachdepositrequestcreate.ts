@@ -12,6 +12,10 @@ export type ForceRejectAchDepositRequestCreate = {
    * The name of the ACH deposit to force reject.
    */
   name: string;
+  /**
+   * Reason why the ACH deposit is being rejected.
+   */
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -21,11 +25,13 @@ export const ForceRejectAchDepositRequestCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /** @internal */
 export type ForceRejectAchDepositRequestCreate$Outbound = {
   name: string;
+  reason?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +41,7 @@ export const ForceRejectAchDepositRequestCreate$outboundSchema: z.ZodType<
   ForceRejectAchDepositRequestCreate
 > = z.object({
   name: z.string(),
+  reason: z.string().optional(),
 });
 
 /**

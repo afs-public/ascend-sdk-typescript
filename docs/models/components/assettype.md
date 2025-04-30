@@ -1,6 +1,7 @@
 # AssetType
 
-The type of the asset in this order
+The type of the asset in this order, which must be one of the following:
+ EQUITY, MUTUAL_FUND, and FIXED_INCOME.
 
 ## Example Usage
 
@@ -16,7 +17,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `AssetTypeUnspecified` | ASSET_TYPE_UNSPECIFIED |
 | `Equity`               | EQUITY                 |
 | `FixedIncome`          | FIXED_INCOME           |
 | `MutualFund`           | MUTUAL_FUND            |

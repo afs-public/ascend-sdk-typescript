@@ -11,7 +11,7 @@ import {
 } from "../../types/enums.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum EstateEnrollmentMetadataCreateDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -20,7 +20,7 @@ export enum EstateEnrollmentMetadataCreateDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type EstateEnrollmentMetadataCreateDividendReinvestmentPlanOpen =
   OpenEnum<typeof EstateEnrollmentMetadataCreateDividendReinvestmentPlan>;
@@ -34,7 +34,7 @@ export type EstateEnrollmentMetadataCreate = {
    */
   certificateOfAppointmentDocumentId?: string | undefined;
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | EstateEnrollmentMetadataCreateDividendReinvestmentPlanOpen

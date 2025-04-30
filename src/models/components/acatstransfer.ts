@@ -51,7 +51,7 @@ export type Deliverer = {
 /**
  * The direction of the transfer
  */
-export enum Direction {
+export enum AcatsTransferDirection {
   DirectionUnspecified = "DIRECTION_UNSPECIFIED",
   Outgoing = "OUTGOING",
   Incoming = "INCOMING",
@@ -59,7 +59,9 @@ export enum Direction {
 /**
  * The direction of the transfer
  */
-export type DirectionOpen = OpenEnum<typeof Direction>;
+export type AcatsTransferDirectionOpen = OpenEnum<
+  typeof AcatsTransferDirection
+>;
 
 /**
  * The NSCC transfer status
@@ -218,7 +220,7 @@ export type AcatsTransfer = {
   /**
    * The direction of the transfer
    */
-  direction?: DirectionOpen | undefined;
+  direction?: AcatsTransferDirectionOpen | undefined;
   /**
    * The service generated name of the transfer. Format: correspondents/{correspondent_id}/accounts/{account_id}/transfers/{transfer_id}
    */
@@ -355,23 +357,23 @@ export namespace Deliverer$ {
 }
 
 /** @internal */
-export const Direction$inboundSchema: z.ZodType<
-  DirectionOpen,
+export const AcatsTransferDirection$inboundSchema: z.ZodType<
+  AcatsTransferDirectionOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(Direction),
+    z.nativeEnum(AcatsTransferDirection),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const Direction$outboundSchema: z.ZodType<
-  DirectionOpen,
+export const AcatsTransferDirection$outboundSchema: z.ZodType<
+  AcatsTransferDirectionOpen,
   z.ZodTypeDef,
-  DirectionOpen
+  AcatsTransferDirectionOpen
 > = z.union([
-  z.nativeEnum(Direction),
+  z.nativeEnum(AcatsTransferDirection),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -379,11 +381,11 @@ export const Direction$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Direction$ {
-  /** @deprecated use `Direction$inboundSchema` instead. */
-  export const inboundSchema = Direction$inboundSchema;
-  /** @deprecated use `Direction$outboundSchema` instead. */
-  export const outboundSchema = Direction$outboundSchema;
+export namespace AcatsTransferDirection$ {
+  /** @deprecated use `AcatsTransferDirection$inboundSchema` instead. */
+  export const inboundSchema = AcatsTransferDirection$inboundSchema;
+  /** @deprecated use `AcatsTransferDirection$outboundSchema` instead. */
+  export const outboundSchema = AcatsTransferDirection$outboundSchema;
 }
 
 /** @internal */
@@ -621,7 +623,7 @@ export const AcatsTransfer$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   deliverer: z.nullable(z.lazy(() => Deliverer$inboundSchema)).optional(),
-  direction: Direction$inboundSchema.optional(),
+  direction: AcatsTransferDirection$inboundSchema.optional(),
   name: z.string().optional(),
   nscc_status: NsccStatus$inboundSchema.optional(),
   original_control_number: z.string().optional(),
@@ -668,7 +670,7 @@ export const AcatsTransfer$outboundSchema: z.ZodType<
   comment: z.string().optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   deliverer: z.nullable(z.lazy(() => Deliverer$outboundSchema)).optional(),
-  direction: Direction$outboundSchema.optional(),
+  direction: AcatsTransferDirection$outboundSchema.optional(),
   name: z.string().optional(),
   nsccStatus: NsccStatus$outboundSchema.optional(),
   originalControlNumber: z.string().optional(),

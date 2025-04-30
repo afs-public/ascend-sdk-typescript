@@ -23,7 +23,7 @@ export type TransferScheduleSummaryAmount = {
 /**
  * Flag indicating whether this is a deposit or withdrawal transfer
  */
-export enum TransferScheduleSummaryDirection {
+export enum Direction {
   DirectionUnspecified = "DIRECTION_UNSPECIFIED",
   Deposit = "DEPOSIT",
   Withdrawal = "WITHDRAWAL",
@@ -31,9 +31,7 @@ export enum TransferScheduleSummaryDirection {
 /**
  * Flag indicating whether this is a deposit or withdrawal transfer
  */
-export type TransferScheduleSummaryDirectionOpen = OpenEnum<
-  typeof TransferScheduleSummaryDirection
->;
+export type DirectionOpen = OpenEnum<typeof Direction>;
 
 /**
  * The mechanism used for this transfer schedule
@@ -344,7 +342,7 @@ export type TransferScheduleSummary = {
   /**
    * Flag indicating whether this is a deposit or withdrawal transfer
    */
-  direction?: TransferScheduleSummaryDirectionOpen | undefined;
+  direction?: DirectionOpen | undefined;
   /**
    * The mechanism used for this transfer schedule
    */
@@ -410,23 +408,23 @@ export namespace TransferScheduleSummaryAmount$ {
 }
 
 /** @internal */
-export const TransferScheduleSummaryDirection$inboundSchema: z.ZodType<
-  TransferScheduleSummaryDirectionOpen,
+export const Direction$inboundSchema: z.ZodType<
+  DirectionOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(TransferScheduleSummaryDirection),
+    z.nativeEnum(Direction),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const TransferScheduleSummaryDirection$outboundSchema: z.ZodType<
-  TransferScheduleSummaryDirectionOpen,
+export const Direction$outboundSchema: z.ZodType<
+  DirectionOpen,
   z.ZodTypeDef,
-  TransferScheduleSummaryDirectionOpen
+  DirectionOpen
 > = z.union([
-  z.nativeEnum(TransferScheduleSummaryDirection),
+  z.nativeEnum(Direction),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -434,11 +432,11 @@ export const TransferScheduleSummaryDirection$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TransferScheduleSummaryDirection$ {
-  /** @deprecated use `TransferScheduleSummaryDirection$inboundSchema` instead. */
-  export const inboundSchema = TransferScheduleSummaryDirection$inboundSchema;
-  /** @deprecated use `TransferScheduleSummaryDirection$outboundSchema` instead. */
-  export const outboundSchema = TransferScheduleSummaryDirection$outboundSchema;
+export namespace Direction$ {
+  /** @deprecated use `Direction$inboundSchema` instead. */
+  export const inboundSchema = Direction$inboundSchema;
+  /** @deprecated use `Direction$outboundSchema` instead. */
+  export const outboundSchema = Direction$outboundSchema;
 }
 
 /** @internal */
@@ -1176,7 +1174,7 @@ export const TransferScheduleSummary$inboundSchema: z.ZodType<
   amount: z.nullable(z.lazy(() => TransferScheduleSummaryAmount$inboundSchema))
     .optional(),
   client_schedule_id: z.string().optional(),
-  direction: TransferScheduleSummaryDirection$inboundSchema.optional(),
+  direction: Direction$inboundSchema.optional(),
   mechanism: TransferScheduleSummaryMechanism$inboundSchema.optional(),
   retirement_contribution: z.nullable(
     z.lazy(() => TransferScheduleSummaryRetirementContribution$inboundSchema),
@@ -1225,7 +1223,7 @@ export const TransferScheduleSummary$outboundSchema: z.ZodType<
   amount: z.nullable(z.lazy(() => TransferScheduleSummaryAmount$outboundSchema))
     .optional(),
   clientScheduleId: z.string().optional(),
-  direction: TransferScheduleSummaryDirection$outboundSchema.optional(),
+  direction: Direction$outboundSchema.optional(),
   mechanism: TransferScheduleSummaryMechanism$outboundSchema.optional(),
   retirementContribution: z.nullable(
     z.lazy(() => TransferScheduleSummaryRetirementContribution$outboundSchema),

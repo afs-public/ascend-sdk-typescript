@@ -9,6 +9,12 @@ import {
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import {
+  OptionDeliverable,
+  OptionDeliverable$inboundSchema,
+  OptionDeliverable$Outbound,
+  OptionDeliverable$outboundSchema,
+} from "./optiondeliverable.js";
 
 /**
  * Indicates the type of currency
@@ -556,6 +562,320 @@ export type MutualFund = {
 };
 
 /**
+ * Indicates whether the option is a Call or a Put. A Put entitles the holder to sell shares at the specified strike_price, while a Call entitles the holder to buy shares at the specified strike_price.
+ */
+export enum CallPut {
+  CallPutUnspecified = "CALL_PUT_UNSPECIFIED",
+  Call = "CALL",
+  Put = "PUT",
+}
+/**
+ * Indicates whether the option is a Call or a Put. A Put entitles the holder to sell shares at the specified strike_price, while a Call entitles the holder to buy shares at the specified strike_price.
+ */
+export type CallPutOpen = OpenEnum<typeof CallPut>;
+
+/**
+ * Indicates how and when an option can be exercised, either American (exercise any time before expiration) or European (exercise only at expiration).
+ */
+export enum ExerciseStyle {
+  ExerciseStyleUnspecified = "EXERCISE_STYLE_UNSPECIFIED",
+  American = "AMERICAN",
+  European = "EUROPEAN",
+}
+/**
+ * Indicates how and when an option can be exercised, either American (exercise any time before expiration) or European (exercise only at expiration).
+ */
+export type ExerciseStyleOpen = OpenEnum<typeof ExerciseStyle>;
+
+/**
+ * The date when the option contract expires. This will typically match the series_date but can vary when the option expiration is accelerated for a given series. This field will represent the actual expiration date.
+ */
+export type AssetExpirationDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
+ * Classification is the category of option that the option falls into These are based on how the contract was written. Only STANDARD is supported at this time.
+ */
+export enum Classification {
+  ClassificationUnspecified = "CLASSIFICATION_UNSPECIFIED",
+  Standard = "STANDARD",
+  Flex = "FLEX",
+}
+/**
+ * Classification is the category of option that the option falls into These are based on how the contract was written. Only STANDARD is supported at this time.
+ */
+export type ClassificationOpen = OpenEnum<typeof Classification>;
+
+/**
+ * The penny pilot indicator of the option
+ */
+export enum PennyPilotIndicator {
+  PennyPilotIndicatorUnspecified = "PENNY_PILOT_INDICATOR_UNSPECIFIED",
+  PennyPilot = "PENNY_PILOT",
+  NonPennyPilot = "NON_PENNY_PILOT",
+}
+/**
+ * The penny pilot indicator of the option
+ */
+export type PennyPilotIndicatorOpen = OpenEnum<typeof PennyPilotIndicator>;
+
+/**
+ * The position Limit for a given option set at the OCC.
+ */
+export type PositionLimit = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * Indicates whether the option is designated to settle at the market's opening price on the expiration date.
+ */
+export enum SettlementStyle {
+  SettlementStyleUnspecified = "SETTLEMENT_STYLE_UNSPECIFIED",
+  SettleOnOpen = "SETTLE_ON_OPEN",
+  SettleOnClose = "SETTLE_ON_CLOSE",
+}
+/**
+ * Indicates whether the option is designated to settle at the market's opening price on the expiration date.
+ */
+export type SettlementStyleOpen = OpenEnum<typeof SettlementStyle>;
+
+/**
+ * A number that identifies where the decimal for a strike price should be within the OSI.  For example, in the OSI: AAPL 210416C00120000,   a strike_multiplier of 1 indicates that the strike price is $120.000 and a strike_multiplier of .1 indicates that the strike price is $12.00.
+ *
+ * @remarks
+ *
+ *  strike_multiplier is: always 1.0 for Equity Options, usually 1.0 for Index Options, but is 0.1 for “half-point” Index Options.
+ */
+export type StrikeMultiplier = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * A number defined as 1 unit of strike value.  For example, if the strike price multiplier = 100, then a strike of $17 equals $1,700. This field is used for  calculating extended strike values.  The number of units represented by the Strike Price Multiplier is comprised of:
+ *
+ * @remarks
+ *    1) Number of shares for Equity Options
+ *    2) A dollar amount for Index Options
+ *  The typical value of this multiplier for Equity and Index options is 100
+ *  For mini options the typical value is 10
+ */
+export type StrikePriceMultiplier = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * A number defined as 1 unit of trade premium value.  For example, if the multiplier = 100, then a premium of $1.50 equals $150. This field is used for calculating premium money extensions.  The number of units represented by the multiplier is comprised of:
+ *
+ * @remarks
+ *   1) Number of shares for Equity Options
+ *   2) A dollar amount for Index Options
+ *  The typical value of this multiplier for Equity and Index options is 100. In the majority of cases,
+ *  the Trade Premium has to be extended to the same base as the Strike Price. Therefore, the
+ *   Trade Value is usually the same as the Strike Value.
+ *  For mini options the typical value is 10
+ */
+export type TradeValueMultiplier = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * The full option root information
+ */
+export type OptionRoot = {
+  /**
+   * Classification is the category of option that the option falls into These are based on how the contract was written. Only STANDARD is supported at this time.
+   */
+  classification?: ClassificationOpen | undefined;
+  /**
+   * deliverables is the deliverables of the option More than 20 deliverable assets are not supported.
+   */
+  deliverables?: Array<OptionDeliverable> | undefined;
+  /**
+   * The penny pilot indicator of the option
+   */
+  pennyPilotIndicator?: PennyPilotIndicatorOpen | undefined;
+  /**
+   * The position Limit for a given option set at the OCC.
+   */
+  positionLimit?: PositionLimit | null | undefined;
+  /**
+   * Unique identifier for the underlying asset and its associated option contracts, which reflects any changes to the underlying asset caused by corporate actions such as mergers, splits, or spin-offs by updating the root with a numerical value to reflect the adjusted terms or entity.
+   */
+  rootSymbol?: string | undefined;
+  /**
+   * Indicates whether the option is designated to settle at the market's opening price on the expiration date.
+   */
+  settlementStyle?: SettlementStyleOpen | undefined;
+  /**
+   * A number that identifies where the decimal for a strike price should be within the OSI.  For example, in the OSI: AAPL 210416C00120000,   a strike_multiplier of 1 indicates that the strike price is $120.000 and a strike_multiplier of .1 indicates that the strike price is $12.00.
+   *
+   * @remarks
+   *
+   *  strike_multiplier is: always 1.0 for Equity Options, usually 1.0 for Index Options, but is 0.1 for “half-point” Index Options.
+   */
+  strikeMultiplier?: StrikeMultiplier | null | undefined;
+  /**
+   * A number defined as 1 unit of strike value.  For example, if the strike price multiplier = 100, then a strike of $17 equals $1,700. This field is used for  calculating extended strike values.  The number of units represented by the Strike Price Multiplier is comprised of:
+   *
+   * @remarks
+   *    1) Number of shares for Equity Options
+   *    2) A dollar amount for Index Options
+   *  The typical value of this multiplier for Equity and Index options is 100
+   *  For mini options the typical value is 10
+   */
+  strikePriceMultiplier?: StrikePriceMultiplier | null | undefined;
+  /**
+   * A number defined as 1 unit of trade premium value.  For example, if the multiplier = 100, then a premium of $1.50 equals $150. This field is used for calculating premium money extensions.  The number of units represented by the multiplier is comprised of:
+   *
+   * @remarks
+   *   1) Number of shares for Equity Options
+   *   2) A dollar amount for Index Options
+   *  The typical value of this multiplier for Equity and Index options is 100. In the majority of cases,
+   *  the Trade Premium has to be extended to the same base as the Strike Price. Therefore, the
+   *   Trade Value is usually the same as the Strike Value.
+   *  For mini options the typical value is 10
+   */
+  tradeValueMultiplier?: TradeValueMultiplier | null | undefined;
+};
+
+/**
+ * Type of deliverable asset the option is set to deliver upon expiry.
+ */
+export enum OptionType {
+  OptionTypeUnspecified = "OPTION_TYPE_UNSPECIFIED",
+  Equity = "EQUITY",
+  Index = "INDEX",
+}
+/**
+ * Type of deliverable asset the option is set to deliver upon expiry.
+ */
+export type OptionTypeOpen = OpenEnum<typeof OptionType>;
+
+/**
+ * The date of the option contract this is the value in the OSI and is typically the same as the expiration_date but can vary when the option expiration is accelerated.
+ */
+export type SeriesDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
+ * Specifies how an option is settled at expiration, either Physical (delivery of the underlying asset) or Cash (payment of the cash difference).
+ */
+export enum SettlementMethod {
+  SettlementMethodUnspecified = "SETTLEMENT_METHOD_UNSPECIFIED",
+  Cash = "CASH",
+  Physical = "PHYSICAL",
+}
+/**
+ * Specifies how an option is settled at expiration, either Physical (delivery of the underlying asset) or Cash (payment of the cash difference).
+ */
+export type SettlementMethodOpen = OpenEnum<typeof SettlementMethod>;
+
+/**
+ * Indicates whether an option follows Standard settlement terms or has Non-Standard terms, often due to adjustments like corporate actions.
+ */
+export enum SettlementType {
+  SettlementTypeUnspecified = "SETTLEMENT_TYPE_UNSPECIFIED",
+  Standard = "STANDARD",
+  NonStandard = "NON_STANDARD",
+}
+/**
+ * Indicates whether an option follows Standard settlement terms or has Non-Standard terms, often due to adjustments like corporate actions.
+ */
+export type SettlementTypeOpen = OpenEnum<typeof SettlementType>;
+
+/**
+ * The price at which the option holder can buy or sell the deliverable asset(s)
+ */
+export type StrikePrice = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * Option specific asset details
+ */
+export type Option = {
+  /**
+   * Indicates whether the option is a Call or a Put. A Put entitles the holder to sell shares at the specified strike_price, while a Call entitles the holder to buy shares at the specified strike_price.
+   */
+  callPut?: CallPutOpen | undefined;
+  /**
+   * Indicates how and when an option can be exercised, either American (exercise any time before expiration) or European (exercise only at expiration).
+   */
+  exerciseStyle?: ExerciseStyleOpen | undefined;
+  /**
+   * The date when the option contract expires. This will typically match the series_date but can vary when the option expiration is accelerated for a given series. This field will represent the actual expiration date.
+   */
+  expirationDate?: AssetExpirationDate | null | undefined;
+  /**
+   * The full option root information
+   */
+  optionRoot?: OptionRoot | null | undefined;
+  /**
+   * Type of deliverable asset the option is set to deliver upon expiry.
+   */
+  optionType?: OptionTypeOpen | undefined;
+  /**
+   * The leading segment of the OSI, which is typically the original deliverable symbol of the option. There are frequent exceptions to this rule, such as when there are multiple deliverables or the deliverable goes through a corporate action.
+   */
+  rootSymbol?: string | undefined;
+  /**
+   * The date of the option contract this is the value in the OSI and is typically the same as the expiration_date but can vary when the option expiration is accelerated.
+   */
+  seriesDate?: SeriesDate | null | undefined;
+  /**
+   * Specifies how an option is settled at expiration, either Physical (delivery of the underlying asset) or Cash (payment of the cash difference).
+   */
+  settlementMethod?: SettlementMethodOpen | undefined;
+  /**
+   * Indicates whether an option follows Standard settlement terms or has Non-Standard terms, often due to adjustments like corporate actions.
+   */
+  settlementType?: SettlementTypeOpen | undefined;
+  /**
+   * The price at which the option holder can buy or sell the deliverable asset(s)
+   */
+  strikePrice?: StrikePrice | null | undefined;
+};
+
+/**
  * The type or category of the asset
  */
 export enum AssetType1 {
@@ -567,7 +887,6 @@ export enum AssetType1 {
   FdicSynthetic = "FDIC_SYNTHETIC",
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
-  AltInvestment = "ALT_INVESTMENT",
 }
 /**
  * The type or category of the asset
@@ -618,6 +937,10 @@ export type Asset = {
    * assets/{asset_id}
    */
   name?: string | undefined;
+  /**
+   * Option specific asset details
+   */
+  option?: Option | null | undefined;
   /**
    * ISO code identifying the region in which the entity was incorporated
    */
@@ -1787,6 +2110,707 @@ export namespace MutualFund$ {
 }
 
 /** @internal */
+export const CallPut$inboundSchema: z.ZodType<
+  CallPutOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CallPut),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CallPut$outboundSchema: z.ZodType<
+  CallPutOpen,
+  z.ZodTypeDef,
+  CallPutOpen
+> = z.union([
+  z.nativeEnum(CallPut),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CallPut$ {
+  /** @deprecated use `CallPut$inboundSchema` instead. */
+  export const inboundSchema = CallPut$inboundSchema;
+  /** @deprecated use `CallPut$outboundSchema` instead. */
+  export const outboundSchema = CallPut$outboundSchema;
+}
+
+/** @internal */
+export const ExerciseStyle$inboundSchema: z.ZodType<
+  ExerciseStyleOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ExerciseStyle),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ExerciseStyle$outboundSchema: z.ZodType<
+  ExerciseStyleOpen,
+  z.ZodTypeDef,
+  ExerciseStyleOpen
+> = z.union([
+  z.nativeEnum(ExerciseStyle),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ExerciseStyle$ {
+  /** @deprecated use `ExerciseStyle$inboundSchema` instead. */
+  export const inboundSchema = ExerciseStyle$inboundSchema;
+  /** @deprecated use `ExerciseStyle$outboundSchema` instead. */
+  export const outboundSchema = ExerciseStyle$outboundSchema;
+}
+
+/** @internal */
+export const AssetExpirationDate$inboundSchema: z.ZodType<
+  AssetExpirationDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type AssetExpirationDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const AssetExpirationDate$outboundSchema: z.ZodType<
+  AssetExpirationDate$Outbound,
+  z.ZodTypeDef,
+  AssetExpirationDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AssetExpirationDate$ {
+  /** @deprecated use `AssetExpirationDate$inboundSchema` instead. */
+  export const inboundSchema = AssetExpirationDate$inboundSchema;
+  /** @deprecated use `AssetExpirationDate$outboundSchema` instead. */
+  export const outboundSchema = AssetExpirationDate$outboundSchema;
+  /** @deprecated use `AssetExpirationDate$Outbound` instead. */
+  export type Outbound = AssetExpirationDate$Outbound;
+}
+
+/** @internal */
+export const Classification$inboundSchema: z.ZodType<
+  ClassificationOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(Classification),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const Classification$outboundSchema: z.ZodType<
+  ClassificationOpen,
+  z.ZodTypeDef,
+  ClassificationOpen
+> = z.union([
+  z.nativeEnum(Classification),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Classification$ {
+  /** @deprecated use `Classification$inboundSchema` instead. */
+  export const inboundSchema = Classification$inboundSchema;
+  /** @deprecated use `Classification$outboundSchema` instead. */
+  export const outboundSchema = Classification$outboundSchema;
+}
+
+/** @internal */
+export const PennyPilotIndicator$inboundSchema: z.ZodType<
+  PennyPilotIndicatorOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(PennyPilotIndicator),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const PennyPilotIndicator$outboundSchema: z.ZodType<
+  PennyPilotIndicatorOpen,
+  z.ZodTypeDef,
+  PennyPilotIndicatorOpen
+> = z.union([
+  z.nativeEnum(PennyPilotIndicator),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PennyPilotIndicator$ {
+  /** @deprecated use `PennyPilotIndicator$inboundSchema` instead. */
+  export const inboundSchema = PennyPilotIndicator$inboundSchema;
+  /** @deprecated use `PennyPilotIndicator$outboundSchema` instead. */
+  export const outboundSchema = PennyPilotIndicator$outboundSchema;
+}
+
+/** @internal */
+export const PositionLimit$inboundSchema: z.ZodType<
+  PositionLimit,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type PositionLimit$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const PositionLimit$outboundSchema: z.ZodType<
+  PositionLimit$Outbound,
+  z.ZodTypeDef,
+  PositionLimit
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PositionLimit$ {
+  /** @deprecated use `PositionLimit$inboundSchema` instead. */
+  export const inboundSchema = PositionLimit$inboundSchema;
+  /** @deprecated use `PositionLimit$outboundSchema` instead. */
+  export const outboundSchema = PositionLimit$outboundSchema;
+  /** @deprecated use `PositionLimit$Outbound` instead. */
+  export type Outbound = PositionLimit$Outbound;
+}
+
+/** @internal */
+export const SettlementStyle$inboundSchema: z.ZodType<
+  SettlementStyleOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(SettlementStyle),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const SettlementStyle$outboundSchema: z.ZodType<
+  SettlementStyleOpen,
+  z.ZodTypeDef,
+  SettlementStyleOpen
+> = z.union([
+  z.nativeEnum(SettlementStyle),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SettlementStyle$ {
+  /** @deprecated use `SettlementStyle$inboundSchema` instead. */
+  export const inboundSchema = SettlementStyle$inboundSchema;
+  /** @deprecated use `SettlementStyle$outboundSchema` instead. */
+  export const outboundSchema = SettlementStyle$outboundSchema;
+}
+
+/** @internal */
+export const StrikeMultiplier$inboundSchema: z.ZodType<
+  StrikeMultiplier,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type StrikeMultiplier$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const StrikeMultiplier$outboundSchema: z.ZodType<
+  StrikeMultiplier$Outbound,
+  z.ZodTypeDef,
+  StrikeMultiplier
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StrikeMultiplier$ {
+  /** @deprecated use `StrikeMultiplier$inboundSchema` instead. */
+  export const inboundSchema = StrikeMultiplier$inboundSchema;
+  /** @deprecated use `StrikeMultiplier$outboundSchema` instead. */
+  export const outboundSchema = StrikeMultiplier$outboundSchema;
+  /** @deprecated use `StrikeMultiplier$Outbound` instead. */
+  export type Outbound = StrikeMultiplier$Outbound;
+}
+
+/** @internal */
+export const StrikePriceMultiplier$inboundSchema: z.ZodType<
+  StrikePriceMultiplier,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type StrikePriceMultiplier$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const StrikePriceMultiplier$outboundSchema: z.ZodType<
+  StrikePriceMultiplier$Outbound,
+  z.ZodTypeDef,
+  StrikePriceMultiplier
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StrikePriceMultiplier$ {
+  /** @deprecated use `StrikePriceMultiplier$inboundSchema` instead. */
+  export const inboundSchema = StrikePriceMultiplier$inboundSchema;
+  /** @deprecated use `StrikePriceMultiplier$outboundSchema` instead. */
+  export const outboundSchema = StrikePriceMultiplier$outboundSchema;
+  /** @deprecated use `StrikePriceMultiplier$Outbound` instead. */
+  export type Outbound = StrikePriceMultiplier$Outbound;
+}
+
+/** @internal */
+export const TradeValueMultiplier$inboundSchema: z.ZodType<
+  TradeValueMultiplier,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type TradeValueMultiplier$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const TradeValueMultiplier$outboundSchema: z.ZodType<
+  TradeValueMultiplier$Outbound,
+  z.ZodTypeDef,
+  TradeValueMultiplier
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TradeValueMultiplier$ {
+  /** @deprecated use `TradeValueMultiplier$inboundSchema` instead. */
+  export const inboundSchema = TradeValueMultiplier$inboundSchema;
+  /** @deprecated use `TradeValueMultiplier$outboundSchema` instead. */
+  export const outboundSchema = TradeValueMultiplier$outboundSchema;
+  /** @deprecated use `TradeValueMultiplier$Outbound` instead. */
+  export type Outbound = TradeValueMultiplier$Outbound;
+}
+
+/** @internal */
+export const OptionRoot$inboundSchema: z.ZodType<
+  OptionRoot,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  classification: Classification$inboundSchema.optional(),
+  deliverables: z.array(OptionDeliverable$inboundSchema).optional(),
+  penny_pilot_indicator: PennyPilotIndicator$inboundSchema.optional(),
+  position_limit: z.nullable(z.lazy(() => PositionLimit$inboundSchema))
+    .optional(),
+  root_symbol: z.string().optional(),
+  settlement_style: SettlementStyle$inboundSchema.optional(),
+  strike_multiplier: z.nullable(z.lazy(() => StrikeMultiplier$inboundSchema))
+    .optional(),
+  strike_price_multiplier: z.nullable(
+    z.lazy(() => StrikePriceMultiplier$inboundSchema),
+  ).optional(),
+  trade_value_multiplier: z.nullable(
+    z.lazy(() => TradeValueMultiplier$inboundSchema),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "penny_pilot_indicator": "pennyPilotIndicator",
+    "position_limit": "positionLimit",
+    "root_symbol": "rootSymbol",
+    "settlement_style": "settlementStyle",
+    "strike_multiplier": "strikeMultiplier",
+    "strike_price_multiplier": "strikePriceMultiplier",
+    "trade_value_multiplier": "tradeValueMultiplier",
+  });
+});
+
+/** @internal */
+export type OptionRoot$Outbound = {
+  classification?: string | undefined;
+  deliverables?: Array<OptionDeliverable$Outbound> | undefined;
+  penny_pilot_indicator?: string | undefined;
+  position_limit?: PositionLimit$Outbound | null | undefined;
+  root_symbol?: string | undefined;
+  settlement_style?: string | undefined;
+  strike_multiplier?: StrikeMultiplier$Outbound | null | undefined;
+  strike_price_multiplier?: StrikePriceMultiplier$Outbound | null | undefined;
+  trade_value_multiplier?: TradeValueMultiplier$Outbound | null | undefined;
+};
+
+/** @internal */
+export const OptionRoot$outboundSchema: z.ZodType<
+  OptionRoot$Outbound,
+  z.ZodTypeDef,
+  OptionRoot
+> = z.object({
+  classification: Classification$outboundSchema.optional(),
+  deliverables: z.array(OptionDeliverable$outboundSchema).optional(),
+  pennyPilotIndicator: PennyPilotIndicator$outboundSchema.optional(),
+  positionLimit: z.nullable(z.lazy(() => PositionLimit$outboundSchema))
+    .optional(),
+  rootSymbol: z.string().optional(),
+  settlementStyle: SettlementStyle$outboundSchema.optional(),
+  strikeMultiplier: z.nullable(z.lazy(() => StrikeMultiplier$outboundSchema))
+    .optional(),
+  strikePriceMultiplier: z.nullable(
+    z.lazy(() => StrikePriceMultiplier$outboundSchema),
+  ).optional(),
+  tradeValueMultiplier: z.nullable(
+    z.lazy(() => TradeValueMultiplier$outboundSchema),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    pennyPilotIndicator: "penny_pilot_indicator",
+    positionLimit: "position_limit",
+    rootSymbol: "root_symbol",
+    settlementStyle: "settlement_style",
+    strikeMultiplier: "strike_multiplier",
+    strikePriceMultiplier: "strike_price_multiplier",
+    tradeValueMultiplier: "trade_value_multiplier",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OptionRoot$ {
+  /** @deprecated use `OptionRoot$inboundSchema` instead. */
+  export const inboundSchema = OptionRoot$inboundSchema;
+  /** @deprecated use `OptionRoot$outboundSchema` instead. */
+  export const outboundSchema = OptionRoot$outboundSchema;
+  /** @deprecated use `OptionRoot$Outbound` instead. */
+  export type Outbound = OptionRoot$Outbound;
+}
+
+/** @internal */
+export const OptionType$inboundSchema: z.ZodType<
+  OptionTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(OptionType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const OptionType$outboundSchema: z.ZodType<
+  OptionTypeOpen,
+  z.ZodTypeDef,
+  OptionTypeOpen
+> = z.union([
+  z.nativeEnum(OptionType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OptionType$ {
+  /** @deprecated use `OptionType$inboundSchema` instead. */
+  export const inboundSchema = OptionType$inboundSchema;
+  /** @deprecated use `OptionType$outboundSchema` instead. */
+  export const outboundSchema = OptionType$outboundSchema;
+}
+
+/** @internal */
+export const SeriesDate$inboundSchema: z.ZodType<
+  SeriesDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type SeriesDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const SeriesDate$outboundSchema: z.ZodType<
+  SeriesDate$Outbound,
+  z.ZodTypeDef,
+  SeriesDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SeriesDate$ {
+  /** @deprecated use `SeriesDate$inboundSchema` instead. */
+  export const inboundSchema = SeriesDate$inboundSchema;
+  /** @deprecated use `SeriesDate$outboundSchema` instead. */
+  export const outboundSchema = SeriesDate$outboundSchema;
+  /** @deprecated use `SeriesDate$Outbound` instead. */
+  export type Outbound = SeriesDate$Outbound;
+}
+
+/** @internal */
+export const SettlementMethod$inboundSchema: z.ZodType<
+  SettlementMethodOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(SettlementMethod),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const SettlementMethod$outboundSchema: z.ZodType<
+  SettlementMethodOpen,
+  z.ZodTypeDef,
+  SettlementMethodOpen
+> = z.union([
+  z.nativeEnum(SettlementMethod),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SettlementMethod$ {
+  /** @deprecated use `SettlementMethod$inboundSchema` instead. */
+  export const inboundSchema = SettlementMethod$inboundSchema;
+  /** @deprecated use `SettlementMethod$outboundSchema` instead. */
+  export const outboundSchema = SettlementMethod$outboundSchema;
+}
+
+/** @internal */
+export const SettlementType$inboundSchema: z.ZodType<
+  SettlementTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(SettlementType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const SettlementType$outboundSchema: z.ZodType<
+  SettlementTypeOpen,
+  z.ZodTypeDef,
+  SettlementTypeOpen
+> = z.union([
+  z.nativeEnum(SettlementType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SettlementType$ {
+  /** @deprecated use `SettlementType$inboundSchema` instead. */
+  export const inboundSchema = SettlementType$inboundSchema;
+  /** @deprecated use `SettlementType$outboundSchema` instead. */
+  export const outboundSchema = SettlementType$outboundSchema;
+}
+
+/** @internal */
+export const StrikePrice$inboundSchema: z.ZodType<
+  StrikePrice,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type StrikePrice$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const StrikePrice$outboundSchema: z.ZodType<
+  StrikePrice$Outbound,
+  z.ZodTypeDef,
+  StrikePrice
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StrikePrice$ {
+  /** @deprecated use `StrikePrice$inboundSchema` instead. */
+  export const inboundSchema = StrikePrice$inboundSchema;
+  /** @deprecated use `StrikePrice$outboundSchema` instead. */
+  export const outboundSchema = StrikePrice$outboundSchema;
+  /** @deprecated use `StrikePrice$Outbound` instead. */
+  export type Outbound = StrikePrice$Outbound;
+}
+
+/** @internal */
+export const Option$inboundSchema: z.ZodType<Option, z.ZodTypeDef, unknown> = z
+  .object({
+    call_put: CallPut$inboundSchema.optional(),
+    exercise_style: ExerciseStyle$inboundSchema.optional(),
+    expiration_date: z.nullable(z.lazy(() => AssetExpirationDate$inboundSchema))
+      .optional(),
+    option_root: z.nullable(z.lazy(() => OptionRoot$inboundSchema)).optional(),
+    option_type: OptionType$inboundSchema.optional(),
+    root_symbol: z.string().optional(),
+    series_date: z.nullable(z.lazy(() => SeriesDate$inboundSchema)).optional(),
+    settlement_method: SettlementMethod$inboundSchema.optional(),
+    settlement_type: SettlementType$inboundSchema.optional(),
+    strike_price: z.nullable(z.lazy(() => StrikePrice$inboundSchema))
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "call_put": "callPut",
+      "exercise_style": "exerciseStyle",
+      "expiration_date": "expirationDate",
+      "option_root": "optionRoot",
+      "option_type": "optionType",
+      "root_symbol": "rootSymbol",
+      "series_date": "seriesDate",
+      "settlement_method": "settlementMethod",
+      "settlement_type": "settlementType",
+      "strike_price": "strikePrice",
+    });
+  });
+
+/** @internal */
+export type Option$Outbound = {
+  call_put?: string | undefined;
+  exercise_style?: string | undefined;
+  expiration_date?: AssetExpirationDate$Outbound | null | undefined;
+  option_root?: OptionRoot$Outbound | null | undefined;
+  option_type?: string | undefined;
+  root_symbol?: string | undefined;
+  series_date?: SeriesDate$Outbound | null | undefined;
+  settlement_method?: string | undefined;
+  settlement_type?: string | undefined;
+  strike_price?: StrikePrice$Outbound | null | undefined;
+};
+
+/** @internal */
+export const Option$outboundSchema: z.ZodType<
+  Option$Outbound,
+  z.ZodTypeDef,
+  Option
+> = z.object({
+  callPut: CallPut$outboundSchema.optional(),
+  exerciseStyle: ExerciseStyle$outboundSchema.optional(),
+  expirationDate: z.nullable(z.lazy(() => AssetExpirationDate$outboundSchema))
+    .optional(),
+  optionRoot: z.nullable(z.lazy(() => OptionRoot$outboundSchema)).optional(),
+  optionType: OptionType$outboundSchema.optional(),
+  rootSymbol: z.string().optional(),
+  seriesDate: z.nullable(z.lazy(() => SeriesDate$outboundSchema)).optional(),
+  settlementMethod: SettlementMethod$outboundSchema.optional(),
+  settlementType: SettlementType$outboundSchema.optional(),
+  strikePrice: z.nullable(z.lazy(() => StrikePrice$outboundSchema)).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    callPut: "call_put",
+    exerciseStyle: "exercise_style",
+    expirationDate: "expiration_date",
+    optionRoot: "option_root",
+    optionType: "option_type",
+    rootSymbol: "root_symbol",
+    seriesDate: "series_date",
+    settlementMethod: "settlement_method",
+    settlementType: "settlement_type",
+    strikePrice: "strike_price",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Option$ {
+  /** @deprecated use `Option$inboundSchema` instead. */
+  export const inboundSchema = Option$inboundSchema;
+  /** @deprecated use `Option$outboundSchema` instead. */
+  export const outboundSchema = Option$outboundSchema;
+  /** @deprecated use `Option$Outbound` instead. */
+  export type Outbound = Option$Outbound;
+}
+
+/** @internal */
 export const AssetType1$inboundSchema: z.ZodType<
   AssetType1Open,
   z.ZodTypeDef,
@@ -1832,6 +2856,7 @@ export const Asset$inboundSchema: z.ZodType<Asset, z.ZodTypeDef, unknown> = z
     issuing_region_code: z.string().optional(),
     mutual_fund: z.nullable(z.lazy(() => MutualFund$inboundSchema)).optional(),
     name: z.string().optional(),
+    option: z.nullable(z.lazy(() => Option$inboundSchema)).optional(),
     originating_region_code: z.string().optional(),
     symbol: z.string().optional(),
     type: AssetType1$inboundSchema.optional(),
@@ -1858,6 +2883,7 @@ export type Asset$Outbound = {
   issuing_region_code?: string | undefined;
   mutual_fund?: MutualFund$Outbound | null | undefined;
   name?: string | undefined;
+  option?: Option$Outbound | null | undefined;
   originating_region_code?: string | undefined;
   symbol?: string | undefined;
   type?: string | undefined;
@@ -1880,6 +2906,7 @@ export const Asset$outboundSchema: z.ZodType<
   issuingRegionCode: z.string().optional(),
   mutualFund: z.nullable(z.lazy(() => MutualFund$outboundSchema)).optional(),
   name: z.string().optional(),
+  option: z.nullable(z.lazy(() => Option$outboundSchema)).optional(),
   originatingRegionCode: z.string().optional(),
   symbol: z.string().optional(),
   type: AssetType1$outboundSchema.optional(),

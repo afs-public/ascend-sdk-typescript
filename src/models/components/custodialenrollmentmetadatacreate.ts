@@ -11,7 +11,7 @@ import {
 } from "../../types/enums.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum CustodialEnrollmentMetadataCreateDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -20,13 +20,13 @@ export enum CustodialEnrollmentMetadataCreateDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type CustodialEnrollmentMetadataCreateDividendReinvestmentPlanOpen =
   OpenEnum<typeof CustodialEnrollmentMetadataCreateDividendReinvestmentPlan>;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum CustodialEnrollmentMetadataCreateFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -35,7 +35,7 @@ export enum CustodialEnrollmentMetadataCreateFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type CustodialEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
   typeof CustodialEnrollmentMetadataCreateFdicCashSweep
@@ -46,13 +46,13 @@ export type CustodialEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
  */
 export type CustodialEnrollmentMetadataCreate = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | CustodialEnrollmentMetadataCreateDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | CustodialEnrollmentMetadataCreateFdicCashSweepOpen

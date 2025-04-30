@@ -1,13 +1,13 @@
 # YieldType
 
-Characterization of a yield percentage
+The type of yield.
 
 ## Example Usage
 
 ```typescript
 import { YieldType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: YieldType = YieldType.YieldToCall;
+let value: YieldType = YieldType.YieldToMaturity;
 ```
 
 ## Values

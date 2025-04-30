@@ -29,16 +29,21 @@ import {
 } from "./fee.js";
 
 /**
- * The type of the asset in this order
+ * The type of the asset in this order, which must be one of the following:
+ *
+ * @remarks
+ *  EQUITY, MUTUAL_FUND, and FIXED_INCOME.
  */
 export enum OrderAssetType {
-  AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
   Equity = "EQUITY",
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
 }
 /**
- * The type of the asset in this order
+ * The type of the asset in this order, which must be one of the following:
+ *
+ * @remarks
+ *  EQUITY, MUTUAL_FUND, and FIXED_INCOME.
  */
 export type OrderAssetTypeOpen = OpenEnum<typeof OrderAssetType>;
 
@@ -491,7 +496,10 @@ export type Order = {
    */
   assetId?: string | undefined;
   /**
-   * The type of the asset in this order
+   * The type of the asset in this order, which must be one of the following:
+   *
+   * @remarks
+   *  EQUITY, MUTUAL_FUND, and FIXED_INCOME.
    */
   assetType?: OrderAssetTypeOpen | undefined;
   /**
@@ -545,7 +553,7 @@ export type Order = {
    */
   executions?: Array<Executions> | undefined;
   /**
-   * Fees that will be applied to this order.
+   * Fees that will be applied to this order. Only the BROKER_FEE type is supported.
    */
   fees?: Array<Fee> | undefined;
   /**

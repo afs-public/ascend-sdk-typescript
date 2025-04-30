@@ -11,7 +11,7 @@ import {
 } from "../../types/enums.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -20,7 +20,7 @@ export enum JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPl
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -28,7 +28,7 @@ export type JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPl
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -37,7 +37,7 @@ export enum JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweepOpen =
   OpenEnum<typeof JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweep>;
@@ -96,13 +96,13 @@ export type JointTenantsByEntiretyEnrollmentMetadataCreateLegalResidencyStateOfM
  */
 export type JointTenantsByEntiretyEnrollmentMetadataCreate = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweepOpen

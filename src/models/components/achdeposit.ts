@@ -13,7 +13,7 @@ import {
 /**
  * The amount to deposit in USD.
  */
-export type AchDepositAmount = {
+export type Amount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -142,7 +142,7 @@ export type AchDeposit = {
   /**
    * The amount to deposit in USD.
    */
-  amount?: AchDepositAmount | null | undefined;
+  amount?: Amount | null | undefined;
   /**
    * The bank relationship to be used for the ACH deposit.
    */
@@ -170,24 +170,21 @@ export type AchDeposit = {
 };
 
 /** @internal */
-export const AchDepositAmount$inboundSchema: z.ZodType<
-  AchDepositAmount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
+export const Amount$inboundSchema: z.ZodType<Amount, z.ZodTypeDef, unknown> = z
+  .object({
+    value: z.string().optional(),
+  });
 
 /** @internal */
-export type AchDepositAmount$Outbound = {
+export type Amount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const AchDepositAmount$outboundSchema: z.ZodType<
-  AchDepositAmount$Outbound,
+export const Amount$outboundSchema: z.ZodType<
+  Amount$Outbound,
   z.ZodTypeDef,
-  AchDepositAmount
+  Amount
 > = z.object({
   value: z.string().optional(),
 });
@@ -196,13 +193,13 @@ export const AchDepositAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AchDepositAmount$ {
-  /** @deprecated use `AchDepositAmount$inboundSchema` instead. */
-  export const inboundSchema = AchDepositAmount$inboundSchema;
-  /** @deprecated use `AchDepositAmount$outboundSchema` instead. */
-  export const outboundSchema = AchDepositAmount$outboundSchema;
-  /** @deprecated use `AchDepositAmount$Outbound` instead. */
-  export type Outbound = AchDepositAmount$Outbound;
+export namespace Amount$ {
+  /** @deprecated use `Amount$inboundSchema` instead. */
+  export const inboundSchema = Amount$inboundSchema;
+  /** @deprecated use `Amount$outboundSchema` instead. */
+  export const outboundSchema = Amount$outboundSchema;
+  /** @deprecated use `Amount$Outbound` instead. */
+  export type Outbound = Amount$Outbound;
 }
 
 /** @internal */
@@ -380,7 +377,7 @@ export const AchDeposit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: z.nullable(z.lazy(() => AchDepositAmount$inboundSchema)).optional(),
+  amount: z.nullable(z.lazy(() => Amount$inboundSchema)).optional(),
   bank_relationship: z.string().optional(),
   client_transfer_id: z.string().optional(),
   memo: z.string().optional(),
@@ -399,7 +396,7 @@ export const AchDeposit$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AchDeposit$Outbound = {
-  amount?: AchDepositAmount$Outbound | null | undefined;
+  amount?: Amount$Outbound | null | undefined;
   bank_relationship?: string | undefined;
   client_transfer_id?: string | undefined;
   memo?: string | undefined;
@@ -414,7 +411,7 @@ export const AchDeposit$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AchDeposit
 > = z.object({
-  amount: z.nullable(z.lazy(() => AchDepositAmount$outboundSchema)).optional(),
+  amount: z.nullable(z.lazy(() => Amount$outboundSchema)).optional(),
   bankRelationship: z.string().optional(),
   clientTransferId: z.string().optional(),
   memo: z.string().optional(),

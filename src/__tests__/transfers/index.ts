@@ -1,6 +1,6 @@
 import { sdk, timeout } from "../utils/sdk";
-import * as components from "../../models/components";
-import { BankRelationshipStateState } from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
+import { BankRelationshipStateState } from "@apexfintechsolutions/ascend-sdk/models/components";
 import crypto from "crypto";
 
 export const withdrawal_account_id = "01JHGTEPC6ZTAHCFRH2MD3VJJT";
@@ -506,7 +506,7 @@ export async function createCashJournal(account_id: string): Promise<string> {
     clientTransferId: crypto.randomUUID(),
     destinationAccount: "accounts/" + account_id,
     amount: {
-      value: "1.00",
+      value: "250001.00",
     },
     sourceAccount: "accounts/" + withdrawal_account_id,
   };
@@ -526,10 +526,19 @@ export async function createWireWithdrawal(
     },
     beneficiary: {
       account: account_id,
+      accountTitle: "Test",
+      address: {
+        streetAddress: ["123 Main St"],
+        city: "Portland",
+        state: "OR",
+        postalCode: "97201",
+        country: "USA",
+      },
+      thirdParty: true,
     },
     recipientBank: {
       bankId: {
-        id: "ABNANL2AXXX",
+        id: "011000028",
         type: components.RecipientBankBankIdCreateType.Aba,
       },
     },

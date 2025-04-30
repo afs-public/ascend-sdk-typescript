@@ -134,6 +134,10 @@ export type TransfersFee = {
    */
   description?: string | undefined;
   /**
+   * Optional account field to denote where the fee amount should be deposited into. If provided, the account must be a fee operating account. In the case of multiple fee operating accounts under the same correspondent, this field must be provided. If not provided, this will be looked up asynchronously (therefore will not be in the initial response)
+   */
+  feeOperatingAccount?: string | undefined;
+  /**
    * Full name of the fee resource, which contains account id and fee transaction id
    */
   name?: string | undefined;
@@ -314,12 +318,14 @@ export const TransfersFee$inboundSchema: z.ZodType<
   amount: z.nullable(z.lazy(() => TransfersFeeAmount$inboundSchema)).optional(),
   client_transfer_id: z.string().optional(),
   description: z.string().optional(),
+  fee_operating_account: z.string().optional(),
   name: z.string().optional(),
   state: z.nullable(z.lazy(() => TransfersFeeState$inboundSchema)).optional(),
   type: TransfersFeeType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "client_transfer_id": "clientTransferId",
+    "fee_operating_account": "feeOperatingAccount",
   });
 });
 
@@ -328,6 +334,7 @@ export type TransfersFee$Outbound = {
   amount?: TransfersFeeAmount$Outbound | null | undefined;
   client_transfer_id?: string | undefined;
   description?: string | undefined;
+  fee_operating_account?: string | undefined;
   name?: string | undefined;
   state?: TransfersFeeState$Outbound | null | undefined;
   type?: string | undefined;
@@ -343,12 +350,14 @@ export const TransfersFee$outboundSchema: z.ZodType<
     .optional(),
   clientTransferId: z.string().optional(),
   description: z.string().optional(),
+  feeOperatingAccount: z.string().optional(),
   name: z.string().optional(),
   state: z.nullable(z.lazy(() => TransfersFeeState$outboundSchema)).optional(),
   type: TransfersFeeType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     clientTransferId: "client_transfer_id",
+    feeOperatingAccount: "fee_operating_account",
   });
 });
 

@@ -21,12 +21,6 @@ import {
   Executions$Outbound,
   Executions$outboundSchema,
 } from "./executions.js";
-import {
-  Fee,
-  Fee$inboundSchema,
-  Fee$Outbound,
-  Fee$outboundSchema,
-} from "./fee.js";
 
 /**
  * The type of the asset in this order
@@ -79,48 +73,6 @@ export type CompressedOrderIdentifierTypeOpen = OpenEnum<
 >;
 
 /**
- * The amount of the LOI. This is a monetary value in the same currency as the order.
- */
-export type CompressedOrderAmount = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The period start date, specific to the US Eastern Time Zone, of the LOI. Date range: 90 days in the past and 13 months in the future from the order_date.
- */
-export type CompressedOrderPeriodStartDate = {
-  /**
-   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-   */
-  day?: number | undefined;
-  /**
-   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-   */
-  month?: number | undefined;
-  /**
-   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-   */
-  year?: number | undefined;
-};
-
-/**
- * Letter of Intent (LOI). An LOI allows investors to receive sales charge discounts based on a commitment to buy a specified monetary amount of shares over a period of time, usually 13 months. Either ROA or LOI may be specified, but not both.
- */
-export type CompressedOrderLetterOfIntent = {
-  /**
-   * The amount of the LOI. This is a monetary value in the same currency as the order.
-   */
-  amount?: CompressedOrderAmount | null | undefined;
-  /**
-   * The period start date, specific to the US Eastern Time Zone, of the LOI. Date range: 90 days in the past and 13 months in the future from the order_date.
-   */
-  periodStartDate?: CompressedOrderPeriodStartDate | null | undefined;
-};
-
-/**
  * Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. Either a quantity or notional_value MUST be specified (but not both). For Equities: currently not supported yet For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified.
  */
 export type CompressedOrderNotionalValue = {
@@ -161,6 +113,8 @@ export enum CompressedOrderOrderRejectedReason {
   AssetNotSetUpToTrade = "ASSET_NOT_SET_UP_TO_TRADE",
   AnotherBasketOrderForAccountHasFailedRiskChecks =
     "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS",
+  InsufficientPosition = "INSUFFICIENT_POSITION",
+  FailedBuyingPower = "FAILED_BUYING_POWER",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -209,26 +163,6 @@ export type CompressedOrderQuantity = {
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
   value?: string | undefined;
-};
-
-/**
- * The amount of the ROA. This is a monetary value in the same currency as the order. Only 9999999.99 is supported.
- */
-export type CompressedOrderRightsOfAccumulationAmount = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * Rights of Accumulation (ROA). An ROA allows an investor to aggregate their own fund shares with the holdings of certain related parties toward achieving the investment thresholds at which sales charge discounts become available. Either ROA or LOI may be specified, but not both.
- */
-export type CompressedOrderRightsOfAccumulation = {
-  /**
-   * The amount of the ROA. This is a monetary value in the same currency as the order. Only 9999999.99 is supported.
-   */
-  amount?: CompressedOrderRightsOfAccumulationAmount | null | undefined;
 };
 
 /**
@@ -306,10 +240,6 @@ export type CompressedOrder = {
    */
   executions?: Array<Executions> | undefined;
   /**
-   * Fees that will be applied to this order.
-   */
-  fees?: Array<Fee> | undefined;
-  /**
    * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
    */
   filledQuantity?: CompressedOrderFilledQuantity | null | undefined;
@@ -325,10 +255,6 @@ export type CompressedOrder = {
    * Time of the last order update
    */
   lastUpdateTime?: Date | null | undefined;
-  /**
-   * Letter of Intent (LOI). An LOI allows investors to receive sales charge discounts based on a commitment to buy a specified monetary amount of shares over a period of time, usually 13 months. Either ROA or LOI may be specified, but not both.
-   */
-  letterOfIntent?: CompressedOrderLetterOfIntent | null | undefined;
   /**
    * System generated name of the order.
    */
@@ -353,10 +279,6 @@ export type CompressedOrder = {
    * Numeric quantity of the order. Either a quantity or notional_value MUST be specified (but not both). For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places.
    */
   quantity?: CompressedOrderQuantity | null | undefined;
-  /**
-   * Rights of Accumulation (ROA). An ROA allows an investor to aggregate their own fund shares with the holdings of certain related parties toward achieving the investment thresholds at which sales charge discounts become available. Either ROA or LOI may be specified, but not both.
-   */
-  rightsOfAccumulation?: CompressedOrderRightsOfAccumulation | null | undefined;
   /**
    * The side of this order.
    */
@@ -503,140 +425,6 @@ export namespace CompressedOrderIdentifierType$ {
   export const inboundSchema = CompressedOrderIdentifierType$inboundSchema;
   /** @deprecated use `CompressedOrderIdentifierType$outboundSchema` instead. */
   export const outboundSchema = CompressedOrderIdentifierType$outboundSchema;
-}
-
-/** @internal */
-export const CompressedOrderAmount$inboundSchema: z.ZodType<
-  CompressedOrderAmount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type CompressedOrderAmount$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const CompressedOrderAmount$outboundSchema: z.ZodType<
-  CompressedOrderAmount$Outbound,
-  z.ZodTypeDef,
-  CompressedOrderAmount
-> = z.object({
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompressedOrderAmount$ {
-  /** @deprecated use `CompressedOrderAmount$inboundSchema` instead. */
-  export const inboundSchema = CompressedOrderAmount$inboundSchema;
-  /** @deprecated use `CompressedOrderAmount$outboundSchema` instead. */
-  export const outboundSchema = CompressedOrderAmount$outboundSchema;
-  /** @deprecated use `CompressedOrderAmount$Outbound` instead. */
-  export type Outbound = CompressedOrderAmount$Outbound;
-}
-
-/** @internal */
-export const CompressedOrderPeriodStartDate$inboundSchema: z.ZodType<
-  CompressedOrderPeriodStartDate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
-
-/** @internal */
-export type CompressedOrderPeriodStartDate$Outbound = {
-  day?: number | undefined;
-  month?: number | undefined;
-  year?: number | undefined;
-};
-
-/** @internal */
-export const CompressedOrderPeriodStartDate$outboundSchema: z.ZodType<
-  CompressedOrderPeriodStartDate$Outbound,
-  z.ZodTypeDef,
-  CompressedOrderPeriodStartDate
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompressedOrderPeriodStartDate$ {
-  /** @deprecated use `CompressedOrderPeriodStartDate$inboundSchema` instead. */
-  export const inboundSchema = CompressedOrderPeriodStartDate$inboundSchema;
-  /** @deprecated use `CompressedOrderPeriodStartDate$outboundSchema` instead. */
-  export const outboundSchema = CompressedOrderPeriodStartDate$outboundSchema;
-  /** @deprecated use `CompressedOrderPeriodStartDate$Outbound` instead. */
-  export type Outbound = CompressedOrderPeriodStartDate$Outbound;
-}
-
-/** @internal */
-export const CompressedOrderLetterOfIntent$inboundSchema: z.ZodType<
-  CompressedOrderLetterOfIntent,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: z.nullable(z.lazy(() => CompressedOrderAmount$inboundSchema))
-    .optional(),
-  period_start_date: z.nullable(
-    z.lazy(() => CompressedOrderPeriodStartDate$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "period_start_date": "periodStartDate",
-  });
-});
-
-/** @internal */
-export type CompressedOrderLetterOfIntent$Outbound = {
-  amount?: CompressedOrderAmount$Outbound | null | undefined;
-  period_start_date?:
-    | CompressedOrderPeriodStartDate$Outbound
-    | null
-    | undefined;
-};
-
-/** @internal */
-export const CompressedOrderLetterOfIntent$outboundSchema: z.ZodType<
-  CompressedOrderLetterOfIntent$Outbound,
-  z.ZodTypeDef,
-  CompressedOrderLetterOfIntent
-> = z.object({
-  amount: z.nullable(z.lazy(() => CompressedOrderAmount$outboundSchema))
-    .optional(),
-  periodStartDate: z.nullable(
-    z.lazy(() => CompressedOrderPeriodStartDate$outboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    periodStartDate: "period_start_date",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompressedOrderLetterOfIntent$ {
-  /** @deprecated use `CompressedOrderLetterOfIntent$inboundSchema` instead. */
-  export const inboundSchema = CompressedOrderLetterOfIntent$inboundSchema;
-  /** @deprecated use `CompressedOrderLetterOfIntent$outboundSchema` instead. */
-  export const outboundSchema = CompressedOrderLetterOfIntent$outboundSchema;
-  /** @deprecated use `CompressedOrderLetterOfIntent$Outbound` instead. */
-  export type Outbound = CompressedOrderLetterOfIntent$Outbound;
 }
 
 /** @internal */
@@ -809,90 +597,6 @@ export namespace CompressedOrderQuantity$ {
 }
 
 /** @internal */
-export const CompressedOrderRightsOfAccumulationAmount$inboundSchema: z.ZodType<
-  CompressedOrderRightsOfAccumulationAmount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type CompressedOrderRightsOfAccumulationAmount$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const CompressedOrderRightsOfAccumulationAmount$outboundSchema:
-  z.ZodType<
-    CompressedOrderRightsOfAccumulationAmount$Outbound,
-    z.ZodTypeDef,
-    CompressedOrderRightsOfAccumulationAmount
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompressedOrderRightsOfAccumulationAmount$ {
-  /** @deprecated use `CompressedOrderRightsOfAccumulationAmount$inboundSchema` instead. */
-  export const inboundSchema =
-    CompressedOrderRightsOfAccumulationAmount$inboundSchema;
-  /** @deprecated use `CompressedOrderRightsOfAccumulationAmount$outboundSchema` instead. */
-  export const outboundSchema =
-    CompressedOrderRightsOfAccumulationAmount$outboundSchema;
-  /** @deprecated use `CompressedOrderRightsOfAccumulationAmount$Outbound` instead. */
-  export type Outbound = CompressedOrderRightsOfAccumulationAmount$Outbound;
-}
-
-/** @internal */
-export const CompressedOrderRightsOfAccumulation$inboundSchema: z.ZodType<
-  CompressedOrderRightsOfAccumulation,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: z.nullable(
-    z.lazy(() => CompressedOrderRightsOfAccumulationAmount$inboundSchema),
-  ).optional(),
-});
-
-/** @internal */
-export type CompressedOrderRightsOfAccumulation$Outbound = {
-  amount?:
-    | CompressedOrderRightsOfAccumulationAmount$Outbound
-    | null
-    | undefined;
-};
-
-/** @internal */
-export const CompressedOrderRightsOfAccumulation$outboundSchema: z.ZodType<
-  CompressedOrderRightsOfAccumulation$Outbound,
-  z.ZodTypeDef,
-  CompressedOrderRightsOfAccumulation
-> = z.object({
-  amount: z.nullable(
-    z.lazy(() => CompressedOrderRightsOfAccumulationAmount$outboundSchema),
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompressedOrderRightsOfAccumulation$ {
-  /** @deprecated use `CompressedOrderRightsOfAccumulation$inboundSchema` instead. */
-  export const inboundSchema =
-    CompressedOrderRightsOfAccumulation$inboundSchema;
-  /** @deprecated use `CompressedOrderRightsOfAccumulation$outboundSchema` instead. */
-  export const outboundSchema =
-    CompressedOrderRightsOfAccumulation$outboundSchema;
-  /** @deprecated use `CompressedOrderRightsOfAccumulation$Outbound` instead. */
-  export type Outbound = CompressedOrderRightsOfAccumulation$Outbound;
-}
-
-/** @internal */
 export const CompressedOrderSide$inboundSchema: z.ZodType<
   CompressedOrderSideOpen,
   z.ZodTypeDef,
@@ -975,7 +679,6 @@ export const CompressedOrder$inboundSchema: z.ZodType<
   ).optional(),
   currency_code: z.string().optional(),
   executions: z.array(Executions$inboundSchema).optional(),
-  fees: z.array(Fee$inboundSchema).optional(),
   filled_quantity: z.nullable(
     z.lazy(() => CompressedOrderFilledQuantity$inboundSchema),
   ).optional(),
@@ -983,9 +686,6 @@ export const CompressedOrder$inboundSchema: z.ZodType<
   identifier_type: CompressedOrderIdentifierType$inboundSchema.optional(),
   last_update_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  letter_of_intent: z.nullable(
-    z.lazy(() => CompressedOrderLetterOfIntent$inboundSchema),
   ).optional(),
   name: z.string().optional(),
   notional_value: z.nullable(
@@ -997,9 +697,6 @@ export const CompressedOrder$inboundSchema: z.ZodType<
   order_type: CompressedOrderOrderType$inboundSchema.optional(),
   quantity: z.nullable(z.lazy(() => CompressedOrderQuantity$inboundSchema))
     .optional(),
-  rights_of_accumulation: z.nullable(
-    z.lazy(() => CompressedOrderRightsOfAccumulation$inboundSchema),
-  ).optional(),
   side: CompressedOrderSide$inboundSchema.optional(),
   time_in_force: CompressedOrderTimeInForce$inboundSchema.optional(),
 }).transform((v) => {
@@ -1015,12 +712,10 @@ export const CompressedOrder$inboundSchema: z.ZodType<
     "filled_quantity": "filledQuantity",
     "identifier_type": "identifierType",
     "last_update_time": "lastUpdateTime",
-    "letter_of_intent": "letterOfIntent",
     "notional_value": "notionalValue",
     "order_rejected_reason": "orderRejectedReason",
     "order_status": "orderStatus",
     "order_type": "orderType",
-    "rights_of_accumulation": "rightsOfAccumulation",
     "time_in_force": "timeInForce",
   });
 });
@@ -1039,22 +734,16 @@ export type CompressedOrder$Outbound = {
     | undefined;
   currency_code?: string | undefined;
   executions?: Array<Executions$Outbound> | undefined;
-  fees?: Array<Fee$Outbound> | undefined;
   filled_quantity?: CompressedOrderFilledQuantity$Outbound | null | undefined;
   identifier?: string | undefined;
   identifier_type?: string | undefined;
   last_update_time?: string | null | undefined;
-  letter_of_intent?: CompressedOrderLetterOfIntent$Outbound | null | undefined;
   name?: string | undefined;
   notional_value?: CompressedOrderNotionalValue$Outbound | null | undefined;
   order_rejected_reason?: string | undefined;
   order_status?: string | undefined;
   order_type?: string | undefined;
   quantity?: CompressedOrderQuantity$Outbound | null | undefined;
-  rights_of_accumulation?:
-    | CompressedOrderRightsOfAccumulation$Outbound
-    | null
-    | undefined;
   side?: string | undefined;
   time_in_force?: string | undefined;
 };
@@ -1076,7 +765,6 @@ export const CompressedOrder$outboundSchema: z.ZodType<
   ).optional(),
   currencyCode: z.string().optional(),
   executions: z.array(Executions$outboundSchema).optional(),
-  fees: z.array(Fee$outboundSchema).optional(),
   filledQuantity: z.nullable(
     z.lazy(() => CompressedOrderFilledQuantity$outboundSchema),
   ).optional(),
@@ -1084,9 +772,6 @@ export const CompressedOrder$outboundSchema: z.ZodType<
   identifierType: CompressedOrderIdentifierType$outboundSchema.optional(),
   lastUpdateTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
-  letterOfIntent: z.nullable(
-    z.lazy(() => CompressedOrderLetterOfIntent$outboundSchema),
-  ).optional(),
   name: z.string().optional(),
   notionalValue: z.nullable(
     z.lazy(() => CompressedOrderNotionalValue$outboundSchema),
@@ -1097,9 +782,6 @@ export const CompressedOrder$outboundSchema: z.ZodType<
   orderType: CompressedOrderOrderType$outboundSchema.optional(),
   quantity: z.nullable(z.lazy(() => CompressedOrderQuantity$outboundSchema))
     .optional(),
-  rightsOfAccumulation: z.nullable(
-    z.lazy(() => CompressedOrderRightsOfAccumulation$outboundSchema),
-  ).optional(),
   side: CompressedOrderSide$outboundSchema.optional(),
   timeInForce: CompressedOrderTimeInForce$outboundSchema.optional(),
 }).transform((v) => {
@@ -1115,12 +797,10 @@ export const CompressedOrder$outboundSchema: z.ZodType<
     filledQuantity: "filled_quantity",
     identifierType: "identifier_type",
     lastUpdateTime: "last_update_time",
-    letterOfIntent: "letter_of_intent",
     notionalValue: "notional_value",
     orderRejectedReason: "order_rejected_reason",
     orderStatus: "order_status",
     orderType: "order_type",
-    rightsOfAccumulation: "rights_of_accumulation",
     timeInForce: "time_in_force",
   });
 });

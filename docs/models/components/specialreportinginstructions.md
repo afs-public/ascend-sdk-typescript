@@ -6,7 +6,7 @@
 import { SpecialReportingInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: SpecialReportingInstructions =
-  SpecialReportingInstructions.SpecialReportingInstructionsUnspecified;
+  SpecialReportingInstructions.SuppressTraceReporting;
 ```
 
 ## Values

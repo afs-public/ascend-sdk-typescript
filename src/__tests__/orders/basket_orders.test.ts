@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { sdk } from "../utils/sdk";
-import * as components from "../../models/components";
+import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import { beforeAll } from "vitest";
 import { createBasketId, withdrawal_account_id } from "./index";
 import crypto from "crypto";

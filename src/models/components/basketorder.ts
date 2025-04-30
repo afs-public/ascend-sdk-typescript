@@ -15,12 +15,6 @@ import {
   ExecutedPrice$Outbound,
   ExecutedPrice$outboundSchema,
 } from "./executedprice.js";
-import {
-  Fee,
-  Fee$inboundSchema,
-  Fee$Outbound,
-  Fee$outboundSchema,
-} from "./fee.js";
 
 /**
  * The type of the asset in this order
@@ -71,48 +65,6 @@ export type BasketOrderIdentifierTypeOpen = OpenEnum<
 >;
 
 /**
- * The amount of the LOI. This is a monetary value in the same currency as the order.
- */
-export type BasketOrderAmount = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The period start date, specific to the US Eastern Time Zone, of the LOI. Date range: 90 days in the past and 13 months in the future from the order_date.
- */
-export type BasketOrderPeriodStartDate = {
-  /**
-   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-   */
-  day?: number | undefined;
-  /**
-   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-   */
-  month?: number | undefined;
-  /**
-   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-   */
-  year?: number | undefined;
-};
-
-/**
- * Letter of Intent (LOI). An LOI allows investors to receive sales charge discounts based on a commitment to buy a specified monetary amount of shares over a period of time, usually 13 months. Either ROA or LOI may be specified, but not both.
- */
-export type BasketOrderLetterOfIntent = {
-  /**
-   * The amount of the LOI. This is a monetary value in the same currency as the order.
-   */
-  amount?: BasketOrderAmount | null | undefined;
-  /**
-   * The period start date, specific to the US Eastern Time Zone, of the LOI. Date range: 90 days in the past and 13 months in the future from the order_date.
-   */
-  periodStartDate?: BasketOrderPeriodStartDate | null | undefined;
-};
-
-/**
  * Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. Either a quantity or notional_value MUST be specified (but not both). For Equities: currently not supported yet For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified.
  */
 export type BasketOrderNotionalValue = {
@@ -153,6 +105,8 @@ export enum BasketOrderOrderRejectedReason {
   AssetNotSetUpToTrade = "ASSET_NOT_SET_UP_TO_TRADE",
   AnotherBasketOrderForAccountHasFailedRiskChecks =
     "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS",
+  InsufficientPosition = "INSUFFICIENT_POSITION",
+  FailedBuyingPower = "FAILED_BUYING_POWER",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -199,26 +153,6 @@ export type BasketOrderQuantity = {
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
   value?: string | undefined;
-};
-
-/**
- * The amount of the ROA. This is a monetary value in the same currency as the order. Only 9999999.99 is supported.
- */
-export type BasketOrderRightsOfAccumulationAmount = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * Rights of Accumulation (ROA). An ROA allows an investor to aggregate their own fund shares with the holdings of certain related parties toward achieving the investment thresholds at which sales charge discounts become available. Either ROA or LOI may be specified, but not both.
- */
-export type BasketOrderRightsOfAccumulation = {
-  /**
-   * The amount of the ROA. This is a monetary value in the same currency as the order. Only 9999999.99 is supported.
-   */
-  amount?: BasketOrderRightsOfAccumulationAmount | null | undefined;
 };
 
 /**
@@ -300,10 +234,6 @@ export type BasketOrder = {
    */
   currencyCode?: string | undefined;
   /**
-   * Fees that will be applied to this order.
-   */
-  fees?: Array<Fee> | undefined;
-  /**
    * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
    */
   filledQuantity?: BasketOrderFilledQuantity | null | undefined;
@@ -319,10 +249,6 @@ export type BasketOrder = {
    * Time of the last order update
    */
   lastUpdateTime?: Date | null | undefined;
-  /**
-   * Letter of Intent (LOI). An LOI allows investors to receive sales charge discounts based on a commitment to buy a specified monetary amount of shares over a period of time, usually 13 months. Either ROA or LOI may be specified, but not both.
-   */
-  letterOfIntent?: BasketOrderLetterOfIntent | null | undefined;
   /**
    * System generated name of the basket order.
    */
@@ -347,10 +273,6 @@ export type BasketOrder = {
    * Numeric quantity of the order. Either a quantity or notional_value MUST be specified (but not both). For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places.
    */
   quantity?: BasketOrderQuantity | null | undefined;
-  /**
-   * Rights of Accumulation (ROA). An ROA allows an investor to aggregate their own fund shares with the holdings of certain related parties toward achieving the investment thresholds at which sales charge discounts become available. Either ROA or LOI may be specified, but not both.
-   */
-  rightsOfAccumulation?: BasketOrderRightsOfAccumulation | null | undefined;
   /**
    * The side of this order.
    */
@@ -496,135 +418,6 @@ export namespace BasketOrderIdentifierType$ {
   export const inboundSchema = BasketOrderIdentifierType$inboundSchema;
   /** @deprecated use `BasketOrderIdentifierType$outboundSchema` instead. */
   export const outboundSchema = BasketOrderIdentifierType$outboundSchema;
-}
-
-/** @internal */
-export const BasketOrderAmount$inboundSchema: z.ZodType<
-  BasketOrderAmount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type BasketOrderAmount$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const BasketOrderAmount$outboundSchema: z.ZodType<
-  BasketOrderAmount$Outbound,
-  z.ZodTypeDef,
-  BasketOrderAmount
-> = z.object({
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BasketOrderAmount$ {
-  /** @deprecated use `BasketOrderAmount$inboundSchema` instead. */
-  export const inboundSchema = BasketOrderAmount$inboundSchema;
-  /** @deprecated use `BasketOrderAmount$outboundSchema` instead. */
-  export const outboundSchema = BasketOrderAmount$outboundSchema;
-  /** @deprecated use `BasketOrderAmount$Outbound` instead. */
-  export type Outbound = BasketOrderAmount$Outbound;
-}
-
-/** @internal */
-export const BasketOrderPeriodStartDate$inboundSchema: z.ZodType<
-  BasketOrderPeriodStartDate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
-
-/** @internal */
-export type BasketOrderPeriodStartDate$Outbound = {
-  day?: number | undefined;
-  month?: number | undefined;
-  year?: number | undefined;
-};
-
-/** @internal */
-export const BasketOrderPeriodStartDate$outboundSchema: z.ZodType<
-  BasketOrderPeriodStartDate$Outbound,
-  z.ZodTypeDef,
-  BasketOrderPeriodStartDate
-> = z.object({
-  day: z.number().int().optional(),
-  month: z.number().int().optional(),
-  year: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BasketOrderPeriodStartDate$ {
-  /** @deprecated use `BasketOrderPeriodStartDate$inboundSchema` instead. */
-  export const inboundSchema = BasketOrderPeriodStartDate$inboundSchema;
-  /** @deprecated use `BasketOrderPeriodStartDate$outboundSchema` instead. */
-  export const outboundSchema = BasketOrderPeriodStartDate$outboundSchema;
-  /** @deprecated use `BasketOrderPeriodStartDate$Outbound` instead. */
-  export type Outbound = BasketOrderPeriodStartDate$Outbound;
-}
-
-/** @internal */
-export const BasketOrderLetterOfIntent$inboundSchema: z.ZodType<
-  BasketOrderLetterOfIntent,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: z.nullable(z.lazy(() => BasketOrderAmount$inboundSchema)).optional(),
-  period_start_date: z.nullable(
-    z.lazy(() => BasketOrderPeriodStartDate$inboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "period_start_date": "periodStartDate",
-  });
-});
-
-/** @internal */
-export type BasketOrderLetterOfIntent$Outbound = {
-  amount?: BasketOrderAmount$Outbound | null | undefined;
-  period_start_date?: BasketOrderPeriodStartDate$Outbound | null | undefined;
-};
-
-/** @internal */
-export const BasketOrderLetterOfIntent$outboundSchema: z.ZodType<
-  BasketOrderLetterOfIntent$Outbound,
-  z.ZodTypeDef,
-  BasketOrderLetterOfIntent
-> = z.object({
-  amount: z.nullable(z.lazy(() => BasketOrderAmount$outboundSchema)).optional(),
-  periodStartDate: z.nullable(
-    z.lazy(() => BasketOrderPeriodStartDate$outboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    periodStartDate: "period_start_date",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BasketOrderLetterOfIntent$ {
-  /** @deprecated use `BasketOrderLetterOfIntent$inboundSchema` instead. */
-  export const inboundSchema = BasketOrderLetterOfIntent$inboundSchema;
-  /** @deprecated use `BasketOrderLetterOfIntent$outboundSchema` instead. */
-  export const outboundSchema = BasketOrderLetterOfIntent$outboundSchema;
-  /** @deprecated use `BasketOrderLetterOfIntent$Outbound` instead. */
-  export type Outbound = BasketOrderLetterOfIntent$Outbound;
 }
 
 /** @internal */
@@ -796,84 +589,6 @@ export namespace BasketOrderQuantity$ {
 }
 
 /** @internal */
-export const BasketOrderRightsOfAccumulationAmount$inboundSchema: z.ZodType<
-  BasketOrderRightsOfAccumulationAmount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type BasketOrderRightsOfAccumulationAmount$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const BasketOrderRightsOfAccumulationAmount$outboundSchema: z.ZodType<
-  BasketOrderRightsOfAccumulationAmount$Outbound,
-  z.ZodTypeDef,
-  BasketOrderRightsOfAccumulationAmount
-> = z.object({
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BasketOrderRightsOfAccumulationAmount$ {
-  /** @deprecated use `BasketOrderRightsOfAccumulationAmount$inboundSchema` instead. */
-  export const inboundSchema =
-    BasketOrderRightsOfAccumulationAmount$inboundSchema;
-  /** @deprecated use `BasketOrderRightsOfAccumulationAmount$outboundSchema` instead. */
-  export const outboundSchema =
-    BasketOrderRightsOfAccumulationAmount$outboundSchema;
-  /** @deprecated use `BasketOrderRightsOfAccumulationAmount$Outbound` instead. */
-  export type Outbound = BasketOrderRightsOfAccumulationAmount$Outbound;
-}
-
-/** @internal */
-export const BasketOrderRightsOfAccumulation$inboundSchema: z.ZodType<
-  BasketOrderRightsOfAccumulation,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: z.nullable(
-    z.lazy(() => BasketOrderRightsOfAccumulationAmount$inboundSchema),
-  ).optional(),
-});
-
-/** @internal */
-export type BasketOrderRightsOfAccumulation$Outbound = {
-  amount?: BasketOrderRightsOfAccumulationAmount$Outbound | null | undefined;
-};
-
-/** @internal */
-export const BasketOrderRightsOfAccumulation$outboundSchema: z.ZodType<
-  BasketOrderRightsOfAccumulation$Outbound,
-  z.ZodTypeDef,
-  BasketOrderRightsOfAccumulation
-> = z.object({
-  amount: z.nullable(
-    z.lazy(() => BasketOrderRightsOfAccumulationAmount$outboundSchema),
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BasketOrderRightsOfAccumulation$ {
-  /** @deprecated use `BasketOrderRightsOfAccumulation$inboundSchema` instead. */
-  export const inboundSchema = BasketOrderRightsOfAccumulation$inboundSchema;
-  /** @deprecated use `BasketOrderRightsOfAccumulation$outboundSchema` instead. */
-  export const outboundSchema = BasketOrderRightsOfAccumulation$outboundSchema;
-  /** @deprecated use `BasketOrderRightsOfAccumulation$Outbound` instead. */
-  export type Outbound = BasketOrderRightsOfAccumulation$Outbound;
-}
-
-/** @internal */
 export const BasketOrderSide$inboundSchema: z.ZodType<
   BasketOrderSideOpen,
   z.ZodTypeDef,
@@ -959,7 +674,6 @@ export const BasketOrder$inboundSchema: z.ZodType<
     z.lazy(() => BasketOrderCumulativeNotionalValue$inboundSchema),
   ).optional(),
   currency_code: z.string().optional(),
-  fees: z.array(Fee$inboundSchema).optional(),
   filled_quantity: z.nullable(
     z.lazy(() => BasketOrderFilledQuantity$inboundSchema),
   ).optional(),
@@ -967,9 +681,6 @@ export const BasketOrder$inboundSchema: z.ZodType<
   identifier_type: BasketOrderIdentifierType$inboundSchema.optional(),
   last_update_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  letter_of_intent: z.nullable(
-    z.lazy(() => BasketOrderLetterOfIntent$inboundSchema),
   ).optional(),
   name: z.string().optional(),
   notional_value: z.nullable(
@@ -981,9 +692,6 @@ export const BasketOrder$inboundSchema: z.ZodType<
   order_type: BasketOrderOrderType$inboundSchema.optional(),
   quantity: z.nullable(z.lazy(() => BasketOrderQuantity$inboundSchema))
     .optional(),
-  rights_of_accumulation: z.nullable(
-    z.lazy(() => BasketOrderRightsOfAccumulation$inboundSchema),
-  ).optional(),
   side: BasketOrderSide$inboundSchema.optional(),
   time_in_force: BasketOrderTimeInForce$inboundSchema.optional(),
 }).transform((v) => {
@@ -1001,12 +709,10 @@ export const BasketOrder$inboundSchema: z.ZodType<
     "filled_quantity": "filledQuantity",
     "identifier_type": "identifierType",
     "last_update_time": "lastUpdateTime",
-    "letter_of_intent": "letterOfIntent",
     "notional_value": "notionalValue",
     "order_rejected_reason": "orderRejectedReason",
     "order_status": "orderStatus",
     "order_type": "orderType",
-    "rights_of_accumulation": "rightsOfAccumulation",
     "time_in_force": "timeInForce",
   });
 });
@@ -1026,22 +732,16 @@ export type BasketOrder$Outbound = {
     | null
     | undefined;
   currency_code?: string | undefined;
-  fees?: Array<Fee$Outbound> | undefined;
   filled_quantity?: BasketOrderFilledQuantity$Outbound | null | undefined;
   identifier?: string | undefined;
   identifier_type?: string | undefined;
   last_update_time?: string | null | undefined;
-  letter_of_intent?: BasketOrderLetterOfIntent$Outbound | null | undefined;
   name?: string | undefined;
   notional_value?: BasketOrderNotionalValue$Outbound | null | undefined;
   order_rejected_reason?: string | undefined;
   order_status?: string | undefined;
   order_type?: string | undefined;
   quantity?: BasketOrderQuantity$Outbound | null | undefined;
-  rights_of_accumulation?:
-    | BasketOrderRightsOfAccumulation$Outbound
-    | null
-    | undefined;
   side?: string | undefined;
   time_in_force?: string | undefined;
 };
@@ -1065,7 +765,6 @@ export const BasketOrder$outboundSchema: z.ZodType<
     z.lazy(() => BasketOrderCumulativeNotionalValue$outboundSchema),
   ).optional(),
   currencyCode: z.string().optional(),
-  fees: z.array(Fee$outboundSchema).optional(),
   filledQuantity: z.nullable(
     z.lazy(() => BasketOrderFilledQuantity$outboundSchema),
   ).optional(),
@@ -1073,9 +772,6 @@ export const BasketOrder$outboundSchema: z.ZodType<
   identifierType: BasketOrderIdentifierType$outboundSchema.optional(),
   lastUpdateTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
-  letterOfIntent: z.nullable(
-    z.lazy(() => BasketOrderLetterOfIntent$outboundSchema),
-  ).optional(),
   name: z.string().optional(),
   notionalValue: z.nullable(
     z.lazy(() => BasketOrderNotionalValue$outboundSchema),
@@ -1085,9 +781,6 @@ export const BasketOrder$outboundSchema: z.ZodType<
   orderType: BasketOrderOrderType$outboundSchema.optional(),
   quantity: z.nullable(z.lazy(() => BasketOrderQuantity$outboundSchema))
     .optional(),
-  rightsOfAccumulation: z.nullable(
-    z.lazy(() => BasketOrderRightsOfAccumulation$outboundSchema),
-  ).optional(),
   side: BasketOrderSide$outboundSchema.optional(),
   timeInForce: BasketOrderTimeInForce$outboundSchema.optional(),
 }).transform((v) => {
@@ -1105,12 +798,10 @@ export const BasketOrder$outboundSchema: z.ZodType<
     filledQuantity: "filled_quantity",
     identifierType: "identifier_type",
     lastUpdateTime: "last_update_time",
-    letterOfIntent: "letter_of_intent",
     notionalValue: "notional_value",
     orderRejectedReason: "order_rejected_reason",
     orderStatus: "order_status",
     orderType: "order_type",
-    rightsOfAccumulation: "rights_of_accumulation",
     timeInForce: "time_in_force",
   });
 });

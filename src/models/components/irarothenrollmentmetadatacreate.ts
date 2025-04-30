@@ -11,7 +11,7 @@ import {
 } from "../../types/enums.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum IRARothEnrollmentMetadataCreateDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -20,13 +20,13 @@ export enum IRARothEnrollmentMetadataCreateDividendReinvestmentPlan {
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type IRARothEnrollmentMetadataCreateDividendReinvestmentPlanOpen =
   OpenEnum<typeof IRARothEnrollmentMetadataCreateDividendReinvestmentPlan>;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum IRARothEnrollmentMetadataCreateFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -35,7 +35,7 @@ export enum IRARothEnrollmentMetadataCreateFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type IRARothEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
   typeof IRARothEnrollmentMetadataCreateFdicCashSweep
@@ -46,13 +46,13 @@ export type IRARothEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
  */
 export type IRARothEnrollmentMetadataCreate = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | IRARothEnrollmentMetadataCreateDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: IRARothEnrollmentMetadataCreateFdicCashSweepOpen | undefined;
 };

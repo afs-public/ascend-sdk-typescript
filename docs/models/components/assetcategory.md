@@ -7,7 +7,7 @@ The NSCC asset category
 ```typescript
 import { AssetCategory } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: AssetCategory = AssetCategory.LifeInsurance;
+let value: AssetCategory = AssetCategory.MutualFundNonMoneyMarket;
 ```
 
 ## Values

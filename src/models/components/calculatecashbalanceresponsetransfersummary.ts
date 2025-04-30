@@ -35,6 +35,7 @@ export enum CalculateCashBalanceResponseTransferSummaryMechanism {
   Rtp = "RTP",
   Tpj = "TPJ",
   Wire = "WIRE",
+  ExternalAch = "EXTERNAL_ACH",
 }
 /**
  * The mechanism of the transfer.

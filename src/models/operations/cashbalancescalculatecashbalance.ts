@@ -22,6 +22,7 @@ export enum Mechanism {
   Rtp = "RTP",
   Tpj = "TPJ",
   Wire = "WIRE",
+  ExternalAch = "EXTERNAL_ACH",
 }
 
 export type CashBalancesCalculateCashBalanceRequest = {

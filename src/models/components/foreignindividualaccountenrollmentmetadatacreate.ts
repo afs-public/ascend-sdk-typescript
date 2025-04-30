@@ -17,7 +17,7 @@ import {
 } from "./foreignnaturalpersonaccountenrollmentmetadatacreate.js";
 
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export enum ForeignIndividualAccountEnrollmentMetadataCreateDividendReinvestmentPlan {
   AutoEnrollDividendReinvestmentUnspecified =
@@ -26,7 +26,7 @@ export enum ForeignIndividualAccountEnrollmentMetadataCreateDividendReinvestment
   DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
 }
 /**
- * Option to auto-enroll in Dividend Reinvestment; defaults to true
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
 export type ForeignIndividualAccountEnrollmentMetadataCreateDividendReinvestmentPlanOpen =
   OpenEnum<
@@ -34,7 +34,7 @@ export type ForeignIndividualAccountEnrollmentMetadataCreateDividendReinvestment
   >;
 
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export enum ForeignIndividualAccountEnrollmentMetadataCreateFdicCashSweep {
   AutoEnrollFdicCashSweepUnspecified =
@@ -43,7 +43,7 @@ export enum ForeignIndividualAccountEnrollmentMetadataCreateFdicCashSweep {
   FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
 }
 /**
- * Option to auto-enroll in FDIC cash sweep; defaults to true
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
  */
 export type ForeignIndividualAccountEnrollmentMetadataCreateFdicCashSweepOpen =
   OpenEnum<
@@ -52,13 +52,13 @@ export type ForeignIndividualAccountEnrollmentMetadataCreateFdicCashSweepOpen =
 
 export type ForeignIndividualAccountEnrollmentMetadataCreate = {
   /**
-   * Option to auto-enroll in Dividend Reinvestment; defaults to true
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
    */
   dividendReinvestmentPlan?:
     | ForeignIndividualAccountEnrollmentMetadataCreateDividendReinvestmentPlanOpen
     | undefined;
   /**
-   * Option to auto-enroll in FDIC cash sweep; defaults to true
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?:
     | ForeignIndividualAccountEnrollmentMetadataCreateFdicCashSweepOpen

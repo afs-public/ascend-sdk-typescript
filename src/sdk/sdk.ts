@@ -29,6 +29,8 @@ import { Retirements } from "./retirements.js";
 import { ScheduleTransfers } from "./scheduletransfers.js";
 import { Subscriber } from "./subscriber.js";
 import { TestSimulation } from "./testsimulation.js";
+import { TradeAllocation } from "./tradeallocation.js";
+import { TradeBooking } from "./tradebooking.js";
 import { Wires } from "./wires.js";
 
 export class Apexascend extends ClientSDK {
@@ -72,51 +74,6 @@ export class Apexascend extends ClientSDK {
   private _investigations?: Investigations;
   get investigations(): Investigations {
     return (this._investigations ??= new Investigations(this._options));
-  }
-
-  private _accountTransfers?: AccountTransfers;
-  get accountTransfers(): AccountTransfers {
-    return (this._accountTransfers ??= new AccountTransfers(this._options));
-  }
-
-  private _createOrder?: CreateOrder;
-  get createOrder(): CreateOrder {
-    return (this._createOrder ??= new CreateOrder(this._options));
-  }
-
-  private _fixedIncomePricing?: FixedIncomePricing;
-  get fixedIncomePricing(): FixedIncomePricing {
-    return (this._fixedIncomePricing ??= new FixedIncomePricing(this._options));
-  }
-
-  private _basketOrders?: BasketOrders;
-  get basketOrders(): BasketOrders {
-    return (this._basketOrders ??= new BasketOrders(this._options));
-  }
-
-  private _assets?: Assets;
-  get assets(): Assets {
-    return (this._assets ??= new Assets(this._options));
-  }
-
-  private _ledger?: Ledger;
-  get ledger(): Ledger {
-    return (this._ledger ??= new Ledger(this._options));
-  }
-
-  private _investorDocs?: InvestorDocs;
-  get investorDocs(): InvestorDocs {
-    return (this._investorDocs ??= new InvestorDocs(this._options));
-  }
-
-  private _dataRetrieval?: DataRetrieval;
-  get dataRetrieval(): DataRetrieval {
-    return (this._dataRetrieval ??= new DataRetrieval(this._options));
-  }
-
-  private _margins?: Margins;
-  get margins(): Margins {
-    return (this._margins ??= new Margins(this._options));
   }
 
   private _bankRelationships?: BankRelationships;
@@ -169,5 +126,60 @@ export class Apexascend extends ClientSDK {
   private _testSimulation?: TestSimulation;
   get testSimulation(): TestSimulation {
     return (this._testSimulation ??= new TestSimulation(this._options));
+  }
+
+  private _accountTransfers?: AccountTransfers;
+  get accountTransfers(): AccountTransfers {
+    return (this._accountTransfers ??= new AccountTransfers(this._options));
+  }
+
+  private _createOrder?: CreateOrder;
+  get createOrder(): CreateOrder {
+    return (this._createOrder ??= new CreateOrder(this._options));
+  }
+
+  private _fixedIncomePricing?: FixedIncomePricing;
+  get fixedIncomePricing(): FixedIncomePricing {
+    return (this._fixedIncomePricing ??= new FixedIncomePricing(this._options));
+  }
+
+  private _basketOrders?: BasketOrders;
+  get basketOrders(): BasketOrders {
+    return (this._basketOrders ??= new BasketOrders(this._options));
+  }
+
+  private _tradeBooking?: TradeBooking;
+  get tradeBooking(): TradeBooking {
+    return (this._tradeBooking ??= new TradeBooking(this._options));
+  }
+
+  private _tradeAllocation?: TradeAllocation;
+  get tradeAllocation(): TradeAllocation {
+    return (this._tradeAllocation ??= new TradeAllocation(this._options));
+  }
+
+  private _assets?: Assets;
+  get assets(): Assets {
+    return (this._assets ??= new Assets(this._options));
+  }
+
+  private _ledger?: Ledger;
+  get ledger(): Ledger {
+    return (this._ledger ??= new Ledger(this._options));
+  }
+
+  private _margins?: Margins;
+  get margins(): Margins {
+    return (this._margins ??= new Margins(this._options));
+  }
+
+  private _investorDocs?: InvestorDocs;
+  get investorDocs(): InvestorDocs {
+    return (this._investorDocs ??= new InvestorDocs(this._options));
+  }
+
+  private _dataRetrieval?: DataRetrieval;
+  get dataRetrieval(): DataRetrieval {
+    return (this._dataRetrieval ??= new DataRetrieval(this._options));
   }
 }

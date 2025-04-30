@@ -24,7 +24,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Giact`                         | GIACT                           |
 | `Synapse`                       | SYNAPSE                         |
 | `Sophtron`                      | SOPHTRON                        |
-| `UseExisting`                   | USE_EXISTING                    |
 | `InternalBank`                  | INTERNAL_BANK                   |
 | `Mx`                            | MX                              |
 | `Fiserv`                        | FISERV                          |
