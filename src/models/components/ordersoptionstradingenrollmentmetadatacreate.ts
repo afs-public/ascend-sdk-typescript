@@ -21,7 +21,7 @@ import {
  */
 export enum OptionsLevel {
   OptionsLevelUnspecified = "OPTIONS_LEVEL_UNSPECIFIED",
-  Level1BasicDirectionalTrades = "LEVEL_1_BASIC_DIRECTIONAL_TRADES",
+  OptionsLevel2LongOptions = "OPTIONS_LEVEL_2_LONG_OPTIONS",
 }
 /**
  * Requested options level

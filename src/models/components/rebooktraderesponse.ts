@@ -10,20 +10,41 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
-  Lot,
-  Lot$inboundSchema,
-  Lot$Outbound,
-  Lot$outboundSchema,
-} from "./lot.js";
+  BookingFee,
+  BookingFee$inboundSchema,
+  BookingFee$Outbound,
+  BookingFee$outboundSchema,
+} from "./bookingfee.js";
 import {
-  YieldRecord,
-  YieldRecord$inboundSchema,
-  YieldRecord$Outbound,
-  YieldRecord$outboundSchema,
-} from "./yieldrecord.js";
+  BookingLot,
+  BookingLot$inboundSchema,
+  BookingLot$Outbound,
+  BookingLot$outboundSchema,
+} from "./bookinglot.js";
+import {
+  Execution,
+  Execution$inboundSchema,
+  Execution$Outbound,
+  Execution$outboundSchema,
+} from "./execution.js";
 
 /**
- * Used to calculate broadridge blotter code
+ * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ */
+export enum RebookTradeResponseAssetType {
+  AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
+  Equity = "EQUITY",
+  FixedIncome = "FIXED_INCOME",
+}
+/**
+ * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ */
+export type RebookTradeResponseAssetTypeOpen = OpenEnum<
+  typeof RebookTradeResponseAssetType
+>;
+
+/**
+ * Broker capacity for the trade.
  */
 export enum RebookTradeResponseBrokerCapacity {
   CapacityUnspecified = "CAPACITY_UNSPECIFIED",
@@ -32,196 +53,363 @@ export enum RebookTradeResponseBrokerCapacity {
   Mixed = "MIXED",
 }
 /**
- * Used to calculate broadridge blotter code
+ * Broker capacity for the trade.
  */
 export type RebookTradeResponseBrokerCapacityOpen = OpenEnum<
   typeof RebookTradeResponseBrokerCapacity
 >;
 
 /**
- * The price for the instrument that is prevailing in the market.
+ * Identifier type for the asset being traded.
  */
-export type RebookTradeResponsePrevailingMarketPrice = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * Total monetary value of the price_adjustment
- */
-export type RebookTradeResponsePriceAdjustmentAmount = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
- */
-export type RebookTradeResponsePriceAdjustmentPercent = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The type of price adjustment being applied by the broker to the net price of the security
- */
-export enum RebookTradeResponsePriceAdjustmentType {
-  PriceAdjustmentTypeUnspecified = "PRICE_ADJUSTMENT_TYPE_UNSPECIFIED",
-  Markup = "MARKUP",
-  Markdown = "MARKDOWN",
-  SalesLoad = "SALES_LOAD",
+export enum RebookTradeResponseIdentifierType {
+  IdentifierTypeUnspecified = "IDENTIFIER_TYPE_UNSPECIFIED",
+  AssetId = "ASSET_ID",
+  Symbol = "SYMBOL",
+  Cusip = "CUSIP",
+  Isin = "ISIN",
 }
 /**
- * The type of price adjustment being applied by the broker to the net price of the security
+ * Identifier type for the asset being traded.
  */
-export type RebookTradeResponsePriceAdjustmentTypeOpen = OpenEnum<
-  typeof RebookTradeResponsePriceAdjustmentType
+export type RebookTradeResponseIdentifierTypeOpen = OpenEnum<
+  typeof RebookTradeResponseIdentifierType
 >;
 
 /**
- * Information about any price adjustments applied to the security
+ * Date field to support extended trading hours.
  */
-export type RebookTradeResponsePriceAdjustmentRecord = {
+export type RebookTradeResponseLocalMarketTradeDate = {
   /**
-   * Total monetary value of the price_adjustment
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
-  priceAdjustmentAmount?:
-    | RebookTradeResponsePriceAdjustmentAmount
-    | null
-    | undefined;
+  day?: number | undefined;
   /**
-   * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
    */
-  priceAdjustmentPercent?:
-    | RebookTradeResponsePriceAdjustmentPercent
-    | null
-    | undefined;
+  month?: number | undefined;
   /**
-   * The type of price adjustment being applied by the broker to the net price of the security
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
    */
-  priceAdjustmentType?: RebookTradeResponsePriceAdjustmentTypeOpen | undefined;
+  year?: number | undefined;
 };
+
+/**
+ * Route type for the trade.
+ */
+export enum RebookTradeResponseRouteType {
+  RouteTypeUnspecified = "ROUTE_TYPE_UNSPECIFIED",
+  Dma = "DMA",
+  Mngd = "MNGD",
+  Quik = "QUIK",
+  Algo = "ALGO",
+  Away = "AWAY",
+  Corr = "CORR",
+  Boats = "BOATS",
+}
+/**
+ * Route type for the trade.
+ */
+export type RebookTradeResponseRouteTypeOpen = OpenEnum<
+  typeof RebookTradeResponseRouteType
+>;
+
+/**
+ * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
+ */
+export type RebookTradeResponseSettlementDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
+ * Denotes if the trade is a SELL or a BUY.
+ */
+export enum RebookTradeResponseSide {
+  SideUnspecified = "SIDE_UNSPECIFIED",
+  Buy = "BUY",
+  Sell = "SELL",
+}
+/**
+ * Denotes if the trade is a SELL or a BUY.
+ */
+export type RebookTradeResponseSideOpen = OpenEnum<
+  typeof RebookTradeResponseSide
+>;
+
+/**
+ * Side modifier for the trade.
+ */
+export enum RebookTradeResponseSideModifier {
+  SideModifierUnspecified = "SIDE_MODIFIER_UNSPECIFIED",
+  Short = "SHORT",
+  ShortExempt = "SHORT_EXEMPT",
+  ShortCover = "SHORT_COVER",
+  Open = "OPEN",
+  Close = "CLOSE",
+}
+/**
+ * Side modifier for the trade.
+ */
+export type RebookTradeResponseSideModifierOpen = OpenEnum<
+  typeof RebookTradeResponseSideModifier
+>;
+
+export enum RebookTradeResponseSpecialInstructions {
+  SpecialInstructionsUnspecified = "SPECIAL_INSTRUCTIONS_UNSPECIFIED",
+  Rule144 = "RULE_144",
+  WithDividend = "WITH_DIVIDEND",
+  WithRights = "WITH_RIGHTS",
+  CloseContract = "CLOSE_CONTRACT",
+  CoverShort = "COVER_SHORT",
+  CrossTrade = "CROSS_TRADE",
+  OpenContractCovered = "OPEN_CONTRACT_COVERED",
+  DiscretionExercised = "DISCRETION_EXERCISED",
+  DiscretionNotExercised = "DISCRETION_NOT_EXERCISED",
+  OptionAssignment = "OPTION_ASSIGNMENT",
+  EmployeeStockOption = "EMPLOYEE_STOCK_OPTION",
+  InvestmentBanking = "INVESTMENT_BANKING",
+  BrokerDealerOrder = "BROKER_DEALER_ORDER",
+  MakeMarketInSecurity = "MAKE_MARKET_IN_SECURITY",
+  MakeMarketSolicited = "MAKE_MARKET_SOLICITED",
+  MakeMarketUnsolicited = "MAKE_MARKET_UNSOLICITED",
+  CustomerDirected = "CUSTOMER_DIRECTED",
+  FullyRegistered = "FULLY_REGISTERED",
+  OpenContract = "OPEN_CONTRACT",
+  OddlotDiffOnRequest = "ODDLOT_DIFF_ON_REQUEST",
+  ProspectusEnclosed = "PROSPECTUS_ENCLOSED",
+  ProspectusSeparateMail = "PROSPECTUS_SEPARATE_MAIL",
+  Solicited = "SOLICITED",
+  Unsolicited = "UNSOLICITED",
+  XDividend = "X_DIVIDEND",
+  ActingAsPrincipal = "ACTING_AS_PRINCIPAL",
+  AveragePrice = "AVERAGE_PRICE",
+  BrokerLiquidation = "BROKER_LIQUIDATION",
+  CouponBooks = "COUPON_BOOKS",
+  HasPostageFee = "HAS_POSTAGE_FEE",
+  InternetOrder = "INTERNET_ORDER",
+  MarginSellout = "MARGIN_SELLOUT",
+  MarketMakersAsPrincipal = "MARKET_MAKERS_AS_PRINCIPAL",
+  NegativeNetProceed = "NEGATIVE_NET_PROCEED",
+  PreFigIndicator = "PRE_FIG_INDICATOR",
+  RisklessPrincipalInstruction = "RISKLESS_PRINCIPAL_INSTRUCTION",
+  ShortInstruction = "SHORT_INSTRUCTION",
+  ThirdMarket = "THIRD_MARKET",
+  SuppressMsrbTransmission = "SUPPRESS_MSRB_TRANSMISSION",
+  SuppressTraceReporting = "SUPPRESS_TRACE_REPORTING",
+  SuppressEmailNotification = "SUPPRESS_EMAIL_NOTIFICATION",
+  StockReward = "STOCK_REWARD",
+  SuppressRegFees = "SUPPRESS_REG_FEES",
+  SuppressSecFee = "SUPPRESS_SEC_FEE",
+  SuppressTafFee = "SUPPRESS_TAF_FEE",
+  DividendReinvestment = "DIVIDEND_REINVESTMENT",
+}
+export type RebookTradeResponseSpecialInstructionsOpen = OpenEnum<
+  typeof RebookTradeResponseSpecialInstructions
+>;
+
+/**
+ * Exchange venue
+ */
+export enum RebookTradeResponseVenue {
+  ExchangeVenueUnspecified = "EXCHANGE_VENUE_UNSPECIFIED",
+  Amex = "AMEX",
+  Arca = "ARCA",
+  Bats = "BATS",
+  BatsByx = "BATS_BYX",
+  Boston = "BOSTON",
+  Box = "BOX",
+  Bzx = "BZX",
+  C2 = "C2",
+  Cboe = "CBOE",
+  Chicago = "CHICAGO",
+  Cincinnati = "CINCINNATI",
+  Edga = "EDGA",
+  Edgx = "EDGX",
+  Exclearing = "EXCLEARING",
+  Iex = "IEX",
+  Ise = "ISE",
+  IseGemini = "ISE_GEMINI",
+  Miax = "MIAX",
+  Nasdaq = "NASDAQ",
+  NasdaqOmxBx = "NASDAQ_OMX_BX",
+  Nyse = "NYSE",
+  Phlx = "PHLX",
+  Otc = "OTC",
+  Qsr = "QSR",
+}
+/**
+ * Exchange venue
+ */
+export type RebookTradeResponseVenueOpen = OpenEnum<
+  typeof RebookTradeResponseVenue
+>;
+
+/**
+ * Denotes that this trade was either when_issued or when_distributed.
+ */
+export enum RebookTradeResponseWhenIssued {
+  WhenIssuedTypeUnspecified = "WHEN_ISSUED_TYPE_UNSPECIFIED",
+  WhenIssued = "WHEN_ISSUED",
+  WhenDistributed = "WHEN_DISTRIBUTED",
+}
+/**
+ * Denotes that this trade was either when_issued or when_distributed.
+ */
+export type RebookTradeResponseWhenIssuedOpen = OpenEnum<
+  typeof RebookTradeResponseWhenIssued
+>;
 
 /**
  * The new trade that is booked.
  */
 export type NewTrade = {
   /**
-   * Free form text field containing additional information for a trade
+   * A globally unique identifier referencing a single account.
    */
-  additionalInstructions?: Array<string> | undefined;
+  accountId?: string | undefined;
   /**
-   * Max Length 100 characters. Alternate order id from the street used for FRAC trades
+   * The current activity_id of this trade in the Ledger.
+   */
+  activityId?: string | undefined;
+  /**
+   * Free form instructions that can be used to provide additional instructions (that are not captured by existing special instructions) and will be put on the trade confirm.
+   */
+  additionalInstructions?: string | undefined;
+  /**
+   * Fractional support for market-makers' internal order ids.
    */
   alternateOrderId?: string | undefined;
   /**
-   * uuid assigned by the Booking API if a trade belongs to an allocation
+   * Type of the asset being traded. Required for SYMBOL and CUSIP.
    */
-  bookingApiTradeAllocationId?: string | undefined;
+  assetType?: RebookTradeResponseAssetTypeOpen | undefined;
   /**
-   * uuid assigned by the Booking API to all trades
-   */
-  bookingApiTradeId?: string | undefined;
-  /**
-   * Executing broker of the trade
-   */
-  broker?: string | undefined;
-  /**
-   * Used to calculate broadridge blotter code
+   * Broker capacity for the trade.
    */
   brokerCapacity?: RebookTradeResponseBrokerCapacityOpen | undefined;
   /**
-   * Free form text submitted by the client for internal purposes
-   */
-  clientMemos?: Array<string> | undefined;
-  /**
-   * 32 characters. The client order ID from the order submitted
+   * The unique identifier that is associated with an order. Must be unique by date per trade per client.
    */
   clientOrderId?: string | undefined;
   /**
-   * MIC code for the exchange
+   * Executing broker of the trade.
    */
-  exchange?: string | undefined;
+  executingBroker?: string | undefined;
   /**
-   * Execution id from the street
+   * The executions (sometimes referred to as partial-fills) that comprise the trade.
    */
-  executionId?: string | undefined;
+  executions?: Array<Execution> | undefined;
   /**
-   * Indicates whether Apex is the clearing broker for this trade. When false, indicates Apex is the clearing broker
+   * Any client calculated fees associated with the trade. Only allowed if trade.open = false. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  executionOnly?: boolean | undefined;
+  fees?: Array<BookingFee> | undefined;
   /**
-   * Max Length 100 characters. External system id provided by a client
+   * Identifier (of the type specified in `identifier_type`). Responses will supply the originally requested identifier.
    */
-  externalId?: string | undefined;
+  identifier?: string | undefined;
   /**
-   * The confirmation number associated with a mutual fund trade
+   * Identifier type for the asset being traded.
    */
-  fundConfirmationNumber?: string | undefined;
+  identifierType?: RebookTradeResponseIdentifierTypeOpen | undefined;
   /**
-   * Max length 100 characters. Order id generated by trading-gateway (Trade-Ex) to uniquely identify all orders in their system. Used as the client_order_id on new order singles sent downstream of the trading-gateway
+   * Unicode CLDR region code. Issuing Region Code is required for some `identifier_type`s, especially CUSIP.
    */
-  gatewayClientOrderId?: string | undefined;
+  issuingRegionCode?: string | undefined;
   /**
-   * If set to true, indicates the trade should be omitted from client billing
+   * Date field to support extended trading hours.
    */
-  internalError?: boolean | undefined;
+  localMarketTradeDate?:
+    | RebookTradeResponseLocalMarketTradeDate
+    | null
+    | undefined;
   /**
-   * Set on penny-for-the-lot trades
+   * One or many lot matching instructions for the trade.
    */
-  isWriteoff?: boolean | undefined;
+  lotMatchingInstructions?: Array<BookingLot> | undefined;
   /**
-   * Repeated record containing information about the tax lots, if specified
+   * Market Identifier Code
    */
-  lots?: Array<Lot> | undefined;
+  micCode?: string | undefined;
   /**
-   * Max Length 100 characters. Internally generated order id that is returned to client on exec reports
+   * The resource name of the trade.
+   */
+  name?: string | undefined;
+  /**
+   * State of this trade's completeness in filling. True: trade is not done filling and can append more executions onto the trade False: trade is done filling and cannot append more executions onto the trade By default, trades are closed when they are created. An open trade can later be closed by calling the CompleteTrade endpoint. Additional executions can be appended to an open trade by calling the CreateExecution endpoint. Trades that are left open will be automatically closed nightly before Ledger's EOD.
+   */
+  open?: boolean | undefined;
+  /**
+   * Street-level order id, unique by day per broker.
    */
   orderId?: string | undefined;
   /**
-   * The price for the instrument that is prevailing in the market.
+   * Route type for the trade.
    */
-  prevailingMarketPrice?:
-    | RebookTradeResponsePrevailingMarketPrice
-    | null
+  routeType?: RebookTradeResponseRouteTypeOpen | undefined;
+  /**
+   * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
+   */
+  settlementDate?: RebookTradeResponseSettlementDate | null | undefined;
+  /**
+   * Denotes if the trade is a SELL or a BUY.
+   */
+  side?: RebookTradeResponseSideOpen | undefined;
+  /**
+   * Side modifier for the trade.
+   */
+  sideModifier?: RebookTradeResponseSideModifierOpen | undefined;
+  /**
+   * The source of the submission.
+   */
+  sourceApplication?: string | undefined;
+  /**
+   * An enumerated list of values used to indicate certain attributes about a trade (E.g. DISCRETION_EXERCISED, BROKER_LIQUIDATION) and/or trigger downstream processing rules (e.g. SUPPRESS_TRACE_REPORTING)
+   */
+  specialInstructions?:
+    | Array<RebookTradeResponseSpecialInstructionsOpen>
     | undefined;
   /**
-   * Information about any price adjustments applied to the security
+   * A ULID to uniquely identify the trade globally.
    */
-  priceAdjustmentRecord?:
-    | RebookTradeResponsePriceAdjustmentRecord
-    | null
-    | undefined;
+  tradeId?: string | undefined;
   /**
-   * Used to calculate broadridge blotter code
+   * Exchange venue
    */
-  route?: string | undefined;
+  venue?: RebookTradeResponseVenueOpen | undefined;
   /**
-   * The special instructions for a trade
+   * Denotes that this trade was either when_issued or when_distributed.
    */
-  specialInstructions?: Array<string> | undefined;
-  /**
-   * Name of the issuer of a security and additional descriptive information about the particular issue
-   */
-  symbolDescription?: string | undefined;
-  /**
-   * Indicates the trade was executed in a security that is not currently listed. When-issued securities are bought and sold before they are officially issued, allowing investors to speculate on their future value
-   */
-  whenIssued?: boolean | undefined;
-  /**
-   * The yields associated with a fixed income trade. only valid if the SecurityType is FIXED_INCOME.
-   */
-  yieldRecords?: Array<YieldRecord> | undefined;
+  whenIssued?: RebookTradeResponseWhenIssuedOpen | undefined;
 };
 
 /**
- * Used to calculate broadridge blotter code
+ * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ */
+export enum RebookTradeResponseOriginalTradeAssetType {
+  AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
+  Equity = "EQUITY",
+  FixedIncome = "FIXED_INCOME",
+}
+/**
+ * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ */
+export type RebookTradeResponseOriginalTradeAssetTypeOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeAssetType
+>;
+
+/**
+ * Broker capacity for the trade.
  */
 export enum RebookTradeResponseOriginalTradeBrokerCapacity {
   CapacityUnspecified = "CAPACITY_UNSPECIFIED",
@@ -230,196 +418,351 @@ export enum RebookTradeResponseOriginalTradeBrokerCapacity {
   Mixed = "MIXED",
 }
 /**
- * Used to calculate broadridge blotter code
+ * Broker capacity for the trade.
  */
 export type RebookTradeResponseOriginalTradeBrokerCapacityOpen = OpenEnum<
   typeof RebookTradeResponseOriginalTradeBrokerCapacity
 >;
 
 /**
- * The price for the instrument that is prevailing in the market.
+ * Identifier type for the asset being traded.
  */
-export type RebookTradeResponseOriginalTradePrevailingMarketPrice = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * Total monetary value of the price_adjustment
- */
-export type RebookTradeResponseOriginalTradePriceAdjustmentAmount = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
- */
-export type RebookTradeResponseOriginalTradePriceAdjustmentPercent = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The type of price adjustment being applied by the broker to the net price of the security
- */
-export enum RebookTradeResponseOriginalTradePriceAdjustmentType {
-  PriceAdjustmentTypeUnspecified = "PRICE_ADJUSTMENT_TYPE_UNSPECIFIED",
-  Markup = "MARKUP",
-  Markdown = "MARKDOWN",
-  SalesLoad = "SALES_LOAD",
+export enum RebookTradeResponseOriginalTradeIdentifierType {
+  IdentifierTypeUnspecified = "IDENTIFIER_TYPE_UNSPECIFIED",
+  AssetId = "ASSET_ID",
+  Symbol = "SYMBOL",
+  Cusip = "CUSIP",
+  Isin = "ISIN",
 }
 /**
- * The type of price adjustment being applied by the broker to the net price of the security
+ * Identifier type for the asset being traded.
  */
-export type RebookTradeResponseOriginalTradePriceAdjustmentTypeOpen = OpenEnum<
-  typeof RebookTradeResponseOriginalTradePriceAdjustmentType
+export type RebookTradeResponseOriginalTradeIdentifierTypeOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeIdentifierType
 >;
 
 /**
- * Information about any price adjustments applied to the security
+ * Date field to support extended trading hours.
  */
-export type RebookTradeResponseOriginalTradePriceAdjustmentRecord = {
+export type RebookTradeResponseOriginalTradeLocalMarketTradeDate = {
   /**
-   * Total monetary value of the price_adjustment
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
-  priceAdjustmentAmount?:
-    | RebookTradeResponseOriginalTradePriceAdjustmentAmount
-    | null
-    | undefined;
+  day?: number | undefined;
   /**
-   * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
    */
-  priceAdjustmentPercent?:
-    | RebookTradeResponseOriginalTradePriceAdjustmentPercent
-    | null
-    | undefined;
+  month?: number | undefined;
   /**
-   * The type of price adjustment being applied by the broker to the net price of the security
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
    */
-  priceAdjustmentType?:
-    | RebookTradeResponseOriginalTradePriceAdjustmentTypeOpen
-    | undefined;
+  year?: number | undefined;
 };
+
+/**
+ * Route type for the trade.
+ */
+export enum RebookTradeResponseOriginalTradeRouteType {
+  RouteTypeUnspecified = "ROUTE_TYPE_UNSPECIFIED",
+  Dma = "DMA",
+  Mngd = "MNGD",
+  Quik = "QUIK",
+  Algo = "ALGO",
+  Away = "AWAY",
+  Corr = "CORR",
+  Boats = "BOATS",
+}
+/**
+ * Route type for the trade.
+ */
+export type RebookTradeResponseOriginalTradeRouteTypeOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeRouteType
+>;
+
+/**
+ * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
+ */
+export type RebookTradeResponseOriginalTradeSettlementDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
+ * Denotes if the trade is a SELL or a BUY.
+ */
+export enum RebookTradeResponseOriginalTradeSide {
+  SideUnspecified = "SIDE_UNSPECIFIED",
+  Buy = "BUY",
+  Sell = "SELL",
+}
+/**
+ * Denotes if the trade is a SELL or a BUY.
+ */
+export type RebookTradeResponseOriginalTradeSideOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeSide
+>;
+
+/**
+ * Side modifier for the trade.
+ */
+export enum RebookTradeResponseOriginalTradeSideModifier {
+  SideModifierUnspecified = "SIDE_MODIFIER_UNSPECIFIED",
+  Short = "SHORT",
+  ShortExempt = "SHORT_EXEMPT",
+  ShortCover = "SHORT_COVER",
+  Open = "OPEN",
+  Close = "CLOSE",
+}
+/**
+ * Side modifier for the trade.
+ */
+export type RebookTradeResponseOriginalTradeSideModifierOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeSideModifier
+>;
+
+export enum RebookTradeResponseOriginalTradeSpecialInstructions {
+  SpecialInstructionsUnspecified = "SPECIAL_INSTRUCTIONS_UNSPECIFIED",
+  Rule144 = "RULE_144",
+  WithDividend = "WITH_DIVIDEND",
+  WithRights = "WITH_RIGHTS",
+  CloseContract = "CLOSE_CONTRACT",
+  CoverShort = "COVER_SHORT",
+  CrossTrade = "CROSS_TRADE",
+  OpenContractCovered = "OPEN_CONTRACT_COVERED",
+  DiscretionExercised = "DISCRETION_EXERCISED",
+  DiscretionNotExercised = "DISCRETION_NOT_EXERCISED",
+  OptionAssignment = "OPTION_ASSIGNMENT",
+  EmployeeStockOption = "EMPLOYEE_STOCK_OPTION",
+  InvestmentBanking = "INVESTMENT_BANKING",
+  BrokerDealerOrder = "BROKER_DEALER_ORDER",
+  MakeMarketInSecurity = "MAKE_MARKET_IN_SECURITY",
+  MakeMarketSolicited = "MAKE_MARKET_SOLICITED",
+  MakeMarketUnsolicited = "MAKE_MARKET_UNSOLICITED",
+  CustomerDirected = "CUSTOMER_DIRECTED",
+  FullyRegistered = "FULLY_REGISTERED",
+  OpenContract = "OPEN_CONTRACT",
+  OddlotDiffOnRequest = "ODDLOT_DIFF_ON_REQUEST",
+  ProspectusEnclosed = "PROSPECTUS_ENCLOSED",
+  ProspectusSeparateMail = "PROSPECTUS_SEPARATE_MAIL",
+  Solicited = "SOLICITED",
+  Unsolicited = "UNSOLICITED",
+  XDividend = "X_DIVIDEND",
+  ActingAsPrincipal = "ACTING_AS_PRINCIPAL",
+  AveragePrice = "AVERAGE_PRICE",
+  BrokerLiquidation = "BROKER_LIQUIDATION",
+  CouponBooks = "COUPON_BOOKS",
+  HasPostageFee = "HAS_POSTAGE_FEE",
+  InternetOrder = "INTERNET_ORDER",
+  MarginSellout = "MARGIN_SELLOUT",
+  MarketMakersAsPrincipal = "MARKET_MAKERS_AS_PRINCIPAL",
+  NegativeNetProceed = "NEGATIVE_NET_PROCEED",
+  PreFigIndicator = "PRE_FIG_INDICATOR",
+  RisklessPrincipalInstruction = "RISKLESS_PRINCIPAL_INSTRUCTION",
+  ShortInstruction = "SHORT_INSTRUCTION",
+  ThirdMarket = "THIRD_MARKET",
+  SuppressMsrbTransmission = "SUPPRESS_MSRB_TRANSMISSION",
+  SuppressTraceReporting = "SUPPRESS_TRACE_REPORTING",
+  SuppressEmailNotification = "SUPPRESS_EMAIL_NOTIFICATION",
+  StockReward = "STOCK_REWARD",
+  SuppressRegFees = "SUPPRESS_REG_FEES",
+  SuppressSecFee = "SUPPRESS_SEC_FEE",
+  SuppressTafFee = "SUPPRESS_TAF_FEE",
+  DividendReinvestment = "DIVIDEND_REINVESTMENT",
+}
+export type RebookTradeResponseOriginalTradeSpecialInstructionsOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeSpecialInstructions
+>;
+
+/**
+ * Exchange venue
+ */
+export enum RebookTradeResponseOriginalTradeVenue {
+  ExchangeVenueUnspecified = "EXCHANGE_VENUE_UNSPECIFIED",
+  Amex = "AMEX",
+  Arca = "ARCA",
+  Bats = "BATS",
+  BatsByx = "BATS_BYX",
+  Boston = "BOSTON",
+  Box = "BOX",
+  Bzx = "BZX",
+  C2 = "C2",
+  Cboe = "CBOE",
+  Chicago = "CHICAGO",
+  Cincinnati = "CINCINNATI",
+  Edga = "EDGA",
+  Edgx = "EDGX",
+  Exclearing = "EXCLEARING",
+  Iex = "IEX",
+  Ise = "ISE",
+  IseGemini = "ISE_GEMINI",
+  Miax = "MIAX",
+  Nasdaq = "NASDAQ",
+  NasdaqOmxBx = "NASDAQ_OMX_BX",
+  Nyse = "NYSE",
+  Phlx = "PHLX",
+  Otc = "OTC",
+  Qsr = "QSR",
+}
+/**
+ * Exchange venue
+ */
+export type RebookTradeResponseOriginalTradeVenueOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeVenue
+>;
+
+/**
+ * Denotes that this trade was either when_issued or when_distributed.
+ */
+export enum RebookTradeResponseOriginalTradeWhenIssued {
+  WhenIssuedTypeUnspecified = "WHEN_ISSUED_TYPE_UNSPECIFIED",
+  WhenIssued = "WHEN_ISSUED",
+  WhenDistributed = "WHEN_DISTRIBUTED",
+}
+/**
+ * Denotes that this trade was either when_issued or when_distributed.
+ */
+export type RebookTradeResponseOriginalTradeWhenIssuedOpen = OpenEnum<
+  typeof RebookTradeResponseOriginalTradeWhenIssued
+>;
 
 /**
  * The original trade that was rebooked.
  */
 export type OriginalTrade = {
   /**
-   * Free form text field containing additional information for a trade
+   * A globally unique identifier referencing a single account.
    */
-  additionalInstructions?: Array<string> | undefined;
+  accountId?: string | undefined;
   /**
-   * Max Length 100 characters. Alternate order id from the street used for FRAC trades
+   * The current activity_id of this trade in the Ledger.
+   */
+  activityId?: string | undefined;
+  /**
+   * Free form instructions that can be used to provide additional instructions (that are not captured by existing special instructions) and will be put on the trade confirm.
+   */
+  additionalInstructions?: string | undefined;
+  /**
+   * Fractional support for market-makers' internal order ids.
    */
   alternateOrderId?: string | undefined;
   /**
-   * uuid assigned by the Booking API if a trade belongs to an allocation
+   * Type of the asset being traded. Required for SYMBOL and CUSIP.
    */
-  bookingApiTradeAllocationId?: string | undefined;
+  assetType?: RebookTradeResponseOriginalTradeAssetTypeOpen | undefined;
   /**
-   * uuid assigned by the Booking API to all trades
-   */
-  bookingApiTradeId?: string | undefined;
-  /**
-   * Executing broker of the trade
-   */
-  broker?: string | undefined;
-  /**
-   * Used to calculate broadridge blotter code
+   * Broker capacity for the trade.
    */
   brokerCapacity?:
     | RebookTradeResponseOriginalTradeBrokerCapacityOpen
     | undefined;
   /**
-   * Free form text submitted by the client for internal purposes
-   */
-  clientMemos?: Array<string> | undefined;
-  /**
-   * 32 characters. The client order ID from the order submitted
+   * The unique identifier that is associated with an order. Must be unique by date per trade per client.
    */
   clientOrderId?: string | undefined;
   /**
-   * MIC code for the exchange
+   * Executing broker of the trade.
    */
-  exchange?: string | undefined;
+  executingBroker?: string | undefined;
   /**
-   * Execution id from the street
+   * The executions (sometimes referred to as partial-fills) that comprise the trade.
    */
-  executionId?: string | undefined;
+  executions?: Array<Execution> | undefined;
   /**
-   * Indicates whether Apex is the clearing broker for this trade. When false, indicates Apex is the clearing broker
+   * Any client calculated fees associated with the trade. Only allowed if trade.open = false. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  executionOnly?: boolean | undefined;
+  fees?: Array<BookingFee> | undefined;
   /**
-   * Max Length 100 characters. External system id provided by a client
+   * Identifier (of the type specified in `identifier_type`). Responses will supply the originally requested identifier.
    */
-  externalId?: string | undefined;
+  identifier?: string | undefined;
   /**
-   * The confirmation number associated with a mutual fund trade
+   * Identifier type for the asset being traded.
    */
-  fundConfirmationNumber?: string | undefined;
+  identifierType?:
+    | RebookTradeResponseOriginalTradeIdentifierTypeOpen
+    | undefined;
   /**
-   * Max length 100 characters. Order id generated by trading-gateway (Trade-Ex) to uniquely identify all orders in their system. Used as the client_order_id on new order singles sent downstream of the trading-gateway
+   * Unicode CLDR region code. Issuing Region Code is required for some `identifier_type`s, especially CUSIP.
    */
-  gatewayClientOrderId?: string | undefined;
+  issuingRegionCode?: string | undefined;
   /**
-   * If set to true, indicates the trade should be omitted from client billing
+   * Date field to support extended trading hours.
    */
-  internalError?: boolean | undefined;
+  localMarketTradeDate?:
+    | RebookTradeResponseOriginalTradeLocalMarketTradeDate
+    | null
+    | undefined;
   /**
-   * Set on penny-for-the-lot trades
+   * One or many lot matching instructions for the trade.
    */
-  isWriteoff?: boolean | undefined;
+  lotMatchingInstructions?: Array<BookingLot> | undefined;
   /**
-   * Repeated record containing information about the tax lots, if specified
+   * Market Identifier Code
    */
-  lots?: Array<Lot> | undefined;
+  micCode?: string | undefined;
   /**
-   * Max Length 100 characters. Internally generated order id that is returned to client on exec reports
+   * The resource name of the trade.
+   */
+  name?: string | undefined;
+  /**
+   * State of this trade's completeness in filling. True: trade is not done filling and can append more executions onto the trade False: trade is done filling and cannot append more executions onto the trade By default, trades are closed when they are created. An open trade can later be closed by calling the CompleteTrade endpoint. Additional executions can be appended to an open trade by calling the CreateExecution endpoint. Trades that are left open will be automatically closed nightly before Ledger's EOD.
+   */
+  open?: boolean | undefined;
+  /**
+   * Street-level order id, unique by day per broker.
    */
   orderId?: string | undefined;
   /**
-   * The price for the instrument that is prevailing in the market.
+   * Route type for the trade.
    */
-  prevailingMarketPrice?:
-    | RebookTradeResponseOriginalTradePrevailingMarketPrice
+  routeType?: RebookTradeResponseOriginalTradeRouteTypeOpen | undefined;
+  /**
+   * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
+   */
+  settlementDate?:
+    | RebookTradeResponseOriginalTradeSettlementDate
     | null
     | undefined;
   /**
-   * Information about any price adjustments applied to the security
+   * Denotes if the trade is a SELL or a BUY.
    */
-  priceAdjustmentRecord?:
-    | RebookTradeResponseOriginalTradePriceAdjustmentRecord
-    | null
+  side?: RebookTradeResponseOriginalTradeSideOpen | undefined;
+  /**
+   * Side modifier for the trade.
+   */
+  sideModifier?: RebookTradeResponseOriginalTradeSideModifierOpen | undefined;
+  /**
+   * The source of the submission.
+   */
+  sourceApplication?: string | undefined;
+  /**
+   * An enumerated list of values used to indicate certain attributes about a trade (E.g. DISCRETION_EXERCISED, BROKER_LIQUIDATION) and/or trigger downstream processing rules (e.g. SUPPRESS_TRACE_REPORTING)
+   */
+  specialInstructions?:
+    | Array<RebookTradeResponseOriginalTradeSpecialInstructionsOpen>
     | undefined;
   /**
-   * Used to calculate broadridge blotter code
+   * A ULID to uniquely identify the trade globally.
    */
-  route?: string | undefined;
+  tradeId?: string | undefined;
   /**
-   * The special instructions for a trade
+   * Exchange venue
    */
-  specialInstructions?: Array<string> | undefined;
+  venue?: RebookTradeResponseOriginalTradeVenueOpen | undefined;
   /**
-   * Name of the issuer of a security and additional descriptive information about the particular issue
+   * Denotes that this trade was either when_issued or when_distributed.
    */
-  symbolDescription?: string | undefined;
-  /**
-   * Indicates the trade was executed in a security that is not currently listed. When-issued securities are bought and sold before they are officially issued, allowing investors to speculate on their future value
-   */
-  whenIssued?: boolean | undefined;
-  /**
-   * The yields associated with a fixed income trade. only valid if the SecurityType is FIXED_INCOME.
-   */
-  yieldRecords?: Array<YieldRecord> | undefined;
+  whenIssued?: RebookTradeResponseOriginalTradeWhenIssuedOpen | undefined;
 };
 
 /**
@@ -435,6 +778,38 @@ export type RebookTradeResponse = {
    */
   originalTrade?: OriginalTrade | null | undefined;
 };
+
+/** @internal */
+export const RebookTradeResponseAssetType$inboundSchema: z.ZodType<
+  RebookTradeResponseAssetTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseAssetType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseAssetType$outboundSchema: z.ZodType<
+  RebookTradeResponseAssetTypeOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseAssetTypeOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseAssetType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseAssetType$ {
+  /** @deprecated use `RebookTradeResponseAssetType$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseAssetType$inboundSchema;
+  /** @deprecated use `RebookTradeResponseAssetType$outboundSchema` instead. */
+  export const outboundSchema = RebookTradeResponseAssetType$outboundSchema;
+}
 
 /** @internal */
 export const RebookTradeResponseBrokerCapacity$inboundSchema: z.ZodType<
@@ -470,138 +845,23 @@ export namespace RebookTradeResponseBrokerCapacity$ {
 }
 
 /** @internal */
-export const RebookTradeResponsePrevailingMarketPrice$inboundSchema: z.ZodType<
-  RebookTradeResponsePrevailingMarketPrice,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type RebookTradeResponsePrevailingMarketPrice$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const RebookTradeResponsePrevailingMarketPrice$outboundSchema: z.ZodType<
-  RebookTradeResponsePrevailingMarketPrice$Outbound,
-  z.ZodTypeDef,
-  RebookTradeResponsePrevailingMarketPrice
-> = z.object({
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RebookTradeResponsePrevailingMarketPrice$ {
-  /** @deprecated use `RebookTradeResponsePrevailingMarketPrice$inboundSchema` instead. */
-  export const inboundSchema =
-    RebookTradeResponsePrevailingMarketPrice$inboundSchema;
-  /** @deprecated use `RebookTradeResponsePrevailingMarketPrice$outboundSchema` instead. */
-  export const outboundSchema =
-    RebookTradeResponsePrevailingMarketPrice$outboundSchema;
-  /** @deprecated use `RebookTradeResponsePrevailingMarketPrice$Outbound` instead. */
-  export type Outbound = RebookTradeResponsePrevailingMarketPrice$Outbound;
-}
-
-/** @internal */
-export const RebookTradeResponsePriceAdjustmentAmount$inboundSchema: z.ZodType<
-  RebookTradeResponsePriceAdjustmentAmount,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type RebookTradeResponsePriceAdjustmentAmount$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const RebookTradeResponsePriceAdjustmentAmount$outboundSchema: z.ZodType<
-  RebookTradeResponsePriceAdjustmentAmount$Outbound,
-  z.ZodTypeDef,
-  RebookTradeResponsePriceAdjustmentAmount
-> = z.object({
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RebookTradeResponsePriceAdjustmentAmount$ {
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentAmount$inboundSchema` instead. */
-  export const inboundSchema =
-    RebookTradeResponsePriceAdjustmentAmount$inboundSchema;
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentAmount$outboundSchema` instead. */
-  export const outboundSchema =
-    RebookTradeResponsePriceAdjustmentAmount$outboundSchema;
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentAmount$Outbound` instead. */
-  export type Outbound = RebookTradeResponsePriceAdjustmentAmount$Outbound;
-}
-
-/** @internal */
-export const RebookTradeResponsePriceAdjustmentPercent$inboundSchema: z.ZodType<
-  RebookTradeResponsePriceAdjustmentPercent,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
-
-/** @internal */
-export type RebookTradeResponsePriceAdjustmentPercent$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const RebookTradeResponsePriceAdjustmentPercent$outboundSchema:
-  z.ZodType<
-    RebookTradeResponsePriceAdjustmentPercent$Outbound,
-    z.ZodTypeDef,
-    RebookTradeResponsePriceAdjustmentPercent
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RebookTradeResponsePriceAdjustmentPercent$ {
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentPercent$inboundSchema` instead. */
-  export const inboundSchema =
-    RebookTradeResponsePriceAdjustmentPercent$inboundSchema;
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentPercent$outboundSchema` instead. */
-  export const outboundSchema =
-    RebookTradeResponsePriceAdjustmentPercent$outboundSchema;
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentPercent$Outbound` instead. */
-  export type Outbound = RebookTradeResponsePriceAdjustmentPercent$Outbound;
-}
-
-/** @internal */
-export const RebookTradeResponsePriceAdjustmentType$inboundSchema: z.ZodType<
-  RebookTradeResponsePriceAdjustmentTypeOpen,
+export const RebookTradeResponseIdentifierType$inboundSchema: z.ZodType<
+  RebookTradeResponseIdentifierTypeOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(RebookTradeResponsePriceAdjustmentType),
+    z.nativeEnum(RebookTradeResponseIdentifierType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const RebookTradeResponsePriceAdjustmentType$outboundSchema: z.ZodType<
-  RebookTradeResponsePriceAdjustmentTypeOpen,
+export const RebookTradeResponseIdentifierType$outboundSchema: z.ZodType<
+  RebookTradeResponseIdentifierTypeOpen,
   z.ZodTypeDef,
-  RebookTradeResponsePriceAdjustmentTypeOpen
+  RebookTradeResponseIdentifierTypeOpen
 > = z.union([
-  z.nativeEnum(RebookTradeResponsePriceAdjustmentType),
+  z.nativeEnum(RebookTradeResponseIdentifierType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -609,85 +869,293 @@ export const RebookTradeResponsePriceAdjustmentType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RebookTradeResponsePriceAdjustmentType$ {
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentType$inboundSchema` instead. */
-  export const inboundSchema =
-    RebookTradeResponsePriceAdjustmentType$inboundSchema;
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentType$outboundSchema` instead. */
+export namespace RebookTradeResponseIdentifierType$ {
+  /** @deprecated use `RebookTradeResponseIdentifierType$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseIdentifierType$inboundSchema;
+  /** @deprecated use `RebookTradeResponseIdentifierType$outboundSchema` instead. */
   export const outboundSchema =
-    RebookTradeResponsePriceAdjustmentType$outboundSchema;
+    RebookTradeResponseIdentifierType$outboundSchema;
 }
 
 /** @internal */
-export const RebookTradeResponsePriceAdjustmentRecord$inboundSchema: z.ZodType<
-  RebookTradeResponsePriceAdjustmentRecord,
+export const RebookTradeResponseLocalMarketTradeDate$inboundSchema: z.ZodType<
+  RebookTradeResponseLocalMarketTradeDate,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  price_adjustment_amount: z.nullable(
-    z.lazy(() => RebookTradeResponsePriceAdjustmentAmount$inboundSchema),
-  ).optional(),
-  price_adjustment_percent: z.nullable(
-    z.lazy(() => RebookTradeResponsePriceAdjustmentPercent$inboundSchema),
-  ).optional(),
-  price_adjustment_type: RebookTradeResponsePriceAdjustmentType$inboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "price_adjustment_amount": "priceAdjustmentAmount",
-    "price_adjustment_percent": "priceAdjustmentPercent",
-    "price_adjustment_type": "priceAdjustmentType",
-  });
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
 });
 
 /** @internal */
-export type RebookTradeResponsePriceAdjustmentRecord$Outbound = {
-  price_adjustment_amount?:
-    | RebookTradeResponsePriceAdjustmentAmount$Outbound
-    | null
-    | undefined;
-  price_adjustment_percent?:
-    | RebookTradeResponsePriceAdjustmentPercent$Outbound
-    | null
-    | undefined;
-  price_adjustment_type?: string | undefined;
+export type RebookTradeResponseLocalMarketTradeDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
 };
 
 /** @internal */
-export const RebookTradeResponsePriceAdjustmentRecord$outboundSchema: z.ZodType<
-  RebookTradeResponsePriceAdjustmentRecord$Outbound,
+export const RebookTradeResponseLocalMarketTradeDate$outboundSchema: z.ZodType<
+  RebookTradeResponseLocalMarketTradeDate$Outbound,
   z.ZodTypeDef,
-  RebookTradeResponsePriceAdjustmentRecord
+  RebookTradeResponseLocalMarketTradeDate
 > = z.object({
-  priceAdjustmentAmount: z.nullable(
-    z.lazy(() => RebookTradeResponsePriceAdjustmentAmount$outboundSchema),
-  ).optional(),
-  priceAdjustmentPercent: z.nullable(
-    z.lazy(() => RebookTradeResponsePriceAdjustmentPercent$outboundSchema),
-  ).optional(),
-  priceAdjustmentType: RebookTradeResponsePriceAdjustmentType$outboundSchema
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    priceAdjustmentAmount: "price_adjustment_amount",
-    priceAdjustmentPercent: "price_adjustment_percent",
-    priceAdjustmentType: "price_adjustment_type",
-  });
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RebookTradeResponsePriceAdjustmentRecord$ {
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentRecord$inboundSchema` instead. */
+export namespace RebookTradeResponseLocalMarketTradeDate$ {
+  /** @deprecated use `RebookTradeResponseLocalMarketTradeDate$inboundSchema` instead. */
   export const inboundSchema =
-    RebookTradeResponsePriceAdjustmentRecord$inboundSchema;
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentRecord$outboundSchema` instead. */
+    RebookTradeResponseLocalMarketTradeDate$inboundSchema;
+  /** @deprecated use `RebookTradeResponseLocalMarketTradeDate$outboundSchema` instead. */
   export const outboundSchema =
-    RebookTradeResponsePriceAdjustmentRecord$outboundSchema;
-  /** @deprecated use `RebookTradeResponsePriceAdjustmentRecord$Outbound` instead. */
-  export type Outbound = RebookTradeResponsePriceAdjustmentRecord$Outbound;
+    RebookTradeResponseLocalMarketTradeDate$outboundSchema;
+  /** @deprecated use `RebookTradeResponseLocalMarketTradeDate$Outbound` instead. */
+  export type Outbound = RebookTradeResponseLocalMarketTradeDate$Outbound;
+}
+
+/** @internal */
+export const RebookTradeResponseRouteType$inboundSchema: z.ZodType<
+  RebookTradeResponseRouteTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseRouteType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseRouteType$outboundSchema: z.ZodType<
+  RebookTradeResponseRouteTypeOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseRouteTypeOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseRouteType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseRouteType$ {
+  /** @deprecated use `RebookTradeResponseRouteType$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseRouteType$inboundSchema;
+  /** @deprecated use `RebookTradeResponseRouteType$outboundSchema` instead. */
+  export const outboundSchema = RebookTradeResponseRouteType$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseSettlementDate$inboundSchema: z.ZodType<
+  RebookTradeResponseSettlementDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type RebookTradeResponseSettlementDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const RebookTradeResponseSettlementDate$outboundSchema: z.ZodType<
+  RebookTradeResponseSettlementDate$Outbound,
+  z.ZodTypeDef,
+  RebookTradeResponseSettlementDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseSettlementDate$ {
+  /** @deprecated use `RebookTradeResponseSettlementDate$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseSettlementDate$inboundSchema;
+  /** @deprecated use `RebookTradeResponseSettlementDate$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseSettlementDate$outboundSchema;
+  /** @deprecated use `RebookTradeResponseSettlementDate$Outbound` instead. */
+  export type Outbound = RebookTradeResponseSettlementDate$Outbound;
+}
+
+/** @internal */
+export const RebookTradeResponseSide$inboundSchema: z.ZodType<
+  RebookTradeResponseSideOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseSide),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseSide$outboundSchema: z.ZodType<
+  RebookTradeResponseSideOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseSideOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseSide),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseSide$ {
+  /** @deprecated use `RebookTradeResponseSide$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseSide$inboundSchema;
+  /** @deprecated use `RebookTradeResponseSide$outboundSchema` instead. */
+  export const outboundSchema = RebookTradeResponseSide$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseSideModifier$inboundSchema: z.ZodType<
+  RebookTradeResponseSideModifierOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseSideModifier),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseSideModifier$outboundSchema: z.ZodType<
+  RebookTradeResponseSideModifierOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseSideModifierOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseSideModifier),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseSideModifier$ {
+  /** @deprecated use `RebookTradeResponseSideModifier$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseSideModifier$inboundSchema;
+  /** @deprecated use `RebookTradeResponseSideModifier$outboundSchema` instead. */
+  export const outboundSchema = RebookTradeResponseSideModifier$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseSpecialInstructions$inboundSchema: z.ZodType<
+  RebookTradeResponseSpecialInstructionsOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseSpecialInstructions),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseSpecialInstructions$outboundSchema: z.ZodType<
+  RebookTradeResponseSpecialInstructionsOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseSpecialInstructionsOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseSpecialInstructions),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseSpecialInstructions$ {
+  /** @deprecated use `RebookTradeResponseSpecialInstructions$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseSpecialInstructions$inboundSchema;
+  /** @deprecated use `RebookTradeResponseSpecialInstructions$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseSpecialInstructions$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseVenue$inboundSchema: z.ZodType<
+  RebookTradeResponseVenueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseVenue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseVenue$outboundSchema: z.ZodType<
+  RebookTradeResponseVenueOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseVenueOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseVenue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseVenue$ {
+  /** @deprecated use `RebookTradeResponseVenue$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseVenue$inboundSchema;
+  /** @deprecated use `RebookTradeResponseVenue$outboundSchema` instead. */
+  export const outboundSchema = RebookTradeResponseVenue$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseWhenIssued$inboundSchema: z.ZodType<
+  RebookTradeResponseWhenIssuedOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseWhenIssued),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseWhenIssued$outboundSchema: z.ZodType<
+  RebookTradeResponseWhenIssuedOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseWhenIssuedOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseWhenIssued),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseWhenIssued$ {
+  /** @deprecated use `RebookTradeResponseWhenIssued$inboundSchema` instead. */
+  export const inboundSchema = RebookTradeResponseWhenIssued$inboundSchema;
+  /** @deprecated use `RebookTradeResponseWhenIssued$outboundSchema` instead. */
+  export const outboundSchema = RebookTradeResponseWhenIssued$outboundSchema;
 }
 
 /** @internal */
@@ -696,94 +1164,102 @@ export const NewTrade$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  additional_instructions: z.array(z.string()).optional(),
+  account_id: z.string().optional(),
+  activity_id: z.string().optional(),
+  additional_instructions: z.string().optional(),
   alternate_order_id: z.string().optional(),
-  booking_api_trade_allocation_id: z.string().optional(),
-  booking_api_trade_id: z.string().optional(),
-  broker: z.string().optional(),
+  asset_type: RebookTradeResponseAssetType$inboundSchema.optional(),
   broker_capacity: RebookTradeResponseBrokerCapacity$inboundSchema.optional(),
-  client_memos: z.array(z.string()).optional(),
   client_order_id: z.string().optional(),
-  exchange: z.string().optional(),
-  execution_id: z.string().optional(),
-  execution_only: z.boolean().optional(),
-  external_id: z.string().optional(),
-  fund_confirmation_number: z.string().optional(),
-  gateway_client_order_id: z.string().optional(),
-  internal_error: z.boolean().optional(),
-  is_writeoff: z.boolean().optional(),
-  lots: z.array(Lot$inboundSchema).optional(),
+  executing_broker: z.string().optional(),
+  executions: z.array(Execution$inboundSchema).optional(),
+  fees: z.array(BookingFee$inboundSchema).optional(),
+  identifier: z.string().optional(),
+  identifier_type: RebookTradeResponseIdentifierType$inboundSchema.optional(),
+  issuing_region_code: z.string().optional(),
+  local_market_trade_date: z.nullable(
+    z.lazy(() => RebookTradeResponseLocalMarketTradeDate$inboundSchema),
+  ).optional(),
+  lot_matching_instructions: z.array(BookingLot$inboundSchema).optional(),
+  mic_code: z.string().optional(),
+  name: z.string().optional(),
+  open: z.boolean().optional(),
   order_id: z.string().optional(),
-  prevailing_market_price: z.nullable(
-    z.lazy(() => RebookTradeResponsePrevailingMarketPrice$inboundSchema),
+  route_type: RebookTradeResponseRouteType$inboundSchema.optional(),
+  settlement_date: z.nullable(
+    z.lazy(() => RebookTradeResponseSettlementDate$inboundSchema),
   ).optional(),
-  price_adjustment_record: z.nullable(
-    z.lazy(() => RebookTradeResponsePriceAdjustmentRecord$inboundSchema),
+  side: RebookTradeResponseSide$inboundSchema.optional(),
+  side_modifier: RebookTradeResponseSideModifier$inboundSchema.optional(),
+  source_application: z.string().optional(),
+  special_instructions: z.array(
+    RebookTradeResponseSpecialInstructions$inboundSchema,
   ).optional(),
-  route: z.string().optional(),
-  special_instructions: z.array(z.string()).optional(),
-  symbol_description: z.string().optional(),
-  when_issued: z.boolean().optional(),
-  yield_records: z.array(YieldRecord$inboundSchema).optional(),
+  trade_id: z.string().optional(),
+  venue: RebookTradeResponseVenue$inboundSchema.optional(),
+  when_issued: RebookTradeResponseWhenIssued$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    "account_id": "accountId",
+    "activity_id": "activityId",
     "additional_instructions": "additionalInstructions",
     "alternate_order_id": "alternateOrderId",
-    "booking_api_trade_allocation_id": "bookingApiTradeAllocationId",
-    "booking_api_trade_id": "bookingApiTradeId",
+    "asset_type": "assetType",
     "broker_capacity": "brokerCapacity",
-    "client_memos": "clientMemos",
     "client_order_id": "clientOrderId",
-    "execution_id": "executionId",
-    "execution_only": "executionOnly",
-    "external_id": "externalId",
-    "fund_confirmation_number": "fundConfirmationNumber",
-    "gateway_client_order_id": "gatewayClientOrderId",
-    "internal_error": "internalError",
-    "is_writeoff": "isWriteoff",
+    "executing_broker": "executingBroker",
+    "identifier_type": "identifierType",
+    "issuing_region_code": "issuingRegionCode",
+    "local_market_trade_date": "localMarketTradeDate",
+    "lot_matching_instructions": "lotMatchingInstructions",
+    "mic_code": "micCode",
     "order_id": "orderId",
-    "prevailing_market_price": "prevailingMarketPrice",
-    "price_adjustment_record": "priceAdjustmentRecord",
+    "route_type": "routeType",
+    "settlement_date": "settlementDate",
+    "side_modifier": "sideModifier",
+    "source_application": "sourceApplication",
     "special_instructions": "specialInstructions",
-    "symbol_description": "symbolDescription",
+    "trade_id": "tradeId",
     "when_issued": "whenIssued",
-    "yield_records": "yieldRecords",
   });
 });
 
 /** @internal */
 export type NewTrade$Outbound = {
-  additional_instructions?: Array<string> | undefined;
+  account_id?: string | undefined;
+  activity_id?: string | undefined;
+  additional_instructions?: string | undefined;
   alternate_order_id?: string | undefined;
-  booking_api_trade_allocation_id?: string | undefined;
-  booking_api_trade_id?: string | undefined;
-  broker?: string | undefined;
+  asset_type?: string | undefined;
   broker_capacity?: string | undefined;
-  client_memos?: Array<string> | undefined;
   client_order_id?: string | undefined;
-  exchange?: string | undefined;
-  execution_id?: string | undefined;
-  execution_only?: boolean | undefined;
-  external_id?: string | undefined;
-  fund_confirmation_number?: string | undefined;
-  gateway_client_order_id?: string | undefined;
-  internal_error?: boolean | undefined;
-  is_writeoff?: boolean | undefined;
-  lots?: Array<Lot$Outbound> | undefined;
+  executing_broker?: string | undefined;
+  executions?: Array<Execution$Outbound> | undefined;
+  fees?: Array<BookingFee$Outbound> | undefined;
+  identifier?: string | undefined;
+  identifier_type?: string | undefined;
+  issuing_region_code?: string | undefined;
+  local_market_trade_date?:
+    | RebookTradeResponseLocalMarketTradeDate$Outbound
+    | null
+    | undefined;
+  lot_matching_instructions?: Array<BookingLot$Outbound> | undefined;
+  mic_code?: string | undefined;
+  name?: string | undefined;
+  open?: boolean | undefined;
   order_id?: string | undefined;
-  prevailing_market_price?:
-    | RebookTradeResponsePrevailingMarketPrice$Outbound
+  route_type?: string | undefined;
+  settlement_date?:
+    | RebookTradeResponseSettlementDate$Outbound
     | null
     | undefined;
-  price_adjustment_record?:
-    | RebookTradeResponsePriceAdjustmentRecord$Outbound
-    | null
-    | undefined;
-  route?: string | undefined;
+  side?: string | undefined;
+  side_modifier?: string | undefined;
+  source_application?: string | undefined;
   special_instructions?: Array<string> | undefined;
-  symbol_description?: string | undefined;
-  when_issued?: boolean | undefined;
-  yield_records?: Array<YieldRecord$Outbound> | undefined;
+  trade_id?: string | undefined;
+  venue?: string | undefined;
+  when_issued?: string | undefined;
 };
 
 /** @internal */
@@ -792,58 +1268,63 @@ export const NewTrade$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NewTrade
 > = z.object({
-  additionalInstructions: z.array(z.string()).optional(),
+  accountId: z.string().optional(),
+  activityId: z.string().optional(),
+  additionalInstructions: z.string().optional(),
   alternateOrderId: z.string().optional(),
-  bookingApiTradeAllocationId: z.string().optional(),
-  bookingApiTradeId: z.string().optional(),
-  broker: z.string().optional(),
+  assetType: RebookTradeResponseAssetType$outboundSchema.optional(),
   brokerCapacity: RebookTradeResponseBrokerCapacity$outboundSchema.optional(),
-  clientMemos: z.array(z.string()).optional(),
   clientOrderId: z.string().optional(),
-  exchange: z.string().optional(),
-  executionId: z.string().optional(),
-  executionOnly: z.boolean().optional(),
-  externalId: z.string().optional(),
-  fundConfirmationNumber: z.string().optional(),
-  gatewayClientOrderId: z.string().optional(),
-  internalError: z.boolean().optional(),
-  isWriteoff: z.boolean().optional(),
-  lots: z.array(Lot$outboundSchema).optional(),
+  executingBroker: z.string().optional(),
+  executions: z.array(Execution$outboundSchema).optional(),
+  fees: z.array(BookingFee$outboundSchema).optional(),
+  identifier: z.string().optional(),
+  identifierType: RebookTradeResponseIdentifierType$outboundSchema.optional(),
+  issuingRegionCode: z.string().optional(),
+  localMarketTradeDate: z.nullable(
+    z.lazy(() => RebookTradeResponseLocalMarketTradeDate$outboundSchema),
+  ).optional(),
+  lotMatchingInstructions: z.array(BookingLot$outboundSchema).optional(),
+  micCode: z.string().optional(),
+  name: z.string().optional(),
+  open: z.boolean().optional(),
   orderId: z.string().optional(),
-  prevailingMarketPrice: z.nullable(
-    z.lazy(() => RebookTradeResponsePrevailingMarketPrice$outboundSchema),
+  routeType: RebookTradeResponseRouteType$outboundSchema.optional(),
+  settlementDate: z.nullable(
+    z.lazy(() => RebookTradeResponseSettlementDate$outboundSchema),
   ).optional(),
-  priceAdjustmentRecord: z.nullable(
-    z.lazy(() => RebookTradeResponsePriceAdjustmentRecord$outboundSchema),
+  side: RebookTradeResponseSide$outboundSchema.optional(),
+  sideModifier: RebookTradeResponseSideModifier$outboundSchema.optional(),
+  sourceApplication: z.string().optional(),
+  specialInstructions: z.array(
+    RebookTradeResponseSpecialInstructions$outboundSchema,
   ).optional(),
-  route: z.string().optional(),
-  specialInstructions: z.array(z.string()).optional(),
-  symbolDescription: z.string().optional(),
-  whenIssued: z.boolean().optional(),
-  yieldRecords: z.array(YieldRecord$outboundSchema).optional(),
+  tradeId: z.string().optional(),
+  venue: RebookTradeResponseVenue$outboundSchema.optional(),
+  whenIssued: RebookTradeResponseWhenIssued$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    accountId: "account_id",
+    activityId: "activity_id",
     additionalInstructions: "additional_instructions",
     alternateOrderId: "alternate_order_id",
-    bookingApiTradeAllocationId: "booking_api_trade_allocation_id",
-    bookingApiTradeId: "booking_api_trade_id",
+    assetType: "asset_type",
     brokerCapacity: "broker_capacity",
-    clientMemos: "client_memos",
     clientOrderId: "client_order_id",
-    executionId: "execution_id",
-    executionOnly: "execution_only",
-    externalId: "external_id",
-    fundConfirmationNumber: "fund_confirmation_number",
-    gatewayClientOrderId: "gateway_client_order_id",
-    internalError: "internal_error",
-    isWriteoff: "is_writeoff",
+    executingBroker: "executing_broker",
+    identifierType: "identifier_type",
+    issuingRegionCode: "issuing_region_code",
+    localMarketTradeDate: "local_market_trade_date",
+    lotMatchingInstructions: "lot_matching_instructions",
+    micCode: "mic_code",
     orderId: "order_id",
-    prevailingMarketPrice: "prevailing_market_price",
-    priceAdjustmentRecord: "price_adjustment_record",
+    routeType: "route_type",
+    settlementDate: "settlement_date",
+    sideModifier: "side_modifier",
+    sourceApplication: "source_application",
     specialInstructions: "special_instructions",
-    symbolDescription: "symbol_description",
+    tradeId: "trade_id",
     whenIssued: "when_issued",
-    yieldRecords: "yield_records",
   });
 });
 
@@ -858,6 +1339,41 @@ export namespace NewTrade$ {
   export const outboundSchema = NewTrade$outboundSchema;
   /** @deprecated use `NewTrade$Outbound` instead. */
   export type Outbound = NewTrade$Outbound;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeAssetType$inboundSchema: z.ZodType<
+  RebookTradeResponseOriginalTradeAssetTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeAssetType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeAssetType$outboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeAssetTypeOpen,
+    z.ZodTypeDef,
+    RebookTradeResponseOriginalTradeAssetTypeOpen
+  > = z.union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeAssetType),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeAssetType$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeAssetType$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeAssetType$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeAssetType$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeAssetType$outboundSchema;
 }
 
 /** @internal */
@@ -897,148 +1413,25 @@ export namespace RebookTradeResponseOriginalTradeBrokerCapacity$ {
 }
 
 /** @internal */
-export const RebookTradeResponseOriginalTradePrevailingMarketPrice$inboundSchema:
+export const RebookTradeResponseOriginalTradeIdentifierType$inboundSchema:
   z.ZodType<
-    RebookTradeResponseOriginalTradePrevailingMarketPrice,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/** @internal */
-export type RebookTradeResponseOriginalTradePrevailingMarketPrice$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const RebookTradeResponseOriginalTradePrevailingMarketPrice$outboundSchema:
-  z.ZodType<
-    RebookTradeResponseOriginalTradePrevailingMarketPrice$Outbound,
-    z.ZodTypeDef,
-    RebookTradeResponseOriginalTradePrevailingMarketPrice
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RebookTradeResponseOriginalTradePrevailingMarketPrice$ {
-  /** @deprecated use `RebookTradeResponseOriginalTradePrevailingMarketPrice$inboundSchema` instead. */
-  export const inboundSchema =
-    RebookTradeResponseOriginalTradePrevailingMarketPrice$inboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePrevailingMarketPrice$outboundSchema` instead. */
-  export const outboundSchema =
-    RebookTradeResponseOriginalTradePrevailingMarketPrice$outboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePrevailingMarketPrice$Outbound` instead. */
-  export type Outbound =
-    RebookTradeResponseOriginalTradePrevailingMarketPrice$Outbound;
-}
-
-/** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentAmount$inboundSchema:
-  z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentAmount,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/** @internal */
-export type RebookTradeResponseOriginalTradePriceAdjustmentAmount$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentAmount$outboundSchema:
-  z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentAmount$Outbound,
-    z.ZodTypeDef,
-    RebookTradeResponseOriginalTradePriceAdjustmentAmount
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RebookTradeResponseOriginalTradePriceAdjustmentAmount$ {
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentAmount$inboundSchema` instead. */
-  export const inboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentAmount$inboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentAmount$outboundSchema` instead. */
-  export const outboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentAmount$outboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentAmount$Outbound` instead. */
-  export type Outbound =
-    RebookTradeResponseOriginalTradePriceAdjustmentAmount$Outbound;
-}
-
-/** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentPercent$inboundSchema:
-  z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentPercent,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/** @internal */
-export type RebookTradeResponseOriginalTradePriceAdjustmentPercent$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentPercent$outboundSchema:
-  z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentPercent$Outbound,
-    z.ZodTypeDef,
-    RebookTradeResponseOriginalTradePriceAdjustmentPercent
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RebookTradeResponseOriginalTradePriceAdjustmentPercent$ {
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentPercent$inboundSchema` instead. */
-  export const inboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentPercent$inboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentPercent$outboundSchema` instead. */
-  export const outboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentPercent$outboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentPercent$Outbound` instead. */
-  export type Outbound =
-    RebookTradeResponseOriginalTradePriceAdjustmentPercent$Outbound;
-}
-
-/** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentType$inboundSchema:
-  z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentTypeOpen,
+    RebookTradeResponseOriginalTradeIdentifierTypeOpen,
     z.ZodTypeDef,
     unknown
   > = z
     .union([
-      z.nativeEnum(RebookTradeResponseOriginalTradePriceAdjustmentType),
+      z.nativeEnum(RebookTradeResponseOriginalTradeIdentifierType),
       z.string().transform(catchUnrecognizedEnum),
     ]);
 
 /** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentType$outboundSchema:
+export const RebookTradeResponseOriginalTradeIdentifierType$outboundSchema:
   z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentTypeOpen,
+    RebookTradeResponseOriginalTradeIdentifierTypeOpen,
     z.ZodTypeDef,
-    RebookTradeResponseOriginalTradePriceAdjustmentTypeOpen
+    RebookTradeResponseOriginalTradeIdentifierTypeOpen
   > = z.union([
-    z.nativeEnum(RebookTradeResponseOriginalTradePriceAdjustmentType),
+    z.nativeEnum(RebookTradeResponseOriginalTradeIdentifierType),
     z.string().and(z.custom<Unrecognized<string>>()),
   ]);
 
@@ -1046,98 +1439,318 @@ export const RebookTradeResponseOriginalTradePriceAdjustmentType$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RebookTradeResponseOriginalTradePriceAdjustmentType$ {
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentType$inboundSchema` instead. */
+export namespace RebookTradeResponseOriginalTradeIdentifierType$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeIdentifierType$inboundSchema` instead. */
   export const inboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentType$inboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentType$outboundSchema` instead. */
+    RebookTradeResponseOriginalTradeIdentifierType$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeIdentifierType$outboundSchema` instead. */
   export const outboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentType$outboundSchema;
+    RebookTradeResponseOriginalTradeIdentifierType$outboundSchema;
 }
 
 /** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentRecord$inboundSchema:
+export const RebookTradeResponseOriginalTradeLocalMarketTradeDate$inboundSchema:
   z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentRecord,
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    price_adjustment_amount: z.nullable(
-      z.lazy(() =>
-        RebookTradeResponseOriginalTradePriceAdjustmentAmount$inboundSchema
-      ),
-    ).optional(),
-    price_adjustment_percent: z.nullable(
-      z.lazy(() =>
-        RebookTradeResponseOriginalTradePriceAdjustmentPercent$inboundSchema
-      ),
-    ).optional(),
-    price_adjustment_type:
-      RebookTradeResponseOriginalTradePriceAdjustmentType$inboundSchema
-        .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "price_adjustment_amount": "priceAdjustmentAmount",
-      "price_adjustment_percent": "priceAdjustmentPercent",
-      "price_adjustment_type": "priceAdjustmentType",
-    });
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
   });
 
 /** @internal */
-export type RebookTradeResponseOriginalTradePriceAdjustmentRecord$Outbound = {
-  price_adjustment_amount?:
-    | RebookTradeResponseOriginalTradePriceAdjustmentAmount$Outbound
-    | null
-    | undefined;
-  price_adjustment_percent?:
-    | RebookTradeResponseOriginalTradePriceAdjustmentPercent$Outbound
-    | null
-    | undefined;
-  price_adjustment_type?: string | undefined;
+export type RebookTradeResponseOriginalTradeLocalMarketTradeDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
 };
 
 /** @internal */
-export const RebookTradeResponseOriginalTradePriceAdjustmentRecord$outboundSchema:
+export const RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema:
   z.ZodType<
-    RebookTradeResponseOriginalTradePriceAdjustmentRecord$Outbound,
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate$Outbound,
     z.ZodTypeDef,
-    RebookTradeResponseOriginalTradePriceAdjustmentRecord
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate
   > = z.object({
-    priceAdjustmentAmount: z.nullable(
-      z.lazy(() =>
-        RebookTradeResponseOriginalTradePriceAdjustmentAmount$outboundSchema
-      ),
-    ).optional(),
-    priceAdjustmentPercent: z.nullable(
-      z.lazy(() =>
-        RebookTradeResponseOriginalTradePriceAdjustmentPercent$outboundSchema
-      ),
-    ).optional(),
-    priceAdjustmentType:
-      RebookTradeResponseOriginalTradePriceAdjustmentType$outboundSchema
-        .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      priceAdjustmentAmount: "price_adjustment_amount",
-      priceAdjustmentPercent: "price_adjustment_percent",
-      priceAdjustmentType: "price_adjustment_type",
-    });
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RebookTradeResponseOriginalTradePriceAdjustmentRecord$ {
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentRecord$inboundSchema` instead. */
+export namespace RebookTradeResponseOriginalTradeLocalMarketTradeDate$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeLocalMarketTradeDate$inboundSchema` instead. */
   export const inboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentRecord$inboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentRecord$outboundSchema` instead. */
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema` instead. */
   export const outboundSchema =
-    RebookTradeResponseOriginalTradePriceAdjustmentRecord$outboundSchema;
-  /** @deprecated use `RebookTradeResponseOriginalTradePriceAdjustmentRecord$Outbound` instead. */
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeLocalMarketTradeDate$Outbound` instead. */
   export type Outbound =
-    RebookTradeResponseOriginalTradePriceAdjustmentRecord$Outbound;
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate$Outbound;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeRouteType$inboundSchema: z.ZodType<
+  RebookTradeResponseOriginalTradeRouteTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeRouteType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeRouteType$outboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeRouteTypeOpen,
+    z.ZodTypeDef,
+    RebookTradeResponseOriginalTradeRouteTypeOpen
+  > = z.union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeRouteType),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeRouteType$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeRouteType$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeRouteType$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeRouteType$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeRouteType$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSettlementDate$inboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeSettlementDate,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+  });
+
+/** @internal */
+export type RebookTradeResponseOriginalTradeSettlementDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSettlementDate$outboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeSettlementDate$Outbound,
+    z.ZodTypeDef,
+    RebookTradeResponseOriginalTradeSettlementDate
+  > = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeSettlementDate$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeSettlementDate$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeSettlementDate$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeSettlementDate$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeSettlementDate$outboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeSettlementDate$Outbound` instead. */
+  export type Outbound =
+    RebookTradeResponseOriginalTradeSettlementDate$Outbound;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSide$inboundSchema: z.ZodType<
+  RebookTradeResponseOriginalTradeSideOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeSide),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSide$outboundSchema: z.ZodType<
+  RebookTradeResponseOriginalTradeSideOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseOriginalTradeSideOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseOriginalTradeSide),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeSide$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeSide$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeSide$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeSide$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeSide$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSideModifier$inboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeSideModifierOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(RebookTradeResponseOriginalTradeSideModifier),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSideModifier$outboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeSideModifierOpen,
+    z.ZodTypeDef,
+    RebookTradeResponseOriginalTradeSideModifierOpen
+  > = z.union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeSideModifier),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeSideModifier$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeSideModifier$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeSideModifier$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeSideModifier$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeSideModifier$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSpecialInstructions$inboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeSpecialInstructionsOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(RebookTradeResponseOriginalTradeSpecialInstructions),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeSpecialInstructions$outboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeSpecialInstructionsOpen,
+    z.ZodTypeDef,
+    RebookTradeResponseOriginalTradeSpecialInstructionsOpen
+  > = z.union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeSpecialInstructions),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeSpecialInstructions$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeSpecialInstructions$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeSpecialInstructions$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeSpecialInstructions$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeSpecialInstructions$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeVenue$inboundSchema: z.ZodType<
+  RebookTradeResponseOriginalTradeVenueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeVenue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeVenue$outboundSchema: z.ZodType<
+  RebookTradeResponseOriginalTradeVenueOpen,
+  z.ZodTypeDef,
+  RebookTradeResponseOriginalTradeVenueOpen
+> = z.union([
+  z.nativeEnum(RebookTradeResponseOriginalTradeVenue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeVenue$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeVenue$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeVenue$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeVenue$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeVenue$outboundSchema;
+}
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeWhenIssued$inboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeWhenIssuedOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(RebookTradeResponseOriginalTradeWhenIssued),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const RebookTradeResponseOriginalTradeWhenIssued$outboundSchema:
+  z.ZodType<
+    RebookTradeResponseOriginalTradeWhenIssuedOpen,
+    z.ZodTypeDef,
+    RebookTradeResponseOriginalTradeWhenIssuedOpen
+  > = z.union([
+    z.nativeEnum(RebookTradeResponseOriginalTradeWhenIssued),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RebookTradeResponseOriginalTradeWhenIssued$ {
+  /** @deprecated use `RebookTradeResponseOriginalTradeWhenIssued$inboundSchema` instead. */
+  export const inboundSchema =
+    RebookTradeResponseOriginalTradeWhenIssued$inboundSchema;
+  /** @deprecated use `RebookTradeResponseOriginalTradeWhenIssued$outboundSchema` instead. */
+  export const outboundSchema =
+    RebookTradeResponseOriginalTradeWhenIssued$outboundSchema;
 }
 
 /** @internal */
@@ -1146,99 +1759,110 @@ export const OriginalTrade$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  additional_instructions: z.array(z.string()).optional(),
+  account_id: z.string().optional(),
+  activity_id: z.string().optional(),
+  additional_instructions: z.string().optional(),
   alternate_order_id: z.string().optional(),
-  booking_api_trade_allocation_id: z.string().optional(),
-  booking_api_trade_id: z.string().optional(),
-  broker: z.string().optional(),
+  asset_type: RebookTradeResponseOriginalTradeAssetType$inboundSchema
+    .optional(),
   broker_capacity: RebookTradeResponseOriginalTradeBrokerCapacity$inboundSchema
     .optional(),
-  client_memos: z.array(z.string()).optional(),
   client_order_id: z.string().optional(),
-  exchange: z.string().optional(),
-  execution_id: z.string().optional(),
-  execution_only: z.boolean().optional(),
-  external_id: z.string().optional(),
-  fund_confirmation_number: z.string().optional(),
-  gateway_client_order_id: z.string().optional(),
-  internal_error: z.boolean().optional(),
-  is_writeoff: z.boolean().optional(),
-  lots: z.array(Lot$inboundSchema).optional(),
+  executing_broker: z.string().optional(),
+  executions: z.array(Execution$inboundSchema).optional(),
+  fees: z.array(BookingFee$inboundSchema).optional(),
+  identifier: z.string().optional(),
+  identifier_type: RebookTradeResponseOriginalTradeIdentifierType$inboundSchema
+    .optional(),
+  issuing_region_code: z.string().optional(),
+  local_market_trade_date: z.nullable(
+    z.lazy(() =>
+      RebookTradeResponseOriginalTradeLocalMarketTradeDate$inboundSchema
+    ),
+  ).optional(),
+  lot_matching_instructions: z.array(BookingLot$inboundSchema).optional(),
+  mic_code: z.string().optional(),
+  name: z.string().optional(),
+  open: z.boolean().optional(),
   order_id: z.string().optional(),
-  prevailing_market_price: z.nullable(
-    z.lazy(() =>
-      RebookTradeResponseOriginalTradePrevailingMarketPrice$inboundSchema
-    ),
+  route_type: RebookTradeResponseOriginalTradeRouteType$inboundSchema
+    .optional(),
+  settlement_date: z.nullable(
+    z.lazy(() => RebookTradeResponseOriginalTradeSettlementDate$inboundSchema),
   ).optional(),
-  price_adjustment_record: z.nullable(
-    z.lazy(() =>
-      RebookTradeResponseOriginalTradePriceAdjustmentRecord$inboundSchema
-    ),
+  side: RebookTradeResponseOriginalTradeSide$inboundSchema.optional(),
+  side_modifier: RebookTradeResponseOriginalTradeSideModifier$inboundSchema
+    .optional(),
+  source_application: z.string().optional(),
+  special_instructions: z.array(
+    RebookTradeResponseOriginalTradeSpecialInstructions$inboundSchema,
   ).optional(),
-  route: z.string().optional(),
-  special_instructions: z.array(z.string()).optional(),
-  symbol_description: z.string().optional(),
-  when_issued: z.boolean().optional(),
-  yield_records: z.array(YieldRecord$inboundSchema).optional(),
+  trade_id: z.string().optional(),
+  venue: RebookTradeResponseOriginalTradeVenue$inboundSchema.optional(),
+  when_issued: RebookTradeResponseOriginalTradeWhenIssued$inboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
+    "account_id": "accountId",
+    "activity_id": "activityId",
     "additional_instructions": "additionalInstructions",
     "alternate_order_id": "alternateOrderId",
-    "booking_api_trade_allocation_id": "bookingApiTradeAllocationId",
-    "booking_api_trade_id": "bookingApiTradeId",
+    "asset_type": "assetType",
     "broker_capacity": "brokerCapacity",
-    "client_memos": "clientMemos",
     "client_order_id": "clientOrderId",
-    "execution_id": "executionId",
-    "execution_only": "executionOnly",
-    "external_id": "externalId",
-    "fund_confirmation_number": "fundConfirmationNumber",
-    "gateway_client_order_id": "gatewayClientOrderId",
-    "internal_error": "internalError",
-    "is_writeoff": "isWriteoff",
+    "executing_broker": "executingBroker",
+    "identifier_type": "identifierType",
+    "issuing_region_code": "issuingRegionCode",
+    "local_market_trade_date": "localMarketTradeDate",
+    "lot_matching_instructions": "lotMatchingInstructions",
+    "mic_code": "micCode",
     "order_id": "orderId",
-    "prevailing_market_price": "prevailingMarketPrice",
-    "price_adjustment_record": "priceAdjustmentRecord",
+    "route_type": "routeType",
+    "settlement_date": "settlementDate",
+    "side_modifier": "sideModifier",
+    "source_application": "sourceApplication",
     "special_instructions": "specialInstructions",
-    "symbol_description": "symbolDescription",
+    "trade_id": "tradeId",
     "when_issued": "whenIssued",
-    "yield_records": "yieldRecords",
   });
 });
 
 /** @internal */
 export type OriginalTrade$Outbound = {
-  additional_instructions?: Array<string> | undefined;
+  account_id?: string | undefined;
+  activity_id?: string | undefined;
+  additional_instructions?: string | undefined;
   alternate_order_id?: string | undefined;
-  booking_api_trade_allocation_id?: string | undefined;
-  booking_api_trade_id?: string | undefined;
-  broker?: string | undefined;
+  asset_type?: string | undefined;
   broker_capacity?: string | undefined;
-  client_memos?: Array<string> | undefined;
   client_order_id?: string | undefined;
-  exchange?: string | undefined;
-  execution_id?: string | undefined;
-  execution_only?: boolean | undefined;
-  external_id?: string | undefined;
-  fund_confirmation_number?: string | undefined;
-  gateway_client_order_id?: string | undefined;
-  internal_error?: boolean | undefined;
-  is_writeoff?: boolean | undefined;
-  lots?: Array<Lot$Outbound> | undefined;
+  executing_broker?: string | undefined;
+  executions?: Array<Execution$Outbound> | undefined;
+  fees?: Array<BookingFee$Outbound> | undefined;
+  identifier?: string | undefined;
+  identifier_type?: string | undefined;
+  issuing_region_code?: string | undefined;
+  local_market_trade_date?:
+    | RebookTradeResponseOriginalTradeLocalMarketTradeDate$Outbound
+    | null
+    | undefined;
+  lot_matching_instructions?: Array<BookingLot$Outbound> | undefined;
+  mic_code?: string | undefined;
+  name?: string | undefined;
+  open?: boolean | undefined;
   order_id?: string | undefined;
-  prevailing_market_price?:
-    | RebookTradeResponseOriginalTradePrevailingMarketPrice$Outbound
+  route_type?: string | undefined;
+  settlement_date?:
+    | RebookTradeResponseOriginalTradeSettlementDate$Outbound
     | null
     | undefined;
-  price_adjustment_record?:
-    | RebookTradeResponseOriginalTradePriceAdjustmentRecord$Outbound
-    | null
-    | undefined;
-  route?: string | undefined;
+  side?: string | undefined;
+  side_modifier?: string | undefined;
+  source_application?: string | undefined;
   special_instructions?: Array<string> | undefined;
-  symbol_description?: string | undefined;
-  when_issued?: boolean | undefined;
-  yield_records?: Array<YieldRecord$Outbound> | undefined;
+  trade_id?: string | undefined;
+  venue?: string | undefined;
+  when_issued?: string | undefined;
 };
 
 /** @internal */
@@ -1247,63 +1871,71 @@ export const OriginalTrade$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OriginalTrade
 > = z.object({
-  additionalInstructions: z.array(z.string()).optional(),
+  accountId: z.string().optional(),
+  activityId: z.string().optional(),
+  additionalInstructions: z.string().optional(),
   alternateOrderId: z.string().optional(),
-  bookingApiTradeAllocationId: z.string().optional(),
-  bookingApiTradeId: z.string().optional(),
-  broker: z.string().optional(),
+  assetType: RebookTradeResponseOriginalTradeAssetType$outboundSchema
+    .optional(),
   brokerCapacity: RebookTradeResponseOriginalTradeBrokerCapacity$outboundSchema
     .optional(),
-  clientMemos: z.array(z.string()).optional(),
   clientOrderId: z.string().optional(),
-  exchange: z.string().optional(),
-  executionId: z.string().optional(),
-  executionOnly: z.boolean().optional(),
-  externalId: z.string().optional(),
-  fundConfirmationNumber: z.string().optional(),
-  gatewayClientOrderId: z.string().optional(),
-  internalError: z.boolean().optional(),
-  isWriteoff: z.boolean().optional(),
-  lots: z.array(Lot$outboundSchema).optional(),
+  executingBroker: z.string().optional(),
+  executions: z.array(Execution$outboundSchema).optional(),
+  fees: z.array(BookingFee$outboundSchema).optional(),
+  identifier: z.string().optional(),
+  identifierType: RebookTradeResponseOriginalTradeIdentifierType$outboundSchema
+    .optional(),
+  issuingRegionCode: z.string().optional(),
+  localMarketTradeDate: z.nullable(
+    z.lazy(() =>
+      RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema
+    ),
+  ).optional(),
+  lotMatchingInstructions: z.array(BookingLot$outboundSchema).optional(),
+  micCode: z.string().optional(),
+  name: z.string().optional(),
+  open: z.boolean().optional(),
   orderId: z.string().optional(),
-  prevailingMarketPrice: z.nullable(
-    z.lazy(() =>
-      RebookTradeResponseOriginalTradePrevailingMarketPrice$outboundSchema
-    ),
+  routeType: RebookTradeResponseOriginalTradeRouteType$outboundSchema
+    .optional(),
+  settlementDate: z.nullable(
+    z.lazy(() => RebookTradeResponseOriginalTradeSettlementDate$outboundSchema),
   ).optional(),
-  priceAdjustmentRecord: z.nullable(
-    z.lazy(() =>
-      RebookTradeResponseOriginalTradePriceAdjustmentRecord$outboundSchema
-    ),
+  side: RebookTradeResponseOriginalTradeSide$outboundSchema.optional(),
+  sideModifier: RebookTradeResponseOriginalTradeSideModifier$outboundSchema
+    .optional(),
+  sourceApplication: z.string().optional(),
+  specialInstructions: z.array(
+    RebookTradeResponseOriginalTradeSpecialInstructions$outboundSchema,
   ).optional(),
-  route: z.string().optional(),
-  specialInstructions: z.array(z.string()).optional(),
-  symbolDescription: z.string().optional(),
-  whenIssued: z.boolean().optional(),
-  yieldRecords: z.array(YieldRecord$outboundSchema).optional(),
+  tradeId: z.string().optional(),
+  venue: RebookTradeResponseOriginalTradeVenue$outboundSchema.optional(),
+  whenIssued: RebookTradeResponseOriginalTradeWhenIssued$outboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
+    accountId: "account_id",
+    activityId: "activity_id",
     additionalInstructions: "additional_instructions",
     alternateOrderId: "alternate_order_id",
-    bookingApiTradeAllocationId: "booking_api_trade_allocation_id",
-    bookingApiTradeId: "booking_api_trade_id",
+    assetType: "asset_type",
     brokerCapacity: "broker_capacity",
-    clientMemos: "client_memos",
     clientOrderId: "client_order_id",
-    executionId: "execution_id",
-    executionOnly: "execution_only",
-    externalId: "external_id",
-    fundConfirmationNumber: "fund_confirmation_number",
-    gatewayClientOrderId: "gateway_client_order_id",
-    internalError: "internal_error",
-    isWriteoff: "is_writeoff",
+    executingBroker: "executing_broker",
+    identifierType: "identifier_type",
+    issuingRegionCode: "issuing_region_code",
+    localMarketTradeDate: "local_market_trade_date",
+    lotMatchingInstructions: "lot_matching_instructions",
+    micCode: "mic_code",
     orderId: "order_id",
-    prevailingMarketPrice: "prevailing_market_price",
-    priceAdjustmentRecord: "price_adjustment_record",
+    routeType: "route_type",
+    settlementDate: "settlement_date",
+    sideModifier: "side_modifier",
+    sourceApplication: "source_application",
     specialInstructions: "special_instructions",
-    symbolDescription: "symbol_description",
+    tradeId: "trade_id",
     whenIssued: "when_issued",
-    yieldRecords: "yield_records",
   });
 });
 

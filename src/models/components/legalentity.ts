@@ -92,7 +92,15 @@ export enum LegalEntityEntityType {
 export type LegalEntityEntityTypeOpen = OpenEnum<typeof LegalEntityEntityType>;
 
 /**
- * The reason the customer is exempt from verifying beneficial owners, if applicable.
+ * **Field Dependencies:**
+ *
+ * @remarks
+ *
+ * Exempt entities must set `exempt_verifying_beneficial_owners` to `true` and provide an `exempt_customer_reason` on the owner record.
+ *
+ * Required if `exempt_verifying_beneficial_owners` is `true`.
+ *
+ * Otherwise, must be empty.
  */
 export enum LegalEntityExemptCustomerReason {
   ExemptReasonUnspecified = "EXEMPT_REASON_UNSPECIFIED",
@@ -115,7 +123,15 @@ export enum LegalEntityExemptCustomerReason {
   StateRegulatedInsuranceCompany = "STATE_REGULATED_INSURANCE_COMPANY",
 }
 /**
- * The reason the customer is exempt from verifying beneficial owners, if applicable.
+ * **Field Dependencies:**
+ *
+ * @remarks
+ *
+ * Exempt entities must set `exempt_verifying_beneficial_owners` to `true` and provide an `exempt_customer_reason` on the owner record.
+ *
+ * Required if `exempt_verifying_beneficial_owners` is `true`.
+ *
+ * Otherwise, must be empty.
  */
 export type LegalEntityExemptCustomerReasonOpen = OpenEnum<
   typeof LegalEntityExemptCustomerReason
@@ -509,7 +525,15 @@ export type LegalEntity = {
    */
   entityType?: LegalEntityEntityTypeOpen | undefined;
   /**
-   * The reason the customer is exempt from verifying beneficial owners, if applicable.
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Exempt entities must set `exempt_verifying_beneficial_owners` to `true` and provide an `exempt_customer_reason` on the owner record.
+   *
+   * Required if `exempt_verifying_beneficial_owners` is `true`.
+   *
+   * Otherwise, must be empty.
    */
   exemptCustomerReason?: LegalEntityExemptCustomerReasonOpen | undefined;
   /**

@@ -24,4 +24,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Rtp`                              | RTP                                |
 | `Ict`                              | ICT                                |
 | `Journal`                          | JOURNAL                            |
+| `ExternalAch`                      | EXTERNAL_ACH                       |
 | -                                  | `Unrecognized<string>`             |

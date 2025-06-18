@@ -132,7 +132,7 @@ export async function tradeBookingGetTrade(
     | ConnectionError
   >(
     M.json(200, operations.BookingGetTradeResponse$inboundSchema, {
-      key: "Trade",
+      key: "BookingTrade",
     }),
     M.jsonErr([400, 403, 404, 500, 503, 504], errors.Status$inboundSchema),
     M.fail(["4XX", "5XX"]),

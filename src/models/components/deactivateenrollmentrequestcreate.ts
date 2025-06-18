@@ -11,7 +11,13 @@ import {
 } from "../../types/enums.js";
 
 /**
- * Describes the name of the enrollment; Expressed as an enum
+ * **Field Dependencies:**
+ *
+ * @remarks
+ *
+ * Required if `enrollment_id` is not present.
+ *
+ * Otherwise, must be empty.
  */
 export enum DeactivateEnrollmentRequestCreateEnrollmentType {
   EnrollmentTypeUnspecified = "ENROLLMENT_TYPE_UNSPECIFIED",
@@ -42,7 +48,13 @@ export enum DeactivateEnrollmentRequestCreateEnrollmentType {
   VirtualAccountNumber = "VIRTUAL_ACCOUNT_NUMBER",
 }
 /**
- * Describes the name of the enrollment; Expressed as an enum
+ * **Field Dependencies:**
+ *
+ * @remarks
+ *
+ * Required if `enrollment_id` is not present.
+ *
+ * Otherwise, must be empty.
  */
 export type DeactivateEnrollmentRequestCreateEnrollmentTypeOpen = OpenEnum<
   typeof DeactivateEnrollmentRequestCreateEnrollmentType
@@ -53,11 +65,23 @@ export type DeactivateEnrollmentRequestCreateEnrollmentTypeOpen = OpenEnum<
  */
 export type DeactivateEnrollmentRequestCreate = {
   /**
-   * A system-generated unique identifier referencing a single instance of an enrollment;
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `enrollment_type` is not present.
+   *
+   * Otherwise, must be empty.
    */
   enrollmentId?: string | undefined;
   /**
-   * Describes the name of the enrollment; Expressed as an enum
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `enrollment_id` is not present.
+   *
+   * Otherwise, must be empty.
    */
   enrollmentType?:
     | DeactivateEnrollmentRequestCreateEnrollmentTypeOpen

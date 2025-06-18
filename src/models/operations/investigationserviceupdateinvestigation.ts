@@ -36,6 +36,9 @@ export type InvestigationServiceUpdateInvestigationResponse = {
   investigation?: components.Investigation | undefined;
   /**
    * INVALID_ARGUMENT: The request is not valid, additional information may be present in the BadRequest details.
+   *
+   * @remarks
+   * FAILED_PRECONDITION: The request is not valid, additional information may be present in the BadRequest details.
    */
   status?: components.Status | undefined;
 };

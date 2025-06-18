@@ -1,0 +1,67 @@
+import * as z from "zod";
+import * as components from "../components/index.js";
+export type BookingCreateTradeRequest = {
+    /**
+     * The account id.
+     */
+    accountId: string;
+    tradeCreate: components.TradeCreate;
+};
+export type BookingCreateTradeResponse = {
+    httpMeta: components.HTTPMetadata;
+    /**
+     * OK
+     */
+    bookingTrade?: components.BookingTrade | undefined;
+    /**
+     * FAILED_PRECONDITION: The operation was rejected because the system is not in a state required for the operation's processing.
+     *
+     * @remarks
+     * INVALID_ARGUMENT: The request is not valid.
+     */
+    status?: components.Status | undefined;
+};
+/** @internal */
+export declare const BookingCreateTradeRequest$inboundSchema: z.ZodType<BookingCreateTradeRequest, z.ZodTypeDef, unknown>;
+/** @internal */
+export type BookingCreateTradeRequest$Outbound = {
+    account_id: string;
+    TradeCreate: components.TradeCreate$Outbound;
+};
+/** @internal */
+export declare const BookingCreateTradeRequest$outboundSchema: z.ZodType<BookingCreateTradeRequest$Outbound, z.ZodTypeDef, BookingCreateTradeRequest>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace BookingCreateTradeRequest$ {
+    /** @deprecated use `BookingCreateTradeRequest$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<BookingCreateTradeRequest, z.ZodTypeDef, unknown>;
+    /** @deprecated use `BookingCreateTradeRequest$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<BookingCreateTradeRequest$Outbound, z.ZodTypeDef, BookingCreateTradeRequest>;
+    /** @deprecated use `BookingCreateTradeRequest$Outbound` instead. */
+    type Outbound = BookingCreateTradeRequest$Outbound;
+}
+/** @internal */
+export declare const BookingCreateTradeResponse$inboundSchema: z.ZodType<BookingCreateTradeResponse, z.ZodTypeDef, unknown>;
+/** @internal */
+export type BookingCreateTradeResponse$Outbound = {
+    HttpMeta: components.HTTPMetadata$Outbound;
+    BookingTrade?: components.BookingTrade$Outbound | undefined;
+    Status?: components.Status$Outbound | undefined;
+};
+/** @internal */
+export declare const BookingCreateTradeResponse$outboundSchema: z.ZodType<BookingCreateTradeResponse$Outbound, z.ZodTypeDef, BookingCreateTradeResponse>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace BookingCreateTradeResponse$ {
+    /** @deprecated use `BookingCreateTradeResponse$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<BookingCreateTradeResponse, z.ZodTypeDef, unknown>;
+    /** @deprecated use `BookingCreateTradeResponse$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<BookingCreateTradeResponse$Outbound, z.ZodTypeDef, BookingCreateTradeResponse>;
+    /** @deprecated use `BookingCreateTradeResponse$Outbound` instead. */
+    type Outbound = BookingCreateTradeResponse$Outbound;
+}
+//# sourceMappingURL=bookingcreatetrade.d.ts.map

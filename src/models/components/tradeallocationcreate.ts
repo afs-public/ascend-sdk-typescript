@@ -16,6 +16,12 @@ import {
   BondYieldCreate$outboundSchema,
 } from "./bondyieldcreate.js";
 import {
+  BookingFeeCreate,
+  BookingFeeCreate$inboundSchema,
+  BookingFeeCreate$Outbound,
+  BookingFeeCreate$outboundSchema,
+} from "./bookingfeecreate.js";
+import {
   DateCreate,
   DateCreate$inboundSchema,
   DateCreate$Outbound,
@@ -27,12 +33,6 @@ import {
   DecimalCreate$Outbound,
   DecimalCreate$outboundSchema,
 } from "./decimalcreate.js";
-import {
-  FeeCreate,
-  FeeCreate$inboundSchema,
-  FeeCreate$Outbound,
-  FeeCreate$outboundSchema,
-} from "./feecreate.js";
 import {
   LotCreate,
   LotCreate$inboundSchema,
@@ -244,7 +244,7 @@ export type TradeAllocationCreate = {
   /**
    * Client calculated fees that will only be applied to the to_account_id. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  fees?: Array<FeeCreate> | undefined;
+  fees?: Array<BookingFeeCreate> | undefined;
   /**
    * The ULID formatted account_id that the positions will be moved from.
    */
@@ -598,7 +598,7 @@ export const TradeAllocationCreate$inboundSchema: z.ZodType<
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
-  fees: z.array(FeeCreate$inboundSchema).optional(),
+  fees: z.array(BookingFeeCreate$inboundSchema).optional(),
   from_account_id: z.string(),
   gross_amount: DecimalCreate$inboundSchema.optional(),
   identifier: z.string(),
@@ -656,7 +656,7 @@ export type TradeAllocationCreate$Outbound = {
   client_order_id?: string | undefined;
   commission_amount?: DecimalCreate$Outbound | undefined;
   execution_time: string | null;
-  fees?: Array<FeeCreate$Outbound> | undefined;
+  fees?: Array<BookingFeeCreate$Outbound> | undefined;
   from_account_id: string;
   gross_amount?: DecimalCreate$Outbound | undefined;
   identifier: string;
@@ -691,7 +691,7 @@ export const TradeAllocationCreate$outboundSchema: z.ZodType<
   clientOrderId: z.string().optional(),
   commissionAmount: DecimalCreate$outboundSchema.optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString())),
-  fees: z.array(FeeCreate$outboundSchema).optional(),
+  fees: z.array(BookingFeeCreate$outboundSchema).optional(),
   fromAccountId: z.string(),
   grossAmount: DecimalCreate$outboundSchema.optional(),
   identifier: z.string(),

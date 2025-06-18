@@ -174,6 +174,17 @@ export enum TimeInForce {
 export type TimeInForceOpen = OpenEnum<typeof TimeInForce>;
 
 /**
+ * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ */
+export enum TradingStrategy {
+  Core = "CORE",
+}
+/**
+ * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ */
+export type TradingStrategyOpen = OpenEnum<typeof TradingStrategy>;
+
+/**
  * The message describing an order
  */
 export type OrderCreate = {
@@ -294,6 +305,10 @@ export type OrderCreate = {
    * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
   timeInForce: TimeInForceOpen;
+  /**
+   * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+   */
+  tradingStrategy?: TradingStrategyOpen | undefined;
 };
 
 /** @internal */
@@ -514,6 +529,38 @@ export namespace TimeInForce$ {
 }
 
 /** @internal */
+export const TradingStrategy$inboundSchema: z.ZodType<
+  TradingStrategyOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(TradingStrategy),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const TradingStrategy$outboundSchema: z.ZodType<
+  TradingStrategyOpen,
+  z.ZodTypeDef,
+  TradingStrategyOpen
+> = z.union([
+  z.nativeEnum(TradingStrategy),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TradingStrategy$ {
+  /** @deprecated use `TradingStrategy$inboundSchema` instead. */
+  export const inboundSchema = TradingStrategy$inboundSchema;
+  /** @deprecated use `TradingStrategy$outboundSchema` instead. */
+  export const outboundSchema = TradingStrategy$outboundSchema;
+}
+
+/** @internal */
 export const OrderCreate$inboundSchema: z.ZodType<
   OrderCreate,
   z.ZodTypeDef,
@@ -545,6 +592,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
   ).optional(),
   stop_price: StopPriceCreate$inboundSchema.optional(),
   time_in_force: TimeInForce$inboundSchema,
+  trading_strategy: TradingStrategy$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "asset_type": "assetType",
@@ -564,6 +612,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
     "special_reporting_instructions": "specialReportingInstructions",
     "stop_price": "stopPrice",
     "time_in_force": "timeInForce",
+    "trading_strategy": "tradingStrategy",
   });
 });
 
@@ -591,6 +640,7 @@ export type OrderCreate$Outbound = {
   special_reporting_instructions?: Array<string> | undefined;
   stop_price?: StopPriceCreate$Outbound | undefined;
   time_in_force: string;
+  trading_strategy?: string | undefined;
 };
 
 /** @internal */
@@ -624,6 +674,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
   ).optional(),
   stopPrice: StopPriceCreate$outboundSchema.optional(),
   timeInForce: TimeInForce$outboundSchema,
+  tradingStrategy: TradingStrategy$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     assetType: "asset_type",
@@ -643,6 +694,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
     specialReportingInstructions: "special_reporting_instructions",
     stopPrice: "stop_price",
     timeInForce: "time_in_force",
+    tradingStrategy: "trading_strategy",
   });
 });
 

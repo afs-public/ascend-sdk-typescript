@@ -9,7 +9,6 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -31,10 +30,7 @@ import { Result } from "../types/fp.js";
  */
 export async function instantCashTransferICTLocateICTReport(
   client: ApexascendCore,
-  correspondentId: string,
-  batchId?: string | undefined,
-  programDateFilterProgram?: operations.ProgramDateFilterProgram | undefined,
-  programDateFilterProcessDate?: components.DateCreate | undefined,
+  request: operations.IctReconReportsLocateIctReportRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -49,15 +45,8 @@ export async function instantCashTransferICTLocateICTReport(
     | ConnectionError
   >
 > {
-  const input: operations.IctReconReportsLocateIctReportRequest = {
-    correspondentId: correspondentId,
-    batchId: batchId,
-    programDateFilterProgram: programDateFilterProgram,
-    programDateFilterProcessDate: programDateFilterProcessDate,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.IctReconReportsLocateIctReportRequest$outboundSchema.parse(
         value,
@@ -84,8 +73,12 @@ export async function instantCashTransferICTLocateICTReport(
 
   const query = encodeFormQuery({
     "batch_id": payload.batch_id,
-    "program_date_filter.process_date":
-      payload["program_date_filter.process_date"],
+    "program_date_filter.process_date.day":
+      payload["program_date_filter.process_date.day"],
+    "program_date_filter.process_date.month":
+      payload["program_date_filter.process_date.month"],
+    "program_date_filter.process_date.year":
+      payload["program_date_filter.process_date.year"],
     "program_date_filter.program": payload["program_date_filter.program"],
   });
 

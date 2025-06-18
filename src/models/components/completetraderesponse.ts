@@ -10,20 +10,41 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
-  Lot,
-  Lot$inboundSchema,
-  Lot$Outbound,
-  Lot$outboundSchema,
-} from "./lot.js";
+  BookingFee,
+  BookingFee$inboundSchema,
+  BookingFee$Outbound,
+  BookingFee$outboundSchema,
+} from "./bookingfee.js";
 import {
-  YieldRecord,
-  YieldRecord$inboundSchema,
-  YieldRecord$Outbound,
-  YieldRecord$outboundSchema,
-} from "./yieldrecord.js";
+  BookingLot,
+  BookingLot$inboundSchema,
+  BookingLot$Outbound,
+  BookingLot$outboundSchema,
+} from "./bookinglot.js";
+import {
+  Execution,
+  Execution$inboundSchema,
+  Execution$Outbound,
+  Execution$outboundSchema,
+} from "./execution.js";
 
 /**
- * Used to calculate broadridge blotter code
+ * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ */
+export enum CompleteTradeResponseAssetType {
+  AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
+  Equity = "EQUITY",
+  FixedIncome = "FIXED_INCOME",
+}
+/**
+ * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ */
+export type CompleteTradeResponseAssetTypeOpen = OpenEnum<
+  typeof CompleteTradeResponseAssetType
+>;
+
+/**
+ * Broker capacity for the trade.
  */
 export enum CompleteTradeResponseBrokerCapacity {
   CapacityUnspecified = "CAPACITY_UNSPECIFIED",
@@ -32,194 +53,344 @@ export enum CompleteTradeResponseBrokerCapacity {
   Mixed = "MIXED",
 }
 /**
- * Used to calculate broadridge blotter code
+ * Broker capacity for the trade.
  */
 export type CompleteTradeResponseBrokerCapacityOpen = OpenEnum<
   typeof CompleteTradeResponseBrokerCapacity
 >;
 
 /**
- * The price for the instrument that is prevailing in the market.
+ * Identifier type for the asset being traded.
  */
-export type CompleteTradeResponsePrevailingMarketPrice = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * Total monetary value of the price_adjustment
- */
-export type CompleteTradeResponsePriceAdjustmentAmount = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
- */
-export type CompleteTradeResponsePriceAdjustmentPercent = {
-  /**
-   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
-   */
-  value?: string | undefined;
-};
-
-/**
- * The type of price adjustment being applied by the broker to the net price of the security
- */
-export enum CompleteTradeResponsePriceAdjustmentType {
-  PriceAdjustmentTypeUnspecified = "PRICE_ADJUSTMENT_TYPE_UNSPECIFIED",
-  Markup = "MARKUP",
-  Markdown = "MARKDOWN",
-  SalesLoad = "SALES_LOAD",
+export enum CompleteTradeResponseIdentifierType {
+  IdentifierTypeUnspecified = "IDENTIFIER_TYPE_UNSPECIFIED",
+  AssetId = "ASSET_ID",
+  Symbol = "SYMBOL",
+  Cusip = "CUSIP",
+  Isin = "ISIN",
 }
 /**
- * The type of price adjustment being applied by the broker to the net price of the security
+ * Identifier type for the asset being traded.
  */
-export type CompleteTradeResponsePriceAdjustmentTypeOpen = OpenEnum<
-  typeof CompleteTradeResponsePriceAdjustmentType
+export type CompleteTradeResponseIdentifierTypeOpen = OpenEnum<
+  typeof CompleteTradeResponseIdentifierType
 >;
 
 /**
- * Information about any price adjustments applied to the security
+ * Date field to support extended trading hours.
  */
-export type CompleteTradeResponsePriceAdjustmentRecord = {
+export type CompleteTradeResponseLocalMarketTradeDate = {
   /**
-   * Total monetary value of the price_adjustment
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
-  priceAdjustmentAmount?:
-    | CompleteTradeResponsePriceAdjustmentAmount
-    | null
-    | undefined;
+  day?: number | undefined;
   /**
-   * The percent at which the price was adjusted. Expressed as a number from 0.00-100 (rounded to 2 decimals)
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
    */
-  priceAdjustmentPercent?:
-    | CompleteTradeResponsePriceAdjustmentPercent
-    | null
-    | undefined;
+  month?: number | undefined;
   /**
-   * The type of price adjustment being applied by the broker to the net price of the security
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
    */
-  priceAdjustmentType?:
-    | CompleteTradeResponsePriceAdjustmentTypeOpen
-    | undefined;
+  year?: number | undefined;
 };
+
+/**
+ * Route type for the trade.
+ */
+export enum CompleteTradeResponseRouteType {
+  RouteTypeUnspecified = "ROUTE_TYPE_UNSPECIFIED",
+  Dma = "DMA",
+  Mngd = "MNGD",
+  Quik = "QUIK",
+  Algo = "ALGO",
+  Away = "AWAY",
+  Corr = "CORR",
+  Boats = "BOATS",
+}
+/**
+ * Route type for the trade.
+ */
+export type CompleteTradeResponseRouteTypeOpen = OpenEnum<
+  typeof CompleteTradeResponseRouteType
+>;
+
+/**
+ * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
+ */
+export type CompleteTradeResponseSettlementDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
+ * Denotes if the trade is a SELL or a BUY.
+ */
+export enum CompleteTradeResponseSide {
+  SideUnspecified = "SIDE_UNSPECIFIED",
+  Buy = "BUY",
+  Sell = "SELL",
+}
+/**
+ * Denotes if the trade is a SELL or a BUY.
+ */
+export type CompleteTradeResponseSideOpen = OpenEnum<
+  typeof CompleteTradeResponseSide
+>;
+
+/**
+ * Side modifier for the trade.
+ */
+export enum CompleteTradeResponseSideModifier {
+  SideModifierUnspecified = "SIDE_MODIFIER_UNSPECIFIED",
+  Short = "SHORT",
+  ShortExempt = "SHORT_EXEMPT",
+  ShortCover = "SHORT_COVER",
+  Open = "OPEN",
+  Close = "CLOSE",
+}
+/**
+ * Side modifier for the trade.
+ */
+export type CompleteTradeResponseSideModifierOpen = OpenEnum<
+  typeof CompleteTradeResponseSideModifier
+>;
+
+export enum CompleteTradeResponseSpecialInstructions {
+  SpecialInstructionsUnspecified = "SPECIAL_INSTRUCTIONS_UNSPECIFIED",
+  Rule144 = "RULE_144",
+  WithDividend = "WITH_DIVIDEND",
+  WithRights = "WITH_RIGHTS",
+  CloseContract = "CLOSE_CONTRACT",
+  CoverShort = "COVER_SHORT",
+  CrossTrade = "CROSS_TRADE",
+  OpenContractCovered = "OPEN_CONTRACT_COVERED",
+  DiscretionExercised = "DISCRETION_EXERCISED",
+  DiscretionNotExercised = "DISCRETION_NOT_EXERCISED",
+  OptionAssignment = "OPTION_ASSIGNMENT",
+  EmployeeStockOption = "EMPLOYEE_STOCK_OPTION",
+  InvestmentBanking = "INVESTMENT_BANKING",
+  BrokerDealerOrder = "BROKER_DEALER_ORDER",
+  MakeMarketInSecurity = "MAKE_MARKET_IN_SECURITY",
+  MakeMarketSolicited = "MAKE_MARKET_SOLICITED",
+  MakeMarketUnsolicited = "MAKE_MARKET_UNSOLICITED",
+  CustomerDirected = "CUSTOMER_DIRECTED",
+  FullyRegistered = "FULLY_REGISTERED",
+  OpenContract = "OPEN_CONTRACT",
+  OddlotDiffOnRequest = "ODDLOT_DIFF_ON_REQUEST",
+  ProspectusEnclosed = "PROSPECTUS_ENCLOSED",
+  ProspectusSeparateMail = "PROSPECTUS_SEPARATE_MAIL",
+  Solicited = "SOLICITED",
+  Unsolicited = "UNSOLICITED",
+  XDividend = "X_DIVIDEND",
+  ActingAsPrincipal = "ACTING_AS_PRINCIPAL",
+  AveragePrice = "AVERAGE_PRICE",
+  BrokerLiquidation = "BROKER_LIQUIDATION",
+  CouponBooks = "COUPON_BOOKS",
+  HasPostageFee = "HAS_POSTAGE_FEE",
+  InternetOrder = "INTERNET_ORDER",
+  MarginSellout = "MARGIN_SELLOUT",
+  MarketMakersAsPrincipal = "MARKET_MAKERS_AS_PRINCIPAL",
+  NegativeNetProceed = "NEGATIVE_NET_PROCEED",
+  PreFigIndicator = "PRE_FIG_INDICATOR",
+  RisklessPrincipalInstruction = "RISKLESS_PRINCIPAL_INSTRUCTION",
+  ShortInstruction = "SHORT_INSTRUCTION",
+  ThirdMarket = "THIRD_MARKET",
+  SuppressMsrbTransmission = "SUPPRESS_MSRB_TRANSMISSION",
+  SuppressTraceReporting = "SUPPRESS_TRACE_REPORTING",
+  SuppressEmailNotification = "SUPPRESS_EMAIL_NOTIFICATION",
+  StockReward = "STOCK_REWARD",
+  SuppressRegFees = "SUPPRESS_REG_FEES",
+  SuppressSecFee = "SUPPRESS_SEC_FEE",
+  SuppressTafFee = "SUPPRESS_TAF_FEE",
+  DividendReinvestment = "DIVIDEND_REINVESTMENT",
+}
+export type CompleteTradeResponseSpecialInstructionsOpen = OpenEnum<
+  typeof CompleteTradeResponseSpecialInstructions
+>;
+
+/**
+ * Exchange venue
+ */
+export enum CompleteTradeResponseVenue {
+  ExchangeVenueUnspecified = "EXCHANGE_VENUE_UNSPECIFIED",
+  Amex = "AMEX",
+  Arca = "ARCA",
+  Bats = "BATS",
+  BatsByx = "BATS_BYX",
+  Boston = "BOSTON",
+  Box = "BOX",
+  Bzx = "BZX",
+  C2 = "C2",
+  Cboe = "CBOE",
+  Chicago = "CHICAGO",
+  Cincinnati = "CINCINNATI",
+  Edga = "EDGA",
+  Edgx = "EDGX",
+  Exclearing = "EXCLEARING",
+  Iex = "IEX",
+  Ise = "ISE",
+  IseGemini = "ISE_GEMINI",
+  Miax = "MIAX",
+  Nasdaq = "NASDAQ",
+  NasdaqOmxBx = "NASDAQ_OMX_BX",
+  Nyse = "NYSE",
+  Phlx = "PHLX",
+  Otc = "OTC",
+  Qsr = "QSR",
+}
+/**
+ * Exchange venue
+ */
+export type CompleteTradeResponseVenueOpen = OpenEnum<
+  typeof CompleteTradeResponseVenue
+>;
+
+/**
+ * Denotes that this trade was either when_issued or when_distributed.
+ */
+export enum CompleteTradeResponseWhenIssued {
+  WhenIssuedTypeUnspecified = "WHEN_ISSUED_TYPE_UNSPECIFIED",
+  WhenIssued = "WHEN_ISSUED",
+  WhenDistributed = "WHEN_DISTRIBUTED",
+}
+/**
+ * Denotes that this trade was either when_issued or when_distributed.
+ */
+export type CompleteTradeResponseWhenIssuedOpen = OpenEnum<
+  typeof CompleteTradeResponseWhenIssued
+>;
 
 /**
  * The completed trade.
  */
-export type CompleteTradeResponseTrade = {
+export type Trade = {
   /**
-   * Free form text field containing additional information for a trade
+   * A globally unique identifier referencing a single account.
    */
-  additionalInstructions?: Array<string> | undefined;
+  accountId?: string | undefined;
   /**
-   * Max Length 100 characters. Alternate order id from the street used for FRAC trades
+   * The current activity_id of this trade in the Ledger.
+   */
+  activityId?: string | undefined;
+  /**
+   * Free form instructions that can be used to provide additional instructions (that are not captured by existing special instructions) and will be put on the trade confirm.
+   */
+  additionalInstructions?: string | undefined;
+  /**
+   * Fractional support for market-makers' internal order ids.
    */
   alternateOrderId?: string | undefined;
   /**
-   * uuid assigned by the Booking API if a trade belongs to an allocation
+   * Type of the asset being traded. Required for SYMBOL and CUSIP.
    */
-  bookingApiTradeAllocationId?: string | undefined;
+  assetType?: CompleteTradeResponseAssetTypeOpen | undefined;
   /**
-   * uuid assigned by the Booking API to all trades
-   */
-  bookingApiTradeId?: string | undefined;
-  /**
-   * Executing broker of the trade
-   */
-  broker?: string | undefined;
-  /**
-   * Used to calculate broadridge blotter code
+   * Broker capacity for the trade.
    */
   brokerCapacity?: CompleteTradeResponseBrokerCapacityOpen | undefined;
   /**
-   * Free form text submitted by the client for internal purposes
-   */
-  clientMemos?: Array<string> | undefined;
-  /**
-   * 32 characters. The client order ID from the order submitted
+   * The unique identifier that is associated with an order. Must be unique by date per trade per client.
    */
   clientOrderId?: string | undefined;
   /**
-   * MIC code for the exchange
+   * Executing broker of the trade.
    */
-  exchange?: string | undefined;
+  executingBroker?: string | undefined;
   /**
-   * Execution id from the street
+   * The executions (sometimes referred to as partial-fills) that comprise the trade.
    */
-  executionId?: string | undefined;
+  executions?: Array<Execution> | undefined;
   /**
-   * Indicates whether Apex is the clearing broker for this trade. When false, indicates Apex is the clearing broker
+   * Any client calculated fees associated with the trade. Only allowed if trade.open = false. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  executionOnly?: boolean | undefined;
+  fees?: Array<BookingFee> | undefined;
   /**
-   * Max Length 100 characters. External system id provided by a client
+   * Identifier (of the type specified in `identifier_type`). Responses will supply the originally requested identifier.
    */
-  externalId?: string | undefined;
+  identifier?: string | undefined;
   /**
-   * The confirmation number associated with a mutual fund trade
+   * Identifier type for the asset being traded.
    */
-  fundConfirmationNumber?: string | undefined;
+  identifierType?: CompleteTradeResponseIdentifierTypeOpen | undefined;
   /**
-   * Max length 100 characters. Order id generated by trading-gateway (Trade-Ex) to uniquely identify all orders in their system. Used as the client_order_id on new order singles sent downstream of the trading-gateway
+   * Unicode CLDR region code. Issuing Region Code is required for some `identifier_type`s, especially CUSIP.
    */
-  gatewayClientOrderId?: string | undefined;
+  issuingRegionCode?: string | undefined;
   /**
-   * If set to true, indicates the trade should be omitted from client billing
+   * Date field to support extended trading hours.
    */
-  internalError?: boolean | undefined;
+  localMarketTradeDate?:
+    | CompleteTradeResponseLocalMarketTradeDate
+    | null
+    | undefined;
   /**
-   * Set on penny-for-the-lot trades
+   * One or many lot matching instructions for the trade.
    */
-  isWriteoff?: boolean | undefined;
+  lotMatchingInstructions?: Array<BookingLot> | undefined;
   /**
-   * Repeated record containing information about the tax lots, if specified
+   * Market Identifier Code
    */
-  lots?: Array<Lot> | undefined;
+  micCode?: string | undefined;
   /**
-   * Max Length 100 characters. Internally generated order id that is returned to client on exec reports
+   * The resource name of the trade.
+   */
+  name?: string | undefined;
+  /**
+   * State of this trade's completeness in filling. True: trade is not done filling and can append more executions onto the trade False: trade is done filling and cannot append more executions onto the trade By default, trades are closed when they are created. An open trade can later be closed by calling the CompleteTrade endpoint. Additional executions can be appended to an open trade by calling the CreateExecution endpoint. Trades that are left open will be automatically closed nightly before Ledger's EOD.
+   */
+  open?: boolean | undefined;
+  /**
+   * Street-level order id, unique by day per broker.
    */
   orderId?: string | undefined;
   /**
-   * The price for the instrument that is prevailing in the market.
+   * Route type for the trade.
    */
-  prevailingMarketPrice?:
-    | CompleteTradeResponsePrevailingMarketPrice
-    | null
+  routeType?: CompleteTradeResponseRouteTypeOpen | undefined;
+  /**
+   * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
+   */
+  settlementDate?: CompleteTradeResponseSettlementDate | null | undefined;
+  /**
+   * Denotes if the trade is a SELL or a BUY.
+   */
+  side?: CompleteTradeResponseSideOpen | undefined;
+  /**
+   * Side modifier for the trade.
+   */
+  sideModifier?: CompleteTradeResponseSideModifierOpen | undefined;
+  /**
+   * The source of the submission.
+   */
+  sourceApplication?: string | undefined;
+  /**
+   * An enumerated list of values used to indicate certain attributes about a trade (E.g. DISCRETION_EXERCISED, BROKER_LIQUIDATION) and/or trigger downstream processing rules (e.g. SUPPRESS_TRACE_REPORTING)
+   */
+  specialInstructions?:
+    | Array<CompleteTradeResponseSpecialInstructionsOpen>
     | undefined;
   /**
-   * Information about any price adjustments applied to the security
+   * A ULID to uniquely identify the trade globally.
    */
-  priceAdjustmentRecord?:
-    | CompleteTradeResponsePriceAdjustmentRecord
-    | null
-    | undefined;
+  tradeId?: string | undefined;
   /**
-   * Used to calculate broadridge blotter code
+   * Exchange venue
    */
-  route?: string | undefined;
+  venue?: CompleteTradeResponseVenueOpen | undefined;
   /**
-   * The special instructions for a trade
+   * Denotes that this trade was either when_issued or when_distributed.
    */
-  specialInstructions?: Array<string> | undefined;
-  /**
-   * Name of the issuer of a security and additional descriptive information about the particular issue
-   */
-  symbolDescription?: string | undefined;
-  /**
-   * Indicates the trade was executed in a security that is not currently listed. When-issued securities are bought and sold before they are officially issued, allowing investors to speculate on their future value
-   */
-  whenIssued?: boolean | undefined;
-  /**
-   * The yields associated with a fixed income trade. only valid if the SecurityType is FIXED_INCOME.
-   */
-  yieldRecords?: Array<YieldRecord> | undefined;
+  whenIssued?: CompleteTradeResponseWhenIssuedOpen | undefined;
 };
 
 /**
@@ -229,8 +400,40 @@ export type CompleteTradeResponse = {
   /**
    * The completed trade.
    */
-  trade?: CompleteTradeResponseTrade | null | undefined;
+  trade?: Trade | null | undefined;
 };
+
+/** @internal */
+export const CompleteTradeResponseAssetType$inboundSchema: z.ZodType<
+  CompleteTradeResponseAssetTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompleteTradeResponseAssetType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompleteTradeResponseAssetType$outboundSchema: z.ZodType<
+  CompleteTradeResponseAssetTypeOpen,
+  z.ZodTypeDef,
+  CompleteTradeResponseAssetTypeOpen
+> = z.union([
+  z.nativeEnum(CompleteTradeResponseAssetType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseAssetType$ {
+  /** @deprecated use `CompleteTradeResponseAssetType$inboundSchema` instead. */
+  export const inboundSchema = CompleteTradeResponseAssetType$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseAssetType$outboundSchema` instead. */
+  export const outboundSchema = CompleteTradeResponseAssetType$outboundSchema;
+}
 
 /** @internal */
 export const CompleteTradeResponseBrokerCapacity$inboundSchema: z.ZodType<
@@ -267,137 +470,23 @@ export namespace CompleteTradeResponseBrokerCapacity$ {
 }
 
 /** @internal */
-export const CompleteTradeResponsePrevailingMarketPrice$inboundSchema:
-  z.ZodType<CompleteTradeResponsePrevailingMarketPrice, z.ZodTypeDef, unknown> =
-    z.object({
-      value: z.string().optional(),
-    });
-
-/** @internal */
-export type CompleteTradeResponsePrevailingMarketPrice$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const CompleteTradeResponsePrevailingMarketPrice$outboundSchema:
-  z.ZodType<
-    CompleteTradeResponsePrevailingMarketPrice$Outbound,
-    z.ZodTypeDef,
-    CompleteTradeResponsePrevailingMarketPrice
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteTradeResponsePrevailingMarketPrice$ {
-  /** @deprecated use `CompleteTradeResponsePrevailingMarketPrice$inboundSchema` instead. */
-  export const inboundSchema =
-    CompleteTradeResponsePrevailingMarketPrice$inboundSchema;
-  /** @deprecated use `CompleteTradeResponsePrevailingMarketPrice$outboundSchema` instead. */
-  export const outboundSchema =
-    CompleteTradeResponsePrevailingMarketPrice$outboundSchema;
-  /** @deprecated use `CompleteTradeResponsePrevailingMarketPrice$Outbound` instead. */
-  export type Outbound = CompleteTradeResponsePrevailingMarketPrice$Outbound;
-}
-
-/** @internal */
-export const CompleteTradeResponsePriceAdjustmentAmount$inboundSchema:
-  z.ZodType<CompleteTradeResponsePriceAdjustmentAmount, z.ZodTypeDef, unknown> =
-    z.object({
-      value: z.string().optional(),
-    });
-
-/** @internal */
-export type CompleteTradeResponsePriceAdjustmentAmount$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const CompleteTradeResponsePriceAdjustmentAmount$outboundSchema:
-  z.ZodType<
-    CompleteTradeResponsePriceAdjustmentAmount$Outbound,
-    z.ZodTypeDef,
-    CompleteTradeResponsePriceAdjustmentAmount
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteTradeResponsePriceAdjustmentAmount$ {
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentAmount$inboundSchema` instead. */
-  export const inboundSchema =
-    CompleteTradeResponsePriceAdjustmentAmount$inboundSchema;
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentAmount$outboundSchema` instead. */
-  export const outboundSchema =
-    CompleteTradeResponsePriceAdjustmentAmount$outboundSchema;
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentAmount$Outbound` instead. */
-  export type Outbound = CompleteTradeResponsePriceAdjustmentAmount$Outbound;
-}
-
-/** @internal */
-export const CompleteTradeResponsePriceAdjustmentPercent$inboundSchema:
-  z.ZodType<
-    CompleteTradeResponsePriceAdjustmentPercent,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/** @internal */
-export type CompleteTradeResponsePriceAdjustmentPercent$Outbound = {
-  value?: string | undefined;
-};
-
-/** @internal */
-export const CompleteTradeResponsePriceAdjustmentPercent$outboundSchema:
-  z.ZodType<
-    CompleteTradeResponsePriceAdjustmentPercent$Outbound,
-    z.ZodTypeDef,
-    CompleteTradeResponsePriceAdjustmentPercent
-  > = z.object({
-    value: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteTradeResponsePriceAdjustmentPercent$ {
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentPercent$inboundSchema` instead. */
-  export const inboundSchema =
-    CompleteTradeResponsePriceAdjustmentPercent$inboundSchema;
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentPercent$outboundSchema` instead. */
-  export const outboundSchema =
-    CompleteTradeResponsePriceAdjustmentPercent$outboundSchema;
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentPercent$Outbound` instead. */
-  export type Outbound = CompleteTradeResponsePriceAdjustmentPercent$Outbound;
-}
-
-/** @internal */
-export const CompleteTradeResponsePriceAdjustmentType$inboundSchema: z.ZodType<
-  CompleteTradeResponsePriceAdjustmentTypeOpen,
+export const CompleteTradeResponseIdentifierType$inboundSchema: z.ZodType<
+  CompleteTradeResponseIdentifierTypeOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(CompleteTradeResponsePriceAdjustmentType),
+    z.nativeEnum(CompleteTradeResponseIdentifierType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const CompleteTradeResponsePriceAdjustmentType$outboundSchema: z.ZodType<
-  CompleteTradeResponsePriceAdjustmentTypeOpen,
+export const CompleteTradeResponseIdentifierType$outboundSchema: z.ZodType<
+  CompleteTradeResponseIdentifierTypeOpen,
   z.ZodTypeDef,
-  CompleteTradeResponsePriceAdjustmentTypeOpen
+  CompleteTradeResponseIdentifierTypeOpen
 > = z.union([
-  z.nativeEnum(CompleteTradeResponsePriceAdjustmentType),
+  z.nativeEnum(CompleteTradeResponseIdentifierType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -405,240 +494,465 @@ export const CompleteTradeResponsePriceAdjustmentType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CompleteTradeResponsePriceAdjustmentType$ {
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentType$inboundSchema` instead. */
+export namespace CompleteTradeResponseIdentifierType$ {
+  /** @deprecated use `CompleteTradeResponseIdentifierType$inboundSchema` instead. */
   export const inboundSchema =
-    CompleteTradeResponsePriceAdjustmentType$inboundSchema;
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentType$outboundSchema` instead. */
+    CompleteTradeResponseIdentifierType$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseIdentifierType$outboundSchema` instead. */
   export const outboundSchema =
-    CompleteTradeResponsePriceAdjustmentType$outboundSchema;
+    CompleteTradeResponseIdentifierType$outboundSchema;
 }
 
 /** @internal */
-export const CompleteTradeResponsePriceAdjustmentRecord$inboundSchema:
-  z.ZodType<CompleteTradeResponsePriceAdjustmentRecord, z.ZodTypeDef, unknown> =
-    z.object({
-      price_adjustment_amount: z.nullable(
-        z.lazy(() => CompleteTradeResponsePriceAdjustmentAmount$inboundSchema),
-      ).optional(),
-      price_adjustment_percent: z.nullable(
-        z.lazy(() => CompleteTradeResponsePriceAdjustmentPercent$inboundSchema),
-      ).optional(),
-      price_adjustment_type:
-        CompleteTradeResponsePriceAdjustmentType$inboundSchema.optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "price_adjustment_amount": "priceAdjustmentAmount",
-        "price_adjustment_percent": "priceAdjustmentPercent",
-        "price_adjustment_type": "priceAdjustmentType",
-      });
-    });
-
-/** @internal */
-export type CompleteTradeResponsePriceAdjustmentRecord$Outbound = {
-  price_adjustment_amount?:
-    | CompleteTradeResponsePriceAdjustmentAmount$Outbound
-    | null
-    | undefined;
-  price_adjustment_percent?:
-    | CompleteTradeResponsePriceAdjustmentPercent$Outbound
-    | null
-    | undefined;
-  price_adjustment_type?: string | undefined;
-};
-
-/** @internal */
-export const CompleteTradeResponsePriceAdjustmentRecord$outboundSchema:
-  z.ZodType<
-    CompleteTradeResponsePriceAdjustmentRecord$Outbound,
-    z.ZodTypeDef,
-    CompleteTradeResponsePriceAdjustmentRecord
-  > = z.object({
-    priceAdjustmentAmount: z.nullable(
-      z.lazy(() => CompleteTradeResponsePriceAdjustmentAmount$outboundSchema),
-    ).optional(),
-    priceAdjustmentPercent: z.nullable(
-      z.lazy(() => CompleteTradeResponsePriceAdjustmentPercent$outboundSchema),
-    ).optional(),
-    priceAdjustmentType: CompleteTradeResponsePriceAdjustmentType$outboundSchema
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      priceAdjustmentAmount: "price_adjustment_amount",
-      priceAdjustmentPercent: "price_adjustment_percent",
-      priceAdjustmentType: "price_adjustment_type",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CompleteTradeResponsePriceAdjustmentRecord$ {
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentRecord$inboundSchema` instead. */
-  export const inboundSchema =
-    CompleteTradeResponsePriceAdjustmentRecord$inboundSchema;
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentRecord$outboundSchema` instead. */
-  export const outboundSchema =
-    CompleteTradeResponsePriceAdjustmentRecord$outboundSchema;
-  /** @deprecated use `CompleteTradeResponsePriceAdjustmentRecord$Outbound` instead. */
-  export type Outbound = CompleteTradeResponsePriceAdjustmentRecord$Outbound;
-}
-
-/** @internal */
-export const CompleteTradeResponseTrade$inboundSchema: z.ZodType<
-  CompleteTradeResponseTrade,
+export const CompleteTradeResponseLocalMarketTradeDate$inboundSchema: z.ZodType<
+  CompleteTradeResponseLocalMarketTradeDate,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  additional_instructions: z.array(z.string()).optional(),
-  alternate_order_id: z.string().optional(),
-  booking_api_trade_allocation_id: z.string().optional(),
-  booking_api_trade_id: z.string().optional(),
-  broker: z.string().optional(),
-  broker_capacity: CompleteTradeResponseBrokerCapacity$inboundSchema.optional(),
-  client_memos: z.array(z.string()).optional(),
-  client_order_id: z.string().optional(),
-  exchange: z.string().optional(),
-  execution_id: z.string().optional(),
-  execution_only: z.boolean().optional(),
-  external_id: z.string().optional(),
-  fund_confirmation_number: z.string().optional(),
-  gateway_client_order_id: z.string().optional(),
-  internal_error: z.boolean().optional(),
-  is_writeoff: z.boolean().optional(),
-  lots: z.array(Lot$inboundSchema).optional(),
-  order_id: z.string().optional(),
-  prevailing_market_price: z.nullable(
-    z.lazy(() => CompleteTradeResponsePrevailingMarketPrice$inboundSchema),
-  ).optional(),
-  price_adjustment_record: z.nullable(
-    z.lazy(() => CompleteTradeResponsePriceAdjustmentRecord$inboundSchema),
-  ).optional(),
-  route: z.string().optional(),
-  special_instructions: z.array(z.string()).optional(),
-  symbol_description: z.string().optional(),
-  when_issued: z.boolean().optional(),
-  yield_records: z.array(YieldRecord$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "additional_instructions": "additionalInstructions",
-    "alternate_order_id": "alternateOrderId",
-    "booking_api_trade_allocation_id": "bookingApiTradeAllocationId",
-    "booking_api_trade_id": "bookingApiTradeId",
-    "broker_capacity": "brokerCapacity",
-    "client_memos": "clientMemos",
-    "client_order_id": "clientOrderId",
-    "execution_id": "executionId",
-    "execution_only": "executionOnly",
-    "external_id": "externalId",
-    "fund_confirmation_number": "fundConfirmationNumber",
-    "gateway_client_order_id": "gatewayClientOrderId",
-    "internal_error": "internalError",
-    "is_writeoff": "isWriteoff",
-    "order_id": "orderId",
-    "prevailing_market_price": "prevailingMarketPrice",
-    "price_adjustment_record": "priceAdjustmentRecord",
-    "special_instructions": "specialInstructions",
-    "symbol_description": "symbolDescription",
-    "when_issued": "whenIssued",
-    "yield_records": "yieldRecords",
-  });
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
 });
 
 /** @internal */
-export type CompleteTradeResponseTrade$Outbound = {
-  additional_instructions?: Array<string> | undefined;
-  alternate_order_id?: string | undefined;
-  booking_api_trade_allocation_id?: string | undefined;
-  booking_api_trade_id?: string | undefined;
-  broker?: string | undefined;
-  broker_capacity?: string | undefined;
-  client_memos?: Array<string> | undefined;
-  client_order_id?: string | undefined;
-  exchange?: string | undefined;
-  execution_id?: string | undefined;
-  execution_only?: boolean | undefined;
-  external_id?: string | undefined;
-  fund_confirmation_number?: string | undefined;
-  gateway_client_order_id?: string | undefined;
-  internal_error?: boolean | undefined;
-  is_writeoff?: boolean | undefined;
-  lots?: Array<Lot$Outbound> | undefined;
-  order_id?: string | undefined;
-  prevailing_market_price?:
-    | CompleteTradeResponsePrevailingMarketPrice$Outbound
-    | null
-    | undefined;
-  price_adjustment_record?:
-    | CompleteTradeResponsePriceAdjustmentRecord$Outbound
-    | null
-    | undefined;
-  route?: string | undefined;
-  special_instructions?: Array<string> | undefined;
-  symbol_description?: string | undefined;
-  when_issued?: boolean | undefined;
-  yield_records?: Array<YieldRecord$Outbound> | undefined;
+export type CompleteTradeResponseLocalMarketTradeDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
 };
 
 /** @internal */
-export const CompleteTradeResponseTrade$outboundSchema: z.ZodType<
-  CompleteTradeResponseTrade$Outbound,
+export const CompleteTradeResponseLocalMarketTradeDate$outboundSchema:
+  z.ZodType<
+    CompleteTradeResponseLocalMarketTradeDate$Outbound,
+    z.ZodTypeDef,
+    CompleteTradeResponseLocalMarketTradeDate
+  > = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseLocalMarketTradeDate$ {
+  /** @deprecated use `CompleteTradeResponseLocalMarketTradeDate$inboundSchema` instead. */
+  export const inboundSchema =
+    CompleteTradeResponseLocalMarketTradeDate$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseLocalMarketTradeDate$outboundSchema` instead. */
+  export const outboundSchema =
+    CompleteTradeResponseLocalMarketTradeDate$outboundSchema;
+  /** @deprecated use `CompleteTradeResponseLocalMarketTradeDate$Outbound` instead. */
+  export type Outbound = CompleteTradeResponseLocalMarketTradeDate$Outbound;
+}
+
+/** @internal */
+export const CompleteTradeResponseRouteType$inboundSchema: z.ZodType<
+  CompleteTradeResponseRouteTypeOpen,
   z.ZodTypeDef,
-  CompleteTradeResponseTrade
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompleteTradeResponseRouteType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompleteTradeResponseRouteType$outboundSchema: z.ZodType<
+  CompleteTradeResponseRouteTypeOpen,
+  z.ZodTypeDef,
+  CompleteTradeResponseRouteTypeOpen
+> = z.union([
+  z.nativeEnum(CompleteTradeResponseRouteType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseRouteType$ {
+  /** @deprecated use `CompleteTradeResponseRouteType$inboundSchema` instead. */
+  export const inboundSchema = CompleteTradeResponseRouteType$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseRouteType$outboundSchema` instead. */
+  export const outboundSchema = CompleteTradeResponseRouteType$outboundSchema;
+}
+
+/** @internal */
+export const CompleteTradeResponseSettlementDate$inboundSchema: z.ZodType<
+  CompleteTradeResponseSettlementDate,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-  additionalInstructions: z.array(z.string()).optional(),
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type CompleteTradeResponseSettlementDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const CompleteTradeResponseSettlementDate$outboundSchema: z.ZodType<
+  CompleteTradeResponseSettlementDate$Outbound,
+  z.ZodTypeDef,
+  CompleteTradeResponseSettlementDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseSettlementDate$ {
+  /** @deprecated use `CompleteTradeResponseSettlementDate$inboundSchema` instead. */
+  export const inboundSchema =
+    CompleteTradeResponseSettlementDate$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseSettlementDate$outboundSchema` instead. */
+  export const outboundSchema =
+    CompleteTradeResponseSettlementDate$outboundSchema;
+  /** @deprecated use `CompleteTradeResponseSettlementDate$Outbound` instead. */
+  export type Outbound = CompleteTradeResponseSettlementDate$Outbound;
+}
+
+/** @internal */
+export const CompleteTradeResponseSide$inboundSchema: z.ZodType<
+  CompleteTradeResponseSideOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompleteTradeResponseSide),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompleteTradeResponseSide$outboundSchema: z.ZodType<
+  CompleteTradeResponseSideOpen,
+  z.ZodTypeDef,
+  CompleteTradeResponseSideOpen
+> = z.union([
+  z.nativeEnum(CompleteTradeResponseSide),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseSide$ {
+  /** @deprecated use `CompleteTradeResponseSide$inboundSchema` instead. */
+  export const inboundSchema = CompleteTradeResponseSide$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseSide$outboundSchema` instead. */
+  export const outboundSchema = CompleteTradeResponseSide$outboundSchema;
+}
+
+/** @internal */
+export const CompleteTradeResponseSideModifier$inboundSchema: z.ZodType<
+  CompleteTradeResponseSideModifierOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompleteTradeResponseSideModifier),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompleteTradeResponseSideModifier$outboundSchema: z.ZodType<
+  CompleteTradeResponseSideModifierOpen,
+  z.ZodTypeDef,
+  CompleteTradeResponseSideModifierOpen
+> = z.union([
+  z.nativeEnum(CompleteTradeResponseSideModifier),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseSideModifier$ {
+  /** @deprecated use `CompleteTradeResponseSideModifier$inboundSchema` instead. */
+  export const inboundSchema = CompleteTradeResponseSideModifier$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseSideModifier$outboundSchema` instead. */
+  export const outboundSchema =
+    CompleteTradeResponseSideModifier$outboundSchema;
+}
+
+/** @internal */
+export const CompleteTradeResponseSpecialInstructions$inboundSchema: z.ZodType<
+  CompleteTradeResponseSpecialInstructionsOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompleteTradeResponseSpecialInstructions),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompleteTradeResponseSpecialInstructions$outboundSchema: z.ZodType<
+  CompleteTradeResponseSpecialInstructionsOpen,
+  z.ZodTypeDef,
+  CompleteTradeResponseSpecialInstructionsOpen
+> = z.union([
+  z.nativeEnum(CompleteTradeResponseSpecialInstructions),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseSpecialInstructions$ {
+  /** @deprecated use `CompleteTradeResponseSpecialInstructions$inboundSchema` instead. */
+  export const inboundSchema =
+    CompleteTradeResponseSpecialInstructions$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseSpecialInstructions$outboundSchema` instead. */
+  export const outboundSchema =
+    CompleteTradeResponseSpecialInstructions$outboundSchema;
+}
+
+/** @internal */
+export const CompleteTradeResponseVenue$inboundSchema: z.ZodType<
+  CompleteTradeResponseVenueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompleteTradeResponseVenue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompleteTradeResponseVenue$outboundSchema: z.ZodType<
+  CompleteTradeResponseVenueOpen,
+  z.ZodTypeDef,
+  CompleteTradeResponseVenueOpen
+> = z.union([
+  z.nativeEnum(CompleteTradeResponseVenue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseVenue$ {
+  /** @deprecated use `CompleteTradeResponseVenue$inboundSchema` instead. */
+  export const inboundSchema = CompleteTradeResponseVenue$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseVenue$outboundSchema` instead. */
+  export const outboundSchema = CompleteTradeResponseVenue$outboundSchema;
+}
+
+/** @internal */
+export const CompleteTradeResponseWhenIssued$inboundSchema: z.ZodType<
+  CompleteTradeResponseWhenIssuedOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompleteTradeResponseWhenIssued),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompleteTradeResponseWhenIssued$outboundSchema: z.ZodType<
+  CompleteTradeResponseWhenIssuedOpen,
+  z.ZodTypeDef,
+  CompleteTradeResponseWhenIssuedOpen
+> = z.union([
+  z.nativeEnum(CompleteTradeResponseWhenIssued),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompleteTradeResponseWhenIssued$ {
+  /** @deprecated use `CompleteTradeResponseWhenIssued$inboundSchema` instead. */
+  export const inboundSchema = CompleteTradeResponseWhenIssued$inboundSchema;
+  /** @deprecated use `CompleteTradeResponseWhenIssued$outboundSchema` instead. */
+  export const outboundSchema = CompleteTradeResponseWhenIssued$outboundSchema;
+}
+
+/** @internal */
+export const Trade$inboundSchema: z.ZodType<Trade, z.ZodTypeDef, unknown> = z
+  .object({
+    account_id: z.string().optional(),
+    activity_id: z.string().optional(),
+    additional_instructions: z.string().optional(),
+    alternate_order_id: z.string().optional(),
+    asset_type: CompleteTradeResponseAssetType$inboundSchema.optional(),
+    broker_capacity: CompleteTradeResponseBrokerCapacity$inboundSchema
+      .optional(),
+    client_order_id: z.string().optional(),
+    executing_broker: z.string().optional(),
+    executions: z.array(Execution$inboundSchema).optional(),
+    fees: z.array(BookingFee$inboundSchema).optional(),
+    identifier: z.string().optional(),
+    identifier_type: CompleteTradeResponseIdentifierType$inboundSchema
+      .optional(),
+    issuing_region_code: z.string().optional(),
+    local_market_trade_date: z.nullable(
+      z.lazy(() => CompleteTradeResponseLocalMarketTradeDate$inboundSchema),
+    ).optional(),
+    lot_matching_instructions: z.array(BookingLot$inboundSchema).optional(),
+    mic_code: z.string().optional(),
+    name: z.string().optional(),
+    open: z.boolean().optional(),
+    order_id: z.string().optional(),
+    route_type: CompleteTradeResponseRouteType$inboundSchema.optional(),
+    settlement_date: z.nullable(
+      z.lazy(() => CompleteTradeResponseSettlementDate$inboundSchema),
+    ).optional(),
+    side: CompleteTradeResponseSide$inboundSchema.optional(),
+    side_modifier: CompleteTradeResponseSideModifier$inboundSchema.optional(),
+    source_application: z.string().optional(),
+    special_instructions: z.array(
+      CompleteTradeResponseSpecialInstructions$inboundSchema,
+    ).optional(),
+    trade_id: z.string().optional(),
+    venue: CompleteTradeResponseVenue$inboundSchema.optional(),
+    when_issued: CompleteTradeResponseWhenIssued$inboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "account_id": "accountId",
+      "activity_id": "activityId",
+      "additional_instructions": "additionalInstructions",
+      "alternate_order_id": "alternateOrderId",
+      "asset_type": "assetType",
+      "broker_capacity": "brokerCapacity",
+      "client_order_id": "clientOrderId",
+      "executing_broker": "executingBroker",
+      "identifier_type": "identifierType",
+      "issuing_region_code": "issuingRegionCode",
+      "local_market_trade_date": "localMarketTradeDate",
+      "lot_matching_instructions": "lotMatchingInstructions",
+      "mic_code": "micCode",
+      "order_id": "orderId",
+      "route_type": "routeType",
+      "settlement_date": "settlementDate",
+      "side_modifier": "sideModifier",
+      "source_application": "sourceApplication",
+      "special_instructions": "specialInstructions",
+      "trade_id": "tradeId",
+      "when_issued": "whenIssued",
+    });
+  });
+
+/** @internal */
+export type Trade$Outbound = {
+  account_id?: string | undefined;
+  activity_id?: string | undefined;
+  additional_instructions?: string | undefined;
+  alternate_order_id?: string | undefined;
+  asset_type?: string | undefined;
+  broker_capacity?: string | undefined;
+  client_order_id?: string | undefined;
+  executing_broker?: string | undefined;
+  executions?: Array<Execution$Outbound> | undefined;
+  fees?: Array<BookingFee$Outbound> | undefined;
+  identifier?: string | undefined;
+  identifier_type?: string | undefined;
+  issuing_region_code?: string | undefined;
+  local_market_trade_date?:
+    | CompleteTradeResponseLocalMarketTradeDate$Outbound
+    | null
+    | undefined;
+  lot_matching_instructions?: Array<BookingLot$Outbound> | undefined;
+  mic_code?: string | undefined;
+  name?: string | undefined;
+  open?: boolean | undefined;
+  order_id?: string | undefined;
+  route_type?: string | undefined;
+  settlement_date?:
+    | CompleteTradeResponseSettlementDate$Outbound
+    | null
+    | undefined;
+  side?: string | undefined;
+  side_modifier?: string | undefined;
+  source_application?: string | undefined;
+  special_instructions?: Array<string> | undefined;
+  trade_id?: string | undefined;
+  venue?: string | undefined;
+  when_issued?: string | undefined;
+};
+
+/** @internal */
+export const Trade$outboundSchema: z.ZodType<
+  Trade$Outbound,
+  z.ZodTypeDef,
+  Trade
+> = z.object({
+  accountId: z.string().optional(),
+  activityId: z.string().optional(),
+  additionalInstructions: z.string().optional(),
   alternateOrderId: z.string().optional(),
-  bookingApiTradeAllocationId: z.string().optional(),
-  bookingApiTradeId: z.string().optional(),
-  broker: z.string().optional(),
+  assetType: CompleteTradeResponseAssetType$outboundSchema.optional(),
   brokerCapacity: CompleteTradeResponseBrokerCapacity$outboundSchema.optional(),
-  clientMemos: z.array(z.string()).optional(),
   clientOrderId: z.string().optional(),
-  exchange: z.string().optional(),
-  executionId: z.string().optional(),
-  executionOnly: z.boolean().optional(),
-  externalId: z.string().optional(),
-  fundConfirmationNumber: z.string().optional(),
-  gatewayClientOrderId: z.string().optional(),
-  internalError: z.boolean().optional(),
-  isWriteoff: z.boolean().optional(),
-  lots: z.array(Lot$outboundSchema).optional(),
+  executingBroker: z.string().optional(),
+  executions: z.array(Execution$outboundSchema).optional(),
+  fees: z.array(BookingFee$outboundSchema).optional(),
+  identifier: z.string().optional(),
+  identifierType: CompleteTradeResponseIdentifierType$outboundSchema.optional(),
+  issuingRegionCode: z.string().optional(),
+  localMarketTradeDate: z.nullable(
+    z.lazy(() => CompleteTradeResponseLocalMarketTradeDate$outboundSchema),
+  ).optional(),
+  lotMatchingInstructions: z.array(BookingLot$outboundSchema).optional(),
+  micCode: z.string().optional(),
+  name: z.string().optional(),
+  open: z.boolean().optional(),
   orderId: z.string().optional(),
-  prevailingMarketPrice: z.nullable(
-    z.lazy(() => CompleteTradeResponsePrevailingMarketPrice$outboundSchema),
+  routeType: CompleteTradeResponseRouteType$outboundSchema.optional(),
+  settlementDate: z.nullable(
+    z.lazy(() => CompleteTradeResponseSettlementDate$outboundSchema),
   ).optional(),
-  priceAdjustmentRecord: z.nullable(
-    z.lazy(() => CompleteTradeResponsePriceAdjustmentRecord$outboundSchema),
+  side: CompleteTradeResponseSide$outboundSchema.optional(),
+  sideModifier: CompleteTradeResponseSideModifier$outboundSchema.optional(),
+  sourceApplication: z.string().optional(),
+  specialInstructions: z.array(
+    CompleteTradeResponseSpecialInstructions$outboundSchema,
   ).optional(),
-  route: z.string().optional(),
-  specialInstructions: z.array(z.string()).optional(),
-  symbolDescription: z.string().optional(),
-  whenIssued: z.boolean().optional(),
-  yieldRecords: z.array(YieldRecord$outboundSchema).optional(),
+  tradeId: z.string().optional(),
+  venue: CompleteTradeResponseVenue$outboundSchema.optional(),
+  whenIssued: CompleteTradeResponseWhenIssued$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    accountId: "account_id",
+    activityId: "activity_id",
     additionalInstructions: "additional_instructions",
     alternateOrderId: "alternate_order_id",
-    bookingApiTradeAllocationId: "booking_api_trade_allocation_id",
-    bookingApiTradeId: "booking_api_trade_id",
+    assetType: "asset_type",
     brokerCapacity: "broker_capacity",
-    clientMemos: "client_memos",
     clientOrderId: "client_order_id",
-    executionId: "execution_id",
-    executionOnly: "execution_only",
-    externalId: "external_id",
-    fundConfirmationNumber: "fund_confirmation_number",
-    gatewayClientOrderId: "gateway_client_order_id",
-    internalError: "internal_error",
-    isWriteoff: "is_writeoff",
+    executingBroker: "executing_broker",
+    identifierType: "identifier_type",
+    issuingRegionCode: "issuing_region_code",
+    localMarketTradeDate: "local_market_trade_date",
+    lotMatchingInstructions: "lot_matching_instructions",
+    micCode: "mic_code",
     orderId: "order_id",
-    prevailingMarketPrice: "prevailing_market_price",
-    priceAdjustmentRecord: "price_adjustment_record",
+    routeType: "route_type",
+    settlementDate: "settlement_date",
+    sideModifier: "side_modifier",
+    sourceApplication: "source_application",
     specialInstructions: "special_instructions",
-    symbolDescription: "symbol_description",
+    tradeId: "trade_id",
     whenIssued: "when_issued",
-    yieldRecords: "yield_records",
   });
 });
 
@@ -646,13 +960,13 @@ export const CompleteTradeResponseTrade$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CompleteTradeResponseTrade$ {
-  /** @deprecated use `CompleteTradeResponseTrade$inboundSchema` instead. */
-  export const inboundSchema = CompleteTradeResponseTrade$inboundSchema;
-  /** @deprecated use `CompleteTradeResponseTrade$outboundSchema` instead. */
-  export const outboundSchema = CompleteTradeResponseTrade$outboundSchema;
-  /** @deprecated use `CompleteTradeResponseTrade$Outbound` instead. */
-  export type Outbound = CompleteTradeResponseTrade$Outbound;
+export namespace Trade$ {
+  /** @deprecated use `Trade$inboundSchema` instead. */
+  export const inboundSchema = Trade$inboundSchema;
+  /** @deprecated use `Trade$outboundSchema` instead. */
+  export const outboundSchema = Trade$outboundSchema;
+  /** @deprecated use `Trade$Outbound` instead. */
+  export type Outbound = Trade$Outbound;
 }
 
 /** @internal */
@@ -661,13 +975,12 @@ export const CompleteTradeResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  trade: z.nullable(z.lazy(() => CompleteTradeResponseTrade$inboundSchema))
-    .optional(),
+  trade: z.nullable(z.lazy(() => Trade$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type CompleteTradeResponse$Outbound = {
-  trade?: CompleteTradeResponseTrade$Outbound | null | undefined;
+  trade?: Trade$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -676,8 +989,7 @@ export const CompleteTradeResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CompleteTradeResponse
 > = z.object({
-  trade: z.nullable(z.lazy(() => CompleteTradeResponseTrade$outboundSchema))
-    .optional(),
+  trade: z.nullable(z.lazy(() => Trade$outboundSchema)).optional(),
 });
 
 /**

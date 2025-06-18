@@ -21,7 +21,7 @@ export type BasketOrdersServiceCreateBasketResponse = {
    */
   basket?: components.Basket | undefined;
   /**
-   * INVALID_ARGUMENT: There was an issue with one or more fields in the request.  The message field will contain details about which field failed validation and why.
+   * INVALID_ARGUMENT: Either the correspondent doesn't have a valid average price account, or there was an issue with one or more fields in the request.  In the latter case, the message field will contain details about which field failed validation and why.
    */
   status?: components.Status | undefined;
 };

@@ -12,6 +12,8 @@ let value: AcatsAssetType = AcatsAssetType.Cusip;
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 | Name                        | Value                       |
 | --------------------------- | --------------------------- |
 | `IdentifierTypeUnspecified` | IDENTIFIER_TYPE_UNSPECIFIED |
@@ -20,3 +22,4 @@ let value: AcatsAssetType = AcatsAssetType.Cusip;
 | `Symbol`                    | SYMBOL                      |
 | `Isin`                      | ISIN                        |
 | `AssetId`                   | ASSET_ID                    |
+| -                           | `Unrecognized<string>`      |

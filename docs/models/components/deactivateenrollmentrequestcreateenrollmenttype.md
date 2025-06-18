@@ -1,6 +1,10 @@
 # DeactivateEnrollmentRequestCreateEnrollmentType
 
-Describes the name of the enrollment; Expressed as an enum
+**Field Dependencies:**
+
+Required if `enrollment_id` is not present.
+
+Otherwise, must be empty.
 
 ## Example Usage
 

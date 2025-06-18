@@ -1,0 +1,20 @@
+# BondDefault
+
+Object containing metadata for bond defaults
+
+## Example Usage
+
+```typescript
+import { BondDefault } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: BondDefault = {};
+```
+
+## Fields
+
+| Field                                                                                                                            | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      | Example                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `cashRate`                                                                                                                       | [components.CashRate](../../models/components/cashrate.md)                                                                       | :heavy_minus_sign:                                                                                                               | The rate (raw value, not a percentage, example: 50% will be .5 in this field) at which cash will be disbursed to the shareholder | {<br/>"value": "0.25"<br/>}                                                                                                      |
+| `corporateActionGeneralInformation`                                                                                              | [components.EntryCorporateActionGeneralInformation](../../models/components/entrycorporateactiongeneralinformation.md)           | :heavy_minus_sign:                                                                                                               | Common fields for corporate actions                                                                                              |                                                                                                                                  |
+| `paymentDate`                                                                                                                    | [components.PaymentDate](../../models/components/paymentdate.md)                                                                 | :heavy_minus_sign:                                                                                                               | The anticipated payment date at the depository                                                                                   | {<br/>"day": 14,<br/>"month": 5,<br/>"year": 2024<br/>}                                                                          |
+| `quantity`                                                                                                                       | [components.EntryBondDefaultQuantity](../../models/components/entrybonddefaultquantity.md)                                       | :heavy_minus_sign:                                                                                                               | Corresponds to the position's trade quantity                                                                                     | {<br/>"value": "100.00"<br/>}                                                                                                    |

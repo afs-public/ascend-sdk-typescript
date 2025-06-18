@@ -22,7 +22,7 @@ export type BookingGetTradeResponse = {
   /**
    * OK
    */
-  trade?: components.Trade | undefined;
+  bookingTrade?: components.BookingTrade | undefined;
   /**
    * INVALID_ARGUMENT: The request is not valid.
    */
@@ -85,12 +85,12 @@ export const BookingGetTradeResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   HttpMeta: components.HTTPMetadata$inboundSchema,
-  Trade: components.Trade$inboundSchema.optional(),
+  BookingTrade: components.BookingTrade$inboundSchema.optional(),
   Status: components.Status$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "HttpMeta": "httpMeta",
-    "Trade": "trade",
+    "BookingTrade": "bookingTrade",
     "Status": "status",
   });
 });
@@ -98,7 +98,7 @@ export const BookingGetTradeResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type BookingGetTradeResponse$Outbound = {
   HttpMeta: components.HTTPMetadata$Outbound;
-  Trade?: components.Trade$Outbound | undefined;
+  BookingTrade?: components.BookingTrade$Outbound | undefined;
   Status?: components.Status$Outbound | undefined;
 };
 
@@ -109,12 +109,12 @@ export const BookingGetTradeResponse$outboundSchema: z.ZodType<
   BookingGetTradeResponse
 > = z.object({
   httpMeta: components.HTTPMetadata$outboundSchema,
-  trade: components.Trade$outboundSchema.optional(),
+  bookingTrade: components.BookingTrade$outboundSchema.optional(),
   status: components.Status$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     httpMeta: "HttpMeta",
-    trade: "Trade",
+    bookingTrade: "BookingTrade",
     status: "Status",
   });
 });

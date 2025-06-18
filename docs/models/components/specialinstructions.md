@@ -5,7 +5,7 @@
 ```typescript
 import { SpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: SpecialInstructions = SpecialInstructions.MarginSellout;
+let value: SpecialInstructions = SpecialInstructions.DiscretionNotExercised;
 ```
 
 ## Values

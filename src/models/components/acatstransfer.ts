@@ -192,6 +192,10 @@ export enum TransferType {
   Reclaim = "RECLAIM",
   ResidualCredit = "RESIDUAL_CREDIT",
 }
+/**
+ * The type of transfer
+ */
+export type TransferTypeOpen = OpenEnum<typeof TransferType>;
 
 /**
  * An account transfer which contains the receiving and delivering party information, assets being transferred, NSCC status information, etc.
@@ -246,9 +250,13 @@ export type AcatsTransfer = {
    */
   state?: AcatsTransferStateOpen | undefined;
   /**
+   * A reason for the state if applicable
+   */
+  stateReason?: string | undefined;
+  /**
    * The type of transfer
    */
-  transferType?: TransferType | undefined;
+  transferType?: TransferTypeOpen | undefined;
 };
 
 /** @internal */
@@ -592,12 +600,25 @@ export namespace AcatsTransferState$ {
 }
 
 /** @internal */
-export const TransferType$inboundSchema: z.ZodNativeEnum<typeof TransferType> =
-  z.nativeEnum(TransferType);
+export const TransferType$inboundSchema: z.ZodType<
+  TransferTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(TransferType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
-export const TransferType$outboundSchema: z.ZodNativeEnum<typeof TransferType> =
-  TransferType$inboundSchema;
+export const TransferType$outboundSchema: z.ZodType<
+  TransferTypeOpen,
+  z.ZodTypeDef,
+  TransferTypeOpen
+> = z.union([
+  z.nativeEnum(TransferType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
 
 /**
  * @internal
@@ -630,6 +651,7 @@ export const AcatsTransfer$inboundSchema: z.ZodType<
   receiver: z.nullable(z.lazy(() => Receiver$inboundSchema)).optional(),
   reject_code: RejectCode$inboundSchema.optional(),
   state: AcatsTransferState$inboundSchema.optional(),
+  state_reason: z.string().optional(),
   transfer_type: TransferType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -638,6 +660,7 @@ export const AcatsTransfer$inboundSchema: z.ZodType<
     "nscc_status": "nsccStatus",
     "original_control_number": "originalControlNumber",
     "reject_code": "rejectCode",
+    "state_reason": "stateReason",
     "transfer_type": "transferType",
   });
 });
@@ -656,6 +679,7 @@ export type AcatsTransfer$Outbound = {
   receiver?: Receiver$Outbound | null | undefined;
   reject_code?: string | undefined;
   state?: string | undefined;
+  state_reason?: string | undefined;
   transfer_type?: string | undefined;
 };
 
@@ -677,6 +701,7 @@ export const AcatsTransfer$outboundSchema: z.ZodType<
   receiver: z.nullable(z.lazy(() => Receiver$outboundSchema)).optional(),
   rejectCode: RejectCode$outboundSchema.optional(),
   state: AcatsTransferState$outboundSchema.optional(),
+  stateReason: z.string().optional(),
   transferType: TransferType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -685,6 +710,7 @@ export const AcatsTransfer$outboundSchema: z.ZodType<
     nsccStatus: "nscc_status",
     originalControlNumber: "original_control_number",
     rejectCode: "reject_code",
+    stateReason: "state_reason",
     transferType: "transfer_type",
   });
 });

@@ -104,10 +104,17 @@ test("Test Instant Cash Transfer Transfers Cancel Ict Withdrawal Cancel Ict With
 });
 
 test("Test Instant Cash Transfer Transfers Locate Ict Report Locate Ict Report1", async () => {
+
+  const request = {
+    correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
+    programDateFilterProgram: ProgramDateFilterProgram.BrokerPartner,
+    programDateFilterProcessDateYear: 2025,
+    programDateFilterProcessDateMonth: 5,
+    programDateFilterProcessDateDay: 28,
+  }
+
   const result = await sdk.instantCashTransferICT.locateIctReport(
-    process.env["CORRESPONDENT_ID"] ?? "",
-    undefined,
-    ProgramDateFilterProgram.BrokerPartner,
+    request,
   );
 
   expect(result).toBeDefined();

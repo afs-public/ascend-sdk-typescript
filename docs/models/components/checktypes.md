@@ -5,7 +5,7 @@
 ```typescript
 import { CheckTypes } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: CheckTypes = CheckTypes.Database;
+let value: CheckTypes = CheckTypes.CheckTypeUnspecified;
 ```
 
 ## Values

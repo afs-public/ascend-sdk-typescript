@@ -1,0 +1,22 @@
+export declare const withdrawal_account_id = "01JHGTEPC6ZTAHCFRH2MD3VJJT";
+export declare const deceased_account_id = "01JHK07CRQ9X8P5XE9JWG4PFSP";
+export declare const deceased_bank_relationship_id = "6786a8e8ea916b424a53cc24";
+export declare const wire_deposit_id = "20250218014356";
+export declare function createBankRelationship(account_id: string): Promise<string | undefined>;
+export declare function failingMicroDeposits(account_id: string, bank_relationship_id: string): Promise<string[] | undefined>;
+export declare function correctMicroDeposits(account_id: string, bank_relationship_id: string): Promise<string[] | undefined>;
+export declare function verifyMicroDeposits(account_id: string, bank_relationship_id: string, amounts: string[]): Promise<void>;
+export declare function createACHDeposit(account_id: string, bank_relationship_id: string): Promise<string | undefined>;
+export declare function createACHWithdrawal(account_id: string, bank_relationship_id: string): Promise<string | undefined>;
+export declare function createFee(account_id: string): Promise<string | undefined>;
+export declare function createCredit(account_id: string): Promise<string | undefined>;
+export declare function createCompletedWithdrawal(withdrawal_account_id: string): Promise<string>;
+export declare function createIctDepositPending(account_id: string): Promise<string>;
+export declare function createScheduledAchDeposit(enrolled_account_id: string, bank_relationship_id: string): Promise<string>;
+export declare function createIctDeposit(enrolled_account_id: string): Promise<string>;
+export declare function createIctWithdrawal(enrolled_account_id: string): Promise<string>;
+export declare function createScheduledAchWithdrawal(enrolled_account_id: string, bank_relationship_id: string): Promise<string>;
+export declare function createScheduledWireWithdrawal(enrolled_account_id: string): Promise<string>;
+export declare function createCashJournal(account_id: string): Promise<string>;
+export declare function createWireWithdrawal(account_id: string): Promise<string>;
+//# sourceMappingURL=index.d.ts.map

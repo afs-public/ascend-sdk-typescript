@@ -337,6 +337,9 @@ const sdk = new Apexascend({ httpClient });
 ### [accountTransfers](docs/sdks/accounttransfers/README.md)
 
 * [createTransfer](docs/sdks/accounttransfers/README.md#createtransfer) - Create Transfer
+* [listTransfers](docs/sdks/accounttransfers/README.md#listtransfers) - List Transfers
+* [acceptTransfer](docs/sdks/accounttransfers/README.md#accepttransfer) - Accept Transfer
+* [rejectTransfer](docs/sdks/accounttransfers/README.md#rejecttransfer) - Reject Transfer
 * [getTransfer](docs/sdks/accounttransfers/README.md#gettransfer) - Get Transfer
 
 ### [achTransfers](docs/sdks/achtransfers/README.md)

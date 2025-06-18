@@ -69,7 +69,7 @@ export type ExecutionPrice = {
 /**
  * Total monetary value of the price_adjustment
  */
-export type ExecutionPriceAdjustmentAmount = {
+export type PriceAdjustmentAmount = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -99,7 +99,7 @@ export type PriceAdjustment = {
   /**
    * Total monetary value of the price_adjustment
    */
-  priceAdjustmentAmount?: ExecutionPriceAdjustmentAmount | null | undefined;
+  priceAdjustmentAmount?: PriceAdjustmentAmount | null | undefined;
   /**
    * The type of price adjustment being applied by the broker to the net price of the security.
    */
@@ -389,8 +389,8 @@ export namespace ExecutionPrice$ {
 }
 
 /** @internal */
-export const ExecutionPriceAdjustmentAmount$inboundSchema: z.ZodType<
-  ExecutionPriceAdjustmentAmount,
+export const PriceAdjustmentAmount$inboundSchema: z.ZodType<
+  PriceAdjustmentAmount,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -398,15 +398,15 @@ export const ExecutionPriceAdjustmentAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ExecutionPriceAdjustmentAmount$Outbound = {
+export type PriceAdjustmentAmount$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const ExecutionPriceAdjustmentAmount$outboundSchema: z.ZodType<
-  ExecutionPriceAdjustmentAmount$Outbound,
+export const PriceAdjustmentAmount$outboundSchema: z.ZodType<
+  PriceAdjustmentAmount$Outbound,
   z.ZodTypeDef,
-  ExecutionPriceAdjustmentAmount
+  PriceAdjustmentAmount
 > = z.object({
   value: z.string().optional(),
 });
@@ -415,13 +415,13 @@ export const ExecutionPriceAdjustmentAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ExecutionPriceAdjustmentAmount$ {
-  /** @deprecated use `ExecutionPriceAdjustmentAmount$inboundSchema` instead. */
-  export const inboundSchema = ExecutionPriceAdjustmentAmount$inboundSchema;
-  /** @deprecated use `ExecutionPriceAdjustmentAmount$outboundSchema` instead. */
-  export const outboundSchema = ExecutionPriceAdjustmentAmount$outboundSchema;
-  /** @deprecated use `ExecutionPriceAdjustmentAmount$Outbound` instead. */
-  export type Outbound = ExecutionPriceAdjustmentAmount$Outbound;
+export namespace PriceAdjustmentAmount$ {
+  /** @deprecated use `PriceAdjustmentAmount$inboundSchema` instead. */
+  export const inboundSchema = PriceAdjustmentAmount$inboundSchema;
+  /** @deprecated use `PriceAdjustmentAmount$outboundSchema` instead. */
+  export const outboundSchema = PriceAdjustmentAmount$outboundSchema;
+  /** @deprecated use `PriceAdjustmentAmount$Outbound` instead. */
+  export type Outbound = PriceAdjustmentAmount$Outbound;
 }
 
 /** @internal */
@@ -463,7 +463,7 @@ export const PriceAdjustment$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   price_adjustment_amount: z.nullable(
-    z.lazy(() => ExecutionPriceAdjustmentAmount$inboundSchema),
+    z.lazy(() => PriceAdjustmentAmount$inboundSchema),
   ).optional(),
   price_adjustment_type: ExecutionPriceAdjustmentType$inboundSchema.optional(),
 }).transform((v) => {
@@ -475,10 +475,7 @@ export const PriceAdjustment$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PriceAdjustment$Outbound = {
-  price_adjustment_amount?:
-    | ExecutionPriceAdjustmentAmount$Outbound
-    | null
-    | undefined;
+  price_adjustment_amount?: PriceAdjustmentAmount$Outbound | null | undefined;
   price_adjustment_type?: string | undefined;
 };
 
@@ -489,7 +486,7 @@ export const PriceAdjustment$outboundSchema: z.ZodType<
   PriceAdjustment
 > = z.object({
   priceAdjustmentAmount: z.nullable(
-    z.lazy(() => ExecutionPriceAdjustmentAmount$outboundSchema),
+    z.lazy(() => PriceAdjustmentAmount$outboundSchema),
   ).optional(),
   priceAdjustmentType: ExecutionPriceAdjustmentType$outboundSchema.optional(),
 }).transform((v) => {

@@ -8,19 +8,19 @@ import {
 } from "./index";
 import { beforeAll } from "vitest";
 
-let subscription_id: string | undefined;
 let subscriber_id: string | undefined;
+let subscription_id: string | undefined;
 let delivery_id: string | undefined;
 beforeAll(async () => {
-  subscription_id = await create_subscriber_id();
+  subscription_id = await get_subscriber_id();
   if (typeof subscription_id !== "string") {
     throw new Error("subscription_id is undefined.");
   }
-  await timeout(5000);
-  subscriber_id = await get_subscriber_id();
+  subscriber_id = await create_subscriber_id();
   if (typeof subscriber_id !== "string") {
     throw new Error("subscriber_id is undefined");
   }
+  await timeout(5000);
   delivery_id = await get_delivery_id();
   if (typeof delivery_id !== "string") {
     throw new Error("delivery_id is undefined");
@@ -62,11 +62,11 @@ test("Subscriber Events Get Push Subscription Event Delivery Get Push Subscripti
   if (typeof delivery_id !== "string") {
     throw new Error("delivery_id is undefined");
   }
-  if (typeof subscriber_id !== "string") {
-    throw new Error("subscriber_id is undefined");
+  if (typeof subscription_id !== "string") {
+    throw new Error("subscription_id is undefined");
   }
   const result = await sdk.subscriber.getPushSubscriptionDelivery(
-    subscriber_id,
+    subscription_id,
     delivery_id,
   );
   expect(result.httpMeta.response.status).toBe(200);

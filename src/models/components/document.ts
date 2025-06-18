@@ -129,6 +129,8 @@ export enum DocumentDocumentType {
   WireRequestForm = "WIRE_REQUEST_FORM",
   WorthlessSecurities = "WORTHLESS_SECURITIES",
   ChangeOfAddressRequest = "CHANGE_OF_ADDRESS_REQUEST",
+  OptionsAgreement = "OPTIONS_AGREEMENT",
+  StateWaiverForm = "STATE_WAIVER_FORM",
 }
 /**
  * Describes the contents of a document and how it is used
@@ -197,7 +199,6 @@ export enum DocumentIdDocumentDocumentType {
   ExecutorCertification = "EXECUTOR_CERTIFICATION",
   TrusteeCertification = "TRUSTEE_CERTIFICATION",
   Selfie = "SELFIE",
-  ArticlesOfOrganisation = "ARTICLES_OF_ORGANISATION",
   CertOfSoleOfficer = "CERT_OF_SOLE_OFFICER",
   CertificationCorrespondentAccounts = "CERTIFICATION_CORRESPONDENT_ACCOUNTS",
   CertificationForeignBanks = "CERTIFICATION_FOREIGN_BANKS",
@@ -212,6 +213,7 @@ export enum DocumentIdDocumentDocumentType {
   CorporateBylaws = "CORPORATE_BYLAWS",
   ShareholderAgreement = "SHAREHOLDER_AGREEMENT",
   CorporateRecords = "CORPORATE_RECORDS",
+  ArticlesOfOrganization = "ARTICLES_OF_ORGANIZATION",
 }
 /**
  * Describes the contents of a document and how it is used

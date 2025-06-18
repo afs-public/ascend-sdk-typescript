@@ -16,7 +16,7 @@ export type StatusData = {
   /**
    * The details field contains one or more technical error details.
    */
-  details?: Array<components.GoogleProtobufAny> | undefined;
+  details?: Array<components.Any> | undefined;
   /**
    * The message field contains human-friendly messages about the error.
    */
@@ -34,7 +34,7 @@ export class Status extends Error {
   /**
    * The details field contains one or more technical error details.
    */
-  details?: Array<components.GoogleProtobufAny> | undefined;
+  details?: Array<components.Any> | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: StatusData;
@@ -57,7 +57,7 @@ export class Status extends Error {
 export const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> = z
   .object({
     code: z.number().int().optional(),
-    details: z.array(components.GoogleProtobufAny$inboundSchema).optional(),
+    details: z.array(components.Any$inboundSchema).optional(),
     message: z.string().optional(),
   })
   .transform((v) => {
@@ -67,7 +67,7 @@ export const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Status$Outbound = {
   code?: number | undefined;
-  details?: Array<components.GoogleProtobufAny$Outbound> | undefined;
+  details?: Array<components.Any$Outbound> | undefined;
   message?: string | undefined;
 };
 
@@ -80,7 +80,7 @@ export const Status$outboundSchema: z.ZodType<
   .transform(v => v.data$)
   .pipe(z.object({
     code: z.number().int().optional(),
-    details: z.array(components.GoogleProtobufAny$outboundSchema).optional(),
+    details: z.array(components.Any$outboundSchema).optional(),
     message: z.string().optional(),
   }));
 

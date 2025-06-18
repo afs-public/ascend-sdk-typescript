@@ -16,17 +16,17 @@ import {
   BondYield$outboundSchema,
 } from "./bondyield.js";
 import {
-  Fee,
-  Fee$inboundSchema,
-  Fee$Outbound,
-  Fee$outboundSchema,
-} from "./fee.js";
+  BookingFee,
+  BookingFee$inboundSchema,
+  BookingFee$Outbound,
+  BookingFee$outboundSchema,
+} from "./bookingfee.js";
 import {
-  Lot,
-  Lot$inboundSchema,
-  Lot$Outbound,
-  Lot$outboundSchema,
-} from "./lot.js";
+  BookingLot,
+  BookingLot$inboundSchema,
+  BookingLot$Outbound,
+  BookingLot$outboundSchema,
+} from "./bookinglot.js";
 
 /**
  * The amount of interest that has been accrued in the issuing currency for a single instrument.
@@ -365,7 +365,7 @@ export type NewTradeAllocation = {
   /**
    * Client calculated fees that will only be applied to the to_account_id. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  fees?: Array<Fee> | undefined;
+  fees?: Array<BookingFee> | undefined;
   /**
    * The ULID formatted account_id that the positions will be moved from.
    */
@@ -393,7 +393,7 @@ export type NewTradeAllocation = {
   /**
    * One or many lot matching instructions for the trade allocation.
    */
-  lotMatchingInstructions?: Array<Lot> | undefined;
+  lotMatchingInstructions?: Array<BookingLot> | undefined;
   /**
    * Caller provided but can be used for booking-service to note original trade details when booking into the error account or using the error asset.
    */
@@ -823,7 +823,7 @@ export type OriginalTradeAllocation = {
   /**
    * Client calculated fees that will only be applied to the to_account_id. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  fees?: Array<Fee> | undefined;
+  fees?: Array<BookingFee> | undefined;
   /**
    * The ULID formatted account_id that the positions will be moved from.
    */
@@ -856,7 +856,7 @@ export type OriginalTradeAllocation = {
   /**
    * One or many lot matching instructions for the trade allocation.
    */
-  lotMatchingInstructions?: Array<Lot> | undefined;
+  lotMatchingInstructions?: Array<BookingLot> | undefined;
   /**
    * Caller provided but can be used for booking-service to note original trade details when booking into the error account or using the error asset.
    */
@@ -1690,7 +1690,7 @@ export const NewTradeAllocation$inboundSchema: z.ZodType<
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  fees: z.array(Fee$inboundSchema).optional(),
+  fees: z.array(BookingFee$inboundSchema).optional(),
   from_account_id: z.string().optional(),
   from_activity_id: z.string().optional(),
   gross_amount: z.nullable(
@@ -1700,7 +1700,7 @@ export const NewTradeAllocation$inboundSchema: z.ZodType<
   identifier_type: RebookTradeAllocationResponseIdentifierType$inboundSchema
     .optional(),
   issuing_region_code: z.string().optional(),
-  lot_matching_instructions: z.array(Lot$inboundSchema).optional(),
+  lot_matching_instructions: z.array(BookingLot$inboundSchema).optional(),
   memo: z.string().optional(),
   name: z.string().optional(),
   prevailing_market_price: z.nullable(
@@ -1778,7 +1778,7 @@ export type NewTradeAllocation$Outbound = {
     | null
     | undefined;
   execution_time?: string | null | undefined;
-  fees?: Array<Fee$Outbound> | undefined;
+  fees?: Array<BookingFee$Outbound> | undefined;
   from_account_id?: string | undefined;
   from_activity_id?: string | undefined;
   gross_amount?:
@@ -1788,7 +1788,7 @@ export type NewTradeAllocation$Outbound = {
   identifier?: string | undefined;
   identifier_type?: string | undefined;
   issuing_region_code?: string | undefined;
-  lot_matching_instructions?: Array<Lot$Outbound> | undefined;
+  lot_matching_instructions?: Array<BookingLot$Outbound> | undefined;
   memo?: string | undefined;
   name?: string | undefined;
   prevailing_market_price?:
@@ -1838,7 +1838,7 @@ export const NewTradeAllocation$outboundSchema: z.ZodType<
   ).optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
-  fees: z.array(Fee$outboundSchema).optional(),
+  fees: z.array(BookingFee$outboundSchema).optional(),
   fromAccountId: z.string().optional(),
   fromActivityId: z.string().optional(),
   grossAmount: z.nullable(
@@ -1848,7 +1848,7 @@ export const NewTradeAllocation$outboundSchema: z.ZodType<
   identifierType: RebookTradeAllocationResponseIdentifierType$outboundSchema
     .optional(),
   issuingRegionCode: z.string().optional(),
-  lotMatchingInstructions: z.array(Lot$outboundSchema).optional(),
+  lotMatchingInstructions: z.array(BookingLot$outboundSchema).optional(),
   memo: z.string().optional(),
   name: z.string().optional(),
   prevailingMarketPrice: z.nullable(
@@ -2713,7 +2713,7 @@ export const OriginalTradeAllocation$inboundSchema: z.ZodType<
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  fees: z.array(Fee$inboundSchema).optional(),
+  fees: z.array(BookingFee$inboundSchema).optional(),
   from_account_id: z.string().optional(),
   from_activity_id: z.string().optional(),
   gross_amount: z.nullable(
@@ -2726,7 +2726,7 @@ export const OriginalTradeAllocation$inboundSchema: z.ZodType<
     RebookTradeAllocationResponseOriginalTradeAllocationIdentifierType$inboundSchema
       .optional(),
   issuing_region_code: z.string().optional(),
-  lot_matching_instructions: z.array(Lot$inboundSchema).optional(),
+  lot_matching_instructions: z.array(BookingLot$inboundSchema).optional(),
   memo: z.string().optional(),
   name: z.string().optional(),
   prevailing_market_price: z.nullable(
@@ -2818,7 +2818,7 @@ export type OriginalTradeAllocation$Outbound = {
     | null
     | undefined;
   execution_time?: string | null | undefined;
-  fees?: Array<Fee$Outbound> | undefined;
+  fees?: Array<BookingFee$Outbound> | undefined;
   from_account_id?: string | undefined;
   from_activity_id?: string | undefined;
   gross_amount?:
@@ -2828,7 +2828,7 @@ export type OriginalTradeAllocation$Outbound = {
   identifier?: string | undefined;
   identifier_type?: string | undefined;
   issuing_region_code?: string | undefined;
-  lot_matching_instructions?: Array<Lot$Outbound> | undefined;
+  lot_matching_instructions?: Array<BookingLot$Outbound> | undefined;
   memo?: string | undefined;
   name?: string | undefined;
   prevailing_market_price?:
@@ -2889,7 +2889,7 @@ export const OriginalTradeAllocation$outboundSchema: z.ZodType<
   ).optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
-  fees: z.array(Fee$outboundSchema).optional(),
+  fees: z.array(BookingFee$outboundSchema).optional(),
   fromAccountId: z.string().optional(),
   fromActivityId: z.string().optional(),
   grossAmount: z.nullable(
@@ -2902,7 +2902,7 @@ export const OriginalTradeAllocation$outboundSchema: z.ZodType<
     RebookTradeAllocationResponseOriginalTradeAllocationIdentifierType$outboundSchema
       .optional(),
   issuingRegionCode: z.string().optional(),
-  lotMatchingInstructions: z.array(Lot$outboundSchema).optional(),
+  lotMatchingInstructions: z.array(BookingLot$outboundSchema).optional(),
   memo: z.string().optional(),
   name: z.string().optional(),
   prevailingMarketPrice: z.nullable(

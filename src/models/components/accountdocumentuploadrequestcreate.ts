@@ -129,6 +129,8 @@ export enum DocumentType {
   WireRequestForm = "WIRE_REQUEST_FORM",
   WorthlessSecurities = "WORTHLESS_SECURITIES",
   ChangeOfAddressRequest = "CHANGE_OF_ADDRESS_REQUEST",
+  OptionsAgreement = "OPTIONS_AGREEMENT",
+  StateWaiverForm = "STATE_WAIVER_FORM",
 }
 /**
  * Describes the contents of a document and how it is used; Required for all account documents

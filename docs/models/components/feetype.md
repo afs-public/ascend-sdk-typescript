@@ -21,7 +21,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Liquidity`                       | LIQUIDITY                         |
 | `GeneralPurpose`                  | GENERAL_PURPOSE                   |
 | `Commission`                      | COMMISSION                        |
-| `Orf`                             | ORF                               |
 | `Taf`                             | TAF                               |
 | `Sec`                             | SEC                               |
 | `AccountClosing`                  | ACCOUNT_CLOSING                   |
@@ -47,4 +46,8 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `InternationalWireDepositFee`     | INTERNATIONAL_WIRE_DEPOSIT_FEE    |
 | `InternationalWireWithdrawalFee`  | INTERNATIONAL_WIRE_WITHDRAWAL_FEE |
 | `BrokerFee`                       | BROKER_FEE                        |
+| `OccFee`                          | OCC_FEE                           |
+| `ContractFee`                     | CONTRACT_FEE                      |
+| `OptionsRegulatory`               | OPTIONS_REGULATORY                |
+| `FinancialTransactionTax`         | FINANCIAL_TRANSACTION_TAX         |
 | -                                 | `Unrecognized<string>`            |

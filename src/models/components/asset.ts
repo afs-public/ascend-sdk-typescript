@@ -513,6 +513,11 @@ export type FixedIncome = {
 };
 
 /**
+ * Index specific asset details
+ */
+export type IndexT = {};
+
+/**
  * The threshold at which Apex would need to notify the fund family of an incoming large order.
  */
 export type LargeOrderNotificationAmount = {
@@ -887,6 +892,7 @@ export enum AssetType1 {
   FdicSynthetic = "FDIC_SYNTHETIC",
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
+  Index = "INDEX",
 }
 /**
  * The type or category of the asset
@@ -921,6 +927,10 @@ export type Asset = {
    * FixedIncome specific asset details
    */
   fixedIncome?: FixedIncome | null | undefined;
+  /**
+   * Index specific asset details
+   */
+  index?: IndexT | null | undefined;
   /**
    * isin is the International Securities Identification Number
    */
@@ -1976,6 +1986,33 @@ export namespace FixedIncome$ {
 }
 
 /** @internal */
+export const IndexT$inboundSchema: z.ZodType<IndexT, z.ZodTypeDef, unknown> = z
+  .object({});
+
+/** @internal */
+export type IndexT$Outbound = {};
+
+/** @internal */
+export const IndexT$outboundSchema: z.ZodType<
+  IndexT$Outbound,
+  z.ZodTypeDef,
+  IndexT
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IndexT$ {
+  /** @deprecated use `IndexT$inboundSchema` instead. */
+  export const inboundSchema = IndexT$inboundSchema;
+  /** @deprecated use `IndexT$outboundSchema` instead. */
+  export const outboundSchema = IndexT$outboundSchema;
+  /** @deprecated use `IndexT$Outbound` instead. */
+  export type Outbound = IndexT$Outbound;
+}
+
+/** @internal */
 export const LargeOrderNotificationAmount$inboundSchema: z.ZodType<
   LargeOrderNotificationAmount,
   z.ZodTypeDef,
@@ -2852,6 +2889,7 @@ export const Asset$inboundSchema: z.ZodType<Asset, z.ZodTypeDef, unknown> = z
     equity: z.nullable(z.lazy(() => Equity$inboundSchema)).optional(),
     fixed_income: z.nullable(z.lazy(() => FixedIncome$inboundSchema))
       .optional(),
+    index: z.nullable(z.lazy(() => IndexT$inboundSchema)).optional(),
     isin: z.string().optional(),
     issuing_region_code: z.string().optional(),
     mutual_fund: z.nullable(z.lazy(() => MutualFund$inboundSchema)).optional(),
@@ -2879,6 +2917,7 @@ export type Asset$Outbound = {
   description?: string | undefined;
   equity?: Equity$Outbound | null | undefined;
   fixed_income?: FixedIncome$Outbound | null | undefined;
+  index?: IndexT$Outbound | null | undefined;
   isin?: string | undefined;
   issuing_region_code?: string | undefined;
   mutual_fund?: MutualFund$Outbound | null | undefined;
@@ -2902,6 +2941,7 @@ export const Asset$outboundSchema: z.ZodType<
   description: z.string().optional(),
   equity: z.nullable(z.lazy(() => Equity$outboundSchema)).optional(),
   fixedIncome: z.nullable(z.lazy(() => FixedIncome$outboundSchema)).optional(),
+  index: z.nullable(z.lazy(() => IndexT$outboundSchema)).optional(),
   isin: z.string().optional(),
   issuingRegionCode: z.string().optional(),
   mutualFund: z.nullable(z.lazy(() => MutualFund$outboundSchema)).optional(),

@@ -10,11 +10,11 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
-  ExecutedPrice,
-  ExecutedPrice$inboundSchema,
-  ExecutedPrice$Outbound,
-  ExecutedPrice$outboundSchema,
-} from "./executedprice.js";
+  BasketTradingExecutedPrice,
+  BasketTradingExecutedPrice$inboundSchema,
+  BasketTradingExecutedPrice$Outbound,
+  BasketTradingExecutedPrice$outboundSchema,
+} from "./baskettradingexecutedprice.js";
 
 /**
  * The type of the asset in this order
@@ -168,6 +168,17 @@ export enum BasketOrderSide {
  */
 export type BasketOrderSideOpen = OpenEnum<typeof BasketOrderSide>;
 
+export enum BasketOrderSpecialReportingInstructions {
+  SpecialReportingInstructionsUnspecified =
+    "SPECIAL_REPORTING_INSTRUCTIONS_UNSPECIFIED",
+  Solicited = "SOLICITED",
+  Unsolicited = "UNSOLICITED",
+  RoundUp = "ROUND_UP",
+}
+export type BasketOrderSpecialReportingInstructionsOpen = OpenEnum<
+  typeof BasketOrderSpecialReportingInstructions
+>;
+
 /**
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
@@ -205,7 +216,7 @@ export type BasketOrder = {
    *
    *  When asset_type = EQUITY, there will be at most one value present, with a type of PRICE_PER_UNIT. This will have up to 4 decimal places for USD amounts less than $1, and a maximum of two for larger USD amounts.
    */
-  averagePrices?: Array<ExecutedPrice> | undefined;
+  averagePrices?: Array<BasketTradingExecutedPrice> | undefined;
   /**
    * System generated unique id for the basket order.
    */
@@ -277,6 +288,12 @@ export type BasketOrder = {
    * The side of this order.
    */
   side?: BasketOrderSideOpen | undefined;
+  /**
+   * Special Reporting Instructions to be applied to this order. Can include multiple Instructions.
+   */
+  specialReportingInstructions?:
+    | Array<BasketOrderSpecialReportingInstructionsOpen>
+    | undefined;
   /**
    * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
@@ -621,6 +638,40 @@ export namespace BasketOrderSide$ {
 }
 
 /** @internal */
+export const BasketOrderSpecialReportingInstructions$inboundSchema: z.ZodType<
+  BasketOrderSpecialReportingInstructionsOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(BasketOrderSpecialReportingInstructions),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const BasketOrderSpecialReportingInstructions$outboundSchema: z.ZodType<
+  BasketOrderSpecialReportingInstructionsOpen,
+  z.ZodTypeDef,
+  BasketOrderSpecialReportingInstructionsOpen
+> = z.union([
+  z.nativeEnum(BasketOrderSpecialReportingInstructions),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BasketOrderSpecialReportingInstructions$ {
+  /** @deprecated use `BasketOrderSpecialReportingInstructions$inboundSchema` instead. */
+  export const inboundSchema =
+    BasketOrderSpecialReportingInstructions$inboundSchema;
+  /** @deprecated use `BasketOrderSpecialReportingInstructions$outboundSchema` instead. */
+  export const outboundSchema =
+    BasketOrderSpecialReportingInstructions$outboundSchema;
+}
+
+/** @internal */
 export const BasketOrderTimeInForce$inboundSchema: z.ZodType<
   BasketOrderTimeInForceOpen,
   z.ZodTypeDef,
@@ -661,7 +712,7 @@ export const BasketOrder$inboundSchema: z.ZodType<
   account_id: z.string().optional(),
   asset_id: z.string().optional(),
   asset_type: BasketOrderAssetType$inboundSchema.optional(),
-  average_prices: z.array(ExecutedPrice$inboundSchema).optional(),
+  average_prices: z.array(BasketTradingExecutedPrice$inboundSchema).optional(),
   basket_order_id: z.string().optional(),
   client_order_id: z.string().optional(),
   client_order_received_time: z.nullable(
@@ -693,6 +744,9 @@ export const BasketOrder$inboundSchema: z.ZodType<
   quantity: z.nullable(z.lazy(() => BasketOrderQuantity$inboundSchema))
     .optional(),
   side: BasketOrderSide$inboundSchema.optional(),
+  special_reporting_instructions: z.array(
+    BasketOrderSpecialReportingInstructions$inboundSchema,
+  ).optional(),
   time_in_force: BasketOrderTimeInForce$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -713,6 +767,7 @@ export const BasketOrder$inboundSchema: z.ZodType<
     "order_rejected_reason": "orderRejectedReason",
     "order_status": "orderStatus",
     "order_type": "orderType",
+    "special_reporting_instructions": "specialReportingInstructions",
     "time_in_force": "timeInForce",
   });
 });
@@ -722,7 +777,7 @@ export type BasketOrder$Outbound = {
   account_id?: string | undefined;
   asset_id?: string | undefined;
   asset_type?: string | undefined;
-  average_prices?: Array<ExecutedPrice$Outbound> | undefined;
+  average_prices?: Array<BasketTradingExecutedPrice$Outbound> | undefined;
   basket_order_id?: string | undefined;
   client_order_id?: string | undefined;
   client_order_received_time?: string | null | undefined;
@@ -743,6 +798,7 @@ export type BasketOrder$Outbound = {
   order_type?: string | undefined;
   quantity?: BasketOrderQuantity$Outbound | null | undefined;
   side?: string | undefined;
+  special_reporting_instructions?: Array<string> | undefined;
   time_in_force?: string | undefined;
 };
 
@@ -755,7 +811,7 @@ export const BasketOrder$outboundSchema: z.ZodType<
   accountId: z.string().optional(),
   assetId: z.string().optional(),
   assetType: BasketOrderAssetType$outboundSchema.optional(),
-  averagePrices: z.array(ExecutedPrice$outboundSchema).optional(),
+  averagePrices: z.array(BasketTradingExecutedPrice$outboundSchema).optional(),
   basketOrderId: z.string().optional(),
   clientOrderId: z.string().optional(),
   clientOrderReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
@@ -782,6 +838,9 @@ export const BasketOrder$outboundSchema: z.ZodType<
   quantity: z.nullable(z.lazy(() => BasketOrderQuantity$outboundSchema))
     .optional(),
   side: BasketOrderSide$outboundSchema.optional(),
+  specialReportingInstructions: z.array(
+    BasketOrderSpecialReportingInstructions$outboundSchema,
+  ).optional(),
   timeInForce: BasketOrderTimeInForce$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -802,6 +861,7 @@ export const BasketOrder$outboundSchema: z.ZodType<
     orderRejectedReason: "order_rejected_reason",
     orderStatus: "order_status",
     orderType: "order_type",
+    specialReportingInstructions: "special_reporting_instructions",
     timeInForce: "time_in_force",
   });
 });

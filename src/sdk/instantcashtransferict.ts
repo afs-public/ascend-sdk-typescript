@@ -141,18 +141,12 @@ export class InstantCashTransferICT extends ClientSDK {
    * Returns a signed link pointing to a recon report file for a specific ICT batch.
    */
   async locateIctReport(
-    correspondentId: string,
-    batchId?: string | undefined,
-    programDateFilterProgram?: operations.ProgramDateFilterProgram | undefined,
-    programDateFilterProcessDate?: components.DateCreate | undefined,
+    request: operations.IctReconReportsLocateIctReportRequest,
     options?: RequestOptions,
   ): Promise<operations.IctReconReportsLocateIctReportResponse> {
     return unwrapAsync(instantCashTransferICTLocateICTReport(
       this,
-      correspondentId,
-      batchId,
-      programDateFilterProgram,
-      programDateFilterProcessDate,
+      request,
       options,
     ));
   }

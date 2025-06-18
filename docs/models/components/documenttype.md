@@ -126,4 +126,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `WireRequestForm`                            | WIRE_REQUEST_FORM                            |
 | `WorthlessSecurities`                        | WORTHLESS_SECURITIES                         |
 | `ChangeOfAddressRequest`                     | CHANGE_OF_ADDRESS_REQUEST                    |
+| `OptionsAgreement`                           | OPTIONS_AGREEMENT                            |
+| `StateWaiverForm`                            | STATE_WAIVER_FORM                            |
 | -                                            | `Unrecognized<string>`                       |
