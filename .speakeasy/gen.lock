@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: 4a628865de94d7e7e887e078a8338829
-  docVersion: v1:20250425:uat:4e9cbfb617ca
+  docChecksum: 5ce91c7251a156c72b6a6bfd31bbe361
+  docVersion: v1:20250617:uat:6f66f0a5cade
   speakeasyVersion: 1.414.1
   generationVersion: 2.437.1
-  releaseVersion: 1.5.5
-  configChecksum: 0df1161ef5401dacfdb48a16cba93be5
+  releaseVersion: 1.5.6
+  configChecksum: 64da8c9aa4fc1c93756b944ee8643446
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -49,6 +49,17 @@ generatedFiles:
   - docs/models/components/acatstransferdirection.md
   - docs/models/components/acatstransferexternalaccount.md
   - docs/models/components/acatstransferstate.md
+  - docs/models/components/accepttransferrequestcreate.md
+  - docs/models/components/accepttransferresponse.md
+  - docs/models/components/accepttransferresponsedeliverer.md
+  - docs/models/components/accepttransferresponsedirection.md
+  - docs/models/components/accepttransferresponseexternalaccount.md
+  - docs/models/components/accepttransferresponsensccstatus.md
+  - docs/models/components/accepttransferresponsereceiver.md
+  - docs/models/components/accepttransferresponserejectcode.md
+  - docs/models/components/accepttransferresponsestate.md
+  - docs/models/components/accepttransferresponsetransferexternalaccount.md
+  - docs/models/components/accepttransferresponsetransfertype.md
   - docs/models/components/account.md
   - docs/models/components/accountannualincomerangeusd.md
   - docs/models/components/accountcataccountholdertype.md
@@ -137,15 +148,23 @@ generatedFiles:
   - docs/models/components/activityaccounttransfer.md
   - docs/models/components/activityaction.md
   - docs/models/components/activityactivitydate.md
+  - docs/models/components/activityallocation.md
+  - docs/models/components/activitybonddefault.md
+  - docs/models/components/activitybonddefaultquantity.md
   - docs/models/components/activitybrokercapacity.md
   - docs/models/components/activitycapitalgains.md
+  - docs/models/components/activitycapitalgainscorporateactiongeneralinformation.md
+  - docs/models/components/activitycapitalgainspaymentdate.md
   - docs/models/components/activitycapitalgainsquantity.md
   - docs/models/components/activitycashdividend.md
+  - docs/models/components/activitycashdividendcashrate.md
   - docs/models/components/activitycashdividendcorporateactiongeneralinformation.md
   - docs/models/components/activitycashdividendfpsl.md
   - docs/models/components/activitycashdividendpaymentdate.md
   - docs/models/components/activitycashdividendquantity.md
   - docs/models/components/activitycashdividendrecorddate.md
+  - docs/models/components/activitycashinlieu.md
+  - docs/models/components/activitycashinlieucorporateactiongeneralinformation.md
   - docs/models/components/activitycashrate.md
   - docs/models/components/activitycommission.md
   - docs/models/components/activitycontributiontype.md
@@ -271,6 +290,7 @@ generatedFiles:
   - docs/models/components/activitysettled.md
   - docs/models/components/activitysettledate.md
   - docs/models/components/activityside.md
+  - docs/models/components/activitysidemodifier.md
   - docs/models/components/activityspinoff.md
   - docs/models/components/activityspinoffcorporateactiongeneralinformation.md
   - docs/models/components/activityspinoffquantity.md
@@ -296,7 +316,14 @@ generatedFiles:
   - docs/models/components/activitytenderoffer.md
   - docs/models/components/activitytenderoffercashrate.md
   - docs/models/components/activitytenderoffercorporateactiongeneralinformation.md
+  - docs/models/components/activitytenderoffertype.md
   - docs/models/components/activitytrade.md
+  - docs/models/components/activitytradebrokercapacity.md
+  - docs/models/components/activitytradeprevailingmarketprice.md
+  - docs/models/components/activitytradepriceadjustmentamount.md
+  - docs/models/components/activitytradepriceadjustmentpercent.md
+  - docs/models/components/activitytradepriceadjustmentrecord.md
+  - docs/models/components/activitytradepriceadjustmenttype.md
   - docs/models/components/activitytransfer.md
   - docs/models/components/activitytransfertype.md
   - docs/models/components/activitytype.md
@@ -325,11 +352,13 @@ generatedFiles:
   - docs/models/components/agreement.md
   - docs/models/components/agreementsource.md
   - docs/models/components/agreementstate.md
+  - docs/models/components/allocation.md
   - docs/models/components/allocationpercentage.md
   - docs/models/components/amount.md
   - docs/models/components/amount1.md
   - docs/models/components/amount2.md
   - docs/models/components/annualincomerangeusd.md
+  - docs/models/components/any.md
   - docs/models/components/askminimumquantity.md
   - docs/models/components/askquantity.md
   - docs/models/components/asset.md
@@ -370,6 +399,7 @@ generatedFiles:
   - docs/models/components/basketordercreateidentifiertype.md
   - docs/models/components/basketordercreateordertype.md
   - docs/models/components/basketordercreateside.md
+  - docs/models/components/basketordercreatespecialreportinginstructions.md
   - docs/models/components/basketordercreatetimeinforce.md
   - docs/models/components/basketordercumulativenotionalvalue.md
   - docs/models/components/basketorderfilledquantity.md
@@ -380,8 +410,14 @@ generatedFiles:
   - docs/models/components/basketorderordertype.md
   - docs/models/components/basketorderquantity.md
   - docs/models/components/basketorderside.md
+  - docs/models/components/basketorderspecialreportinginstructions.md
   - docs/models/components/basketordertimeinforce.md
   - docs/models/components/basketstate.md
+  - docs/models/components/baskettradingexecutedprice.md
+  - docs/models/components/baskettradingexecutedpriceprice.md
+  - docs/models/components/baskettradingexecutedpricetype.md
+  - docs/models/components/baskettradingexecutions.md
+  - docs/models/components/baskettradingexecutionsquantity.md
   - docs/models/components/batchcreateuploadlinksrequestcreate.md
   - docs/models/components/batchcreateuploadlinksresponse.md
   - docs/models/components/beneficiary.md
@@ -402,9 +438,30 @@ generatedFiles:
   - docs/models/components/bidquantity.md
   - docs/models/components/birthdate.md
   - docs/models/components/birthdateverified.md
+  - docs/models/components/bonddefault.md
   - docs/models/components/bondyield.md
   - docs/models/components/bondyieldcreate.md
   - docs/models/components/bondyieldyieldtype.md
+  - docs/models/components/bookingfee.md
+  - docs/models/components/bookingfeeamount.md
+  - docs/models/components/bookingfeecreate.md
+  - docs/models/components/bookingfeecreatetype.md
+  - docs/models/components/bookingfeetype.md
+  - docs/models/components/bookinglot.md
+  - docs/models/components/bookinglotmoney.md
+  - docs/models/components/bookinglotmoneyprice.md
+  - docs/models/components/bookinglotprice.md
+  - docs/models/components/bookinglotquantity.md
+  - docs/models/components/bookingtrade.md
+  - docs/models/components/bookingtradeassettype.md
+  - docs/models/components/bookingtradebrokercapacity.md
+  - docs/models/components/bookingtradeidentifiertype.md
+  - docs/models/components/bookingtraderoutetype.md
+  - docs/models/components/bookingtradeside.md
+  - docs/models/components/bookingtradesidemodifier.md
+  - docs/models/components/bookingtradespecialinstructions.md
+  - docs/models/components/bookingtradevenue.md
+  - docs/models/components/bookingtradewhenissued.md
   - docs/models/components/brokercapacity.md
   - docs/models/components/businessindustrialclassification.md
   - docs/models/components/buyingpower.md
@@ -465,18 +522,24 @@ generatedFiles:
   - docs/models/components/canceltradeallocationresponsewhenissued.md
   - docs/models/components/canceltraderequestcreate.md
   - docs/models/components/canceltraderesponse.md
+  - docs/models/components/canceltraderesponseassettype.md
   - docs/models/components/canceltraderesponsebrokercapacity.md
-  - docs/models/components/canceltraderesponseprevailingmarketprice.md
-  - docs/models/components/canceltraderesponsepriceadjustmentamount.md
-  - docs/models/components/canceltraderesponsepriceadjustmentpercent.md
-  - docs/models/components/canceltraderesponsepriceadjustmentrecord.md
-  - docs/models/components/canceltraderesponsepriceadjustmenttype.md
+  - docs/models/components/canceltraderesponseidentifiertype.md
+  - docs/models/components/canceltraderesponselocalmarkettradedate.md
+  - docs/models/components/canceltraderesponseroutetype.md
+  - docs/models/components/canceltraderesponsesettlementdate.md
+  - docs/models/components/canceltraderesponseside.md
+  - docs/models/components/canceltraderesponsesidemodifier.md
+  - docs/models/components/canceltraderesponsespecialinstructions.md
   - docs/models/components/canceltraderesponsetrade.md
+  - docs/models/components/canceltraderesponsevenue.md
+  - docs/models/components/canceltraderesponsewhenissued.md
   - docs/models/components/cancelwirewithdrawalrequestcreate.md
   - docs/models/components/cancelwirewithdrawalschedulerequestcreate.md
   - docs/models/components/capitalgains.md
   - docs/models/components/cashamount.md
   - docs/models/components/cashdividend.md
+  - docs/models/components/cashinlieu.md
   - docs/models/components/cashjournal.md
   - docs/models/components/cashjournalamount.md
   - docs/models/components/cashjournalconstraints.md
@@ -513,13 +576,17 @@ generatedFiles:
   - docs/models/components/commissioncreatetype.md
   - docs/models/components/completetraderequestcreate.md
   - docs/models/components/completetraderesponse.md
+  - docs/models/components/completetraderesponseassettype.md
   - docs/models/components/completetraderesponsebrokercapacity.md
-  - docs/models/components/completetraderesponseprevailingmarketprice.md
-  - docs/models/components/completetraderesponsepriceadjustmentamount.md
-  - docs/models/components/completetraderesponsepriceadjustmentpercent.md
-  - docs/models/components/completetraderesponsepriceadjustmentrecord.md
-  - docs/models/components/completetraderesponsepriceadjustmenttype.md
-  - docs/models/components/completetraderesponsetrade.md
+  - docs/models/components/completetraderesponseidentifiertype.md
+  - docs/models/components/completetraderesponselocalmarkettradedate.md
+  - docs/models/components/completetraderesponseroutetype.md
+  - docs/models/components/completetraderesponsesettlementdate.md
+  - docs/models/components/completetraderesponseside.md
+  - docs/models/components/completetraderesponsesidemodifier.md
+  - docs/models/components/completetraderesponsespecialinstructions.md
+  - docs/models/components/completetraderesponsevenue.md
+  - docs/models/components/completetraderesponsewhenissued.md
   - docs/models/components/compressedorder.md
   - docs/models/components/compressedorderassettype.md
   - docs/models/components/compressedordercumulativenotionalvalue.md
@@ -531,6 +598,7 @@ generatedFiles:
   - docs/models/components/compressedorderordertype.md
   - docs/models/components/compressedorderquantity.md
   - docs/models/components/compressedorderside.md
+  - docs/models/components/compressedorderspecialreportinginstructions.md
   - docs/models/components/compressedordertimeinforce.md
   - docs/models/components/consentmethod.md
   - docs/models/components/contributionconstraints.md
@@ -562,6 +630,8 @@ generatedFiles:
   - docs/models/components/custodialenrollmentmetadatacreatedividendreinvestmentplan.md
   - docs/models/components/custodialenrollmentmetadatacreatefdiccashsweep.md
   - docs/models/components/customeridentification.md
+  - docs/models/components/customeridentificationbirthdate.md
+  - docs/models/components/customeridentificationlegaladdress.md
   - docs/models/components/customeridentificationresult.md
   - docs/models/components/customerprofile.md
   - docs/models/components/customerprofilecreate.md
@@ -736,11 +806,16 @@ generatedFiles:
   - docs/models/components/entry.md
   - docs/models/components/entryaccruedinterest.md
   - docs/models/components/entryaction.md
+  - docs/models/components/entrybonddefaultquantity.md
   - docs/models/components/entrybrokercapacity.md
+  - docs/models/components/entrycapitalgainscorporateactiongeneralinformation.md
   - docs/models/components/entrycapitalgainsquantity.md
+  - docs/models/components/entrycashdividendcashrate.md
   - docs/models/components/entrycashdividendcorporateactiongeneralinformation.md
+  - docs/models/components/entrycashdividendpaymentdate.md
   - docs/models/components/entrycashdividendquantity.md
   - docs/models/components/entrycashdividendsettled.md
+  - docs/models/components/entrycashinlieucorporateactiongeneralinformation.md
   - docs/models/components/entrycashrate.md
   - docs/models/components/entrycommission.md
   - docs/models/components/entryconversioncashrate.md
@@ -858,6 +933,11 @@ generatedFiles:
   - docs/models/components/entrytenderoffercashrate.md
   - docs/models/components/entrytenderoffercorporateactiongeneralinformation.md
   - docs/models/components/entrytrade.md
+  - docs/models/components/entrytradebrokercapacity.md
+  - docs/models/components/entrytradeprevailingmarketprice.md
+  - docs/models/components/entrytradepriceadjustmentamount.md
+  - docs/models/components/entrytradepriceadjustmenttype.md
+  - docs/models/components/entrytransfer.md
   - docs/models/components/entrytransfertype.md
   - docs/models/components/entrytype.md
   - docs/models/components/entryunitsplitcorporateactiongeneralinformation.md
@@ -881,18 +961,14 @@ generatedFiles:
   - docs/models/components/estimatednetamount.md
   - docs/models/components/eventmessage.md
   - docs/models/components/exchange.md
-  - docs/models/components/executedprice.md
-  - docs/models/components/executedpricetype.md
   - docs/models/components/execution.md
   - docs/models/components/executionaccruedinterestamount.md
   - docs/models/components/executioncreate.md
   - docs/models/components/executiondate.md
   - docs/models/components/executionprevailingmarketprice.md
   - docs/models/components/executionprice.md
-  - docs/models/components/executionpriceadjustmentamount.md
   - docs/models/components/executionpriceadjustmenttype.md
   - docs/models/components/executionquantity.md
-  - docs/models/components/executions.md
   - docs/models/components/executionstate.md
   - docs/models/components/exemptcustomerreason.md
   - docs/models/components/exercisestyle.md
@@ -964,7 +1040,6 @@ generatedFiles:
   - docs/models/components/fullypaidunsettledfundsamount.md
   - docs/models/components/fundingtype.md
   - docs/models/components/generateserviceaccounttokenrequestcreate.md
-  - docs/models/components/googleprotobufany.md
   - docs/models/components/grossamount.md
   - docs/models/components/grosscreditamount.md
   - docs/models/components/httpcallback.md
@@ -1026,6 +1101,9 @@ generatedFiles:
   - docs/models/components/identifiertype1.md
   - docs/models/components/identifierupdate.md
   - docs/models/components/identifierupdatetype.md
+  - docs/models/components/identity.md
+  - docs/models/components/identityidentification.md
+  - docs/models/components/identityidentificationtype.md
   - docs/models/components/identityverification.md
   - docs/models/components/identityverificationresult.md
   - docs/models/components/identityverificationresultcreate.md
@@ -1034,6 +1112,7 @@ generatedFiles:
   - docs/models/components/identityverificationtypes.md
   - docs/models/components/immediatefamilymember.md
   - docs/models/components/immediatefamilymembercreate.md
+  - docs/models/components/indext.md
   - docs/models/components/individualenrollmentmetadata.md
   - docs/models/components/individualenrollmentmetadatacreate.md
   - docs/models/components/individualenrollmentmetadatacreatedividendreinvestmentplan.md
@@ -1218,11 +1297,13 @@ generatedFiles:
   - docs/models/components/listschedulesummariesresponse.md
   - docs/models/components/listsigningkeysresponse.md
   - docs/models/components/listsnapshotsresponse.md
+  - docs/models/components/listtransfersresponse.md
   - docs/models/components/listwirewithdrawalschedulesresponse.md
   - docs/models/components/llcenrollmentmetadata.md
   - docs/models/components/llcenrollmentmetadatacreate.md
   - docs/models/components/llcenrollmentmetadatacreatedividendreinvestmentplan.md
   - docs/models/components/llcenrollmentmetadatacreatefdiccashsweep.md
+  - docs/models/components/localmarkettradedate.md
   - docs/models/components/locateictreportresponse.md
   - docs/models/components/locateictreportresponseprogram.md
   - docs/models/components/lot.md
@@ -1230,6 +1311,7 @@ generatedFiles:
   - docs/models/components/lotmoney.md
   - docs/models/components/lotprice.md
   - docs/models/components/lotquantity.md
+  - docs/models/components/lottradedate.md
   - docs/models/components/lowpricedsecurities.md
   - docs/models/components/lowpricedsecuritiescreate.md
   - docs/models/components/lowpricedsecuritiespercentage.md
@@ -1241,6 +1323,7 @@ generatedFiles:
   - docs/models/components/markpricetype.md
   - docs/models/components/matchattributes.md
   - docs/models/components/matchstate.md
+  - docs/models/components/matchtypes.md
   - docs/models/components/maturity.md
   - docs/models/components/maturitydate.md
   - docs/models/components/maxsellquantity.md
@@ -1327,6 +1410,7 @@ generatedFiles:
   - docs/models/components/orderstoppriceprice.md
   - docs/models/components/orderstoppricetype.md
   - docs/models/components/ordertimeinforce.md
+  - docs/models/components/ordertradingstrategy.md
   - docs/models/components/ordertype.md
   - docs/models/components/originalprocessdate.md
   - docs/models/components/originaltrade.md
@@ -1526,18 +1610,28 @@ generatedFiles:
   - docs/models/components/rebooktradeallocationresponsewhenissued.md
   - docs/models/components/rebooktraderequestcreate.md
   - docs/models/components/rebooktraderesponse.md
+  - docs/models/components/rebooktraderesponseassettype.md
   - docs/models/components/rebooktraderesponsebrokercapacity.md
+  - docs/models/components/rebooktraderesponseidentifiertype.md
+  - docs/models/components/rebooktraderesponselocalmarkettradedate.md
+  - docs/models/components/rebooktraderesponseoriginaltradeassettype.md
   - docs/models/components/rebooktraderesponseoriginaltradebrokercapacity.md
-  - docs/models/components/rebooktraderesponseoriginaltradeprevailingmarketprice.md
-  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmentamount.md
-  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmentpercent.md
-  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmentrecord.md
-  - docs/models/components/rebooktraderesponseoriginaltradepriceadjustmenttype.md
-  - docs/models/components/rebooktraderesponseprevailingmarketprice.md
-  - docs/models/components/rebooktraderesponsepriceadjustmentamount.md
-  - docs/models/components/rebooktraderesponsepriceadjustmentpercent.md
-  - docs/models/components/rebooktraderesponsepriceadjustmentrecord.md
-  - docs/models/components/rebooktraderesponsepriceadjustmenttype.md
+  - docs/models/components/rebooktraderesponseoriginaltradeidentifiertype.md
+  - docs/models/components/rebooktraderesponseoriginaltradelocalmarkettradedate.md
+  - docs/models/components/rebooktraderesponseoriginaltraderoutetype.md
+  - docs/models/components/rebooktraderesponseoriginaltradesettlementdate.md
+  - docs/models/components/rebooktraderesponseoriginaltradeside.md
+  - docs/models/components/rebooktraderesponseoriginaltradesidemodifier.md
+  - docs/models/components/rebooktraderesponseoriginaltradespecialinstructions.md
+  - docs/models/components/rebooktraderesponseoriginaltradevenue.md
+  - docs/models/components/rebooktraderesponseoriginaltradewhenissued.md
+  - docs/models/components/rebooktraderesponseroutetype.md
+  - docs/models/components/rebooktraderesponsesettlementdate.md
+  - docs/models/components/rebooktraderesponseside.md
+  - docs/models/components/rebooktraderesponsesidemodifier.md
+  - docs/models/components/rebooktraderesponsespecialinstructions.md
+  - docs/models/components/rebooktraderesponsevenue.md
+  - docs/models/components/rebooktraderesponsewhenissued.md
   - docs/models/components/receive.md
   - docs/models/components/receiver.md
   - docs/models/components/recipientbank.md
@@ -1552,6 +1646,18 @@ generatedFiles:
   - docs/models/components/regularamount.md
   - docs/models/components/reissuemicrodepositsrequestcreate.md
   - docs/models/components/rejectcode.md
+  - docs/models/components/rejecttransferrequestcreate.md
+  - docs/models/components/rejecttransferresponse.md
+  - docs/models/components/rejecttransferresponsedeliverer.md
+  - docs/models/components/rejecttransferresponsedirection.md
+  - docs/models/components/rejecttransferresponseexternalaccount.md
+  - docs/models/components/rejecttransferresponsensccstatus.md
+  - docs/models/components/rejecttransferresponsereceiver.md
+  - docs/models/components/rejecttransferresponserejectcode.md
+  - docs/models/components/rejecttransferresponsestate.md
+  - docs/models/components/rejecttransferresponsetransfer.md
+  - docs/models/components/rejecttransferresponsetransferexternalaccount.md
+  - docs/models/components/rejecttransferresponsetransfertype.md
   - docs/models/components/relatedpep.md
   - docs/models/components/relatedpepcreate.md
   - docs/models/components/relatedpepdetails.md
@@ -1671,6 +1777,7 @@ generatedFiles:
   - docs/models/components/taxwithholdingmetadatacreate.md
   - docs/models/components/temporaltaxyear.md
   - docs/models/components/tenderoffer.md
+  - docs/models/components/tenderoffertype.md
   - docs/models/components/timehorizon.md
   - docs/models/components/timeinforce.md
   - docs/models/components/timeunit.md
@@ -1700,12 +1807,12 @@ generatedFiles:
   - docs/models/components/tradeallocationpriceadjustmentamount.md
   - docs/models/components/tradeallocationpriceadjustmenttype.md
   - docs/models/components/tradeallocationquantity.md
+  - docs/models/components/tradeallocationsettlementdate.md
   - docs/models/components/tradeallocationsidemodifier.md
   - docs/models/components/tradeallocationspecialinstructions.md
   - docs/models/components/tradeallocationstate.md
   - docs/models/components/tradeallocationtoside.md
   - docs/models/components/tradeallocationwhenissued.md
-  - docs/models/components/tradebrokercapacity.md
   - docs/models/components/tradeconfirmationdeliverypreference.md
   - docs/models/components/tradecreate.md
   - docs/models/components/tradecreateassettype.md
@@ -1713,9 +1820,14 @@ generatedFiles:
   - docs/models/components/tradecreateidentifiertype.md
   - docs/models/components/tradecreateside.md
   - docs/models/components/tradedate.md
-  - docs/models/components/tradeprevailingmarketprice.md
-  - docs/models/components/tradepriceadjustmenttype.md
   - docs/models/components/tradevaluemultiplier.md
+  - docs/models/components/tradingexecutedprice.md
+  - docs/models/components/tradingexecutedpricetype.md
+  - docs/models/components/tradingexecutions.md
+  - docs/models/components/tradingfee.md
+  - docs/models/components/tradingfeeamount.md
+  - docs/models/components/tradingfeetype.md
+  - docs/models/components/tradingstrategy.md
   - docs/models/components/transfer.md
   - docs/models/components/transferaccountcreate.md
   - docs/models/components/transfercreate.md
@@ -1931,10 +2043,16 @@ generatedFiles:
   - docs/models/operations/accountsupdatepartyresponse.md
   - docs/models/operations/accountsupdatetrustedcontactrequest.md
   - docs/models/operations/accountsupdatetrustedcontactresponse.md
+  - docs/models/operations/accounttransfersaccepttransferrequest.md
+  - docs/models/operations/accounttransfersaccepttransferresponse.md
   - docs/models/operations/accounttransferscreatetransferrequest.md
   - docs/models/operations/accounttransferscreatetransferresponse.md
   - docs/models/operations/accounttransfersgettransferrequest.md
   - docs/models/operations/accounttransfersgettransferresponse.md
+  - docs/models/operations/accounttransferslisttransfersrequest.md
+  - docs/models/operations/accounttransferslisttransfersresponse.md
+  - docs/models/operations/accounttransfersrejecttransferrequest.md
+  - docs/models/operations/accounttransfersrejecttransferresponse.md
   - docs/models/operations/achdepositscancelachdepositrequest.md
   - docs/models/operations/achdepositscancelachdepositresponse.md
   - docs/models/operations/achdepositschedulescancelachdepositschedulerequest.md
@@ -2252,8 +2370,11 @@ generatedFiles:
   - src/funcs/accountManagementUpdateInterestedParty.ts
   - src/funcs/accountManagementUpdateParty.ts
   - src/funcs/accountManagementUpdateTrustedContact.ts
+  - src/funcs/accountTransfersAcceptTransfer.ts
   - src/funcs/accountTransfersCreateTransfer.ts
   - src/funcs/accountTransfersGetTransfer.ts
+  - src/funcs/accountTransfersListTransfers.ts
+  - src/funcs/accountTransfersRejectTransfer.ts
   - src/funcs/achTransfersCancelACHDeposit.ts
   - src/funcs/achTransfersCancelACHWithdrawal.ts
   - src/funcs/achTransfersCreateACHDeposit.ts
@@ -2423,6 +2544,8 @@ generatedFiles:
   - src/lib/url.ts
   - src/models/components/acatsasset.ts
   - src/models/components/acatstransfer.ts
+  - src/models/components/accepttransferrequestcreate.ts
+  - src/models/components/accepttransferresponse.ts
   - src/models/components/account.ts
   - src/models/components/accountdocumentuploadrequestcreate.ts
   - src/models/components/accountgoalscreate.ts
@@ -2450,6 +2573,7 @@ generatedFiles:
   - src/models/components/affirmagreementsrequestcreate.ts
   - src/models/components/affirmagreementsresponse.ts
   - src/models/components/agreement.ts
+  - src/models/components/any.ts
   - src/models/components/asset.ts
   - src/models/components/assetcreate.ts
   - src/models/components/assignlargetraderrequestcreate.ts
@@ -2465,6 +2589,8 @@ generatedFiles:
   - src/models/components/basketcreate.ts
   - src/models/components/basketorder.ts
   - src/models/components/basketordercreate.ts
+  - src/models/components/baskettradingexecutedprice.ts
+  - src/models/components/baskettradingexecutions.ts
   - src/models/components/batchcreateuploadlinksrequestcreate.ts
   - src/models/components/batchcreateuploadlinksresponse.ts
   - src/models/components/beneficiary.ts
@@ -2473,6 +2599,10 @@ generatedFiles:
   - src/models/components/bidaskprice.ts
   - src/models/components/bondyield.ts
   - src/models/components/bondyieldcreate.ts
+  - src/models/components/bookingfee.ts
+  - src/models/components/bookingfeecreate.ts
+  - src/models/components/bookinglot.ts
+  - src/models/components/bookingtrade.ts
   - src/models/components/buyingpower.ts
   - src/models/components/calculatecashbalanceresponse.ts
   - src/models/components/calculatecashbalanceresponseopenordersummary.ts
@@ -2551,10 +2681,8 @@ generatedFiles:
   - src/models/components/entry.ts
   - src/models/components/estateenrollmentmetadatacreate.ts
   - src/models/components/eventmessage.ts
-  - src/models/components/executedprice.ts
   - src/models/components/execution.ts
   - src/models/components/executioncreate.ts
-  - src/models/components/executions.ts
   - src/models/components/externalaccountcreate.ts
   - src/models/components/fee.ts
   - src/models/components/feecreate.ts
@@ -2585,7 +2713,6 @@ generatedFiles:
   - src/models/components/foreignnaturalpersonaccountenrollmentmetadatacreate.ts
   - src/models/components/fpslenrollmentmetadatacreate.ts
   - src/models/components/generateserviceaccounttokenrequestcreate.ts
-  - src/models/components/googleprotobufany.ts
   - src/models/components/httpmetadata.ts
   - src/models/components/httppushcallbackcreate.ts
   - src/models/components/httppushcallbackupdate.ts
@@ -2600,6 +2727,7 @@ generatedFiles:
   - src/models/components/identifier.ts
   - src/models/components/identifiercreate.ts
   - src/models/components/identifierupdate.ts
+  - src/models/components/identityidentification.ts
   - src/models/components/identityverificationresult.ts
   - src/models/components/identityverificationresultcreate.ts
   - src/models/components/identityverificationresultupdate.ts
@@ -2667,6 +2795,7 @@ generatedFiles:
   - src/models/components/listschedulesummariesresponse.ts
   - src/models/components/listsigningkeysresponse.ts
   - src/models/components/listsnapshotsresponse.ts
+  - src/models/components/listtransfersresponse.ts
   - src/models/components/listwirewithdrawalschedulesresponse.ts
   - src/models/components/llcenrollmentmetadatacreate.ts
   - src/models/components/locateictreportresponse.ts
@@ -2723,6 +2852,8 @@ generatedFiles:
   - src/models/components/recipientbankbankdetailscreate.ts
   - src/models/components/recipientbankbankidcreate.ts
   - src/models/components/reissuemicrodepositsrequestcreate.ts
+  - src/models/components/rejecttransferrequestcreate.ts
+  - src/models/components/rejecttransferresponse.ts
   - src/models/components/relatedpep.ts
   - src/models/components/relatedpepcreate.ts
   - src/models/components/relatedpepdetailscreate.ts
@@ -2757,10 +2888,12 @@ generatedFiles:
   - src/models/components/taxprofileupdate.ts
   - src/models/components/taxwithholdingmetadatacreate.ts
   - src/models/components/token.ts
-  - src/models/components/trade.ts
   - src/models/components/tradeallocation.ts
   - src/models/components/tradeallocationcreate.ts
   - src/models/components/tradecreate.ts
+  - src/models/components/tradingexecutedprice.ts
+  - src/models/components/tradingexecutions.ts
+  - src/models/components/tradingfee.ts
   - src/models/components/transferaccountcreate.ts
   - src/models/components/transfercreate.ts
   - src/models/components/transferschedulesummary.ts
@@ -2837,8 +2970,11 @@ generatedFiles:
   - src/models/operations/accountsupdatelegalnaturalperson.ts
   - src/models/operations/accountsupdateparty.ts
   - src/models/operations/accountsupdatetrustedcontact.ts
+  - src/models/operations/accounttransfersaccepttransfer.ts
   - src/models/operations/accounttransferscreatetransfer.ts
   - src/models/operations/accounttransfersgettransfer.ts
+  - src/models/operations/accounttransferslisttransfers.ts
+  - src/models/operations/accounttransfersrejecttransfer.ts
   - src/models/operations/achdepositscancelachdeposit.ts
   - src/models/operations/achdepositschedulescancelachdepositschedule.ts
   - src/models/operations/achdepositschedulescreateachdepositschedule.ts
@@ -4980,3 +5116,57 @@ examples:
           tradeAllocation_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
       requestBody:
         application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM", "request_id": "8a0d35c0-428c-439e-9b03-b611530fe06f", "trade_allocation": {"broker_capacity": "AGENCY", "execution_time": "2024-07-17T12:00:00Z", "from_account_id": "01HASWB2DTMRT3DAM45P56J2H3", "identifier": "AAPL", "identifier_type": "SYMBOL", "source_application": "Trading-App", "to_account_id": "02HASWB2DTMRT3DAM45P56J2T2", "to_side": "BUY"}}
+  AccountTransfers_ListTransfers:
+    "":
+      parameters:
+        path:
+          correspondent_id: "00000000-0000-0000-0000-000000000002"
+          account_id: "01FAKEACCOUNT"
+        query:
+          page_size: 25
+          page_token: "CgwI5uHttgYQyJXO2wESJDAxOTFjOTMxLTA3YjMtYzU0ZC0yMDNmLWU1M2U0OTBkY2FhZRoicmVjZWl2ZXIuYWNjb3VudF9pZCBpbiBbJzEwMDAwQUEnXQ"
+          filter: "deliverer.account_number == \"R9AHY8P\""
+  AccountTransfers_AcceptTransfer:
+    "":
+      parameters:
+        path:
+          correspondent_id: "00000000-0000-0000-0000-000000000002"
+          account_id: "01H8FB90ZRRFWXB4XC2JPJ1D4Y"
+          transfer_id: "00000000-0000-0000-0000-000000000000"
+      requestBody:
+        application/json: {"name": "correspondents/00000000-0000-0000-0000-000000000002/accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/transfers/00000000-0000-0000-0000-000000000000"}
+  AccountTransfers_RejectTransfer:
+    "":
+      parameters:
+        path:
+          correspondent_id: "00000000-0000-0000-0000-000000000002"
+          account_id: "01H8FB90ZRRFWXB4XC2JPJ1D4Y"
+          transfer_id: "00000000-0000-0000-0000-000000000000"
+      requestBody:
+        application/json: {"name": "correspondents/00000000-0000-0000-0000-000000000002/accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/transfers/00000000-0000-0000-0000-000000000000"}
+  ExternalAchDeposits_GetExternalAchDeposit:
+    "":
+      parameters:
+        path:
+          account_id: "01H8FB90ZRRFWXB4XC2JPJ1D4Y"
+          externalAchDeposit_id: "20230817000319"
+  ExternalAchDeposits_SimulateCreateExternalAchDeposit:
+    speakeasy-default-external-ach-deposits-simulate-create-external-ach-deposit:
+      requestBody:
+        application/json: {"virtual_account_number": "24412345678901"}
+  ExternalAchDeposits_ForceApproveExternalAchDeposit:
+    "":
+      parameters:
+        path:
+          account_id: "01H8FB90ZRRFWXB4XC2JPJ1D4Y"
+          externalAchDeposit_id: "20230817000319"
+      requestBody:
+        application/json: {"name": "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/externalAchDeposits/20230817000319"}
+  ExternalAchDeposits_ForceRejectExternalAchDeposit:
+    "":
+      parameters:
+        path:
+          account_id: "01H8FB90ZRRFWXB4XC2JPJ1D4Y"
+          externalAchDeposit_id: "20230817000319"
+      requestBody:
+        application/json: {"name": "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/externalAchDeposits/20230817000319"}

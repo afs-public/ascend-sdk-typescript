@@ -14,7 +14,6 @@ export enum ProgramDateFilterProgram {
   BrokerPartner = "BROKER_PARTNER",
   DepositOnly = "DEPOSIT_ONLY",
   BankingPartner = "BANKING_PARTNER",
-  MoneyTransmitter = "MONEY_TRANSMITTER",
   WithdrawalOnly = "WITHDRAWAL_ONLY",
   DigitalPartner = "DIGITAL_PARTNER",
 }
@@ -33,9 +32,17 @@ export type IctReconReportsLocateIctReportRequest = {
    */
   programDateFilterProgram?: ProgramDateFilterProgram | undefined;
   /**
-   * The process date for which to locate the report.
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
    */
-  programDateFilterProcessDate?: components.DateCreate | undefined;
+  programDateFilterProcessDateYear?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  programDateFilterProcessDateMonth?: number | undefined;
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  programDateFilterProcessDateDay?: number | undefined;
 };
 
 export type IctReconReportsLocateIctReportResponse = {
@@ -81,14 +88,18 @@ export const IctReconReportsLocateIctReportRequest$inboundSchema: z.ZodType<
   batch_id: z.string().optional(),
   "program_date_filter.program": ProgramDateFilterProgram$inboundSchema
     .optional(),
-  "program_date_filter.process_date": components.DateCreate$inboundSchema
-    .optional(),
+  "program_date_filter.process_date.year": z.number().int().optional(),
+  "program_date_filter.process_date.month": z.number().int().optional(),
+  "program_date_filter.process_date.day": z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
     "correspondent_id": "correspondentId",
     "batch_id": "batchId",
     "program_date_filter.program": "programDateFilterProgram",
-    "program_date_filter.process_date": "programDateFilterProcessDate",
+    "program_date_filter.process_date.year": "programDateFilterProcessDateYear",
+    "program_date_filter.process_date.month":
+      "programDateFilterProcessDateMonth",
+    "program_date_filter.process_date.day": "programDateFilterProcessDateDay",
   });
 });
 
@@ -97,9 +108,9 @@ export type IctReconReportsLocateIctReportRequest$Outbound = {
   correspondent_id: string;
   batch_id?: string | undefined;
   "program_date_filter.program"?: string | undefined;
-  "program_date_filter.process_date"?:
-    | components.DateCreate$Outbound
-    | undefined;
+  "program_date_filter.process_date.year"?: number | undefined;
+  "program_date_filter.process_date.month"?: number | undefined;
+  "program_date_filter.process_date.day"?: number | undefined;
 };
 
 /** @internal */
@@ -111,13 +122,17 @@ export const IctReconReportsLocateIctReportRequest$outboundSchema: z.ZodType<
   correspondentId: z.string(),
   batchId: z.string().optional(),
   programDateFilterProgram: ProgramDateFilterProgram$outboundSchema.optional(),
-  programDateFilterProcessDate: components.DateCreate$outboundSchema.optional(),
+  programDateFilterProcessDateYear: z.number().int().optional(),
+  programDateFilterProcessDateMonth: z.number().int().optional(),
+  programDateFilterProcessDateDay: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
     correspondentId: "correspondent_id",
     batchId: "batch_id",
     programDateFilterProgram: "program_date_filter.program",
-    programDateFilterProcessDate: "program_date_filter.process_date",
+    programDateFilterProcessDateYear: "program_date_filter.process_date.year",
+    programDateFilterProcessDateMonth: "program_date_filter.process_date.month",
+    programDateFilterProcessDateDay: "program_date_filter.process_date.day",
   });
 });
 

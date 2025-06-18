@@ -10,23 +10,23 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
-  ExecutedPrice,
-  ExecutedPrice$inboundSchema,
-  ExecutedPrice$Outbound,
-  ExecutedPrice$outboundSchema,
-} from "./executedprice.js";
+  TradingExecutedPrice,
+  TradingExecutedPrice$inboundSchema,
+  TradingExecutedPrice$Outbound,
+  TradingExecutedPrice$outboundSchema,
+} from "./tradingexecutedprice.js";
 import {
-  Executions,
-  Executions$inboundSchema,
-  Executions$Outbound,
-  Executions$outboundSchema,
-} from "./executions.js";
+  TradingExecutions,
+  TradingExecutions$inboundSchema,
+  TradingExecutions$Outbound,
+  TradingExecutions$outboundSchema,
+} from "./tradingexecutions.js";
 import {
-  Fee,
-  Fee$inboundSchema,
-  Fee$Outbound,
-  Fee$outboundSchema,
-} from "./fee.js";
+  TradingFee,
+  TradingFee$inboundSchema,
+  TradingFee$Outbound,
+  TradingFee$outboundSchema,
+} from "./tradingfee.js";
 
 /**
  * The type of the asset in this order, which must be one of the following:
@@ -311,6 +311,8 @@ export enum OrderRejectedReason {
   AssetNotSetUpToTrade = "ASSET_NOT_SET_UP_TO_TRADE",
   InvalidOrderQuantity = "INVALID_ORDER_QUANTITY",
   ClientReceivedTimeRequired = "CLIENT_RECEIVED_TIME_REQUIRED",
+  ClientNotPermittedToUseTradingStrategy =
+    "CLIENT_NOT_PERMITTED_TO_USE_TRADING_STRATEGY",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -484,6 +486,17 @@ export enum OrderTimeInForce {
 export type OrderTimeInForceOpen = OpenEnum<typeof OrderTimeInForce>;
 
 /**
+ * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ */
+export enum OrderTradingStrategy {
+  Core = "CORE",
+}
+/**
+ * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ */
+export type OrderTradingStrategyOpen = OpenEnum<typeof OrderTradingStrategy>;
+
+/**
  * The message describing an order
  */
 export type Order = {
@@ -511,7 +524,7 @@ export type Order = {
    *
    *  When asset_type = FIXED_INCOME, there may be more than one value present which would have a type other than PRICE_PER_UNIT. Price values in PERCENTAGE_OF_PAR will have up to 4 decimal places of precision, and price values measured in yields will support up to 5 decimal places.
    */
-  averagePrices?: Array<ExecutedPrice> | undefined;
+  averagePrices?: Array<TradingExecutedPrice> | undefined;
   /**
    * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
    */
@@ -551,11 +564,11 @@ export type Order = {
   /**
    * The execution-level details that compose this order
    */
-  executions?: Array<Executions> | undefined;
+  executions?: Array<TradingExecutions> | undefined;
   /**
    * Fees that will be applied to this order. Only the BROKER_FEE type is supported.
    */
-  fees?: Array<Fee> | undefined;
+  fees?: Array<TradingFee> | undefined;
   /**
    * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
    */
@@ -650,6 +663,10 @@ export type Order = {
    * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
   timeInForce?: OrderTimeInForceOpen | undefined;
+  /**
+   * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+   */
+  tradingStrategy?: OrderTradingStrategyOpen | undefined;
 };
 
 /** @internal */
@@ -1754,12 +1771,44 @@ export namespace OrderTimeInForce$ {
 }
 
 /** @internal */
+export const OrderTradingStrategy$inboundSchema: z.ZodType<
+  OrderTradingStrategyOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(OrderTradingStrategy),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const OrderTradingStrategy$outboundSchema: z.ZodType<
+  OrderTradingStrategyOpen,
+  z.ZodTypeDef,
+  OrderTradingStrategyOpen
+> = z.union([
+  z.nativeEnum(OrderTradingStrategy),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OrderTradingStrategy$ {
+  /** @deprecated use `OrderTradingStrategy$inboundSchema` instead. */
+  export const inboundSchema = OrderTradingStrategy$inboundSchema;
+  /** @deprecated use `OrderTradingStrategy$outboundSchema` instead. */
+  export const outboundSchema = OrderTradingStrategy$outboundSchema;
+}
+
+/** @internal */
 export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
   .object({
     account_id: z.string().optional(),
     asset_id: z.string().optional(),
     asset_type: OrderAssetType$inboundSchema.optional(),
-    average_prices: z.array(ExecutedPrice$inboundSchema).optional(),
+    average_prices: z.array(TradingExecutedPrice$inboundSchema).optional(),
     broker_capacity: OrderBrokerCapacity$inboundSchema.optional(),
     cancel_reason: z.string().optional(),
     cancel_rejected_reason: CancelRejectedReason$inboundSchema.optional(),
@@ -1776,8 +1825,8 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
       z.lazy(() => CumulativeNotionalValue$inboundSchema),
     ).optional(),
     currency_code: z.string().optional(),
-    executions: z.array(Executions$inboundSchema).optional(),
-    fees: z.array(Fee$inboundSchema).optional(),
+    executions: z.array(TradingExecutions$inboundSchema).optional(),
+    fees: z.array(TradingFee$inboundSchema).optional(),
     filled_quantity: z.nullable(z.lazy(() => FilledQuantity$inboundSchema))
       .optional(),
     identifier: z.string().optional(),
@@ -1812,6 +1861,7 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
     ).optional(),
     stop_price: z.nullable(z.lazy(() => StopPrice$inboundSchema)).optional(),
     time_in_force: OrderTimeInForce$inboundSchema.optional(),
+    trading_strategy: OrderTradingStrategy$inboundSchema.optional(),
   }).transform((v) => {
     return remap$(v, {
       "account_id": "accountId",
@@ -1844,6 +1894,7 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
       "special_reporting_instructions": "specialReportingInstructions",
       "stop_price": "stopPrice",
       "time_in_force": "timeInForce",
+      "trading_strategy": "tradingStrategy",
     });
   });
 
@@ -1852,7 +1903,7 @@ export type Order$Outbound = {
   account_id?: string | undefined;
   asset_id?: string | undefined;
   asset_type?: string | undefined;
-  average_prices?: Array<ExecutedPrice$Outbound> | undefined;
+  average_prices?: Array<TradingExecutedPrice$Outbound> | undefined;
   broker_capacity?: string | undefined;
   cancel_reason?: string | undefined;
   cancel_rejected_reason?: string | undefined;
@@ -1865,8 +1916,8 @@ export type Order$Outbound = {
     | null
     | undefined;
   currency_code?: string | undefined;
-  executions?: Array<Executions$Outbound> | undefined;
-  fees?: Array<Fee$Outbound> | undefined;
+  executions?: Array<TradingExecutions$Outbound> | undefined;
+  fees?: Array<TradingFee$Outbound> | undefined;
   filled_quantity?: FilledQuantity$Outbound | null | undefined;
   identifier?: string | undefined;
   identifier_issuing_region_code?: string | undefined;
@@ -1892,6 +1943,7 @@ export type Order$Outbound = {
   special_reporting_instructions?: Array<string> | undefined;
   stop_price?: StopPrice$Outbound | null | undefined;
   time_in_force?: string | undefined;
+  trading_strategy?: string | undefined;
 };
 
 /** @internal */
@@ -1903,7 +1955,7 @@ export const Order$outboundSchema: z.ZodType<
   accountId: z.string().optional(),
   assetId: z.string().optional(),
   assetType: OrderAssetType$outboundSchema.optional(),
-  averagePrices: z.array(ExecutedPrice$outboundSchema).optional(),
+  averagePrices: z.array(TradingExecutedPrice$outboundSchema).optional(),
   brokerCapacity: OrderBrokerCapacity$outboundSchema.optional(),
   cancelReason: z.string().optional(),
   cancelRejectedReason: CancelRejectedReason$outboundSchema.optional(),
@@ -1917,8 +1969,8 @@ export const Order$outboundSchema: z.ZodType<
     z.lazy(() => CumulativeNotionalValue$outboundSchema),
   ).optional(),
   currencyCode: z.string().optional(),
-  executions: z.array(Executions$outboundSchema).optional(),
-  fees: z.array(Fee$outboundSchema).optional(),
+  executions: z.array(TradingExecutions$outboundSchema).optional(),
+  fees: z.array(TradingFee$outboundSchema).optional(),
   filledQuantity: z.nullable(z.lazy(() => FilledQuantity$outboundSchema))
     .optional(),
   identifier: z.string().optional(),
@@ -1952,6 +2004,7 @@ export const Order$outboundSchema: z.ZodType<
   ).optional(),
   stopPrice: z.nullable(z.lazy(() => StopPrice$outboundSchema)).optional(),
   timeInForce: OrderTimeInForce$outboundSchema.optional(),
+  tradingStrategy: OrderTradingStrategy$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",
@@ -1984,6 +2037,7 @@ export const Order$outboundSchema: z.ZodType<
     specialReportingInstructions: "special_reporting_instructions",
     stopPrice: "stop_price",
     timeInForce: "time_in_force",
+    tradingStrategy: "trading_strategy",
   });
 });
 

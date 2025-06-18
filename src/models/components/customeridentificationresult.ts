@@ -168,6 +168,10 @@ export type CustomerIdentificationResult = {
    */
   birthDateVerified?: BirthDateVerifiedOpen | undefined;
   /**
+   * Whether or not the result is completed Must be true to be linked to an Investigation or used to Create/Update an LegalNaturalPerson
+   */
+  completed?: boolean | undefined;
+  /**
    * Whether or not the document authenticity is verified or not Will be NOT_IN_SCOPE if the check being done is not documentary
    */
   documentAuthenticityVerified?: DocumentAuthenticityVerifiedOpen | undefined;
@@ -176,9 +180,13 @@ export type CustomerIdentificationResult = {
    */
   documentExpiryStatus?: DocumentExpiryStatusOpen | undefined;
   /**
-   * One or more ULIDs from the documents api of the image(s) of the document that relates to the identification check
+   * One or more ULIDs from the documents api of the image(s) of the document that relates to the identification check for a DOCUMENTARY check, these will be the images provided in the session
    */
   documentVerificationIds?: Array<string> | undefined;
+  /**
+   * The URI to complete documentary session Will be populated if the CheckType is DOCUMENTARY
+   */
+  documentarySessionUri?: string | undefined;
   /**
    * Whether or not the customer email was verified
    */
@@ -548,10 +556,12 @@ export const CustomerIdentificationResult$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   birth_date_verified: BirthDateVerified$inboundSchema.optional(),
+  completed: z.boolean().optional(),
   document_authenticity_verified: DocumentAuthenticityVerified$inboundSchema
     .optional(),
   document_expiry_status: DocumentExpiryStatus$inboundSchema.optional(),
   document_verification_ids: z.array(z.string()).optional(),
+  documentary_session_uri: z.string().optional(),
   email_verified: EmailVerified$inboundSchema.optional(),
   external_vendor: z.string().optional(),
   external_vendor_id: z.string().optional(),
@@ -570,6 +580,7 @@ export const CustomerIdentificationResult$inboundSchema: z.ZodType<
     "document_authenticity_verified": "documentAuthenticityVerified",
     "document_expiry_status": "documentExpiryStatus",
     "document_verification_ids": "documentVerificationIds",
+    "documentary_session_uri": "documentarySessionUri",
     "email_verified": "emailVerified",
     "external_vendor": "externalVendor",
     "external_vendor_id": "externalVendorId",
@@ -586,9 +597,11 @@ export const CustomerIdentificationResult$inboundSchema: z.ZodType<
 /** @internal */
 export type CustomerIdentificationResult$Outbound = {
   birth_date_verified?: string | undefined;
+  completed?: boolean | undefined;
   document_authenticity_verified?: string | undefined;
   document_expiry_status?: string | undefined;
   document_verification_ids?: Array<string> | undefined;
+  documentary_session_uri?: string | undefined;
   email_verified?: string | undefined;
   external_vendor?: string | undefined;
   external_vendor_id?: string | undefined;
@@ -608,10 +621,12 @@ export const CustomerIdentificationResult$outboundSchema: z.ZodType<
   CustomerIdentificationResult
 > = z.object({
   birthDateVerified: BirthDateVerified$outboundSchema.optional(),
+  completed: z.boolean().optional(),
   documentAuthenticityVerified: DocumentAuthenticityVerified$outboundSchema
     .optional(),
   documentExpiryStatus: DocumentExpiryStatus$outboundSchema.optional(),
   documentVerificationIds: z.array(z.string()).optional(),
+  documentarySessionUri: z.string().optional(),
   emailVerified: EmailVerified$outboundSchema.optional(),
   externalVendor: z.string().optional(),
   externalVendorId: z.string().optional(),
@@ -630,6 +645,7 @@ export const CustomerIdentificationResult$outboundSchema: z.ZodType<
     documentAuthenticityVerified: "document_authenticity_verified",
     documentExpiryStatus: "document_expiry_status",
     documentVerificationIds: "document_verification_ids",
+    documentarySessionUri: "documentary_session_uri",
     emailVerified: "email_verified",
     externalVendor: "external_vendor",
     externalVendorId: "external_vendor_id",

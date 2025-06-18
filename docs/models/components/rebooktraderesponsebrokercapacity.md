@@ -1,6 +1,6 @@
 # RebookTradeResponseBrokerCapacity
 
-Used to calculate broadridge blotter code
+Broker capacity for the trade.
 
 ## Example Usage
 

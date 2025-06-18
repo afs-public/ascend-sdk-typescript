@@ -36,6 +36,17 @@ export enum MatchState {
  */
 export type MatchStateOpen = OpenEnum<typeof MatchState>;
 
+export enum MatchTypes {
+  MatchTypeUnspecified = "MATCH_TYPE_UNSPECIFIED",
+  NonOfacSanctions = "NON_OFAC_SANCTIONS",
+  RelativeOrCloseAssociate = "RELATIVE_OR_CLOSE_ASSOCIATE",
+  OfacSanctions = "OFAC_SANCTIONS",
+  PoliticallyExposedPerson = "POLITICALLY_EXPOSED_PERSON",
+  Dndb = "DNDB",
+  NegativeNews = "NEGATIVE_NEWS",
+}
+export type MatchTypesOpen = OpenEnum<typeof MatchTypes>;
+
 /**
  * Matched profile details
  */
@@ -60,6 +71,10 @@ export type WatchlistMatch = {
    * Match state - whether or not the match is confirmed
    */
   matchState?: MatchStateOpen | undefined;
+  /**
+   * The types of watchlist matches
+   */
+  matchTypes?: Array<MatchTypesOpen> | undefined;
   /**
    * The time the watchlist match was last updated
    */
@@ -139,6 +154,38 @@ export namespace MatchState$ {
 }
 
 /** @internal */
+export const MatchTypes$inboundSchema: z.ZodType<
+  MatchTypesOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(MatchTypes),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const MatchTypes$outboundSchema: z.ZodType<
+  MatchTypesOpen,
+  z.ZodTypeDef,
+  MatchTypesOpen
+> = z.union([
+  z.nativeEnum(MatchTypes),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MatchTypes$ {
+  /** @deprecated use `MatchTypes$inboundSchema` instead. */
+  export const inboundSchema = MatchTypes$inboundSchema;
+  /** @deprecated use `MatchTypes$outboundSchema` instead. */
+  export const outboundSchema = MatchTypes$outboundSchema;
+}
+
+/** @internal */
 export const WatchlistMatch$inboundSchema: z.ZodType<
   WatchlistMatch,
   z.ZodTypeDef,
@@ -151,6 +198,7 @@ export const WatchlistMatch$inboundSchema: z.ZodType<
   exclude_from_screening: z.boolean().optional(),
   match_attributes: z.array(MatchAttributes$inboundSchema).optional(),
   match_state: MatchState$inboundSchema.optional(),
+  match_types: z.array(MatchTypes$inboundSchema).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -162,6 +210,7 @@ export const WatchlistMatch$inboundSchema: z.ZodType<
     "exclude_from_screening": "excludeFromScreening",
     "match_attributes": "matchAttributes",
     "match_state": "matchState",
+    "match_types": "matchTypes",
     "updated_at": "updatedAt",
     "watchlist_id": "watchlistId",
     "watchlist_item_id": "watchlistItemId",
@@ -175,6 +224,7 @@ export type WatchlistMatch$Outbound = {
   exclude_from_screening?: boolean | undefined;
   match_attributes?: Array<string> | undefined;
   match_state?: string | undefined;
+  match_types?: Array<string> | undefined;
   updated_at?: string | null | undefined;
   watchlist_id?: string | undefined;
   watchlist_item_id?: number | undefined;
@@ -191,6 +241,7 @@ export const WatchlistMatch$outboundSchema: z.ZodType<
   excludeFromScreening: z.boolean().optional(),
   matchAttributes: z.array(MatchAttributes$outboundSchema).optional(),
   matchState: MatchState$outboundSchema.optional(),
+  matchTypes: z.array(MatchTypes$outboundSchema).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   watchlistId: z.string().optional(),
   watchlistItemId: z.number().int().optional(),
@@ -200,6 +251,7 @@ export const WatchlistMatch$outboundSchema: z.ZodType<
     excludeFromScreening: "exclude_from_screening",
     matchAttributes: "match_attributes",
     matchState: "match_state",
+    matchTypes: "match_types",
     updatedAt: "updated_at",
     watchlistId: "watchlist_id",
     watchlistItemId: "watchlist_item_id",

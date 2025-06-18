@@ -1,13 +1,13 @@
 # EntrySideModifier
 
-Additional information about a trade Should be populated if possible for trades; the side modifier for the trade
+Indicates whether the trade is opening a new position or closing an existing position Should be populated if possible for trades; the side modifier for the trade
 
 ## Example Usage
 
 ```typescript
 import { EntrySideModifier } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: EntrySideModifier = EntrySideModifier.Short;
+let value: EntrySideModifier = EntrySideModifier.Open;
 ```
 
 ## Values

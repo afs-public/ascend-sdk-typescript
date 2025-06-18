@@ -4,11 +4,11 @@
 
 import * as z from "zod";
 import {
-  GoogleProtobufAny,
-  GoogleProtobufAny$inboundSchema,
-  GoogleProtobufAny$Outbound,
-  GoogleProtobufAny$outboundSchema,
-} from "./googleprotobufany.js";
+  Any,
+  Any$inboundSchema,
+  Any$Outbound,
+  Any$outboundSchema,
+} from "./any.js";
 
 /**
  * The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
@@ -21,7 +21,7 @@ export type Status = {
   /**
    * The details field contains one or more technical error details.
    */
-  details?: Array<GoogleProtobufAny> | undefined;
+  details?: Array<Any> | undefined;
   /**
    * The message field contains human-friendly messages about the error.
    */
@@ -32,14 +32,14 @@ export type Status = {
 export const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> = z
   .object({
     code: z.number().int().optional(),
-    details: z.array(GoogleProtobufAny$inboundSchema).optional(),
+    details: z.array(Any$inboundSchema).optional(),
     message: z.string().optional(),
   });
 
 /** @internal */
 export type Status$Outbound = {
   code?: number | undefined;
-  details?: Array<GoogleProtobufAny$Outbound> | undefined;
+  details?: Array<Any$Outbound> | undefined;
   message?: string | undefined;
 };
 
@@ -50,7 +50,7 @@ export const Status$outboundSchema: z.ZodType<
   Status
 > = z.object({
   code: z.number().int().optional(),
-  details: z.array(GoogleProtobufAny$outboundSchema).optional(),
+  details: z.array(Any$outboundSchema).optional(),
   message: z.string().optional(),
 });
 

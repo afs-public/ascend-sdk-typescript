@@ -12,6 +12,8 @@ let value: TransferType = TransferType.FullTransfer;
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 | Name                                                    | Value                                                   |
 | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransferTypeUnspecified`                               | TRANSFER_TYPE_UNSPECIFIED                               |
@@ -23,3 +25,4 @@ let value: TransferType = TransferType.FullTransfer;
 | `PositionTransferFundFirmToMutualFundCompanyOnly`       | POSITION_TRANSFER_FUND_FIRM_TO_MUTUAL_FUND_COMPANY_ONLY |
 | `Reclaim`                                               | RECLAIM                                                 |
 | `ResidualCredit`                                        | RESIDUAL_CREDIT                                         |
+| -                                                       | `Unrecognized<string>`                                  |

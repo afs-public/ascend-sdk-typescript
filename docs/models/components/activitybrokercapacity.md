@@ -1,13 +1,13 @@
 # ActivityBrokerCapacity
 
-Used to calculate broadridge blotter code
+The execution route Apex used for this trade
 
 ## Example Usage
 
 ```typescript
 import { ActivityBrokerCapacity } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: ActivityBrokerCapacity = ActivityBrokerCapacity.Agency;
+let value: ActivityBrokerCapacity = ActivityBrokerCapacity.CapacityUnspecified;
 ```
 
 ## Values

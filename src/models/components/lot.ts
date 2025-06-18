@@ -42,7 +42,7 @@ export type LotQuantity = {
 /**
  * Trade date of the trade lot
  */
-export type TradeDate = {
+export type LotTradeDate = {
   /**
    * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
@@ -73,7 +73,7 @@ export type Lot = {
   /**
    * Trade date of the trade lot
    */
-  tradeDate?: TradeDate | null | undefined;
+  tradeDate?: LotTradeDate | null | undefined;
 };
 
 /** @internal */
@@ -196,8 +196,8 @@ export namespace LotQuantity$ {
 }
 
 /** @internal */
-export const TradeDate$inboundSchema: z.ZodType<
-  TradeDate,
+export const LotTradeDate$inboundSchema: z.ZodType<
+  LotTradeDate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -207,17 +207,17 @@ export const TradeDate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type TradeDate$Outbound = {
+export type LotTradeDate$Outbound = {
   day?: number | undefined;
   month?: number | undefined;
   year?: number | undefined;
 };
 
 /** @internal */
-export const TradeDate$outboundSchema: z.ZodType<
-  TradeDate$Outbound,
+export const LotTradeDate$outboundSchema: z.ZodType<
+  LotTradeDate$Outbound,
   z.ZodTypeDef,
-  TradeDate
+  LotTradeDate
 > = z.object({
   day: z.number().int().optional(),
   month: z.number().int().optional(),
@@ -228,13 +228,13 @@ export const TradeDate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TradeDate$ {
-  /** @deprecated use `TradeDate$inboundSchema` instead. */
-  export const inboundSchema = TradeDate$inboundSchema;
-  /** @deprecated use `TradeDate$outboundSchema` instead. */
-  export const outboundSchema = TradeDate$outboundSchema;
-  /** @deprecated use `TradeDate$Outbound` instead. */
-  export type Outbound = TradeDate$Outbound;
+export namespace LotTradeDate$ {
+  /** @deprecated use `LotTradeDate$inboundSchema` instead. */
+  export const inboundSchema = LotTradeDate$inboundSchema;
+  /** @deprecated use `LotTradeDate$outboundSchema` instead. */
+  export const outboundSchema = LotTradeDate$outboundSchema;
+  /** @deprecated use `LotTradeDate$Outbound` instead. */
+  export type Outbound = LotTradeDate$Outbound;
 }
 
 /** @internal */
@@ -243,7 +243,7 @@ export const Lot$inboundSchema: z.ZodType<Lot, z.ZodTypeDef, unknown> = z
     id: z.string().optional(),
     money: z.nullable(z.lazy(() => LotMoney$inboundSchema)).optional(),
     quantity: z.nullable(z.lazy(() => LotQuantity$inboundSchema)).optional(),
-    trade_date: z.nullable(z.lazy(() => TradeDate$inboundSchema)).optional(),
+    trade_date: z.nullable(z.lazy(() => LotTradeDate$inboundSchema)).optional(),
   }).transform((v) => {
     return remap$(v, {
       "trade_date": "tradeDate",
@@ -255,7 +255,7 @@ export type Lot$Outbound = {
   id?: string | undefined;
   money?: LotMoney$Outbound | null | undefined;
   quantity?: LotQuantity$Outbound | null | undefined;
-  trade_date?: TradeDate$Outbound | null | undefined;
+  trade_date?: LotTradeDate$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -264,7 +264,7 @@ export const Lot$outboundSchema: z.ZodType<Lot$Outbound, z.ZodTypeDef, Lot> = z
     id: z.string().optional(),
     money: z.nullable(z.lazy(() => LotMoney$outboundSchema)).optional(),
     quantity: z.nullable(z.lazy(() => LotQuantity$outboundSchema)).optional(),
-    tradeDate: z.nullable(z.lazy(() => TradeDate$outboundSchema)).optional(),
+    tradeDate: z.nullable(z.lazy(() => LotTradeDate$outboundSchema)).optional(),
   }).transform((v) => {
     return remap$(v, {
       tradeDate: "trade_date",

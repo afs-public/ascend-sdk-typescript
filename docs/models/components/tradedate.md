@@ -1,6 +1,6 @@
 # TradeDate
 
-Trade date of the trade lot
+Trade date for this lot specifically
 
 ## Example Usage
 

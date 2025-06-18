@@ -8,7 +8,7 @@ import { RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructions
 let value:
   RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructions =
     RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructions
-      .InternetOrder;
+      .OpenContractCovered;
 ```
 
 ## Values

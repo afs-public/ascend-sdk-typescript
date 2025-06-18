@@ -16,17 +16,17 @@ import {
   BondYield$outboundSchema,
 } from "./bondyield.js";
 import {
-  Fee,
-  Fee$inboundSchema,
-  Fee$Outbound,
-  Fee$outboundSchema,
-} from "./fee.js";
+  BookingFee,
+  BookingFee$inboundSchema,
+  BookingFee$Outbound,
+  BookingFee$outboundSchema,
+} from "./bookingfee.js";
 import {
-  Lot,
-  Lot$inboundSchema,
-  Lot$Outbound,
-  Lot$outboundSchema,
-} from "./lot.js";
+  BookingLot,
+  BookingLot$inboundSchema,
+  BookingLot$Outbound,
+  BookingLot$outboundSchema,
+} from "./bookinglot.js";
 
 /**
  * The amount of interest that has been accrued in the issuing currency for a single instrument.
@@ -182,7 +182,7 @@ export type TradeAllocationQuantity = {
 /**
  * Defaults to T+1 for equities if this is not provided. Calculated using the execution_time field in Eastern Time.
  */
-export type SettlementDate = {
+export type TradeAllocationSettlementDate = {
   /**
    * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
@@ -356,7 +356,7 @@ export type TradeAllocation = {
   /**
    * Client calculated fees that will only be applied to the to_account_id. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  fees?: Array<Fee> | undefined;
+  fees?: Array<BookingFee> | undefined;
   /**
    * The ULID formatted account_id that the positions will be moved from.
    */
@@ -384,7 +384,7 @@ export type TradeAllocation = {
   /**
    * One or many lot matching instructions for the trade allocation.
    */
-  lotMatchingInstructions?: Array<Lot> | undefined;
+  lotMatchingInstructions?: Array<BookingLot> | undefined;
   /**
    * Caller provided but can be used for booking-service to note original trade details when booking into the error account or using the error asset.
    */
@@ -415,7 +415,7 @@ export type TradeAllocation = {
   /**
    * Defaults to T+1 for equities if this is not provided. Calculated using the execution_time field in Eastern Time.
    */
-  settlementDate?: SettlementDate | null | undefined;
+  settlementDate?: TradeAllocationSettlementDate | null | undefined;
   /**
    * Side modifier for the trade allocation.
    */
@@ -902,8 +902,8 @@ export namespace TradeAllocationQuantity$ {
 }
 
 /** @internal */
-export const SettlementDate$inboundSchema: z.ZodType<
-  SettlementDate,
+export const TradeAllocationSettlementDate$inboundSchema: z.ZodType<
+  TradeAllocationSettlementDate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -913,17 +913,17 @@ export const SettlementDate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SettlementDate$Outbound = {
+export type TradeAllocationSettlementDate$Outbound = {
   day?: number | undefined;
   month?: number | undefined;
   year?: number | undefined;
 };
 
 /** @internal */
-export const SettlementDate$outboundSchema: z.ZodType<
-  SettlementDate$Outbound,
+export const TradeAllocationSettlementDate$outboundSchema: z.ZodType<
+  TradeAllocationSettlementDate$Outbound,
   z.ZodTypeDef,
-  SettlementDate
+  TradeAllocationSettlementDate
 > = z.object({
   day: z.number().int().optional(),
   month: z.number().int().optional(),
@@ -934,13 +934,13 @@ export const SettlementDate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SettlementDate$ {
-  /** @deprecated use `SettlementDate$inboundSchema` instead. */
-  export const inboundSchema = SettlementDate$inboundSchema;
-  /** @deprecated use `SettlementDate$outboundSchema` instead. */
-  export const outboundSchema = SettlementDate$outboundSchema;
-  /** @deprecated use `SettlementDate$Outbound` instead. */
-  export type Outbound = SettlementDate$Outbound;
+export namespace TradeAllocationSettlementDate$ {
+  /** @deprecated use `TradeAllocationSettlementDate$inboundSchema` instead. */
+  export const inboundSchema = TradeAllocationSettlementDate$inboundSchema;
+  /** @deprecated use `TradeAllocationSettlementDate$outboundSchema` instead. */
+  export const outboundSchema = TradeAllocationSettlementDate$outboundSchema;
+  /** @deprecated use `TradeAllocationSettlementDate$Outbound` instead. */
+  export type Outbound = TradeAllocationSettlementDate$Outbound;
 }
 
 /** @internal */
@@ -1124,7 +1124,7 @@ export const TradeAllocation$inboundSchema: z.ZodType<
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  fees: z.array(Fee$inboundSchema).optional(),
+  fees: z.array(BookingFee$inboundSchema).optional(),
   from_account_id: z.string().optional(),
   from_activity_id: z.string().optional(),
   gross_amount: z.nullable(
@@ -1133,7 +1133,7 @@ export const TradeAllocation$inboundSchema: z.ZodType<
   identifier: z.string().optional(),
   identifier_type: TradeAllocationIdentifierType$inboundSchema.optional(),
   issuing_region_code: z.string().optional(),
-  lot_matching_instructions: z.array(Lot$inboundSchema).optional(),
+  lot_matching_instructions: z.array(BookingLot$inboundSchema).optional(),
   memo: z.string().optional(),
   name: z.string().optional(),
   prevailing_market_price: z.nullable(
@@ -1146,8 +1146,9 @@ export const TradeAllocation$inboundSchema: z.ZodType<
   ).optional(),
   quantity: z.nullable(z.lazy(() => TradeAllocationQuantity$inboundSchema))
     .optional(),
-  settlement_date: z.nullable(z.lazy(() => SettlementDate$inboundSchema))
-    .optional(),
+  settlement_date: z.nullable(
+    z.lazy(() => TradeAllocationSettlementDate$inboundSchema),
+  ).optional(),
   side_modifier: TradeAllocationSideModifier$inboundSchema.optional(),
   source_application: z.string().optional(),
   special_instructions: z.array(
@@ -1205,14 +1206,14 @@ export type TradeAllocation$Outbound = {
     | null
     | undefined;
   execution_time?: string | null | undefined;
-  fees?: Array<Fee$Outbound> | undefined;
+  fees?: Array<BookingFee$Outbound> | undefined;
   from_account_id?: string | undefined;
   from_activity_id?: string | undefined;
   gross_amount?: TradeAllocationGrossAmount$Outbound | null | undefined;
   identifier?: string | undefined;
   identifier_type?: string | undefined;
   issuing_region_code?: string | undefined;
-  lot_matching_instructions?: Array<Lot$Outbound> | undefined;
+  lot_matching_instructions?: Array<BookingLot$Outbound> | undefined;
   memo?: string | undefined;
   name?: string | undefined;
   prevailing_market_price?:
@@ -1222,7 +1223,7 @@ export type TradeAllocation$Outbound = {
   price?: TradeAllocationPrice$Outbound | null | undefined;
   price_adjustment?: TradeAllocationPriceAdjustment$Outbound | null | undefined;
   quantity?: TradeAllocationQuantity$Outbound | null | undefined;
-  settlement_date?: SettlementDate$Outbound | null | undefined;
+  settlement_date?: TradeAllocationSettlementDate$Outbound | null | undefined;
   side_modifier?: string | undefined;
   source_application?: string | undefined;
   special_instructions?: Array<string> | undefined;
@@ -1253,7 +1254,7 @@ export const TradeAllocation$outboundSchema: z.ZodType<
   ).optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
-  fees: z.array(Fee$outboundSchema).optional(),
+  fees: z.array(BookingFee$outboundSchema).optional(),
   fromAccountId: z.string().optional(),
   fromActivityId: z.string().optional(),
   grossAmount: z.nullable(
@@ -1262,7 +1263,7 @@ export const TradeAllocation$outboundSchema: z.ZodType<
   identifier: z.string().optional(),
   identifierType: TradeAllocationIdentifierType$outboundSchema.optional(),
   issuingRegionCode: z.string().optional(),
-  lotMatchingInstructions: z.array(Lot$outboundSchema).optional(),
+  lotMatchingInstructions: z.array(BookingLot$outboundSchema).optional(),
   memo: z.string().optional(),
   name: z.string().optional(),
   prevailingMarketPrice: z.nullable(
@@ -1275,8 +1276,9 @@ export const TradeAllocation$outboundSchema: z.ZodType<
   ).optional(),
   quantity: z.nullable(z.lazy(() => TradeAllocationQuantity$outboundSchema))
     .optional(),
-  settlementDate: z.nullable(z.lazy(() => SettlementDate$outboundSchema))
-    .optional(),
+  settlementDate: z.nullable(
+    z.lazy(() => TradeAllocationSettlementDate$outboundSchema),
+  ).optional(),
   sideModifier: TradeAllocationSideModifier$outboundSchema.optional(),
   sourceApplication: z.string().optional(),
   specialInstructions: z.array(

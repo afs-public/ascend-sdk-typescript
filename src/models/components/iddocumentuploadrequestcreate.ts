@@ -36,7 +36,6 @@ export enum IDDocumentUploadRequestCreateDocumentType {
   ExecutorCertification = "EXECUTOR_CERTIFICATION",
   TrusteeCertification = "TRUSTEE_CERTIFICATION",
   Selfie = "SELFIE",
-  ArticlesOfOrganisation = "ARTICLES_OF_ORGANISATION",
   CertOfSoleOfficer = "CERT_OF_SOLE_OFFICER",
   CertificationCorrespondentAccounts = "CERTIFICATION_CORRESPONDENT_ACCOUNTS",
   CertificationForeignBanks = "CERTIFICATION_FOREIGN_BANKS",
@@ -51,6 +50,7 @@ export enum IDDocumentUploadRequestCreateDocumentType {
   CorporateBylaws = "CORPORATE_BYLAWS",
   ShareholderAgreement = "SHAREHOLDER_AGREEMENT",
   CorporateRecords = "CORPORATE_RECORDS",
+  ArticlesOfOrganization = "ARTICLES_OF_ORGANIZATION",
 }
 /**
  * Describes the contents of a document and how it is used; Required for all identity documents
@@ -72,7 +72,7 @@ export type IDDocumentUploadRequestCreate = {
    */
   documentType: IDDocumentUploadRequestCreateDocumentTypeOpen;
   /**
-   * Identifies the legal natural person relevant to the document
+   * Identifies the legal natural person or legal entity relevant to the document
    */
   legalNaturalPersonId: string;
 };

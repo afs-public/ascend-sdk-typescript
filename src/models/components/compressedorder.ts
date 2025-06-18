@@ -10,17 +10,17 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
-  ExecutedPrice,
-  ExecutedPrice$inboundSchema,
-  ExecutedPrice$Outbound,
-  ExecutedPrice$outboundSchema,
-} from "./executedprice.js";
+  BasketTradingExecutedPrice,
+  BasketTradingExecutedPrice$inboundSchema,
+  BasketTradingExecutedPrice$Outbound,
+  BasketTradingExecutedPrice$outboundSchema,
+} from "./baskettradingexecutedprice.js";
 import {
-  Executions,
-  Executions$inboundSchema,
-  Executions$Outbound,
-  Executions$outboundSchema,
-} from "./executions.js";
+  BasketTradingExecutions,
+  BasketTradingExecutions$inboundSchema,
+  BasketTradingExecutions$Outbound,
+  BasketTradingExecutions$outboundSchema,
+} from "./baskettradingexecutions.js";
 
 /**
  * The type of the asset in this order
@@ -178,6 +178,17 @@ export enum CompressedOrderSide {
  */
 export type CompressedOrderSideOpen = OpenEnum<typeof CompressedOrderSide>;
 
+export enum CompressedOrderSpecialReportingInstructions {
+  SpecialReportingInstructionsUnspecified =
+    "SPECIAL_REPORTING_INSTRUCTIONS_UNSPECIFIED",
+  Solicited = "SOLICITED",
+  Unsolicited = "UNSOLICITED",
+  RoundUp = "ROUND_UP",
+}
+export type CompressedOrderSpecialReportingInstructionsOpen = OpenEnum<
+  typeof CompressedOrderSpecialReportingInstructions
+>;
+
 /**
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
@@ -215,7 +226,7 @@ export type CompressedOrder = {
    *
    *  When asset_type = EQUITY, there will be at most one value present, with a type of PRICE_PER_UNIT. This will have up to 4 decimal places for USD amounts less than $1, and a maximum of two for larger USD amounts.
    */
-  averagePrices?: Array<ExecutedPrice> | undefined;
+  averagePrices?: Array<BasketTradingExecutedPrice> | undefined;
   /**
    * System generated unique id for the compressed order.
    */
@@ -238,7 +249,7 @@ export type CompressedOrder = {
   /**
    * The execution-level details that compose this order
    */
-  executions?: Array<Executions> | undefined;
+  executions?: Array<BasketTradingExecutions> | undefined;
   /**
    * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
    */
@@ -283,6 +294,12 @@ export type CompressedOrder = {
    * The side of this order.
    */
   side?: CompressedOrderSideOpen | undefined;
+  /**
+   * Special Reporting Instructions to be applied to this order. Can include multiple Instructions.
+   */
+  specialReportingInstructions?:
+    | Array<CompressedOrderSpecialReportingInstructionsOpen>
+    | undefined;
   /**
    * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
@@ -629,6 +646,42 @@ export namespace CompressedOrderSide$ {
 }
 
 /** @internal */
+export const CompressedOrderSpecialReportingInstructions$inboundSchema:
+  z.ZodType<
+    CompressedOrderSpecialReportingInstructionsOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(CompressedOrderSpecialReportingInstructions),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const CompressedOrderSpecialReportingInstructions$outboundSchema:
+  z.ZodType<
+    CompressedOrderSpecialReportingInstructionsOpen,
+    z.ZodTypeDef,
+    CompressedOrderSpecialReportingInstructionsOpen
+  > = z.union([
+    z.nativeEnum(CompressedOrderSpecialReportingInstructions),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompressedOrderSpecialReportingInstructions$ {
+  /** @deprecated use `CompressedOrderSpecialReportingInstructions$inboundSchema` instead. */
+  export const inboundSchema =
+    CompressedOrderSpecialReportingInstructions$inboundSchema;
+  /** @deprecated use `CompressedOrderSpecialReportingInstructions$outboundSchema` instead. */
+  export const outboundSchema =
+    CompressedOrderSpecialReportingInstructions$outboundSchema;
+}
+
+/** @internal */
 export const CompressedOrderTimeInForce$inboundSchema: z.ZodType<
   CompressedOrderTimeInForceOpen,
   z.ZodTypeDef,
@@ -669,7 +722,7 @@ export const CompressedOrder$inboundSchema: z.ZodType<
   asset_id: z.string().optional(),
   asset_type: CompressedOrderAssetType$inboundSchema.optional(),
   average_price_account_id: z.string().optional(),
-  average_prices: z.array(ExecutedPrice$inboundSchema).optional(),
+  average_prices: z.array(BasketTradingExecutedPrice$inboundSchema).optional(),
   compressed_order_id: z.string().optional(),
   create_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -678,7 +731,7 @@ export const CompressedOrder$inboundSchema: z.ZodType<
     z.lazy(() => CompressedOrderCumulativeNotionalValue$inboundSchema),
   ).optional(),
   currency_code: z.string().optional(),
-  executions: z.array(Executions$inboundSchema).optional(),
+  executions: z.array(BasketTradingExecutions$inboundSchema).optional(),
   filled_quantity: z.nullable(
     z.lazy(() => CompressedOrderFilledQuantity$inboundSchema),
   ).optional(),
@@ -698,6 +751,9 @@ export const CompressedOrder$inboundSchema: z.ZodType<
   quantity: z.nullable(z.lazy(() => CompressedOrderQuantity$inboundSchema))
     .optional(),
   side: CompressedOrderSide$inboundSchema.optional(),
+  special_reporting_instructions: z.array(
+    CompressedOrderSpecialReportingInstructions$inboundSchema,
+  ).optional(),
   time_in_force: CompressedOrderTimeInForce$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -716,6 +772,7 @@ export const CompressedOrder$inboundSchema: z.ZodType<
     "order_rejected_reason": "orderRejectedReason",
     "order_status": "orderStatus",
     "order_type": "orderType",
+    "special_reporting_instructions": "specialReportingInstructions",
     "time_in_force": "timeInForce",
   });
 });
@@ -725,7 +782,7 @@ export type CompressedOrder$Outbound = {
   asset_id?: string | undefined;
   asset_type?: string | undefined;
   average_price_account_id?: string | undefined;
-  average_prices?: Array<ExecutedPrice$Outbound> | undefined;
+  average_prices?: Array<BasketTradingExecutedPrice$Outbound> | undefined;
   compressed_order_id?: string | undefined;
   create_time?: string | null | undefined;
   cumulative_notional_value?:
@@ -733,7 +790,7 @@ export type CompressedOrder$Outbound = {
     | null
     | undefined;
   currency_code?: string | undefined;
-  executions?: Array<Executions$Outbound> | undefined;
+  executions?: Array<BasketTradingExecutions$Outbound> | undefined;
   filled_quantity?: CompressedOrderFilledQuantity$Outbound | null | undefined;
   identifier?: string | undefined;
   identifier_type?: string | undefined;
@@ -745,6 +802,7 @@ export type CompressedOrder$Outbound = {
   order_type?: string | undefined;
   quantity?: CompressedOrderQuantity$Outbound | null | undefined;
   side?: string | undefined;
+  special_reporting_instructions?: Array<string> | undefined;
   time_in_force?: string | undefined;
 };
 
@@ -757,14 +815,14 @@ export const CompressedOrder$outboundSchema: z.ZodType<
   assetId: z.string().optional(),
   assetType: CompressedOrderAssetType$outboundSchema.optional(),
   averagePriceAccountId: z.string().optional(),
-  averagePrices: z.array(ExecutedPrice$outboundSchema).optional(),
+  averagePrices: z.array(BasketTradingExecutedPrice$outboundSchema).optional(),
   compressedOrderId: z.string().optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   cumulativeNotionalValue: z.nullable(
     z.lazy(() => CompressedOrderCumulativeNotionalValue$outboundSchema),
   ).optional(),
   currencyCode: z.string().optional(),
-  executions: z.array(Executions$outboundSchema).optional(),
+  executions: z.array(BasketTradingExecutions$outboundSchema).optional(),
   filledQuantity: z.nullable(
     z.lazy(() => CompressedOrderFilledQuantity$outboundSchema),
   ).optional(),
@@ -783,6 +841,9 @@ export const CompressedOrder$outboundSchema: z.ZodType<
   quantity: z.nullable(z.lazy(() => CompressedOrderQuantity$outboundSchema))
     .optional(),
   side: CompressedOrderSide$outboundSchema.optional(),
+  specialReportingInstructions: z.array(
+    CompressedOrderSpecialReportingInstructions$outboundSchema,
+  ).optional(),
   timeInForce: CompressedOrderTimeInForce$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -801,6 +862,7 @@ export const CompressedOrder$outboundSchema: z.ZodType<
     orderRejectedReason: "order_rejected_reason",
     orderStatus: "order_status",
     orderType: "order_type",
+    specialReportingInstructions: "special_reporting_instructions",
     timeInForce: "time_in_force",
   });
 });

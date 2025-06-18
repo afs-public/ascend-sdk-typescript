@@ -73,6 +73,17 @@ export enum BasketOrderCreateSide {
  */
 export type BasketOrderCreateSideOpen = OpenEnum<typeof BasketOrderCreateSide>;
 
+export enum BasketOrderCreateSpecialReportingInstructions {
+  SpecialReportingInstructionsUnspecified =
+    "SPECIAL_REPORTING_INSTRUCTIONS_UNSPECIFIED",
+  Solicited = "SOLICITED",
+  Unsolicited = "UNSOLICITED",
+  RoundUp = "ROUND_UP",
+}
+export type BasketOrderCreateSpecialReportingInstructionsOpen = OpenEnum<
+  typeof BasketOrderCreateSpecialReportingInstructions
+>;
+
 /**
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
@@ -147,6 +158,12 @@ export type BasketOrderCreate = {
    * The side of this order.
    */
   side: BasketOrderCreateSideOpen;
+  /**
+   * Special Reporting Instructions to be applied to this order. Can include multiple Instructions.
+   */
+  specialReportingInstructions?:
+    | Array<BasketOrderCreateSpecialReportingInstructionsOpen>
+    | undefined;
   /**
    * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
@@ -282,6 +299,42 @@ export namespace BasketOrderCreateSide$ {
 }
 
 /** @internal */
+export const BasketOrderCreateSpecialReportingInstructions$inboundSchema:
+  z.ZodType<
+    BasketOrderCreateSpecialReportingInstructionsOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(BasketOrderCreateSpecialReportingInstructions),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const BasketOrderCreateSpecialReportingInstructions$outboundSchema:
+  z.ZodType<
+    BasketOrderCreateSpecialReportingInstructionsOpen,
+    z.ZodTypeDef,
+    BasketOrderCreateSpecialReportingInstructionsOpen
+  > = z.union([
+    z.nativeEnum(BasketOrderCreateSpecialReportingInstructions),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BasketOrderCreateSpecialReportingInstructions$ {
+  /** @deprecated use `BasketOrderCreateSpecialReportingInstructions$inboundSchema` instead. */
+  export const inboundSchema =
+    BasketOrderCreateSpecialReportingInstructions$inboundSchema;
+  /** @deprecated use `BasketOrderCreateSpecialReportingInstructions$outboundSchema` instead. */
+  export const outboundSchema =
+    BasketOrderCreateSpecialReportingInstructions$outboundSchema;
+}
+
+/** @internal */
 export const BasketOrderCreateTimeInForce$inboundSchema: z.ZodType<
   BasketOrderCreateTimeInForceOpen,
   z.ZodTypeDef,
@@ -332,6 +385,9 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
   order_type: BasketOrderCreateOrderType$inboundSchema,
   quantity: DecimalCreate$inboundSchema.optional(),
   side: BasketOrderCreateSide$inboundSchema,
+  special_reporting_instructions: z.array(
+    BasketOrderCreateSpecialReportingInstructions$inboundSchema,
+  ).optional(),
   time_in_force: BasketOrderCreateTimeInForce$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
@@ -343,6 +399,7 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
     "identifier_type": "identifierType",
     "notional_value": "notionalValue",
     "order_type": "orderType",
+    "special_reporting_instructions": "specialReportingInstructions",
     "time_in_force": "timeInForce",
   });
 });
@@ -360,6 +417,7 @@ export type BasketOrderCreate$Outbound = {
   order_type: string;
   quantity?: DecimalCreate$Outbound | undefined;
   side: string;
+  special_reporting_instructions?: Array<string> | undefined;
   time_in_force: string;
 };
 
@@ -381,6 +439,9 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
   orderType: BasketOrderCreateOrderType$outboundSchema,
   quantity: DecimalCreate$outboundSchema.optional(),
   side: BasketOrderCreateSide$outboundSchema,
+  specialReportingInstructions: z.array(
+    BasketOrderCreateSpecialReportingInstructions$outboundSchema,
+  ).optional(),
   timeInForce: BasketOrderCreateTimeInForce$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
@@ -392,6 +453,7 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
     identifierType: "identifier_type",
     notionalValue: "notional_value",
     orderType: "order_type",
+    specialReportingInstructions: "special_reporting_instructions",
     timeInForce: "time_in_force",
   });
 });

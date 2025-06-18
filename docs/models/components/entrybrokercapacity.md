@@ -1,13 +1,13 @@
 # EntryBrokerCapacity
 
-Used to calculate broadridge blotter code
+The execution route Apex used for this trade
 
 ## Example Usage
 
 ```typescript
 import { EntryBrokerCapacity } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: EntryBrokerCapacity = EntryBrokerCapacity.Principal;
+let value: EntryBrokerCapacity = EntryBrokerCapacity.Agency;
 ```
 
 ## Values

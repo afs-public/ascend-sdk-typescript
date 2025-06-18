@@ -39,7 +39,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `ExecutorCertification`              | EXECUTOR_CERTIFICATION               |
 | `TrusteeCertification`               | TRUSTEE_CERTIFICATION                |
 | `Selfie`                             | SELFIE                               |
-| `ArticlesOfOrganisation`             | ARTICLES_OF_ORGANISATION             |
 | `CertOfSoleOfficer`                  | CERT_OF_SOLE_OFFICER                 |
 | `CertificationCorrespondentAccounts` | CERTIFICATION_CORRESPONDENT_ACCOUNTS |
 | `CertificationForeignBanks`          | CERTIFICATION_FOREIGN_BANKS          |
@@ -54,4 +53,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `CorporateBylaws`                    | CORPORATE_BYLAWS                     |
 | `ShareholderAgreement`               | SHAREHOLDER_AGREEMENT                |
 | `CorporateRecords`                   | CORPORATE_RECORDS                    |
+| `ArticlesOfOrganization`             | ARTICLES_OF_ORGANIZATION             |
 | -                                    | `Unrecognized<string>`               |

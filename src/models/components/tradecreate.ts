@@ -10,6 +10,12 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
+  BookingFeeCreate,
+  BookingFeeCreate$inboundSchema,
+  BookingFeeCreate$Outbound,
+  BookingFeeCreate$outboundSchema,
+} from "./bookingfeecreate.js";
+import {
   DateCreate,
   DateCreate$inboundSchema,
   DateCreate$Outbound,
@@ -21,12 +27,6 @@ import {
   ExecutionCreate$Outbound,
   ExecutionCreate$outboundSchema,
 } from "./executioncreate.js";
-import {
-  FeeCreate,
-  FeeCreate$inboundSchema,
-  FeeCreate$Outbound,
-  FeeCreate$outboundSchema,
-} from "./feecreate.js";
 import {
   LotCreate,
   LotCreate$inboundSchema,
@@ -265,7 +265,7 @@ export type TradeCreate = {
   /**
    * Any client calculated fees associated with the trade. Only allowed if trade.open = false. Regulatory fees will be calculated automatically if they are not explicitly overwritten or suppressed.
    */
-  fees?: Array<FeeCreate> | undefined;
+  fees?: Array<BookingFeeCreate> | undefined;
   /**
    * Identifier (of the type specified in `identifier_type`). Responses will supply the originally requested identifier.
    */
@@ -643,7 +643,7 @@ export const TradeCreate$inboundSchema: z.ZodType<
   client_order_id: z.string(),
   executing_broker: z.string().optional(),
   executions: z.array(ExecutionCreate$inboundSchema),
-  fees: z.array(FeeCreate$inboundSchema).optional(),
+  fees: z.array(BookingFeeCreate$inboundSchema).optional(),
   identifier: z.string(),
   identifier_type: TradeCreateIdentifierType$inboundSchema,
   issuing_region_code: z.string().optional(),
@@ -694,7 +694,7 @@ export type TradeCreate$Outbound = {
   client_order_id: string;
   executing_broker?: string | undefined;
   executions: Array<ExecutionCreate$Outbound>;
-  fees?: Array<FeeCreate$Outbound> | undefined;
+  fees?: Array<BookingFeeCreate$Outbound> | undefined;
   identifier: string;
   identifier_type: string;
   issuing_region_code?: string | undefined;
@@ -727,7 +727,7 @@ export const TradeCreate$outboundSchema: z.ZodType<
   clientOrderId: z.string(),
   executingBroker: z.string().optional(),
   executions: z.array(ExecutionCreate$outboundSchema),
-  fees: z.array(FeeCreate$outboundSchema).optional(),
+  fees: z.array(BookingFeeCreate$outboundSchema).optional(),
   identifier: z.string(),
   identifierType: TradeCreateIdentifierType$outboundSchema,
   issuingRegionCode: z.string().optional(),

@@ -76,6 +76,10 @@ export enum AcatsAssetType {
   Isin = "ISIN",
   AssetId = "ASSET_ID",
 }
+/**
+ * The asset identifier type
+ */
+export type AcatsAssetTypeOpen = OpenEnum<typeof AcatsAssetType>;
 
 /**
  * The asset being transferred If cash, the asset_id is the currency code (e.g. USD) and the position is the amount
@@ -100,7 +104,7 @@ export type AcatsAsset = {
   /**
    * The asset identifier type
    */
-  type?: AcatsAssetType | undefined;
+  type?: AcatsAssetTypeOpen | undefined;
 };
 
 /** @internal */
@@ -210,14 +214,25 @@ export namespace AcatsAssetPosition$ {
 }
 
 /** @internal */
-export const AcatsAssetType$inboundSchema: z.ZodNativeEnum<
-  typeof AcatsAssetType
-> = z.nativeEnum(AcatsAssetType);
+export const AcatsAssetType$inboundSchema: z.ZodType<
+  AcatsAssetTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(AcatsAssetType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
-export const AcatsAssetType$outboundSchema: z.ZodNativeEnum<
-  typeof AcatsAssetType
-> = AcatsAssetType$inboundSchema;
+export const AcatsAssetType$outboundSchema: z.ZodType<
+  AcatsAssetTypeOpen,
+  z.ZodTypeDef,
+  AcatsAssetTypeOpen
+> = z.union([
+  z.nativeEnum(AcatsAssetType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
 
 /**
  * @internal

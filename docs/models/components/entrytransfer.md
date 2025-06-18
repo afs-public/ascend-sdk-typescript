@@ -1,0 +1,19 @@
+# EntryTransfer
+
+Used to record more generic transfers of funds or securities and details related to the transfer. The transfer type and activity_description can be used to provide more specific context
+
+## Example Usage
+
+```typescript
+import { EntryTransfer } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: EntryTransfer = {};
+```
+
+## Fields
+
+| Field                                                                                                                                       | Type                                                                                                                                        | Required                                                                                                                                    | Description                                                                                                                                 | Example                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `additionalInstructions`                                                                                                                    | *string*                                                                                                                                    | :heavy_minus_sign:                                                                                                                          | Free form text field                                                                                                                        | FDIC asset reclassification to currency equivalent                                                                                          |
+| `clientBrokerage`                                                                                                                           | *string*                                                                                                                                    | :heavy_minus_sign:                                                                                                                          | String field that can be populated with the broker dealer undergoing a clearing platform conversion. Used for activity description purposes | APEX                                                                                                                                        |
+| `transferType`                                                                                                                              | [components.EntryTransferType](../../models/components/entrytransfertype.md)                                                                | :heavy_minus_sign:                                                                                                                          | Provides more detail on the type of transfer                                                                                                | MIGRATION                                                                                                                                   |

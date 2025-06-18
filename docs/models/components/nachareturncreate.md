@@ -8,7 +8,7 @@ A return on an ACH transfer from the Nacha network.
 import { NachaReturnCreate, NachaReturnCreateCode } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: NachaReturnCreate = {
-  code: NachaReturnCreateCode.R39,
+  code: NachaReturnCreateCode.R01,
 };
 ```
 

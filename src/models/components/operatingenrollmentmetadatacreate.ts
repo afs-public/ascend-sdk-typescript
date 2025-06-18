@@ -40,6 +40,8 @@ export enum OperatingPurpose {
   TaxWithholding = "TAX_WITHHOLDING",
   Fee = "FEE",
   PrincipalTrading = "PRINCIPAL_TRADING",
+  SafekeepingBookEntityDomestic = "SAFEKEEPING_BOOK_ENTITY_DOMESTIC",
+  Fail = "FAIL",
 }
 /**
  * The purpose of the operating account.

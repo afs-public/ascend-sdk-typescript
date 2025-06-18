@@ -4,11 +4,11 @@
 
 import * as z from "zod";
 import {
-  FeeCreate,
-  FeeCreate$inboundSchema,
-  FeeCreate$Outbound,
-  FeeCreate$outboundSchema,
-} from "./feecreate.js";
+  BookingFeeCreate,
+  BookingFeeCreate$inboundSchema,
+  BookingFeeCreate$Outbound,
+  BookingFeeCreate$outboundSchema,
+} from "./bookingfeecreate.js";
 
 /**
  * A request for completing a trade.
@@ -17,7 +17,7 @@ export type CompleteTradeRequestCreate = {
   /**
    * Client calculated fees to use while completing an existing trade.
    */
-  fees?: Array<FeeCreate> | undefined;
+  fees?: Array<BookingFeeCreate> | undefined;
   /**
    * The name of the trade to complete.
    */
@@ -30,13 +30,13 @@ export const CompleteTradeRequestCreate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  fees: z.array(FeeCreate$inboundSchema).optional(),
+  fees: z.array(BookingFeeCreate$inboundSchema).optional(),
   name: z.string(),
 });
 
 /** @internal */
 export type CompleteTradeRequestCreate$Outbound = {
-  fees?: Array<FeeCreate$Outbound> | undefined;
+  fees?: Array<BookingFeeCreate$Outbound> | undefined;
   name: string;
 };
 
@@ -46,7 +46,7 @@ export const CompleteTradeRequestCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CompleteTradeRequestCreate
 > = z.object({
-  fees: z.array(FeeCreate$outboundSchema).optional(),
+  fees: z.array(BookingFeeCreate$outboundSchema).optional(),
   name: z.string(),
 });
 

@@ -7,7 +7,7 @@ Type of coupon rate
 ```typescript
 import { CouponType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: CouponType = CouponType.CouponTypeZero;
+let value: CouponType = CouponType.CouponTypeFixed;
 ```
 
 ## Values
