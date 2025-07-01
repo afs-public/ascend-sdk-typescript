@@ -17,6 +17,7 @@ import { beforeAll } from "vitest";
 
 let lnp_id: string | undefined;
 let account_id: string | undefined;
+let reuse_account_id: string | undefined;
 let enrollment_ids: string[] | undefined;
 let bank_relationship_id: string | undefined;
 
@@ -29,6 +30,11 @@ beforeAll(async () => {
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
+  }
+  await timeout(5000);
+  reuse_account_id = await createAccount(lnp_id);
+  if (typeof reuse_account_id !== "string") {
+    throw new Error("reissue_account_id is undefined.");
   }
   await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
@@ -171,6 +177,28 @@ test("Bank Relationships Transfers Verify Micro Deposits Verify Micro Deposits1"
     request,
     account_id,
     bank_relationship_id,
+  );
+  expect(result.httpMeta.response.status).toBe(200);
+});
+
+test("Bank Relationships Transfers Reuse Bank Relationships Reuse Bank Relationships1", async () => {
+  if (typeof account_id !== "string") {
+    throw new Error("account_id is undefined.");
+  }
+  if (typeof reuse_account_id !== "string") {
+      throw new Error("reuse_account_id is undefined.");
+  }
+  if (typeof bank_relationship_id !== "string") {
+      throw new Error("bank_relationship_id is undefined.");
+  }
+  const request: components.ReuseBankRelationshipRequestCreate = {
+      parent: `accounts/${account_id}`,
+      sourceBankRelationship: `accounts/${account_id}/bankRelationships/${bank_relationship_id}`,
+  };
+
+  const result = await sdk.bankRelationships.reuseBankRelationship(
+      request,
+      reuse_account_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
 });

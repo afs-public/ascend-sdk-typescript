@@ -46,9 +46,9 @@ export type SDKOptions = {
 export declare function serverURLFromOptions(options: SDKOptions): URL | null;
 export declare const SDK_METADATA: {
     readonly language: "typescript";
-    readonly openapiDocVersion: "v1:20250617:uat:6f66f0a5cade";
-    readonly sdkVersion: "1.5.6";
+    readonly openapiDocVersion: "v1:20250630:uat:8b6dcb722a6f";
+    readonly sdkVersion: "1.5.7";
     readonly genVersion: "2.437.1";
-    readonly userAgent: "speakeasy-sdk/typescript 1.5.6 2.437.1 v1:20250617:uat:6f66f0a5cade @apexfintechsolutions/ascend-sdk";
+    readonly userAgent: "speakeasy-sdk/typescript 1.5.7 2.437.1 v1:20250630:uat:8b6dcb722a6f @apexfintechsolutions/ascend-sdk";
 };
 //# sourceMappingURL=config.d.ts.map

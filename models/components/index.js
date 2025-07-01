@@ -348,6 +348,7 @@ __exportStar(require("./retrievefixedincomemarksresponse.js"), exports);
 __exportStar(require("./retrievefixedincomemarksresponseassetmark.js"), exports);
 __exportStar(require("./retrievequoterequestcreate.js"), exports);
 __exportStar(require("./retrievequoteresponse.js"), exports);
+__exportStar(require("./reusebankrelationshiprequestcreate.js"), exports);
 __exportStar(require("./rightsofaccumulationcreate.js"), exports);
 __exportStar(require("./roledetail.js"), exports);
 __exportStar(require("./sanctionslistdetail.js"), exports);

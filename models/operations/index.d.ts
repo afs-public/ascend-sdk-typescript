@@ -77,6 +77,7 @@ export * from "./bankrelationshipsgetbankrelationship.js";
 export * from "./bankrelationshipsgetmicrodepositamounts.js";
 export * from "./bankrelationshipslistbankrelationships.js";
 export * from "./bankrelationshipsreissuemicrodeposits.js";
+export * from "./bankrelationshipsreusebankrelationship.js";
 export * from "./bankrelationshipsupdatebankrelationship.js";
 export * from "./bankrelationshipsverifymicrodeposits.js";
 export * from "./basketordersserviceaddorders.js";

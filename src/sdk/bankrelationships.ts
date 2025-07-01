@@ -7,6 +7,7 @@ import { bankRelationshipsCreateBankRelationship } from "../funcs/bankRelationsh
 import { bankRelationshipsGetBankRelationship } from "../funcs/bankRelationshipsGetBankRelationship.js";
 import { bankRelationshipsListBankRelationships } from "../funcs/bankRelationshipsListBankRelationships.js";
 import { bankRelationshipsReissueMicroDeposits } from "../funcs/bankRelationshipsReissueMicroDeposits.js";
+import { bankRelationshipsReuseBankRelationship } from "../funcs/bankRelationshipsReuseBankRelationship.js";
 import { bankRelationshipsUpdateBankRelationship } from "../funcs/bankRelationshipsUpdateBankRelationship.js";
 import { bankRelationshipsVerifyMicroDeposits } from "../funcs/bankRelationshipsVerifyMicroDeposits.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -161,6 +162,26 @@ export class BankRelationships extends ClientSDK {
       reissueMicroDepositsRequestCreate,
       accountId,
       bankRelationshipId,
+      options,
+    ));
+  }
+
+  /**
+   * Reuse Bank Relationship
+   *
+   * @remarks
+   * Reuses an existing bank relationship for a new account. The source bank relationship must be approved. The new account must be related to the parent account of the `source_bank_relationship`. The new relationship will be created with the `USE_EXISTING` verification method in place of the source bank relationship's verification method.
+   */
+  async reuseBankRelationship(
+    reuseBankRelationshipRequestCreate:
+      components.ReuseBankRelationshipRequestCreate,
+    accountId: string,
+    options?: RequestOptions,
+  ): Promise<operations.BankRelationshipsReuseBankRelationshipResponse> {
+    return unwrapAsync(bankRelationshipsReuseBankRelationship(
+      this,
+      reuseBankRelationshipRequestCreate,
+      accountId,
       options,
     ));
   }

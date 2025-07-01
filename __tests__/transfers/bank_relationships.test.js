@@ -41,6 +41,7 @@ const index_1 = require("./index");
 const vitest_2 = require("vitest");
 let lnp_id;
 let account_id;
+let reuse_account_id;
 let enrollment_ids;
 let bank_relationship_id;
 (0, vitest_2.beforeAll)(async () => {
@@ -52,6 +53,11 @@ let bank_relationship_id;
     account_id = await (0, accounts_1.createAccount)(lnp_id);
     if (typeof account_id !== "string") {
         throw new Error("account_id is undefined.");
+    }
+    await (0, sdk_1.timeout)(5000);
+    reuse_account_id = await (0, accounts_1.createAccount)(lnp_id);
+    if (typeof reuse_account_id !== "string") {
+        throw new Error("reissue_account_id is undefined.");
     }
     await (0, sdk_1.timeout)(5000);
     enrollment_ids = await (0, accounts_1.enrollAccount)(account_id);
@@ -163,6 +169,23 @@ let bank_relationship_id;
         name: `accounts/${account_id}/bankRelationships/${bank_relationship_id}`,
     };
     const result = await sdk_1.sdk.bankRelationships.verifyMicroDeposits(request, account_id, bank_relationship_id);
+    (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
+});
+(0, vitest_1.test)("Bank Relationships Transfers Reuse Bank Relationships Reuse Bank Relationships1", async () => {
+    if (typeof account_id !== "string") {
+        throw new Error("account_id is undefined.");
+    }
+    if (typeof reuse_account_id !== "string") {
+        throw new Error("reuse_account_id is undefined.");
+    }
+    if (typeof bank_relationship_id !== "string") {
+        throw new Error("bank_relationship_id is undefined.");
+    }
+    const request = {
+        parent: `accounts/${account_id}`,
+        sourceBankRelationship: `accounts/${account_id}/bankRelationships/${bank_relationship_id}`,
+    };
+    const result = await sdk_1.sdk.bankRelationships.reuseBankRelationship(request, reuse_account_id);
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Bank Relationships Transfers Cancel Bank Relationships Cancel Bank Relationships1", async () => {

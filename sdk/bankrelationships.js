@@ -9,6 +9,7 @@ const bankRelationshipsCreateBankRelationship_js_1 = require("../funcs/bankRelat
 const bankRelationshipsGetBankRelationship_js_1 = require("../funcs/bankRelationshipsGetBankRelationship.js");
 const bankRelationshipsListBankRelationships_js_1 = require("../funcs/bankRelationshipsListBankRelationships.js");
 const bankRelationshipsReissueMicroDeposits_js_1 = require("../funcs/bankRelationshipsReissueMicroDeposits.js");
+const bankRelationshipsReuseBankRelationship_js_1 = require("../funcs/bankRelationshipsReuseBankRelationship.js");
 const bankRelationshipsUpdateBankRelationship_js_1 = require("../funcs/bankRelationshipsUpdateBankRelationship.js");
 const bankRelationshipsVerifyMicroDeposits_js_1 = require("../funcs/bankRelationshipsVerifyMicroDeposits.js");
 const sdks_js_1 = require("../lib/sdks.js");
@@ -76,6 +77,15 @@ class BankRelationships extends sdks_js_1.ClientSDK {
      */
     async reissueMicroDeposits(reissueMicroDepositsRequestCreate, accountId, bankRelationshipId, options) {
         return (0, fp_js_1.unwrapAsync)((0, bankRelationshipsReissueMicroDeposits_js_1.bankRelationshipsReissueMicroDeposits)(this, reissueMicroDepositsRequestCreate, accountId, bankRelationshipId, options));
+    }
+    /**
+     * Reuse Bank Relationship
+     *
+     * @remarks
+     * Reuses an existing bank relationship for a new account. The source bank relationship must be approved. The new account must be related to the parent account of the `source_bank_relationship`. The new relationship will be created with the `USE_EXISTING` verification method in place of the source bank relationship's verification method.
+     */
+    async reuseBankRelationship(reuseBankRelationshipRequestCreate, accountId, options) {
+        return (0, fp_js_1.unwrapAsync)((0, bankRelationshipsReuseBankRelationship_js_1.bankRelationshipsReuseBankRelationship)(this, reuseBankRelationshipRequestCreate, accountId, options));
     }
 }
 exports.BankRelationships = BankRelationships;
