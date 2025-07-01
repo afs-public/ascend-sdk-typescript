@@ -329,6 +329,7 @@ export * from "./retrievefixedincomemarksresponse.js";
 export * from "./retrievefixedincomemarksresponseassetmark.js";
 export * from "./retrievequoterequestcreate.js";
 export * from "./retrievequoteresponse.js";
+export * from "./reusebankrelationshiprequestcreate.js";
 export * from "./rightsofaccumulationcreate.js";
 export * from "./roledetail.js";
 export * from "./sanctionslistdetail.js";

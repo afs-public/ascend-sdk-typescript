@@ -51,5 +51,12 @@ export declare class BankRelationships extends ClientSDK {
      * Reissues micro deposits after micro deposit verification has failed. The user should have received a message that new micro deposits should be reissued.
      */
     reissueMicroDeposits(reissueMicroDepositsRequestCreate: components.ReissueMicroDepositsRequestCreate, accountId: string, bankRelationshipId: string, options?: RequestOptions): Promise<operations.BankRelationshipsReissueMicroDepositsResponse>;
+    /**
+     * Reuse Bank Relationship
+     *
+     * @remarks
+     * Reuses an existing bank relationship for a new account. The source bank relationship must be approved. The new account must be related to the parent account of the `source_bank_relationship`. The new relationship will be created with the `USE_EXISTING` verification method in place of the source bank relationship's verification method.
+     */
+    reuseBankRelationship(reuseBankRelationshipRequestCreate: components.ReuseBankRelationshipRequestCreate, accountId: string, options?: RequestOptions): Promise<operations.BankRelationshipsReuseBankRelationshipResponse>;
 }
 //# sourceMappingURL=bankrelationships.d.ts.map

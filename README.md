@@ -373,6 +373,7 @@ const sdk = new Apexascend({ httpClient });
 * [cancelBankRelationship](docs/sdks/bankrelationships/README.md#cancelbankrelationship) - Cancel Bank Relationship
 * [verifyMicroDeposits](docs/sdks/bankrelationships/README.md#verifymicrodeposits) - Verify Micro Deposits
 * [reissueMicroDeposits](docs/sdks/bankrelationships/README.md#reissuemicrodeposits) - Reissue Micro Deposits
+* [reuseBankRelationship](docs/sdks/bankrelationships/README.md#reusebankrelationship) - Reuse Bank Relationship
 
 ### [basketOrders](docs/sdks/basketorders/README.md)
 

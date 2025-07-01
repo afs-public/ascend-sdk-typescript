@@ -96,6 +96,7 @@ __exportStar(require("./bankrelationshipsgetbankrelationship.js"), exports);
 __exportStar(require("./bankrelationshipsgetmicrodepositamounts.js"), exports);
 __exportStar(require("./bankrelationshipslistbankrelationships.js"), exports);
 __exportStar(require("./bankrelationshipsreissuemicrodeposits.js"), exports);
+__exportStar(require("./bankrelationshipsreusebankrelationship.js"), exports);
 __exportStar(require("./bankrelationshipsupdatebankrelationship.js"), exports);
 __exportStar(require("./bankrelationshipsverifymicrodeposits.js"), exports);
 __exportStar(require("./basketordersserviceaddorders.js"), exports);
