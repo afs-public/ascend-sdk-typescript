@@ -79,6 +79,7 @@ var CompressedOrderOrderRejectedReason;
     CompressedOrderOrderRejectedReason["BlockingCorporateAction"] = "BLOCKING_CORPORATE_ACTION";
     CompressedOrderOrderRejectedReason["UnavailablePriceQuote"] = "UNAVAILABLE_PRICE_QUOTE";
     CompressedOrderOrderRejectedReason["ExecutionMisconfiguredClient"] = "EXECUTION_MISCONFIGURED_CLIENT";
+    CompressedOrderOrderRejectedReason["NotionalQuantityNotAllowedForSecurity"] = "NOTIONAL_QUANTITY_NOT_ALLOWED_FOR_SECURITY";
     CompressedOrderOrderRejectedReason["FractionalQuantityNotAllowedForSecurity"] = "FRACTIONAL_QUANTITY_NOT_ALLOWED_FOR_SECURITY";
     CompressedOrderOrderRejectedReason["OnlyFractionalSellOrWholeOrdersAllowedForSecurity"] = "ONLY_FRACTIONAL_SELL_OR_WHOLE_ORDERS_ALLOWED_FOR_SECURITY";
     CompressedOrderOrderRejectedReason["SymbolNotTradeable"] = "SYMBOL_NOT_TRADEABLE";

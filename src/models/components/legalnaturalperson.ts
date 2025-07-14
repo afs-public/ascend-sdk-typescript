@@ -167,11 +167,25 @@ export type Employment = {
    */
   employmentStatus?: LegalNaturalPersonEmploymentStatusOpen | undefined;
   /**
-   * The nature of work performed at an investor's place of employment. Required if the employment_status is `EMPLOYED` or `SELF_EMPLOYED`.
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `employment_status` is one of:
+   *   - `EMPLOYED`
+   *   - `SELF_EMPLOYED`
    */
   occupation?: string | undefined;
   /**
-   * The start year of employment related to a person's stated employer Must be from birth year to current year, or 0 to clear start year value
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `employment_status` is one of:
+   *   - `EMPLOYED`
+   *   - `SELF_EMPLOYED`
+   *
+   * Otherwise, must be empty.
    */
   startYear?: number | undefined;
 };
@@ -229,7 +243,13 @@ export type LegalNaturalPersonTypeOpen = OpenEnum<
 >;
 
 /**
- * Foreign identification. Must be provided if the person does not have a U.S. tax ID
+ * **Field Dependencies:**
+ *
+ * @remarks
+ *
+ * Required if `irs_form_type` is `W_8BEN`.
+ *
+ * Otherwise, must be empty.
  */
 export type ForeignIdentification = {
   /**
@@ -815,6 +835,10 @@ export type LegalNaturalPerson = {
    */
   custodianEmployee?: boolean | undefined;
   /**
+   * Customer identification id returned by the customer identification service which represents a single instance of an identity verification outcome for the specified customer. This verification result will be used as part of the full investigation.
+   */
+  customerIdentificationId?: string | undefined;
+  /**
    * The day, month, and year of death of a legal natural person
    */
   deathDate?: DeathDate | null | undefined;
@@ -835,7 +859,13 @@ export type LegalNaturalPerson = {
    */
   finraAssociatedEntity?: string | undefined;
   /**
-   * Foreign identification. Must be provided if the person does not have a U.S. tax ID
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `irs_form_type` is `W_8BEN`.
+   *
+   * Otherwise, must be empty.
    */
   foreignIdentification?: ForeignIdentification | null | undefined;
   /**
@@ -858,7 +888,7 @@ export type LegalNaturalPerson = {
    */
   institutionalCustomer?: boolean | undefined;
   /**
-   * Investigation id relating to the Customer Identification Program (CIP) and Customer Due Diligence (CDD).
+   * Investigation id relating a comprehensive investigation for a customer, encompassing the aggregation of identity verification results and watchlist screenings, conducted to support the Customer Identification Program (CIP) and Customer Due Diligence (CDD)
    */
   investigationId?: string | undefined;
   /**
@@ -2545,6 +2575,7 @@ export const LegalNaturalPerson$inboundSchema: z.ZodType<
   correspondent_employee: z.boolean().optional(),
   correspondent_id: z.string().optional(),
   custodian_employee: z.boolean().optional(),
+  customer_identification_id: z.string().optional(),
   death_date: z.nullable(z.lazy(() => DeathDate$inboundSchema)).optional(),
   doing_business_as: z.array(z.string()).optional(),
   employment: z.nullable(z.lazy(() => Employment$inboundSchema)).optional(),
@@ -2590,6 +2621,7 @@ export const LegalNaturalPerson$inboundSchema: z.ZodType<
     "correspondent_employee": "correspondentEmployee",
     "correspondent_id": "correspondentId",
     "custodian_employee": "custodianEmployee",
+    "customer_identification_id": "customerIdentificationId",
     "death_date": "deathDate",
     "doing_business_as": "doingBusinessAs",
     "family_name": "familyName",
@@ -2628,6 +2660,7 @@ export type LegalNaturalPerson$Outbound = {
   correspondent_employee?: boolean | undefined;
   correspondent_id?: string | undefined;
   custodian_employee?: boolean | undefined;
+  customer_identification_id?: string | undefined;
   death_date?: DeathDate$Outbound | null | undefined;
   doing_business_as?: Array<string> | undefined;
   employment?: Employment$Outbound | null | undefined;
@@ -2673,6 +2706,7 @@ export const LegalNaturalPerson$outboundSchema: z.ZodType<
   correspondentEmployee: z.boolean().optional(),
   correspondentId: z.string().optional(),
   custodianEmployee: z.boolean().optional(),
+  customerIdentificationId: z.string().optional(),
   deathDate: z.nullable(z.lazy(() => DeathDate$outboundSchema)).optional(),
   doingBusinessAs: z.array(z.string()).optional(),
   employment: z.nullable(z.lazy(() => Employment$outboundSchema)).optional(),
@@ -2718,6 +2752,7 @@ export const LegalNaturalPerson$outboundSchema: z.ZodType<
     correspondentEmployee: "correspondent_employee",
     correspondentId: "correspondent_id",
     custodianEmployee: "custodian_employee",
+    customerIdentificationId: "customer_identification_id",
     deathDate: "death_date",
     doingBusinessAs: "doing_business_as",
     familyName: "family_name",

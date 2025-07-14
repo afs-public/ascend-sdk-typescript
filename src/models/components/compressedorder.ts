@@ -100,6 +100,8 @@ export enum CompressedOrderOrderRejectedReason {
   BlockingCorporateAction = "BLOCKING_CORPORATE_ACTION",
   UnavailablePriceQuote = "UNAVAILABLE_PRICE_QUOTE",
   ExecutionMisconfiguredClient = "EXECUTION_MISCONFIGURED_CLIENT",
+  NotionalQuantityNotAllowedForSecurity =
+    "NOTIONAL_QUANTITY_NOT_ALLOWED_FOR_SECURITY",
   FractionalQuantityNotAllowedForSecurity =
     "FRACTIONAL_QUANTITY_NOT_ALLOWED_FOR_SECURITY",
   OnlyFractionalSellOrWholeOrdersAllowedForSecurity =

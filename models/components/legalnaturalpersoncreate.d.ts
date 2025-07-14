@@ -90,6 +90,10 @@ export type LegalNaturalPersonCreate = {
      */
     correspondentId: string;
     /**
+     * Customer identification id returned by the customer identification service which represents a single instance of an identity verification outcome for the specified customer. This verification result will be used as part of the full investigation.
+     */
+    customerIdentificationId?: string | undefined;
+    /**
      * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
      *
      * @remarks
@@ -245,6 +249,7 @@ export type LegalNaturalPersonCreate$Outbound = {
     control_person_company_symbols?: string | undefined;
     correspondent_employee?: boolean | undefined;
     correspondent_id: string;
+    customer_identification_id?: string | undefined;
     death_date?: DateCreate$Outbound | undefined;
     doing_business_as?: Array<string> | undefined;
     employment: EmploymentCreate$Outbound;

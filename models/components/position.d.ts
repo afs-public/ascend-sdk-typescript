@@ -180,6 +180,10 @@ export type Position = {
      */
     pendingWithdrawal?: PendingWithdrawal | null | undefined;
     /**
+     * The position version for an asset/account combo. This number only increases, such that larger `position_version`s are newer than lower ones.
+     */
+    positionVersion?: string | undefined;
+    /**
      * Computed fieldsOriginal Settled Position before and as-of changesComputed based on the bucket values to represet the total settled position in an account  Currently defined as `free` + `fpsl` + `pending_outgoing_acat` + `drip` + `pending_withdrawal`, but if/when new buckets are added this value will need to change to reflect them
      */
     settled?: Settled | null | undefined;
@@ -453,6 +457,7 @@ export type Position$Outbound = {
     pending_drip?: PendingDrip$Outbound | null | undefined;
     pending_outgoing_acat?: PendingOutgoingAcat$Outbound | null | undefined;
     pending_withdrawal?: PendingWithdrawal$Outbound | null | undefined;
+    position_version?: string | undefined;
     settled?: Settled$Outbound | null | undefined;
     trade?: PositionTrade$Outbound | null | undefined;
     unrestricted?: Unrestricted$Outbound | null | undefined;

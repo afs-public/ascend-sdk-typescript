@@ -59,11 +59,25 @@ export type EmploymentUpdate = {
    */
   employmentStatus?: EmploymentUpdateEmploymentStatusOpen | undefined;
   /**
-   * The nature of work performed at an investor's place of employment. Required if the employment_status is `EMPLOYED` or `SELF_EMPLOYED`.
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `employment_status` is one of:
+   *   - `EMPLOYED`
+   *   - `SELF_EMPLOYED`
    */
   occupation?: string | undefined;
   /**
-   * The start year of employment related to a person's stated employer Must be from birth year to current year, or 0 to clear start year value
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `employment_status` is one of:
+   *   - `EMPLOYED`
+   *   - `SELF_EMPLOYED`
+   *
+   * Otherwise, must be empty.
    */
   startYear?: number | undefined;
 };
