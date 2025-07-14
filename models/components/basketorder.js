@@ -78,6 +78,7 @@ var BasketOrderOrderRejectedReason;
     BasketOrderOrderRejectedReason["BlockingCorporateAction"] = "BLOCKING_CORPORATE_ACTION";
     BasketOrderOrderRejectedReason["UnavailablePriceQuote"] = "UNAVAILABLE_PRICE_QUOTE";
     BasketOrderOrderRejectedReason["ExecutionMisconfiguredClient"] = "EXECUTION_MISCONFIGURED_CLIENT";
+    BasketOrderOrderRejectedReason["NotionalQuantityNotAllowedForSecurity"] = "NOTIONAL_QUANTITY_NOT_ALLOWED_FOR_SECURITY";
     BasketOrderOrderRejectedReason["FractionalQuantityNotAllowedForSecurity"] = "FRACTIONAL_QUANTITY_NOT_ALLOWED_FOR_SECURITY";
     BasketOrderOrderRejectedReason["OnlyFractionalSellOrWholeOrdersAllowedForSecurity"] = "ONLY_FRACTIONAL_SELL_OR_WHOLE_ORDERS_ALLOWED_FOR_SECURITY";
     BasketOrderOrderRejectedReason["SymbolNotTradeable"] = "SYMBOL_NOT_TRADEABLE";

@@ -296,6 +296,7 @@ exports.Position$inboundSchema = z.object({
     pending_outgoing_acat: z.nullable(z.lazy(() => exports.PendingOutgoingAcat$inboundSchema)).optional(),
     pending_withdrawal: z.nullable(z.lazy(() => exports.PendingWithdrawal$inboundSchema))
         .optional(),
+    position_version: z.string().optional(),
     settled: z.nullable(z.lazy(() => exports.Settled$inboundSchema)).optional(),
     trade: z.nullable(z.lazy(() => exports.PositionTrade$inboundSchema)).optional(),
     unrestricted: z.nullable(z.lazy(() => exports.Unrestricted$inboundSchema)).optional(),
@@ -310,6 +311,7 @@ exports.Position$inboundSchema = z.object({
         "pending_drip": "pendingDrip",
         "pending_outgoing_acat": "pendingOutgoingAcat",
         "pending_withdrawal": "pendingWithdrawal",
+        "position_version": "positionVersion",
     });
 });
 /** @internal */
@@ -331,6 +333,7 @@ exports.Position$outboundSchema = z.object({
     pendingOutgoingAcat: z.nullable(z.lazy(() => exports.PendingOutgoingAcat$outboundSchema)).optional(),
     pendingWithdrawal: z.nullable(z.lazy(() => exports.PendingWithdrawal$outboundSchema))
         .optional(),
+    positionVersion: z.string().optional(),
     settled: z.nullable(z.lazy(() => exports.Settled$outboundSchema)).optional(),
     trade: z.nullable(z.lazy(() => exports.PositionTrade$outboundSchema)).optional(),
     unrestricted: z.nullable(z.lazy(() => exports.Unrestricted$outboundSchema))
@@ -346,6 +349,7 @@ exports.Position$outboundSchema = z.object({
         pendingDrip: "pending_drip",
         pendingOutgoingAcat: "pending_outgoing_acat",
         pendingWithdrawal: "pending_withdrawal",
+        positionVersion: "position_version",
     });
 });
 /**

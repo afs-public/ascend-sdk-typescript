@@ -1,6 +1,10 @@
 # ForeignIdentification
 
-Foreign identification. Must be provided if the person does not have a U.S. tax ID
+**Field Dependencies:**
+
+Required if `irs_form_type` is `W_8BEN`.
+
+Otherwise, must be empty.
 
 ## Example Usage
 

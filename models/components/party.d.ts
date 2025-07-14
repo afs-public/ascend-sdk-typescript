@@ -717,11 +717,25 @@ export type PartyEmployment = {
      */
     employmentStatus?: PartyEmploymentStatusOpen | undefined;
     /**
-     * The nature of work performed at an investor's place of employment. Required if the employment_status is `EMPLOYED` or `SELF_EMPLOYED`.
+     * **Field Dependencies:**
+     *
+     * @remarks
+     *
+     * Required if `employment_status` is one of:
+     *   - `EMPLOYED`
+     *   - `SELF_EMPLOYED`
      */
     occupation?: string | undefined;
     /**
-     * The start year of employment related to a person's stated employer Must be from birth year to current year, or 0 to clear start year value
+     * **Field Dependencies:**
+     *
+     * @remarks
+     *
+     * Required if `employment_status` is one of:
+     *   - `EMPLOYED`
+     *   - `SELF_EMPLOYED`
+     *
+     * Otherwise, must be empty.
      */
     startYear?: number | undefined;
 };
@@ -773,7 +787,13 @@ export declare enum PartyLegalNaturalPersonType {
  */
 export type PartyLegalNaturalPersonTypeOpen = OpenEnum<typeof PartyLegalNaturalPersonType>;
 /**
- * Foreign identification. Must be provided if the person does not have a U.S. tax ID
+ * **Field Dependencies:**
+ *
+ * @remarks
+ *
+ * Required if `irs_form_type` is `W_8BEN`.
+ *
+ * Otherwise, must be empty.
  */
 export type PartyForeignIdentification = {
     /**
@@ -1312,6 +1332,10 @@ export type PartyLegalNaturalPerson = {
      */
     custodianEmployee?: boolean | undefined;
     /**
+     * Customer identification id returned by the customer identification service which represents a single instance of an identity verification outcome for the specified customer. This verification result will be used as part of the full investigation.
+     */
+    customerIdentificationId?: string | undefined;
+    /**
      * The day, month, and year of death of a legal natural person
      */
     deathDate?: PartyDeathDate | null | undefined;
@@ -1332,7 +1356,13 @@ export type PartyLegalNaturalPerson = {
      */
     finraAssociatedEntity?: string | undefined;
     /**
-     * Foreign identification. Must be provided if the person does not have a U.S. tax ID
+     * **Field Dependencies:**
+     *
+     * @remarks
+     *
+     * Required if `irs_form_type` is `W_8BEN`.
+     *
+     * Otherwise, must be empty.
      */
     foreignIdentification?: PartyForeignIdentification | null | undefined;
     /**
@@ -1352,7 +1382,7 @@ export type PartyLegalNaturalPerson = {
      */
     institutionalCustomer?: boolean | undefined;
     /**
-     * Investigation id relating to the Customer Identification Program (CIP) and Customer Due Diligence (CDD).
+     * Investigation id relating a comprehensive investigation for a customer, encompassing the aggregation of identity verification results and watchlist screenings, conducted to support the Customer Identification Program (CIP) and Customer Due Diligence (CDD)
      */
     investigationId?: string | undefined;
     /**
@@ -2816,6 +2846,7 @@ export type PartyLegalNaturalPerson$Outbound = {
     correspondent_employee?: boolean | undefined;
     correspondent_id?: string | undefined;
     custodian_employee?: boolean | undefined;
+    customer_identification_id?: string | undefined;
     death_date?: PartyDeathDate$Outbound | null | undefined;
     doing_business_as?: Array<string> | undefined;
     employment?: PartyEmployment$Outbound | null | undefined;

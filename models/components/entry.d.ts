@@ -31,6 +31,24 @@ export declare enum AccountMemo {
  */
 export type AccountMemoOpen = OpenEnum<typeof AccountMemo>;
 /**
+ * The type of asset movement being performed within the lifecycle of an account transfer process
+ */
+export declare enum AccountTransferType {
+    AccountTransferTypeUnspecified = "ACCOUNT_TRANSFER_TYPE_UNSPECIFIED",
+    PartialTransferReceiver = "PARTIAL_TRANSFER_RECEIVER",
+    PartialTransferDeliverer = "PARTIAL_TRANSFER_DELIVERER",
+    FullAccountTransfer = "FULL_ACCOUNT_TRANSFER",
+    ResidualCredit = "RESIDUAL_CREDIT",
+    MutualFundCleanup = "MUTUAL_FUND_CLEANUP",
+    FailReversal = "FAIL_REVERSAL",
+    Reclaim = "RECLAIM",
+    PositionTransferFund = "POSITION_TRANSFER_FUND"
+}
+/**
+ * The type of asset movement being performed within the lifecycle of an account transfer process
+ */
+export type AccountTransferTypeOpen = OpenEnum<typeof AccountTransferType>;
+/**
  * Indicates whether the account transfer is incoming or outgoing
  */
 export declare enum Action {
@@ -68,6 +86,10 @@ export type AccountTransfer = {
      * the unique transfer Identifier assigned by NSCC
      */
     acatsControlNumber?: string | undefined;
+    /**
+     * The type of asset movement being performed within the lifecycle of an account transfer process
+     */
+    accountTransferType?: AccountTransferTypeOpen | undefined;
     /**
      * Indicates whether the account transfer is incoming or outgoing
      */
@@ -4355,6 +4377,20 @@ export declare namespace AccountMemo$ {
     const outboundSchema: z.ZodType<AccountMemoOpen, z.ZodTypeDef, AccountMemoOpen>;
 }
 /** @internal */
+export declare const AccountTransferType$inboundSchema: z.ZodType<AccountTransferTypeOpen, z.ZodTypeDef, unknown>;
+/** @internal */
+export declare const AccountTransferType$outboundSchema: z.ZodType<AccountTransferTypeOpen, z.ZodTypeDef, AccountTransferTypeOpen>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace AccountTransferType$ {
+    /** @deprecated use `AccountTransferType$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<AccountTransferTypeOpen, z.ZodTypeDef, unknown>;
+    /** @deprecated use `AccountTransferType$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<AccountTransferTypeOpen, z.ZodTypeDef, AccountTransferTypeOpen>;
+}
+/** @internal */
 export declare const Action$inboundSchema: z.ZodType<ActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
 export declare const Action$outboundSchema: z.ZodType<ActionOpen, z.ZodTypeDef, ActionOpen>;
@@ -4388,6 +4424,7 @@ export declare const AccountTransfer$inboundSchema: z.ZodType<AccountTransfer, z
 export type AccountTransfer$Outbound = {
     acats_asset_sequence_number?: string | undefined;
     acats_control_number?: string | undefined;
+    account_transfer_type?: string | undefined;
     action?: string | undefined;
     additional_instructions?: string | undefined;
     contra_party_account_number?: string | undefined;

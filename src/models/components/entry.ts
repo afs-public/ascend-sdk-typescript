@@ -53,6 +53,25 @@ export enum AccountMemo {
 export type AccountMemoOpen = OpenEnum<typeof AccountMemo>;
 
 /**
+ * The type of asset movement being performed within the lifecycle of an account transfer process
+ */
+export enum AccountTransferType {
+  AccountTransferTypeUnspecified = "ACCOUNT_TRANSFER_TYPE_UNSPECIFIED",
+  PartialTransferReceiver = "PARTIAL_TRANSFER_RECEIVER",
+  PartialTransferDeliverer = "PARTIAL_TRANSFER_DELIVERER",
+  FullAccountTransfer = "FULL_ACCOUNT_TRANSFER",
+  ResidualCredit = "RESIDUAL_CREDIT",
+  MutualFundCleanup = "MUTUAL_FUND_CLEANUP",
+  FailReversal = "FAIL_REVERSAL",
+  Reclaim = "RECLAIM",
+  PositionTransferFund = "POSITION_TRANSFER_FUND",
+}
+/**
+ * The type of asset movement being performed within the lifecycle of an account transfer process
+ */
+export type AccountTransferTypeOpen = OpenEnum<typeof AccountTransferType>;
+
+/**
  * Indicates whether the account transfer is incoming or outgoing
  */
 export enum Action {
@@ -92,6 +111,10 @@ export type AccountTransfer = {
    * the unique transfer Identifier assigned by NSCC
    */
   acatsControlNumber?: string | undefined;
+  /**
+   * The type of asset movement being performed within the lifecycle of an account transfer process
+   */
+  accountTransferType?: AccountTransferTypeOpen | undefined;
   /**
    * Indicates whether the account transfer is incoming or outgoing
    */
@@ -4750,6 +4773,38 @@ export namespace AccountMemo$ {
 }
 
 /** @internal */
+export const AccountTransferType$inboundSchema: z.ZodType<
+  AccountTransferTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(AccountTransferType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const AccountTransferType$outboundSchema: z.ZodType<
+  AccountTransferTypeOpen,
+  z.ZodTypeDef,
+  AccountTransferTypeOpen
+> = z.union([
+  z.nativeEnum(AccountTransferType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AccountTransferType$ {
+  /** @deprecated use `AccountTransferType$inboundSchema` instead. */
+  export const inboundSchema = AccountTransferType$inboundSchema;
+  /** @deprecated use `AccountTransferType$outboundSchema` instead. */
+  export const outboundSchema = AccountTransferType$outboundSchema;
+}
+
+/** @internal */
 export const Action$inboundSchema: z.ZodType<
   ActionOpen,
   z.ZodTypeDef,
@@ -4821,6 +4876,7 @@ export const AccountTransfer$inboundSchema: z.ZodType<
 > = z.object({
   acats_asset_sequence_number: z.string().optional(),
   acats_control_number: z.string().optional(),
+  account_transfer_type: AccountTransferType$inboundSchema.optional(),
   action: Action$inboundSchema.optional(),
   additional_instructions: z.string().optional(),
   contra_party_account_number: z.string().optional(),
@@ -4831,6 +4887,7 @@ export const AccountTransfer$inboundSchema: z.ZodType<
   return remap$(v, {
     "acats_asset_sequence_number": "acatsAssetSequenceNumber",
     "acats_control_number": "acatsControlNumber",
+    "account_transfer_type": "accountTransferType",
     "additional_instructions": "additionalInstructions",
     "contra_party_account_number": "contraPartyAccountNumber",
     "contra_party_id": "contraPartyId",
@@ -4841,6 +4898,7 @@ export const AccountTransfer$inboundSchema: z.ZodType<
 export type AccountTransfer$Outbound = {
   acats_asset_sequence_number?: string | undefined;
   acats_control_number?: string | undefined;
+  account_transfer_type?: string | undefined;
   action?: string | undefined;
   additional_instructions?: string | undefined;
   contra_party_account_number?: string | undefined;
@@ -4857,6 +4915,7 @@ export const AccountTransfer$outboundSchema: z.ZodType<
 > = z.object({
   acatsAssetSequenceNumber: z.string().optional(),
   acatsControlNumber: z.string().optional(),
+  accountTransferType: AccountTransferType$outboundSchema.optional(),
   action: Action$outboundSchema.optional(),
   additionalInstructions: z.string().optional(),
   contraPartyAccountNumber: z.string().optional(),
@@ -4867,6 +4926,7 @@ export const AccountTransfer$outboundSchema: z.ZodType<
   return remap$(v, {
     acatsAssetSequenceNumber: "acats_asset_sequence_number",
     acatsControlNumber: "acats_control_number",
+    accountTransferType: "account_transfer_type",
     additionalInstructions: "additional_instructions",
     contraPartyAccountNumber: "contra_party_account_number",
     contraPartyId: "contra_party_id",

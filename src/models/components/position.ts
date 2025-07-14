@@ -198,6 +198,10 @@ export type Position = {
    */
   pendingWithdrawal?: PendingWithdrawal | null | undefined;
   /**
+   * The position version for an asset/account combo. This number only increases, such that larger `position_version`s are newer than lower ones.
+   */
+  positionVersion?: string | undefined;
+  /**
    * Computed fieldsOriginal Settled Position before and as-of changesComputed based on the bucket values to represet the total settled position in an account  Currently defined as `free` + `fpsl` + `pending_outgoing_acat` + `drip` + `pending_withdrawal`, but if/when new buckets are added this value will need to change to reflect them
    */
   settled?: Settled | null | undefined;
@@ -668,6 +672,7 @@ export const Position$inboundSchema: z.ZodType<
   ).optional(),
   pending_withdrawal: z.nullable(z.lazy(() => PendingWithdrawal$inboundSchema))
     .optional(),
+  position_version: z.string().optional(),
   settled: z.nullable(z.lazy(() => Settled$inboundSchema)).optional(),
   trade: z.nullable(z.lazy(() => PositionTrade$inboundSchema)).optional(),
   unrestricted: z.nullable(z.lazy(() => Unrestricted$inboundSchema)).optional(),
@@ -682,6 +687,7 @@ export const Position$inboundSchema: z.ZodType<
     "pending_drip": "pendingDrip",
     "pending_outgoing_acat": "pendingOutgoingAcat",
     "pending_withdrawal": "pendingWithdrawal",
+    "position_version": "positionVersion",
   });
 });
 
@@ -700,6 +706,7 @@ export type Position$Outbound = {
   pending_drip?: PendingDrip$Outbound | null | undefined;
   pending_outgoing_acat?: PendingOutgoingAcat$Outbound | null | undefined;
   pending_withdrawal?: PendingWithdrawal$Outbound | null | undefined;
+  position_version?: string | undefined;
   settled?: Settled$Outbound | null | undefined;
   trade?: PositionTrade$Outbound | null | undefined;
   unrestricted?: Unrestricted$Outbound | null | undefined;
@@ -730,6 +737,7 @@ export const Position$outboundSchema: z.ZodType<
   ).optional(),
   pendingWithdrawal: z.nullable(z.lazy(() => PendingWithdrawal$outboundSchema))
     .optional(),
+  positionVersion: z.string().optional(),
   settled: z.nullable(z.lazy(() => Settled$outboundSchema)).optional(),
   trade: z.nullable(z.lazy(() => PositionTrade$outboundSchema)).optional(),
   unrestricted: z.nullable(z.lazy(() => Unrestricted$outboundSchema))
@@ -745,6 +753,7 @@ export const Position$outboundSchema: z.ZodType<
     pendingDrip: "pending_drip",
     pendingOutgoingAcat: "pending_outgoing_acat",
     pendingWithdrawal: "pending_withdrawal",
+    positionVersion: "position_version",
   });
 });
 

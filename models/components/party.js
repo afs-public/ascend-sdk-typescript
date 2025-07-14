@@ -2128,6 +2128,7 @@ exports.PartyLegalNaturalPerson$inboundSchema = z.object({
     correspondent_employee: z.boolean().optional(),
     correspondent_id: z.string().optional(),
     custodian_employee: z.boolean().optional(),
+    customer_identification_id: z.string().optional(),
     death_date: z.nullable(z.lazy(() => exports.PartyDeathDate$inboundSchema)).optional(),
     doing_business_as: z.array(z.string()).optional(),
     employment: z.nullable(z.lazy(() => exports.PartyEmployment$inboundSchema))
@@ -2165,6 +2166,7 @@ exports.PartyLegalNaturalPerson$inboundSchema = z.object({
         "correspondent_employee": "correspondentEmployee",
         "correspondent_id": "correspondentId",
         "custodian_employee": "custodianEmployee",
+        "customer_identification_id": "customerIdentificationId",
         "death_date": "deathDate",
         "doing_business_as": "doingBusinessAs",
         "family_name": "familyName",
@@ -2201,6 +2203,7 @@ exports.PartyLegalNaturalPerson$outboundSchema = z.object({
     correspondentEmployee: z.boolean().optional(),
     correspondentId: z.string().optional(),
     custodianEmployee: z.boolean().optional(),
+    customerIdentificationId: z.string().optional(),
     deathDate: z.nullable(z.lazy(() => exports.PartyDeathDate$outboundSchema)).optional(),
     doingBusinessAs: z.array(z.string()).optional(),
     employment: z.nullable(z.lazy(() => exports.PartyEmployment$outboundSchema))
@@ -2238,6 +2241,7 @@ exports.PartyLegalNaturalPerson$outboundSchema = z.object({
         correspondentEmployee: "correspondent_employee",
         correspondentId: "correspondent_id",
         custodianEmployee: "custodian_employee",
+        customerIdentificationId: "customer_identification_id",
         deathDate: "death_date",
         doingBusinessAs: "doing_business_as",
         familyName: "family_name",
