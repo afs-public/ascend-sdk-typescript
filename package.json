@@ -1,10 +1,10 @@
 {
   "name": "@apexfintechsolutions/ascend-sdk",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "author": "Apex Fintech Solutions",
+  "license": "MIT",
   "description": "Apex Ascend SDK",
   "homepage": "https://apexfintechsolutions.com",
-  "license": "MIT",
   "main": "./index.js",
   "sideEffects": false,
   "scripts": {
