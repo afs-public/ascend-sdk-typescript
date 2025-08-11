@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The process date of the batch associated with the report.
@@ -114,6 +117,20 @@ export namespace ProcessDate$ {
   export type Outbound = ProcessDate$Outbound;
 }
 
+export function processDateToJSON(processDate: ProcessDate): string {
+  return JSON.stringify(ProcessDate$outboundSchema.parse(processDate));
+}
+
+export function processDateFromJSON(
+  jsonString: string,
+): SafeParseResult<ProcessDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProcessDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProcessDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const LocateIctReportResponseProgram$inboundSchema: z.ZodType<
   LocateIctReportResponseProgramOpen,
@@ -208,4 +225,22 @@ export namespace LocateIctReportResponse$ {
   export const outboundSchema = LocateIctReportResponse$outboundSchema;
   /** @deprecated use `LocateIctReportResponse$Outbound` instead. */
   export type Outbound = LocateIctReportResponse$Outbound;
+}
+
+export function locateIctReportResponseToJSON(
+  locateIctReportResponse: LocateIctReportResponse,
+): string {
+  return JSON.stringify(
+    LocateIctReportResponse$outboundSchema.parse(locateIctReportResponse),
+  );
+}
+
+export function locateIctReportResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LocateIctReportResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LocateIctReportResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocateIctReportResponse' from JSON`,
+  );
 }

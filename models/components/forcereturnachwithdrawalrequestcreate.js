@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForceReturnAchWithdrawalRequestCreate$ = exports.ForceReturnAchWithdrawalRequestCreate$outboundSchema = exports.ForceReturnAchWithdrawalRequestCreate$inboundSchema = void 0;
+exports.forceReturnAchWithdrawalRequestCreateToJSON = forceReturnAchWithdrawalRequestCreateToJSON;
+exports.forceReturnAchWithdrawalRequestCreateFromJSON = forceReturnAchWithdrawalRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const nachareturncreate_js_1 = require("./nachareturncreate.js");
 /** @internal */
 exports.ForceReturnAchWithdrawalRequestCreate$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ForceReturnAchWithdrawalRequestCreate$;
     /** @deprecated use `ForceReturnAchWithdrawalRequestCreate$outboundSchema` instead. */
     ForceReturnAchWithdrawalRequestCreate$.outboundSchema = exports.ForceReturnAchWithdrawalRequestCreate$outboundSchema;
 })(ForceReturnAchWithdrawalRequestCreate$ || (exports.ForceReturnAchWithdrawalRequestCreate$ = ForceReturnAchWithdrawalRequestCreate$ = {}));
+function forceReturnAchWithdrawalRequestCreateToJSON(forceReturnAchWithdrawalRequestCreate) {
+    return JSON.stringify(exports.ForceReturnAchWithdrawalRequestCreate$outboundSchema.parse(forceReturnAchWithdrawalRequestCreate));
+}
+function forceReturnAchWithdrawalRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForceReturnAchWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForceReturnAchWithdrawalRequestCreate' from JSON`);
+}
 //# sourceMappingURL=forcereturnachwithdrawalrequestcreate.js.map

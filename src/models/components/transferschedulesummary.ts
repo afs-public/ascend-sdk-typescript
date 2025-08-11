@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A cash amount in the format of decimal value. An unset or empty value represents a full disbursement
@@ -407,6 +410,26 @@ export namespace TransferScheduleSummaryAmount$ {
   export type Outbound = TransferScheduleSummaryAmount$Outbound;
 }
 
+export function transferScheduleSummaryAmountToJSON(
+  transferScheduleSummaryAmount: TransferScheduleSummaryAmount,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryAmount$outboundSchema.parse(
+      transferScheduleSummaryAmount,
+    ),
+  );
+}
+
+export function transferScheduleSummaryAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferScheduleSummaryAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferScheduleSummaryAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferScheduleSummaryAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const Direction$inboundSchema: z.ZodType<
   DirectionOpen,
@@ -595,6 +618,33 @@ export namespace TransferScheduleSummaryRetirementContribution$ {
   export type Outbound = TransferScheduleSummaryRetirementContribution$Outbound;
 }
 
+export function transferScheduleSummaryRetirementContributionToJSON(
+  transferScheduleSummaryRetirementContribution:
+    TransferScheduleSummaryRetirementContribution,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryRetirementContribution$outboundSchema.parse(
+      transferScheduleSummaryRetirementContribution,
+    ),
+  );
+}
+
+export function transferScheduleSummaryRetirementContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummaryRetirementContribution,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummaryRetirementContribution$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TransferScheduleSummaryRetirementContribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransferScheduleSummaryRetirementDistributionAmount$inboundSchema:
   z.ZodType<
@@ -636,6 +686,33 @@ export namespace TransferScheduleSummaryRetirementDistributionAmount$ {
     TransferScheduleSummaryRetirementDistributionAmount$Outbound;
 }
 
+export function transferScheduleSummaryRetirementDistributionAmountToJSON(
+  transferScheduleSummaryRetirementDistributionAmount:
+    TransferScheduleSummaryRetirementDistributionAmount,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryRetirementDistributionAmount$outboundSchema.parse(
+      transferScheduleSummaryRetirementDistributionAmount,
+    ),
+  );
+}
+
+export function transferScheduleSummaryRetirementDistributionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummaryRetirementDistributionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummaryRetirementDistributionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TransferScheduleSummaryRetirementDistributionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransferScheduleSummaryPercentage$inboundSchema: z.ZodType<
   TransferScheduleSummaryPercentage,
@@ -671,6 +748,26 @@ export namespace TransferScheduleSummaryPercentage$ {
     TransferScheduleSummaryPercentage$outboundSchema;
   /** @deprecated use `TransferScheduleSummaryPercentage$Outbound` instead. */
   export type Outbound = TransferScheduleSummaryPercentage$Outbound;
+}
+
+export function transferScheduleSummaryPercentageToJSON(
+  transferScheduleSummaryPercentage: TransferScheduleSummaryPercentage,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryPercentage$outboundSchema.parse(
+      transferScheduleSummaryPercentage,
+    ),
+  );
+}
+
+export function transferScheduleSummaryPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferScheduleSummaryPercentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferScheduleSummaryPercentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferScheduleSummaryPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -731,6 +828,33 @@ export namespace TransferScheduleSummaryFederalTaxWithholding$ {
   export type Outbound = TransferScheduleSummaryFederalTaxWithholding$Outbound;
 }
 
+export function transferScheduleSummaryFederalTaxWithholdingToJSON(
+  transferScheduleSummaryFederalTaxWithholding:
+    TransferScheduleSummaryFederalTaxWithholding,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryFederalTaxWithholding$outboundSchema.parse(
+      transferScheduleSummaryFederalTaxWithholding,
+    ),
+  );
+}
+
+export function transferScheduleSummaryFederalTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummaryFederalTaxWithholding,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummaryFederalTaxWithholding$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TransferScheduleSummaryFederalTaxWithholding' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$inboundSchema:
   z.ZodType<
@@ -773,6 +897,33 @@ export namespace TransferScheduleSummaryRetirementDistributionStateTaxWithholdin
     TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$Outbound;
 }
 
+export function transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountToJSON(
+  transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount:
+    TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$outboundSchema
+      .parse(
+        transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount,
+      ),
+  );
+}
+
+export function transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransferScheduleSummaryRetirementDistributionPercentage$inboundSchema:
   z.ZodType<
@@ -812,6 +963,31 @@ export namespace TransferScheduleSummaryRetirementDistributionPercentage$ {
   /** @deprecated use `TransferScheduleSummaryRetirementDistributionPercentage$Outbound` instead. */
   export type Outbound =
     TransferScheduleSummaryRetirementDistributionPercentage$Outbound;
+}
+
+export function transferScheduleSummaryRetirementDistributionPercentageToJSON(
+  transferScheduleSummaryRetirementDistributionPercentage:
+    TransferScheduleSummaryRetirementDistributionPercentage,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryRetirementDistributionPercentage$outboundSchema
+      .parse(transferScheduleSummaryRetirementDistributionPercentage),
+  );
+}
+
+export function transferScheduleSummaryRetirementDistributionPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummaryRetirementDistributionPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummaryRetirementDistributionPercentage$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'TransferScheduleSummaryRetirementDistributionPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -874,6 +1050,33 @@ export namespace TransferScheduleSummaryStateTaxWithholding$ {
     TransferScheduleSummaryStateTaxWithholding$outboundSchema;
   /** @deprecated use `TransferScheduleSummaryStateTaxWithholding$Outbound` instead. */
   export type Outbound = TransferScheduleSummaryStateTaxWithholding$Outbound;
+}
+
+export function transferScheduleSummaryStateTaxWithholdingToJSON(
+  transferScheduleSummaryStateTaxWithholding:
+    TransferScheduleSummaryStateTaxWithholding,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryStateTaxWithholding$outboundSchema.parse(
+      transferScheduleSummaryStateTaxWithholding,
+    ),
+  );
+}
+
+export function transferScheduleSummaryStateTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummaryStateTaxWithholding,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummaryStateTaxWithholding$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TransferScheduleSummaryStateTaxWithholding' from JSON`,
+  );
 }
 
 /** @internal */
@@ -999,6 +1202,33 @@ export namespace TransferScheduleSummaryRetirementDistribution$ {
   export type Outbound = TransferScheduleSummaryRetirementDistribution$Outbound;
 }
 
+export function transferScheduleSummaryRetirementDistributionToJSON(
+  transferScheduleSummaryRetirementDistribution:
+    TransferScheduleSummaryRetirementDistribution,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryRetirementDistribution$outboundSchema.parse(
+      transferScheduleSummaryRetirementDistribution,
+    ),
+  );
+}
+
+export function transferScheduleSummaryRetirementDistributionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummaryRetirementDistribution,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummaryRetirementDistribution$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TransferScheduleSummaryRetirementDistribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const StartDate$inboundSchema: z.ZodType<
   StartDate,
@@ -1039,6 +1269,20 @@ export namespace StartDate$ {
   export const outboundSchema = StartDate$outboundSchema;
   /** @deprecated use `StartDate$Outbound` instead. */
   export type Outbound = StartDate$Outbound;
+}
+
+export function startDateToJSON(startDate: StartDate): string {
+  return JSON.stringify(StartDate$outboundSchema.parse(startDate));
+}
+
+export function startDateFromJSON(
+  jsonString: string,
+): SafeParseResult<StartDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StartDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StartDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1165,6 +1409,24 @@ export namespace ScheduleProperties$ {
   export type Outbound = ScheduleProperties$Outbound;
 }
 
+export function schedulePropertiesToJSON(
+  scheduleProperties: ScheduleProperties,
+): string {
+  return JSON.stringify(
+    ScheduleProperties$outboundSchema.parse(scheduleProperties),
+  );
+}
+
+export function schedulePropertiesFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduleProperties, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduleProperties$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduleProperties' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransferScheduleSummary$inboundSchema: z.ZodType<
   TransferScheduleSummary,
@@ -1256,4 +1518,22 @@ export namespace TransferScheduleSummary$ {
   export const outboundSchema = TransferScheduleSummary$outboundSchema;
   /** @deprecated use `TransferScheduleSummary$Outbound` instead. */
   export type Outbound = TransferScheduleSummary$Outbound;
+}
+
+export function transferScheduleSummaryToJSON(
+  transferScheduleSummary: TransferScheduleSummary,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummary$outboundSchema.parse(transferScheduleSummary),
+  );
+}
+
+export function transferScheduleSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferScheduleSummary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferScheduleSummary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferScheduleSummary' from JSON`,
+  );
 }

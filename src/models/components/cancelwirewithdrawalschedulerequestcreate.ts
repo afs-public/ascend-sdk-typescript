@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel a Wire withdrawal transfer schedule
@@ -58,4 +61,31 @@ export namespace CancelWireWithdrawalScheduleRequestCreate$ {
     CancelWireWithdrawalScheduleRequestCreate$outboundSchema;
   /** @deprecated use `CancelWireWithdrawalScheduleRequestCreate$Outbound` instead. */
   export type Outbound = CancelWireWithdrawalScheduleRequestCreate$Outbound;
+}
+
+export function cancelWireWithdrawalScheduleRequestCreateToJSON(
+  cancelWireWithdrawalScheduleRequestCreate:
+    CancelWireWithdrawalScheduleRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelWireWithdrawalScheduleRequestCreate$outboundSchema.parse(
+      cancelWireWithdrawalScheduleRequestCreate,
+    ),
+  );
+}
+
+export function cancelWireWithdrawalScheduleRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelWireWithdrawalScheduleRequestCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelWireWithdrawalScheduleRequestCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelWireWithdrawalScheduleRequestCreate' from JSON`,
+  );
 }

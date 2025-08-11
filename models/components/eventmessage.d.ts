@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Represents an envelope and the data of an event
  */
@@ -72,4 +74,6 @@ export declare namespace EventMessage$ {
     /** @deprecated use `EventMessage$Outbound` instead. */
     type Outbound = EventMessage$Outbound;
 }
+export declare function eventMessageToJSON(eventMessage: EventMessage): string;
+export declare function eventMessageFromJSON(jsonString: string): SafeParseResult<EventMessage, SDKValidationError>;
 //# sourceMappingURL=eventmessage.d.ts.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LegalNaturalPerson,
   LegalNaturalPerson$inboundSchema,
@@ -72,4 +75,24 @@ export namespace ListLegalNaturalPersonsResponse$ {
   export const outboundSchema = ListLegalNaturalPersonsResponse$outboundSchema;
   /** @deprecated use `ListLegalNaturalPersonsResponse$Outbound` instead. */
   export type Outbound = ListLegalNaturalPersonsResponse$Outbound;
+}
+
+export function listLegalNaturalPersonsResponseToJSON(
+  listLegalNaturalPersonsResponse: ListLegalNaturalPersonsResponse,
+): string {
+  return JSON.stringify(
+    ListLegalNaturalPersonsResponse$outboundSchema.parse(
+      listLegalNaturalPersonsResponse,
+    ),
+  );
+}
+
+export function listLegalNaturalPersonsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListLegalNaturalPersonsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListLegalNaturalPersonsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListLegalNaturalPersonsResponse' from JSON`,
+  );
 }

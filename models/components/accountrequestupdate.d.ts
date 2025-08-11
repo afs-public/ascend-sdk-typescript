@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AccountTaxProfileUpdate, AccountTaxProfileUpdate$Outbound } from "./accounttaxprofileupdate.js";
 import { IdentifierUpdate, IdentifierUpdate$Outbound } from "./identifierupdate.js";
 import { InterestedPartyUpdate, InterestedPartyUpdate$Outbound } from "./interestedpartyupdate.js";
@@ -122,4 +124,6 @@ export declare namespace AccountRequestUpdate$ {
     /** @deprecated use `AccountRequestUpdate$Outbound` instead. */
     type Outbound = AccountRequestUpdate$Outbound;
 }
+export declare function accountRequestUpdateToJSON(accountRequestUpdate: AccountRequestUpdate): string;
+export declare function accountRequestUpdateFromJSON(jsonString: string): SafeParseResult<AccountRequestUpdate, SDKValidationError>;
 //# sourceMappingURL=accountrequestupdate.d.ts.map

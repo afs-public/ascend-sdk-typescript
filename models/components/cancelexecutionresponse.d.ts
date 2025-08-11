@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYield, BondYield$Outbound } from "./bondyield.js";
 /**
  * The amount of interest that has been accrued in the issuing currency for a single instrument. Requirement of 15 or less integral number and 2 or less fractional precision. Required for FIXED_INCOME trades. Not allowed for trades of other instrument types.
@@ -209,6 +211,8 @@ export declare namespace CancelExecutionResponseAccruedInterestAmount$ {
     /** @deprecated use `CancelExecutionResponseAccruedInterestAmount$Outbound` instead. */
     type Outbound = CancelExecutionResponseAccruedInterestAmount$Outbound;
 }
+export declare function cancelExecutionResponseAccruedInterestAmountToJSON(cancelExecutionResponseAccruedInterestAmount: CancelExecutionResponseAccruedInterestAmount): string;
+export declare function cancelExecutionResponseAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponseAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponseCommissionAmount$inboundSchema: z.ZodType<CancelExecutionResponseCommissionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -229,6 +233,8 @@ export declare namespace CancelExecutionResponseCommissionAmount$ {
     /** @deprecated use `CancelExecutionResponseCommissionAmount$Outbound` instead. */
     type Outbound = CancelExecutionResponseCommissionAmount$Outbound;
 }
+export declare function cancelExecutionResponseCommissionAmountToJSON(cancelExecutionResponseCommissionAmount: CancelExecutionResponseCommissionAmount): string;
+export declare function cancelExecutionResponseCommissionAmountFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponseCommissionAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponseGrossAmount$inboundSchema: z.ZodType<CancelExecutionResponseGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -249,6 +255,8 @@ export declare namespace CancelExecutionResponseGrossAmount$ {
     /** @deprecated use `CancelExecutionResponseGrossAmount$Outbound` instead. */
     type Outbound = CancelExecutionResponseGrossAmount$Outbound;
 }
+export declare function cancelExecutionResponseGrossAmountToJSON(cancelExecutionResponseGrossAmount: CancelExecutionResponseGrossAmount): string;
+export declare function cancelExecutionResponseGrossAmountFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponseGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponsePrevailingMarketPrice$inboundSchema: z.ZodType<CancelExecutionResponsePrevailingMarketPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -269,6 +277,8 @@ export declare namespace CancelExecutionResponsePrevailingMarketPrice$ {
     /** @deprecated use `CancelExecutionResponsePrevailingMarketPrice$Outbound` instead. */
     type Outbound = CancelExecutionResponsePrevailingMarketPrice$Outbound;
 }
+export declare function cancelExecutionResponsePrevailingMarketPriceToJSON(cancelExecutionResponsePrevailingMarketPrice: CancelExecutionResponsePrevailingMarketPrice): string;
+export declare function cancelExecutionResponsePrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponsePrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponsePrice$inboundSchema: z.ZodType<CancelExecutionResponsePrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -289,6 +299,8 @@ export declare namespace CancelExecutionResponsePrice$ {
     /** @deprecated use `CancelExecutionResponsePrice$Outbound` instead. */
     type Outbound = CancelExecutionResponsePrice$Outbound;
 }
+export declare function cancelExecutionResponsePriceToJSON(cancelExecutionResponsePrice: CancelExecutionResponsePrice): string;
+export declare function cancelExecutionResponsePriceFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponsePrice, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponsePriceAdjustmentAmount$inboundSchema: z.ZodType<CancelExecutionResponsePriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -309,6 +321,8 @@ export declare namespace CancelExecutionResponsePriceAdjustmentAmount$ {
     /** @deprecated use `CancelExecutionResponsePriceAdjustmentAmount$Outbound` instead. */
     type Outbound = CancelExecutionResponsePriceAdjustmentAmount$Outbound;
 }
+export declare function cancelExecutionResponsePriceAdjustmentAmountToJSON(cancelExecutionResponsePriceAdjustmentAmount: CancelExecutionResponsePriceAdjustmentAmount): string;
+export declare function cancelExecutionResponsePriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponsePriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponsePriceAdjustmentType$inboundSchema: z.ZodType<CancelExecutionResponsePriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -344,6 +358,8 @@ export declare namespace CancelExecutionResponsePriceAdjustment$ {
     /** @deprecated use `CancelExecutionResponsePriceAdjustment$Outbound` instead. */
     type Outbound = CancelExecutionResponsePriceAdjustment$Outbound;
 }
+export declare function cancelExecutionResponsePriceAdjustmentToJSON(cancelExecutionResponsePriceAdjustment: CancelExecutionResponsePriceAdjustment): string;
+export declare function cancelExecutionResponsePriceAdjustmentFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponsePriceAdjustment, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponseQuantity$inboundSchema: z.ZodType<CancelExecutionResponseQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -364,6 +380,8 @@ export declare namespace CancelExecutionResponseQuantity$ {
     /** @deprecated use `CancelExecutionResponseQuantity$Outbound` instead. */
     type Outbound = CancelExecutionResponseQuantity$Outbound;
 }
+export declare function cancelExecutionResponseQuantityToJSON(cancelExecutionResponseQuantity: CancelExecutionResponseQuantity): string;
+export declare function cancelExecutionResponseQuantityFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponseQuantity, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponseState$inboundSchema: z.ZodType<CancelExecutionResponseStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -414,6 +432,8 @@ export declare namespace CancelExecutionResponseExecution$ {
     /** @deprecated use `CancelExecutionResponseExecution$Outbound` instead. */
     type Outbound = CancelExecutionResponseExecution$Outbound;
 }
+export declare function cancelExecutionResponseExecutionToJSON(cancelExecutionResponseExecution: CancelExecutionResponseExecution): string;
+export declare function cancelExecutionResponseExecutionFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponseExecution, SDKValidationError>;
 /** @internal */
 export declare const CancelExecutionResponse$inboundSchema: z.ZodType<CancelExecutionResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -434,4 +454,6 @@ export declare namespace CancelExecutionResponse$ {
     /** @deprecated use `CancelExecutionResponse$Outbound` instead. */
     type Outbound = CancelExecutionResponse$Outbound;
 }
+export declare function cancelExecutionResponseToJSON(cancelExecutionResponse: CancelExecutionResponse): string;
+export declare function cancelExecutionResponseFromJSON(jsonString: string): SafeParseResult<CancelExecutionResponse, SDKValidationError>;
 //# sourceMappingURL=cancelexecutionresponse.d.ts.map

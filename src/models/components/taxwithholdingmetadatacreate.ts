@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Tax Authority for Enrollment
@@ -212,4 +215,24 @@ export namespace TaxWithholdingMetadataCreate$ {
   export const outboundSchema = TaxWithholdingMetadataCreate$outboundSchema;
   /** @deprecated use `TaxWithholdingMetadataCreate$Outbound` instead. */
   export type Outbound = TaxWithholdingMetadataCreate$Outbound;
+}
+
+export function taxWithholdingMetadataCreateToJSON(
+  taxWithholdingMetadataCreate: TaxWithholdingMetadataCreate,
+): string {
+  return JSON.stringify(
+    TaxWithholdingMetadataCreate$outboundSchema.parse(
+      taxWithholdingMetadataCreate,
+    ),
+  );
+}
+
+export function taxWithholdingMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TaxWithholdingMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TaxWithholdingMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TaxWithholdingMetadataCreate' from JSON`,
+  );
 }

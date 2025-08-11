@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EddAccountEnrollmentMetadataCreate,
   EddAccountEnrollmentMetadataCreate$inboundSchema,
@@ -197,4 +200,24 @@ export namespace LLCEnrollmentMetadataCreate$ {
   export const outboundSchema = LLCEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `LLCEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = LLCEnrollmentMetadataCreate$Outbound;
+}
+
+export function llcEnrollmentMetadataCreateToJSON(
+  llcEnrollmentMetadataCreate: LLCEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    LLCEnrollmentMetadataCreate$outboundSchema.parse(
+      llcEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function llcEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<LLCEnrollmentMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LLCEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LLCEnrollmentMetadataCreate' from JSON`,
+  );
 }

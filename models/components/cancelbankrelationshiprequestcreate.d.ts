@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to cancel an existing bank relationship.
  */
@@ -33,4 +35,6 @@ export declare namespace CancelBankRelationshipRequestCreate$ {
     /** @deprecated use `CancelBankRelationshipRequestCreate$Outbound` instead. */
     type Outbound = CancelBankRelationshipRequestCreate$Outbound;
 }
+export declare function cancelBankRelationshipRequestCreateToJSON(cancelBankRelationshipRequestCreate: CancelBankRelationshipRequestCreate): string;
+export declare function cancelBankRelationshipRequestCreateFromJSON(jsonString: string): SafeParseResult<CancelBankRelationshipRequestCreate, SDKValidationError>;
 //# sourceMappingURL=cancelbankrelationshiprequestcreate.d.ts.map

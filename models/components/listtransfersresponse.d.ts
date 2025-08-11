@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AcatsTransfer, AcatsTransfer$Outbound } from "./acatstransfer.js";
 /**
  * Response to list existing transfers.
@@ -34,4 +36,6 @@ export declare namespace ListTransfersResponse$ {
     /** @deprecated use `ListTransfersResponse$Outbound` instead. */
     type Outbound = ListTransfersResponse$Outbound;
 }
+export declare function listTransfersResponseToJSON(listTransfersResponse: ListTransfersResponse): string;
+export declare function listTransfersResponseFromJSON(jsonString: string): SafeParseResult<ListTransfersResponse, SDKValidationError>;
 //# sourceMappingURL=listtransfersresponse.d.ts.map

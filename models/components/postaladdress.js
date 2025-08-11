@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostalAddress$ = exports.PostalAddress$outboundSchema = exports.PostalAddress$inboundSchema = void 0;
+exports.postalAddressToJSON = postalAddressToJSON;
+exports.postalAddressFromJSON = postalAddressFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.PostalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -96,4 +99,10 @@ var PostalAddress$;
     /** @deprecated use `PostalAddress$outboundSchema` instead. */
     PostalAddress$.outboundSchema = exports.PostalAddress$outboundSchema;
 })(PostalAddress$ || (exports.PostalAddress$ = PostalAddress$ = {}));
+function postalAddressToJSON(postalAddress) {
+    return JSON.stringify(exports.PostalAddress$outboundSchema.parse(postalAddress));
+}
+function postalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PostalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PostalAddress' from JSON`);
+}
 //# sourceMappingURL=postaladdress.js.map

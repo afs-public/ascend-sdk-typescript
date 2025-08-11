@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BasketOrdersServiceListBasketOrdersRequest = {
     /**
      * The correspondent id.
@@ -17,6 +19,10 @@ export type BasketOrdersServiceListBasketOrdersRequest = {
      * A page token, received from a previous `ListBasketOrders` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBasketOrders` must match the call that provided the page token.
      */
     pageToken?: string | undefined;
+    /**
+     * Indicates whether basket orders with a status of REMOVED_BEFORE_SUBMISSION will be included in the response. By default, removed orders are not returned.
+     */
+    showRemoved?: boolean | undefined;
 };
 export type BasketOrdersServiceListBasketOrdersResponse = {
     httpMeta: components.HTTPMetadata;
@@ -37,6 +43,7 @@ export type BasketOrdersServiceListBasketOrdersRequest$Outbound = {
     basket_id: string;
     page_size?: number | undefined;
     page_token?: string | undefined;
+    show_removed?: boolean | undefined;
 };
 /** @internal */
 export declare const BasketOrdersServiceListBasketOrdersRequest$outboundSchema: z.ZodType<BasketOrdersServiceListBasketOrdersRequest$Outbound, z.ZodTypeDef, BasketOrdersServiceListBasketOrdersRequest>;
@@ -52,6 +59,8 @@ export declare namespace BasketOrdersServiceListBasketOrdersRequest$ {
     /** @deprecated use `BasketOrdersServiceListBasketOrdersRequest$Outbound` instead. */
     type Outbound = BasketOrdersServiceListBasketOrdersRequest$Outbound;
 }
+export declare function basketOrdersServiceListBasketOrdersRequestToJSON(basketOrdersServiceListBasketOrdersRequest: BasketOrdersServiceListBasketOrdersRequest): string;
+export declare function basketOrdersServiceListBasketOrdersRequestFromJSON(jsonString: string): SafeParseResult<BasketOrdersServiceListBasketOrdersRequest, SDKValidationError>;
 /** @internal */
 export declare const BasketOrdersServiceListBasketOrdersResponse$inboundSchema: z.ZodType<BasketOrdersServiceListBasketOrdersResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -74,4 +83,6 @@ export declare namespace BasketOrdersServiceListBasketOrdersResponse$ {
     /** @deprecated use `BasketOrdersServiceListBasketOrdersResponse$Outbound` instead. */
     type Outbound = BasketOrdersServiceListBasketOrdersResponse$Outbound;
 }
+export declare function basketOrdersServiceListBasketOrdersResponseToJSON(basketOrdersServiceListBasketOrdersResponse: BasketOrdersServiceListBasketOrdersResponse): string;
+export declare function basketOrdersServiceListBasketOrdersResponseFromJSON(jsonString: string): SafeParseResult<BasketOrdersServiceListBasketOrdersResponse, SDKValidationError>;
 //# sourceMappingURL=basketordersservicelistbasketorders.d.ts.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The request for closing an Account.
  */
@@ -28,4 +30,6 @@ export declare namespace CloseAccountRequestCreate$ {
     /** @deprecated use `CloseAccountRequestCreate$Outbound` instead. */
     type Outbound = CloseAccountRequestCreate$Outbound;
 }
+export declare function closeAccountRequestCreateToJSON(closeAccountRequestCreate: CloseAccountRequestCreate): string;
+export declare function closeAccountRequestCreateFromJSON(jsonString: string): SafeParseResult<CloseAccountRequestCreate, SDKValidationError>;
 //# sourceMappingURL=closeaccountrequestcreate.d.ts.map

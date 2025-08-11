@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Retirement distribution type
@@ -155,4 +158,31 @@ export namespace DistributionConstraintsDistributionTypeInfo$ {
     DistributionConstraintsDistributionTypeInfo$outboundSchema;
   /** @deprecated use `DistributionConstraintsDistributionTypeInfo$Outbound` instead. */
   export type Outbound = DistributionConstraintsDistributionTypeInfo$Outbound;
+}
+
+export function distributionConstraintsDistributionTypeInfoToJSON(
+  distributionConstraintsDistributionTypeInfo:
+    DistributionConstraintsDistributionTypeInfo,
+): string {
+  return JSON.stringify(
+    DistributionConstraintsDistributionTypeInfo$outboundSchema.parse(
+      distributionConstraintsDistributionTypeInfo,
+    ),
+  );
+}
+
+export function distributionConstraintsDistributionTypeInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DistributionConstraintsDistributionTypeInfo,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DistributionConstraintsDistributionTypeInfo$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DistributionConstraintsDistributionTypeInfo' from JSON`,
+  );
 }

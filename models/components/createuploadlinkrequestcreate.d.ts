@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AccountDocumentUploadRequestCreate, AccountDocumentUploadRequestCreate$Outbound } from "./accountdocumentuploadrequestcreate.js";
 import { IDDocumentUploadRequestCreate, IDDocumentUploadRequestCreate$Outbound } from "./iddocumentuploadrequestcreate.js";
 /**
@@ -45,4 +47,6 @@ export declare namespace CreateUploadLinkRequestCreate$ {
     /** @deprecated use `CreateUploadLinkRequestCreate$Outbound` instead. */
     type Outbound = CreateUploadLinkRequestCreate$Outbound;
 }
+export declare function createUploadLinkRequestCreateToJSON(createUploadLinkRequestCreate: CreateUploadLinkRequestCreate): string;
+export declare function createUploadLinkRequestCreateFromJSON(jsonString: string): SafeParseResult<CreateUploadLinkRequestCreate, SDKValidationError>;
 //# sourceMappingURL=createuploadlinkrequestcreate.d.ts.map

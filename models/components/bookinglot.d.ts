@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
  *
@@ -105,6 +107,8 @@ export declare namespace BookingLotMoneyPrice$ {
     /** @deprecated use `BookingLotMoneyPrice$Outbound` instead. */
     type Outbound = BookingLotMoneyPrice$Outbound;
 }
+export declare function bookingLotMoneyPriceToJSON(bookingLotMoneyPrice: BookingLotMoneyPrice): string;
+export declare function bookingLotMoneyPriceFromJSON(jsonString: string): SafeParseResult<BookingLotMoneyPrice, SDKValidationError>;
 /** @internal */
 export declare const BookingLotMoney$inboundSchema: z.ZodType<BookingLotMoney, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -126,6 +130,8 @@ export declare namespace BookingLotMoney$ {
     /** @deprecated use `BookingLotMoney$Outbound` instead. */
     type Outbound = BookingLotMoney$Outbound;
 }
+export declare function bookingLotMoneyToJSON(bookingLotMoney: BookingLotMoney): string;
+export declare function bookingLotMoneyFromJSON(jsonString: string): SafeParseResult<BookingLotMoney, SDKValidationError>;
 /** @internal */
 export declare const BookingLotPrice$inboundSchema: z.ZodType<BookingLotPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -146,6 +152,8 @@ export declare namespace BookingLotPrice$ {
     /** @deprecated use `BookingLotPrice$Outbound` instead. */
     type Outbound = BookingLotPrice$Outbound;
 }
+export declare function bookingLotPriceToJSON(bookingLotPrice: BookingLotPrice): string;
+export declare function bookingLotPriceFromJSON(jsonString: string): SafeParseResult<BookingLotPrice, SDKValidationError>;
 /** @internal */
 export declare const BookingLotQuantity$inboundSchema: z.ZodType<BookingLotQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -166,6 +174,8 @@ export declare namespace BookingLotQuantity$ {
     /** @deprecated use `BookingLotQuantity$Outbound` instead. */
     type Outbound = BookingLotQuantity$Outbound;
 }
+export declare function bookingLotQuantityToJSON(bookingLotQuantity: BookingLotQuantity): string;
+export declare function bookingLotQuantityFromJSON(jsonString: string): SafeParseResult<BookingLotQuantity, SDKValidationError>;
 /** @internal */
 export declare const TradeDate$inboundSchema: z.ZodType<TradeDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -188,6 +198,8 @@ export declare namespace TradeDate$ {
     /** @deprecated use `TradeDate$Outbound` instead. */
     type Outbound = TradeDate$Outbound;
 }
+export declare function tradeDateToJSON(tradeDate: TradeDate): string;
+export declare function tradeDateFromJSON(jsonString: string): SafeParseResult<TradeDate, SDKValidationError>;
 /** @internal */
 export declare const BookingLot$inboundSchema: z.ZodType<BookingLot, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -212,4 +224,6 @@ export declare namespace BookingLot$ {
     /** @deprecated use `BookingLot$Outbound` instead. */
     type Outbound = BookingLot$Outbound;
 }
+export declare function bookingLotToJSON(bookingLot: BookingLot): string;
+export declare function bookingLotFromJSON(jsonString: string): SafeParseResult<BookingLot, SDKValidationError>;
 //# sourceMappingURL=bookinglot.d.ts.map

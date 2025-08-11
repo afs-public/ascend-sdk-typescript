@@ -1,5 +1,6 @@
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { ApexascendError } from "./apexascenderror.js";
 /**
  * The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
  */
@@ -20,7 +21,7 @@ export type StatusData = {
 /**
  * The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
  */
-export declare class Status extends Error {
+export declare class Status extends ApexascendError {
     /**
      * The code field contains an enum value of google.rpc.Code.
      */
@@ -31,7 +32,11 @@ export declare class Status extends Error {
     details?: Array<components.Any> | undefined;
     /** The original data that was passed to this error instance. */
     data$: StatusData;
-    constructor(err: StatusData);
+    constructor(err: StatusData, httpMeta: {
+        response: Response;
+        request: Request;
+        body: string;
+    });
 }
 /** @internal */
 export declare const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown>;

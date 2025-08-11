@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DistributionConstraints$ = exports.DistributionConstraints$outboundSchema = exports.DistributionConstraints$inboundSchema = void 0;
+exports.distributionConstraintsToJSON = distributionConstraintsToJSON;
+exports.distributionConstraintsFromJSON = distributionConstraintsFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const distributionconstraintsdistributiontypeinfo_js_1 = require("./distributionconstraintsdistributiontypeinfo.js");
 /** @internal */
 exports.DistributionConstraints$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var DistributionConstraints$;
     /** @deprecated use `DistributionConstraints$outboundSchema` instead. */
     DistributionConstraints$.outboundSchema = exports.DistributionConstraints$outboundSchema;
 })(DistributionConstraints$ || (exports.DistributionConstraints$ = DistributionConstraints$ = {}));
+function distributionConstraintsToJSON(distributionConstraints) {
+    return JSON.stringify(exports.DistributionConstraints$outboundSchema.parse(distributionConstraints));
+}
+function distributionConstraintsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DistributionConstraints$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DistributionConstraints' from JSON`);
+}
 //# sourceMappingURL=distributionconstraints.js.map

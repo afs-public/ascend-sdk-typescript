@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PriceAdjustmentCreate$ = exports.PriceAdjustmentCreate$outboundSchema = exports.PriceAdjustmentCreate$inboundSchema = exports.PriceAdjustmentType$ = exports.PriceAdjustmentType$outboundSchema = exports.PriceAdjustmentType$inboundSchema = exports.PriceAdjustmentType = void 0;
+exports.priceAdjustmentCreateToJSON = priceAdjustmentCreateToJSON;
+exports.priceAdjustmentCreateFromJSON = priceAdjustmentCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -104,4 +107,10 @@ var PriceAdjustmentCreate$;
     /** @deprecated use `PriceAdjustmentCreate$outboundSchema` instead. */
     PriceAdjustmentCreate$.outboundSchema = exports.PriceAdjustmentCreate$outboundSchema;
 })(PriceAdjustmentCreate$ || (exports.PriceAdjustmentCreate$ = PriceAdjustmentCreate$ = {}));
+function priceAdjustmentCreateToJSON(priceAdjustmentCreate) {
+    return JSON.stringify(exports.PriceAdjustmentCreate$outboundSchema.parse(priceAdjustmentCreate));
+}
+function priceAdjustmentCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PriceAdjustmentCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PriceAdjustmentCreate' from JSON`);
+}
 //# sourceMappingURL=priceadjustmentcreate.js.map

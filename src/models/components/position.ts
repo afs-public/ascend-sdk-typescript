@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * `settled` + any as of settled amounts for the date
@@ -251,6 +254,22 @@ export namespace AdjustedSettled$ {
   export type Outbound = AdjustedSettled$Outbound;
 }
 
+export function adjustedSettledToJSON(
+  adjustedSettled: AdjustedSettled,
+): string {
+  return JSON.stringify(AdjustedSettled$outboundSchema.parse(adjustedSettled));
+}
+
+export function adjustedSettledFromJSON(
+  jsonString: string,
+): SafeParseResult<AdjustedSettled, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AdjustedSettled$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AdjustedSettled' from JSON`,
+  );
+}
+
 /** @internal */
 export const AdjustedTrade$inboundSchema: z.ZodType<
   AdjustedTrade,
@@ -285,6 +304,20 @@ export namespace AdjustedTrade$ {
   export const outboundSchema = AdjustedTrade$outboundSchema;
   /** @deprecated use `AdjustedTrade$Outbound` instead. */
   export type Outbound = AdjustedTrade$Outbound;
+}
+
+export function adjustedTradeToJSON(adjustedTrade: AdjustedTrade): string {
+  return JSON.stringify(AdjustedTrade$outboundSchema.parse(adjustedTrade));
+}
+
+export function adjustedTradeFromJSON(
+  jsonString: string,
+): SafeParseResult<AdjustedTrade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AdjustedTrade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AdjustedTrade' from JSON`,
+  );
 }
 
 /** @internal */
@@ -326,6 +359,20 @@ export namespace DateT$ {
   export type Outbound = DateT$Outbound;
 }
 
+export function dateToJSON(dateT: DateT): string {
+  return JSON.stringify(DateT$outboundSchema.parse(dateT));
+}
+
+export function dateFromJSON(
+  jsonString: string,
+): SafeParseResult<DateT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DateT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DateT' from JSON`,
+  );
+}
+
 /** @internal */
 export const PositionFpsl$inboundSchema: z.ZodType<
   PositionFpsl,
@@ -362,6 +409,20 @@ export namespace PositionFpsl$ {
   export type Outbound = PositionFpsl$Outbound;
 }
 
+export function positionFpslToJSON(positionFpsl: PositionFpsl): string {
+  return JSON.stringify(PositionFpsl$outboundSchema.parse(positionFpsl));
+}
+
+export function positionFpslFromJSON(
+  jsonString: string,
+): SafeParseResult<PositionFpsl, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PositionFpsl$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PositionFpsl' from JSON`,
+  );
+}
+
 /** @internal */
 export const Free$inboundSchema: z.ZodType<Free, z.ZodTypeDef, unknown> = z
   .object({
@@ -390,6 +451,20 @@ export namespace Free$ {
   export const outboundSchema = Free$outboundSchema;
   /** @deprecated use `Free$Outbound` instead. */
   export type Outbound = Free$Outbound;
+}
+
+export function freeToJSON(free: Free): string {
+  return JSON.stringify(Free$outboundSchema.parse(free));
+}
+
+export function freeFromJSON(
+  jsonString: string,
+): SafeParseResult<Free, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Free$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Free' from JSON`,
+  );
 }
 
 /** @internal */
@@ -434,6 +509,24 @@ export namespace LastAdjustedDate$ {
   export type Outbound = LastAdjustedDate$Outbound;
 }
 
+export function lastAdjustedDateToJSON(
+  lastAdjustedDate: LastAdjustedDate,
+): string {
+  return JSON.stringify(
+    LastAdjustedDate$outboundSchema.parse(lastAdjustedDate),
+  );
+}
+
+export function lastAdjustedDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LastAdjustedDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastAdjustedDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastAdjustedDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const PendingDrip$inboundSchema: z.ZodType<
   PendingDrip,
@@ -468,6 +561,20 @@ export namespace PendingDrip$ {
   export const outboundSchema = PendingDrip$outboundSchema;
   /** @deprecated use `PendingDrip$Outbound` instead. */
   export type Outbound = PendingDrip$Outbound;
+}
+
+export function pendingDripToJSON(pendingDrip: PendingDrip): string {
+  return JSON.stringify(PendingDrip$outboundSchema.parse(pendingDrip));
+}
+
+export function pendingDripFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingDrip, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingDrip$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingDrip' from JSON`,
+  );
 }
 
 /** @internal */
@@ -506,6 +613,24 @@ export namespace PendingOutgoingAcat$ {
   export type Outbound = PendingOutgoingAcat$Outbound;
 }
 
+export function pendingOutgoingAcatToJSON(
+  pendingOutgoingAcat: PendingOutgoingAcat,
+): string {
+  return JSON.stringify(
+    PendingOutgoingAcat$outboundSchema.parse(pendingOutgoingAcat),
+  );
+}
+
+export function pendingOutgoingAcatFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingOutgoingAcat, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingOutgoingAcat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingOutgoingAcat' from JSON`,
+  );
+}
+
 /** @internal */
 export const PendingWithdrawal$inboundSchema: z.ZodType<
   PendingWithdrawal,
@@ -542,6 +667,24 @@ export namespace PendingWithdrawal$ {
   export type Outbound = PendingWithdrawal$Outbound;
 }
 
+export function pendingWithdrawalToJSON(
+  pendingWithdrawal: PendingWithdrawal,
+): string {
+  return JSON.stringify(
+    PendingWithdrawal$outboundSchema.parse(pendingWithdrawal),
+  );
+}
+
+export function pendingWithdrawalFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingWithdrawal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingWithdrawal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingWithdrawal' from JSON`,
+  );
+}
+
 /** @internal */
 export const Settled$inboundSchema: z.ZodType<Settled, z.ZodTypeDef, unknown> =
   z.object({
@@ -573,6 +716,20 @@ export namespace Settled$ {
   export const outboundSchema = Settled$outboundSchema;
   /** @deprecated use `Settled$Outbound` instead. */
   export type Outbound = Settled$Outbound;
+}
+
+export function settledToJSON(settled: Settled): string {
+  return JSON.stringify(Settled$outboundSchema.parse(settled));
+}
+
+export function settledFromJSON(
+  jsonString: string,
+): SafeParseResult<Settled, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Settled$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Settled' from JSON`,
+  );
 }
 
 /** @internal */
@@ -611,6 +768,20 @@ export namespace PositionTrade$ {
   export type Outbound = PositionTrade$Outbound;
 }
 
+export function positionTradeToJSON(positionTrade: PositionTrade): string {
+  return JSON.stringify(PositionTrade$outboundSchema.parse(positionTrade));
+}
+
+export function positionTradeFromJSON(
+  jsonString: string,
+): SafeParseResult<PositionTrade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PositionTrade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PositionTrade' from JSON`,
+  );
+}
+
 /** @internal */
 export const Unrestricted$inboundSchema: z.ZodType<
   Unrestricted,
@@ -645,6 +816,20 @@ export namespace Unrestricted$ {
   export const outboundSchema = Unrestricted$outboundSchema;
   /** @deprecated use `Unrestricted$Outbound` instead. */
   export type Outbound = Unrestricted$Outbound;
+}
+
+export function unrestrictedToJSON(unrestricted: Unrestricted): string {
+  return JSON.stringify(Unrestricted$outboundSchema.parse(unrestricted));
+}
+
+export function unrestrictedFromJSON(
+  jsonString: string,
+): SafeParseResult<Unrestricted, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Unrestricted$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Unrestricted' from JSON`,
+  );
 }
 
 /** @internal */
@@ -768,4 +953,18 @@ export namespace Position$ {
   export const outboundSchema = Position$outboundSchema;
   /** @deprecated use `Position$Outbound` instead. */
   export type Outbound = Position$Outbound;
+}
+
+export function positionToJSON(position: Position): string {
+  return JSON.stringify(Position$outboundSchema.parse(position));
+}
+
+export function positionFromJSON(
+  jsonString: string,
+): SafeParseResult<Position, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Position$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Position' from JSON`,
+  );
 }

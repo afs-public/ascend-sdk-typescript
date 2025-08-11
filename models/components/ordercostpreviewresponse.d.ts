@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The type of asset referenced by the security identifier
  */
@@ -222,6 +224,8 @@ export declare namespace EstimatedAccruedInterest$ {
     /** @deprecated use `EstimatedAccruedInterest$Outbound` instead. */
     type Outbound = EstimatedAccruedInterest$Outbound;
 }
+export declare function estimatedAccruedInterestToJSON(estimatedAccruedInterest: EstimatedAccruedInterest): string;
+export declare function estimatedAccruedInterestFromJSON(jsonString: string): SafeParseResult<EstimatedAccruedInterest, SDKValidationError>;
 /** @internal */
 export declare const EstimatedGrossAmount$inboundSchema: z.ZodType<EstimatedGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -242,6 +246,8 @@ export declare namespace EstimatedGrossAmount$ {
     /** @deprecated use `EstimatedGrossAmount$Outbound` instead. */
     type Outbound = EstimatedGrossAmount$Outbound;
 }
+export declare function estimatedGrossAmountToJSON(estimatedGrossAmount: EstimatedGrossAmount): string;
+export declare function estimatedGrossAmountFromJSON(jsonString: string): SafeParseResult<EstimatedGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const EstimatedGrossCreditAmount$inboundSchema: z.ZodType<EstimatedGrossCreditAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -262,6 +268,8 @@ export declare namespace EstimatedGrossCreditAmount$ {
     /** @deprecated use `EstimatedGrossCreditAmount$Outbound` instead. */
     type Outbound = EstimatedGrossCreditAmount$Outbound;
 }
+export declare function estimatedGrossCreditAmountToJSON(estimatedGrossCreditAmount: EstimatedGrossCreditAmount): string;
+export declare function estimatedGrossCreditAmountFromJSON(jsonString: string): SafeParseResult<EstimatedGrossCreditAmount, SDKValidationError>;
 /** @internal */
 export declare const EstimatedNetAmount$inboundSchema: z.ZodType<EstimatedNetAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -282,6 +290,8 @@ export declare namespace EstimatedNetAmount$ {
     /** @deprecated use `EstimatedNetAmount$Outbound` instead. */
     type Outbound = EstimatedNetAmount$Outbound;
 }
+export declare function estimatedNetAmountToJSON(estimatedNetAmount: EstimatedNetAmount): string;
+export declare function estimatedNetAmountFromJSON(jsonString: string): SafeParseResult<EstimatedNetAmount, SDKValidationError>;
 /** @internal */
 export declare const OrderCostPreviewResponseIdentifierType$inboundSchema: z.ZodType<OrderCostPreviewResponseIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -316,6 +326,8 @@ export declare namespace OrderCostPreviewResponsePrice$ {
     /** @deprecated use `OrderCostPreviewResponsePrice$Outbound` instead. */
     type Outbound = OrderCostPreviewResponsePrice$Outbound;
 }
+export declare function orderCostPreviewResponsePriceToJSON(orderCostPreviewResponsePrice: OrderCostPreviewResponsePrice): string;
+export declare function orderCostPreviewResponsePriceFromJSON(jsonString: string): SafeParseResult<OrderCostPreviewResponsePrice, SDKValidationError>;
 /** @internal */
 export declare const OrderCostPreviewResponseType$inboundSchema: z.ZodType<OrderCostPreviewResponseTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -351,6 +363,8 @@ export declare namespace OrderCostPreviewResponseLimitPrice$ {
     /** @deprecated use `OrderCostPreviewResponseLimitPrice$Outbound` instead. */
     type Outbound = OrderCostPreviewResponseLimitPrice$Outbound;
 }
+export declare function orderCostPreviewResponseLimitPriceToJSON(orderCostPreviewResponseLimitPrice: OrderCostPreviewResponseLimitPrice): string;
+export declare function orderCostPreviewResponseLimitPriceFromJSON(jsonString: string): SafeParseResult<OrderCostPreviewResponseLimitPrice, SDKValidationError>;
 /** @internal */
 export declare const OrderCostPreviewResponseQuantity$inboundSchema: z.ZodType<OrderCostPreviewResponseQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -371,6 +385,8 @@ export declare namespace OrderCostPreviewResponseQuantity$ {
     /** @deprecated use `OrderCostPreviewResponseQuantity$Outbound` instead. */
     type Outbound = OrderCostPreviewResponseQuantity$Outbound;
 }
+export declare function orderCostPreviewResponseQuantityToJSON(orderCostPreviewResponseQuantity: OrderCostPreviewResponseQuantity): string;
+export declare function orderCostPreviewResponseQuantityFromJSON(jsonString: string): SafeParseResult<OrderCostPreviewResponseQuantity, SDKValidationError>;
 /** @internal */
 export declare const OrderCostPreviewResponse$inboundSchema: z.ZodType<OrderCostPreviewResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -403,4 +419,6 @@ export declare namespace OrderCostPreviewResponse$ {
     /** @deprecated use `OrderCostPreviewResponse$Outbound` instead. */
     type Outbound = OrderCostPreviewResponse$Outbound;
 }
+export declare function orderCostPreviewResponseToJSON(orderCostPreviewResponse: OrderCostPreviewResponse): string;
+export declare function orderCostPreviewResponseFromJSON(jsonString: string): SafeParseResult<OrderCostPreviewResponse, SDKValidationError>;
 //# sourceMappingURL=ordercostpreviewresponse.d.ts.map

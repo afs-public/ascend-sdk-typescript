@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IRASEPEnrollmentMetadataCreate$ = exports.IRASEPEnrollmentMetadataCreate$outboundSchema = exports.IRASEPEnrollmentMetadataCreate$inboundSchema = exports.IRASEPEnrollmentMetadataCreateFdicCashSweep$ = exports.IRASEPEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.IRASEPEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.IRASEPEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.IRASEPEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.IRASEPEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.IRASEPEnrollmentMetadataCreateFdicCashSweep = exports.IRASEPEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.irasepEnrollmentMetadataCreateToJSON = irasepEnrollmentMetadataCreateToJSON;
+exports.irasepEnrollmentMetadataCreateFromJSON = irasepEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -137,4 +140,10 @@ var IRASEPEnrollmentMetadataCreate$;
     /** @deprecated use `IRASEPEnrollmentMetadataCreate$outboundSchema` instead. */
     IRASEPEnrollmentMetadataCreate$.outboundSchema = exports.IRASEPEnrollmentMetadataCreate$outboundSchema;
 })(IRASEPEnrollmentMetadataCreate$ || (exports.IRASEPEnrollmentMetadataCreate$ = IRASEPEnrollmentMetadataCreate$ = {}));
+function irasepEnrollmentMetadataCreateToJSON(irasepEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.IRASEPEnrollmentMetadataCreate$outboundSchema.parse(irasepEnrollmentMetadataCreate));
+}
+function irasepEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IRASEPEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IRASEPEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=irasepenrollmentmetadatacreate.js.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The object containing data for the purpose of delivery physical mailings to a party; Typically used for statements, account updates, tax documents, and other postal mailings; May also be used as an alternative identity verification address to personalAddress. If input, the required fields within the `mailing_address` object include:
@@ -266,6 +269,26 @@ export namespace TrustedContactMailingAddress$ {
   export type Outbound = TrustedContactMailingAddress$Outbound;
 }
 
+export function trustedContactMailingAddressToJSON(
+  trustedContactMailingAddress: TrustedContactMailingAddress,
+): string {
+  return JSON.stringify(
+    TrustedContactMailingAddress$outboundSchema.parse(
+      trustedContactMailingAddress,
+    ),
+  );
+}
+
+export function trustedContactMailingAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedContactMailingAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedContactMailingAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedContactMailingAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const TrustedContactShortCode$inboundSchema: z.ZodType<
   TrustedContactShortCode,
@@ -311,6 +334,24 @@ export namespace TrustedContactShortCode$ {
   export const outboundSchema = TrustedContactShortCode$outboundSchema;
   /** @deprecated use `TrustedContactShortCode$Outbound` instead. */
   export type Outbound = TrustedContactShortCode$Outbound;
+}
+
+export function trustedContactShortCodeToJSON(
+  trustedContactShortCode: TrustedContactShortCode,
+): string {
+  return JSON.stringify(
+    TrustedContactShortCode$outboundSchema.parse(trustedContactShortCode),
+  );
+}
+
+export function trustedContactShortCodeFromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedContactShortCode, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedContactShortCode$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedContactShortCode' from JSON`,
+  );
 }
 
 /** @internal */
@@ -365,6 +406,24 @@ export namespace TrustedContactPhoneNumber$ {
   export const outboundSchema = TrustedContactPhoneNumber$outboundSchema;
   /** @deprecated use `TrustedContactPhoneNumber$Outbound` instead. */
   export type Outbound = TrustedContactPhoneNumber$Outbound;
+}
+
+export function trustedContactPhoneNumberToJSON(
+  trustedContactPhoneNumber: TrustedContactPhoneNumber,
+): string {
+  return JSON.stringify(
+    TrustedContactPhoneNumber$outboundSchema.parse(trustedContactPhoneNumber),
+  );
+}
+
+export function trustedContactPhoneNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedContactPhoneNumber, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedContactPhoneNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedContactPhoneNumber' from JSON`,
+  );
 }
 
 /** @internal */
@@ -450,4 +509,18 @@ export namespace TrustedContact$ {
   export const outboundSchema = TrustedContact$outboundSchema;
   /** @deprecated use `TrustedContact$Outbound` instead. */
   export type Outbound = TrustedContact$Outbound;
+}
+
+export function trustedContactToJSON(trustedContact: TrustedContact): string {
+  return JSON.stringify(TrustedContact$outboundSchema.parse(trustedContact));
+}
+
+export function trustedContactFromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedContact, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedContact$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedContact' from JSON`,
+  );
 }

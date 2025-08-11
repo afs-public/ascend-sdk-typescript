@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoleDetail$ = exports.RoleDetail$outboundSchema = exports.RoleDetail$inboundSchema = void 0;
+exports.roleDetailToJSON = roleDetailToJSON;
+exports.roleDetailFromJSON = roleDetailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.RoleDetail$inboundSchema = z.object({
     end_day: z.string().optional(),
@@ -98,4 +101,10 @@ var RoleDetail$;
     /** @deprecated use `RoleDetail$outboundSchema` instead. */
     RoleDetail$.outboundSchema = exports.RoleDetail$outboundSchema;
 })(RoleDetail$ || (exports.RoleDetail$ = RoleDetail$ = {}));
+function roleDetailToJSON(roleDetail) {
+    return JSON.stringify(exports.RoleDetail$outboundSchema.parse(roleDetail));
+}
+function roleDetailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RoleDetail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RoleDetail' from JSON`);
+}
 //# sourceMappingURL=roledetail.js.map

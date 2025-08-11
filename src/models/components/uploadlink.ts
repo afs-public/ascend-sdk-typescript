@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Maps the correlation id to the signed link that can be used to upload the described document.
@@ -73,4 +76,18 @@ export namespace UploadLink$ {
   export const outboundSchema = UploadLink$outboundSchema;
   /** @deprecated use `UploadLink$Outbound` instead. */
   export type Outbound = UploadLink$Outbound;
+}
+
+export function uploadLinkToJSON(uploadLink: UploadLink): string {
+  return JSON.stringify(UploadLink$outboundSchema.parse(uploadLink));
+}
+
+export function uploadLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadLink' from JSON`,
+  );
 }

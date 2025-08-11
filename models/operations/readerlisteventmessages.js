@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReaderListEventMessagesResponse$ = exports.ReaderListEventMessagesResponse$outboundSchema = exports.ReaderListEventMessagesResponse$inboundSchema = exports.ReaderListEventMessagesRequest$ = exports.ReaderListEventMessagesRequest$outboundSchema = exports.ReaderListEventMessagesRequest$inboundSchema = void 0;
+exports.readerListEventMessagesRequestToJSON = readerListEventMessagesRequestToJSON;
+exports.readerListEventMessagesRequestFromJSON = readerListEventMessagesRequestFromJSON;
+exports.readerListEventMessagesResponseToJSON = readerListEventMessagesResponseToJSON;
+exports.readerListEventMessagesResponseFromJSON = readerListEventMessagesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.ReaderListEventMessagesRequest$inboundSchema = z.object({
@@ -73,6 +78,12 @@ var ReaderListEventMessagesRequest$;
     /** @deprecated use `ReaderListEventMessagesRequest$outboundSchema` instead. */
     ReaderListEventMessagesRequest$.outboundSchema = exports.ReaderListEventMessagesRequest$outboundSchema;
 })(ReaderListEventMessagesRequest$ || (exports.ReaderListEventMessagesRequest$ = ReaderListEventMessagesRequest$ = {}));
+function readerListEventMessagesRequestToJSON(readerListEventMessagesRequest) {
+    return JSON.stringify(exports.ReaderListEventMessagesRequest$outboundSchema.parse(readerListEventMessagesRequest));
+}
+function readerListEventMessagesRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ReaderListEventMessagesRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ReaderListEventMessagesRequest' from JSON`);
+}
 /** @internal */
 exports.ReaderListEventMessagesResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var ReaderListEventMessagesResponse$;
     /** @deprecated use `ReaderListEventMessagesResponse$outboundSchema` instead. */
     ReaderListEventMessagesResponse$.outboundSchema = exports.ReaderListEventMessagesResponse$outboundSchema;
 })(ReaderListEventMessagesResponse$ || (exports.ReaderListEventMessagesResponse$ = ReaderListEventMessagesResponse$ = {}));
+function readerListEventMessagesResponseToJSON(readerListEventMessagesResponse) {
+    return JSON.stringify(exports.ReaderListEventMessagesResponse$outboundSchema.parse(readerListEventMessagesResponse));
+}
+function readerListEventMessagesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ReaderListEventMessagesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ReaderListEventMessagesResponse' from JSON`);
+}
 //# sourceMappingURL=readerlisteventmessages.js.map

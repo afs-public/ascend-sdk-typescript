@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsCreateRestrictionRequest = {
   /**
@@ -75,6 +78,26 @@ export namespace AccountsCreateRestrictionRequest$ {
   export type Outbound = AccountsCreateRestrictionRequest$Outbound;
 }
 
+export function accountsCreateRestrictionRequestToJSON(
+  accountsCreateRestrictionRequest: AccountsCreateRestrictionRequest,
+): string {
+  return JSON.stringify(
+    AccountsCreateRestrictionRequest$outboundSchema.parse(
+      accountsCreateRestrictionRequest,
+    ),
+  );
+}
+
+export function accountsCreateRestrictionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsCreateRestrictionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsCreateRestrictionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsCreateRestrictionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsCreateRestrictionResponse$inboundSchema: z.ZodType<
   AccountsCreateRestrictionResponse,
@@ -128,4 +151,24 @@ export namespace AccountsCreateRestrictionResponse$ {
     AccountsCreateRestrictionResponse$outboundSchema;
   /** @deprecated use `AccountsCreateRestrictionResponse$Outbound` instead. */
   export type Outbound = AccountsCreateRestrictionResponse$Outbound;
+}
+
+export function accountsCreateRestrictionResponseToJSON(
+  accountsCreateRestrictionResponse: AccountsCreateRestrictionResponse,
+): string {
+  return JSON.stringify(
+    AccountsCreateRestrictionResponse$outboundSchema.parse(
+      accountsCreateRestrictionResponse,
+    ),
+  );
+}
+
+export function accountsCreateRestrictionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsCreateRestrictionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsCreateRestrictionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsCreateRestrictionResponse' from JSON`,
+  );
 }

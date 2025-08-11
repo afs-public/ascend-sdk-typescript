@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYield,
   BondYield$inboundSchema,
@@ -494,6 +497,27 @@ export namespace TradeAllocationAccruedInterestAmount$ {
   export type Outbound = TradeAllocationAccruedInterestAmount$Outbound;
 }
 
+export function tradeAllocationAccruedInterestAmountToJSON(
+  tradeAllocationAccruedInterestAmount: TradeAllocationAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    TradeAllocationAccruedInterestAmount$outboundSchema.parse(
+      tradeAllocationAccruedInterestAmount,
+    ),
+  );
+}
+
+export function tradeAllocationAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationAccruedInterestAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TradeAllocationAccruedInterestAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationAccruedInterestAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const TradeAllocationAssetType$inboundSchema: z.ZodType<
   TradeAllocationAssetTypeOpen,
@@ -594,6 +618,26 @@ export namespace TradeAllocationCommissionAmount$ {
   export type Outbound = TradeAllocationCommissionAmount$Outbound;
 }
 
+export function tradeAllocationCommissionAmountToJSON(
+  tradeAllocationCommissionAmount: TradeAllocationCommissionAmount,
+): string {
+  return JSON.stringify(
+    TradeAllocationCommissionAmount$outboundSchema.parse(
+      tradeAllocationCommissionAmount,
+    ),
+  );
+}
+
+export function tradeAllocationCommissionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationCommissionAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocationCommissionAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationCommissionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const TradeAllocationGrossAmount$inboundSchema: z.ZodType<
   TradeAllocationGrossAmount,
@@ -628,6 +672,24 @@ export namespace TradeAllocationGrossAmount$ {
   export const outboundSchema = TradeAllocationGrossAmount$outboundSchema;
   /** @deprecated use `TradeAllocationGrossAmount$Outbound` instead. */
   export type Outbound = TradeAllocationGrossAmount$Outbound;
+}
+
+export function tradeAllocationGrossAmountToJSON(
+  tradeAllocationGrossAmount: TradeAllocationGrossAmount,
+): string {
+  return JSON.stringify(
+    TradeAllocationGrossAmount$outboundSchema.parse(tradeAllocationGrossAmount),
+  );
+}
+
+export function tradeAllocationGrossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationGrossAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocationGrossAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationGrossAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -700,6 +762,27 @@ export namespace TradeAllocationPrevailingMarketPrice$ {
   export type Outbound = TradeAllocationPrevailingMarketPrice$Outbound;
 }
 
+export function tradeAllocationPrevailingMarketPriceToJSON(
+  tradeAllocationPrevailingMarketPrice: TradeAllocationPrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    TradeAllocationPrevailingMarketPrice$outboundSchema.parse(
+      tradeAllocationPrevailingMarketPrice,
+    ),
+  );
+}
+
+export function tradeAllocationPrevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationPrevailingMarketPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TradeAllocationPrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationPrevailingMarketPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const TradeAllocationPrice$inboundSchema: z.ZodType<
   TradeAllocationPrice,
@@ -734,6 +817,24 @@ export namespace TradeAllocationPrice$ {
   export const outboundSchema = TradeAllocationPrice$outboundSchema;
   /** @deprecated use `TradeAllocationPrice$Outbound` instead. */
   export type Outbound = TradeAllocationPrice$Outbound;
+}
+
+export function tradeAllocationPriceToJSON(
+  tradeAllocationPrice: TradeAllocationPrice,
+): string {
+  return JSON.stringify(
+    TradeAllocationPrice$outboundSchema.parse(tradeAllocationPrice),
+  );
+}
+
+export function tradeAllocationPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocationPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationPrice' from JSON`,
+  );
 }
 
 /** @internal */
@@ -772,6 +873,27 @@ export namespace TradeAllocationPriceAdjustmentAmount$ {
     TradeAllocationPriceAdjustmentAmount$outboundSchema;
   /** @deprecated use `TradeAllocationPriceAdjustmentAmount$Outbound` instead. */
   export type Outbound = TradeAllocationPriceAdjustmentAmount$Outbound;
+}
+
+export function tradeAllocationPriceAdjustmentAmountToJSON(
+  tradeAllocationPriceAdjustmentAmount: TradeAllocationPriceAdjustmentAmount,
+): string {
+  return JSON.stringify(
+    TradeAllocationPriceAdjustmentAmount$outboundSchema.parse(
+      tradeAllocationPriceAdjustmentAmount,
+    ),
+  );
+}
+
+export function tradeAllocationPriceAdjustmentAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationPriceAdjustmentAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TradeAllocationPriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationPriceAdjustmentAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -865,6 +987,26 @@ export namespace TradeAllocationPriceAdjustment$ {
   export type Outbound = TradeAllocationPriceAdjustment$Outbound;
 }
 
+export function tradeAllocationPriceAdjustmentToJSON(
+  tradeAllocationPriceAdjustment: TradeAllocationPriceAdjustment,
+): string {
+  return JSON.stringify(
+    TradeAllocationPriceAdjustment$outboundSchema.parse(
+      tradeAllocationPriceAdjustment,
+    ),
+  );
+}
+
+export function tradeAllocationPriceAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationPriceAdjustment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocationPriceAdjustment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationPriceAdjustment' from JSON`,
+  );
+}
+
 /** @internal */
 export const TradeAllocationQuantity$inboundSchema: z.ZodType<
   TradeAllocationQuantity,
@@ -899,6 +1041,24 @@ export namespace TradeAllocationQuantity$ {
   export const outboundSchema = TradeAllocationQuantity$outboundSchema;
   /** @deprecated use `TradeAllocationQuantity$Outbound` instead. */
   export type Outbound = TradeAllocationQuantity$Outbound;
+}
+
+export function tradeAllocationQuantityToJSON(
+  tradeAllocationQuantity: TradeAllocationQuantity,
+): string {
+  return JSON.stringify(
+    TradeAllocationQuantity$outboundSchema.parse(tradeAllocationQuantity),
+  );
+}
+
+export function tradeAllocationQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocationQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -941,6 +1101,26 @@ export namespace TradeAllocationSettlementDate$ {
   export const outboundSchema = TradeAllocationSettlementDate$outboundSchema;
   /** @deprecated use `TradeAllocationSettlementDate$Outbound` instead. */
   export type Outbound = TradeAllocationSettlementDate$Outbound;
+}
+
+export function tradeAllocationSettlementDateToJSON(
+  tradeAllocationSettlementDate: TradeAllocationSettlementDate,
+): string {
+  return JSON.stringify(
+    TradeAllocationSettlementDate$outboundSchema.parse(
+      tradeAllocationSettlementDate,
+    ),
+  );
+}
+
+export function tradeAllocationSettlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationSettlementDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocationSettlementDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationSettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1331,4 +1511,20 @@ export namespace TradeAllocation$ {
   export const outboundSchema = TradeAllocation$outboundSchema;
   /** @deprecated use `TradeAllocation$Outbound` instead. */
   export type Outbound = TradeAllocation$Outbound;
+}
+
+export function tradeAllocationToJSON(
+  tradeAllocation: TradeAllocation,
+): string {
+  return JSON.stringify(TradeAllocation$outboundSchema.parse(tradeAllocation));
+}
+
+export function tradeAllocationFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocation' from JSON`,
+  );
 }

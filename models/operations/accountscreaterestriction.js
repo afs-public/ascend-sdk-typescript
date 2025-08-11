@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsCreateRestrictionResponse$ = exports.AccountsCreateRestrictionResponse$outboundSchema = exports.AccountsCreateRestrictionResponse$inboundSchema = exports.AccountsCreateRestrictionRequest$ = exports.AccountsCreateRestrictionRequest$outboundSchema = exports.AccountsCreateRestrictionRequest$inboundSchema = void 0;
+exports.accountsCreateRestrictionRequestToJSON = accountsCreateRestrictionRequestToJSON;
+exports.accountsCreateRestrictionRequestFromJSON = accountsCreateRestrictionRequestFromJSON;
+exports.accountsCreateRestrictionResponseToJSON = accountsCreateRestrictionResponseToJSON;
+exports.accountsCreateRestrictionResponseFromJSON = accountsCreateRestrictionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsCreateRestrictionRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsCreateRestrictionRequest$;
     /** @deprecated use `AccountsCreateRestrictionRequest$outboundSchema` instead. */
     AccountsCreateRestrictionRequest$.outboundSchema = exports.AccountsCreateRestrictionRequest$outboundSchema;
 })(AccountsCreateRestrictionRequest$ || (exports.AccountsCreateRestrictionRequest$ = AccountsCreateRestrictionRequest$ = {}));
+function accountsCreateRestrictionRequestToJSON(accountsCreateRestrictionRequest) {
+    return JSON.stringify(exports.AccountsCreateRestrictionRequest$outboundSchema.parse(accountsCreateRestrictionRequest));
+}
+function accountsCreateRestrictionRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsCreateRestrictionRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsCreateRestrictionRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsCreateRestrictionResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsCreateRestrictionResponse$;
     /** @deprecated use `AccountsCreateRestrictionResponse$outboundSchema` instead. */
     AccountsCreateRestrictionResponse$.outboundSchema = exports.AccountsCreateRestrictionResponse$outboundSchema;
 })(AccountsCreateRestrictionResponse$ || (exports.AccountsCreateRestrictionResponse$ = AccountsCreateRestrictionResponse$ = {}));
+function accountsCreateRestrictionResponseToJSON(accountsCreateRestrictionResponse) {
+    return JSON.stringify(exports.AccountsCreateRestrictionResponse$outboundSchema.parse(accountsCreateRestrictionResponse));
+}
+function accountsCreateRestrictionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsCreateRestrictionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsCreateRestrictionResponse' from JSON`);
+}
 //# sourceMappingURL=accountscreaterestriction.js.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Maps the correlation id to the signed link that can be used to upload the described document.
  */
@@ -38,4 +40,6 @@ export declare namespace UploadLink$ {
     /** @deprecated use `UploadLink$Outbound` instead. */
     type Outbound = UploadLink$Outbound;
 }
+export declare function uploadLinkToJSON(uploadLink: UploadLink): string;
+export declare function uploadLinkFromJSON(jsonString: string): SafeParseResult<UploadLink, SDKValidationError>;
 //# sourceMappingURL=uploadlink.d.ts.map

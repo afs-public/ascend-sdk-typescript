@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { NachaNocCreate, NachaNocCreate$Outbound } from "./nachanoccreate.js";
 /**
  * Request to force a Nacha notice of change (NOC) on a completed ACH withdrawal. FOR TESTING ONLY!
@@ -34,4 +36,6 @@ export declare namespace ForceNocAchWithdrawalRequestCreate$ {
     /** @deprecated use `ForceNocAchWithdrawalRequestCreate$Outbound` instead. */
     type Outbound = ForceNocAchWithdrawalRequestCreate$Outbound;
 }
+export declare function forceNocAchWithdrawalRequestCreateToJSON(forceNocAchWithdrawalRequestCreate: ForceNocAchWithdrawalRequestCreate): string;
+export declare function forceNocAchWithdrawalRequestCreateFromJSON(jsonString: string): SafeParseResult<ForceNocAchWithdrawalRequestCreate, SDKValidationError>;
 //# sourceMappingURL=forcenocachwithdrawalrequestcreate.d.ts.map

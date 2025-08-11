@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RemovePartyRequestCreate$ = exports.RemovePartyRequestCreate$outboundSchema = exports.RemovePartyRequestCreate$inboundSchema = void 0;
+exports.removePartyRequestCreateToJSON = removePartyRequestCreateToJSON;
+exports.removePartyRequestCreateFromJSON = removePartyRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.RemovePartyRequestCreate$inboundSchema = z.object({
     authorized_by_party_ids: z.array(z.string()).optional(),
@@ -68,4 +71,10 @@ var RemovePartyRequestCreate$;
     /** @deprecated use `RemovePartyRequestCreate$outboundSchema` instead. */
     RemovePartyRequestCreate$.outboundSchema = exports.RemovePartyRequestCreate$outboundSchema;
 })(RemovePartyRequestCreate$ || (exports.RemovePartyRequestCreate$ = RemovePartyRequestCreate$ = {}));
+function removePartyRequestCreateToJSON(removePartyRequestCreate) {
+    return JSON.stringify(exports.RemovePartyRequestCreate$outboundSchema.parse(removePartyRequestCreate));
+}
+function removePartyRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RemovePartyRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RemovePartyRequestCreate' from JSON`);
+}
 //# sourceMappingURL=removepartyrequestcreate.js.map

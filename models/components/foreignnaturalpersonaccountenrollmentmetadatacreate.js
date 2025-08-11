@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForeignNaturalPersonAccountEnrollmentMetadataCreate$ = exports.ForeignNaturalPersonAccountEnrollmentMetadataCreate$outboundSchema = exports.ForeignNaturalPersonAccountEnrollmentMetadataCreate$inboundSchema = void 0;
+exports.foreignNaturalPersonAccountEnrollmentMetadataCreateToJSON = foreignNaturalPersonAccountEnrollmentMetadataCreateToJSON;
+exports.foreignNaturalPersonAccountEnrollmentMetadataCreateFromJSON = foreignNaturalPersonAccountEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const depositedfundscreate_js_1 = require("./depositedfundscreate.js");
 const financialprofilecreate_js_1 = require("./financialprofilecreate.js");
 const plannedactivitycreate_js_1 = require("./plannedactivitycreate.js");
@@ -82,4 +85,10 @@ var ForeignNaturalPersonAccountEnrollmentMetadataCreate$;
     /** @deprecated use `ForeignNaturalPersonAccountEnrollmentMetadataCreate$outboundSchema` instead. */
     ForeignNaturalPersonAccountEnrollmentMetadataCreate$.outboundSchema = exports.ForeignNaturalPersonAccountEnrollmentMetadataCreate$outboundSchema;
 })(ForeignNaturalPersonAccountEnrollmentMetadataCreate$ || (exports.ForeignNaturalPersonAccountEnrollmentMetadataCreate$ = ForeignNaturalPersonAccountEnrollmentMetadataCreate$ = {}));
+function foreignNaturalPersonAccountEnrollmentMetadataCreateToJSON(foreignNaturalPersonAccountEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.ForeignNaturalPersonAccountEnrollmentMetadataCreate$outboundSchema.parse(foreignNaturalPersonAccountEnrollmentMetadataCreate));
+}
+function foreignNaturalPersonAccountEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignNaturalPersonAccountEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignNaturalPersonAccountEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=foreignnaturalpersonaccountenrollmentmetadatacreate.js.map

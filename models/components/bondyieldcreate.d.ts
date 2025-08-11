@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The type of yield.
@@ -69,4 +71,6 @@ export declare namespace BondYieldCreate$ {
     /** @deprecated use `BondYieldCreate$Outbound` instead. */
     type Outbound = BondYieldCreate$Outbound;
 }
+export declare function bondYieldCreateToJSON(bondYieldCreate: BondYieldCreate): string;
+export declare function bondYieldCreateFromJSON(jsonString: string): SafeParseResult<BondYieldCreate, SDKValidationError>;
 //# sourceMappingURL=bondyieldcreate.d.ts.map

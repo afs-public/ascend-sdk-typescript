@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Agreement,
   Agreement$inboundSchema,
@@ -54,4 +57,22 @@ export namespace EnrollAccountResponse$ {
   export const outboundSchema = EnrollAccountResponse$outboundSchema;
   /** @deprecated use `EnrollAccountResponse$Outbound` instead. */
   export type Outbound = EnrollAccountResponse$Outbound;
+}
+
+export function enrollAccountResponseToJSON(
+  enrollAccountResponse: EnrollAccountResponse,
+): string {
+  return JSON.stringify(
+    EnrollAccountResponse$outboundSchema.parse(enrollAccountResponse),
+  );
+}
+
+export function enrollAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollAccountResponse' from JSON`,
+  );
 }

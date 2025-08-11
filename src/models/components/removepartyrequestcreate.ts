@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A request to remove a party from an account
@@ -64,4 +67,22 @@ export namespace RemovePartyRequestCreate$ {
   export const outboundSchema = RemovePartyRequestCreate$outboundSchema;
   /** @deprecated use `RemovePartyRequestCreate$Outbound` instead. */
   export type Outbound = RemovePartyRequestCreate$Outbound;
+}
+
+export function removePartyRequestCreateToJSON(
+  removePartyRequestCreate: RemovePartyRequestCreate,
+): string {
+  return JSON.stringify(
+    RemovePartyRequestCreate$outboundSchema.parse(removePartyRequestCreate),
+  );
+}
+
+export function removePartyRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RemovePartyRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemovePartyRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemovePartyRequestCreate' from JSON`,
+  );
 }

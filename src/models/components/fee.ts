@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Monetary amount associated with the fee
@@ -110,6 +113,20 @@ export namespace FeeAmount$ {
   export type Outbound = FeeAmount$Outbound;
 }
 
+export function feeAmountToJSON(feeAmount: FeeAmount): string {
+  return JSON.stringify(FeeAmount$outboundSchema.parse(feeAmount));
+}
+
+export function feeAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<FeeAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FeeAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FeeAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const FeeType$inboundSchema: z.ZodType<
   FeeTypeOpen,
@@ -173,4 +190,18 @@ export namespace Fee$ {
   export const outboundSchema = Fee$outboundSchema;
   /** @deprecated use `Fee$Outbound` instead. */
   export type Outbound = Fee$Outbound;
+}
+
+export function feeToJSON(fee: Fee): string {
+  return JSON.stringify(Fee$outboundSchema.parse(fee));
+}
+
+export function feeFromJSON(
+  jsonString: string,
+): SafeParseResult<Fee, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fee' from JSON`,
+  );
 }

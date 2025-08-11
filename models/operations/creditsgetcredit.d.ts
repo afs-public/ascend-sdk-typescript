@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CreditsGetCreditRequest = {
     /**
      * The account id.
@@ -42,6 +44,8 @@ export declare namespace CreditsGetCreditRequest$ {
     /** @deprecated use `CreditsGetCreditRequest$Outbound` instead. */
     type Outbound = CreditsGetCreditRequest$Outbound;
 }
+export declare function creditsGetCreditRequestToJSON(creditsGetCreditRequest: CreditsGetCreditRequest): string;
+export declare function creditsGetCreditRequestFromJSON(jsonString: string): SafeParseResult<CreditsGetCreditRequest, SDKValidationError>;
 /** @internal */
 export declare const CreditsGetCreditResponse$inboundSchema: z.ZodType<CreditsGetCreditResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace CreditsGetCreditResponse$ {
     /** @deprecated use `CreditsGetCreditResponse$Outbound` instead. */
     type Outbound = CreditsGetCreditResponse$Outbound;
 }
+export declare function creditsGetCreditResponseToJSON(creditsGetCreditResponse: CreditsGetCreditResponse): string;
+export declare function creditsGetCreditResponseFromJSON(jsonString: string): SafeParseResult<CreditsGetCreditResponse, SDKValidationError>;
 //# sourceMappingURL=creditsgetcredit.d.ts.map

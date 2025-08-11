@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OrderPriceServiceRetrieveFixedIncomeMarksRequest = {
   /**
@@ -88,6 +91,33 @@ export namespace OrderPriceServiceRetrieveFixedIncomeMarksRequest$ {
     OrderPriceServiceRetrieveFixedIncomeMarksRequest$Outbound;
 }
 
+export function orderPriceServiceRetrieveFixedIncomeMarksRequestToJSON(
+  orderPriceServiceRetrieveFixedIncomeMarksRequest:
+    OrderPriceServiceRetrieveFixedIncomeMarksRequest,
+): string {
+  return JSON.stringify(
+    OrderPriceServiceRetrieveFixedIncomeMarksRequest$outboundSchema.parse(
+      orderPriceServiceRetrieveFixedIncomeMarksRequest,
+    ),
+  );
+}
+
+export function orderPriceServiceRetrieveFixedIncomeMarksRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  OrderPriceServiceRetrieveFixedIncomeMarksRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrderPriceServiceRetrieveFixedIncomeMarksRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'OrderPriceServiceRetrieveFixedIncomeMarksRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const OrderPriceServiceRetrieveFixedIncomeMarksResponse$inboundSchema:
   z.ZodType<
@@ -149,4 +179,31 @@ export namespace OrderPriceServiceRetrieveFixedIncomeMarksResponse$ {
   /** @deprecated use `OrderPriceServiceRetrieveFixedIncomeMarksResponse$Outbound` instead. */
   export type Outbound =
     OrderPriceServiceRetrieveFixedIncomeMarksResponse$Outbound;
+}
+
+export function orderPriceServiceRetrieveFixedIncomeMarksResponseToJSON(
+  orderPriceServiceRetrieveFixedIncomeMarksResponse:
+    OrderPriceServiceRetrieveFixedIncomeMarksResponse,
+): string {
+  return JSON.stringify(
+    OrderPriceServiceRetrieveFixedIncomeMarksResponse$outboundSchema.parse(
+      orderPriceServiceRetrieveFixedIncomeMarksResponse,
+    ),
+  );
+}
+
+export function orderPriceServiceRetrieveFixedIncomeMarksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  OrderPriceServiceRetrieveFixedIncomeMarksResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrderPriceServiceRetrieveFixedIncomeMarksResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'OrderPriceServiceRetrieveFixedIncomeMarksResponse' from JSON`,
+  );
 }

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CalculateCashBalanceResponseOpenOrderSummary$ = exports.CalculateCashBalanceResponseOpenOrderSummary$outboundSchema = exports.CalculateCashBalanceResponseOpenOrderSummary$inboundSchema = exports.ExpectedNotionalCeilingAmount$ = exports.ExpectedNotionalCeilingAmount$outboundSchema = exports.ExpectedNotionalCeilingAmount$inboundSchema = void 0;
+exports.expectedNotionalCeilingAmountToJSON = expectedNotionalCeilingAmountToJSON;
+exports.expectedNotionalCeilingAmountFromJSON = expectedNotionalCeilingAmountFromJSON;
+exports.calculateCashBalanceResponseOpenOrderSummaryToJSON = calculateCashBalanceResponseOpenOrderSummaryToJSON;
+exports.calculateCashBalanceResponseOpenOrderSummaryFromJSON = calculateCashBalanceResponseOpenOrderSummaryFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ExpectedNotionalCeilingAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +63,12 @@ var ExpectedNotionalCeilingAmount$;
     /** @deprecated use `ExpectedNotionalCeilingAmount$outboundSchema` instead. */
     ExpectedNotionalCeilingAmount$.outboundSchema = exports.ExpectedNotionalCeilingAmount$outboundSchema;
 })(ExpectedNotionalCeilingAmount$ || (exports.ExpectedNotionalCeilingAmount$ = ExpectedNotionalCeilingAmount$ = {}));
+function expectedNotionalCeilingAmountToJSON(expectedNotionalCeilingAmount) {
+    return JSON.stringify(exports.ExpectedNotionalCeilingAmount$outboundSchema.parse(expectedNotionalCeilingAmount));
+}
+function expectedNotionalCeilingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExpectedNotionalCeilingAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExpectedNotionalCeilingAmount' from JSON`);
+}
 /** @internal */
 exports.CalculateCashBalanceResponseOpenOrderSummary$inboundSchema = z.object({
     asset: z.string().optional(),
@@ -87,4 +98,10 @@ var CalculateCashBalanceResponseOpenOrderSummary$;
     /** @deprecated use `CalculateCashBalanceResponseOpenOrderSummary$outboundSchema` instead. */
     CalculateCashBalanceResponseOpenOrderSummary$.outboundSchema = exports.CalculateCashBalanceResponseOpenOrderSummary$outboundSchema;
 })(CalculateCashBalanceResponseOpenOrderSummary$ || (exports.CalculateCashBalanceResponseOpenOrderSummary$ = CalculateCashBalanceResponseOpenOrderSummary$ = {}));
+function calculateCashBalanceResponseOpenOrderSummaryToJSON(calculateCashBalanceResponseOpenOrderSummary) {
+    return JSON.stringify(exports.CalculateCashBalanceResponseOpenOrderSummary$outboundSchema.parse(calculateCashBalanceResponseOpenOrderSummary));
+}
+function calculateCashBalanceResponseOpenOrderSummaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CalculateCashBalanceResponseOpenOrderSummary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CalculateCashBalanceResponseOpenOrderSummary' from JSON`);
+}
 //# sourceMappingURL=calculatecashbalanceresponseopenordersummary.js.map

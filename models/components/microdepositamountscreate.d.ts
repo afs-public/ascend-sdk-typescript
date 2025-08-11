@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The micro deposits sent to verify a pending bank relationship. FOR TESTING ONLY!
@@ -46,4 +48,6 @@ export declare namespace MicroDepositAmountsCreate$ {
     /** @deprecated use `MicroDepositAmountsCreate$Outbound` instead. */
     type Outbound = MicroDepositAmountsCreate$Outbound;
 }
+export declare function microDepositAmountsCreateToJSON(microDepositAmountsCreate: MicroDepositAmountsCreate): string;
+export declare function microDepositAmountsCreateFromJSON(jsonString: string): SafeParseResult<MicroDepositAmountsCreate, SDKValidationError>;
 //# sourceMappingURL=microdepositamountscreate.d.ts.map

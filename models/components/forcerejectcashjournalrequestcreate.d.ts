@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to force reject a pending cash journal
  */
@@ -33,4 +35,6 @@ export declare namespace ForceRejectCashJournalRequestCreate$ {
     /** @deprecated use `ForceRejectCashJournalRequestCreate$Outbound` instead. */
     type Outbound = ForceRejectCashJournalRequestCreate$Outbound;
 }
+export declare function forceRejectCashJournalRequestCreateToJSON(forceRejectCashJournalRequestCreate: ForceRejectCashJournalRequestCreate): string;
+export declare function forceRejectCashJournalRequestCreateFromJSON(jsonString: string): SafeParseResult<ForceRejectCashJournalRequestCreate, SDKValidationError>;
 //# sourceMappingURL=forcerejectcashjournalrequestcreate.d.ts.map

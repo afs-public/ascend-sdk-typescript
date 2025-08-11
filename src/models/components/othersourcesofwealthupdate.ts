@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Applicant's other source of wealth
@@ -75,4 +78,22 @@ export namespace OtherSourcesOfWealthUpdate$ {
   export const outboundSchema = OtherSourcesOfWealthUpdate$outboundSchema;
   /** @deprecated use `OtherSourcesOfWealthUpdate$Outbound` instead. */
   export type Outbound = OtherSourcesOfWealthUpdate$Outbound;
+}
+
+export function otherSourcesOfWealthUpdateToJSON(
+  otherSourcesOfWealthUpdate: OtherSourcesOfWealthUpdate,
+): string {
+  return JSON.stringify(
+    OtherSourcesOfWealthUpdate$outboundSchema.parse(otherSourcesOfWealthUpdate),
+  );
+}
+
+export function otherSourcesOfWealthUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<OtherSourcesOfWealthUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OtherSourcesOfWealthUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OtherSourcesOfWealthUpdate' from JSON`,
+  );
 }

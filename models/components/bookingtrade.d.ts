@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
 import { Execution, Execution$Outbound } from "./execution.js";
@@ -397,6 +399,8 @@ export declare namespace LocalMarketTradeDate$ {
     /** @deprecated use `LocalMarketTradeDate$Outbound` instead. */
     type Outbound = LocalMarketTradeDate$Outbound;
 }
+export declare function localMarketTradeDateToJSON(localMarketTradeDate: LocalMarketTradeDate): string;
+export declare function localMarketTradeDateFromJSON(jsonString: string): SafeParseResult<LocalMarketTradeDate, SDKValidationError>;
 /** @internal */
 export declare const BookingTradeRouteType$inboundSchema: z.ZodType<BookingTradeRouteTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -433,6 +437,8 @@ export declare namespace SettlementDate$ {
     /** @deprecated use `SettlementDate$Outbound` instead. */
     type Outbound = SettlementDate$Outbound;
 }
+export declare function settlementDateToJSON(settlementDate: SettlementDate): string;
+export declare function settlementDateFromJSON(jsonString: string): SafeParseResult<SettlementDate, SDKValidationError>;
 /** @internal */
 export declare const BookingTradeSide$inboundSchema: z.ZodType<BookingTradeSideOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -550,4 +556,6 @@ export declare namespace BookingTrade$ {
     /** @deprecated use `BookingTrade$Outbound` instead. */
     type Outbound = BookingTrade$Outbound;
 }
+export declare function bookingTradeToJSON(bookingTrade: BookingTrade): string;
+export declare function bookingTradeFromJSON(jsonString: string): SafeParseResult<BookingTrade, SDKValidationError>;
 //# sourceMappingURL=bookingtrade.d.ts.map

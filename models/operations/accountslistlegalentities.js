@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsListLegalEntitiesResponse$ = exports.AccountsListLegalEntitiesResponse$outboundSchema = exports.AccountsListLegalEntitiesResponse$inboundSchema = exports.AccountsListLegalEntitiesRequest$ = exports.AccountsListLegalEntitiesRequest$outboundSchema = exports.AccountsListLegalEntitiesRequest$inboundSchema = void 0;
+exports.accountsListLegalEntitiesRequestToJSON = accountsListLegalEntitiesRequestToJSON;
+exports.accountsListLegalEntitiesRequestFromJSON = accountsListLegalEntitiesRequestFromJSON;
+exports.accountsListLegalEntitiesResponseToJSON = accountsListLegalEntitiesResponseToJSON;
+exports.accountsListLegalEntitiesResponseFromJSON = accountsListLegalEntitiesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsListLegalEntitiesRequest$inboundSchema = z.object({
@@ -77,6 +82,12 @@ var AccountsListLegalEntitiesRequest$;
     /** @deprecated use `AccountsListLegalEntitiesRequest$outboundSchema` instead. */
     AccountsListLegalEntitiesRequest$.outboundSchema = exports.AccountsListLegalEntitiesRequest$outboundSchema;
 })(AccountsListLegalEntitiesRequest$ || (exports.AccountsListLegalEntitiesRequest$ = AccountsListLegalEntitiesRequest$ = {}));
+function accountsListLegalEntitiesRequestToJSON(accountsListLegalEntitiesRequest) {
+    return JSON.stringify(exports.AccountsListLegalEntitiesRequest$outboundSchema.parse(accountsListLegalEntitiesRequest));
+}
+function accountsListLegalEntitiesRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListLegalEntitiesRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListLegalEntitiesRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsListLegalEntitiesResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var AccountsListLegalEntitiesResponse$;
     /** @deprecated use `AccountsListLegalEntitiesResponse$outboundSchema` instead. */
     AccountsListLegalEntitiesResponse$.outboundSchema = exports.AccountsListLegalEntitiesResponse$outboundSchema;
 })(AccountsListLegalEntitiesResponse$ || (exports.AccountsListLegalEntitiesResponse$ = AccountsListLegalEntitiesResponse$ = {}));
+function accountsListLegalEntitiesResponseToJSON(accountsListLegalEntitiesResponse) {
+    return JSON.stringify(exports.AccountsListLegalEntitiesResponse$outboundSchema.parse(accountsListLegalEntitiesResponse));
+}
+function accountsListLegalEntitiesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListLegalEntitiesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListLegalEntitiesResponse' from JSON`);
+}
 //# sourceMappingURL=accountslistlegalentities.js.map

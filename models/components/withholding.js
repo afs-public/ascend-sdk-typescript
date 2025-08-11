@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Withholding$ = exports.Withholding$outboundSchema = exports.Withholding$inboundSchema = exports.WithholdingType1$ = exports.WithholdingType1$outboundSchema = exports.WithholdingType1$inboundSchema = exports.WithholdingState$ = exports.WithholdingState$outboundSchema = exports.WithholdingState$inboundSchema = exports.WithholdingRate$ = exports.WithholdingRate$outboundSchema = exports.WithholdingRate$inboundSchema = exports.WithholdingAmount$ = exports.WithholdingAmount$outboundSchema = exports.WithholdingAmount$inboundSchema = exports.WithholdingType1 = exports.WithholdingState = void 0;
+exports.withholdingAmountToJSON = withholdingAmountToJSON;
+exports.withholdingAmountFromJSON = withholdingAmountFromJSON;
+exports.withholdingRateToJSON = withholdingRateToJSON;
+exports.withholdingRateFromJSON = withholdingRateFromJSON;
+exports.withholdingToJSON = withholdingToJSON;
+exports.withholdingFromJSON = withholdingFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 var WithholdingState;
 (function (WithholdingState) {
@@ -126,6 +133,12 @@ var WithholdingAmount$;
     /** @deprecated use `WithholdingAmount$outboundSchema` instead. */
     WithholdingAmount$.outboundSchema = exports.WithholdingAmount$outboundSchema;
 })(WithholdingAmount$ || (exports.WithholdingAmount$ = WithholdingAmount$ = {}));
+function withholdingAmountToJSON(withholdingAmount) {
+    return JSON.stringify(exports.WithholdingAmount$outboundSchema.parse(withholdingAmount));
+}
+function withholdingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WithholdingAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WithholdingAmount' from JSON`);
+}
 /** @internal */
 exports.WithholdingRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -145,6 +158,12 @@ var WithholdingRate$;
     /** @deprecated use `WithholdingRate$outboundSchema` instead. */
     WithholdingRate$.outboundSchema = exports.WithholdingRate$outboundSchema;
 })(WithholdingRate$ || (exports.WithholdingRate$ = WithholdingRate$ = {}));
+function withholdingRateToJSON(withholdingRate) {
+    return JSON.stringify(exports.WithholdingRate$outboundSchema.parse(withholdingRate));
+}
+function withholdingRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WithholdingRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WithholdingRate' from JSON`);
+}
 /** @internal */
 exports.WithholdingState$inboundSchema = z
     .union([
@@ -224,4 +243,10 @@ var Withholding$;
     /** @deprecated use `Withholding$outboundSchema` instead. */
     Withholding$.outboundSchema = exports.Withholding$outboundSchema;
 })(Withholding$ || (exports.Withholding$ = Withholding$ = {}));
+function withholdingToJSON(withholding) {
+    return JSON.stringify(exports.Withholding$outboundSchema.parse(withholding));
+}
+function withholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Withholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Withholding' from JSON`);
+}
 //# sourceMappingURL=withholding.js.map

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to simulate the rejection of an ICT deposit
@@ -56,4 +59,25 @@ export namespace ForceRejectIctDepositRequestCreate$ {
     ForceRejectIctDepositRequestCreate$outboundSchema;
   /** @deprecated use `ForceRejectIctDepositRequestCreate$Outbound` instead. */
   export type Outbound = ForceRejectIctDepositRequestCreate$Outbound;
+}
+
+export function forceRejectIctDepositRequestCreateToJSON(
+  forceRejectIctDepositRequestCreate: ForceRejectIctDepositRequestCreate,
+): string {
+  return JSON.stringify(
+    ForceRejectIctDepositRequestCreate$outboundSchema.parse(
+      forceRejectIctDepositRequestCreate,
+    ),
+  );
+}
+
+export function forceRejectIctDepositRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ForceRejectIctDepositRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForceRejectIctDepositRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForceRejectIctDepositRequestCreate' from JSON`,
+  );
 }

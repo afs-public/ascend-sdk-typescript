@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubmitBasketRequestCreate$ = exports.SubmitBasketRequestCreate$outboundSchema = exports.SubmitBasketRequestCreate$inboundSchema = void 0;
+exports.submitBasketRequestCreateToJSON = submitBasketRequestCreateToJSON;
+exports.submitBasketRequestCreateFromJSON = submitBasketRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.SubmitBasketRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -57,4 +60,10 @@ var SubmitBasketRequestCreate$;
     /** @deprecated use `SubmitBasketRequestCreate$outboundSchema` instead. */
     SubmitBasketRequestCreate$.outboundSchema = exports.SubmitBasketRequestCreate$outboundSchema;
 })(SubmitBasketRequestCreate$ || (exports.SubmitBasketRequestCreate$ = SubmitBasketRequestCreate$ = {}));
+function submitBasketRequestCreateToJSON(submitBasketRequestCreate) {
+    return JSON.stringify(exports.SubmitBasketRequestCreate$outboundSchema.parse(submitBasketRequestCreate));
+}
+function submitBasketRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubmitBasketRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubmitBasketRequestCreate' from JSON`);
+}
 //# sourceMappingURL=submitbasketrequestcreate.js.map

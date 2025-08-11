@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelFeeRequestCreate$ = exports.CancelFeeRequestCreate$outboundSchema = exports.CancelFeeRequestCreate$inboundSchema = void 0;
+exports.cancelFeeRequestCreateToJSON = cancelFeeRequestCreateToJSON;
+exports.cancelFeeRequestCreateFromJSON = cancelFeeRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelFeeRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -59,4 +62,10 @@ var CancelFeeRequestCreate$;
     /** @deprecated use `CancelFeeRequestCreate$outboundSchema` instead. */
     CancelFeeRequestCreate$.outboundSchema = exports.CancelFeeRequestCreate$outboundSchema;
 })(CancelFeeRequestCreate$ || (exports.CancelFeeRequestCreate$ = CancelFeeRequestCreate$ = {}));
+function cancelFeeRequestCreateToJSON(cancelFeeRequestCreate) {
+    return JSON.stringify(exports.CancelFeeRequestCreate$outboundSchema.parse(cancelFeeRequestCreate));
+}
+function cancelFeeRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelFeeRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelFeeRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelfeerequestcreate.js.map

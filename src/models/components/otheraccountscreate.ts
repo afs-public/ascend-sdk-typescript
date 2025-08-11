@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A customer-disclosed list of other Apex-held accounts owned by the Entity applicant at the time of this account's application; expressed as zero, one, or many account numbers
@@ -75,4 +78,22 @@ export namespace OtherAccountsCreate$ {
   export const outboundSchema = OtherAccountsCreate$outboundSchema;
   /** @deprecated use `OtherAccountsCreate$Outbound` instead. */
   export type Outbound = OtherAccountsCreate$Outbound;
+}
+
+export function otherAccountsCreateToJSON(
+  otherAccountsCreate: OtherAccountsCreate,
+): string {
+  return JSON.stringify(
+    OtherAccountsCreate$outboundSchema.parse(otherAccountsCreate),
+  );
+}
+
+export function otherAccountsCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<OtherAccountsCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OtherAccountsCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OtherAccountsCreate' from JSON`,
+  );
 }

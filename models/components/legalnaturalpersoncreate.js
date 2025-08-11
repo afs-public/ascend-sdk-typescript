@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegalNaturalPersonCreate$ = exports.LegalNaturalPersonCreate$outboundSchema = exports.LegalNaturalPersonCreate$inboundSchema = exports.TaxIdType$ = exports.TaxIdType$outboundSchema = exports.TaxIdType$inboundSchema = exports.NameSuffix$ = exports.NameSuffix$outboundSchema = exports.NameSuffix$inboundSchema = exports.MaritalStatus$ = exports.MaritalStatus$outboundSchema = exports.MaritalStatus$inboundSchema = exports.TaxIdType = exports.NameSuffix = exports.MaritalStatus = void 0;
+exports.legalNaturalPersonCreateToJSON = legalNaturalPersonCreateToJSON;
+exports.legalNaturalPersonCreateFromJSON = legalNaturalPersonCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const datecreate_js_1 = require("./datecreate.js");
 const employmentcreate_js_1 = require("./employmentcreate.js");
@@ -289,4 +292,10 @@ var LegalNaturalPersonCreate$;
     /** @deprecated use `LegalNaturalPersonCreate$outboundSchema` instead. */
     LegalNaturalPersonCreate$.outboundSchema = exports.LegalNaturalPersonCreate$outboundSchema;
 })(LegalNaturalPersonCreate$ || (exports.LegalNaturalPersonCreate$ = LegalNaturalPersonCreate$ = {}));
+function legalNaturalPersonCreateToJSON(legalNaturalPersonCreate) {
+    return JSON.stringify(exports.LegalNaturalPersonCreate$outboundSchema.parse(legalNaturalPersonCreate));
+}
+function legalNaturalPersonCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalNaturalPersonCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalNaturalPersonCreate' from JSON`);
+}
 //# sourceMappingURL=legalnaturalpersoncreate.js.map

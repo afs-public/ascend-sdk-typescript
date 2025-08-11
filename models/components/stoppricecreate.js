@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StopPriceCreate$ = exports.StopPriceCreate$outboundSchema = exports.StopPriceCreate$inboundSchema = exports.StopPriceCreateType$ = exports.StopPriceCreateType$outboundSchema = exports.StopPriceCreateType$inboundSchema = exports.StopPriceCreateType = void 0;
+exports.stopPriceCreateToJSON = stopPriceCreateToJSON;
+exports.stopPriceCreateFromJSON = stopPriceCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -91,4 +94,10 @@ var StopPriceCreate$;
     /** @deprecated use `StopPriceCreate$outboundSchema` instead. */
     StopPriceCreate$.outboundSchema = exports.StopPriceCreate$outboundSchema;
 })(StopPriceCreate$ || (exports.StopPriceCreate$ = StopPriceCreate$ = {}));
+function stopPriceCreateToJSON(stopPriceCreate) {
+    return JSON.stringify(exports.StopPriceCreate$outboundSchema.parse(stopPriceCreate));
+}
+function stopPriceCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.StopPriceCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'StopPriceCreate' from JSON`);
+}
 //# sourceMappingURL=stoppricecreate.js.map

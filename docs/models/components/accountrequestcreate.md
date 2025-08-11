@@ -5,19 +5,12 @@ A single record representing an owner or manager of an Account.
 ## Example Usage
 
 ```typescript
-import { AccountRequestCreate, RelationType } from "@apexfintechsolutions/ascend-sdk/models/components";
+import { AccountRequestCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: AccountRequestCreate = {
   accountGroupId: "01ARZ3NDEKTSV4RRFFQ69G5FAV",
   correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
-  parties: [
-    {
-      emailAddress: "example@domain.com",
-      mailingAddress: {},
-      phoneNumber: {},
-      relationType: RelationType.PrimaryOwner,
-    },
-  ],
+  parties: [],
 };
 ```
 

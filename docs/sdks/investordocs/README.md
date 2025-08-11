@@ -14,6 +14,7 @@ Create a batch of signed links that can be used to upload files.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InvestorCommunicationService_BatchCreateUploadLinks" method="post" path="/investordocs/v1/uploadLinks:batchCreate" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -32,7 +33,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investorDocs.batchCreateUploadLinks({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -63,15 +63,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await investorDocsBatchCreateUploadLinks(apexascend, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investorDocsBatchCreateUploadLinks failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -92,10 +89,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 401, 403, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 401, 403    | application/json |
+| errors.Status    | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listDocuments
 
@@ -103,6 +101,7 @@ List documents that match search parameters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InvestorCommunicationService_ListDocuments" method="get" path="/investordocs/v1/documents" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -121,7 +120,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investorDocs.listDocuments();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -152,15 +150,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await investorDocsListDocuments(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investorDocsListDocuments failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -183,7 +178,8 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 401, 403, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 401, 403    | application/json |
+| errors.Status    | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListAgreementsResponse$ = exports.ListAgreementsResponse$outboundSchema = exports.ListAgreementsResponse$inboundSchema = void 0;
+exports.listAgreementsResponseToJSON = listAgreementsResponseToJSON;
+exports.listAgreementsResponseFromJSON = listAgreementsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const agreement_js_1 = require("./agreement.js");
 /** @internal */
 exports.ListAgreementsResponse$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ListAgreementsResponse$;
     /** @deprecated use `ListAgreementsResponse$outboundSchema` instead. */
     ListAgreementsResponse$.outboundSchema = exports.ListAgreementsResponse$outboundSchema;
 })(ListAgreementsResponse$ || (exports.ListAgreementsResponse$ = ListAgreementsResponse$ = {}));
+function listAgreementsResponseToJSON(listAgreementsResponse) {
+    return JSON.stringify(exports.ListAgreementsResponse$outboundSchema.parse(listAgreementsResponse));
+}
+function listAgreementsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListAgreementsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListAgreementsResponse' from JSON`);
+}
 //# sourceMappingURL=listagreementsresponse.js.map

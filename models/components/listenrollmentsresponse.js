@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListEnrollmentsResponse$ = exports.ListEnrollmentsResponse$outboundSchema = exports.ListEnrollmentsResponse$inboundSchema = void 0;
+exports.listEnrollmentsResponseToJSON = listEnrollmentsResponseToJSON;
+exports.listEnrollmentsResponseFromJSON = listEnrollmentsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enrollment_js_1 = require("./enrollment.js");
 /** @internal */
 exports.ListEnrollmentsResponse$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ListEnrollmentsResponse$;
     /** @deprecated use `ListEnrollmentsResponse$outboundSchema` instead. */
     ListEnrollmentsResponse$.outboundSchema = exports.ListEnrollmentsResponse$outboundSchema;
 })(ListEnrollmentsResponse$ || (exports.ListEnrollmentsResponse$ = ListEnrollmentsResponse$ = {}));
+function listEnrollmentsResponseToJSON(listEnrollmentsResponse) {
+    return JSON.stringify(exports.ListEnrollmentsResponse$outboundSchema.parse(listEnrollmentsResponse));
+}
+function listEnrollmentsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListEnrollmentsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListEnrollmentsResponse' from JSON`);
+}
 //# sourceMappingURL=listenrollmentsresponse.js.map

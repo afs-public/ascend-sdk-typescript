@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RebookTradeAllocationRequestCreate$ = exports.RebookTradeAllocationRequestCreate$outboundSchema = exports.RebookTradeAllocationRequestCreate$inboundSchema = void 0;
+exports.rebookTradeAllocationRequestCreateToJSON = rebookTradeAllocationRequestCreateToJSON;
+exports.rebookTradeAllocationRequestCreateFromJSON = rebookTradeAllocationRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const tradeallocationcreate_js_1 = require("./tradeallocationcreate.js");
 /** @internal */
 exports.RebookTradeAllocationRequestCreate$inboundSchema = z.object({
@@ -73,4 +76,10 @@ var RebookTradeAllocationRequestCreate$;
     /** @deprecated use `RebookTradeAllocationRequestCreate$outboundSchema` instead. */
     RebookTradeAllocationRequestCreate$.outboundSchema = exports.RebookTradeAllocationRequestCreate$outboundSchema;
 })(RebookTradeAllocationRequestCreate$ || (exports.RebookTradeAllocationRequestCreate$ = RebookTradeAllocationRequestCreate$ = {}));
+function rebookTradeAllocationRequestCreateToJSON(rebookTradeAllocationRequestCreate) {
+    return JSON.stringify(exports.RebookTradeAllocationRequestCreate$outboundSchema.parse(rebookTradeAllocationRequestCreate));
+}
+function rebookTradeAllocationRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookTradeAllocationRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookTradeAllocationRequestCreate' from JSON`);
+}
 //# sourceMappingURL=rebooktradeallocationrequestcreate.js.map

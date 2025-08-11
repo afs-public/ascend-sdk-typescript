@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The legal day, month, and year of birth for a beneficiary; Birth date is required if tax id and tax id type is not provided.
  */
@@ -273,6 +275,8 @@ export declare namespace BeneficiaryBirthDate$ {
     /** @deprecated use `BeneficiaryBirthDate$Outbound` instead. */
     type Outbound = BeneficiaryBirthDate$Outbound;
 }
+export declare function beneficiaryBirthDateToJSON(beneficiaryBirthDate: BeneficiaryBirthDate): string;
+export declare function beneficiaryBirthDateFromJSON(jsonString: string): SafeParseResult<BeneficiaryBirthDate, SDKValidationError>;
 /** @internal */
 export declare const BeneficiaryEntityType$inboundSchema: z.ZodType<BeneficiaryEntityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -317,6 +321,8 @@ export declare namespace MailingAddress$ {
     /** @deprecated use `MailingAddress$Outbound` instead. */
     type Outbound = MailingAddress$Outbound;
 }
+export declare function mailingAddressToJSON(mailingAddress: MailingAddress): string;
+export declare function mailingAddressFromJSON(jsonString: string): SafeParseResult<MailingAddress, SDKValidationError>;
 /** @internal */
 export declare const ShortCode$inboundSchema: z.ZodType<ShortCode, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -338,6 +344,8 @@ export declare namespace ShortCode$ {
     /** @deprecated use `ShortCode$Outbound` instead. */
     type Outbound = ShortCode$Outbound;
 }
+export declare function shortCodeToJSON(shortCode: ShortCode): string;
+export declare function shortCodeFromJSON(jsonString: string): SafeParseResult<ShortCode, SDKValidationError>;
 /** @internal */
 export declare const PhoneNumber$inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -360,6 +368,8 @@ export declare namespace PhoneNumber$ {
     /** @deprecated use `PhoneNumber$Outbound` instead. */
     type Outbound = PhoneNumber$Outbound;
 }
+export declare function phoneNumberToJSON(phoneNumber: PhoneNumber): string;
+export declare function phoneNumberFromJSON(jsonString: string): SafeParseResult<PhoneNumber, SDKValidationError>;
 /** @internal */
 export declare const BeneficiaryRelationType$inboundSchema: z.ZodType<BeneficiaryRelationTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -420,4 +430,6 @@ export declare namespace Beneficiary$ {
     /** @deprecated use `Beneficiary$Outbound` instead. */
     type Outbound = Beneficiary$Outbound;
 }
+export declare function beneficiaryToJSON(beneficiary: Beneficiary): string;
+export declare function beneficiaryFromJSON(jsonString: string): SafeParseResult<Beneficiary, SDKValidationError>;
 //# sourceMappingURL=beneficiary.d.ts.map

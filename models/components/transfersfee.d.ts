@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of the fee being charged from the investor's account
  */
@@ -156,6 +158,8 @@ export declare namespace TransfersFeeAmount$ {
     /** @deprecated use `TransfersFeeAmount$Outbound` instead. */
     type Outbound = TransfersFeeAmount$Outbound;
 }
+export declare function transfersFeeAmountToJSON(transfersFeeAmount: TransfersFeeAmount): string;
+export declare function transfersFeeAmountFromJSON(jsonString: string): SafeParseResult<TransfersFeeAmount, SDKValidationError>;
 /** @internal */
 export declare const TransfersFeeStateState$inboundSchema: z.ZodType<TransfersFeeStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -196,6 +200,8 @@ export declare namespace TransfersFeeState$ {
     /** @deprecated use `TransfersFeeState$Outbound` instead. */
     type Outbound = TransfersFeeState$Outbound;
 }
+export declare function transfersFeeStateToJSON(transfersFeeState: TransfersFeeState): string;
+export declare function transfersFeeStateFromJSON(jsonString: string): SafeParseResult<TransfersFeeState, SDKValidationError>;
 /** @internal */
 export declare const TransfersFeeType$inboundSchema: z.ZodType<TransfersFeeTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -236,4 +242,6 @@ export declare namespace TransfersFee$ {
     /** @deprecated use `TransfersFee$Outbound` instead. */
     type Outbound = TransfersFee$Outbound;
 }
+export declare function transfersFeeToJSON(transfersFee: TransfersFee): string;
+export declare function transfersFeeFromJSON(jsonString: string): SafeParseResult<TransfersFee, SDKValidationError>;
 //# sourceMappingURL=transfersfee.d.ts.map

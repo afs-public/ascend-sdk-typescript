@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WatchlistServiceGetWatchlistItemRequest = {
   /**
@@ -80,6 +83,33 @@ export namespace WatchlistServiceGetWatchlistItemRequest$ {
   export type Outbound = WatchlistServiceGetWatchlistItemRequest$Outbound;
 }
 
+export function watchlistServiceGetWatchlistItemRequestToJSON(
+  watchlistServiceGetWatchlistItemRequest:
+    WatchlistServiceGetWatchlistItemRequest,
+): string {
+  return JSON.stringify(
+    WatchlistServiceGetWatchlistItemRequest$outboundSchema.parse(
+      watchlistServiceGetWatchlistItemRequest,
+    ),
+  );
+}
+
+export function watchlistServiceGetWatchlistItemRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WatchlistServiceGetWatchlistItemRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WatchlistServiceGetWatchlistItemRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WatchlistServiceGetWatchlistItemRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const WatchlistServiceGetWatchlistItemResponse$inboundSchema: z.ZodType<
   WatchlistServiceGetWatchlistItemResponse,
@@ -134,4 +164,31 @@ export namespace WatchlistServiceGetWatchlistItemResponse$ {
     WatchlistServiceGetWatchlistItemResponse$outboundSchema;
   /** @deprecated use `WatchlistServiceGetWatchlistItemResponse$Outbound` instead. */
   export type Outbound = WatchlistServiceGetWatchlistItemResponse$Outbound;
+}
+
+export function watchlistServiceGetWatchlistItemResponseToJSON(
+  watchlistServiceGetWatchlistItemResponse:
+    WatchlistServiceGetWatchlistItemResponse,
+): string {
+  return JSON.stringify(
+    WatchlistServiceGetWatchlistItemResponse$outboundSchema.parse(
+      watchlistServiceGetWatchlistItemResponse,
+    ),
+  );
+}
+
+export function watchlistServiceGetWatchlistItemResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WatchlistServiceGetWatchlistItemResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WatchlistServiceGetWatchlistItemResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WatchlistServiceGetWatchlistItemResponse' from JSON`,
+  );
 }

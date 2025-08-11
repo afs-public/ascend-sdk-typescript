@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForeignJointAccountEnrollmentMetadataCreate$ = exports.ForeignJointAccountEnrollmentMetadataCreate$outboundSchema = exports.ForeignJointAccountEnrollmentMetadataCreate$inboundSchema = exports.ForeignJointAccountEnrollmentMetadataCreateFdicCashSweep$ = exports.ForeignJointAccountEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.ForeignJointAccountEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.ForeignJointAccountEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.ForeignJointAccountEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.ForeignJointAccountEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.ForeignJointAccountEnrollmentMetadataCreateFdicCashSweep = exports.ForeignJointAccountEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.foreignJointAccountEnrollmentMetadataCreateToJSON = foreignJointAccountEnrollmentMetadataCreateToJSON;
+exports.foreignJointAccountEnrollmentMetadataCreateFromJSON = foreignJointAccountEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const foreignnaturalpersonaccountenrollmentmetadatacreate_js_1 = require("./foreignnaturalpersonaccountenrollmentmetadatacreate.js");
 /**
@@ -142,4 +145,10 @@ var ForeignJointAccountEnrollmentMetadataCreate$;
     /** @deprecated use `ForeignJointAccountEnrollmentMetadataCreate$outboundSchema` instead. */
     ForeignJointAccountEnrollmentMetadataCreate$.outboundSchema = exports.ForeignJointAccountEnrollmentMetadataCreate$outboundSchema;
 })(ForeignJointAccountEnrollmentMetadataCreate$ || (exports.ForeignJointAccountEnrollmentMetadataCreate$ = ForeignJointAccountEnrollmentMetadataCreate$ = {}));
+function foreignJointAccountEnrollmentMetadataCreateToJSON(foreignJointAccountEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.ForeignJointAccountEnrollmentMetadataCreate$outboundSchema.parse(foreignJointAccountEnrollmentMetadataCreate));
+}
+function foreignJointAccountEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignJointAccountEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignJointAccountEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=foreignjointaccountenrollmentmetadatacreate.js.map

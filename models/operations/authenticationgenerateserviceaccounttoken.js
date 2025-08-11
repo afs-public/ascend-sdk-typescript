@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthenticationGenerateServiceAccountTokenResponse$ = exports.AuthenticationGenerateServiceAccountTokenResponse$outboundSchema = exports.AuthenticationGenerateServiceAccountTokenResponse$inboundSchema = exports.AuthenticationGenerateServiceAccountTokenSecurity$ = exports.AuthenticationGenerateServiceAccountTokenSecurity$outboundSchema = exports.AuthenticationGenerateServiceAccountTokenSecurity$inboundSchema = void 0;
+exports.authenticationGenerateServiceAccountTokenSecurityToJSON = authenticationGenerateServiceAccountTokenSecurityToJSON;
+exports.authenticationGenerateServiceAccountTokenSecurityFromJSON = authenticationGenerateServiceAccountTokenSecurityFromJSON;
+exports.authenticationGenerateServiceAccountTokenResponseToJSON = authenticationGenerateServiceAccountTokenResponseToJSON;
+exports.authenticationGenerateServiceAccountTokenResponseFromJSON = authenticationGenerateServiceAccountTokenResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AuthenticationGenerateServiceAccountTokenSecurity$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var AuthenticationGenerateServiceAccountTokenSecurity$;
     /** @deprecated use `AuthenticationGenerateServiceAccountTokenSecurity$outboundSchema` instead. */
     AuthenticationGenerateServiceAccountTokenSecurity$.outboundSchema = exports.AuthenticationGenerateServiceAccountTokenSecurity$outboundSchema;
 })(AuthenticationGenerateServiceAccountTokenSecurity$ || (exports.AuthenticationGenerateServiceAccountTokenSecurity$ = AuthenticationGenerateServiceAccountTokenSecurity$ = {}));
+function authenticationGenerateServiceAccountTokenSecurityToJSON(authenticationGenerateServiceAccountTokenSecurity) {
+    return JSON.stringify(exports.AuthenticationGenerateServiceAccountTokenSecurity$outboundSchema.parse(authenticationGenerateServiceAccountTokenSecurity));
+}
+function authenticationGenerateServiceAccountTokenSecurityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AuthenticationGenerateServiceAccountTokenSecurity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AuthenticationGenerateServiceAccountTokenSecurity' from JSON`);
+}
 /** @internal */
 exports.AuthenticationGenerateServiceAccountTokenResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var AuthenticationGenerateServiceAccountTokenResponse$;
     /** @deprecated use `AuthenticationGenerateServiceAccountTokenResponse$outboundSchema` instead. */
     AuthenticationGenerateServiceAccountTokenResponse$.outboundSchema = exports.AuthenticationGenerateServiceAccountTokenResponse$outboundSchema;
 })(AuthenticationGenerateServiceAccountTokenResponse$ || (exports.AuthenticationGenerateServiceAccountTokenResponse$ = AuthenticationGenerateServiceAccountTokenResponse$ = {}));
+function authenticationGenerateServiceAccountTokenResponseToJSON(authenticationGenerateServiceAccountTokenResponse) {
+    return JSON.stringify(exports.AuthenticationGenerateServiceAccountTokenResponse$outboundSchema.parse(authenticationGenerateServiceAccountTokenResponse));
+}
+function authenticationGenerateServiceAccountTokenResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AuthenticationGenerateServiceAccountTokenResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AuthenticationGenerateServiceAccountTokenResponse' from JSON`);
+}
 //# sourceMappingURL=authenticationgenerateserviceaccounttoken.js.map

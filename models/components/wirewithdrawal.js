@@ -38,8 +38,45 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireWithdrawalRecipientBankAddress$outboundSchema = exports.WireWithdrawalRecipientBankAddress$inboundSchema = exports.WireWithdrawalBankId$ = exports.WireWithdrawalBankId$outboundSchema = exports.WireWithdrawalBankId$inboundSchema = exports.WireWithdrawalRecipientBankType$ = exports.WireWithdrawalRecipientBankType$outboundSchema = exports.WireWithdrawalRecipientBankType$inboundSchema = exports.WireWithdrawalIraDistribution$ = exports.WireWithdrawalIraDistribution$outboundSchema = exports.WireWithdrawalIraDistribution$inboundSchema = exports.WireWithdrawalType$ = exports.WireWithdrawalType$outboundSchema = exports.WireWithdrawalType$inboundSchema = exports.WireWithdrawalStateTaxWithholding$ = exports.WireWithdrawalStateTaxWithholding$outboundSchema = exports.WireWithdrawalStateTaxWithholding$inboundSchema = exports.WireWithdrawalIraDistributionPercentage$ = exports.WireWithdrawalIraDistributionPercentage$outboundSchema = exports.WireWithdrawalIraDistributionPercentage$inboundSchema = exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$ = exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$outboundSchema = exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$inboundSchema = exports.WireWithdrawalFederalTaxWithholding$ = exports.WireWithdrawalFederalTaxWithholding$outboundSchema = exports.WireWithdrawalFederalTaxWithholding$inboundSchema = exports.WireWithdrawalPercentage$ = exports.WireWithdrawalPercentage$outboundSchema = exports.WireWithdrawalPercentage$inboundSchema = exports.WireWithdrawalIraDistributionAmount$ = exports.WireWithdrawalIraDistributionAmount$outboundSchema = exports.WireWithdrawalIraDistributionAmount$inboundSchema = exports.WireWithdrawalIntermediary$ = exports.WireWithdrawalIntermediary$outboundSchema = exports.WireWithdrawalIntermediary$inboundSchema = exports.WireWithdrawalIntermediaryAddress$ = exports.WireWithdrawalIntermediaryAddress$outboundSchema = exports.WireWithdrawalIntermediaryAddress$inboundSchema = exports.WireWithdrawalBeneficiary$ = exports.WireWithdrawalBeneficiary$outboundSchema = exports.WireWithdrawalBeneficiary$inboundSchema = exports.WireWithdrawalAddress$ = exports.WireWithdrawalAddress$outboundSchema = exports.WireWithdrawalAddress$inboundSchema = exports.WireWithdrawalAmount$ = exports.WireWithdrawalAmount$outboundSchema = exports.WireWithdrawalAmount$inboundSchema = exports.WireWithdrawalStateState = exports.WireWithdrawalRecipientBankType = exports.WireWithdrawalType = void 0;
 exports.WireWithdrawal$ = exports.WireWithdrawal$outboundSchema = exports.WireWithdrawal$inboundSchema = exports.WireWithdrawalState$ = exports.WireWithdrawalState$outboundSchema = exports.WireWithdrawalState$inboundSchema = exports.WireWithdrawalStateState$ = exports.WireWithdrawalStateState$outboundSchema = exports.WireWithdrawalStateState$inboundSchema = exports.WireWithdrawalRecipientBank$ = exports.WireWithdrawalRecipientBank$outboundSchema = exports.WireWithdrawalRecipientBank$inboundSchema = exports.WireWithdrawalInternationalBankDetails$ = exports.WireWithdrawalInternationalBankDetails$outboundSchema = exports.WireWithdrawalInternationalBankDetails$inboundSchema = exports.WireWithdrawalRecipientBankAddress$ = void 0;
+exports.wireWithdrawalAmountToJSON = wireWithdrawalAmountToJSON;
+exports.wireWithdrawalAmountFromJSON = wireWithdrawalAmountFromJSON;
+exports.wireWithdrawalAddressToJSON = wireWithdrawalAddressToJSON;
+exports.wireWithdrawalAddressFromJSON = wireWithdrawalAddressFromJSON;
+exports.wireWithdrawalBeneficiaryToJSON = wireWithdrawalBeneficiaryToJSON;
+exports.wireWithdrawalBeneficiaryFromJSON = wireWithdrawalBeneficiaryFromJSON;
+exports.wireWithdrawalIntermediaryAddressToJSON = wireWithdrawalIntermediaryAddressToJSON;
+exports.wireWithdrawalIntermediaryAddressFromJSON = wireWithdrawalIntermediaryAddressFromJSON;
+exports.wireWithdrawalIntermediaryToJSON = wireWithdrawalIntermediaryToJSON;
+exports.wireWithdrawalIntermediaryFromJSON = wireWithdrawalIntermediaryFromJSON;
+exports.wireWithdrawalIraDistributionAmountToJSON = wireWithdrawalIraDistributionAmountToJSON;
+exports.wireWithdrawalIraDistributionAmountFromJSON = wireWithdrawalIraDistributionAmountFromJSON;
+exports.wireWithdrawalPercentageToJSON = wireWithdrawalPercentageToJSON;
+exports.wireWithdrawalPercentageFromJSON = wireWithdrawalPercentageFromJSON;
+exports.wireWithdrawalFederalTaxWithholdingToJSON = wireWithdrawalFederalTaxWithholdingToJSON;
+exports.wireWithdrawalFederalTaxWithholdingFromJSON = wireWithdrawalFederalTaxWithholdingFromJSON;
+exports.wireWithdrawalIraDistributionStateTaxWithholdingAmountToJSON = wireWithdrawalIraDistributionStateTaxWithholdingAmountToJSON;
+exports.wireWithdrawalIraDistributionStateTaxWithholdingAmountFromJSON = wireWithdrawalIraDistributionStateTaxWithholdingAmountFromJSON;
+exports.wireWithdrawalIraDistributionPercentageToJSON = wireWithdrawalIraDistributionPercentageToJSON;
+exports.wireWithdrawalIraDistributionPercentageFromJSON = wireWithdrawalIraDistributionPercentageFromJSON;
+exports.wireWithdrawalStateTaxWithholdingToJSON = wireWithdrawalStateTaxWithholdingToJSON;
+exports.wireWithdrawalStateTaxWithholdingFromJSON = wireWithdrawalStateTaxWithholdingFromJSON;
+exports.wireWithdrawalIraDistributionToJSON = wireWithdrawalIraDistributionToJSON;
+exports.wireWithdrawalIraDistributionFromJSON = wireWithdrawalIraDistributionFromJSON;
+exports.wireWithdrawalBankIdToJSON = wireWithdrawalBankIdToJSON;
+exports.wireWithdrawalBankIdFromJSON = wireWithdrawalBankIdFromJSON;
+exports.wireWithdrawalRecipientBankAddressToJSON = wireWithdrawalRecipientBankAddressToJSON;
+exports.wireWithdrawalRecipientBankAddressFromJSON = wireWithdrawalRecipientBankAddressFromJSON;
+exports.wireWithdrawalInternationalBankDetailsToJSON = wireWithdrawalInternationalBankDetailsToJSON;
+exports.wireWithdrawalInternationalBankDetailsFromJSON = wireWithdrawalInternationalBankDetailsFromJSON;
+exports.wireWithdrawalRecipientBankToJSON = wireWithdrawalRecipientBankToJSON;
+exports.wireWithdrawalRecipientBankFromJSON = wireWithdrawalRecipientBankFromJSON;
+exports.wireWithdrawalStateToJSON = wireWithdrawalStateToJSON;
+exports.wireWithdrawalStateFromJSON = wireWithdrawalStateFromJSON;
+exports.wireWithdrawalToJSON = wireWithdrawalToJSON;
+exports.wireWithdrawalFromJSON = wireWithdrawalFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of retirement distribution.
@@ -121,6 +158,12 @@ var WireWithdrawalAmount$;
     /** @deprecated use `WireWithdrawalAmount$outboundSchema` instead. */
     WireWithdrawalAmount$.outboundSchema = exports.WireWithdrawalAmount$outboundSchema;
 })(WireWithdrawalAmount$ || (exports.WireWithdrawalAmount$ = WireWithdrawalAmount$ = {}));
+function wireWithdrawalAmountToJSON(wireWithdrawalAmount) {
+    return JSON.stringify(exports.WireWithdrawalAmount$outboundSchema.parse(wireWithdrawalAmount));
+}
+function wireWithdrawalAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalAmount' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalAddress$inboundSchema = z.object({
     city: z.string().optional(),
@@ -156,6 +199,12 @@ var WireWithdrawalAddress$;
     /** @deprecated use `WireWithdrawalAddress$outboundSchema` instead. */
     WireWithdrawalAddress$.outboundSchema = exports.WireWithdrawalAddress$outboundSchema;
 })(WireWithdrawalAddress$ || (exports.WireWithdrawalAddress$ = WireWithdrawalAddress$ = {}));
+function wireWithdrawalAddressToJSON(wireWithdrawalAddress) {
+    return JSON.stringify(exports.WireWithdrawalAddress$outboundSchema.parse(wireWithdrawalAddress));
+}
+function wireWithdrawalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalAddress' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalBeneficiary$inboundSchema = z.object({
     account: z.string().optional(),
@@ -193,6 +242,12 @@ var WireWithdrawalBeneficiary$;
     /** @deprecated use `WireWithdrawalBeneficiary$outboundSchema` instead. */
     WireWithdrawalBeneficiary$.outboundSchema = exports.WireWithdrawalBeneficiary$outboundSchema;
 })(WireWithdrawalBeneficiary$ || (exports.WireWithdrawalBeneficiary$ = WireWithdrawalBeneficiary$ = {}));
+function wireWithdrawalBeneficiaryToJSON(wireWithdrawalBeneficiary) {
+    return JSON.stringify(exports.WireWithdrawalBeneficiary$outboundSchema.parse(wireWithdrawalBeneficiary));
+}
+function wireWithdrawalBeneficiaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalBeneficiary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalBeneficiary' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalIntermediaryAddress$inboundSchema = z.object({
     city: z.string().optional(),
@@ -228,6 +283,12 @@ var WireWithdrawalIntermediaryAddress$;
     /** @deprecated use `WireWithdrawalIntermediaryAddress$outboundSchema` instead. */
     WireWithdrawalIntermediaryAddress$.outboundSchema = exports.WireWithdrawalIntermediaryAddress$outboundSchema;
 })(WireWithdrawalIntermediaryAddress$ || (exports.WireWithdrawalIntermediaryAddress$ = WireWithdrawalIntermediaryAddress$ = {}));
+function wireWithdrawalIntermediaryAddressToJSON(wireWithdrawalIntermediaryAddress) {
+    return JSON.stringify(exports.WireWithdrawalIntermediaryAddress$outboundSchema.parse(wireWithdrawalIntermediaryAddress));
+}
+function wireWithdrawalIntermediaryAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalIntermediaryAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalIntermediaryAddress' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalIntermediary$inboundSchema = z.object({
     account: z.string().optional(),
@@ -259,6 +320,12 @@ var WireWithdrawalIntermediary$;
     /** @deprecated use `WireWithdrawalIntermediary$outboundSchema` instead. */
     WireWithdrawalIntermediary$.outboundSchema = exports.WireWithdrawalIntermediary$outboundSchema;
 })(WireWithdrawalIntermediary$ || (exports.WireWithdrawalIntermediary$ = WireWithdrawalIntermediary$ = {}));
+function wireWithdrawalIntermediaryToJSON(wireWithdrawalIntermediary) {
+    return JSON.stringify(exports.WireWithdrawalIntermediary$outboundSchema.parse(wireWithdrawalIntermediary));
+}
+function wireWithdrawalIntermediaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalIntermediary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalIntermediary' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalIraDistributionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -278,6 +345,12 @@ var WireWithdrawalIraDistributionAmount$;
     /** @deprecated use `WireWithdrawalIraDistributionAmount$outboundSchema` instead. */
     WireWithdrawalIraDistributionAmount$.outboundSchema = exports.WireWithdrawalIraDistributionAmount$outboundSchema;
 })(WireWithdrawalIraDistributionAmount$ || (exports.WireWithdrawalIraDistributionAmount$ = WireWithdrawalIraDistributionAmount$ = {}));
+function wireWithdrawalIraDistributionAmountToJSON(wireWithdrawalIraDistributionAmount) {
+    return JSON.stringify(exports.WireWithdrawalIraDistributionAmount$outboundSchema.parse(wireWithdrawalIraDistributionAmount));
+}
+function wireWithdrawalIraDistributionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalIraDistributionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalIraDistributionAmount' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -297,6 +370,12 @@ var WireWithdrawalPercentage$;
     /** @deprecated use `WireWithdrawalPercentage$outboundSchema` instead. */
     WireWithdrawalPercentage$.outboundSchema = exports.WireWithdrawalPercentage$outboundSchema;
 })(WireWithdrawalPercentage$ || (exports.WireWithdrawalPercentage$ = WireWithdrawalPercentage$ = {}));
+function wireWithdrawalPercentageToJSON(wireWithdrawalPercentage) {
+    return JSON.stringify(exports.WireWithdrawalPercentage$outboundSchema.parse(wireWithdrawalPercentage));
+}
+function wireWithdrawalPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalPercentage' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalFederalTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.WireWithdrawalIraDistributionAmount$inboundSchema)).optional(),
@@ -320,6 +399,12 @@ var WireWithdrawalFederalTaxWithholding$;
     /** @deprecated use `WireWithdrawalFederalTaxWithholding$outboundSchema` instead. */
     WireWithdrawalFederalTaxWithholding$.outboundSchema = exports.WireWithdrawalFederalTaxWithholding$outboundSchema;
 })(WireWithdrawalFederalTaxWithholding$ || (exports.WireWithdrawalFederalTaxWithholding$ = WireWithdrawalFederalTaxWithholding$ = {}));
+function wireWithdrawalFederalTaxWithholdingToJSON(wireWithdrawalFederalTaxWithholding) {
+    return JSON.stringify(exports.WireWithdrawalFederalTaxWithholding$outboundSchema.parse(wireWithdrawalFederalTaxWithholding));
+}
+function wireWithdrawalFederalTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalFederalTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalFederalTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -339,6 +424,13 @@ var WireWithdrawalIraDistributionStateTaxWithholdingAmount$;
     /** @deprecated use `WireWithdrawalIraDistributionStateTaxWithholdingAmount$outboundSchema` instead. */
     WireWithdrawalIraDistributionStateTaxWithholdingAmount$.outboundSchema = exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$outboundSchema;
 })(WireWithdrawalIraDistributionStateTaxWithholdingAmount$ || (exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$ = WireWithdrawalIraDistributionStateTaxWithholdingAmount$ = {}));
+function wireWithdrawalIraDistributionStateTaxWithholdingAmountToJSON(wireWithdrawalIraDistributionStateTaxWithholdingAmount) {
+    return JSON.stringify(exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$outboundSchema.parse(wireWithdrawalIraDistributionStateTaxWithholdingAmount));
+}
+function wireWithdrawalIraDistributionStateTaxWithholdingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalIraDistributionStateTaxWithholdingAmount' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalIraDistributionPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -358,6 +450,12 @@ var WireWithdrawalIraDistributionPercentage$;
     /** @deprecated use `WireWithdrawalIraDistributionPercentage$outboundSchema` instead. */
     WireWithdrawalIraDistributionPercentage$.outboundSchema = exports.WireWithdrawalIraDistributionPercentage$outboundSchema;
 })(WireWithdrawalIraDistributionPercentage$ || (exports.WireWithdrawalIraDistributionPercentage$ = WireWithdrawalIraDistributionPercentage$ = {}));
+function wireWithdrawalIraDistributionPercentageToJSON(wireWithdrawalIraDistributionPercentage) {
+    return JSON.stringify(exports.WireWithdrawalIraDistributionPercentage$outboundSchema.parse(wireWithdrawalIraDistributionPercentage));
+}
+function wireWithdrawalIraDistributionPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalIraDistributionPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalIraDistributionPercentage' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalStateTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.WireWithdrawalIraDistributionStateTaxWithholdingAmount$inboundSchema)).optional(),
@@ -379,6 +477,12 @@ var WireWithdrawalStateTaxWithholding$;
     /** @deprecated use `WireWithdrawalStateTaxWithholding$outboundSchema` instead. */
     WireWithdrawalStateTaxWithholding$.outboundSchema = exports.WireWithdrawalStateTaxWithholding$outboundSchema;
 })(WireWithdrawalStateTaxWithholding$ || (exports.WireWithdrawalStateTaxWithholding$ = WireWithdrawalStateTaxWithholding$ = {}));
+function wireWithdrawalStateTaxWithholdingToJSON(wireWithdrawalStateTaxWithholding) {
+    return JSON.stringify(exports.WireWithdrawalStateTaxWithholding$outboundSchema.parse(wireWithdrawalStateTaxWithholding));
+}
+function wireWithdrawalStateTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalStateTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalStateTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalType$inboundSchema = z
     .union([
@@ -446,6 +550,12 @@ var WireWithdrawalIraDistribution$;
     /** @deprecated use `WireWithdrawalIraDistribution$outboundSchema` instead. */
     WireWithdrawalIraDistribution$.outboundSchema = exports.WireWithdrawalIraDistribution$outboundSchema;
 })(WireWithdrawalIraDistribution$ || (exports.WireWithdrawalIraDistribution$ = WireWithdrawalIraDistribution$ = {}));
+function wireWithdrawalIraDistributionToJSON(wireWithdrawalIraDistribution) {
+    return JSON.stringify(exports.WireWithdrawalIraDistribution$outboundSchema.parse(wireWithdrawalIraDistribution));
+}
+function wireWithdrawalIraDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalIraDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalIraDistribution' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalRecipientBankType$inboundSchema = z
     .union([
@@ -489,6 +599,12 @@ var WireWithdrawalBankId$;
     /** @deprecated use `WireWithdrawalBankId$outboundSchema` instead. */
     WireWithdrawalBankId$.outboundSchema = exports.WireWithdrawalBankId$outboundSchema;
 })(WireWithdrawalBankId$ || (exports.WireWithdrawalBankId$ = WireWithdrawalBankId$ = {}));
+function wireWithdrawalBankIdToJSON(wireWithdrawalBankId) {
+    return JSON.stringify(exports.WireWithdrawalBankId$outboundSchema.parse(wireWithdrawalBankId));
+}
+function wireWithdrawalBankIdFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalBankId$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalBankId' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalRecipientBankAddress$inboundSchema = z.object({
     city: z.string().optional(),
@@ -524,6 +640,12 @@ var WireWithdrawalRecipientBankAddress$;
     /** @deprecated use `WireWithdrawalRecipientBankAddress$outboundSchema` instead. */
     WireWithdrawalRecipientBankAddress$.outboundSchema = exports.WireWithdrawalRecipientBankAddress$outboundSchema;
 })(WireWithdrawalRecipientBankAddress$ || (exports.WireWithdrawalRecipientBankAddress$ = WireWithdrawalRecipientBankAddress$ = {}));
+function wireWithdrawalRecipientBankAddressToJSON(wireWithdrawalRecipientBankAddress) {
+    return JSON.stringify(exports.WireWithdrawalRecipientBankAddress$outboundSchema.parse(wireWithdrawalRecipientBankAddress));
+}
+function wireWithdrawalRecipientBankAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalRecipientBankAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalRecipientBankAddress' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalInternationalBankDetails$inboundSchema = z.object({
     additional_info: z.string().optional(),
@@ -557,6 +679,12 @@ var WireWithdrawalInternationalBankDetails$;
     /** @deprecated use `WireWithdrawalInternationalBankDetails$outboundSchema` instead. */
     WireWithdrawalInternationalBankDetails$.outboundSchema = exports.WireWithdrawalInternationalBankDetails$outboundSchema;
 })(WireWithdrawalInternationalBankDetails$ || (exports.WireWithdrawalInternationalBankDetails$ = WireWithdrawalInternationalBankDetails$ = {}));
+function wireWithdrawalInternationalBankDetailsToJSON(wireWithdrawalInternationalBankDetails) {
+    return JSON.stringify(exports.WireWithdrawalInternationalBankDetails$outboundSchema.parse(wireWithdrawalInternationalBankDetails));
+}
+function wireWithdrawalInternationalBankDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalInternationalBankDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalInternationalBankDetails' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalRecipientBank$inboundSchema = z.object({
     bank_id: z.nullable(z.lazy(() => exports.WireWithdrawalBankId$inboundSchema))
@@ -590,6 +718,12 @@ var WireWithdrawalRecipientBank$;
     /** @deprecated use `WireWithdrawalRecipientBank$outboundSchema` instead. */
     WireWithdrawalRecipientBank$.outboundSchema = exports.WireWithdrawalRecipientBank$outboundSchema;
 })(WireWithdrawalRecipientBank$ || (exports.WireWithdrawalRecipientBank$ = WireWithdrawalRecipientBank$ = {}));
+function wireWithdrawalRecipientBankToJSON(wireWithdrawalRecipientBank) {
+    return JSON.stringify(exports.WireWithdrawalRecipientBank$outboundSchema.parse(wireWithdrawalRecipientBank));
+}
+function wireWithdrawalRecipientBankFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalRecipientBank$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalRecipientBank' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalStateState$inboundSchema = z
     .union([
@@ -647,6 +781,12 @@ var WireWithdrawalState$;
     /** @deprecated use `WireWithdrawalState$outboundSchema` instead. */
     WireWithdrawalState$.outboundSchema = exports.WireWithdrawalState$outboundSchema;
 })(WireWithdrawalState$ || (exports.WireWithdrawalState$ = WireWithdrawalState$ = {}));
+function wireWithdrawalStateToJSON(wireWithdrawalState) {
+    return JSON.stringify(exports.WireWithdrawalState$outboundSchema.parse(wireWithdrawalState));
+}
+function wireWithdrawalStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalState' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawal$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.WireWithdrawalAmount$inboundSchema))
@@ -700,4 +840,10 @@ var WireWithdrawal$;
     /** @deprecated use `WireWithdrawal$outboundSchema` instead. */
     WireWithdrawal$.outboundSchema = exports.WireWithdrawal$outboundSchema;
 })(WireWithdrawal$ || (exports.WireWithdrawal$ = WireWithdrawal$ = {}));
+function wireWithdrawalToJSON(wireWithdrawal) {
+    return JSON.stringify(exports.WireWithdrawal$outboundSchema.parse(wireWithdrawal));
+}
+function wireWithdrawalFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawal$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawal' from JSON`);
+}
 //# sourceMappingURL=wirewithdrawal.js.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TradeAllocationCreate,
   TradeAllocationCreate$inboundSchema,
@@ -80,4 +83,25 @@ export namespace RebookTradeAllocationRequestCreate$ {
     RebookTradeAllocationRequestCreate$outboundSchema;
   /** @deprecated use `RebookTradeAllocationRequestCreate$Outbound` instead. */
   export type Outbound = RebookTradeAllocationRequestCreate$Outbound;
+}
+
+export function rebookTradeAllocationRequestCreateToJSON(
+  rebookTradeAllocationRequestCreate: RebookTradeAllocationRequestCreate,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationRequestCreate$outboundSchema.parse(
+      rebookTradeAllocationRequestCreate,
+    ),
+  );
+}
+
+export function rebookTradeAllocationRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookTradeAllocationRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationRequestCreate' from JSON`,
+  );
 }

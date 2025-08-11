@@ -37,12 +37,24 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestigationUpdate$ = exports.InvestigationUpdate$outboundSchema = exports.InvestigationUpdate$inboundSchema = exports.InvestigationUpdateInvestigationRequestState$ = exports.InvestigationUpdateInvestigationRequestState$outboundSchema = exports.InvestigationUpdateInvestigationRequestState$inboundSchema = exports.InvestigationUpdateIdentityVerification$ = exports.InvestigationUpdateIdentityVerification$outboundSchema = exports.InvestigationUpdateIdentityVerification$inboundSchema = exports.InvestigationUpdateInvestigationRequestState = exports.InvestigationUpdateIdentityVerification = void 0;
+exports.investigationUpdateToJSON = investigationUpdateToJSON;
+exports.investigationUpdateFromJSON = investigationUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const watchlistmatchupdate_js_1 = require("./watchlistmatchupdate.js");
 /**
- * Indicates the current state of identity verification
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 var InvestigationUpdateIdentityVerification;
 (function (InvestigationUpdateIdentityVerification) {
@@ -55,7 +67,12 @@ var InvestigationUpdateIdentityVerification;
     InvestigationUpdateIdentityVerification["OutOfScope"] = "OUT_OF_SCOPE";
 })(InvestigationUpdateIdentityVerification || (exports.InvestigationUpdateIdentityVerification = InvestigationUpdateIdentityVerification = {}));
 /**
- * Current state of investigation request
+ * The state of an investigation request, one of:
+ *
+ * @remarks
+ * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+ * - `OPEN` - The investigation request is open.
+ * - `CLOSED` - The investigation request is closed.
  */
 var InvestigationUpdateInvestigationRequestState;
 (function (InvestigationUpdateInvestigationRequestState) {
@@ -109,6 +126,7 @@ var InvestigationUpdateInvestigationRequestState$;
 })(InvestigationUpdateInvestigationRequestState$ || (exports.InvestigationUpdateInvestigationRequestState$ = InvestigationUpdateInvestigationRequestState$ = {}));
 /** @internal */
 exports.InvestigationUpdate$inboundSchema = z.object({
+    client_id: z.string().optional(),
     comment: z.string().optional(),
     identity_verification: exports.InvestigationUpdateIdentityVerification$inboundSchema
         .optional(),
@@ -116,6 +134,7 @@ exports.InvestigationUpdate$inboundSchema = z.object({
     watchlist_matches: z.array(watchlistmatchupdate_js_1.WatchlistMatchUpdate$inboundSchema).optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        "client_id": "clientId",
         "identity_verification": "identityVerification",
         "investigation_request_state": "investigationRequestState",
         "watchlist_matches": "watchlistMatches",
@@ -123,6 +142,7 @@ exports.InvestigationUpdate$inboundSchema = z.object({
 });
 /** @internal */
 exports.InvestigationUpdate$outboundSchema = z.object({
+    clientId: z.string().optional(),
     comment: z.string().optional(),
     identityVerification: exports.InvestigationUpdateIdentityVerification$outboundSchema
         .optional(),
@@ -130,6 +150,7 @@ exports.InvestigationUpdate$outboundSchema = z.object({
     watchlistMatches: z.array(watchlistmatchupdate_js_1.WatchlistMatchUpdate$outboundSchema).optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        clientId: "client_id",
         identityVerification: "identity_verification",
         investigationRequestState: "investigation_request_state",
         watchlistMatches: "watchlist_matches",
@@ -146,4 +167,10 @@ var InvestigationUpdate$;
     /** @deprecated use `InvestigationUpdate$outboundSchema` instead. */
     InvestigationUpdate$.outboundSchema = exports.InvestigationUpdate$outboundSchema;
 })(InvestigationUpdate$ || (exports.InvestigationUpdate$ = InvestigationUpdate$ = {}));
+function investigationUpdateToJSON(investigationUpdate) {
+    return JSON.stringify(exports.InvestigationUpdate$outboundSchema.parse(investigationUpdate));
+}
+function investigationUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationUpdate' from JSON`);
+}
 //# sourceMappingURL=investigationupdate.js.map

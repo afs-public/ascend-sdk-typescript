@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type TransferScheduleSummariesListScheduleSummariesRequest = {
   /**
@@ -100,6 +103,33 @@ export namespace TransferScheduleSummariesListScheduleSummariesRequest$ {
     TransferScheduleSummariesListScheduleSummariesRequest$Outbound;
 }
 
+export function transferScheduleSummariesListScheduleSummariesRequestToJSON(
+  transferScheduleSummariesListScheduleSummariesRequest:
+    TransferScheduleSummariesListScheduleSummariesRequest,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummariesListScheduleSummariesRequest$outboundSchema.parse(
+      transferScheduleSummariesListScheduleSummariesRequest,
+    ),
+  );
+}
+
+export function transferScheduleSummariesListScheduleSummariesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummariesListScheduleSummariesRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummariesListScheduleSummariesRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'TransferScheduleSummariesListScheduleSummariesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransferScheduleSummariesListScheduleSummariesResponse$inboundSchema:
   z.ZodType<
@@ -161,4 +191,30 @@ export namespace TransferScheduleSummariesListScheduleSummariesResponse$ {
   /** @deprecated use `TransferScheduleSummariesListScheduleSummariesResponse$Outbound` instead. */
   export type Outbound =
     TransferScheduleSummariesListScheduleSummariesResponse$Outbound;
+}
+
+export function transferScheduleSummariesListScheduleSummariesResponseToJSON(
+  transferScheduleSummariesListScheduleSummariesResponse:
+    TransferScheduleSummariesListScheduleSummariesResponse,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummariesListScheduleSummariesResponse$outboundSchema.parse(
+      transferScheduleSummariesListScheduleSummariesResponse,
+    ),
+  );
+}
+
+export function transferScheduleSummariesListScheduleSummariesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  TransferScheduleSummariesListScheduleSummariesResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      TransferScheduleSummariesListScheduleSummariesResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'TransferScheduleSummariesListScheduleSummariesResponse' from JSON`,
+  );
 }

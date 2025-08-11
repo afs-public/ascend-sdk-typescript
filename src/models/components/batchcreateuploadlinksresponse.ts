@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UploadLink,
   UploadLink$inboundSchema,
@@ -63,4 +66,24 @@ export namespace BatchCreateUploadLinksResponse$ {
   export const outboundSchema = BatchCreateUploadLinksResponse$outboundSchema;
   /** @deprecated use `BatchCreateUploadLinksResponse$Outbound` instead. */
   export type Outbound = BatchCreateUploadLinksResponse$Outbound;
+}
+
+export function batchCreateUploadLinksResponseToJSON(
+  batchCreateUploadLinksResponse: BatchCreateUploadLinksResponse,
+): string {
+  return JSON.stringify(
+    BatchCreateUploadLinksResponse$outboundSchema.parse(
+      batchCreateUploadLinksResponse,
+    ),
+  );
+}
+
+export function batchCreateUploadLinksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BatchCreateUploadLinksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BatchCreateUploadLinksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BatchCreateUploadLinksResponse' from JSON`,
+  );
 }

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankRelationshipsCreateBankRelationshipResponse$ = exports.BankRelationshipsCreateBankRelationshipResponse$outboundSchema = exports.BankRelationshipsCreateBankRelationshipResponse$inboundSchema = exports.BankRelationshipsCreateBankRelationshipRequest$ = exports.BankRelationshipsCreateBankRelationshipRequest$outboundSchema = exports.BankRelationshipsCreateBankRelationshipRequest$inboundSchema = void 0;
+exports.bankRelationshipsCreateBankRelationshipRequestToJSON = bankRelationshipsCreateBankRelationshipRequestToJSON;
+exports.bankRelationshipsCreateBankRelationshipRequestFromJSON = bankRelationshipsCreateBankRelationshipRequestFromJSON;
+exports.bankRelationshipsCreateBankRelationshipResponseToJSON = bankRelationshipsCreateBankRelationshipResponseToJSON;
+exports.bankRelationshipsCreateBankRelationshipResponseFromJSON = bankRelationshipsCreateBankRelationshipResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BankRelationshipsCreateBankRelationshipRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var BankRelationshipsCreateBankRelationshipRequest$;
     /** @deprecated use `BankRelationshipsCreateBankRelationshipRequest$outboundSchema` instead. */
     BankRelationshipsCreateBankRelationshipRequest$.outboundSchema = exports.BankRelationshipsCreateBankRelationshipRequest$outboundSchema;
 })(BankRelationshipsCreateBankRelationshipRequest$ || (exports.BankRelationshipsCreateBankRelationshipRequest$ = BankRelationshipsCreateBankRelationshipRequest$ = {}));
+function bankRelationshipsCreateBankRelationshipRequestToJSON(bankRelationshipsCreateBankRelationshipRequest) {
+    return JSON.stringify(exports.BankRelationshipsCreateBankRelationshipRequest$outboundSchema.parse(bankRelationshipsCreateBankRelationshipRequest));
+}
+function bankRelationshipsCreateBankRelationshipRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipsCreateBankRelationshipRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipsCreateBankRelationshipRequest' from JSON`);
+}
 /** @internal */
 exports.BankRelationshipsCreateBankRelationshipResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var BankRelationshipsCreateBankRelationshipResponse$;
     /** @deprecated use `BankRelationshipsCreateBankRelationshipResponse$outboundSchema` instead. */
     BankRelationshipsCreateBankRelationshipResponse$.outboundSchema = exports.BankRelationshipsCreateBankRelationshipResponse$outboundSchema;
 })(BankRelationshipsCreateBankRelationshipResponse$ || (exports.BankRelationshipsCreateBankRelationshipResponse$ = BankRelationshipsCreateBankRelationshipResponse$ = {}));
+function bankRelationshipsCreateBankRelationshipResponseToJSON(bankRelationshipsCreateBankRelationshipResponse) {
+    return JSON.stringify(exports.BankRelationshipsCreateBankRelationshipResponse$outboundSchema.parse(bankRelationshipsCreateBankRelationshipResponse));
+}
+function bankRelationshipsCreateBankRelationshipResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipsCreateBankRelationshipResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipsCreateBankRelationshipResponse' from JSON`);
+}
 //# sourceMappingURL=bankrelationshipscreatebankrelationship.js.map

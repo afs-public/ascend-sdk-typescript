@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsAssignLargeTraderLegalEntityResponse$ = exports.AccountsAssignLargeTraderLegalEntityResponse$outboundSchema = exports.AccountsAssignLargeTraderLegalEntityResponse$inboundSchema = exports.AccountsAssignLargeTraderLegalEntityRequest$ = exports.AccountsAssignLargeTraderLegalEntityRequest$outboundSchema = exports.AccountsAssignLargeTraderLegalEntityRequest$inboundSchema = void 0;
+exports.accountsAssignLargeTraderLegalEntityRequestToJSON = accountsAssignLargeTraderLegalEntityRequestToJSON;
+exports.accountsAssignLargeTraderLegalEntityRequestFromJSON = accountsAssignLargeTraderLegalEntityRequestFromJSON;
+exports.accountsAssignLargeTraderLegalEntityResponseToJSON = accountsAssignLargeTraderLegalEntityResponseToJSON;
+exports.accountsAssignLargeTraderLegalEntityResponseFromJSON = accountsAssignLargeTraderLegalEntityResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsAssignLargeTraderLegalEntityRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsAssignLargeTraderLegalEntityRequest$;
     /** @deprecated use `AccountsAssignLargeTraderLegalEntityRequest$outboundSchema` instead. */
     AccountsAssignLargeTraderLegalEntityRequest$.outboundSchema = exports.AccountsAssignLargeTraderLegalEntityRequest$outboundSchema;
 })(AccountsAssignLargeTraderLegalEntityRequest$ || (exports.AccountsAssignLargeTraderLegalEntityRequest$ = AccountsAssignLargeTraderLegalEntityRequest$ = {}));
+function accountsAssignLargeTraderLegalEntityRequestToJSON(accountsAssignLargeTraderLegalEntityRequest) {
+    return JSON.stringify(exports.AccountsAssignLargeTraderLegalEntityRequest$outboundSchema.parse(accountsAssignLargeTraderLegalEntityRequest));
+}
+function accountsAssignLargeTraderLegalEntityRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAssignLargeTraderLegalEntityRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAssignLargeTraderLegalEntityRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsAssignLargeTraderLegalEntityResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsAssignLargeTraderLegalEntityResponse$;
     /** @deprecated use `AccountsAssignLargeTraderLegalEntityResponse$outboundSchema` instead. */
     AccountsAssignLargeTraderLegalEntityResponse$.outboundSchema = exports.AccountsAssignLargeTraderLegalEntityResponse$outboundSchema;
 })(AccountsAssignLargeTraderLegalEntityResponse$ || (exports.AccountsAssignLargeTraderLegalEntityResponse$ = AccountsAssignLargeTraderLegalEntityResponse$ = {}));
+function accountsAssignLargeTraderLegalEntityResponseToJSON(accountsAssignLargeTraderLegalEntityResponse) {
+    return JSON.stringify(exports.AccountsAssignLargeTraderLegalEntityResponse$outboundSchema.parse(accountsAssignLargeTraderLegalEntityResponse));
+}
+function accountsAssignLargeTraderLegalEntityResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAssignLargeTraderLegalEntityResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAssignLargeTraderLegalEntityResponse' from JSON`);
+}
 //# sourceMappingURL=accountsassignlargetraderlegalentity.js.map

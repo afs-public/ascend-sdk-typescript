@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HttpPushCallbackUpdate,
   HttpPushCallbackUpdate$inboundSchema,
@@ -81,4 +84,22 @@ export namespace PushSubscriptionUpdate$ {
   export const outboundSchema = PushSubscriptionUpdate$outboundSchema;
   /** @deprecated use `PushSubscriptionUpdate$Outbound` instead. */
   export type Outbound = PushSubscriptionUpdate$Outbound;
+}
+
+export function pushSubscriptionUpdateToJSON(
+  pushSubscriptionUpdate: PushSubscriptionUpdate,
+): string {
+  return JSON.stringify(
+    PushSubscriptionUpdate$outboundSchema.parse(pushSubscriptionUpdate),
+  );
+}
+
+export function pushSubscriptionUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<PushSubscriptionUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushSubscriptionUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushSubscriptionUpdate' from JSON`,
+  );
 }

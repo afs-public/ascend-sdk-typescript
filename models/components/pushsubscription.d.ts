@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The information about an HTTP target callback
  */
@@ -85,6 +87,8 @@ export declare namespace HttpCallback$ {
     /** @deprecated use `HttpCallback$Outbound` instead. */
     type Outbound = HttpCallback$Outbound;
 }
+export declare function httpCallbackToJSON(httpCallback: HttpCallback): string;
+export declare function httpCallbackFromJSON(jsonString: string): SafeParseResult<HttpCallback, SDKValidationError>;
 /** @internal */
 export declare const State$inboundSchema: z.ZodType<StateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -126,4 +130,6 @@ export declare namespace PushSubscription$ {
     /** @deprecated use `PushSubscription$Outbound` instead. */
     type Outbound = PushSubscription$Outbound;
 }
+export declare function pushSubscriptionToJSON(pushSubscription: PushSubscription): string;
+export declare function pushSubscriptionFromJSON(jsonString: string): SafeParseResult<PushSubscription, SDKValidationError>;
 //# sourceMappingURL=pushsubscription.d.ts.map

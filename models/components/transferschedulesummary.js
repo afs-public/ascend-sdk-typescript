@@ -38,8 +38,33 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StartDate$inboundSchema = exports.TransferScheduleSummaryRetirementDistribution$ = exports.TransferScheduleSummaryRetirementDistribution$outboundSchema = exports.TransferScheduleSummaryRetirementDistribution$inboundSchema = exports.TransferScheduleSummaryRetirementDistributionType$ = exports.TransferScheduleSummaryRetirementDistributionType$outboundSchema = exports.TransferScheduleSummaryRetirementDistributionType$inboundSchema = exports.TransferScheduleSummaryStateTaxWithholding$ = exports.TransferScheduleSummaryStateTaxWithholding$outboundSchema = exports.TransferScheduleSummaryStateTaxWithholding$inboundSchema = exports.TransferScheduleSummaryRetirementDistributionPercentage$ = exports.TransferScheduleSummaryRetirementDistributionPercentage$outboundSchema = exports.TransferScheduleSummaryRetirementDistributionPercentage$inboundSchema = exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$ = exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$outboundSchema = exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$inboundSchema = exports.TransferScheduleSummaryFederalTaxWithholding$ = exports.TransferScheduleSummaryFederalTaxWithholding$outboundSchema = exports.TransferScheduleSummaryFederalTaxWithholding$inboundSchema = exports.TransferScheduleSummaryPercentage$ = exports.TransferScheduleSummaryPercentage$outboundSchema = exports.TransferScheduleSummaryPercentage$inboundSchema = exports.TransferScheduleSummaryRetirementDistributionAmount$ = exports.TransferScheduleSummaryRetirementDistributionAmount$outboundSchema = exports.TransferScheduleSummaryRetirementDistributionAmount$inboundSchema = exports.TransferScheduleSummaryRetirementContribution$ = exports.TransferScheduleSummaryRetirementContribution$outboundSchema = exports.TransferScheduleSummaryRetirementContribution$inboundSchema = exports.TransferScheduleSummaryType$ = exports.TransferScheduleSummaryType$outboundSchema = exports.TransferScheduleSummaryType$inboundSchema = exports.TransferScheduleSummaryTemporalTaxYear$ = exports.TransferScheduleSummaryTemporalTaxYear$outboundSchema = exports.TransferScheduleSummaryTemporalTaxYear$inboundSchema = exports.TransferScheduleSummaryMechanism$ = exports.TransferScheduleSummaryMechanism$outboundSchema = exports.TransferScheduleSummaryMechanism$inboundSchema = exports.Direction$ = exports.Direction$outboundSchema = exports.Direction$inboundSchema = exports.TransferScheduleSummaryAmount$ = exports.TransferScheduleSummaryAmount$outboundSchema = exports.TransferScheduleSummaryAmount$inboundSchema = exports.TransferScheduleSummaryTimeUnit = exports.TransferScheduleSummaryState = exports.TransferScheduleSummaryRetirementDistributionType = exports.TransferScheduleSummaryType = exports.TransferScheduleSummaryTemporalTaxYear = exports.TransferScheduleSummaryMechanism = exports.Direction = void 0;
 exports.TransferScheduleSummary$ = exports.TransferScheduleSummary$outboundSchema = exports.TransferScheduleSummary$inboundSchema = exports.ScheduleProperties$ = exports.ScheduleProperties$outboundSchema = exports.ScheduleProperties$inboundSchema = exports.TransferScheduleSummaryTimeUnit$ = exports.TransferScheduleSummaryTimeUnit$outboundSchema = exports.TransferScheduleSummaryTimeUnit$inboundSchema = exports.TransferScheduleSummaryState$ = exports.TransferScheduleSummaryState$outboundSchema = exports.TransferScheduleSummaryState$inboundSchema = exports.StartDate$ = exports.StartDate$outboundSchema = void 0;
+exports.transferScheduleSummaryAmountToJSON = transferScheduleSummaryAmountToJSON;
+exports.transferScheduleSummaryAmountFromJSON = transferScheduleSummaryAmountFromJSON;
+exports.transferScheduleSummaryRetirementContributionToJSON = transferScheduleSummaryRetirementContributionToJSON;
+exports.transferScheduleSummaryRetirementContributionFromJSON = transferScheduleSummaryRetirementContributionFromJSON;
+exports.transferScheduleSummaryRetirementDistributionAmountToJSON = transferScheduleSummaryRetirementDistributionAmountToJSON;
+exports.transferScheduleSummaryRetirementDistributionAmountFromJSON = transferScheduleSummaryRetirementDistributionAmountFromJSON;
+exports.transferScheduleSummaryPercentageToJSON = transferScheduleSummaryPercentageToJSON;
+exports.transferScheduleSummaryPercentageFromJSON = transferScheduleSummaryPercentageFromJSON;
+exports.transferScheduleSummaryFederalTaxWithholdingToJSON = transferScheduleSummaryFederalTaxWithholdingToJSON;
+exports.transferScheduleSummaryFederalTaxWithholdingFromJSON = transferScheduleSummaryFederalTaxWithholdingFromJSON;
+exports.transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountToJSON = transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountToJSON;
+exports.transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountFromJSON = transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountFromJSON;
+exports.transferScheduleSummaryRetirementDistributionPercentageToJSON = transferScheduleSummaryRetirementDistributionPercentageToJSON;
+exports.transferScheduleSummaryRetirementDistributionPercentageFromJSON = transferScheduleSummaryRetirementDistributionPercentageFromJSON;
+exports.transferScheduleSummaryStateTaxWithholdingToJSON = transferScheduleSummaryStateTaxWithholdingToJSON;
+exports.transferScheduleSummaryStateTaxWithholdingFromJSON = transferScheduleSummaryStateTaxWithholdingFromJSON;
+exports.transferScheduleSummaryRetirementDistributionToJSON = transferScheduleSummaryRetirementDistributionToJSON;
+exports.transferScheduleSummaryRetirementDistributionFromJSON = transferScheduleSummaryRetirementDistributionFromJSON;
+exports.startDateToJSON = startDateToJSON;
+exports.startDateFromJSON = startDateFromJSON;
+exports.schedulePropertiesToJSON = schedulePropertiesToJSON;
+exports.schedulePropertiesFromJSON = schedulePropertiesFromJSON;
+exports.transferScheduleSummaryToJSON = transferScheduleSummaryToJSON;
+exports.transferScheduleSummaryFromJSON = transferScheduleSummaryFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Flag indicating whether this is a deposit or withdrawal transfer
@@ -149,6 +174,12 @@ var TransferScheduleSummaryAmount$;
     /** @deprecated use `TransferScheduleSummaryAmount$outboundSchema` instead. */
     TransferScheduleSummaryAmount$.outboundSchema = exports.TransferScheduleSummaryAmount$outboundSchema;
 })(TransferScheduleSummaryAmount$ || (exports.TransferScheduleSummaryAmount$ = TransferScheduleSummaryAmount$ = {}));
+function transferScheduleSummaryAmountToJSON(transferScheduleSummaryAmount) {
+    return JSON.stringify(exports.TransferScheduleSummaryAmount$outboundSchema.parse(transferScheduleSummaryAmount));
+}
+function transferScheduleSummaryAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryAmount' from JSON`);
+}
 /** @internal */
 exports.Direction$inboundSchema = z
     .union([
@@ -272,6 +303,12 @@ var TransferScheduleSummaryRetirementContribution$;
     /** @deprecated use `TransferScheduleSummaryRetirementContribution$outboundSchema` instead. */
     TransferScheduleSummaryRetirementContribution$.outboundSchema = exports.TransferScheduleSummaryRetirementContribution$outboundSchema;
 })(TransferScheduleSummaryRetirementContribution$ || (exports.TransferScheduleSummaryRetirementContribution$ = TransferScheduleSummaryRetirementContribution$ = {}));
+function transferScheduleSummaryRetirementContributionToJSON(transferScheduleSummaryRetirementContribution) {
+    return JSON.stringify(exports.TransferScheduleSummaryRetirementContribution$outboundSchema.parse(transferScheduleSummaryRetirementContribution));
+}
+function transferScheduleSummaryRetirementContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryRetirementContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryRetirementContribution' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryRetirementDistributionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -291,6 +328,12 @@ var TransferScheduleSummaryRetirementDistributionAmount$;
     /** @deprecated use `TransferScheduleSummaryRetirementDistributionAmount$outboundSchema` instead. */
     TransferScheduleSummaryRetirementDistributionAmount$.outboundSchema = exports.TransferScheduleSummaryRetirementDistributionAmount$outboundSchema;
 })(TransferScheduleSummaryRetirementDistributionAmount$ || (exports.TransferScheduleSummaryRetirementDistributionAmount$ = TransferScheduleSummaryRetirementDistributionAmount$ = {}));
+function transferScheduleSummaryRetirementDistributionAmountToJSON(transferScheduleSummaryRetirementDistributionAmount) {
+    return JSON.stringify(exports.TransferScheduleSummaryRetirementDistributionAmount$outboundSchema.parse(transferScheduleSummaryRetirementDistributionAmount));
+}
+function transferScheduleSummaryRetirementDistributionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryRetirementDistributionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryRetirementDistributionAmount' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -310,6 +353,12 @@ var TransferScheduleSummaryPercentage$;
     /** @deprecated use `TransferScheduleSummaryPercentage$outboundSchema` instead. */
     TransferScheduleSummaryPercentage$.outboundSchema = exports.TransferScheduleSummaryPercentage$outboundSchema;
 })(TransferScheduleSummaryPercentage$ || (exports.TransferScheduleSummaryPercentage$ = TransferScheduleSummaryPercentage$ = {}));
+function transferScheduleSummaryPercentageToJSON(transferScheduleSummaryPercentage) {
+    return JSON.stringify(exports.TransferScheduleSummaryPercentage$outboundSchema.parse(transferScheduleSummaryPercentage));
+}
+function transferScheduleSummaryPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryPercentage' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryFederalTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.TransferScheduleSummaryRetirementDistributionAmount$inboundSchema)).optional(),
@@ -331,6 +380,12 @@ var TransferScheduleSummaryFederalTaxWithholding$;
     /** @deprecated use `TransferScheduleSummaryFederalTaxWithholding$outboundSchema` instead. */
     TransferScheduleSummaryFederalTaxWithholding$.outboundSchema = exports.TransferScheduleSummaryFederalTaxWithholding$outboundSchema;
 })(TransferScheduleSummaryFederalTaxWithholding$ || (exports.TransferScheduleSummaryFederalTaxWithholding$ = TransferScheduleSummaryFederalTaxWithholding$ = {}));
+function transferScheduleSummaryFederalTaxWithholdingToJSON(transferScheduleSummaryFederalTaxWithholding) {
+    return JSON.stringify(exports.TransferScheduleSummaryFederalTaxWithholding$outboundSchema.parse(transferScheduleSummaryFederalTaxWithholding));
+}
+function transferScheduleSummaryFederalTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryFederalTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryFederalTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -350,6 +405,14 @@ var TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$;
     /** @deprecated use `TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$outboundSchema` instead. */
     TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$.outboundSchema = exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$outboundSchema;
 })(TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$ || (exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$ = TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$ = {}));
+function transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountToJSON(transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount) {
+    return JSON.stringify(exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$outboundSchema
+        .parse(transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount));
+}
+function transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryRetirementDistributionPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -369,6 +432,14 @@ var TransferScheduleSummaryRetirementDistributionPercentage$;
     /** @deprecated use `TransferScheduleSummaryRetirementDistributionPercentage$outboundSchema` instead. */
     TransferScheduleSummaryRetirementDistributionPercentage$.outboundSchema = exports.TransferScheduleSummaryRetirementDistributionPercentage$outboundSchema;
 })(TransferScheduleSummaryRetirementDistributionPercentage$ || (exports.TransferScheduleSummaryRetirementDistributionPercentage$ = TransferScheduleSummaryRetirementDistributionPercentage$ = {}));
+function transferScheduleSummaryRetirementDistributionPercentageToJSON(transferScheduleSummaryRetirementDistributionPercentage) {
+    return JSON.stringify(exports.TransferScheduleSummaryRetirementDistributionPercentage$outboundSchema
+        .parse(transferScheduleSummaryRetirementDistributionPercentage));
+}
+function transferScheduleSummaryRetirementDistributionPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryRetirementDistributionPercentage$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryRetirementDistributionPercentage' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryStateTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$inboundSchema)).optional(),
@@ -390,6 +461,12 @@ var TransferScheduleSummaryStateTaxWithholding$;
     /** @deprecated use `TransferScheduleSummaryStateTaxWithholding$outboundSchema` instead. */
     TransferScheduleSummaryStateTaxWithholding$.outboundSchema = exports.TransferScheduleSummaryStateTaxWithholding$outboundSchema;
 })(TransferScheduleSummaryStateTaxWithholding$ || (exports.TransferScheduleSummaryStateTaxWithholding$ = TransferScheduleSummaryStateTaxWithholding$ = {}));
+function transferScheduleSummaryStateTaxWithholdingToJSON(transferScheduleSummaryStateTaxWithholding) {
+    return JSON.stringify(exports.TransferScheduleSummaryStateTaxWithholding$outboundSchema.parse(transferScheduleSummaryStateTaxWithholding));
+}
+function transferScheduleSummaryStateTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryStateTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryStateTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryRetirementDistributionType$inboundSchema = z
     .union([
@@ -459,6 +536,12 @@ var TransferScheduleSummaryRetirementDistribution$;
     /** @deprecated use `TransferScheduleSummaryRetirementDistribution$outboundSchema` instead. */
     TransferScheduleSummaryRetirementDistribution$.outboundSchema = exports.TransferScheduleSummaryRetirementDistribution$outboundSchema;
 })(TransferScheduleSummaryRetirementDistribution$ || (exports.TransferScheduleSummaryRetirementDistribution$ = TransferScheduleSummaryRetirementDistribution$ = {}));
+function transferScheduleSummaryRetirementDistributionToJSON(transferScheduleSummaryRetirementDistribution) {
+    return JSON.stringify(exports.TransferScheduleSummaryRetirementDistribution$outboundSchema.parse(transferScheduleSummaryRetirementDistribution));
+}
+function transferScheduleSummaryRetirementDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummaryRetirementDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryRetirementDistribution' from JSON`);
+}
 /** @internal */
 exports.StartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -482,6 +565,12 @@ var StartDate$;
     /** @deprecated use `StartDate$outboundSchema` instead. */
     StartDate$.outboundSchema = exports.StartDate$outboundSchema;
 })(StartDate$ || (exports.StartDate$ = StartDate$ = {}));
+function startDateToJSON(startDate) {
+    return JSON.stringify(exports.StartDate$outboundSchema.parse(startDate));
+}
+function startDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.StartDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'StartDate' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummaryState$inboundSchema = z
     .union([
@@ -565,6 +654,12 @@ var ScheduleProperties$;
     /** @deprecated use `ScheduleProperties$outboundSchema` instead. */
     ScheduleProperties$.outboundSchema = exports.ScheduleProperties$outboundSchema;
 })(ScheduleProperties$ || (exports.ScheduleProperties$ = ScheduleProperties$ = {}));
+function schedulePropertiesToJSON(scheduleProperties) {
+    return JSON.stringify(exports.ScheduleProperties$outboundSchema.parse(scheduleProperties));
+}
+function schedulePropertiesFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ScheduleProperties$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ScheduleProperties' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummary$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.TransferScheduleSummaryAmount$inboundSchema))
@@ -616,4 +711,10 @@ var TransferScheduleSummary$;
     /** @deprecated use `TransferScheduleSummary$outboundSchema` instead. */
     TransferScheduleSummary$.outboundSchema = exports.TransferScheduleSummary$outboundSchema;
 })(TransferScheduleSummary$ || (exports.TransferScheduleSummary$ = TransferScheduleSummary$ = {}));
+function transferScheduleSummaryToJSON(transferScheduleSummary) {
+    return JSON.stringify(exports.TransferScheduleSummary$outboundSchema.parse(transferScheduleSummary));
+}
+function transferScheduleSummaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummary' from JSON`);
+}
 //# sourceMappingURL=transferschedulesummary.js.map

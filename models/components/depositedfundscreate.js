@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DepositedFundsCreate$ = exports.DepositedFundsCreate$outboundSchema = exports.DepositedFundsCreate$inboundSchema = void 0;
+exports.depositedFundsCreateToJSON = depositedFundsCreateToJSON;
+exports.depositedFundsCreateFromJSON = depositedFundsCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
 exports.DepositedFundsCreate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var DepositedFundsCreate$;
     /** @deprecated use `DepositedFundsCreate$outboundSchema` instead. */
     DepositedFundsCreate$.outboundSchema = exports.DepositedFundsCreate$outboundSchema;
 })(DepositedFundsCreate$ || (exports.DepositedFundsCreate$ = DepositedFundsCreate$ = {}));
+function depositedFundsCreateToJSON(depositedFundsCreate) {
+    return JSON.stringify(exports.DepositedFundsCreate$outboundSchema.parse(depositedFundsCreate));
+}
+function depositedFundsCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DepositedFundsCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DepositedFundsCreate' from JSON`);
+}
 //# sourceMappingURL=depositedfundscreate.js.map

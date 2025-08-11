@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A request for canceling all executions underneath a trade.
  */
@@ -28,4 +30,6 @@ export declare namespace CancelTradeRequestCreate$ {
     /** @deprecated use `CancelTradeRequestCreate$Outbound` instead. */
     type Outbound = CancelTradeRequestCreate$Outbound;
 }
+export declare function cancelTradeRequestCreateToJSON(cancelTradeRequestCreate: CancelTradeRequestCreate): string;
+export declare function cancelTradeRequestCreateFromJSON(jsonString: string): SafeParseResult<CancelTradeRequestCreate, SDKValidationError>;
 //# sourceMappingURL=canceltraderequestcreate.d.ts.map

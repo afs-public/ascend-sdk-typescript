@@ -37,11 +37,20 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuditTrail$ = exports.AuditTrail$outboundSchema = exports.AuditTrail$inboundSchema = exports.AuditType$ = exports.AuditType$outboundSchema = exports.AuditType$inboundSchema = exports.AuditType = void 0;
+exports.auditTrailToJSON = auditTrailToJSON;
+exports.auditTrailFromJSON = auditTrailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
- * The type of audit that was performed on the investigation
+ * The audit record type, one of:
+ *
+ * @remarks
+ * - `AUDIT_TYPE_UNSPECIFIED` - Default/Null audit type.
+ * - `INVESTIGATION_REQUEST_UPDATE` - Used to update an investigation request.
+ * - `INVESTIGATION_STATE` - Used for recording investigation state changed events.
+ * - `COMMENT` - Used for adding a comment to investigation.
  */
 var AuditType;
 (function (AuditType) {
@@ -119,4 +128,10 @@ var AuditTrail$;
     /** @deprecated use `AuditTrail$outboundSchema` instead. */
     AuditTrail$.outboundSchema = exports.AuditTrail$outboundSchema;
 })(AuditTrail$ || (exports.AuditTrail$ = AuditTrail$ = {}));
+function auditTrailToJSON(auditTrail) {
+    return JSON.stringify(exports.AuditTrail$outboundSchema.parse(auditTrail));
+}
+function auditTrailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AuditTrail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AuditTrail' from JSON`);
+}
 //# sourceMappingURL=audittrail.js.map

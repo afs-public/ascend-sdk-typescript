@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashJournalsForceRejectCashJournalResponse$ = exports.CashJournalsForceRejectCashJournalResponse$outboundSchema = exports.CashJournalsForceRejectCashJournalResponse$inboundSchema = exports.CashJournalsForceRejectCashJournalRequest$ = exports.CashJournalsForceRejectCashJournalRequest$outboundSchema = exports.CashJournalsForceRejectCashJournalRequest$inboundSchema = void 0;
+exports.cashJournalsForceRejectCashJournalRequestToJSON = cashJournalsForceRejectCashJournalRequestToJSON;
+exports.cashJournalsForceRejectCashJournalRequestFromJSON = cashJournalsForceRejectCashJournalRequestFromJSON;
+exports.cashJournalsForceRejectCashJournalResponseToJSON = cashJournalsForceRejectCashJournalResponseToJSON;
+exports.cashJournalsForceRejectCashJournalResponseFromJSON = cashJournalsForceRejectCashJournalResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.CashJournalsForceRejectCashJournalRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var CashJournalsForceRejectCashJournalRequest$;
     /** @deprecated use `CashJournalsForceRejectCashJournalRequest$outboundSchema` instead. */
     CashJournalsForceRejectCashJournalRequest$.outboundSchema = exports.CashJournalsForceRejectCashJournalRequest$outboundSchema;
 })(CashJournalsForceRejectCashJournalRequest$ || (exports.CashJournalsForceRejectCashJournalRequest$ = CashJournalsForceRejectCashJournalRequest$ = {}));
+function cashJournalsForceRejectCashJournalRequestToJSON(cashJournalsForceRejectCashJournalRequest) {
+    return JSON.stringify(exports.CashJournalsForceRejectCashJournalRequest$outboundSchema.parse(cashJournalsForceRejectCashJournalRequest));
+}
+function cashJournalsForceRejectCashJournalRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalsForceRejectCashJournalRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalsForceRejectCashJournalRequest' from JSON`);
+}
 /** @internal */
 exports.CashJournalsForceRejectCashJournalResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var CashJournalsForceRejectCashJournalResponse$;
     /** @deprecated use `CashJournalsForceRejectCashJournalResponse$outboundSchema` instead. */
     CashJournalsForceRejectCashJournalResponse$.outboundSchema = exports.CashJournalsForceRejectCashJournalResponse$outboundSchema;
 })(CashJournalsForceRejectCashJournalResponse$ || (exports.CashJournalsForceRejectCashJournalResponse$ = CashJournalsForceRejectCashJournalResponse$ = {}));
+function cashJournalsForceRejectCashJournalResponseToJSON(cashJournalsForceRejectCashJournalResponse) {
+    return JSON.stringify(exports.CashJournalsForceRejectCashJournalResponse$outboundSchema.parse(cashJournalsForceRejectCashJournalResponse));
+}
+function cashJournalsForceRejectCashJournalResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalsForceRejectCashJournalResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalsForceRejectCashJournalResponse' from JSON`);
+}
 //# sourceMappingURL=cashjournalsforcerejectcashjournal.js.map

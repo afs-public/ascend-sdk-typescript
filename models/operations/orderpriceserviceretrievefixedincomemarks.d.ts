@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type OrderPriceServiceRetrieveFixedIncomeMarksRequest = {
     /**
      * The correspondent id.
@@ -39,6 +41,8 @@ export declare namespace OrderPriceServiceRetrieveFixedIncomeMarksRequest$ {
     /** @deprecated use `OrderPriceServiceRetrieveFixedIncomeMarksRequest$Outbound` instead. */
     type Outbound = OrderPriceServiceRetrieveFixedIncomeMarksRequest$Outbound;
 }
+export declare function orderPriceServiceRetrieveFixedIncomeMarksRequestToJSON(orderPriceServiceRetrieveFixedIncomeMarksRequest: OrderPriceServiceRetrieveFixedIncomeMarksRequest): string;
+export declare function orderPriceServiceRetrieveFixedIncomeMarksRequestFromJSON(jsonString: string): SafeParseResult<OrderPriceServiceRetrieveFixedIncomeMarksRequest, SDKValidationError>;
 /** @internal */
 export declare const OrderPriceServiceRetrieveFixedIncomeMarksResponse$inboundSchema: z.ZodType<OrderPriceServiceRetrieveFixedIncomeMarksResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace OrderPriceServiceRetrieveFixedIncomeMarksResponse$ {
     /** @deprecated use `OrderPriceServiceRetrieveFixedIncomeMarksResponse$Outbound` instead. */
     type Outbound = OrderPriceServiceRetrieveFixedIncomeMarksResponse$Outbound;
 }
+export declare function orderPriceServiceRetrieveFixedIncomeMarksResponseToJSON(orderPriceServiceRetrieveFixedIncomeMarksResponse: OrderPriceServiceRetrieveFixedIncomeMarksResponse): string;
+export declare function orderPriceServiceRetrieveFixedIncomeMarksResponseFromJSON(jsonString: string): SafeParseResult<OrderPriceServiceRetrieveFixedIncomeMarksResponse, SDKValidationError>;
 //# sourceMappingURL=orderpriceserviceretrievefixedincomemarks.d.ts.map

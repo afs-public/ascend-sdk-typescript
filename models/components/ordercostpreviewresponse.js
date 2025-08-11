@@ -37,8 +37,25 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderCostPreviewResponse$ = exports.OrderCostPreviewResponse$outboundSchema = exports.OrderCostPreviewResponse$inboundSchema = exports.OrderCostPreviewResponseQuantity$ = exports.OrderCostPreviewResponseQuantity$outboundSchema = exports.OrderCostPreviewResponseQuantity$inboundSchema = exports.OrderCostPreviewResponseLimitPrice$ = exports.OrderCostPreviewResponseLimitPrice$outboundSchema = exports.OrderCostPreviewResponseLimitPrice$inboundSchema = exports.OrderCostPreviewResponseType$ = exports.OrderCostPreviewResponseType$outboundSchema = exports.OrderCostPreviewResponseType$inboundSchema = exports.OrderCostPreviewResponsePrice$ = exports.OrderCostPreviewResponsePrice$outboundSchema = exports.OrderCostPreviewResponsePrice$inboundSchema = exports.OrderCostPreviewResponseIdentifierType$ = exports.OrderCostPreviewResponseIdentifierType$outboundSchema = exports.OrderCostPreviewResponseIdentifierType$inboundSchema = exports.EstimatedNetAmount$ = exports.EstimatedNetAmount$outboundSchema = exports.EstimatedNetAmount$inboundSchema = exports.EstimatedGrossCreditAmount$ = exports.EstimatedGrossCreditAmount$outboundSchema = exports.EstimatedGrossCreditAmount$inboundSchema = exports.EstimatedGrossAmount$ = exports.EstimatedGrossAmount$outboundSchema = exports.EstimatedGrossAmount$inboundSchema = exports.EstimatedAccruedInterest$ = exports.EstimatedAccruedInterest$outboundSchema = exports.EstimatedAccruedInterest$inboundSchema = exports.OrderCostPreviewResponseBrokerCapacity$ = exports.OrderCostPreviewResponseBrokerCapacity$outboundSchema = exports.OrderCostPreviewResponseBrokerCapacity$inboundSchema = exports.OrderCostPreviewResponseAssetType$ = exports.OrderCostPreviewResponseAssetType$outboundSchema = exports.OrderCostPreviewResponseAssetType$inboundSchema = exports.OrderCostPreviewResponseType = exports.OrderCostPreviewResponseIdentifierType = exports.OrderCostPreviewResponseBrokerCapacity = exports.OrderCostPreviewResponseAssetType = void 0;
+exports.estimatedAccruedInterestToJSON = estimatedAccruedInterestToJSON;
+exports.estimatedAccruedInterestFromJSON = estimatedAccruedInterestFromJSON;
+exports.estimatedGrossAmountToJSON = estimatedGrossAmountToJSON;
+exports.estimatedGrossAmountFromJSON = estimatedGrossAmountFromJSON;
+exports.estimatedGrossCreditAmountToJSON = estimatedGrossCreditAmountToJSON;
+exports.estimatedGrossCreditAmountFromJSON = estimatedGrossCreditAmountFromJSON;
+exports.estimatedNetAmountToJSON = estimatedNetAmountToJSON;
+exports.estimatedNetAmountFromJSON = estimatedNetAmountFromJSON;
+exports.orderCostPreviewResponsePriceToJSON = orderCostPreviewResponsePriceToJSON;
+exports.orderCostPreviewResponsePriceFromJSON = orderCostPreviewResponsePriceFromJSON;
+exports.orderCostPreviewResponseLimitPriceToJSON = orderCostPreviewResponseLimitPriceToJSON;
+exports.orderCostPreviewResponseLimitPriceFromJSON = orderCostPreviewResponseLimitPriceFromJSON;
+exports.orderCostPreviewResponseQuantityToJSON = orderCostPreviewResponseQuantityToJSON;
+exports.orderCostPreviewResponseQuantityFromJSON = orderCostPreviewResponseQuantityFromJSON;
+exports.orderCostPreviewResponseToJSON = orderCostPreviewResponseToJSON;
+exports.orderCostPreviewResponseFromJSON = orderCostPreviewResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of asset referenced by the security identifier
@@ -141,6 +158,12 @@ var EstimatedAccruedInterest$;
     /** @deprecated use `EstimatedAccruedInterest$outboundSchema` instead. */
     EstimatedAccruedInterest$.outboundSchema = exports.EstimatedAccruedInterest$outboundSchema;
 })(EstimatedAccruedInterest$ || (exports.EstimatedAccruedInterest$ = EstimatedAccruedInterest$ = {}));
+function estimatedAccruedInterestToJSON(estimatedAccruedInterest) {
+    return JSON.stringify(exports.EstimatedAccruedInterest$outboundSchema.parse(estimatedAccruedInterest));
+}
+function estimatedAccruedInterestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EstimatedAccruedInterest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EstimatedAccruedInterest' from JSON`);
+}
 /** @internal */
 exports.EstimatedGrossAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -160,6 +183,12 @@ var EstimatedGrossAmount$;
     /** @deprecated use `EstimatedGrossAmount$outboundSchema` instead. */
     EstimatedGrossAmount$.outboundSchema = exports.EstimatedGrossAmount$outboundSchema;
 })(EstimatedGrossAmount$ || (exports.EstimatedGrossAmount$ = EstimatedGrossAmount$ = {}));
+function estimatedGrossAmountToJSON(estimatedGrossAmount) {
+    return JSON.stringify(exports.EstimatedGrossAmount$outboundSchema.parse(estimatedGrossAmount));
+}
+function estimatedGrossAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EstimatedGrossAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EstimatedGrossAmount' from JSON`);
+}
 /** @internal */
 exports.EstimatedGrossCreditAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -179,6 +208,12 @@ var EstimatedGrossCreditAmount$;
     /** @deprecated use `EstimatedGrossCreditAmount$outboundSchema` instead. */
     EstimatedGrossCreditAmount$.outboundSchema = exports.EstimatedGrossCreditAmount$outboundSchema;
 })(EstimatedGrossCreditAmount$ || (exports.EstimatedGrossCreditAmount$ = EstimatedGrossCreditAmount$ = {}));
+function estimatedGrossCreditAmountToJSON(estimatedGrossCreditAmount) {
+    return JSON.stringify(exports.EstimatedGrossCreditAmount$outboundSchema.parse(estimatedGrossCreditAmount));
+}
+function estimatedGrossCreditAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EstimatedGrossCreditAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EstimatedGrossCreditAmount' from JSON`);
+}
 /** @internal */
 exports.EstimatedNetAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -198,6 +233,12 @@ var EstimatedNetAmount$;
     /** @deprecated use `EstimatedNetAmount$outboundSchema` instead. */
     EstimatedNetAmount$.outboundSchema = exports.EstimatedNetAmount$outboundSchema;
 })(EstimatedNetAmount$ || (exports.EstimatedNetAmount$ = EstimatedNetAmount$ = {}));
+function estimatedNetAmountToJSON(estimatedNetAmount) {
+    return JSON.stringify(exports.EstimatedNetAmount$outboundSchema.parse(estimatedNetAmount));
+}
+function estimatedNetAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EstimatedNetAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EstimatedNetAmount' from JSON`);
+}
 /** @internal */
 exports.OrderCostPreviewResponseIdentifierType$inboundSchema = z
     .union([
@@ -239,6 +280,12 @@ var OrderCostPreviewResponsePrice$;
     /** @deprecated use `OrderCostPreviewResponsePrice$outboundSchema` instead. */
     OrderCostPreviewResponsePrice$.outboundSchema = exports.OrderCostPreviewResponsePrice$outboundSchema;
 })(OrderCostPreviewResponsePrice$ || (exports.OrderCostPreviewResponsePrice$ = OrderCostPreviewResponsePrice$ = {}));
+function orderCostPreviewResponsePriceToJSON(orderCostPreviewResponsePrice) {
+    return JSON.stringify(exports.OrderCostPreviewResponsePrice$outboundSchema.parse(orderCostPreviewResponsePrice));
+}
+function orderCostPreviewResponsePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderCostPreviewResponsePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderCostPreviewResponsePrice' from JSON`);
+}
 /** @internal */
 exports.OrderCostPreviewResponseType$inboundSchema = z
     .union([
@@ -284,6 +331,12 @@ var OrderCostPreviewResponseLimitPrice$;
     /** @deprecated use `OrderCostPreviewResponseLimitPrice$outboundSchema` instead. */
     OrderCostPreviewResponseLimitPrice$.outboundSchema = exports.OrderCostPreviewResponseLimitPrice$outboundSchema;
 })(OrderCostPreviewResponseLimitPrice$ || (exports.OrderCostPreviewResponseLimitPrice$ = OrderCostPreviewResponseLimitPrice$ = {}));
+function orderCostPreviewResponseLimitPriceToJSON(orderCostPreviewResponseLimitPrice) {
+    return JSON.stringify(exports.OrderCostPreviewResponseLimitPrice$outboundSchema.parse(orderCostPreviewResponseLimitPrice));
+}
+function orderCostPreviewResponseLimitPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderCostPreviewResponseLimitPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderCostPreviewResponseLimitPrice' from JSON`);
+}
 /** @internal */
 exports.OrderCostPreviewResponseQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -303,6 +356,12 @@ var OrderCostPreviewResponseQuantity$;
     /** @deprecated use `OrderCostPreviewResponseQuantity$outboundSchema` instead. */
     OrderCostPreviewResponseQuantity$.outboundSchema = exports.OrderCostPreviewResponseQuantity$outboundSchema;
 })(OrderCostPreviewResponseQuantity$ || (exports.OrderCostPreviewResponseQuantity$ = OrderCostPreviewResponseQuantity$ = {}));
+function orderCostPreviewResponseQuantityToJSON(orderCostPreviewResponseQuantity) {
+    return JSON.stringify(exports.OrderCostPreviewResponseQuantity$outboundSchema.parse(orderCostPreviewResponseQuantity));
+}
+function orderCostPreviewResponseQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderCostPreviewResponseQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderCostPreviewResponseQuantity' from JSON`);
+}
 /** @internal */
 exports.OrderCostPreviewResponse$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -379,4 +438,10 @@ var OrderCostPreviewResponse$;
     /** @deprecated use `OrderCostPreviewResponse$outboundSchema` instead. */
     OrderCostPreviewResponse$.outboundSchema = exports.OrderCostPreviewResponse$outboundSchema;
 })(OrderCostPreviewResponse$ || (exports.OrderCostPreviewResponse$ = OrderCostPreviewResponse$ = {}));
+function orderCostPreviewResponseToJSON(orderCostPreviewResponse) {
+    return JSON.stringify(exports.OrderCostPreviewResponse$outboundSchema.parse(orderCostPreviewResponse));
+}
+function orderCostPreviewResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderCostPreviewResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderCostPreviewResponse' from JSON`);
+}
 //# sourceMappingURL=ordercostpreviewresponse.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PositionCreate, PositionCreate$Outbound } from "./positioncreate.js";
 /**
  * The asset identifier type
@@ -69,4 +71,6 @@ export declare namespace AssetCreate$ {
     /** @deprecated use `AssetCreate$Outbound` instead. */
     type Outbound = AssetCreate$Outbound;
 }
+export declare function assetCreateToJSON(assetCreate: AssetCreate): string;
+export declare function assetCreateFromJSON(jsonString: string): SafeParseResult<AssetCreate, SDKValidationError>;
 //# sourceMappingURL=assetcreate.d.ts.map

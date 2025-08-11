@@ -7,7 +7,8 @@ The type of withholding
 ```typescript
 import { EntryWithholdingType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: EntryWithholdingType = EntryWithholdingType.ForeignSecurity;
+let value: EntryWithholdingType =
+  EntryWithholdingType.WithholdingTypeUnspecified;
 ```
 
 ## Values

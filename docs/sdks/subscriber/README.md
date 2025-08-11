@@ -19,6 +19,7 @@ Creates a new push subscription for event notifications.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Subscriber_CreatePushSubscription" method="post" path="/events/v1/subscriptions" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -42,7 +43,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -78,15 +78,12 @@ async function run() {
       "position.v1.updated",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriberCreatePushSubscription failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -107,10 +104,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 409, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 409 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## listPushSubscriptions
 
@@ -118,6 +116,7 @@ Gets a list of push subscriptions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Subscriber_ListPushSubscriptions" method="get" path="/events/v1/subscriptions" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -136,7 +135,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.listPushSubscriptions();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -167,15 +165,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await subscriberListPushSubscriptions(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriberListPushSubscriptions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -198,10 +193,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 401, 403, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 401, 403    | application/json |
+| errors.Status    | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getPushSubscription
 
@@ -209,6 +205,7 @@ Gets the details of a specific push subscription.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Subscriber_GetPushSubscription" method="get" path="/events/v1/subscriptions/{subscription_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -227,7 +224,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.getPushSubscription("01H8MCDXH4JVH7KVNB2YY42907");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -258,15 +254,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await subscriberGetPushSubscription(apexascend, "01H8MCDXH4JVH7KVNB2YY42907");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriberGetPushSubscription failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -287,10 +280,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 404, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## updatePushSubscription
 
@@ -298,6 +292,7 @@ Updates the details of a push subscription.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Subscriber_UpdatePushSubscription" method="patch" path="/events/v1/subscriptions/{subscription_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -316,7 +311,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.updatePushSubscription({}, "01H8MCDXH4JVH7KVNB2YY42907");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -347,15 +341,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await subscriberUpdatePushSubscription(apexascend, {}, "01H8MCDXH4JVH7KVNB2YY42907");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriberUpdatePushSubscription failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -378,10 +369,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 404, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## deletePushSubscription
 
@@ -389,6 +381,7 @@ Stops receiving events from a push subscription, and then deletes it.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Subscriber_DeletePushSubscription" method="delete" path="/events/v1/subscriptions/{subscription_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -407,7 +400,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.deletePushSubscription("01H8MCDXH4JVH7KVNB2YY42907");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -438,15 +430,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await subscriberDeletePushSubscription(apexascend, "01H8MCDXH4JVH7KVNB2YY42907");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriberDeletePushSubscription failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -467,10 +456,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 404, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## getPushSubscriptionDelivery
 
@@ -478,6 +468,7 @@ Gets the details of a specific push subscription delivery.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Subscriber_GetPushSubscriptionDelivery" method="get" path="/events/v1/subscriptions/{subscription_id}/deliveries/{delivery_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -496,7 +487,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.getPushSubscriptionDelivery("01H8MCDXH4JVH7KVNB2YY42907", "01H8MCDXH415BJ962YDN4B02JK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -527,15 +517,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await subscriberGetPushSubscriptionDelivery(apexascend, "01H8MCDXH4JVH7KVNB2YY42907", "01H8MCDXH415BJ962YDN4B02JK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriberGetPushSubscriptionDelivery failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -557,10 +544,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 404, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## listPushSubscriptionDeliveries
 
@@ -568,6 +556,7 @@ Gets a list of a push subscription's event deliveries.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Subscriber_ListPushSubscriptionDeliveries" method="get" path="/events/v1/subscriptions/{subscription_id}/deliveries" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -586,7 +575,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.listPushSubscriptionDeliveries("01H8MCDXH4JVH7KVNB2YY42907");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -617,15 +605,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await subscriberListPushSubscriptionDeliveries(apexascend, "01H8MCDXH4JVH7KVNB2YY42907");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriberListPushSubscriptionDeliveries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -649,7 +634,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 404, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |

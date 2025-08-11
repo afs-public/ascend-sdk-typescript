@@ -28,7 +28,7 @@ let value: LegalNaturalPersonCreate = {
   personalAddress: {},
   taxProfile: {
     federalTaxClassification: FederalTaxClassification.CCorporation,
-    irsFormType: IrsFormType.W8Ben,
+    irsFormType: IrsFormType.W9,
     legalTaxRegionCode: "US",
     usTinStatus: UsTinStatus.Passing,
   },

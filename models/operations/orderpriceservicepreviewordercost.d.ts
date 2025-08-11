@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type OrderPriceServicePreviewOrderCostRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace OrderPriceServicePreviewOrderCostRequest$ {
     /** @deprecated use `OrderPriceServicePreviewOrderCostRequest$Outbound` instead. */
     type Outbound = OrderPriceServicePreviewOrderCostRequest$Outbound;
 }
+export declare function orderPriceServicePreviewOrderCostRequestToJSON(orderPriceServicePreviewOrderCostRequest: OrderPriceServicePreviewOrderCostRequest): string;
+export declare function orderPriceServicePreviewOrderCostRequestFromJSON(jsonString: string): SafeParseResult<OrderPriceServicePreviewOrderCostRequest, SDKValidationError>;
 /** @internal */
 export declare const OrderPriceServicePreviewOrderCostResponse$inboundSchema: z.ZodType<OrderPriceServicePreviewOrderCostResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace OrderPriceServicePreviewOrderCostResponse$ {
     /** @deprecated use `OrderPriceServicePreviewOrderCostResponse$Outbound` instead. */
     type Outbound = OrderPriceServicePreviewOrderCostResponse$Outbound;
 }
+export declare function orderPriceServicePreviewOrderCostResponseToJSON(orderPriceServicePreviewOrderCostResponse: OrderPriceServicePreviewOrderCostResponse): string;
+export declare function orderPriceServicePreviewOrderCostResponseFromJSON(jsonString: string): SafeParseResult<OrderPriceServicePreviewOrderCostResponse, SDKValidationError>;
 //# sourceMappingURL=orderpriceservicepreviewordercost.d.ts.map

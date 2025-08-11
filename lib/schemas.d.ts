@@ -13,7 +13,7 @@ export declare function parse<Inp, Out>(rawValue: Inp, fn: (value: Inp) => Out, 
  * leak Zod implementation details to user code.
  */
 export declare function safeParse<Inp, Out>(rawValue: Inp, fn: (value: Inp) => Out, errorMessage: string): Result<Out, SDKValidationError>;
-export declare function collectExtraKeys<Shape extends ZodRawShape, Catchall extends ZodTypeAny, K extends string>(obj: ZodObject<Shape, "strip", Catchall>, extrasKey: K): ZodEffects<typeof obj, output<ZodObject<Shape, "strict">> & {
+export declare function collectExtraKeys<Shape extends ZodRawShape, Catchall extends ZodTypeAny, K extends string>(obj: ZodObject<Shape, "strip", Catchall>, extrasKey: K, optional: boolean): ZodEffects<typeof obj, output<ZodObject<Shape, "strict">> & {
     [k in K]: Record<string, output<Catchall>>;
 }>;
 //# sourceMappingURL=schemas.d.ts.map

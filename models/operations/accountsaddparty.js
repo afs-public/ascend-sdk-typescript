@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsAddPartyResponse$ = exports.AccountsAddPartyResponse$outboundSchema = exports.AccountsAddPartyResponse$inboundSchema = exports.AccountsAddPartyRequest$ = exports.AccountsAddPartyRequest$outboundSchema = exports.AccountsAddPartyRequest$inboundSchema = void 0;
+exports.accountsAddPartyRequestToJSON = accountsAddPartyRequestToJSON;
+exports.accountsAddPartyRequestFromJSON = accountsAddPartyRequestFromJSON;
+exports.accountsAddPartyResponseToJSON = accountsAddPartyResponseToJSON;
+exports.accountsAddPartyResponseFromJSON = accountsAddPartyResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsAddPartyRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsAddPartyRequest$;
     /** @deprecated use `AccountsAddPartyRequest$outboundSchema` instead. */
     AccountsAddPartyRequest$.outboundSchema = exports.AccountsAddPartyRequest$outboundSchema;
 })(AccountsAddPartyRequest$ || (exports.AccountsAddPartyRequest$ = AccountsAddPartyRequest$ = {}));
+function accountsAddPartyRequestToJSON(accountsAddPartyRequest) {
+    return JSON.stringify(exports.AccountsAddPartyRequest$outboundSchema.parse(accountsAddPartyRequest));
+}
+function accountsAddPartyRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAddPartyRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAddPartyRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsAddPartyResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsAddPartyResponse$;
     /** @deprecated use `AccountsAddPartyResponse$outboundSchema` instead. */
     AccountsAddPartyResponse$.outboundSchema = exports.AccountsAddPartyResponse$outboundSchema;
 })(AccountsAddPartyResponse$ || (exports.AccountsAddPartyResponse$ = AccountsAddPartyResponse$ = {}));
+function accountsAddPartyResponseToJSON(accountsAddPartyResponse) {
+    return JSON.stringify(exports.AccountsAddPartyResponse$outboundSchema.parse(accountsAddPartyResponse));
+}
+function accountsAddPartyResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAddPartyResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAddPartyResponse' from JSON`);
+}
 //# sourceMappingURL=accountsaddparty.js.map

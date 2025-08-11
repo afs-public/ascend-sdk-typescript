@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssetCreate,
   AssetCreate$inboundSchema,
@@ -90,4 +93,18 @@ export namespace TransferCreate$ {
   export const outboundSchema = TransferCreate$outboundSchema;
   /** @deprecated use `TransferCreate$Outbound` instead. */
   export type Outbound = TransferCreate$Outbound;
+}
+
+export function transferCreateToJSON(transferCreate: TransferCreate): string {
+  return JSON.stringify(TransferCreate$outboundSchema.parse(transferCreate));
+}
+
+export function transferCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferCreate' from JSON`,
+  );
 }

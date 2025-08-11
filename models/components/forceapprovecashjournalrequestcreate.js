@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForceApproveCashJournalRequestCreate$ = exports.ForceApproveCashJournalRequestCreate$outboundSchema = exports.ForceApproveCashJournalRequestCreate$inboundSchema = void 0;
+exports.forceApproveCashJournalRequestCreateToJSON = forceApproveCashJournalRequestCreateToJSON;
+exports.forceApproveCashJournalRequestCreateFromJSON = forceApproveCashJournalRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ForceApproveCashJournalRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -57,4 +60,10 @@ var ForceApproveCashJournalRequestCreate$;
     /** @deprecated use `ForceApproveCashJournalRequestCreate$outboundSchema` instead. */
     ForceApproveCashJournalRequestCreate$.outboundSchema = exports.ForceApproveCashJournalRequestCreate$outboundSchema;
 })(ForceApproveCashJournalRequestCreate$ || (exports.ForceApproveCashJournalRequestCreate$ = ForceApproveCashJournalRequestCreate$ = {}));
+function forceApproveCashJournalRequestCreateToJSON(forceApproveCashJournalRequestCreate) {
+    return JSON.stringify(exports.ForceApproveCashJournalRequestCreate$outboundSchema.parse(forceApproveCashJournalRequestCreate));
+}
+function forceApproveCashJournalRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForceApproveCashJournalRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForceApproveCashJournalRequestCreate' from JSON`);
+}
 //# sourceMappingURL=forceapprovecashjournalrequestcreate.js.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Represents a JSON Web Token for access to the system; See: https://datatracker.ietf.org/doc/html/rfc6749#section-5.1
@@ -72,4 +75,18 @@ export namespace Token$ {
   export const outboundSchema = Token$outboundSchema;
   /** @deprecated use `Token$Outbound` instead. */
   export type Outbound = Token$Outbound;
+}
+
+export function tokenToJSON(token: Token): string {
+  return JSON.stringify(Token$outboundSchema.parse(token));
+}
+
+export function tokenFromJSON(
+  jsonString: string,
+): SafeParseResult<Token, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Token$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Token' from JSON`,
+  );
 }

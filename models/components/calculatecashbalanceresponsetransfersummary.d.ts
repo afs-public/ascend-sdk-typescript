@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of the transfer in USD. The value will be positive for deposits and negative for withdrawals.
  */
@@ -68,6 +70,8 @@ export declare namespace CalculateCashBalanceResponseTransferSummaryAmount$ {
     /** @deprecated use `CalculateCashBalanceResponseTransferSummaryAmount$Outbound` instead. */
     type Outbound = CalculateCashBalanceResponseTransferSummaryAmount$Outbound;
 }
+export declare function calculateCashBalanceResponseTransferSummaryAmountToJSON(calculateCashBalanceResponseTransferSummaryAmount: CalculateCashBalanceResponseTransferSummaryAmount): string;
+export declare function calculateCashBalanceResponseTransferSummaryAmountFromJSON(jsonString: string): SafeParseResult<CalculateCashBalanceResponseTransferSummaryAmount, SDKValidationError>;
 /** @internal */
 export declare const CalculateCashBalanceResponseTransferSummaryMechanism$inboundSchema: z.ZodType<CalculateCashBalanceResponseTransferSummaryMechanismOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -104,4 +108,6 @@ export declare namespace CalculateCashBalanceResponseTransferSummary$ {
     /** @deprecated use `CalculateCashBalanceResponseTransferSummary$Outbound` instead. */
     type Outbound = CalculateCashBalanceResponseTransferSummary$Outbound;
 }
+export declare function calculateCashBalanceResponseTransferSummaryToJSON(calculateCashBalanceResponseTransferSummary: CalculateCashBalanceResponseTransferSummary): string;
+export declare function calculateCashBalanceResponseTransferSummaryFromJSON(jsonString: string): SafeParseResult<CalculateCashBalanceResponseTransferSummary, SDKValidationError>;
 //# sourceMappingURL=calculatecashbalanceresponsetransfersummary.d.ts.map

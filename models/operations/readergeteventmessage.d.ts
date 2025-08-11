@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type ReaderGetEventMessageRequest = {
     /**
      * The message id.
@@ -37,6 +39,8 @@ export declare namespace ReaderGetEventMessageRequest$ {
     /** @deprecated use `ReaderGetEventMessageRequest$Outbound` instead. */
     type Outbound = ReaderGetEventMessageRequest$Outbound;
 }
+export declare function readerGetEventMessageRequestToJSON(readerGetEventMessageRequest: ReaderGetEventMessageRequest): string;
+export declare function readerGetEventMessageRequestFromJSON(jsonString: string): SafeParseResult<ReaderGetEventMessageRequest, SDKValidationError>;
 /** @internal */
 export declare const ReaderGetEventMessageResponse$inboundSchema: z.ZodType<ReaderGetEventMessageResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace ReaderGetEventMessageResponse$ {
     /** @deprecated use `ReaderGetEventMessageResponse$Outbound` instead. */
     type Outbound = ReaderGetEventMessageResponse$Outbound;
 }
+export declare function readerGetEventMessageResponseToJSON(readerGetEventMessageResponse: ReaderGetEventMessageResponse): string;
+export declare function readerGetEventMessageResponseFromJSON(jsonString: string): SafeParseResult<ReaderGetEventMessageResponse, SDKValidationError>;
 //# sourceMappingURL=readergeteventmessage.d.ts.map

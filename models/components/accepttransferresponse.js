@@ -37,8 +37,21 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AcceptTransferResponse$ = exports.AcceptTransferResponse$outboundSchema = exports.AcceptTransferResponse$inboundSchema = exports.Transfer$ = exports.Transfer$outboundSchema = exports.Transfer$inboundSchema = exports.AcceptTransferResponseTransferType$ = exports.AcceptTransferResponseTransferType$outboundSchema = exports.AcceptTransferResponseTransferType$inboundSchema = exports.AcceptTransferResponseState$ = exports.AcceptTransferResponseState$outboundSchema = exports.AcceptTransferResponseState$inboundSchema = exports.AcceptTransferResponseRejectCode$ = exports.AcceptTransferResponseRejectCode$outboundSchema = exports.AcceptTransferResponseRejectCode$inboundSchema = exports.AcceptTransferResponseReceiver$ = exports.AcceptTransferResponseReceiver$outboundSchema = exports.AcceptTransferResponseReceiver$inboundSchema = exports.AcceptTransferResponseTransferExternalAccount$ = exports.AcceptTransferResponseTransferExternalAccount$outboundSchema = exports.AcceptTransferResponseTransferExternalAccount$inboundSchema = exports.AcceptTransferResponseNsccStatus$ = exports.AcceptTransferResponseNsccStatus$outboundSchema = exports.AcceptTransferResponseNsccStatus$inboundSchema = exports.AcceptTransferResponseDirection$ = exports.AcceptTransferResponseDirection$outboundSchema = exports.AcceptTransferResponseDirection$inboundSchema = exports.AcceptTransferResponseDeliverer$ = exports.AcceptTransferResponseDeliverer$outboundSchema = exports.AcceptTransferResponseDeliverer$inboundSchema = exports.AcceptTransferResponseExternalAccount$ = exports.AcceptTransferResponseExternalAccount$outboundSchema = exports.AcceptTransferResponseExternalAccount$inboundSchema = exports.AcceptTransferResponseTransferType = exports.AcceptTransferResponseState = exports.AcceptTransferResponseRejectCode = exports.AcceptTransferResponseNsccStatus = exports.AcceptTransferResponseDirection = void 0;
+exports.acceptTransferResponseExternalAccountToJSON = acceptTransferResponseExternalAccountToJSON;
+exports.acceptTransferResponseExternalAccountFromJSON = acceptTransferResponseExternalAccountFromJSON;
+exports.acceptTransferResponseDelivererToJSON = acceptTransferResponseDelivererToJSON;
+exports.acceptTransferResponseDelivererFromJSON = acceptTransferResponseDelivererFromJSON;
+exports.acceptTransferResponseTransferExternalAccountToJSON = acceptTransferResponseTransferExternalAccountToJSON;
+exports.acceptTransferResponseTransferExternalAccountFromJSON = acceptTransferResponseTransferExternalAccountFromJSON;
+exports.acceptTransferResponseReceiverToJSON = acceptTransferResponseReceiverToJSON;
+exports.acceptTransferResponseReceiverFromJSON = acceptTransferResponseReceiverFromJSON;
+exports.transferToJSON = transferToJSON;
+exports.transferFromJSON = transferFromJSON;
+exports.acceptTransferResponseToJSON = acceptTransferResponseToJSON;
+exports.acceptTransferResponseFromJSON = acceptTransferResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const acatsasset_js_1 = require("./acatsasset.js");
 /**
@@ -165,6 +178,12 @@ var AcceptTransferResponseExternalAccount$;
     /** @deprecated use `AcceptTransferResponseExternalAccount$outboundSchema` instead. */
     AcceptTransferResponseExternalAccount$.outboundSchema = exports.AcceptTransferResponseExternalAccount$outboundSchema;
 })(AcceptTransferResponseExternalAccount$ || (exports.AcceptTransferResponseExternalAccount$ = AcceptTransferResponseExternalAccount$ = {}));
+function acceptTransferResponseExternalAccountToJSON(acceptTransferResponseExternalAccount) {
+    return JSON.stringify(exports.AcceptTransferResponseExternalAccount$outboundSchema.parse(acceptTransferResponseExternalAccount));
+}
+function acceptTransferResponseExternalAccountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcceptTransferResponseExternalAccount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcceptTransferResponseExternalAccount' from JSON`);
+}
 /** @internal */
 exports.AcceptTransferResponseDeliverer$inboundSchema = z.object({
     apex_account_id: z.string().optional(),
@@ -196,6 +215,12 @@ var AcceptTransferResponseDeliverer$;
     /** @deprecated use `AcceptTransferResponseDeliverer$outboundSchema` instead. */
     AcceptTransferResponseDeliverer$.outboundSchema = exports.AcceptTransferResponseDeliverer$outboundSchema;
 })(AcceptTransferResponseDeliverer$ || (exports.AcceptTransferResponseDeliverer$ = AcceptTransferResponseDeliverer$ = {}));
+function acceptTransferResponseDelivererToJSON(acceptTransferResponseDeliverer) {
+    return JSON.stringify(exports.AcceptTransferResponseDeliverer$outboundSchema.parse(acceptTransferResponseDeliverer));
+}
+function acceptTransferResponseDelivererFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcceptTransferResponseDeliverer$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcceptTransferResponseDeliverer' from JSON`);
+}
 /** @internal */
 exports.AcceptTransferResponseDirection$inboundSchema = z
     .union([
@@ -275,6 +300,12 @@ var AcceptTransferResponseTransferExternalAccount$;
     /** @deprecated use `AcceptTransferResponseTransferExternalAccount$outboundSchema` instead. */
     AcceptTransferResponseTransferExternalAccount$.outboundSchema = exports.AcceptTransferResponseTransferExternalAccount$outboundSchema;
 })(AcceptTransferResponseTransferExternalAccount$ || (exports.AcceptTransferResponseTransferExternalAccount$ = AcceptTransferResponseTransferExternalAccount$ = {}));
+function acceptTransferResponseTransferExternalAccountToJSON(acceptTransferResponseTransferExternalAccount) {
+    return JSON.stringify(exports.AcceptTransferResponseTransferExternalAccount$outboundSchema.parse(acceptTransferResponseTransferExternalAccount));
+}
+function acceptTransferResponseTransferExternalAccountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcceptTransferResponseTransferExternalAccount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcceptTransferResponseTransferExternalAccount' from JSON`);
+}
 /** @internal */
 exports.AcceptTransferResponseReceiver$inboundSchema = z.object({
     apex_account_id: z.string().optional(),
@@ -306,6 +337,12 @@ var AcceptTransferResponseReceiver$;
     /** @deprecated use `AcceptTransferResponseReceiver$outboundSchema` instead. */
     AcceptTransferResponseReceiver$.outboundSchema = exports.AcceptTransferResponseReceiver$outboundSchema;
 })(AcceptTransferResponseReceiver$ || (exports.AcceptTransferResponseReceiver$ = AcceptTransferResponseReceiver$ = {}));
+function acceptTransferResponseReceiverToJSON(acceptTransferResponseReceiver) {
+    return JSON.stringify(exports.AcceptTransferResponseReceiver$outboundSchema.parse(acceptTransferResponseReceiver));
+}
+function acceptTransferResponseReceiverFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcceptTransferResponseReceiver$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcceptTransferResponseReceiver' from JSON`);
+}
 /** @internal */
 exports.AcceptTransferResponseRejectCode$inboundSchema = z
     .union([
@@ -437,6 +474,12 @@ var Transfer$;
     /** @deprecated use `Transfer$outboundSchema` instead. */
     Transfer$.outboundSchema = exports.Transfer$outboundSchema;
 })(Transfer$ || (exports.Transfer$ = Transfer$ = {}));
+function transferToJSON(transfer) {
+    return JSON.stringify(exports.Transfer$outboundSchema.parse(transfer));
+}
+function transferFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Transfer$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Transfer' from JSON`);
+}
 /** @internal */
 exports.AcceptTransferResponse$inboundSchema = z.object({
     transfer: z.nullable(z.lazy(() => exports.Transfer$inboundSchema)).optional(),
@@ -456,4 +499,10 @@ var AcceptTransferResponse$;
     /** @deprecated use `AcceptTransferResponse$outboundSchema` instead. */
     AcceptTransferResponse$.outboundSchema = exports.AcceptTransferResponse$outboundSchema;
 })(AcceptTransferResponse$ || (exports.AcceptTransferResponse$ = AcceptTransferResponse$ = {}));
+function acceptTransferResponseToJSON(acceptTransferResponse) {
+    return JSON.stringify(exports.AcceptTransferResponse$outboundSchema.parse(acceptTransferResponse));
+}
+function acceptTransferResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcceptTransferResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcceptTransferResponse' from JSON`);
+}
 //# sourceMappingURL=accepttransferresponse.js.map

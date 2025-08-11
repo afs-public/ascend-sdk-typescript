@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to accept internal Ascend transfers.
@@ -55,4 +58,24 @@ export namespace AcceptTransferRequestCreate$ {
   export const outboundSchema = AcceptTransferRequestCreate$outboundSchema;
   /** @deprecated use `AcceptTransferRequestCreate$Outbound` instead. */
   export type Outbound = AcceptTransferRequestCreate$Outbound;
+}
+
+export function acceptTransferRequestCreateToJSON(
+  acceptTransferRequestCreate: AcceptTransferRequestCreate,
+): string {
+  return JSON.stringify(
+    AcceptTransferRequestCreate$outboundSchema.parse(
+      acceptTransferRequestCreate,
+    ),
+  );
+}
+
+export function acceptTransferRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AcceptTransferRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcceptTransferRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcceptTransferRequestCreate' from JSON`,
+  );
 }

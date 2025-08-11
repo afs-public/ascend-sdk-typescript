@@ -18,6 +18,7 @@ Create a fee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Fees_CreateFee" method="post" path="/transfers/v1/accounts/{account_id}/fees" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { TransfersFeeCreateType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -41,7 +42,6 @@ async function run() {
     type: TransfersFeeCreateType.Platform,
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -77,15 +77,12 @@ async function run() {
     clientTransferId: "179dcd33-49f8-4615-989c-560fb387c4fd",
     type: TransfersFeeCreateType.Platform,
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feesAndCreditsCreateFee failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -118,6 +115,7 @@ Retrieve an existing fee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Fees_GetFee" method="get" path="/transfers/v1/accounts/{account_id}/fees/{fee_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -136,7 +134,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.feesAndCredits.getFee("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -167,15 +164,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await feesAndCreditsGetFee(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feesAndCreditsGetFee failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -208,6 +202,7 @@ Cancel an existing fee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Fees_CancelFee" method="post" path="/transfers/v1/accounts/{account_id}/fees/{fee_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -228,7 +223,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/fees/20230823123456",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -261,15 +255,12 @@ async function run() {
   const res = await feesAndCreditsCancelFee(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/fees/20230823123456",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feesAndCreditsCancelFee failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -303,6 +294,7 @@ Create a credit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Credits_CreateCredit" method="post" path="/transfers/v1/accounts/{account_id}/credits" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { TransfersCreditCreateType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -326,7 +318,6 @@ async function run() {
     type: TransfersCreditCreateType.Promotional,
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -362,15 +353,12 @@ async function run() {
     clientTransferId: "179dcd33-49f8-4615-989c-560fb387c4fd",
     type: TransfersCreditCreateType.Promotional,
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feesAndCreditsCreateCredit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -403,6 +391,7 @@ Retrieve an existing credit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Credits_GetCredit" method="get" path="/transfers/v1/accounts/{account_id}/credits/{credit_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -421,7 +410,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.feesAndCredits.getCredit("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -452,15 +440,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await feesAndCreditsGetCredit(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feesAndCreditsGetCredit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -493,6 +478,7 @@ Cancel an existing credit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Credits_CancelCredit" method="post" path="/transfers/v1/accounts/{account_id}/credits/{credit_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -513,7 +499,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/credits/20230823123456",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -546,15 +531,12 @@ async function run() {
   const res = await feesAndCreditsCancelCredit(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/credits/20230823123456",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230823123456");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("feesAndCreditsCancelCredit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

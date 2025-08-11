@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The outcome of the delivery
  */
@@ -90,4 +92,6 @@ export declare namespace PushSubscriptionDelivery$ {
     /** @deprecated use `PushSubscriptionDelivery$Outbound` instead. */
     type Outbound = PushSubscriptionDelivery$Outbound;
 }
+export declare function pushSubscriptionDeliveryToJSON(pushSubscriptionDelivery: PushSubscriptionDelivery): string;
+export declare function pushSubscriptionDeliveryFromJSON(jsonString: string): SafeParseResult<PushSubscriptionDelivery, SDKValidationError>;
 //# sourceMappingURL=pushsubscriptiondelivery.d.ts.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsEndLargeTrader1Request = {
   /**
@@ -73,6 +76,26 @@ export namespace AccountsEndLargeTrader1Request$ {
   export type Outbound = AccountsEndLargeTrader1Request$Outbound;
 }
 
+export function accountsEndLargeTrader1RequestToJSON(
+  accountsEndLargeTrader1Request: AccountsEndLargeTrader1Request,
+): string {
+  return JSON.stringify(
+    AccountsEndLargeTrader1Request$outboundSchema.parse(
+      accountsEndLargeTrader1Request,
+    ),
+  );
+}
+
+export function accountsEndLargeTrader1RequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsEndLargeTrader1Request, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsEndLargeTrader1Request$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsEndLargeTrader1Request' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsEndLargeTrader1Response$inboundSchema: z.ZodType<
   AccountsEndLargeTrader1Response,
@@ -120,4 +143,24 @@ export namespace AccountsEndLargeTrader1Response$ {
   export const outboundSchema = AccountsEndLargeTrader1Response$outboundSchema;
   /** @deprecated use `AccountsEndLargeTrader1Response$Outbound` instead. */
   export type Outbound = AccountsEndLargeTrader1Response$Outbound;
+}
+
+export function accountsEndLargeTrader1ResponseToJSON(
+  accountsEndLargeTrader1Response: AccountsEndLargeTrader1Response,
+): string {
+  return JSON.stringify(
+    AccountsEndLargeTrader1Response$outboundSchema.parse(
+      accountsEndLargeTrader1Response,
+    ),
+  );
+}
+
+export function accountsEndLargeTrader1ResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsEndLargeTrader1Response, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsEndLargeTrader1Response$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsEndLargeTrader1Response' from JSON`,
+  );
 }

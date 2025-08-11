@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerProfileCreate$ = exports.CustomerProfileCreate$outboundSchema = exports.CustomerProfileCreate$inboundSchema = exports.TotalNetWorthRangeUsd$ = exports.TotalNetWorthRangeUsd$outboundSchema = exports.TotalNetWorthRangeUsd$inboundSchema = exports.LiquidNetWorthRangeUsd$ = exports.LiquidNetWorthRangeUsd$outboundSchema = exports.LiquidNetWorthRangeUsd$inboundSchema = exports.InvestmentExperience$ = exports.InvestmentExperience$outboundSchema = exports.InvestmentExperience$inboundSchema = exports.AnnualIncomeRangeUsd$ = exports.AnnualIncomeRangeUsd$outboundSchema = exports.AnnualIncomeRangeUsd$inboundSchema = exports.TotalNetWorthRangeUsd = exports.LiquidNetWorthRangeUsd = exports.InvestmentExperience = exports.AnnualIncomeRangeUsd = void 0;
+exports.customerProfileCreateToJSON = customerProfileCreateToJSON;
+exports.customerProfileCreateFromJSON = customerProfileCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Annual income range; the low number is exclusive, the high number is inclusive
@@ -230,4 +233,10 @@ var CustomerProfileCreate$;
     /** @deprecated use `CustomerProfileCreate$outboundSchema` instead. */
     CustomerProfileCreate$.outboundSchema = exports.CustomerProfileCreate$outboundSchema;
 })(CustomerProfileCreate$ || (exports.CustomerProfileCreate$ = CustomerProfileCreate$ = {}));
+function customerProfileCreateToJSON(customerProfileCreate) {
+    return JSON.stringify(exports.CustomerProfileCreate$outboundSchema.parse(customerProfileCreate));
+}
+function customerProfileCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerProfileCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerProfileCreate' from JSON`);
+}
 //# sourceMappingURL=customerprofilecreate.js.map

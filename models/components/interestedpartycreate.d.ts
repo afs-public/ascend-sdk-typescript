@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PostalAddressCreate, PostalAddressCreate$Outbound } from "./postaladdresscreate.js";
 /**
  * Delivery method instruction for account statements for a given Interested Party; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
@@ -103,4 +105,6 @@ export declare namespace InterestedPartyCreate$ {
     /** @deprecated use `InterestedPartyCreate$Outbound` instead. */
     type Outbound = InterestedPartyCreate$Outbound;
 }
+export declare function interestedPartyCreateToJSON(interestedPartyCreate: InterestedPartyCreate): string;
+export declare function interestedPartyCreateFromJSON(jsonString: string): SafeParseResult<InterestedPartyCreate, SDKValidationError>;
 //# sourceMappingURL=interestedpartycreate.d.ts.map

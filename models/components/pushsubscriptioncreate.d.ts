@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { HttpPushCallbackCreate, HttpPushCallbackCreate$Outbound } from "./httppushcallbackcreate.js";
 /**
  * Configuration information about a push subscription
@@ -49,4 +51,6 @@ export declare namespace PushSubscriptionCreate$ {
     /** @deprecated use `PushSubscriptionCreate$Outbound` instead. */
     type Outbound = PushSubscriptionCreate$Outbound;
 }
+export declare function pushSubscriptionCreateToJSON(pushSubscriptionCreate: PushSubscriptionCreate): string;
+export declare function pushSubscriptionCreateFromJSON(jsonString: string): SafeParseResult<PushSubscriptionCreate, SDKValidationError>;
 //# sourceMappingURL=pushsubscriptioncreate.d.ts.map

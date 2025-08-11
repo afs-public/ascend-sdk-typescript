@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsEndLargeTraderLegalNaturalPersonRequest = {
     /**
      * The legalNaturalPerson id.
@@ -35,6 +37,8 @@ export declare namespace AccountsEndLargeTraderLegalNaturalPersonRequest$ {
     /** @deprecated use `AccountsEndLargeTraderLegalNaturalPersonRequest$Outbound` instead. */
     type Outbound = AccountsEndLargeTraderLegalNaturalPersonRequest$Outbound;
 }
+export declare function accountsEndLargeTraderLegalNaturalPersonRequestToJSON(accountsEndLargeTraderLegalNaturalPersonRequest: AccountsEndLargeTraderLegalNaturalPersonRequest): string;
+export declare function accountsEndLargeTraderLegalNaturalPersonRequestFromJSON(jsonString: string): SafeParseResult<AccountsEndLargeTraderLegalNaturalPersonRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsEndLargeTraderLegalNaturalPersonResponse$inboundSchema: z.ZodType<AccountsEndLargeTraderLegalNaturalPersonResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -56,4 +60,6 @@ export declare namespace AccountsEndLargeTraderLegalNaturalPersonResponse$ {
     /** @deprecated use `AccountsEndLargeTraderLegalNaturalPersonResponse$Outbound` instead. */
     type Outbound = AccountsEndLargeTraderLegalNaturalPersonResponse$Outbound;
 }
+export declare function accountsEndLargeTraderLegalNaturalPersonResponseToJSON(accountsEndLargeTraderLegalNaturalPersonResponse: AccountsEndLargeTraderLegalNaturalPersonResponse): string;
+export declare function accountsEndLargeTraderLegalNaturalPersonResponseFromJSON(jsonString: string): SafeParseResult<AccountsEndLargeTraderLegalNaturalPersonResponse, SDKValidationError>;
 //# sourceMappingURL=accountsendlargetraderlegalnaturalperson.d.ts.map

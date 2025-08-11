@@ -37,8 +37,17 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDeposit$ = exports.AchDeposit$outboundSchema = exports.AchDeposit$inboundSchema = exports.AchDepositState$ = exports.AchDepositState$outboundSchema = exports.AchDepositState$inboundSchema = exports.AchDepositStateState$ = exports.AchDepositStateState$outboundSchema = exports.AchDepositStateState$inboundSchema = exports.RetirementContribution$ = exports.RetirementContribution$outboundSchema = exports.RetirementContribution$inboundSchema = exports.AchDepositType$ = exports.AchDepositType$outboundSchema = exports.AchDepositType$inboundSchema = exports.Amount$ = exports.Amount$outboundSchema = exports.Amount$inboundSchema = exports.AchDepositStateState = exports.AchDepositType = void 0;
+exports.amountToJSON = amountToJSON;
+exports.amountFromJSON = amountFromJSON;
+exports.retirementContributionToJSON = retirementContributionToJSON;
+exports.retirementContributionFromJSON = retirementContributionFromJSON;
+exports.achDepositStateToJSON = achDepositStateToJSON;
+exports.achDepositStateFromJSON = achDepositStateFromJSON;
+exports.achDepositToJSON = achDepositToJSON;
+exports.achDepositFromJSON = achDepositFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of retirement contribution.
@@ -103,6 +112,12 @@ var Amount$;
     /** @deprecated use `Amount$outboundSchema` instead. */
     Amount$.outboundSchema = exports.Amount$outboundSchema;
 })(Amount$ || (exports.Amount$ = Amount$ = {}));
+function amountToJSON(amount) {
+    return JSON.stringify(exports.Amount$outboundSchema.parse(amount));
+}
+function amountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Amount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Amount' from JSON`);
+}
 /** @internal */
 exports.AchDepositType$inboundSchema = z
     .union([
@@ -154,6 +169,12 @@ var RetirementContribution$;
     /** @deprecated use `RetirementContribution$outboundSchema` instead. */
     RetirementContribution$.outboundSchema = exports.RetirementContribution$outboundSchema;
 })(RetirementContribution$ || (exports.RetirementContribution$ = RetirementContribution$ = {}));
+function retirementContributionToJSON(retirementContribution) {
+    return JSON.stringify(exports.RetirementContribution$outboundSchema.parse(retirementContribution));
+}
+function retirementContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetirementContribution' from JSON`);
+}
 /** @internal */
 exports.AchDepositStateState$inboundSchema = z
     .union([
@@ -211,6 +232,12 @@ var AchDepositState$;
     /** @deprecated use `AchDepositState$outboundSchema` instead. */
     AchDepositState$.outboundSchema = exports.AchDepositState$outboundSchema;
 })(AchDepositState$ || (exports.AchDepositState$ = AchDepositState$ = {}));
+function achDepositStateToJSON(achDepositState) {
+    return JSON.stringify(exports.AchDepositState$outboundSchema.parse(achDepositState));
+}
+function achDepositStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositState' from JSON`);
+}
 /** @internal */
 exports.AchDeposit$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.Amount$inboundSchema)).optional(),
@@ -254,4 +281,10 @@ var AchDeposit$;
     /** @deprecated use `AchDeposit$outboundSchema` instead. */
     AchDeposit$.outboundSchema = exports.AchDeposit$outboundSchema;
 })(AchDeposit$ || (exports.AchDeposit$ = AchDeposit$ = {}));
+function achDepositToJSON(achDeposit) {
+    return JSON.stringify(exports.AchDeposit$outboundSchema.parse(achDeposit));
+}
+function achDepositFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDeposit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDeposit' from JSON`);
+}
 //# sourceMappingURL=achdeposit.js.map

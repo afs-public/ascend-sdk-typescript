@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetirementConstraintsRetrieveCashJournalConstraintsResponse = {
   httpMeta: components.HTTPMetadata;
@@ -80,4 +83,29 @@ export namespace RetirementConstraintsRetrieveCashJournalConstraintsResponse$ {
   /** @deprecated use `RetirementConstraintsRetrieveCashJournalConstraintsResponse$Outbound` instead. */
   export type Outbound =
     RetirementConstraintsRetrieveCashJournalConstraintsResponse$Outbound;
+}
+
+export function retirementConstraintsRetrieveCashJournalConstraintsResponseToJSON(
+  retirementConstraintsRetrieveCashJournalConstraintsResponse:
+    RetirementConstraintsRetrieveCashJournalConstraintsResponse,
+): string {
+  return JSON.stringify(
+    RetirementConstraintsRetrieveCashJournalConstraintsResponse$outboundSchema
+      .parse(retirementConstraintsRetrieveCashJournalConstraintsResponse),
+  );
+}
+
+export function retirementConstraintsRetrieveCashJournalConstraintsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetirementConstraintsRetrieveCashJournalConstraintsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetirementConstraintsRetrieveCashJournalConstraintsResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RetirementConstraintsRetrieveCashJournalConstraintsResponse' from JSON`,
+  );
 }

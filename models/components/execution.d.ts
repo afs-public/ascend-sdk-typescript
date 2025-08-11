@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYield, BondYield$Outbound } from "./bondyield.js";
 /**
  * The amount of interest that has been accrued in the issuing currency for a single instrument. Requirement of 15 or less integral number and 2 or less fractional precision. Required for FIXED_INCOME trades. Not allowed for trades of other instrument types.
@@ -200,6 +202,8 @@ export declare namespace ExecutionAccruedInterestAmount$ {
     /** @deprecated use `ExecutionAccruedInterestAmount$Outbound` instead. */
     type Outbound = ExecutionAccruedInterestAmount$Outbound;
 }
+export declare function executionAccruedInterestAmountToJSON(executionAccruedInterestAmount: ExecutionAccruedInterestAmount): string;
+export declare function executionAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<ExecutionAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const CommissionAmount$inboundSchema: z.ZodType<CommissionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -220,6 +224,8 @@ export declare namespace CommissionAmount$ {
     /** @deprecated use `CommissionAmount$Outbound` instead. */
     type Outbound = CommissionAmount$Outbound;
 }
+export declare function commissionAmountToJSON(commissionAmount: CommissionAmount): string;
+export declare function commissionAmountFromJSON(jsonString: string): SafeParseResult<CommissionAmount, SDKValidationError>;
 /** @internal */
 export declare const GrossAmount$inboundSchema: z.ZodType<GrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -240,6 +246,8 @@ export declare namespace GrossAmount$ {
     /** @deprecated use `GrossAmount$Outbound` instead. */
     type Outbound = GrossAmount$Outbound;
 }
+export declare function grossAmountToJSON(grossAmount: GrossAmount): string;
+export declare function grossAmountFromJSON(jsonString: string): SafeParseResult<GrossAmount, SDKValidationError>;
 /** @internal */
 export declare const ExecutionPrevailingMarketPrice$inboundSchema: z.ZodType<ExecutionPrevailingMarketPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -260,6 +268,8 @@ export declare namespace ExecutionPrevailingMarketPrice$ {
     /** @deprecated use `ExecutionPrevailingMarketPrice$Outbound` instead. */
     type Outbound = ExecutionPrevailingMarketPrice$Outbound;
 }
+export declare function executionPrevailingMarketPriceToJSON(executionPrevailingMarketPrice: ExecutionPrevailingMarketPrice): string;
+export declare function executionPrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<ExecutionPrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const ExecutionPrice$inboundSchema: z.ZodType<ExecutionPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -280,6 +290,8 @@ export declare namespace ExecutionPrice$ {
     /** @deprecated use `ExecutionPrice$Outbound` instead. */
     type Outbound = ExecutionPrice$Outbound;
 }
+export declare function executionPriceToJSON(executionPrice: ExecutionPrice): string;
+export declare function executionPriceFromJSON(jsonString: string): SafeParseResult<ExecutionPrice, SDKValidationError>;
 /** @internal */
 export declare const PriceAdjustmentAmount$inboundSchema: z.ZodType<PriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -300,6 +312,8 @@ export declare namespace PriceAdjustmentAmount$ {
     /** @deprecated use `PriceAdjustmentAmount$Outbound` instead. */
     type Outbound = PriceAdjustmentAmount$Outbound;
 }
+export declare function priceAdjustmentAmountToJSON(priceAdjustmentAmount: PriceAdjustmentAmount): string;
+export declare function priceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<PriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const ExecutionPriceAdjustmentType$inboundSchema: z.ZodType<ExecutionPriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -335,6 +349,8 @@ export declare namespace PriceAdjustment$ {
     /** @deprecated use `PriceAdjustment$Outbound` instead. */
     type Outbound = PriceAdjustment$Outbound;
 }
+export declare function priceAdjustmentToJSON(priceAdjustment: PriceAdjustment): string;
+export declare function priceAdjustmentFromJSON(jsonString: string): SafeParseResult<PriceAdjustment, SDKValidationError>;
 /** @internal */
 export declare const ExecutionQuantity$inboundSchema: z.ZodType<ExecutionQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -355,6 +371,8 @@ export declare namespace ExecutionQuantity$ {
     /** @deprecated use `ExecutionQuantity$Outbound` instead. */
     type Outbound = ExecutionQuantity$Outbound;
 }
+export declare function executionQuantityToJSON(executionQuantity: ExecutionQuantity): string;
+export declare function executionQuantityFromJSON(jsonString: string): SafeParseResult<ExecutionQuantity, SDKValidationError>;
 /** @internal */
 export declare const ExecutionState$inboundSchema: z.ZodType<ExecutionStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -405,4 +423,6 @@ export declare namespace Execution$ {
     /** @deprecated use `Execution$Outbound` instead. */
     type Outbound = Execution$Outbound;
 }
+export declare function executionToJSON(execution: Execution): string;
+export declare function executionFromJSON(jsonString: string): SafeParseResult<Execution, SDKValidationError>;
 //# sourceMappingURL=execution.d.ts.map

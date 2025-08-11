@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BookingFee,
   BookingFee$inboundSchema,
@@ -548,6 +551,33 @@ export namespace CompleteTradeResponseLocalMarketTradeDate$ {
   export type Outbound = CompleteTradeResponseLocalMarketTradeDate$Outbound;
 }
 
+export function completeTradeResponseLocalMarketTradeDateToJSON(
+  completeTradeResponseLocalMarketTradeDate:
+    CompleteTradeResponseLocalMarketTradeDate,
+): string {
+  return JSON.stringify(
+    CompleteTradeResponseLocalMarketTradeDate$outboundSchema.parse(
+      completeTradeResponseLocalMarketTradeDate,
+    ),
+  );
+}
+
+export function completeTradeResponseLocalMarketTradeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CompleteTradeResponseLocalMarketTradeDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CompleteTradeResponseLocalMarketTradeDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CompleteTradeResponseLocalMarketTradeDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const CompleteTradeResponseRouteType$inboundSchema: z.ZodType<
   CompleteTradeResponseRouteTypeOpen,
@@ -622,6 +652,27 @@ export namespace CompleteTradeResponseSettlementDate$ {
     CompleteTradeResponseSettlementDate$outboundSchema;
   /** @deprecated use `CompleteTradeResponseSettlementDate$Outbound` instead. */
   export type Outbound = CompleteTradeResponseSettlementDate$Outbound;
+}
+
+export function completeTradeResponseSettlementDateToJSON(
+  completeTradeResponseSettlementDate: CompleteTradeResponseSettlementDate,
+): string {
+  return JSON.stringify(
+    CompleteTradeResponseSettlementDate$outboundSchema.parse(
+      completeTradeResponseSettlementDate,
+    ),
+  );
+}
+
+export function completeTradeResponseSettlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<CompleteTradeResponseSettlementDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CompleteTradeResponseSettlementDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompleteTradeResponseSettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -969,6 +1020,20 @@ export namespace Trade$ {
   export type Outbound = Trade$Outbound;
 }
 
+export function tradeToJSON(trade: Trade): string {
+  return JSON.stringify(Trade$outboundSchema.parse(trade));
+}
+
+export function tradeFromJSON(
+  jsonString: string,
+): SafeParseResult<Trade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Trade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Trade' from JSON`,
+  );
+}
+
 /** @internal */
 export const CompleteTradeResponse$inboundSchema: z.ZodType<
   CompleteTradeResponse,
@@ -1003,4 +1068,22 @@ export namespace CompleteTradeResponse$ {
   export const outboundSchema = CompleteTradeResponse$outboundSchema;
   /** @deprecated use `CompleteTradeResponse$Outbound` instead. */
   export type Outbound = CompleteTradeResponse$Outbound;
+}
+
+export function completeTradeResponseToJSON(
+  completeTradeResponse: CompleteTradeResponse,
+): string {
+  return JSON.stringify(
+    CompleteTradeResponse$outboundSchema.parse(completeTradeResponse),
+  );
+}
+
+export function completeTradeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CompleteTradeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompleteTradeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompleteTradeResponse' from JSON`,
+  );
 }

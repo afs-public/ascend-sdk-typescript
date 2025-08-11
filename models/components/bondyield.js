@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BondYield$ = exports.BondYield$outboundSchema = exports.BondYield$inboundSchema = exports.BondYieldYieldType$ = exports.BondYieldYieldType$outboundSchema = exports.BondYieldYieldType$inboundSchema = exports.Percent$ = exports.Percent$outboundSchema = exports.Percent$inboundSchema = exports.BondYieldYieldType = void 0;
+exports.percentToJSON = percentToJSON;
+exports.percentFromJSON = percentFromJSON;
+exports.bondYieldToJSON = bondYieldToJSON;
+exports.bondYieldFromJSON = bondYieldFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of yield.
@@ -70,6 +75,12 @@ var Percent$;
     /** @deprecated use `Percent$outboundSchema` instead. */
     Percent$.outboundSchema = exports.Percent$outboundSchema;
 })(Percent$ || (exports.Percent$ = Percent$ = {}));
+function percentToJSON(percent) {
+    return JSON.stringify(exports.Percent$outboundSchema.parse(percent));
+}
+function percentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Percent$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Percent' from JSON`);
+}
 /** @internal */
 exports.BondYieldYieldType$inboundSchema = z
     .union([
@@ -121,4 +132,10 @@ var BondYield$;
     /** @deprecated use `BondYield$outboundSchema` instead. */
     BondYield$.outboundSchema = exports.BondYield$outboundSchema;
 })(BondYield$ || (exports.BondYield$ = BondYield$ = {}));
+function bondYieldToJSON(bondYield) {
+    return JSON.stringify(exports.BondYield$outboundSchema.parse(bondYield));
+}
+function bondYieldFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BondYield$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BondYield' from JSON`);
+}
 //# sourceMappingURL=bondyield.js.map

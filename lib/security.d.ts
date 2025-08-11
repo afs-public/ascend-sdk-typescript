@@ -1,4 +1,11 @@
 import * as components from "../models/components/index.js";
+type OAuth2PasswordFlow = {
+    username: string;
+    password: string;
+    clientID?: string | undefined;
+    clientSecret?: string | undefined;
+    tokenURL: string;
+};
 export declare enum SecurityErrorCode {
     Incomplete = "incomplete",
     UnrecognisedSecurityType = "unrecognized_security_type"
@@ -17,6 +24,11 @@ export type SecurityState = {
     headers: Record<string, string>;
     queryParams: Record<string, string>;
     cookies: Record<string, string>;
+    oauth2: ({
+        type: "password";
+    } & OAuth2PasswordFlow) | {
+        type: "none";
+    };
 };
 type SecurityInputBasic = {
     type: "http:basic";
@@ -47,15 +59,23 @@ type SecurityInputOAuth2 = {
 };
 type SecurityInputOAuth2ClientCredentials = {
     type: "oauth2:client_credentials";
+    value: {
+        clientID?: string | undefined;
+        clientSecret?: string | undefined;
+    } | null | string | undefined;
+    fieldName?: string;
+};
+type SecurityInputOAuth2PasswordCredentials = {
+    type: "oauth2:password";
     value: string | null | undefined;
-    fieldName: string;
+    fieldName?: string;
 };
 type SecurityInputCustom = {
     type: "http:custom";
     value: any | null | undefined;
-    fieldName: string;
+    fieldName?: string;
 };
-export type SecurityInput = SecurityInputBasic | SecurityInputBearer | SecurityInputAPIKey | SecurityInputOAuth2 | SecurityInputOAuth2ClientCredentials | SecurityInputOIDC | SecurityInputCustom;
+export type SecurityInput = SecurityInputBasic | SecurityInputBearer | SecurityInputAPIKey | SecurityInputOAuth2 | SecurityInputOAuth2ClientCredentials | SecurityInputOAuth2PasswordCredentials | SecurityInputOIDC | SecurityInputCustom;
 export declare function resolveSecurity(...options: SecurityInput[][]): SecurityState | null;
 export declare function resolveGlobalSecurity(security: Partial<components.Security> | null | undefined): SecurityState | null;
 export declare function extractSecurity<T extends string | Record<string, unknown>>(sec: T | (() => Promise<T>) | undefined): Promise<T | undefined>;

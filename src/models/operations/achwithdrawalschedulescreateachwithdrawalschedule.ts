@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest = {
   /**
@@ -84,6 +87,31 @@ export namespace AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$ {
     AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$Outbound;
 }
 
+export function achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestToJSON(
+  achWithdrawalSchedulesCreateAchWithdrawalScheduleRequest:
+    AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest,
+): string {
+  return JSON.stringify(
+    AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$outboundSchema
+      .parse(achWithdrawalSchedulesCreateAchWithdrawalScheduleRequest),
+  );
+}
+
+export function achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$inboundSchema:
   z.ZodType<
@@ -146,4 +174,29 @@ export namespace AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$ {
   /** @deprecated use `AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$Outbound` instead. */
   export type Outbound =
     AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$Outbound;
+}
+
+export function achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseToJSON(
+  achWithdrawalSchedulesCreateAchWithdrawalScheduleResponse:
+    AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse,
+): string {
+  return JSON.stringify(
+    AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$outboundSchema
+      .parse(achWithdrawalSchedulesCreateAchWithdrawalScheduleResponse),
+  );
+}
+
+export function achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse' from JSON`,
+  );
 }

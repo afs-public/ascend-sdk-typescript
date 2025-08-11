@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type TransferScheduleSummariesListScheduleSummariesRequest = {
     /**
      * A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; Filter options include:
@@ -55,6 +57,8 @@ export declare namespace TransferScheduleSummariesListScheduleSummariesRequest$ 
     /** @deprecated use `TransferScheduleSummariesListScheduleSummariesRequest$Outbound` instead. */
     type Outbound = TransferScheduleSummariesListScheduleSummariesRequest$Outbound;
 }
+export declare function transferScheduleSummariesListScheduleSummariesRequestToJSON(transferScheduleSummariesListScheduleSummariesRequest: TransferScheduleSummariesListScheduleSummariesRequest): string;
+export declare function transferScheduleSummariesListScheduleSummariesRequestFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummariesListScheduleSummariesRequest, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummariesListScheduleSummariesResponse$inboundSchema: z.ZodType<TransferScheduleSummariesListScheduleSummariesResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -77,4 +81,6 @@ export declare namespace TransferScheduleSummariesListScheduleSummariesResponse$
     /** @deprecated use `TransferScheduleSummariesListScheduleSummariesResponse$Outbound` instead. */
     type Outbound = TransferScheduleSummariesListScheduleSummariesResponse$Outbound;
 }
+export declare function transferScheduleSummariesListScheduleSummariesResponseToJSON(transferScheduleSummariesListScheduleSummariesResponse: TransferScheduleSummariesListScheduleSummariesResponse): string;
+export declare function transferScheduleSummariesListScheduleSummariesResponseFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummariesListScheduleSummariesResponse, SDKValidationError>;
 //# sourceMappingURL=transferschedulesummarieslistschedulesummaries.d.ts.map

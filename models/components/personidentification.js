@@ -37,11 +37,23 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PersonIdentification$ = exports.PersonIdentification$outboundSchema = exports.PersonIdentification$inboundSchema = exports.PersonIdentificationType$ = exports.PersonIdentificationType$outboundSchema = exports.PersonIdentificationType$inboundSchema = exports.PersonIdentificationType = void 0;
+exports.personIdentificationToJSON = personIdentificationToJSON;
+exports.personIdentificationFromJSON = personIdentificationFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
- * Tax id type (e.g. ssn)
+ * The identification type for a person, one of:
+ *
+ * @remarks
+ * - `ID_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `SSN` - SSN tax type.
+ * - `ITIN` - ITIN tax type.
+ * - `FTIN` - FTIN (foreign tax id) type.
+ * - `NATIONAL_ID` - National id type.
+ * - `PASSPORT` - Passport id type.
+ * - `DRIVING_LICENSE` - Drivers license id type.
  */
 var PersonIdentificationType;
 (function (PersonIdentificationType) {
@@ -114,4 +126,10 @@ var PersonIdentification$;
     /** @deprecated use `PersonIdentification$outboundSchema` instead. */
     PersonIdentification$.outboundSchema = exports.PersonIdentification$outboundSchema;
 })(PersonIdentification$ || (exports.PersonIdentification$ = PersonIdentification$ = {}));
+function personIdentificationToJSON(personIdentification) {
+    return JSON.stringify(exports.PersonIdentification$outboundSchema.parse(personIdentification));
+}
+function personIdentificationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PersonIdentification$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PersonIdentification' from JSON`);
+}
 //# sourceMappingURL=personidentification.js.map

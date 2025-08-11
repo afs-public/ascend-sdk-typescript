@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchDepositsForceNocAchDepositRequest = {
   /**
@@ -89,6 +92,27 @@ export namespace AchDepositsForceNocAchDepositRequest$ {
   export type Outbound = AchDepositsForceNocAchDepositRequest$Outbound;
 }
 
+export function achDepositsForceNocAchDepositRequestToJSON(
+  achDepositsForceNocAchDepositRequest: AchDepositsForceNocAchDepositRequest,
+): string {
+  return JSON.stringify(
+    AchDepositsForceNocAchDepositRequest$outboundSchema.parse(
+      achDepositsForceNocAchDepositRequest,
+    ),
+  );
+}
+
+export function achDepositsForceNocAchDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositsForceNocAchDepositRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositsForceNocAchDepositRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositsForceNocAchDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositsForceNocAchDepositResponse$inboundSchema: z.ZodType<
   AchDepositsForceNocAchDepositResponse,
@@ -143,4 +167,25 @@ export namespace AchDepositsForceNocAchDepositResponse$ {
     AchDepositsForceNocAchDepositResponse$outboundSchema;
   /** @deprecated use `AchDepositsForceNocAchDepositResponse$Outbound` instead. */
   export type Outbound = AchDepositsForceNocAchDepositResponse$Outbound;
+}
+
+export function achDepositsForceNocAchDepositResponseToJSON(
+  achDepositsForceNocAchDepositResponse: AchDepositsForceNocAchDepositResponse,
+): string {
+  return JSON.stringify(
+    AchDepositsForceNocAchDepositResponse$outboundSchema.parse(
+      achDepositsForceNocAchDepositResponse,
+    ),
+  );
+}
+
+export function achDepositsForceNocAchDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositsForceNocAchDepositResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositsForceNocAchDepositResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositsForceNocAchDepositResponse' from JSON`,
+  );
 }

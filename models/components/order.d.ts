@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { TradingExecutedPrice, TradingExecutedPrice$Outbound } from "./tradingexecutedprice.js";
 import { TradingExecutions, TradingExecutions$Outbound } from "./tradingexecutions.js";
 import { TradingFee, TradingFee$Outbound } from "./tradingfee.js";
@@ -33,6 +35,18 @@ export declare enum OrderBrokerCapacity {
  * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
  */
 export type OrderBrokerCapacityOpen = OpenEnum<typeof OrderBrokerCapacity>;
+/**
+ * Output only field that is required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. This field denotes the initiator of the cancel request. This field will be present when provided on the CancelOrderRequest
+ */
+export declare enum CancelInitiator {
+    InitiatorUnspecified = "INITIATOR_UNSPECIFIED",
+    Firm = "FIRM",
+    Client = "CLIENT"
+}
+/**
+ * Output only field that is required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. This field denotes the initiator of the cancel request. This field will be present when provided on the CancelOrderRequest
+ */
+export type CancelInitiatorOpen = OpenEnum<typeof CancelInitiator>;
 /**
  * Used to denote when a cancel request has been rejected.
  */
@@ -263,7 +277,7 @@ export declare enum OrderRejectedReason {
     AssetNotSetUpToTrade = "ASSET_NOT_SET_UP_TO_TRADE",
     InvalidOrderQuantity = "INVALID_ORDER_QUANTITY",
     ClientReceivedTimeRequired = "CLIENT_RECEIVED_TIME_REQUIRED",
-    ClientNotPermittedToUseTradingStrategy = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_STRATEGY"
+    ClientNotPermittedToUseTradingSession = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION"
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -289,16 +303,14 @@ export declare enum OrderStatus {
  */
 export type OrderStatusOpen = OpenEnum<typeof OrderStatus>;
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export declare enum OrderOrderType {
-    OrderTypeUnspecified = "ORDER_TYPE_UNSPECIFIED",
     Limit = "LIMIT",
-    Market = "MARKET",
-    Stop = "STOP"
+    Market = "MARKET"
 }
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export type OrderOrderTypeOpen = OpenEnum<typeof OrderOrderType>;
 /**
@@ -413,7 +425,6 @@ export type StopPrice = {
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export declare enum OrderTimeInForce {
-    TimeInForceUnspecified = "TIME_IN_FORCE_UNSPECIFIED",
     Day = "DAY"
 }
 /**
@@ -421,15 +432,21 @@ export declare enum OrderTimeInForce {
  */
 export type OrderTimeInForceOpen = OpenEnum<typeof OrderTimeInForce>;
 /**
- * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
  */
-export declare enum OrderTradingStrategy {
-    Core = "CORE"
+export declare enum OrderTradingSession {
+    TradingSessionUnspecified = "TRADING_SESSION_UNSPECIFIED",
+    Core = "CORE",
+    Pre = "PRE",
+    Post = "POST",
+    Overnight = "OVERNIGHT",
+    Apex24 = "APEX24",
+    Gtx = "GTX"
 }
 /**
- * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
  */
-export type OrderTradingStrategyOpen = OpenEnum<typeof OrderTradingStrategy>;
+export type OrderTradingSessionOpen = OpenEnum<typeof OrderTradingSession>;
 /**
  * The message describing an order
  */
@@ -464,6 +481,10 @@ export type Order = {
      */
     brokerCapacity?: OrderBrokerCapacityOpen | undefined;
     /**
+     * Output only field that is required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. This field denotes the initiator of the cancel request. This field will be present when provided on the CancelOrderRequest
+     */
+    cancelInitiator?: CancelInitiatorOpen | undefined;
+    /**
      * Used to explain why an order is canceled
      */
     cancelReason?: string | undefined;
@@ -471,6 +492,10 @@ export type Order = {
      * Used to denote when a cancel request has been rejected.
      */
     cancelRejectedReason?: CancelRejectedReasonOpen | undefined;
+    /**
+     * Output only field for Equity Orders related to CAT reporting on behalf of clients. This field will be present when provided on the CancelOrderRequest
+     */
+    clientCancelReceivedTime?: Date | null | undefined;
     /**
      * User-supplied unique order ID. Cannot be more than 40 characters long.
      */
@@ -564,7 +589,7 @@ export type Order = {
      */
     orderStatus?: OrderStatusOpen | undefined;
     /**
-     * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+     * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
      */
     orderType?: OrderOrderTypeOpen | undefined;
     /**
@@ -596,9 +621,9 @@ export type Order = {
      */
     timeInForce?: OrderTimeInForceOpen | undefined;
     /**
-     * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+     * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
      */
-    tradingStrategy?: OrderTradingStrategyOpen | undefined;
+    tradingSession?: OrderTradingSessionOpen | undefined;
 };
 /** @internal */
 export declare const OrderAssetType$inboundSchema: z.ZodType<OrderAssetTypeOpen, z.ZodTypeDef, unknown>;
@@ -627,6 +652,20 @@ export declare namespace OrderBrokerCapacity$ {
     const inboundSchema: z.ZodType<OrderBrokerCapacityOpen, z.ZodTypeDef, unknown>;
     /** @deprecated use `OrderBrokerCapacity$outboundSchema` instead. */
     const outboundSchema: z.ZodType<OrderBrokerCapacityOpen, z.ZodTypeDef, OrderBrokerCapacityOpen>;
+}
+/** @internal */
+export declare const CancelInitiator$inboundSchema: z.ZodType<CancelInitiatorOpen, z.ZodTypeDef, unknown>;
+/** @internal */
+export declare const CancelInitiator$outboundSchema: z.ZodType<CancelInitiatorOpen, z.ZodTypeDef, CancelInitiatorOpen>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace CancelInitiator$ {
+    /** @deprecated use `CancelInitiator$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<CancelInitiatorOpen, z.ZodTypeDef, unknown>;
+    /** @deprecated use `CancelInitiator$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<CancelInitiatorOpen, z.ZodTypeDef, CancelInitiatorOpen>;
 }
 /** @internal */
 export declare const CancelRejectedReason$inboundSchema: z.ZodType<CancelRejectedReasonOpen, z.ZodTypeDef, unknown>;
@@ -676,6 +715,8 @@ export declare namespace Value$ {
     /** @deprecated use `Value$Outbound` instead. */
     type Outbound = Value$Outbound;
 }
+export declare function valueToJSON(value: Value): string;
+export declare function valueFromJSON(jsonString: string): SafeParseResult<Value, SDKValidationError>;
 /** @internal */
 export declare const OrderCommission$inboundSchema: z.ZodType<OrderCommission, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -697,6 +738,8 @@ export declare namespace OrderCommission$ {
     /** @deprecated use `OrderCommission$Outbound` instead. */
     type Outbound = OrderCommission$Outbound;
 }
+export declare function orderCommissionToJSON(orderCommission: OrderCommission): string;
+export declare function orderCommissionFromJSON(jsonString: string): SafeParseResult<OrderCommission, SDKValidationError>;
 /** @internal */
 export declare const CumulativeNotionalValue$inboundSchema: z.ZodType<CumulativeNotionalValue, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -717,6 +760,8 @@ export declare namespace CumulativeNotionalValue$ {
     /** @deprecated use `CumulativeNotionalValue$Outbound` instead. */
     type Outbound = CumulativeNotionalValue$Outbound;
 }
+export declare function cumulativeNotionalValueToJSON(cumulativeNotionalValue: CumulativeNotionalValue): string;
+export declare function cumulativeNotionalValueFromJSON(jsonString: string): SafeParseResult<CumulativeNotionalValue, SDKValidationError>;
 /** @internal */
 export declare const FilledQuantity$inboundSchema: z.ZodType<FilledQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -737,6 +782,8 @@ export declare namespace FilledQuantity$ {
     /** @deprecated use `FilledQuantity$Outbound` instead. */
     type Outbound = FilledQuantity$Outbound;
 }
+export declare function filledQuantityToJSON(filledQuantity: FilledQuantity): string;
+export declare function filledQuantityFromJSON(jsonString: string): SafeParseResult<FilledQuantity, SDKValidationError>;
 /** @internal */
 export declare const OrderIdentifierType$inboundSchema: z.ZodType<OrderIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -771,6 +818,8 @@ export declare namespace OrderAmount$ {
     /** @deprecated use `OrderAmount$Outbound` instead. */
     type Outbound = OrderAmount$Outbound;
 }
+export declare function orderAmountToJSON(orderAmount: OrderAmount): string;
+export declare function orderAmountFromJSON(jsonString: string): SafeParseResult<OrderAmount, SDKValidationError>;
 /** @internal */
 export declare const PeriodStartDate$inboundSchema: z.ZodType<PeriodStartDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -793,6 +842,8 @@ export declare namespace PeriodStartDate$ {
     /** @deprecated use `PeriodStartDate$Outbound` instead. */
     type Outbound = PeriodStartDate$Outbound;
 }
+export declare function periodStartDateToJSON(periodStartDate: PeriodStartDate): string;
+export declare function periodStartDateFromJSON(jsonString: string): SafeParseResult<PeriodStartDate, SDKValidationError>;
 /** @internal */
 export declare const LetterOfIntent$inboundSchema: z.ZodType<LetterOfIntent, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -814,6 +865,8 @@ export declare namespace LetterOfIntent$ {
     /** @deprecated use `LetterOfIntent$Outbound` instead. */
     type Outbound = LetterOfIntent$Outbound;
 }
+export declare function letterOfIntentToJSON(letterOfIntent: LetterOfIntent): string;
+export declare function letterOfIntentFromJSON(jsonString: string): SafeParseResult<LetterOfIntent, SDKValidationError>;
 /** @internal */
 export declare const OrderPrice$inboundSchema: z.ZodType<OrderPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -834,6 +887,8 @@ export declare namespace OrderPrice$ {
     /** @deprecated use `OrderPrice$Outbound` instead. */
     type Outbound = OrderPrice$Outbound;
 }
+export declare function orderPriceToJSON(orderPrice: OrderPrice): string;
+export declare function orderPriceFromJSON(jsonString: string): SafeParseResult<OrderPrice, SDKValidationError>;
 /** @internal */
 export declare const OrderLimitPriceType$inboundSchema: z.ZodType<OrderLimitPriceTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -869,6 +924,8 @@ export declare namespace LimitPrice$ {
     /** @deprecated use `LimitPrice$Outbound` instead. */
     type Outbound = LimitPrice$Outbound;
 }
+export declare function limitPriceToJSON(limitPrice: LimitPrice): string;
+export declare function limitPriceFromJSON(jsonString: string): SafeParseResult<LimitPrice, SDKValidationError>;
 /** @internal */
 export declare const MaxSellQuantity$inboundSchema: z.ZodType<MaxSellQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -889,6 +946,8 @@ export declare namespace MaxSellQuantity$ {
     /** @deprecated use `MaxSellQuantity$Outbound` instead. */
     type Outbound = MaxSellQuantity$Outbound;
 }
+export declare function maxSellQuantityToJSON(maxSellQuantity: MaxSellQuantity): string;
+export declare function maxSellQuantityFromJSON(jsonString: string): SafeParseResult<MaxSellQuantity, SDKValidationError>;
 /** @internal */
 export declare const NotionalValue$inboundSchema: z.ZodType<NotionalValue, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -909,6 +968,8 @@ export declare namespace NotionalValue$ {
     /** @deprecated use `NotionalValue$Outbound` instead. */
     type Outbound = NotionalValue$Outbound;
 }
+export declare function notionalValueToJSON(notionalValue: NotionalValue): string;
+export declare function notionalValueFromJSON(jsonString: string): SafeParseResult<NotionalValue, SDKValidationError>;
 /** @internal */
 export declare const OrderDate$inboundSchema: z.ZodType<OrderDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -931,6 +992,8 @@ export declare namespace OrderDate$ {
     /** @deprecated use `OrderDate$Outbound` instead. */
     type Outbound = OrderDate$Outbound;
 }
+export declare function orderDateToJSON(orderDate: OrderDate): string;
+export declare function orderDateFromJSON(jsonString: string): SafeParseResult<OrderDate, SDKValidationError>;
 /** @internal */
 export declare const OrderRejectedReason$inboundSchema: z.ZodType<OrderRejectedReasonOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -993,6 +1056,8 @@ export declare namespace OrderPrevailingMarketPrice$ {
     /** @deprecated use `OrderPrevailingMarketPrice$Outbound` instead. */
     type Outbound = OrderPrevailingMarketPrice$Outbound;
 }
+export declare function orderPrevailingMarketPriceToJSON(orderPrevailingMarketPrice: OrderPrevailingMarketPrice): string;
+export declare function orderPrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<OrderPrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const OrderQuantity$inboundSchema: z.ZodType<OrderQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1013,6 +1078,8 @@ export declare namespace OrderQuantity$ {
     /** @deprecated use `OrderQuantity$Outbound` instead. */
     type Outbound = OrderQuantity$Outbound;
 }
+export declare function orderQuantityToJSON(orderQuantity: OrderQuantity): string;
+export declare function orderQuantityFromJSON(jsonString: string): SafeParseResult<OrderQuantity, SDKValidationError>;
 /** @internal */
 export declare const OrderRightsOfAccumulationAmount$inboundSchema: z.ZodType<OrderRightsOfAccumulationAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1033,6 +1100,8 @@ export declare namespace OrderRightsOfAccumulationAmount$ {
     /** @deprecated use `OrderRightsOfAccumulationAmount$Outbound` instead. */
     type Outbound = OrderRightsOfAccumulationAmount$Outbound;
 }
+export declare function orderRightsOfAccumulationAmountToJSON(orderRightsOfAccumulationAmount: OrderRightsOfAccumulationAmount): string;
+export declare function orderRightsOfAccumulationAmountFromJSON(jsonString: string): SafeParseResult<OrderRightsOfAccumulationAmount, SDKValidationError>;
 /** @internal */
 export declare const RightsOfAccumulation$inboundSchema: z.ZodType<RightsOfAccumulation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1053,6 +1122,8 @@ export declare namespace RightsOfAccumulation$ {
     /** @deprecated use `RightsOfAccumulation$Outbound` instead. */
     type Outbound = RightsOfAccumulation$Outbound;
 }
+export declare function rightsOfAccumulationToJSON(rightsOfAccumulation: RightsOfAccumulation): string;
+export declare function rightsOfAccumulationFromJSON(jsonString: string): SafeParseResult<RightsOfAccumulation, SDKValidationError>;
 /** @internal */
 export declare const OrderSide$inboundSchema: z.ZodType<OrderSideOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1101,6 +1172,8 @@ export declare namespace OrderStopPricePrice$ {
     /** @deprecated use `OrderStopPricePrice$Outbound` instead. */
     type Outbound = OrderStopPricePrice$Outbound;
 }
+export declare function orderStopPricePriceToJSON(orderStopPricePrice: OrderStopPricePrice): string;
+export declare function orderStopPricePriceFromJSON(jsonString: string): SafeParseResult<OrderStopPricePrice, SDKValidationError>;
 /** @internal */
 export declare const OrderStopPriceType$inboundSchema: z.ZodType<OrderStopPriceTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1136,6 +1209,8 @@ export declare namespace StopPrice$ {
     /** @deprecated use `StopPrice$Outbound` instead. */
     type Outbound = StopPrice$Outbound;
 }
+export declare function stopPriceToJSON(stopPrice: StopPrice): string;
+export declare function stopPriceFromJSON(jsonString: string): SafeParseResult<StopPrice, SDKValidationError>;
 /** @internal */
 export declare const OrderTimeInForce$inboundSchema: z.ZodType<OrderTimeInForceOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1151,18 +1226,18 @@ export declare namespace OrderTimeInForce$ {
     const outboundSchema: z.ZodType<OrderTimeInForceOpen, z.ZodTypeDef, OrderTimeInForceOpen>;
 }
 /** @internal */
-export declare const OrderTradingStrategy$inboundSchema: z.ZodType<OrderTradingStrategyOpen, z.ZodTypeDef, unknown>;
+export declare const OrderTradingSession$inboundSchema: z.ZodType<OrderTradingSessionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
-export declare const OrderTradingStrategy$outboundSchema: z.ZodType<OrderTradingStrategyOpen, z.ZodTypeDef, OrderTradingStrategyOpen>;
+export declare const OrderTradingSession$outboundSchema: z.ZodType<OrderTradingSessionOpen, z.ZodTypeDef, OrderTradingSessionOpen>;
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export declare namespace OrderTradingStrategy$ {
-    /** @deprecated use `OrderTradingStrategy$inboundSchema` instead. */
-    const inboundSchema: z.ZodType<OrderTradingStrategyOpen, z.ZodTypeDef, unknown>;
-    /** @deprecated use `OrderTradingStrategy$outboundSchema` instead. */
-    const outboundSchema: z.ZodType<OrderTradingStrategyOpen, z.ZodTypeDef, OrderTradingStrategyOpen>;
+export declare namespace OrderTradingSession$ {
+    /** @deprecated use `OrderTradingSession$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<OrderTradingSessionOpen, z.ZodTypeDef, unknown>;
+    /** @deprecated use `OrderTradingSession$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<OrderTradingSessionOpen, z.ZodTypeDef, OrderTradingSessionOpen>;
 }
 /** @internal */
 export declare const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown>;
@@ -1173,8 +1248,10 @@ export type Order$Outbound = {
     asset_type?: string | undefined;
     average_prices?: Array<TradingExecutedPrice$Outbound> | undefined;
     broker_capacity?: string | undefined;
+    cancel_initiator?: string | undefined;
     cancel_reason?: string | undefined;
     cancel_rejected_reason?: string | undefined;
+    client_cancel_received_time?: string | null | undefined;
     client_order_id?: string | undefined;
     client_received_time?: string | null | undefined;
     commission?: OrderCommission$Outbound | null | undefined;
@@ -1205,7 +1282,7 @@ export type Order$Outbound = {
     special_reporting_instructions?: Array<string> | undefined;
     stop_price?: StopPrice$Outbound | null | undefined;
     time_in_force?: string | undefined;
-    trading_strategy?: string | undefined;
+    trading_session?: string | undefined;
 };
 /** @internal */
 export declare const Order$outboundSchema: z.ZodType<Order$Outbound, z.ZodTypeDef, Order>;
@@ -1221,4 +1298,6 @@ export declare namespace Order$ {
     /** @deprecated use `Order$Outbound` instead. */
     type Outbound = Order$Outbound;
 }
+export declare function orderToJSON(order: Order): string;
+export declare function orderFromJSON(jsonString: string): SafeParseResult<Order, SDKValidationError>;
 //# sourceMappingURL=order.d.ts.map

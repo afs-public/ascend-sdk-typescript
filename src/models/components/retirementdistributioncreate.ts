@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RetirementDistributionTaxWithholdingCreate,
   RetirementDistributionTaxWithholdingCreate$inboundSchema,
@@ -179,4 +182,24 @@ export namespace RetirementDistributionCreate$ {
   export const outboundSchema = RetirementDistributionCreate$outboundSchema;
   /** @deprecated use `RetirementDistributionCreate$Outbound` instead. */
   export type Outbound = RetirementDistributionCreate$Outbound;
+}
+
+export function retirementDistributionCreateToJSON(
+  retirementDistributionCreate: RetirementDistributionCreate,
+): string {
+  return JSON.stringify(
+    RetirementDistributionCreate$outboundSchema.parse(
+      retirementDistributionCreate,
+    ),
+  );
+}
+
+export function retirementDistributionCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RetirementDistributionCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetirementDistributionCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetirementDistributionCreate' from JSON`,
+  );
 }

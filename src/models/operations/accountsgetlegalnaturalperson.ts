@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsGetLegalNaturalPersonRequest = {
   /**
@@ -71,6 +74,27 @@ export namespace AccountsGetLegalNaturalPersonRequest$ {
   export type Outbound = AccountsGetLegalNaturalPersonRequest$Outbound;
 }
 
+export function accountsGetLegalNaturalPersonRequestToJSON(
+  accountsGetLegalNaturalPersonRequest: AccountsGetLegalNaturalPersonRequest,
+): string {
+  return JSON.stringify(
+    AccountsGetLegalNaturalPersonRequest$outboundSchema.parse(
+      accountsGetLegalNaturalPersonRequest,
+    ),
+  );
+}
+
+export function accountsGetLegalNaturalPersonRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsGetLegalNaturalPersonRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsGetLegalNaturalPersonRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsGetLegalNaturalPersonRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsGetLegalNaturalPersonResponse$inboundSchema: z.ZodType<
   AccountsGetLegalNaturalPersonResponse,
@@ -125,4 +149,25 @@ export namespace AccountsGetLegalNaturalPersonResponse$ {
     AccountsGetLegalNaturalPersonResponse$outboundSchema;
   /** @deprecated use `AccountsGetLegalNaturalPersonResponse$Outbound` instead. */
   export type Outbound = AccountsGetLegalNaturalPersonResponse$Outbound;
+}
+
+export function accountsGetLegalNaturalPersonResponseToJSON(
+  accountsGetLegalNaturalPersonResponse: AccountsGetLegalNaturalPersonResponse,
+): string {
+  return JSON.stringify(
+    AccountsGetLegalNaturalPersonResponse$outboundSchema.parse(
+      accountsGetLegalNaturalPersonResponse,
+    ),
+  );
+}
+
+export function accountsGetLegalNaturalPersonResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsGetLegalNaturalPersonResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsGetLegalNaturalPersonResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsGetLegalNaturalPersonResponse' from JSON`,
+  );
 }

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount to transfer in USD
  */
@@ -316,6 +318,8 @@ export declare namespace CashJournalAmount$ {
     /** @deprecated use `CashJournalAmount$Outbound` instead. */
     type Outbound = CashJournalAmount$Outbound;
 }
+export declare function cashJournalAmountToJSON(cashJournalAmount: CashJournalAmount): string;
+export declare function cashJournalAmountFromJSON(jsonString: string): SafeParseResult<CashJournalAmount, SDKValidationError>;
 /** @internal */
 export declare const PartyType$inboundSchema: z.ZodType<PartyTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -365,6 +369,8 @@ export declare namespace CashJournalRetirementContribution$ {
     /** @deprecated use `CashJournalRetirementContribution$Outbound` instead. */
     type Outbound = CashJournalRetirementContribution$Outbound;
 }
+export declare function cashJournalRetirementContributionToJSON(cashJournalRetirementContribution: CashJournalRetirementContribution): string;
+export declare function cashJournalRetirementContributionFromJSON(jsonString: string): SafeParseResult<CashJournalRetirementContribution, SDKValidationError>;
 /** @internal */
 export declare const CashJournalRetirementDistributionAmount$inboundSchema: z.ZodType<CashJournalRetirementDistributionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -385,6 +391,8 @@ export declare namespace CashJournalRetirementDistributionAmount$ {
     /** @deprecated use `CashJournalRetirementDistributionAmount$Outbound` instead. */
     type Outbound = CashJournalRetirementDistributionAmount$Outbound;
 }
+export declare function cashJournalRetirementDistributionAmountToJSON(cashJournalRetirementDistributionAmount: CashJournalRetirementDistributionAmount): string;
+export declare function cashJournalRetirementDistributionAmountFromJSON(jsonString: string): SafeParseResult<CashJournalRetirementDistributionAmount, SDKValidationError>;
 /** @internal */
 export declare const CashJournalPercentage$inboundSchema: z.ZodType<CashJournalPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -405,6 +413,8 @@ export declare namespace CashJournalPercentage$ {
     /** @deprecated use `CashJournalPercentage$Outbound` instead. */
     type Outbound = CashJournalPercentage$Outbound;
 }
+export declare function cashJournalPercentageToJSON(cashJournalPercentage: CashJournalPercentage): string;
+export declare function cashJournalPercentageFromJSON(jsonString: string): SafeParseResult<CashJournalPercentage, SDKValidationError>;
 /** @internal */
 export declare const CashJournalFederalTaxWithholding$inboundSchema: z.ZodType<CashJournalFederalTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -426,6 +436,8 @@ export declare namespace CashJournalFederalTaxWithholding$ {
     /** @deprecated use `CashJournalFederalTaxWithholding$Outbound` instead. */
     type Outbound = CashJournalFederalTaxWithholding$Outbound;
 }
+export declare function cashJournalFederalTaxWithholdingToJSON(cashJournalFederalTaxWithholding: CashJournalFederalTaxWithholding): string;
+export declare function cashJournalFederalTaxWithholdingFromJSON(jsonString: string): SafeParseResult<CashJournalFederalTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const CashJournalRetirementDistributionStateTaxWithholdingAmount$inboundSchema: z.ZodType<CashJournalRetirementDistributionStateTaxWithholdingAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -446,6 +458,8 @@ export declare namespace CashJournalRetirementDistributionStateTaxWithholdingAmo
     /** @deprecated use `CashJournalRetirementDistributionStateTaxWithholdingAmount$Outbound` instead. */
     type Outbound = CashJournalRetirementDistributionStateTaxWithholdingAmount$Outbound;
 }
+export declare function cashJournalRetirementDistributionStateTaxWithholdingAmountToJSON(cashJournalRetirementDistributionStateTaxWithholdingAmount: CashJournalRetirementDistributionStateTaxWithholdingAmount): string;
+export declare function cashJournalRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString: string): SafeParseResult<CashJournalRetirementDistributionStateTaxWithholdingAmount, SDKValidationError>;
 /** @internal */
 export declare const CashJournalRetirementDistributionPercentage$inboundSchema: z.ZodType<CashJournalRetirementDistributionPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -466,6 +480,8 @@ export declare namespace CashJournalRetirementDistributionPercentage$ {
     /** @deprecated use `CashJournalRetirementDistributionPercentage$Outbound` instead. */
     type Outbound = CashJournalRetirementDistributionPercentage$Outbound;
 }
+export declare function cashJournalRetirementDistributionPercentageToJSON(cashJournalRetirementDistributionPercentage: CashJournalRetirementDistributionPercentage): string;
+export declare function cashJournalRetirementDistributionPercentageFromJSON(jsonString: string): SafeParseResult<CashJournalRetirementDistributionPercentage, SDKValidationError>;
 /** @internal */
 export declare const CashJournalStateTaxWithholding$inboundSchema: z.ZodType<CashJournalStateTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -487,6 +503,8 @@ export declare namespace CashJournalStateTaxWithholding$ {
     /** @deprecated use `CashJournalStateTaxWithholding$Outbound` instead. */
     type Outbound = CashJournalStateTaxWithholding$Outbound;
 }
+export declare function cashJournalStateTaxWithholdingToJSON(cashJournalStateTaxWithholding: CashJournalStateTaxWithholding): string;
+export declare function cashJournalStateTaxWithholdingFromJSON(jsonString: string): SafeParseResult<CashJournalStateTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const CashJournalRetirementDistributionType$inboundSchema: z.ZodType<CashJournalRetirementDistributionTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -526,6 +544,8 @@ export declare namespace CashJournalRetirementDistribution$ {
     /** @deprecated use `CashJournalRetirementDistribution$Outbound` instead. */
     type Outbound = CashJournalRetirementDistribution$Outbound;
 }
+export declare function cashJournalRetirementDistributionToJSON(cashJournalRetirementDistribution: CashJournalRetirementDistribution): string;
+export declare function cashJournalRetirementDistributionFromJSON(jsonString: string): SafeParseResult<CashJournalRetirementDistribution, SDKValidationError>;
 /** @internal */
 export declare const CashJournalStateState$inboundSchema: z.ZodType<CashJournalStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -566,6 +586,8 @@ export declare namespace CashJournalState$ {
     /** @deprecated use `CashJournalState$Outbound` instead. */
     type Outbound = CashJournalState$Outbound;
 }
+export declare function cashJournalStateToJSON(cashJournalState: CashJournalState): string;
+export declare function cashJournalStateFromJSON(jsonString: string): SafeParseResult<CashJournalState, SDKValidationError>;
 /** @internal */
 export declare const CashJournal$inboundSchema: z.ZodType<CashJournal, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -594,4 +616,6 @@ export declare namespace CashJournal$ {
     /** @deprecated use `CashJournal$Outbound` instead. */
     type Outbound = CashJournal$Outbound;
 }
+export declare function cashJournalToJSON(cashJournal: CashJournal): string;
+export declare function cashJournalFromJSON(jsonString: string): SafeParseResult<CashJournal, SDKValidationError>;
 //# sourceMappingURL=cashjournal.d.ts.map

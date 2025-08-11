@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustodialEnrollmentMetadataCreate$ = exports.CustodialEnrollmentMetadataCreate$outboundSchema = exports.CustodialEnrollmentMetadataCreate$inboundSchema = exports.CustodialEnrollmentMetadataCreateFdicCashSweep$ = exports.CustodialEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.CustodialEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.CustodialEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.CustodialEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.CustodialEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.CustodialEnrollmentMetadataCreateFdicCashSweep = exports.CustodialEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.custodialEnrollmentMetadataCreateToJSON = custodialEnrollmentMetadataCreateToJSON;
+exports.custodialEnrollmentMetadataCreateFromJSON = custodialEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -137,4 +140,10 @@ var CustodialEnrollmentMetadataCreate$;
     /** @deprecated use `CustodialEnrollmentMetadataCreate$outboundSchema` instead. */
     CustodialEnrollmentMetadataCreate$.outboundSchema = exports.CustodialEnrollmentMetadataCreate$outboundSchema;
 })(CustodialEnrollmentMetadataCreate$ || (exports.CustodialEnrollmentMetadataCreate$ = CustodialEnrollmentMetadataCreate$ = {}));
+function custodialEnrollmentMetadataCreateToJSON(custodialEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.CustodialEnrollmentMetadataCreate$outboundSchema.parse(custodialEnrollmentMetadataCreate));
+}
+function custodialEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustodialEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustodialEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=custodialenrollmentmetadatacreate.js.map

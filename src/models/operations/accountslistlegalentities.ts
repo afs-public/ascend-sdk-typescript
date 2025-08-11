@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsListLegalEntitiesRequest = {
   /**
@@ -104,6 +107,26 @@ export namespace AccountsListLegalEntitiesRequest$ {
   export type Outbound = AccountsListLegalEntitiesRequest$Outbound;
 }
 
+export function accountsListLegalEntitiesRequestToJSON(
+  accountsListLegalEntitiesRequest: AccountsListLegalEntitiesRequest,
+): string {
+  return JSON.stringify(
+    AccountsListLegalEntitiesRequest$outboundSchema.parse(
+      accountsListLegalEntitiesRequest,
+    ),
+  );
+}
+
+export function accountsListLegalEntitiesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListLegalEntitiesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListLegalEntitiesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListLegalEntitiesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsListLegalEntitiesResponse$inboundSchema: z.ZodType<
   AccountsListLegalEntitiesResponse,
@@ -161,4 +184,24 @@ export namespace AccountsListLegalEntitiesResponse$ {
     AccountsListLegalEntitiesResponse$outboundSchema;
   /** @deprecated use `AccountsListLegalEntitiesResponse$Outbound` instead. */
   export type Outbound = AccountsListLegalEntitiesResponse$Outbound;
+}
+
+export function accountsListLegalEntitiesResponseToJSON(
+  accountsListLegalEntitiesResponse: AccountsListLegalEntitiesResponse,
+): string {
+  return JSON.stringify(
+    AccountsListLegalEntitiesResponse$outboundSchema.parse(
+      accountsListLegalEntitiesResponse,
+    ),
+  );
+}
+
+export function accountsListLegalEntitiesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListLegalEntitiesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListLegalEntitiesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListLegalEntitiesResponse' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BasketTradingExecutedPrice,
   BasketTradingExecutedPrice$inboundSchema,
@@ -117,6 +120,7 @@ export enum CompressedOrderOrderRejectedReason {
     "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS",
   InsufficientPosition = "INSUFFICIENT_POSITION",
   FailedBuyingPower = "FAILED_BUYING_POWER",
+  RoundUpAmountTooSmall = "ROUND_UP_AMOUNT_TOO_SMALL",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -135,6 +139,7 @@ export enum CompressedOrderOrderStatus {
   PartiallyFilled = "PARTIALLY_FILLED",
   Filled = "FILLED",
   Rejected = "REJECTED",
+  RemovedBeforeSubmission = "REMOVED_BEFORE_SUBMISSION",
 }
 /**
  * The processing status of the order
@@ -378,6 +383,28 @@ export namespace CompressedOrderCumulativeNotionalValue$ {
   export type Outbound = CompressedOrderCumulativeNotionalValue$Outbound;
 }
 
+export function compressedOrderCumulativeNotionalValueToJSON(
+  compressedOrderCumulativeNotionalValue:
+    CompressedOrderCumulativeNotionalValue,
+): string {
+  return JSON.stringify(
+    CompressedOrderCumulativeNotionalValue$outboundSchema.parse(
+      compressedOrderCumulativeNotionalValue,
+    ),
+  );
+}
+
+export function compressedOrderCumulativeNotionalValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CompressedOrderCumulativeNotionalValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CompressedOrderCumulativeNotionalValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompressedOrderCumulativeNotionalValue' from JSON`,
+  );
+}
+
 /** @internal */
 export const CompressedOrderFilledQuantity$inboundSchema: z.ZodType<
   CompressedOrderFilledQuantity,
@@ -412,6 +439,26 @@ export namespace CompressedOrderFilledQuantity$ {
   export const outboundSchema = CompressedOrderFilledQuantity$outboundSchema;
   /** @deprecated use `CompressedOrderFilledQuantity$Outbound` instead. */
   export type Outbound = CompressedOrderFilledQuantity$Outbound;
+}
+
+export function compressedOrderFilledQuantityToJSON(
+  compressedOrderFilledQuantity: CompressedOrderFilledQuantity,
+): string {
+  return JSON.stringify(
+    CompressedOrderFilledQuantity$outboundSchema.parse(
+      compressedOrderFilledQuantity,
+    ),
+  );
+}
+
+export function compressedOrderFilledQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<CompressedOrderFilledQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompressedOrderFilledQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompressedOrderFilledQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -480,6 +527,26 @@ export namespace CompressedOrderNotionalValue$ {
   export const outboundSchema = CompressedOrderNotionalValue$outboundSchema;
   /** @deprecated use `CompressedOrderNotionalValue$Outbound` instead. */
   export type Outbound = CompressedOrderNotionalValue$Outbound;
+}
+
+export function compressedOrderNotionalValueToJSON(
+  compressedOrderNotionalValue: CompressedOrderNotionalValue,
+): string {
+  return JSON.stringify(
+    CompressedOrderNotionalValue$outboundSchema.parse(
+      compressedOrderNotionalValue,
+    ),
+  );
+}
+
+export function compressedOrderNotionalValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CompressedOrderNotionalValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompressedOrderNotionalValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompressedOrderNotionalValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -613,6 +680,24 @@ export namespace CompressedOrderQuantity$ {
   export const outboundSchema = CompressedOrderQuantity$outboundSchema;
   /** @deprecated use `CompressedOrderQuantity$Outbound` instead. */
   export type Outbound = CompressedOrderQuantity$Outbound;
+}
+
+export function compressedOrderQuantityToJSON(
+  compressedOrderQuantity: CompressedOrderQuantity,
+): string {
+  return JSON.stringify(
+    CompressedOrderQuantity$outboundSchema.parse(compressedOrderQuantity),
+  );
+}
+
+export function compressedOrderQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<CompressedOrderQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompressedOrderQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompressedOrderQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -880,4 +965,20 @@ export namespace CompressedOrder$ {
   export const outboundSchema = CompressedOrder$outboundSchema;
   /** @deprecated use `CompressedOrder$Outbound` instead. */
   export type Outbound = CompressedOrder$Outbound;
+}
+
+export function compressedOrderToJSON(
+  compressedOrder: CompressedOrder,
+): string {
+  return JSON.stringify(CompressedOrder$outboundSchema.parse(compressedOrder));
+}
+
+export function compressedOrderFromJSON(
+  jsonString: string,
+): SafeParseResult<CompressedOrder, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompressedOrder$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompressedOrder' from JSON`,
+  );
 }

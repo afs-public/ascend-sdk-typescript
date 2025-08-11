@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A request to obtain a JSON Web Token for a service account
  */
@@ -28,4 +30,6 @@ export declare namespace GenerateServiceAccountTokenRequestCreate$ {
     /** @deprecated use `GenerateServiceAccountTokenRequestCreate$Outbound` instead. */
     type Outbound = GenerateServiceAccountTokenRequestCreate$Outbound;
 }
+export declare function generateServiceAccountTokenRequestCreateToJSON(generateServiceAccountTokenRequestCreate: GenerateServiceAccountTokenRequestCreate): string;
+export declare function generateServiceAccountTokenRequestCreateFromJSON(jsonString: string): SafeParseResult<GenerateServiceAccountTokenRequestCreate, SDKValidationError>;
 //# sourceMappingURL=generateserviceaccounttokenrequestcreate.d.ts.map

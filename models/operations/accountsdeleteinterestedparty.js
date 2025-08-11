@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsDeleteInterestedPartyResponse$ = exports.AccountsDeleteInterestedPartyResponse$outboundSchema = exports.AccountsDeleteInterestedPartyResponse$inboundSchema = exports.AccountsDeleteInterestedPartyRequest$ = exports.AccountsDeleteInterestedPartyRequest$outboundSchema = exports.AccountsDeleteInterestedPartyRequest$inboundSchema = void 0;
+exports.accountsDeleteInterestedPartyRequestToJSON = accountsDeleteInterestedPartyRequestToJSON;
+exports.accountsDeleteInterestedPartyRequestFromJSON = accountsDeleteInterestedPartyRequestFromJSON;
+exports.accountsDeleteInterestedPartyResponseToJSON = accountsDeleteInterestedPartyResponseToJSON;
+exports.accountsDeleteInterestedPartyResponseFromJSON = accountsDeleteInterestedPartyResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsDeleteInterestedPartyRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsDeleteInterestedPartyRequest$;
     /** @deprecated use `AccountsDeleteInterestedPartyRequest$outboundSchema` instead. */
     AccountsDeleteInterestedPartyRequest$.outboundSchema = exports.AccountsDeleteInterestedPartyRequest$outboundSchema;
 })(AccountsDeleteInterestedPartyRequest$ || (exports.AccountsDeleteInterestedPartyRequest$ = AccountsDeleteInterestedPartyRequest$ = {}));
+function accountsDeleteInterestedPartyRequestToJSON(accountsDeleteInterestedPartyRequest) {
+    return JSON.stringify(exports.AccountsDeleteInterestedPartyRequest$outboundSchema.parse(accountsDeleteInterestedPartyRequest));
+}
+function accountsDeleteInterestedPartyRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsDeleteInterestedPartyRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsDeleteInterestedPartyRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsDeleteInterestedPartyResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var AccountsDeleteInterestedPartyResponse$;
     /** @deprecated use `AccountsDeleteInterestedPartyResponse$outboundSchema` instead. */
     AccountsDeleteInterestedPartyResponse$.outboundSchema = exports.AccountsDeleteInterestedPartyResponse$outboundSchema;
 })(AccountsDeleteInterestedPartyResponse$ || (exports.AccountsDeleteInterestedPartyResponse$ = AccountsDeleteInterestedPartyResponse$ = {}));
+function accountsDeleteInterestedPartyResponseToJSON(accountsDeleteInterestedPartyResponse) {
+    return JSON.stringify(exports.AccountsDeleteInterestedPartyResponse$outboundSchema.parse(accountsDeleteInterestedPartyResponse));
+}
+function accountsDeleteInterestedPartyResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsDeleteInterestedPartyResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsDeleteInterestedPartyResponse' from JSON`);
+}
 //# sourceMappingURL=accountsdeleteinterestedparty.js.map

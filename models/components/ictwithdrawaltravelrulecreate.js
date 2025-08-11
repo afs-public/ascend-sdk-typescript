@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IctWithdrawalTravelRuleCreate$ = exports.IctWithdrawalTravelRuleCreate$outboundSchema = exports.IctWithdrawalTravelRuleCreate$inboundSchema = void 0;
+exports.ictWithdrawalTravelRuleCreateToJSON = ictWithdrawalTravelRuleCreateToJSON;
+exports.ictWithdrawalTravelRuleCreateFromJSON = ictWithdrawalTravelRuleCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const institutioncreate_js_1 = require("./institutioncreate.js");
 /** @internal */
 exports.IctWithdrawalTravelRuleCreate$inboundSchema = z.object({
@@ -67,4 +70,10 @@ var IctWithdrawalTravelRuleCreate$;
     /** @deprecated use `IctWithdrawalTravelRuleCreate$outboundSchema` instead. */
     IctWithdrawalTravelRuleCreate$.outboundSchema = exports.IctWithdrawalTravelRuleCreate$outboundSchema;
 })(IctWithdrawalTravelRuleCreate$ || (exports.IctWithdrawalTravelRuleCreate$ = IctWithdrawalTravelRuleCreate$ = {}));
+function ictWithdrawalTravelRuleCreateToJSON(ictWithdrawalTravelRuleCreate) {
+    return JSON.stringify(exports.IctWithdrawalTravelRuleCreate$outboundSchema.parse(ictWithdrawalTravelRuleCreate));
+}
+function ictWithdrawalTravelRuleCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalTravelRuleCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalTravelRuleCreate' from JSON`);
+}
 //# sourceMappingURL=ictwithdrawaltravelrulecreate.js.map

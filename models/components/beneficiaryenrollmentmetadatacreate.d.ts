@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BeneficiaryCreate, BeneficiaryCreate$Outbound } from "./beneficiarycreate.js";
 /**
  * Enrollment metadata for the BENEFICIARY_DESIGNATION enrollment type.
@@ -34,4 +36,6 @@ export declare namespace BeneficiaryEnrollmentMetadataCreate$ {
     /** @deprecated use `BeneficiaryEnrollmentMetadataCreate$Outbound` instead. */
     type Outbound = BeneficiaryEnrollmentMetadataCreate$Outbound;
 }
+export declare function beneficiaryEnrollmentMetadataCreateToJSON(beneficiaryEnrollmentMetadataCreate: BeneficiaryEnrollmentMetadataCreate): string;
+export declare function beneficiaryEnrollmentMetadataCreateFromJSON(jsonString: string): SafeParseResult<BeneficiaryEnrollmentMetadataCreate, SDKValidationError>;
 //# sourceMappingURL=beneficiaryenrollmentmetadatacreate.d.ts.map

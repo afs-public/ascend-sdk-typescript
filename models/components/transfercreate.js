@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransferCreate$ = exports.TransferCreate$outboundSchema = exports.TransferCreate$inboundSchema = void 0;
+exports.transferCreateToJSON = transferCreateToJSON;
+exports.transferCreateFromJSON = transferCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const assetcreate_js_1 = require("./assetcreate.js");
 const transferaccountcreate_js_1 = require("./transferaccountcreate.js");
 /** @internal */
@@ -74,4 +77,10 @@ var TransferCreate$;
     /** @deprecated use `TransferCreate$outboundSchema` instead. */
     TransferCreate$.outboundSchema = exports.TransferCreate$outboundSchema;
 })(TransferCreate$ || (exports.TransferCreate$ = TransferCreate$ = {}));
+function transferCreateToJSON(transferCreate) {
+    return JSON.stringify(exports.TransferCreate$outboundSchema.parse(transferCreate));
+}
+function transferCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferCreate' from JSON`);
+}
 //# sourceMappingURL=transfercreate.js.map

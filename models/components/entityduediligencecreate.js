@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EntityDueDiligenceCreate$ = exports.EntityDueDiligenceCreate$outboundSchema = exports.EntityDueDiligenceCreate$inboundSchema = void 0;
+exports.entityDueDiligenceCreateToJSON = entityDueDiligenceCreateToJSON;
+exports.entityDueDiligenceCreateFromJSON = entityDueDiligenceCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const negativenewscreate_js_1 = require("./negativenewscreate.js");
 /** @internal */
 exports.EntityDueDiligenceCreate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var EntityDueDiligenceCreate$;
     /** @deprecated use `EntityDueDiligenceCreate$outboundSchema` instead. */
     EntityDueDiligenceCreate$.outboundSchema = exports.EntityDueDiligenceCreate$outboundSchema;
 })(EntityDueDiligenceCreate$ || (exports.EntityDueDiligenceCreate$ = EntityDueDiligenceCreate$ = {}));
+function entityDueDiligenceCreateToJSON(entityDueDiligenceCreate) {
+    return JSON.stringify(exports.EntityDueDiligenceCreate$outboundSchema.parse(entityDueDiligenceCreate));
+}
+function entityDueDiligenceCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EntityDueDiligenceCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EntityDueDiligenceCreate' from JSON`);
+}
 //# sourceMappingURL=entityduediligencecreate.js.map

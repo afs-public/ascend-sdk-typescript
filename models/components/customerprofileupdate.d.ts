@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Annual income range; the low number is exclusive, the high number is inclusive
  */
@@ -176,4 +178,6 @@ export declare namespace CustomerProfileUpdate$ {
     /** @deprecated use `CustomerProfileUpdate$Outbound` instead. */
     type Outbound = CustomerProfileUpdate$Outbound;
 }
+export declare function customerProfileUpdateToJSON(customerProfileUpdate: CustomerProfileUpdate): string;
+export declare function customerProfileUpdateFromJSON(jsonString: string): SafeParseResult<CustomerProfileUpdate, SDKValidationError>;
 //# sourceMappingURL=customerprofileupdate.d.ts.map

@@ -5,11 +5,13 @@
 import { ApexascendCore } from "../core.js";
 import { encodeFormQuery, encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
+import { ApexascendError } from "../models/errors/apexascenderror.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -18,9 +20,10 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
-import { SDKError } from "../models/errors/sdkerror.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -29,7 +32,38 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Creates a transfer
  */
-export async function accountTransfersCreateTransfer(
+export function accountTransfersCreateTransfer(
+  client: ApexascendCore,
+  transferCreate: components.TransferCreate,
+  correspondentId: string,
+  accountId: string,
+  requestId?: string | undefined,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.AccountTransfersCreateTransferResponse,
+    | errors.Status
+    | ApexascendError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    transferCreate,
+    correspondentId,
+    accountId,
+    requestId,
+    options,
+  ));
+}
+
+async function $do(
   client: ApexascendCore,
   transferCreate: components.TransferCreate,
   correspondentId: string,
@@ -37,17 +71,21 @@ export async function accountTransfersCreateTransfer(
   requestId?: string | undefined,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.AccountTransfersCreateTransferResponse,
-    | errors.Status
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    Result<
+      operations.AccountTransfersCreateTransferResponse,
+      | errors.Status
+      | ApexascendError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    APICall,
+  ]
 > {
   const input: operations.AccountTransfersCreateTransferRequest = {
     transferCreate: transferCreate,
@@ -65,7 +103,7 @@ export async function accountTransfersCreateTransfer(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload.TransferCreate, { explode: true });
@@ -90,42 +128,53 @@ export async function accountTransfersCreateTransfer(
     "request_id": payload.request_id,
   });
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const securityInput = await extractSecurity(client._options.security);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
+    options: client._options,
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "AccountTransfers_CreateTransfer",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
   const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "403", "409", "4XX", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -136,13 +185,14 @@ export async function accountTransfersCreateTransfer(
   const [result] = await M.match<
     operations.AccountTransfersCreateTransferResponse,
     | errors.Status
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | ApexascendError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(
       200,
@@ -150,7 +200,8 @@ export async function accountTransfersCreateTransfer(
       { key: "AcatsTransfer" },
     ),
     M.jsonErr([400, 403, 409], errors.Status$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
     M.json(
       "default",
       operations.AccountTransfersCreateTransferResponse$inboundSchema,
@@ -158,8 +209,8 @@ export async function accountTransfersCreateTransfer(
     ),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

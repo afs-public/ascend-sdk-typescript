@@ -4,10 +4,29 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDKError = void 0;
-class SDKError extends Error {
+const apexascenderror_js_1 = require("./apexascenderror.js");
+/** The fallback error class if no more specific error class is matched */
+class SDKError extends apexascenderror_js_1.ApexascendError {
     constructor(message, httpMeta) {
-        super(`${message}: Status ${httpMeta.response.status} Content-Type ${httpMeta.response.headers.get("content-type") || ""}`);
-        this.httpMeta = httpMeta;
+        if (message) {
+            message += `: `;
+        }
+        message += `Status ${httpMeta.response.status}`;
+        const contentType = httpMeta.response.headers.get("content-type") || `""`;
+        if (contentType !== "application/json") {
+            message += ` Content-Type ${contentType.includes(" ") ? `"${contentType}"` : contentType}`;
+        }
+        const body = httpMeta.body || `""`;
+        message += body.length > 100 ? "\n" : ". ";
+        let bodyDisplay = body;
+        if (body.length > 10000) {
+            const truncated = body.substring(0, 10000);
+            const remaining = body.length - 10000;
+            bodyDisplay = `${truncated}...and ${remaining} more chars`;
+        }
+        message += `Body: ${bodyDisplay}`;
+        message = message.trim();
+        super(message, httpMeta);
         this.name = "SDKError";
     }
 }

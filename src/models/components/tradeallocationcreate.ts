@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYieldCreate,
   BondYieldCreate$inboundSchema,
@@ -750,4 +753,22 @@ export namespace TradeAllocationCreate$ {
   export const outboundSchema = TradeAllocationCreate$outboundSchema;
   /** @deprecated use `TradeAllocationCreate$Outbound` instead. */
   export type Outbound = TradeAllocationCreate$Outbound;
+}
+
+export function tradeAllocationCreateToJSON(
+  tradeAllocationCreate: TradeAllocationCreate,
+): string {
+  return JSON.stringify(
+    TradeAllocationCreate$outboundSchema.parse(tradeAllocationCreate),
+  );
+}
+
+export function tradeAllocationCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeAllocationCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeAllocationCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeAllocationCreate' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Entitlement$ = exports.Entitlement$outboundSchema = exports.Entitlement$inboundSchema = exports.EntitlementState$ = exports.EntitlementState$outboundSchema = exports.EntitlementState$inboundSchema = exports.EntitlementState = void 0;
+exports.entitlementToJSON = entitlementToJSON;
+exports.entitlementFromJSON = entitlementFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * GRANTED if it was activated via an enrollment, SUSPENDED if a restriction has temporarily disabled it, or DENIED if it has never before been GRANTED
@@ -118,4 +121,10 @@ var Entitlement$;
     /** @deprecated use `Entitlement$outboundSchema` instead. */
     Entitlement$.outboundSchema = exports.Entitlement$outboundSchema;
 })(Entitlement$ || (exports.Entitlement$ = Entitlement$ = {}));
+function entitlementToJSON(entitlement) {
+    return JSON.stringify(exports.Entitlement$outboundSchema.parse(entitlement));
+}
+function entitlementFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Entitlement$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Entitlement' from JSON`);
+}
 //# sourceMappingURL=entitlement.js.map

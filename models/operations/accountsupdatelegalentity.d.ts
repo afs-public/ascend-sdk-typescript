@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsUpdateLegalEntityRequest = {
     /**
      * The legalEntity id.
@@ -44,6 +46,8 @@ export declare namespace AccountsUpdateLegalEntityRequest$ {
     /** @deprecated use `AccountsUpdateLegalEntityRequest$Outbound` instead. */
     type Outbound = AccountsUpdateLegalEntityRequest$Outbound;
 }
+export declare function accountsUpdateLegalEntityRequestToJSON(accountsUpdateLegalEntityRequest: AccountsUpdateLegalEntityRequest): string;
+export declare function accountsUpdateLegalEntityRequestFromJSON(jsonString: string): SafeParseResult<AccountsUpdateLegalEntityRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsUpdateLegalEntityResponse$inboundSchema: z.ZodType<AccountsUpdateLegalEntityResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace AccountsUpdateLegalEntityResponse$ {
     /** @deprecated use `AccountsUpdateLegalEntityResponse$Outbound` instead. */
     type Outbound = AccountsUpdateLegalEntityResponse$Outbound;
 }
+export declare function accountsUpdateLegalEntityResponseToJSON(accountsUpdateLegalEntityResponse: AccountsUpdateLegalEntityResponse): string;
+export declare function accountsUpdateLegalEntityResponseFromJSON(jsonString: string): SafeParseResult<AccountsUpdateLegalEntityResponse, SDKValidationError>;
 //# sourceMappingURL=accountsupdatelegalentity.d.ts.map

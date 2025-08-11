@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Negative News detail.
@@ -69,4 +72,22 @@ export namespace NegativeNewsUpdate$ {
   export const outboundSchema = NegativeNewsUpdate$outboundSchema;
   /** @deprecated use `NegativeNewsUpdate$Outbound` instead. */
   export type Outbound = NegativeNewsUpdate$Outbound;
+}
+
+export function negativeNewsUpdateToJSON(
+  negativeNewsUpdate: NegativeNewsUpdate,
+): string {
+  return JSON.stringify(
+    NegativeNewsUpdate$outboundSchema.parse(negativeNewsUpdate),
+  );
+}
+
+export function negativeNewsUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<NegativeNewsUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NegativeNewsUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NegativeNewsUpdate' from JSON`,
+  );
 }

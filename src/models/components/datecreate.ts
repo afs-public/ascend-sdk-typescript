@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
@@ -68,4 +71,18 @@ export namespace DateCreate$ {
   export const outboundSchema = DateCreate$outboundSchema;
   /** @deprecated use `DateCreate$Outbound` instead. */
   export type Outbound = DateCreate$Outbound;
+}
+
+export function dateCreateToJSON(dateCreate: DateCreate): string {
+  return JSON.stringify(DateCreate$outboundSchema.parse(dateCreate));
+}
+
+export function dateCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<DateCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DateCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DateCreate' from JSON`,
+  );
 }

@@ -6,7 +6,7 @@
 import { TradeAllocationCreateSpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: TradeAllocationCreateSpecialInstructions =
-  TradeAllocationCreateSpecialInstructions.DividendReinvestment;
+  TradeAllocationCreateSpecialInstructions.NegativeNetProceed;
 ```
 
 ## Values

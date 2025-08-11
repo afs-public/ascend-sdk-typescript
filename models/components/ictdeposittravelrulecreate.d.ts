@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { InstitutionCreate, InstitutionCreate$Outbound } from "./institutioncreate.js";
 import { TravelRuleEntityPartyCreate, TravelRuleEntityPartyCreate$Outbound } from "./travelruleentitypartycreate.js";
 import { TravelRulePartyCreate, TravelRulePartyCreate$Outbound } from "./travelrulepartycreate.js";
@@ -51,4 +53,6 @@ export declare namespace IctDepositTravelRuleCreate$ {
     /** @deprecated use `IctDepositTravelRuleCreate$Outbound` instead. */
     type Outbound = IctDepositTravelRuleCreate$Outbound;
 }
+export declare function ictDepositTravelRuleCreateToJSON(ictDepositTravelRuleCreate: IctDepositTravelRuleCreate): string;
+export declare function ictDepositTravelRuleCreateFromJSON(jsonString: string): SafeParseResult<IctDepositTravelRuleCreate, SDKValidationError>;
 //# sourceMappingURL=ictdeposittravelrulecreate.d.ts.map

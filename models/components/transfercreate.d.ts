@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AssetCreate, AssetCreate$Outbound } from "./assetcreate.js";
 import { TransferAccountCreate, TransferAccountCreate$Outbound } from "./transferaccountcreate.js";
 /**
@@ -45,4 +47,6 @@ export declare namespace TransferCreate$ {
     /** @deprecated use `TransferCreate$Outbound` instead. */
     type Outbound = TransferCreate$Outbound;
 }
+export declare function transferCreateToJSON(transferCreate: TransferCreate): string;
+export declare function transferCreateFromJSON(jsonString: string): SafeParseResult<TransferCreate, SDKValidationError>;
 //# sourceMappingURL=transfercreate.d.ts.map

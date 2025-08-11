@@ -14,8 +14,7 @@ let value: TimeInForce = TimeInForce.Day;
 
 This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
-| Name                      | Value                     |
-| ------------------------- | ------------------------- |
-| `TimeInForceUnspecified`  | TIME_IN_FORCE_UNSPECIFIED |
-| `Day`                     | DAY                       |
-| -                         | `Unrecognized<string>`    |
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `Day`                  | DAY                    |
+| -                      | `Unrecognized<string>` |

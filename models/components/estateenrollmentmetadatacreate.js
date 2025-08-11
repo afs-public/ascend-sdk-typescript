@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EstateEnrollmentMetadataCreate$ = exports.EstateEnrollmentMetadataCreate$outboundSchema = exports.EstateEnrollmentMetadataCreate$inboundSchema = exports.EstateEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.EstateEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.EstateEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.EstateEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.estateEnrollmentMetadataCreateToJSON = estateEnrollmentMetadataCreateToJSON;
+exports.estateEnrollmentMetadataCreateFromJSON = estateEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -104,4 +107,10 @@ var EstateEnrollmentMetadataCreate$;
     /** @deprecated use `EstateEnrollmentMetadataCreate$outboundSchema` instead. */
     EstateEnrollmentMetadataCreate$.outboundSchema = exports.EstateEnrollmentMetadataCreate$outboundSchema;
 })(EstateEnrollmentMetadataCreate$ || (exports.EstateEnrollmentMetadataCreate$ = EstateEnrollmentMetadataCreate$ = {}));
+function estateEnrollmentMetadataCreateToJSON(estateEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.EstateEnrollmentMetadataCreate$outboundSchema.parse(estateEnrollmentMetadataCreate));
+}
+function estateEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EstateEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EstateEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=estateenrollmentmetadatacreate.js.map

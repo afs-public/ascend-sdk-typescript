@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SubscriberGetPushSubscriptionDeliveryRequest = {
   /**
@@ -82,6 +85,33 @@ export namespace SubscriberGetPushSubscriptionDeliveryRequest$ {
   export type Outbound = SubscriberGetPushSubscriptionDeliveryRequest$Outbound;
 }
 
+export function subscriberGetPushSubscriptionDeliveryRequestToJSON(
+  subscriberGetPushSubscriptionDeliveryRequest:
+    SubscriberGetPushSubscriptionDeliveryRequest,
+): string {
+  return JSON.stringify(
+    SubscriberGetPushSubscriptionDeliveryRequest$outboundSchema.parse(
+      subscriberGetPushSubscriptionDeliveryRequest,
+    ),
+  );
+}
+
+export function subscriberGetPushSubscriptionDeliveryRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SubscriberGetPushSubscriptionDeliveryRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SubscriberGetPushSubscriptionDeliveryRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SubscriberGetPushSubscriptionDeliveryRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const SubscriberGetPushSubscriptionDeliveryResponse$inboundSchema:
   z.ZodType<
@@ -142,4 +172,31 @@ export namespace SubscriberGetPushSubscriptionDeliveryResponse$ {
     SubscriberGetPushSubscriptionDeliveryResponse$outboundSchema;
   /** @deprecated use `SubscriberGetPushSubscriptionDeliveryResponse$Outbound` instead. */
   export type Outbound = SubscriberGetPushSubscriptionDeliveryResponse$Outbound;
+}
+
+export function subscriberGetPushSubscriptionDeliveryResponseToJSON(
+  subscriberGetPushSubscriptionDeliveryResponse:
+    SubscriberGetPushSubscriptionDeliveryResponse,
+): string {
+  return JSON.stringify(
+    SubscriberGetPushSubscriptionDeliveryResponse$outboundSchema.parse(
+      subscriberGetPushSubscriptionDeliveryResponse,
+    ),
+  );
+}
+
+export function subscriberGetPushSubscriptionDeliveryResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SubscriberGetPushSubscriptionDeliveryResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SubscriberGetPushSubscriptionDeliveryResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SubscriberGetPushSubscriptionDeliveryResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A request for canceling a single execution.
@@ -48,4 +51,24 @@ export namespace CancelExecutionRequestCreate$ {
   export const outboundSchema = CancelExecutionRequestCreate$outboundSchema;
   /** @deprecated use `CancelExecutionRequestCreate$Outbound` instead. */
   export type Outbound = CancelExecutionRequestCreate$Outbound;
+}
+
+export function cancelExecutionRequestCreateToJSON(
+  cancelExecutionRequestCreate: CancelExecutionRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelExecutionRequestCreate$outboundSchema.parse(
+      cancelExecutionRequestCreate,
+    ),
+  );
+}
+
+export function cancelExecutionRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelExecutionRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelExecutionRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelExecutionRequestCreate' from JSON`,
+  );
 }

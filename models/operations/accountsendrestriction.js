@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsEndRestrictionResponse$ = exports.AccountsEndRestrictionResponse$outboundSchema = exports.AccountsEndRestrictionResponse$inboundSchema = exports.AccountsEndRestrictionRequest$ = exports.AccountsEndRestrictionRequest$outboundSchema = exports.AccountsEndRestrictionRequest$inboundSchema = void 0;
+exports.accountsEndRestrictionRequestToJSON = accountsEndRestrictionRequestToJSON;
+exports.accountsEndRestrictionRequestFromJSON = accountsEndRestrictionRequestFromJSON;
+exports.accountsEndRestrictionResponseToJSON = accountsEndRestrictionResponseToJSON;
+exports.accountsEndRestrictionResponseFromJSON = accountsEndRestrictionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsEndRestrictionRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountsEndRestrictionRequest$;
     /** @deprecated use `AccountsEndRestrictionRequest$outboundSchema` instead. */
     AccountsEndRestrictionRequest$.outboundSchema = exports.AccountsEndRestrictionRequest$outboundSchema;
 })(AccountsEndRestrictionRequest$ || (exports.AccountsEndRestrictionRequest$ = AccountsEndRestrictionRequest$ = {}));
+function accountsEndRestrictionRequestToJSON(accountsEndRestrictionRequest) {
+    return JSON.stringify(exports.AccountsEndRestrictionRequest$outboundSchema.parse(accountsEndRestrictionRequest));
+}
+function accountsEndRestrictionRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEndRestrictionRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEndRestrictionRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsEndRestrictionResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsEndRestrictionResponse$;
     /** @deprecated use `AccountsEndRestrictionResponse$outboundSchema` instead. */
     AccountsEndRestrictionResponse$.outboundSchema = exports.AccountsEndRestrictionResponse$outboundSchema;
 })(AccountsEndRestrictionResponse$ || (exports.AccountsEndRestrictionResponse$ = AccountsEndRestrictionResponse$ = {}));
+function accountsEndRestrictionResponseToJSON(accountsEndRestrictionResponse) {
+    return JSON.stringify(exports.AccountsEndRestrictionResponse$outboundSchema.parse(accountsEndRestrictionResponse));
+}
+function accountsEndRestrictionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEndRestrictionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEndRestrictionResponse' from JSON`);
+}
 //# sourceMappingURL=accountsendrestriction.js.map

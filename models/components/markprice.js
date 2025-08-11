@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MarkPrice$ = exports.MarkPrice$outboundSchema = exports.MarkPrice$inboundSchema = exports.MarkPriceType$ = exports.MarkPriceType$outboundSchema = exports.MarkPriceType$inboundSchema = exports.MarkPricePrice$ = exports.MarkPricePrice$outboundSchema = exports.MarkPricePrice$inboundSchema = exports.MarkPriceType = void 0;
+exports.markPricePriceToJSON = markPricePriceToJSON;
+exports.markPricePriceFromJSON = markPricePriceFromJSON;
+exports.markPriceToJSON = markPriceToJSON;
+exports.markPriceFromJSON = markPriceFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The calculation type of this price
@@ -68,6 +73,12 @@ var MarkPricePrice$;
     /** @deprecated use `MarkPricePrice$outboundSchema` instead. */
     MarkPricePrice$.outboundSchema = exports.MarkPricePrice$outboundSchema;
 })(MarkPricePrice$ || (exports.MarkPricePrice$ = MarkPricePrice$ = {}));
+function markPricePriceToJSON(markPricePrice) {
+    return JSON.stringify(exports.MarkPricePrice$outboundSchema.parse(markPricePrice));
+}
+function markPricePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MarkPricePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MarkPricePrice' from JSON`);
+}
 /** @internal */
 exports.MarkPriceType$inboundSchema = z
     .union([
@@ -111,4 +122,10 @@ var MarkPrice$;
     /** @deprecated use `MarkPrice$outboundSchema` instead. */
     MarkPrice$.outboundSchema = exports.MarkPrice$outboundSchema;
 })(MarkPrice$ || (exports.MarkPrice$ = MarkPrice$ = {}));
+function markPriceToJSON(markPrice) {
+    return JSON.stringify(exports.MarkPrice$outboundSchema.parse(markPrice));
+}
+function markPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MarkPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MarkPrice' from JSON`);
+}
 //# sourceMappingURL=markprice.js.map

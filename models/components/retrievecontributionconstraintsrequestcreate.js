@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveContributionConstraintsRequestCreate$ = exports.RetrieveContributionConstraintsRequestCreate$outboundSchema = exports.RetrieveContributionConstraintsRequestCreate$inboundSchema = exports.Mechanism$ = exports.Mechanism$outboundSchema = exports.Mechanism$inboundSchema = exports.Mechanism = void 0;
+exports.retrieveContributionConstraintsRequestCreateToJSON = retrieveContributionConstraintsRequestCreateToJSON;
+exports.retrieveContributionConstraintsRequestCreateFromJSON = retrieveContributionConstraintsRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Cash transfer mechanism to search constraints for
@@ -90,4 +93,10 @@ var RetrieveContributionConstraintsRequestCreate$;
     /** @deprecated use `RetrieveContributionConstraintsRequestCreate$outboundSchema` instead. */
     RetrieveContributionConstraintsRequestCreate$.outboundSchema = exports.RetrieveContributionConstraintsRequestCreate$outboundSchema;
 })(RetrieveContributionConstraintsRequestCreate$ || (exports.RetrieveContributionConstraintsRequestCreate$ = RetrieveContributionConstraintsRequestCreate$ = {}));
+function retrieveContributionConstraintsRequestCreateToJSON(retrieveContributionConstraintsRequestCreate) {
+    return JSON.stringify(exports.RetrieveContributionConstraintsRequestCreate$outboundSchema.parse(retrieveContributionConstraintsRequestCreate));
+}
+function retrieveContributionConstraintsRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveContributionConstraintsRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetrieveContributionConstraintsRequestCreate' from JSON`);
+}
 //# sourceMappingURL=retrievecontributionconstraintsrequestcreate.js.map

@@ -38,8 +38,53 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IctWithdrawalEntityOriginatingParty$inboundSchema = exports.IctWithdrawalAddress$ = exports.IctWithdrawalAddress$outboundSchema = exports.IctWithdrawalAddress$inboundSchema = exports.IctWithdrawalTransferState$ = exports.IctWithdrawalTransferState$outboundSchema = exports.IctWithdrawalTransferState$inboundSchema = exports.IctWithdrawalTransferStateState$ = exports.IctWithdrawalTransferStateState$outboundSchema = exports.IctWithdrawalTransferStateState$inboundSchema = exports.IctWithdrawalState$ = exports.IctWithdrawalState$outboundSchema = exports.IctWithdrawalState$inboundSchema = exports.IctWithdrawalStateState$ = exports.IctWithdrawalStateState$outboundSchema = exports.IctWithdrawalStateState$inboundSchema = exports.IctWithdrawalRetirementDistribution$ = exports.IctWithdrawalRetirementDistribution$outboundSchema = exports.IctWithdrawalRetirementDistribution$inboundSchema = exports.IctWithdrawalType$ = exports.IctWithdrawalType$outboundSchema = exports.IctWithdrawalType$inboundSchema = exports.IctWithdrawalStateTaxWithholding$ = exports.IctWithdrawalStateTaxWithholding$outboundSchema = exports.IctWithdrawalStateTaxWithholding$inboundSchema = exports.IctWithdrawalRetirementDistributionPercentage$ = exports.IctWithdrawalRetirementDistributionPercentage$outboundSchema = exports.IctWithdrawalRetirementDistributionPercentage$inboundSchema = exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$ = exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema = exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema = exports.IctWithdrawalFederalTaxWithholding$ = exports.IctWithdrawalFederalTaxWithholding$outboundSchema = exports.IctWithdrawalFederalTaxWithholding$inboundSchema = exports.IctWithdrawalPercentage$ = exports.IctWithdrawalPercentage$outboundSchema = exports.IctWithdrawalPercentage$inboundSchema = exports.IctWithdrawalRetirementDistributionAmount$ = exports.IctWithdrawalRetirementDistributionAmount$outboundSchema = exports.IctWithdrawalRetirementDistributionAmount$inboundSchema = exports.IctWithdrawalProgram$ = exports.IctWithdrawalProgram$outboundSchema = exports.IctWithdrawalProgram$inboundSchema = exports.IctWithdrawalAmount$ = exports.IctWithdrawalAmount$outboundSchema = exports.IctWithdrawalAmount$inboundSchema = exports.IctWithdrawalTransferStateState = exports.IctWithdrawalStateState = exports.IctWithdrawalType = exports.IctWithdrawalProgram = void 0;
 exports.IctWithdrawal$ = exports.IctWithdrawal$outboundSchema = exports.IctWithdrawal$inboundSchema = exports.IctWithdrawalTravelRule$ = exports.IctWithdrawalTravelRule$outboundSchema = exports.IctWithdrawalTravelRule$inboundSchema = exports.IctWithdrawalRecipientInstitution$ = exports.IctWithdrawalRecipientInstitution$outboundSchema = exports.IctWithdrawalRecipientInstitution$inboundSchema = exports.IctWithdrawalOriginatingInstitution$ = exports.IctWithdrawalOriginatingInstitution$outboundSchema = exports.IctWithdrawalOriginatingInstitution$inboundSchema = exports.IctWithdrawalIndividualRecipientParty$ = exports.IctWithdrawalIndividualRecipientParty$outboundSchema = exports.IctWithdrawalIndividualRecipientParty$inboundSchema = exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$ = exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$outboundSchema = exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$inboundSchema = exports.IctWithdrawalIndividualOriginatingParty$ = exports.IctWithdrawalIndividualOriginatingParty$outboundSchema = exports.IctWithdrawalIndividualOriginatingParty$inboundSchema = exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$ = exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$outboundSchema = exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$inboundSchema = exports.IctWithdrawalEntityRecipientParty$ = exports.IctWithdrawalEntityRecipientParty$outboundSchema = exports.IctWithdrawalEntityRecipientParty$inboundSchema = exports.IctWithdrawalTravelRuleAddress$ = exports.IctWithdrawalTravelRuleAddress$outboundSchema = exports.IctWithdrawalTravelRuleAddress$inboundSchema = exports.IctWithdrawalEntityOriginatingParty$ = exports.IctWithdrawalEntityOriginatingParty$outboundSchema = void 0;
+exports.ictWithdrawalAmountToJSON = ictWithdrawalAmountToJSON;
+exports.ictWithdrawalAmountFromJSON = ictWithdrawalAmountFromJSON;
+exports.ictWithdrawalRetirementDistributionAmountToJSON = ictWithdrawalRetirementDistributionAmountToJSON;
+exports.ictWithdrawalRetirementDistributionAmountFromJSON = ictWithdrawalRetirementDistributionAmountFromJSON;
+exports.ictWithdrawalPercentageToJSON = ictWithdrawalPercentageToJSON;
+exports.ictWithdrawalPercentageFromJSON = ictWithdrawalPercentageFromJSON;
+exports.ictWithdrawalFederalTaxWithholdingToJSON = ictWithdrawalFederalTaxWithholdingToJSON;
+exports.ictWithdrawalFederalTaxWithholdingFromJSON = ictWithdrawalFederalTaxWithholdingFromJSON;
+exports.ictWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON = ictWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON;
+exports.ictWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON = ictWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON;
+exports.ictWithdrawalRetirementDistributionPercentageToJSON = ictWithdrawalRetirementDistributionPercentageToJSON;
+exports.ictWithdrawalRetirementDistributionPercentageFromJSON = ictWithdrawalRetirementDistributionPercentageFromJSON;
+exports.ictWithdrawalStateTaxWithholdingToJSON = ictWithdrawalStateTaxWithholdingToJSON;
+exports.ictWithdrawalStateTaxWithholdingFromJSON = ictWithdrawalStateTaxWithholdingFromJSON;
+exports.ictWithdrawalRetirementDistributionToJSON = ictWithdrawalRetirementDistributionToJSON;
+exports.ictWithdrawalRetirementDistributionFromJSON = ictWithdrawalRetirementDistributionFromJSON;
+exports.ictWithdrawalStateToJSON = ictWithdrawalStateToJSON;
+exports.ictWithdrawalStateFromJSON = ictWithdrawalStateFromJSON;
+exports.ictWithdrawalTransferStateToJSON = ictWithdrawalTransferStateToJSON;
+exports.ictWithdrawalTransferStateFromJSON = ictWithdrawalTransferStateFromJSON;
+exports.ictWithdrawalAddressToJSON = ictWithdrawalAddressToJSON;
+exports.ictWithdrawalAddressFromJSON = ictWithdrawalAddressFromJSON;
+exports.ictWithdrawalEntityOriginatingPartyToJSON = ictWithdrawalEntityOriginatingPartyToJSON;
+exports.ictWithdrawalEntityOriginatingPartyFromJSON = ictWithdrawalEntityOriginatingPartyFromJSON;
+exports.ictWithdrawalTravelRuleAddressToJSON = ictWithdrawalTravelRuleAddressToJSON;
+exports.ictWithdrawalTravelRuleAddressFromJSON = ictWithdrawalTravelRuleAddressFromJSON;
+exports.ictWithdrawalEntityRecipientPartyToJSON = ictWithdrawalEntityRecipientPartyToJSON;
+exports.ictWithdrawalEntityRecipientPartyFromJSON = ictWithdrawalEntityRecipientPartyFromJSON;
+exports.ictWithdrawalTravelRuleIndividualOriginatingPartyAddressToJSON = ictWithdrawalTravelRuleIndividualOriginatingPartyAddressToJSON;
+exports.ictWithdrawalTravelRuleIndividualOriginatingPartyAddressFromJSON = ictWithdrawalTravelRuleIndividualOriginatingPartyAddressFromJSON;
+exports.ictWithdrawalIndividualOriginatingPartyToJSON = ictWithdrawalIndividualOriginatingPartyToJSON;
+exports.ictWithdrawalIndividualOriginatingPartyFromJSON = ictWithdrawalIndividualOriginatingPartyFromJSON;
+exports.ictWithdrawalTravelRuleIndividualRecipientPartyAddressToJSON = ictWithdrawalTravelRuleIndividualRecipientPartyAddressToJSON;
+exports.ictWithdrawalTravelRuleIndividualRecipientPartyAddressFromJSON = ictWithdrawalTravelRuleIndividualRecipientPartyAddressFromJSON;
+exports.ictWithdrawalIndividualRecipientPartyToJSON = ictWithdrawalIndividualRecipientPartyToJSON;
+exports.ictWithdrawalIndividualRecipientPartyFromJSON = ictWithdrawalIndividualRecipientPartyFromJSON;
+exports.ictWithdrawalOriginatingInstitutionToJSON = ictWithdrawalOriginatingInstitutionToJSON;
+exports.ictWithdrawalOriginatingInstitutionFromJSON = ictWithdrawalOriginatingInstitutionFromJSON;
+exports.ictWithdrawalRecipientInstitutionToJSON = ictWithdrawalRecipientInstitutionToJSON;
+exports.ictWithdrawalRecipientInstitutionFromJSON = ictWithdrawalRecipientInstitutionFromJSON;
+exports.ictWithdrawalTravelRuleToJSON = ictWithdrawalTravelRuleToJSON;
+exports.ictWithdrawalTravelRuleFromJSON = ictWithdrawalTravelRuleFromJSON;
+exports.ictWithdrawalToJSON = ictWithdrawalToJSON;
+exports.ictWithdrawalFromJSON = ictWithdrawalFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The name of the program that the ICT withdrawal is associated with.
@@ -149,6 +194,12 @@ var IctWithdrawalAmount$;
     /** @deprecated use `IctWithdrawalAmount$outboundSchema` instead. */
     IctWithdrawalAmount$.outboundSchema = exports.IctWithdrawalAmount$outboundSchema;
 })(IctWithdrawalAmount$ || (exports.IctWithdrawalAmount$ = IctWithdrawalAmount$ = {}));
+function ictWithdrawalAmountToJSON(ictWithdrawalAmount) {
+    return JSON.stringify(exports.IctWithdrawalAmount$outboundSchema.parse(ictWithdrawalAmount));
+}
+function ictWithdrawalAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalAmount' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalProgram$inboundSchema = z
     .union([
@@ -190,6 +241,12 @@ var IctWithdrawalRetirementDistributionAmount$;
     /** @deprecated use `IctWithdrawalRetirementDistributionAmount$outboundSchema` instead. */
     IctWithdrawalRetirementDistributionAmount$.outboundSchema = exports.IctWithdrawalRetirementDistributionAmount$outboundSchema;
 })(IctWithdrawalRetirementDistributionAmount$ || (exports.IctWithdrawalRetirementDistributionAmount$ = IctWithdrawalRetirementDistributionAmount$ = {}));
+function ictWithdrawalRetirementDistributionAmountToJSON(ictWithdrawalRetirementDistributionAmount) {
+    return JSON.stringify(exports.IctWithdrawalRetirementDistributionAmount$outboundSchema.parse(ictWithdrawalRetirementDistributionAmount));
+}
+function ictWithdrawalRetirementDistributionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalRetirementDistributionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalRetirementDistributionAmount' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -209,6 +266,12 @@ var IctWithdrawalPercentage$;
     /** @deprecated use `IctWithdrawalPercentage$outboundSchema` instead. */
     IctWithdrawalPercentage$.outboundSchema = exports.IctWithdrawalPercentage$outboundSchema;
 })(IctWithdrawalPercentage$ || (exports.IctWithdrawalPercentage$ = IctWithdrawalPercentage$ = {}));
+function ictWithdrawalPercentageToJSON(ictWithdrawalPercentage) {
+    return JSON.stringify(exports.IctWithdrawalPercentage$outboundSchema.parse(ictWithdrawalPercentage));
+}
+function ictWithdrawalPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalPercentage' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalFederalTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.IctWithdrawalRetirementDistributionAmount$inboundSchema)).optional(),
@@ -232,6 +295,12 @@ var IctWithdrawalFederalTaxWithholding$;
     /** @deprecated use `IctWithdrawalFederalTaxWithholding$outboundSchema` instead. */
     IctWithdrawalFederalTaxWithholding$.outboundSchema = exports.IctWithdrawalFederalTaxWithholding$outboundSchema;
 })(IctWithdrawalFederalTaxWithholding$ || (exports.IctWithdrawalFederalTaxWithholding$ = IctWithdrawalFederalTaxWithholding$ = {}));
+function ictWithdrawalFederalTaxWithholdingToJSON(ictWithdrawalFederalTaxWithholding) {
+    return JSON.stringify(exports.IctWithdrawalFederalTaxWithholding$outboundSchema.parse(ictWithdrawalFederalTaxWithholding));
+}
+function ictWithdrawalFederalTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalFederalTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalFederalTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -251,6 +320,14 @@ var IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$;
     /** @deprecated use `IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema` instead. */
     IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$.outboundSchema = exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema;
 })(IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$ || (exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$ = IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$ = {}));
+function ictWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON(ictWithdrawalRetirementDistributionStateTaxWithholdingAmount) {
+    return JSON.stringify(exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema
+        .parse(ictWithdrawalRetirementDistributionStateTaxWithholdingAmount));
+}
+function ictWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalRetirementDistributionStateTaxWithholdingAmount' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalRetirementDistributionPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -270,6 +347,12 @@ var IctWithdrawalRetirementDistributionPercentage$;
     /** @deprecated use `IctWithdrawalRetirementDistributionPercentage$outboundSchema` instead. */
     IctWithdrawalRetirementDistributionPercentage$.outboundSchema = exports.IctWithdrawalRetirementDistributionPercentage$outboundSchema;
 })(IctWithdrawalRetirementDistributionPercentage$ || (exports.IctWithdrawalRetirementDistributionPercentage$ = IctWithdrawalRetirementDistributionPercentage$ = {}));
+function ictWithdrawalRetirementDistributionPercentageToJSON(ictWithdrawalRetirementDistributionPercentage) {
+    return JSON.stringify(exports.IctWithdrawalRetirementDistributionPercentage$outboundSchema.parse(ictWithdrawalRetirementDistributionPercentage));
+}
+function ictWithdrawalRetirementDistributionPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalRetirementDistributionPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalRetirementDistributionPercentage' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalStateTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema)).optional(),
@@ -291,6 +374,12 @@ var IctWithdrawalStateTaxWithholding$;
     /** @deprecated use `IctWithdrawalStateTaxWithholding$outboundSchema` instead. */
     IctWithdrawalStateTaxWithholding$.outboundSchema = exports.IctWithdrawalStateTaxWithholding$outboundSchema;
 })(IctWithdrawalStateTaxWithholding$ || (exports.IctWithdrawalStateTaxWithholding$ = IctWithdrawalStateTaxWithholding$ = {}));
+function ictWithdrawalStateTaxWithholdingToJSON(ictWithdrawalStateTaxWithholding) {
+    return JSON.stringify(exports.IctWithdrawalStateTaxWithholding$outboundSchema.parse(ictWithdrawalStateTaxWithholding));
+}
+function ictWithdrawalStateTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalStateTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalStateTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalType$inboundSchema = z
     .union([
@@ -358,6 +447,12 @@ var IctWithdrawalRetirementDistribution$;
     /** @deprecated use `IctWithdrawalRetirementDistribution$outboundSchema` instead. */
     IctWithdrawalRetirementDistribution$.outboundSchema = exports.IctWithdrawalRetirementDistribution$outboundSchema;
 })(IctWithdrawalRetirementDistribution$ || (exports.IctWithdrawalRetirementDistribution$ = IctWithdrawalRetirementDistribution$ = {}));
+function ictWithdrawalRetirementDistributionToJSON(ictWithdrawalRetirementDistribution) {
+    return JSON.stringify(exports.IctWithdrawalRetirementDistribution$outboundSchema.parse(ictWithdrawalRetirementDistribution));
+}
+function ictWithdrawalRetirementDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalRetirementDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalRetirementDistribution' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalStateState$inboundSchema = z
     .union([
@@ -415,6 +510,12 @@ var IctWithdrawalState$;
     /** @deprecated use `IctWithdrawalState$outboundSchema` instead. */
     IctWithdrawalState$.outboundSchema = exports.IctWithdrawalState$outboundSchema;
 })(IctWithdrawalState$ || (exports.IctWithdrawalState$ = IctWithdrawalState$ = {}));
+function ictWithdrawalStateToJSON(ictWithdrawalState) {
+    return JSON.stringify(exports.IctWithdrawalState$outboundSchema.parse(ictWithdrawalState));
+}
+function ictWithdrawalStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalState' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalTransferStateState$inboundSchema = z
     .union([
@@ -472,6 +573,12 @@ var IctWithdrawalTransferState$;
     /** @deprecated use `IctWithdrawalTransferState$outboundSchema` instead. */
     IctWithdrawalTransferState$.outboundSchema = exports.IctWithdrawalTransferState$outboundSchema;
 })(IctWithdrawalTransferState$ || (exports.IctWithdrawalTransferState$ = IctWithdrawalTransferState$ = {}));
+function ictWithdrawalTransferStateToJSON(ictWithdrawalTransferState) {
+    return JSON.stringify(exports.IctWithdrawalTransferState$outboundSchema.parse(ictWithdrawalTransferState));
+}
+function ictWithdrawalTransferStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalTransferState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalTransferState' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -529,6 +636,12 @@ var IctWithdrawalAddress$;
     /** @deprecated use `IctWithdrawalAddress$outboundSchema` instead. */
     IctWithdrawalAddress$.outboundSchema = exports.IctWithdrawalAddress$outboundSchema;
 })(IctWithdrawalAddress$ || (exports.IctWithdrawalAddress$ = IctWithdrawalAddress$ = {}));
+function ictWithdrawalAddressToJSON(ictWithdrawalAddress) {
+    return JSON.stringify(exports.IctWithdrawalAddress$outboundSchema.parse(ictWithdrawalAddress));
+}
+function ictWithdrawalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalAddress' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalEntityOriginatingParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctWithdrawalAddress$inboundSchema))
@@ -562,6 +675,12 @@ var IctWithdrawalEntityOriginatingParty$;
     /** @deprecated use `IctWithdrawalEntityOriginatingParty$outboundSchema` instead. */
     IctWithdrawalEntityOriginatingParty$.outboundSchema = exports.IctWithdrawalEntityOriginatingParty$outboundSchema;
 })(IctWithdrawalEntityOriginatingParty$ || (exports.IctWithdrawalEntityOriginatingParty$ = IctWithdrawalEntityOriginatingParty$ = {}));
+function ictWithdrawalEntityOriginatingPartyToJSON(ictWithdrawalEntityOriginatingParty) {
+    return JSON.stringify(exports.IctWithdrawalEntityOriginatingParty$outboundSchema.parse(ictWithdrawalEntityOriginatingParty));
+}
+function ictWithdrawalEntityOriginatingPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalEntityOriginatingParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalEntityOriginatingParty' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalTravelRuleAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -619,6 +738,12 @@ var IctWithdrawalTravelRuleAddress$;
     /** @deprecated use `IctWithdrawalTravelRuleAddress$outboundSchema` instead. */
     IctWithdrawalTravelRuleAddress$.outboundSchema = exports.IctWithdrawalTravelRuleAddress$outboundSchema;
 })(IctWithdrawalTravelRuleAddress$ || (exports.IctWithdrawalTravelRuleAddress$ = IctWithdrawalTravelRuleAddress$ = {}));
+function ictWithdrawalTravelRuleAddressToJSON(ictWithdrawalTravelRuleAddress) {
+    return JSON.stringify(exports.IctWithdrawalTravelRuleAddress$outboundSchema.parse(ictWithdrawalTravelRuleAddress));
+}
+function ictWithdrawalTravelRuleAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalTravelRuleAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalTravelRuleAddress' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalEntityRecipientParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctWithdrawalTravelRuleAddress$inboundSchema)).optional(),
@@ -650,6 +775,12 @@ var IctWithdrawalEntityRecipientParty$;
     /** @deprecated use `IctWithdrawalEntityRecipientParty$outboundSchema` instead. */
     IctWithdrawalEntityRecipientParty$.outboundSchema = exports.IctWithdrawalEntityRecipientParty$outboundSchema;
 })(IctWithdrawalEntityRecipientParty$ || (exports.IctWithdrawalEntityRecipientParty$ = IctWithdrawalEntityRecipientParty$ = {}));
+function ictWithdrawalEntityRecipientPartyToJSON(ictWithdrawalEntityRecipientParty) {
+    return JSON.stringify(exports.IctWithdrawalEntityRecipientParty$outboundSchema.parse(ictWithdrawalEntityRecipientParty));
+}
+function ictWithdrawalEntityRecipientPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalEntityRecipientParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalEntityRecipientParty' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -707,6 +838,14 @@ var IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$;
     /** @deprecated use `IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$outboundSchema` instead. */
     IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$.outboundSchema = exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$outboundSchema;
 })(IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$ || (exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$ = IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$ = {}));
+function ictWithdrawalTravelRuleIndividualOriginatingPartyAddressToJSON(ictWithdrawalTravelRuleIndividualOriginatingPartyAddress) {
+    return JSON.stringify(exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$outboundSchema
+        .parse(ictWithdrawalTravelRuleIndividualOriginatingPartyAddress));
+}
+function ictWithdrawalTravelRuleIndividualOriginatingPartyAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalTravelRuleIndividualOriginatingPartyAddress' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalIndividualOriginatingParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$inboundSchema)).optional(),
@@ -740,6 +879,12 @@ var IctWithdrawalIndividualOriginatingParty$;
     /** @deprecated use `IctWithdrawalIndividualOriginatingParty$outboundSchema` instead. */
     IctWithdrawalIndividualOriginatingParty$.outboundSchema = exports.IctWithdrawalIndividualOriginatingParty$outboundSchema;
 })(IctWithdrawalIndividualOriginatingParty$ || (exports.IctWithdrawalIndividualOriginatingParty$ = IctWithdrawalIndividualOriginatingParty$ = {}));
+function ictWithdrawalIndividualOriginatingPartyToJSON(ictWithdrawalIndividualOriginatingParty) {
+    return JSON.stringify(exports.IctWithdrawalIndividualOriginatingParty$outboundSchema.parse(ictWithdrawalIndividualOriginatingParty));
+}
+function ictWithdrawalIndividualOriginatingPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalIndividualOriginatingParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalIndividualOriginatingParty' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -797,6 +942,13 @@ var IctWithdrawalTravelRuleIndividualRecipientPartyAddress$;
     /** @deprecated use `IctWithdrawalTravelRuleIndividualRecipientPartyAddress$outboundSchema` instead. */
     IctWithdrawalTravelRuleIndividualRecipientPartyAddress$.outboundSchema = exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$outboundSchema;
 })(IctWithdrawalTravelRuleIndividualRecipientPartyAddress$ || (exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$ = IctWithdrawalTravelRuleIndividualRecipientPartyAddress$ = {}));
+function ictWithdrawalTravelRuleIndividualRecipientPartyAddressToJSON(ictWithdrawalTravelRuleIndividualRecipientPartyAddress) {
+    return JSON.stringify(exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$outboundSchema.parse(ictWithdrawalTravelRuleIndividualRecipientPartyAddress));
+}
+function ictWithdrawalTravelRuleIndividualRecipientPartyAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalTravelRuleIndividualRecipientPartyAddress' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalIndividualRecipientParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctWithdrawalTravelRuleIndividualRecipientPartyAddress$inboundSchema)).optional(),
@@ -830,6 +982,12 @@ var IctWithdrawalIndividualRecipientParty$;
     /** @deprecated use `IctWithdrawalIndividualRecipientParty$outboundSchema` instead. */
     IctWithdrawalIndividualRecipientParty$.outboundSchema = exports.IctWithdrawalIndividualRecipientParty$outboundSchema;
 })(IctWithdrawalIndividualRecipientParty$ || (exports.IctWithdrawalIndividualRecipientParty$ = IctWithdrawalIndividualRecipientParty$ = {}));
+function ictWithdrawalIndividualRecipientPartyToJSON(ictWithdrawalIndividualRecipientParty) {
+    return JSON.stringify(exports.IctWithdrawalIndividualRecipientParty$outboundSchema.parse(ictWithdrawalIndividualRecipientParty));
+}
+function ictWithdrawalIndividualRecipientPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalIndividualRecipientParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalIndividualRecipientParty' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalOriginatingInstitution$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -859,6 +1017,12 @@ var IctWithdrawalOriginatingInstitution$;
     /** @deprecated use `IctWithdrawalOriginatingInstitution$outboundSchema` instead. */
     IctWithdrawalOriginatingInstitution$.outboundSchema = exports.IctWithdrawalOriginatingInstitution$outboundSchema;
 })(IctWithdrawalOriginatingInstitution$ || (exports.IctWithdrawalOriginatingInstitution$ = IctWithdrawalOriginatingInstitution$ = {}));
+function ictWithdrawalOriginatingInstitutionToJSON(ictWithdrawalOriginatingInstitution) {
+    return JSON.stringify(exports.IctWithdrawalOriginatingInstitution$outboundSchema.parse(ictWithdrawalOriginatingInstitution));
+}
+function ictWithdrawalOriginatingInstitutionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalOriginatingInstitution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalOriginatingInstitution' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalRecipientInstitution$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -888,6 +1052,12 @@ var IctWithdrawalRecipientInstitution$;
     /** @deprecated use `IctWithdrawalRecipientInstitution$outboundSchema` instead. */
     IctWithdrawalRecipientInstitution$.outboundSchema = exports.IctWithdrawalRecipientInstitution$outboundSchema;
 })(IctWithdrawalRecipientInstitution$ || (exports.IctWithdrawalRecipientInstitution$ = IctWithdrawalRecipientInstitution$ = {}));
+function ictWithdrawalRecipientInstitutionToJSON(ictWithdrawalRecipientInstitution) {
+    return JSON.stringify(exports.IctWithdrawalRecipientInstitution$outboundSchema.parse(ictWithdrawalRecipientInstitution));
+}
+function ictWithdrawalRecipientInstitutionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalRecipientInstitution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalRecipientInstitution' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalTravelRule$inboundSchema = z.object({
     entity_originating_party: z.nullable(z.lazy(() => exports.IctWithdrawalEntityOriginatingParty$inboundSchema)).optional(),
@@ -935,6 +1105,12 @@ var IctWithdrawalTravelRule$;
     /** @deprecated use `IctWithdrawalTravelRule$outboundSchema` instead. */
     IctWithdrawalTravelRule$.outboundSchema = exports.IctWithdrawalTravelRule$outboundSchema;
 })(IctWithdrawalTravelRule$ || (exports.IctWithdrawalTravelRule$ = IctWithdrawalTravelRule$ = {}));
+function ictWithdrawalTravelRuleToJSON(ictWithdrawalTravelRule) {
+    return JSON.stringify(exports.IctWithdrawalTravelRule$outboundSchema.parse(ictWithdrawalTravelRule));
+}
+function ictWithdrawalTravelRuleFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalTravelRule$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalTravelRule' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawal$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.IctWithdrawalAmount$inboundSchema))
@@ -986,4 +1162,10 @@ var IctWithdrawal$;
     /** @deprecated use `IctWithdrawal$outboundSchema` instead. */
     IctWithdrawal$.outboundSchema = exports.IctWithdrawal$outboundSchema;
 })(IctWithdrawal$ || (exports.IctWithdrawal$ = IctWithdrawal$ = {}));
+function ictWithdrawalToJSON(ictWithdrawal) {
+    return JSON.stringify(exports.IctWithdrawal$outboundSchema.parse(ictWithdrawal));
+}
+function ictWithdrawalFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawal$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawal' from JSON`);
+}
 //# sourceMappingURL=ictwithdrawal.js.map

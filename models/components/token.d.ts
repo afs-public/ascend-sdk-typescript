@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Represents a JSON Web Token for access to the system; See: https://datatracker.ietf.org/doc/html/rfc6749#section-5.1
  */
@@ -38,4 +40,6 @@ export declare namespace Token$ {
     /** @deprecated use `Token$Outbound` instead. */
     type Outbound = Token$Outbound;
 }
+export declare function tokenToJSON(token: Token): string;
+export declare function tokenFromJSON(jsonString: string): SafeParseResult<Token, SDKValidationError>;
 //# sourceMappingURL=token.d.ts.map

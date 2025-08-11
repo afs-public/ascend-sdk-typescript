@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankRelationshipsListBankRelationshipsResponse$ = exports.BankRelationshipsListBankRelationshipsResponse$outboundSchema = exports.BankRelationshipsListBankRelationshipsResponse$inboundSchema = exports.BankRelationshipsListBankRelationshipsRequest$ = exports.BankRelationshipsListBankRelationshipsRequest$outboundSchema = exports.BankRelationshipsListBankRelationshipsRequest$inboundSchema = exports.State$ = exports.State$outboundSchema = exports.State$inboundSchema = exports.State = void 0;
+exports.bankRelationshipsListBankRelationshipsRequestToJSON = bankRelationshipsListBankRelationshipsRequestToJSON;
+exports.bankRelationshipsListBankRelationshipsRequestFromJSON = bankRelationshipsListBankRelationshipsRequestFromJSON;
+exports.bankRelationshipsListBankRelationshipsResponseToJSON = bankRelationshipsListBankRelationshipsResponseToJSON;
+exports.bankRelationshipsListBankRelationshipsResponseFromJSON = bankRelationshipsListBankRelationshipsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /**
  * The state of bank relationships to filter by. Unspecified returns relationships of all states.
@@ -103,6 +108,12 @@ var BankRelationshipsListBankRelationshipsRequest$;
     /** @deprecated use `BankRelationshipsListBankRelationshipsRequest$outboundSchema` instead. */
     BankRelationshipsListBankRelationshipsRequest$.outboundSchema = exports.BankRelationshipsListBankRelationshipsRequest$outboundSchema;
 })(BankRelationshipsListBankRelationshipsRequest$ || (exports.BankRelationshipsListBankRelationshipsRequest$ = BankRelationshipsListBankRelationshipsRequest$ = {}));
+function bankRelationshipsListBankRelationshipsRequestToJSON(bankRelationshipsListBankRelationshipsRequest) {
+    return JSON.stringify(exports.BankRelationshipsListBankRelationshipsRequest$outboundSchema.parse(bankRelationshipsListBankRelationshipsRequest));
+}
+function bankRelationshipsListBankRelationshipsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipsListBankRelationshipsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipsListBankRelationshipsRequest' from JSON`);
+}
 /** @internal */
 exports.BankRelationshipsListBankRelationshipsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -140,4 +151,10 @@ var BankRelationshipsListBankRelationshipsResponse$;
     /** @deprecated use `BankRelationshipsListBankRelationshipsResponse$outboundSchema` instead. */
     BankRelationshipsListBankRelationshipsResponse$.outboundSchema = exports.BankRelationshipsListBankRelationshipsResponse$outboundSchema;
 })(BankRelationshipsListBankRelationshipsResponse$ || (exports.BankRelationshipsListBankRelationshipsResponse$ = BankRelationshipsListBankRelationshipsResponse$ = {}));
+function bankRelationshipsListBankRelationshipsResponseToJSON(bankRelationshipsListBankRelationshipsResponse) {
+    return JSON.stringify(exports.BankRelationshipsListBankRelationshipsResponse$outboundSchema.parse(bankRelationshipsListBankRelationshipsResponse));
+}
+function bankRelationshipsListBankRelationshipsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipsListBankRelationshipsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipsListBankRelationshipsResponse' from JSON`);
+}
 //# sourceMappingURL=bankrelationshipslistbankrelationships.js.map

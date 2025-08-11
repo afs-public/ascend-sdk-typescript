@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingRebookTradeResponse$ = exports.BookingRebookTradeResponse$outboundSchema = exports.BookingRebookTradeResponse$inboundSchema = exports.BookingRebookTradeRequest$ = exports.BookingRebookTradeRequest$outboundSchema = exports.BookingRebookTradeRequest$inboundSchema = void 0;
+exports.bookingRebookTradeRequestToJSON = bookingRebookTradeRequestToJSON;
+exports.bookingRebookTradeRequestFromJSON = bookingRebookTradeRequestFromJSON;
+exports.bookingRebookTradeResponseToJSON = bookingRebookTradeResponseToJSON;
+exports.bookingRebookTradeResponseFromJSON = bookingRebookTradeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BookingRebookTradeRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var BookingRebookTradeRequest$;
     /** @deprecated use `BookingRebookTradeRequest$outboundSchema` instead. */
     BookingRebookTradeRequest$.outboundSchema = exports.BookingRebookTradeRequest$outboundSchema;
 })(BookingRebookTradeRequest$ || (exports.BookingRebookTradeRequest$ = BookingRebookTradeRequest$ = {}));
+function bookingRebookTradeRequestToJSON(bookingRebookTradeRequest) {
+    return JSON.stringify(exports.BookingRebookTradeRequest$outboundSchema.parse(bookingRebookTradeRequest));
+}
+function bookingRebookTradeRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingRebookTradeRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingRebookTradeRequest' from JSON`);
+}
 /** @internal */
 exports.BookingRebookTradeResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var BookingRebookTradeResponse$;
     /** @deprecated use `BookingRebookTradeResponse$outboundSchema` instead. */
     BookingRebookTradeResponse$.outboundSchema = exports.BookingRebookTradeResponse$outboundSchema;
 })(BookingRebookTradeResponse$ || (exports.BookingRebookTradeResponse$ = BookingRebookTradeResponse$ = {}));
+function bookingRebookTradeResponseToJSON(bookingRebookTradeResponse) {
+    return JSON.stringify(exports.BookingRebookTradeResponse$outboundSchema.parse(bookingRebookTradeResponse));
+}
+function bookingRebookTradeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingRebookTradeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingRebookTradeResponse' from JSON`);
+}
 //# sourceMappingURL=bookingrebooktrade.js.map

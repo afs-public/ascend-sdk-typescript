@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing credit
@@ -55,4 +58,22 @@ export namespace CancelCreditRequestCreate$ {
   export const outboundSchema = CancelCreditRequestCreate$outboundSchema;
   /** @deprecated use `CancelCreditRequestCreate$Outbound` instead. */
   export type Outbound = CancelCreditRequestCreate$Outbound;
+}
+
+export function cancelCreditRequestCreateToJSON(
+  cancelCreditRequestCreate: CancelCreditRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelCreditRequestCreate$outboundSchema.parse(cancelCreditRequestCreate),
+  );
+}
+
+export function cancelCreditRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelCreditRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelCreditRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelCreditRequestCreate' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Immediate Family Member detail.
@@ -64,4 +67,24 @@ export namespace ImmediateFamilyMemberCreate$ {
   export const outboundSchema = ImmediateFamilyMemberCreate$outboundSchema;
   /** @deprecated use `ImmediateFamilyMemberCreate$Outbound` instead. */
   export type Outbound = ImmediateFamilyMemberCreate$Outbound;
+}
+
+export function immediateFamilyMemberCreateToJSON(
+  immediateFamilyMemberCreate: ImmediateFamilyMemberCreate,
+): string {
+  return JSON.stringify(
+    ImmediateFamilyMemberCreate$outboundSchema.parse(
+      immediateFamilyMemberCreate,
+    ),
+  );
+}
+
+export function immediateFamilyMemberCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ImmediateFamilyMemberCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ImmediateFamilyMemberCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ImmediateFamilyMemberCreate' from JSON`,
+  );
 }

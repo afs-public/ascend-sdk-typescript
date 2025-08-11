@@ -4,37 +4,88 @@
 
 import { expect, test } from "vitest";
 import { Apexascend } from "../index.js";
+import { View } from "../models/operations/index.js";
+import { createTestHTTPClient } from "./testclient.js";
 
-test("Person Management Accounts List Legal Natural Persons List Legal Natural Persons1", async () => {
+test("Person Management Accounts List Legal Natural Persons", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "Accounts_ListLegalNaturalPersons",
+  );
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
-  const result = await apexascend.personManagement.listLegalNaturalPersons();
+
+  const result = await apexascend.personManagement.listLegalNaturalPersons(
+    25,
+    "",
+    "",
+  );
   expect(result.httpMeta.response.status).toBe(200);
 });
 
-test("Person Management Accounts List Legal Entities List Legal Entities1", async () => {
+test("Person Management Accounts List Legal Entities", async () => {
+  const testHttpClient = createTestHTTPClient("Accounts_ListLegalEntities");
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
-  const result = await apexascend.personManagement.listLegalEntities();
+
+  const result = await apexascend.personManagement.listLegalEntities(
+    25,
+    "",
+    "",
+    "",
+  );
+  expect(result.httpMeta.response.status).toBe(200);
+});
+
+test("Person Management Accounts List Accounts", async () => {
+  const testHttpClient = createTestHTTPClient("Accounts_ListAccounts");
+
+  const apexascend = new Apexascend({
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
+    security: {
+      apiKey: process.env["API_KEY"] ?? "value",
+      serviceAccountCreds: {
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
+      },
+    },
+    httpClient: testHttpClient,
+  });
+
+  const result = await apexascend.accountManagement.listAccounts({
+    pageSize: 25,
+    pageToken: "",
+    orderBy: "",
+    filter: "",
+    view: View.Basic,
+  });
   expect(result.httpMeta.response.status).toBe(200);
 });

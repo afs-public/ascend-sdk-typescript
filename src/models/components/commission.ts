@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Monetary amount associated with the commission
@@ -57,6 +60,24 @@ export namespace CommissionAmount1$ {
   export type Outbound = CommissionAmount1$Outbound;
 }
 
+export function commissionAmount1ToJSON(
+  commissionAmount1: CommissionAmount1,
+): string {
+  return JSON.stringify(
+    CommissionAmount1$outboundSchema.parse(commissionAmount1),
+  );
+}
+
+export function commissionAmount1FromJSON(
+  jsonString: string,
+): SafeParseResult<CommissionAmount1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CommissionAmount1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CommissionAmount1' from JSON`,
+  );
+}
+
 /** @internal */
 export const Commission$inboundSchema: z.ZodType<
   Commission,
@@ -91,4 +112,18 @@ export namespace Commission$ {
   export const outboundSchema = Commission$outboundSchema;
   /** @deprecated use `Commission$Outbound` instead. */
   export type Outbound = Commission$Outbound;
+}
+
+export function commissionToJSON(commission: Commission): string {
+  return JSON.stringify(Commission$outboundSchema.parse(commission));
+}
+
+export function commissionFromJSON(
+  jsonString: string,
+): SafeParseResult<Commission, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Commission$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Commission' from JSON`,
+  );
 }

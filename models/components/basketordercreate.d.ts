@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The type of the asset in this order
@@ -251,4 +253,6 @@ export declare namespace BasketOrderCreate$ {
     /** @deprecated use `BasketOrderCreate$Outbound` instead. */
     type Outbound = BasketOrderCreate$Outbound;
 }
+export declare function basketOrderCreateToJSON(basketOrderCreate: BasketOrderCreate): string;
+export declare function basketOrderCreateFromJSON(jsonString: string): SafeParseResult<BasketOrderCreate, SDKValidationError>;
 //# sourceMappingURL=basketordercreate.d.ts.map

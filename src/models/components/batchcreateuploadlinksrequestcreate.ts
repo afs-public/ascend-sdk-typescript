@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateUploadLinkRequestCreate,
   CreateUploadLinkRequestCreate$inboundSchema,
@@ -73,4 +76,25 @@ export namespace BatchCreateUploadLinksRequestCreate$ {
     BatchCreateUploadLinksRequestCreate$outboundSchema;
   /** @deprecated use `BatchCreateUploadLinksRequestCreate$Outbound` instead. */
   export type Outbound = BatchCreateUploadLinksRequestCreate$Outbound;
+}
+
+export function batchCreateUploadLinksRequestCreateToJSON(
+  batchCreateUploadLinksRequestCreate: BatchCreateUploadLinksRequestCreate,
+): string {
+  return JSON.stringify(
+    BatchCreateUploadLinksRequestCreate$outboundSchema.parse(
+      batchCreateUploadLinksRequestCreate,
+    ),
+  );
+}
+
+export function batchCreateUploadLinksRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<BatchCreateUploadLinksRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BatchCreateUploadLinksRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BatchCreateUploadLinksRequestCreate' from JSON`,
+  );
 }

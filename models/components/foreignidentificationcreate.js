@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForeignIdentificationCreate$ = exports.ForeignIdentificationCreate$outboundSchema = exports.ForeignIdentificationCreate$inboundSchema = exports.Type$ = exports.Type$outboundSchema = exports.Type$inboundSchema = exports.Type = void 0;
+exports.foreignIdentificationCreateToJSON = foreignIdentificationCreateToJSON;
+exports.foreignIdentificationCreateFromJSON = foreignIdentificationCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const datecreate_js_1 = require("./datecreate.js");
 /**
@@ -116,4 +119,10 @@ var ForeignIdentificationCreate$;
     /** @deprecated use `ForeignIdentificationCreate$outboundSchema` instead. */
     ForeignIdentificationCreate$.outboundSchema = exports.ForeignIdentificationCreate$outboundSchema;
 })(ForeignIdentificationCreate$ || (exports.ForeignIdentificationCreate$ = ForeignIdentificationCreate$ = {}));
+function foreignIdentificationCreateToJSON(foreignIdentificationCreate) {
+    return JSON.stringify(exports.ForeignIdentificationCreate$outboundSchema.parse(foreignIdentificationCreate));
+}
+function foreignIdentificationCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignIdentificationCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignIdentificationCreate' from JSON`);
+}
 //# sourceMappingURL=foreignidentificationcreate.js.map

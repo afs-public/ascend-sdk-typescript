@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The processing status of the basket
@@ -224,4 +227,18 @@ export namespace Basket$ {
   export const outboundSchema = Basket$outboundSchema;
   /** @deprecated use `Basket$Outbound` instead. */
   export type Outbound = Basket$Outbound;
+}
+
+export function basketToJSON(basket: Basket): string {
+  return JSON.stringify(Basket$outboundSchema.parse(basket));
+}
+
+export function basketFromJSON(
+  jsonString: string,
+): SafeParseResult<Basket, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Basket$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Basket' from JSON`,
+  );
 }

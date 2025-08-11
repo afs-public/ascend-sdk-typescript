@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankRelationshipCreate$ = exports.BankRelationshipCreate$outboundSchema = exports.BankRelationshipCreate$inboundSchema = exports.VerificationMethod$ = exports.VerificationMethod$outboundSchema = exports.VerificationMethod$inboundSchema = exports.VerificationMethod = void 0;
+exports.bankRelationshipCreateToJSON = bankRelationshipCreateToJSON;
+exports.bankRelationshipCreateFromJSON = bankRelationshipCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bankaccountcreate_js_1 = require("./bankaccountcreate.js");
 /**
@@ -117,4 +120,10 @@ var BankRelationshipCreate$;
     /** @deprecated use `BankRelationshipCreate$outboundSchema` instead. */
     BankRelationshipCreate$.outboundSchema = exports.BankRelationshipCreate$outboundSchema;
 })(BankRelationshipCreate$ || (exports.BankRelationshipCreate$ = BankRelationshipCreate$ = {}));
+function bankRelationshipCreateToJSON(bankRelationshipCreate) {
+    return JSON.stringify(exports.BankRelationshipCreate$outboundSchema.parse(bankRelationshipCreate));
+}
+function bankRelationshipCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipCreate' from JSON`);
+}
 //# sourceMappingURL=bankrelationshipcreate.js.map

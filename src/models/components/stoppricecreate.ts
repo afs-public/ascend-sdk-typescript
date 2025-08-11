@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -116,4 +119,20 @@ export namespace StopPriceCreate$ {
   export const outboundSchema = StopPriceCreate$outboundSchema;
   /** @deprecated use `StopPriceCreate$Outbound` instead. */
   export type Outbound = StopPriceCreate$Outbound;
+}
+
+export function stopPriceCreateToJSON(
+  stopPriceCreate: StopPriceCreate,
+): string {
+  return JSON.stringify(StopPriceCreate$outboundSchema.parse(stopPriceCreate));
+}
+
+export function stopPriceCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<StopPriceCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StopPriceCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StopPriceCreate' from JSON`,
+  );
 }

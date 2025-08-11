@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The type of identifier
  */
@@ -62,4 +64,6 @@ export declare namespace IdentifierCreate$ {
     /** @deprecated use `IdentifierCreate$Outbound` instead. */
     type Outbound = IdentifierCreate$Outbound;
 }
+export declare function identifierCreateToJSON(identifierCreate: IdentifierCreate): string;
+export declare function identifierCreateFromJSON(jsonString: string): SafeParseResult<IdentifierCreate, SDKValidationError>;
 //# sourceMappingURL=identifiercreate.d.ts.map

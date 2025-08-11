@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -60,4 +63,18 @@ export namespace PositionCreate$ {
   export const outboundSchema = PositionCreate$outboundSchema;
   /** @deprecated use `PositionCreate$Outbound` instead. */
   export type Outbound = PositionCreate$Outbound;
+}
+
+export function positionCreateToJSON(positionCreate: PositionCreate): string {
+  return JSON.stringify(PositionCreate$outboundSchema.parse(positionCreate));
+}
+
+export function positionCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<PositionCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PositionCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PositionCreate' from JSON`,
+  );
 }

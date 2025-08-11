@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EntityDueDiligenceUpdate$ = exports.EntityDueDiligenceUpdate$outboundSchema = exports.EntityDueDiligenceUpdate$inboundSchema = void 0;
+exports.entityDueDiligenceUpdateToJSON = entityDueDiligenceUpdateToJSON;
+exports.entityDueDiligenceUpdateFromJSON = entityDueDiligenceUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const negativenewsupdate_js_1 = require("./negativenewsupdate.js");
 /** @internal */
 exports.EntityDueDiligenceUpdate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var EntityDueDiligenceUpdate$;
     /** @deprecated use `EntityDueDiligenceUpdate$outboundSchema` instead. */
     EntityDueDiligenceUpdate$.outboundSchema = exports.EntityDueDiligenceUpdate$outboundSchema;
 })(EntityDueDiligenceUpdate$ || (exports.EntityDueDiligenceUpdate$ = EntityDueDiligenceUpdate$ = {}));
+function entityDueDiligenceUpdateToJSON(entityDueDiligenceUpdate) {
+    return JSON.stringify(exports.EntityDueDiligenceUpdate$outboundSchema.parse(entityDueDiligenceUpdate));
+}
+function entityDueDiligenceUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EntityDueDiligenceUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EntityDueDiligenceUpdate' from JSON`);
+}
 //# sourceMappingURL=entityduediligenceupdate.js.map

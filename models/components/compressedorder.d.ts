@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BasketTradingExecutedPrice, BasketTradingExecutedPrice$Outbound } from "./baskettradingexecutedprice.js";
 import { BasketTradingExecutions, BasketTradingExecutions$Outbound } from "./baskettradingexecutions.js";
 /**
@@ -83,7 +85,8 @@ export declare enum CompressedOrderOrderRejectedReason {
     AssetNotSetUpToTrade = "ASSET_NOT_SET_UP_TO_TRADE",
     AnotherBasketOrderForAccountHasFailedRiskChecks = "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS",
     InsufficientPosition = "INSUFFICIENT_POSITION",
-    FailedBuyingPower = "FAILED_BUYING_POWER"
+    FailedBuyingPower = "FAILED_BUYING_POWER",
+    RoundUpAmountTooSmall = "ROUND_UP_AMOUNT_TOO_SMALL"
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -98,7 +101,8 @@ export declare enum CompressedOrderOrderStatus {
     New = "NEW",
     PartiallyFilled = "PARTIALLY_FILLED",
     Filled = "FILLED",
-    Rejected = "REJECTED"
+    Rejected = "REJECTED",
+    RemovedBeforeSubmission = "REMOVED_BEFORE_SUBMISSION"
 }
 /**
  * The processing status of the order
@@ -285,6 +289,8 @@ export declare namespace CompressedOrderCumulativeNotionalValue$ {
     /** @deprecated use `CompressedOrderCumulativeNotionalValue$Outbound` instead. */
     type Outbound = CompressedOrderCumulativeNotionalValue$Outbound;
 }
+export declare function compressedOrderCumulativeNotionalValueToJSON(compressedOrderCumulativeNotionalValue: CompressedOrderCumulativeNotionalValue): string;
+export declare function compressedOrderCumulativeNotionalValueFromJSON(jsonString: string): SafeParseResult<CompressedOrderCumulativeNotionalValue, SDKValidationError>;
 /** @internal */
 export declare const CompressedOrderFilledQuantity$inboundSchema: z.ZodType<CompressedOrderFilledQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -305,6 +311,8 @@ export declare namespace CompressedOrderFilledQuantity$ {
     /** @deprecated use `CompressedOrderFilledQuantity$Outbound` instead. */
     type Outbound = CompressedOrderFilledQuantity$Outbound;
 }
+export declare function compressedOrderFilledQuantityToJSON(compressedOrderFilledQuantity: CompressedOrderFilledQuantity): string;
+export declare function compressedOrderFilledQuantityFromJSON(jsonString: string): SafeParseResult<CompressedOrderFilledQuantity, SDKValidationError>;
 /** @internal */
 export declare const CompressedOrderIdentifierType$inboundSchema: z.ZodType<CompressedOrderIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -339,6 +347,8 @@ export declare namespace CompressedOrderNotionalValue$ {
     /** @deprecated use `CompressedOrderNotionalValue$Outbound` instead. */
     type Outbound = CompressedOrderNotionalValue$Outbound;
 }
+export declare function compressedOrderNotionalValueToJSON(compressedOrderNotionalValue: CompressedOrderNotionalValue): string;
+export declare function compressedOrderNotionalValueFromJSON(jsonString: string): SafeParseResult<CompressedOrderNotionalValue, SDKValidationError>;
 /** @internal */
 export declare const CompressedOrderOrderRejectedReason$inboundSchema: z.ZodType<CompressedOrderOrderRejectedReasonOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -401,6 +411,8 @@ export declare namespace CompressedOrderQuantity$ {
     /** @deprecated use `CompressedOrderQuantity$Outbound` instead. */
     type Outbound = CompressedOrderQuantity$Outbound;
 }
+export declare function compressedOrderQuantityToJSON(compressedOrderQuantity: CompressedOrderQuantity): string;
+export declare function compressedOrderQuantityFromJSON(jsonString: string): SafeParseResult<CompressedOrderQuantity, SDKValidationError>;
 /** @internal */
 export declare const CompressedOrderSide$inboundSchema: z.ZodType<CompressedOrderSideOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -484,4 +496,6 @@ export declare namespace CompressedOrder$ {
     /** @deprecated use `CompressedOrder$Outbound` instead. */
     type Outbound = CompressedOrder$Outbound;
 }
+export declare function compressedOrderToJSON(compressedOrder: CompressedOrder): string;
+export declare function compressedOrderFromJSON(jsonString: string): SafeParseResult<CompressedOrder, SDKValidationError>;
 //# sourceMappingURL=compressedorder.d.ts.map

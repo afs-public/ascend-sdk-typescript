@@ -1,0 +1,14 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Ascend OpenAPI:
+        inputs:
+            - location: ../ascend_uat_typescript.sdk.yaml
+targets:
+    sdk:
+        target: typescript
+        source: Ascend OpenAPI
+        testing:
+            enabled: true
+            mockServer:
+                enabled: false

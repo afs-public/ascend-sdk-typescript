@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PhoneNumberShortCodeCreate, PhoneNumberShortCodeCreate$Outbound } from "./phonenumbershortcodecreate.js";
 /**
  * An object representing a phone number, suitable as an API wire format.
@@ -70,4 +72,6 @@ export declare namespace PhoneNumberCreate$ {
     /** @deprecated use `PhoneNumberCreate$Outbound` instead. */
     type Outbound = PhoneNumberCreate$Outbound;
 }
+export declare function phoneNumberCreateToJSON(phoneNumberCreate: PhoneNumberCreate): string;
+export declare function phoneNumberCreateFromJSON(jsonString: string): SafeParseResult<PhoneNumberCreate, SDKValidationError>;
 //# sourceMappingURL=phonenumbercreate.d.ts.map

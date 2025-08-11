@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsListLegalNaturalPersonsRequest = {
     /**
      * The maximum number of legal natural persons to return. The service may return fewer than this value. If unspecified, at most 25 legal natural persons will be returned. The maximum value is 100; values above 100 will be coerced to 100.
@@ -65,6 +67,8 @@ export declare namespace AccountsListLegalNaturalPersonsRequest$ {
     /** @deprecated use `AccountsListLegalNaturalPersonsRequest$Outbound` instead. */
     type Outbound = AccountsListLegalNaturalPersonsRequest$Outbound;
 }
+export declare function accountsListLegalNaturalPersonsRequestToJSON(accountsListLegalNaturalPersonsRequest: AccountsListLegalNaturalPersonsRequest): string;
+export declare function accountsListLegalNaturalPersonsRequestFromJSON(jsonString: string): SafeParseResult<AccountsListLegalNaturalPersonsRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsListLegalNaturalPersonsResponse$inboundSchema: z.ZodType<AccountsListLegalNaturalPersonsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -87,4 +91,6 @@ export declare namespace AccountsListLegalNaturalPersonsResponse$ {
     /** @deprecated use `AccountsListLegalNaturalPersonsResponse$Outbound` instead. */
     type Outbound = AccountsListLegalNaturalPersonsResponse$Outbound;
 }
+export declare function accountsListLegalNaturalPersonsResponseToJSON(accountsListLegalNaturalPersonsResponse: AccountsListLegalNaturalPersonsResponse): string;
+export declare function accountsListLegalNaturalPersonsResponseFromJSON(jsonString: string): SafeParseResult<AccountsListLegalNaturalPersonsResponse, SDKValidationError>;
 //# sourceMappingURL=accountslistlegalnaturalpersons.d.ts.map

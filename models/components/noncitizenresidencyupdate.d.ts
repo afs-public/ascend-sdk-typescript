@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export declare enum NonCitizenResidencyUpdateResidencyStatus {
     ResidencyStatusUnspecified = "RESIDENCY_STATUS_UNSPECIFIED",
     UsPermanentResident = "US_PERMANENT_RESIDENT",
@@ -47,4 +49,6 @@ export declare namespace NonCitizenResidencyUpdate$ {
     /** @deprecated use `NonCitizenResidencyUpdate$Outbound` instead. */
     type Outbound = NonCitizenResidencyUpdate$Outbound;
 }
+export declare function nonCitizenResidencyUpdateToJSON(nonCitizenResidencyUpdate: NonCitizenResidencyUpdate): string;
+export declare function nonCitizenResidencyUpdateFromJSON(jsonString: string): SafeParseResult<NonCitizenResidencyUpdate, SDKValidationError>;
 //# sourceMappingURL=noncitizenresidencyupdate.d.ts.map

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashJournalsCreateCashJournalResponse$ = exports.CashJournalsCreateCashJournalResponse$outboundSchema = exports.CashJournalsCreateCashJournalResponse$inboundSchema = void 0;
+exports.cashJournalsCreateCashJournalResponseToJSON = cashJournalsCreateCashJournalResponseToJSON;
+exports.cashJournalsCreateCashJournalResponseFromJSON = cashJournalsCreateCashJournalResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.CashJournalsCreateCashJournalResponse$inboundSchema = z.object({
@@ -75,4 +78,10 @@ var CashJournalsCreateCashJournalResponse$;
     /** @deprecated use `CashJournalsCreateCashJournalResponse$outboundSchema` instead. */
     CashJournalsCreateCashJournalResponse$.outboundSchema = exports.CashJournalsCreateCashJournalResponse$outboundSchema;
 })(CashJournalsCreateCashJournalResponse$ || (exports.CashJournalsCreateCashJournalResponse$ = CashJournalsCreateCashJournalResponse$ = {}));
+function cashJournalsCreateCashJournalResponseToJSON(cashJournalsCreateCashJournalResponse) {
+    return JSON.stringify(exports.CashJournalsCreateCashJournalResponse$outboundSchema.parse(cashJournalsCreateCashJournalResponse));
+}
+function cashJournalsCreateCashJournalResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalsCreateCashJournalResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalsCreateCashJournalResponse' from JSON`);
+}
 //# sourceMappingURL=cashjournalscreatecashjournal.js.map

@@ -9,7 +9,7 @@ import { AccountsEndLargeTrader1Request } from "@apexfintechsolutions/ascend-sdk
 let value: AccountsEndLargeTrader1Request = {
   legalEntityId: "e6716139-da77-46d1-9f15-13599161db0b",
   endLargeTraderRequestCreate: {
-    endReason: EndReason.EventReasonTransfer,
+    endReason: EndReason.EventReasonCorrection,
   },
 };
 ```

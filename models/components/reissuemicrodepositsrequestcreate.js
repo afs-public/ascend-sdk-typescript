@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReissueMicroDepositsRequestCreate$ = exports.ReissueMicroDepositsRequestCreate$outboundSchema = exports.ReissueMicroDepositsRequestCreate$inboundSchema = void 0;
+exports.reissueMicroDepositsRequestCreateToJSON = reissueMicroDepositsRequestCreateToJSON;
+exports.reissueMicroDepositsRequestCreateFromJSON = reissueMicroDepositsRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ReissueMicroDepositsRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -57,4 +60,10 @@ var ReissueMicroDepositsRequestCreate$;
     /** @deprecated use `ReissueMicroDepositsRequestCreate$outboundSchema` instead. */
     ReissueMicroDepositsRequestCreate$.outboundSchema = exports.ReissueMicroDepositsRequestCreate$outboundSchema;
 })(ReissueMicroDepositsRequestCreate$ || (exports.ReissueMicroDepositsRequestCreate$ = ReissueMicroDepositsRequestCreate$ = {}));
+function reissueMicroDepositsRequestCreateToJSON(reissueMicroDepositsRequestCreate) {
+    return JSON.stringify(exports.ReissueMicroDepositsRequestCreate$outboundSchema.parse(reissueMicroDepositsRequestCreate));
+}
+function reissueMicroDepositsRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ReissueMicroDepositsRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ReissueMicroDepositsRequestCreate' from JSON`);
+}
 //# sourceMappingURL=reissuemicrodepositsrequestcreate.js.map

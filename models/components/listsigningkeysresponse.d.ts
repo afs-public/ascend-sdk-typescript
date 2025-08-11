@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A response to a list signing keys method
  */
@@ -8,7 +10,7 @@ export type ListSigningKeysResponse = {
      */
     keys?: Array<{
         [k: string]: any;
-    }> | undefined;
+    } | null> | undefined;
     /**
      * Page token used for pagination; Supplying a page token returns the next page of results
      */
@@ -20,7 +22,7 @@ export declare const ListSigningKeysResponse$inboundSchema: z.ZodType<ListSignin
 export type ListSigningKeysResponse$Outbound = {
     keys?: Array<{
         [k: string]: any;
-    }> | undefined;
+    } | null> | undefined;
     next_page_token?: string | undefined;
 };
 /** @internal */
@@ -37,4 +39,6 @@ export declare namespace ListSigningKeysResponse$ {
     /** @deprecated use `ListSigningKeysResponse$Outbound` instead. */
     type Outbound = ListSigningKeysResponse$Outbound;
 }
+export declare function listSigningKeysResponseToJSON(listSigningKeysResponse: ListSigningKeysResponse): string;
+export declare function listSigningKeysResponseFromJSON(jsonString: string): SafeParseResult<ListSigningKeysResponse, SDKValidationError>;
 //# sourceMappingURL=listsigningkeysresponse.d.ts.map

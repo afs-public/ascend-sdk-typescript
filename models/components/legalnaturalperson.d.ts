@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The legal day, month, and year of birth for a natural person.
  */
@@ -909,6 +911,8 @@ export declare namespace BirthDate$ {
     /** @deprecated use `BirthDate$Outbound` instead. */
     type Outbound = BirthDate$Outbound;
 }
+export declare function birthDateToJSON(birthDate: BirthDate): string;
+export declare function birthDateFromJSON(jsonString: string): SafeParseResult<BirthDate, SDKValidationError>;
 /** @internal */
 export declare const DeathDate$inboundSchema: z.ZodType<DeathDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -931,6 +935,8 @@ export declare namespace DeathDate$ {
     /** @deprecated use `DeathDate$Outbound` instead. */
     type Outbound = DeathDate$Outbound;
 }
+export declare function deathDateToJSON(deathDate: DeathDate): string;
+export declare function deathDateFromJSON(jsonString: string): SafeParseResult<DeathDate, SDKValidationError>;
 /** @internal */
 export declare const EmployerAddress$inboundSchema: z.ZodType<EmployerAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -961,6 +967,8 @@ export declare namespace EmployerAddress$ {
     /** @deprecated use `EmployerAddress$Outbound` instead. */
     type Outbound = EmployerAddress$Outbound;
 }
+export declare function employerAddressToJSON(employerAddress: EmployerAddress): string;
+export declare function employerAddressFromJSON(jsonString: string): SafeParseResult<EmployerAddress, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonEmploymentStatus$inboundSchema: z.ZodType<LegalNaturalPersonEmploymentStatusOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1000,6 +1008,8 @@ export declare namespace Employment$ {
     /** @deprecated use `Employment$Outbound` instead. */
     type Outbound = Employment$Outbound;
 }
+export declare function employmentToJSON(employment: Employment): string;
+export declare function employmentFromJSON(jsonString: string): SafeParseResult<Employment, SDKValidationError>;
 /** @internal */
 export declare const ExpirationDate$inboundSchema: z.ZodType<ExpirationDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1022,6 +1032,8 @@ export declare namespace ExpirationDate$ {
     /** @deprecated use `ExpirationDate$Outbound` instead. */
     type Outbound = ExpirationDate$Outbound;
 }
+export declare function expirationDateToJSON(expirationDate: ExpirationDate): string;
+export declare function expirationDateFromJSON(jsonString: string): SafeParseResult<ExpirationDate, SDKValidationError>;
 /** @internal */
 export declare const IssueDate$inboundSchema: z.ZodType<IssueDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1044,6 +1056,8 @@ export declare namespace IssueDate$ {
     /** @deprecated use `IssueDate$Outbound` instead. */
     type Outbound = IssueDate$Outbound;
 }
+export declare function issueDateToJSON(issueDate: IssueDate): string;
+export declare function issueDateFromJSON(jsonString: string): SafeParseResult<IssueDate, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonType$inboundSchema: z.ZodType<LegalNaturalPersonTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1083,6 +1097,8 @@ export declare namespace ForeignIdentification$ {
     /** @deprecated use `ForeignIdentification$Outbound` instead. */
     type Outbound = ForeignIdentification$Outbound;
 }
+export declare function foreignIdentificationToJSON(foreignIdentification: ForeignIdentification): string;
+export declare function foreignIdentificationFromJSON(jsonString: string): SafeParseResult<ForeignIdentification, SDKValidationError>;
 /** @internal */
 export declare const ExecutionDate$inboundSchema: z.ZodType<ExecutionDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1105,6 +1121,8 @@ export declare namespace ExecutionDate$ {
     /** @deprecated use `ExecutionDate$Outbound` instead. */
     type Outbound = ExecutionDate$Outbound;
 }
+export declare function executionDateToJSON(executionDate: ExecutionDate): string;
+export declare function executionDateFromJSON(jsonString: string): SafeParseResult<ExecutionDate, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonIdentityVerificationResult$inboundSchema: z.ZodType<LegalNaturalPersonIdentityVerificationResult, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1134,6 +1152,8 @@ export declare namespace LegalNaturalPersonIdentityVerificationResult$ {
     /** @deprecated use `LegalNaturalPersonIdentityVerificationResult$Outbound` instead. */
     type Outbound = LegalNaturalPersonIdentityVerificationResult$Outbound;
 }
+export declare function legalNaturalPersonIdentityVerificationResultToJSON(legalNaturalPersonIdentityVerificationResult: LegalNaturalPersonIdentityVerificationResult): string;
+export declare function legalNaturalPersonIdentityVerificationResultFromJSON(jsonString: string): SafeParseResult<LegalNaturalPersonIdentityVerificationResult, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonEffectiveDate$inboundSchema: z.ZodType<LegalNaturalPersonEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1156,6 +1176,8 @@ export declare namespace LegalNaturalPersonEffectiveDate$ {
     /** @deprecated use `LegalNaturalPersonEffectiveDate$Outbound` instead. */
     type Outbound = LegalNaturalPersonEffectiveDate$Outbound;
 }
+export declare function legalNaturalPersonEffectiveDateToJSON(legalNaturalPersonEffectiveDate: LegalNaturalPersonEffectiveDate): string;
+export declare function legalNaturalPersonEffectiveDateFromJSON(jsonString: string): SafeParseResult<LegalNaturalPersonEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonLargeTrader$inboundSchema: z.ZodType<LegalNaturalPersonLargeTrader, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1177,6 +1199,8 @@ export declare namespace LegalNaturalPersonLargeTrader$ {
     /** @deprecated use `LegalNaturalPersonLargeTrader$Outbound` instead. */
     type Outbound = LegalNaturalPersonLargeTrader$Outbound;
 }
+export declare function legalNaturalPersonLargeTraderToJSON(legalNaturalPersonLargeTrader: LegalNaturalPersonLargeTrader): string;
+export declare function legalNaturalPersonLargeTraderFromJSON(jsonString: string): SafeParseResult<LegalNaturalPersonLargeTrader, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonMaritalStatus$inboundSchema: z.ZodType<LegalNaturalPersonMaritalStatusOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1228,6 +1252,8 @@ export declare namespace CustomerReferralSource$ {
     /** @deprecated use `CustomerReferralSource$Outbound` instead. */
     type Outbound = CustomerReferralSource$Outbound;
 }
+export declare function customerReferralSourceToJSON(customerReferralSource: CustomerReferralSource): string;
+export declare function customerReferralSourceFromJSON(jsonString: string): SafeParseResult<CustomerReferralSource, SDKValidationError>;
 /** @internal */
 export declare const NegativeNews$inboundSchema: z.ZodType<NegativeNews, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1249,6 +1275,8 @@ export declare namespace NegativeNews$ {
     /** @deprecated use `NegativeNews$Outbound` instead. */
     type Outbound = NegativeNews$Outbound;
 }
+export declare function negativeNewsToJSON(negativeNews: NegativeNews): string;
+export declare function negativeNewsFromJSON(jsonString: string): SafeParseResult<NegativeNews, SDKValidationError>;
 /** @internal */
 export declare const OtherSourcesOfWealth$inboundSchema: z.ZodType<OtherSourcesOfWealth, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1271,6 +1299,8 @@ export declare namespace OtherSourcesOfWealth$ {
     /** @deprecated use `OtherSourcesOfWealth$Outbound` instead. */
     type Outbound = OtherSourcesOfWealth$Outbound;
 }
+export declare function otherSourcesOfWealthToJSON(otherSourcesOfWealth: OtherSourcesOfWealth): string;
+export declare function otherSourcesOfWealthFromJSON(jsonString: string): SafeParseResult<OtherSourcesOfWealth, SDKValidationError>;
 /** @internal */
 export declare const NaturalPersonFdd$inboundSchema: z.ZodType<NaturalPersonFdd, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1295,6 +1325,8 @@ export declare namespace NaturalPersonFdd$ {
     /** @deprecated use `NaturalPersonFdd$Outbound` instead. */
     type Outbound = NaturalPersonFdd$Outbound;
 }
+export declare function naturalPersonFddToJSON(naturalPersonFdd: NaturalPersonFdd): string;
+export declare function naturalPersonFddFromJSON(jsonString: string): SafeParseResult<NaturalPersonFdd, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonResidencyStatus$inboundSchema: z.ZodType<LegalNaturalPersonResidencyStatusOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1329,6 +1361,8 @@ export declare namespace NonCitizenResidency$ {
     /** @deprecated use `NonCitizenResidency$Outbound` instead. */
     type Outbound = NonCitizenResidency$Outbound;
 }
+export declare function nonCitizenResidencyToJSON(nonCitizenResidency: NonCitizenResidency): string;
+export declare function nonCitizenResidencyFromJSON(jsonString: string): SafeParseResult<NonCitizenResidency, SDKValidationError>;
 /** @internal */
 export declare const PersonalAddress$inboundSchema: z.ZodType<PersonalAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1359,6 +1393,8 @@ export declare namespace PersonalAddress$ {
     /** @deprecated use `PersonalAddress$Outbound` instead. */
     type Outbound = PersonalAddress$Outbound;
 }
+export declare function personalAddressToJSON(personalAddress: PersonalAddress): string;
+export declare function personalAddressFromJSON(jsonString: string): SafeParseResult<PersonalAddress, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonTaxIdType$inboundSchema: z.ZodType<LegalNaturalPersonTaxIdTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1395,6 +1431,8 @@ export declare namespace CNoticeDate$ {
     /** @deprecated use `CNoticeDate$Outbound` instead. */
     type Outbound = CNoticeDate$Outbound;
 }
+export declare function cNoticeDateToJSON(cNoticeDate: CNoticeDate): string;
+export declare function cNoticeDateFromJSON(jsonString: string): SafeParseResult<CNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonFederalTaxClassification$inboundSchema: z.ZodType<LegalNaturalPersonFederalTaxClassificationOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1431,6 +1469,8 @@ export declare namespace FirstBNoticeDate$ {
     /** @deprecated use `FirstBNoticeDate$Outbound` instead. */
     type Outbound = FirstBNoticeDate$Outbound;
 }
+export declare function firstBNoticeDateToJSON(firstBNoticeDate: FirstBNoticeDate): string;
+export declare function firstBNoticeDateFromJSON(jsonString: string): SafeParseResult<FirstBNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPersonIrsFormType$inboundSchema: z.ZodType<LegalNaturalPersonIrsFormTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1481,6 +1521,8 @@ export declare namespace TaxCertificationDate$ {
     /** @deprecated use `TaxCertificationDate$Outbound` instead. */
     type Outbound = TaxCertificationDate$Outbound;
 }
+export declare function taxCertificationDateToJSON(taxCertificationDate: TaxCertificationDate): string;
+export declare function taxCertificationDateFromJSON(jsonString: string): SafeParseResult<TaxCertificationDate, SDKValidationError>;
 /** @internal */
 export declare const TaxpayerCertificationState$inboundSchema: z.ZodType<TaxpayerCertificationStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1552,6 +1594,8 @@ export declare namespace TaxProfile$ {
     /** @deprecated use `TaxProfile$Outbound` instead. */
     type Outbound = TaxProfile$Outbound;
 }
+export declare function taxProfileToJSON(taxProfile: TaxProfile): string;
+export declare function taxProfileFromJSON(jsonString: string): SafeParseResult<TaxProfile, SDKValidationError>;
 /** @internal */
 export declare const LegalNaturalPerson$inboundSchema: z.ZodType<LegalNaturalPerson, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1606,4 +1650,6 @@ export declare namespace LegalNaturalPerson$ {
     /** @deprecated use `LegalNaturalPerson$Outbound` instead. */
     type Outbound = LegalNaturalPerson$Outbound;
 }
+export declare function legalNaturalPersonToJSON(legalNaturalPerson: LegalNaturalPerson): string;
+export declare function legalNaturalPersonFromJSON(jsonString: string): SafeParseResult<LegalNaturalPerson, SDKValidationError>;
 //# sourceMappingURL=legalnaturalperson.d.ts.map

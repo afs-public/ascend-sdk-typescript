@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsAffirmAgreementsResponse$ = exports.AccountsAffirmAgreementsResponse$outboundSchema = exports.AccountsAffirmAgreementsResponse$inboundSchema = exports.AccountsAffirmAgreementsRequest$ = exports.AccountsAffirmAgreementsRequest$outboundSchema = exports.AccountsAffirmAgreementsRequest$inboundSchema = void 0;
+exports.accountsAffirmAgreementsRequestToJSON = accountsAffirmAgreementsRequestToJSON;
+exports.accountsAffirmAgreementsRequestFromJSON = accountsAffirmAgreementsRequestFromJSON;
+exports.accountsAffirmAgreementsResponseToJSON = accountsAffirmAgreementsResponseToJSON;
+exports.accountsAffirmAgreementsResponseFromJSON = accountsAffirmAgreementsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsAffirmAgreementsRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsAffirmAgreementsRequest$;
     /** @deprecated use `AccountsAffirmAgreementsRequest$outboundSchema` instead. */
     AccountsAffirmAgreementsRequest$.outboundSchema = exports.AccountsAffirmAgreementsRequest$outboundSchema;
 })(AccountsAffirmAgreementsRequest$ || (exports.AccountsAffirmAgreementsRequest$ = AccountsAffirmAgreementsRequest$ = {}));
+function accountsAffirmAgreementsRequestToJSON(accountsAffirmAgreementsRequest) {
+    return JSON.stringify(exports.AccountsAffirmAgreementsRequest$outboundSchema.parse(accountsAffirmAgreementsRequest));
+}
+function accountsAffirmAgreementsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAffirmAgreementsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAffirmAgreementsRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsAffirmAgreementsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +119,10 @@ var AccountsAffirmAgreementsResponse$;
     /** @deprecated use `AccountsAffirmAgreementsResponse$outboundSchema` instead. */
     AccountsAffirmAgreementsResponse$.outboundSchema = exports.AccountsAffirmAgreementsResponse$outboundSchema;
 })(AccountsAffirmAgreementsResponse$ || (exports.AccountsAffirmAgreementsResponse$ = AccountsAffirmAgreementsResponse$ = {}));
+function accountsAffirmAgreementsResponseToJSON(accountsAffirmAgreementsResponse) {
+    return JSON.stringify(exports.AccountsAffirmAgreementsResponse$outboundSchema.parse(accountsAffirmAgreementsResponse));
+}
+function accountsAffirmAgreementsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAffirmAgreementsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAffirmAgreementsResponse' from JSON`);
+}
 //# sourceMappingURL=accountsaffirmagreements.js.map

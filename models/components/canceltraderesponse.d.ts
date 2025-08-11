@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
 import { Execution, Execution$Outbound } from "./execution.js";
@@ -406,6 +408,8 @@ export declare namespace CancelTradeResponseLocalMarketTradeDate$ {
     /** @deprecated use `CancelTradeResponseLocalMarketTradeDate$Outbound` instead. */
     type Outbound = CancelTradeResponseLocalMarketTradeDate$Outbound;
 }
+export declare function cancelTradeResponseLocalMarketTradeDateToJSON(cancelTradeResponseLocalMarketTradeDate: CancelTradeResponseLocalMarketTradeDate): string;
+export declare function cancelTradeResponseLocalMarketTradeDateFromJSON(jsonString: string): SafeParseResult<CancelTradeResponseLocalMarketTradeDate, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeResponseRouteType$inboundSchema: z.ZodType<CancelTradeResponseRouteTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -442,6 +446,8 @@ export declare namespace CancelTradeResponseSettlementDate$ {
     /** @deprecated use `CancelTradeResponseSettlementDate$Outbound` instead. */
     type Outbound = CancelTradeResponseSettlementDate$Outbound;
 }
+export declare function cancelTradeResponseSettlementDateToJSON(cancelTradeResponseSettlementDate: CancelTradeResponseSettlementDate): string;
+export declare function cancelTradeResponseSettlementDateFromJSON(jsonString: string): SafeParseResult<CancelTradeResponseSettlementDate, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeResponseSide$inboundSchema: z.ZodType<CancelTradeResponseSideOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -559,6 +565,8 @@ export declare namespace CancelTradeResponseTrade$ {
     /** @deprecated use `CancelTradeResponseTrade$Outbound` instead. */
     type Outbound = CancelTradeResponseTrade$Outbound;
 }
+export declare function cancelTradeResponseTradeToJSON(cancelTradeResponseTrade: CancelTradeResponseTrade): string;
+export declare function cancelTradeResponseTradeFromJSON(jsonString: string): SafeParseResult<CancelTradeResponseTrade, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeResponse$inboundSchema: z.ZodType<CancelTradeResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -579,4 +587,6 @@ export declare namespace CancelTradeResponse$ {
     /** @deprecated use `CancelTradeResponse$Outbound` instead. */
     type Outbound = CancelTradeResponse$Outbound;
 }
+export declare function cancelTradeResponseToJSON(cancelTradeResponse: CancelTradeResponse): string;
+export declare function cancelTradeResponseFromJSON(jsonString: string): SafeParseResult<CancelTradeResponse, SDKValidationError>;
 //# sourceMappingURL=canceltraderesponse.d.ts.map

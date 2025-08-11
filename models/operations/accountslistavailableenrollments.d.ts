@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsListAvailableEnrollmentsRequest = {
     /**
      * The account id.
@@ -59,6 +61,8 @@ export declare namespace AccountsListAvailableEnrollmentsRequest$ {
     /** @deprecated use `AccountsListAvailableEnrollmentsRequest$Outbound` instead. */
     type Outbound = AccountsListAvailableEnrollmentsRequest$Outbound;
 }
+export declare function accountsListAvailableEnrollmentsRequestToJSON(accountsListAvailableEnrollmentsRequest: AccountsListAvailableEnrollmentsRequest): string;
+export declare function accountsListAvailableEnrollmentsRequestFromJSON(jsonString: string): SafeParseResult<AccountsListAvailableEnrollmentsRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsListAvailableEnrollmentsResponse$inboundSchema: z.ZodType<AccountsListAvailableEnrollmentsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -81,4 +85,6 @@ export declare namespace AccountsListAvailableEnrollmentsResponse$ {
     /** @deprecated use `AccountsListAvailableEnrollmentsResponse$Outbound` instead. */
     type Outbound = AccountsListAvailableEnrollmentsResponse$Outbound;
 }
+export declare function accountsListAvailableEnrollmentsResponseToJSON(accountsListAvailableEnrollmentsResponse: AccountsListAvailableEnrollmentsResponse): string;
+export declare function accountsListAvailableEnrollmentsResponseFromJSON(jsonString: string): SafeParseResult<AccountsListAvailableEnrollmentsResponse, SDKValidationError>;
 //# sourceMappingURL=accountslistavailableenrollments.d.ts.map

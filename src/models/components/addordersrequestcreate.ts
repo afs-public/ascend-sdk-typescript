@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BasketOrderCreate,
   BasketOrderCreate$inboundSchema,
@@ -70,4 +73,22 @@ export namespace AddOrdersRequestCreate$ {
   export const outboundSchema = AddOrdersRequestCreate$outboundSchema;
   /** @deprecated use `AddOrdersRequestCreate$Outbound` instead. */
   export type Outbound = AddOrdersRequestCreate$Outbound;
+}
+
+export function addOrdersRequestCreateToJSON(
+  addOrdersRequestCreate: AddOrdersRequestCreate,
+): string {
+  return JSON.stringify(
+    AddOrdersRequestCreate$outboundSchema.parse(addOrdersRequestCreate),
+  );
+}
+
+export function addOrdersRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AddOrdersRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddOrdersRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddOrdersRequestCreate' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerIdentificationResult$ = exports.CustomerIdentificationResult$outboundSchema = exports.CustomerIdentificationResult$inboundSchema = exports.SelfieVerified$ = exports.SelfieVerified$outboundSchema = exports.SelfieVerified$inboundSchema = exports.PhoneNumberVerified$ = exports.PhoneNumberVerified$outboundSchema = exports.PhoneNumberVerified$inboundSchema = exports.NameVerified$ = exports.NameVerified$outboundSchema = exports.NameVerified$inboundSchema = exports.LegalAddressVerified$ = exports.LegalAddressVerified$outboundSchema = exports.LegalAddressVerified$inboundSchema = exports.IdentityVerificationTypes$ = exports.IdentityVerificationTypes$outboundSchema = exports.IdentityVerificationTypes$inboundSchema = exports.IdentificationNumberVerified$ = exports.IdentificationNumberVerified$outboundSchema = exports.IdentificationNumberVerified$inboundSchema = exports.EmailVerified$ = exports.EmailVerified$outboundSchema = exports.EmailVerified$inboundSchema = exports.DocumentExpiryStatus$ = exports.DocumentExpiryStatus$outboundSchema = exports.DocumentExpiryStatus$inboundSchema = exports.DocumentAuthenticityVerified$ = exports.DocumentAuthenticityVerified$outboundSchema = exports.DocumentAuthenticityVerified$inboundSchema = exports.BirthDateVerified$ = exports.BirthDateVerified$outboundSchema = exports.BirthDateVerified$inboundSchema = exports.SelfieVerified = exports.PhoneNumberVerified = exports.NameVerified = exports.LegalAddressVerified = exports.IdentityVerificationTypes = exports.IdentificationNumberVerified = exports.EmailVerified = exports.DocumentExpiryStatus = exports.DocumentAuthenticityVerified = exports.BirthDateVerified = void 0;
+exports.customerIdentificationResultToJSON = customerIdentificationResultToJSON;
+exports.customerIdentificationResultFromJSON = customerIdentificationResultFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Whether or not the customer birth date was verified
@@ -375,6 +378,7 @@ exports.CustomerIdentificationResult$inboundSchema = z.object({
     document_verification_ids: z.array(z.string()).optional(),
     documentary_session_uri: z.string().optional(),
     email_verified: exports.EmailVerified$inboundSchema.optional(),
+    expired: z.boolean().optional(),
     external_vendor: z.string().optional(),
     external_vendor_id: z.string().optional(),
     identification_number_verified: exports.IdentificationNumberVerified$inboundSchema
@@ -415,6 +419,7 @@ exports.CustomerIdentificationResult$outboundSchema = z.object({
     documentVerificationIds: z.array(z.string()).optional(),
     documentarySessionUri: z.string().optional(),
     emailVerified: exports.EmailVerified$outboundSchema.optional(),
+    expired: z.boolean().optional(),
     externalVendor: z.string().optional(),
     externalVendorId: z.string().optional(),
     identificationNumberVerified: exports.IdentificationNumberVerified$outboundSchema
@@ -456,4 +461,10 @@ var CustomerIdentificationResult$;
     /** @deprecated use `CustomerIdentificationResult$outboundSchema` instead. */
     CustomerIdentificationResult$.outboundSchema = exports.CustomerIdentificationResult$outboundSchema;
 })(CustomerIdentificationResult$ || (exports.CustomerIdentificationResult$ = CustomerIdentificationResult$ = {}));
+function customerIdentificationResultToJSON(customerIdentificationResult) {
+    return JSON.stringify(exports.CustomerIdentificationResult$outboundSchema.parse(customerIdentificationResult));
+}
+function customerIdentificationResultFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerIdentificationResult$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerIdentificationResult' from JSON`);
+}
 //# sourceMappingURL=customeridentificationresult.js.map

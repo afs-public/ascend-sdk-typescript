@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsListAvailableRestrictionsRequest = {
     /**
      * The account id.
@@ -37,6 +39,8 @@ export declare namespace AccountsListAvailableRestrictionsRequest$ {
     /** @deprecated use `AccountsListAvailableRestrictionsRequest$Outbound` instead. */
     type Outbound = AccountsListAvailableRestrictionsRequest$Outbound;
 }
+export declare function accountsListAvailableRestrictionsRequestToJSON(accountsListAvailableRestrictionsRequest: AccountsListAvailableRestrictionsRequest): string;
+export declare function accountsListAvailableRestrictionsRequestFromJSON(jsonString: string): SafeParseResult<AccountsListAvailableRestrictionsRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsListAvailableRestrictionsResponse$inboundSchema: z.ZodType<AccountsListAvailableRestrictionsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace AccountsListAvailableRestrictionsResponse$ {
     /** @deprecated use `AccountsListAvailableRestrictionsResponse$Outbound` instead. */
     type Outbound = AccountsListAvailableRestrictionsResponse$Outbound;
 }
+export declare function accountsListAvailableRestrictionsResponseToJSON(accountsListAvailableRestrictionsResponse: AccountsListAvailableRestrictionsResponse): string;
+export declare function accountsListAvailableRestrictionsResponseFromJSON(jsonString: string): SafeParseResult<AccountsListAvailableRestrictionsResponse, SDKValidationError>;
 //# sourceMappingURL=accountslistavailablerestrictions.d.ts.map

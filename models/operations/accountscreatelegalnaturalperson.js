@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsCreateLegalNaturalPersonResponse$ = exports.AccountsCreateLegalNaturalPersonResponse$outboundSchema = exports.AccountsCreateLegalNaturalPersonResponse$inboundSchema = void 0;
+exports.accountsCreateLegalNaturalPersonResponseToJSON = accountsCreateLegalNaturalPersonResponseToJSON;
+exports.accountsCreateLegalNaturalPersonResponseFromJSON = accountsCreateLegalNaturalPersonResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsCreateLegalNaturalPersonResponse$inboundSchema = z.object({
@@ -75,4 +78,10 @@ var AccountsCreateLegalNaturalPersonResponse$;
     /** @deprecated use `AccountsCreateLegalNaturalPersonResponse$outboundSchema` instead. */
     AccountsCreateLegalNaturalPersonResponse$.outboundSchema = exports.AccountsCreateLegalNaturalPersonResponse$outboundSchema;
 })(AccountsCreateLegalNaturalPersonResponse$ || (exports.AccountsCreateLegalNaturalPersonResponse$ = AccountsCreateLegalNaturalPersonResponse$ = {}));
+function accountsCreateLegalNaturalPersonResponseToJSON(accountsCreateLegalNaturalPersonResponse) {
+    return JSON.stringify(exports.AccountsCreateLegalNaturalPersonResponse$outboundSchema.parse(accountsCreateLegalNaturalPersonResponse));
+}
+function accountsCreateLegalNaturalPersonResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsCreateLegalNaturalPersonResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsCreateLegalNaturalPersonResponse' from JSON`);
+}
 //# sourceMappingURL=accountscreatelegalnaturalperson.js.map

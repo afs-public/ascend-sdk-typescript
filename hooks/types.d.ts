@@ -1,8 +1,15 @@
+import { SDKOptions } from "../lib/config.js";
 import { HTTPClient, RequestInput } from "../lib/http.js";
+import { RetryConfig } from "../lib/retries.js";
+import { SecurityState } from "../lib/security.js";
 export type HookContext = {
+    baseURL: string | URL;
     operationID: string;
-    oAuth2Scopes?: string[];
+    oAuth2Scopes: string[] | null;
     securitySource?: any | (() => Promise<any>);
+    retryConfig: RetryConfig;
+    resolvedSecurity: SecurityState | null;
+    options: SDKOptions;
 };
 export type Awaitable<T> = T | Promise<T>;
 export type SDKInitOptions = {
@@ -69,4 +76,5 @@ export interface Hooks {
     /** Registers a hook to be used by the SDK for the after error event. */
     registerAfterErrorHook(hook: AfterErrorHook): void;
 }
+export type Hook = SDKInitHook | BeforeCreateRequestHook | BeforeRequestHook | AfterSuccessHook | AfterErrorHook;
 //# sourceMappingURL=types.d.ts.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The initial amount of money placed into the account by the entity upon or after the account's establishment.
@@ -40,4 +42,6 @@ export declare namespace DepositedFundsCreate$ {
     /** @deprecated use `DepositedFundsCreate$Outbound` instead. */
     type Outbound = DepositedFundsCreate$Outbound;
 }
+export declare function depositedFundsCreateToJSON(depositedFundsCreate: DepositedFundsCreate): string;
+export declare function depositedFundsCreateFromJSON(jsonString: string): SafeParseResult<DepositedFundsCreate, SDKValidationError>;
 //# sourceMappingURL=depositedfundscreate.d.ts.map

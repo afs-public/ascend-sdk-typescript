@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContributionConstraintsContributionTypeInfo,
   ContributionConstraintsContributionTypeInfo$inboundSchema,
@@ -126,6 +129,33 @@ export namespace CashJournalConstraintsContributionConstraints$ {
   export type Outbound = CashJournalConstraintsContributionConstraints$Outbound;
 }
 
+export function cashJournalConstraintsContributionConstraintsToJSON(
+  cashJournalConstraintsContributionConstraints:
+    CashJournalConstraintsContributionConstraints,
+): string {
+  return JSON.stringify(
+    CashJournalConstraintsContributionConstraints$outboundSchema.parse(
+      cashJournalConstraintsContributionConstraints,
+    ),
+  );
+}
+
+export function cashJournalConstraintsContributionConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashJournalConstraintsContributionConstraints,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalConstraintsContributionConstraints$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashJournalConstraintsContributionConstraints' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalConstraintsDistributionConstraints$inboundSchema:
   z.ZodType<
@@ -183,6 +213,33 @@ export namespace CashJournalConstraintsDistributionConstraints$ {
     CashJournalConstraintsDistributionConstraints$outboundSchema;
   /** @deprecated use `CashJournalConstraintsDistributionConstraints$Outbound` instead. */
   export type Outbound = CashJournalConstraintsDistributionConstraints$Outbound;
+}
+
+export function cashJournalConstraintsDistributionConstraintsToJSON(
+  cashJournalConstraintsDistributionConstraints:
+    CashJournalConstraintsDistributionConstraints,
+): string {
+  return JSON.stringify(
+    CashJournalConstraintsDistributionConstraints$outboundSchema.parse(
+      cashJournalConstraintsDistributionConstraints,
+    ),
+  );
+}
+
+export function cashJournalConstraintsDistributionConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashJournalConstraintsDistributionConstraints,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalConstraintsDistributionConstraints$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashJournalConstraintsDistributionConstraints' from JSON`,
+  );
 }
 
 /** @internal */
@@ -246,4 +303,22 @@ export namespace CashJournalConstraints$ {
   export const outboundSchema = CashJournalConstraints$outboundSchema;
   /** @deprecated use `CashJournalConstraints$Outbound` instead. */
   export type Outbound = CashJournalConstraints$Outbound;
+}
+
+export function cashJournalConstraintsToJSON(
+  cashJournalConstraints: CashJournalConstraints,
+): string {
+  return JSON.stringify(
+    CashJournalConstraints$outboundSchema.parse(cashJournalConstraints),
+  );
+}
+
+export function cashJournalConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalConstraints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalConstraints' from JSON`,
+  );
 }

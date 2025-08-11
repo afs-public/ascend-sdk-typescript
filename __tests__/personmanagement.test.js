@@ -5,38 +5,69 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vitest_1 = require("vitest");
 const index_js_1 = require("../index.js");
-(0, vitest_1.test)("Person Management Accounts List Legal Natural Persons List Legal Natural Persons1", async () => {
-    var _a, _b, _c, _d;
+const index_js_2 = require("../models/operations/index.js");
+const testclient_js_1 = require("./testclient.js");
+(0, vitest_1.test)("Person Management Accounts List Legal Natural Persons", async () => {
+    const testHttpClient = (0, testclient_js_1.createTestHTTPClient)("Accounts_ListLegalNaturalPersons");
     const apexascend = new index_js_1.Apexascend({
-        serverURL: "https://uat.apexapis.com",
+        serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
         security: {
-            apiKey: (_a = process.env["API_KEY"]) !== null && _a !== void 0 ? _a : "",
+            apiKey: process.env["API_KEY"] ?? "value",
             serviceAccountCreds: {
-                privateKey: (_b = process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"]) !== null && _b !== void 0 ? _b : "",
-                name: (_c = process.env["SERVICE_ACCOUNT_CREDS_NAME"]) !== null && _c !== void 0 ? _c : "",
-                organization: (_d = process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]) !== null && _d !== void 0 ? _d : "",
-                type: "serviceAccount",
+                privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+                name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+                organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+                    ?? "value",
+                type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
             },
         },
+        httpClient: testHttpClient,
     });
-    const result = await apexascend.personManagement.listLegalNaturalPersons();
+    const result = await apexascend.personManagement.listLegalNaturalPersons(25, "", "");
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
-(0, vitest_1.test)("Person Management Accounts List Legal Entities List Legal Entities1", async () => {
-    var _a, _b, _c, _d;
+(0, vitest_1.test)("Person Management Accounts List Legal Entities", async () => {
+    const testHttpClient = (0, testclient_js_1.createTestHTTPClient)("Accounts_ListLegalEntities");
     const apexascend = new index_js_1.Apexascend({
-        serverURL: "https://uat.apexapis.com",
+        serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
         security: {
-            apiKey: (_a = process.env["API_KEY"]) !== null && _a !== void 0 ? _a : "",
+            apiKey: process.env["API_KEY"] ?? "value",
             serviceAccountCreds: {
-                privateKey: (_b = process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"]) !== null && _b !== void 0 ? _b : "",
-                name: (_c = process.env["SERVICE_ACCOUNT_CREDS_NAME"]) !== null && _c !== void 0 ? _c : "",
-                organization: (_d = process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]) !== null && _d !== void 0 ? _d : "",
-                type: "serviceAccount",
+                privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+                name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+                organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+                    ?? "value",
+                type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
             },
         },
+        httpClient: testHttpClient,
     });
-    const result = await apexascend.personManagement.listLegalEntities();
+    const result = await apexascend.personManagement.listLegalEntities(25, "", "", "");
+    (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
+});
+(0, vitest_1.test)("Person Management Accounts List Accounts", async () => {
+    const testHttpClient = (0, testclient_js_1.createTestHTTPClient)("Accounts_ListAccounts");
+    const apexascend = new index_js_1.Apexascend({
+        serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
+        security: {
+            apiKey: process.env["API_KEY"] ?? "value",
+            serviceAccountCreds: {
+                privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+                name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+                organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+                    ?? "value",
+                type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
+            },
+        },
+        httpClient: testHttpClient,
+    });
+    const result = await apexascend.accountManagement.listAccounts({
+        pageSize: 25,
+        pageToken: "",
+        orderBy: "",
+        filter: "",
+        view: index_js_2.View.Basic,
+    });
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 //# sourceMappingURL=personmanagement.test.js.map

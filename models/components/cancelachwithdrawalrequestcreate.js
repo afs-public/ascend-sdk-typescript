@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelAchWithdrawalRequestCreate$ = exports.CancelAchWithdrawalRequestCreate$outboundSchema = exports.CancelAchWithdrawalRequestCreate$inboundSchema = void 0;
+exports.cancelAchWithdrawalRequestCreateToJSON = cancelAchWithdrawalRequestCreateToJSON;
+exports.cancelAchWithdrawalRequestCreateFromJSON = cancelAchWithdrawalRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelAchWithdrawalRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -59,4 +62,10 @@ var CancelAchWithdrawalRequestCreate$;
     /** @deprecated use `CancelAchWithdrawalRequestCreate$outboundSchema` instead. */
     CancelAchWithdrawalRequestCreate$.outboundSchema = exports.CancelAchWithdrawalRequestCreate$outboundSchema;
 })(CancelAchWithdrawalRequestCreate$ || (exports.CancelAchWithdrawalRequestCreate$ = CancelAchWithdrawalRequestCreate$ = {}));
+function cancelAchWithdrawalRequestCreateToJSON(cancelAchWithdrawalRequestCreate) {
+    return JSON.stringify(exports.CancelAchWithdrawalRequestCreate$outboundSchema.parse(cancelAchWithdrawalRequestCreate));
+}
+function cancelAchWithdrawalRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelAchWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelAchWithdrawalRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelachwithdrawalrequestcreate.js.map

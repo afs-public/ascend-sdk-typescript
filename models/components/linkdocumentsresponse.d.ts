@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Custom response - returns identity verification documentIds added to investigation request
  */
@@ -33,4 +35,6 @@ export declare namespace LinkDocumentsResponse$ {
     /** @deprecated use `LinkDocumentsResponse$Outbound` instead. */
     type Outbound = LinkDocumentsResponse$Outbound;
 }
+export declare function linkDocumentsResponseToJSON(linkDocumentsResponse: LinkDocumentsResponse): string;
+export declare function linkDocumentsResponseFromJSON(jsonString: string): SafeParseResult<LinkDocumentsResponse, SDKValidationError>;
 //# sourceMappingURL=linkdocumentsresponse.d.ts.map

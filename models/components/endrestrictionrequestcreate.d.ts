@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The request for ending a Restriction on an Account.
  */
@@ -28,4 +30,6 @@ export declare namespace EndRestrictionRequestCreate$ {
     /** @deprecated use `EndRestrictionRequestCreate$Outbound` instead. */
     type Outbound = EndRestrictionRequestCreate$Outbound;
 }
+export declare function endRestrictionRequestCreateToJSON(endRestrictionRequestCreate: EndRestrictionRequestCreate): string;
+export declare function endRestrictionRequestCreateFromJSON(jsonString: string): SafeParseResult<EndRestrictionRequestCreate, SDKValidationError>;
 //# sourceMappingURL=endrestrictionrequestcreate.d.ts.map

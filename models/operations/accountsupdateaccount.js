@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsUpdateAccountResponse$ = exports.AccountsUpdateAccountResponse$outboundSchema = exports.AccountsUpdateAccountResponse$inboundSchema = exports.AccountsUpdateAccountRequest$ = exports.AccountsUpdateAccountRequest$outboundSchema = exports.AccountsUpdateAccountRequest$inboundSchema = void 0;
+exports.accountsUpdateAccountRequestToJSON = accountsUpdateAccountRequestToJSON;
+exports.accountsUpdateAccountRequestFromJSON = accountsUpdateAccountRequestFromJSON;
+exports.accountsUpdateAccountResponseToJSON = accountsUpdateAccountResponseToJSON;
+exports.accountsUpdateAccountResponseFromJSON = accountsUpdateAccountResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsUpdateAccountRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountsUpdateAccountRequest$;
     /** @deprecated use `AccountsUpdateAccountRequest$outboundSchema` instead. */
     AccountsUpdateAccountRequest$.outboundSchema = exports.AccountsUpdateAccountRequest$outboundSchema;
 })(AccountsUpdateAccountRequest$ || (exports.AccountsUpdateAccountRequest$ = AccountsUpdateAccountRequest$ = {}));
+function accountsUpdateAccountRequestToJSON(accountsUpdateAccountRequest) {
+    return JSON.stringify(exports.AccountsUpdateAccountRequest$outboundSchema.parse(accountsUpdateAccountRequest));
+}
+function accountsUpdateAccountRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateAccountRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateAccountRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsUpdateAccountResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var AccountsUpdateAccountResponse$;
     /** @deprecated use `AccountsUpdateAccountResponse$outboundSchema` instead. */
     AccountsUpdateAccountResponse$.outboundSchema = exports.AccountsUpdateAccountResponse$outboundSchema;
 })(AccountsUpdateAccountResponse$ || (exports.AccountsUpdateAccountResponse$ = AccountsUpdateAccountResponse$ = {}));
+function accountsUpdateAccountResponseToJSON(accountsUpdateAccountResponse) {
+    return JSON.stringify(exports.AccountsUpdateAccountResponse$outboundSchema.parse(accountsUpdateAccountResponse));
+}
+function accountsUpdateAccountResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateAccountResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateAccountResponse' from JSON`);
+}
 //# sourceMappingURL=accountsupdateaccount.js.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetirementConstraintsListContributionSummariesRequest = {
   /**
@@ -94,6 +97,33 @@ export namespace RetirementConstraintsListContributionSummariesRequest$ {
     RetirementConstraintsListContributionSummariesRequest$Outbound;
 }
 
+export function retirementConstraintsListContributionSummariesRequestToJSON(
+  retirementConstraintsListContributionSummariesRequest:
+    RetirementConstraintsListContributionSummariesRequest,
+): string {
+  return JSON.stringify(
+    RetirementConstraintsListContributionSummariesRequest$outboundSchema.parse(
+      retirementConstraintsListContributionSummariesRequest,
+    ),
+  );
+}
+
+export function retirementConstraintsListContributionSummariesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetirementConstraintsListContributionSummariesRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetirementConstraintsListContributionSummariesRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetirementConstraintsListContributionSummariesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const RetirementConstraintsListContributionSummariesResponse$inboundSchema:
   z.ZodType<
@@ -155,4 +185,30 @@ export namespace RetirementConstraintsListContributionSummariesResponse$ {
   /** @deprecated use `RetirementConstraintsListContributionSummariesResponse$Outbound` instead. */
   export type Outbound =
     RetirementConstraintsListContributionSummariesResponse$Outbound;
+}
+
+export function retirementConstraintsListContributionSummariesResponseToJSON(
+  retirementConstraintsListContributionSummariesResponse:
+    RetirementConstraintsListContributionSummariesResponse,
+): string {
+  return JSON.stringify(
+    RetirementConstraintsListContributionSummariesResponse$outboundSchema.parse(
+      retirementConstraintsListContributionSummariesResponse,
+    ),
+  );
+}
+
+export function retirementConstraintsListContributionSummariesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetirementConstraintsListContributionSummariesResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetirementConstraintsListContributionSummariesResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RetirementConstraintsListContributionSummariesResponse' from JSON`,
+  );
 }

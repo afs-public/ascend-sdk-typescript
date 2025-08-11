@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchWithdrawalsForceApproveAchWithdrawalRequest = {
   /**
@@ -95,6 +98,33 @@ export namespace AchWithdrawalsForceApproveAchWithdrawalRequest$ {
     AchWithdrawalsForceApproveAchWithdrawalRequest$Outbound;
 }
 
+export function achWithdrawalsForceApproveAchWithdrawalRequestToJSON(
+  achWithdrawalsForceApproveAchWithdrawalRequest:
+    AchWithdrawalsForceApproveAchWithdrawalRequest,
+): string {
+  return JSON.stringify(
+    AchWithdrawalsForceApproveAchWithdrawalRequest$outboundSchema.parse(
+      achWithdrawalsForceApproveAchWithdrawalRequest,
+    ),
+  );
+}
+
+export function achWithdrawalsForceApproveAchWithdrawalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalsForceApproveAchWithdrawalRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalsForceApproveAchWithdrawalRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalsForceApproveAchWithdrawalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalsForceApproveAchWithdrawalResponse$inboundSchema:
   z.ZodType<
@@ -152,4 +182,31 @@ export namespace AchWithdrawalsForceApproveAchWithdrawalResponse$ {
   /** @deprecated use `AchWithdrawalsForceApproveAchWithdrawalResponse$Outbound` instead. */
   export type Outbound =
     AchWithdrawalsForceApproveAchWithdrawalResponse$Outbound;
+}
+
+export function achWithdrawalsForceApproveAchWithdrawalResponseToJSON(
+  achWithdrawalsForceApproveAchWithdrawalResponse:
+    AchWithdrawalsForceApproveAchWithdrawalResponse,
+): string {
+  return JSON.stringify(
+    AchWithdrawalsForceApproveAchWithdrawalResponse$outboundSchema.parse(
+      achWithdrawalsForceApproveAchWithdrawalResponse,
+    ),
+  );
+}
+
+export function achWithdrawalsForceApproveAchWithdrawalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalsForceApproveAchWithdrawalResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalsForceApproveAchWithdrawalResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalsForceApproveAchWithdrawalResponse' from JSON`,
+  );
 }

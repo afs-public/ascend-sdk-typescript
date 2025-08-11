@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DistributionConstraintsDistributionTypeInfo, DistributionConstraintsDistributionTypeInfo$Outbound } from "./distributionconstraintsdistributiontypeinfo.js";
 /**
  * Retirement distribution constraints when withdrawing money from an Apex account
@@ -34,4 +36,6 @@ export declare namespace DistributionConstraints$ {
     /** @deprecated use `DistributionConstraints$Outbound` instead. */
     type Outbound = DistributionConstraints$Outbound;
 }
+export declare function distributionConstraintsToJSON(distributionConstraints: DistributionConstraints): string;
+export declare function distributionConstraintsFromJSON(jsonString: string): SafeParseResult<DistributionConstraints, SDKValidationError>;
 //# sourceMappingURL=distributionconstraints.d.ts.map

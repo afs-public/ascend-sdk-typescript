@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The ICT program for which to locate the report.
  */
@@ -87,6 +89,8 @@ export declare namespace IctReconReportsLocateIctReportRequest$ {
     /** @deprecated use `IctReconReportsLocateIctReportRequest$Outbound` instead. */
     type Outbound = IctReconReportsLocateIctReportRequest$Outbound;
 }
+export declare function ictReconReportsLocateIctReportRequestToJSON(ictReconReportsLocateIctReportRequest: IctReconReportsLocateIctReportRequest): string;
+export declare function ictReconReportsLocateIctReportRequestFromJSON(jsonString: string): SafeParseResult<IctReconReportsLocateIctReportRequest, SDKValidationError>;
 /** @internal */
 export declare const IctReconReportsLocateIctReportResponse$inboundSchema: z.ZodType<IctReconReportsLocateIctReportResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -109,4 +113,6 @@ export declare namespace IctReconReportsLocateIctReportResponse$ {
     /** @deprecated use `IctReconReportsLocateIctReportResponse$Outbound` instead. */
     type Outbound = IctReconReportsLocateIctReportResponse$Outbound;
 }
+export declare function ictReconReportsLocateIctReportResponseToJSON(ictReconReportsLocateIctReportResponse: IctReconReportsLocateIctReportResponse): string;
+export declare function ictReconReportsLocateIctReportResponseFromJSON(jsonString: string): SafeParseResult<IctReconReportsLocateIctReportResponse, SDKValidationError>;
 //# sourceMappingURL=ictreconreportslocateictreport.d.ts.map

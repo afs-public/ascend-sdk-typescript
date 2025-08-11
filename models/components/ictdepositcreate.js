@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IctDepositCreate$ = exports.IctDepositCreate$outboundSchema = exports.IctDepositCreate$inboundSchema = exports.Program$ = exports.Program$outboundSchema = exports.Program$inboundSchema = exports.Program = void 0;
+exports.ictDepositCreateToJSON = ictDepositCreateToJSON;
+exports.ictDepositCreateFromJSON = ictDepositCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const ictdeposittravelrulecreate_js_1 = require("./ictdeposittravelrulecreate.js");
@@ -118,4 +121,10 @@ var IctDepositCreate$;
     /** @deprecated use `IctDepositCreate$outboundSchema` instead. */
     IctDepositCreate$.outboundSchema = exports.IctDepositCreate$outboundSchema;
 })(IctDepositCreate$ || (exports.IctDepositCreate$ = IctDepositCreate$ = {}));
+function ictDepositCreateToJSON(ictDepositCreate) {
+    return JSON.stringify(exports.IctDepositCreate$outboundSchema.parse(ictDepositCreate));
+}
+function ictDepositCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositCreate' from JSON`);
+}
 //# sourceMappingURL=ictdepositcreate.js.map

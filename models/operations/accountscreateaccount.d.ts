@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsCreateAccountResponse = {
     httpMeta: components.HTTPMetadata;
     /**
@@ -33,4 +35,6 @@ export declare namespace AccountsCreateAccountResponse$ {
     /** @deprecated use `AccountsCreateAccountResponse$Outbound` instead. */
     type Outbound = AccountsCreateAccountResponse$Outbound;
 }
+export declare function accountsCreateAccountResponseToJSON(accountsCreateAccountResponse: AccountsCreateAccountResponse): string;
+export declare function accountsCreateAccountResponseFromJSON(jsonString: string): SafeParseResult<AccountsCreateAccountResponse, SDKValidationError>;
 //# sourceMappingURL=accountscreateaccount.d.ts.map

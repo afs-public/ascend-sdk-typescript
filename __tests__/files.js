@@ -7,6 +7,7 @@ exports.filesToStream = filesToStream;
 exports.filesToByteArray = filesToByteArray;
 exports.filesToString = filesToString;
 exports.streamToByteArray = streamToByteArray;
+exports.bytesToStream = bytesToStream;
 const node_fs_1 = require("node:fs");
 const promises_1 = require("node:fs/promises");
 const node_stream_1 = require("node:stream");
@@ -14,7 +15,7 @@ function filesToStream(filePath) {
     return node_stream_1.Readable.toWeb((0, node_fs_1.createReadStream)(filePath));
 }
 async function filesToByteArray(filePath) {
-    return (0, promises_1.readFile)(filePath);
+    return new Uint8Array(await (0, promises_1.readFile)(filePath));
 }
 async function filesToString(filePath) {
     return (0, promises_1.readFile)(filePath, "utf8");
@@ -34,5 +35,17 @@ async function streamToByteArray(stream) {
         }
     }
     return Buffer.concat(chunks);
+}
+function bytesToStream(bytes) {
+    return new ReadableStream({
+        start(controller) {
+            controller.enqueue(bytes);
+        },
+        pull(controller) {
+            controller.close();
+        },
+        cancel() {
+        },
+    });
 }
 //# sourceMappingURL=files.js.map

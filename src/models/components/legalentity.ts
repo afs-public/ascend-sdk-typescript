@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum LegalEntityBusinessIndustrialClassification {
   BusinessIndustrialClassificationUnspecified =
@@ -753,6 +756,24 @@ export namespace LegalEntityNegativeNews$ {
   export type Outbound = LegalEntityNegativeNews$Outbound;
 }
 
+export function legalEntityNegativeNewsToJSON(
+  legalEntityNegativeNews: LegalEntityNegativeNews,
+): string {
+  return JSON.stringify(
+    LegalEntityNegativeNews$outboundSchema.parse(legalEntityNegativeNews),
+  );
+}
+
+export function legalEntityNegativeNewsFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntityNegativeNews, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntityNegativeNews$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntityNegativeNews' from JSON`,
+  );
+}
+
 /** @internal */
 export const EntityDueDiligence$inboundSchema: z.ZodType<
   EntityDueDiligence,
@@ -802,6 +823,24 @@ export namespace EntityDueDiligence$ {
   export const outboundSchema = EntityDueDiligence$outboundSchema;
   /** @deprecated use `EntityDueDiligence$Outbound` instead. */
   export type Outbound = EntityDueDiligence$Outbound;
+}
+
+export function entityDueDiligenceToJSON(
+  entityDueDiligence: EntityDueDiligence,
+): string {
+  return JSON.stringify(
+    EntityDueDiligence$outboundSchema.parse(entityDueDiligence),
+  );
+}
+
+export function entityDueDiligenceFromJSON(
+  jsonString: string,
+): SafeParseResult<EntityDueDiligence, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntityDueDiligence$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntityDueDiligence' from JSON`,
+  );
 }
 
 /** @internal */
@@ -910,6 +949,20 @@ export namespace FormationDate$ {
   export type Outbound = FormationDate$Outbound;
 }
 
+export function formationDateToJSON(formationDate: FormationDate): string {
+  return JSON.stringify(FormationDate$outboundSchema.parse(formationDate));
+}
+
+export function formationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<FormationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FormationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FormationDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const LegalEntityEffectiveDate$inboundSchema: z.ZodType<
   LegalEntityEffectiveDate,
@@ -950,6 +1003,24 @@ export namespace LegalEntityEffectiveDate$ {
   export const outboundSchema = LegalEntityEffectiveDate$outboundSchema;
   /** @deprecated use `LegalEntityEffectiveDate$Outbound` instead. */
   export type Outbound = LegalEntityEffectiveDate$Outbound;
+}
+
+export function legalEntityEffectiveDateToJSON(
+  legalEntityEffectiveDate: LegalEntityEffectiveDate,
+): string {
+  return JSON.stringify(
+    LegalEntityEffectiveDate$outboundSchema.parse(legalEntityEffectiveDate),
+  );
+}
+
+export function legalEntityEffectiveDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntityEffectiveDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntityEffectiveDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntityEffectiveDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1003,6 +1074,24 @@ export namespace LegalEntityLargeTrader$ {
   export const outboundSchema = LegalEntityLargeTrader$outboundSchema;
   /** @deprecated use `LegalEntityLargeTrader$Outbound` instead. */
   export type Outbound = LegalEntityLargeTrader$Outbound;
+}
+
+export function legalEntityLargeTraderToJSON(
+  legalEntityLargeTrader: LegalEntityLargeTrader,
+): string {
+  return JSON.stringify(
+    LegalEntityLargeTrader$outboundSchema.parse(legalEntityLargeTrader),
+  );
+}
+
+export function legalEntityLargeTraderFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntityLargeTrader, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntityLargeTrader$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntityLargeTrader' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1089,6 +1178,20 @@ export namespace LegalAddress$ {
   export type Outbound = LegalAddress$Outbound;
 }
 
+export function legalAddressToJSON(legalAddress: LegalAddress): string {
+  return JSON.stringify(LegalAddress$outboundSchema.parse(legalAddress));
+}
+
+export function legalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const LegalEntityTaxIdType$inboundSchema: z.ZodType<
   LegalEntityTaxIdTypeOpen,
@@ -1161,6 +1264,24 @@ export namespace LegalEntityCNoticeDate$ {
   export const outboundSchema = LegalEntityCNoticeDate$outboundSchema;
   /** @deprecated use `LegalEntityCNoticeDate$Outbound` instead. */
   export type Outbound = LegalEntityCNoticeDate$Outbound;
+}
+
+export function legalEntityCNoticeDateToJSON(
+  legalEntityCNoticeDate: LegalEntityCNoticeDate,
+): string {
+  return JSON.stringify(
+    LegalEntityCNoticeDate$outboundSchema.parse(legalEntityCNoticeDate),
+  );
+}
+
+export function legalEntityCNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntityCNoticeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntityCNoticeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntityCNoticeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1237,6 +1358,26 @@ export namespace LegalEntityFirstBNoticeDate$ {
   export const outboundSchema = LegalEntityFirstBNoticeDate$outboundSchema;
   /** @deprecated use `LegalEntityFirstBNoticeDate$Outbound` instead. */
   export type Outbound = LegalEntityFirstBNoticeDate$Outbound;
+}
+
+export function legalEntityFirstBNoticeDateToJSON(
+  legalEntityFirstBNoticeDate: LegalEntityFirstBNoticeDate,
+): string {
+  return JSON.stringify(
+    LegalEntityFirstBNoticeDate$outboundSchema.parse(
+      legalEntityFirstBNoticeDate,
+    ),
+  );
+}
+
+export function legalEntityFirstBNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntityFirstBNoticeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntityFirstBNoticeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntityFirstBNoticeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1343,6 +1484,26 @@ export namespace LegalEntityTaxCertificationDate$ {
   export const outboundSchema = LegalEntityTaxCertificationDate$outboundSchema;
   /** @deprecated use `LegalEntityTaxCertificationDate$Outbound` instead. */
   export type Outbound = LegalEntityTaxCertificationDate$Outbound;
+}
+
+export function legalEntityTaxCertificationDateToJSON(
+  legalEntityTaxCertificationDate: LegalEntityTaxCertificationDate,
+): string {
+  return JSON.stringify(
+    LegalEntityTaxCertificationDate$outboundSchema.parse(
+      legalEntityTaxCertificationDate,
+    ),
+  );
+}
+
+export function legalEntityTaxCertificationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntityTaxCertificationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntityTaxCertificationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntityTaxCertificationDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1549,6 +1710,24 @@ export namespace LegalEntityTaxProfile$ {
   export const outboundSchema = LegalEntityTaxProfile$outboundSchema;
   /** @deprecated use `LegalEntityTaxProfile$Outbound` instead. */
   export type Outbound = LegalEntityTaxProfile$Outbound;
+}
+
+export function legalEntityTaxProfileToJSON(
+  legalEntityTaxProfile: LegalEntityTaxProfile,
+): string {
+  return JSON.stringify(
+    LegalEntityTaxProfile$outboundSchema.parse(legalEntityTaxProfile),
+  );
+}
+
+export function legalEntityTaxProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntityTaxProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntityTaxProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntityTaxProfile' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1765,4 +1944,18 @@ export namespace LegalEntity$ {
   export const outboundSchema = LegalEntity$outboundSchema;
   /** @deprecated use `LegalEntity$Outbound` instead. */
   export type Outbound = LegalEntity$Outbound;
+}
+
+export function legalEntityToJSON(legalEntity: LegalEntity): string {
+  return JSON.stringify(LegalEntity$outboundSchema.parse(legalEntity));
+}
+
+export function legalEntityFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalEntity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalEntity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalEntity' from JSON`,
+  );
 }

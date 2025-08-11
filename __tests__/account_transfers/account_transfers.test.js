@@ -37,11 +37,10 @@ let transfer_id;
     (0, vitest_1.expect)(transfer_id).not.toBe(undefined);
 });
 (0, vitest_1.test)("Account Transfers Account Transfers List Transfers List Transfers1", async () => {
-    var _a, _b, _c;
     if (typeof account_id !== "string") {
         throw new Error('account_id is undefined.');
     }
-    const correspondentId = (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "";
+    const correspondentId = process.env["CORRESPONDENT_ID"] ?? "";
     if (!correspondentId) {
         throw new Error('CORRESPONDENT_ID is undefined or empty.');
     }
@@ -51,14 +50,13 @@ let transfer_id;
     };
     const result = await sdk_1.sdk.accountTransfers.listTransfers(request);
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
-    (0, vitest_1.expect)((_c = (_b = result.listTransfersResponse) === null || _b === void 0 ? void 0 : _b.transfers) === null || _c === void 0 ? void 0 : _c.length).toBeGreaterThan(0);
+    (0, vitest_1.expect)(result.listTransfersResponse?.transfers?.length).toBeGreaterThan(0);
 });
 (0, vitest_1.test)("Account Transfers Account Transfers Reject Transfer Reject Transfer1", async () => {
-    var _a;
     if (typeof account_id !== "string") {
         throw new Error('account_id is undefined.');
     }
-    const correspondentId = (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "";
+    const correspondentId = process.env["CORRESPONDENT_ID"] ?? "";
     if (!correspondentId) {
         throw new Error('CORRESPONDENT_ID is undefined or empty.');
     }
@@ -72,11 +70,10 @@ let transfer_id;
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Account Transfers Account Transfers Accept Transfer Accept Transfer1", async () => {
-    var _a;
     if (typeof account_id !== "string") {
         throw new Error('account_id is undefined.');
     }
-    const correspondentId = (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "";
+    const correspondentId = process.env["CORRESPONDENT_ID"] ?? "";
     if (!correspondentId) {
         throw new Error('CORRESPONDENT_ID is undefined or empty.');
     }
@@ -92,14 +89,13 @@ let transfer_id;
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Account Transfers Account Transfers Get Transfer Get Transfer1", async () => {
-    var _a;
     if (typeof account_id !== "string") {
         throw new Error('account_id is undefined.');
     }
     if (typeof transfer_id !== "string") {
         throw new Error('accept_transfer_id is undefined.');
     }
-    const correspondentId = (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "";
+    const correspondentId = process.env["CORRESPONDENT_ID"] ?? "";
     if (!correspondentId) {
         throw new Error('CORRESPONDENT_ID is undefined or empty.');
     }

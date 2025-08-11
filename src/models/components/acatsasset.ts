@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The NSCC asset category
@@ -175,6 +178,24 @@ export namespace AcatsAssetQuantity$ {
   export type Outbound = AcatsAssetQuantity$Outbound;
 }
 
+export function acatsAssetQuantityToJSON(
+  acatsAssetQuantity: AcatsAssetQuantity,
+): string {
+  return JSON.stringify(
+    AcatsAssetQuantity$outboundSchema.parse(acatsAssetQuantity),
+  );
+}
+
+export function acatsAssetQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<AcatsAssetQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcatsAssetQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcatsAssetQuantity' from JSON`,
+  );
+}
+
 /** @internal */
 export const AcatsAssetPosition$inboundSchema: z.ZodType<
   AcatsAssetPosition,
@@ -211,6 +232,24 @@ export namespace AcatsAssetPosition$ {
   export const outboundSchema = AcatsAssetPosition$outboundSchema;
   /** @deprecated use `AcatsAssetPosition$Outbound` instead. */
   export type Outbound = AcatsAssetPosition$Outbound;
+}
+
+export function acatsAssetPositionToJSON(
+  acatsAssetPosition: AcatsAssetPosition,
+): string {
+  return JSON.stringify(
+    AcatsAssetPosition$outboundSchema.parse(acatsAssetPosition),
+  );
+}
+
+export function acatsAssetPositionFromJSON(
+  jsonString: string,
+): SafeParseResult<AcatsAssetPosition, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcatsAssetPosition$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcatsAssetPosition' from JSON`,
+  );
 }
 
 /** @internal */
@@ -303,4 +342,18 @@ export namespace AcatsAsset$ {
   export const outboundSchema = AcatsAsset$outboundSchema;
   /** @deprecated use `AcatsAsset$Outbound` instead. */
   export type Outbound = AcatsAsset$Outbound;
+}
+
+export function acatsAssetToJSON(acatsAsset: AcatsAsset): string {
+  return JSON.stringify(AcatsAsset$outboundSchema.parse(acatsAsset));
+}
+
+export function acatsAssetFromJSON(
+  jsonString: string,
+): SafeParseResult<AcatsAsset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcatsAsset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcatsAsset' from JSON`,
+  );
 }

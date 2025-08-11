@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The process date of the batch associated with the report.
  */
@@ -79,6 +81,8 @@ export declare namespace ProcessDate$ {
     /** @deprecated use `ProcessDate$Outbound` instead. */
     type Outbound = ProcessDate$Outbound;
 }
+export declare function processDateToJSON(processDate: ProcessDate): string;
+export declare function processDateFromJSON(jsonString: string): SafeParseResult<ProcessDate, SDKValidationError>;
 /** @internal */
 export declare const LocateIctReportResponseProgram$inboundSchema: z.ZodType<LocateIctReportResponseProgramOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -117,4 +121,6 @@ export declare namespace LocateIctReportResponse$ {
     /** @deprecated use `LocateIctReportResponse$Outbound` instead. */
     type Outbound = LocateIctReportResponse$Outbound;
 }
+export declare function locateIctReportResponseToJSON(locateIctReportResponse: LocateIctReportResponse): string;
+export declare function locateIctReportResponseFromJSON(jsonString: string): SafeParseResult<LocateIctReportResponse, SDKValidationError>;
 //# sourceMappingURL=locateictreportresponse.d.ts.map

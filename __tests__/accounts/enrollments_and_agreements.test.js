@@ -83,8 +83,7 @@ let enrollment_ids;
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Test Enrollments And Agreements Accounts List Available Enrollments By Account Group Accounts List Available Enrollments By Account Group1 accounts_ListAvailableEnrollmentsByAccountGroup", async () => {
-    var _a;
-    const result = await sdk_1.sdk.enrollmentsAndAgreements.accountsListAvailableEnrollmentsByAccountGroup((_a = process.env["ACCOUNT_GROUP_ID"]) !== null && _a !== void 0 ? _a : "");
+    const result = await sdk_1.sdk.enrollmentsAndAgreements.accountsListAvailableEnrollmentsByAccountGroup(process.env["ACCOUNT_GROUP_ID"] ?? "");
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 //# sourceMappingURL=enrollments_and_agreements.test.js.map

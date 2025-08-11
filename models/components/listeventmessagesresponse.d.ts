@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { EventMessage, EventMessage$Outbound } from "./eventmessage.js";
 /**
  * A response to a list events method
@@ -34,4 +36,6 @@ export declare namespace ListEventMessagesResponse$ {
     /** @deprecated use `ListEventMessagesResponse$Outbound` instead. */
     type Outbound = ListEventMessagesResponse$Outbound;
 }
+export declare function listEventMessagesResponseToJSON(listEventMessagesResponse: ListEventMessagesResponse): string;
+export declare function listEventMessagesResponseFromJSON(jsonString: string): SafeParseResult<ListEventMessagesResponse, SDKValidationError>;
 //# sourceMappingURL=listeventmessagesresponse.d.ts.map

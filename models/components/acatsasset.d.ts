@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The NSCC asset category
  */
@@ -126,6 +128,8 @@ export declare namespace AcatsAssetQuantity$ {
     /** @deprecated use `AcatsAssetQuantity$Outbound` instead. */
     type Outbound = AcatsAssetQuantity$Outbound;
 }
+export declare function acatsAssetQuantityToJSON(acatsAssetQuantity: AcatsAssetQuantity): string;
+export declare function acatsAssetQuantityFromJSON(jsonString: string): SafeParseResult<AcatsAssetQuantity, SDKValidationError>;
 /** @internal */
 export declare const AcatsAssetPosition$inboundSchema: z.ZodType<AcatsAssetPosition, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -146,6 +150,8 @@ export declare namespace AcatsAssetPosition$ {
     /** @deprecated use `AcatsAssetPosition$Outbound` instead. */
     type Outbound = AcatsAssetPosition$Outbound;
 }
+export declare function acatsAssetPositionToJSON(acatsAssetPosition: AcatsAssetPosition): string;
+export declare function acatsAssetPositionFromJSON(jsonString: string): SafeParseResult<AcatsAssetPosition, SDKValidationError>;
 /** @internal */
 export declare const AcatsAssetType$inboundSchema: z.ZodType<AcatsAssetTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -184,4 +190,6 @@ export declare namespace AcatsAsset$ {
     /** @deprecated use `AcatsAsset$Outbound` instead. */
     type Outbound = AcatsAsset$Outbound;
 }
+export declare function acatsAssetToJSON(acatsAsset: AcatsAsset): string;
+export declare function acatsAssetFromJSON(jsonString: string): SafeParseResult<AcatsAsset, SDKValidationError>;
 //# sourceMappingURL=acatsasset.d.ts.map

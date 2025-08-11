@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsUpdateTrustedContactRequest = {
     /**
      * The account id.
@@ -49,6 +51,8 @@ export declare namespace AccountsUpdateTrustedContactRequest$ {
     /** @deprecated use `AccountsUpdateTrustedContactRequest$Outbound` instead. */
     type Outbound = AccountsUpdateTrustedContactRequest$Outbound;
 }
+export declare function accountsUpdateTrustedContactRequestToJSON(accountsUpdateTrustedContactRequest: AccountsUpdateTrustedContactRequest): string;
+export declare function accountsUpdateTrustedContactRequestFromJSON(jsonString: string): SafeParseResult<AccountsUpdateTrustedContactRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsUpdateTrustedContactResponse$inboundSchema: z.ZodType<AccountsUpdateTrustedContactResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -71,4 +75,6 @@ export declare namespace AccountsUpdateTrustedContactResponse$ {
     /** @deprecated use `AccountsUpdateTrustedContactResponse$Outbound` instead. */
     type Outbound = AccountsUpdateTrustedContactResponse$Outbound;
 }
+export declare function accountsUpdateTrustedContactResponseToJSON(accountsUpdateTrustedContactResponse: AccountsUpdateTrustedContactResponse): string;
+export declare function accountsUpdateTrustedContactResponseFromJSON(jsonString: string): SafeParseResult<AccountsUpdateTrustedContactResponse, SDKValidationError>;
 //# sourceMappingURL=accountsupdatetrustedcontact.d.ts.map

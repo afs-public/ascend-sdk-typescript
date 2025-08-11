@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to determine if a potential cash journal will be considered first party or third party
@@ -66,4 +69,24 @@ export namespace CheckPartyTypeRequestCreate$ {
   export const outboundSchema = CheckPartyTypeRequestCreate$outboundSchema;
   /** @deprecated use `CheckPartyTypeRequestCreate$Outbound` instead. */
   export type Outbound = CheckPartyTypeRequestCreate$Outbound;
+}
+
+export function checkPartyTypeRequestCreateToJSON(
+  checkPartyTypeRequestCreate: CheckPartyTypeRequestCreate,
+): string {
+  return JSON.stringify(
+    CheckPartyTypeRequestCreate$outboundSchema.parse(
+      checkPartyTypeRequestCreate,
+    ),
+  );
+}
+
+export function checkPartyTypeRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CheckPartyTypeRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CheckPartyTypeRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CheckPartyTypeRequestCreate' from JSON`,
+  );
 }

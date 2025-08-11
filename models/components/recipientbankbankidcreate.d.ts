@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The type of bank identifier specified
  */
@@ -60,4 +62,6 @@ export declare namespace RecipientBankBankIdCreate$ {
     /** @deprecated use `RecipientBankBankIdCreate$Outbound` instead. */
     type Outbound = RecipientBankBankIdCreate$Outbound;
 }
+export declare function recipientBankBankIdCreateToJSON(recipientBankBankIdCreate: RecipientBankBankIdCreate): string;
+export declare function recipientBankBankIdCreateFromJSON(jsonString: string): SafeParseResult<RecipientBankBankIdCreate, SDKValidationError>;
 //# sourceMappingURL=recipientbankbankidcreate.d.ts.map

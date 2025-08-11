@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ContributionConstraintsContributionTypeInfo, ContributionConstraintsContributionTypeInfo$Outbound } from "./contributionconstraintscontributiontypeinfo.js";
 import { DistributionConstraintsDistributionTypeInfo, DistributionConstraintsDistributionTypeInfo$Outbound } from "./distributionconstraintsdistributiontypeinfo.js";
 /**
@@ -63,6 +65,8 @@ export declare namespace CashJournalConstraintsContributionConstraints$ {
     /** @deprecated use `CashJournalConstraintsContributionConstraints$Outbound` instead. */
     type Outbound = CashJournalConstraintsContributionConstraints$Outbound;
 }
+export declare function cashJournalConstraintsContributionConstraintsToJSON(cashJournalConstraintsContributionConstraints: CashJournalConstraintsContributionConstraints): string;
+export declare function cashJournalConstraintsContributionConstraintsFromJSON(jsonString: string): SafeParseResult<CashJournalConstraintsContributionConstraints, SDKValidationError>;
 /** @internal */
 export declare const CashJournalConstraintsDistributionConstraints$inboundSchema: z.ZodType<CashJournalConstraintsDistributionConstraints, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -84,6 +88,8 @@ export declare namespace CashJournalConstraintsDistributionConstraints$ {
     /** @deprecated use `CashJournalConstraintsDistributionConstraints$Outbound` instead. */
     type Outbound = CashJournalConstraintsDistributionConstraints$Outbound;
 }
+export declare function cashJournalConstraintsDistributionConstraintsToJSON(cashJournalConstraintsDistributionConstraints: CashJournalConstraintsDistributionConstraints): string;
+export declare function cashJournalConstraintsDistributionConstraintsFromJSON(jsonString: string): SafeParseResult<CashJournalConstraintsDistributionConstraints, SDKValidationError>;
 /** @internal */
 export declare const CashJournalConstraints$inboundSchema: z.ZodType<CashJournalConstraints, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -105,4 +111,6 @@ export declare namespace CashJournalConstraints$ {
     /** @deprecated use `CashJournalConstraints$Outbound` instead. */
     type Outbound = CashJournalConstraints$Outbound;
 }
+export declare function cashJournalConstraintsToJSON(cashJournalConstraints: CashJournalConstraints): string;
+export declare function cashJournalConstraintsFromJSON(jsonString: string): SafeParseResult<CashJournalConstraints, SDKValidationError>;
 //# sourceMappingURL=cashjournalconstraints.d.ts.map

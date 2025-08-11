@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InstitutionCreate,
   InstitutionCreate$inboundSchema,
@@ -112,4 +115,22 @@ export namespace IctDepositTravelRuleCreate$ {
   export const outboundSchema = IctDepositTravelRuleCreate$outboundSchema;
   /** @deprecated use `IctDepositTravelRuleCreate$Outbound` instead. */
   export type Outbound = IctDepositTravelRuleCreate$Outbound;
+}
+
+export function ictDepositTravelRuleCreateToJSON(
+  ictDepositTravelRuleCreate: IctDepositTravelRuleCreate,
+): string {
+  return JSON.stringify(
+    IctDepositTravelRuleCreate$outboundSchema.parse(ictDepositTravelRuleCreate),
+  );
+}
+
+export function ictDepositTravelRuleCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositTravelRuleCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositTravelRuleCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositTravelRuleCreate' from JSON`,
+  );
 }

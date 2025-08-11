@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The price value
  */
@@ -55,6 +57,8 @@ export declare namespace MarkPricePrice$ {
     /** @deprecated use `MarkPricePrice$Outbound` instead. */
     type Outbound = MarkPricePrice$Outbound;
 }
+export declare function markPricePriceToJSON(markPricePrice: MarkPricePrice): string;
+export declare function markPricePriceFromJSON(jsonString: string): SafeParseResult<MarkPricePrice, SDKValidationError>;
 /** @internal */
 export declare const MarkPriceType$inboundSchema: z.ZodType<MarkPriceTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -90,4 +94,6 @@ export declare namespace MarkPrice$ {
     /** @deprecated use `MarkPrice$Outbound` instead. */
     type Outbound = MarkPrice$Outbound;
 }
+export declare function markPriceToJSON(markPrice: MarkPrice): string;
+export declare function markPriceFromJSON(jsonString: string): SafeParseResult<MarkPrice, SDKValidationError>;
 //# sourceMappingURL=markprice.d.ts.map

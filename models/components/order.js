@@ -36,11 +36,50 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LetterOfIntent$ = exports.LetterOfIntent$outboundSchema = exports.LetterOfIntent$inboundSchema = exports.PeriodStartDate$ = exports.PeriodStartDate$outboundSchema = exports.PeriodStartDate$inboundSchema = exports.OrderAmount$ = exports.OrderAmount$outboundSchema = exports.OrderAmount$inboundSchema = exports.OrderIdentifierType$ = exports.OrderIdentifierType$outboundSchema = exports.OrderIdentifierType$inboundSchema = exports.FilledQuantity$ = exports.FilledQuantity$outboundSchema = exports.FilledQuantity$inboundSchema = exports.CumulativeNotionalValue$ = exports.CumulativeNotionalValue$outboundSchema = exports.CumulativeNotionalValue$inboundSchema = exports.OrderCommission$ = exports.OrderCommission$outboundSchema = exports.OrderCommission$inboundSchema = exports.Value$ = exports.Value$outboundSchema = exports.Value$inboundSchema = exports.OrderCommissionType$ = exports.OrderCommissionType$outboundSchema = exports.OrderCommissionType$inboundSchema = exports.CancelRejectedReason$ = exports.CancelRejectedReason$outboundSchema = exports.CancelRejectedReason$inboundSchema = exports.OrderBrokerCapacity$ = exports.OrderBrokerCapacity$outboundSchema = exports.OrderBrokerCapacity$inboundSchema = exports.OrderAssetType$ = exports.OrderAssetType$outboundSchema = exports.OrderAssetType$inboundSchema = exports.OrderTradingStrategy = exports.OrderTimeInForce = exports.OrderStopPriceType = exports.OrderSpecialReportingInstructions = exports.OrderSide = exports.OrderOrderType = exports.OrderStatus = exports.OrderRejectedReason = exports.OrderLimitPriceType = exports.OrderIdentifierType = exports.OrderCommissionType = exports.CancelRejectedReason = exports.OrderBrokerCapacity = exports.OrderAssetType = void 0;
-exports.OrderStopPriceType$outboundSchema = exports.OrderStopPriceType$inboundSchema = exports.OrderStopPricePrice$ = exports.OrderStopPricePrice$outboundSchema = exports.OrderStopPricePrice$inboundSchema = exports.OrderSpecialReportingInstructions$ = exports.OrderSpecialReportingInstructions$outboundSchema = exports.OrderSpecialReportingInstructions$inboundSchema = exports.OrderSide$ = exports.OrderSide$outboundSchema = exports.OrderSide$inboundSchema = exports.RightsOfAccumulation$ = exports.RightsOfAccumulation$outboundSchema = exports.RightsOfAccumulation$inboundSchema = exports.OrderRightsOfAccumulationAmount$ = exports.OrderRightsOfAccumulationAmount$outboundSchema = exports.OrderRightsOfAccumulationAmount$inboundSchema = exports.OrderQuantity$ = exports.OrderQuantity$outboundSchema = exports.OrderQuantity$inboundSchema = exports.OrderPrevailingMarketPrice$ = exports.OrderPrevailingMarketPrice$outboundSchema = exports.OrderPrevailingMarketPrice$inboundSchema = exports.OrderOrderType$ = exports.OrderOrderType$outboundSchema = exports.OrderOrderType$inboundSchema = exports.OrderStatus$ = exports.OrderStatus$outboundSchema = exports.OrderStatus$inboundSchema = exports.OrderRejectedReason$ = exports.OrderRejectedReason$outboundSchema = exports.OrderRejectedReason$inboundSchema = exports.OrderDate$ = exports.OrderDate$outboundSchema = exports.OrderDate$inboundSchema = exports.NotionalValue$ = exports.NotionalValue$outboundSchema = exports.NotionalValue$inboundSchema = exports.MaxSellQuantity$ = exports.MaxSellQuantity$outboundSchema = exports.MaxSellQuantity$inboundSchema = exports.LimitPrice$ = exports.LimitPrice$outboundSchema = exports.LimitPrice$inboundSchema = exports.OrderLimitPriceType$ = exports.OrderLimitPriceType$outboundSchema = exports.OrderLimitPriceType$inboundSchema = exports.OrderPrice$ = exports.OrderPrice$outboundSchema = exports.OrderPrice$inboundSchema = void 0;
-exports.Order$ = exports.Order$outboundSchema = exports.Order$inboundSchema = exports.OrderTradingStrategy$ = exports.OrderTradingStrategy$outboundSchema = exports.OrderTradingStrategy$inboundSchema = exports.OrderTimeInForce$ = exports.OrderTimeInForce$outboundSchema = exports.OrderTimeInForce$inboundSchema = exports.StopPrice$ = exports.StopPrice$outboundSchema = exports.StopPrice$inboundSchema = exports.OrderStopPriceType$ = void 0;
+exports.PeriodStartDate$outboundSchema = exports.PeriodStartDate$inboundSchema = exports.OrderAmount$ = exports.OrderAmount$outboundSchema = exports.OrderAmount$inboundSchema = exports.OrderIdentifierType$ = exports.OrderIdentifierType$outboundSchema = exports.OrderIdentifierType$inboundSchema = exports.FilledQuantity$ = exports.FilledQuantity$outboundSchema = exports.FilledQuantity$inboundSchema = exports.CumulativeNotionalValue$ = exports.CumulativeNotionalValue$outboundSchema = exports.CumulativeNotionalValue$inboundSchema = exports.OrderCommission$ = exports.OrderCommission$outboundSchema = exports.OrderCommission$inboundSchema = exports.Value$ = exports.Value$outboundSchema = exports.Value$inboundSchema = exports.OrderCommissionType$ = exports.OrderCommissionType$outboundSchema = exports.OrderCommissionType$inboundSchema = exports.CancelRejectedReason$ = exports.CancelRejectedReason$outboundSchema = exports.CancelRejectedReason$inboundSchema = exports.CancelInitiator$ = exports.CancelInitiator$outboundSchema = exports.CancelInitiator$inboundSchema = exports.OrderBrokerCapacity$ = exports.OrderBrokerCapacity$outboundSchema = exports.OrderBrokerCapacity$inboundSchema = exports.OrderAssetType$ = exports.OrderAssetType$outboundSchema = exports.OrderAssetType$inboundSchema = exports.OrderTradingSession = exports.OrderTimeInForce = exports.OrderStopPriceType = exports.OrderSpecialReportingInstructions = exports.OrderSide = exports.OrderOrderType = exports.OrderStatus = exports.OrderRejectedReason = exports.OrderLimitPriceType = exports.OrderIdentifierType = exports.OrderCommissionType = exports.CancelRejectedReason = exports.CancelInitiator = exports.OrderBrokerCapacity = exports.OrderAssetType = void 0;
+exports.OrderStopPricePrice$inboundSchema = exports.OrderSpecialReportingInstructions$ = exports.OrderSpecialReportingInstructions$outboundSchema = exports.OrderSpecialReportingInstructions$inboundSchema = exports.OrderSide$ = exports.OrderSide$outboundSchema = exports.OrderSide$inboundSchema = exports.RightsOfAccumulation$ = exports.RightsOfAccumulation$outboundSchema = exports.RightsOfAccumulation$inboundSchema = exports.OrderRightsOfAccumulationAmount$ = exports.OrderRightsOfAccumulationAmount$outboundSchema = exports.OrderRightsOfAccumulationAmount$inboundSchema = exports.OrderQuantity$ = exports.OrderQuantity$outboundSchema = exports.OrderQuantity$inboundSchema = exports.OrderPrevailingMarketPrice$ = exports.OrderPrevailingMarketPrice$outboundSchema = exports.OrderPrevailingMarketPrice$inboundSchema = exports.OrderOrderType$ = exports.OrderOrderType$outboundSchema = exports.OrderOrderType$inboundSchema = exports.OrderStatus$ = exports.OrderStatus$outboundSchema = exports.OrderStatus$inboundSchema = exports.OrderRejectedReason$ = exports.OrderRejectedReason$outboundSchema = exports.OrderRejectedReason$inboundSchema = exports.OrderDate$ = exports.OrderDate$outboundSchema = exports.OrderDate$inboundSchema = exports.NotionalValue$ = exports.NotionalValue$outboundSchema = exports.NotionalValue$inboundSchema = exports.MaxSellQuantity$ = exports.MaxSellQuantity$outboundSchema = exports.MaxSellQuantity$inboundSchema = exports.LimitPrice$ = exports.LimitPrice$outboundSchema = exports.LimitPrice$inboundSchema = exports.OrderLimitPriceType$ = exports.OrderLimitPriceType$outboundSchema = exports.OrderLimitPriceType$inboundSchema = exports.OrderPrice$ = exports.OrderPrice$outboundSchema = exports.OrderPrice$inboundSchema = exports.LetterOfIntent$ = exports.LetterOfIntent$outboundSchema = exports.LetterOfIntent$inboundSchema = exports.PeriodStartDate$ = void 0;
+exports.Order$ = exports.Order$outboundSchema = exports.Order$inboundSchema = exports.OrderTradingSession$ = exports.OrderTradingSession$outboundSchema = exports.OrderTradingSession$inboundSchema = exports.OrderTimeInForce$ = exports.OrderTimeInForce$outboundSchema = exports.OrderTimeInForce$inboundSchema = exports.StopPrice$ = exports.StopPrice$outboundSchema = exports.StopPrice$inboundSchema = exports.OrderStopPriceType$ = exports.OrderStopPriceType$outboundSchema = exports.OrderStopPriceType$inboundSchema = exports.OrderStopPricePrice$ = exports.OrderStopPricePrice$outboundSchema = void 0;
+exports.valueToJSON = valueToJSON;
+exports.valueFromJSON = valueFromJSON;
+exports.orderCommissionToJSON = orderCommissionToJSON;
+exports.orderCommissionFromJSON = orderCommissionFromJSON;
+exports.cumulativeNotionalValueToJSON = cumulativeNotionalValueToJSON;
+exports.cumulativeNotionalValueFromJSON = cumulativeNotionalValueFromJSON;
+exports.filledQuantityToJSON = filledQuantityToJSON;
+exports.filledQuantityFromJSON = filledQuantityFromJSON;
+exports.orderAmountToJSON = orderAmountToJSON;
+exports.orderAmountFromJSON = orderAmountFromJSON;
+exports.periodStartDateToJSON = periodStartDateToJSON;
+exports.periodStartDateFromJSON = periodStartDateFromJSON;
+exports.letterOfIntentToJSON = letterOfIntentToJSON;
+exports.letterOfIntentFromJSON = letterOfIntentFromJSON;
+exports.orderPriceToJSON = orderPriceToJSON;
+exports.orderPriceFromJSON = orderPriceFromJSON;
+exports.limitPriceToJSON = limitPriceToJSON;
+exports.limitPriceFromJSON = limitPriceFromJSON;
+exports.maxSellQuantityToJSON = maxSellQuantityToJSON;
+exports.maxSellQuantityFromJSON = maxSellQuantityFromJSON;
+exports.notionalValueToJSON = notionalValueToJSON;
+exports.notionalValueFromJSON = notionalValueFromJSON;
+exports.orderDateToJSON = orderDateToJSON;
+exports.orderDateFromJSON = orderDateFromJSON;
+exports.orderPrevailingMarketPriceToJSON = orderPrevailingMarketPriceToJSON;
+exports.orderPrevailingMarketPriceFromJSON = orderPrevailingMarketPriceFromJSON;
+exports.orderQuantityToJSON = orderQuantityToJSON;
+exports.orderQuantityFromJSON = orderQuantityFromJSON;
+exports.orderRightsOfAccumulationAmountToJSON = orderRightsOfAccumulationAmountToJSON;
+exports.orderRightsOfAccumulationAmountFromJSON = orderRightsOfAccumulationAmountFromJSON;
+exports.rightsOfAccumulationToJSON = rightsOfAccumulationToJSON;
+exports.rightsOfAccumulationFromJSON = rightsOfAccumulationFromJSON;
+exports.orderStopPricePriceToJSON = orderStopPricePriceToJSON;
+exports.orderStopPricePriceFromJSON = orderStopPricePriceFromJSON;
+exports.stopPriceToJSON = stopPriceToJSON;
+exports.stopPriceFromJSON = stopPriceFromJSON;
+exports.orderToJSON = orderToJSON;
+exports.orderFromJSON = orderFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const tradingexecutedprice_js_1 = require("./tradingexecutedprice.js");
 const tradingexecutions_js_1 = require("./tradingexecutions.js");
@@ -66,6 +105,15 @@ var OrderBrokerCapacity;
     OrderBrokerCapacity["Agency"] = "AGENCY";
     OrderBrokerCapacity["Principal"] = "PRINCIPAL";
 })(OrderBrokerCapacity || (exports.OrderBrokerCapacity = OrderBrokerCapacity = {}));
+/**
+ * Output only field that is required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. This field denotes the initiator of the cancel request. This field will be present when provided on the CancelOrderRequest
+ */
+var CancelInitiator;
+(function (CancelInitiator) {
+    CancelInitiator["InitiatorUnspecified"] = "INITIATOR_UNSPECIFIED";
+    CancelInitiator["Firm"] = "FIRM";
+    CancelInitiator["Client"] = "CLIENT";
+})(CancelInitiator || (exports.CancelInitiator = CancelInitiator = {}));
 /**
  * Used to denote when a cancel request has been rejected.
  */
@@ -145,7 +193,7 @@ var OrderRejectedReason;
     OrderRejectedReason["AssetNotSetUpToTrade"] = "ASSET_NOT_SET_UP_TO_TRADE";
     OrderRejectedReason["InvalidOrderQuantity"] = "INVALID_ORDER_QUANTITY";
     OrderRejectedReason["ClientReceivedTimeRequired"] = "CLIENT_RECEIVED_TIME_REQUIRED";
-    OrderRejectedReason["ClientNotPermittedToUseTradingStrategy"] = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_STRATEGY";
+    OrderRejectedReason["ClientNotPermittedToUseTradingSession"] = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION";
 })(OrderRejectedReason || (exports.OrderRejectedReason = OrderRejectedReason = {}));
 /**
  * The processing status of the order
@@ -164,14 +212,12 @@ var OrderStatus;
     OrderStatus["Rejected"] = "REJECTED";
 })(OrderStatus || (exports.OrderStatus = OrderStatus = {}));
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 var OrderOrderType;
 (function (OrderOrderType) {
-    OrderOrderType["OrderTypeUnspecified"] = "ORDER_TYPE_UNSPECIFIED";
     OrderOrderType["Limit"] = "LIMIT";
     OrderOrderType["Market"] = "MARKET";
-    OrderOrderType["Stop"] = "STOP";
 })(OrderOrderType || (exports.OrderOrderType = OrderOrderType = {}));
 /**
  * The side of this order.
@@ -222,16 +268,21 @@ var OrderStopPriceType;
  */
 var OrderTimeInForce;
 (function (OrderTimeInForce) {
-    OrderTimeInForce["TimeInForceUnspecified"] = "TIME_IN_FORCE_UNSPECIFIED";
     OrderTimeInForce["Day"] = "DAY";
 })(OrderTimeInForce || (exports.OrderTimeInForce = OrderTimeInForce = {}));
 /**
- * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
  */
-var OrderTradingStrategy;
-(function (OrderTradingStrategy) {
-    OrderTradingStrategy["Core"] = "CORE";
-})(OrderTradingStrategy || (exports.OrderTradingStrategy = OrderTradingStrategy = {}));
+var OrderTradingSession;
+(function (OrderTradingSession) {
+    OrderTradingSession["TradingSessionUnspecified"] = "TRADING_SESSION_UNSPECIFIED";
+    OrderTradingSession["Core"] = "CORE";
+    OrderTradingSession["Pre"] = "PRE";
+    OrderTradingSession["Post"] = "POST";
+    OrderTradingSession["Overnight"] = "OVERNIGHT";
+    OrderTradingSession["Apex24"] = "APEX24";
+    OrderTradingSession["Gtx"] = "GTX";
+})(OrderTradingSession || (exports.OrderTradingSession = OrderTradingSession = {}));
 /** @internal */
 exports.OrderAssetType$inboundSchema = z
     .union([
@@ -276,6 +327,28 @@ var OrderBrokerCapacity$;
     /** @deprecated use `OrderBrokerCapacity$outboundSchema` instead. */
     OrderBrokerCapacity$.outboundSchema = exports.OrderBrokerCapacity$outboundSchema;
 })(OrderBrokerCapacity$ || (exports.OrderBrokerCapacity$ = OrderBrokerCapacity$ = {}));
+/** @internal */
+exports.CancelInitiator$inboundSchema = z
+    .union([
+    z.nativeEnum(CancelInitiator),
+    z.string().transform(enums_js_1.catchUnrecognizedEnum),
+]);
+/** @internal */
+exports.CancelInitiator$outboundSchema = z.union([
+    z.nativeEnum(CancelInitiator),
+    z.string().and(z.custom()),
+]);
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+var CancelInitiator$;
+(function (CancelInitiator$) {
+    /** @deprecated use `CancelInitiator$inboundSchema` instead. */
+    CancelInitiator$.inboundSchema = exports.CancelInitiator$inboundSchema;
+    /** @deprecated use `CancelInitiator$outboundSchema` instead. */
+    CancelInitiator$.outboundSchema = exports.CancelInitiator$outboundSchema;
+})(CancelInitiator$ || (exports.CancelInitiator$ = CancelInitiator$ = {}));
 /** @internal */
 exports.CancelRejectedReason$inboundSchema = z
     .union([
@@ -340,6 +413,12 @@ var Value$;
     /** @deprecated use `Value$outboundSchema` instead. */
     Value$.outboundSchema = exports.Value$outboundSchema;
 })(Value$ || (exports.Value$ = Value$ = {}));
+function valueToJSON(value) {
+    return JSON.stringify(exports.Value$outboundSchema.parse(value));
+}
+function valueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Value$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Value' from JSON`);
+}
 /** @internal */
 exports.OrderCommission$inboundSchema = z.object({
     type: exports.OrderCommissionType$inboundSchema.optional(),
@@ -361,6 +440,12 @@ var OrderCommission$;
     /** @deprecated use `OrderCommission$outboundSchema` instead. */
     OrderCommission$.outboundSchema = exports.OrderCommission$outboundSchema;
 })(OrderCommission$ || (exports.OrderCommission$ = OrderCommission$ = {}));
+function orderCommissionToJSON(orderCommission) {
+    return JSON.stringify(exports.OrderCommission$outboundSchema.parse(orderCommission));
+}
+function orderCommissionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderCommission$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderCommission' from JSON`);
+}
 /** @internal */
 exports.CumulativeNotionalValue$inboundSchema = z.object({
     value: z.string().optional(),
@@ -380,6 +465,12 @@ var CumulativeNotionalValue$;
     /** @deprecated use `CumulativeNotionalValue$outboundSchema` instead. */
     CumulativeNotionalValue$.outboundSchema = exports.CumulativeNotionalValue$outboundSchema;
 })(CumulativeNotionalValue$ || (exports.CumulativeNotionalValue$ = CumulativeNotionalValue$ = {}));
+function cumulativeNotionalValueToJSON(cumulativeNotionalValue) {
+    return JSON.stringify(exports.CumulativeNotionalValue$outboundSchema.parse(cumulativeNotionalValue));
+}
+function cumulativeNotionalValueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CumulativeNotionalValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CumulativeNotionalValue' from JSON`);
+}
 /** @internal */
 exports.FilledQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -399,6 +490,12 @@ var FilledQuantity$;
     /** @deprecated use `FilledQuantity$outboundSchema` instead. */
     FilledQuantity$.outboundSchema = exports.FilledQuantity$outboundSchema;
 })(FilledQuantity$ || (exports.FilledQuantity$ = FilledQuantity$ = {}));
+function filledQuantityToJSON(filledQuantity) {
+    return JSON.stringify(exports.FilledQuantity$outboundSchema.parse(filledQuantity));
+}
+function filledQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FilledQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FilledQuantity' from JSON`);
+}
 /** @internal */
 exports.OrderIdentifierType$inboundSchema = z
     .union([
@@ -440,6 +537,12 @@ var OrderAmount$;
     /** @deprecated use `OrderAmount$outboundSchema` instead. */
     OrderAmount$.outboundSchema = exports.OrderAmount$outboundSchema;
 })(OrderAmount$ || (exports.OrderAmount$ = OrderAmount$ = {}));
+function orderAmountToJSON(orderAmount) {
+    return JSON.stringify(exports.OrderAmount$outboundSchema.parse(orderAmount));
+}
+function orderAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderAmount' from JSON`);
+}
 /** @internal */
 exports.PeriodStartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -463,6 +566,12 @@ var PeriodStartDate$;
     /** @deprecated use `PeriodStartDate$outboundSchema` instead. */
     PeriodStartDate$.outboundSchema = exports.PeriodStartDate$outboundSchema;
 })(PeriodStartDate$ || (exports.PeriodStartDate$ = PeriodStartDate$ = {}));
+function periodStartDateToJSON(periodStartDate) {
+    return JSON.stringify(exports.PeriodStartDate$outboundSchema.parse(periodStartDate));
+}
+function periodStartDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PeriodStartDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PeriodStartDate' from JSON`);
+}
 /** @internal */
 exports.LetterOfIntent$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.OrderAmount$inboundSchema)).optional(),
@@ -494,6 +603,12 @@ var LetterOfIntent$;
     /** @deprecated use `LetterOfIntent$outboundSchema` instead. */
     LetterOfIntent$.outboundSchema = exports.LetterOfIntent$outboundSchema;
 })(LetterOfIntent$ || (exports.LetterOfIntent$ = LetterOfIntent$ = {}));
+function letterOfIntentToJSON(letterOfIntent) {
+    return JSON.stringify(exports.LetterOfIntent$outboundSchema.parse(letterOfIntent));
+}
+function letterOfIntentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LetterOfIntent$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LetterOfIntent' from JSON`);
+}
 /** @internal */
 exports.OrderPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -513,6 +628,12 @@ var OrderPrice$;
     /** @deprecated use `OrderPrice$outboundSchema` instead. */
     OrderPrice$.outboundSchema = exports.OrderPrice$outboundSchema;
 })(OrderPrice$ || (exports.OrderPrice$ = OrderPrice$ = {}));
+function orderPriceToJSON(orderPrice) {
+    return JSON.stringify(exports.OrderPrice$outboundSchema.parse(orderPrice));
+}
+function orderPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderPrice' from JSON`);
+}
 /** @internal */
 exports.OrderLimitPriceType$inboundSchema = z
     .union([
@@ -556,6 +677,12 @@ var LimitPrice$;
     /** @deprecated use `LimitPrice$outboundSchema` instead. */
     LimitPrice$.outboundSchema = exports.LimitPrice$outboundSchema;
 })(LimitPrice$ || (exports.LimitPrice$ = LimitPrice$ = {}));
+function limitPriceToJSON(limitPrice) {
+    return JSON.stringify(exports.LimitPrice$outboundSchema.parse(limitPrice));
+}
+function limitPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LimitPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LimitPrice' from JSON`);
+}
 /** @internal */
 exports.MaxSellQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -575,6 +702,12 @@ var MaxSellQuantity$;
     /** @deprecated use `MaxSellQuantity$outboundSchema` instead. */
     MaxSellQuantity$.outboundSchema = exports.MaxSellQuantity$outboundSchema;
 })(MaxSellQuantity$ || (exports.MaxSellQuantity$ = MaxSellQuantity$ = {}));
+function maxSellQuantityToJSON(maxSellQuantity) {
+    return JSON.stringify(exports.MaxSellQuantity$outboundSchema.parse(maxSellQuantity));
+}
+function maxSellQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MaxSellQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MaxSellQuantity' from JSON`);
+}
 /** @internal */
 exports.NotionalValue$inboundSchema = z.object({
     value: z.string().optional(),
@@ -594,6 +727,12 @@ var NotionalValue$;
     /** @deprecated use `NotionalValue$outboundSchema` instead. */
     NotionalValue$.outboundSchema = exports.NotionalValue$outboundSchema;
 })(NotionalValue$ || (exports.NotionalValue$ = NotionalValue$ = {}));
+function notionalValueToJSON(notionalValue) {
+    return JSON.stringify(exports.NotionalValue$outboundSchema.parse(notionalValue));
+}
+function notionalValueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NotionalValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NotionalValue' from JSON`);
+}
 /** @internal */
 exports.OrderDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -617,6 +756,12 @@ var OrderDate$;
     /** @deprecated use `OrderDate$outboundSchema` instead. */
     OrderDate$.outboundSchema = exports.OrderDate$outboundSchema;
 })(OrderDate$ || (exports.OrderDate$ = OrderDate$ = {}));
+function orderDateToJSON(orderDate) {
+    return JSON.stringify(exports.OrderDate$outboundSchema.parse(orderDate));
+}
+function orderDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderDate' from JSON`);
+}
 /** @internal */
 exports.OrderRejectedReason$inboundSchema = z
     .union([
@@ -702,6 +847,12 @@ var OrderPrevailingMarketPrice$;
     /** @deprecated use `OrderPrevailingMarketPrice$outboundSchema` instead. */
     OrderPrevailingMarketPrice$.outboundSchema = exports.OrderPrevailingMarketPrice$outboundSchema;
 })(OrderPrevailingMarketPrice$ || (exports.OrderPrevailingMarketPrice$ = OrderPrevailingMarketPrice$ = {}));
+function orderPrevailingMarketPriceToJSON(orderPrevailingMarketPrice) {
+    return JSON.stringify(exports.OrderPrevailingMarketPrice$outboundSchema.parse(orderPrevailingMarketPrice));
+}
+function orderPrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderPrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderPrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.OrderQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -721,6 +872,12 @@ var OrderQuantity$;
     /** @deprecated use `OrderQuantity$outboundSchema` instead. */
     OrderQuantity$.outboundSchema = exports.OrderQuantity$outboundSchema;
 })(OrderQuantity$ || (exports.OrderQuantity$ = OrderQuantity$ = {}));
+function orderQuantityToJSON(orderQuantity) {
+    return JSON.stringify(exports.OrderQuantity$outboundSchema.parse(orderQuantity));
+}
+function orderQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderQuantity' from JSON`);
+}
 /** @internal */
 exports.OrderRightsOfAccumulationAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -740,6 +897,12 @@ var OrderRightsOfAccumulationAmount$;
     /** @deprecated use `OrderRightsOfAccumulationAmount$outboundSchema` instead. */
     OrderRightsOfAccumulationAmount$.outboundSchema = exports.OrderRightsOfAccumulationAmount$outboundSchema;
 })(OrderRightsOfAccumulationAmount$ || (exports.OrderRightsOfAccumulationAmount$ = OrderRightsOfAccumulationAmount$ = {}));
+function orderRightsOfAccumulationAmountToJSON(orderRightsOfAccumulationAmount) {
+    return JSON.stringify(exports.OrderRightsOfAccumulationAmount$outboundSchema.parse(orderRightsOfAccumulationAmount));
+}
+function orderRightsOfAccumulationAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderRightsOfAccumulationAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderRightsOfAccumulationAmount' from JSON`);
+}
 /** @internal */
 exports.RightsOfAccumulation$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.OrderRightsOfAccumulationAmount$inboundSchema)).optional(),
@@ -759,6 +922,12 @@ var RightsOfAccumulation$;
     /** @deprecated use `RightsOfAccumulation$outboundSchema` instead. */
     RightsOfAccumulation$.outboundSchema = exports.RightsOfAccumulation$outboundSchema;
 })(RightsOfAccumulation$ || (exports.RightsOfAccumulation$ = RightsOfAccumulation$ = {}));
+function rightsOfAccumulationToJSON(rightsOfAccumulation) {
+    return JSON.stringify(exports.RightsOfAccumulation$outboundSchema.parse(rightsOfAccumulation));
+}
+function rightsOfAccumulationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RightsOfAccumulation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RightsOfAccumulation' from JSON`);
+}
 /** @internal */
 exports.OrderSide$inboundSchema = z
     .union([
@@ -822,6 +991,12 @@ var OrderStopPricePrice$;
     /** @deprecated use `OrderStopPricePrice$outboundSchema` instead. */
     OrderStopPricePrice$.outboundSchema = exports.OrderStopPricePrice$outboundSchema;
 })(OrderStopPricePrice$ || (exports.OrderStopPricePrice$ = OrderStopPricePrice$ = {}));
+function orderStopPricePriceToJSON(orderStopPricePrice) {
+    return JSON.stringify(exports.OrderStopPricePrice$outboundSchema.parse(orderStopPricePrice));
+}
+function orderStopPricePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderStopPricePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderStopPricePrice' from JSON`);
+}
 /** @internal */
 exports.OrderStopPriceType$inboundSchema = z
     .union([
@@ -866,6 +1041,12 @@ var StopPrice$;
     /** @deprecated use `StopPrice$outboundSchema` instead. */
     StopPrice$.outboundSchema = exports.StopPrice$outboundSchema;
 })(StopPrice$ || (exports.StopPrice$ = StopPrice$ = {}));
+function stopPriceToJSON(stopPrice) {
+    return JSON.stringify(exports.StopPrice$outboundSchema.parse(stopPrice));
+}
+function stopPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.StopPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'StopPrice' from JSON`);
+}
 /** @internal */
 exports.OrderTimeInForce$inboundSchema = z
     .union([
@@ -889,27 +1070,27 @@ var OrderTimeInForce$;
     OrderTimeInForce$.outboundSchema = exports.OrderTimeInForce$outboundSchema;
 })(OrderTimeInForce$ || (exports.OrderTimeInForce$ = OrderTimeInForce$ = {}));
 /** @internal */
-exports.OrderTradingStrategy$inboundSchema = z
+exports.OrderTradingSession$inboundSchema = z
     .union([
-    z.nativeEnum(OrderTradingStrategy),
+    z.nativeEnum(OrderTradingSession),
     z.string().transform(enums_js_1.catchUnrecognizedEnum),
 ]);
 /** @internal */
-exports.OrderTradingStrategy$outboundSchema = z.union([
-    z.nativeEnum(OrderTradingStrategy),
+exports.OrderTradingSession$outboundSchema = z.union([
+    z.nativeEnum(OrderTradingSession),
     z.string().and(z.custom()),
 ]);
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-var OrderTradingStrategy$;
-(function (OrderTradingStrategy$) {
-    /** @deprecated use `OrderTradingStrategy$inboundSchema` instead. */
-    OrderTradingStrategy$.inboundSchema = exports.OrderTradingStrategy$inboundSchema;
-    /** @deprecated use `OrderTradingStrategy$outboundSchema` instead. */
-    OrderTradingStrategy$.outboundSchema = exports.OrderTradingStrategy$outboundSchema;
-})(OrderTradingStrategy$ || (exports.OrderTradingStrategy$ = OrderTradingStrategy$ = {}));
+var OrderTradingSession$;
+(function (OrderTradingSession$) {
+    /** @deprecated use `OrderTradingSession$inboundSchema` instead. */
+    OrderTradingSession$.inboundSchema = exports.OrderTradingSession$inboundSchema;
+    /** @deprecated use `OrderTradingSession$outboundSchema` instead. */
+    OrderTradingSession$.outboundSchema = exports.OrderTradingSession$outboundSchema;
+})(OrderTradingSession$ || (exports.OrderTradingSession$ = OrderTradingSession$ = {}));
 /** @internal */
 exports.Order$inboundSchema = z
     .object({
@@ -918,8 +1099,10 @@ exports.Order$inboundSchema = z
     asset_type: exports.OrderAssetType$inboundSchema.optional(),
     average_prices: z.array(tradingexecutedprice_js_1.TradingExecutedPrice$inboundSchema).optional(),
     broker_capacity: exports.OrderBrokerCapacity$inboundSchema.optional(),
+    cancel_initiator: exports.CancelInitiator$inboundSchema.optional(),
     cancel_reason: z.string().optional(),
     cancel_rejected_reason: exports.CancelRejectedReason$inboundSchema.optional(),
+    client_cancel_received_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
     client_order_id: z.string().optional(),
     client_received_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
     commission: z.nullable(z.lazy(() => exports.OrderCommission$inboundSchema))
@@ -955,7 +1138,7 @@ exports.Order$inboundSchema = z
     special_reporting_instructions: z.array(exports.OrderSpecialReportingInstructions$inboundSchema).optional(),
     stop_price: z.nullable(z.lazy(() => exports.StopPrice$inboundSchema)).optional(),
     time_in_force: exports.OrderTimeInForce$inboundSchema.optional(),
-    trading_strategy: exports.OrderTradingStrategy$inboundSchema.optional(),
+    trading_session: exports.OrderTradingSession$inboundSchema.optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "account_id": "accountId",
@@ -963,8 +1146,10 @@ exports.Order$inboundSchema = z
         "asset_type": "assetType",
         "average_prices": "averagePrices",
         "broker_capacity": "brokerCapacity",
+        "cancel_initiator": "cancelInitiator",
         "cancel_reason": "cancelReason",
         "cancel_rejected_reason": "cancelRejectedReason",
+        "client_cancel_received_time": "clientCancelReceivedTime",
         "client_order_id": "clientOrderId",
         "client_received_time": "clientReceivedTime",
         "create_time": "createTime",
@@ -988,7 +1173,7 @@ exports.Order$inboundSchema = z
         "special_reporting_instructions": "specialReportingInstructions",
         "stop_price": "stopPrice",
         "time_in_force": "timeInForce",
-        "trading_strategy": "tradingStrategy",
+        "trading_session": "tradingSession",
     });
 });
 /** @internal */
@@ -998,8 +1183,11 @@ exports.Order$outboundSchema = z.object({
     assetType: exports.OrderAssetType$outboundSchema.optional(),
     averagePrices: z.array(tradingexecutedprice_js_1.TradingExecutedPrice$outboundSchema).optional(),
     brokerCapacity: exports.OrderBrokerCapacity$outboundSchema.optional(),
+    cancelInitiator: exports.CancelInitiator$outboundSchema.optional(),
     cancelReason: z.string().optional(),
     cancelRejectedReason: exports.CancelRejectedReason$outboundSchema.optional(),
+    clientCancelReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+        .optional(),
     clientOrderId: z.string().optional(),
     clientReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
         .optional(),
@@ -1037,7 +1225,7 @@ exports.Order$outboundSchema = z.object({
     specialReportingInstructions: z.array(exports.OrderSpecialReportingInstructions$outboundSchema).optional(),
     stopPrice: z.nullable(z.lazy(() => exports.StopPrice$outboundSchema)).optional(),
     timeInForce: exports.OrderTimeInForce$outboundSchema.optional(),
-    tradingStrategy: exports.OrderTradingStrategy$outboundSchema.optional(),
+    tradingSession: exports.OrderTradingSession$outboundSchema.optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         accountId: "account_id",
@@ -1045,8 +1233,10 @@ exports.Order$outboundSchema = z.object({
         assetType: "asset_type",
         averagePrices: "average_prices",
         brokerCapacity: "broker_capacity",
+        cancelInitiator: "cancel_initiator",
         cancelReason: "cancel_reason",
         cancelRejectedReason: "cancel_rejected_reason",
+        clientCancelReceivedTime: "client_cancel_received_time",
         clientOrderId: "client_order_id",
         clientReceivedTime: "client_received_time",
         createTime: "create_time",
@@ -1070,7 +1260,7 @@ exports.Order$outboundSchema = z.object({
         specialReportingInstructions: "special_reporting_instructions",
         stopPrice: "stop_price",
         timeInForce: "time_in_force",
-        tradingStrategy: "trading_strategy",
+        tradingSession: "trading_session",
     });
 });
 /**
@@ -1084,4 +1274,10 @@ var Order$;
     /** @deprecated use `Order$outboundSchema` instead. */
     Order$.outboundSchema = exports.Order$outboundSchema;
 })(Order$ || (exports.Order$ = Order$ = {}));
+function orderToJSON(order) {
+    return JSON.stringify(exports.Order$outboundSchema.parse(order));
+}
+function orderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Order$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Order' from JSON`);
+}
 //# sourceMappingURL=order.js.map

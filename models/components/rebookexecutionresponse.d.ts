@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYield, BondYield$Outbound } from "./bondyield.js";
 /**
  * The amount of interest that has been accrued in the issuing currency for a single instrument. Requirement of 15 or less integral number and 2 or less fractional precision. Required for FIXED_INCOME trades. Not allowed for trades of other instrument types.
@@ -209,6 +211,8 @@ export declare namespace RebookExecutionResponseAccruedInterestAmount$ {
     /** @deprecated use `RebookExecutionResponseAccruedInterestAmount$Outbound` instead. */
     type Outbound = RebookExecutionResponseAccruedInterestAmount$Outbound;
 }
+export declare function rebookExecutionResponseAccruedInterestAmountToJSON(rebookExecutionResponseAccruedInterestAmount: RebookExecutionResponseAccruedInterestAmount): string;
+export declare function rebookExecutionResponseAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponseAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponseCommissionAmount$inboundSchema: z.ZodType<RebookExecutionResponseCommissionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -229,6 +233,8 @@ export declare namespace RebookExecutionResponseCommissionAmount$ {
     /** @deprecated use `RebookExecutionResponseCommissionAmount$Outbound` instead. */
     type Outbound = RebookExecutionResponseCommissionAmount$Outbound;
 }
+export declare function rebookExecutionResponseCommissionAmountToJSON(rebookExecutionResponseCommissionAmount: RebookExecutionResponseCommissionAmount): string;
+export declare function rebookExecutionResponseCommissionAmountFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponseCommissionAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponseGrossAmount$inboundSchema: z.ZodType<RebookExecutionResponseGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -249,6 +255,8 @@ export declare namespace RebookExecutionResponseGrossAmount$ {
     /** @deprecated use `RebookExecutionResponseGrossAmount$Outbound` instead. */
     type Outbound = RebookExecutionResponseGrossAmount$Outbound;
 }
+export declare function rebookExecutionResponseGrossAmountToJSON(rebookExecutionResponseGrossAmount: RebookExecutionResponseGrossAmount): string;
+export declare function rebookExecutionResponseGrossAmountFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponseGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponsePrevailingMarketPrice$inboundSchema: z.ZodType<RebookExecutionResponsePrevailingMarketPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -269,6 +277,8 @@ export declare namespace RebookExecutionResponsePrevailingMarketPrice$ {
     /** @deprecated use `RebookExecutionResponsePrevailingMarketPrice$Outbound` instead. */
     type Outbound = RebookExecutionResponsePrevailingMarketPrice$Outbound;
 }
+export declare function rebookExecutionResponsePrevailingMarketPriceToJSON(rebookExecutionResponsePrevailingMarketPrice: RebookExecutionResponsePrevailingMarketPrice): string;
+export declare function rebookExecutionResponsePrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponsePrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponsePrice$inboundSchema: z.ZodType<RebookExecutionResponsePrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -289,6 +299,8 @@ export declare namespace RebookExecutionResponsePrice$ {
     /** @deprecated use `RebookExecutionResponsePrice$Outbound` instead. */
     type Outbound = RebookExecutionResponsePrice$Outbound;
 }
+export declare function rebookExecutionResponsePriceToJSON(rebookExecutionResponsePrice: RebookExecutionResponsePrice): string;
+export declare function rebookExecutionResponsePriceFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponsePrice, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponsePriceAdjustmentAmount$inboundSchema: z.ZodType<RebookExecutionResponsePriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -309,6 +321,8 @@ export declare namespace RebookExecutionResponsePriceAdjustmentAmount$ {
     /** @deprecated use `RebookExecutionResponsePriceAdjustmentAmount$Outbound` instead. */
     type Outbound = RebookExecutionResponsePriceAdjustmentAmount$Outbound;
 }
+export declare function rebookExecutionResponsePriceAdjustmentAmountToJSON(rebookExecutionResponsePriceAdjustmentAmount: RebookExecutionResponsePriceAdjustmentAmount): string;
+export declare function rebookExecutionResponsePriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponsePriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponsePriceAdjustmentType$inboundSchema: z.ZodType<RebookExecutionResponsePriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -344,6 +358,8 @@ export declare namespace RebookExecutionResponsePriceAdjustment$ {
     /** @deprecated use `RebookExecutionResponsePriceAdjustment$Outbound` instead. */
     type Outbound = RebookExecutionResponsePriceAdjustment$Outbound;
 }
+export declare function rebookExecutionResponsePriceAdjustmentToJSON(rebookExecutionResponsePriceAdjustment: RebookExecutionResponsePriceAdjustment): string;
+export declare function rebookExecutionResponsePriceAdjustmentFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponsePriceAdjustment, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponseQuantity$inboundSchema: z.ZodType<RebookExecutionResponseQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -364,6 +380,8 @@ export declare namespace RebookExecutionResponseQuantity$ {
     /** @deprecated use `RebookExecutionResponseQuantity$Outbound` instead. */
     type Outbound = RebookExecutionResponseQuantity$Outbound;
 }
+export declare function rebookExecutionResponseQuantityToJSON(rebookExecutionResponseQuantity: RebookExecutionResponseQuantity): string;
+export declare function rebookExecutionResponseQuantityFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponseQuantity, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponseState$inboundSchema: z.ZodType<RebookExecutionResponseStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -414,6 +432,8 @@ export declare namespace RebookExecutionResponseExecution$ {
     /** @deprecated use `RebookExecutionResponseExecution$Outbound` instead. */
     type Outbound = RebookExecutionResponseExecution$Outbound;
 }
+export declare function rebookExecutionResponseExecutionToJSON(rebookExecutionResponseExecution: RebookExecutionResponseExecution): string;
+export declare function rebookExecutionResponseExecutionFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponseExecution, SDKValidationError>;
 /** @internal */
 export declare const RebookExecutionResponse$inboundSchema: z.ZodType<RebookExecutionResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -434,4 +454,6 @@ export declare namespace RebookExecutionResponse$ {
     /** @deprecated use `RebookExecutionResponse$Outbound` instead. */
     type Outbound = RebookExecutionResponse$Outbound;
 }
+export declare function rebookExecutionResponseToJSON(rebookExecutionResponse: RebookExecutionResponse): string;
+export declare function rebookExecutionResponseFromJSON(jsonString: string): SafeParseResult<RebookExecutionResponse, SDKValidationError>;
 //# sourceMappingURL=rebookexecutionresponse.d.ts.map

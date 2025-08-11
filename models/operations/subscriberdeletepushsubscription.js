@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubscriberDeletePushSubscriptionResponse$ = exports.SubscriberDeletePushSubscriptionResponse$outboundSchema = exports.SubscriberDeletePushSubscriptionResponse$inboundSchema = exports.SubscriberDeletePushSubscriptionRequest$ = exports.SubscriberDeletePushSubscriptionRequest$outboundSchema = exports.SubscriberDeletePushSubscriptionRequest$inboundSchema = void 0;
+exports.subscriberDeletePushSubscriptionRequestToJSON = subscriberDeletePushSubscriptionRequestToJSON;
+exports.subscriberDeletePushSubscriptionRequestFromJSON = subscriberDeletePushSubscriptionRequestFromJSON;
+exports.subscriberDeletePushSubscriptionResponseToJSON = subscriberDeletePushSubscriptionResponseToJSON;
+exports.subscriberDeletePushSubscriptionResponseFromJSON = subscriberDeletePushSubscriptionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.SubscriberDeletePushSubscriptionRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var SubscriberDeletePushSubscriptionRequest$;
     /** @deprecated use `SubscriberDeletePushSubscriptionRequest$outboundSchema` instead. */
     SubscriberDeletePushSubscriptionRequest$.outboundSchema = exports.SubscriberDeletePushSubscriptionRequest$outboundSchema;
 })(SubscriberDeletePushSubscriptionRequest$ || (exports.SubscriberDeletePushSubscriptionRequest$ = SubscriberDeletePushSubscriptionRequest$ = {}));
+function subscriberDeletePushSubscriptionRequestToJSON(subscriberDeletePushSubscriptionRequest) {
+    return JSON.stringify(exports.SubscriberDeletePushSubscriptionRequest$outboundSchema.parse(subscriberDeletePushSubscriptionRequest));
+}
+function subscriberDeletePushSubscriptionRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberDeletePushSubscriptionRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberDeletePushSubscriptionRequest' from JSON`);
+}
 /** @internal */
 exports.SubscriberDeletePushSubscriptionResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -98,4 +109,10 @@ var SubscriberDeletePushSubscriptionResponse$;
     /** @deprecated use `SubscriberDeletePushSubscriptionResponse$outboundSchema` instead. */
     SubscriberDeletePushSubscriptionResponse$.outboundSchema = exports.SubscriberDeletePushSubscriptionResponse$outboundSchema;
 })(SubscriberDeletePushSubscriptionResponse$ || (exports.SubscriberDeletePushSubscriptionResponse$ = SubscriberDeletePushSubscriptionResponse$ = {}));
+function subscriberDeletePushSubscriptionResponseToJSON(subscriberDeletePushSubscriptionResponse) {
+    return JSON.stringify(exports.SubscriberDeletePushSubscriptionResponse$outboundSchema.parse(subscriberDeletePushSubscriptionResponse));
+}
+function subscriberDeletePushSubscriptionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberDeletePushSubscriptionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberDeletePushSubscriptionResponse' from JSON`);
+}
 //# sourceMappingURL=subscriberdeletepushsubscription.js.map

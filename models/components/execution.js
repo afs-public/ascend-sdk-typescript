@@ -37,8 +37,27 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Execution$ = exports.Execution$outboundSchema = exports.Execution$inboundSchema = exports.ExecutionState$ = exports.ExecutionState$outboundSchema = exports.ExecutionState$inboundSchema = exports.ExecutionQuantity$ = exports.ExecutionQuantity$outboundSchema = exports.ExecutionQuantity$inboundSchema = exports.PriceAdjustment$ = exports.PriceAdjustment$outboundSchema = exports.PriceAdjustment$inboundSchema = exports.ExecutionPriceAdjustmentType$ = exports.ExecutionPriceAdjustmentType$outboundSchema = exports.ExecutionPriceAdjustmentType$inboundSchema = exports.PriceAdjustmentAmount$ = exports.PriceAdjustmentAmount$outboundSchema = exports.PriceAdjustmentAmount$inboundSchema = exports.ExecutionPrice$ = exports.ExecutionPrice$outboundSchema = exports.ExecutionPrice$inboundSchema = exports.ExecutionPrevailingMarketPrice$ = exports.ExecutionPrevailingMarketPrice$outboundSchema = exports.ExecutionPrevailingMarketPrice$inboundSchema = exports.GrossAmount$ = exports.GrossAmount$outboundSchema = exports.GrossAmount$inboundSchema = exports.CommissionAmount$ = exports.CommissionAmount$outboundSchema = exports.CommissionAmount$inboundSchema = exports.ExecutionAccruedInterestAmount$ = exports.ExecutionAccruedInterestAmount$outboundSchema = exports.ExecutionAccruedInterestAmount$inboundSchema = exports.ExecutionState = exports.ExecutionPriceAdjustmentType = void 0;
+exports.executionAccruedInterestAmountToJSON = executionAccruedInterestAmountToJSON;
+exports.executionAccruedInterestAmountFromJSON = executionAccruedInterestAmountFromJSON;
+exports.commissionAmountToJSON = commissionAmountToJSON;
+exports.commissionAmountFromJSON = commissionAmountFromJSON;
+exports.grossAmountToJSON = grossAmountToJSON;
+exports.grossAmountFromJSON = grossAmountFromJSON;
+exports.executionPrevailingMarketPriceToJSON = executionPrevailingMarketPriceToJSON;
+exports.executionPrevailingMarketPriceFromJSON = executionPrevailingMarketPriceFromJSON;
+exports.executionPriceToJSON = executionPriceToJSON;
+exports.executionPriceFromJSON = executionPriceFromJSON;
+exports.priceAdjustmentAmountToJSON = priceAdjustmentAmountToJSON;
+exports.priceAdjustmentAmountFromJSON = priceAdjustmentAmountFromJSON;
+exports.priceAdjustmentToJSON = priceAdjustmentToJSON;
+exports.priceAdjustmentFromJSON = priceAdjustmentFromJSON;
+exports.executionQuantityToJSON = executionQuantityToJSON;
+exports.executionQuantityFromJSON = executionQuantityFromJSON;
+exports.executionToJSON = executionToJSON;
+exports.executionFromJSON = executionFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bondyield_js_1 = require("./bondyield.js");
 /**
@@ -84,6 +103,12 @@ var ExecutionAccruedInterestAmount$;
     /** @deprecated use `ExecutionAccruedInterestAmount$outboundSchema` instead. */
     ExecutionAccruedInterestAmount$.outboundSchema = exports.ExecutionAccruedInterestAmount$outboundSchema;
 })(ExecutionAccruedInterestAmount$ || (exports.ExecutionAccruedInterestAmount$ = ExecutionAccruedInterestAmount$ = {}));
+function executionAccruedInterestAmountToJSON(executionAccruedInterestAmount) {
+    return JSON.stringify(exports.ExecutionAccruedInterestAmount$outboundSchema.parse(executionAccruedInterestAmount));
+}
+function executionAccruedInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExecutionAccruedInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExecutionAccruedInterestAmount' from JSON`);
+}
 /** @internal */
 exports.CommissionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -103,6 +128,12 @@ var CommissionAmount$;
     /** @deprecated use `CommissionAmount$outboundSchema` instead. */
     CommissionAmount$.outboundSchema = exports.CommissionAmount$outboundSchema;
 })(CommissionAmount$ || (exports.CommissionAmount$ = CommissionAmount$ = {}));
+function commissionAmountToJSON(commissionAmount) {
+    return JSON.stringify(exports.CommissionAmount$outboundSchema.parse(commissionAmount));
+}
+function commissionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CommissionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CommissionAmount' from JSON`);
+}
 /** @internal */
 exports.GrossAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -122,6 +153,12 @@ var GrossAmount$;
     /** @deprecated use `GrossAmount$outboundSchema` instead. */
     GrossAmount$.outboundSchema = exports.GrossAmount$outboundSchema;
 })(GrossAmount$ || (exports.GrossAmount$ = GrossAmount$ = {}));
+function grossAmountToJSON(grossAmount) {
+    return JSON.stringify(exports.GrossAmount$outboundSchema.parse(grossAmount));
+}
+function grossAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.GrossAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'GrossAmount' from JSON`);
+}
 /** @internal */
 exports.ExecutionPrevailingMarketPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -141,6 +178,12 @@ var ExecutionPrevailingMarketPrice$;
     /** @deprecated use `ExecutionPrevailingMarketPrice$outboundSchema` instead. */
     ExecutionPrevailingMarketPrice$.outboundSchema = exports.ExecutionPrevailingMarketPrice$outboundSchema;
 })(ExecutionPrevailingMarketPrice$ || (exports.ExecutionPrevailingMarketPrice$ = ExecutionPrevailingMarketPrice$ = {}));
+function executionPrevailingMarketPriceToJSON(executionPrevailingMarketPrice) {
+    return JSON.stringify(exports.ExecutionPrevailingMarketPrice$outboundSchema.parse(executionPrevailingMarketPrice));
+}
+function executionPrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExecutionPrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExecutionPrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.ExecutionPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -160,6 +203,12 @@ var ExecutionPrice$;
     /** @deprecated use `ExecutionPrice$outboundSchema` instead. */
     ExecutionPrice$.outboundSchema = exports.ExecutionPrice$outboundSchema;
 })(ExecutionPrice$ || (exports.ExecutionPrice$ = ExecutionPrice$ = {}));
+function executionPriceToJSON(executionPrice) {
+    return JSON.stringify(exports.ExecutionPrice$outboundSchema.parse(executionPrice));
+}
+function executionPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExecutionPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExecutionPrice' from JSON`);
+}
 /** @internal */
 exports.PriceAdjustmentAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -179,6 +228,12 @@ var PriceAdjustmentAmount$;
     /** @deprecated use `PriceAdjustmentAmount$outboundSchema` instead. */
     PriceAdjustmentAmount$.outboundSchema = exports.PriceAdjustmentAmount$outboundSchema;
 })(PriceAdjustmentAmount$ || (exports.PriceAdjustmentAmount$ = PriceAdjustmentAmount$ = {}));
+function priceAdjustmentAmountToJSON(priceAdjustmentAmount) {
+    return JSON.stringify(exports.PriceAdjustmentAmount$outboundSchema.parse(priceAdjustmentAmount));
+}
+function priceAdjustmentAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PriceAdjustmentAmount' from JSON`);
+}
 /** @internal */
 exports.ExecutionPriceAdjustmentType$inboundSchema = z
     .union([
@@ -232,6 +287,12 @@ var PriceAdjustment$;
     /** @deprecated use `PriceAdjustment$outboundSchema` instead. */
     PriceAdjustment$.outboundSchema = exports.PriceAdjustment$outboundSchema;
 })(PriceAdjustment$ || (exports.PriceAdjustment$ = PriceAdjustment$ = {}));
+function priceAdjustmentToJSON(priceAdjustment) {
+    return JSON.stringify(exports.PriceAdjustment$outboundSchema.parse(priceAdjustment));
+}
+function priceAdjustmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PriceAdjustment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PriceAdjustment' from JSON`);
+}
 /** @internal */
 exports.ExecutionQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -251,6 +312,12 @@ var ExecutionQuantity$;
     /** @deprecated use `ExecutionQuantity$outboundSchema` instead. */
     ExecutionQuantity$.outboundSchema = exports.ExecutionQuantity$outboundSchema;
 })(ExecutionQuantity$ || (exports.ExecutionQuantity$ = ExecutionQuantity$ = {}));
+function executionQuantityToJSON(executionQuantity) {
+    return JSON.stringify(exports.ExecutionQuantity$outboundSchema.parse(executionQuantity));
+}
+function executionQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExecutionQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExecutionQuantity' from JSON`);
+}
 /** @internal */
 exports.ExecutionState$inboundSchema = z
     .union([
@@ -361,4 +428,10 @@ var Execution$;
     /** @deprecated use `Execution$outboundSchema` instead. */
     Execution$.outboundSchema = exports.Execution$outboundSchema;
 })(Execution$ || (exports.Execution$ = Execution$ = {}));
+function executionToJSON(execution) {
+    return JSON.stringify(exports.Execution$outboundSchema.parse(execution));
+}
+function executionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Execution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Execution' from JSON`);
+}
 //# sourceMappingURL=execution.js.map

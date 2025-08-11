@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 import { RetirementContributionCreate, RetirementContributionCreate$Outbound } from "./retirementcontributioncreate.js";
 import { RetirementDistributionCreate, RetirementDistributionCreate$Outbound } from "./retirementdistributioncreate.js";
@@ -67,4 +69,6 @@ export declare namespace CashJournalCreate$ {
     /** @deprecated use `CashJournalCreate$Outbound` instead. */
     type Outbound = CashJournalCreate$Outbound;
 }
+export declare function cashJournalCreateToJSON(cashJournalCreate: CashJournalCreate): string;
+export declare function cashJournalCreateFromJSON(jsonString: string): SafeParseResult<CashJournalCreate, SDKValidationError>;
 //# sourceMappingURL=cashjournalcreate.d.ts.map

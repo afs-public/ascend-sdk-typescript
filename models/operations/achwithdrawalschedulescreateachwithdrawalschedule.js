@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$ = exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$outboundSchema = exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$inboundSchema = exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$ = exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$outboundSchema = exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$inboundSchema = void 0;
+exports.achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestToJSON = achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestToJSON;
+exports.achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestFromJSON = achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestFromJSON;
+exports.achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseToJSON = achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseToJSON;
+exports.achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseFromJSON = achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$inboundSchema = z.object({
@@ -71,6 +76,14 @@ var AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$;
     /** @deprecated use `AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$outboundSchema` instead. */
     AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$.outboundSchema = exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$outboundSchema;
 })(AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$ || (exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$ = AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$ = {}));
+function achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestToJSON(achWithdrawalSchedulesCreateAchWithdrawalScheduleRequest) {
+    return JSON.stringify(exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$outboundSchema
+        .parse(achWithdrawalSchedulesCreateAchWithdrawalScheduleRequest));
+}
+function achWithdrawalSchedulesCreateAchWithdrawalScheduleRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalSchedulesCreateAchWithdrawalScheduleRequest' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +121,12 @@ var AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$;
     /** @deprecated use `AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$outboundSchema` instead. */
     AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$.outboundSchema = exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$outboundSchema;
 })(AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$ || (exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$ = AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$ = {}));
+function achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseToJSON(achWithdrawalSchedulesCreateAchWithdrawalScheduleResponse) {
+    return JSON.stringify(exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$outboundSchema
+        .parse(achWithdrawalSchedulesCreateAchWithdrawalScheduleResponse));
+}
+function achWithdrawalSchedulesCreateAchWithdrawalScheduleResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalSchedulesCreateAchWithdrawalScheduleResponse' from JSON`);
+}
 //# sourceMappingURL=achwithdrawalschedulescreateachwithdrawalschedule.js.map

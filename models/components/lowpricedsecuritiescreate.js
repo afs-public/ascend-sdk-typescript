@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LowPricedSecuritiesCreate$ = exports.LowPricedSecuritiesCreate$outboundSchema = exports.LowPricedSecuritiesCreate$inboundSchema = void 0;
+exports.lowPricedSecuritiesCreateToJSON = lowPricedSecuritiesCreateToJSON;
+exports.lowPricedSecuritiesCreateFromJSON = lowPricedSecuritiesCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
 exports.LowPricedSecuritiesCreate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var LowPricedSecuritiesCreate$;
     /** @deprecated use `LowPricedSecuritiesCreate$outboundSchema` instead. */
     LowPricedSecuritiesCreate$.outboundSchema = exports.LowPricedSecuritiesCreate$outboundSchema;
 })(LowPricedSecuritiesCreate$ || (exports.LowPricedSecuritiesCreate$ = LowPricedSecuritiesCreate$ = {}));
+function lowPricedSecuritiesCreateToJSON(lowPricedSecuritiesCreate) {
+    return JSON.stringify(exports.LowPricedSecuritiesCreate$outboundSchema.parse(lowPricedSecuritiesCreate));
+}
+function lowPricedSecuritiesCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LowPricedSecuritiesCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LowPricedSecuritiesCreate' from JSON`);
+}
 //# sourceMappingURL=lowpricedsecuritiescreate.js.map

@@ -41,6 +41,6 @@ const z = __importStar(require("zod"));
 function constDateTime(val) {
     return z.custom((v) => {
         return (typeof v === "string" && new Date(v).getTime() === new Date(val).getTime());
-    }, `Value must be equivelant to ${val}`);
+    }, `Value must be equivalent to ${val}`);
 }
 //# sourceMappingURL=constdatetime.js.map

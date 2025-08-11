@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingRebookExecutionRequest = {
   /**
@@ -99,6 +102,26 @@ export namespace BookingRebookExecutionRequest$ {
   export type Outbound = BookingRebookExecutionRequest$Outbound;
 }
 
+export function bookingRebookExecutionRequestToJSON(
+  bookingRebookExecutionRequest: BookingRebookExecutionRequest,
+): string {
+  return JSON.stringify(
+    BookingRebookExecutionRequest$outboundSchema.parse(
+      bookingRebookExecutionRequest,
+    ),
+  );
+}
+
+export function bookingRebookExecutionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingRebookExecutionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingRebookExecutionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingRebookExecutionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingRebookExecutionResponse$inboundSchema: z.ZodType<
   BookingRebookExecutionResponse,
@@ -155,4 +178,24 @@ export namespace BookingRebookExecutionResponse$ {
   export const outboundSchema = BookingRebookExecutionResponse$outboundSchema;
   /** @deprecated use `BookingRebookExecutionResponse$Outbound` instead. */
   export type Outbound = BookingRebookExecutionResponse$Outbound;
+}
+
+export function bookingRebookExecutionResponseToJSON(
+  bookingRebookExecutionResponse: BookingRebookExecutionResponse,
+): string {
+  return JSON.stringify(
+    BookingRebookExecutionResponse$outboundSchema.parse(
+      bookingRebookExecutionResponse,
+    ),
+  );
+}
+
+export function bookingRebookExecutionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingRebookExecutionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingRebookExecutionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingRebookExecutionResponse' from JSON`,
+  );
 }

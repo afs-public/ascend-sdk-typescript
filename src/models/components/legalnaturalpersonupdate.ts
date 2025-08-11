@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateUpdate,
   DateUpdate$inboundSchema,
@@ -552,4 +555,22 @@ export namespace LegalNaturalPersonUpdate$ {
   export const outboundSchema = LegalNaturalPersonUpdate$outboundSchema;
   /** @deprecated use `LegalNaturalPersonUpdate$Outbound` instead. */
   export type Outbound = LegalNaturalPersonUpdate$Outbound;
+}
+
+export function legalNaturalPersonUpdateToJSON(
+  legalNaturalPersonUpdate: LegalNaturalPersonUpdate,
+): string {
+  return JSON.stringify(
+    LegalNaturalPersonUpdate$outboundSchema.parse(legalNaturalPersonUpdate),
+  );
+}
+
+export function legalNaturalPersonUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalNaturalPersonUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalNaturalPersonUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalNaturalPersonUpdate' from JSON`,
+  );
 }

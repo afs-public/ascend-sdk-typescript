@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CheckPartyTypeResponse$ = exports.CheckPartyTypeResponse$outboundSchema = exports.CheckPartyTypeResponse$inboundSchema = exports.CheckPartyTypeResponsePartyType$ = exports.CheckPartyTypeResponsePartyType$outboundSchema = exports.CheckPartyTypeResponsePartyType$inboundSchema = exports.CheckPartyTypeResponsePartyType = void 0;
+exports.checkPartyTypeResponseToJSON = checkPartyTypeResponseToJSON;
+exports.checkPartyTypeResponseFromJSON = checkPartyTypeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Whether the cash journal is considered first party or third party
@@ -100,4 +103,10 @@ var CheckPartyTypeResponse$;
     /** @deprecated use `CheckPartyTypeResponse$outboundSchema` instead. */
     CheckPartyTypeResponse$.outboundSchema = exports.CheckPartyTypeResponse$outboundSchema;
 })(CheckPartyTypeResponse$ || (exports.CheckPartyTypeResponse$ = CheckPartyTypeResponse$ = {}));
+function checkPartyTypeResponseToJSON(checkPartyTypeResponse) {
+    return JSON.stringify(exports.CheckPartyTypeResponse$outboundSchema.parse(checkPartyTypeResponse));
+}
+function checkPartyTypeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CheckPartyTypeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CheckPartyTypeResponse' from JSON`);
+}
 //# sourceMappingURL=checkpartytyperesponse.js.map

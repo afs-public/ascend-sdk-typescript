@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegalNaturalPersonUpdate$ = exports.LegalNaturalPersonUpdate$outboundSchema = exports.LegalNaturalPersonUpdate$inboundSchema = exports.LegalNaturalPersonUpdateTaxIdType$ = exports.LegalNaturalPersonUpdateTaxIdType$outboundSchema = exports.LegalNaturalPersonUpdateTaxIdType$inboundSchema = exports.LegalNaturalPersonUpdateNameSuffix$ = exports.LegalNaturalPersonUpdateNameSuffix$outboundSchema = exports.LegalNaturalPersonUpdateNameSuffix$inboundSchema = exports.LegalNaturalPersonUpdateMaritalStatus$ = exports.LegalNaturalPersonUpdateMaritalStatus$outboundSchema = exports.LegalNaturalPersonUpdateMaritalStatus$inboundSchema = exports.LegalNaturalPersonUpdateTaxIdType = exports.LegalNaturalPersonUpdateNameSuffix = exports.LegalNaturalPersonUpdateMaritalStatus = void 0;
+exports.legalNaturalPersonUpdateToJSON = legalNaturalPersonUpdateToJSON;
+exports.legalNaturalPersonUpdateFromJSON = legalNaturalPersonUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const dateupdate_js_1 = require("./dateupdate.js");
 const employmentupdate_js_1 = require("./employmentupdate.js");
@@ -291,4 +294,10 @@ var LegalNaturalPersonUpdate$;
     /** @deprecated use `LegalNaturalPersonUpdate$outboundSchema` instead. */
     LegalNaturalPersonUpdate$.outboundSchema = exports.LegalNaturalPersonUpdate$outboundSchema;
 })(LegalNaturalPersonUpdate$ || (exports.LegalNaturalPersonUpdate$ = LegalNaturalPersonUpdate$ = {}));
+function legalNaturalPersonUpdateToJSON(legalNaturalPersonUpdate) {
+    return JSON.stringify(exports.LegalNaturalPersonUpdate$outboundSchema.parse(legalNaturalPersonUpdate));
+}
+function legalNaturalPersonUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalNaturalPersonUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalNaturalPersonUpdate' from JSON`);
+}
 //# sourceMappingURL=legalnaturalpersonupdate.js.map

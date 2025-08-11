@@ -38,8 +38,31 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegalEntityFederalTaxClassification$ = exports.LegalEntityFederalTaxClassification$outboundSchema = exports.LegalEntityFederalTaxClassification$inboundSchema = exports.LegalEntityCNoticeDate$ = exports.LegalEntityCNoticeDate$outboundSchema = exports.LegalEntityCNoticeDate$inboundSchema = exports.LegalEntityTaxIdType$ = exports.LegalEntityTaxIdType$outboundSchema = exports.LegalEntityTaxIdType$inboundSchema = exports.LegalAddress$ = exports.LegalAddress$outboundSchema = exports.LegalAddress$inboundSchema = exports.LegalEntityLargeTrader$ = exports.LegalEntityLargeTrader$outboundSchema = exports.LegalEntityLargeTrader$inboundSchema = exports.LegalEntityEffectiveDate$ = exports.LegalEntityEffectiveDate$outboundSchema = exports.LegalEntityEffectiveDate$inboundSchema = exports.FormationDate$ = exports.FormationDate$outboundSchema = exports.FormationDate$inboundSchema = exports.LegalEntityExemptCustomerReason$ = exports.LegalEntityExemptCustomerReason$outboundSchema = exports.LegalEntityExemptCustomerReason$inboundSchema = exports.LegalEntityEntityType$ = exports.LegalEntityEntityType$outboundSchema = exports.LegalEntityEntityType$inboundSchema = exports.EntityDueDiligence$ = exports.EntityDueDiligence$outboundSchema = exports.EntityDueDiligence$inboundSchema = exports.LegalEntityNegativeNews$ = exports.LegalEntityNegativeNews$outboundSchema = exports.LegalEntityNegativeNews$inboundSchema = exports.LegalEntityCorporateStructure$ = exports.LegalEntityCorporateStructure$outboundSchema = exports.LegalEntityCorporateStructure$inboundSchema = exports.LegalEntityBusinessIndustrialClassification$ = exports.LegalEntityBusinessIndustrialClassification$outboundSchema = exports.LegalEntityBusinessIndustrialClassification$inboundSchema = exports.LegalEntityWithholdingState = exports.LegalEntityUsTinStatus = exports.LegalEntityTaxpayerCertificationState = exports.LegalEntityReportingEligibility = exports.LegalEntityIrsFormType = exports.LegalEntityFederalTaxClassification = exports.LegalEntityTaxIdType = exports.LegalEntityExemptCustomerReason = exports.LegalEntityEntityType = exports.LegalEntityCorporateStructure = exports.LegalEntityBusinessIndustrialClassification = void 0;
 exports.LegalEntity$ = exports.LegalEntity$outboundSchema = exports.LegalEntity$inboundSchema = exports.LegalEntityTaxProfile$ = exports.LegalEntityTaxProfile$outboundSchema = exports.LegalEntityTaxProfile$inboundSchema = exports.LegalEntityWithholdingState$ = exports.LegalEntityWithholdingState$outboundSchema = exports.LegalEntityWithholdingState$inboundSchema = exports.LegalEntityUsTinStatus$ = exports.LegalEntityUsTinStatus$outboundSchema = exports.LegalEntityUsTinStatus$inboundSchema = exports.LegalEntityTaxpayerCertificationState$ = exports.LegalEntityTaxpayerCertificationState$outboundSchema = exports.LegalEntityTaxpayerCertificationState$inboundSchema = exports.LegalEntityTaxCertificationDate$ = exports.LegalEntityTaxCertificationDate$outboundSchema = exports.LegalEntityTaxCertificationDate$inboundSchema = exports.LegalEntityReportingEligibility$ = exports.LegalEntityReportingEligibility$outboundSchema = exports.LegalEntityReportingEligibility$inboundSchema = exports.LegalEntityIrsFormType$ = exports.LegalEntityIrsFormType$outboundSchema = exports.LegalEntityIrsFormType$inboundSchema = exports.LegalEntityFirstBNoticeDate$ = exports.LegalEntityFirstBNoticeDate$outboundSchema = exports.LegalEntityFirstBNoticeDate$inboundSchema = void 0;
+exports.legalEntityNegativeNewsToJSON = legalEntityNegativeNewsToJSON;
+exports.legalEntityNegativeNewsFromJSON = legalEntityNegativeNewsFromJSON;
+exports.entityDueDiligenceToJSON = entityDueDiligenceToJSON;
+exports.entityDueDiligenceFromJSON = entityDueDiligenceFromJSON;
+exports.formationDateToJSON = formationDateToJSON;
+exports.formationDateFromJSON = formationDateFromJSON;
+exports.legalEntityEffectiveDateToJSON = legalEntityEffectiveDateToJSON;
+exports.legalEntityEffectiveDateFromJSON = legalEntityEffectiveDateFromJSON;
+exports.legalEntityLargeTraderToJSON = legalEntityLargeTraderToJSON;
+exports.legalEntityLargeTraderFromJSON = legalEntityLargeTraderFromJSON;
+exports.legalAddressToJSON = legalAddressToJSON;
+exports.legalAddressFromJSON = legalAddressFromJSON;
+exports.legalEntityCNoticeDateToJSON = legalEntityCNoticeDateToJSON;
+exports.legalEntityCNoticeDateFromJSON = legalEntityCNoticeDateFromJSON;
+exports.legalEntityFirstBNoticeDateToJSON = legalEntityFirstBNoticeDateToJSON;
+exports.legalEntityFirstBNoticeDateFromJSON = legalEntityFirstBNoticeDateFromJSON;
+exports.legalEntityTaxCertificationDateToJSON = legalEntityTaxCertificationDateToJSON;
+exports.legalEntityTaxCertificationDateFromJSON = legalEntityTaxCertificationDateFromJSON;
+exports.legalEntityTaxProfileToJSON = legalEntityTaxProfileToJSON;
+exports.legalEntityTaxProfileFromJSON = legalEntityTaxProfileFromJSON;
+exports.legalEntityToJSON = legalEntityToJSON;
+exports.legalEntityFromJSON = legalEntityFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 var LegalEntityBusinessIndustrialClassification;
 (function (LegalEntityBusinessIndustrialClassification) {
@@ -252,6 +275,12 @@ var LegalEntityNegativeNews$;
     /** @deprecated use `LegalEntityNegativeNews$outboundSchema` instead. */
     LegalEntityNegativeNews$.outboundSchema = exports.LegalEntityNegativeNews$outboundSchema;
 })(LegalEntityNegativeNews$ || (exports.LegalEntityNegativeNews$ = LegalEntityNegativeNews$ = {}));
+function legalEntityNegativeNewsToJSON(legalEntityNegativeNews) {
+    return JSON.stringify(exports.LegalEntityNegativeNews$outboundSchema.parse(legalEntityNegativeNews));
+}
+function legalEntityNegativeNewsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityNegativeNews$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityNegativeNews' from JSON`);
+}
 /** @internal */
 exports.EntityDueDiligence$inboundSchema = z.object({
     entity_issues_bearer_shares: z.boolean().optional(),
@@ -285,6 +314,12 @@ var EntityDueDiligence$;
     /** @deprecated use `EntityDueDiligence$outboundSchema` instead. */
     EntityDueDiligence$.outboundSchema = exports.EntityDueDiligence$outboundSchema;
 })(EntityDueDiligence$ || (exports.EntityDueDiligence$ = EntityDueDiligence$ = {}));
+function entityDueDiligenceToJSON(entityDueDiligence) {
+    return JSON.stringify(exports.EntityDueDiligence$outboundSchema.parse(entityDueDiligence));
+}
+function entityDueDiligenceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EntityDueDiligence$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EntityDueDiligence' from JSON`);
+}
 /** @internal */
 exports.LegalEntityEntityType$inboundSchema = z
     .union([
@@ -352,6 +387,12 @@ var FormationDate$;
     /** @deprecated use `FormationDate$outboundSchema` instead. */
     FormationDate$.outboundSchema = exports.FormationDate$outboundSchema;
 })(FormationDate$ || (exports.FormationDate$ = FormationDate$ = {}));
+function formationDateToJSON(formationDate) {
+    return JSON.stringify(exports.FormationDate$outboundSchema.parse(formationDate));
+}
+function formationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FormationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FormationDate' from JSON`);
+}
 /** @internal */
 exports.LegalEntityEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -375,6 +416,12 @@ var LegalEntityEffectiveDate$;
     /** @deprecated use `LegalEntityEffectiveDate$outboundSchema` instead. */
     LegalEntityEffectiveDate$.outboundSchema = exports.LegalEntityEffectiveDate$outboundSchema;
 })(LegalEntityEffectiveDate$ || (exports.LegalEntityEffectiveDate$ = LegalEntityEffectiveDate$ = {}));
+function legalEntityEffectiveDateToJSON(legalEntityEffectiveDate) {
+    return JSON.stringify(exports.LegalEntityEffectiveDate$outboundSchema.parse(legalEntityEffectiveDate));
+}
+function legalEntityEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.LegalEntityLargeTrader$inboundSchema = z.object({
     effective_date: z.nullable(z.lazy(() => exports.LegalEntityEffectiveDate$inboundSchema)).optional(),
@@ -406,6 +453,12 @@ var LegalEntityLargeTrader$;
     /** @deprecated use `LegalEntityLargeTrader$outboundSchema` instead. */
     LegalEntityLargeTrader$.outboundSchema = exports.LegalEntityLargeTrader$outboundSchema;
 })(LegalEntityLargeTrader$ || (exports.LegalEntityLargeTrader$ = LegalEntityLargeTrader$ = {}));
+function legalEntityLargeTraderToJSON(legalEntityLargeTrader) {
+    return JSON.stringify(exports.LegalEntityLargeTrader$outboundSchema.parse(legalEntityLargeTrader));
+}
+function legalEntityLargeTraderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityLargeTrader$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityLargeTrader' from JSON`);
+}
 /** @internal */
 exports.LegalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -463,6 +516,12 @@ var LegalAddress$;
     /** @deprecated use `LegalAddress$outboundSchema` instead. */
     LegalAddress$.outboundSchema = exports.LegalAddress$outboundSchema;
 })(LegalAddress$ || (exports.LegalAddress$ = LegalAddress$ = {}));
+function legalAddressToJSON(legalAddress) {
+    return JSON.stringify(exports.LegalAddress$outboundSchema.parse(legalAddress));
+}
+function legalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalAddress' from JSON`);
+}
 /** @internal */
 exports.LegalEntityTaxIdType$inboundSchema = z
     .union([
@@ -508,6 +567,12 @@ var LegalEntityCNoticeDate$;
     /** @deprecated use `LegalEntityCNoticeDate$outboundSchema` instead. */
     LegalEntityCNoticeDate$.outboundSchema = exports.LegalEntityCNoticeDate$outboundSchema;
 })(LegalEntityCNoticeDate$ || (exports.LegalEntityCNoticeDate$ = LegalEntityCNoticeDate$ = {}));
+function legalEntityCNoticeDateToJSON(legalEntityCNoticeDate) {
+    return JSON.stringify(exports.LegalEntityCNoticeDate$outboundSchema.parse(legalEntityCNoticeDate));
+}
+function legalEntityCNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityCNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityCNoticeDate' from JSON`);
+}
 /** @internal */
 exports.LegalEntityFederalTaxClassification$inboundSchema = z
     .union([
@@ -553,6 +618,12 @@ var LegalEntityFirstBNoticeDate$;
     /** @deprecated use `LegalEntityFirstBNoticeDate$outboundSchema` instead. */
     LegalEntityFirstBNoticeDate$.outboundSchema = exports.LegalEntityFirstBNoticeDate$outboundSchema;
 })(LegalEntityFirstBNoticeDate$ || (exports.LegalEntityFirstBNoticeDate$ = LegalEntityFirstBNoticeDate$ = {}));
+function legalEntityFirstBNoticeDateToJSON(legalEntityFirstBNoticeDate) {
+    return JSON.stringify(exports.LegalEntityFirstBNoticeDate$outboundSchema.parse(legalEntityFirstBNoticeDate));
+}
+function legalEntityFirstBNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityFirstBNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityFirstBNoticeDate' from JSON`);
+}
 /** @internal */
 exports.LegalEntityIrsFormType$inboundSchema = z
     .union([
@@ -620,6 +691,12 @@ var LegalEntityTaxCertificationDate$;
     /** @deprecated use `LegalEntityTaxCertificationDate$outboundSchema` instead. */
     LegalEntityTaxCertificationDate$.outboundSchema = exports.LegalEntityTaxCertificationDate$outboundSchema;
 })(LegalEntityTaxCertificationDate$ || (exports.LegalEntityTaxCertificationDate$ = LegalEntityTaxCertificationDate$ = {}));
+function legalEntityTaxCertificationDateToJSON(legalEntityTaxCertificationDate) {
+    return JSON.stringify(exports.LegalEntityTaxCertificationDate$outboundSchema.parse(legalEntityTaxCertificationDate));
+}
+function legalEntityTaxCertificationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityTaxCertificationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityTaxCertificationDate' from JSON`);
+}
 /** @internal */
 exports.LegalEntityTaxpayerCertificationState$inboundSchema = z
     .union([
@@ -755,6 +832,12 @@ var LegalEntityTaxProfile$;
     /** @deprecated use `LegalEntityTaxProfile$outboundSchema` instead. */
     LegalEntityTaxProfile$.outboundSchema = exports.LegalEntityTaxProfile$outboundSchema;
 })(LegalEntityTaxProfile$ || (exports.LegalEntityTaxProfile$ = LegalEntityTaxProfile$ = {}));
+function legalEntityTaxProfileToJSON(legalEntityTaxProfile) {
+    return JSON.stringify(exports.LegalEntityTaxProfile$outboundSchema.parse(legalEntityTaxProfile));
+}
+function legalEntityTaxProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityTaxProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityTaxProfile' from JSON`);
+}
 /** @internal */
 exports.LegalEntity$inboundSchema = z.object({
     accredited_investor: z.boolean().optional(),
@@ -916,4 +999,10 @@ var LegalEntity$;
     /** @deprecated use `LegalEntity$outboundSchema` instead. */
     LegalEntity$.outboundSchema = exports.LegalEntity$outboundSchema;
 })(LegalEntity$ || (exports.LegalEntity$ = LegalEntity$ = {}));
+function legalEntityToJSON(legalEntity) {
+    return JSON.stringify(exports.LegalEntity$outboundSchema.parse(legalEntity));
+}
+function legalEntityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntity' from JSON`);
+}
 //# sourceMappingURL=legalentity.js.map

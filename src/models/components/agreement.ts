@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * An internal indicator from where the agreement was generated; Typically `ACCOUNTS_SERVICE` if accessing our public APIs
@@ -245,4 +248,18 @@ export namespace Agreement$ {
   export const outboundSchema = Agreement$outboundSchema;
   /** @deprecated use `Agreement$Outbound` instead. */
   export type Outbound = Agreement$Outbound;
+}
+
+export function agreementToJSON(agreement: Agreement): string {
+  return JSON.stringify(Agreement$outboundSchema.parse(agreement));
+}
+
+export function agreementFromJSON(
+  jsonString: string,
+): SafeParseResult<Agreement, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Agreement$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Agreement' from JSON`,
+  );
 }

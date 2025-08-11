@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type FeesCancelFeeRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace FeesCancelFeeRequest$ {
     /** @deprecated use `FeesCancelFeeRequest$Outbound` instead. */
     type Outbound = FeesCancelFeeRequest$Outbound;
 }
+export declare function feesCancelFeeRequestToJSON(feesCancelFeeRequest: FeesCancelFeeRequest): string;
+export declare function feesCancelFeeRequestFromJSON(jsonString: string): SafeParseResult<FeesCancelFeeRequest, SDKValidationError>;
 /** @internal */
 export declare const FeesCancelFeeResponse$inboundSchema: z.ZodType<FeesCancelFeeResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace FeesCancelFeeResponse$ {
     /** @deprecated use `FeesCancelFeeResponse$Outbound` instead. */
     type Outbound = FeesCancelFeeResponse$Outbound;
 }
+export declare function feesCancelFeeResponseToJSON(feesCancelFeeResponse: FeesCancelFeeResponse): string;
+export declare function feesCancelFeeResponseFromJSON(jsonString: string): SafeParseResult<FeesCancelFeeResponse, SDKValidationError>;
 //# sourceMappingURL=feescancelfee.d.ts.map

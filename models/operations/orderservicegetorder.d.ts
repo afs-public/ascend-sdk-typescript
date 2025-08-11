@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type OrderServiceGetOrderRequest = {
     /**
      * The account id.
@@ -42,6 +44,8 @@ export declare namespace OrderServiceGetOrderRequest$ {
     /** @deprecated use `OrderServiceGetOrderRequest$Outbound` instead. */
     type Outbound = OrderServiceGetOrderRequest$Outbound;
 }
+export declare function orderServiceGetOrderRequestToJSON(orderServiceGetOrderRequest: OrderServiceGetOrderRequest): string;
+export declare function orderServiceGetOrderRequestFromJSON(jsonString: string): SafeParseResult<OrderServiceGetOrderRequest, SDKValidationError>;
 /** @internal */
 export declare const OrderServiceGetOrderResponse$inboundSchema: z.ZodType<OrderServiceGetOrderResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace OrderServiceGetOrderResponse$ {
     /** @deprecated use `OrderServiceGetOrderResponse$Outbound` instead. */
     type Outbound = OrderServiceGetOrderResponse$Outbound;
 }
+export declare function orderServiceGetOrderResponseToJSON(orderServiceGetOrderResponse: OrderServiceGetOrderResponse): string;
+export declare function orderServiceGetOrderResponseFromJSON(jsonString: string): SafeParseResult<OrderServiceGetOrderResponse, SDKValidationError>;
 //# sourceMappingURL=orderservicegetorder.d.ts.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The details of file containing the snapshot data. This contains the download uri and uri expiry time.
@@ -120,6 +123,20 @@ export namespace FileT$ {
   export type Outbound = FileT$Outbound;
 }
 
+export function fileToJSON(fileT: FileT): string {
+  return JSON.stringify(FileT$outboundSchema.parse(fileT));
+}
+
+export function fileFromJSON(
+  jsonString: string,
+): SafeParseResult<FileT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FileT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FileT' from JSON`,
+  );
+}
+
 /** @internal */
 export const SnapshotProcessDate$inboundSchema: z.ZodType<
   SnapshotProcessDate,
@@ -160,6 +177,24 @@ export namespace SnapshotProcessDate$ {
   export const outboundSchema = SnapshotProcessDate$outboundSchema;
   /** @deprecated use `SnapshotProcessDate$Outbound` instead. */
   export type Outbound = SnapshotProcessDate$Outbound;
+}
+
+export function snapshotProcessDateToJSON(
+  snapshotProcessDate: SnapshotProcessDate,
+): string {
+  return JSON.stringify(
+    SnapshotProcessDate$outboundSchema.parse(snapshotProcessDate),
+  );
+}
+
+export function snapshotProcessDateFromJSON(
+  jsonString: string,
+): SafeParseResult<SnapshotProcessDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SnapshotProcessDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SnapshotProcessDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -232,4 +267,18 @@ export namespace Snapshot$ {
   export const outboundSchema = Snapshot$outboundSchema;
   /** @deprecated use `Snapshot$Outbound` instead. */
   export type Outbound = Snapshot$Outbound;
+}
+
+export function snapshotToJSON(snapshot: Snapshot): string {
+  return JSON.stringify(Snapshot$outboundSchema.parse(snapshot));
+}
+
+export function snapshotFromJSON(
+  jsonString: string,
+): SafeParseResult<Snapshot, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Snapshot$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Snapshot' from JSON`,
+  );
 }

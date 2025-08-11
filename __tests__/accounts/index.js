@@ -49,7 +49,6 @@ const sdk_1 = require("../utils/sdk");
 const components = __importStar(require("@apexfintechsolutions/ascend-sdk/models/components"));
 const large_trader_id = "123456789100";
 async function createLegalNaturalPerson() {
-    var _a, _b;
     const request = {
         birthDate: {
             year: 1981,
@@ -57,7 +56,7 @@ async function createLegalNaturalPerson() {
             day: 13,
         },
         citizenshipCountries: ["US"],
-        correspondentId: (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "",
+        correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
         familyName: "Jacob",
         givenName: "Bob",
         personalAddress: {
@@ -103,29 +102,27 @@ async function createLegalNaturalPerson() {
         },
     };
     const result = await sdk_1.sdk.personManagement.createLegalNaturalPerson(request);
-    if ((_b = result === null || result === void 0 ? void 0 : result.legalNaturalPerson) === null || _b === void 0 ? void 0 : _b.legalNaturalPersonId) {
+    if (result?.legalNaturalPerson?.legalNaturalPersonId) {
         return result.legalNaturalPerson.legalNaturalPersonId;
     }
     return undefined;
 }
 async function assignLargeTrader(lnp_id) {
-    var _a;
     const request = {
         largeTraderId: large_trader_id,
     };
     const result = await sdk_1.sdk.personManagement.assignLargeTrader(request, lnp_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.largeTrader) === null || _a === void 0 ? void 0 : _a.largeTraderId) {
+    if (result?.largeTrader?.largeTraderId) {
         return result.largeTrader.largeTraderId;
     }
     return undefined;
 }
 async function createLegalEntity() {
-    var _a, _b;
     const request = {
         accreditedInvestor: false,
         adviser: false,
         brokerDealer: false,
-        correspondentId: (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "",
+        correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
         entityName: "AcmeInc",
         entityType: components.EntityType.Estate,
         exemptVerifyingBeneficialOwners: false,
@@ -150,16 +147,15 @@ async function createLegalEntity() {
         },
     };
     const result = await sdk_1.sdk.personManagement.createLegalEntity(request);
-    if ((_b = result === null || result === void 0 ? void 0 : result.legalEntity) === null || _b === void 0 ? void 0 : _b.legalEntityId) {
+    if (result?.legalEntity?.legalEntityId) {
         return result.legalEntity.legalEntityId;
     }
     return undefined;
 }
 async function createAccount(lnp_id) {
-    var _a, _b, _c;
     const request = {
-        accountGroupId: (_a = process.env["ACCOUNT_GROUP_ID"]) !== null && _a !== void 0 ? _a : "",
-        correspondentId: (_b = process.env["CORRESPONDENT_ID"]) !== null && _b !== void 0 ? _b : "",
+        accountGroupId: process.env["ACCOUNT_GROUP_ID"] ?? "",
+        correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
         parties: [
             {
                 legalNaturalPersonId: lnp_id,
@@ -180,13 +176,12 @@ async function createAccount(lnp_id) {
         ],
     };
     const result = await sdk_1.sdk.accountCreation.createAccount(request);
-    if ((_c = result === null || result === void 0 ? void 0 : result.account) === null || _c === void 0 ? void 0 : _c.accountId) {
+    if (result?.account?.accountId) {
         return result.account.accountId;
     }
     return undefined;
 }
 async function addParty(account_id, legalEntityId) {
-    var _a;
     const request = {
         authorizedByPartyIds: [
             "8096110d-fb55-4f9d-b883-b84f0b70d3ea",
@@ -210,13 +205,12 @@ async function addParty(account_id, legalEntityId) {
         },
     };
     const result = await sdk_1.sdk.accountManagement.addParty(request, account_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.party) === null || _a === void 0 ? void 0 : _a.partyId) {
+    if (result?.party?.partyId) {
         return result.party.partyId;
     }
     return undefined;
 }
 async function replaceParty(account_id, lnp_id, party_id) {
-    var _a;
     const request = {
         authorizedByPartyIds: [
             "8096110d-fb55-4f9d-b883-b84f0b70d3ea",
@@ -240,13 +234,12 @@ async function replaceParty(account_id, lnp_id, party_id) {
         },
     };
     const result = await sdk_1.sdk.accountManagement.replaceParty(request, account_id, party_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.party) === null || _a === void 0 ? void 0 : _a.partyId) {
+    if (result?.party?.partyId) {
         return result.party.partyId;
     }
     return undefined;
 }
 async function createTrustedContact(account_id) {
-    var _a;
     const request = {
         emailAddress: "example@email.com",
         familyName: "Doe",
@@ -257,13 +250,12 @@ async function createTrustedContact(account_id) {
         },
     };
     const result = await sdk_1.sdk.accountManagement.createTrustedContact(request, account_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.trustedContact) === null || _a === void 0 ? void 0 : _a.trustedContactId) {
+    if (result?.trustedContact?.trustedContactId) {
         return result.trustedContact.trustedContactId;
     }
     return undefined;
 }
 async function createInterestedParty(account_id) {
-    var _a;
     const request = {
         mailingAddress: {
             addressLines: ["123 Main Street"],
@@ -275,26 +267,24 @@ async function createInterestedParty(account_id) {
         recipient: "John Dough",
     };
     const result = await sdk_1.sdk.accountManagement.createInterestedParty(request, account_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.interestedParty) === null || _a === void 0 ? void 0 : _a.interestedPartyId) {
+    if (result?.interestedParty?.interestedPartyId) {
         return result.interestedParty.interestedPartyId;
     }
     return undefined;
 }
 async function createRestrictionCode(account_id) {
-    var _a;
     const request = {
         createReason: "Some reason for creating",
         endedReason: "Some reason for removing",
         restrictionCode: "TRADING_LIQUIDATION_ONLY_BY_CORRESPONDENT",
     };
     const result = await sdk_1.sdk.accountManagement.createRestriction(request, account_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.restriction) === null || _a === void 0 ? void 0 : _a.restrictionCode) {
+    if (result?.restriction?.restrictionCode) {
         return result.restriction.restrictionCode;
     }
     return undefined;
 }
 async function enrollAccount(account_id) {
-    var _a, _b, _c, _d, _e, _f;
     const request = {
         enrollment: {
             principalApproverId: "01HMESE8WMDNTTWJ2BAEG3TZWA",
@@ -306,8 +296,8 @@ async function enrollAccount(account_id) {
         },
     };
     const result = await sdk_1.sdk.enrollmentsAndAgreements.enrollAccount(request, account_id);
-    if (((_c = (_b = (_a = result === null || result === void 0 ? void 0 : result.enrollAccountResponse) === null || _a === void 0 ? void 0 : _a.agreements) === null || _b === void 0 ? void 0 : _b[0]) === null || _c === void 0 ? void 0 : _c.agreementId) &&
-        ((_f = (_e = (_d = result === null || result === void 0 ? void 0 : result.enrollAccountResponse) === null || _d === void 0 ? void 0 : _d.agreements) === null || _e === void 0 ? void 0 : _e[1]) === null || _f === void 0 ? void 0 : _f.agreementId)) {
+    if (result?.enrollAccountResponse?.agreements?.[0]?.agreementId &&
+        result?.enrollAccountResponse?.agreements?.[1]?.agreementId) {
         return [
             result.enrollAccountResponse.agreements[0].agreementId,
             result.enrollAccountResponse.agreements[1].agreementId,
@@ -316,9 +306,8 @@ async function enrollAccount(account_id) {
     return undefined;
 }
 async function getEnrollmentToDeactivate(account_id) {
-    var _a;
     const result = await sdk_1.sdk.enrollmentsAndAgreements.listEnrollments(account_id);
-    const enrollments = (_a = result.listEnrollmentsResponse) === null || _a === void 0 ? void 0 : _a.enrollments;
+    const enrollments = result.listEnrollmentsResponse?.enrollments;
     if (enrollments) {
         for (const enrollment of enrollments) {
             if (enrollment.type === "DIVIDEND_REINVESTMENT_PLAN") {

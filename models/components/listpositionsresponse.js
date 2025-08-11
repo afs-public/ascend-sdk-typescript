@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListPositionsResponse$ = exports.ListPositionsResponse$outboundSchema = exports.ListPositionsResponse$inboundSchema = void 0;
+exports.listPositionsResponseToJSON = listPositionsResponseToJSON;
+exports.listPositionsResponseFromJSON = listPositionsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const position_js_1 = require("./position.js");
 /** @internal */
 exports.ListPositionsResponse$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ListPositionsResponse$;
     /** @deprecated use `ListPositionsResponse$outboundSchema` instead. */
     ListPositionsResponse$.outboundSchema = exports.ListPositionsResponse$outboundSchema;
 })(ListPositionsResponse$ || (exports.ListPositionsResponse$ = ListPositionsResponse$ = {}));
+function listPositionsResponseToJSON(listPositionsResponse) {
+    return JSON.stringify(exports.ListPositionsResponse$outboundSchema.parse(listPositionsResponse));
+}
+function listPositionsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListPositionsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListPositionsResponse' from JSON`);
+}
 //# sourceMappingURL=listpositionsresponse.js.map

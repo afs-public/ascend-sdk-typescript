@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountGoalsUpdate$ = exports.AccountGoalsUpdate$outboundSchema = exports.AccountGoalsUpdate$inboundSchema = exports.AccountGoalsUpdateTimeHorizon$ = exports.AccountGoalsUpdateTimeHorizon$outboundSchema = exports.AccountGoalsUpdateTimeHorizon$inboundSchema = exports.AccountGoalsUpdateRiskTolerance$ = exports.AccountGoalsUpdateRiskTolerance$outboundSchema = exports.AccountGoalsUpdateRiskTolerance$inboundSchema = exports.AccountGoalsUpdateLiquidityNeeds$ = exports.AccountGoalsUpdateLiquidityNeeds$outboundSchema = exports.AccountGoalsUpdateLiquidityNeeds$inboundSchema = exports.AccountGoalsUpdateInvestmentObjective$ = exports.AccountGoalsUpdateInvestmentObjective$outboundSchema = exports.AccountGoalsUpdateInvestmentObjective$inboundSchema = exports.AccountGoalsUpdateTimeHorizon = exports.AccountGoalsUpdateRiskTolerance = exports.AccountGoalsUpdateLiquidityNeeds = exports.AccountGoalsUpdateInvestmentObjective = void 0;
+exports.accountGoalsUpdateToJSON = accountGoalsUpdateToJSON;
+exports.accountGoalsUpdateFromJSON = accountGoalsUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The financial goal or purpose that an investor has in mind when making investment decisions; firms often ask investors to specify their investment objectives when opening an account, in order to provide appropriate investment recommendations and manage risk appropriately
@@ -219,4 +222,10 @@ var AccountGoalsUpdate$;
     /** @deprecated use `AccountGoalsUpdate$outboundSchema` instead. */
     AccountGoalsUpdate$.outboundSchema = exports.AccountGoalsUpdate$outboundSchema;
 })(AccountGoalsUpdate$ || (exports.AccountGoalsUpdate$ = AccountGoalsUpdate$ = {}));
+function accountGoalsUpdateToJSON(accountGoalsUpdate) {
+    return JSON.stringify(exports.AccountGoalsUpdate$outboundSchema.parse(accountGoalsUpdate));
+}
+function accountGoalsUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountGoalsUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountGoalsUpdate' from JSON`);
+}
 //# sourceMappingURL=accountgoalsupdate.js.map

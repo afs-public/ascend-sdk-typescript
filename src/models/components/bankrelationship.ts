@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The bank account type.
@@ -232,6 +235,20 @@ export namespace BankAccount$ {
   export type Outbound = BankAccount$Outbound;
 }
 
+export function bankAccountToJSON(bankAccount: BankAccount): string {
+  return JSON.stringify(BankAccount$outboundSchema.parse(bankAccount));
+}
+
+export function bankAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<BankAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BankAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BankAccount' from JSON`,
+  );
+}
+
 /** @internal */
 export const BankRelationshipStateState$inboundSchema: z.ZodType<
   BankRelationshipStateStateOpen,
@@ -317,6 +334,24 @@ export namespace BankRelationshipState$ {
   export const outboundSchema = BankRelationshipState$outboundSchema;
   /** @deprecated use `BankRelationshipState$Outbound` instead. */
   export type Outbound = BankRelationshipState$Outbound;
+}
+
+export function bankRelationshipStateToJSON(
+  bankRelationshipState: BankRelationshipState,
+): string {
+  return JSON.stringify(
+    BankRelationshipState$outboundSchema.parse(bankRelationshipState),
+  );
+}
+
+export function bankRelationshipStateFromJSON(
+  jsonString: string,
+): SafeParseResult<BankRelationshipState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BankRelationshipState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BankRelationshipState' from JSON`,
+  );
 }
 
 /** @internal */
@@ -424,4 +459,22 @@ export namespace BankRelationship$ {
   export const outboundSchema = BankRelationship$outboundSchema;
   /** @deprecated use `BankRelationship$Outbound` instead. */
   export type Outbound = BankRelationship$Outbound;
+}
+
+export function bankRelationshipToJSON(
+  bankRelationship: BankRelationship,
+): string {
+  return JSON.stringify(
+    BankRelationship$outboundSchema.parse(bankRelationship),
+  );
+}
+
+export function bankRelationshipFromJSON(
+  jsonString: string,
+): SafeParseResult<BankRelationship, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BankRelationship$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BankRelationship' from JSON`,
+  );
 }

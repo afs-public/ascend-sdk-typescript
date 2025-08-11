@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ForeignBondTradingDetailCreate, ForeignBondTradingDetailCreate$Outbound } from "./foreignbondtradingdetailcreate.js";
 /**
  * Foreign bond trading detail
@@ -34,4 +36,6 @@ export declare namespace ForeignBondTradingDetailsCreate$ {
     /** @deprecated use `ForeignBondTradingDetailsCreate$Outbound` instead. */
     type Outbound = ForeignBondTradingDetailsCreate$Outbound;
 }
+export declare function foreignBondTradingDetailsCreateToJSON(foreignBondTradingDetailsCreate: ForeignBondTradingDetailsCreate): string;
+export declare function foreignBondTradingDetailsCreateFromJSON(jsonString: string): SafeParseResult<ForeignBondTradingDetailsCreate, SDKValidationError>;
 //# sourceMappingURL=foreignbondtradingdetailscreate.d.ts.map

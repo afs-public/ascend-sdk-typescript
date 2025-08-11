@@ -1,7 +1,16 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 export declare enum WatchlistMatchUpdateMatchState {
     MatchUnspecified = "MATCH_UNSPECIFIED",
@@ -11,7 +20,14 @@ export declare enum WatchlistMatchUpdateMatchState {
     Inconclusive = "INCONCLUSIVE"
 }
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 export type WatchlistMatchUpdateMatchStateOpen = OpenEnum<typeof WatchlistMatchUpdateMatchState>;
 /**
@@ -23,7 +39,14 @@ export type WatchlistMatchUpdate = {
      */
     excludeFromScreening?: boolean | undefined;
     /**
-     * Match state - whether or not the match is confirmed
+     * The match state for a profile, one of:
+     *
+     * @remarks
+     * - `MATCH_UNSPECIFIED` - Default/Null value.
+     * - `CONFIRMED_MATCH` - Match is confirmed.
+     * - `POTENTIAL_MATCH` - Match is a potential.
+     * - `NO_MATCH` - Match is confirmed not to be a match.
+     * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
      */
     matchState?: WatchlistMatchUpdateMatchStateOpen | undefined;
     /**
@@ -72,4 +95,6 @@ export declare namespace WatchlistMatchUpdate$ {
     /** @deprecated use `WatchlistMatchUpdate$Outbound` instead. */
     type Outbound = WatchlistMatchUpdate$Outbound;
 }
+export declare function watchlistMatchUpdateToJSON(watchlistMatchUpdate: WatchlistMatchUpdate): string;
+export declare function watchlistMatchUpdateFromJSON(jsonString: string): SafeParseResult<WatchlistMatchUpdate, SDKValidationError>;
 //# sourceMappingURL=watchlistmatchupdate.d.ts.map

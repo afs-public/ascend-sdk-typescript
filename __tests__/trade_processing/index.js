@@ -46,7 +46,6 @@ const crypto_1 = __importDefault(require("crypto"));
 exports.withdrawal_account_id = "01JHGTEPC6ZTAHCFRH2MD3VJJT";
 exports.deceased_account_id = "01JHK07CRQ9X8P5XE9JWG4PFSP";
 async function createBooking(account_id) {
-    var _a, _b;
     const request = {
         accountId: account_id,
         brokerCapacity: components.TradeCreateBrokerCapacity.Principal,
@@ -72,13 +71,12 @@ async function createBooking(account_id) {
         open: true
     };
     const result = await sdk_1.sdk.tradeBooking.createTrade(request, account_id);
-    if (((_a = result === null || result === void 0 ? void 0 : result.bookingTrade) === null || _a === void 0 ? void 0 : _a.tradeId) && ((_b = result === null || result === void 0 ? void 0 : result.bookingTrade) === null || _b === void 0 ? void 0 : _b.clientOrderId)) {
+    if (result?.bookingTrade?.tradeId && result?.bookingTrade?.clientOrderId) {
         return [result.bookingTrade.tradeId, result.bookingTrade.clientOrderId];
     }
     return [undefined, undefined];
 }
 async function createExecution(account_id, trade_id) {
-    var _a;
     const request = {
         executionTime: new Date(),
         externalId: crypto_1.default.randomUUID(),
@@ -90,13 +88,12 @@ async function createExecution(account_id, trade_id) {
         }
     };
     const result = await sdk_1.sdk.tradeBooking.createExecution(request, account_id, trade_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.execution) === null || _a === void 0 ? void 0 : _a.executionId) {
+    if (result?.execution?.executionId) {
         return result.execution.executionId;
     }
     return undefined;
 }
 async function createTradeAllocation(account_id) {
-    var _a;
     const request = {
         brokerCapacity: components.TradeAllocationCreateBrokerCapacity.Principal,
         executionTime: new Date(),
@@ -116,7 +113,7 @@ async function createTradeAllocation(account_id) {
     };
     const request_id = crypto_1.default.randomUUID();
     const result = await sdk_1.sdk.tradeAllocation.createTradeAllocation(request, account_id, request_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.tradeAllocation) === null || _a === void 0 ? void 0 : _a.tradeAllocationId) {
+    if (result?.tradeAllocation?.tradeAllocationId) {
         return result.tradeAllocation.tradeAllocationId;
     }
     return undefined;

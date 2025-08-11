@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DepositedFundsCreate, DepositedFundsCreate$Outbound } from "./depositedfundscreate.js";
 import { FinancialProfileCreate, FinancialProfileCreate$Outbound } from "./financialprofilecreate.js";
 import { PlannedActivityCreate, PlannedActivityCreate$Outbound } from "./plannedactivitycreate.js";
@@ -47,4 +49,6 @@ export declare namespace ForeignNaturalPersonAccountEnrollmentMetadataCreate$ {
     /** @deprecated use `ForeignNaturalPersonAccountEnrollmentMetadataCreate$Outbound` instead. */
     type Outbound = ForeignNaturalPersonAccountEnrollmentMetadataCreate$Outbound;
 }
+export declare function foreignNaturalPersonAccountEnrollmentMetadataCreateToJSON(foreignNaturalPersonAccountEnrollmentMetadataCreate: ForeignNaturalPersonAccountEnrollmentMetadataCreate): string;
+export declare function foreignNaturalPersonAccountEnrollmentMetadataCreateFromJSON(jsonString: string): SafeParseResult<ForeignNaturalPersonAccountEnrollmentMetadataCreate, SDKValidationError>;
 //# sourceMappingURL=foreignnaturalpersonaccountenrollmentmetadatacreate.d.ts.map

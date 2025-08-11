@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * An object representing a short code, which is a phone number that is typically much shorter than regular phone numbers and can be used to address messages in MMS and SMS systems, as well as for abbreviated dialing (e.g. "Text 611 to see how many minutes you have remaining on your plan.").
@@ -73,4 +76,22 @@ export namespace PhoneNumberShortCodeUpdate$ {
   export const outboundSchema = PhoneNumberShortCodeUpdate$outboundSchema;
   /** @deprecated use `PhoneNumberShortCodeUpdate$Outbound` instead. */
   export type Outbound = PhoneNumberShortCodeUpdate$Outbound;
+}
+
+export function phoneNumberShortCodeUpdateToJSON(
+  phoneNumberShortCodeUpdate: PhoneNumberShortCodeUpdate,
+): string {
+  return JSON.stringify(
+    PhoneNumberShortCodeUpdate$outboundSchema.parse(phoneNumberShortCodeUpdate),
+  );
+}
+
+export function phoneNumberShortCodeUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<PhoneNumberShortCodeUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PhoneNumberShortCodeUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PhoneNumberShortCodeUpdate' from JSON`,
+  );
 }

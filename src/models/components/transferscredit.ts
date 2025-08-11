@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of the credit being issued to the investor
@@ -185,6 +188,24 @@ export namespace TransfersCreditAmount$ {
   export type Outbound = TransfersCreditAmount$Outbound;
 }
 
+export function transfersCreditAmountToJSON(
+  transfersCreditAmount: TransfersCreditAmount,
+): string {
+  return JSON.stringify(
+    TransfersCreditAmount$outboundSchema.parse(transfersCreditAmount),
+  );
+}
+
+export function transfersCreditAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TransfersCreditAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransfersCreditAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransfersCreditAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransfersCreditStateState$inboundSchema: z.ZodType<
   TransfersCreditStateStateOpen,
@@ -273,6 +294,24 @@ export namespace TransfersCreditState$ {
   export const outboundSchema = TransfersCreditState$outboundSchema;
   /** @deprecated use `TransfersCreditState$Outbound` instead. */
   export type Outbound = TransfersCreditState$Outbound;
+}
+
+export function transfersCreditStateToJSON(
+  transfersCreditState: TransfersCreditState,
+): string {
+  return JSON.stringify(
+    TransfersCreditState$outboundSchema.parse(transfersCreditState),
+  );
+}
+
+export function transfersCreditStateFromJSON(
+  jsonString: string,
+): SafeParseResult<TransfersCreditState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransfersCreditState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransfersCreditState' from JSON`,
+  );
 }
 
 /** @internal */
@@ -373,4 +412,20 @@ export namespace TransfersCredit$ {
   export const outboundSchema = TransfersCredit$outboundSchema;
   /** @deprecated use `TransfersCredit$Outbound` instead. */
   export type Outbound = TransfersCredit$Outbound;
+}
+
+export function transfersCreditToJSON(
+  transfersCredit: TransfersCredit,
+): string {
+  return JSON.stringify(TransfersCredit$outboundSchema.parse(transfersCredit));
+}
+
+export function transfersCreditFromJSON(
+  jsonString: string,
+): SafeParseResult<TransfersCredit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransfersCredit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransfersCredit' from JSON`,
+  );
 }

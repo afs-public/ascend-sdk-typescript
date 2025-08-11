@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingFeeCreate$ = exports.BookingFeeCreate$outboundSchema = exports.BookingFeeCreate$inboundSchema = exports.BookingFeeCreateType$ = exports.BookingFeeCreateType$outboundSchema = exports.BookingFeeCreateType$inboundSchema = exports.BookingFeeCreateType = void 0;
+exports.bookingFeeCreateToJSON = bookingFeeCreateToJSON;
+exports.bookingFeeCreateFromJSON = bookingFeeCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -112,4 +115,10 @@ var BookingFeeCreate$;
     /** @deprecated use `BookingFeeCreate$outboundSchema` instead. */
     BookingFeeCreate$.outboundSchema = exports.BookingFeeCreate$outboundSchema;
 })(BookingFeeCreate$ || (exports.BookingFeeCreate$ = BookingFeeCreate$ = {}));
+function bookingFeeCreateToJSON(bookingFeeCreate) {
+    return JSON.stringify(exports.BookingFeeCreate$outboundSchema.parse(bookingFeeCreate));
+}
+function bookingFeeCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingFeeCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingFeeCreate' from JSON`);
+}
 //# sourceMappingURL=bookingfeecreate.js.map

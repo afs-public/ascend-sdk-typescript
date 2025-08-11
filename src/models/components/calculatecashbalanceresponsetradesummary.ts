@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The net amount of the trade in USD. This value is always positive.
@@ -69,6 +72,20 @@ export namespace NetAmount$ {
   export type Outbound = NetAmount$Outbound;
 }
 
+export function netAmountToJSON(netAmount: NetAmount): string {
+  return JSON.stringify(NetAmount$outboundSchema.parse(netAmount));
+}
+
+export function netAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<NetAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NetAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NetAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CalculateCashBalanceResponseTradeSummary$inboundSchema: z.ZodType<
   CalculateCashBalanceResponseTradeSummary,
@@ -119,4 +136,31 @@ export namespace CalculateCashBalanceResponseTradeSummary$ {
     CalculateCashBalanceResponseTradeSummary$outboundSchema;
   /** @deprecated use `CalculateCashBalanceResponseTradeSummary$Outbound` instead. */
   export type Outbound = CalculateCashBalanceResponseTradeSummary$Outbound;
+}
+
+export function calculateCashBalanceResponseTradeSummaryToJSON(
+  calculateCashBalanceResponseTradeSummary:
+    CalculateCashBalanceResponseTradeSummary,
+): string {
+  return JSON.stringify(
+    CalculateCashBalanceResponseTradeSummary$outboundSchema.parse(
+      calculateCashBalanceResponseTradeSummary,
+    ),
+  );
+}
+
+export function calculateCashBalanceResponseTradeSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CalculateCashBalanceResponseTradeSummary,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CalculateCashBalanceResponseTradeSummary$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CalculateCashBalanceResponseTradeSummary' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WatchlistMatch$ = exports.WatchlistMatch$outboundSchema = exports.WatchlistMatch$inboundSchema = exports.MatchTypes$ = exports.MatchTypes$outboundSchema = exports.MatchTypes$inboundSchema = exports.MatchState$ = exports.MatchState$outboundSchema = exports.MatchState$inboundSchema = exports.MatchAttributes$ = exports.MatchAttributes$outboundSchema = exports.MatchAttributes$inboundSchema = exports.MatchTypes = exports.MatchState = exports.MatchAttributes = void 0;
+exports.watchlistMatchToJSON = watchlistMatchToJSON;
+exports.watchlistMatchFromJSON = watchlistMatchFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 var MatchAttributes;
 (function (MatchAttributes) {
@@ -51,7 +54,14 @@ var MatchAttributes;
     MatchAttributes["Address"] = "ADDRESS";
 })(MatchAttributes || (exports.MatchAttributes = MatchAttributes = {}));
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 var MatchState;
 (function (MatchState) {
@@ -194,4 +204,10 @@ var WatchlistMatch$;
     /** @deprecated use `WatchlistMatch$outboundSchema` instead. */
     WatchlistMatch$.outboundSchema = exports.WatchlistMatch$outboundSchema;
 })(WatchlistMatch$ || (exports.WatchlistMatch$ = WatchlistMatch$ = {}));
+function watchlistMatchToJSON(watchlistMatch) {
+    return JSON.stringify(exports.WatchlistMatch$outboundSchema.parse(watchlistMatch));
+}
+function watchlistMatchFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WatchlistMatch$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WatchlistMatch' from JSON`);
+}
 //# sourceMappingURL=watchlistmatch.js.map

@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelIctWithdrawalRequestCreate$ = exports.CancelIctWithdrawalRequestCreate$outboundSchema = exports.CancelIctWithdrawalRequestCreate$inboundSchema = void 0;
+exports.cancelIctWithdrawalRequestCreateToJSON = cancelIctWithdrawalRequestCreateToJSON;
+exports.cancelIctWithdrawalRequestCreateFromJSON = cancelIctWithdrawalRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelIctWithdrawalRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -59,4 +62,10 @@ var CancelIctWithdrawalRequestCreate$;
     /** @deprecated use `CancelIctWithdrawalRequestCreate$outboundSchema` instead. */
     CancelIctWithdrawalRequestCreate$.outboundSchema = exports.CancelIctWithdrawalRequestCreate$outboundSchema;
 })(CancelIctWithdrawalRequestCreate$ || (exports.CancelIctWithdrawalRequestCreate$ = CancelIctWithdrawalRequestCreate$ = {}));
+function cancelIctWithdrawalRequestCreateToJSON(cancelIctWithdrawalRequestCreate) {
+    return JSON.stringify(exports.CancelIctWithdrawalRequestCreate$outboundSchema.parse(cancelIctWithdrawalRequestCreate));
+}
+function cancelIctWithdrawalRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelIctWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelIctWithdrawalRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelictwithdrawalrequestcreate.js.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsUpdatePartyRequest = {
   /**
@@ -93,6 +96,24 @@ export namespace AccountsUpdatePartyRequest$ {
   export type Outbound = AccountsUpdatePartyRequest$Outbound;
 }
 
+export function accountsUpdatePartyRequestToJSON(
+  accountsUpdatePartyRequest: AccountsUpdatePartyRequest,
+): string {
+  return JSON.stringify(
+    AccountsUpdatePartyRequest$outboundSchema.parse(accountsUpdatePartyRequest),
+  );
+}
+
+export function accountsUpdatePartyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdatePartyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsUpdatePartyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdatePartyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsUpdatePartyResponse$inboundSchema: z.ZodType<
   AccountsUpdatePartyResponse,
@@ -145,4 +166,24 @@ export namespace AccountsUpdatePartyResponse$ {
   export const outboundSchema = AccountsUpdatePartyResponse$outboundSchema;
   /** @deprecated use `AccountsUpdatePartyResponse$Outbound` instead. */
   export type Outbound = AccountsUpdatePartyResponse$Outbound;
+}
+
+export function accountsUpdatePartyResponseToJSON(
+  accountsUpdatePartyResponse: AccountsUpdatePartyResponse,
+): string {
+  return JSON.stringify(
+    AccountsUpdatePartyResponse$outboundSchema.parse(
+      accountsUpdatePartyResponse,
+    ),
+  );
+}
+
+export function accountsUpdatePartyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdatePartyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsUpdatePartyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdatePartyResponse' from JSON`,
+  );
 }

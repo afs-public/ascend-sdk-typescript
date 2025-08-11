@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DepositScheduleDetailsCreate$ = exports.DepositScheduleDetailsCreate$outboundSchema = exports.DepositScheduleDetailsCreate$inboundSchema = void 0;
+exports.depositScheduleDetailsCreateToJSON = depositScheduleDetailsCreateToJSON;
+exports.depositScheduleDetailsCreateFromJSON = depositScheduleDetailsCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const schedulepropertiescreate_js_1 = require("./schedulepropertiescreate.js");
 /** @internal */
@@ -74,4 +77,10 @@ var DepositScheduleDetailsCreate$;
     /** @deprecated use `DepositScheduleDetailsCreate$outboundSchema` instead. */
     DepositScheduleDetailsCreate$.outboundSchema = exports.DepositScheduleDetailsCreate$outboundSchema;
 })(DepositScheduleDetailsCreate$ || (exports.DepositScheduleDetailsCreate$ = DepositScheduleDetailsCreate$ = {}));
+function depositScheduleDetailsCreateToJSON(depositScheduleDetailsCreate) {
+    return JSON.stringify(exports.DepositScheduleDetailsCreate$outboundSchema.parse(depositScheduleDetailsCreate));
+}
+function depositScheduleDetailsCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DepositScheduleDetailsCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DepositScheduleDetailsCreate' from JSON`);
+}
 //# sourceMappingURL=depositscheduledetailscreate.js.map

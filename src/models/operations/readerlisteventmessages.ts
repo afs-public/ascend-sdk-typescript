@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ReaderListEventMessagesRequest = {
   /**
@@ -95,6 +98,26 @@ export namespace ReaderListEventMessagesRequest$ {
   export type Outbound = ReaderListEventMessagesRequest$Outbound;
 }
 
+export function readerListEventMessagesRequestToJSON(
+  readerListEventMessagesRequest: ReaderListEventMessagesRequest,
+): string {
+  return JSON.stringify(
+    ReaderListEventMessagesRequest$outboundSchema.parse(
+      readerListEventMessagesRequest,
+    ),
+  );
+}
+
+export function readerListEventMessagesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ReaderListEventMessagesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReaderListEventMessagesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReaderListEventMessagesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ReaderListEventMessagesResponse$inboundSchema: z.ZodType<
   ReaderListEventMessagesResponse,
@@ -151,4 +174,24 @@ export namespace ReaderListEventMessagesResponse$ {
   export const outboundSchema = ReaderListEventMessagesResponse$outboundSchema;
   /** @deprecated use `ReaderListEventMessagesResponse$Outbound` instead. */
   export type Outbound = ReaderListEventMessagesResponse$Outbound;
+}
+
+export function readerListEventMessagesResponseToJSON(
+  readerListEventMessagesResponse: ReaderListEventMessagesResponse,
+): string {
+  return JSON.stringify(
+    ReaderListEventMessagesResponse$outboundSchema.parse(
+      readerListEventMessagesResponse,
+    ),
+  );
+}
+
+export function readerListEventMessagesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ReaderListEventMessagesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReaderListEventMessagesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReaderListEventMessagesResponse' from JSON`,
+  );
 }

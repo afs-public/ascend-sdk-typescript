@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForeignBondTradingDetail$ = exports.ForeignBondTradingDetail$outboundSchema = exports.ForeignBondTradingDetail$inboundSchema = exports.Percentage$ = exports.Percentage$outboundSchema = exports.Percentage$inboundSchema = void 0;
+exports.percentageToJSON = percentageToJSON;
+exports.percentageFromJSON = percentageFromJSON;
+exports.foreignBondTradingDetailToJSON = foreignBondTradingDetailToJSON;
+exports.foreignBondTradingDetailFromJSON = foreignBondTradingDetailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.Percentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +63,12 @@ var Percentage$;
     /** @deprecated use `Percentage$outboundSchema` instead. */
     Percentage$.outboundSchema = exports.Percentage$outboundSchema;
 })(Percentage$ || (exports.Percentage$ = Percentage$ = {}));
+function percentageToJSON(percentage) {
+    return JSON.stringify(exports.Percentage$outboundSchema.parse(percentage));
+}
+function percentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Percentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Percentage' from JSON`);
+}
 /** @internal */
 exports.ForeignBondTradingDetail$inboundSchema = z.object({
     percentage: z.nullable(z.lazy(() => exports.Percentage$inboundSchema)).optional(),
@@ -87,4 +98,10 @@ var ForeignBondTradingDetail$;
     /** @deprecated use `ForeignBondTradingDetail$outboundSchema` instead. */
     ForeignBondTradingDetail$.outboundSchema = exports.ForeignBondTradingDetail$outboundSchema;
 })(ForeignBondTradingDetail$ || (exports.ForeignBondTradingDetail$ = ForeignBondTradingDetail$ = {}));
+function foreignBondTradingDetailToJSON(foreignBondTradingDetail) {
+    return JSON.stringify(exports.ForeignBondTradingDetail$outboundSchema.parse(foreignBondTradingDetail));
+}
+function foreignBondTradingDetailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignBondTradingDetail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignBondTradingDetail' from JSON`);
+}
 //# sourceMappingURL=foreignbondtradingdetail.js.map

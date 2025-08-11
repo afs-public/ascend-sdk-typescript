@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositCreate$ = exports.AchDepositCreate$outboundSchema = exports.AchDepositCreate$inboundSchema = void 0;
+exports.achDepositCreateToJSON = achDepositCreateToJSON;
+exports.achDepositCreateFromJSON = achDepositCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const retirementcontributioncreate_js_1 = require("./retirementcontributioncreate.js");
 /** @internal */
@@ -82,4 +85,10 @@ var AchDepositCreate$;
     /** @deprecated use `AchDepositCreate$outboundSchema` instead. */
     AchDepositCreate$.outboundSchema = exports.AchDepositCreate$outboundSchema;
 })(AchDepositCreate$ || (exports.AchDepositCreate$ = AchDepositCreate$ = {}));
+function achDepositCreateToJSON(achDepositCreate) {
+    return JSON.stringify(exports.AchDepositCreate$outboundSchema.parse(achDepositCreate));
+}
+function achDepositCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositCreate' from JSON`);
+}
 //# sourceMappingURL=achdepositcreate.js.map

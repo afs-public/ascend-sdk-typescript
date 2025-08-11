@@ -8,7 +8,7 @@ The reject code
 import { AcceptTransferResponseRejectCode } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: AcceptTransferResponseRejectCode =
-  AcceptTransferResponseRejectCode.RejectCodeMutualFundCleanup;
+  AcceptTransferResponseRejectCode.RejectCodeAccountFlat;
 ```
 
 ## Values

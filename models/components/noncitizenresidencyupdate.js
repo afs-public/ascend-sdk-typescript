@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonCitizenResidencyUpdate$ = exports.NonCitizenResidencyUpdate$outboundSchema = exports.NonCitizenResidencyUpdate$inboundSchema = exports.NonCitizenResidencyUpdateResidencyStatus$ = exports.NonCitizenResidencyUpdateResidencyStatus$outboundSchema = exports.NonCitizenResidencyUpdateResidencyStatus$inboundSchema = exports.NonCitizenResidencyUpdateResidencyStatus = void 0;
+exports.nonCitizenResidencyUpdateToJSON = nonCitizenResidencyUpdateToJSON;
+exports.nonCitizenResidencyUpdateFromJSON = nonCitizenResidencyUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 var NonCitizenResidencyUpdateResidencyStatus;
 (function (NonCitizenResidencyUpdateResidencyStatus) {
@@ -98,4 +101,10 @@ var NonCitizenResidencyUpdate$;
     /** @deprecated use `NonCitizenResidencyUpdate$outboundSchema` instead. */
     NonCitizenResidencyUpdate$.outboundSchema = exports.NonCitizenResidencyUpdate$outboundSchema;
 })(NonCitizenResidencyUpdate$ || (exports.NonCitizenResidencyUpdate$ = NonCitizenResidencyUpdate$ = {}));
+function nonCitizenResidencyUpdateToJSON(nonCitizenResidencyUpdate) {
+    return JSON.stringify(exports.NonCitizenResidencyUpdate$outboundSchema.parse(nonCitizenResidencyUpdate));
+}
+function nonCitizenResidencyUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NonCitizenResidencyUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NonCitizenResidencyUpdate' from JSON`);
+}
 //# sourceMappingURL=noncitizenresidencyupdate.js.map

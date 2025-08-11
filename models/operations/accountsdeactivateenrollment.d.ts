@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsDeactivateEnrollmentRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace AccountsDeactivateEnrollmentRequest$ {
     /** @deprecated use `AccountsDeactivateEnrollmentRequest$Outbound` instead. */
     type Outbound = AccountsDeactivateEnrollmentRequest$Outbound;
 }
+export declare function accountsDeactivateEnrollmentRequestToJSON(accountsDeactivateEnrollmentRequest: AccountsDeactivateEnrollmentRequest): string;
+export declare function accountsDeactivateEnrollmentRequestFromJSON(jsonString: string): SafeParseResult<AccountsDeactivateEnrollmentRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsDeactivateEnrollmentResponse$inboundSchema: z.ZodType<AccountsDeactivateEnrollmentResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsDeactivateEnrollmentResponse$ {
     /** @deprecated use `AccountsDeactivateEnrollmentResponse$Outbound` instead. */
     type Outbound = AccountsDeactivateEnrollmentResponse$Outbound;
 }
+export declare function accountsDeactivateEnrollmentResponseToJSON(accountsDeactivateEnrollmentResponse: AccountsDeactivateEnrollmentResponse): string;
+export declare function accountsDeactivateEnrollmentResponseFromJSON(jsonString: string): SafeParseResult<AccountsDeactivateEnrollmentResponse, SDKValidationError>;
 //# sourceMappingURL=accountsdeactivateenrollment.d.ts.map

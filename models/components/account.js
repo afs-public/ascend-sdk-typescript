@@ -38,8 +38,19 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountInvestmentExperience$ = exports.AccountInvestmentExperience$outboundSchema = exports.AccountInvestmentExperience$inboundSchema = exports.AccountAnnualIncomeRangeUsd$ = exports.AccountAnnualIncomeRangeUsd$outboundSchema = exports.AccountAnnualIncomeRangeUsd$inboundSchema = exports.AccountGoals$ = exports.AccountGoals$outboundSchema = exports.AccountGoals$inboundSchema = exports.AccountTimeHorizon$ = exports.AccountTimeHorizon$outboundSchema = exports.AccountTimeHorizon$inboundSchema = exports.AccountRiskTolerance$ = exports.AccountRiskTolerance$outboundSchema = exports.AccountRiskTolerance$inboundSchema = exports.AccountLiquidityNeeds$ = exports.AccountLiquidityNeeds$outboundSchema = exports.AccountLiquidityNeeds$inboundSchema = exports.AccountInvestmentObjective$ = exports.AccountInvestmentObjective$outboundSchema = exports.AccountInvestmentObjective$inboundSchema = exports.FundingType$ = exports.FundingType$outboundSchema = exports.FundingType$inboundSchema = exports.FinraCoaCode$ = exports.FinraCoaCode$outboundSchema = exports.FinraCoaCode$inboundSchema = exports.Domicile$ = exports.Domicile$outboundSchema = exports.Domicile$inboundSchema = exports.AccountCatAccountHolderType$ = exports.AccountCatAccountHolderType$outboundSchema = exports.AccountCatAccountHolderType$inboundSchema = exports.AccountCostBasisLotDisposalMethod = exports.AccountState = exports.ReserveClass = exports.RegistrationType = exports.OwnershipType = exports.AccountTotalNetWorthRangeUsd = exports.AccountLiquidNetWorthRangeUsd = exports.AccountInvestmentExperience = exports.AccountAnnualIncomeRangeUsd = exports.AccountTimeHorizon = exports.AccountRiskTolerance = exports.AccountLiquidityNeeds = exports.AccountInvestmentObjective = exports.FundingType = exports.FinraCoaCode = exports.Domicile = exports.AccountCatAccountHolderType = void 0;
 exports.Account$ = exports.Account$outboundSchema = exports.Account$inboundSchema = exports.AccountTaxProfile$ = exports.AccountTaxProfile$outboundSchema = exports.AccountTaxProfile$inboundSchema = exports.AccountCostBasisLotDisposalMethod$ = exports.AccountCostBasisLotDisposalMethod$outboundSchema = exports.AccountCostBasisLotDisposalMethod$inboundSchema = exports.AccountState$ = exports.AccountState$outboundSchema = exports.AccountState$inboundSchema = exports.ReserveClass$ = exports.ReserveClass$outboundSchema = exports.ReserveClass$inboundSchema = exports.RegistrationType$ = exports.RegistrationType$outboundSchema = exports.RegistrationType$inboundSchema = exports.OwnershipType$ = exports.OwnershipType$outboundSchema = exports.OwnershipType$inboundSchema = exports.InvestmentProfile$ = exports.InvestmentProfile$outboundSchema = exports.InvestmentProfile$inboundSchema = exports.CustomerProfile$ = exports.CustomerProfile$outboundSchema = exports.CustomerProfile$inboundSchema = exports.AccountTotalNetWorthRangeUsd$ = exports.AccountTotalNetWorthRangeUsd$outboundSchema = exports.AccountTotalNetWorthRangeUsd$inboundSchema = exports.AccountLiquidNetWorthRangeUsd$ = exports.AccountLiquidNetWorthRangeUsd$outboundSchema = exports.AccountLiquidNetWorthRangeUsd$inboundSchema = void 0;
+exports.accountGoalsToJSON = accountGoalsToJSON;
+exports.accountGoalsFromJSON = accountGoalsFromJSON;
+exports.customerProfileToJSON = customerProfileToJSON;
+exports.customerProfileFromJSON = customerProfileFromJSON;
+exports.investmentProfileToJSON = investmentProfileToJSON;
+exports.investmentProfileFromJSON = investmentProfileFromJSON;
+exports.accountTaxProfileToJSON = accountTaxProfileToJSON;
+exports.accountTaxProfileFromJSON = accountTaxProfileFromJSON;
+exports.accountToJSON = accountToJSON;
+exports.accountFromJSON = accountFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const agreement_js_1 = require("./agreement.js");
 const enrollment_js_1 = require("./enrollment.js");
@@ -555,6 +566,12 @@ var AccountGoals$;
     /** @deprecated use `AccountGoals$outboundSchema` instead. */
     AccountGoals$.outboundSchema = exports.AccountGoals$outboundSchema;
 })(AccountGoals$ || (exports.AccountGoals$ = AccountGoals$ = {}));
+function accountGoalsToJSON(accountGoals) {
+    return JSON.stringify(exports.AccountGoals$outboundSchema.parse(accountGoals));
+}
+function accountGoalsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountGoals$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountGoals' from JSON`);
+}
 /** @internal */
 exports.AccountAnnualIncomeRangeUsd$inboundSchema = z
     .union([
@@ -689,6 +706,12 @@ var CustomerProfile$;
     /** @deprecated use `CustomerProfile$outboundSchema` instead. */
     CustomerProfile$.outboundSchema = exports.CustomerProfile$outboundSchema;
 })(CustomerProfile$ || (exports.CustomerProfile$ = CustomerProfile$ = {}));
+function customerProfileToJSON(customerProfile) {
+    return JSON.stringify(exports.CustomerProfile$outboundSchema.parse(customerProfile));
+}
+function customerProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerProfile' from JSON`);
+}
 /** @internal */
 exports.InvestmentProfile$inboundSchema = z.object({
     account_goals: z.nullable(z.lazy(() => exports.AccountGoals$inboundSchema))
@@ -728,6 +751,12 @@ var InvestmentProfile$;
     /** @deprecated use `InvestmentProfile$outboundSchema` instead. */
     InvestmentProfile$.outboundSchema = exports.InvestmentProfile$outboundSchema;
 })(InvestmentProfile$ || (exports.InvestmentProfile$ = InvestmentProfile$ = {}));
+function investmentProfileToJSON(investmentProfile) {
+    return JSON.stringify(exports.InvestmentProfile$outboundSchema.parse(investmentProfile));
+}
+function investmentProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestmentProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestmentProfile' from JSON`);
+}
 /** @internal */
 exports.OwnershipType$inboundSchema = z
     .union([
@@ -870,6 +899,12 @@ var AccountTaxProfile$;
     /** @deprecated use `AccountTaxProfile$outboundSchema` instead. */
     AccountTaxProfile$.outboundSchema = exports.AccountTaxProfile$outboundSchema;
 })(AccountTaxProfile$ || (exports.AccountTaxProfile$ = AccountTaxProfile$ = {}));
+function accountTaxProfileToJSON(accountTaxProfile) {
+    return JSON.stringify(exports.AccountTaxProfile$outboundSchema.parse(accountTaxProfile));
+}
+function accountTaxProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountTaxProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountTaxProfile' from JSON`);
+}
 /** @internal */
 exports.Account$inboundSchema = z.object({
     accepts_issuer_direct_communication: z.boolean().optional(),
@@ -1011,4 +1046,10 @@ var Account$;
     /** @deprecated use `Account$outboundSchema` instead. */
     Account$.outboundSchema = exports.Account$outboundSchema;
 })(Account$ || (exports.Account$ = Account$ = {}));
+function accountToJSON(account) {
+    return JSON.stringify(exports.Account$outboundSchema.parse(account));
+}
+function accountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Account$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Account' from JSON`);
+}
 //# sourceMappingURL=account.js.map

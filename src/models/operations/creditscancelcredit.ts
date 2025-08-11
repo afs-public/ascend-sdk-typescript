@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreditsCancelCreditRequest = {
   /**
@@ -85,6 +88,24 @@ export namespace CreditsCancelCreditRequest$ {
   export type Outbound = CreditsCancelCreditRequest$Outbound;
 }
 
+export function creditsCancelCreditRequestToJSON(
+  creditsCancelCreditRequest: CreditsCancelCreditRequest,
+): string {
+  return JSON.stringify(
+    CreditsCancelCreditRequest$outboundSchema.parse(creditsCancelCreditRequest),
+  );
+}
+
+export function creditsCancelCreditRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreditsCancelCreditRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreditsCancelCreditRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreditsCancelCreditRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreditsCancelCreditResponse$inboundSchema: z.ZodType<
   CreditsCancelCreditResponse,
@@ -137,4 +158,24 @@ export namespace CreditsCancelCreditResponse$ {
   export const outboundSchema = CreditsCancelCreditResponse$outboundSchema;
   /** @deprecated use `CreditsCancelCreditResponse$Outbound` instead. */
   export type Outbound = CreditsCancelCreditResponse$Outbound;
+}
+
+export function creditsCancelCreditResponseToJSON(
+  creditsCancelCreditResponse: CreditsCancelCreditResponse,
+): string {
+  return JSON.stringify(
+    CreditsCancelCreditResponse$outboundSchema.parse(
+      creditsCancelCreditResponse,
+    ),
+  );
+}
+
+export function creditsCancelCreditResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreditsCancelCreditResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreditsCancelCreditResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreditsCancelCreditResponse' from JSON`,
+  );
 }

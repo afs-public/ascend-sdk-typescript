@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ForeignNaturalPersonAccountEnrollmentMetadataCreate,
   ForeignNaturalPersonAccountEnrollmentMetadataCreate$inboundSchema,
@@ -216,4 +219,31 @@ export namespace ForeignJointAccountEnrollmentMetadataCreate$ {
     ForeignJointAccountEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `ForeignJointAccountEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = ForeignJointAccountEnrollmentMetadataCreate$Outbound;
+}
+
+export function foreignJointAccountEnrollmentMetadataCreateToJSON(
+  foreignJointAccountEnrollmentMetadataCreate:
+    ForeignJointAccountEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    ForeignJointAccountEnrollmentMetadataCreate$outboundSchema.parse(
+      foreignJointAccountEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function foreignJointAccountEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ForeignJointAccountEnrollmentMetadataCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForeignJointAccountEnrollmentMetadataCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ForeignJointAccountEnrollmentMetadataCreate' from JSON`,
+  );
 }

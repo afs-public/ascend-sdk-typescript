@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BondYieldCreate$ = exports.BondYieldCreate$outboundSchema = exports.BondYieldCreate$inboundSchema = exports.YieldType$ = exports.YieldType$outboundSchema = exports.YieldType$inboundSchema = exports.YieldType = void 0;
+exports.bondYieldCreateToJSON = bondYieldCreateToJSON;
+exports.bondYieldCreateFromJSON = bondYieldCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -103,4 +106,10 @@ var BondYieldCreate$;
     /** @deprecated use `BondYieldCreate$outboundSchema` instead. */
     BondYieldCreate$.outboundSchema = exports.BondYieldCreate$outboundSchema;
 })(BondYieldCreate$ || (exports.BondYieldCreate$ = BondYieldCreate$ = {}));
+function bondYieldCreateToJSON(bondYieldCreate) {
+    return JSON.stringify(exports.BondYieldCreate$outboundSchema.parse(bondYieldCreate));
+}
+function bondYieldCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BondYieldCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BondYieldCreate' from JSON`);
+}
 //# sourceMappingURL=bondyieldcreate.js.map

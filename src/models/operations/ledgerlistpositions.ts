@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LedgerListPositionsRequest = {
   /**
@@ -94,6 +97,24 @@ export namespace LedgerListPositionsRequest$ {
   export type Outbound = LedgerListPositionsRequest$Outbound;
 }
 
+export function ledgerListPositionsRequestToJSON(
+  ledgerListPositionsRequest: LedgerListPositionsRequest,
+): string {
+  return JSON.stringify(
+    LedgerListPositionsRequest$outboundSchema.parse(ledgerListPositionsRequest),
+  );
+}
+
+export function ledgerListPositionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LedgerListPositionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LedgerListPositionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LedgerListPositionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LedgerListPositionsResponse$inboundSchema: z.ZodType<
   LedgerListPositionsResponse,
@@ -148,4 +169,24 @@ export namespace LedgerListPositionsResponse$ {
   export const outboundSchema = LedgerListPositionsResponse$outboundSchema;
   /** @deprecated use `LedgerListPositionsResponse$Outbound` instead. */
   export type Outbound = LedgerListPositionsResponse$Outbound;
+}
+
+export function ledgerListPositionsResponseToJSON(
+  ledgerListPositionsResponse: LedgerListPositionsResponse,
+): string {
+  return JSON.stringify(
+    LedgerListPositionsResponse$outboundSchema.parse(
+      ledgerListPositionsResponse,
+    ),
+  );
+}
+
+export function ledgerListPositionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LedgerListPositionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LedgerListPositionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LedgerListPositionsResponse' from JSON`,
+  );
 }

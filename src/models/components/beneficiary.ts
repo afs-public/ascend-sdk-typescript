@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The legal day, month, and year of birth for a beneficiary; Birth date is required if tax id and tax id type is not provided.
@@ -313,6 +316,24 @@ export namespace BeneficiaryBirthDate$ {
   export type Outbound = BeneficiaryBirthDate$Outbound;
 }
 
+export function beneficiaryBirthDateToJSON(
+  beneficiaryBirthDate: BeneficiaryBirthDate,
+): string {
+  return JSON.stringify(
+    BeneficiaryBirthDate$outboundSchema.parse(beneficiaryBirthDate),
+  );
+}
+
+export function beneficiaryBirthDateFromJSON(
+  jsonString: string,
+): SafeParseResult<BeneficiaryBirthDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BeneficiaryBirthDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BeneficiaryBirthDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const BeneficiaryEntityType$inboundSchema: z.ZodType<
   BeneficiaryEntityTypeOpen,
@@ -429,6 +450,20 @@ export namespace MailingAddress$ {
   export type Outbound = MailingAddress$Outbound;
 }
 
+export function mailingAddressToJSON(mailingAddress: MailingAddress): string {
+  return JSON.stringify(MailingAddress$outboundSchema.parse(mailingAddress));
+}
+
+export function mailingAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<MailingAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MailingAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MailingAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const ShortCode$inboundSchema: z.ZodType<
   ShortCode,
@@ -474,6 +509,20 @@ export namespace ShortCode$ {
   export const outboundSchema = ShortCode$outboundSchema;
   /** @deprecated use `ShortCode$Outbound` instead. */
   export type Outbound = ShortCode$Outbound;
+}
+
+export function shortCodeToJSON(shortCode: ShortCode): string {
+  return JSON.stringify(ShortCode$outboundSchema.parse(shortCode));
+}
+
+export function shortCodeFromJSON(
+  jsonString: string,
+): SafeParseResult<ShortCode, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ShortCode$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ShortCode' from JSON`,
+  );
 }
 
 /** @internal */
@@ -526,6 +575,20 @@ export namespace PhoneNumber$ {
   export const outboundSchema = PhoneNumber$outboundSchema;
   /** @deprecated use `PhoneNumber$Outbound` instead. */
   export type Outbound = PhoneNumber$Outbound;
+}
+
+export function phoneNumberToJSON(phoneNumber: PhoneNumber): string {
+  return JSON.stringify(PhoneNumber$outboundSchema.parse(phoneNumber));
+}
+
+export function phoneNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<PhoneNumber, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PhoneNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PhoneNumber' from JSON`,
+  );
 }
 
 /** @internal */
@@ -696,4 +759,18 @@ export namespace Beneficiary$ {
   export const outboundSchema = Beneficiary$outboundSchema;
   /** @deprecated use `Beneficiary$Outbound` instead. */
   export type Outbound = Beneficiary$Outbound;
+}
+
+export function beneficiaryToJSON(beneficiary: Beneficiary): string {
+  return JSON.stringify(Beneficiary$outboundSchema.parse(beneficiary));
+}
+
+export function beneficiaryFromJSON(
+  jsonString: string,
+): SafeParseResult<Beneficiary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Beneficiary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Beneficiary' from JSON`,
+  );
 }

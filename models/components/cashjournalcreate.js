@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashJournalCreate$ = exports.CashJournalCreate$outboundSchema = exports.CashJournalCreate$inboundSchema = void 0;
+exports.cashJournalCreateToJSON = cashJournalCreateToJSON;
+exports.cashJournalCreateFromJSON = cashJournalCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const retirementcontributioncreate_js_1 = require("./retirementcontributioncreate.js");
 const retirementdistributioncreate_js_1 = require("./retirementdistributioncreate.js");
@@ -95,4 +98,10 @@ var CashJournalCreate$;
     /** @deprecated use `CashJournalCreate$outboundSchema` instead. */
     CashJournalCreate$.outboundSchema = exports.CashJournalCreate$outboundSchema;
 })(CashJournalCreate$ || (exports.CashJournalCreate$ = CashJournalCreate$ = {}));
+function cashJournalCreateToJSON(cashJournalCreate) {
+    return JSON.stringify(exports.CashJournalCreate$outboundSchema.parse(cashJournalCreate));
+}
+function cashJournalCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalCreate' from JSON`);
+}
 //# sourceMappingURL=cashjournalcreate.js.map

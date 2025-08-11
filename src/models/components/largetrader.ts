@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The date on which the trader meets or exceeds the large trader reporting threshold, which is defined by the U.S. Securities and Exchange Commission (SEC) as trades of 2 million shares or $20 million in a single day or 20 million shares or $200 million during a calendar month
@@ -79,6 +82,20 @@ export namespace EffectiveDate$ {
   export type Outbound = EffectiveDate$Outbound;
 }
 
+export function effectiveDateToJSON(effectiveDate: EffectiveDate): string {
+  return JSON.stringify(EffectiveDate$outboundSchema.parse(effectiveDate));
+}
+
+export function effectiveDateFromJSON(
+  jsonString: string,
+): SafeParseResult<EffectiveDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EffectiveDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EffectiveDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const LargeTrader$inboundSchema: z.ZodType<
   LargeTrader,
@@ -128,4 +145,18 @@ export namespace LargeTrader$ {
   export const outboundSchema = LargeTrader$outboundSchema;
   /** @deprecated use `LargeTrader$Outbound` instead. */
   export type Outbound = LargeTrader$Outbound;
+}
+
+export function largeTraderToJSON(largeTrader: LargeTrader): string {
+  return JSON.stringify(LargeTrader$outboundSchema.parse(largeTrader));
+}
+
+export function largeTraderFromJSON(
+  jsonString: string,
+): SafeParseResult<LargeTrader, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LargeTrader$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LargeTrader' from JSON`,
+  );
 }

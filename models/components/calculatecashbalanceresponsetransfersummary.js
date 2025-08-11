@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CalculateCashBalanceResponseTransferSummary$ = exports.CalculateCashBalanceResponseTransferSummary$outboundSchema = exports.CalculateCashBalanceResponseTransferSummary$inboundSchema = exports.CalculateCashBalanceResponseTransferSummaryMechanism$ = exports.CalculateCashBalanceResponseTransferSummaryMechanism$outboundSchema = exports.CalculateCashBalanceResponseTransferSummaryMechanism$inboundSchema = exports.CalculateCashBalanceResponseTransferSummaryAmount$ = exports.CalculateCashBalanceResponseTransferSummaryAmount$outboundSchema = exports.CalculateCashBalanceResponseTransferSummaryAmount$inboundSchema = exports.CalculateCashBalanceResponseTransferSummaryMechanism = void 0;
+exports.calculateCashBalanceResponseTransferSummaryAmountToJSON = calculateCashBalanceResponseTransferSummaryAmountToJSON;
+exports.calculateCashBalanceResponseTransferSummaryAmountFromJSON = calculateCashBalanceResponseTransferSummaryAmountFromJSON;
+exports.calculateCashBalanceResponseTransferSummaryToJSON = calculateCashBalanceResponseTransferSummaryToJSON;
+exports.calculateCashBalanceResponseTransferSummaryFromJSON = calculateCashBalanceResponseTransferSummaryFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The mechanism of the transfer.
@@ -77,6 +82,12 @@ var CalculateCashBalanceResponseTransferSummaryAmount$;
     /** @deprecated use `CalculateCashBalanceResponseTransferSummaryAmount$outboundSchema` instead. */
     CalculateCashBalanceResponseTransferSummaryAmount$.outboundSchema = exports.CalculateCashBalanceResponseTransferSummaryAmount$outboundSchema;
 })(CalculateCashBalanceResponseTransferSummaryAmount$ || (exports.CalculateCashBalanceResponseTransferSummaryAmount$ = CalculateCashBalanceResponseTransferSummaryAmount$ = {}));
+function calculateCashBalanceResponseTransferSummaryAmountToJSON(calculateCashBalanceResponseTransferSummaryAmount) {
+    return JSON.stringify(exports.CalculateCashBalanceResponseTransferSummaryAmount$outboundSchema.parse(calculateCashBalanceResponseTransferSummaryAmount));
+}
+function calculateCashBalanceResponseTransferSummaryAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CalculateCashBalanceResponseTransferSummaryAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CalculateCashBalanceResponseTransferSummaryAmount' from JSON`);
+}
 /** @internal */
 exports.CalculateCashBalanceResponseTransferSummaryMechanism$inboundSchema = z
     .union([
@@ -124,4 +135,10 @@ var CalculateCashBalanceResponseTransferSummary$;
     /** @deprecated use `CalculateCashBalanceResponseTransferSummary$outboundSchema` instead. */
     CalculateCashBalanceResponseTransferSummary$.outboundSchema = exports.CalculateCashBalanceResponseTransferSummary$outboundSchema;
 })(CalculateCashBalanceResponseTransferSummary$ || (exports.CalculateCashBalanceResponseTransferSummary$ = CalculateCashBalanceResponseTransferSummary$ = {}));
+function calculateCashBalanceResponseTransferSummaryToJSON(calculateCashBalanceResponseTransferSummary) {
+    return JSON.stringify(exports.CalculateCashBalanceResponseTransferSummary$outboundSchema.parse(calculateCashBalanceResponseTransferSummary));
+}
+function calculateCashBalanceResponseTransferSummaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CalculateCashBalanceResponseTransferSummary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CalculateCashBalanceResponseTransferSummary' from JSON`);
+}
 //# sourceMappingURL=calculatecashbalanceresponsetransfersummary.js.map

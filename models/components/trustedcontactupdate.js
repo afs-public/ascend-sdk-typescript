@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrustedContactUpdate$ = exports.TrustedContactUpdate$outboundSchema = exports.TrustedContactUpdate$inboundSchema = void 0;
+exports.trustedContactUpdateToJSON = trustedContactUpdateToJSON;
+exports.trustedContactUpdateFromJSON = trustedContactUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const phonenumberupdate_js_1 = require("./phonenumberupdate.js");
 const postaladdressupdate_js_1 = require("./postaladdressupdate.js");
 /** @internal */
@@ -88,4 +91,10 @@ var TrustedContactUpdate$;
     /** @deprecated use `TrustedContactUpdate$outboundSchema` instead. */
     TrustedContactUpdate$.outboundSchema = exports.TrustedContactUpdate$outboundSchema;
 })(TrustedContactUpdate$ || (exports.TrustedContactUpdate$ = TrustedContactUpdate$ = {}));
+function trustedContactUpdateToJSON(trustedContactUpdate) {
+    return JSON.stringify(exports.TrustedContactUpdate$outboundSchema.parse(trustedContactUpdate));
+}
+function trustedContactUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TrustedContactUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TrustedContactUpdate' from JSON`);
+}
 //# sourceMappingURL=trustedcontactupdate.js.map

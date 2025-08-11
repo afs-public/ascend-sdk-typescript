@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to simulate the approval of an ICT deposit
  */
@@ -28,4 +30,6 @@ export declare namespace ForceApproveIctDepositRequestCreate$ {
     /** @deprecated use `ForceApproveIctDepositRequestCreate$Outbound` instead. */
     type Outbound = ForceApproveIctDepositRequestCreate$Outbound;
 }
+export declare function forceApproveIctDepositRequestCreateToJSON(forceApproveIctDepositRequestCreate: ForceApproveIctDepositRequestCreate): string;
+export declare function forceApproveIctDepositRequestCreateFromJSON(jsonString: string): SafeParseResult<ForceApproveIctDepositRequestCreate, SDKValidationError>;
 //# sourceMappingURL=forceapproveictdepositrequestcreate.d.ts.map

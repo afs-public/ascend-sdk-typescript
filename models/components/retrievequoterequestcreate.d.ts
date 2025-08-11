@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The type of asset being evaluated in cost calculations
@@ -137,4 +139,6 @@ export declare namespace RetrieveQuoteRequestCreate$ {
     /** @deprecated use `RetrieveQuoteRequestCreate$Outbound` instead. */
     type Outbound = RetrieveQuoteRequestCreate$Outbound;
 }
+export declare function retrieveQuoteRequestCreateToJSON(retrieveQuoteRequestCreate: RetrieveQuoteRequestCreate): string;
+export declare function retrieveQuoteRequestCreateFromJSON(jsonString: string): SafeParseResult<RetrieveQuoteRequestCreate, SDKValidationError>;
 //# sourceMappingURL=retrievequoterequestcreate.d.ts.map

@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentifierUpdate$ = exports.IdentifierUpdate$outboundSchema = exports.IdentifierUpdate$inboundSchema = exports.IdentifierUpdateType$ = exports.IdentifierUpdateType$outboundSchema = exports.IdentifierUpdateType$inboundSchema = exports.IdentifierUpdateType = void 0;
+exports.identifierUpdateToJSON = identifierUpdateToJSON;
+exports.identifierUpdateFromJSON = identifierUpdateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of identifier
@@ -91,4 +94,10 @@ var IdentifierUpdate$;
     /** @deprecated use `IdentifierUpdate$outboundSchema` instead. */
     IdentifierUpdate$.outboundSchema = exports.IdentifierUpdate$outboundSchema;
 })(IdentifierUpdate$ || (exports.IdentifierUpdate$ = IdentifierUpdate$ = {}));
+function identifierUpdateToJSON(identifierUpdate) {
+    return JSON.stringify(exports.IdentifierUpdate$outboundSchema.parse(identifierUpdate));
+}
+function identifierUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IdentifierUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IdentifierUpdate' from JSON`);
+}
 //# sourceMappingURL=identifierupdate.js.map

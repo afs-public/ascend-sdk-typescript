@@ -23,6 +23,7 @@ Creates a trade with one or more executions. Combination of (account_id, client_
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_CreateTrade" method="post" path="/booking/v1/accounts/{account_id}/trades" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RouteType, TradeCreateBrokerCapacity, TradeCreateIdentifierType, TradeCreateSide } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -51,18 +52,6 @@ async function run() {
         price: {},
         quantity: {},
       },
-      {
-        executionTime: new Date("2024-07-17T12:00:00Z"),
-        externalId: "0H06HAP3A3Y",
-        price: {},
-        quantity: {},
-      },
-      {
-        executionTime: new Date("2024-07-17T12:00:00Z"),
-        externalId: "0H06HAP3A3Y",
-        price: {},
-        quantity: {},
-      },
     ],
     identifier: "AAPL",
     identifierType: TradeCreateIdentifierType.Symbol,
@@ -71,7 +60,6 @@ async function run() {
     sourceApplication: "Trading-App",
   }, "01FAKEACCOUNT1TYKWEYRH8S2K");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -113,18 +101,6 @@ async function run() {
         price: {},
         quantity: {},
       },
-      {
-        executionTime: new Date("2024-07-17T12:00:00Z"),
-        externalId: "0H06HAP3A3Y",
-        price: {},
-        quantity: {},
-      },
-      {
-        executionTime: new Date("2024-07-17T12:00:00Z"),
-        externalId: "0H06HAP3A3Y",
-        price: {},
-        quantity: {},
-      },
     ],
     identifier: "AAPL",
     identifierType: TradeCreateIdentifierType.Symbol,
@@ -132,15 +108,12 @@ async function run() {
     side: TradeCreateSide.Buy,
     sourceApplication: "Trading-App",
   }, "01FAKEACCOUNT1TYKWEYRH8S2K");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingCreateTrade failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -162,10 +135,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 409, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 409    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getTrade
 
@@ -175,6 +149,7 @@ Gets a trade and all executions by trade_id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_GetTrade" method="get" path="/booking/v1/accounts/{account_id}/trades/{trade_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -193,7 +168,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.tradeBooking.getTrade("01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -224,15 +198,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await tradeBookingGetTrade(apexascend, "01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingGetTrade failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -254,10 +225,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## completeTrade
 
@@ -267,6 +239,7 @@ Complete a Trade by closing and generating any fees and withholdings if necessar
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_CompleteTrade" method="post" path="/booking/v1/accounts/{account_id}/trades/{trade_id}:complete" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -287,7 +260,6 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -320,15 +292,12 @@ async function run() {
   const res = await tradeBookingCompleteTrade(apexascend, {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingCompleteTrade failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -351,10 +320,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## cancelTrade
 
@@ -364,6 +334,7 @@ Cancel a trade and all the executions using the original trade_id. CancelTrade w
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_CancelTrade" method="post" path="/booking/v1/accounts/{account_id}/trades/{trade_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -384,7 +355,6 @@ async function run() {
     name: "accounts/01FAKEACCOUNT1TYKWEYRH8S2K/trades/01FAKETRADEIDPROVIDEDFROMCREATETRADE",
   }, "01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -417,15 +387,12 @@ async function run() {
   const res = await tradeBookingCancelTrade(apexascend, {
     name: "accounts/01FAKEACCOUNT1TYKWEYRH8S2K/trades/01FAKETRADEIDPROVIDEDFROMCREATETRADE",
   }, "01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingCancelTrade failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -448,10 +415,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## rebookTrade
 
@@ -461,6 +429,7 @@ Rebook a trade by the original trade_id. The entire original trade's executions 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_RebookTrade" method="post" path="/booking/v1/accounts/{account_id}/trades/{trade_id}:rebook" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RouteType, TradeCreateBrokerCapacity, TradeCreateIdentifierType, TradeCreateSide } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -484,26 +453,7 @@ async function run() {
       accountId: "02HASWB2DTMRT3DAM45P56J2T2",
       brokerCapacity: TradeCreateBrokerCapacity.Agency,
       clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
-      executions: [
-        {
-          executionTime: new Date("2024-07-17T12:00:00Z"),
-          externalId: "0H06HAP3A3Y",
-          price: {},
-          quantity: {},
-        },
-        {
-          executionTime: new Date("2024-07-17T12:00:00Z"),
-          externalId: "0H06HAP3A3Y",
-          price: {},
-          quantity: {},
-        },
-        {
-          executionTime: new Date("2024-07-17T12:00:00Z"),
-          externalId: "0H06HAP3A3Y",
-          price: {},
-          quantity: {},
-        },
-      ],
+      executions: [],
       identifier: "AAPL",
       identifierType: TradeCreateIdentifierType.Symbol,
       routeType: RouteType.Mngd,
@@ -512,7 +462,6 @@ async function run() {
     },
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -549,26 +498,7 @@ async function run() {
       accountId: "02HASWB2DTMRT3DAM45P56J2T2",
       brokerCapacity: TradeCreateBrokerCapacity.Agency,
       clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
-      executions: [
-        {
-          executionTime: new Date("2024-07-17T12:00:00Z"),
-          externalId: "0H06HAP3A3Y",
-          price: {},
-          quantity: {},
-        },
-        {
-          executionTime: new Date("2024-07-17T12:00:00Z"),
-          externalId: "0H06HAP3A3Y",
-          price: {},
-          quantity: {},
-        },
-        {
-          executionTime: new Date("2024-07-17T12:00:00Z"),
-          externalId: "0H06HAP3A3Y",
-          price: {},
-          quantity: {},
-        },
-      ],
+      executions: [],
       identifier: "AAPL",
       identifierType: TradeCreateIdentifierType.Symbol,
       routeType: RouteType.Mngd,
@@ -576,15 +506,12 @@ async function run() {
       sourceApplication: "Trading-App",
     },
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingRebookTrade failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -607,10 +534,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## createExecution
 
@@ -620,6 +548,7 @@ Create a new execution under an existing trade that is open.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_CreateExecution" method="post" path="/booking/v1/accounts/{account_id}/trades/{trade_id}/executions" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -643,7 +572,6 @@ async function run() {
     quantity: {},
   }, "01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -679,15 +607,12 @@ async function run() {
     price: {},
     quantity: {},
   }, "01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingCreateExecution failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -710,10 +635,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 500, 503, 504 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getExecution
 
@@ -723,6 +649,7 @@ Gets an execution by execution_id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_GetExecution" method="get" path="/booking/v1/accounts/{account_id}/trades/{trade_id}/executions/{execution_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -741,7 +668,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.tradeBooking.getExecution("01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE", "01FAKEEXECUTONIDPROVIDEDFROMBOOKINGAPI");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -772,15 +698,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await tradeBookingGetExecution(apexascend, "01FAKEACCOUNT1TYKWEYRH8S2K", "01FAKETRADEIDPROVIDEDFROMCREATETRADE", "01FAKEEXECUTONIDPROVIDEDFROMBOOKINGAPI");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingGetExecution failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -803,10 +726,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## cancelExecution
 
@@ -816,6 +740,7 @@ Cancel an execution using the original execution_id. If applicable, fees and bac
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_CancelExecution" method="post" path="/booking/v1/accounts/{account_id}/trades/{trade_id}/executions/{execution_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -836,7 +761,6 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM", "02G0XX2KDN3M9QKFKRE2HYSCMY");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -869,15 +793,12 @@ async function run() {
   const res = await tradeBookingCancelExecution(apexascend, {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM", "02G0XX2KDN3M9QKFKRE2HYSCMY");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingCancelExecution failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -901,10 +822,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## rebookExecution
 
@@ -914,6 +836,7 @@ Rebook an execution by the original execution_id. If applicable, fees and backup
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_RebookExecution" method="post" path="/booking/v1/accounts/{account_id}/trades/{trade_id}/executions/{execution_id}:rebook" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -940,7 +863,6 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM", "02G0XX2KDN3M9QKFKRE2HYSCMY");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -979,15 +901,12 @@ async function run() {
     },
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM", "02G0XX2KDN3M9QKFKRE2HYSCMY");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeBookingRebookExecution failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1011,7 +930,8 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

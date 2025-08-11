@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LocateIctReportResponse$ = exports.LocateIctReportResponse$outboundSchema = exports.LocateIctReportResponse$inboundSchema = exports.LocateIctReportResponseProgram$ = exports.LocateIctReportResponseProgram$outboundSchema = exports.LocateIctReportResponseProgram$inboundSchema = exports.ProcessDate$ = exports.ProcessDate$outboundSchema = exports.ProcessDate$inboundSchema = exports.LocateIctReportResponseProgram = void 0;
+exports.processDateToJSON = processDateToJSON;
+exports.processDateFromJSON = processDateFromJSON;
+exports.locateIctReportResponseToJSON = locateIctReportResponseToJSON;
+exports.locateIctReportResponseFromJSON = locateIctReportResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The ICT program associated with the report.
@@ -75,6 +80,12 @@ var ProcessDate$;
     /** @deprecated use `ProcessDate$outboundSchema` instead. */
     ProcessDate$.outboundSchema = exports.ProcessDate$outboundSchema;
 })(ProcessDate$ || (exports.ProcessDate$ = ProcessDate$ = {}));
+function processDateToJSON(processDate) {
+    return JSON.stringify(exports.ProcessDate$outboundSchema.parse(processDate));
+}
+function processDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ProcessDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ProcessDate' from JSON`);
+}
 /** @internal */
 exports.LocateIctReportResponseProgram$inboundSchema = z
     .union([
@@ -138,4 +149,10 @@ var LocateIctReportResponse$;
     /** @deprecated use `LocateIctReportResponse$outboundSchema` instead. */
     LocateIctReportResponse$.outboundSchema = exports.LocateIctReportResponse$outboundSchema;
 })(LocateIctReportResponse$ || (exports.LocateIctReportResponse$ = LocateIctReportResponse$ = {}));
+function locateIctReportResponseToJSON(locateIctReportResponse) {
+    return JSON.stringify(exports.LocateIctReportResponse$outboundSchema.parse(locateIctReportResponse));
+}
+function locateIctReportResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LocateIctReportResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LocateIctReportResponse' from JSON`);
+}
 //# sourceMappingURL=locateictreportresponse.js.map

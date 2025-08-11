@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CashJournalsCreateCashJournalResponse = {
   httpMeta: components.HTTPMetadata;
@@ -72,4 +75,25 @@ export namespace CashJournalsCreateCashJournalResponse$ {
     CashJournalsCreateCashJournalResponse$outboundSchema;
   /** @deprecated use `CashJournalsCreateCashJournalResponse$Outbound` instead. */
   export type Outbound = CashJournalsCreateCashJournalResponse$Outbound;
+}
+
+export function cashJournalsCreateCashJournalResponseToJSON(
+  cashJournalsCreateCashJournalResponse: CashJournalsCreateCashJournalResponse,
+): string {
+  return JSON.stringify(
+    CashJournalsCreateCashJournalResponse$outboundSchema.parse(
+      cashJournalsCreateCashJournalResponse,
+    ),
+  );
+}
+
+export function cashJournalsCreateCashJournalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalsCreateCashJournalResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalsCreateCashJournalResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalsCreateCashJournalResponse' from JSON`,
+  );
 }

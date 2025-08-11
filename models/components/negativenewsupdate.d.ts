@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Negative News detail.
  */
@@ -33,4 +35,6 @@ export declare namespace NegativeNewsUpdate$ {
     /** @deprecated use `NegativeNewsUpdate$Outbound` instead. */
     type Outbound = NegativeNewsUpdate$Outbound;
 }
+export declare function negativeNewsUpdateToJSON(negativeNewsUpdate: NegativeNewsUpdate): string;
+export declare function negativeNewsUpdateFromJSON(jsonString: string): SafeParseResult<NegativeNewsUpdate, SDKValidationError>;
 //# sourceMappingURL=negativenewsupdate.d.ts.map

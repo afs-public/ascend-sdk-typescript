@@ -18,6 +18,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./httpclienterrors.js"), exports);
+__exportStar(require("./responsevalidationerror.js"), exports);
 __exportStar(require("./sdkerror.js"), exports);
 __exportStar(require("./sdkvalidationerror.js"), exports);
 __exportStar(require("./status.js"), exports);

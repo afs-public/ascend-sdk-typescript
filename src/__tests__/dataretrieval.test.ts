@@ -4,20 +4,26 @@
 
 import { expect, test } from "vitest";
 import { Apexascend } from "../index.js";
+import { createTestHTTPClient } from "./testclient.js";
 
-test("Data Retrieval Snapshots List Snapshots List Snapshots1", async () => {
+test("Data Retrieval Snapshots List Snapshots", async () => {
+  const testHttpClient = createTestHTTPClient("Snapshots_ListSnapshots");
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
-  const result = await apexascend.dataRetrieval.listSnapshots();
+
+  const result = await apexascend.dataRetrieval.listSnapshots("", 25, "");
   expect(result.httpMeta.response.status).toBe(200);
 });

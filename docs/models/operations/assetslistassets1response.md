@@ -5,14 +5,7 @@
 ```typescript
 import { AssetsListAssets1Response } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: AssetsListAssets1Response = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: AssetsListAssets1Response = {};
 ```
 
 ## Fields

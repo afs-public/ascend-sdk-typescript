@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsAssignLargeTraderLegalEntityRequest = {
   /**
@@ -82,6 +85,33 @@ export namespace AccountsAssignLargeTraderLegalEntityRequest$ {
   export type Outbound = AccountsAssignLargeTraderLegalEntityRequest$Outbound;
 }
 
+export function accountsAssignLargeTraderLegalEntityRequestToJSON(
+  accountsAssignLargeTraderLegalEntityRequest:
+    AccountsAssignLargeTraderLegalEntityRequest,
+): string {
+  return JSON.stringify(
+    AccountsAssignLargeTraderLegalEntityRequest$outboundSchema.parse(
+      accountsAssignLargeTraderLegalEntityRequest,
+    ),
+  );
+}
+
+export function accountsAssignLargeTraderLegalEntityRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsAssignLargeTraderLegalEntityRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsAssignLargeTraderLegalEntityRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsAssignLargeTraderLegalEntityRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsAssignLargeTraderLegalEntityResponse$inboundSchema:
   z.ZodType<
@@ -138,4 +168,31 @@ export namespace AccountsAssignLargeTraderLegalEntityResponse$ {
     AccountsAssignLargeTraderLegalEntityResponse$outboundSchema;
   /** @deprecated use `AccountsAssignLargeTraderLegalEntityResponse$Outbound` instead. */
   export type Outbound = AccountsAssignLargeTraderLegalEntityResponse$Outbound;
+}
+
+export function accountsAssignLargeTraderLegalEntityResponseToJSON(
+  accountsAssignLargeTraderLegalEntityResponse:
+    AccountsAssignLargeTraderLegalEntityResponse,
+): string {
+  return JSON.stringify(
+    AccountsAssignLargeTraderLegalEntityResponse$outboundSchema.parse(
+      accountsAssignLargeTraderLegalEntityResponse,
+    ),
+  );
+}
+
+export function accountsAssignLargeTraderLegalEntityResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsAssignLargeTraderLegalEntityResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsAssignLargeTraderLegalEntityResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsAssignLargeTraderLegalEntityResponse' from JSON`,
+  );
 }

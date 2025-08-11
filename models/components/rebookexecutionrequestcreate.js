@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RebookExecutionRequestCreate$ = exports.RebookExecutionRequestCreate$outboundSchema = exports.RebookExecutionRequestCreate$inboundSchema = void 0;
+exports.rebookExecutionRequestCreateToJSON = rebookExecutionRequestCreateToJSON;
+exports.rebookExecutionRequestCreateFromJSON = rebookExecutionRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const executioncreate_js_1 = require("./executioncreate.js");
 /** @internal */
 exports.RebookExecutionRequestCreate$inboundSchema = z.object({
@@ -60,4 +63,10 @@ var RebookExecutionRequestCreate$;
     /** @deprecated use `RebookExecutionRequestCreate$outboundSchema` instead. */
     RebookExecutionRequestCreate$.outboundSchema = exports.RebookExecutionRequestCreate$outboundSchema;
 })(RebookExecutionRequestCreate$ || (exports.RebookExecutionRequestCreate$ = RebookExecutionRequestCreate$ = {}));
+function rebookExecutionRequestCreateToJSON(rebookExecutionRequestCreate) {
+    return JSON.stringify(exports.RebookExecutionRequestCreate$outboundSchema.parse(rebookExecutionRequestCreate));
+}
+function rebookExecutionRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionRequestCreate' from JSON`);
+}
 //# sourceMappingURL=rebookexecutionrequestcreate.js.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Entitlement,
   Entitlement$inboundSchema,
@@ -70,4 +73,22 @@ export namespace ListEntitlementsResponse$ {
   export const outboundSchema = ListEntitlementsResponse$outboundSchema;
   /** @deprecated use `ListEntitlementsResponse$Outbound` instead. */
   export type Outbound = ListEntitlementsResponse$Outbound;
+}
+
+export function listEntitlementsResponseToJSON(
+  listEntitlementsResponse: ListEntitlementsResponse,
+): string {
+  return JSON.stringify(
+    ListEntitlementsResponse$outboundSchema.parse(listEntitlementsResponse),
+  );
+}
+
+export function listEntitlementsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEntitlementsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEntitlementsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEntitlementsResponse' from JSON`,
+  );
 }

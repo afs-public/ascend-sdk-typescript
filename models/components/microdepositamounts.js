@@ -37,7 +37,14 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MicroDepositAmounts$ = exports.MicroDepositAmounts$outboundSchema = exports.MicroDepositAmounts$inboundSchema = exports.Amount2$ = exports.Amount2$outboundSchema = exports.Amount2$inboundSchema = exports.Amount1$ = exports.Amount1$outboundSchema = exports.Amount1$inboundSchema = void 0;
+exports.amount1ToJSON = amount1ToJSON;
+exports.amount1FromJSON = amount1FromJSON;
+exports.amount2ToJSON = amount2ToJSON;
+exports.amount2FromJSON = amount2FromJSON;
+exports.microDepositAmountsToJSON = microDepositAmountsToJSON;
+exports.microDepositAmountsFromJSON = microDepositAmountsFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.Amount1$inboundSchema = z.object({
     value: z.string().optional(),
@@ -57,6 +64,12 @@ var Amount1$;
     /** @deprecated use `Amount1$outboundSchema` instead. */
     Amount1$.outboundSchema = exports.Amount1$outboundSchema;
 })(Amount1$ || (exports.Amount1$ = Amount1$ = {}));
+function amount1ToJSON(amount1) {
+    return JSON.stringify(exports.Amount1$outboundSchema.parse(amount1));
+}
+function amount1FromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Amount1$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Amount1' from JSON`);
+}
 /** @internal */
 exports.Amount2$inboundSchema = z.object({
     value: z.string().optional(),
@@ -76,6 +89,12 @@ var Amount2$;
     /** @deprecated use `Amount2$outboundSchema` instead. */
     Amount2$.outboundSchema = exports.Amount2$outboundSchema;
 })(Amount2$ || (exports.Amount2$ = Amount2$ = {}));
+function amount2ToJSON(amount2) {
+    return JSON.stringify(exports.Amount2$outboundSchema.parse(amount2));
+}
+function amount2FromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Amount2$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Amount2' from JSON`);
+}
 /** @internal */
 exports.MicroDepositAmounts$inboundSchema = z.object({
     amount1: z.nullable(z.lazy(() => exports.Amount1$inboundSchema)).optional(),
@@ -97,4 +116,10 @@ var MicroDepositAmounts$;
     /** @deprecated use `MicroDepositAmounts$outboundSchema` instead. */
     MicroDepositAmounts$.outboundSchema = exports.MicroDepositAmounts$outboundSchema;
 })(MicroDepositAmounts$ || (exports.MicroDepositAmounts$ = MicroDepositAmounts$ = {}));
+function microDepositAmountsToJSON(microDepositAmounts) {
+    return JSON.stringify(exports.MicroDepositAmounts$outboundSchema.parse(microDepositAmounts));
+}
+function microDepositAmountsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MicroDepositAmounts$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MicroDepositAmounts' from JSON`);
+}
 //# sourceMappingURL=microdepositamounts.js.map

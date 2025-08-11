@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsListAgreementsResponse$ = exports.AccountsListAgreementsResponse$outboundSchema = exports.AccountsListAgreementsResponse$inboundSchema = exports.AccountsListAgreementsRequest$ = exports.AccountsListAgreementsRequest$outboundSchema = exports.AccountsListAgreementsRequest$inboundSchema = void 0;
+exports.accountsListAgreementsRequestToJSON = accountsListAgreementsRequestToJSON;
+exports.accountsListAgreementsRequestFromJSON = accountsListAgreementsRequestFromJSON;
+exports.accountsListAgreementsResponseToJSON = accountsListAgreementsResponseToJSON;
+exports.accountsListAgreementsResponseFromJSON = accountsListAgreementsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsListAgreementsRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountsListAgreementsRequest$;
     /** @deprecated use `AccountsListAgreementsRequest$outboundSchema` instead. */
     AccountsListAgreementsRequest$.outboundSchema = exports.AccountsListAgreementsRequest$outboundSchema;
 })(AccountsListAgreementsRequest$ || (exports.AccountsListAgreementsRequest$ = AccountsListAgreementsRequest$ = {}));
+function accountsListAgreementsRequestToJSON(accountsListAgreementsRequest) {
+    return JSON.stringify(exports.AccountsListAgreementsRequest$outboundSchema.parse(accountsListAgreementsRequest));
+}
+function accountsListAgreementsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAgreementsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAgreementsRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsListAgreementsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -112,4 +123,10 @@ var AccountsListAgreementsResponse$;
     /** @deprecated use `AccountsListAgreementsResponse$outboundSchema` instead. */
     AccountsListAgreementsResponse$.outboundSchema = exports.AccountsListAgreementsResponse$outboundSchema;
 })(AccountsListAgreementsResponse$ || (exports.AccountsListAgreementsResponse$ = AccountsListAgreementsResponse$ = {}));
+function accountsListAgreementsResponseToJSON(accountsListAgreementsResponse) {
+    return JSON.stringify(exports.AccountsListAgreementsResponse$outboundSchema.parse(accountsListAgreementsResponse));
+}
+function accountsListAgreementsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAgreementsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAgreementsResponse' from JSON`);
+}
 //# sourceMappingURL=accountslistagreements.js.map

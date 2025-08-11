@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The data structure containing attributes describing the location of an underlying entity.
@@ -85,4 +88,18 @@ export namespace AddressCreate$ {
   export const outboundSchema = AddressCreate$outboundSchema;
   /** @deprecated use `AddressCreate$Outbound` instead. */
   export type Outbound = AddressCreate$Outbound;
+}
+
+export function addressCreateToJSON(addressCreate: AddressCreate): string {
+  return JSON.stringify(AddressCreate$outboundSchema.parse(addressCreate));
+}
+
+export function addressCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AddressCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddressCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddressCreate' from JSON`,
+  );
 }

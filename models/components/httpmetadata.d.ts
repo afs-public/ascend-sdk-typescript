@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type HTTPMetadata = {
     /**
      * Raw HTTP response; suitable for custom response parsing
@@ -30,4 +32,6 @@ export declare namespace HTTPMetadata$ {
     /** @deprecated use `HTTPMetadata$Outbound` instead. */
     type Outbound = HTTPMetadata$Outbound;
 }
+export declare function httpMetadataToJSON(httpMetadata: HTTPMetadata): string;
+export declare function httpMetadataFromJSON(jsonString: string): SafeParseResult<HTTPMetadata, SDKValidationError>;
 //# sourceMappingURL=httpmetadata.d.ts.map

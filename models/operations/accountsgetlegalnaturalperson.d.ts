@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsGetLegalNaturalPersonRequest = {
     /**
      * The legalNaturalPerson id.
@@ -37,6 +39,8 @@ export declare namespace AccountsGetLegalNaturalPersonRequest$ {
     /** @deprecated use `AccountsGetLegalNaturalPersonRequest$Outbound` instead. */
     type Outbound = AccountsGetLegalNaturalPersonRequest$Outbound;
 }
+export declare function accountsGetLegalNaturalPersonRequestToJSON(accountsGetLegalNaturalPersonRequest: AccountsGetLegalNaturalPersonRequest): string;
+export declare function accountsGetLegalNaturalPersonRequestFromJSON(jsonString: string): SafeParseResult<AccountsGetLegalNaturalPersonRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsGetLegalNaturalPersonResponse$inboundSchema: z.ZodType<AccountsGetLegalNaturalPersonResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace AccountsGetLegalNaturalPersonResponse$ {
     /** @deprecated use `AccountsGetLegalNaturalPersonResponse$Outbound` instead. */
     type Outbound = AccountsGetLegalNaturalPersonResponse$Outbound;
 }
+export declare function accountsGetLegalNaturalPersonResponseToJSON(accountsGetLegalNaturalPersonResponse: AccountsGetLegalNaturalPersonResponse): string;
+export declare function accountsGetLegalNaturalPersonResponseFromJSON(jsonString: string): SafeParseResult<AccountsGetLegalNaturalPersonResponse, SDKValidationError>;
 //# sourceMappingURL=accountsgetlegalnaturalperson.d.ts.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalUpdate, DecimalUpdate$Outbound } from "./decimalupdate.js";
 /**
  * Details of withdrawal schedule transfers
@@ -35,4 +37,6 @@ export declare namespace WithdrawalScheduleDetailsUpdate$ {
     /** @deprecated use `WithdrawalScheduleDetailsUpdate$Outbound` instead. */
     type Outbound = WithdrawalScheduleDetailsUpdate$Outbound;
 }
+export declare function withdrawalScheduleDetailsUpdateToJSON(withdrawalScheduleDetailsUpdate: WithdrawalScheduleDetailsUpdate): string;
+export declare function withdrawalScheduleDetailsUpdateFromJSON(jsonString: string): SafeParseResult<WithdrawalScheduleDetailsUpdate, SDKValidationError>;
 //# sourceMappingURL=withdrawalscheduledetailsupdate.d.ts.map

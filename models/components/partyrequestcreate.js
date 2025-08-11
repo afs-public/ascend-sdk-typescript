@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PartyRequestCreate$ = exports.PartyRequestCreate$outboundSchema = exports.PartyRequestCreate$inboundSchema = exports.PartyRequestCreateTradeConfirmationDeliveryPreference$ = exports.PartyRequestCreateTradeConfirmationDeliveryPreference$outboundSchema = exports.PartyRequestCreateTradeConfirmationDeliveryPreference$inboundSchema = exports.TaxDocumentDeliveryPreference$ = exports.TaxDocumentDeliveryPreference$outboundSchema = exports.TaxDocumentDeliveryPreference$inboundSchema = exports.PartyRequestCreateStatementDeliveryPreference$ = exports.PartyRequestCreateStatementDeliveryPreference$outboundSchema = exports.PartyRequestCreateStatementDeliveryPreference$inboundSchema = exports.RelationType$ = exports.RelationType$outboundSchema = exports.RelationType$inboundSchema = exports.ProxyDeliveryPreference$ = exports.ProxyDeliveryPreference$outboundSchema = exports.ProxyDeliveryPreference$inboundSchema = exports.ProspectusDeliveryPreference$ = exports.ProspectusDeliveryPreference$outboundSchema = exports.ProspectusDeliveryPreference$inboundSchema = exports.PartyRequestCreateTradeConfirmationDeliveryPreference = exports.TaxDocumentDeliveryPreference = exports.PartyRequestCreateStatementDeliveryPreference = exports.RelationType = exports.ProxyDeliveryPreference = exports.ProspectusDeliveryPreference = void 0;
+exports.partyRequestCreateToJSON = partyRequestCreateToJSON;
+exports.partyRequestCreateFromJSON = partyRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const phonenumbercreate_js_1 = require("./phonenumbercreate.js");
 const postaladdresscreate_js_1 = require("./postaladdresscreate.js");
@@ -314,4 +317,10 @@ var PartyRequestCreate$;
     /** @deprecated use `PartyRequestCreate$outboundSchema` instead. */
     PartyRequestCreate$.outboundSchema = exports.PartyRequestCreate$outboundSchema;
 })(PartyRequestCreate$ || (exports.PartyRequestCreate$ = PartyRequestCreate$ = {}));
+function partyRequestCreateToJSON(partyRequestCreate) {
+    return JSON.stringify(exports.PartyRequestCreate$outboundSchema.parse(partyRequestCreate));
+}
+function partyRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyRequestCreate' from JSON`);
+}
 //# sourceMappingURL=partyrequestcreate.js.map

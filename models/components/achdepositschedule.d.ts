@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The type of retirement contribution.
  */
@@ -240,6 +242,8 @@ export declare namespace AchDepositScheduleIraContribution$ {
     /** @deprecated use `AchDepositScheduleIraContribution$Outbound` instead. */
     type Outbound = AchDepositScheduleIraContribution$Outbound;
 }
+export declare function achDepositScheduleIraContributionToJSON(achDepositScheduleIraContribution: AchDepositScheduleIraContribution): string;
+export declare function achDepositScheduleIraContributionFromJSON(jsonString: string): SafeParseResult<AchDepositScheduleIraContribution, SDKValidationError>;
 /** @internal */
 export declare const AchDepositScheduleTemporalTaxYear$inboundSchema: z.ZodType<AchDepositScheduleTemporalTaxYearOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -290,6 +294,8 @@ export declare namespace AchDepositScheduleRetirementContribution$ {
     /** @deprecated use `AchDepositScheduleRetirementContribution$Outbound` instead. */
     type Outbound = AchDepositScheduleRetirementContribution$Outbound;
 }
+export declare function achDepositScheduleRetirementContributionToJSON(achDepositScheduleRetirementContribution: AchDepositScheduleRetirementContribution): string;
+export declare function achDepositScheduleRetirementContributionFromJSON(jsonString: string): SafeParseResult<AchDepositScheduleRetirementContribution, SDKValidationError>;
 /** @internal */
 export declare const AchDepositScheduleAmount$inboundSchema: z.ZodType<AchDepositScheduleAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -310,6 +316,8 @@ export declare namespace AchDepositScheduleAmount$ {
     /** @deprecated use `AchDepositScheduleAmount$Outbound` instead. */
     type Outbound = AchDepositScheduleAmount$Outbound;
 }
+export declare function achDepositScheduleAmountToJSON(achDepositScheduleAmount: AchDepositScheduleAmount): string;
+export declare function achDepositScheduleAmountFromJSON(jsonString: string): SafeParseResult<AchDepositScheduleAmount, SDKValidationError>;
 /** @internal */
 export declare const AchDepositScheduleStartDate$inboundSchema: z.ZodType<AchDepositScheduleStartDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -332,6 +340,8 @@ export declare namespace AchDepositScheduleStartDate$ {
     /** @deprecated use `AchDepositScheduleStartDate$Outbound` instead. */
     type Outbound = AchDepositScheduleStartDate$Outbound;
 }
+export declare function achDepositScheduleStartDateToJSON(achDepositScheduleStartDate: AchDepositScheduleStartDate): string;
+export declare function achDepositScheduleStartDateFromJSON(jsonString: string): SafeParseResult<AchDepositScheduleStartDate, SDKValidationError>;
 /** @internal */
 export declare const AchDepositScheduleState$inboundSchema: z.ZodType<AchDepositScheduleStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -384,6 +394,8 @@ export declare namespace AchDepositScheduleScheduleProperties$ {
     /** @deprecated use `AchDepositScheduleScheduleProperties$Outbound` instead. */
     type Outbound = AchDepositScheduleScheduleProperties$Outbound;
 }
+export declare function achDepositScheduleSchedulePropertiesToJSON(achDepositScheduleScheduleProperties: AchDepositScheduleScheduleProperties): string;
+export declare function achDepositScheduleSchedulePropertiesFromJSON(jsonString: string): SafeParseResult<AchDepositScheduleScheduleProperties, SDKValidationError>;
 /** @internal */
 export declare const ScheduleDetails$inboundSchema: z.ZodType<ScheduleDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -406,6 +418,8 @@ export declare namespace ScheduleDetails$ {
     /** @deprecated use `ScheduleDetails$Outbound` instead. */
     type Outbound = ScheduleDetails$Outbound;
 }
+export declare function scheduleDetailsToJSON(scheduleDetails: ScheduleDetails): string;
+export declare function scheduleDetailsFromJSON(jsonString: string): SafeParseResult<ScheduleDetails, SDKValidationError>;
 /** @internal */
 export declare const AchDepositSchedule$inboundSchema: z.ZodType<AchDepositSchedule, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -430,4 +444,6 @@ export declare namespace AchDepositSchedule$ {
     /** @deprecated use `AchDepositSchedule$Outbound` instead. */
     type Outbound = AchDepositSchedule$Outbound;
 }
+export declare function achDepositScheduleToJSON(achDepositSchedule: AchDepositSchedule): string;
+export declare function achDepositScheduleFromJSON(jsonString: string): SafeParseResult<AchDepositSchedule, SDKValidationError>;
 //# sourceMappingURL=achdepositschedule.d.ts.map

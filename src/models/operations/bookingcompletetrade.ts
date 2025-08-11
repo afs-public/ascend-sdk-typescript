@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingCompleteTradeRequest = {
   /**
@@ -89,6 +92,26 @@ export namespace BookingCompleteTradeRequest$ {
   export type Outbound = BookingCompleteTradeRequest$Outbound;
 }
 
+export function bookingCompleteTradeRequestToJSON(
+  bookingCompleteTradeRequest: BookingCompleteTradeRequest,
+): string {
+  return JSON.stringify(
+    BookingCompleteTradeRequest$outboundSchema.parse(
+      bookingCompleteTradeRequest,
+    ),
+  );
+}
+
+export function bookingCompleteTradeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCompleteTradeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCompleteTradeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCompleteTradeRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingCompleteTradeResponse$inboundSchema: z.ZodType<
   BookingCompleteTradeResponse,
@@ -143,4 +166,24 @@ export namespace BookingCompleteTradeResponse$ {
   export const outboundSchema = BookingCompleteTradeResponse$outboundSchema;
   /** @deprecated use `BookingCompleteTradeResponse$Outbound` instead. */
   export type Outbound = BookingCompleteTradeResponse$Outbound;
+}
+
+export function bookingCompleteTradeResponseToJSON(
+  bookingCompleteTradeResponse: BookingCompleteTradeResponse,
+): string {
+  return JSON.stringify(
+    BookingCompleteTradeResponse$outboundSchema.parse(
+      bookingCompleteTradeResponse,
+    ),
+  );
+}
+
+export function bookingCompleteTradeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCompleteTradeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCompleteTradeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCompleteTradeResponse' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Snapshot, Snapshot$Outbound } from "./snapshot.js";
 /**
  * Returns the requested snapshots.
@@ -39,4 +41,6 @@ export declare namespace ListSnapshotsResponse$ {
     /** @deprecated use `ListSnapshotsResponse$Outbound` instead. */
     type Outbound = ListSnapshotsResponse$Outbound;
 }
+export declare function listSnapshotsResponseToJSON(listSnapshotsResponse: ListSnapshotsResponse): string;
+export declare function listSnapshotsResponseFromJSON(jsonString: string): SafeParseResult<ListSnapshotsResponse, SDKValidationError>;
 //# sourceMappingURL=listsnapshotsresponse.d.ts.map

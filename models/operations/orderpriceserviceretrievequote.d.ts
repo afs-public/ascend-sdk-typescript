@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type OrderPriceServiceRetrieveQuoteRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace OrderPriceServiceRetrieveQuoteRequest$ {
     /** @deprecated use `OrderPriceServiceRetrieveQuoteRequest$Outbound` instead. */
     type Outbound = OrderPriceServiceRetrieveQuoteRequest$Outbound;
 }
+export declare function orderPriceServiceRetrieveQuoteRequestToJSON(orderPriceServiceRetrieveQuoteRequest: OrderPriceServiceRetrieveQuoteRequest): string;
+export declare function orderPriceServiceRetrieveQuoteRequestFromJSON(jsonString: string): SafeParseResult<OrderPriceServiceRetrieveQuoteRequest, SDKValidationError>;
 /** @internal */
 export declare const OrderPriceServiceRetrieveQuoteResponse$inboundSchema: z.ZodType<OrderPriceServiceRetrieveQuoteResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace OrderPriceServiceRetrieveQuoteResponse$ {
     /** @deprecated use `OrderPriceServiceRetrieveQuoteResponse$Outbound` instead. */
     type Outbound = OrderPriceServiceRetrieveQuoteResponse$Outbound;
 }
+export declare function orderPriceServiceRetrieveQuoteResponseToJSON(orderPriceServiceRetrieveQuoteResponse: OrderPriceServiceRetrieveQuoteResponse): string;
+export declare function orderPriceServiceRetrieveQuoteResponseFromJSON(jsonString: string): SafeParseResult<OrderPriceServiceRetrieveQuoteResponse, SDKValidationError>;
 //# sourceMappingURL=orderpriceserviceretrievequote.d.ts.map

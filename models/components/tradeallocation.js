@@ -38,8 +38,29 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TradeAllocationSideModifier$outboundSchema = exports.TradeAllocationSideModifier$inboundSchema = exports.TradeAllocationSettlementDate$ = exports.TradeAllocationSettlementDate$outboundSchema = exports.TradeAllocationSettlementDate$inboundSchema = exports.TradeAllocationQuantity$ = exports.TradeAllocationQuantity$outboundSchema = exports.TradeAllocationQuantity$inboundSchema = exports.TradeAllocationPriceAdjustment$ = exports.TradeAllocationPriceAdjustment$outboundSchema = exports.TradeAllocationPriceAdjustment$inboundSchema = exports.TradeAllocationPriceAdjustmentType$ = exports.TradeAllocationPriceAdjustmentType$outboundSchema = exports.TradeAllocationPriceAdjustmentType$inboundSchema = exports.TradeAllocationPriceAdjustmentAmount$ = exports.TradeAllocationPriceAdjustmentAmount$outboundSchema = exports.TradeAllocationPriceAdjustmentAmount$inboundSchema = exports.TradeAllocationPrice$ = exports.TradeAllocationPrice$outboundSchema = exports.TradeAllocationPrice$inboundSchema = exports.TradeAllocationPrevailingMarketPrice$ = exports.TradeAllocationPrevailingMarketPrice$outboundSchema = exports.TradeAllocationPrevailingMarketPrice$inboundSchema = exports.TradeAllocationIdentifierType$ = exports.TradeAllocationIdentifierType$outboundSchema = exports.TradeAllocationIdentifierType$inboundSchema = exports.TradeAllocationGrossAmount$ = exports.TradeAllocationGrossAmount$outboundSchema = exports.TradeAllocationGrossAmount$inboundSchema = exports.TradeAllocationCommissionAmount$ = exports.TradeAllocationCommissionAmount$outboundSchema = exports.TradeAllocationCommissionAmount$inboundSchema = exports.TradeAllocationBrokerCapacity$ = exports.TradeAllocationBrokerCapacity$outboundSchema = exports.TradeAllocationBrokerCapacity$inboundSchema = exports.TradeAllocationAssetType$ = exports.TradeAllocationAssetType$outboundSchema = exports.TradeAllocationAssetType$inboundSchema = exports.TradeAllocationAccruedInterestAmount$ = exports.TradeAllocationAccruedInterestAmount$outboundSchema = exports.TradeAllocationAccruedInterestAmount$inboundSchema = exports.TradeAllocationWhenIssued = exports.TradeAllocationToSide = exports.TradeAllocationState = exports.TradeAllocationSpecialInstructions = exports.TradeAllocationSideModifier = exports.TradeAllocationPriceAdjustmentType = exports.TradeAllocationIdentifierType = exports.TradeAllocationBrokerCapacity = exports.TradeAllocationAssetType = void 0;
 exports.TradeAllocation$ = exports.TradeAllocation$outboundSchema = exports.TradeAllocation$inboundSchema = exports.TradeAllocationWhenIssued$ = exports.TradeAllocationWhenIssued$outboundSchema = exports.TradeAllocationWhenIssued$inboundSchema = exports.TradeAllocationToSide$ = exports.TradeAllocationToSide$outboundSchema = exports.TradeAllocationToSide$inboundSchema = exports.TradeAllocationState$ = exports.TradeAllocationState$outboundSchema = exports.TradeAllocationState$inboundSchema = exports.TradeAllocationSpecialInstructions$ = exports.TradeAllocationSpecialInstructions$outboundSchema = exports.TradeAllocationSpecialInstructions$inboundSchema = exports.TradeAllocationSideModifier$ = void 0;
+exports.tradeAllocationAccruedInterestAmountToJSON = tradeAllocationAccruedInterestAmountToJSON;
+exports.tradeAllocationAccruedInterestAmountFromJSON = tradeAllocationAccruedInterestAmountFromJSON;
+exports.tradeAllocationCommissionAmountToJSON = tradeAllocationCommissionAmountToJSON;
+exports.tradeAllocationCommissionAmountFromJSON = tradeAllocationCommissionAmountFromJSON;
+exports.tradeAllocationGrossAmountToJSON = tradeAllocationGrossAmountToJSON;
+exports.tradeAllocationGrossAmountFromJSON = tradeAllocationGrossAmountFromJSON;
+exports.tradeAllocationPrevailingMarketPriceToJSON = tradeAllocationPrevailingMarketPriceToJSON;
+exports.tradeAllocationPrevailingMarketPriceFromJSON = tradeAllocationPrevailingMarketPriceFromJSON;
+exports.tradeAllocationPriceToJSON = tradeAllocationPriceToJSON;
+exports.tradeAllocationPriceFromJSON = tradeAllocationPriceFromJSON;
+exports.tradeAllocationPriceAdjustmentAmountToJSON = tradeAllocationPriceAdjustmentAmountToJSON;
+exports.tradeAllocationPriceAdjustmentAmountFromJSON = tradeAllocationPriceAdjustmentAmountFromJSON;
+exports.tradeAllocationPriceAdjustmentToJSON = tradeAllocationPriceAdjustmentToJSON;
+exports.tradeAllocationPriceAdjustmentFromJSON = tradeAllocationPriceAdjustmentFromJSON;
+exports.tradeAllocationQuantityToJSON = tradeAllocationQuantityToJSON;
+exports.tradeAllocationQuantityFromJSON = tradeAllocationQuantityFromJSON;
+exports.tradeAllocationSettlementDateToJSON = tradeAllocationSettlementDateToJSON;
+exports.tradeAllocationSettlementDateFromJSON = tradeAllocationSettlementDateFromJSON;
+exports.tradeAllocationToJSON = tradeAllocationToJSON;
+exports.tradeAllocationFromJSON = tradeAllocationFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bondyield_js_1 = require("./bondyield.js");
 const bookingfee_js_1 = require("./bookingfee.js");
@@ -197,6 +218,12 @@ var TradeAllocationAccruedInterestAmount$;
     /** @deprecated use `TradeAllocationAccruedInterestAmount$outboundSchema` instead. */
     TradeAllocationAccruedInterestAmount$.outboundSchema = exports.TradeAllocationAccruedInterestAmount$outboundSchema;
 })(TradeAllocationAccruedInterestAmount$ || (exports.TradeAllocationAccruedInterestAmount$ = TradeAllocationAccruedInterestAmount$ = {}));
+function tradeAllocationAccruedInterestAmountToJSON(tradeAllocationAccruedInterestAmount) {
+    return JSON.stringify(exports.TradeAllocationAccruedInterestAmount$outboundSchema.parse(tradeAllocationAccruedInterestAmount));
+}
+function tradeAllocationAccruedInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationAccruedInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationAccruedInterestAmount' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationAssetType$inboundSchema = z
     .union([
@@ -260,6 +287,12 @@ var TradeAllocationCommissionAmount$;
     /** @deprecated use `TradeAllocationCommissionAmount$outboundSchema` instead. */
     TradeAllocationCommissionAmount$.outboundSchema = exports.TradeAllocationCommissionAmount$outboundSchema;
 })(TradeAllocationCommissionAmount$ || (exports.TradeAllocationCommissionAmount$ = TradeAllocationCommissionAmount$ = {}));
+function tradeAllocationCommissionAmountToJSON(tradeAllocationCommissionAmount) {
+    return JSON.stringify(exports.TradeAllocationCommissionAmount$outboundSchema.parse(tradeAllocationCommissionAmount));
+}
+function tradeAllocationCommissionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationCommissionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationCommissionAmount' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationGrossAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -279,6 +312,12 @@ var TradeAllocationGrossAmount$;
     /** @deprecated use `TradeAllocationGrossAmount$outboundSchema` instead. */
     TradeAllocationGrossAmount$.outboundSchema = exports.TradeAllocationGrossAmount$outboundSchema;
 })(TradeAllocationGrossAmount$ || (exports.TradeAllocationGrossAmount$ = TradeAllocationGrossAmount$ = {}));
+function tradeAllocationGrossAmountToJSON(tradeAllocationGrossAmount) {
+    return JSON.stringify(exports.TradeAllocationGrossAmount$outboundSchema.parse(tradeAllocationGrossAmount));
+}
+function tradeAllocationGrossAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationGrossAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationGrossAmount' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationIdentifierType$inboundSchema = z
     .union([
@@ -320,6 +359,12 @@ var TradeAllocationPrevailingMarketPrice$;
     /** @deprecated use `TradeAllocationPrevailingMarketPrice$outboundSchema` instead. */
     TradeAllocationPrevailingMarketPrice$.outboundSchema = exports.TradeAllocationPrevailingMarketPrice$outboundSchema;
 })(TradeAllocationPrevailingMarketPrice$ || (exports.TradeAllocationPrevailingMarketPrice$ = TradeAllocationPrevailingMarketPrice$ = {}));
+function tradeAllocationPrevailingMarketPriceToJSON(tradeAllocationPrevailingMarketPrice) {
+    return JSON.stringify(exports.TradeAllocationPrevailingMarketPrice$outboundSchema.parse(tradeAllocationPrevailingMarketPrice));
+}
+function tradeAllocationPrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationPrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationPrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -339,6 +384,12 @@ var TradeAllocationPrice$;
     /** @deprecated use `TradeAllocationPrice$outboundSchema` instead. */
     TradeAllocationPrice$.outboundSchema = exports.TradeAllocationPrice$outboundSchema;
 })(TradeAllocationPrice$ || (exports.TradeAllocationPrice$ = TradeAllocationPrice$ = {}));
+function tradeAllocationPriceToJSON(tradeAllocationPrice) {
+    return JSON.stringify(exports.TradeAllocationPrice$outboundSchema.parse(tradeAllocationPrice));
+}
+function tradeAllocationPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationPrice' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationPriceAdjustmentAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -358,6 +409,12 @@ var TradeAllocationPriceAdjustmentAmount$;
     /** @deprecated use `TradeAllocationPriceAdjustmentAmount$outboundSchema` instead. */
     TradeAllocationPriceAdjustmentAmount$.outboundSchema = exports.TradeAllocationPriceAdjustmentAmount$outboundSchema;
 })(TradeAllocationPriceAdjustmentAmount$ || (exports.TradeAllocationPriceAdjustmentAmount$ = TradeAllocationPriceAdjustmentAmount$ = {}));
+function tradeAllocationPriceAdjustmentAmountToJSON(tradeAllocationPriceAdjustmentAmount) {
+    return JSON.stringify(exports.TradeAllocationPriceAdjustmentAmount$outboundSchema.parse(tradeAllocationPriceAdjustmentAmount));
+}
+function tradeAllocationPriceAdjustmentAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationPriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationPriceAdjustmentAmount' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationPriceAdjustmentType$inboundSchema = z
     .union([
@@ -413,6 +470,12 @@ var TradeAllocationPriceAdjustment$;
     /** @deprecated use `TradeAllocationPriceAdjustment$outboundSchema` instead. */
     TradeAllocationPriceAdjustment$.outboundSchema = exports.TradeAllocationPriceAdjustment$outboundSchema;
 })(TradeAllocationPriceAdjustment$ || (exports.TradeAllocationPriceAdjustment$ = TradeAllocationPriceAdjustment$ = {}));
+function tradeAllocationPriceAdjustmentToJSON(tradeAllocationPriceAdjustment) {
+    return JSON.stringify(exports.TradeAllocationPriceAdjustment$outboundSchema.parse(tradeAllocationPriceAdjustment));
+}
+function tradeAllocationPriceAdjustmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationPriceAdjustment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationPriceAdjustment' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -432,6 +495,12 @@ var TradeAllocationQuantity$;
     /** @deprecated use `TradeAllocationQuantity$outboundSchema` instead. */
     TradeAllocationQuantity$.outboundSchema = exports.TradeAllocationQuantity$outboundSchema;
 })(TradeAllocationQuantity$ || (exports.TradeAllocationQuantity$ = TradeAllocationQuantity$ = {}));
+function tradeAllocationQuantityToJSON(tradeAllocationQuantity) {
+    return JSON.stringify(exports.TradeAllocationQuantity$outboundSchema.parse(tradeAllocationQuantity));
+}
+function tradeAllocationQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationQuantity' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationSettlementDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -455,6 +524,12 @@ var TradeAllocationSettlementDate$;
     /** @deprecated use `TradeAllocationSettlementDate$outboundSchema` instead. */
     TradeAllocationSettlementDate$.outboundSchema = exports.TradeAllocationSettlementDate$outboundSchema;
 })(TradeAllocationSettlementDate$ || (exports.TradeAllocationSettlementDate$ = TradeAllocationSettlementDate$ = {}));
+function tradeAllocationSettlementDateToJSON(tradeAllocationSettlementDate) {
+    return JSON.stringify(exports.TradeAllocationSettlementDate$outboundSchema.parse(tradeAllocationSettlementDate));
+}
+function tradeAllocationSettlementDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationSettlementDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationSettlementDate' from JSON`);
+}
 /** @internal */
 exports.TradeAllocationSideModifier$inboundSchema = z
     .union([
@@ -707,4 +782,10 @@ var TradeAllocation$;
     /** @deprecated use `TradeAllocation$outboundSchema` instead. */
     TradeAllocation$.outboundSchema = exports.TradeAllocation$outboundSchema;
 })(TradeAllocation$ || (exports.TradeAllocation$ = TradeAllocation$ = {}));
+function tradeAllocationToJSON(tradeAllocation) {
+    return JSON.stringify(exports.TradeAllocation$outboundSchema.parse(tradeAllocation));
+}
+function tradeAllocationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocation' from JSON`);
+}
 //# sourceMappingURL=tradeallocation.js.map

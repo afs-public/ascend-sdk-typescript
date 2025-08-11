@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AchDepositSchedule, AchDepositSchedule$Outbound } from "./achdepositschedule.js";
 /**
  * A paged response containing a list of ACH deposit transfer schedules
@@ -34,4 +36,6 @@ export declare namespace ListAchDepositSchedulesResponse$ {
     /** @deprecated use `ListAchDepositSchedulesResponse$Outbound` instead. */
     type Outbound = ListAchDepositSchedulesResponse$Outbound;
 }
+export declare function listAchDepositSchedulesResponseToJSON(listAchDepositSchedulesResponse: ListAchDepositSchedulesResponse): string;
+export declare function listAchDepositSchedulesResponseFromJSON(jsonString: string): SafeParseResult<ListAchDepositSchedulesResponse, SDKValidationError>;
 //# sourceMappingURL=listachdepositschedulesresponse.d.ts.map

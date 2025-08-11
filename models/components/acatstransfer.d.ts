@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AcatsAsset, AcatsAsset$Outbound } from "./acatsasset.js";
 /**
  * The external account information
@@ -248,6 +250,8 @@ export declare namespace ExternalAccount$ {
     /** @deprecated use `ExternalAccount$Outbound` instead. */
     type Outbound = ExternalAccount$Outbound;
 }
+export declare function externalAccountToJSON(externalAccount: ExternalAccount): string;
+export declare function externalAccountFromJSON(jsonString: string): SafeParseResult<ExternalAccount, SDKValidationError>;
 /** @internal */
 export declare const Deliverer$inboundSchema: z.ZodType<Deliverer, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -269,6 +273,8 @@ export declare namespace Deliverer$ {
     /** @deprecated use `Deliverer$Outbound` instead. */
     type Outbound = Deliverer$Outbound;
 }
+export declare function delivererToJSON(deliverer: Deliverer): string;
+export declare function delivererFromJSON(jsonString: string): SafeParseResult<Deliverer, SDKValidationError>;
 /** @internal */
 export declare const AcatsTransferDirection$inboundSchema: z.ZodType<AcatsTransferDirectionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -319,6 +325,8 @@ export declare namespace AcatsTransferExternalAccount$ {
     /** @deprecated use `AcatsTransferExternalAccount$Outbound` instead. */
     type Outbound = AcatsTransferExternalAccount$Outbound;
 }
+export declare function acatsTransferExternalAccountToJSON(acatsTransferExternalAccount: AcatsTransferExternalAccount): string;
+export declare function acatsTransferExternalAccountFromJSON(jsonString: string): SafeParseResult<AcatsTransferExternalAccount, SDKValidationError>;
 /** @internal */
 export declare const Receiver$inboundSchema: z.ZodType<Receiver, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -340,6 +348,8 @@ export declare namespace Receiver$ {
     /** @deprecated use `Receiver$Outbound` instead. */
     type Outbound = Receiver$Outbound;
 }
+export declare function receiverToJSON(receiver: Receiver): string;
+export declare function receiverFromJSON(jsonString: string): SafeParseResult<Receiver, SDKValidationError>;
 /** @internal */
 export declare const RejectCode$inboundSchema: z.ZodType<RejectCodeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -415,4 +425,6 @@ export declare namespace AcatsTransfer$ {
     /** @deprecated use `AcatsTransfer$Outbound` instead. */
     type Outbound = AcatsTransfer$Outbound;
 }
+export declare function acatsTransferToJSON(acatsTransfer: AcatsTransfer): string;
+export declare function acatsTransferFromJSON(jsonString: string): SafeParseResult<AcatsTransfer, SDKValidationError>;
 //# sourceMappingURL=acatstransfer.d.ts.map

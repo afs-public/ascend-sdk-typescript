@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Custom date object to present related Dow Jones dates because any value can be null, Month is represented randomly like June, Jun, 6 etc. etc.
@@ -62,4 +65,18 @@ export namespace DowJonesDate$ {
   export const outboundSchema = DowJonesDate$outboundSchema;
   /** @deprecated use `DowJonesDate$Outbound` instead. */
   export type Outbound = DowJonesDate$Outbound;
+}
+
+export function dowJonesDateToJSON(dowJonesDate: DowJonesDate): string {
+  return JSON.stringify(DowJonesDate$outboundSchema.parse(dowJonesDate));
+}
+
+export function dowJonesDateFromJSON(
+  jsonString: string,
+): SafeParseResult<DowJonesDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DowJonesDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DowJonesDate' from JSON`,
+  );
 }

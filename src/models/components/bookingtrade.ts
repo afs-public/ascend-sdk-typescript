@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BookingFee,
   BookingFee$inboundSchema,
@@ -518,6 +521,24 @@ export namespace LocalMarketTradeDate$ {
   export type Outbound = LocalMarketTradeDate$Outbound;
 }
 
+export function localMarketTradeDateToJSON(
+  localMarketTradeDate: LocalMarketTradeDate,
+): string {
+  return JSON.stringify(
+    LocalMarketTradeDate$outboundSchema.parse(localMarketTradeDate),
+  );
+}
+
+export function localMarketTradeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LocalMarketTradeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LocalMarketTradeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocalMarketTradeDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingTradeRouteType$inboundSchema: z.ZodType<
   BookingTradeRouteTypeOpen,
@@ -590,6 +611,20 @@ export namespace SettlementDate$ {
   export const outboundSchema = SettlementDate$outboundSchema;
   /** @deprecated use `SettlementDate$Outbound` instead. */
   export type Outbound = SettlementDate$Outbound;
+}
+
+export function settlementDateToJSON(settlementDate: SettlementDate): string {
+  return JSON.stringify(SettlementDate$outboundSchema.parse(settlementDate));
+}
+
+export function settlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<SettlementDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SettlementDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -923,4 +958,18 @@ export namespace BookingTrade$ {
   export const outboundSchema = BookingTrade$outboundSchema;
   /** @deprecated use `BookingTrade$Outbound` instead. */
   export type Outbound = BookingTrade$Outbound;
+}
+
+export function bookingTradeToJSON(bookingTrade: BookingTrade): string {
+  return JSON.stringify(BookingTrade$outboundSchema.parse(bookingTrade));
+}
+
+export function bookingTradeFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingTrade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingTrade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingTrade' from JSON`,
+  );
 }

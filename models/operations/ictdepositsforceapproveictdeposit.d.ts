@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type IctDepositsForceApproveIctDepositRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace IctDepositsForceApproveIctDepositRequest$ {
     /** @deprecated use `IctDepositsForceApproveIctDepositRequest$Outbound` instead. */
     type Outbound = IctDepositsForceApproveIctDepositRequest$Outbound;
 }
+export declare function ictDepositsForceApproveIctDepositRequestToJSON(ictDepositsForceApproveIctDepositRequest: IctDepositsForceApproveIctDepositRequest): string;
+export declare function ictDepositsForceApproveIctDepositRequestFromJSON(jsonString: string): SafeParseResult<IctDepositsForceApproveIctDepositRequest, SDKValidationError>;
 /** @internal */
 export declare const IctDepositsForceApproveIctDepositResponse$inboundSchema: z.ZodType<IctDepositsForceApproveIctDepositResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace IctDepositsForceApproveIctDepositResponse$ {
     /** @deprecated use `IctDepositsForceApproveIctDepositResponse$Outbound` instead. */
     type Outbound = IctDepositsForceApproveIctDepositResponse$Outbound;
 }
+export declare function ictDepositsForceApproveIctDepositResponseToJSON(ictDepositsForceApproveIctDepositResponse: IctDepositsForceApproveIctDepositResponse): string;
+export declare function ictDepositsForceApproveIctDepositResponseFromJSON(jsonString: string): SafeParseResult<IctDepositsForceApproveIctDepositResponse, SDKValidationError>;
 //# sourceMappingURL=ictdepositsforceapproveictdeposit.d.ts.map

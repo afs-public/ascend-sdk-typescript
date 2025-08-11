@@ -10,7 +10,7 @@ exports.ConnectionError = exports.RequestTimeoutError = exports.RequestAbortedEr
 class HTTPClientError extends Error {
     constructor(message, opts) {
         let msg = message;
-        if (opts === null || opts === void 0 ? void 0 : opts.cause) {
+        if (opts?.cause) {
             msg += `: ${opts.cause}`;
         }
         super(msg, opts);
@@ -18,7 +18,7 @@ class HTTPClientError extends Error {
         // In older runtimes, the cause field would not have been assigned through
         // the super() call.
         if (typeof this.cause === "undefined") {
-            this.cause = opts === null || opts === void 0 ? void 0 : opts.cause;
+            this.cause = opts?.cause;
         }
     }
 }

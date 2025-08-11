@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The percentage of the account's trades which will involve foreign bond
@@ -65,6 +68,20 @@ export namespace Percentage$ {
   export type Outbound = Percentage$Outbound;
 }
 
+export function percentageToJSON(percentage: Percentage): string {
+  return JSON.stringify(Percentage$outboundSchema.parse(percentage));
+}
+
+export function percentageFromJSON(
+  jsonString: string,
+): SafeParseResult<Percentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Percentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Percentage' from JSON`,
+  );
+}
+
 /** @internal */
 export const ForeignBondTradingDetail$inboundSchema: z.ZodType<
   ForeignBondTradingDetail,
@@ -110,4 +127,22 @@ export namespace ForeignBondTradingDetail$ {
   export const outboundSchema = ForeignBondTradingDetail$outboundSchema;
   /** @deprecated use `ForeignBondTradingDetail$Outbound` instead. */
   export type Outbound = ForeignBondTradingDetail$Outbound;
+}
+
+export function foreignBondTradingDetailToJSON(
+  foreignBondTradingDetail: ForeignBondTradingDetail,
+): string {
+  return JSON.stringify(
+    ForeignBondTradingDetail$outboundSchema.parse(foreignBondTradingDetail),
+  );
+}
+
+export function foreignBondTradingDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<ForeignBondTradingDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ForeignBondTradingDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForeignBondTradingDetail' from JSON`,
+  );
 }

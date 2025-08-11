@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListSnapshotsResponse$ = exports.ListSnapshotsResponse$outboundSchema = exports.ListSnapshotsResponse$inboundSchema = void 0;
+exports.listSnapshotsResponseToJSON = listSnapshotsResponseToJSON;
+exports.listSnapshotsResponseFromJSON = listSnapshotsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const snapshot_js_1 = require("./snapshot.js");
 /** @internal */
 exports.ListSnapshotsResponse$inboundSchema = z.object({
@@ -73,4 +76,10 @@ var ListSnapshotsResponse$;
     /** @deprecated use `ListSnapshotsResponse$outboundSchema` instead. */
     ListSnapshotsResponse$.outboundSchema = exports.ListSnapshotsResponse$outboundSchema;
 })(ListSnapshotsResponse$ || (exports.ListSnapshotsResponse$ = ListSnapshotsResponse$ = {}));
+function listSnapshotsResponseToJSON(listSnapshotsResponse) {
+    return JSON.stringify(exports.ListSnapshotsResponse$outboundSchema.parse(listSnapshotsResponse));
+}
+function listSnapshotsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListSnapshotsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListSnapshotsResponse' from JSON`);
+}
 //# sourceMappingURL=listsnapshotsresponse.js.map

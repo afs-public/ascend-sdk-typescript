@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NegativeNewsUpdate$ = exports.NegativeNewsUpdate$outboundSchema = exports.NegativeNewsUpdate$inboundSchema = void 0;
+exports.negativeNewsUpdateToJSON = negativeNewsUpdateToJSON;
+exports.negativeNewsUpdateFromJSON = negativeNewsUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.NegativeNewsUpdate$inboundSchema = z.object({
     negative_news_against_related_parties: z.boolean().optional(),
@@ -70,4 +73,10 @@ var NegativeNewsUpdate$;
     /** @deprecated use `NegativeNewsUpdate$outboundSchema` instead. */
     NegativeNewsUpdate$.outboundSchema = exports.NegativeNewsUpdate$outboundSchema;
 })(NegativeNewsUpdate$ || (exports.NegativeNewsUpdate$ = NegativeNewsUpdate$ = {}));
+function negativeNewsUpdateToJSON(negativeNewsUpdate) {
+    return JSON.stringify(exports.NegativeNewsUpdate$outboundSchema.parse(negativeNewsUpdate));
+}
+function negativeNewsUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NegativeNewsUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NegativeNewsUpdate' from JSON`);
+}
 //# sourceMappingURL=negativenewsupdate.js.map

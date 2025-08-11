@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AffirmAgreementsResponse$ = exports.AffirmAgreementsResponse$outboundSchema = exports.AffirmAgreementsResponse$inboundSchema = void 0;
+exports.affirmAgreementsResponseToJSON = affirmAgreementsResponseToJSON;
+exports.affirmAgreementsResponseFromJSON = affirmAgreementsResponseFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const agreement_js_1 = require("./agreement.js");
 /** @internal */
 exports.AffirmAgreementsResponse$inboundSchema = z.object({
@@ -58,4 +61,10 @@ var AffirmAgreementsResponse$;
     /** @deprecated use `AffirmAgreementsResponse$outboundSchema` instead. */
     AffirmAgreementsResponse$.outboundSchema = exports.AffirmAgreementsResponse$outboundSchema;
 })(AffirmAgreementsResponse$ || (exports.AffirmAgreementsResponse$ = AffirmAgreementsResponse$ = {}));
+function affirmAgreementsResponseToJSON(affirmAgreementsResponse) {
+    return JSON.stringify(exports.AffirmAgreementsResponse$outboundSchema.parse(affirmAgreementsResponse));
+}
+function affirmAgreementsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AffirmAgreementsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AffirmAgreementsResponse' from JSON`);
+}
 //# sourceMappingURL=affirmagreementsresponse.js.map

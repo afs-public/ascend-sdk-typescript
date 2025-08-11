@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PostalAddressCreate,
   PostalAddressCreate$inboundSchema,
@@ -170,4 +173,22 @@ export namespace EmploymentCreate$ {
   export const outboundSchema = EmploymentCreate$outboundSchema;
   /** @deprecated use `EmploymentCreate$Outbound` instead. */
   export type Outbound = EmploymentCreate$Outbound;
+}
+
+export function employmentCreateToJSON(
+  employmentCreate: EmploymentCreate,
+): string {
+  return JSON.stringify(
+    EmploymentCreate$outboundSchema.parse(employmentCreate),
+  );
+}
+
+export function employmentCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentCreate' from JSON`,
+  );
 }

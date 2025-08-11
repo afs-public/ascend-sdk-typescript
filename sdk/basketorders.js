@@ -65,8 +65,8 @@ class BasketOrders extends sdks_js_1.ClientSDK {
      *
      *  Upon successful submission, returns a list of basket orders for the basket. If the list of basket orders becomes too large, a token is returned to retrieve the next page of basket orders.
      */
-    async listBasketOrders(correspondentId, basketId, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, basketOrdersListBasketOrders_js_1.basketOrdersListBasketOrders)(this, correspondentId, basketId, pageSize, pageToken, options));
+    async listBasketOrders(request, options) {
+        return (0, fp_js_1.unwrapAsync)((0, basketOrdersListBasketOrders_js_1.basketOrdersListBasketOrders)(this, request, options));
     }
     /**
      * List Compressed Orders

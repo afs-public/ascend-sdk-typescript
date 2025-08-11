@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CalculateCashBalanceResponseTradeSummary$ = exports.CalculateCashBalanceResponseTradeSummary$outboundSchema = exports.CalculateCashBalanceResponseTradeSummary$inboundSchema = exports.NetAmount$ = exports.NetAmount$outboundSchema = exports.NetAmount$inboundSchema = void 0;
+exports.netAmountToJSON = netAmountToJSON;
+exports.netAmountFromJSON = netAmountFromJSON;
+exports.calculateCashBalanceResponseTradeSummaryToJSON = calculateCashBalanceResponseTradeSummaryToJSON;
+exports.calculateCashBalanceResponseTradeSummaryFromJSON = calculateCashBalanceResponseTradeSummaryFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.NetAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +63,12 @@ var NetAmount$;
     /** @deprecated use `NetAmount$outboundSchema` instead. */
     NetAmount$.outboundSchema = exports.NetAmount$outboundSchema;
 })(NetAmount$ || (exports.NetAmount$ = NetAmount$ = {}));
+function netAmountToJSON(netAmount) {
+    return JSON.stringify(exports.NetAmount$outboundSchema.parse(netAmount));
+}
+function netAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NetAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NetAmount' from JSON`);
+}
 /** @internal */
 exports.CalculateCashBalanceResponseTradeSummary$inboundSchema = z.object({
     activity: z.string().optional(),
@@ -89,4 +100,10 @@ var CalculateCashBalanceResponseTradeSummary$;
     /** @deprecated use `CalculateCashBalanceResponseTradeSummary$outboundSchema` instead. */
     CalculateCashBalanceResponseTradeSummary$.outboundSchema = exports.CalculateCashBalanceResponseTradeSummary$outboundSchema;
 })(CalculateCashBalanceResponseTradeSummary$ || (exports.CalculateCashBalanceResponseTradeSummary$ = CalculateCashBalanceResponseTradeSummary$ = {}));
+function calculateCashBalanceResponseTradeSummaryToJSON(calculateCashBalanceResponseTradeSummary) {
+    return JSON.stringify(exports.CalculateCashBalanceResponseTradeSummary$outboundSchema.parse(calculateCashBalanceResponseTradeSummary));
+}
+function calculateCashBalanceResponseTradeSummaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CalculateCashBalanceResponseTradeSummary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CalculateCashBalanceResponseTradeSummary' from JSON`);
+}
 //# sourceMappingURL=calculatecashbalanceresponsetradesummary.js.map

@@ -7,7 +7,7 @@ The execution route Apex used for this trade
 ```typescript
 import { ActivityBrokerCapacity } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: ActivityBrokerCapacity = ActivityBrokerCapacity.CapacityUnspecified;
+let value: ActivityBrokerCapacity = ActivityBrokerCapacity.Agency;
 ```
 
 ## Values

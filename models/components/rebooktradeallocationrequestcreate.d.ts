@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { TradeAllocationCreate, TradeAllocationCreate$Outbound } from "./tradeallocationcreate.js";
 /**
  * Used to correct a trade allocation.
@@ -39,4 +41,6 @@ export declare namespace RebookTradeAllocationRequestCreate$ {
     /** @deprecated use `RebookTradeAllocationRequestCreate$Outbound` instead. */
     type Outbound = RebookTradeAllocationRequestCreate$Outbound;
 }
+export declare function rebookTradeAllocationRequestCreateToJSON(rebookTradeAllocationRequestCreate: RebookTradeAllocationRequestCreate): string;
+export declare function rebookTradeAllocationRequestCreateFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationRequestCreate, SDKValidationError>;
 //# sourceMappingURL=rebooktradeallocationrequestcreate.d.ts.map

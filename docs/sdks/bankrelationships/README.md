@@ -20,6 +20,7 @@ Creates a bank relationship.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_CreateBankRelationship" method="post" path="/transfers/v1/accounts/{account_id}/bankRelationships" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { VerificationMethod } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -42,7 +43,6 @@ async function run() {
     verificationMethod: VerificationMethod.MicroDeposit,
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -77,15 +77,12 @@ async function run() {
     nickname: "My Primary Bank",
     verificationMethod: VerificationMethod.MicroDeposit,
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsCreateBankRelationship failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -118,6 +115,7 @@ Lists bank relationships for an account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_ListBankRelationships" method="get" path="/transfers/v1/accounts/{account_id}/bankRelationships" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -136,7 +134,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.bankRelationships.listBankRelationships("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -167,15 +164,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await bankRelationshipsListBankRelationships(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsListBankRelationships failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -210,6 +204,7 @@ Gets an existing bank relationship.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_GetBankRelationship" method="get" path="/transfers/v1/accounts/{account_id}/bankRelationships/{bankRelationship_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -228,7 +223,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.bankRelationships.getBankRelationship("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -259,15 +253,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await bankRelationshipsGetBankRelationship(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsGetBankRelationship failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -300,6 +291,7 @@ Updates an existing bank relationship.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_UpdateBankRelationship" method="patch" path="/transfers/v1/accounts/{account_id}/bankRelationships/{bankRelationship_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -318,7 +310,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.bankRelationships.updateBankRelationship({}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -349,15 +340,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await bankRelationshipsUpdateBankRelationship(apexascend, {}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsUpdateBankRelationship failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -392,6 +380,7 @@ Cancels an existing bank relationship.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_CancelBankRelationship" method="post" path="/transfers/v1/accounts/{account_id}/bankRelationships/{bankRelationship_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -413,7 +402,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -447,15 +435,12 @@ async function run() {
     comment: "User Request",
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsCancelBankRelationship failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -489,6 +474,7 @@ Verifies a pending bank relationship with the `MICRO_DEPOSIT` verification metho
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_VerifyMicroDeposits" method="post" path="/transfers/v1/accounts/{account_id}/bankRelationships/{bankRelationship_id}:verifyMicroDeposits" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -513,7 +499,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -550,15 +535,12 @@ async function run() {
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsVerifyMicroDeposits failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -592,6 +574,7 @@ Reissues micro deposits after micro deposit verification has failed. The user sh
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_ReissueMicroDeposits" method="post" path="/transfers/v1/accounts/{account_id}/bankRelationships/{bankRelationship_id}:reissue" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -612,7 +595,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -645,15 +627,12 @@ async function run() {
   const res = await bankRelationshipsReissueMicroDeposits(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsReissueMicroDeposits failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -687,6 +666,7 @@ Reuses an existing bank relationship for a new account. The source bank relation
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_ReuseBankRelationship" method="post" path="/transfers/v1/accounts/{account_id}/bankRelationships:reuse" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -708,7 +688,6 @@ async function run() {
     sourceBankRelationship: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Z");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -742,15 +721,12 @@ async function run() {
     parent: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Z",
     sourceBankRelationship: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Z");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("bankRelationshipsReuseBankRelationship failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

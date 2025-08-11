@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EnrollmentCreate$ = exports.EnrollmentCreate$outboundSchema = exports.EnrollmentCreate$inboundSchema = exports.EnrollmentCreateType$ = exports.EnrollmentCreateType$outboundSchema = exports.EnrollmentCreateType$inboundSchema = exports.EnrollmentCreateConsentMethod$ = exports.EnrollmentCreateConsentMethod$outboundSchema = exports.EnrollmentCreateConsentMethod$inboundSchema = exports.EnrollmentCreateType = exports.EnrollmentCreateConsentMethod = void 0;
+exports.enrollmentCreateToJSON = enrollmentCreateToJSON;
+exports.enrollmentCreateFromJSON = enrollmentCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const beneficiaryenrollmentmetadatacreate_js_1 = require("./beneficiaryenrollmentmetadatacreate.js");
 const corporationenrollmentmetadatacreate_js_1 = require("./corporationenrollmentmetadatacreate.js");
@@ -291,4 +294,10 @@ var EnrollmentCreate$;
     /** @deprecated use `EnrollmentCreate$outboundSchema` instead. */
     EnrollmentCreate$.outboundSchema = exports.EnrollmentCreate$outboundSchema;
 })(EnrollmentCreate$ || (exports.EnrollmentCreate$ = EnrollmentCreate$ = {}));
+function enrollmentCreateToJSON(enrollmentCreate) {
+    return JSON.stringify(exports.EnrollmentCreate$outboundSchema.parse(enrollmentCreate));
+}
+function enrollmentCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentCreate' from JSON`);
+}
 //# sourceMappingURL=enrollmentcreate.js.map

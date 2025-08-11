@@ -5,7 +5,8 @@
 ```typescript
 import { IdentityVerificationTypes } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: IdentityVerificationTypes = IdentityVerificationTypes.Selfie;
+let value: IdentityVerificationTypes =
+  IdentityVerificationTypes.IdentityVerificationTypeUnspecified;
 ```
 
 ## Values

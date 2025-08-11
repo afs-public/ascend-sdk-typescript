@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RelatedPepCreate$ = exports.RelatedPepCreate$outboundSchema = exports.RelatedPepCreate$inboundSchema = void 0;
+exports.relatedPepCreateToJSON = relatedPepCreateToJSON;
+exports.relatedPepCreateFromJSON = relatedPepCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const immediatefamilymembercreate_js_1 = require("./immediatefamilymembercreate.js");
 /** @internal */
 exports.RelatedPepCreate$inboundSchema = z.object({
@@ -77,4 +80,10 @@ var RelatedPepCreate$;
     /** @deprecated use `RelatedPepCreate$outboundSchema` instead. */
     RelatedPepCreate$.outboundSchema = exports.RelatedPepCreate$outboundSchema;
 })(RelatedPepCreate$ || (exports.RelatedPepCreate$ = RelatedPepCreate$ = {}));
+function relatedPepCreateToJSON(relatedPepCreate) {
+    return JSON.stringify(exports.RelatedPepCreate$outboundSchema.parse(relatedPepCreate));
+}
+function relatedPepCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RelatedPepCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RelatedPepCreate' from JSON`);
+}
 //# sourceMappingURL=relatedpepcreate.js.map

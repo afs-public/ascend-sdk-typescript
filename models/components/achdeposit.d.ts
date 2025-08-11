@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount to deposit in USD.
  */
@@ -175,6 +177,8 @@ export declare namespace Amount$ {
     /** @deprecated use `Amount$Outbound` instead. */
     type Outbound = Amount$Outbound;
 }
+export declare function amountToJSON(amount: Amount): string;
+export declare function amountFromJSON(jsonString: string): SafeParseResult<Amount, SDKValidationError>;
 /** @internal */
 export declare const AchDepositType$inboundSchema: z.ZodType<AchDepositTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -210,6 +214,8 @@ export declare namespace RetirementContribution$ {
     /** @deprecated use `RetirementContribution$Outbound` instead. */
     type Outbound = RetirementContribution$Outbound;
 }
+export declare function retirementContributionToJSON(retirementContribution: RetirementContribution): string;
+export declare function retirementContributionFromJSON(jsonString: string): SafeParseResult<RetirementContribution, SDKValidationError>;
 /** @internal */
 export declare const AchDepositStateState$inboundSchema: z.ZodType<AchDepositStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -250,6 +256,8 @@ export declare namespace AchDepositState$ {
     /** @deprecated use `AchDepositState$Outbound` instead. */
     type Outbound = AchDepositState$Outbound;
 }
+export declare function achDepositStateToJSON(achDepositState: AchDepositState): string;
+export declare function achDepositStateFromJSON(jsonString: string): SafeParseResult<AchDepositState, SDKValidationError>;
 /** @internal */
 export declare const AchDeposit$inboundSchema: z.ZodType<AchDeposit, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -276,4 +284,6 @@ export declare namespace AchDeposit$ {
     /** @deprecated use `AchDeposit$Outbound` instead. */
     type Outbound = AchDeposit$Outbound;
 }
+export declare function achDepositToJSON(achDeposit: AchDeposit): string;
+export declare function achDepositFromJSON(jsonString: string): SafeParseResult<AchDeposit, SDKValidationError>;
 //# sourceMappingURL=achdeposit.d.ts.map

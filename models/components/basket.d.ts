@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The processing status of the basket
  */
@@ -120,4 +122,6 @@ export declare namespace Basket$ {
     /** @deprecated use `Basket$Outbound` instead. */
     type Outbound = Basket$Outbound;
 }
+export declare function basketToJSON(basket: Basket): string;
+export declare function basketFromJSON(jsonString: string): SafeParseResult<Basket, SDKValidationError>;
 //# sourceMappingURL=basket.d.ts.map

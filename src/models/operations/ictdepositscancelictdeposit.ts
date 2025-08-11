@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IctDepositsCancelIctDepositRequest = {
   /**
@@ -88,6 +91,27 @@ export namespace IctDepositsCancelIctDepositRequest$ {
   export type Outbound = IctDepositsCancelIctDepositRequest$Outbound;
 }
 
+export function ictDepositsCancelIctDepositRequestToJSON(
+  ictDepositsCancelIctDepositRequest: IctDepositsCancelIctDepositRequest,
+): string {
+  return JSON.stringify(
+    IctDepositsCancelIctDepositRequest$outboundSchema.parse(
+      ictDepositsCancelIctDepositRequest,
+    ),
+  );
+}
+
+export function ictDepositsCancelIctDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositsCancelIctDepositRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositsCancelIctDepositRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositsCancelIctDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDepositsCancelIctDepositResponse$inboundSchema: z.ZodType<
   IctDepositsCancelIctDepositResponse,
@@ -142,4 +166,25 @@ export namespace IctDepositsCancelIctDepositResponse$ {
     IctDepositsCancelIctDepositResponse$outboundSchema;
   /** @deprecated use `IctDepositsCancelIctDepositResponse$Outbound` instead. */
   export type Outbound = IctDepositsCancelIctDepositResponse$Outbound;
+}
+
+export function ictDepositsCancelIctDepositResponseToJSON(
+  ictDepositsCancelIctDepositResponse: IctDepositsCancelIctDepositResponse,
+): string {
+  return JSON.stringify(
+    IctDepositsCancelIctDepositResponse$outboundSchema.parse(
+      ictDepositsCancelIctDepositResponse,
+    ),
+  );
+}
+
+export function ictDepositsCancelIctDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositsCancelIctDepositResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositsCancelIctDepositResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositsCancelIctDepositResponse' from JSON`,
+  );
 }

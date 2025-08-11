@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositsCreateAchDepositResponse$ = exports.AchDepositsCreateAchDepositResponse$outboundSchema = exports.AchDepositsCreateAchDepositResponse$inboundSchema = exports.AchDepositsCreateAchDepositRequest$ = exports.AchDepositsCreateAchDepositRequest$outboundSchema = exports.AchDepositsCreateAchDepositRequest$inboundSchema = void 0;
+exports.achDepositsCreateAchDepositRequestToJSON = achDepositsCreateAchDepositRequestToJSON;
+exports.achDepositsCreateAchDepositRequestFromJSON = achDepositsCreateAchDepositRequestFromJSON;
+exports.achDepositsCreateAchDepositResponseToJSON = achDepositsCreateAchDepositResponseToJSON;
+exports.achDepositsCreateAchDepositResponseFromJSON = achDepositsCreateAchDepositResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AchDepositsCreateAchDepositRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AchDepositsCreateAchDepositRequest$;
     /** @deprecated use `AchDepositsCreateAchDepositRequest$outboundSchema` instead. */
     AchDepositsCreateAchDepositRequest$.outboundSchema = exports.AchDepositsCreateAchDepositRequest$outboundSchema;
 })(AchDepositsCreateAchDepositRequest$ || (exports.AchDepositsCreateAchDepositRequest$ = AchDepositsCreateAchDepositRequest$ = {}));
+function achDepositsCreateAchDepositRequestToJSON(achDepositsCreateAchDepositRequest) {
+    return JSON.stringify(exports.AchDepositsCreateAchDepositRequest$outboundSchema.parse(achDepositsCreateAchDepositRequest));
+}
+function achDepositsCreateAchDepositRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositsCreateAchDepositRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositsCreateAchDepositRequest' from JSON`);
+}
 /** @internal */
 exports.AchDepositsCreateAchDepositResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AchDepositsCreateAchDepositResponse$;
     /** @deprecated use `AchDepositsCreateAchDepositResponse$outboundSchema` instead. */
     AchDepositsCreateAchDepositResponse$.outboundSchema = exports.AchDepositsCreateAchDepositResponse$outboundSchema;
 })(AchDepositsCreateAchDepositResponse$ || (exports.AchDepositsCreateAchDepositResponse$ = AchDepositsCreateAchDepositResponse$ = {}));
+function achDepositsCreateAchDepositResponseToJSON(achDepositsCreateAchDepositResponse) {
+    return JSON.stringify(exports.AchDepositsCreateAchDepositResponse$outboundSchema.parse(achDepositsCreateAchDepositResponse));
+}
+function achDepositsCreateAchDepositResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositsCreateAchDepositResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositsCreateAchDepositResponse' from JSON`);
+}
 //# sourceMappingURL=achdepositscreateachdeposit.js.map

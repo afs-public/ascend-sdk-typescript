@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsUpdateTrustedContactResponse$ = exports.AccountsUpdateTrustedContactResponse$outboundSchema = exports.AccountsUpdateTrustedContactResponse$inboundSchema = exports.AccountsUpdateTrustedContactRequest$ = exports.AccountsUpdateTrustedContactRequest$outboundSchema = exports.AccountsUpdateTrustedContactRequest$inboundSchema = void 0;
+exports.accountsUpdateTrustedContactRequestToJSON = accountsUpdateTrustedContactRequestToJSON;
+exports.accountsUpdateTrustedContactRequestFromJSON = accountsUpdateTrustedContactRequestFromJSON;
+exports.accountsUpdateTrustedContactResponseToJSON = accountsUpdateTrustedContactResponseToJSON;
+exports.accountsUpdateTrustedContactResponseFromJSON = accountsUpdateTrustedContactResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsUpdateTrustedContactRequest$inboundSchema = z.object({
@@ -79,6 +84,12 @@ var AccountsUpdateTrustedContactRequest$;
     /** @deprecated use `AccountsUpdateTrustedContactRequest$outboundSchema` instead. */
     AccountsUpdateTrustedContactRequest$.outboundSchema = exports.AccountsUpdateTrustedContactRequest$outboundSchema;
 })(AccountsUpdateTrustedContactRequest$ || (exports.AccountsUpdateTrustedContactRequest$ = AccountsUpdateTrustedContactRequest$ = {}));
+function accountsUpdateTrustedContactRequestToJSON(accountsUpdateTrustedContactRequest) {
+    return JSON.stringify(exports.AccountsUpdateTrustedContactRequest$outboundSchema.parse(accountsUpdateTrustedContactRequest));
+}
+function accountsUpdateTrustedContactRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateTrustedContactRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateTrustedContactRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsUpdateTrustedContactResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var AccountsUpdateTrustedContactResponse$;
     /** @deprecated use `AccountsUpdateTrustedContactResponse$outboundSchema` instead. */
     AccountsUpdateTrustedContactResponse$.outboundSchema = exports.AccountsUpdateTrustedContactResponse$outboundSchema;
 })(AccountsUpdateTrustedContactResponse$ || (exports.AccountsUpdateTrustedContactResponse$ = AccountsUpdateTrustedContactResponse$ = {}));
+function accountsUpdateTrustedContactResponseToJSON(accountsUpdateTrustedContactResponse) {
+    return JSON.stringify(exports.AccountsUpdateTrustedContactResponse$outboundSchema.parse(accountsUpdateTrustedContactResponse));
+}
+function accountsUpdateTrustedContactResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateTrustedContactResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateTrustedContactResponse' from JSON`);
+}
 //# sourceMappingURL=accountsupdatetrustedcontact.js.map

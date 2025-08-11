@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountTransfersGetTransferRequest = {
   /**
@@ -88,6 +91,27 @@ export namespace AccountTransfersGetTransferRequest$ {
   export type Outbound = AccountTransfersGetTransferRequest$Outbound;
 }
 
+export function accountTransfersGetTransferRequestToJSON(
+  accountTransfersGetTransferRequest: AccountTransfersGetTransferRequest,
+): string {
+  return JSON.stringify(
+    AccountTransfersGetTransferRequest$outboundSchema.parse(
+      accountTransfersGetTransferRequest,
+    ),
+  );
+}
+
+export function accountTransfersGetTransferRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountTransfersGetTransferRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountTransfersGetTransferRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountTransfersGetTransferRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountTransfersGetTransferResponse$inboundSchema: z.ZodType<
   AccountTransfersGetTransferResponse,
@@ -142,4 +166,25 @@ export namespace AccountTransfersGetTransferResponse$ {
     AccountTransfersGetTransferResponse$outboundSchema;
   /** @deprecated use `AccountTransfersGetTransferResponse$Outbound` instead. */
   export type Outbound = AccountTransfersGetTransferResponse$Outbound;
+}
+
+export function accountTransfersGetTransferResponseToJSON(
+  accountTransfersGetTransferResponse: AccountTransfersGetTransferResponse,
+): string {
+  return JSON.stringify(
+    AccountTransfersGetTransferResponse$outboundSchema.parse(
+      accountTransfersGetTransferResponse,
+    ),
+  );
+}
+
+export function accountTransfersGetTransferResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountTransfersGetTransferResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountTransfersGetTransferResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountTransfersGetTransferResponse' from JSON`,
+  );
 }

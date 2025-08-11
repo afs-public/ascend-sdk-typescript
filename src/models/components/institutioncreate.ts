@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Institution representing originator or recipient of funds from an Instant Cash Transfer
@@ -64,4 +67,22 @@ export namespace InstitutionCreate$ {
   export const outboundSchema = InstitutionCreate$outboundSchema;
   /** @deprecated use `InstitutionCreate$Outbound` instead. */
   export type Outbound = InstitutionCreate$Outbound;
+}
+
+export function institutionCreateToJSON(
+  institutionCreate: InstitutionCreate,
+): string {
+  return JSON.stringify(
+    InstitutionCreate$outboundSchema.parse(institutionCreate),
+  );
+}
+
+export function institutionCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<InstitutionCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InstitutionCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InstitutionCreate' from JSON`,
+  );
 }

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.YieldRecord$ = exports.YieldRecord$outboundSchema = exports.YieldRecord$inboundSchema = exports.YieldRecordYieldType$ = exports.YieldRecordYieldType$outboundSchema = exports.YieldRecordYieldType$inboundSchema = exports.YieldPercent$ = exports.YieldPercent$outboundSchema = exports.YieldPercent$inboundSchema = exports.YieldRecordYieldType = void 0;
+exports.yieldPercentToJSON = yieldPercentToJSON;
+exports.yieldPercentFromJSON = yieldPercentFromJSON;
+exports.yieldRecordToJSON = yieldRecordToJSON;
+exports.yieldRecordFromJSON = yieldRecordFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Characterization of a yield percentage
@@ -70,6 +75,12 @@ var YieldPercent$;
     /** @deprecated use `YieldPercent$outboundSchema` instead. */
     YieldPercent$.outboundSchema = exports.YieldPercent$outboundSchema;
 })(YieldPercent$ || (exports.YieldPercent$ = YieldPercent$ = {}));
+function yieldPercentToJSON(yieldPercent) {
+    return JSON.stringify(exports.YieldPercent$outboundSchema.parse(yieldPercent));
+}
+function yieldPercentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.YieldPercent$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'YieldPercent' from JSON`);
+}
 /** @internal */
 exports.YieldRecordYieldType$inboundSchema = z
     .union([
@@ -125,4 +136,10 @@ var YieldRecord$;
     /** @deprecated use `YieldRecord$outboundSchema` instead. */
     YieldRecord$.outboundSchema = exports.YieldRecord$outboundSchema;
 })(YieldRecord$ || (exports.YieldRecord$ = YieldRecord$ = {}));
+function yieldRecordToJSON(yieldRecord) {
+    return JSON.stringify(exports.YieldRecord$outboundSchema.parse(yieldRecord));
+}
+function yieldRecordFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.YieldRecord$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'YieldRecord' from JSON`);
+}
 //# sourceMappingURL=yieldrecord.js.map

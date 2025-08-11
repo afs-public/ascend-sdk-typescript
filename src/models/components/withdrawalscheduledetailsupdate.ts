@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalUpdate,
   DecimalUpdate$inboundSchema,
@@ -60,4 +63,24 @@ export namespace WithdrawalScheduleDetailsUpdate$ {
   export const outboundSchema = WithdrawalScheduleDetailsUpdate$outboundSchema;
   /** @deprecated use `WithdrawalScheduleDetailsUpdate$Outbound` instead. */
   export type Outbound = WithdrawalScheduleDetailsUpdate$Outbound;
+}
+
+export function withdrawalScheduleDetailsUpdateToJSON(
+  withdrawalScheduleDetailsUpdate: WithdrawalScheduleDetailsUpdate,
+): string {
+  return JSON.stringify(
+    WithdrawalScheduleDetailsUpdate$outboundSchema.parse(
+      withdrawalScheduleDetailsUpdate,
+    ),
+  );
+}
+
+export function withdrawalScheduleDetailsUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<WithdrawalScheduleDetailsUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WithdrawalScheduleDetailsUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WithdrawalScheduleDetailsUpdate' from JSON`,
+  );
 }

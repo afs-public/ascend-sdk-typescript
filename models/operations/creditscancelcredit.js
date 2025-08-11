@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreditsCancelCreditResponse$ = exports.CreditsCancelCreditResponse$outboundSchema = exports.CreditsCancelCreditResponse$inboundSchema = exports.CreditsCancelCreditRequest$ = exports.CreditsCancelCreditRequest$outboundSchema = exports.CreditsCancelCreditRequest$inboundSchema = void 0;
+exports.creditsCancelCreditRequestToJSON = creditsCancelCreditRequestToJSON;
+exports.creditsCancelCreditRequestFromJSON = creditsCancelCreditRequestFromJSON;
+exports.creditsCancelCreditResponseToJSON = creditsCancelCreditResponseToJSON;
+exports.creditsCancelCreditResponseFromJSON = creditsCancelCreditResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.CreditsCancelCreditRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var CreditsCancelCreditRequest$;
     /** @deprecated use `CreditsCancelCreditRequest$outboundSchema` instead. */
     CreditsCancelCreditRequest$.outboundSchema = exports.CreditsCancelCreditRequest$outboundSchema;
 })(CreditsCancelCreditRequest$ || (exports.CreditsCancelCreditRequest$ = CreditsCancelCreditRequest$ = {}));
+function creditsCancelCreditRequestToJSON(creditsCancelCreditRequest) {
+    return JSON.stringify(exports.CreditsCancelCreditRequest$outboundSchema.parse(creditsCancelCreditRequest));
+}
+function creditsCancelCreditRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CreditsCancelCreditRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CreditsCancelCreditRequest' from JSON`);
+}
 /** @internal */
 exports.CreditsCancelCreditResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var CreditsCancelCreditResponse$;
     /** @deprecated use `CreditsCancelCreditResponse$outboundSchema` instead. */
     CreditsCancelCreditResponse$.outboundSchema = exports.CreditsCancelCreditResponse$outboundSchema;
 })(CreditsCancelCreditResponse$ || (exports.CreditsCancelCreditResponse$ = CreditsCancelCreditResponse$ = {}));
+function creditsCancelCreditResponseToJSON(creditsCancelCreditResponse) {
+    return JSON.stringify(exports.CreditsCancelCreditResponse$outboundSchema.parse(creditsCancelCreditResponse));
+}
+function creditsCancelCreditResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CreditsCancelCreditResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CreditsCancelCreditResponse' from JSON`);
+}
 //# sourceMappingURL=creditscancelcredit.js.map

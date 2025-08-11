@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The account_equity in USD returned from the request.
  */
@@ -136,6 +138,8 @@ export declare namespace AccountEquityAmount$ {
     /** @deprecated use `AccountEquityAmount$Outbound` instead. */
     type Outbound = AccountEquityAmount$Outbound;
 }
+export declare function accountEquityAmountToJSON(accountEquityAmount: AccountEquityAmount): string;
+export declare function accountEquityAmountFromJSON(jsonString: string): SafeParseResult<AccountEquityAmount, SDKValidationError>;
 /** @internal */
 export declare const BuyingPowerAmount$inboundSchema: z.ZodType<BuyingPowerAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -156,6 +160,8 @@ export declare namespace BuyingPowerAmount$ {
     /** @deprecated use `BuyingPowerAmount$Outbound` instead. */
     type Outbound = BuyingPowerAmount$Outbound;
 }
+export declare function buyingPowerAmountToJSON(buyingPowerAmount: BuyingPowerAmount): string;
+export declare function buyingPowerAmountFromJSON(jsonString: string): SafeParseResult<BuyingPowerAmount, SDKValidationError>;
 /** @internal */
 export declare const DayTradeBuyingPowerAmount$inboundSchema: z.ZodType<DayTradeBuyingPowerAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -176,6 +182,8 @@ export declare namespace DayTradeBuyingPowerAmount$ {
     /** @deprecated use `DayTradeBuyingPowerAmount$Outbound` instead. */
     type Outbound = DayTradeBuyingPowerAmount$Outbound;
 }
+export declare function dayTradeBuyingPowerAmountToJSON(dayTradeBuyingPowerAmount: DayTradeBuyingPowerAmount): string;
+export declare function dayTradeBuyingPowerAmountFromJSON(jsonString: string): SafeParseResult<DayTradeBuyingPowerAmount, SDKValidationError>;
 /** @internal */
 export declare const PositionMarketValueAmount$inboundSchema: z.ZodType<PositionMarketValueAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -196,6 +204,8 @@ export declare namespace PositionMarketValueAmount$ {
     /** @deprecated use `PositionMarketValueAmount$Outbound` instead. */
     type Outbound = PositionMarketValueAmount$Outbound;
 }
+export declare function positionMarketValueAmountToJSON(positionMarketValueAmount: PositionMarketValueAmount): string;
+export declare function positionMarketValueAmountFromJSON(jsonString: string): SafeParseResult<PositionMarketValueAmount, SDKValidationError>;
 /** @internal */
 export declare const TotalExcessAmount$inboundSchema: z.ZodType<TotalExcessAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -216,6 +226,8 @@ export declare namespace TotalExcessAmount$ {
     /** @deprecated use `TotalExcessAmount$Outbound` instead. */
     type Outbound = TotalExcessAmount$Outbound;
 }
+export declare function totalExcessAmountToJSON(totalExcessAmount: TotalExcessAmount): string;
+export declare function totalExcessAmountFromJSON(jsonString: string): SafeParseResult<TotalExcessAmount, SDKValidationError>;
 /** @internal */
 export declare const TotalRequirementsAmount$inboundSchema: z.ZodType<TotalRequirementsAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -236,6 +248,8 @@ export declare namespace TotalRequirementsAmount$ {
     /** @deprecated use `TotalRequirementsAmount$Outbound` instead. */
     type Outbound = TotalRequirementsAmount$Outbound;
 }
+export declare function totalRequirementsAmountToJSON(totalRequirementsAmount: TotalRequirementsAmount): string;
+export declare function totalRequirementsAmountFromJSON(jsonString: string): SafeParseResult<TotalRequirementsAmount, SDKValidationError>;
 /** @internal */
 export declare const Requirements$inboundSchema: z.ZodType<Requirements, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -257,6 +271,8 @@ export declare namespace Requirements$ {
     /** @deprecated use `Requirements$Outbound` instead. */
     type Outbound = Requirements$Outbound;
 }
+export declare function requirementsToJSON(requirements: Requirements): string;
+export declare function requirementsFromJSON(jsonString: string): SafeParseResult<Requirements, SDKValidationError>;
 /** @internal */
 export declare const SmaAmount$inboundSchema: z.ZodType<SmaAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -277,6 +293,8 @@ export declare namespace SmaAmount$ {
     /** @deprecated use `SmaAmount$Outbound` instead. */
     type Outbound = SmaAmount$Outbound;
 }
+export declare function smaAmountToJSON(smaAmount: SmaAmount): string;
+export declare function smaAmountFromJSON(jsonString: string): SafeParseResult<SmaAmount, SDKValidationError>;
 /** @internal */
 export declare const BuyingPower$inboundSchema: z.ZodType<BuyingPower, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -305,4 +323,6 @@ export declare namespace BuyingPower$ {
     /** @deprecated use `BuyingPower$Outbound` instead. */
     type Outbound = BuyingPower$Outbound;
 }
+export declare function buyingPowerToJSON(buyingPower: BuyingPower): string;
+export declare function buyingPowerFromJSON(jsonString: string): SafeParseResult<BuyingPower, SDKValidationError>;
 //# sourceMappingURL=buyingpower.d.ts.map

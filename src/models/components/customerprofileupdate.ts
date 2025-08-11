@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Annual income range; the low number is exclusive, the high number is inclusive
@@ -339,4 +342,22 @@ export namespace CustomerProfileUpdate$ {
   export const outboundSchema = CustomerProfileUpdate$outboundSchema;
   /** @deprecated use `CustomerProfileUpdate$Outbound` instead. */
   export type Outbound = CustomerProfileUpdate$Outbound;
+}
+
+export function customerProfileUpdateToJSON(
+  customerProfileUpdate: CustomerProfileUpdate,
+): string {
+  return JSON.stringify(
+    CustomerProfileUpdate$outboundSchema.parse(customerProfileUpdate),
+  );
+}
+
+export function customerProfileUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerProfileUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerProfileUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerProfileUpdate' from JSON`,
+  );
 }

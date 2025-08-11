@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressDetail,
   AddressDetail$inboundSchema,
@@ -343,6 +346,20 @@ export namespace CreatedDate$ {
   export type Outbound = CreatedDate$Outbound;
 }
 
+export function createdDateToJSON(createdDate: CreatedDate): string {
+  return JSON.stringify(CreatedDate$outboundSchema.parse(createdDate));
+}
+
+export function createdDateFromJSON(
+  jsonString: string,
+): SafeParseResult<CreatedDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatedDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const Dob$inboundSchema: z.ZodType<Dob, z.ZodTypeDef, unknown> = z
   .object({
@@ -377,6 +394,20 @@ export namespace Dob$ {
   export const outboundSchema = Dob$outboundSchema;
   /** @deprecated use `Dob$Outbound` instead. */
   export type Outbound = Dob$Outbound;
+}
+
+export function dobToJSON(dob: Dob): string {
+  return JSON.stringify(Dob$outboundSchema.parse(dob));
+}
+
+export function dobFromJSON(
+  jsonString: string,
+): SafeParseResult<Dob, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Dob$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Dob' from JSON`,
+  );
 }
 
 /** @internal */
@@ -416,6 +447,20 @@ export namespace EndDate$ {
   export const outboundSchema = EndDate$outboundSchema;
   /** @deprecated use `EndDate$Outbound` instead. */
   export type Outbound = EndDate$Outbound;
+}
+
+export function endDateToJSON(endDate: EndDate): string {
+  return JSON.stringify(EndDate$outboundSchema.parse(endDate));
+}
+
+export function endDateFromJSON(
+  jsonString: string,
+): SafeParseResult<EndDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EndDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EndDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -513,6 +558,20 @@ export namespace DndbDetails$ {
   export type Outbound = DndbDetails$Outbound;
 }
 
+export function dndbDetailsToJSON(dndbDetails: DndbDetails): string {
+  return JSON.stringify(DndbDetails$outboundSchema.parse(dndbDetails));
+}
+
+export function dndbDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<DndbDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DndbDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DndbDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const LastChangedDate$inboundSchema: z.ZodType<
   LastChangedDate,
@@ -553,6 +612,22 @@ export namespace LastChangedDate$ {
   export const outboundSchema = LastChangedDate$outboundSchema;
   /** @deprecated use `LastChangedDate$Outbound` instead. */
   export type Outbound = LastChangedDate$Outbound;
+}
+
+export function lastChangedDateToJSON(
+  lastChangedDate: LastChangedDate,
+): string {
+  return JSON.stringify(LastChangedDate$outboundSchema.parse(lastChangedDate));
+}
+
+export function lastChangedDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LastChangedDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastChangedDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastChangedDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -681,6 +756,22 @@ export namespace DowJonesDetails$ {
   export type Outbound = DowJonesDetails$Outbound;
 }
 
+export function dowJonesDetailsToJSON(
+  dowJonesDetails: DowJonesDetails,
+): string {
+  return JSON.stringify(DowJonesDetails$outboundSchema.parse(dowJonesDetails));
+}
+
+export function dowJonesDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<DowJonesDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DowJonesDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DowJonesDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const WatchlistItem$inboundSchema: z.ZodType<
   WatchlistItem,
@@ -741,4 +832,18 @@ export namespace WatchlistItem$ {
   export const outboundSchema = WatchlistItem$outboundSchema;
   /** @deprecated use `WatchlistItem$Outbound` instead. */
   export type Outbound = WatchlistItem$Outbound;
+}
+
+export function watchlistItemToJSON(watchlistItem: WatchlistItem): string {
+  return JSON.stringify(WatchlistItem$outboundSchema.parse(watchlistItem));
+}
+
+export function watchlistItemFromJSON(
+  jsonString: string,
+): SafeParseResult<WatchlistItem, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WatchlistItem$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WatchlistItem' from JSON`,
+  );
 }

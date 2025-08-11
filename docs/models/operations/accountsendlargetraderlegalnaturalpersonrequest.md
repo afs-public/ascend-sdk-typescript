@@ -9,7 +9,7 @@ import { AccountsEndLargeTraderLegalNaturalPersonRequest } from "@apexfintechsol
 let value: AccountsEndLargeTraderLegalNaturalPersonRequest = {
   legalNaturalPersonId: "e6716139-da77-46d1-9f15-13599161db0b",
   endLargeTraderRequestCreate: {
-    endReason: EndReason.EventReasonEnded,
+    endReason: EndReason.EventReasonCorrection,
   },
 };
 ```

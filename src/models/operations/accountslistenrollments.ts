@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsListEnrollmentsRequest = {
   /**
@@ -91,6 +94,26 @@ export namespace AccountsListEnrollmentsRequest$ {
   export type Outbound = AccountsListEnrollmentsRequest$Outbound;
 }
 
+export function accountsListEnrollmentsRequestToJSON(
+  accountsListEnrollmentsRequest: AccountsListEnrollmentsRequest,
+): string {
+  return JSON.stringify(
+    AccountsListEnrollmentsRequest$outboundSchema.parse(
+      accountsListEnrollmentsRequest,
+    ),
+  );
+}
+
+export function accountsListEnrollmentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListEnrollmentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListEnrollmentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListEnrollmentsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsListEnrollmentsResponse$inboundSchema: z.ZodType<
   AccountsListEnrollmentsResponse,
@@ -147,4 +170,24 @@ export namespace AccountsListEnrollmentsResponse$ {
   export const outboundSchema = AccountsListEnrollmentsResponse$outboundSchema;
   /** @deprecated use `AccountsListEnrollmentsResponse$Outbound` instead. */
   export type Outbound = AccountsListEnrollmentsResponse$Outbound;
+}
+
+export function accountsListEnrollmentsResponseToJSON(
+  accountsListEnrollmentsResponse: AccountsListEnrollmentsResponse,
+): string {
+  return JSON.stringify(
+    AccountsListEnrollmentsResponse$outboundSchema.parse(
+      accountsListEnrollmentsResponse,
+    ),
+  );
+}
+
+export function accountsListEnrollmentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListEnrollmentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListEnrollmentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListEnrollmentsResponse' from JSON`,
+  );
 }

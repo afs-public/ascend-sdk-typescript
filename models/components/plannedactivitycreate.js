@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlannedActivityCreate$ = exports.PlannedActivityCreate$outboundSchema = exports.PlannedActivityCreate$inboundSchema = exports.WithdrawalFrequency$ = exports.WithdrawalFrequency$outboundSchema = exports.WithdrawalFrequency$inboundSchema = exports.PrimaryAccountActivityType$ = exports.PrimaryAccountActivityType$outboundSchema = exports.PrimaryAccountActivityType$inboundSchema = exports.WithdrawalFrequency = exports.PrimaryAccountActivityType = void 0;
+exports.plannedActivityCreateToJSON = plannedActivityCreateToJSON;
+exports.plannedActivityCreateFromJSON = plannedActivityCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const foreignbondtradingdetailscreate_js_1 = require("./foreignbondtradingdetailscreate.js");
 const lowpricedsecuritiescreate_js_1 = require("./lowpricedsecuritiescreate.js");
@@ -145,4 +148,10 @@ var PlannedActivityCreate$;
     /** @deprecated use `PlannedActivityCreate$outboundSchema` instead. */
     PlannedActivityCreate$.outboundSchema = exports.PlannedActivityCreate$outboundSchema;
 })(PlannedActivityCreate$ || (exports.PlannedActivityCreate$ = PlannedActivityCreate$ = {}));
+function plannedActivityCreateToJSON(plannedActivityCreate) {
+    return JSON.stringify(exports.PlannedActivityCreate$outboundSchema.parse(plannedActivityCreate));
+}
+function plannedActivityCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PlannedActivityCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PlannedActivityCreate' from JSON`);
+}
 //# sourceMappingURL=plannedactivitycreate.js.map

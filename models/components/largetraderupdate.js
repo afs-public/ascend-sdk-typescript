@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LargeTraderUpdate$ = exports.LargeTraderUpdate$outboundSchema = exports.LargeTraderUpdate$inboundSchema = void 0;
+exports.largeTraderUpdateToJSON = largeTraderUpdateToJSON;
+exports.largeTraderUpdateFromJSON = largeTraderUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const dateupdate_js_1 = require("./dateupdate.js");
 /** @internal */
 exports.LargeTraderUpdate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var LargeTraderUpdate$;
     /** @deprecated use `LargeTraderUpdate$outboundSchema` instead. */
     LargeTraderUpdate$.outboundSchema = exports.LargeTraderUpdate$outboundSchema;
 })(LargeTraderUpdate$ || (exports.LargeTraderUpdate$ = LargeTraderUpdate$ = {}));
+function largeTraderUpdateToJSON(largeTraderUpdate) {
+    return JSON.stringify(exports.LargeTraderUpdate$outboundSchema.parse(largeTraderUpdate));
+}
+function largeTraderUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LargeTraderUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LargeTraderUpdate' from JSON`);
+}
 //# sourceMappingURL=largetraderupdate.js.map

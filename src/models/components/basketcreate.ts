@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The message describing a basket
@@ -66,4 +69,18 @@ export namespace BasketCreate$ {
   export const outboundSchema = BasketCreate$outboundSchema;
   /** @deprecated use `BasketCreate$Outbound` instead. */
   export type Outbound = BasketCreate$Outbound;
+}
+
+export function basketCreateToJSON(basketCreate: BasketCreate): string {
+  return JSON.stringify(BasketCreate$outboundSchema.parse(basketCreate));
+}
+
+export function basketCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BasketCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketCreate' from JSON`,
+  );
 }

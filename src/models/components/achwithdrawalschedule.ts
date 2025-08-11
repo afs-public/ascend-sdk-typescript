@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Fixed USD amount to withhold for taxes.
@@ -328,6 +331,31 @@ export namespace AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount
     AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$Outbound;
 }
 
+export function achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountToJSON(
+  achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount:
+    AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$outboundSchema
+      .parse(achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount),
+  );
+}
+
+export function achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalSchedulePercentage$inboundSchema: z.ZodType<
   AchWithdrawalSchedulePercentage,
@@ -362,6 +390,26 @@ export namespace AchWithdrawalSchedulePercentage$ {
   export const outboundSchema = AchWithdrawalSchedulePercentage$outboundSchema;
   /** @deprecated use `AchWithdrawalSchedulePercentage$Outbound` instead. */
   export type Outbound = AchWithdrawalSchedulePercentage$Outbound;
+}
+
+export function achWithdrawalSchedulePercentageToJSON(
+  achWithdrawalSchedulePercentage: AchWithdrawalSchedulePercentage,
+): string {
+  return JSON.stringify(
+    AchWithdrawalSchedulePercentage$outboundSchema.parse(
+      achWithdrawalSchedulePercentage,
+    ),
+  );
+}
+
+export function achWithdrawalSchedulePercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalSchedulePercentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalSchedulePercentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalSchedulePercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -419,6 +467,33 @@ export namespace AchWithdrawalScheduleFederalTaxWithholding$ {
   export type Outbound = AchWithdrawalScheduleFederalTaxWithholding$Outbound;
 }
 
+export function achWithdrawalScheduleFederalTaxWithholdingToJSON(
+  achWithdrawalScheduleFederalTaxWithholding:
+    AchWithdrawalScheduleFederalTaxWithholding,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleFederalTaxWithholding$outboundSchema.parse(
+      achWithdrawalScheduleFederalTaxWithholding,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleFederalTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalScheduleFederalTaxWithholding,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalScheduleFederalTaxWithholding$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalScheduleFederalTaxWithholding' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalScheduleIraDistributionAmount$inboundSchema:
   z.ZodType<AchWithdrawalScheduleIraDistributionAmount, z.ZodTypeDef, unknown> =
@@ -454,6 +529,33 @@ export namespace AchWithdrawalScheduleIraDistributionAmount$ {
     AchWithdrawalScheduleIraDistributionAmount$outboundSchema;
   /** @deprecated use `AchWithdrawalScheduleIraDistributionAmount$Outbound` instead. */
   export type Outbound = AchWithdrawalScheduleIraDistributionAmount$Outbound;
+}
+
+export function achWithdrawalScheduleIraDistributionAmountToJSON(
+  achWithdrawalScheduleIraDistributionAmount:
+    AchWithdrawalScheduleIraDistributionAmount,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleIraDistributionAmount$outboundSchema.parse(
+      achWithdrawalScheduleIraDistributionAmount,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleIraDistributionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalScheduleIraDistributionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalScheduleIraDistributionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalScheduleIraDistributionAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -495,6 +597,33 @@ export namespace AchWithdrawalScheduleIraDistributionPercentage$ {
   /** @deprecated use `AchWithdrawalScheduleIraDistributionPercentage$Outbound` instead. */
   export type Outbound =
     AchWithdrawalScheduleIraDistributionPercentage$Outbound;
+}
+
+export function achWithdrawalScheduleIraDistributionPercentageToJSON(
+  achWithdrawalScheduleIraDistributionPercentage:
+    AchWithdrawalScheduleIraDistributionPercentage,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleIraDistributionPercentage$outboundSchema.parse(
+      achWithdrawalScheduleIraDistributionPercentage,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleIraDistributionPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalScheduleIraDistributionPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalScheduleIraDistributionPercentage$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalScheduleIraDistributionPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -550,6 +679,33 @@ export namespace AchWithdrawalScheduleStateTaxWithholding$ {
     AchWithdrawalScheduleStateTaxWithholding$outboundSchema;
   /** @deprecated use `AchWithdrawalScheduleStateTaxWithholding$Outbound` instead. */
   export type Outbound = AchWithdrawalScheduleStateTaxWithholding$Outbound;
+}
+
+export function achWithdrawalScheduleStateTaxWithholdingToJSON(
+  achWithdrawalScheduleStateTaxWithholding:
+    AchWithdrawalScheduleStateTaxWithholding,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleStateTaxWithholding$outboundSchema.parse(
+      achWithdrawalScheduleStateTaxWithholding,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleStateTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalScheduleStateTaxWithholding,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalScheduleStateTaxWithholding$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalScheduleStateTaxWithholding' from JSON`,
+  );
 }
 
 /** @internal */
@@ -665,6 +821,22 @@ export namespace IraDistribution$ {
   export type Outbound = IraDistribution$Outbound;
 }
 
+export function iraDistributionToJSON(
+  iraDistribution: IraDistribution,
+): string {
+  return JSON.stringify(IraDistribution$outboundSchema.parse(iraDistribution));
+}
+
+export function iraDistributionFromJSON(
+  jsonString: string,
+): SafeParseResult<IraDistribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraDistribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraDistribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalScheduleAmount$inboundSchema: z.ZodType<
   AchWithdrawalScheduleAmount,
@@ -699,6 +871,26 @@ export namespace AchWithdrawalScheduleAmount$ {
   export const outboundSchema = AchWithdrawalScheduleAmount$outboundSchema;
   /** @deprecated use `AchWithdrawalScheduleAmount$Outbound` instead. */
   export type Outbound = AchWithdrawalScheduleAmount$Outbound;
+}
+
+export function achWithdrawalScheduleAmountToJSON(
+  achWithdrawalScheduleAmount: AchWithdrawalScheduleAmount,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleAmount$outboundSchema.parse(
+      achWithdrawalScheduleAmount,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalScheduleAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalScheduleAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalScheduleAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -741,6 +933,26 @@ export namespace AchWithdrawalScheduleStartDate$ {
   export const outboundSchema = AchWithdrawalScheduleStartDate$outboundSchema;
   /** @deprecated use `AchWithdrawalScheduleStartDate$Outbound` instead. */
   export type Outbound = AchWithdrawalScheduleStartDate$Outbound;
+}
+
+export function achWithdrawalScheduleStartDateToJSON(
+  achWithdrawalScheduleStartDate: AchWithdrawalScheduleStartDate,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleStartDate$outboundSchema.parse(
+      achWithdrawalScheduleStartDate,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleStartDateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalScheduleStartDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalScheduleStartDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalScheduleStartDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -873,6 +1085,33 @@ export namespace AchWithdrawalScheduleScheduleProperties$ {
   export type Outbound = AchWithdrawalScheduleScheduleProperties$Outbound;
 }
 
+export function achWithdrawalScheduleSchedulePropertiesToJSON(
+  achWithdrawalScheduleScheduleProperties:
+    AchWithdrawalScheduleScheduleProperties,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleScheduleProperties$outboundSchema.parse(
+      achWithdrawalScheduleScheduleProperties,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleSchedulePropertiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalScheduleScheduleProperties,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalScheduleScheduleProperties$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalScheduleScheduleProperties' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalScheduleScheduleDetails$inboundSchema: z.ZodType<
   AchWithdrawalScheduleScheduleDetails,
@@ -941,6 +1180,27 @@ export namespace AchWithdrawalScheduleScheduleDetails$ {
   export type Outbound = AchWithdrawalScheduleScheduleDetails$Outbound;
 }
 
+export function achWithdrawalScheduleScheduleDetailsToJSON(
+  achWithdrawalScheduleScheduleDetails: AchWithdrawalScheduleScheduleDetails,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleScheduleDetails$outboundSchema.parse(
+      achWithdrawalScheduleScheduleDetails,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleScheduleDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalScheduleScheduleDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalScheduleScheduleDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalScheduleScheduleDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalSchedule$inboundSchema: z.ZodType<
   AchWithdrawalSchedule,
@@ -1005,4 +1265,22 @@ export namespace AchWithdrawalSchedule$ {
   export const outboundSchema = AchWithdrawalSchedule$outboundSchema;
   /** @deprecated use `AchWithdrawalSchedule$Outbound` instead. */
   export type Outbound = AchWithdrawalSchedule$Outbound;
+}
+
+export function achWithdrawalScheduleToJSON(
+  achWithdrawalSchedule: AchWithdrawalSchedule,
+): string {
+  return JSON.stringify(
+    AchWithdrawalSchedule$outboundSchema.parse(achWithdrawalSchedule),
+  );
+}
+
+export function achWithdrawalScheduleFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalSchedule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalSchedule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalSchedule' from JSON`,
+  );
 }

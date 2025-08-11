@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsUpdateAccountRequest = {
   /**
@@ -84,6 +87,26 @@ export namespace AccountsUpdateAccountRequest$ {
   export type Outbound = AccountsUpdateAccountRequest$Outbound;
 }
 
+export function accountsUpdateAccountRequestToJSON(
+  accountsUpdateAccountRequest: AccountsUpdateAccountRequest,
+): string {
+  return JSON.stringify(
+    AccountsUpdateAccountRequest$outboundSchema.parse(
+      accountsUpdateAccountRequest,
+    ),
+  );
+}
+
+export function accountsUpdateAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsUpdateAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateAccountRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsUpdateAccountResponse$inboundSchema: z.ZodType<
   AccountsUpdateAccountResponse,
@@ -136,4 +159,24 @@ export namespace AccountsUpdateAccountResponse$ {
   export const outboundSchema = AccountsUpdateAccountResponse$outboundSchema;
   /** @deprecated use `AccountsUpdateAccountResponse$Outbound` instead. */
   export type Outbound = AccountsUpdateAccountResponse$Outbound;
+}
+
+export function accountsUpdateAccountResponseToJSON(
+  accountsUpdateAccountResponse: AccountsUpdateAccountResponse,
+): string {
+  return JSON.stringify(
+    AccountsUpdateAccountResponse$outboundSchema.parse(
+      accountsUpdateAccountResponse,
+    ),
+  );
+}
+
+export function accountsUpdateAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsUpdateAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateAccountResponse' from JSON`,
+  );
 }

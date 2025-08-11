@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CashJournalsCancelCashJournalRequest = {
   /**
@@ -80,6 +83,27 @@ export namespace CashJournalsCancelCashJournalRequest$ {
   export type Outbound = CashJournalsCancelCashJournalRequest$Outbound;
 }
 
+export function cashJournalsCancelCashJournalRequestToJSON(
+  cashJournalsCancelCashJournalRequest: CashJournalsCancelCashJournalRequest,
+): string {
+  return JSON.stringify(
+    CashJournalsCancelCashJournalRequest$outboundSchema.parse(
+      cashJournalsCancelCashJournalRequest,
+    ),
+  );
+}
+
+export function cashJournalsCancelCashJournalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalsCancelCashJournalRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalsCancelCashJournalRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalsCancelCashJournalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalsCancelCashJournalResponse$inboundSchema: z.ZodType<
   CashJournalsCancelCashJournalResponse,
@@ -134,4 +158,25 @@ export namespace CashJournalsCancelCashJournalResponse$ {
     CashJournalsCancelCashJournalResponse$outboundSchema;
   /** @deprecated use `CashJournalsCancelCashJournalResponse$Outbound` instead. */
   export type Outbound = CashJournalsCancelCashJournalResponse$Outbound;
+}
+
+export function cashJournalsCancelCashJournalResponseToJSON(
+  cashJournalsCancelCashJournalResponse: CashJournalsCancelCashJournalResponse,
+): string {
+  return JSON.stringify(
+    CashJournalsCancelCashJournalResponse$outboundSchema.parse(
+      cashJournalsCancelCashJournalResponse,
+    ),
+  );
+}
+
+export function cashJournalsCancelCashJournalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalsCancelCashJournalResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalsCancelCashJournalResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalsCancelCashJournalResponse' from JSON`,
+  );
 }

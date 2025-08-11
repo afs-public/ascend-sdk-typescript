@@ -37,8 +37,25 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DistributionSummary$ = exports.DistributionSummary$outboundSchema = exports.DistributionSummary$inboundSchema = exports.DistributionSummaryRolloverAmount$ = exports.DistributionSummaryRolloverAmount$outboundSchema = exports.DistributionSummaryRolloverAmount$inboundSchema = exports.RequiredMinimumDistribution$ = exports.RequiredMinimumDistribution$outboundSchema = exports.RequiredMinimumDistribution$inboundSchema = exports.RemainingDistributionRequired$ = exports.RemainingDistributionRequired$outboundSchema = exports.RemainingDistributionRequired$inboundSchema = exports.PriorYearEndAccountBalance$ = exports.PriorYearEndAccountBalance$outboundSchema = exports.PriorYearEndAccountBalance$inboundSchema = exports.LifeExpectancyFactor$ = exports.LifeExpectancyFactor$outboundSchema = exports.LifeExpectancyFactor$inboundSchema = exports.DistributionSummaryAmount$ = exports.DistributionSummaryAmount$outboundSchema = exports.DistributionSummaryAmount$inboundSchema = exports.DistributionSummaryRegularAmount$ = exports.DistributionSummaryRegularAmount$outboundSchema = exports.DistributionSummaryRegularAmount$inboundSchema = void 0;
+exports.distributionSummaryRegularAmountToJSON = distributionSummaryRegularAmountToJSON;
+exports.distributionSummaryRegularAmountFromJSON = distributionSummaryRegularAmountFromJSON;
+exports.distributionSummaryAmountToJSON = distributionSummaryAmountToJSON;
+exports.distributionSummaryAmountFromJSON = distributionSummaryAmountFromJSON;
+exports.lifeExpectancyFactorToJSON = lifeExpectancyFactorToJSON;
+exports.lifeExpectancyFactorFromJSON = lifeExpectancyFactorFromJSON;
+exports.priorYearEndAccountBalanceToJSON = priorYearEndAccountBalanceToJSON;
+exports.priorYearEndAccountBalanceFromJSON = priorYearEndAccountBalanceFromJSON;
+exports.remainingDistributionRequiredToJSON = remainingDistributionRequiredToJSON;
+exports.remainingDistributionRequiredFromJSON = remainingDistributionRequiredFromJSON;
+exports.requiredMinimumDistributionToJSON = requiredMinimumDistributionToJSON;
+exports.requiredMinimumDistributionFromJSON = requiredMinimumDistributionFromJSON;
+exports.distributionSummaryRolloverAmountToJSON = distributionSummaryRolloverAmountToJSON;
+exports.distributionSummaryRolloverAmountFromJSON = distributionSummaryRolloverAmountFromJSON;
+exports.distributionSummaryToJSON = distributionSummaryToJSON;
+exports.distributionSummaryFromJSON = distributionSummaryFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.DistributionSummaryRegularAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +75,12 @@ var DistributionSummaryRegularAmount$;
     /** @deprecated use `DistributionSummaryRegularAmount$outboundSchema` instead. */
     DistributionSummaryRegularAmount$.outboundSchema = exports.DistributionSummaryRegularAmount$outboundSchema;
 })(DistributionSummaryRegularAmount$ || (exports.DistributionSummaryRegularAmount$ = DistributionSummaryRegularAmount$ = {}));
+function distributionSummaryRegularAmountToJSON(distributionSummaryRegularAmount) {
+    return JSON.stringify(exports.DistributionSummaryRegularAmount$outboundSchema.parse(distributionSummaryRegularAmount));
+}
+function distributionSummaryRegularAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DistributionSummaryRegularAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DistributionSummaryRegularAmount' from JSON`);
+}
 /** @internal */
 exports.DistributionSummaryAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -77,6 +100,12 @@ var DistributionSummaryAmount$;
     /** @deprecated use `DistributionSummaryAmount$outboundSchema` instead. */
     DistributionSummaryAmount$.outboundSchema = exports.DistributionSummaryAmount$outboundSchema;
 })(DistributionSummaryAmount$ || (exports.DistributionSummaryAmount$ = DistributionSummaryAmount$ = {}));
+function distributionSummaryAmountToJSON(distributionSummaryAmount) {
+    return JSON.stringify(exports.DistributionSummaryAmount$outboundSchema.parse(distributionSummaryAmount));
+}
+function distributionSummaryAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DistributionSummaryAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DistributionSummaryAmount' from JSON`);
+}
 /** @internal */
 exports.LifeExpectancyFactor$inboundSchema = z.object({
     value: z.string().optional(),
@@ -96,6 +125,12 @@ var LifeExpectancyFactor$;
     /** @deprecated use `LifeExpectancyFactor$outboundSchema` instead. */
     LifeExpectancyFactor$.outboundSchema = exports.LifeExpectancyFactor$outboundSchema;
 })(LifeExpectancyFactor$ || (exports.LifeExpectancyFactor$ = LifeExpectancyFactor$ = {}));
+function lifeExpectancyFactorToJSON(lifeExpectancyFactor) {
+    return JSON.stringify(exports.LifeExpectancyFactor$outboundSchema.parse(lifeExpectancyFactor));
+}
+function lifeExpectancyFactorFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LifeExpectancyFactor$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LifeExpectancyFactor' from JSON`);
+}
 /** @internal */
 exports.PriorYearEndAccountBalance$inboundSchema = z.object({
     value: z.string().optional(),
@@ -115,6 +150,12 @@ var PriorYearEndAccountBalance$;
     /** @deprecated use `PriorYearEndAccountBalance$outboundSchema` instead. */
     PriorYearEndAccountBalance$.outboundSchema = exports.PriorYearEndAccountBalance$outboundSchema;
 })(PriorYearEndAccountBalance$ || (exports.PriorYearEndAccountBalance$ = PriorYearEndAccountBalance$ = {}));
+function priorYearEndAccountBalanceToJSON(priorYearEndAccountBalance) {
+    return JSON.stringify(exports.PriorYearEndAccountBalance$outboundSchema.parse(priorYearEndAccountBalance));
+}
+function priorYearEndAccountBalanceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PriorYearEndAccountBalance$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PriorYearEndAccountBalance' from JSON`);
+}
 /** @internal */
 exports.RemainingDistributionRequired$inboundSchema = z.object({
     value: z.string().optional(),
@@ -134,6 +175,12 @@ var RemainingDistributionRequired$;
     /** @deprecated use `RemainingDistributionRequired$outboundSchema` instead. */
     RemainingDistributionRequired$.outboundSchema = exports.RemainingDistributionRequired$outboundSchema;
 })(RemainingDistributionRequired$ || (exports.RemainingDistributionRequired$ = RemainingDistributionRequired$ = {}));
+function remainingDistributionRequiredToJSON(remainingDistributionRequired) {
+    return JSON.stringify(exports.RemainingDistributionRequired$outboundSchema.parse(remainingDistributionRequired));
+}
+function remainingDistributionRequiredFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RemainingDistributionRequired$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RemainingDistributionRequired' from JSON`);
+}
 /** @internal */
 exports.RequiredMinimumDistribution$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.DistributionSummaryAmount$inboundSchema))
@@ -173,6 +220,12 @@ var RequiredMinimumDistribution$;
     /** @deprecated use `RequiredMinimumDistribution$outboundSchema` instead. */
     RequiredMinimumDistribution$.outboundSchema = exports.RequiredMinimumDistribution$outboundSchema;
 })(RequiredMinimumDistribution$ || (exports.RequiredMinimumDistribution$ = RequiredMinimumDistribution$ = {}));
+function requiredMinimumDistributionToJSON(requiredMinimumDistribution) {
+    return JSON.stringify(exports.RequiredMinimumDistribution$outboundSchema.parse(requiredMinimumDistribution));
+}
+function requiredMinimumDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RequiredMinimumDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RequiredMinimumDistribution' from JSON`);
+}
 /** @internal */
 exports.DistributionSummaryRolloverAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -192,6 +245,12 @@ var DistributionSummaryRolloverAmount$;
     /** @deprecated use `DistributionSummaryRolloverAmount$outboundSchema` instead. */
     DistributionSummaryRolloverAmount$.outboundSchema = exports.DistributionSummaryRolloverAmount$outboundSchema;
 })(DistributionSummaryRolloverAmount$ || (exports.DistributionSummaryRolloverAmount$ = DistributionSummaryRolloverAmount$ = {}));
+function distributionSummaryRolloverAmountToJSON(distributionSummaryRolloverAmount) {
+    return JSON.stringify(exports.DistributionSummaryRolloverAmount$outboundSchema.parse(distributionSummaryRolloverAmount));
+}
+function distributionSummaryRolloverAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DistributionSummaryRolloverAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DistributionSummaryRolloverAmount' from JSON`);
+}
 /** @internal */
 exports.DistributionSummary$inboundSchema = z.object({
     name: z.string().optional(),
@@ -233,4 +292,10 @@ var DistributionSummary$;
     /** @deprecated use `DistributionSummary$outboundSchema` instead. */
     DistributionSummary$.outboundSchema = exports.DistributionSummary$outboundSchema;
 })(DistributionSummary$ || (exports.DistributionSummary$ = DistributionSummary$ = {}));
+function distributionSummaryToJSON(distributionSummary) {
+    return JSON.stringify(exports.DistributionSummary$outboundSchema.parse(distributionSummary));
+}
+function distributionSummaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DistributionSummary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DistributionSummary' from JSON`);
+}
 //# sourceMappingURL=distributionsummary.js.map

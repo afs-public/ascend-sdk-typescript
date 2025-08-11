@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The fee amount. Not required if the fee is suppressed
@@ -96,6 +99,24 @@ export namespace BookingFeeAmount$ {
   export type Outbound = BookingFeeAmount$Outbound;
 }
 
+export function bookingFeeAmountToJSON(
+  bookingFeeAmount: BookingFeeAmount,
+): string {
+  return JSON.stringify(
+    BookingFeeAmount$outboundSchema.parse(bookingFeeAmount),
+  );
+}
+
+export function bookingFeeAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingFeeAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingFeeAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingFeeAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingFeeType$inboundSchema: z.ZodType<
   BookingFeeTypeOpen,
@@ -176,4 +197,18 @@ export namespace BookingFee$ {
   export const outboundSchema = BookingFee$outboundSchema;
   /** @deprecated use `BookingFee$Outbound` instead. */
   export type Outbound = BookingFee$Outbound;
+}
+
+export function bookingFeeToJSON(bookingFee: BookingFee): string {
+  return JSON.stringify(BookingFee$outboundSchema.parse(bookingFee));
+}
+
+export function bookingFeeFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingFee, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingFee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingFee' from JSON`,
+  );
 }

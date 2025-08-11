@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Agreement, Agreement$Outbound } from "./agreement.js";
 /**
  * The response for affirming agreements.
@@ -29,4 +31,6 @@ export declare namespace AffirmAgreementsResponse$ {
     /** @deprecated use `AffirmAgreementsResponse$Outbound` instead. */
     type Outbound = AffirmAgreementsResponse$Outbound;
 }
+export declare function affirmAgreementsResponseToJSON(affirmAgreementsResponse: AffirmAgreementsResponse): string;
+export declare function affirmAgreementsResponseFromJSON(jsonString: string): SafeParseResult<AffirmAgreementsResponse, SDKValidationError>;
 //# sourceMappingURL=affirmagreementsresponse.d.ts.map

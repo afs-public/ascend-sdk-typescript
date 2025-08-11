@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of identifier
@@ -107,4 +110,22 @@ export namespace IdentifierCreate$ {
   export const outboundSchema = IdentifierCreate$outboundSchema;
   /** @deprecated use `IdentifierCreate$Outbound` instead. */
   export type Outbound = IdentifierCreate$Outbound;
+}
+
+export function identifierCreateToJSON(
+  identifierCreate: IdentifierCreate,
+): string {
+  return JSON.stringify(
+    IdentifierCreate$outboundSchema.parse(identifierCreate),
+  );
+}
+
+export function identifierCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<IdentifierCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IdentifierCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IdentifierCreate' from JSON`,
+  );
 }

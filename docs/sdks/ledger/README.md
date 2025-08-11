@@ -17,6 +17,7 @@ List all Entries based on a filter
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Ledger_ListEntries" method="get" path="/ledger/v1/accounts/{account_id}/entries" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -35,7 +36,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.ledger.listEntries("01FAKEACCOUNT1TYKWEYRH8S2K");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -66,15 +66,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await ledgerListEntries(apexascend, "01FAKEACCOUNT1TYKWEYRH8S2K");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ledgerListEntries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -98,10 +95,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 500, 503, 504 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listActivities
 
@@ -109,6 +107,7 @@ List all Completed Activities based on a filter
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Ledger_ListActivities" method="get" path="/ledger/v1/accounts/{account_id}/activities" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -127,7 +126,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.ledger.listActivities("01FAKEACCOUNT1TYKWEYRH8S2K");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -158,15 +156,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await ledgerListActivities(apexascend, "01FAKEACCOUNT1TYKWEYRH8S2K");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ledgerListActivities failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -190,10 +185,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 500, 503, 504 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listPositions
 
@@ -201,6 +197,7 @@ List positions based on a filter
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Ledger_ListPositions" method="get" path="/ledger/v1/accounts/{account_id}/positions" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -219,7 +216,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.ledger.listPositions("01HBRQ5BW6ZAY4BNWP4GWRD80X");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -250,15 +246,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await ledgerListPositions(apexascend, "01HBRQ5BW6ZAY4BNWP4GWRD80X");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ledgerListPositions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -282,10 +275,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 500, 503, 504 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getActivity
 
@@ -293,6 +287,7 @@ Get an activity
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Ledger_GetActivity" method="get" path="/ledger/v1/accounts/{account_id}/activities/{activity_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -311,7 +306,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.ledger.getActivity("01FAKEACCOUNT1TYKWEYRH8S2K", "FAKEACTIVITYID");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -342,15 +336,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await ledgerGetActivity(apexascend, "01FAKEACCOUNT1TYKWEYRH8S2K", "FAKEACTIVITYID");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ledgerGetActivity failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -372,10 +363,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 500, 503, 504 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getEntry
 
@@ -383,6 +375,7 @@ Get an entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Ledger_GetEntry" method="get" path="/ledger/v1/accounts/{account_id}/entries/{entry_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -399,9 +392,8 @@ const apexascend = new Apexascend({
 });
 
 async function run() {
-  const result = await apexascend.ledger.getEntry("{\"account_id\":\"\"}", "{\"entry_id\":\"\"}");
+  const result = await apexascend.ledger.getEntry("[object Object]", "[object Object]");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -431,16 +423,13 @@ const apexascend = new ApexascendCore({
 });
 
 async function run() {
-  const res = await ledgerGetEntry(apexascend, "{\"account_id\":\"\"}", "{\"entry_id\":\"\"}");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await ledgerGetEntry(apexascend, "[object Object]", "[object Object]");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("ledgerGetEntry failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -462,7 +451,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 500, 503, 504 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

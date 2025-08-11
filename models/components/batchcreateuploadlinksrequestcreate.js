@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BatchCreateUploadLinksRequestCreate$ = exports.BatchCreateUploadLinksRequestCreate$outboundSchema = exports.BatchCreateUploadLinksRequestCreate$inboundSchema = void 0;
+exports.batchCreateUploadLinksRequestCreateToJSON = batchCreateUploadLinksRequestCreateToJSON;
+exports.batchCreateUploadLinksRequestCreateFromJSON = batchCreateUploadLinksRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const createuploadlinkrequestcreate_js_1 = require("./createuploadlinkrequestcreate.js");
 /** @internal */
 exports.BatchCreateUploadLinksRequestCreate$inboundSchema = z.object({
@@ -67,4 +70,10 @@ var BatchCreateUploadLinksRequestCreate$;
     /** @deprecated use `BatchCreateUploadLinksRequestCreate$outboundSchema` instead. */
     BatchCreateUploadLinksRequestCreate$.outboundSchema = exports.BatchCreateUploadLinksRequestCreate$outboundSchema;
 })(BatchCreateUploadLinksRequestCreate$ || (exports.BatchCreateUploadLinksRequestCreate$ = BatchCreateUploadLinksRequestCreate$ = {}));
+function batchCreateUploadLinksRequestCreateToJSON(batchCreateUploadLinksRequestCreate) {
+    return JSON.stringify(exports.BatchCreateUploadLinksRequestCreate$outboundSchema.parse(batchCreateUploadLinksRequestCreate));
+}
+function batchCreateUploadLinksRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BatchCreateUploadLinksRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BatchCreateUploadLinksRequestCreate' from JSON`);
+}
 //# sourceMappingURL=batchcreateuploadlinksrequestcreate.js.map

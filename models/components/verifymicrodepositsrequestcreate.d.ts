@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { MicroDepositAmountsCreate, MicroDepositAmountsCreate$Outbound } from "./microdepositamountscreate.js";
 /**
  * Verifies micro deposits for a pending relationship.
@@ -34,4 +36,6 @@ export declare namespace VerifyMicroDepositsRequestCreate$ {
     /** @deprecated use `VerifyMicroDepositsRequestCreate$Outbound` instead. */
     type Outbound = VerifyMicroDepositsRequestCreate$Outbound;
 }
+export declare function verifyMicroDepositsRequestCreateToJSON(verifyMicroDepositsRequestCreate: VerifyMicroDepositsRequestCreate): string;
+export declare function verifyMicroDepositsRequestCreateFromJSON(jsonString: string): SafeParseResult<VerifyMicroDepositsRequestCreate, SDKValidationError>;
 //# sourceMappingURL=verifymicrodepositsrequestcreate.d.ts.map

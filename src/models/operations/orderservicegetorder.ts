@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OrderServiceGetOrderRequest = {
   /**
@@ -78,6 +81,26 @@ export namespace OrderServiceGetOrderRequest$ {
   export type Outbound = OrderServiceGetOrderRequest$Outbound;
 }
 
+export function orderServiceGetOrderRequestToJSON(
+  orderServiceGetOrderRequest: OrderServiceGetOrderRequest,
+): string {
+  return JSON.stringify(
+    OrderServiceGetOrderRequest$outboundSchema.parse(
+      orderServiceGetOrderRequest,
+    ),
+  );
+}
+
+export function orderServiceGetOrderRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderServiceGetOrderRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderServiceGetOrderRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderServiceGetOrderRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const OrderServiceGetOrderResponse$inboundSchema: z.ZodType<
   OrderServiceGetOrderResponse,
@@ -130,4 +153,24 @@ export namespace OrderServiceGetOrderResponse$ {
   export const outboundSchema = OrderServiceGetOrderResponse$outboundSchema;
   /** @deprecated use `OrderServiceGetOrderResponse$Outbound` instead. */
   export type Outbound = OrderServiceGetOrderResponse$Outbound;
+}
+
+export function orderServiceGetOrderResponseToJSON(
+  orderServiceGetOrderResponse: OrderServiceGetOrderResponse,
+): string {
+  return JSON.stringify(
+    OrderServiceGetOrderResponse$outboundSchema.parse(
+      orderServiceGetOrderResponse,
+    ),
+  );
+}
+
+export function orderServiceGetOrderResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderServiceGetOrderResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderServiceGetOrderResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderServiceGetOrderResponse' from JSON`,
+  );
 }

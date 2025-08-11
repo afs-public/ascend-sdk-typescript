@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
 /**
  * The time unit used to calculate the interval between transfers. The time period between transfers in a scheduled series is the unit of time times the multiplier
@@ -77,4 +79,6 @@ export declare namespace SchedulePropertiesCreate$ {
     /** @deprecated use `SchedulePropertiesCreate$Outbound` instead. */
     type Outbound = SchedulePropertiesCreate$Outbound;
 }
+export declare function schedulePropertiesCreateToJSON(schedulePropertiesCreate: SchedulePropertiesCreate): string;
+export declare function schedulePropertiesCreateFromJSON(jsonString: string): SafeParseResult<SchedulePropertiesCreate, SDKValidationError>;
 //# sourceMappingURL=schedulepropertiescreate.d.ts.map

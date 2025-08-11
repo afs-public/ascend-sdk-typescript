@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListDocumentsResponse$ = exports.ListDocumentsResponse$outboundSchema = exports.ListDocumentsResponse$inboundSchema = void 0;
+exports.listDocumentsResponseToJSON = listDocumentsResponseToJSON;
+exports.listDocumentsResponseFromJSON = listDocumentsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const document_js_1 = require("./document.js");
 /** @internal */
 exports.ListDocumentsResponse$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ListDocumentsResponse$;
     /** @deprecated use `ListDocumentsResponse$outboundSchema` instead. */
     ListDocumentsResponse$.outboundSchema = exports.ListDocumentsResponse$outboundSchema;
 })(ListDocumentsResponse$ || (exports.ListDocumentsResponse$ = ListDocumentsResponse$ = {}));
+function listDocumentsResponseToJSON(listDocumentsResponse) {
+    return JSON.stringify(exports.ListDocumentsResponse$outboundSchema.parse(listDocumentsResponse));
+}
+function listDocumentsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListDocumentsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListDocumentsResponse' from JSON`);
+}
 //# sourceMappingURL=listdocumentsresponse.js.map

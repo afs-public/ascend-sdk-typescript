@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AcatsAsset,
   AcatsAsset$inboundSchema,
@@ -313,6 +316,22 @@ export namespace ExternalAccount$ {
   export type Outbound = ExternalAccount$Outbound;
 }
 
+export function externalAccountToJSON(
+  externalAccount: ExternalAccount,
+): string {
+  return JSON.stringify(ExternalAccount$outboundSchema.parse(externalAccount));
+}
+
+export function externalAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<ExternalAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExternalAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExternalAccount' from JSON`,
+  );
+}
+
 /** @internal */
 export const Deliverer$inboundSchema: z.ZodType<
   Deliverer,
@@ -362,6 +381,20 @@ export namespace Deliverer$ {
   export const outboundSchema = Deliverer$outboundSchema;
   /** @deprecated use `Deliverer$Outbound` instead. */
   export type Outbound = Deliverer$Outbound;
+}
+
+export function delivererToJSON(deliverer: Deliverer): string {
+  return JSON.stringify(Deliverer$outboundSchema.parse(deliverer));
+}
+
+export function delivererFromJSON(
+  jsonString: string,
+): SafeParseResult<Deliverer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Deliverer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Deliverer' from JSON`,
+  );
 }
 
 /** @internal */
@@ -482,6 +515,26 @@ export namespace AcatsTransferExternalAccount$ {
   export type Outbound = AcatsTransferExternalAccount$Outbound;
 }
 
+export function acatsTransferExternalAccountToJSON(
+  acatsTransferExternalAccount: AcatsTransferExternalAccount,
+): string {
+  return JSON.stringify(
+    AcatsTransferExternalAccount$outboundSchema.parse(
+      acatsTransferExternalAccount,
+    ),
+  );
+}
+
+export function acatsTransferExternalAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<AcatsTransferExternalAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcatsTransferExternalAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcatsTransferExternalAccount' from JSON`,
+  );
+}
+
 /** @internal */
 export const Receiver$inboundSchema: z.ZodType<
   Receiver,
@@ -533,6 +586,20 @@ export namespace Receiver$ {
   export const outboundSchema = Receiver$outboundSchema;
   /** @deprecated use `Receiver$Outbound` instead. */
   export type Outbound = Receiver$Outbound;
+}
+
+export function receiverToJSON(receiver: Receiver): string {
+  return JSON.stringify(Receiver$outboundSchema.parse(receiver));
+}
+
+export function receiverFromJSON(
+  jsonString: string,
+): SafeParseResult<Receiver, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Receiver$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Receiver' from JSON`,
+  );
 }
 
 /** @internal */
@@ -726,4 +793,18 @@ export namespace AcatsTransfer$ {
   export const outboundSchema = AcatsTransfer$outboundSchema;
   /** @deprecated use `AcatsTransfer$Outbound` instead. */
   export type Outbound = AcatsTransfer$Outbound;
+}
+
+export function acatsTransferToJSON(acatsTransfer: AcatsTransfer): string {
+  return JSON.stringify(AcatsTransfer$outboundSchema.parse(acatsTransfer));
+}
+
+export function acatsTransferFromJSON(
+  jsonString: string,
+): SafeParseResult<AcatsTransfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AcatsTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcatsTransfer' from JSON`,
+  );
 }

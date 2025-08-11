@@ -37,8 +37,19 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AcatsTransfer$ = exports.AcatsTransfer$outboundSchema = exports.AcatsTransfer$inboundSchema = exports.TransferType$ = exports.TransferType$outboundSchema = exports.TransferType$inboundSchema = exports.AcatsTransferState$ = exports.AcatsTransferState$outboundSchema = exports.AcatsTransferState$inboundSchema = exports.RejectCode$ = exports.RejectCode$outboundSchema = exports.RejectCode$inboundSchema = exports.Receiver$ = exports.Receiver$outboundSchema = exports.Receiver$inboundSchema = exports.AcatsTransferExternalAccount$ = exports.AcatsTransferExternalAccount$outboundSchema = exports.AcatsTransferExternalAccount$inboundSchema = exports.NsccStatus$ = exports.NsccStatus$outboundSchema = exports.NsccStatus$inboundSchema = exports.AcatsTransferDirection$ = exports.AcatsTransferDirection$outboundSchema = exports.AcatsTransferDirection$inboundSchema = exports.Deliverer$ = exports.Deliverer$outboundSchema = exports.Deliverer$inboundSchema = exports.ExternalAccount$ = exports.ExternalAccount$outboundSchema = exports.ExternalAccount$inboundSchema = exports.TransferType = exports.AcatsTransferState = exports.RejectCode = exports.NsccStatus = exports.AcatsTransferDirection = void 0;
+exports.externalAccountToJSON = externalAccountToJSON;
+exports.externalAccountFromJSON = externalAccountFromJSON;
+exports.delivererToJSON = delivererToJSON;
+exports.delivererFromJSON = delivererFromJSON;
+exports.acatsTransferExternalAccountToJSON = acatsTransferExternalAccountToJSON;
+exports.acatsTransferExternalAccountFromJSON = acatsTransferExternalAccountFromJSON;
+exports.receiverToJSON = receiverToJSON;
+exports.receiverFromJSON = receiverFromJSON;
+exports.acatsTransferToJSON = acatsTransferToJSON;
+exports.acatsTransferFromJSON = acatsTransferFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const acatsasset_js_1 = require("./acatsasset.js");
 /**
@@ -165,6 +176,12 @@ var ExternalAccount$;
     /** @deprecated use `ExternalAccount$outboundSchema` instead. */
     ExternalAccount$.outboundSchema = exports.ExternalAccount$outboundSchema;
 })(ExternalAccount$ || (exports.ExternalAccount$ = ExternalAccount$ = {}));
+function externalAccountToJSON(externalAccount) {
+    return JSON.stringify(exports.ExternalAccount$outboundSchema.parse(externalAccount));
+}
+function externalAccountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExternalAccount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExternalAccount' from JSON`);
+}
 /** @internal */
 exports.Deliverer$inboundSchema = z.object({
     apex_account_id: z.string().optional(),
@@ -198,6 +215,12 @@ var Deliverer$;
     /** @deprecated use `Deliverer$outboundSchema` instead. */
     Deliverer$.outboundSchema = exports.Deliverer$outboundSchema;
 })(Deliverer$ || (exports.Deliverer$ = Deliverer$ = {}));
+function delivererToJSON(deliverer) {
+    return JSON.stringify(exports.Deliverer$outboundSchema.parse(deliverer));
+}
+function delivererFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Deliverer$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Deliverer' from JSON`);
+}
 /** @internal */
 exports.AcatsTransferDirection$inboundSchema = z
     .union([
@@ -277,6 +300,12 @@ var AcatsTransferExternalAccount$;
     /** @deprecated use `AcatsTransferExternalAccount$outboundSchema` instead. */
     AcatsTransferExternalAccount$.outboundSchema = exports.AcatsTransferExternalAccount$outboundSchema;
 })(AcatsTransferExternalAccount$ || (exports.AcatsTransferExternalAccount$ = AcatsTransferExternalAccount$ = {}));
+function acatsTransferExternalAccountToJSON(acatsTransferExternalAccount) {
+    return JSON.stringify(exports.AcatsTransferExternalAccount$outboundSchema.parse(acatsTransferExternalAccount));
+}
+function acatsTransferExternalAccountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcatsTransferExternalAccount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcatsTransferExternalAccount' from JSON`);
+}
 /** @internal */
 exports.Receiver$inboundSchema = z.object({
     apex_account_id: z.string().optional(),
@@ -308,6 +337,12 @@ var Receiver$;
     /** @deprecated use `Receiver$outboundSchema` instead. */
     Receiver$.outboundSchema = exports.Receiver$outboundSchema;
 })(Receiver$ || (exports.Receiver$ = Receiver$ = {}));
+function receiverToJSON(receiver) {
+    return JSON.stringify(exports.Receiver$outboundSchema.parse(receiver));
+}
+function receiverFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Receiver$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Receiver' from JSON`);
+}
 /** @internal */
 exports.RejectCode$inboundSchema = z
     .union([
@@ -439,4 +474,10 @@ var AcatsTransfer$;
     /** @deprecated use `AcatsTransfer$outboundSchema` instead. */
     AcatsTransfer$.outboundSchema = exports.AcatsTransfer$outboundSchema;
 })(AcatsTransfer$ || (exports.AcatsTransfer$ = AcatsTransfer$ = {}));
+function acatsTransferToJSON(acatsTransfer) {
+    return JSON.stringify(exports.AcatsTransfer$outboundSchema.parse(acatsTransfer));
+}
+function acatsTransferFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcatsTransfer$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcatsTransfer' from JSON`);
+}
 //# sourceMappingURL=acatstransfer.js.map

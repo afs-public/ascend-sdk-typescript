@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RetirementDistributionCreate,
   RetirementDistributionCreate$inboundSchema,
@@ -87,4 +90,24 @@ export namespace AchWithdrawalScheduleCreate$ {
   export const outboundSchema = AchWithdrawalScheduleCreate$outboundSchema;
   /** @deprecated use `AchWithdrawalScheduleCreate$Outbound` instead. */
   export type Outbound = AchWithdrawalScheduleCreate$Outbound;
+}
+
+export function achWithdrawalScheduleCreateToJSON(
+  achWithdrawalScheduleCreate: AchWithdrawalScheduleCreate,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleCreate$outboundSchema.parse(
+      achWithdrawalScheduleCreate,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalScheduleCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalScheduleCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalScheduleCreate' from JSON`,
+  );
 }

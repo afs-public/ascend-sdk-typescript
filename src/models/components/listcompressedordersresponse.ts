@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CompressedOrder,
   CompressedOrder$inboundSchema,
@@ -72,4 +75,24 @@ export namespace ListCompressedOrdersResponse$ {
   export const outboundSchema = ListCompressedOrdersResponse$outboundSchema;
   /** @deprecated use `ListCompressedOrdersResponse$Outbound` instead. */
   export type Outbound = ListCompressedOrdersResponse$Outbound;
+}
+
+export function listCompressedOrdersResponseToJSON(
+  listCompressedOrdersResponse: ListCompressedOrdersResponse,
+): string {
+  return JSON.stringify(
+    ListCompressedOrdersResponse$outboundSchema.parse(
+      listCompressedOrdersResponse,
+    ),
+  );
+}
+
+export function listCompressedOrdersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListCompressedOrdersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListCompressedOrdersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCompressedOrdersResponse' from JSON`,
+  );
 }

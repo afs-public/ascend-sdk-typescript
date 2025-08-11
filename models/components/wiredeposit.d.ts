@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of the wire deposit being issued to the investor in USD
  */
@@ -179,6 +181,8 @@ export declare namespace WireDepositAmount$ {
     /** @deprecated use `WireDepositAmount$Outbound` instead. */
     type Outbound = WireDepositAmount$Outbound;
 }
+export declare function wireDepositAmountToJSON(wireDepositAmount: WireDepositAmount): string;
+export declare function wireDepositAmountFromJSON(jsonString: string): SafeParseResult<WireDepositAmount, SDKValidationError>;
 /** @internal */
 export declare const WireDepositType$inboundSchema: z.ZodType<WireDepositTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -214,6 +218,8 @@ export declare namespace WireDepositRetirementContribution$ {
     /** @deprecated use `WireDepositRetirementContribution$Outbound` instead. */
     type Outbound = WireDepositRetirementContribution$Outbound;
 }
+export declare function wireDepositRetirementContributionToJSON(wireDepositRetirementContribution: WireDepositRetirementContribution): string;
+export declare function wireDepositRetirementContributionFromJSON(jsonString: string): SafeParseResult<WireDepositRetirementContribution, SDKValidationError>;
 /** @internal */
 export declare const WireDepositStateState$inboundSchema: z.ZodType<WireDepositStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -254,6 +260,8 @@ export declare namespace WireDepositState$ {
     /** @deprecated use `WireDepositState$Outbound` instead. */
     type Outbound = WireDepositState$Outbound;
 }
+export declare function wireDepositStateToJSON(wireDepositState: WireDepositState): string;
+export declare function wireDepositStateFromJSON(jsonString: string): SafeParseResult<WireDepositState, SDKValidationError>;
 /** @internal */
 export declare const WireDeposit$inboundSchema: z.ZodType<WireDeposit, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -281,4 +289,6 @@ export declare namespace WireDeposit$ {
     /** @deprecated use `WireDeposit$Outbound` instead. */
     type Outbound = WireDeposit$Outbound;
 }
+export declare function wireDepositToJSON(wireDeposit: WireDeposit): string;
+export declare function wireDepositFromJSON(jsonString: string): SafeParseResult<WireDeposit, SDKValidationError>;
 //# sourceMappingURL=wiredeposit.d.ts.map

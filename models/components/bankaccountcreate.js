@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankAccountCreate$ = exports.BankAccountCreate$outboundSchema = exports.BankAccountCreate$inboundSchema = exports.BankAccountCreateType$ = exports.BankAccountCreateType$outboundSchema = exports.BankAccountCreateType$inboundSchema = exports.BankAccountCreateType = void 0;
+exports.bankAccountCreateToJSON = bankAccountCreateToJSON;
+exports.bankAccountCreateFromJSON = bankAccountCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The bank account type.
@@ -106,4 +109,10 @@ var BankAccountCreate$;
     /** @deprecated use `BankAccountCreate$outboundSchema` instead. */
     BankAccountCreate$.outboundSchema = exports.BankAccountCreate$outboundSchema;
 })(BankAccountCreate$ || (exports.BankAccountCreate$ = BankAccountCreate$ = {}));
+function bankAccountCreateToJSON(bankAccountCreate) {
+    return JSON.stringify(exports.BankAccountCreate$outboundSchema.parse(bankAccountCreate));
+}
+function bankAccountCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankAccountCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankAccountCreate' from JSON`);
+}
 //# sourceMappingURL=bankaccountcreate.js.map

@@ -7,7 +7,7 @@ IRS form type.
 ```typescript
 import { TaxProfileUpdateIrsFormType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: TaxProfileUpdateIrsFormType = TaxProfileUpdateIrsFormType.W9;
+let value: TaxProfileUpdateIrsFormType = TaxProfileUpdateIrsFormType.W8Ben;
 ```
 
 ## Values

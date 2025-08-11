@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the cash journal is considered first party or third party
@@ -116,4 +119,22 @@ export namespace CheckPartyTypeResponse$ {
   export const outboundSchema = CheckPartyTypeResponse$outboundSchema;
   /** @deprecated use `CheckPartyTypeResponse$Outbound` instead. */
   export type Outbound = CheckPartyTypeResponse$Outbound;
+}
+
+export function checkPartyTypeResponseToJSON(
+  checkPartyTypeResponse: CheckPartyTypeResponse,
+): string {
+  return JSON.stringify(
+    CheckPartyTypeResponse$outboundSchema.parse(checkPartyTypeResponse),
+  );
+}
+
+export function checkPartyTypeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CheckPartyTypeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CheckPartyTypeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CheckPartyTypeResponse' from JSON`,
+  );
 }

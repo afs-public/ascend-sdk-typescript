@@ -5,14 +5,7 @@
 ```typescript
 import { AccountsEndLargeTrader1Response } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: AccountsEndLargeTrader1Response = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: AccountsEndLargeTrader1Response = {};
 ```
 
 ## Fields

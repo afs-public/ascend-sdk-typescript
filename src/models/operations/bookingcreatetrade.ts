@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingCreateTradeRequest = {
   /**
@@ -78,6 +81,24 @@ export namespace BookingCreateTradeRequest$ {
   export type Outbound = BookingCreateTradeRequest$Outbound;
 }
 
+export function bookingCreateTradeRequestToJSON(
+  bookingCreateTradeRequest: BookingCreateTradeRequest,
+): string {
+  return JSON.stringify(
+    BookingCreateTradeRequest$outboundSchema.parse(bookingCreateTradeRequest),
+  );
+}
+
+export function bookingCreateTradeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCreateTradeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCreateTradeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCreateTradeRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingCreateTradeResponse$inboundSchema: z.ZodType<
   BookingCreateTradeResponse,
@@ -130,4 +151,22 @@ export namespace BookingCreateTradeResponse$ {
   export const outboundSchema = BookingCreateTradeResponse$outboundSchema;
   /** @deprecated use `BookingCreateTradeResponse$Outbound` instead. */
   export type Outbound = BookingCreateTradeResponse$Outbound;
+}
+
+export function bookingCreateTradeResponseToJSON(
+  bookingCreateTradeResponse: BookingCreateTradeResponse,
+): string {
+  return JSON.stringify(
+    BookingCreateTradeResponse$outboundSchema.parse(bookingCreateTradeResponse),
+  );
+}
+
+export function bookingCreateTradeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCreateTradeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCreateTradeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCreateTradeResponse' from JSON`,
+  );
 }

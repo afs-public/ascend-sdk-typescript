@@ -4,14 +4,23 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The type of audit that was performed on the investigation
+ * The audit record type, one of:
+ *
+ * @remarks
+ * - `AUDIT_TYPE_UNSPECIFIED` - Default/Null audit type.
+ * - `INVESTIGATION_REQUEST_UPDATE` - Used to update an investigation request.
+ * - `INVESTIGATION_STATE` - Used for recording investigation state changed events.
+ * - `COMMENT` - Used for adding a comment to investigation.
  */
 export enum AuditType {
   AuditTypeUnspecified = "AUDIT_TYPE_UNSPECIFIED",
@@ -20,7 +29,13 @@ export enum AuditType {
   Comment = "COMMENT",
 }
 /**
- * The type of audit that was performed on the investigation
+ * The audit record type, one of:
+ *
+ * @remarks
+ * - `AUDIT_TYPE_UNSPECIFIED` - Default/Null audit type.
+ * - `INVESTIGATION_REQUEST_UPDATE` - Used to update an investigation request.
+ * - `INVESTIGATION_STATE` - Used for recording investigation state changed events.
+ * - `COMMENT` - Used for adding a comment to investigation.
  */
 export type AuditTypeOpen = OpenEnum<typeof AuditType>;
 
@@ -29,7 +44,13 @@ export type AuditTypeOpen = OpenEnum<typeof AuditType>;
  */
 export type AuditTrail = {
   /**
-   * The type of audit that was performed on the investigation
+   * The audit record type, one of:
+   *
+   * @remarks
+   * - `AUDIT_TYPE_UNSPECIFIED` - Default/Null audit type.
+   * - `INVESTIGATION_REQUEST_UPDATE` - Used to update an investigation request.
+   * - `INVESTIGATION_STATE` - Used for recording investigation state changed events.
+   * - `COMMENT` - Used for adding a comment to investigation.
    */
   auditType?: AuditTypeOpen | undefined;
   /**
@@ -160,4 +181,18 @@ export namespace AuditTrail$ {
   export const outboundSchema = AuditTrail$outboundSchema;
   /** @deprecated use `AuditTrail$Outbound` instead. */
   export type Outbound = AuditTrail$Outbound;
+}
+
+export function auditTrailToJSON(auditTrail: AuditTrail): string {
+  return JSON.stringify(AuditTrail$outboundSchema.parse(auditTrail));
+}
+
+export function auditTrailFromJSON(
+  jsonString: string,
+): SafeParseResult<AuditTrail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AuditTrail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuditTrail' from JSON`,
+  );
 }

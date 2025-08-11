@@ -42,7 +42,6 @@ const components = __importStar(require("@apexfintechsolutions/ascend-sdk/models
 const crypto_1 = __importDefault(require("crypto"));
 const transfers_1 = require("../transfers");
 async function create_account_transfer_id(account_id) {
-    var _a, _b;
     const account = await sdk_1.sdk.accountCreation.getAccount(account_id);
     if (!account || !account.account) {
         throw new Error("Account not found or invalid response.");
@@ -81,12 +80,12 @@ async function create_account_transfer_id(account_id) {
             },
         },
     };
-    const correspondentId = (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "";
+    const correspondentId = process.env["CORRESPONDENT_ID"] ?? "";
     if (!correspondentId) {
         throw new Error("CORRESPONDENT_ID is undefined or empty.");
     }
     const result = await sdk_1.sdk.accountTransfers.createTransfer(request, correspondentId, transfers_1.withdrawal_account_id);
-    if ((_b = result === null || result === void 0 ? void 0 : result.acatsTransfer) === null || _b === void 0 ? void 0 : _b.name) {
+    if (result?.acatsTransfer?.name) {
         return result.acatsTransfer.name.split("/").pop();
     }
     return undefined;

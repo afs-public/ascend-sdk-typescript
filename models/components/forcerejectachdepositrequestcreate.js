@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForceRejectAchDepositRequestCreate$ = exports.ForceRejectAchDepositRequestCreate$outboundSchema = exports.ForceRejectAchDepositRequestCreate$inboundSchema = void 0;
+exports.forceRejectAchDepositRequestCreateToJSON = forceRejectAchDepositRequestCreateToJSON;
+exports.forceRejectAchDepositRequestCreateFromJSON = forceRejectAchDepositRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ForceRejectAchDepositRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -59,4 +62,10 @@ var ForceRejectAchDepositRequestCreate$;
     /** @deprecated use `ForceRejectAchDepositRequestCreate$outboundSchema` instead. */
     ForceRejectAchDepositRequestCreate$.outboundSchema = exports.ForceRejectAchDepositRequestCreate$outboundSchema;
 })(ForceRejectAchDepositRequestCreate$ || (exports.ForceRejectAchDepositRequestCreate$ = ForceRejectAchDepositRequestCreate$ = {}));
+function forceRejectAchDepositRequestCreateToJSON(forceRejectAchDepositRequestCreate) {
+    return JSON.stringify(exports.ForceRejectAchDepositRequestCreate$outboundSchema.parse(forceRejectAchDepositRequestCreate));
+}
+function forceRejectAchDepositRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForceRejectAchDepositRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForceRejectAchDepositRequestCreate' from JSON`);
+}
 //# sourceMappingURL=forcerejectachdepositrequestcreate.js.map

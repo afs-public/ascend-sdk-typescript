@@ -37,8 +37,19 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompressedOrder$ = exports.CompressedOrder$outboundSchema = exports.CompressedOrder$inboundSchema = exports.CompressedOrderTimeInForce$ = exports.CompressedOrderTimeInForce$outboundSchema = exports.CompressedOrderTimeInForce$inboundSchema = exports.CompressedOrderSpecialReportingInstructions$ = exports.CompressedOrderSpecialReportingInstructions$outboundSchema = exports.CompressedOrderSpecialReportingInstructions$inboundSchema = exports.CompressedOrderSide$ = exports.CompressedOrderSide$outboundSchema = exports.CompressedOrderSide$inboundSchema = exports.CompressedOrderQuantity$ = exports.CompressedOrderQuantity$outboundSchema = exports.CompressedOrderQuantity$inboundSchema = exports.CompressedOrderOrderType$ = exports.CompressedOrderOrderType$outboundSchema = exports.CompressedOrderOrderType$inboundSchema = exports.CompressedOrderOrderStatus$ = exports.CompressedOrderOrderStatus$outboundSchema = exports.CompressedOrderOrderStatus$inboundSchema = exports.CompressedOrderOrderRejectedReason$ = exports.CompressedOrderOrderRejectedReason$outboundSchema = exports.CompressedOrderOrderRejectedReason$inboundSchema = exports.CompressedOrderNotionalValue$ = exports.CompressedOrderNotionalValue$outboundSchema = exports.CompressedOrderNotionalValue$inboundSchema = exports.CompressedOrderIdentifierType$ = exports.CompressedOrderIdentifierType$outboundSchema = exports.CompressedOrderIdentifierType$inboundSchema = exports.CompressedOrderFilledQuantity$ = exports.CompressedOrderFilledQuantity$outboundSchema = exports.CompressedOrderFilledQuantity$inboundSchema = exports.CompressedOrderCumulativeNotionalValue$ = exports.CompressedOrderCumulativeNotionalValue$outboundSchema = exports.CompressedOrderCumulativeNotionalValue$inboundSchema = exports.CompressedOrderAssetType$ = exports.CompressedOrderAssetType$outboundSchema = exports.CompressedOrderAssetType$inboundSchema = exports.CompressedOrderTimeInForce = exports.CompressedOrderSpecialReportingInstructions = exports.CompressedOrderSide = exports.CompressedOrderOrderType = exports.CompressedOrderOrderStatus = exports.CompressedOrderOrderRejectedReason = exports.CompressedOrderIdentifierType = exports.CompressedOrderAssetType = void 0;
+exports.compressedOrderCumulativeNotionalValueToJSON = compressedOrderCumulativeNotionalValueToJSON;
+exports.compressedOrderCumulativeNotionalValueFromJSON = compressedOrderCumulativeNotionalValueFromJSON;
+exports.compressedOrderFilledQuantityToJSON = compressedOrderFilledQuantityToJSON;
+exports.compressedOrderFilledQuantityFromJSON = compressedOrderFilledQuantityFromJSON;
+exports.compressedOrderNotionalValueToJSON = compressedOrderNotionalValueToJSON;
+exports.compressedOrderNotionalValueFromJSON = compressedOrderNotionalValueFromJSON;
+exports.compressedOrderQuantityToJSON = compressedOrderQuantityToJSON;
+exports.compressedOrderQuantityFromJSON = compressedOrderQuantityFromJSON;
+exports.compressedOrderToJSON = compressedOrderToJSON;
+exports.compressedOrderFromJSON = compressedOrderFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const baskettradingexecutedprice_js_1 = require("./baskettradingexecutedprice.js");
 const baskettradingexecutions_js_1 = require("./baskettradingexecutions.js");
@@ -92,6 +103,7 @@ var CompressedOrderOrderRejectedReason;
     CompressedOrderOrderRejectedReason["AnotherBasketOrderForAccountHasFailedRiskChecks"] = "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS";
     CompressedOrderOrderRejectedReason["InsufficientPosition"] = "INSUFFICIENT_POSITION";
     CompressedOrderOrderRejectedReason["FailedBuyingPower"] = "FAILED_BUYING_POWER";
+    CompressedOrderOrderRejectedReason["RoundUpAmountTooSmall"] = "ROUND_UP_AMOUNT_TOO_SMALL";
 })(CompressedOrderOrderRejectedReason || (exports.CompressedOrderOrderRejectedReason = CompressedOrderOrderRejectedReason = {}));
 /**
  * The processing status of the order
@@ -104,6 +116,7 @@ var CompressedOrderOrderStatus;
     CompressedOrderOrderStatus["PartiallyFilled"] = "PARTIALLY_FILLED";
     CompressedOrderOrderStatus["Filled"] = "FILLED";
     CompressedOrderOrderStatus["Rejected"] = "REJECTED";
+    CompressedOrderOrderStatus["RemovedBeforeSubmission"] = "REMOVED_BEFORE_SUBMISSION";
 })(CompressedOrderOrderStatus || (exports.CompressedOrderOrderStatus = CompressedOrderOrderStatus = {}));
 /**
  * The execution type of this order. Only MARKET is supported.
@@ -178,6 +191,12 @@ var CompressedOrderCumulativeNotionalValue$;
     /** @deprecated use `CompressedOrderCumulativeNotionalValue$outboundSchema` instead. */
     CompressedOrderCumulativeNotionalValue$.outboundSchema = exports.CompressedOrderCumulativeNotionalValue$outboundSchema;
 })(CompressedOrderCumulativeNotionalValue$ || (exports.CompressedOrderCumulativeNotionalValue$ = CompressedOrderCumulativeNotionalValue$ = {}));
+function compressedOrderCumulativeNotionalValueToJSON(compressedOrderCumulativeNotionalValue) {
+    return JSON.stringify(exports.CompressedOrderCumulativeNotionalValue$outboundSchema.parse(compressedOrderCumulativeNotionalValue));
+}
+function compressedOrderCumulativeNotionalValueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompressedOrderCumulativeNotionalValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompressedOrderCumulativeNotionalValue' from JSON`);
+}
 /** @internal */
 exports.CompressedOrderFilledQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -197,6 +216,12 @@ var CompressedOrderFilledQuantity$;
     /** @deprecated use `CompressedOrderFilledQuantity$outboundSchema` instead. */
     CompressedOrderFilledQuantity$.outboundSchema = exports.CompressedOrderFilledQuantity$outboundSchema;
 })(CompressedOrderFilledQuantity$ || (exports.CompressedOrderFilledQuantity$ = CompressedOrderFilledQuantity$ = {}));
+function compressedOrderFilledQuantityToJSON(compressedOrderFilledQuantity) {
+    return JSON.stringify(exports.CompressedOrderFilledQuantity$outboundSchema.parse(compressedOrderFilledQuantity));
+}
+function compressedOrderFilledQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompressedOrderFilledQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompressedOrderFilledQuantity' from JSON`);
+}
 /** @internal */
 exports.CompressedOrderIdentifierType$inboundSchema = z
     .union([
@@ -238,6 +263,12 @@ var CompressedOrderNotionalValue$;
     /** @deprecated use `CompressedOrderNotionalValue$outboundSchema` instead. */
     CompressedOrderNotionalValue$.outboundSchema = exports.CompressedOrderNotionalValue$outboundSchema;
 })(CompressedOrderNotionalValue$ || (exports.CompressedOrderNotionalValue$ = CompressedOrderNotionalValue$ = {}));
+function compressedOrderNotionalValueToJSON(compressedOrderNotionalValue) {
+    return JSON.stringify(exports.CompressedOrderNotionalValue$outboundSchema.parse(compressedOrderNotionalValue));
+}
+function compressedOrderNotionalValueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompressedOrderNotionalValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompressedOrderNotionalValue' from JSON`);
+}
 /** @internal */
 exports.CompressedOrderOrderRejectedReason$inboundSchema = z
     .union([
@@ -323,6 +354,12 @@ var CompressedOrderQuantity$;
     /** @deprecated use `CompressedOrderQuantity$outboundSchema` instead. */
     CompressedOrderQuantity$.outboundSchema = exports.CompressedOrderQuantity$outboundSchema;
 })(CompressedOrderQuantity$ || (exports.CompressedOrderQuantity$ = CompressedOrderQuantity$ = {}));
+function compressedOrderQuantityToJSON(compressedOrderQuantity) {
+    return JSON.stringify(exports.CompressedOrderQuantity$outboundSchema.parse(compressedOrderQuantity));
+}
+function compressedOrderQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompressedOrderQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompressedOrderQuantity' from JSON`);
+}
 /** @internal */
 exports.CompressedOrderSide$inboundSchema = z
     .union([
@@ -495,4 +532,10 @@ var CompressedOrder$;
     /** @deprecated use `CompressedOrder$outboundSchema` instead. */
     CompressedOrder$.outboundSchema = exports.CompressedOrder$outboundSchema;
 })(CompressedOrder$ || (exports.CompressedOrder$ = CompressedOrder$ = {}));
+function compressedOrderToJSON(compressedOrder) {
+    return JSON.stringify(exports.CompressedOrder$outboundSchema.parse(compressedOrder));
+}
+function compressedOrderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompressedOrder$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompressedOrder' from JSON`);
+}
 //# sourceMappingURL=compressedorder.js.map

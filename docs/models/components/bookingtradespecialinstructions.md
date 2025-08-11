@@ -6,7 +6,7 @@
 import { BookingTradeSpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: BookingTradeSpecialInstructions =
-  BookingTradeSpecialInstructions.InternetOrder;
+  BookingTradeSpecialInstructions.MakeMarketInSecurity;
 ```
 
 ## Values

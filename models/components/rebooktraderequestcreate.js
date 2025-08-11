@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RebookTradeRequestCreate$ = exports.RebookTradeRequestCreate$outboundSchema = exports.RebookTradeRequestCreate$inboundSchema = void 0;
+exports.rebookTradeRequestCreateToJSON = rebookTradeRequestCreateToJSON;
+exports.rebookTradeRequestCreateFromJSON = rebookTradeRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const tradecreate_js_1 = require("./tradecreate.js");
 /** @internal */
 exports.RebookTradeRequestCreate$inboundSchema = z.object({
@@ -60,4 +63,10 @@ var RebookTradeRequestCreate$;
     /** @deprecated use `RebookTradeRequestCreate$outboundSchema` instead. */
     RebookTradeRequestCreate$.outboundSchema = exports.RebookTradeRequestCreate$outboundSchema;
 })(RebookTradeRequestCreate$ || (exports.RebookTradeRequestCreate$ = RebookTradeRequestCreate$ = {}));
+function rebookTradeRequestCreateToJSON(rebookTradeRequestCreate) {
+    return JSON.stringify(exports.RebookTradeRequestCreate$outboundSchema.parse(rebookTradeRequestCreate));
+}
+function rebookTradeRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookTradeRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookTradeRequestCreate' from JSON`);
+}
 //# sourceMappingURL=rebooktraderequestcreate.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type RetirementConstraintsRetrieveDistributionConstraintsRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace RetirementConstraintsRetrieveDistributionConstraintsReq
     /** @deprecated use `RetirementConstraintsRetrieveDistributionConstraintsRequest$Outbound` instead. */
     type Outbound = RetirementConstraintsRetrieveDistributionConstraintsRequest$Outbound;
 }
+export declare function retirementConstraintsRetrieveDistributionConstraintsRequestToJSON(retirementConstraintsRetrieveDistributionConstraintsRequest: RetirementConstraintsRetrieveDistributionConstraintsRequest): string;
+export declare function retirementConstraintsRetrieveDistributionConstraintsRequestFromJSON(jsonString: string): SafeParseResult<RetirementConstraintsRetrieveDistributionConstraintsRequest, SDKValidationError>;
 /** @internal */
 export declare const RetirementConstraintsRetrieveDistributionConstraintsResponse$inboundSchema: z.ZodType<RetirementConstraintsRetrieveDistributionConstraintsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace RetirementConstraintsRetrieveDistributionConstraintsRes
     /** @deprecated use `RetirementConstraintsRetrieveDistributionConstraintsResponse$Outbound` instead. */
     type Outbound = RetirementConstraintsRetrieveDistributionConstraintsResponse$Outbound;
 }
+export declare function retirementConstraintsRetrieveDistributionConstraintsResponseToJSON(retirementConstraintsRetrieveDistributionConstraintsResponse: RetirementConstraintsRetrieveDistributionConstraintsResponse): string;
+export declare function retirementConstraintsRetrieveDistributionConstraintsResponseFromJSON(jsonString: string): SafeParseResult<RetirementConstraintsRetrieveDistributionConstraintsResponse, SDKValidationError>;
 //# sourceMappingURL=retirementconstraintsretrievedistributionconstraints.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The limit price which must be greater than zero if provided. For equity orders in the USD currency, up to 2 decimal places are allowed for prices above $1 and up to 4 decimal places for prices at or below $1. For fixed income orders this is expressed as a percentage of par, which allows up to 5 decimal places in the USD currency.
  */
@@ -52,6 +54,8 @@ export declare namespace BasketTradingExecutedPricePrice$ {
     /** @deprecated use `BasketTradingExecutedPricePrice$Outbound` instead. */
     type Outbound = BasketTradingExecutedPricePrice$Outbound;
 }
+export declare function basketTradingExecutedPricePriceToJSON(basketTradingExecutedPricePrice: BasketTradingExecutedPricePrice): string;
+export declare function basketTradingExecutedPricePriceFromJSON(jsonString: string): SafeParseResult<BasketTradingExecutedPricePrice, SDKValidationError>;
 /** @internal */
 export declare const BasketTradingExecutedPriceType$inboundSchema: z.ZodType<BasketTradingExecutedPriceTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -87,4 +91,6 @@ export declare namespace BasketTradingExecutedPrice$ {
     /** @deprecated use `BasketTradingExecutedPrice$Outbound` instead. */
     type Outbound = BasketTradingExecutedPrice$Outbound;
 }
+export declare function basketTradingExecutedPriceToJSON(basketTradingExecutedPrice: BasketTradingExecutedPrice): string;
+export declare function basketTradingExecutedPriceFromJSON(jsonString: string): SafeParseResult<BasketTradingExecutedPrice, SDKValidationError>;
 //# sourceMappingURL=baskettradingexecutedprice.d.ts.map

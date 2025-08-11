@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RelatedPep$ = exports.RelatedPep$outboundSchema = exports.RelatedPep$inboundSchema = void 0;
+exports.relatedPepToJSON = relatedPepToJSON;
+exports.relatedPepFromJSON = relatedPepFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const immediatefamilymember_js_1 = require("./immediatefamilymember.js");
 /** @internal */
 exports.RelatedPep$inboundSchema = z.object({
@@ -77,4 +80,10 @@ var RelatedPep$;
     /** @deprecated use `RelatedPep$outboundSchema` instead. */
     RelatedPep$.outboundSchema = exports.RelatedPep$outboundSchema;
 })(RelatedPep$ || (exports.RelatedPep$ = RelatedPep$ = {}));
+function relatedPepToJSON(relatedPep) {
+    return JSON.stringify(exports.RelatedPep$outboundSchema.parse(relatedPep));
+}
+function relatedPepFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RelatedPep$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RelatedPep' from JSON`);
+}
 //# sourceMappingURL=relatedpep.js.map

@@ -19,6 +19,7 @@ Creates an ICT deposit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctDeposits_CreateIctDeposit" method="post" path="/transfers/v1/accounts/{account_id}/ictDeposits" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { Program } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -48,7 +49,6 @@ async function run() {
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -90,15 +90,12 @@ async function run() {
       },
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("instantCashTransferICTCreateICTDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -131,6 +128,7 @@ Gets an existing ICT deposit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctDeposits_GetIctDeposit" method="get" path="/transfers/v1/accounts/{account_id}/ictDeposits/{ictDeposit_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -149,7 +147,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.instantCashTransferICT.getIctDeposit("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -180,15 +177,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await instantCashTransferICTGetICTDeposit(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("instantCashTransferICTGetICTDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -221,6 +215,7 @@ Cancels an existing ICT deposit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctDeposits_CancelIctDeposit" method="post" path="/transfers/v1/accounts/{account_id}/ictDeposits/{ictDeposit_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -241,7 +236,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictDeposits/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -274,15 +268,12 @@ async function run() {
   const res = await instantCashTransferICTCancelICTDeposit(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictDeposits/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("instantCashTransferICTCancelICTDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -316,6 +307,7 @@ Creates an ICT withdrawal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctWithdrawals_CreateIctWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/ictWithdrawals" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { IctWithdrawalCreateProgram } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -344,7 +336,6 @@ async function run() {
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -385,15 +376,12 @@ async function run() {
       },
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("instantCashTransferICTCreateICTWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -426,6 +414,7 @@ Gets an existing ICT withdrawal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctWithdrawals_GetIctWithdrawal" method="get" path="/transfers/v1/accounts/{account_id}/ictWithdrawals/{ictWithdrawal_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -444,7 +433,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.instantCashTransferICT.getIctWithdrawal("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -475,15 +463,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await instantCashTransferICTGetICTWithdrawal(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("instantCashTransferICTGetICTWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -516,6 +501,7 @@ Cancels an existing ICT withdrawal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctWithdrawals_CancelIctWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/ictWithdrawals/{ictWithdrawal_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -536,7 +522,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictWithdrawals/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -569,15 +554,12 @@ async function run() {
   const res = await instantCashTransferICTCancelICTWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictWithdrawals/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("instantCashTransferICTCancelICTWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -611,8 +593,10 @@ Returns a signed link pointing to a recon report file for a specific ICT batch.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctReconReports_LocateIctReport" method="get" path="/transfers/v1/correspondents/{correspondent_id}/ictReconReports:locate" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+import { ProgramDateFilterProgram } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
 const apexascend = new Apexascend({
   security: {
@@ -629,9 +613,10 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.instantCashTransferICT.locateIctReport({
     correspondentId: "01H8MCDXH4HYJJAV921BDKCC83",
+    batchId: "24114.108.2b2c1.001",
+    programDateFilterProgram: ProgramDateFilterProgram.BrokerPartner,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -645,6 +630,7 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { instantCashTransferICTLocateICTReport } from "@apexfintechsolutions/ascend-sdk/funcs/instantCashTransferICTLocateICTReport.js";
+import { ProgramDateFilterProgram } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -663,16 +649,15 @@ const apexascend = new ApexascendCore({
 async function run() {
   const res = await instantCashTransferICTLocateICTReport(apexascend, {
     correspondentId: "01H8MCDXH4HYJJAV921BDKCC83",
+    batchId: "24114.108.2b2c1.001",
+    programDateFilterProgram: ProgramDateFilterProgram.BrokerPartner,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("instantCashTransferICTLocateICTReport failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

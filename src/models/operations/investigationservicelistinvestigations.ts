@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InvestigationServiceListInvestigationsRequest = {
   /**
@@ -22,6 +25,22 @@ export type InvestigationServiceListInvestigationsRequest = {
    *  ListInvestigationStatesResponse.investigation_states
    */
   filter?: string | undefined;
+  /**
+   * The order in which investigations are listed. Only one field and direction can be specified. Supported fields (followed by 'asc' or 'desc'; 'asc' is default if left blank):
+   *
+   * @remarks
+   *   - investigation_request_state
+   *   - correspondent_id
+   *   - scope
+   *   - identity_verification
+   *   - watchlist_screen
+   *   - person.given_name
+   *   - person.family_name
+   *   - entity.legal_name
+   *   - created_at
+   *   - updated_at
+   */
+  orderBy?: string | undefined;
 };
 
 export type InvestigationServiceListInvestigationsResponse = {
@@ -48,10 +67,12 @@ export const InvestigationServiceListInvestigationsRequest$inboundSchema:
     page_size: z.number().int().optional(),
     page_token: z.string().optional(),
     filter: z.string().optional(),
+    order_by: z.string().optional(),
   }).transform((v) => {
     return remap$(v, {
       "page_size": "pageSize",
       "page_token": "pageToken",
+      "order_by": "orderBy",
     });
   });
 
@@ -60,6 +81,7 @@ export type InvestigationServiceListInvestigationsRequest$Outbound = {
   page_size?: number | undefined;
   page_token?: string | undefined;
   filter?: string | undefined;
+  order_by?: string | undefined;
 };
 
 /** @internal */
@@ -72,10 +94,12 @@ export const InvestigationServiceListInvestigationsRequest$outboundSchema:
     pageSize: z.number().int().optional(),
     pageToken: z.string().optional(),
     filter: z.string().optional(),
+    orderBy: z.string().optional(),
   }).transform((v) => {
     return remap$(v, {
       pageSize: "page_size",
       pageToken: "page_token",
+      orderBy: "order_by",
     });
   });
 
@@ -92,6 +116,33 @@ export namespace InvestigationServiceListInvestigationsRequest$ {
     InvestigationServiceListInvestigationsRequest$outboundSchema;
   /** @deprecated use `InvestigationServiceListInvestigationsRequest$Outbound` instead. */
   export type Outbound = InvestigationServiceListInvestigationsRequest$Outbound;
+}
+
+export function investigationServiceListInvestigationsRequestToJSON(
+  investigationServiceListInvestigationsRequest:
+    InvestigationServiceListInvestigationsRequest,
+): string {
+  return JSON.stringify(
+    InvestigationServiceListInvestigationsRequest$outboundSchema.parse(
+      investigationServiceListInvestigationsRequest,
+    ),
+  );
+}
+
+export function investigationServiceListInvestigationsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  InvestigationServiceListInvestigationsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      InvestigationServiceListInvestigationsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'InvestigationServiceListInvestigationsRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -155,4 +206,31 @@ export namespace InvestigationServiceListInvestigationsResponse$ {
   /** @deprecated use `InvestigationServiceListInvestigationsResponse$Outbound` instead. */
   export type Outbound =
     InvestigationServiceListInvestigationsResponse$Outbound;
+}
+
+export function investigationServiceListInvestigationsResponseToJSON(
+  investigationServiceListInvestigationsResponse:
+    InvestigationServiceListInvestigationsResponse,
+): string {
+  return JSON.stringify(
+    InvestigationServiceListInvestigationsResponse$outboundSchema.parse(
+      investigationServiceListInvestigationsResponse,
+    ),
+  );
+}
+
+export function investigationServiceListInvestigationsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  InvestigationServiceListInvestigationsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      InvestigationServiceListInvestigationsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'InvestigationServiceListInvestigationsResponse' from JSON`,
+  );
 }

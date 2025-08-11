@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PushSubscriptionDelivery,
   PushSubscriptionDelivery$inboundSchema,
@@ -78,4 +81,26 @@ export namespace ListPushSubscriptionDeliveriesResponse$ {
     ListPushSubscriptionDeliveriesResponse$outboundSchema;
   /** @deprecated use `ListPushSubscriptionDeliveriesResponse$Outbound` instead. */
   export type Outbound = ListPushSubscriptionDeliveriesResponse$Outbound;
+}
+
+export function listPushSubscriptionDeliveriesResponseToJSON(
+  listPushSubscriptionDeliveriesResponse:
+    ListPushSubscriptionDeliveriesResponse,
+): string {
+  return JSON.stringify(
+    ListPushSubscriptionDeliveriesResponse$outboundSchema.parse(
+      listPushSubscriptionDeliveriesResponse,
+    ),
+  );
+}
+
+export function listPushSubscriptionDeliveriesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListPushSubscriptionDeliveriesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListPushSubscriptionDeliveriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListPushSubscriptionDeliveriesResponse' from JSON`,
+  );
 }

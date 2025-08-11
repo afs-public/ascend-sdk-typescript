@@ -8,7 +8,7 @@ IRS form type.
 import { PartyLegalNaturalPersonIrsFormType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: PartyLegalNaturalPersonIrsFormType =
-  PartyLegalNaturalPersonIrsFormType.W8Ben;
+  PartyLegalNaturalPersonIrsFormType.W9;
 ```
 
 ## Values

@@ -1,7 +1,15 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
- * Tax id type for entities (e.g. ein, lei, etc.))
+ * The entity tax id type, one of:
+ *
+ * @remarks
+ * - `ID_ENTITY_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `EIN` - Employer Identification Number (US government issued, 9 digits, XX-XXXXXXX).
+ * - `LEI` - Legal Entity Identifier (20 digit alphanumeric).
+ * - `DUNS` - Dun and Bradstreet number.
  */
 export declare enum EntityIdentificationType {
     IdEntityTypeUnspecified = "ID_ENTITY_TYPE_UNSPECIFIED",
@@ -10,7 +18,13 @@ export declare enum EntityIdentificationType {
     Duns = "DUNS"
 }
 /**
- * Tax id type for entities (e.g. ein, lei, etc.))
+ * The entity tax id type, one of:
+ *
+ * @remarks
+ * - `ID_ENTITY_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `EIN` - Employer Identification Number (US government issued, 9 digits, XX-XXXXXXX).
+ * - `LEI` - Legal Entity Identifier (20 digit alphanumeric).
+ * - `DUNS` - Dun and Bradstreet number.
  */
 export type EntityIdentificationTypeOpen = OpenEnum<typeof EntityIdentificationType>;
 /**
@@ -30,7 +44,13 @@ export type EntityIdentification = {
      */
     regionCode?: string | undefined;
     /**
-     * Tax id type for entities (e.g. ein, lei, etc.))
+     * The entity tax id type, one of:
+     *
+     * @remarks
+     * - `ID_ENTITY_TYPE_UNSPECIFIED` - Default/Null value.
+     * - `EIN` - Employer Identification Number (US government issued, 9 digits, XX-XXXXXXX).
+     * - `LEI` - Legal Entity Identifier (20 digit alphanumeric).
+     * - `DUNS` - Dun and Bradstreet number.
      */
     type?: EntityIdentificationTypeOpen | undefined;
     /**
@@ -76,4 +96,6 @@ export declare namespace EntityIdentification$ {
     /** @deprecated use `EntityIdentification$Outbound` instead. */
     type Outbound = EntityIdentification$Outbound;
 }
+export declare function entityIdentificationToJSON(entityIdentification: EntityIdentification): string;
+export declare function entityIdentificationFromJSON(jsonString: string): SafeParseResult<EntityIdentification, SDKValidationError>;
 //# sourceMappingURL=entityidentification.d.ts.map

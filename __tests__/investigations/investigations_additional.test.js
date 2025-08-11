@@ -53,9 +53,8 @@ const apex_investigation_id = "01JP8EHZ3CJKCTMHKTT4FZ51HC";
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Test Investigations Investigations Get Identify Verification", async () => {
-    var _a;
     const inv = await sdk_1.sdk.investigations.getInvestigation(apex_investigation_id);
-    const results = (_a = inv === null || inv === void 0 ? void 0 : inv.investigation) === null || _a === void 0 ? void 0 : _a.identityVerificationResults;
+    const results = inv?.investigation?.identityVerificationResults;
     if (results == undefined) {
         throw new Error("Failed to get identity verification results");
     }
@@ -63,10 +62,10 @@ const apex_investigation_id = "01JP8EHZ3CJKCTMHKTT4FZ51HC";
         throw new Error("Failed to get identity verification results or results array is empty");
     }
     const first_id_result = results[0];
-    if (!(first_id_result === null || first_id_result === void 0 ? void 0 : first_id_result.customerIdentificationId)) {
+    if (!first_id_result?.customerIdentificationId) {
         throw new Error("Customer Identification ID is missing in the first identity verification result");
     }
-    const result = await sdk_1.sdk.investigations.getCustomerIdentification(process.env["CORRESPONDENT_ID"] || "", (first_id_result === null || first_id_result === void 0 ? void 0 : first_id_result.customerIdentificationId) || "");
+    const result = await sdk_1.sdk.investigations.getCustomerIdentification(process.env["CORRESPONDENT_ID"] || "", first_id_result?.customerIdentificationId || "");
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 //# sourceMappingURL=investigations_additional.test.js.map

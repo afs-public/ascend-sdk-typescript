@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to force rejection of an existing ACH withdrawal that is pending review. FOR TESTING ONLY!
  */
@@ -33,4 +35,6 @@ export declare namespace ForceRejectAchWithdrawalRequestCreate$ {
     /** @deprecated use `ForceRejectAchWithdrawalRequestCreate$Outbound` instead. */
     type Outbound = ForceRejectAchWithdrawalRequestCreate$Outbound;
 }
+export declare function forceRejectAchWithdrawalRequestCreateToJSON(forceRejectAchWithdrawalRequestCreate: ForceRejectAchWithdrawalRequestCreate): string;
+export declare function forceRejectAchWithdrawalRequestCreateFromJSON(jsonString: string): SafeParseResult<ForceRejectAchWithdrawalRequestCreate, SDKValidationError>;
 //# sourceMappingURL=forcerejectachwithdrawalrequestcreate.d.ts.map

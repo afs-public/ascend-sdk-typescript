@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EddAccountEnrollmentMetadataCreate,
   EddAccountEnrollmentMetadataCreate$inboundSchema,
@@ -183,4 +186,25 @@ export namespace CorporationEnrollmentMetadataCreate$ {
     CorporationEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `CorporationEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = CorporationEnrollmentMetadataCreate$Outbound;
+}
+
+export function corporationEnrollmentMetadataCreateToJSON(
+  corporationEnrollmentMetadataCreate: CorporationEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    CorporationEnrollmentMetadataCreate$outboundSchema.parse(
+      corporationEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function corporationEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CorporationEnrollmentMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CorporationEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CorporationEnrollmentMetadataCreate' from JSON`,
+  );
 }

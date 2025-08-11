@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to reuse a bank relationship.
  */
@@ -33,4 +35,6 @@ export declare namespace ReuseBankRelationshipRequestCreate$ {
     /** @deprecated use `ReuseBankRelationshipRequestCreate$Outbound` instead. */
     type Outbound = ReuseBankRelationshipRequestCreate$Outbound;
 }
+export declare function reuseBankRelationshipRequestCreateToJSON(reuseBankRelationshipRequestCreate: ReuseBankRelationshipRequestCreate): string;
+export declare function reuseBankRelationshipRequestCreateFromJSON(jsonString: string): SafeParseResult<ReuseBankRelationshipRequestCreate, SDKValidationError>;
 //# sourceMappingURL=reusebankrelationshiprequestcreate.d.ts.map

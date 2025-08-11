@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestigationServiceGetInvestigationResponse$ = exports.InvestigationServiceGetInvestigationResponse$outboundSchema = exports.InvestigationServiceGetInvestigationResponse$inboundSchema = exports.InvestigationServiceGetInvestigationRequest$ = exports.InvestigationServiceGetInvestigationRequest$outboundSchema = exports.InvestigationServiceGetInvestigationRequest$inboundSchema = void 0;
+exports.investigationServiceGetInvestigationRequestToJSON = investigationServiceGetInvestigationRequestToJSON;
+exports.investigationServiceGetInvestigationRequestFromJSON = investigationServiceGetInvestigationRequestFromJSON;
+exports.investigationServiceGetInvestigationResponseToJSON = investigationServiceGetInvestigationResponseToJSON;
+exports.investigationServiceGetInvestigationResponseFromJSON = investigationServiceGetInvestigationResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.InvestigationServiceGetInvestigationRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var InvestigationServiceGetInvestigationRequest$;
     /** @deprecated use `InvestigationServiceGetInvestigationRequest$outboundSchema` instead. */
     InvestigationServiceGetInvestigationRequest$.outboundSchema = exports.InvestigationServiceGetInvestigationRequest$outboundSchema;
 })(InvestigationServiceGetInvestigationRequest$ || (exports.InvestigationServiceGetInvestigationRequest$ = InvestigationServiceGetInvestigationRequest$ = {}));
+function investigationServiceGetInvestigationRequestToJSON(investigationServiceGetInvestigationRequest) {
+    return JSON.stringify(exports.InvestigationServiceGetInvestigationRequest$outboundSchema.parse(investigationServiceGetInvestigationRequest));
+}
+function investigationServiceGetInvestigationRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationServiceGetInvestigationRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationServiceGetInvestigationRequest' from JSON`);
+}
 /** @internal */
 exports.InvestigationServiceGetInvestigationResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var InvestigationServiceGetInvestigationResponse$;
     /** @deprecated use `InvestigationServiceGetInvestigationResponse$outboundSchema` instead. */
     InvestigationServiceGetInvestigationResponse$.outboundSchema = exports.InvestigationServiceGetInvestigationResponse$outboundSchema;
 })(InvestigationServiceGetInvestigationResponse$ || (exports.InvestigationServiceGetInvestigationResponse$ = InvestigationServiceGetInvestigationResponse$ = {}));
+function investigationServiceGetInvestigationResponseToJSON(investigationServiceGetInvestigationResponse) {
+    return JSON.stringify(exports.InvestigationServiceGetInvestigationResponse$outboundSchema.parse(investigationServiceGetInvestigationResponse));
+}
+function investigationServiceGetInvestigationResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationServiceGetInvestigationResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationServiceGetInvestigationResponse' from JSON`);
+}
 //# sourceMappingURL=investigationservicegetinvestigation.js.map

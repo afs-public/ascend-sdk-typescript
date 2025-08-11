@@ -37,11 +37,21 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WatchlistMatchUpdate$ = exports.WatchlistMatchUpdate$outboundSchema = exports.WatchlistMatchUpdate$inboundSchema = exports.WatchlistMatchUpdateMatchState$ = exports.WatchlistMatchUpdateMatchState$outboundSchema = exports.WatchlistMatchUpdateMatchState$inboundSchema = exports.WatchlistMatchUpdateMatchState = void 0;
+exports.watchlistMatchUpdateToJSON = watchlistMatchUpdateToJSON;
+exports.watchlistMatchUpdateFromJSON = watchlistMatchUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 var WatchlistMatchUpdateMatchState;
 (function (WatchlistMatchUpdateMatchState) {
@@ -112,4 +122,10 @@ var WatchlistMatchUpdate$;
     /** @deprecated use `WatchlistMatchUpdate$outboundSchema` instead. */
     WatchlistMatchUpdate$.outboundSchema = exports.WatchlistMatchUpdate$outboundSchema;
 })(WatchlistMatchUpdate$ || (exports.WatchlistMatchUpdate$ = WatchlistMatchUpdate$ = {}));
+function watchlistMatchUpdateToJSON(watchlistMatchUpdate) {
+    return JSON.stringify(exports.WatchlistMatchUpdate$outboundSchema.parse(watchlistMatchUpdate));
+}
+function watchlistMatchUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WatchlistMatchUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WatchlistMatchUpdate' from JSON`);
+}
 //# sourceMappingURL=watchlistmatchupdate.js.map

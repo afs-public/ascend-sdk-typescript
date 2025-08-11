@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains).
  *
@@ -104,4 +106,6 @@ export declare namespace PostalAddressUpdate$ {
     /** @deprecated use `PostalAddressUpdate$Outbound` instead. */
     type Outbound = PostalAddressUpdate$Outbound;
 }
+export declare function postalAddressUpdateToJSON(postalAddressUpdate: PostalAddressUpdate): string;
+export declare function postalAddressUpdateFromJSON(jsonString: string): SafeParseResult<PostalAddressUpdate, SDKValidationError>;
 //# sourceMappingURL=postaladdressupdate.d.ts.map

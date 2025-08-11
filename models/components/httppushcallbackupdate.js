@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HttpPushCallbackUpdate$ = exports.HttpPushCallbackUpdate$outboundSchema = exports.HttpPushCallbackUpdate$inboundSchema = void 0;
+exports.httpPushCallbackUpdateToJSON = httpPushCallbackUpdateToJSON;
+exports.httpPushCallbackUpdateFromJSON = httpPushCallbackUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.HttpPushCallbackUpdate$inboundSchema = z.object({
     client_secret: z.string().optional(),
@@ -72,4 +75,10 @@ var HttpPushCallbackUpdate$;
     /** @deprecated use `HttpPushCallbackUpdate$outboundSchema` instead. */
     HttpPushCallbackUpdate$.outboundSchema = exports.HttpPushCallbackUpdate$outboundSchema;
 })(HttpPushCallbackUpdate$ || (exports.HttpPushCallbackUpdate$ = HttpPushCallbackUpdate$ = {}));
+function httpPushCallbackUpdateToJSON(httpPushCallbackUpdate) {
+    return JSON.stringify(exports.HttpPushCallbackUpdate$outboundSchema.parse(httpPushCallbackUpdate));
+}
+function httpPushCallbackUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.HttpPushCallbackUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'HttpPushCallbackUpdate' from JSON`);
+}
 //# sourceMappingURL=httppushcallbackupdate.js.map

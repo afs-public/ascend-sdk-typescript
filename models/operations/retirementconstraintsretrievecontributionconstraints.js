@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetirementConstraintsRetrieveContributionConstraintsResponse$ = exports.RetirementConstraintsRetrieveContributionConstraintsResponse$outboundSchema = exports.RetirementConstraintsRetrieveContributionConstraintsResponse$inboundSchema = exports.RetirementConstraintsRetrieveContributionConstraintsRequest$ = exports.RetirementConstraintsRetrieveContributionConstraintsRequest$outboundSchema = exports.RetirementConstraintsRetrieveContributionConstraintsRequest$inboundSchema = void 0;
+exports.retirementConstraintsRetrieveContributionConstraintsRequestToJSON = retirementConstraintsRetrieveContributionConstraintsRequestToJSON;
+exports.retirementConstraintsRetrieveContributionConstraintsRequestFromJSON = retirementConstraintsRetrieveContributionConstraintsRequestFromJSON;
+exports.retirementConstraintsRetrieveContributionConstraintsResponseToJSON = retirementConstraintsRetrieveContributionConstraintsResponseToJSON;
+exports.retirementConstraintsRetrieveContributionConstraintsResponseFromJSON = retirementConstraintsRetrieveContributionConstraintsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.RetirementConstraintsRetrieveContributionConstraintsRequest$inboundSchema = z.object({
@@ -71,6 +76,14 @@ var RetirementConstraintsRetrieveContributionConstraintsRequest$;
     /** @deprecated use `RetirementConstraintsRetrieveContributionConstraintsRequest$outboundSchema` instead. */
     RetirementConstraintsRetrieveContributionConstraintsRequest$.outboundSchema = exports.RetirementConstraintsRetrieveContributionConstraintsRequest$outboundSchema;
 })(RetirementConstraintsRetrieveContributionConstraintsRequest$ || (exports.RetirementConstraintsRetrieveContributionConstraintsRequest$ = RetirementConstraintsRetrieveContributionConstraintsRequest$ = {}));
+function retirementConstraintsRetrieveContributionConstraintsRequestToJSON(retirementConstraintsRetrieveContributionConstraintsRequest) {
+    return JSON.stringify(exports.RetirementConstraintsRetrieveContributionConstraintsRequest$outboundSchema
+        .parse(retirementConstraintsRetrieveContributionConstraintsRequest));
+}
+function retirementConstraintsRetrieveContributionConstraintsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementConstraintsRetrieveContributionConstraintsRequest$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'RetirementConstraintsRetrieveContributionConstraintsRequest' from JSON`);
+}
 /** @internal */
 exports.RetirementConstraintsRetrieveContributionConstraintsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +121,12 @@ var RetirementConstraintsRetrieveContributionConstraintsResponse$;
     /** @deprecated use `RetirementConstraintsRetrieveContributionConstraintsResponse$outboundSchema` instead. */
     RetirementConstraintsRetrieveContributionConstraintsResponse$.outboundSchema = exports.RetirementConstraintsRetrieveContributionConstraintsResponse$outboundSchema;
 })(RetirementConstraintsRetrieveContributionConstraintsResponse$ || (exports.RetirementConstraintsRetrieveContributionConstraintsResponse$ = RetirementConstraintsRetrieveContributionConstraintsResponse$ = {}));
+function retirementConstraintsRetrieveContributionConstraintsResponseToJSON(retirementConstraintsRetrieveContributionConstraintsResponse) {
+    return JSON.stringify(exports.RetirementConstraintsRetrieveContributionConstraintsResponse$outboundSchema
+        .parse(retirementConstraintsRetrieveContributionConstraintsResponse));
+}
+function retirementConstraintsRetrieveContributionConstraintsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementConstraintsRetrieveContributionConstraintsResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'RetirementConstraintsRetrieveContributionConstraintsResponse' from JSON`);
+}
 //# sourceMappingURL=retirementconstraintsretrievecontributionconstraints.js.map

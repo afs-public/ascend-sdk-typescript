@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositSchedulesCancelAchDepositScheduleResponse$ = exports.AchDepositSchedulesCancelAchDepositScheduleResponse$outboundSchema = exports.AchDepositSchedulesCancelAchDepositScheduleResponse$inboundSchema = exports.AchDepositSchedulesCancelAchDepositScheduleRequest$ = exports.AchDepositSchedulesCancelAchDepositScheduleRequest$outboundSchema = exports.AchDepositSchedulesCancelAchDepositScheduleRequest$inboundSchema = void 0;
+exports.achDepositSchedulesCancelAchDepositScheduleRequestToJSON = achDepositSchedulesCancelAchDepositScheduleRequestToJSON;
+exports.achDepositSchedulesCancelAchDepositScheduleRequestFromJSON = achDepositSchedulesCancelAchDepositScheduleRequestFromJSON;
+exports.achDepositSchedulesCancelAchDepositScheduleResponseToJSON = achDepositSchedulesCancelAchDepositScheduleResponseToJSON;
+exports.achDepositSchedulesCancelAchDepositScheduleResponseFromJSON = achDepositSchedulesCancelAchDepositScheduleResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AchDepositSchedulesCancelAchDepositScheduleRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AchDepositSchedulesCancelAchDepositScheduleRequest$;
     /** @deprecated use `AchDepositSchedulesCancelAchDepositScheduleRequest$outboundSchema` instead. */
     AchDepositSchedulesCancelAchDepositScheduleRequest$.outboundSchema = exports.AchDepositSchedulesCancelAchDepositScheduleRequest$outboundSchema;
 })(AchDepositSchedulesCancelAchDepositScheduleRequest$ || (exports.AchDepositSchedulesCancelAchDepositScheduleRequest$ = AchDepositSchedulesCancelAchDepositScheduleRequest$ = {}));
+function achDepositSchedulesCancelAchDepositScheduleRequestToJSON(achDepositSchedulesCancelAchDepositScheduleRequest) {
+    return JSON.stringify(exports.AchDepositSchedulesCancelAchDepositScheduleRequest$outboundSchema.parse(achDepositSchedulesCancelAchDepositScheduleRequest));
+}
+function achDepositSchedulesCancelAchDepositScheduleRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositSchedulesCancelAchDepositScheduleRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositSchedulesCancelAchDepositScheduleRequest' from JSON`);
+}
 /** @internal */
 exports.AchDepositSchedulesCancelAchDepositScheduleResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var AchDepositSchedulesCancelAchDepositScheduleResponse$;
     /** @deprecated use `AchDepositSchedulesCancelAchDepositScheduleResponse$outboundSchema` instead. */
     AchDepositSchedulesCancelAchDepositScheduleResponse$.outboundSchema = exports.AchDepositSchedulesCancelAchDepositScheduleResponse$outboundSchema;
 })(AchDepositSchedulesCancelAchDepositScheduleResponse$ || (exports.AchDepositSchedulesCancelAchDepositScheduleResponse$ = AchDepositSchedulesCancelAchDepositScheduleResponse$ = {}));
+function achDepositSchedulesCancelAchDepositScheduleResponseToJSON(achDepositSchedulesCancelAchDepositScheduleResponse) {
+    return JSON.stringify(exports.AchDepositSchedulesCancelAchDepositScheduleResponse$outboundSchema.parse(achDepositSchedulesCancelAchDepositScheduleResponse));
+}
+function achDepositSchedulesCancelAchDepositScheduleResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositSchedulesCancelAchDepositScheduleResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositSchedulesCancelAchDepositScheduleResponse' from JSON`);
+}
 //# sourceMappingURL=achdepositschedulescancelachdepositschedule.js.map

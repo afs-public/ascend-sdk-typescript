@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { RetrieveFixedIncomeMarksResponseAssetMark, RetrieveFixedIncomeMarksResponseAssetMark$Outbound } from "./retrievefixedincomemarksresponseassetmark.js";
 /**
  * List of objects with the most recently observed mark per security
@@ -29,4 +31,6 @@ export declare namespace RetrieveFixedIncomeMarksResponse$ {
     /** @deprecated use `RetrieveFixedIncomeMarksResponse$Outbound` instead. */
     type Outbound = RetrieveFixedIncomeMarksResponse$Outbound;
 }
+export declare function retrieveFixedIncomeMarksResponseToJSON(retrieveFixedIncomeMarksResponse: RetrieveFixedIncomeMarksResponse): string;
+export declare function retrieveFixedIncomeMarksResponseFromJSON(jsonString: string): SafeParseResult<RetrieveFixedIncomeMarksResponse, SDKValidationError>;
 //# sourceMappingURL=retrievefixedincomemarksresponse.d.ts.map

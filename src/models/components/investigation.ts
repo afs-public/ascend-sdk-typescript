@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuditTrail,
   AuditTrail$inboundSchema,
@@ -157,7 +160,16 @@ export type Entity = {
 };
 
 /**
- * Indicates the current state of identity verification
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 export enum IdentityVerification {
   ScreenStateUnspecified = "SCREEN_STATE_UNSPECIFIED",
@@ -169,12 +181,26 @@ export enum IdentityVerification {
   OutOfScope = "OUT_OF_SCOPE",
 }
 /**
- * Indicates the current state of identity verification
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 export type IdentityVerificationOpen = OpenEnum<typeof IdentityVerification>;
 
 /**
- * Used to determine who is responsible for running identity verification checks
+ * Used to determine who is responsible for running identity verification checks, one of:
+ *
+ * @remarks
+ * - `IDENTITY_VERIFICATION_SCOPE_UNSPECIFIED` - Default/Null value.
+ * - `PERFORMED_BY_APEX` - Run CIP and CDD checks.
+ * - `PROVIDED_BY_CLIENT` - Run CDD checks with CIP provided in request.
  */
 export enum IdentityVerificationScope {
   IdentityVerificationScopeUnspecified =
@@ -183,14 +209,24 @@ export enum IdentityVerificationScope {
   ProvidedByClient = "PROVIDED_BY_CLIENT",
 }
 /**
- * Used to determine who is responsible for running identity verification checks
+ * Used to determine who is responsible for running identity verification checks, one of:
+ *
+ * @remarks
+ * - `IDENTITY_VERIFICATION_SCOPE_UNSPECIFIED` - Default/Null value.
+ * - `PERFORMED_BY_APEX` - Run CIP and CDD checks.
+ * - `PROVIDED_BY_CLIENT` - Run CDD checks with CIP provided in request.
  */
 export type IdentityVerificationScopeOpen = OpenEnum<
   typeof IdentityVerificationScope
 >;
 
 /**
- * Current state of investigation request
+ * The state of an investigation request, one of:
+ *
+ * @remarks
+ * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+ * - `OPEN` - The investigation request is open.
+ * - `CLOSED` - The investigation request is closed.
  */
 export enum InvestigationRequestState {
   InvestigationRequestStateUnspecified =
@@ -199,7 +235,12 @@ export enum InvestigationRequestState {
   Closed = "CLOSED",
 }
 /**
- * Current state of investigation request
+ * The state of an investigation request, one of:
+ *
+ * @remarks
+ * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+ * - `OPEN` - The investigation request is open.
+ * - `CLOSED` - The investigation request is closed.
  */
 export type InvestigationRequestStateOpen = OpenEnum<
   typeof InvestigationRequestState
@@ -292,7 +333,15 @@ export type InvestigationPersonLegalAddress = {
 };
 
 /**
- * Suffix of the person's name
+ * The name suffix for individuals, one of:
+ *
+ * @remarks
+ * - `NAME_SUFFIX_UNSPECIFIED` - Default/Null value.
+ * - `SR` - Senior.
+ * - `JR` - Junior.
+ * - `III` - The third.
+ * - `IV` - The fourth.
+ * - `V` - The fifth.
  */
 export enum InvestigationNameSuffix {
   NameSuffixUnspecified = "NAME_SUFFIX_UNSPECIFIED",
@@ -303,7 +352,15 @@ export enum InvestigationNameSuffix {
   V = "V",
 }
 /**
- * Suffix of the person's name
+ * The name suffix for individuals, one of:
+ *
+ * @remarks
+ * - `NAME_SUFFIX_UNSPECIFIED` - Default/Null value.
+ * - `SR` - Senior.
+ * - `JR` - Junior.
+ * - `III` - The third.
+ * - `IV` - The fourth.
+ * - `V` - The fifth.
  */
 export type InvestigationNameSuffixOpen = OpenEnum<
   typeof InvestigationNameSuffix
@@ -422,7 +479,15 @@ export type Person = {
    */
   middleNames?: string | undefined;
   /**
-   * Suffix of the person's name
+   * The name suffix for individuals, one of:
+   *
+   * @remarks
+   * - `NAME_SUFFIX_UNSPECIFIED` - Default/Null value.
+   * - `SR` - Senior.
+   * - `JR` - Junior.
+   * - `III` - The third.
+   * - `IV` - The fourth.
+   * - `V` - The fifth.
    */
   nameSuffix?: InvestigationNameSuffixOpen | undefined;
   /**
@@ -439,7 +504,16 @@ export type Person = {
 };
 
 /**
- * Indicates the current state of the watchlist screen
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 export enum WatchlistScreen {
   ScreenStateUnspecified = "SCREEN_STATE_UNSPECIFIED",
@@ -451,7 +525,16 @@ export enum WatchlistScreen {
   OutOfScope = "OUT_OF_SCOPE",
 }
 /**
- * Indicates the current state of the watchlist screen
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 export type WatchlistScreenOpen = OpenEnum<typeof WatchlistScreen>;
 
@@ -463,6 +546,10 @@ export type Investigation = {
    * Audit trail of an investigation
    */
   auditTrail?: Array<AuditTrail> | undefined;
+  /**
+   * A unique identifier referencing a client The client ID serves as the unique identifier for the apex client positioned above the correspondent within the apex client configurator hierarchy. Moving forward, the account service will internally assign the client ID for all investigations.
+   */
+  clientId?: string | undefined;
   /**
    * A unique identifier referencing a Correspondent
    */
@@ -476,7 +563,16 @@ export type Investigation = {
    */
   entity?: Entity | null | undefined;
   /**
-   * Indicates the current state of identity verification
+   * The screen state of one screening within an investigation, one of:
+   *
+   * @remarks
+   * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+   * - `PENDING` - Screen result is pending.
+   * - `PASSED` - Screen result has passed.
+   * - `FAILED` - Screen result has failed.
+   * - `NEEDS_REVIEW` - Screen result needs manual review.
+   * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+   * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
    */
   identityVerification?: IdentityVerificationOpen | undefined;
   /**
@@ -484,11 +580,21 @@ export type Investigation = {
    */
   identityVerificationResults?: Array<IdentityVerificationResult> | undefined;
   /**
-   * Used to determine who is responsible for running identity verification checks
+   * Used to determine who is responsible for running identity verification checks, one of:
+   *
+   * @remarks
+   * - `IDENTITY_VERIFICATION_SCOPE_UNSPECIFIED` - Default/Null value.
+   * - `PERFORMED_BY_APEX` - Run CIP and CDD checks.
+   * - `PROVIDED_BY_CLIENT` - Run CDD checks with CIP provided in request.
    */
   identityVerificationScope?: IdentityVerificationScopeOpen | undefined;
   /**
-   * Current state of investigation request
+   * The state of an investigation request, one of:
+   *
+   * @remarks
+   * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+   * - `OPEN` - The investigation request is open.
+   * - `CLOSED` - The investigation request is closed.
    */
   investigationRequestState?: InvestigationRequestStateOpen | undefined;
   /**
@@ -508,7 +614,16 @@ export type Investigation = {
    */
   watchlistMatches?: Array<WatchlistMatch> | undefined;
   /**
-   * Indicates the current state of the watchlist screen
+   * The screen state of one screening within an investigation, one of:
+   *
+   * @remarks
+   * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+   * - `PENDING` - Screen result is pending.
+   * - `PASSED` - Screen result has passed.
+   * - `FAILED` - Screen result has failed.
+   * - `NEEDS_REVIEW` - Screen result needs manual review.
+   * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+   * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
    */
   watchlistScreen?: WatchlistScreenOpen | undefined;
 };
@@ -597,6 +712,24 @@ export namespace InvestigationLegalAddress$ {
   export type Outbound = InvestigationLegalAddress$Outbound;
 }
 
+export function investigationLegalAddressToJSON(
+  investigationLegalAddress: InvestigationLegalAddress,
+): string {
+  return JSON.stringify(
+    InvestigationLegalAddress$outboundSchema.parse(investigationLegalAddress),
+  );
+}
+
+export function investigationLegalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestigationLegalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestigationLegalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestigationLegalAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const Entity$inboundSchema: z.ZodType<Entity, z.ZodTypeDef, unknown> = z
   .object({
@@ -678,6 +811,20 @@ export namespace Entity$ {
   export const outboundSchema = Entity$outboundSchema;
   /** @deprecated use `Entity$Outbound` instead. */
   export type Outbound = Entity$Outbound;
+}
+
+export function entityToJSON(entity: Entity): string {
+  return JSON.stringify(Entity$outboundSchema.parse(entity));
+}
+
+export function entityFromJSON(
+  jsonString: string,
+): SafeParseResult<Entity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Entity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Entity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -818,6 +965,24 @@ export namespace InvestigationBirthDate$ {
   export type Outbound = InvestigationBirthDate$Outbound;
 }
 
+export function investigationBirthDateToJSON(
+  investigationBirthDate: InvestigationBirthDate,
+): string {
+  return JSON.stringify(
+    InvestigationBirthDate$outboundSchema.parse(investigationBirthDate),
+  );
+}
+
+export function investigationBirthDateFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestigationBirthDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestigationBirthDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestigationBirthDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const InvestigationPersonLegalAddress$inboundSchema: z.ZodType<
   InvestigationPersonLegalAddress,
@@ -902,6 +1067,26 @@ export namespace InvestigationPersonLegalAddress$ {
   export type Outbound = InvestigationPersonLegalAddress$Outbound;
 }
 
+export function investigationPersonLegalAddressToJSON(
+  investigationPersonLegalAddress: InvestigationPersonLegalAddress,
+): string {
+  return JSON.stringify(
+    InvestigationPersonLegalAddress$outboundSchema.parse(
+      investigationPersonLegalAddress,
+    ),
+  );
+}
+
+export function investigationPersonLegalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestigationPersonLegalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestigationPersonLegalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestigationPersonLegalAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const InvestigationNameSuffix$inboundSchema: z.ZodType<
   InvestigationNameSuffixOpen,
@@ -974,6 +1159,24 @@ export namespace InvestigationExecutionDate$ {
   export const outboundSchema = InvestigationExecutionDate$outboundSchema;
   /** @deprecated use `InvestigationExecutionDate$Outbound` instead. */
   export type Outbound = InvestigationExecutionDate$Outbound;
+}
+
+export function investigationExecutionDateToJSON(
+  investigationExecutionDate: InvestigationExecutionDate,
+): string {
+  return JSON.stringify(
+    InvestigationExecutionDate$outboundSchema.parse(investigationExecutionDate),
+  );
+}
+
+export function investigationExecutionDateFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestigationExecutionDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestigationExecutionDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestigationExecutionDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1065,6 +1268,26 @@ export namespace ProvidedIdentityVerification$ {
   export const outboundSchema = ProvidedIdentityVerification$outboundSchema;
   /** @deprecated use `ProvidedIdentityVerification$Outbound` instead. */
   export type Outbound = ProvidedIdentityVerification$Outbound;
+}
+
+export function providedIdentityVerificationToJSON(
+  providedIdentityVerification: ProvidedIdentityVerification,
+): string {
+  return JSON.stringify(
+    ProvidedIdentityVerification$outboundSchema.parse(
+      providedIdentityVerification,
+    ),
+  );
+}
+
+export function providedIdentityVerificationFromJSON(
+  jsonString: string,
+): SafeParseResult<ProvidedIdentityVerification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProvidedIdentityVerification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProvidedIdentityVerification' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1184,6 +1407,20 @@ export namespace Person$ {
   export type Outbound = Person$Outbound;
 }
 
+export function personToJSON(person: Person): string {
+  return JSON.stringify(Person$outboundSchema.parse(person));
+}
+
+export function personFromJSON(
+  jsonString: string,
+): SafeParseResult<Person, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Person$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Person' from JSON`,
+  );
+}
+
 /** @internal */
 export const WatchlistScreen$inboundSchema: z.ZodType<
   WatchlistScreenOpen,
@@ -1223,6 +1460,7 @@ export const Investigation$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   audit_trail: z.array(AuditTrail$inboundSchema).optional(),
+  client_id: z.string().optional(),
   correspondent_id: z.string().optional(),
   create_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -1246,6 +1484,7 @@ export const Investigation$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "audit_trail": "auditTrail",
+    "client_id": "clientId",
     "correspondent_id": "correspondentId",
     "create_time": "createTime",
     "identity_verification": "identityVerification",
@@ -1261,6 +1500,7 @@ export const Investigation$inboundSchema: z.ZodType<
 /** @internal */
 export type Investigation$Outbound = {
   audit_trail?: Array<AuditTrail$Outbound> | undefined;
+  client_id?: string | undefined;
   correspondent_id?: string | undefined;
   create_time?: string | null | undefined;
   entity?: Entity$Outbound | null | undefined;
@@ -1284,6 +1524,7 @@ export const Investigation$outboundSchema: z.ZodType<
   Investigation
 > = z.object({
   auditTrail: z.array(AuditTrail$outboundSchema).optional(),
+  clientId: z.string().optional(),
   correspondentId: z.string().optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   entity: z.nullable(z.lazy(() => Entity$outboundSchema)).optional(),
@@ -1303,6 +1544,7 @@ export const Investigation$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     auditTrail: "audit_trail",
+    clientId: "client_id",
     correspondentId: "correspondent_id",
     createTime: "create_time",
     identityVerification: "identity_verification",
@@ -1326,4 +1568,18 @@ export namespace Investigation$ {
   export const outboundSchema = Investigation$outboundSchema;
   /** @deprecated use `Investigation$Outbound` instead. */
   export type Outbound = Investigation$Outbound;
+}
+
+export function investigationToJSON(investigation: Investigation): string {
+  return JSON.stringify(Investigation$outboundSchema.parse(investigation));
+}
+
+export function investigationFromJSON(
+  jsonString: string,
+): SafeParseResult<Investigation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Investigation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Investigation' from JSON`,
+  );
 }

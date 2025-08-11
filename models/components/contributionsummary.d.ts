@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The max retirement contribution that can be made for the tax year, inclusive of catch-up contributions. Value is dependent on the account's registration type and account holder's age
  */
@@ -84,6 +86,8 @@ export declare namespace ContributionLimit$ {
     /** @deprecated use `ContributionLimit$Outbound` instead. */
     type Outbound = ContributionLimit$Outbound;
 }
+export declare function contributionLimitToJSON(contributionLimit: ContributionLimit): string;
+export declare function contributionLimitFromJSON(jsonString: string): SafeParseResult<ContributionLimit, SDKValidationError>;
 /** @internal */
 export declare const RegularAmount$inboundSchema: z.ZodType<RegularAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -104,6 +108,8 @@ export declare namespace RegularAmount$ {
     /** @deprecated use `RegularAmount$Outbound` instead. */
     type Outbound = RegularAmount$Outbound;
 }
+export declare function regularAmountToJSON(regularAmount: RegularAmount): string;
+export declare function regularAmountFromJSON(jsonString: string): SafeParseResult<RegularAmount, SDKValidationError>;
 /** @internal */
 export declare const RemainingContributionAllowed$inboundSchema: z.ZodType<RemainingContributionAllowed, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -124,6 +130,8 @@ export declare namespace RemainingContributionAllowed$ {
     /** @deprecated use `RemainingContributionAllowed$Outbound` instead. */
     type Outbound = RemainingContributionAllowed$Outbound;
 }
+export declare function remainingContributionAllowedToJSON(remainingContributionAllowed: RemainingContributionAllowed): string;
+export declare function remainingContributionAllowedFromJSON(jsonString: string): SafeParseResult<RemainingContributionAllowed, SDKValidationError>;
 /** @internal */
 export declare const RolloverAmount$inboundSchema: z.ZodType<RolloverAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -144,6 +152,8 @@ export declare namespace RolloverAmount$ {
     /** @deprecated use `RolloverAmount$Outbound` instead. */
     type Outbound = RolloverAmount$Outbound;
 }
+export declare function rolloverAmountToJSON(rolloverAmount: RolloverAmount): string;
+export declare function rolloverAmountFromJSON(jsonString: string): SafeParseResult<RolloverAmount, SDKValidationError>;
 /** @internal */
 export declare const ContributionSummary$inboundSchema: z.ZodType<ContributionSummary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -169,4 +179,6 @@ export declare namespace ContributionSummary$ {
     /** @deprecated use `ContributionSummary$Outbound` instead. */
     type Outbound = ContributionSummary$Outbound;
 }
+export declare function contributionSummaryToJSON(contributionSummary: ContributionSummary): string;
+export declare function contributionSummaryFromJSON(jsonString: string): SafeParseResult<ContributionSummary, SDKValidationError>;
 //# sourceMappingURL=contributionsummary.d.ts.map

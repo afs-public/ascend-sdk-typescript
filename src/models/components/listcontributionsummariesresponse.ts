@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContributionSummary,
   ContributionSummary$inboundSchema,
@@ -73,4 +76,24 @@ export namespace ListContributionSummariesResponse$ {
     ListContributionSummariesResponse$outboundSchema;
   /** @deprecated use `ListContributionSummariesResponse$Outbound` instead. */
   export type Outbound = ListContributionSummariesResponse$Outbound;
+}
+
+export function listContributionSummariesResponseToJSON(
+  listContributionSummariesResponse: ListContributionSummariesResponse,
+): string {
+  return JSON.stringify(
+    ListContributionSummariesResponse$outboundSchema.parse(
+      listContributionSummariesResponse,
+    ),
+  );
+}
+
+export function listContributionSummariesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListContributionSummariesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListContributionSummariesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListContributionSummariesResponse' from JSON`,
+  );
 }

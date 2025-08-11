@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The request for closing an Account.
@@ -57,4 +60,22 @@ export namespace CloseAccountRequestCreate$ {
   export const outboundSchema = CloseAccountRequestCreate$outboundSchema;
   /** @deprecated use `CloseAccountRequestCreate$Outbound` instead. */
   export type Outbound = CloseAccountRequestCreate$Outbound;
+}
+
+export function closeAccountRequestCreateToJSON(
+  closeAccountRequestCreate: CloseAccountRequestCreate,
+): string {
+  return JSON.stringify(
+    CloseAccountRequestCreate$outboundSchema.parse(closeAccountRequestCreate),
+  );
+}
+
+export function closeAccountRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CloseAccountRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CloseAccountRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CloseAccountRequestCreate' from JSON`,
+  );
 }

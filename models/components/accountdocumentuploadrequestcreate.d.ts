@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Describes the contents of a document and how it is used; Required for all account documents
  */
@@ -174,4 +176,6 @@ export declare namespace AccountDocumentUploadRequestCreate$ {
     /** @deprecated use `AccountDocumentUploadRequestCreate$Outbound` instead. */
     type Outbound = AccountDocumentUploadRequestCreate$Outbound;
 }
+export declare function accountDocumentUploadRequestCreateToJSON(accountDocumentUploadRequestCreate: AccountDocumentUploadRequestCreate): string;
+export declare function accountDocumentUploadRequestCreateFromJSON(jsonString: string): SafeParseResult<AccountDocumentUploadRequestCreate, SDKValidationError>;
 //# sourceMappingURL=accountdocumentuploadrequestcreate.d.ts.map

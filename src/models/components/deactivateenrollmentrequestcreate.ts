@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * **Field Dependencies:**
@@ -174,4 +177,24 @@ export namespace DeactivateEnrollmentRequestCreate$ {
     DeactivateEnrollmentRequestCreate$outboundSchema;
   /** @deprecated use `DeactivateEnrollmentRequestCreate$Outbound` instead. */
   export type Outbound = DeactivateEnrollmentRequestCreate$Outbound;
+}
+
+export function deactivateEnrollmentRequestCreateToJSON(
+  deactivateEnrollmentRequestCreate: DeactivateEnrollmentRequestCreate,
+): string {
+  return JSON.stringify(
+    DeactivateEnrollmentRequestCreate$outboundSchema.parse(
+      deactivateEnrollmentRequestCreate,
+    ),
+  );
+}
+
+export function deactivateEnrollmentRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<DeactivateEnrollmentRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeactivateEnrollmentRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeactivateEnrollmentRequestCreate' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -60,4 +63,22 @@ export namespace RightsOfAccumulationCreate$ {
   export const outboundSchema = RightsOfAccumulationCreate$outboundSchema;
   /** @deprecated use `RightsOfAccumulationCreate$Outbound` instead. */
   export type Outbound = RightsOfAccumulationCreate$Outbound;
+}
+
+export function rightsOfAccumulationCreateToJSON(
+  rightsOfAccumulationCreate: RightsOfAccumulationCreate,
+): string {
+  return JSON.stringify(
+    RightsOfAccumulationCreate$outboundSchema.parse(rightsOfAccumulationCreate),
+  );
+}
+
+export function rightsOfAccumulationCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RightsOfAccumulationCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RightsOfAccumulationCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RightsOfAccumulationCreate' from JSON`,
+  );
 }

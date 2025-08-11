@@ -12,6 +12,24 @@ class SDKHooks {
         this.beforeRequestHooks = [];
         this.afterSuccessHooks = [];
         this.afterErrorHooks = [];
+        const presetHooks = [];
+        for (const hook of presetHooks) {
+            if ("sdkInit" in hook) {
+                this.registerSDKInitHook(hook);
+            }
+            if ("beforeCreateRequest" in hook) {
+                this.registerBeforeCreateRequestHook(hook);
+            }
+            if ("beforeRequest" in hook) {
+                this.registerBeforeRequestHook(hook);
+            }
+            if ("afterSuccess" in hook) {
+                this.registerAfterSuccessHook(hook);
+            }
+            if ("afterError" in hook) {
+                this.registerAfterErrorHook(hook);
+            }
+        }
         (0, registration_js_1.initHooks)(this);
     }
     registerSDKInitHook(hook) {

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LotCreate$ = exports.LotCreate$outboundSchema = exports.LotCreate$inboundSchema = exports.Money$ = exports.Money$outboundSchema = exports.Money$inboundSchema = void 0;
+exports.moneyToJSON = moneyToJSON;
+exports.moneyFromJSON = moneyFromJSON;
+exports.lotCreateToJSON = lotCreateToJSON;
+exports.lotCreateFromJSON = lotCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const datecreate_js_1 = require("./datecreate.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
@@ -71,6 +76,12 @@ var Money$;
     /** @deprecated use `Money$outboundSchema` instead. */
     Money$.outboundSchema = exports.Money$outboundSchema;
 })(Money$ || (exports.Money$ = Money$ = {}));
+function moneyToJSON(money) {
+    return JSON.stringify(exports.Money$outboundSchema.parse(money));
+}
+function moneyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Money$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Money' from JSON`);
+}
 /** @internal */
 exports.LotCreate$inboundSchema = z.object({
     id: z.string().optional(),
@@ -106,4 +117,10 @@ var LotCreate$;
     /** @deprecated use `LotCreate$outboundSchema` instead. */
     LotCreate$.outboundSchema = exports.LotCreate$outboundSchema;
 })(LotCreate$ || (exports.LotCreate$ = LotCreate$ = {}));
+function lotCreateToJSON(lotCreate) {
+    return JSON.stringify(exports.LotCreate$outboundSchema.parse(lotCreate));
+}
+function lotCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LotCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LotCreate' from JSON`);
+}
 //# sourceMappingURL=lotcreate.js.map

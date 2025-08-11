@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsListAvailableEnrollments1Response$ = exports.AccountsListAvailableEnrollments1Response$outboundSchema = exports.AccountsListAvailableEnrollments1Response$inboundSchema = exports.AccountsListAvailableEnrollments1Request$ = exports.AccountsListAvailableEnrollments1Request$outboundSchema = exports.AccountsListAvailableEnrollments1Request$inboundSchema = void 0;
+exports.accountsListAvailableEnrollments1RequestToJSON = accountsListAvailableEnrollments1RequestToJSON;
+exports.accountsListAvailableEnrollments1RequestFromJSON = accountsListAvailableEnrollments1RequestFromJSON;
+exports.accountsListAvailableEnrollments1ResponseToJSON = accountsListAvailableEnrollments1ResponseToJSON;
+exports.accountsListAvailableEnrollments1ResponseFromJSON = accountsListAvailableEnrollments1ResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsListAvailableEnrollments1Request$inboundSchema = z.object({
@@ -77,6 +82,12 @@ var AccountsListAvailableEnrollments1Request$;
     /** @deprecated use `AccountsListAvailableEnrollments1Request$outboundSchema` instead. */
     AccountsListAvailableEnrollments1Request$.outboundSchema = exports.AccountsListAvailableEnrollments1Request$outboundSchema;
 })(AccountsListAvailableEnrollments1Request$ || (exports.AccountsListAvailableEnrollments1Request$ = AccountsListAvailableEnrollments1Request$ = {}));
+function accountsListAvailableEnrollments1RequestToJSON(accountsListAvailableEnrollments1Request) {
+    return JSON.stringify(exports.AccountsListAvailableEnrollments1Request$outboundSchema.parse(accountsListAvailableEnrollments1Request));
+}
+function accountsListAvailableEnrollments1RequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAvailableEnrollments1Request$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAvailableEnrollments1Request' from JSON`);
+}
 /** @internal */
 exports.AccountsListAvailableEnrollments1Response$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var AccountsListAvailableEnrollments1Response$;
     /** @deprecated use `AccountsListAvailableEnrollments1Response$outboundSchema` instead. */
     AccountsListAvailableEnrollments1Response$.outboundSchema = exports.AccountsListAvailableEnrollments1Response$outboundSchema;
 })(AccountsListAvailableEnrollments1Response$ || (exports.AccountsListAvailableEnrollments1Response$ = AccountsListAvailableEnrollments1Response$ = {}));
+function accountsListAvailableEnrollments1ResponseToJSON(accountsListAvailableEnrollments1Response) {
+    return JSON.stringify(exports.AccountsListAvailableEnrollments1Response$outboundSchema.parse(accountsListAvailableEnrollments1Response));
+}
+function accountsListAvailableEnrollments1ResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAvailableEnrollments1Response$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAvailableEnrollments1Response' from JSON`);
+}
 //# sourceMappingURL=accountslistavailableenrollments1.js.map

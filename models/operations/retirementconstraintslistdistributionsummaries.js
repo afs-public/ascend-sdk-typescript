@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetirementConstraintsListDistributionSummariesResponse$ = exports.RetirementConstraintsListDistributionSummariesResponse$outboundSchema = exports.RetirementConstraintsListDistributionSummariesResponse$inboundSchema = exports.RetirementConstraintsListDistributionSummariesRequest$ = exports.RetirementConstraintsListDistributionSummariesRequest$outboundSchema = exports.RetirementConstraintsListDistributionSummariesRequest$inboundSchema = void 0;
+exports.retirementConstraintsListDistributionSummariesRequestToJSON = retirementConstraintsListDistributionSummariesRequestToJSON;
+exports.retirementConstraintsListDistributionSummariesRequestFromJSON = retirementConstraintsListDistributionSummariesRequestFromJSON;
+exports.retirementConstraintsListDistributionSummariesResponseToJSON = retirementConstraintsListDistributionSummariesResponseToJSON;
+exports.retirementConstraintsListDistributionSummariesResponseFromJSON = retirementConstraintsListDistributionSummariesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.RetirementConstraintsListDistributionSummariesRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var RetirementConstraintsListDistributionSummariesRequest$;
     /** @deprecated use `RetirementConstraintsListDistributionSummariesRequest$outboundSchema` instead. */
     RetirementConstraintsListDistributionSummariesRequest$.outboundSchema = exports.RetirementConstraintsListDistributionSummariesRequest$outboundSchema;
 })(RetirementConstraintsListDistributionSummariesRequest$ || (exports.RetirementConstraintsListDistributionSummariesRequest$ = RetirementConstraintsListDistributionSummariesRequest$ = {}));
+function retirementConstraintsListDistributionSummariesRequestToJSON(retirementConstraintsListDistributionSummariesRequest) {
+    return JSON.stringify(exports.RetirementConstraintsListDistributionSummariesRequest$outboundSchema.parse(retirementConstraintsListDistributionSummariesRequest));
+}
+function retirementConstraintsListDistributionSummariesRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementConstraintsListDistributionSummariesRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetirementConstraintsListDistributionSummariesRequest' from JSON`);
+}
 /** @internal */
 exports.RetirementConstraintsListDistributionSummariesResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -112,4 +123,11 @@ var RetirementConstraintsListDistributionSummariesResponse$;
     /** @deprecated use `RetirementConstraintsListDistributionSummariesResponse$outboundSchema` instead. */
     RetirementConstraintsListDistributionSummariesResponse$.outboundSchema = exports.RetirementConstraintsListDistributionSummariesResponse$outboundSchema;
 })(RetirementConstraintsListDistributionSummariesResponse$ || (exports.RetirementConstraintsListDistributionSummariesResponse$ = RetirementConstraintsListDistributionSummariesResponse$ = {}));
+function retirementConstraintsListDistributionSummariesResponseToJSON(retirementConstraintsListDistributionSummariesResponse) {
+    return JSON.stringify(exports.RetirementConstraintsListDistributionSummariesResponse$outboundSchema.parse(retirementConstraintsListDistributionSummariesResponse));
+}
+function retirementConstraintsListDistributionSummariesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementConstraintsListDistributionSummariesResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'RetirementConstraintsListDistributionSummariesResponse' from JSON`);
+}
 //# sourceMappingURL=retirementconstraintslistdistributionsummaries.js.map

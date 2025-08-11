@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The request for ending a Restriction on an Account.
@@ -48,4 +51,24 @@ export namespace EndRestrictionRequestCreate$ {
   export const outboundSchema = EndRestrictionRequestCreate$outboundSchema;
   /** @deprecated use `EndRestrictionRequestCreate$Outbound` instead. */
   export type Outbound = EndRestrictionRequestCreate$Outbound;
+}
+
+export function endRestrictionRequestCreateToJSON(
+  endRestrictionRequestCreate: EndRestrictionRequestCreate,
+): string {
+  return JSON.stringify(
+    EndRestrictionRequestCreate$outboundSchema.parse(
+      endRestrictionRequestCreate,
+    ),
+  );
+}
+
+export function endRestrictionRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<EndRestrictionRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EndRestrictionRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EndRestrictionRequestCreate' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * Low priced securities
@@ -40,4 +42,6 @@ export declare namespace LowPricedSecuritiesCreate$ {
     /** @deprecated use `LowPricedSecuritiesCreate$Outbound` instead. */
     type Outbound = LowPricedSecuritiesCreate$Outbound;
 }
+export declare function lowPricedSecuritiesCreateToJSON(lowPricedSecuritiesCreate: LowPricedSecuritiesCreate): string;
+export declare function lowPricedSecuritiesCreateFromJSON(jsonString: string): SafeParseResult<LowPricedSecuritiesCreate, SDKValidationError>;
 //# sourceMappingURL=lowpricedsecuritiescreate.d.ts.map

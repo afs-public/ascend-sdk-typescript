@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { RetirementDistributionCreate, RetirementDistributionCreate$Outbound } from "./retirementdistributioncreate.js";
 import { WithdrawalScheduleDetailsCreate, WithdrawalScheduleDetailsCreate$Outbound } from "./withdrawalscheduledetailscreate.js";
 /**
@@ -40,4 +42,6 @@ export declare namespace AchWithdrawalScheduleCreate$ {
     /** @deprecated use `AchWithdrawalScheduleCreate$Outbound` instead. */
     type Outbound = AchWithdrawalScheduleCreate$Outbound;
 }
+export declare function achWithdrawalScheduleCreateToJSON(achWithdrawalScheduleCreate: AchWithdrawalScheduleCreate): string;
+export declare function achWithdrawalScheduleCreateFromJSON(jsonString: string): SafeParseResult<AchWithdrawalScheduleCreate, SDKValidationError>;
 //# sourceMappingURL=achwithdrawalschedulecreate.d.ts.map

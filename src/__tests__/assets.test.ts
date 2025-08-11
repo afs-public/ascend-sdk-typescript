@@ -4,37 +4,48 @@
 
 import { expect, test } from "vitest";
 import { Apexascend } from "../index.js";
+import { createTestHTTPClient } from "./testclient.js";
 
-test("Assets Assets List Assets 1 Assets List Assets 1", async () => {
+test("Assets Assets List Assets 1", async () => {
+  const testHttpClient = createTestHTTPClient("Assets_ListAssets_1");
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
-  const result = await apexascend.assets.listAssets();
+
+  const result = await apexascend.assets.listAssets("", 25, "", "");
   expect(result.httpMeta.response.status).toBe(200);
 });
 
-test("Assets Assets Get Asset Assets Get Asset1", async () => {
+test("Assets Assets Get Asset", async () => {
+  const testHttpClient = createTestHTTPClient("Assets_GetAsset");
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
+
   const result = await apexascend.assets.getAsset("8395");
   expect(result.httpMeta.response.status).toBe(200);
 });

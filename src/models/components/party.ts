@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum PartyBusinessIndustrialClassification {
   BusinessIndustrialClassificationUnspecified =
@@ -1998,6 +2001,24 @@ export namespace PartyNegativeNews$ {
   export type Outbound = PartyNegativeNews$Outbound;
 }
 
+export function partyNegativeNewsToJSON(
+  partyNegativeNews: PartyNegativeNews,
+): string {
+  return JSON.stringify(
+    PartyNegativeNews$outboundSchema.parse(partyNegativeNews),
+  );
+}
+
+export function partyNegativeNewsFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyNegativeNews, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyNegativeNews$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyNegativeNews' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyEntityDueDiligence$inboundSchema: z.ZodType<
   PartyEntityDueDiligence,
@@ -2047,6 +2068,24 @@ export namespace PartyEntityDueDiligence$ {
   export const outboundSchema = PartyEntityDueDiligence$outboundSchema;
   /** @deprecated use `PartyEntityDueDiligence$Outbound` instead. */
   export type Outbound = PartyEntityDueDiligence$Outbound;
+}
+
+export function partyEntityDueDiligenceToJSON(
+  partyEntityDueDiligence: PartyEntityDueDiligence,
+): string {
+  return JSON.stringify(
+    PartyEntityDueDiligence$outboundSchema.parse(partyEntityDueDiligence),
+  );
+}
+
+export function partyEntityDueDiligenceFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyEntityDueDiligence, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyEntityDueDiligence$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyEntityDueDiligence' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2155,6 +2194,24 @@ export namespace PartyFormationDate$ {
   export type Outbound = PartyFormationDate$Outbound;
 }
 
+export function partyFormationDateToJSON(
+  partyFormationDate: PartyFormationDate,
+): string {
+  return JSON.stringify(
+    PartyFormationDate$outboundSchema.parse(partyFormationDate),
+  );
+}
+
+export function partyFormationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyFormationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyFormationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyFormationDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyEffectiveDate$inboundSchema: z.ZodType<
   PartyEffectiveDate,
@@ -2195,6 +2252,24 @@ export namespace PartyEffectiveDate$ {
   export const outboundSchema = PartyEffectiveDate$outboundSchema;
   /** @deprecated use `PartyEffectiveDate$Outbound` instead. */
   export type Outbound = PartyEffectiveDate$Outbound;
+}
+
+export function partyEffectiveDateToJSON(
+  partyEffectiveDate: PartyEffectiveDate,
+): string {
+  return JSON.stringify(
+    PartyEffectiveDate$outboundSchema.parse(partyEffectiveDate),
+  );
+}
+
+export function partyEffectiveDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyEffectiveDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyEffectiveDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyEffectiveDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2246,6 +2321,24 @@ export namespace PartyLargeTrader$ {
   export const outboundSchema = PartyLargeTrader$outboundSchema;
   /** @deprecated use `PartyLargeTrader$Outbound` instead. */
   export type Outbound = PartyLargeTrader$Outbound;
+}
+
+export function partyLargeTraderToJSON(
+  partyLargeTrader: PartyLargeTrader,
+): string {
+  return JSON.stringify(
+    PartyLargeTrader$outboundSchema.parse(partyLargeTrader),
+  );
+}
+
+export function partyLargeTraderFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLargeTrader, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyLargeTrader$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLargeTrader' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2332,6 +2425,24 @@ export namespace PartyLegalAddress$ {
   export type Outbound = PartyLegalAddress$Outbound;
 }
 
+export function partyLegalAddressToJSON(
+  partyLegalAddress: PartyLegalAddress,
+): string {
+  return JSON.stringify(
+    PartyLegalAddress$outboundSchema.parse(partyLegalAddress),
+  );
+}
+
+export function partyLegalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyLegalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyTaxIdType$inboundSchema: z.ZodType<
   PartyTaxIdTypeOpen,
@@ -2406,6 +2517,24 @@ export namespace PartyCNoticeDate$ {
   export type Outbound = PartyCNoticeDate$Outbound;
 }
 
+export function partyCNoticeDateToJSON(
+  partyCNoticeDate: PartyCNoticeDate,
+): string {
+  return JSON.stringify(
+    PartyCNoticeDate$outboundSchema.parse(partyCNoticeDate),
+  );
+}
+
+export function partyCNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyCNoticeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyCNoticeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyCNoticeDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyFederalTaxClassification$inboundSchema: z.ZodType<
   PartyFederalTaxClassificationOpen,
@@ -2478,6 +2607,24 @@ export namespace PartyFirstBNoticeDate$ {
   export const outboundSchema = PartyFirstBNoticeDate$outboundSchema;
   /** @deprecated use `PartyFirstBNoticeDate$Outbound` instead. */
   export type Outbound = PartyFirstBNoticeDate$Outbound;
+}
+
+export function partyFirstBNoticeDateToJSON(
+  partyFirstBNoticeDate: PartyFirstBNoticeDate,
+): string {
+  return JSON.stringify(
+    PartyFirstBNoticeDate$outboundSchema.parse(partyFirstBNoticeDate),
+  );
+}
+
+export function partyFirstBNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyFirstBNoticeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyFirstBNoticeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyFirstBNoticeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2584,6 +2731,24 @@ export namespace PartyTaxCertificationDate$ {
   export const outboundSchema = PartyTaxCertificationDate$outboundSchema;
   /** @deprecated use `PartyTaxCertificationDate$Outbound` instead. */
   export type Outbound = PartyTaxCertificationDate$Outbound;
+}
+
+export function partyTaxCertificationDateToJSON(
+  partyTaxCertificationDate: PartyTaxCertificationDate,
+): string {
+  return JSON.stringify(
+    PartyTaxCertificationDate$outboundSchema.parse(partyTaxCertificationDate),
+  );
+}
+
+export function partyTaxCertificationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyTaxCertificationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyTaxCertificationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyTaxCertificationDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2786,6 +2951,22 @@ export namespace PartyTaxProfile$ {
   export const outboundSchema = PartyTaxProfile$outboundSchema;
   /** @deprecated use `PartyTaxProfile$Outbound` instead. */
   export type Outbound = PartyTaxProfile$Outbound;
+}
+
+export function partyTaxProfileToJSON(
+  partyTaxProfile: PartyTaxProfile,
+): string {
+  return JSON.stringify(PartyTaxProfile$outboundSchema.parse(partyTaxProfile));
+}
+
+export function partyTaxProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyTaxProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyTaxProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyTaxProfile' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3002,6 +3183,24 @@ export namespace PartyLegalEntity$ {
   export type Outbound = PartyLegalEntity$Outbound;
 }
 
+export function partyLegalEntityToJSON(
+  partyLegalEntity: PartyLegalEntity,
+): string {
+  return JSON.stringify(
+    PartyLegalEntity$outboundSchema.parse(partyLegalEntity),
+  );
+}
+
+export function partyLegalEntityFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalEntity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyLegalEntity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalEntity' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyBirthDate$inboundSchema: z.ZodType<
   PartyBirthDate,
@@ -3044,6 +3243,20 @@ export namespace PartyBirthDate$ {
   export type Outbound = PartyBirthDate$Outbound;
 }
 
+export function partyBirthDateToJSON(partyBirthDate: PartyBirthDate): string {
+  return JSON.stringify(PartyBirthDate$outboundSchema.parse(partyBirthDate));
+}
+
+export function partyBirthDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyBirthDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyBirthDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyBirthDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyDeathDate$inboundSchema: z.ZodType<
   PartyDeathDate,
@@ -3084,6 +3297,20 @@ export namespace PartyDeathDate$ {
   export const outboundSchema = PartyDeathDate$outboundSchema;
   /** @deprecated use `PartyDeathDate$Outbound` instead. */
   export type Outbound = PartyDeathDate$Outbound;
+}
+
+export function partyDeathDateToJSON(partyDeathDate: PartyDeathDate): string {
+  return JSON.stringify(PartyDeathDate$outboundSchema.parse(partyDeathDate));
+}
+
+export function partyDeathDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyDeathDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyDeathDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyDeathDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3168,6 +3395,24 @@ export namespace PartyEmployerAddress$ {
   export const outboundSchema = PartyEmployerAddress$outboundSchema;
   /** @deprecated use `PartyEmployerAddress$Outbound` instead. */
   export type Outbound = PartyEmployerAddress$Outbound;
+}
+
+export function partyEmployerAddressToJSON(
+  partyEmployerAddress: PartyEmployerAddress,
+): string {
+  return JSON.stringify(
+    PartyEmployerAddress$outboundSchema.parse(partyEmployerAddress),
+  );
+}
+
+export function partyEmployerAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyEmployerAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyEmployerAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyEmployerAddress' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3269,6 +3514,22 @@ export namespace PartyEmployment$ {
   export type Outbound = PartyEmployment$Outbound;
 }
 
+export function partyEmploymentToJSON(
+  partyEmployment: PartyEmployment,
+): string {
+  return JSON.stringify(PartyEmployment$outboundSchema.parse(partyEmployment));
+}
+
+export function partyEmploymentFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyEmployment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyEmployment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyEmployment' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyExpirationDate$inboundSchema: z.ZodType<
   PartyExpirationDate,
@@ -3311,6 +3572,24 @@ export namespace PartyExpirationDate$ {
   export type Outbound = PartyExpirationDate$Outbound;
 }
 
+export function partyExpirationDateToJSON(
+  partyExpirationDate: PartyExpirationDate,
+): string {
+  return JSON.stringify(
+    PartyExpirationDate$outboundSchema.parse(partyExpirationDate),
+  );
+}
+
+export function partyExpirationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyExpirationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyExpirationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyExpirationDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyIssueDate$inboundSchema: z.ZodType<
   PartyIssueDate,
@@ -3351,6 +3630,20 @@ export namespace PartyIssueDate$ {
   export const outboundSchema = PartyIssueDate$outboundSchema;
   /** @deprecated use `PartyIssueDate$Outbound` instead. */
   export type Outbound = PartyIssueDate$Outbound;
+}
+
+export function partyIssueDateToJSON(partyIssueDate: PartyIssueDate): string {
+  return JSON.stringify(PartyIssueDate$outboundSchema.parse(partyIssueDate));
+}
+
+export function partyIssueDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyIssueDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyIssueDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyIssueDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3452,6 +3745,24 @@ export namespace PartyForeignIdentification$ {
   export type Outbound = PartyForeignIdentification$Outbound;
 }
 
+export function partyForeignIdentificationToJSON(
+  partyForeignIdentification: PartyForeignIdentification,
+): string {
+  return JSON.stringify(
+    PartyForeignIdentification$outboundSchema.parse(partyForeignIdentification),
+  );
+}
+
+export function partyForeignIdentificationFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyForeignIdentification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyForeignIdentification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyForeignIdentification' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyExecutionDate$inboundSchema: z.ZodType<
   PartyExecutionDate,
@@ -3492,6 +3803,24 @@ export namespace PartyExecutionDate$ {
   export const outboundSchema = PartyExecutionDate$outboundSchema;
   /** @deprecated use `PartyExecutionDate$Outbound` instead. */
   export type Outbound = PartyExecutionDate$Outbound;
+}
+
+export function partyExecutionDateToJSON(
+  partyExecutionDate: PartyExecutionDate,
+): string {
+  return JSON.stringify(
+    PartyExecutionDate$outboundSchema.parse(partyExecutionDate),
+  );
+}
+
+export function partyExecutionDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyExecutionDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyExecutionDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyExecutionDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3583,6 +3912,26 @@ export namespace PartyIdentityVerificationResult$ {
   export type Outbound = PartyIdentityVerificationResult$Outbound;
 }
 
+export function partyIdentityVerificationResultToJSON(
+  partyIdentityVerificationResult: PartyIdentityVerificationResult,
+): string {
+  return JSON.stringify(
+    PartyIdentityVerificationResult$outboundSchema.parse(
+      partyIdentityVerificationResult,
+    ),
+  );
+}
+
+export function partyIdentityVerificationResultFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyIdentityVerificationResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyIdentityVerificationResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyIdentityVerificationResult' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyLegalNaturalPersonEffectiveDate$inboundSchema: z.ZodType<
   PartyLegalNaturalPersonEffectiveDate,
@@ -3625,6 +3974,27 @@ export namespace PartyLegalNaturalPersonEffectiveDate$ {
     PartyLegalNaturalPersonEffectiveDate$outboundSchema;
   /** @deprecated use `PartyLegalNaturalPersonEffectiveDate$Outbound` instead. */
   export type Outbound = PartyLegalNaturalPersonEffectiveDate$Outbound;
+}
+
+export function partyLegalNaturalPersonEffectiveDateToJSON(
+  partyLegalNaturalPersonEffectiveDate: PartyLegalNaturalPersonEffectiveDate,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPersonEffectiveDate$outboundSchema.parse(
+      partyLegalNaturalPersonEffectiveDate,
+    ),
+  );
+}
+
+export function partyLegalNaturalPersonEffectiveDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalNaturalPersonEffectiveDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PartyLegalNaturalPersonEffectiveDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalNaturalPersonEffectiveDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3682,6 +4052,27 @@ export namespace PartyLegalNaturalPersonLargeTrader$ {
     PartyLegalNaturalPersonLargeTrader$outboundSchema;
   /** @deprecated use `PartyLegalNaturalPersonLargeTrader$Outbound` instead. */
   export type Outbound = PartyLegalNaturalPersonLargeTrader$Outbound;
+}
+
+export function partyLegalNaturalPersonLargeTraderToJSON(
+  partyLegalNaturalPersonLargeTrader: PartyLegalNaturalPersonLargeTrader,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPersonLargeTrader$outboundSchema.parse(
+      partyLegalNaturalPersonLargeTrader,
+    ),
+  );
+}
+
+export function partyLegalNaturalPersonLargeTraderFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalNaturalPersonLargeTrader, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PartyLegalNaturalPersonLargeTrader$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalNaturalPersonLargeTrader' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3805,6 +4196,26 @@ export namespace PartyCustomerReferralSource$ {
   export type Outbound = PartyCustomerReferralSource$Outbound;
 }
 
+export function partyCustomerReferralSourceToJSON(
+  partyCustomerReferralSource: PartyCustomerReferralSource,
+): string {
+  return JSON.stringify(
+    PartyCustomerReferralSource$outboundSchema.parse(
+      partyCustomerReferralSource,
+    ),
+  );
+}
+
+export function partyCustomerReferralSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyCustomerReferralSource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyCustomerReferralSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyCustomerReferralSource' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyLegalNaturalPersonNegativeNews$inboundSchema: z.ZodType<
   PartyLegalNaturalPersonNegativeNews,
@@ -3859,6 +4270,27 @@ export namespace PartyLegalNaturalPersonNegativeNews$ {
   export type Outbound = PartyLegalNaturalPersonNegativeNews$Outbound;
 }
 
+export function partyLegalNaturalPersonNegativeNewsToJSON(
+  partyLegalNaturalPersonNegativeNews: PartyLegalNaturalPersonNegativeNews,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPersonNegativeNews$outboundSchema.parse(
+      partyLegalNaturalPersonNegativeNews,
+    ),
+  );
+}
+
+export function partyLegalNaturalPersonNegativeNewsFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalNaturalPersonNegativeNews, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PartyLegalNaturalPersonNegativeNews$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalNaturalPersonNegativeNews' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyOtherSourcesOfWealth$inboundSchema: z.ZodType<
   PartyOtherSourcesOfWealth,
@@ -3911,6 +4343,24 @@ export namespace PartyOtherSourcesOfWealth$ {
   export const outboundSchema = PartyOtherSourcesOfWealth$outboundSchema;
   /** @deprecated use `PartyOtherSourcesOfWealth$Outbound` instead. */
   export type Outbound = PartyOtherSourcesOfWealth$Outbound;
+}
+
+export function partyOtherSourcesOfWealthToJSON(
+  partyOtherSourcesOfWealth: PartyOtherSourcesOfWealth,
+): string {
+  return JSON.stringify(
+    PartyOtherSourcesOfWealth$outboundSchema.parse(partyOtherSourcesOfWealth),
+  );
+}
+
+export function partyOtherSourcesOfWealthFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyOtherSourcesOfWealth, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyOtherSourcesOfWealth$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyOtherSourcesOfWealth' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3998,6 +4448,24 @@ export namespace PartyNaturalPersonFdd$ {
   export type Outbound = PartyNaturalPersonFdd$Outbound;
 }
 
+export function partyNaturalPersonFddToJSON(
+  partyNaturalPersonFdd: PartyNaturalPersonFdd,
+): string {
+  return JSON.stringify(
+    PartyNaturalPersonFdd$outboundSchema.parse(partyNaturalPersonFdd),
+  );
+}
+
+export function partyNaturalPersonFddFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyNaturalPersonFdd, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyNaturalPersonFdd$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyNaturalPersonFdd' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyResidencyStatus$inboundSchema: z.ZodType<
   PartyResidencyStatusOpen,
@@ -4072,6 +4540,24 @@ export namespace PartyNonCitizenResidency$ {
   export const outboundSchema = PartyNonCitizenResidency$outboundSchema;
   /** @deprecated use `PartyNonCitizenResidency$Outbound` instead. */
   export type Outbound = PartyNonCitizenResidency$Outbound;
+}
+
+export function partyNonCitizenResidencyToJSON(
+  partyNonCitizenResidency: PartyNonCitizenResidency,
+): string {
+  return JSON.stringify(
+    PartyNonCitizenResidency$outboundSchema.parse(partyNonCitizenResidency),
+  );
+}
+
+export function partyNonCitizenResidencyFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyNonCitizenResidency, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyNonCitizenResidency$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyNonCitizenResidency' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4158,6 +4644,24 @@ export namespace PartyPersonalAddress$ {
   export type Outbound = PartyPersonalAddress$Outbound;
 }
 
+export function partyPersonalAddressToJSON(
+  partyPersonalAddress: PartyPersonalAddress,
+): string {
+  return JSON.stringify(
+    PartyPersonalAddress$outboundSchema.parse(partyPersonalAddress),
+  );
+}
+
+export function partyPersonalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyPersonalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyPersonalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyPersonalAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyLegalNaturalPersonTaxIdType$inboundSchema: z.ZodType<
   PartyLegalNaturalPersonTaxIdTypeOpen,
@@ -4231,6 +4735,27 @@ export namespace PartyLegalNaturalPersonCNoticeDate$ {
     PartyLegalNaturalPersonCNoticeDate$outboundSchema;
   /** @deprecated use `PartyLegalNaturalPersonCNoticeDate$Outbound` instead. */
   export type Outbound = PartyLegalNaturalPersonCNoticeDate$Outbound;
+}
+
+export function partyLegalNaturalPersonCNoticeDateToJSON(
+  partyLegalNaturalPersonCNoticeDate: PartyLegalNaturalPersonCNoticeDate,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPersonCNoticeDate$outboundSchema.parse(
+      partyLegalNaturalPersonCNoticeDate,
+    ),
+  );
+}
+
+export function partyLegalNaturalPersonCNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalNaturalPersonCNoticeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PartyLegalNaturalPersonCNoticeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalNaturalPersonCNoticeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4311,6 +4836,33 @@ export namespace PartyLegalNaturalPersonFirstBNoticeDate$ {
     PartyLegalNaturalPersonFirstBNoticeDate$outboundSchema;
   /** @deprecated use `PartyLegalNaturalPersonFirstBNoticeDate$Outbound` instead. */
   export type Outbound = PartyLegalNaturalPersonFirstBNoticeDate$Outbound;
+}
+
+export function partyLegalNaturalPersonFirstBNoticeDateToJSON(
+  partyLegalNaturalPersonFirstBNoticeDate:
+    PartyLegalNaturalPersonFirstBNoticeDate,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPersonFirstBNoticeDate$outboundSchema.parse(
+      partyLegalNaturalPersonFirstBNoticeDate,
+    ),
+  );
+}
+
+export function partyLegalNaturalPersonFirstBNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PartyLegalNaturalPersonFirstBNoticeDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PartyLegalNaturalPersonFirstBNoticeDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PartyLegalNaturalPersonFirstBNoticeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4426,6 +4978,33 @@ export namespace PartyLegalNaturalPersonTaxCertificationDate$ {
     PartyLegalNaturalPersonTaxCertificationDate$outboundSchema;
   /** @deprecated use `PartyLegalNaturalPersonTaxCertificationDate$Outbound` instead. */
   export type Outbound = PartyLegalNaturalPersonTaxCertificationDate$Outbound;
+}
+
+export function partyLegalNaturalPersonTaxCertificationDateToJSON(
+  partyLegalNaturalPersonTaxCertificationDate:
+    PartyLegalNaturalPersonTaxCertificationDate,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPersonTaxCertificationDate$outboundSchema.parse(
+      partyLegalNaturalPersonTaxCertificationDate,
+    ),
+  );
+}
+
+export function partyLegalNaturalPersonTaxCertificationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PartyLegalNaturalPersonTaxCertificationDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PartyLegalNaturalPersonTaxCertificationDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PartyLegalNaturalPersonTaxCertificationDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4648,6 +5227,26 @@ export namespace PartyLegalNaturalPersonTaxProfile$ {
     PartyLegalNaturalPersonTaxProfile$outboundSchema;
   /** @deprecated use `PartyLegalNaturalPersonTaxProfile$Outbound` instead. */
   export type Outbound = PartyLegalNaturalPersonTaxProfile$Outbound;
+}
+
+export function partyLegalNaturalPersonTaxProfileToJSON(
+  partyLegalNaturalPersonTaxProfile: PartyLegalNaturalPersonTaxProfile,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPersonTaxProfile$outboundSchema.parse(
+      partyLegalNaturalPersonTaxProfile,
+    ),
+  );
+}
+
+export function partyLegalNaturalPersonTaxProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalNaturalPersonTaxProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyLegalNaturalPersonTaxProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalNaturalPersonTaxProfile' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4894,6 +5493,24 @@ export namespace PartyLegalNaturalPerson$ {
   export type Outbound = PartyLegalNaturalPerson$Outbound;
 }
 
+export function partyLegalNaturalPersonToJSON(
+  partyLegalNaturalPerson: PartyLegalNaturalPerson,
+): string {
+  return JSON.stringify(
+    PartyLegalNaturalPerson$outboundSchema.parse(partyLegalNaturalPerson),
+  );
+}
+
+export function partyLegalNaturalPersonFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyLegalNaturalPerson, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyLegalNaturalPerson$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyLegalNaturalPerson' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyMailingAddress$inboundSchema: z.ZodType<
   PartyMailingAddress,
@@ -4978,6 +5595,24 @@ export namespace PartyMailingAddress$ {
   export type Outbound = PartyMailingAddress$Outbound;
 }
 
+export function partyMailingAddressToJSON(
+  partyMailingAddress: PartyMailingAddress,
+): string {
+  return JSON.stringify(
+    PartyMailingAddress$outboundSchema.parse(partyMailingAddress),
+  );
+}
+
+export function partyMailingAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyMailingAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyMailingAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyMailingAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyShortCode$inboundSchema: z.ZodType<
   PartyShortCode,
@@ -5023,6 +5658,20 @@ export namespace PartyShortCode$ {
   export const outboundSchema = PartyShortCode$outboundSchema;
   /** @deprecated use `PartyShortCode$Outbound` instead. */
   export type Outbound = PartyShortCode$Outbound;
+}
+
+export function partyShortCodeToJSON(partyShortCode: PartyShortCode): string {
+  return JSON.stringify(PartyShortCode$outboundSchema.parse(partyShortCode));
+}
+
+export function partyShortCodeFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyShortCode, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyShortCode$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyShortCode' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5075,6 +5724,24 @@ export namespace PartyPhoneNumber$ {
   export const outboundSchema = PartyPhoneNumber$outboundSchema;
   /** @deprecated use `PartyPhoneNumber$Outbound` instead. */
   export type Outbound = PartyPhoneNumber$Outbound;
+}
+
+export function partyPhoneNumberToJSON(
+  partyPhoneNumber: PartyPhoneNumber,
+): string {
+  return JSON.stringify(
+    PartyPhoneNumber$outboundSchema.parse(partyPhoneNumber),
+  );
+}
+
+export function partyPhoneNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyPhoneNumber, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyPhoneNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyPhoneNumber' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5392,4 +6059,18 @@ export namespace Party$ {
   export const outboundSchema = Party$outboundSchema;
   /** @deprecated use `Party$Outbound` instead. */
   export type Outbound = Party$Outbound;
+}
+
+export function partyToJSON(party: Party): string {
+  return JSON.stringify(Party$outboundSchema.parse(party));
+}
+
+export function partyFromJSON(
+  jsonString: string,
+): SafeParseResult<Party, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Party$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Party' from JSON`,
+  );
 }

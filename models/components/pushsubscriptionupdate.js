@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PushSubscriptionUpdate$ = exports.PushSubscriptionUpdate$outboundSchema = exports.PushSubscriptionUpdate$inboundSchema = void 0;
+exports.pushSubscriptionUpdateToJSON = pushSubscriptionUpdateToJSON;
+exports.pushSubscriptionUpdateFromJSON = pushSubscriptionUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const httppushcallbackupdate_js_1 = require("./httppushcallbackupdate.js");
 /** @internal */
 exports.PushSubscriptionUpdate$inboundSchema = z.object({
@@ -75,4 +78,10 @@ var PushSubscriptionUpdate$;
     /** @deprecated use `PushSubscriptionUpdate$outboundSchema` instead. */
     PushSubscriptionUpdate$.outboundSchema = exports.PushSubscriptionUpdate$outboundSchema;
 })(PushSubscriptionUpdate$ || (exports.PushSubscriptionUpdate$ = PushSubscriptionUpdate$ = {}));
+function pushSubscriptionUpdateToJSON(pushSubscriptionUpdate) {
+    return JSON.stringify(exports.PushSubscriptionUpdate$outboundSchema.parse(pushSubscriptionUpdate));
+}
+function pushSubscriptionUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PushSubscriptionUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PushSubscriptionUpdate' from JSON`);
+}
 //# sourceMappingURL=pushsubscriptionupdate.js.map

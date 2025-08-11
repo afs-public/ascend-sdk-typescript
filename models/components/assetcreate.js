@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetCreate$ = exports.AssetCreate$outboundSchema = exports.AssetCreate$inboundSchema = exports.AssetCreateType$ = exports.AssetCreateType$outboundSchema = exports.AssetCreateType$inboundSchema = exports.AssetCreateType = void 0;
+exports.assetCreateToJSON = assetCreateToJSON;
+exports.assetCreateFromJSON = assetCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const positioncreate_js_1 = require("./positioncreate.js");
 /**
@@ -97,4 +100,10 @@ var AssetCreate$;
     /** @deprecated use `AssetCreate$outboundSchema` instead. */
     AssetCreate$.outboundSchema = exports.AssetCreate$outboundSchema;
 })(AssetCreate$ || (exports.AssetCreate$ = AssetCreate$ = {}));
+function assetCreateToJSON(assetCreate) {
+    return JSON.stringify(exports.AssetCreate$outboundSchema.parse(assetCreate));
+}
+function assetCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssetCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssetCreate' from JSON`);
+}
 //# sourceMappingURL=assetcreate.js.map

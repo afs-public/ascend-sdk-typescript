@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CreateUploadLinkRequestCreate, CreateUploadLinkRequestCreate$Outbound } from "./createuploadlinkrequestcreate.js";
 /**
  * List of documents to get upload signed links for.
@@ -29,4 +31,6 @@ export declare namespace BatchCreateUploadLinksRequestCreate$ {
     /** @deprecated use `BatchCreateUploadLinksRequestCreate$Outbound` instead. */
     type Outbound = BatchCreateUploadLinksRequestCreate$Outbound;
 }
+export declare function batchCreateUploadLinksRequestCreateToJSON(batchCreateUploadLinksRequestCreate: BatchCreateUploadLinksRequestCreate): string;
+export declare function batchCreateUploadLinksRequestCreateFromJSON(jsonString: string): SafeParseResult<BatchCreateUploadLinksRequestCreate, SDKValidationError>;
 //# sourceMappingURL=batchcreateuploadlinksrequestcreate.d.ts.map

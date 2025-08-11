@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type IctWithdrawalsCancelIctWithdrawalRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace IctWithdrawalsCancelIctWithdrawalRequest$ {
     /** @deprecated use `IctWithdrawalsCancelIctWithdrawalRequest$Outbound` instead. */
     type Outbound = IctWithdrawalsCancelIctWithdrawalRequest$Outbound;
 }
+export declare function ictWithdrawalsCancelIctWithdrawalRequestToJSON(ictWithdrawalsCancelIctWithdrawalRequest: IctWithdrawalsCancelIctWithdrawalRequest): string;
+export declare function ictWithdrawalsCancelIctWithdrawalRequestFromJSON(jsonString: string): SafeParseResult<IctWithdrawalsCancelIctWithdrawalRequest, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalsCancelIctWithdrawalResponse$inboundSchema: z.ZodType<IctWithdrawalsCancelIctWithdrawalResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace IctWithdrawalsCancelIctWithdrawalResponse$ {
     /** @deprecated use `IctWithdrawalsCancelIctWithdrawalResponse$Outbound` instead. */
     type Outbound = IctWithdrawalsCancelIctWithdrawalResponse$Outbound;
 }
+export declare function ictWithdrawalsCancelIctWithdrawalResponseToJSON(ictWithdrawalsCancelIctWithdrawalResponse: IctWithdrawalsCancelIctWithdrawalResponse): string;
+export declare function ictWithdrawalsCancelIctWithdrawalResponseFromJSON(jsonString: string): SafeParseResult<IctWithdrawalsCancelIctWithdrawalResponse, SDKValidationError>;
 //# sourceMappingURL=ictwithdrawalscancelictwithdrawal.d.ts.map

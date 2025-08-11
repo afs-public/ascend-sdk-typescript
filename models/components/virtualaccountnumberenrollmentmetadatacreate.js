@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VirtualAccountNumberEnrollmentMetadataCreate$ = exports.VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema = exports.VirtualAccountNumberEnrollmentMetadataCreate$inboundSchema = void 0;
+exports.virtualAccountNumberEnrollmentMetadataCreateToJSON = virtualAccountNumberEnrollmentMetadataCreateToJSON;
+exports.virtualAccountNumberEnrollmentMetadataCreateFromJSON = virtualAccountNumberEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.VirtualAccountNumberEnrollmentMetadataCreate$inboundSchema = z.object({});
 /** @internal */
@@ -53,4 +56,10 @@ var VirtualAccountNumberEnrollmentMetadataCreate$;
     /** @deprecated use `VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema` instead. */
     VirtualAccountNumberEnrollmentMetadataCreate$.outboundSchema = exports.VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema;
 })(VirtualAccountNumberEnrollmentMetadataCreate$ || (exports.VirtualAccountNumberEnrollmentMetadataCreate$ = VirtualAccountNumberEnrollmentMetadataCreate$ = {}));
+function virtualAccountNumberEnrollmentMetadataCreateToJSON(virtualAccountNumberEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema.parse(virtualAccountNumberEnrollmentMetadataCreate));
+}
+function virtualAccountNumberEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.VirtualAccountNumberEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'VirtualAccountNumberEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=virtualaccountnumberenrollmentmetadatacreate.js.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type ServiceAccountCreds = {
     privateKey: string;
     name: string;
@@ -32,6 +34,8 @@ export declare namespace ServiceAccountCreds$ {
     /** @deprecated use `ServiceAccountCreds$Outbound` instead. */
     type Outbound = ServiceAccountCreds$Outbound;
 }
+export declare function serviceAccountCredsToJSON(serviceAccountCreds: ServiceAccountCreds): string;
+export declare function serviceAccountCredsFromJSON(jsonString: string): SafeParseResult<ServiceAccountCreds, SDKValidationError>;
 /** @internal */
 export declare const Security$inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -53,4 +57,6 @@ export declare namespace Security$ {
     /** @deprecated use `Security$Outbound` instead. */
     type Outbound = Security$Outbound;
 }
+export declare function securityToJSON(security: Security): string;
+export declare function securityFromJSON(jsonString: string): SafeParseResult<Security, SDKValidationError>;
 //# sourceMappingURL=security.d.ts.map

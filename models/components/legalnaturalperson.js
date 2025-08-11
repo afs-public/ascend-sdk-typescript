@@ -39,8 +39,53 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegalNaturalPersonLargeTrader$outboundSchema = exports.LegalNaturalPersonLargeTrader$inboundSchema = exports.LegalNaturalPersonEffectiveDate$ = exports.LegalNaturalPersonEffectiveDate$outboundSchema = exports.LegalNaturalPersonEffectiveDate$inboundSchema = exports.LegalNaturalPersonIdentityVerificationResult$ = exports.LegalNaturalPersonIdentityVerificationResult$outboundSchema = exports.LegalNaturalPersonIdentityVerificationResult$inboundSchema = exports.ExecutionDate$ = exports.ExecutionDate$outboundSchema = exports.ExecutionDate$inboundSchema = exports.ForeignIdentification$ = exports.ForeignIdentification$outboundSchema = exports.ForeignIdentification$inboundSchema = exports.LegalNaturalPersonType$ = exports.LegalNaturalPersonType$outboundSchema = exports.LegalNaturalPersonType$inboundSchema = exports.IssueDate$ = exports.IssueDate$outboundSchema = exports.IssueDate$inboundSchema = exports.ExpirationDate$ = exports.ExpirationDate$outboundSchema = exports.ExpirationDate$inboundSchema = exports.Employment$ = exports.Employment$outboundSchema = exports.Employment$inboundSchema = exports.LegalNaturalPersonEmploymentStatus$ = exports.LegalNaturalPersonEmploymentStatus$outboundSchema = exports.LegalNaturalPersonEmploymentStatus$inboundSchema = exports.EmployerAddress$ = exports.EmployerAddress$outboundSchema = exports.EmployerAddress$inboundSchema = exports.DeathDate$ = exports.DeathDate$outboundSchema = exports.DeathDate$inboundSchema = exports.BirthDate$ = exports.BirthDate$outboundSchema = exports.BirthDate$inboundSchema = exports.LegalNaturalPersonWithholdingState = exports.LegalNaturalPersonUsTinStatus = exports.TaxpayerCertificationState = exports.ReportingEligibility = exports.LegalNaturalPersonIrsFormType = exports.LegalNaturalPersonFederalTaxClassification = exports.LegalNaturalPersonTaxIdType = exports.LegalNaturalPersonResidencyStatus = exports.LegalNaturalPersonNameSuffix = exports.LegalNaturalPersonMaritalStatus = exports.LegalNaturalPersonType = exports.LegalNaturalPersonEmploymentStatus = void 0;
 exports.TaxpayerCertificationState$inboundSchema = exports.TaxCertificationDate$ = exports.TaxCertificationDate$outboundSchema = exports.TaxCertificationDate$inboundSchema = exports.ReportingEligibility$ = exports.ReportingEligibility$outboundSchema = exports.ReportingEligibility$inboundSchema = exports.LegalNaturalPersonIrsFormType$ = exports.LegalNaturalPersonIrsFormType$outboundSchema = exports.LegalNaturalPersonIrsFormType$inboundSchema = exports.FirstBNoticeDate$ = exports.FirstBNoticeDate$outboundSchema = exports.FirstBNoticeDate$inboundSchema = exports.LegalNaturalPersonFederalTaxClassification$ = exports.LegalNaturalPersonFederalTaxClassification$outboundSchema = exports.LegalNaturalPersonFederalTaxClassification$inboundSchema = exports.CNoticeDate$ = exports.CNoticeDate$outboundSchema = exports.CNoticeDate$inboundSchema = exports.LegalNaturalPersonTaxIdType$ = exports.LegalNaturalPersonTaxIdType$outboundSchema = exports.LegalNaturalPersonTaxIdType$inboundSchema = exports.PersonalAddress$ = exports.PersonalAddress$outboundSchema = exports.PersonalAddress$inboundSchema = exports.NonCitizenResidency$ = exports.NonCitizenResidency$outboundSchema = exports.NonCitizenResidency$inboundSchema = exports.LegalNaturalPersonResidencyStatus$ = exports.LegalNaturalPersonResidencyStatus$outboundSchema = exports.LegalNaturalPersonResidencyStatus$inboundSchema = exports.NaturalPersonFdd$ = exports.NaturalPersonFdd$outboundSchema = exports.NaturalPersonFdd$inboundSchema = exports.OtherSourcesOfWealth$ = exports.OtherSourcesOfWealth$outboundSchema = exports.OtherSourcesOfWealth$inboundSchema = exports.NegativeNews$ = exports.NegativeNews$outboundSchema = exports.NegativeNews$inboundSchema = exports.CustomerReferralSource$ = exports.CustomerReferralSource$outboundSchema = exports.CustomerReferralSource$inboundSchema = exports.LegalNaturalPersonNameSuffix$ = exports.LegalNaturalPersonNameSuffix$outboundSchema = exports.LegalNaturalPersonNameSuffix$inboundSchema = exports.LegalNaturalPersonMaritalStatus$ = exports.LegalNaturalPersonMaritalStatus$outboundSchema = exports.LegalNaturalPersonMaritalStatus$inboundSchema = exports.LegalNaturalPersonLargeTrader$ = void 0;
 exports.LegalNaturalPerson$ = exports.LegalNaturalPerson$outboundSchema = exports.LegalNaturalPerson$inboundSchema = exports.TaxProfile$ = exports.TaxProfile$outboundSchema = exports.TaxProfile$inboundSchema = exports.LegalNaturalPersonWithholdingState$ = exports.LegalNaturalPersonWithholdingState$outboundSchema = exports.LegalNaturalPersonWithholdingState$inboundSchema = exports.LegalNaturalPersonUsTinStatus$ = exports.LegalNaturalPersonUsTinStatus$outboundSchema = exports.LegalNaturalPersonUsTinStatus$inboundSchema = exports.TaxpayerCertificationState$ = exports.TaxpayerCertificationState$outboundSchema = void 0;
+exports.birthDateToJSON = birthDateToJSON;
+exports.birthDateFromJSON = birthDateFromJSON;
+exports.deathDateToJSON = deathDateToJSON;
+exports.deathDateFromJSON = deathDateFromJSON;
+exports.employerAddressToJSON = employerAddressToJSON;
+exports.employerAddressFromJSON = employerAddressFromJSON;
+exports.employmentToJSON = employmentToJSON;
+exports.employmentFromJSON = employmentFromJSON;
+exports.expirationDateToJSON = expirationDateToJSON;
+exports.expirationDateFromJSON = expirationDateFromJSON;
+exports.issueDateToJSON = issueDateToJSON;
+exports.issueDateFromJSON = issueDateFromJSON;
+exports.foreignIdentificationToJSON = foreignIdentificationToJSON;
+exports.foreignIdentificationFromJSON = foreignIdentificationFromJSON;
+exports.executionDateToJSON = executionDateToJSON;
+exports.executionDateFromJSON = executionDateFromJSON;
+exports.legalNaturalPersonIdentityVerificationResultToJSON = legalNaturalPersonIdentityVerificationResultToJSON;
+exports.legalNaturalPersonIdentityVerificationResultFromJSON = legalNaturalPersonIdentityVerificationResultFromJSON;
+exports.legalNaturalPersonEffectiveDateToJSON = legalNaturalPersonEffectiveDateToJSON;
+exports.legalNaturalPersonEffectiveDateFromJSON = legalNaturalPersonEffectiveDateFromJSON;
+exports.legalNaturalPersonLargeTraderToJSON = legalNaturalPersonLargeTraderToJSON;
+exports.legalNaturalPersonLargeTraderFromJSON = legalNaturalPersonLargeTraderFromJSON;
+exports.customerReferralSourceToJSON = customerReferralSourceToJSON;
+exports.customerReferralSourceFromJSON = customerReferralSourceFromJSON;
+exports.negativeNewsToJSON = negativeNewsToJSON;
+exports.negativeNewsFromJSON = negativeNewsFromJSON;
+exports.otherSourcesOfWealthToJSON = otherSourcesOfWealthToJSON;
+exports.otherSourcesOfWealthFromJSON = otherSourcesOfWealthFromJSON;
+exports.naturalPersonFddToJSON = naturalPersonFddToJSON;
+exports.naturalPersonFddFromJSON = naturalPersonFddFromJSON;
+exports.nonCitizenResidencyToJSON = nonCitizenResidencyToJSON;
+exports.nonCitizenResidencyFromJSON = nonCitizenResidencyFromJSON;
+exports.personalAddressToJSON = personalAddressToJSON;
+exports.personalAddressFromJSON = personalAddressFromJSON;
+exports.cNoticeDateToJSON = cNoticeDateToJSON;
+exports.cNoticeDateFromJSON = cNoticeDateFromJSON;
+exports.firstBNoticeDateToJSON = firstBNoticeDateToJSON;
+exports.firstBNoticeDateFromJSON = firstBNoticeDateFromJSON;
+exports.taxCertificationDateToJSON = taxCertificationDateToJSON;
+exports.taxCertificationDateFromJSON = taxCertificationDateFromJSON;
+exports.taxProfileToJSON = taxProfileToJSON;
+exports.taxProfileFromJSON = taxProfileFromJSON;
+exports.legalNaturalPersonToJSON = legalNaturalPersonToJSON;
+exports.legalNaturalPersonFromJSON = legalNaturalPersonFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Classifies in what capacity (or if) the underlying natural person holds a job
@@ -190,6 +235,12 @@ var BirthDate$;
     /** @deprecated use `BirthDate$outboundSchema` instead. */
     BirthDate$.outboundSchema = exports.BirthDate$outboundSchema;
 })(BirthDate$ || (exports.BirthDate$ = BirthDate$ = {}));
+function birthDateToJSON(birthDate) {
+    return JSON.stringify(exports.BirthDate$outboundSchema.parse(birthDate));
+}
+function birthDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BirthDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BirthDate' from JSON`);
+}
 /** @internal */
 exports.DeathDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -213,6 +264,12 @@ var DeathDate$;
     /** @deprecated use `DeathDate$outboundSchema` instead. */
     DeathDate$.outboundSchema = exports.DeathDate$outboundSchema;
 })(DeathDate$ || (exports.DeathDate$ = DeathDate$ = {}));
+function deathDateToJSON(deathDate) {
+    return JSON.stringify(exports.DeathDate$outboundSchema.parse(deathDate));
+}
+function deathDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DeathDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DeathDate' from JSON`);
+}
 /** @internal */
 exports.EmployerAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -270,6 +327,12 @@ var EmployerAddress$;
     /** @deprecated use `EmployerAddress$outboundSchema` instead. */
     EmployerAddress$.outboundSchema = exports.EmployerAddress$outboundSchema;
 })(EmployerAddress$ || (exports.EmployerAddress$ = EmployerAddress$ = {}));
+function employerAddressToJSON(employerAddress) {
+    return JSON.stringify(exports.EmployerAddress$outboundSchema.parse(employerAddress));
+}
+function employerAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EmployerAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EmployerAddress' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonEmploymentStatus$inboundSchema = z
     .union([
@@ -339,6 +402,12 @@ var Employment$;
     /** @deprecated use `Employment$outboundSchema` instead. */
     Employment$.outboundSchema = exports.Employment$outboundSchema;
 })(Employment$ || (exports.Employment$ = Employment$ = {}));
+function employmentToJSON(employment) {
+    return JSON.stringify(exports.Employment$outboundSchema.parse(employment));
+}
+function employmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Employment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Employment' from JSON`);
+}
 /** @internal */
 exports.ExpirationDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -362,6 +431,12 @@ var ExpirationDate$;
     /** @deprecated use `ExpirationDate$outboundSchema` instead. */
     ExpirationDate$.outboundSchema = exports.ExpirationDate$outboundSchema;
 })(ExpirationDate$ || (exports.ExpirationDate$ = ExpirationDate$ = {}));
+function expirationDateToJSON(expirationDate) {
+    return JSON.stringify(exports.ExpirationDate$outboundSchema.parse(expirationDate));
+}
+function expirationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExpirationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExpirationDate' from JSON`);
+}
 /** @internal */
 exports.IssueDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -385,6 +460,12 @@ var IssueDate$;
     /** @deprecated use `IssueDate$outboundSchema` instead. */
     IssueDate$.outboundSchema = exports.IssueDate$outboundSchema;
 })(IssueDate$ || (exports.IssueDate$ = IssueDate$ = {}));
+function issueDateToJSON(issueDate) {
+    return JSON.stringify(exports.IssueDate$outboundSchema.parse(issueDate));
+}
+function issueDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IssueDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IssueDate' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonType$inboundSchema = z
     .union([
@@ -452,6 +533,12 @@ var ForeignIdentification$;
     /** @deprecated use `ForeignIdentification$outboundSchema` instead. */
     ForeignIdentification$.outboundSchema = exports.ForeignIdentification$outboundSchema;
 })(ForeignIdentification$ || (exports.ForeignIdentification$ = ForeignIdentification$ = {}));
+function foreignIdentificationToJSON(foreignIdentification) {
+    return JSON.stringify(exports.ForeignIdentification$outboundSchema.parse(foreignIdentification));
+}
+function foreignIdentificationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignIdentification$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignIdentification' from JSON`);
+}
 /** @internal */
 exports.ExecutionDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -475,6 +562,12 @@ var ExecutionDate$;
     /** @deprecated use `ExecutionDate$outboundSchema` instead. */
     ExecutionDate$.outboundSchema = exports.ExecutionDate$outboundSchema;
 })(ExecutionDate$ || (exports.ExecutionDate$ = ExecutionDate$ = {}));
+function executionDateToJSON(executionDate) {
+    return JSON.stringify(exports.ExecutionDate$outboundSchema.parse(executionDate));
+}
+function executionDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExecutionDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExecutionDate' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonIdentityVerificationResult$inboundSchema = z.object({
     address_verified: z.boolean().optional(),
@@ -538,6 +631,12 @@ var LegalNaturalPersonIdentityVerificationResult$;
     /** @deprecated use `LegalNaturalPersonIdentityVerificationResult$outboundSchema` instead. */
     LegalNaturalPersonIdentityVerificationResult$.outboundSchema = exports.LegalNaturalPersonIdentityVerificationResult$outboundSchema;
 })(LegalNaturalPersonIdentityVerificationResult$ || (exports.LegalNaturalPersonIdentityVerificationResult$ = LegalNaturalPersonIdentityVerificationResult$ = {}));
+function legalNaturalPersonIdentityVerificationResultToJSON(legalNaturalPersonIdentityVerificationResult) {
+    return JSON.stringify(exports.LegalNaturalPersonIdentityVerificationResult$outboundSchema.parse(legalNaturalPersonIdentityVerificationResult));
+}
+function legalNaturalPersonIdentityVerificationResultFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalNaturalPersonIdentityVerificationResult$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalNaturalPersonIdentityVerificationResult' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -561,6 +660,12 @@ var LegalNaturalPersonEffectiveDate$;
     /** @deprecated use `LegalNaturalPersonEffectiveDate$outboundSchema` instead. */
     LegalNaturalPersonEffectiveDate$.outboundSchema = exports.LegalNaturalPersonEffectiveDate$outboundSchema;
 })(LegalNaturalPersonEffectiveDate$ || (exports.LegalNaturalPersonEffectiveDate$ = LegalNaturalPersonEffectiveDate$ = {}));
+function legalNaturalPersonEffectiveDateToJSON(legalNaturalPersonEffectiveDate) {
+    return JSON.stringify(exports.LegalNaturalPersonEffectiveDate$outboundSchema.parse(legalNaturalPersonEffectiveDate));
+}
+function legalNaturalPersonEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalNaturalPersonEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalNaturalPersonEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonLargeTrader$inboundSchema = z.object({
     effective_date: z.nullable(z.lazy(() => exports.LegalNaturalPersonEffectiveDate$inboundSchema)).optional(),
@@ -592,6 +697,12 @@ var LegalNaturalPersonLargeTrader$;
     /** @deprecated use `LegalNaturalPersonLargeTrader$outboundSchema` instead. */
     LegalNaturalPersonLargeTrader$.outboundSchema = exports.LegalNaturalPersonLargeTrader$outboundSchema;
 })(LegalNaturalPersonLargeTrader$ || (exports.LegalNaturalPersonLargeTrader$ = LegalNaturalPersonLargeTrader$ = {}));
+function legalNaturalPersonLargeTraderToJSON(legalNaturalPersonLargeTrader) {
+    return JSON.stringify(exports.LegalNaturalPersonLargeTrader$outboundSchema.parse(legalNaturalPersonLargeTrader));
+}
+function legalNaturalPersonLargeTraderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalNaturalPersonLargeTrader$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalNaturalPersonLargeTrader' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonMaritalStatus$inboundSchema = z
     .union([
@@ -673,6 +784,12 @@ var CustomerReferralSource$;
     /** @deprecated use `CustomerReferralSource$outboundSchema` instead. */
     CustomerReferralSource$.outboundSchema = exports.CustomerReferralSource$outboundSchema;
 })(CustomerReferralSource$ || (exports.CustomerReferralSource$ = CustomerReferralSource$ = {}));
+function customerReferralSourceToJSON(customerReferralSource) {
+    return JSON.stringify(exports.CustomerReferralSource$outboundSchema.parse(customerReferralSource));
+}
+function customerReferralSourceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerReferralSource$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerReferralSource' from JSON`);
+}
 /** @internal */
 exports.NegativeNews$inboundSchema = z.object({
     negative_news_against_related_parties: z.boolean().optional(),
@@ -704,6 +821,12 @@ var NegativeNews$;
     /** @deprecated use `NegativeNews$outboundSchema` instead. */
     NegativeNews$.outboundSchema = exports.NegativeNews$outboundSchema;
 })(NegativeNews$ || (exports.NegativeNews$ = NegativeNews$ = {}));
+function negativeNewsToJSON(negativeNews) {
+    return JSON.stringify(exports.NegativeNews$outboundSchema.parse(negativeNews));
+}
+function negativeNewsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NegativeNews$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NegativeNews' from JSON`);
+}
 /** @internal */
 exports.OtherSourcesOfWealth$inboundSchema = z.object({
     applicant_has_other_sources_of_wealth: z.boolean().optional(),
@@ -739,6 +862,12 @@ var OtherSourcesOfWealth$;
     /** @deprecated use `OtherSourcesOfWealth$outboundSchema` instead. */
     OtherSourcesOfWealth$.outboundSchema = exports.OtherSourcesOfWealth$outboundSchema;
 })(OtherSourcesOfWealth$ || (exports.OtherSourcesOfWealth$ = OtherSourcesOfWealth$ = {}));
+function otherSourcesOfWealthToJSON(otherSourcesOfWealth) {
+    return JSON.stringify(exports.OtherSourcesOfWealth$outboundSchema.parse(otherSourcesOfWealth));
+}
+function otherSourcesOfWealthFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OtherSourcesOfWealth$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OtherSourcesOfWealth' from JSON`);
+}
 /** @internal */
 exports.NaturalPersonFdd$inboundSchema = z.object({
     customer_non_referral_source: z.string().optional(),
@@ -784,6 +913,12 @@ var NaturalPersonFdd$;
     /** @deprecated use `NaturalPersonFdd$outboundSchema` instead. */
     NaturalPersonFdd$.outboundSchema = exports.NaturalPersonFdd$outboundSchema;
 })(NaturalPersonFdd$ || (exports.NaturalPersonFdd$ = NaturalPersonFdd$ = {}));
+function naturalPersonFddToJSON(naturalPersonFdd) {
+    return JSON.stringify(exports.NaturalPersonFdd$outboundSchema.parse(naturalPersonFdd));
+}
+function naturalPersonFddFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NaturalPersonFdd$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NaturalPersonFdd' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonResidencyStatus$inboundSchema = z
     .union([
@@ -833,6 +968,12 @@ var NonCitizenResidency$;
     /** @deprecated use `NonCitizenResidency$outboundSchema` instead. */
     NonCitizenResidency$.outboundSchema = exports.NonCitizenResidency$outboundSchema;
 })(NonCitizenResidency$ || (exports.NonCitizenResidency$ = NonCitizenResidency$ = {}));
+function nonCitizenResidencyToJSON(nonCitizenResidency) {
+    return JSON.stringify(exports.NonCitizenResidency$outboundSchema.parse(nonCitizenResidency));
+}
+function nonCitizenResidencyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NonCitizenResidency$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NonCitizenResidency' from JSON`);
+}
 /** @internal */
 exports.PersonalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -890,6 +1031,12 @@ var PersonalAddress$;
     /** @deprecated use `PersonalAddress$outboundSchema` instead. */
     PersonalAddress$.outboundSchema = exports.PersonalAddress$outboundSchema;
 })(PersonalAddress$ || (exports.PersonalAddress$ = PersonalAddress$ = {}));
+function personalAddressToJSON(personalAddress) {
+    return JSON.stringify(exports.PersonalAddress$outboundSchema.parse(personalAddress));
+}
+function personalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PersonalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PersonalAddress' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonTaxIdType$inboundSchema = z
     .union([
@@ -935,6 +1082,12 @@ var CNoticeDate$;
     /** @deprecated use `CNoticeDate$outboundSchema` instead. */
     CNoticeDate$.outboundSchema = exports.CNoticeDate$outboundSchema;
 })(CNoticeDate$ || (exports.CNoticeDate$ = CNoticeDate$ = {}));
+function cNoticeDateToJSON(cNoticeDate) {
+    return JSON.stringify(exports.CNoticeDate$outboundSchema.parse(cNoticeDate));
+}
+function cNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CNoticeDate' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonFederalTaxClassification$inboundSchema = z
     .union([
@@ -980,6 +1133,12 @@ var FirstBNoticeDate$;
     /** @deprecated use `FirstBNoticeDate$outboundSchema` instead. */
     FirstBNoticeDate$.outboundSchema = exports.FirstBNoticeDate$outboundSchema;
 })(FirstBNoticeDate$ || (exports.FirstBNoticeDate$ = FirstBNoticeDate$ = {}));
+function firstBNoticeDateToJSON(firstBNoticeDate) {
+    return JSON.stringify(exports.FirstBNoticeDate$outboundSchema.parse(firstBNoticeDate));
+}
+function firstBNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FirstBNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FirstBNoticeDate' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPersonIrsFormType$inboundSchema = z
     .union([
@@ -1047,6 +1206,12 @@ var TaxCertificationDate$;
     /** @deprecated use `TaxCertificationDate$outboundSchema` instead. */
     TaxCertificationDate$.outboundSchema = exports.TaxCertificationDate$outboundSchema;
 })(TaxCertificationDate$ || (exports.TaxCertificationDate$ = TaxCertificationDate$ = {}));
+function taxCertificationDateToJSON(taxCertificationDate) {
+    return JSON.stringify(exports.TaxCertificationDate$outboundSchema.parse(taxCertificationDate));
+}
+function taxCertificationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TaxCertificationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TaxCertificationDate' from JSON`);
+}
 /** @internal */
 exports.TaxpayerCertificationState$inboundSchema = z
     .union([
@@ -1182,6 +1347,12 @@ var TaxProfile$;
     /** @deprecated use `TaxProfile$outboundSchema` instead. */
     TaxProfile$.outboundSchema = exports.TaxProfile$outboundSchema;
 })(TaxProfile$ || (exports.TaxProfile$ = TaxProfile$ = {}));
+function taxProfileToJSON(taxProfile) {
+    return JSON.stringify(exports.TaxProfile$outboundSchema.parse(taxProfile));
+}
+function taxProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TaxProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TaxProfile' from JSON`);
+}
 /** @internal */
 exports.LegalNaturalPerson$inboundSchema = z.object({
     accredited_investor: z.boolean().optional(),
@@ -1343,4 +1514,10 @@ var LegalNaturalPerson$;
     /** @deprecated use `LegalNaturalPerson$outboundSchema` instead. */
     LegalNaturalPerson$.outboundSchema = exports.LegalNaturalPerson$outboundSchema;
 })(LegalNaturalPerson$ || (exports.LegalNaturalPerson$ = LegalNaturalPerson$ = {}));
+function legalNaturalPersonToJSON(legalNaturalPerson) {
+    return JSON.stringify(exports.LegalNaturalPerson$outboundSchema.parse(legalNaturalPerson));
+}
+function legalNaturalPersonFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalNaturalPerson$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalNaturalPerson' from JSON`);
+}
 //# sourceMappingURL=legalnaturalperson.js.map

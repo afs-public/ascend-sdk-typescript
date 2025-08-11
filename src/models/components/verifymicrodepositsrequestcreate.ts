@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MicroDepositAmountsCreate,
   MicroDepositAmountsCreate$inboundSchema,
@@ -61,4 +64,24 @@ export namespace VerifyMicroDepositsRequestCreate$ {
   export const outboundSchema = VerifyMicroDepositsRequestCreate$outboundSchema;
   /** @deprecated use `VerifyMicroDepositsRequestCreate$Outbound` instead. */
   export type Outbound = VerifyMicroDepositsRequestCreate$Outbound;
+}
+
+export function verifyMicroDepositsRequestCreateToJSON(
+  verifyMicroDepositsRequestCreate: VerifyMicroDepositsRequestCreate,
+): string {
+  return JSON.stringify(
+    VerifyMicroDepositsRequestCreate$outboundSchema.parse(
+      verifyMicroDepositsRequestCreate,
+    ),
+  );
+}
+
+export function verifyMicroDepositsRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<VerifyMicroDepositsRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => VerifyMicroDepositsRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'VerifyMicroDepositsRequestCreate' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Country detail used for Dow Jones Profile details
  */
@@ -33,4 +35,6 @@ export declare namespace CountryDetail$ {
     /** @deprecated use `CountryDetail$Outbound` instead. */
     type Outbound = CountryDetail$Outbound;
 }
+export declare function countryDetailToJSON(countryDetail: CountryDetail): string;
+export declare function countryDetailFromJSON(jsonString: string): SafeParseResult<CountryDetail, SDKValidationError>;
 //# sourceMappingURL=countrydetail.d.ts.map

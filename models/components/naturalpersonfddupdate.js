@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NaturalPersonFddUpdate$ = exports.NaturalPersonFddUpdate$outboundSchema = exports.NaturalPersonFddUpdate$inboundSchema = void 0;
+exports.naturalPersonFddUpdateToJSON = naturalPersonFddUpdateToJSON;
+exports.naturalPersonFddUpdateFromJSON = naturalPersonFddUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const customerreferralsourceupdate_js_1 = require("./customerreferralsourceupdate.js");
 const negativenewsupdate_js_1 = require("./negativenewsupdate.js");
 const othersourcesofwealthupdate_js_1 = require("./othersourcesofwealthupdate.js");
@@ -87,4 +90,10 @@ var NaturalPersonFddUpdate$;
     /** @deprecated use `NaturalPersonFddUpdate$outboundSchema` instead. */
     NaturalPersonFddUpdate$.outboundSchema = exports.NaturalPersonFddUpdate$outboundSchema;
 })(NaturalPersonFddUpdate$ || (exports.NaturalPersonFddUpdate$ = NaturalPersonFddUpdate$ = {}));
+function naturalPersonFddUpdateToJSON(naturalPersonFddUpdate) {
+    return JSON.stringify(exports.NaturalPersonFddUpdate$outboundSchema.parse(naturalPersonFddUpdate));
+}
+function naturalPersonFddUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NaturalPersonFddUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NaturalPersonFddUpdate' from JSON`);
+}
 //# sourceMappingURL=naturalpersonfddupdate.js.map

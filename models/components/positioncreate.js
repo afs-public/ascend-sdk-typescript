@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PositionCreate$ = exports.PositionCreate$outboundSchema = exports.PositionCreate$inboundSchema = void 0;
+exports.positionCreateToJSON = positionCreateToJSON;
+exports.positionCreateFromJSON = positionCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
 exports.PositionCreate$inboundSchema = z.object({
@@ -58,4 +61,10 @@ var PositionCreate$;
     /** @deprecated use `PositionCreate$outboundSchema` instead. */
     PositionCreate$.outboundSchema = exports.PositionCreate$outboundSchema;
 })(PositionCreate$ || (exports.PositionCreate$ = PositionCreate$ = {}));
+function positionCreateToJSON(positionCreate) {
+    return JSON.stringify(exports.PositionCreate$outboundSchema.parse(positionCreate));
+}
+function positionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PositionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PositionCreate' from JSON`);
+}
 //# sourceMappingURL=positioncreate.js.map

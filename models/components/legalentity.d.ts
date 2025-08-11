@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export declare enum LegalEntityBusinessIndustrialClassification {
     BusinessIndustrialClassificationUnspecified = "BUSINESS_INDUSTRIAL_CLASSIFICATION_UNSPECIFIED",
     AgricultureForestryAndFishing = "AGRICULTURE_FORESTRY_AND_FISHING",
@@ -615,6 +617,8 @@ export declare namespace LegalEntityNegativeNews$ {
     /** @deprecated use `LegalEntityNegativeNews$Outbound` instead. */
     type Outbound = LegalEntityNegativeNews$Outbound;
 }
+export declare function legalEntityNegativeNewsToJSON(legalEntityNegativeNews: LegalEntityNegativeNews): string;
+export declare function legalEntityNegativeNewsFromJSON(jsonString: string): SafeParseResult<LegalEntityNegativeNews, SDKValidationError>;
 /** @internal */
 export declare const EntityDueDiligence$inboundSchema: z.ZodType<EntityDueDiligence, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -636,6 +640,8 @@ export declare namespace EntityDueDiligence$ {
     /** @deprecated use `EntityDueDiligence$Outbound` instead. */
     type Outbound = EntityDueDiligence$Outbound;
 }
+export declare function entityDueDiligenceToJSON(entityDueDiligence: EntityDueDiligence): string;
+export declare function entityDueDiligenceFromJSON(jsonString: string): SafeParseResult<EntityDueDiligence, SDKValidationError>;
 /** @internal */
 export declare const LegalEntityEntityType$inboundSchema: z.ZodType<LegalEntityEntityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -686,6 +692,8 @@ export declare namespace FormationDate$ {
     /** @deprecated use `FormationDate$Outbound` instead. */
     type Outbound = FormationDate$Outbound;
 }
+export declare function formationDateToJSON(formationDate: FormationDate): string;
+export declare function formationDateFromJSON(jsonString: string): SafeParseResult<FormationDate, SDKValidationError>;
 /** @internal */
 export declare const LegalEntityEffectiveDate$inboundSchema: z.ZodType<LegalEntityEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -708,6 +716,8 @@ export declare namespace LegalEntityEffectiveDate$ {
     /** @deprecated use `LegalEntityEffectiveDate$Outbound` instead. */
     type Outbound = LegalEntityEffectiveDate$Outbound;
 }
+export declare function legalEntityEffectiveDateToJSON(legalEntityEffectiveDate: LegalEntityEffectiveDate): string;
+export declare function legalEntityEffectiveDateFromJSON(jsonString: string): SafeParseResult<LegalEntityEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const LegalEntityLargeTrader$inboundSchema: z.ZodType<LegalEntityLargeTrader, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -729,6 +739,8 @@ export declare namespace LegalEntityLargeTrader$ {
     /** @deprecated use `LegalEntityLargeTrader$Outbound` instead. */
     type Outbound = LegalEntityLargeTrader$Outbound;
 }
+export declare function legalEntityLargeTraderToJSON(legalEntityLargeTrader: LegalEntityLargeTrader): string;
+export declare function legalEntityLargeTraderFromJSON(jsonString: string): SafeParseResult<LegalEntityLargeTrader, SDKValidationError>;
 /** @internal */
 export declare const LegalAddress$inboundSchema: z.ZodType<LegalAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -759,6 +771,8 @@ export declare namespace LegalAddress$ {
     /** @deprecated use `LegalAddress$Outbound` instead. */
     type Outbound = LegalAddress$Outbound;
 }
+export declare function legalAddressToJSON(legalAddress: LegalAddress): string;
+export declare function legalAddressFromJSON(jsonString: string): SafeParseResult<LegalAddress, SDKValidationError>;
 /** @internal */
 export declare const LegalEntityTaxIdType$inboundSchema: z.ZodType<LegalEntityTaxIdTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -795,6 +809,8 @@ export declare namespace LegalEntityCNoticeDate$ {
     /** @deprecated use `LegalEntityCNoticeDate$Outbound` instead. */
     type Outbound = LegalEntityCNoticeDate$Outbound;
 }
+export declare function legalEntityCNoticeDateToJSON(legalEntityCNoticeDate: LegalEntityCNoticeDate): string;
+export declare function legalEntityCNoticeDateFromJSON(jsonString: string): SafeParseResult<LegalEntityCNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const LegalEntityFederalTaxClassification$inboundSchema: z.ZodType<LegalEntityFederalTaxClassificationOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -831,6 +847,8 @@ export declare namespace LegalEntityFirstBNoticeDate$ {
     /** @deprecated use `LegalEntityFirstBNoticeDate$Outbound` instead. */
     type Outbound = LegalEntityFirstBNoticeDate$Outbound;
 }
+export declare function legalEntityFirstBNoticeDateToJSON(legalEntityFirstBNoticeDate: LegalEntityFirstBNoticeDate): string;
+export declare function legalEntityFirstBNoticeDateFromJSON(jsonString: string): SafeParseResult<LegalEntityFirstBNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const LegalEntityIrsFormType$inboundSchema: z.ZodType<LegalEntityIrsFormTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -881,6 +899,8 @@ export declare namespace LegalEntityTaxCertificationDate$ {
     /** @deprecated use `LegalEntityTaxCertificationDate$Outbound` instead. */
     type Outbound = LegalEntityTaxCertificationDate$Outbound;
 }
+export declare function legalEntityTaxCertificationDateToJSON(legalEntityTaxCertificationDate: LegalEntityTaxCertificationDate): string;
+export declare function legalEntityTaxCertificationDateFromJSON(jsonString: string): SafeParseResult<LegalEntityTaxCertificationDate, SDKValidationError>;
 /** @internal */
 export declare const LegalEntityTaxpayerCertificationState$inboundSchema: z.ZodType<LegalEntityTaxpayerCertificationStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -952,6 +972,8 @@ export declare namespace LegalEntityTaxProfile$ {
     /** @deprecated use `LegalEntityTaxProfile$Outbound` instead. */
     type Outbound = LegalEntityTaxProfile$Outbound;
 }
+export declare function legalEntityTaxProfileToJSON(legalEntityTaxProfile: LegalEntityTaxProfile): string;
+export declare function legalEntityTaxProfileFromJSON(jsonString: string): SafeParseResult<LegalEntityTaxProfile, SDKValidationError>;
 /** @internal */
 export declare const LegalEntity$inboundSchema: z.ZodType<LegalEntity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1004,4 +1026,6 @@ export declare namespace LegalEntity$ {
     /** @deprecated use `LegalEntity$Outbound` instead. */
     type Outbound = LegalEntity$Outbound;
 }
+export declare function legalEntityToJSON(legalEntity: LegalEntity): string;
+export declare function legalEntityFromJSON(jsonString: string): SafeParseResult<LegalEntity, SDKValidationError>;
 //# sourceMappingURL=legalentity.d.ts.map

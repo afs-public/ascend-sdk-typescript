@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Configuration information about an HTTP target callback
  */
@@ -38,4 +40,6 @@ export declare namespace HttpPushCallbackCreate$ {
     /** @deprecated use `HttpPushCallbackCreate$Outbound` instead. */
     type Outbound = HttpPushCallbackCreate$Outbound;
 }
+export declare function httpPushCallbackCreateToJSON(httpPushCallbackCreate: HttpPushCallbackCreate): string;
+export declare function httpPushCallbackCreateFromJSON(jsonString: string): SafeParseResult<HttpPushCallbackCreate, SDKValidationError>;
 //# sourceMappingURL=httppushcallbackcreate.d.ts.map

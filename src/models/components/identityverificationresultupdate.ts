@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateUpdate,
   DateUpdate$inboundSchema,
@@ -139,4 +142,24 @@ export namespace IdentityVerificationResultUpdate$ {
   export const outboundSchema = IdentityVerificationResultUpdate$outboundSchema;
   /** @deprecated use `IdentityVerificationResultUpdate$Outbound` instead. */
   export type Outbound = IdentityVerificationResultUpdate$Outbound;
+}
+
+export function identityVerificationResultUpdateToJSON(
+  identityVerificationResultUpdate: IdentityVerificationResultUpdate,
+): string {
+  return JSON.stringify(
+    IdentityVerificationResultUpdate$outboundSchema.parse(
+      identityVerificationResultUpdate,
+    ),
+  );
+}
+
+export function identityVerificationResultUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<IdentityVerificationResultUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IdentityVerificationResultUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IdentityVerificationResultUpdate' from JSON`,
+  );
 }

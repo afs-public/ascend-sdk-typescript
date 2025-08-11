@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains).
@@ -163,4 +166,22 @@ export namespace PostalAddressUpdate$ {
   export const outboundSchema = PostalAddressUpdate$outboundSchema;
   /** @deprecated use `PostalAddressUpdate$Outbound` instead. */
   export type Outbound = PostalAddressUpdate$Outbound;
+}
+
+export function postalAddressUpdateToJSON(
+  postalAddressUpdate: PostalAddressUpdate,
+): string {
+  return JSON.stringify(
+    PostalAddressUpdate$outboundSchema.parse(postalAddressUpdate),
+  );
+}
+
+export function postalAddressUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<PostalAddressUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PostalAddressUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostalAddressUpdate' from JSON`,
+  );
 }

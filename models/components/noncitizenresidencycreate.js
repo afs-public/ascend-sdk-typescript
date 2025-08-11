@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonCitizenResidencyCreate$ = exports.NonCitizenResidencyCreate$outboundSchema = exports.NonCitizenResidencyCreate$inboundSchema = exports.ResidencyStatus$ = exports.ResidencyStatus$outboundSchema = exports.ResidencyStatus$inboundSchema = exports.ResidencyStatus = void 0;
+exports.nonCitizenResidencyCreateToJSON = nonCitizenResidencyCreateToJSON;
+exports.nonCitizenResidencyCreateFromJSON = nonCitizenResidencyCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 var ResidencyStatus;
 (function (ResidencyStatus) {
@@ -96,4 +99,10 @@ var NonCitizenResidencyCreate$;
     /** @deprecated use `NonCitizenResidencyCreate$outboundSchema` instead. */
     NonCitizenResidencyCreate$.outboundSchema = exports.NonCitizenResidencyCreate$outboundSchema;
 })(NonCitizenResidencyCreate$ || (exports.NonCitizenResidencyCreate$ = NonCitizenResidencyCreate$ = {}));
+function nonCitizenResidencyCreateToJSON(nonCitizenResidencyCreate) {
+    return JSON.stringify(exports.NonCitizenResidencyCreate$outboundSchema.parse(nonCitizenResidencyCreate));
+}
+function nonCitizenResidencyCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NonCitizenResidencyCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NonCitizenResidencyCreate' from JSON`);
+}
 //# sourceMappingURL=noncitizenresidencycreate.js.map

@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForceRejectWireWithdrawalRequestCreate$ = exports.ForceRejectWireWithdrawalRequestCreate$outboundSchema = exports.ForceRejectWireWithdrawalRequestCreate$inboundSchema = void 0;
+exports.forceRejectWireWithdrawalRequestCreateToJSON = forceRejectWireWithdrawalRequestCreateToJSON;
+exports.forceRejectWireWithdrawalRequestCreateFromJSON = forceRejectWireWithdrawalRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ForceRejectWireWithdrawalRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -59,4 +62,10 @@ var ForceRejectWireWithdrawalRequestCreate$;
     /** @deprecated use `ForceRejectWireWithdrawalRequestCreate$outboundSchema` instead. */
     ForceRejectWireWithdrawalRequestCreate$.outboundSchema = exports.ForceRejectWireWithdrawalRequestCreate$outboundSchema;
 })(ForceRejectWireWithdrawalRequestCreate$ || (exports.ForceRejectWireWithdrawalRequestCreate$ = ForceRejectWireWithdrawalRequestCreate$ = {}));
+function forceRejectWireWithdrawalRequestCreateToJSON(forceRejectWireWithdrawalRequestCreate) {
+    return JSON.stringify(exports.ForceRejectWireWithdrawalRequestCreate$outboundSchema.parse(forceRejectWireWithdrawalRequestCreate));
+}
+function forceRejectWireWithdrawalRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForceRejectWireWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForceRejectWireWithdrawalRequestCreate' from JSON`);
+}
 //# sourceMappingURL=forcerejectwirewithdrawalrequestcreate.js.map

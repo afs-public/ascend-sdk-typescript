@@ -6,7 +6,7 @@
 import { CancelTradeAllocationResponseSpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: CancelTradeAllocationResponseSpecialInstructions =
-  CancelTradeAllocationResponseSpecialInstructions.CloseContract;
+  CancelTradeAllocationResponseSpecialInstructions.ShortInstruction;
 ```
 
 ## Values

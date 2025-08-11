@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type SnapshotsListSnapshotsRequest = {
     /**
      * A CEL string to filter snapshot results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information;
@@ -47,6 +49,8 @@ export declare namespace SnapshotsListSnapshotsRequest$ {
     /** @deprecated use `SnapshotsListSnapshotsRequest$Outbound` instead. */
     type Outbound = SnapshotsListSnapshotsRequest$Outbound;
 }
+export declare function snapshotsListSnapshotsRequestToJSON(snapshotsListSnapshotsRequest: SnapshotsListSnapshotsRequest): string;
+export declare function snapshotsListSnapshotsRequestFromJSON(jsonString: string): SafeParseResult<SnapshotsListSnapshotsRequest, SDKValidationError>;
 /** @internal */
 export declare const SnapshotsListSnapshotsResponse$inboundSchema: z.ZodType<SnapshotsListSnapshotsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -69,4 +73,6 @@ export declare namespace SnapshotsListSnapshotsResponse$ {
     /** @deprecated use `SnapshotsListSnapshotsResponse$Outbound` instead. */
     type Outbound = SnapshotsListSnapshotsResponse$Outbound;
 }
+export declare function snapshotsListSnapshotsResponseToJSON(snapshotsListSnapshotsResponse: SnapshotsListSnapshotsResponse): string;
+export declare function snapshotsListSnapshotsResponseFromJSON(jsonString: string): SafeParseResult<SnapshotsListSnapshotsResponse, SDKValidationError>;
 //# sourceMappingURL=snapshotslistsnapshots.d.ts.map

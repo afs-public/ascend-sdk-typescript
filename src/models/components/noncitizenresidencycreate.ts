@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum ResidencyStatus {
   ResidencyStatusUnspecified = "RESIDENCY_STATUS_UNSPECIFIED",
@@ -99,4 +102,22 @@ export namespace NonCitizenResidencyCreate$ {
   export const outboundSchema = NonCitizenResidencyCreate$outboundSchema;
   /** @deprecated use `NonCitizenResidencyCreate$Outbound` instead. */
   export type Outbound = NonCitizenResidencyCreate$Outbound;
+}
+
+export function nonCitizenResidencyCreateToJSON(
+  nonCitizenResidencyCreate: NonCitizenResidencyCreate,
+): string {
+  return JSON.stringify(
+    NonCitizenResidencyCreate$outboundSchema.parse(nonCitizenResidencyCreate),
+  );
+}
+
+export function nonCitizenResidencyCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<NonCitizenResidencyCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NonCitizenResidencyCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NonCitizenResidencyCreate' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PushSubscriptionCreate$ = exports.PushSubscriptionCreate$outboundSchema = exports.PushSubscriptionCreate$inboundSchema = void 0;
+exports.pushSubscriptionCreateToJSON = pushSubscriptionCreateToJSON;
+exports.pushSubscriptionCreateFromJSON = pushSubscriptionCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const httppushcallbackcreate_js_1 = require("./httppushcallbackcreate.js");
 /** @internal */
 exports.PushSubscriptionCreate$inboundSchema = z.object({
@@ -83,4 +86,10 @@ var PushSubscriptionCreate$;
     /** @deprecated use `PushSubscriptionCreate$outboundSchema` instead. */
     PushSubscriptionCreate$.outboundSchema = exports.PushSubscriptionCreate$outboundSchema;
 })(PushSubscriptionCreate$ || (exports.PushSubscriptionCreate$ = PushSubscriptionCreate$ = {}));
+function pushSubscriptionCreateToJSON(pushSubscriptionCreate) {
+    return JSON.stringify(exports.PushSubscriptionCreate$outboundSchema.parse(pushSubscriptionCreate));
+}
+function pushSubscriptionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PushSubscriptionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PushSubscriptionCreate' from JSON`);
+}
 //# sourceMappingURL=pushsubscriptioncreate.js.map

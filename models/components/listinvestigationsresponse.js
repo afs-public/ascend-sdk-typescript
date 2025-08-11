@@ -37,25 +37,32 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListInvestigationsResponse$ = exports.ListInvestigationsResponse$outboundSchema = exports.ListInvestigationsResponse$inboundSchema = void 0;
+exports.listInvestigationsResponseToJSON = listInvestigationsResponseToJSON;
+exports.listInvestigationsResponseFromJSON = listInvestigationsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const investigation_js_1 = require("./investigation.js");
 /** @internal */
 exports.ListInvestigationsResponse$inboundSchema = z.object({
     investigations: z.array(investigation_js_1.Investigation$inboundSchema).optional(),
     next_page_token: z.string().optional(),
+    total_size: z.number().int().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "next_page_token": "nextPageToken",
+        "total_size": "totalSize",
     });
 });
 /** @internal */
 exports.ListInvestigationsResponse$outboundSchema = z.object({
     investigations: z.array(investigation_js_1.Investigation$outboundSchema).optional(),
     nextPageToken: z.string().optional(),
+    totalSize: z.number().int().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         nextPageToken: "next_page_token",
+        totalSize: "total_size",
     });
 });
 /**
@@ -69,4 +76,10 @@ var ListInvestigationsResponse$;
     /** @deprecated use `ListInvestigationsResponse$outboundSchema` instead. */
     ListInvestigationsResponse$.outboundSchema = exports.ListInvestigationsResponse$outboundSchema;
 })(ListInvestigationsResponse$ || (exports.ListInvestigationsResponse$ = ListInvestigationsResponse$ = {}));
+function listInvestigationsResponseToJSON(listInvestigationsResponse) {
+    return JSON.stringify(exports.ListInvestigationsResponse$outboundSchema.parse(listInvestigationsResponse));
+}
+function listInvestigationsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListInvestigationsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListInvestigationsResponse' from JSON`);
+}
 //# sourceMappingURL=listinvestigationsresponse.js.map

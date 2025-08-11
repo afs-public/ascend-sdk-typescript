@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * **Field Dependencies:**
  *
@@ -112,4 +114,6 @@ export declare namespace IdentityIdentification$ {
     /** @deprecated use `IdentityIdentification$Outbound` instead. */
     type Outbound = IdentityIdentification$Outbound;
 }
+export declare function identityIdentificationToJSON(identityIdentification: IdentityIdentification): string;
+export declare function identityIdentificationFromJSON(jsonString: string): SafeParseResult<IdentityIdentification, SDKValidationError>;
 //# sourceMappingURL=identityidentification.d.ts.map

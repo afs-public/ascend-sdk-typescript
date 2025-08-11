@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ContributionConstraintsContributionTypeInfo, ContributionConstraintsContributionTypeInfo$Outbound } from "./contributionconstraintscontributiontypeinfo.js";
 /**
  * Retirement contribution constraints when depositing money into an Apex account
@@ -36,4 +38,6 @@ export declare namespace ContributionConstraints$ {
     /** @deprecated use `ContributionConstraints$Outbound` instead. */
     type Outbound = ContributionConstraints$Outbound;
 }
+export declare function contributionConstraintsToJSON(contributionConstraints: ContributionConstraints): string;
+export declare function contributionConstraintsFromJSON(jsonString: string): SafeParseResult<ContributionConstraints, SDKValidationError>;
 //# sourceMappingURL=contributionconstraints.d.ts.map

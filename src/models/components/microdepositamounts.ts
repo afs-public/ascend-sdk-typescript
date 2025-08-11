@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of one of the micro deposits.
@@ -71,6 +74,20 @@ export namespace Amount1$ {
   export type Outbound = Amount1$Outbound;
 }
 
+export function amount1ToJSON(amount1: Amount1): string {
+  return JSON.stringify(Amount1$outboundSchema.parse(amount1));
+}
+
+export function amount1FromJSON(
+  jsonString: string,
+): SafeParseResult<Amount1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Amount1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Amount1' from JSON`,
+  );
+}
+
 /** @internal */
 export const Amount2$inboundSchema: z.ZodType<Amount2, z.ZodTypeDef, unknown> =
   z.object({
@@ -102,6 +119,20 @@ export namespace Amount2$ {
   export const outboundSchema = Amount2$outboundSchema;
   /** @deprecated use `Amount2$Outbound` instead. */
   export type Outbound = Amount2$Outbound;
+}
+
+export function amount2ToJSON(amount2: Amount2): string {
+  return JSON.stringify(Amount2$outboundSchema.parse(amount2));
+}
+
+export function amount2FromJSON(
+  jsonString: string,
+): SafeParseResult<Amount2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Amount2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Amount2' from JSON`,
+  );
 }
 
 /** @internal */
@@ -141,4 +172,22 @@ export namespace MicroDepositAmounts$ {
   export const outboundSchema = MicroDepositAmounts$outboundSchema;
   /** @deprecated use `MicroDepositAmounts$Outbound` instead. */
   export type Outbound = MicroDepositAmounts$Outbound;
+}
+
+export function microDepositAmountsToJSON(
+  microDepositAmounts: MicroDepositAmounts,
+): string {
+  return JSON.stringify(
+    MicroDepositAmounts$outboundSchema.parse(microDepositAmounts),
+  );
+}
+
+export function microDepositAmountsFromJSON(
+  jsonString: string,
+): SafeParseResult<MicroDepositAmounts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MicroDepositAmounts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MicroDepositAmounts' from JSON`,
+  );
 }

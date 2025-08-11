@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$ = exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$outboundSchema = exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$inboundSchema = void 0;
+exports.investorCommunicationServiceBatchCreateUploadLinksResponseToJSON = investorCommunicationServiceBatchCreateUploadLinksResponseToJSON;
+exports.investorCommunicationServiceBatchCreateUploadLinksResponseFromJSON = investorCommunicationServiceBatchCreateUploadLinksResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$inboundSchema = z.object({
@@ -77,4 +80,12 @@ var InvestorCommunicationServiceBatchCreateUploadLinksResponse$;
     /** @deprecated use `InvestorCommunicationServiceBatchCreateUploadLinksResponse$outboundSchema` instead. */
     InvestorCommunicationServiceBatchCreateUploadLinksResponse$.outboundSchema = exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$outboundSchema;
 })(InvestorCommunicationServiceBatchCreateUploadLinksResponse$ || (exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$ = InvestorCommunicationServiceBatchCreateUploadLinksResponse$ = {}));
+function investorCommunicationServiceBatchCreateUploadLinksResponseToJSON(investorCommunicationServiceBatchCreateUploadLinksResponse) {
+    return JSON.stringify(exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$outboundSchema
+        .parse(investorCommunicationServiceBatchCreateUploadLinksResponse));
+}
+function investorCommunicationServiceBatchCreateUploadLinksResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestorCommunicationServiceBatchCreateUploadLinksResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'InvestorCommunicationServiceBatchCreateUploadLinksResponse' from JSON`);
+}
 //# sourceMappingURL=investorcommunicationservicebatchcreateuploadlinks.js.map

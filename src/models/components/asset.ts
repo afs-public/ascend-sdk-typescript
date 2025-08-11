@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   OptionDeliverable,
   OptionDeliverable$inboundSchema,
@@ -515,7 +518,7 @@ export type FixedIncome = {
 /**
  * Index specific asset details
  */
-export type IndexT = {};
+export type Index = {};
 
 /**
  * The threshold at which Apex would need to notify the fund family of an incoming large order.
@@ -930,7 +933,7 @@ export type Asset = {
   /**
    * Index specific asset details
    */
-  index?: IndexT | null | undefined;
+  index?: Index | null | undefined;
   /**
    * isin is the International Securities Identification Number
    */
@@ -1050,6 +1053,20 @@ export namespace Currency$ {
   export type Outbound = Currency$Outbound;
 }
 
+export function currencyToJSON(currency: Currency): string {
+  return JSON.stringify(Currency$outboundSchema.parse(currency));
+}
+
+export function currencyFromJSON(
+  jsonString: string,
+): SafeParseResult<Currency, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Currency$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Currency' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssetEquityType$inboundSchema: z.ZodType<
   AssetEquityTypeOpen,
@@ -1119,6 +1136,20 @@ export namespace Equity$ {
   export const outboundSchema = Equity$outboundSchema;
   /** @deprecated use `Equity$Outbound` instead. */
   export type Outbound = Equity$Outbound;
+}
+
+export function equityToJSON(equity: Equity): string {
+  return JSON.stringify(Equity$outboundSchema.parse(equity));
+}
+
+export function equityFromJSON(
+  jsonString: string,
+): SafeParseResult<Equity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Equity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Equity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1221,6 +1252,20 @@ export namespace CouponRate$ {
   export type Outbound = CouponRate$Outbound;
 }
 
+export function couponRateToJSON(couponRate: CouponRate): string {
+  return JSON.stringify(CouponRate$outboundSchema.parse(couponRate));
+}
+
+export function couponRateFromJSON(
+  jsonString: string,
+): SafeParseResult<CouponRate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CouponRate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CouponRate' from JSON`,
+  );
+}
+
 /** @internal */
 export const CouponType$inboundSchema: z.ZodType<
   CouponTypeOpen,
@@ -1289,6 +1334,20 @@ export namespace Duration$ {
   export type Outbound = Duration$Outbound;
 }
 
+export function durationToJSON(duration: Duration): string {
+  return JSON.stringify(Duration$outboundSchema.parse(duration));
+}
+
+export function durationFromJSON(
+  jsonString: string,
+): SafeParseResult<Duration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Duration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Duration' from JSON`,
+  );
+}
+
 /** @internal */
 export const FirstCouponDate$inboundSchema: z.ZodType<
   FirstCouponDate,
@@ -1329,6 +1388,22 @@ export namespace FirstCouponDate$ {
   export const outboundSchema = FirstCouponDate$outboundSchema;
   /** @deprecated use `FirstCouponDate$Outbound` instead. */
   export type Outbound = FirstCouponDate$Outbound;
+}
+
+export function firstCouponDateToJSON(
+  firstCouponDate: FirstCouponDate,
+): string {
+  return JSON.stringify(FirstCouponDate$outboundSchema.parse(firstCouponDate));
+}
+
+export function firstCouponDateFromJSON(
+  jsonString: string,
+): SafeParseResult<FirstCouponDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FirstCouponDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FirstCouponDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1469,6 +1544,20 @@ export namespace AssetIssueDate$ {
   export type Outbound = AssetIssueDate$Outbound;
 }
 
+export function assetIssueDateToJSON(assetIssueDate: AssetIssueDate): string {
+  return JSON.stringify(AssetIssueDate$outboundSchema.parse(assetIssueDate));
+}
+
+export function assetIssueDateFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetIssueDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssetIssueDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetIssueDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const IssueSize$inboundSchema: z.ZodType<
   IssueSize,
@@ -1503,6 +1592,20 @@ export namespace IssueSize$ {
   export const outboundSchema = IssueSize$outboundSchema;
   /** @deprecated use `IssueSize$Outbound` instead. */
   export type Outbound = IssueSize$Outbound;
+}
+
+export function issueSizeToJSON(issueSize: IssueSize): string {
+  return JSON.stringify(IssueSize$outboundSchema.parse(issueSize));
+}
+
+export function issueSizeFromJSON(
+  jsonString: string,
+): SafeParseResult<IssueSize, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IssueSize$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IssueSize' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1547,6 +1650,20 @@ export namespace LastCouponDate$ {
   export type Outbound = LastCouponDate$Outbound;
 }
 
+export function lastCouponDateToJSON(lastCouponDate: LastCouponDate): string {
+  return JSON.stringify(LastCouponDate$outboundSchema.parse(lastCouponDate));
+}
+
+export function lastCouponDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LastCouponDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastCouponDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastCouponDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const MaturityDate$inboundSchema: z.ZodType<
   MaturityDate,
@@ -1587,6 +1704,20 @@ export namespace MaturityDate$ {
   export const outboundSchema = MaturityDate$outboundSchema;
   /** @deprecated use `MaturityDate$Outbound` instead. */
   export type Outbound = MaturityDate$Outbound;
+}
+
+export function maturityDateToJSON(maturityDate: MaturityDate): string {
+  return JSON.stringify(MaturityDate$outboundSchema.parse(maturityDate));
+}
+
+export function maturityDateFromJSON(
+  jsonString: string,
+): SafeParseResult<MaturityDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MaturityDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MaturityDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1631,6 +1762,20 @@ export namespace NextCallDate$ {
   export type Outbound = NextCallDate$Outbound;
 }
 
+export function nextCallDateToJSON(nextCallDate: NextCallDate): string {
+  return JSON.stringify(NextCallDate$outboundSchema.parse(nextCallDate));
+}
+
+export function nextCallDateFromJSON(
+  jsonString: string,
+): SafeParseResult<NextCallDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NextCallDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NextCallDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const NextCouponDate$inboundSchema: z.ZodType<
   NextCouponDate,
@@ -1673,6 +1818,20 @@ export namespace NextCouponDate$ {
   export type Outbound = NextCouponDate$Outbound;
 }
 
+export function nextCouponDateToJSON(nextCouponDate: NextCouponDate): string {
+  return JSON.stringify(NextCouponDate$outboundSchema.parse(nextCouponDate));
+}
+
+export function nextCouponDateFromJSON(
+  jsonString: string,
+): SafeParseResult<NextCouponDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NextCouponDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NextCouponDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const ParValue$inboundSchema: z.ZodType<
   ParValue,
@@ -1709,6 +1868,20 @@ export namespace ParValue$ {
   export type Outbound = ParValue$Outbound;
 }
 
+export function parValueToJSON(parValue: ParValue): string {
+  return JSON.stringify(ParValue$outboundSchema.parse(parValue));
+}
+
+export function parValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ParValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ParValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ParValue' from JSON`,
+  );
+}
+
 /** @internal */
 export const PriceAtIssuance$inboundSchema: z.ZodType<
   PriceAtIssuance,
@@ -1743,6 +1916,22 @@ export namespace PriceAtIssuance$ {
   export const outboundSchema = PriceAtIssuance$outboundSchema;
   /** @deprecated use `PriceAtIssuance$Outbound` instead. */
   export type Outbound = PriceAtIssuance$Outbound;
+}
+
+export function priceAtIssuanceToJSON(
+  priceAtIssuance: PriceAtIssuance,
+): string {
+  return JSON.stringify(PriceAtIssuance$outboundSchema.parse(priceAtIssuance));
+}
+
+export function priceAtIssuanceFromJSON(
+  jsonString: string,
+): SafeParseResult<PriceAtIssuance, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PriceAtIssuance$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PriceAtIssuance' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1817,6 +2006,20 @@ export namespace SpRatingDate$ {
   export const outboundSchema = SpRatingDate$outboundSchema;
   /** @deprecated use `SpRatingDate$Outbound` instead. */
   export type Outbound = SpRatingDate$Outbound;
+}
+
+export function spRatingDateToJSON(spRatingDate: SpRatingDate): string {
+  return JSON.stringify(SpRatingDate$outboundSchema.parse(spRatingDate));
+}
+
+export function spRatingDateFromJSON(
+  jsonString: string,
+): SafeParseResult<SpRatingDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SpRatingDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SpRatingDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1985,31 +2188,59 @@ export namespace FixedIncome$ {
   export type Outbound = FixedIncome$Outbound;
 }
 
+export function fixedIncomeToJSON(fixedIncome: FixedIncome): string {
+  return JSON.stringify(FixedIncome$outboundSchema.parse(fixedIncome));
+}
+
+export function fixedIncomeFromJSON(
+  jsonString: string,
+): SafeParseResult<FixedIncome, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FixedIncome$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FixedIncome' from JSON`,
+  );
+}
+
 /** @internal */
-export const IndexT$inboundSchema: z.ZodType<IndexT, z.ZodTypeDef, unknown> = z
+export const Index$inboundSchema: z.ZodType<Index, z.ZodTypeDef, unknown> = z
   .object({});
 
 /** @internal */
-export type IndexT$Outbound = {};
+export type Index$Outbound = {};
 
 /** @internal */
-export const IndexT$outboundSchema: z.ZodType<
-  IndexT$Outbound,
+export const Index$outboundSchema: z.ZodType<
+  Index$Outbound,
   z.ZodTypeDef,
-  IndexT
+  Index
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace IndexT$ {
-  /** @deprecated use `IndexT$inboundSchema` instead. */
-  export const inboundSchema = IndexT$inboundSchema;
-  /** @deprecated use `IndexT$outboundSchema` instead. */
-  export const outboundSchema = IndexT$outboundSchema;
-  /** @deprecated use `IndexT$Outbound` instead. */
-  export type Outbound = IndexT$Outbound;
+export namespace Index$ {
+  /** @deprecated use `Index$inboundSchema` instead. */
+  export const inboundSchema = Index$inboundSchema;
+  /** @deprecated use `Index$outboundSchema` instead. */
+  export const outboundSchema = Index$outboundSchema;
+  /** @deprecated use `Index$Outbound` instead. */
+  export type Outbound = Index$Outbound;
+}
+
+export function indexToJSON(index: Index): string {
+  return JSON.stringify(Index$outboundSchema.parse(index));
+}
+
+export function indexFromJSON(
+  jsonString: string,
+): SafeParseResult<Index, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Index$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Index' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2046,6 +2277,26 @@ export namespace LargeOrderNotificationAmount$ {
   export const outboundSchema = LargeOrderNotificationAmount$outboundSchema;
   /** @deprecated use `LargeOrderNotificationAmount$Outbound` instead. */
   export type Outbound = LargeOrderNotificationAmount$Outbound;
+}
+
+export function largeOrderNotificationAmountToJSON(
+  largeOrderNotificationAmount: LargeOrderNotificationAmount,
+): string {
+  return JSON.stringify(
+    LargeOrderNotificationAmount$outboundSchema.parse(
+      largeOrderNotificationAmount,
+    ),
+  );
+}
+
+export function largeOrderNotificationAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<LargeOrderNotificationAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LargeOrderNotificationAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LargeOrderNotificationAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2144,6 +2395,20 @@ export namespace MutualFund$ {
   export const outboundSchema = MutualFund$outboundSchema;
   /** @deprecated use `MutualFund$Outbound` instead. */
   export type Outbound = MutualFund$Outbound;
+}
+
+export function mutualFundToJSON(mutualFund: MutualFund): string {
+  return JSON.stringify(MutualFund$outboundSchema.parse(mutualFund));
+}
+
+export function mutualFundFromJSON(
+  jsonString: string,
+): SafeParseResult<MutualFund, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MutualFund$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MutualFund' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2252,6 +2517,24 @@ export namespace AssetExpirationDate$ {
   export type Outbound = AssetExpirationDate$Outbound;
 }
 
+export function assetExpirationDateToJSON(
+  assetExpirationDate: AssetExpirationDate,
+): string {
+  return JSON.stringify(
+    AssetExpirationDate$outboundSchema.parse(assetExpirationDate),
+  );
+}
+
+export function assetExpirationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetExpirationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssetExpirationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetExpirationDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const Classification$inboundSchema: z.ZodType<
   ClassificationOpen,
@@ -2352,6 +2635,20 @@ export namespace PositionLimit$ {
   export type Outbound = PositionLimit$Outbound;
 }
 
+export function positionLimitToJSON(positionLimit: PositionLimit): string {
+  return JSON.stringify(PositionLimit$outboundSchema.parse(positionLimit));
+}
+
+export function positionLimitFromJSON(
+  jsonString: string,
+): SafeParseResult<PositionLimit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PositionLimit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PositionLimit' from JSON`,
+  );
+}
+
 /** @internal */
 export const SettlementStyle$inboundSchema: z.ZodType<
   SettlementStyleOpen,
@@ -2420,6 +2717,24 @@ export namespace StrikeMultiplier$ {
   export type Outbound = StrikeMultiplier$Outbound;
 }
 
+export function strikeMultiplierToJSON(
+  strikeMultiplier: StrikeMultiplier,
+): string {
+  return JSON.stringify(
+    StrikeMultiplier$outboundSchema.parse(strikeMultiplier),
+  );
+}
+
+export function strikeMultiplierFromJSON(
+  jsonString: string,
+): SafeParseResult<StrikeMultiplier, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrikeMultiplier$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrikeMultiplier' from JSON`,
+  );
+}
+
 /** @internal */
 export const StrikePriceMultiplier$inboundSchema: z.ZodType<
   StrikePriceMultiplier,
@@ -2456,6 +2771,24 @@ export namespace StrikePriceMultiplier$ {
   export type Outbound = StrikePriceMultiplier$Outbound;
 }
 
+export function strikePriceMultiplierToJSON(
+  strikePriceMultiplier: StrikePriceMultiplier,
+): string {
+  return JSON.stringify(
+    StrikePriceMultiplier$outboundSchema.parse(strikePriceMultiplier),
+  );
+}
+
+export function strikePriceMultiplierFromJSON(
+  jsonString: string,
+): SafeParseResult<StrikePriceMultiplier, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrikePriceMultiplier$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrikePriceMultiplier' from JSON`,
+  );
+}
+
 /** @internal */
 export const TradeValueMultiplier$inboundSchema: z.ZodType<
   TradeValueMultiplier,
@@ -2490,6 +2823,24 @@ export namespace TradeValueMultiplier$ {
   export const outboundSchema = TradeValueMultiplier$outboundSchema;
   /** @deprecated use `TradeValueMultiplier$Outbound` instead. */
   export type Outbound = TradeValueMultiplier$Outbound;
+}
+
+export function tradeValueMultiplierToJSON(
+  tradeValueMultiplier: TradeValueMultiplier,
+): string {
+  return JSON.stringify(
+    TradeValueMultiplier$outboundSchema.parse(tradeValueMultiplier),
+  );
+}
+
+export function tradeValueMultiplierFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeValueMultiplier, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeValueMultiplier$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeValueMultiplier' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2584,6 +2935,20 @@ export namespace OptionRoot$ {
   export type Outbound = OptionRoot$Outbound;
 }
 
+export function optionRootToJSON(optionRoot: OptionRoot): string {
+  return JSON.stringify(OptionRoot$outboundSchema.parse(optionRoot));
+}
+
+export function optionRootFromJSON(
+  jsonString: string,
+): SafeParseResult<OptionRoot, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OptionRoot$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionRoot' from JSON`,
+  );
+}
+
 /** @internal */
 export const OptionType$inboundSchema: z.ZodType<
   OptionTypeOpen,
@@ -2656,6 +3021,20 @@ export namespace SeriesDate$ {
   export const outboundSchema = SeriesDate$outboundSchema;
   /** @deprecated use `SeriesDate$Outbound` instead. */
   export type Outbound = SeriesDate$Outbound;
+}
+
+export function seriesDateToJSON(seriesDate: SeriesDate): string {
+  return JSON.stringify(SeriesDate$outboundSchema.parse(seriesDate));
+}
+
+export function seriesDateFromJSON(
+  jsonString: string,
+): SafeParseResult<SeriesDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SeriesDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeriesDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2758,6 +3137,20 @@ export namespace StrikePrice$ {
   export type Outbound = StrikePrice$Outbound;
 }
 
+export function strikePriceToJSON(strikePrice: StrikePrice): string {
+  return JSON.stringify(StrikePrice$outboundSchema.parse(strikePrice));
+}
+
+export function strikePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<StrikePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StrikePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StrikePrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const Option$inboundSchema: z.ZodType<Option, z.ZodTypeDef, unknown> = z
   .object({
@@ -2847,6 +3240,20 @@ export namespace Option$ {
   export type Outbound = Option$Outbound;
 }
 
+export function optionToJSON(option: Option): string {
+  return JSON.stringify(Option$outboundSchema.parse(option));
+}
+
+export function optionFromJSON(
+  jsonString: string,
+): SafeParseResult<Option, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Option$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Option' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssetType1$inboundSchema: z.ZodType<
   AssetType1Open,
@@ -2889,7 +3296,7 @@ export const Asset$inboundSchema: z.ZodType<Asset, z.ZodTypeDef, unknown> = z
     equity: z.nullable(z.lazy(() => Equity$inboundSchema)).optional(),
     fixed_income: z.nullable(z.lazy(() => FixedIncome$inboundSchema))
       .optional(),
-    index: z.nullable(z.lazy(() => IndexT$inboundSchema)).optional(),
+    index: z.nullable(z.lazy(() => Index$inboundSchema)).optional(),
     isin: z.string().optional(),
     issuing_region_code: z.string().optional(),
     mutual_fund: z.nullable(z.lazy(() => MutualFund$inboundSchema)).optional(),
@@ -2917,7 +3324,7 @@ export type Asset$Outbound = {
   description?: string | undefined;
   equity?: Equity$Outbound | null | undefined;
   fixed_income?: FixedIncome$Outbound | null | undefined;
-  index?: IndexT$Outbound | null | undefined;
+  index?: Index$Outbound | null | undefined;
   isin?: string | undefined;
   issuing_region_code?: string | undefined;
   mutual_fund?: MutualFund$Outbound | null | undefined;
@@ -2941,7 +3348,7 @@ export const Asset$outboundSchema: z.ZodType<
   description: z.string().optional(),
   equity: z.nullable(z.lazy(() => Equity$outboundSchema)).optional(),
   fixedIncome: z.nullable(z.lazy(() => FixedIncome$outboundSchema)).optional(),
-  index: z.nullable(z.lazy(() => IndexT$outboundSchema)).optional(),
+  index: z.nullable(z.lazy(() => Index$outboundSchema)).optional(),
   isin: z.string().optional(),
   issuingRegionCode: z.string().optional(),
   mutualFund: z.nullable(z.lazy(() => MutualFund$outboundSchema)).optional(),
@@ -2972,4 +3379,18 @@ export namespace Asset$ {
   export const outboundSchema = Asset$outboundSchema;
   /** @deprecated use `Asset$Outbound` instead. */
   export type Outbound = Asset$Outbound;
+}
+
+export function assetToJSON(asset: Asset): string {
+  return JSON.stringify(Asset$outboundSchema.parse(asset));
+}
+
+export function assetFromJSON(
+  jsonString: string,
+): SafeParseResult<Asset, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Asset$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Asset' from JSON`,
+  );
 }

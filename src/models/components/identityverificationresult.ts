@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A summary of the results from a identity verification check
@@ -113,4 +116,22 @@ export namespace IdentityVerificationResult$ {
   export const outboundSchema = IdentityVerificationResult$outboundSchema;
   /** @deprecated use `IdentityVerificationResult$Outbound` instead. */
   export type Outbound = IdentityVerificationResult$Outbound;
+}
+
+export function identityVerificationResultToJSON(
+  identityVerificationResult: IdentityVerificationResult,
+): string {
+  return JSON.stringify(
+    IdentityVerificationResult$outboundSchema.parse(identityVerificationResult),
+  );
+}
+
+export function identityVerificationResultFromJSON(
+  jsonString: string,
+): SafeParseResult<IdentityVerificationResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IdentityVerificationResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IdentityVerificationResult' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A customer-disclosed list of other Apex-held accounts owned by the Entity applicant at the time of this account's application; expressed as zero, one, or many account numbers
  */
@@ -38,4 +40,6 @@ export declare namespace OtherAccountsCreate$ {
     /** @deprecated use `OtherAccountsCreate$Outbound` instead. */
     type Outbound = OtherAccountsCreate$Outbound;
 }
+export declare function otherAccountsCreateToJSON(otherAccountsCreate: OtherAccountsCreate): string;
+export declare function otherAccountsCreateFromJSON(jsonString: string): SafeParseResult<OtherAccountsCreate, SDKValidationError>;
 //# sourceMappingURL=otheraccountscreate.d.ts.map

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IctReconReportsLocateIctReportResponse$ = exports.IctReconReportsLocateIctReportResponse$outboundSchema = exports.IctReconReportsLocateIctReportResponse$inboundSchema = exports.IctReconReportsLocateIctReportRequest$ = exports.IctReconReportsLocateIctReportRequest$outboundSchema = exports.IctReconReportsLocateIctReportRequest$inboundSchema = exports.ProgramDateFilterProgram$ = exports.ProgramDateFilterProgram$outboundSchema = exports.ProgramDateFilterProgram$inboundSchema = exports.ProgramDateFilterProgram = void 0;
+exports.ictReconReportsLocateIctReportRequestToJSON = ictReconReportsLocateIctReportRequestToJSON;
+exports.ictReconReportsLocateIctReportRequestFromJSON = ictReconReportsLocateIctReportRequestFromJSON;
+exports.ictReconReportsLocateIctReportResponseToJSON = ictReconReportsLocateIctReportResponseToJSON;
+exports.ictReconReportsLocateIctReportResponseFromJSON = ictReconReportsLocateIctReportResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /**
  * The ICT program for which to locate the report.
@@ -115,6 +120,12 @@ var IctReconReportsLocateIctReportRequest$;
     /** @deprecated use `IctReconReportsLocateIctReportRequest$outboundSchema` instead. */
     IctReconReportsLocateIctReportRequest$.outboundSchema = exports.IctReconReportsLocateIctReportRequest$outboundSchema;
 })(IctReconReportsLocateIctReportRequest$ || (exports.IctReconReportsLocateIctReportRequest$ = IctReconReportsLocateIctReportRequest$ = {}));
+function ictReconReportsLocateIctReportRequestToJSON(ictReconReportsLocateIctReportRequest) {
+    return JSON.stringify(exports.IctReconReportsLocateIctReportRequest$outboundSchema.parse(ictReconReportsLocateIctReportRequest));
+}
+function ictReconReportsLocateIctReportRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctReconReportsLocateIctReportRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctReconReportsLocateIctReportRequest' from JSON`);
+}
 /** @internal */
 exports.IctReconReportsLocateIctReportResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -152,4 +163,10 @@ var IctReconReportsLocateIctReportResponse$;
     /** @deprecated use `IctReconReportsLocateIctReportResponse$outboundSchema` instead. */
     IctReconReportsLocateIctReportResponse$.outboundSchema = exports.IctReconReportsLocateIctReportResponse$outboundSchema;
 })(IctReconReportsLocateIctReportResponse$ || (exports.IctReconReportsLocateIctReportResponse$ = IctReconReportsLocateIctReportResponse$ = {}));
+function ictReconReportsLocateIctReportResponseToJSON(ictReconReportsLocateIctReportResponse) {
+    return JSON.stringify(exports.IctReconReportsLocateIctReportResponse$outboundSchema.parse(ictReconReportsLocateIctReportResponse));
+}
+function ictReconReportsLocateIctReportResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctReconReportsLocateIctReportResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctReconReportsLocateIctReportResponse' from JSON`);
+}
 //# sourceMappingURL=ictreconreportslocateictreport.js.map

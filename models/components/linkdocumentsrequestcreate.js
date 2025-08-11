@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LinkDocumentsRequestCreate$ = exports.LinkDocumentsRequestCreate$outboundSchema = exports.LinkDocumentsRequestCreate$inboundSchema = void 0;
+exports.linkDocumentsRequestCreateToJSON = linkDocumentsRequestCreateToJSON;
+exports.linkDocumentsRequestCreateFromJSON = linkDocumentsRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.LinkDocumentsRequestCreate$inboundSchema = z.object({
     identity_verification_document_ids: z.array(z.string()),
@@ -66,4 +69,10 @@ var LinkDocumentsRequestCreate$;
     /** @deprecated use `LinkDocumentsRequestCreate$outboundSchema` instead. */
     LinkDocumentsRequestCreate$.outboundSchema = exports.LinkDocumentsRequestCreate$outboundSchema;
 })(LinkDocumentsRequestCreate$ || (exports.LinkDocumentsRequestCreate$ = LinkDocumentsRequestCreate$ = {}));
+function linkDocumentsRequestCreateToJSON(linkDocumentsRequestCreate) {
+    return JSON.stringify(exports.LinkDocumentsRequestCreate$outboundSchema.parse(linkDocumentsRequestCreate));
+}
+function linkDocumentsRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LinkDocumentsRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LinkDocumentsRequestCreate' from JSON`);
+}
 //# sourceMappingURL=linkdocumentsrequestcreate.js.map

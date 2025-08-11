@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The max retirement contribution that can be made for the tax year, inclusive of catch-up contributions. Value is dependent on the account's registration type and account holder's age
@@ -114,6 +117,24 @@ export namespace ContributionLimit$ {
   export type Outbound = ContributionLimit$Outbound;
 }
 
+export function contributionLimitToJSON(
+  contributionLimit: ContributionLimit,
+): string {
+  return JSON.stringify(
+    ContributionLimit$outboundSchema.parse(contributionLimit),
+  );
+}
+
+export function contributionLimitFromJSON(
+  jsonString: string,
+): SafeParseResult<ContributionLimit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContributionLimit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContributionLimit' from JSON`,
+  );
+}
+
 /** @internal */
 export const RegularAmount$inboundSchema: z.ZodType<
   RegularAmount,
@@ -148,6 +169,20 @@ export namespace RegularAmount$ {
   export const outboundSchema = RegularAmount$outboundSchema;
   /** @deprecated use `RegularAmount$Outbound` instead. */
   export type Outbound = RegularAmount$Outbound;
+}
+
+export function regularAmountToJSON(regularAmount: RegularAmount): string {
+  return JSON.stringify(RegularAmount$outboundSchema.parse(regularAmount));
+}
+
+export function regularAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<RegularAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RegularAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RegularAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -186,6 +221,26 @@ export namespace RemainingContributionAllowed$ {
   export type Outbound = RemainingContributionAllowed$Outbound;
 }
 
+export function remainingContributionAllowedToJSON(
+  remainingContributionAllowed: RemainingContributionAllowed,
+): string {
+  return JSON.stringify(
+    RemainingContributionAllowed$outboundSchema.parse(
+      remainingContributionAllowed,
+    ),
+  );
+}
+
+export function remainingContributionAllowedFromJSON(
+  jsonString: string,
+): SafeParseResult<RemainingContributionAllowed, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemainingContributionAllowed$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemainingContributionAllowed' from JSON`,
+  );
+}
+
 /** @internal */
 export const RolloverAmount$inboundSchema: z.ZodType<
   RolloverAmount,
@@ -220,6 +275,20 @@ export namespace RolloverAmount$ {
   export const outboundSchema = RolloverAmount$outboundSchema;
   /** @deprecated use `RolloverAmount$Outbound` instead. */
   export type Outbound = RolloverAmount$Outbound;
+}
+
+export function rolloverAmountToJSON(rolloverAmount: RolloverAmount): string {
+  return JSON.stringify(RolloverAmount$outboundSchema.parse(rolloverAmount));
+}
+
+export function rolloverAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<RolloverAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RolloverAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RolloverAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -300,4 +369,22 @@ export namespace ContributionSummary$ {
   export const outboundSchema = ContributionSummary$outboundSchema;
   /** @deprecated use `ContributionSummary$Outbound` instead. */
   export type Outbound = ContributionSummary$Outbound;
+}
+
+export function contributionSummaryToJSON(
+  contributionSummary: ContributionSummary,
+): string {
+  return JSON.stringify(
+    ContributionSummary$outboundSchema.parse(contributionSummary),
+  );
+}
+
+export function contributionSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<ContributionSummary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContributionSummary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContributionSummary' from JSON`,
+  );
 }

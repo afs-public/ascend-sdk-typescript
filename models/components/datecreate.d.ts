@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
  *
@@ -44,4 +46,6 @@ export declare namespace DateCreate$ {
     /** @deprecated use `DateCreate$Outbound` instead. */
     type Outbound = DateCreate$Outbound;
 }
+export declare function dateCreateToJSON(dateCreate: DateCreate): string;
+export declare function dateCreateFromJSON(jsonString: string): SafeParseResult<DateCreate, SDKValidationError>;
 //# sourceMappingURL=datecreate.d.ts.map

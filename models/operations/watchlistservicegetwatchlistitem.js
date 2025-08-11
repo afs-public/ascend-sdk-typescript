@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WatchlistServiceGetWatchlistItemResponse$ = exports.WatchlistServiceGetWatchlistItemResponse$outboundSchema = exports.WatchlistServiceGetWatchlistItemResponse$inboundSchema = exports.WatchlistServiceGetWatchlistItemRequest$ = exports.WatchlistServiceGetWatchlistItemRequest$outboundSchema = exports.WatchlistServiceGetWatchlistItemRequest$inboundSchema = void 0;
+exports.watchlistServiceGetWatchlistItemRequestToJSON = watchlistServiceGetWatchlistItemRequestToJSON;
+exports.watchlistServiceGetWatchlistItemRequestFromJSON = watchlistServiceGetWatchlistItemRequestFromJSON;
+exports.watchlistServiceGetWatchlistItemResponseToJSON = watchlistServiceGetWatchlistItemResponseToJSON;
+exports.watchlistServiceGetWatchlistItemResponseFromJSON = watchlistServiceGetWatchlistItemResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.WatchlistServiceGetWatchlistItemRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var WatchlistServiceGetWatchlistItemRequest$;
     /** @deprecated use `WatchlistServiceGetWatchlistItemRequest$outboundSchema` instead. */
     WatchlistServiceGetWatchlistItemRequest$.outboundSchema = exports.WatchlistServiceGetWatchlistItemRequest$outboundSchema;
 })(WatchlistServiceGetWatchlistItemRequest$ || (exports.WatchlistServiceGetWatchlistItemRequest$ = WatchlistServiceGetWatchlistItemRequest$ = {}));
+function watchlistServiceGetWatchlistItemRequestToJSON(watchlistServiceGetWatchlistItemRequest) {
+    return JSON.stringify(exports.WatchlistServiceGetWatchlistItemRequest$outboundSchema.parse(watchlistServiceGetWatchlistItemRequest));
+}
+function watchlistServiceGetWatchlistItemRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WatchlistServiceGetWatchlistItemRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WatchlistServiceGetWatchlistItemRequest' from JSON`);
+}
 /** @internal */
 exports.WatchlistServiceGetWatchlistItemResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var WatchlistServiceGetWatchlistItemResponse$;
     /** @deprecated use `WatchlistServiceGetWatchlistItemResponse$outboundSchema` instead. */
     WatchlistServiceGetWatchlistItemResponse$.outboundSchema = exports.WatchlistServiceGetWatchlistItemResponse$outboundSchema;
 })(WatchlistServiceGetWatchlistItemResponse$ || (exports.WatchlistServiceGetWatchlistItemResponse$ = WatchlistServiceGetWatchlistItemResponse$ = {}));
+function watchlistServiceGetWatchlistItemResponseToJSON(watchlistServiceGetWatchlistItemResponse) {
+    return JSON.stringify(exports.WatchlistServiceGetWatchlistItemResponse$outboundSchema.parse(watchlistServiceGetWatchlistItemResponse));
+}
+function watchlistServiceGetWatchlistItemResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WatchlistServiceGetWatchlistItemResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WatchlistServiceGetWatchlistItemResponse' from JSON`);
+}
 //# sourceMappingURL=watchlistservicegetwatchlistitem.js.map

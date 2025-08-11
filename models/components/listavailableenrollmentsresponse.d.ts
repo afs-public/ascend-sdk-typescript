@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AvailableEnrollment, AvailableEnrollment$Outbound } from "./availableenrollment.js";
 /**
  * The response to list Enrollments available for an Account.
@@ -29,4 +31,6 @@ export declare namespace ListAvailableEnrollmentsResponse$ {
     /** @deprecated use `ListAvailableEnrollmentsResponse$Outbound` instead. */
     type Outbound = ListAvailableEnrollmentsResponse$Outbound;
 }
+export declare function listAvailableEnrollmentsResponseToJSON(listAvailableEnrollmentsResponse: ListAvailableEnrollmentsResponse): string;
+export declare function listAvailableEnrollmentsResponseFromJSON(jsonString: string): SafeParseResult<ListAvailableEnrollmentsResponse, SDKValidationError>;
 //# sourceMappingURL=listavailableenrollmentsresponse.d.ts.map

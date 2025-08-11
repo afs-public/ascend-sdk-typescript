@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TaxWithholdingMetadataCreate,
   TaxWithholdingMetadataCreate$inboundSchema,
@@ -151,4 +154,24 @@ export namespace OperatingEnrollmentMetadataCreate$ {
     OperatingEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `OperatingEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = OperatingEnrollmentMetadataCreate$Outbound;
+}
+
+export function operatingEnrollmentMetadataCreateToJSON(
+  operatingEnrollmentMetadataCreate: OperatingEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    OperatingEnrollmentMetadataCreate$outboundSchema.parse(
+      operatingEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function operatingEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<OperatingEnrollmentMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OperatingEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OperatingEnrollmentMetadataCreate' from JSON`,
+  );
 }

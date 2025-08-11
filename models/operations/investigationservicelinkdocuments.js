@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestigationServiceLinkDocumentsResponse$ = exports.InvestigationServiceLinkDocumentsResponse$outboundSchema = exports.InvestigationServiceLinkDocumentsResponse$inboundSchema = exports.InvestigationServiceLinkDocumentsRequest$ = exports.InvestigationServiceLinkDocumentsRequest$outboundSchema = exports.InvestigationServiceLinkDocumentsRequest$inboundSchema = void 0;
+exports.investigationServiceLinkDocumentsRequestToJSON = investigationServiceLinkDocumentsRequestToJSON;
+exports.investigationServiceLinkDocumentsRequestFromJSON = investigationServiceLinkDocumentsRequestFromJSON;
+exports.investigationServiceLinkDocumentsResponseToJSON = investigationServiceLinkDocumentsResponseToJSON;
+exports.investigationServiceLinkDocumentsResponseFromJSON = investigationServiceLinkDocumentsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.InvestigationServiceLinkDocumentsRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var InvestigationServiceLinkDocumentsRequest$;
     /** @deprecated use `InvestigationServiceLinkDocumentsRequest$outboundSchema` instead. */
     InvestigationServiceLinkDocumentsRequest$.outboundSchema = exports.InvestigationServiceLinkDocumentsRequest$outboundSchema;
 })(InvestigationServiceLinkDocumentsRequest$ || (exports.InvestigationServiceLinkDocumentsRequest$ = InvestigationServiceLinkDocumentsRequest$ = {}));
+function investigationServiceLinkDocumentsRequestToJSON(investigationServiceLinkDocumentsRequest) {
+    return JSON.stringify(exports.InvestigationServiceLinkDocumentsRequest$outboundSchema.parse(investigationServiceLinkDocumentsRequest));
+}
+function investigationServiceLinkDocumentsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationServiceLinkDocumentsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationServiceLinkDocumentsRequest' from JSON`);
+}
 /** @internal */
 exports.InvestigationServiceLinkDocumentsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +119,10 @@ var InvestigationServiceLinkDocumentsResponse$;
     /** @deprecated use `InvestigationServiceLinkDocumentsResponse$outboundSchema` instead. */
     InvestigationServiceLinkDocumentsResponse$.outboundSchema = exports.InvestigationServiceLinkDocumentsResponse$outboundSchema;
 })(InvestigationServiceLinkDocumentsResponse$ || (exports.InvestigationServiceLinkDocumentsResponse$ = InvestigationServiceLinkDocumentsResponse$ = {}));
+function investigationServiceLinkDocumentsResponseToJSON(investigationServiceLinkDocumentsResponse) {
+    return JSON.stringify(exports.InvestigationServiceLinkDocumentsResponse$outboundSchema.parse(investigationServiceLinkDocumentsResponse));
+}
+function investigationServiceLinkDocumentsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationServiceLinkDocumentsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationServiceLinkDocumentsResponse' from JSON`);
+}
 //# sourceMappingURL=investigationservicelinkdocuments.js.map

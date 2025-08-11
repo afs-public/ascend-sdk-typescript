@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketOrdersServiceSubmitBasketResponse$ = exports.BasketOrdersServiceSubmitBasketResponse$outboundSchema = exports.BasketOrdersServiceSubmitBasketResponse$inboundSchema = exports.BasketOrdersServiceSubmitBasketRequest$ = exports.BasketOrdersServiceSubmitBasketRequest$outboundSchema = exports.BasketOrdersServiceSubmitBasketRequest$inboundSchema = void 0;
+exports.basketOrdersServiceSubmitBasketRequestToJSON = basketOrdersServiceSubmitBasketRequestToJSON;
+exports.basketOrdersServiceSubmitBasketRequestFromJSON = basketOrdersServiceSubmitBasketRequestFromJSON;
+exports.basketOrdersServiceSubmitBasketResponseToJSON = basketOrdersServiceSubmitBasketResponseToJSON;
+exports.basketOrdersServiceSubmitBasketResponseFromJSON = basketOrdersServiceSubmitBasketResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BasketOrdersServiceSubmitBasketRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var BasketOrdersServiceSubmitBasketRequest$;
     /** @deprecated use `BasketOrdersServiceSubmitBasketRequest$outboundSchema` instead. */
     BasketOrdersServiceSubmitBasketRequest$.outboundSchema = exports.BasketOrdersServiceSubmitBasketRequest$outboundSchema;
 })(BasketOrdersServiceSubmitBasketRequest$ || (exports.BasketOrdersServiceSubmitBasketRequest$ = BasketOrdersServiceSubmitBasketRequest$ = {}));
+function basketOrdersServiceSubmitBasketRequestToJSON(basketOrdersServiceSubmitBasketRequest) {
+    return JSON.stringify(exports.BasketOrdersServiceSubmitBasketRequest$outboundSchema.parse(basketOrdersServiceSubmitBasketRequest));
+}
+function basketOrdersServiceSubmitBasketRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrdersServiceSubmitBasketRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrdersServiceSubmitBasketRequest' from JSON`);
+}
 /** @internal */
 exports.BasketOrdersServiceSubmitBasketResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var BasketOrdersServiceSubmitBasketResponse$;
     /** @deprecated use `BasketOrdersServiceSubmitBasketResponse$outboundSchema` instead. */
     BasketOrdersServiceSubmitBasketResponse$.outboundSchema = exports.BasketOrdersServiceSubmitBasketResponse$outboundSchema;
 })(BasketOrdersServiceSubmitBasketResponse$ || (exports.BasketOrdersServiceSubmitBasketResponse$ = BasketOrdersServiceSubmitBasketResponse$ = {}));
+function basketOrdersServiceSubmitBasketResponseToJSON(basketOrdersServiceSubmitBasketResponse) {
+    return JSON.stringify(exports.BasketOrdersServiceSubmitBasketResponse$outboundSchema.parse(basketOrdersServiceSubmitBasketResponse));
+}
+function basketOrdersServiceSubmitBasketResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrdersServiceSubmitBasketResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrdersServiceSubmitBasketResponse' from JSON`);
+}
 //# sourceMappingURL=basketordersservicesubmitbasket.js.map

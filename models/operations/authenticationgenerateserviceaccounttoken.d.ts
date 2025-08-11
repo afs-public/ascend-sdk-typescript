@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AuthenticationGenerateServiceAccountTokenSecurity = {
     apiKeyAuth: string;
 };
@@ -34,6 +36,8 @@ export declare namespace AuthenticationGenerateServiceAccountTokenSecurity$ {
     /** @deprecated use `AuthenticationGenerateServiceAccountTokenSecurity$Outbound` instead. */
     type Outbound = AuthenticationGenerateServiceAccountTokenSecurity$Outbound;
 }
+export declare function authenticationGenerateServiceAccountTokenSecurityToJSON(authenticationGenerateServiceAccountTokenSecurity: AuthenticationGenerateServiceAccountTokenSecurity): string;
+export declare function authenticationGenerateServiceAccountTokenSecurityFromJSON(jsonString: string): SafeParseResult<AuthenticationGenerateServiceAccountTokenSecurity, SDKValidationError>;
 /** @internal */
 export declare const AuthenticationGenerateServiceAccountTokenResponse$inboundSchema: z.ZodType<AuthenticationGenerateServiceAccountTokenResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -56,4 +60,6 @@ export declare namespace AuthenticationGenerateServiceAccountTokenResponse$ {
     /** @deprecated use `AuthenticationGenerateServiceAccountTokenResponse$Outbound` instead. */
     type Outbound = AuthenticationGenerateServiceAccountTokenResponse$Outbound;
 }
+export declare function authenticationGenerateServiceAccountTokenResponseToJSON(authenticationGenerateServiceAccountTokenResponse: AuthenticationGenerateServiceAccountTokenResponse): string;
+export declare function authenticationGenerateServiceAccountTokenResponseFromJSON(jsonString: string): SafeParseResult<AuthenticationGenerateServiceAccountTokenResponse, SDKValidationError>;
 //# sourceMappingURL=authenticationgenerateserviceaccounttoken.d.ts.map

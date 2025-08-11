@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to retrieve retirement constraints for two accounts in a cash journal transfer
@@ -70,4 +73,31 @@ export namespace RetrieveCashJournalConstraintsRequestCreate$ {
     RetrieveCashJournalConstraintsRequestCreate$outboundSchema;
   /** @deprecated use `RetrieveCashJournalConstraintsRequestCreate$Outbound` instead. */
   export type Outbound = RetrieveCashJournalConstraintsRequestCreate$Outbound;
+}
+
+export function retrieveCashJournalConstraintsRequestCreateToJSON(
+  retrieveCashJournalConstraintsRequestCreate:
+    RetrieveCashJournalConstraintsRequestCreate,
+): string {
+  return JSON.stringify(
+    RetrieveCashJournalConstraintsRequestCreate$outboundSchema.parse(
+      retrieveCashJournalConstraintsRequestCreate,
+    ),
+  );
+}
+
+export function retrieveCashJournalConstraintsRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetrieveCashJournalConstraintsRequestCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveCashJournalConstraintsRequestCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetrieveCashJournalConstraintsRequestCreate' from JSON`,
+  );
 }

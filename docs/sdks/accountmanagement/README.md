@@ -28,8 +28,10 @@ Gets a list of Accounts based on search criteria.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListAccounts" method="get" path="/accounts/v1/accounts" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+import { View } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
 const apexascend = new Apexascend({
   security: {
@@ -44,9 +46,14 @@ const apexascend = new Apexascend({
 });
 
 async function run() {
-  const result = await apexascend.accountManagement.listAccounts({});
+  const result = await apexascend.accountManagement.listAccounts({
+    pageSize: 25,
+    pageToken: "4ZHd3wAaMD1IQ0ZKS2BKV0FSRVdLW4VLWkY1R1B3MU4",
+    orderBy: "state",
+    filter: "account_number == \"R9AHY8P\"",
+    view: View.Full,
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -60,6 +67,7 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { accountManagementListAccounts } from "@apexfintechsolutions/ascend-sdk/funcs/accountManagementListAccounts.js";
+import { View } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -76,16 +84,19 @@ const apexascend = new ApexascendCore({
 });
 
 async function run() {
-  const res = await accountManagementListAccounts(apexascend, {});
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await accountManagementListAccounts(apexascend, {
+    pageSize: 25,
+    pageToken: "4ZHd3wAaMD1IQ0ZKS2BKV0FSRVdLW4VLWkY1R1B3MU4",
+    orderBy: "state",
+    filter: "account_number == \"R9AHY8P\"",
+    view: View.Full,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementListAccounts failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -106,10 +117,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## updateAccount
 
@@ -117,6 +129,7 @@ UPDATE Updates an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_UpdateAccount" method="patch" path="/accounts/v1/accounts/{account_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -135,7 +148,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.updateAccount({}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -166,15 +178,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementUpdateAccount(apexascend, {}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementUpdateAccount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -197,10 +206,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## addParty
 
@@ -208,6 +218,7 @@ Adds a party to an account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_AddParty" method="post" path="/accounts/v1/accounts/{account_id}/parties:add" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RelationType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -235,7 +246,6 @@ async function run() {
     },
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -275,15 +285,12 @@ async function run() {
       relationType: RelationType.PrimaryOwner,
     },
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementAddParty failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -305,10 +312,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## updateParty
 
@@ -316,6 +324,7 @@ Updates a Party.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_UpdateParty" method="patch" path="/accounts/v1/accounts/{account_id}/parties/{party_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -334,7 +343,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.updateParty({}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "a58ddb02-3954-4249-a7d5-1d408def12cf");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -365,15 +373,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementUpdateParty(apexascend, {}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "a58ddb02-3954-4249-a7d5-1d408def12cf");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementUpdateParty failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -397,10 +402,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## replaceParty
 
@@ -408,6 +414,7 @@ Replaces a party on an account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ReplaceParty" method="post" path="/accounts/v1/accounts/{account_id}/parties/{party_id}:replace" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RelationType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -435,7 +442,6 @@ async function run() {
     },
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -475,15 +481,12 @@ async function run() {
       relationType: RelationType.PrimaryOwner,
     },
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementReplaceParty failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -506,10 +509,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## removeParty
 
@@ -517,6 +521,7 @@ Remove a party from an account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_RemoveParty" method="post" path="/accounts/v1/accounts/{account_id}/parties/{party_id}:remove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -537,7 +542,6 @@ async function run() {
     name: "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/parties/8096110d-fb55-4f9d-b883-b84f0b70d3ea",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -570,15 +574,12 @@ async function run() {
   const res = await accountManagementRemoveParty(apexascend, {
     name: "accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/parties/8096110d-fb55-4f9d-b883-b84f0b70d3ea",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementRemoveParty failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -601,10 +602,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## closeAccount
 
@@ -612,6 +614,7 @@ CUSTOM Places an ACCT_MAINT_CLOSURE_PREP_BY_CORRESPONDENT restriction on the Acc
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_CloseAccount" method="post" path="/accounts/v1/accounts/{account_id}:close" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -630,7 +633,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.closeAccount({}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -661,15 +663,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementCloseAccount(apexascend, {}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementCloseAccount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -691,10 +690,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 409, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 403, 404, 409 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## createTrustedContact
 
@@ -702,6 +702,7 @@ Creates a new Trusted Contact for an account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_CreateTrustedContact" method="post" path="/accounts/v1/accounts/{account_id}/trustedContacts" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -723,7 +724,6 @@ async function run() {
     givenName: "John",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -757,15 +757,12 @@ async function run() {
     familyName: "Doe",
     givenName: "John",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementCreateTrustedContact failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -787,10 +784,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## updateTrustedContact
 
@@ -798,6 +796,7 @@ Updates a Trusted Contact.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_UpdateTrustedContact" method="patch" path="/accounts/v1/accounts/{account_id}/trustedContacts/{trustedContact_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -816,7 +815,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.updateTrustedContact({}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -847,15 +845,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementUpdateTrustedContact(apexascend, {}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementUpdateTrustedContact failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -879,10 +874,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## deleteTrustedContact
 
@@ -890,6 +886,7 @@ DELETE Deletes a Trusted Contact for an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_DeleteTrustedContact" method="delete" path="/accounts/v1/accounts/{account_id}/trustedContacts/{trustedContact_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -908,7 +905,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.deleteTrustedContact("01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -939,15 +935,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementDeleteTrustedContact(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementDeleteTrustedContact failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -969,10 +962,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## createInterestedParty
 
@@ -980,6 +974,7 @@ Creates an Interested Party record for an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_CreateInterestedParty" method="post" path="/accounts/v1/accounts/{account_id}/interestedParties" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1001,7 +996,6 @@ async function run() {
     recipient: "John Dough",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1035,15 +1029,12 @@ async function run() {
     mailingAddress: {},
     recipient: "John Dough",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementCreateInterestedParty failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1065,10 +1056,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## updateInterestedParty
 
@@ -1076,6 +1068,7 @@ Updates an Interested Party.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_UpdateInterestedParty" method="patch" path="/accounts/v1/accounts/{account_id}/interestedParties/{interestedParty_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1094,7 +1087,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.updateInterestedParty({}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "ecf44f2f-7030-48ed-b937-c40891ee10c8");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1125,15 +1117,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementUpdateInterestedParty(apexascend, {}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "ecf44f2f-7030-48ed-b937-c40891ee10c8");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementUpdateInterestedParty failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1157,10 +1146,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## deleteInterestedParty
 
@@ -1168,6 +1158,7 @@ Deletes an Interested Party associated from an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_DeleteInterestedParty" method="delete" path="/accounts/v1/accounts/{account_id}/interestedParties/{interestedParty_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1186,7 +1177,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.deleteInterestedParty("01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1217,15 +1207,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementDeleteInterestedParty(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "8096110d-fb55-4f9d-b883-b84f0b70d3ea");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementDeleteInterestedParty failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1247,10 +1234,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listAvailableRestrictions
 
@@ -1258,6 +1246,7 @@ Gets a list of possible Restrictions that can be placed on an Account based on E
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListAvailableRestrictions" method="get" path="/accounts/v1/accounts/{account_id}/availableRestrictions" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1276,7 +1265,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountManagement.listAvailableRestrictions("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1307,15 +1295,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountManagementListAvailableRestrictions(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementListAvailableRestrictions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1336,10 +1321,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## createRestriction
 
@@ -1347,6 +1333,7 @@ Applies a Restriction to an account that suspends one or more Entitlements.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_CreateRestriction" method="post" path="/accounts/v1/accounts/{account_id}/restrictions" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1368,7 +1355,6 @@ async function run() {
     restrictionCode: "MARGIN_CALL_VIOLATION_REG_T",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1402,15 +1388,12 @@ async function run() {
     createReason: "Some reason for creating",
     restrictionCode: "MARGIN_CALL_VIOLATION_REG_T",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementCreateRestriction failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1432,10 +1415,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 409, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 409    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## endRestriction
 
@@ -1443,6 +1427,7 @@ Ends a Restriction on an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_EndRestriction" method="post" path="/accounts/v1/accounts/{account_id}/restrictions/{restriction_id}:end" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1463,7 +1448,6 @@ async function run() {
     reason: "Reason for ending the restriction",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "FRAUD_SUSPENDED_BY_CORRESPONDENT");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1496,15 +1480,12 @@ async function run() {
   const res = await accountManagementEndRestriction(apexascend, {
     reason: "Reason for ending the restriction",
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK", "FRAUD_SUSPENDED_BY_CORRESPONDENT");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountManagementEndRestriction failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1527,7 +1508,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

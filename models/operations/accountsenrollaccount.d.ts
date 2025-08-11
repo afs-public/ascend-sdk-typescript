@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsEnrollAccountRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace AccountsEnrollAccountRequest$ {
     /** @deprecated use `AccountsEnrollAccountRequest$Outbound` instead. */
     type Outbound = AccountsEnrollAccountRequest$Outbound;
 }
+export declare function accountsEnrollAccountRequestToJSON(accountsEnrollAccountRequest: AccountsEnrollAccountRequest): string;
+export declare function accountsEnrollAccountRequestFromJSON(jsonString: string): SafeParseResult<AccountsEnrollAccountRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsEnrollAccountResponse$inboundSchema: z.ZodType<AccountsEnrollAccountResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsEnrollAccountResponse$ {
     /** @deprecated use `AccountsEnrollAccountResponse$Outbound` instead. */
     type Outbound = AccountsEnrollAccountResponse$Outbound;
 }
+export declare function accountsEnrollAccountResponseToJSON(accountsEnrollAccountResponse: AccountsEnrollAccountResponse): string;
+export declare function accountsEnrollAccountResponseFromJSON(jsonString: string): SafeParseResult<AccountsEnrollAccountResponse, SDKValidationError>;
 //# sourceMappingURL=accountsenrollaccount.d.ts.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingCancelTradeAllocationRequest = {
   /**
@@ -95,6 +98,27 @@ export namespace BookingCancelTradeAllocationRequest$ {
   export type Outbound = BookingCancelTradeAllocationRequest$Outbound;
 }
 
+export function bookingCancelTradeAllocationRequestToJSON(
+  bookingCancelTradeAllocationRequest: BookingCancelTradeAllocationRequest,
+): string {
+  return JSON.stringify(
+    BookingCancelTradeAllocationRequest$outboundSchema.parse(
+      bookingCancelTradeAllocationRequest,
+    ),
+  );
+}
+
+export function bookingCancelTradeAllocationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCancelTradeAllocationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BookingCancelTradeAllocationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCancelTradeAllocationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingCancelTradeAllocationResponse$inboundSchema: z.ZodType<
   BookingCancelTradeAllocationResponse,
@@ -153,4 +177,25 @@ export namespace BookingCancelTradeAllocationResponse$ {
     BookingCancelTradeAllocationResponse$outboundSchema;
   /** @deprecated use `BookingCancelTradeAllocationResponse$Outbound` instead. */
   export type Outbound = BookingCancelTradeAllocationResponse$Outbound;
+}
+
+export function bookingCancelTradeAllocationResponseToJSON(
+  bookingCancelTradeAllocationResponse: BookingCancelTradeAllocationResponse,
+): string {
+  return JSON.stringify(
+    BookingCancelTradeAllocationResponse$outboundSchema.parse(
+      bookingCancelTradeAllocationResponse,
+    ),
+  );
+}
+
+export function bookingCancelTradeAllocationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCancelTradeAllocationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BookingCancelTradeAllocationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCancelTradeAllocationResponse' from JSON`,
+  );
 }

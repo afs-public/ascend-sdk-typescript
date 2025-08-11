@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A cash amount in the format of decimal value
  */
@@ -438,6 +440,8 @@ export declare namespace WireWithdrawalAmount$ {
     /** @deprecated use `WireWithdrawalAmount$Outbound` instead. */
     type Outbound = WireWithdrawalAmount$Outbound;
 }
+export declare function wireWithdrawalAmountToJSON(wireWithdrawalAmount: WireWithdrawalAmount): string;
+export declare function wireWithdrawalAmountFromJSON(jsonString: string): SafeParseResult<WireWithdrawalAmount, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalAddress$inboundSchema: z.ZodType<WireWithdrawalAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -462,6 +466,8 @@ export declare namespace WireWithdrawalAddress$ {
     /** @deprecated use `WireWithdrawalAddress$Outbound` instead. */
     type Outbound = WireWithdrawalAddress$Outbound;
 }
+export declare function wireWithdrawalAddressToJSON(wireWithdrawalAddress: WireWithdrawalAddress): string;
+export declare function wireWithdrawalAddressFromJSON(jsonString: string): SafeParseResult<WireWithdrawalAddress, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalBeneficiary$inboundSchema: z.ZodType<WireWithdrawalBeneficiary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -485,6 +491,8 @@ export declare namespace WireWithdrawalBeneficiary$ {
     /** @deprecated use `WireWithdrawalBeneficiary$Outbound` instead. */
     type Outbound = WireWithdrawalBeneficiary$Outbound;
 }
+export declare function wireWithdrawalBeneficiaryToJSON(wireWithdrawalBeneficiary: WireWithdrawalBeneficiary): string;
+export declare function wireWithdrawalBeneficiaryFromJSON(jsonString: string): SafeParseResult<WireWithdrawalBeneficiary, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalIntermediaryAddress$inboundSchema: z.ZodType<WireWithdrawalIntermediaryAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -509,6 +517,8 @@ export declare namespace WireWithdrawalIntermediaryAddress$ {
     /** @deprecated use `WireWithdrawalIntermediaryAddress$Outbound` instead. */
     type Outbound = WireWithdrawalIntermediaryAddress$Outbound;
 }
+export declare function wireWithdrawalIntermediaryAddressToJSON(wireWithdrawalIntermediaryAddress: WireWithdrawalIntermediaryAddress): string;
+export declare function wireWithdrawalIntermediaryAddressFromJSON(jsonString: string): SafeParseResult<WireWithdrawalIntermediaryAddress, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalIntermediary$inboundSchema: z.ZodType<WireWithdrawalIntermediary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -531,6 +541,8 @@ export declare namespace WireWithdrawalIntermediary$ {
     /** @deprecated use `WireWithdrawalIntermediary$Outbound` instead. */
     type Outbound = WireWithdrawalIntermediary$Outbound;
 }
+export declare function wireWithdrawalIntermediaryToJSON(wireWithdrawalIntermediary: WireWithdrawalIntermediary): string;
+export declare function wireWithdrawalIntermediaryFromJSON(jsonString: string): SafeParseResult<WireWithdrawalIntermediary, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalIraDistributionAmount$inboundSchema: z.ZodType<WireWithdrawalIraDistributionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -551,6 +563,8 @@ export declare namespace WireWithdrawalIraDistributionAmount$ {
     /** @deprecated use `WireWithdrawalIraDistributionAmount$Outbound` instead. */
     type Outbound = WireWithdrawalIraDistributionAmount$Outbound;
 }
+export declare function wireWithdrawalIraDistributionAmountToJSON(wireWithdrawalIraDistributionAmount: WireWithdrawalIraDistributionAmount): string;
+export declare function wireWithdrawalIraDistributionAmountFromJSON(jsonString: string): SafeParseResult<WireWithdrawalIraDistributionAmount, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalPercentage$inboundSchema: z.ZodType<WireWithdrawalPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -571,6 +585,8 @@ export declare namespace WireWithdrawalPercentage$ {
     /** @deprecated use `WireWithdrawalPercentage$Outbound` instead. */
     type Outbound = WireWithdrawalPercentage$Outbound;
 }
+export declare function wireWithdrawalPercentageToJSON(wireWithdrawalPercentage: WireWithdrawalPercentage): string;
+export declare function wireWithdrawalPercentageFromJSON(jsonString: string): SafeParseResult<WireWithdrawalPercentage, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalFederalTaxWithholding$inboundSchema: z.ZodType<WireWithdrawalFederalTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -592,6 +608,8 @@ export declare namespace WireWithdrawalFederalTaxWithholding$ {
     /** @deprecated use `WireWithdrawalFederalTaxWithholding$Outbound` instead. */
     type Outbound = WireWithdrawalFederalTaxWithholding$Outbound;
 }
+export declare function wireWithdrawalFederalTaxWithholdingToJSON(wireWithdrawalFederalTaxWithholding: WireWithdrawalFederalTaxWithholding): string;
+export declare function wireWithdrawalFederalTaxWithholdingFromJSON(jsonString: string): SafeParseResult<WireWithdrawalFederalTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalIraDistributionStateTaxWithholdingAmount$inboundSchema: z.ZodType<WireWithdrawalIraDistributionStateTaxWithholdingAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -612,6 +630,8 @@ export declare namespace WireWithdrawalIraDistributionStateTaxWithholdingAmount$
     /** @deprecated use `WireWithdrawalIraDistributionStateTaxWithholdingAmount$Outbound` instead. */
     type Outbound = WireWithdrawalIraDistributionStateTaxWithholdingAmount$Outbound;
 }
+export declare function wireWithdrawalIraDistributionStateTaxWithholdingAmountToJSON(wireWithdrawalIraDistributionStateTaxWithholdingAmount: WireWithdrawalIraDistributionStateTaxWithholdingAmount): string;
+export declare function wireWithdrawalIraDistributionStateTaxWithholdingAmountFromJSON(jsonString: string): SafeParseResult<WireWithdrawalIraDistributionStateTaxWithholdingAmount, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalIraDistributionPercentage$inboundSchema: z.ZodType<WireWithdrawalIraDistributionPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -632,6 +652,8 @@ export declare namespace WireWithdrawalIraDistributionPercentage$ {
     /** @deprecated use `WireWithdrawalIraDistributionPercentage$Outbound` instead. */
     type Outbound = WireWithdrawalIraDistributionPercentage$Outbound;
 }
+export declare function wireWithdrawalIraDistributionPercentageToJSON(wireWithdrawalIraDistributionPercentage: WireWithdrawalIraDistributionPercentage): string;
+export declare function wireWithdrawalIraDistributionPercentageFromJSON(jsonString: string): SafeParseResult<WireWithdrawalIraDistributionPercentage, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalStateTaxWithholding$inboundSchema: z.ZodType<WireWithdrawalStateTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -653,6 +675,8 @@ export declare namespace WireWithdrawalStateTaxWithholding$ {
     /** @deprecated use `WireWithdrawalStateTaxWithholding$Outbound` instead. */
     type Outbound = WireWithdrawalStateTaxWithholding$Outbound;
 }
+export declare function wireWithdrawalStateTaxWithholdingToJSON(wireWithdrawalStateTaxWithholding: WireWithdrawalStateTaxWithholding): string;
+export declare function wireWithdrawalStateTaxWithholdingFromJSON(jsonString: string): SafeParseResult<WireWithdrawalStateTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalType$inboundSchema: z.ZodType<WireWithdrawalTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -692,6 +716,8 @@ export declare namespace WireWithdrawalIraDistribution$ {
     /** @deprecated use `WireWithdrawalIraDistribution$Outbound` instead. */
     type Outbound = WireWithdrawalIraDistribution$Outbound;
 }
+export declare function wireWithdrawalIraDistributionToJSON(wireWithdrawalIraDistribution: WireWithdrawalIraDistribution): string;
+export declare function wireWithdrawalIraDistributionFromJSON(jsonString: string): SafeParseResult<WireWithdrawalIraDistribution, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalRecipientBankType$inboundSchema: z.ZodType<WireWithdrawalRecipientBankTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -727,6 +753,8 @@ export declare namespace WireWithdrawalBankId$ {
     /** @deprecated use `WireWithdrawalBankId$Outbound` instead. */
     type Outbound = WireWithdrawalBankId$Outbound;
 }
+export declare function wireWithdrawalBankIdToJSON(wireWithdrawalBankId: WireWithdrawalBankId): string;
+export declare function wireWithdrawalBankIdFromJSON(jsonString: string): SafeParseResult<WireWithdrawalBankId, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalRecipientBankAddress$inboundSchema: z.ZodType<WireWithdrawalRecipientBankAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -751,6 +779,8 @@ export declare namespace WireWithdrawalRecipientBankAddress$ {
     /** @deprecated use `WireWithdrawalRecipientBankAddress$Outbound` instead. */
     type Outbound = WireWithdrawalRecipientBankAddress$Outbound;
 }
+export declare function wireWithdrawalRecipientBankAddressToJSON(wireWithdrawalRecipientBankAddress: WireWithdrawalRecipientBankAddress): string;
+export declare function wireWithdrawalRecipientBankAddressFromJSON(jsonString: string): SafeParseResult<WireWithdrawalRecipientBankAddress, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalInternationalBankDetails$inboundSchema: z.ZodType<WireWithdrawalInternationalBankDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -773,6 +803,8 @@ export declare namespace WireWithdrawalInternationalBankDetails$ {
     /** @deprecated use `WireWithdrawalInternationalBankDetails$Outbound` instead. */
     type Outbound = WireWithdrawalInternationalBankDetails$Outbound;
 }
+export declare function wireWithdrawalInternationalBankDetailsToJSON(wireWithdrawalInternationalBankDetails: WireWithdrawalInternationalBankDetails): string;
+export declare function wireWithdrawalInternationalBankDetailsFromJSON(jsonString: string): SafeParseResult<WireWithdrawalInternationalBankDetails, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalRecipientBank$inboundSchema: z.ZodType<WireWithdrawalRecipientBank, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -794,6 +826,8 @@ export declare namespace WireWithdrawalRecipientBank$ {
     /** @deprecated use `WireWithdrawalRecipientBank$Outbound` instead. */
     type Outbound = WireWithdrawalRecipientBank$Outbound;
 }
+export declare function wireWithdrawalRecipientBankToJSON(wireWithdrawalRecipientBank: WireWithdrawalRecipientBank): string;
+export declare function wireWithdrawalRecipientBankFromJSON(jsonString: string): SafeParseResult<WireWithdrawalRecipientBank, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalStateState$inboundSchema: z.ZodType<WireWithdrawalStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -834,6 +868,8 @@ export declare namespace WireWithdrawalState$ {
     /** @deprecated use `WireWithdrawalState$Outbound` instead. */
     type Outbound = WireWithdrawalState$Outbound;
 }
+export declare function wireWithdrawalStateToJSON(wireWithdrawalState: WireWithdrawalState): string;
+export declare function wireWithdrawalStateFromJSON(jsonString: string): SafeParseResult<WireWithdrawalState, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawal$inboundSchema: z.ZodType<WireWithdrawal, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -862,4 +898,6 @@ export declare namespace WireWithdrawal$ {
     /** @deprecated use `WireWithdrawal$Outbound` instead. */
     type Outbound = WireWithdrawal$Outbound;
 }
+export declare function wireWithdrawalToJSON(wireWithdrawal: WireWithdrawal): string;
+export declare function wireWithdrawalFromJSON(jsonString: string): SafeParseResult<WireWithdrawal, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawal.d.ts.map

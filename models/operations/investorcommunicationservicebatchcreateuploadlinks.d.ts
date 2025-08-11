@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type InvestorCommunicationServiceBatchCreateUploadLinksResponse = {
     httpMeta: components.HTTPMetadata;
     /**
@@ -33,4 +35,6 @@ export declare namespace InvestorCommunicationServiceBatchCreateUploadLinksRespo
     /** @deprecated use `InvestorCommunicationServiceBatchCreateUploadLinksResponse$Outbound` instead. */
     type Outbound = InvestorCommunicationServiceBatchCreateUploadLinksResponse$Outbound;
 }
+export declare function investorCommunicationServiceBatchCreateUploadLinksResponseToJSON(investorCommunicationServiceBatchCreateUploadLinksResponse: InvestorCommunicationServiceBatchCreateUploadLinksResponse): string;
+export declare function investorCommunicationServiceBatchCreateUploadLinksResponseFromJSON(jsonString: string): SafeParseResult<InvestorCommunicationServiceBatchCreateUploadLinksResponse, SDKValidationError>;
 //# sourceMappingURL=investorcommunicationservicebatchcreateuploadlinks.d.ts.map

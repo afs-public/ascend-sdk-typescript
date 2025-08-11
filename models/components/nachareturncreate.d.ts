@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The cause of the return.
  */
@@ -121,4 +123,6 @@ export declare namespace NachaReturnCreate$ {
     /** @deprecated use `NachaReturnCreate$Outbound` instead. */
     type Outbound = NachaReturnCreate$Outbound;
 }
+export declare function nachaReturnCreateToJSON(nachaReturnCreate: NachaReturnCreate): string;
+export declare function nachaReturnCreateFromJSON(jsonString: string): SafeParseResult<NachaReturnCreate, SDKValidationError>;
 //# sourceMappingURL=nachareturncreate.d.ts.map

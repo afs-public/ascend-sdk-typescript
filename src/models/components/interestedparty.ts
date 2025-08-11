@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The object containing data for the purpose of delivery physical mailings to a party; Typically used for statements, account updates, tax documents, and other postal mailings; May also be used as an alternative identity verification address to personalAddress. Required fields within the `mailing_address` object include:
@@ -238,6 +241,26 @@ export namespace InterestedPartyMailingAddress$ {
   export type Outbound = InterestedPartyMailingAddress$Outbound;
 }
 
+export function interestedPartyMailingAddressToJSON(
+  interestedPartyMailingAddress: InterestedPartyMailingAddress,
+): string {
+  return JSON.stringify(
+    InterestedPartyMailingAddress$outboundSchema.parse(
+      interestedPartyMailingAddress,
+    ),
+  );
+}
+
+export function interestedPartyMailingAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<InterestedPartyMailingAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterestedPartyMailingAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterestedPartyMailingAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const InterestedPartyStatementDeliveryPreference$inboundSchema:
   z.ZodType<
@@ -384,4 +407,20 @@ export namespace InterestedParty$ {
   export const outboundSchema = InterestedParty$outboundSchema;
   /** @deprecated use `InterestedParty$Outbound` instead. */
   export type Outbound = InterestedParty$Outbound;
+}
+
+export function interestedPartyToJSON(
+  interestedParty: InterestedParty,
+): string {
+  return JSON.stringify(InterestedParty$outboundSchema.parse(interestedParty));
+}
+
+export function interestedPartyFromJSON(
+  jsonString: string,
+): SafeParseResult<InterestedParty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterestedParty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterestedParty' from JSON`,
+  );
 }

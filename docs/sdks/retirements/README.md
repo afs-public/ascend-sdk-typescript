@@ -16,6 +16,7 @@ Lists the aggregated retirement contribution summaries by tax year
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RetirementConstraints_ListContributionSummaries" method="get" path="/transfers/v1/accounts/{account_id}/contributionSummaries" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -34,7 +35,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.retirements.listContributionSummaries("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -65,15 +65,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await retirementsListContributionSummaries(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("retirementsListContributionSummaries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -107,6 +104,7 @@ Retrieves retirement contribution constraints for an account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RetirementConstraints_RetrieveContributionConstraints" method="post" path="/transfers/v1/accounts/{account_id}:retrieveContributionConstraints" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { Mechanism } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -129,7 +127,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -164,15 +161,12 @@ async function run() {
     mechanism: Mechanism.Ach,
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("retirementsRetrieveContributionConstraints failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -205,6 +199,7 @@ Lists the aggregated retirement distribution summaries by tax year
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RetirementConstraints_ListDistributionSummaries" method="get" path="/transfers/v1/accounts/{account_id}/distributionSummaries" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -223,7 +218,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.retirements.listDistributionSummaries("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -254,15 +248,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await retirementsListDistributionSummaries(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("retirementsListDistributionSummaries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -296,6 +287,7 @@ Retrieves retirement distribution constraints for an account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RetirementConstraints_RetrieveDistributionConstraints" method="post" path="/transfers/v1/accounts/{account_id}:retrieveDistributionConstraints" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RetrieveDistributionConstraintsRequestCreateMechanism } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -318,7 +310,6 @@ async function run() {
     name: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   }, "01H8FM6EXVH77SAW3TC8KAWMES");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -353,15 +344,12 @@ async function run() {
     mechanism: RetrieveDistributionConstraintsRequestCreateMechanism.Ach,
     name: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   }, "01H8FM6EXVH77SAW3TC8KAWMES");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("retirementsRetrieveDistributionConstraints failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

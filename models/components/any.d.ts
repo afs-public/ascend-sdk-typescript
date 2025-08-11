@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
  */
@@ -7,7 +9,7 @@ export type Any = {
      * The type of the serialized message.
      */
     atType?: string | undefined;
-    additionalProperties: {
+    additionalProperties?: {
         [k: string]: any;
     };
 };
@@ -32,4 +34,6 @@ export declare namespace Any$ {
     /** @deprecated use `Any$Outbound` instead. */
     type Outbound = Any$Outbound;
 }
+export declare function anyToJSON(any: Any): string;
+export declare function anyFromJSON(jsonString: string): SafeParseResult<Any, SDKValidationError>;
 //# sourceMappingURL=any.d.ts.map

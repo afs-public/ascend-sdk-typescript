@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListContributionSummariesResponse$ = exports.ListContributionSummariesResponse$outboundSchema = exports.ListContributionSummariesResponse$inboundSchema = void 0;
+exports.listContributionSummariesResponseToJSON = listContributionSummariesResponseToJSON;
+exports.listContributionSummariesResponseFromJSON = listContributionSummariesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const contributionsummary_js_1 = require("./contributionsummary.js");
 /** @internal */
 exports.ListContributionSummariesResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListContributionSummariesResponse$;
     /** @deprecated use `ListContributionSummariesResponse$outboundSchema` instead. */
     ListContributionSummariesResponse$.outboundSchema = exports.ListContributionSummariesResponse$outboundSchema;
 })(ListContributionSummariesResponse$ || (exports.ListContributionSummariesResponse$ = ListContributionSummariesResponse$ = {}));
+function listContributionSummariesResponseToJSON(listContributionSummariesResponse) {
+    return JSON.stringify(exports.ListContributionSummariesResponse$outboundSchema.parse(listContributionSummariesResponse));
+}
+function listContributionSummariesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListContributionSummariesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListContributionSummariesResponse' from JSON`);
+}
 //# sourceMappingURL=listcontributionsummariesresponse.js.map

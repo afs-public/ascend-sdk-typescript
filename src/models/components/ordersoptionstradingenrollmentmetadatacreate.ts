@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InvestmentVehicleExperienceCreate,
   InvestmentVehicleExperienceCreate$inboundSchema,
@@ -138,4 +141,31 @@ export namespace OrdersOptionsTradingEnrollmentMetadataCreate$ {
     OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `OrdersOptionsTradingEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = OrdersOptionsTradingEnrollmentMetadataCreate$Outbound;
+}
+
+export function ordersOptionsTradingEnrollmentMetadataCreateToJSON(
+  ordersOptionsTradingEnrollmentMetadataCreate:
+    OrdersOptionsTradingEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema.parse(
+      ordersOptionsTradingEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function ordersOptionsTradingEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  OrdersOptionsTradingEnrollmentMetadataCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrdersOptionsTradingEnrollmentMetadataCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'OrdersOptionsTradingEnrollmentMetadataCreate' from JSON`,
+  );
 }

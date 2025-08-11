@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsRemovePartyResponse$ = exports.AccountsRemovePartyResponse$outboundSchema = exports.AccountsRemovePartyResponse$inboundSchema = exports.AccountsRemovePartyRequest$ = exports.AccountsRemovePartyRequest$outboundSchema = exports.AccountsRemovePartyRequest$inboundSchema = void 0;
+exports.accountsRemovePartyRequestToJSON = accountsRemovePartyRequestToJSON;
+exports.accountsRemovePartyRequestFromJSON = accountsRemovePartyRequestFromJSON;
+exports.accountsRemovePartyResponseToJSON = accountsRemovePartyResponseToJSON;
+exports.accountsRemovePartyResponseFromJSON = accountsRemovePartyResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsRemovePartyRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountsRemovePartyRequest$;
     /** @deprecated use `AccountsRemovePartyRequest$outboundSchema` instead. */
     AccountsRemovePartyRequest$.outboundSchema = exports.AccountsRemovePartyRequest$outboundSchema;
 })(AccountsRemovePartyRequest$ || (exports.AccountsRemovePartyRequest$ = AccountsRemovePartyRequest$ = {}));
+function accountsRemovePartyRequestToJSON(accountsRemovePartyRequest) {
+    return JSON.stringify(exports.AccountsRemovePartyRequest$outboundSchema.parse(accountsRemovePartyRequest));
+}
+function accountsRemovePartyRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsRemovePartyRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsRemovePartyRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsRemovePartyResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsRemovePartyResponse$;
     /** @deprecated use `AccountsRemovePartyResponse$outboundSchema` instead. */
     AccountsRemovePartyResponse$.outboundSchema = exports.AccountsRemovePartyResponse$outboundSchema;
 })(AccountsRemovePartyResponse$ || (exports.AccountsRemovePartyResponse$ = AccountsRemovePartyResponse$ = {}));
+function accountsRemovePartyResponseToJSON(accountsRemovePartyResponse) {
+    return JSON.stringify(exports.AccountsRemovePartyResponse$outboundSchema.parse(accountsRemovePartyResponse));
+}
+function accountsRemovePartyResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsRemovePartyResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsRemovePartyResponse' from JSON`);
+}
 //# sourceMappingURL=accountsremoveparty.js.map

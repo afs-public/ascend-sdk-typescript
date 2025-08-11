@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveDistributionConstraintsRequestCreate$ = exports.RetrieveDistributionConstraintsRequestCreate$outboundSchema = exports.RetrieveDistributionConstraintsRequestCreate$inboundSchema = exports.RetrieveDistributionConstraintsRequestCreateMechanism$ = exports.RetrieveDistributionConstraintsRequestCreateMechanism$outboundSchema = exports.RetrieveDistributionConstraintsRequestCreateMechanism$inboundSchema = exports.RetrieveDistributionConstraintsRequestCreateMechanism = void 0;
+exports.retrieveDistributionConstraintsRequestCreateToJSON = retrieveDistributionConstraintsRequestCreateToJSON;
+exports.retrieveDistributionConstraintsRequestCreateFromJSON = retrieveDistributionConstraintsRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Cash transfer mechanism to search constraints for
@@ -90,4 +93,10 @@ var RetrieveDistributionConstraintsRequestCreate$;
     /** @deprecated use `RetrieveDistributionConstraintsRequestCreate$outboundSchema` instead. */
     RetrieveDistributionConstraintsRequestCreate$.outboundSchema = exports.RetrieveDistributionConstraintsRequestCreate$outboundSchema;
 })(RetrieveDistributionConstraintsRequestCreate$ || (exports.RetrieveDistributionConstraintsRequestCreate$ = RetrieveDistributionConstraintsRequestCreate$ = {}));
+function retrieveDistributionConstraintsRequestCreateToJSON(retrieveDistributionConstraintsRequestCreate) {
+    return JSON.stringify(exports.RetrieveDistributionConstraintsRequestCreate$outboundSchema.parse(retrieveDistributionConstraintsRequestCreate));
+}
+function retrieveDistributionConstraintsRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveDistributionConstraintsRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetrieveDistributionConstraintsRequestCreate' from JSON`);
+}
 //# sourceMappingURL=retrievedistributionconstraintsrequestcreate.js.map

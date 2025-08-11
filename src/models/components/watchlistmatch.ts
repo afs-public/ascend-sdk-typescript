@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum MatchAttributes {
   MatchAttributeUnspecified = "MATCH_ATTRIBUTE_UNSPECIFIED",
@@ -22,7 +25,14 @@ export enum MatchAttributes {
 export type MatchAttributesOpen = OpenEnum<typeof MatchAttributes>;
 
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 export enum MatchState {
   MatchUnspecified = "MATCH_UNSPECIFIED",
@@ -32,7 +42,14 @@ export enum MatchState {
   Inconclusive = "INCONCLUSIVE",
 }
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 export type MatchStateOpen = OpenEnum<typeof MatchState>;
 
@@ -64,15 +81,40 @@ export type WatchlistMatch = {
    */
   excludeFromScreening?: boolean | undefined;
   /**
-   * The attributes used to identify this watchlist match
+   * The attributes used in watchlist screening, one of:
+   *
+   * @remarks
+   * - `MATCH_ATTRIBUTE_UNSPECIFIED` - Default/Null value.
+   * - `NAME` - Matched on name.
+   * - `PHONE_NUMBER` - Matched on phone number.
+   * - `BIRTH_DATE` - Matched on birth date.
+   * - `IDENTIFICATION` - Matched on identification.
+   * - `EMAIL` - Matched on email.
+   * - `ADDRESS` - Matched on address.
    */
   matchAttributes?: Array<MatchAttributesOpen> | undefined;
   /**
-   * Match state - whether or not the match is confirmed
+   * The match state for a profile, one of:
+   *
+   * @remarks
+   * - `MATCH_UNSPECIFIED` - Default/Null value.
+   * - `CONFIRMED_MATCH` - Match is confirmed.
+   * - `POTENTIAL_MATCH` - Match is a potential.
+   * - `NO_MATCH` - Match is confirmed not to be a match.
+   * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
    */
   matchState?: MatchStateOpen | undefined;
   /**
-   * The types of watchlist matches
+   * The type of watchlist match, one of:
+   *
+   * @remarks
+   * - `MATCH_TYPE_UNSPECIFIED` - Default/Null value.
+   * - `NON_OFAC_SANCTIONS` - Matched on a non OFAC sanctions list.
+   * - `RELATIVE_OR_CLOSE_ASSOCIATE` - Matched on a relative or close associate.
+   * - `OFAC_SANCTIONS` - Matched on a OFAC sanctions list.
+   * - `POLITICALLY_EXPOSED_PERSON` - Matched on a politically exposed person list.
+   * - `DNDB` - Matched on a do not do business list.
+   * - `NEGATIVE_NEWS` - Matched on a negative news list.
    */
   matchTypes?: Array<MatchTypesOpen> | undefined;
   /**
@@ -269,4 +311,18 @@ export namespace WatchlistMatch$ {
   export const outboundSchema = WatchlistMatch$outboundSchema;
   /** @deprecated use `WatchlistMatch$Outbound` instead. */
   export type Outbound = WatchlistMatch$Outbound;
+}
+
+export function watchlistMatchToJSON(watchlistMatch: WatchlistMatch): string {
+  return JSON.stringify(WatchlistMatch$outboundSchema.parse(watchlistMatch));
+}
+
+export function watchlistMatchFromJSON(
+  jsonString: string,
+): SafeParseResult<WatchlistMatch, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WatchlistMatch$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WatchlistMatch' from JSON`,
+  );
 }

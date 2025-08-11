@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYieldCreate, BondYieldCreate$Outbound } from "./bondyieldcreate.js";
 import { BookingFeeCreate, BookingFeeCreate$Outbound } from "./bookingfeecreate.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
@@ -433,4 +435,6 @@ export declare namespace TradeAllocationCreate$ {
     /** @deprecated use `TradeAllocationCreate$Outbound` instead. */
     type Outbound = TradeAllocationCreate$Outbound;
 }
+export declare function tradeAllocationCreateToJSON(tradeAllocationCreate: TradeAllocationCreate): string;
+export declare function tradeAllocationCreateFromJSON(jsonString: string): SafeParseResult<TradeAllocationCreate, SDKValidationError>;
 //# sourceMappingURL=tradeallocationcreate.d.ts.map

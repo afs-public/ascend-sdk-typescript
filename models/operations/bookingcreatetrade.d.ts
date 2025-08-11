@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BookingCreateTradeRequest = {
     /**
      * The account id.
@@ -42,6 +44,8 @@ export declare namespace BookingCreateTradeRequest$ {
     /** @deprecated use `BookingCreateTradeRequest$Outbound` instead. */
     type Outbound = BookingCreateTradeRequest$Outbound;
 }
+export declare function bookingCreateTradeRequestToJSON(bookingCreateTradeRequest: BookingCreateTradeRequest): string;
+export declare function bookingCreateTradeRequestFromJSON(jsonString: string): SafeParseResult<BookingCreateTradeRequest, SDKValidationError>;
 /** @internal */
 export declare const BookingCreateTradeResponse$inboundSchema: z.ZodType<BookingCreateTradeResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace BookingCreateTradeResponse$ {
     /** @deprecated use `BookingCreateTradeResponse$Outbound` instead. */
     type Outbound = BookingCreateTradeResponse$Outbound;
 }
+export declare function bookingCreateTradeResponseToJSON(bookingCreateTradeResponse: BookingCreateTradeResponse): string;
+export declare function bookingCreateTradeResponseFromJSON(jsonString: string): SafeParseResult<BookingCreateTradeResponse, SDKValidationError>;
 //# sourceMappingURL=bookingcreatetrade.d.ts.map

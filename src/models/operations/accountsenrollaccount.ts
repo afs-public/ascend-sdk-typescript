@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsEnrollAccountRequest = {
   /**
@@ -77,6 +80,26 @@ export namespace AccountsEnrollAccountRequest$ {
   export type Outbound = AccountsEnrollAccountRequest$Outbound;
 }
 
+export function accountsEnrollAccountRequestToJSON(
+  accountsEnrollAccountRequest: AccountsEnrollAccountRequest,
+): string {
+  return JSON.stringify(
+    AccountsEnrollAccountRequest$outboundSchema.parse(
+      accountsEnrollAccountRequest,
+    ),
+  );
+}
+
+export function accountsEnrollAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsEnrollAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsEnrollAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsEnrollAccountRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsEnrollAccountResponse$inboundSchema: z.ZodType<
   AccountsEnrollAccountResponse,
@@ -131,4 +154,24 @@ export namespace AccountsEnrollAccountResponse$ {
   export const outboundSchema = AccountsEnrollAccountResponse$outboundSchema;
   /** @deprecated use `AccountsEnrollAccountResponse$Outbound` instead. */
   export type Outbound = AccountsEnrollAccountResponse$Outbound;
+}
+
+export function accountsEnrollAccountResponseToJSON(
+  accountsEnrollAccountResponse: AccountsEnrollAccountResponse,
+): string {
+  return JSON.stringify(
+    AccountsEnrollAccountResponse$outboundSchema.parse(
+      accountsEnrollAccountResponse,
+    ),
+  );
+}
+
+export function accountsEnrollAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsEnrollAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsEnrollAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsEnrollAccountResponse' from JSON`,
+  );
 }

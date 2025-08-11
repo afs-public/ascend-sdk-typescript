@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RightsOfAccumulationCreate$ = exports.RightsOfAccumulationCreate$outboundSchema = exports.RightsOfAccumulationCreate$inboundSchema = void 0;
+exports.rightsOfAccumulationCreateToJSON = rightsOfAccumulationCreateToJSON;
+exports.rightsOfAccumulationCreateFromJSON = rightsOfAccumulationCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
 exports.RightsOfAccumulationCreate$inboundSchema = z.object({
@@ -58,4 +61,10 @@ var RightsOfAccumulationCreate$;
     /** @deprecated use `RightsOfAccumulationCreate$outboundSchema` instead. */
     RightsOfAccumulationCreate$.outboundSchema = exports.RightsOfAccumulationCreate$outboundSchema;
 })(RightsOfAccumulationCreate$ || (exports.RightsOfAccumulationCreate$ = RightsOfAccumulationCreate$ = {}));
+function rightsOfAccumulationCreateToJSON(rightsOfAccumulationCreate) {
+    return JSON.stringify(exports.RightsOfAccumulationCreate$outboundSchema.parse(rightsOfAccumulationCreate));
+}
+function rightsOfAccumulationCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RightsOfAccumulationCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RightsOfAccumulationCreate' from JSON`);
+}
 //# sourceMappingURL=rightsofaccumulationcreate.js.map

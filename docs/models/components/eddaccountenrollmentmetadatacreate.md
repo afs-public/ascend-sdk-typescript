@@ -19,9 +19,7 @@ let value: EddAccountEnrollmentMetadataCreate = {
   },
   determinedAccountRiskRating: DeterminedAccountRiskRating.High,
   financialProfile: {
-    bankingRelationships: [
-      "<value>",
-    ],
+    bankingRelationships: [],
     otherAccounts: {
       ownerHasOtherAccountsAtApex: true,
     },

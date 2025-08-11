@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The type of this price, which must be PRICE_PER_UNIT for equity orders, or PERCENTAGE_OF_PAR for fixed income orders.
@@ -67,4 +69,6 @@ export declare namespace LimitPriceCreate$ {
     /** @deprecated use `LimitPriceCreate$Outbound` instead. */
     type Outbound = LimitPriceCreate$Outbound;
 }
+export declare function limitPriceCreateToJSON(limitPriceCreate: LimitPriceCreate): string;
+export declare function limitPriceCreateFromJSON(jsonString: string): SafeParseResult<LimitPriceCreate, SDKValidationError>;
 //# sourceMappingURL=limitpricecreate.d.ts.map

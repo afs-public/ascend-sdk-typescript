@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A method of determining the cost basis of an asset that has been sold or disposed of, by identifying which specific lot of the asset was sold and using the cost of that lot to calculate the cost basis; this method is commonly used for tax purposes to determine the amount of reportable capital gains or losses By default, this is set to `COST_BASIS_LOT_DISPOSAL_MIN_TAX_TERM`
@@ -132,4 +135,22 @@ export namespace AccountTaxProfileCreate$ {
   export const outboundSchema = AccountTaxProfileCreate$outboundSchema;
   /** @deprecated use `AccountTaxProfileCreate$Outbound` instead. */
   export type Outbound = AccountTaxProfileCreate$Outbound;
+}
+
+export function accountTaxProfileCreateToJSON(
+  accountTaxProfileCreate: AccountTaxProfileCreate,
+): string {
+  return JSON.stringify(
+    AccountTaxProfileCreate$outboundSchema.parse(accountTaxProfileCreate),
+  );
+}
+
+export function accountTaxProfileCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountTaxProfileCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountTaxProfileCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountTaxProfileCreate' from JSON`,
+  );
 }

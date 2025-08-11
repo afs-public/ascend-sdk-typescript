@@ -13,6 +13,7 @@ Returns details of a list of snapshots.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Snapshots_ListSnapshots" method="get" path="/analytics/v1/snapshots" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -31,7 +32,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.dataRetrieval.listSnapshots();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -62,15 +62,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await dataRetrievalListSnapshots(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("dataRetrievalListSnapshots failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -95,5 +92,6 @@ run();
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.Status    | 400, 403, 500    | application/json |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500              | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |

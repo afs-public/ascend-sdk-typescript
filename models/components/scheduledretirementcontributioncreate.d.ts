@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A temporal tax year value. This will always evaluate to a year based on the date the transfer was initiated.
  */
@@ -100,4 +102,6 @@ export declare namespace ScheduledRetirementContributionCreate$ {
     /** @deprecated use `ScheduledRetirementContributionCreate$Outbound` instead. */
     type Outbound = ScheduledRetirementContributionCreate$Outbound;
 }
+export declare function scheduledRetirementContributionCreateToJSON(scheduledRetirementContributionCreate: ScheduledRetirementContributionCreate): string;
+export declare function scheduledRetirementContributionCreateFromJSON(jsonString: string): SafeParseResult<ScheduledRetirementContributionCreate, SDKValidationError>;
 //# sourceMappingURL=scheduledretirementcontributioncreate.d.ts.map

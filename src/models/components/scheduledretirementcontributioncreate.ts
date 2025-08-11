@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A temporal tax year value. This will always evaluate to a year based on the date the transfer was initiated.
@@ -184,4 +187,25 @@ export namespace ScheduledRetirementContributionCreate$ {
     ScheduledRetirementContributionCreate$outboundSchema;
   /** @deprecated use `ScheduledRetirementContributionCreate$Outbound` instead. */
   export type Outbound = ScheduledRetirementContributionCreate$Outbound;
+}
+
+export function scheduledRetirementContributionCreateToJSON(
+  scheduledRetirementContributionCreate: ScheduledRetirementContributionCreate,
+): string {
+  return JSON.stringify(
+    ScheduledRetirementContributionCreate$outboundSchema.parse(
+      scheduledRetirementContributionCreate,
+    ),
+  );
+}
+
+export function scheduledRetirementContributionCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledRetirementContributionCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ScheduledRetirementContributionCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledRetirementContributionCreate' from JSON`,
+  );
 }

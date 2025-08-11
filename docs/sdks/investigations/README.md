@@ -18,6 +18,7 @@ Use this endpoint to get the current state of an investigation by request refere
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InvestigationService_GetInvestigation" method="get" path="/investigations/v1/investigations/{investigation_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -36,7 +37,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investigations.getInvestigation("01HEWVF4ZSNKYRP293J53ASJCJ");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -67,15 +67,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await investigationsGetInvestigation(apexascend, "01HEWVF4ZSNKYRP293J53ASJCJ");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsGetInvestigation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -96,10 +93,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## updateInvestigation
 
@@ -107,6 +105,7 @@ Use this endpoint to update the details of an investigation by request reference
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InvestigationService_UpdateInvestigation" method="patch" path="/investigations/v1/investigations/{investigation_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -125,7 +124,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investigations.updateInvestigation({}, "01HEWVF4ZSNKYRP293J53ASJCJ");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -156,15 +154,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await investigationsUpdateInvestigation(apexascend, {}, "01HEWVF4ZSNKYRP293J53ASJCJ");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsUpdateInvestigation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -187,10 +182,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listInvestigations
 
@@ -198,6 +194,7 @@ Use this endpoint to retrieve a list of investigation summaries based on optiona
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InvestigationService_ListInvestigations" method="get" path="/investigations/v1/investigations" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -216,7 +213,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investigations.listInvestigations();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -247,15 +243,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await investigationsListInvestigations(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsListInvestigations failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -263,14 +256,15 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                          | Type                                                                                                                                                                                                                                               | Required                                                                                                                                                                                                                                           | Description                                                                                                                                                                                                                                        | Example                                                                                                                                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pageSize`                                                                                                                                                                                                                                         | *number*                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                 | The maximum number of records to return. Default is 50 The maximum is 200, values exceeding this will be set to 200                                                                                                                                | [object Object]                                                                                                                                                                                                                                    |
-| `pageToken`                                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                 | The page token used to request a specific page of the search results                                                                                                                                                                               |                                                                                                                                                                                                                                                    |
-| `filter`                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                 | A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; Filter options include:<br/> ListInvestigationStatesResponse.investigation_states | [object Object]                                                                                                                                                                                                                                    |
-| `options`                                                                                                                                                                                                                                          | RequestOptions                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                 | Used to set various options for making HTTP requests.                                                                                                                                                                                              |                                                                                                                                                                                                                                                    |
-| `options.fetchOptions`                                                                                                                                                                                                                             | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                 | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                                     |                                                                                                                                                                                                                                                    |
-| `options.retries`                                                                                                                                                                                                                                  | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                 | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                                   |                                                                                                                                                                                                                                                    |
+| Parameter                                                                                                                                                                                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                                                                                                                                                                                        | Required                                                                                                                                                                                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                 | Example                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pageSize`                                                                                                                                                                                                                                                                                                                                                                                  | *number*                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | The maximum number of records to return. Default is 50 The maximum is 200, values exceeding this will be set to 200                                                                                                                                                                                                                                                                         | [object Object]                                                                                                                                                                                                                                                                                                                                                                             |
+| `pageToken`                                                                                                                                                                                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | The page token used to request a specific page of the search results                                                                                                                                                                                                                                                                                                                        |                                                                                                                                                                                                                                                                                                                                                                                             |
+| `filter`                                                                                                                                                                                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; Filter options include:<br/> ListInvestigationStatesResponse.investigation_states                                                                                                                                      | [object Object]                                                                                                                                                                                                                                                                                                                                                                             |
+| `orderBy`                                                                                                                                                                                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | The order in which investigations are listed. Only one field and direction can be specified. Supported fields (followed by 'asc' or 'desc'; 'asc' is default if left blank):<br/>  - investigation_request_state<br/>  - correspondent_id<br/>  - scope<br/>  - identity_verification<br/>  - watchlist_screen<br/>  - person.given_name<br/>  - person.family_name<br/>  - entity.legal_name<br/>  - created_at<br/>  - updated_at | [object Object]                                                                                                                                                                                                                                                                                                                                                                             |
+| `options`                                                                                                                                                                                                                                                                                                                                                                                   | RequestOptions                                                                                                                                                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | Used to set various options for making HTTP requests.                                                                                                                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                                             |
+| `options.fetchOptions`                                                                                                                                                                                                                                                                                                                                                                      | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                             |
+| `options.retries`                                                                                                                                                                                                                                                                                                                                                                           | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                             |
 
 ### Response
 
@@ -278,10 +272,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## linkDocuments
 
@@ -289,6 +284,7 @@ Use this endpoint to update identity verification document IDs.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="InvestigationService_LinkDocuments" method="post" path="/investigations/v1/investigations/{investigation_id}:linkDocuments" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -311,7 +307,6 @@ async function run() {
     ],
   }, "01HEWVF4ZSNKYRP293J53ASJCJ");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -346,15 +341,12 @@ async function run() {
       "0f01ae1f-d24c-4171-8f3f-c0b820bf3044",
     ],
   }, "01HEWVF4ZSNKYRP293J53ASJCJ");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsLinkDocuments failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -376,10 +368,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getWatchlistItem
 
@@ -387,6 +380,7 @@ Gets the details of an investigation by watchlist type and valid watchlist id
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WatchlistService_GetWatchlistItem" method="get" path="/investigations/v1/watchlists/{watchlist_id}/items/{item_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -405,7 +399,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investigations.getWatchlistItem("DOWJONES", "123456");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -436,15 +429,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await investigationsGetWatchlistItem(apexascend, "DOWJONES", "123456");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsGetWatchlistItem failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -466,10 +456,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getCustomerIdentification
 
@@ -477,6 +468,7 @@ Gets a CustomerIdentification by CustomerIdentification ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CustomerIdentificationResultService_GetCustomerIdentification" method="get" path="/cip/v1/correspondents/{correspondent_id}/customerIdentifications/{customerIdentification_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -495,7 +487,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investigations.getCustomerIdentification("01HPMZZM6RKMVZA1JQ63RQKJRP", "01HEWVF4ZSNKYRP293J53ASJCJ");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -526,15 +517,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await investigationsGetCustomerIdentification(apexascend, "01HPMZZM6RKMVZA1JQ63RQKJRP", "01HEWVF4ZSNKYRP293J53ASJCJ");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsGetCustomerIdentification failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -557,7 +545,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

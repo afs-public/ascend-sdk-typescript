@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExecutionCreate$ = exports.ExecutionCreate$outboundSchema = exports.ExecutionCreate$inboundSchema = void 0;
+exports.executionCreateToJSON = executionCreateToJSON;
+exports.executionCreateFromJSON = executionCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const bondyieldcreate_js_1 = require("./bondyieldcreate.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const priceadjustmentcreate_js_1 = require("./priceadjustmentcreate.js");
@@ -107,4 +110,10 @@ var ExecutionCreate$;
     /** @deprecated use `ExecutionCreate$outboundSchema` instead. */
     ExecutionCreate$.outboundSchema = exports.ExecutionCreate$outboundSchema;
 })(ExecutionCreate$ || (exports.ExecutionCreate$ = ExecutionCreate$ = {}));
+function executionCreateToJSON(executionCreate) {
+    return JSON.stringify(exports.ExecutionCreate$outboundSchema.parse(executionCreate));
+}
+function executionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExecutionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExecutionCreate' from JSON`);
+}
 //# sourceMappingURL=executioncreate.js.map

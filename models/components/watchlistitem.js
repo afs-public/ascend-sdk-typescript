@@ -37,8 +37,23 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WatchlistItem$ = exports.WatchlistItem$outboundSchema = exports.WatchlistItem$inboundSchema = exports.DowJonesDetails$ = exports.DowJonesDetails$outboundSchema = exports.DowJonesDetails$inboundSchema = exports.LastChangedDate$ = exports.LastChangedDate$outboundSchema = exports.LastChangedDate$inboundSchema = exports.DndbDetails$ = exports.DndbDetails$outboundSchema = exports.DndbDetails$inboundSchema = exports.EndDate$ = exports.EndDate$outboundSchema = exports.EndDate$inboundSchema = exports.Dob$ = exports.Dob$outboundSchema = exports.Dob$inboundSchema = exports.CreatedDate$ = exports.CreatedDate$outboundSchema = exports.CreatedDate$inboundSchema = void 0;
+exports.createdDateToJSON = createdDateToJSON;
+exports.createdDateFromJSON = createdDateFromJSON;
+exports.dobToJSON = dobToJSON;
+exports.dobFromJSON = dobFromJSON;
+exports.endDateToJSON = endDateToJSON;
+exports.endDateFromJSON = endDateFromJSON;
+exports.dndbDetailsToJSON = dndbDetailsToJSON;
+exports.dndbDetailsFromJSON = dndbDetailsFromJSON;
+exports.lastChangedDateToJSON = lastChangedDateToJSON;
+exports.lastChangedDateFromJSON = lastChangedDateFromJSON;
+exports.dowJonesDetailsToJSON = dowJonesDetailsToJSON;
+exports.dowJonesDetailsFromJSON = dowJonesDetailsFromJSON;
+exports.watchlistItemToJSON = watchlistItemToJSON;
+exports.watchlistItemFromJSON = watchlistItemFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const addressdetail_js_1 = require("./addressdetail.js");
 const countrydetail_js_1 = require("./countrydetail.js");
 const descriptiondetail_js_1 = require("./descriptiondetail.js");
@@ -71,6 +86,12 @@ var CreatedDate$;
     /** @deprecated use `CreatedDate$outboundSchema` instead. */
     CreatedDate$.outboundSchema = exports.CreatedDate$outboundSchema;
 })(CreatedDate$ || (exports.CreatedDate$ = CreatedDate$ = {}));
+function createdDateToJSON(createdDate) {
+    return JSON.stringify(exports.CreatedDate$outboundSchema.parse(createdDate));
+}
+function createdDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CreatedDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CreatedDate' from JSON`);
+}
 /** @internal */
 exports.Dob$inboundSchema = z
     .object({
@@ -96,6 +117,12 @@ var Dob$;
     /** @deprecated use `Dob$outboundSchema` instead. */
     Dob$.outboundSchema = exports.Dob$outboundSchema;
 })(Dob$ || (exports.Dob$ = Dob$ = {}));
+function dobToJSON(dob) {
+    return JSON.stringify(exports.Dob$outboundSchema.parse(dob));
+}
+function dobFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Dob$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Dob' from JSON`);
+}
 /** @internal */
 exports.EndDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -119,6 +146,12 @@ var EndDate$;
     /** @deprecated use `EndDate$outboundSchema` instead. */
     EndDate$.outboundSchema = exports.EndDate$outboundSchema;
 })(EndDate$ || (exports.EndDate$ = EndDate$ = {}));
+function endDateToJSON(endDate) {
+    return JSON.stringify(exports.EndDate$outboundSchema.parse(endDate));
+}
+function endDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EndDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EndDate' from JSON`);
+}
 /** @internal */
 exports.DndbDetails$inboundSchema = z.object({
     business_nm: z.string().optional(),
@@ -184,6 +217,12 @@ var DndbDetails$;
     /** @deprecated use `DndbDetails$outboundSchema` instead. */
     DndbDetails$.outboundSchema = exports.DndbDetails$outboundSchema;
 })(DndbDetails$ || (exports.DndbDetails$ = DndbDetails$ = {}));
+function dndbDetailsToJSON(dndbDetails) {
+    return JSON.stringify(exports.DndbDetails$outboundSchema.parse(dndbDetails));
+}
+function dndbDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DndbDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DndbDetails' from JSON`);
+}
 /** @internal */
 exports.LastChangedDate$inboundSchema = z.object({
     day: z.string().optional(),
@@ -207,6 +246,12 @@ var LastChangedDate$;
     /** @deprecated use `LastChangedDate$outboundSchema` instead. */
     LastChangedDate$.outboundSchema = exports.LastChangedDate$outboundSchema;
 })(LastChangedDate$ || (exports.LastChangedDate$ = LastChangedDate$ = {}));
+function lastChangedDateToJSON(lastChangedDate) {
+    return JSON.stringify(exports.LastChangedDate$outboundSchema.parse(lastChangedDate));
+}
+function lastChangedDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LastChangedDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LastChangedDate' from JSON`);
+}
 /** @internal */
 exports.DowJonesDetails$inboundSchema = z.object({
     active_status: z.string().optional(),
@@ -298,6 +343,12 @@ var DowJonesDetails$;
     /** @deprecated use `DowJonesDetails$outboundSchema` instead. */
     DowJonesDetails$.outboundSchema = exports.DowJonesDetails$outboundSchema;
 })(DowJonesDetails$ || (exports.DowJonesDetails$ = DowJonesDetails$ = {}));
+function dowJonesDetailsToJSON(dowJonesDetails) {
+    return JSON.stringify(exports.DowJonesDetails$outboundSchema.parse(dowJonesDetails));
+}
+function dowJonesDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DowJonesDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DowJonesDetails' from JSON`);
+}
 /** @internal */
 exports.WatchlistItem$inboundSchema = z.object({
     dndb_details: z.nullable(z.lazy(() => exports.DndbDetails$inboundSchema)).optional(),
@@ -339,4 +390,10 @@ var WatchlistItem$;
     /** @deprecated use `WatchlistItem$outboundSchema` instead. */
     WatchlistItem$.outboundSchema = exports.WatchlistItem$outboundSchema;
 })(WatchlistItem$ || (exports.WatchlistItem$ = WatchlistItem$ = {}));
+function watchlistItemToJSON(watchlistItem) {
+    return JSON.stringify(exports.WatchlistItem$outboundSchema.parse(watchlistItem));
+}
+function watchlistItemFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WatchlistItem$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WatchlistItem' from JSON`);
+}
 //# sourceMappingURL=watchlistitem.js.map

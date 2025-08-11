@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsGetLegalEntityRequest = {
     /**
      * The legalEntity id.
@@ -37,6 +39,8 @@ export declare namespace AccountsGetLegalEntityRequest$ {
     /** @deprecated use `AccountsGetLegalEntityRequest$Outbound` instead. */
     type Outbound = AccountsGetLegalEntityRequest$Outbound;
 }
+export declare function accountsGetLegalEntityRequestToJSON(accountsGetLegalEntityRequest: AccountsGetLegalEntityRequest): string;
+export declare function accountsGetLegalEntityRequestFromJSON(jsonString: string): SafeParseResult<AccountsGetLegalEntityRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsGetLegalEntityResponse$inboundSchema: z.ZodType<AccountsGetLegalEntityResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace AccountsGetLegalEntityResponse$ {
     /** @deprecated use `AccountsGetLegalEntityResponse$Outbound` instead. */
     type Outbound = AccountsGetLegalEntityResponse$Outbound;
 }
+export declare function accountsGetLegalEntityResponseToJSON(accountsGetLegalEntityResponse: AccountsGetLegalEntityResponse): string;
+export declare function accountsGetLegalEntityResponseFromJSON(jsonString: string): SafeParseResult<AccountsGetLegalEntityResponse, SDKValidationError>;
 //# sourceMappingURL=accountsgetlegalentity.d.ts.map

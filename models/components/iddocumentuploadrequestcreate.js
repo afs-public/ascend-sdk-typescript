@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IDDocumentUploadRequestCreate$ = exports.IDDocumentUploadRequestCreate$outboundSchema = exports.IDDocumentUploadRequestCreate$inboundSchema = exports.IDDocumentUploadRequestCreateDocumentType$ = exports.IDDocumentUploadRequestCreateDocumentType$outboundSchema = exports.IDDocumentUploadRequestCreateDocumentType$inboundSchema = exports.IDDocumentUploadRequestCreateDocumentType = void 0;
+exports.idDocumentUploadRequestCreateToJSON = idDocumentUploadRequestCreateToJSON;
+exports.idDocumentUploadRequestCreateFromJSON = idDocumentUploadRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Describes the contents of a document and how it is used; Required for all identity documents
@@ -140,4 +143,10 @@ var IDDocumentUploadRequestCreate$;
     /** @deprecated use `IDDocumentUploadRequestCreate$outboundSchema` instead. */
     IDDocumentUploadRequestCreate$.outboundSchema = exports.IDDocumentUploadRequestCreate$outboundSchema;
 })(IDDocumentUploadRequestCreate$ || (exports.IDDocumentUploadRequestCreate$ = IDDocumentUploadRequestCreate$ = {}));
+function idDocumentUploadRequestCreateToJSON(idDocumentUploadRequestCreate) {
+    return JSON.stringify(exports.IDDocumentUploadRequestCreate$outboundSchema.parse(idDocumentUploadRequestCreate));
+}
+function idDocumentUploadRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IDDocumentUploadRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IDDocumentUploadRequestCreate' from JSON`);
+}
 //# sourceMappingURL=iddocumentuploadrequestcreate.js.map

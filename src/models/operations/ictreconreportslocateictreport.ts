@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The ICT program for which to locate the report.
@@ -151,6 +154,27 @@ export namespace IctReconReportsLocateIctReportRequest$ {
   export type Outbound = IctReconReportsLocateIctReportRequest$Outbound;
 }
 
+export function ictReconReportsLocateIctReportRequestToJSON(
+  ictReconReportsLocateIctReportRequest: IctReconReportsLocateIctReportRequest,
+): string {
+  return JSON.stringify(
+    IctReconReportsLocateIctReportRequest$outboundSchema.parse(
+      ictReconReportsLocateIctReportRequest,
+    ),
+  );
+}
+
+export function ictReconReportsLocateIctReportRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IctReconReportsLocateIctReportRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctReconReportsLocateIctReportRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctReconReportsLocateIctReportRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctReconReportsLocateIctReportResponse$inboundSchema: z.ZodType<
   IctReconReportsLocateIctReportResponse,
@@ -209,4 +233,26 @@ export namespace IctReconReportsLocateIctReportResponse$ {
     IctReconReportsLocateIctReportResponse$outboundSchema;
   /** @deprecated use `IctReconReportsLocateIctReportResponse$Outbound` instead. */
   export type Outbound = IctReconReportsLocateIctReportResponse$Outbound;
+}
+
+export function ictReconReportsLocateIctReportResponseToJSON(
+  ictReconReportsLocateIctReportResponse:
+    IctReconReportsLocateIctReportResponse,
+): string {
+  return JSON.stringify(
+    IctReconReportsLocateIctReportResponse$outboundSchema.parse(
+      ictReconReportsLocateIctReportResponse,
+    ),
+  );
+}
+
+export function ictReconReportsLocateIctReportResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IctReconReportsLocateIctReportResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctReconReportsLocateIctReportResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctReconReportsLocateIctReportResponse' from JSON`,
+  );
 }

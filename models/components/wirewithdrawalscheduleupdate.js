@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireWithdrawalScheduleUpdate$ = exports.WireWithdrawalScheduleUpdate$outboundSchema = exports.WireWithdrawalScheduleUpdate$inboundSchema = void 0;
+exports.wireWithdrawalScheduleUpdateToJSON = wireWithdrawalScheduleUpdateToJSON;
+exports.wireWithdrawalScheduleUpdateFromJSON = wireWithdrawalScheduleUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const withdrawalscheduledetailsupdate_js_1 = require("./withdrawalscheduledetailsupdate.js");
 /** @internal */
 exports.WireWithdrawalScheduleUpdate$inboundSchema = z.object({
@@ -67,4 +70,10 @@ var WireWithdrawalScheduleUpdate$;
     /** @deprecated use `WireWithdrawalScheduleUpdate$outboundSchema` instead. */
     WireWithdrawalScheduleUpdate$.outboundSchema = exports.WireWithdrawalScheduleUpdate$outboundSchema;
 })(WireWithdrawalScheduleUpdate$ || (exports.WireWithdrawalScheduleUpdate$ = WireWithdrawalScheduleUpdate$ = {}));
+function wireWithdrawalScheduleUpdateToJSON(wireWithdrawalScheduleUpdate) {
+    return JSON.stringify(exports.WireWithdrawalScheduleUpdate$outboundSchema.parse(wireWithdrawalScheduleUpdate));
+}
+function wireWithdrawalScheduleUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalScheduleUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalScheduleUpdate' from JSON`);
+}
 //# sourceMappingURL=wirewithdrawalscheduleupdate.js.map

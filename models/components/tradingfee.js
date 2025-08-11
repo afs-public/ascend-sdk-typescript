@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TradingFee$ = exports.TradingFee$outboundSchema = exports.TradingFee$inboundSchema = exports.TradingFeeType$ = exports.TradingFeeType$outboundSchema = exports.TradingFeeType$inboundSchema = exports.TradingFeeAmount$ = exports.TradingFeeAmount$outboundSchema = exports.TradingFeeAmount$inboundSchema = exports.TradingFeeType = void 0;
+exports.tradingFeeAmountToJSON = tradingFeeAmountToJSON;
+exports.tradingFeeAmountFromJSON = tradingFeeAmountFromJSON;
+exports.tradingFeeToJSON = tradingFeeToJSON;
+exports.tradingFeeFromJSON = tradingFeeFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of fee being specified. Only the type of "BROKER_FEE" is supported.
@@ -67,6 +72,12 @@ var TradingFeeAmount$;
     /** @deprecated use `TradingFeeAmount$outboundSchema` instead. */
     TradingFeeAmount$.outboundSchema = exports.TradingFeeAmount$outboundSchema;
 })(TradingFeeAmount$ || (exports.TradingFeeAmount$ = TradingFeeAmount$ = {}));
+function tradingFeeAmountToJSON(tradingFeeAmount) {
+    return JSON.stringify(exports.TradingFeeAmount$outboundSchema.parse(tradingFeeAmount));
+}
+function tradingFeeAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradingFeeAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradingFeeAmount' from JSON`);
+}
 /** @internal */
 exports.TradingFeeType$inboundSchema = z
     .union([
@@ -110,4 +121,10 @@ var TradingFee$;
     /** @deprecated use `TradingFee$outboundSchema` instead. */
     TradingFee$.outboundSchema = exports.TradingFee$outboundSchema;
 })(TradingFee$ || (exports.TradingFee$ = TradingFee$ = {}));
+function tradingFeeToJSON(tradingFee) {
+    return JSON.stringify(exports.TradingFee$outboundSchema.parse(tradingFee));
+}
+function tradingFeeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradingFee$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradingFee' from JSON`);
+}
 //# sourceMappingURL=tradingfee.js.map

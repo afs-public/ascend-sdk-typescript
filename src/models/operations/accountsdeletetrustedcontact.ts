@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsDeleteTrustedContactRequest = {
   /**
@@ -76,6 +79,27 @@ export namespace AccountsDeleteTrustedContactRequest$ {
   export type Outbound = AccountsDeleteTrustedContactRequest$Outbound;
 }
 
+export function accountsDeleteTrustedContactRequestToJSON(
+  accountsDeleteTrustedContactRequest: AccountsDeleteTrustedContactRequest,
+): string {
+  return JSON.stringify(
+    AccountsDeleteTrustedContactRequest$outboundSchema.parse(
+      accountsDeleteTrustedContactRequest,
+    ),
+  );
+}
+
+export function accountsDeleteTrustedContactRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsDeleteTrustedContactRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsDeleteTrustedContactRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsDeleteTrustedContactRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsDeleteTrustedContactResponse$inboundSchema: z.ZodType<
   AccountsDeleteTrustedContactResponse,
@@ -125,4 +149,25 @@ export namespace AccountsDeleteTrustedContactResponse$ {
     AccountsDeleteTrustedContactResponse$outboundSchema;
   /** @deprecated use `AccountsDeleteTrustedContactResponse$Outbound` instead. */
   export type Outbound = AccountsDeleteTrustedContactResponse$Outbound;
+}
+
+export function accountsDeleteTrustedContactResponseToJSON(
+  accountsDeleteTrustedContactResponse: AccountsDeleteTrustedContactResponse,
+): string {
+  return JSON.stringify(
+    AccountsDeleteTrustedContactResponse$outboundSchema.parse(
+      accountsDeleteTrustedContactResponse,
+    ),
+  );
+}
+
+export function accountsDeleteTrustedContactResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsDeleteTrustedContactResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsDeleteTrustedContactResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsDeleteTrustedContactResponse' from JSON`,
+  );
 }

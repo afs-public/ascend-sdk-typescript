@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AddressCreate, AddressCreate$Outbound } from "./addresscreate.js";
 /**
  * The person or entity taking receipt of the wired funds
@@ -44,4 +46,6 @@ export declare namespace WireWithdrawalBeneficiaryCreate$ {
     /** @deprecated use `WireWithdrawalBeneficiaryCreate$Outbound` instead. */
     type Outbound = WireWithdrawalBeneficiaryCreate$Outbound;
 }
+export declare function wireWithdrawalBeneficiaryCreateToJSON(wireWithdrawalBeneficiaryCreate: WireWithdrawalBeneficiaryCreate): string;
+export declare function wireWithdrawalBeneficiaryCreateFromJSON(jsonString: string): SafeParseResult<WireWithdrawalBeneficiaryCreate, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalbeneficiarycreate.d.ts.map

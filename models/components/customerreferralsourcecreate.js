@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerReferralSourceCreate$ = exports.CustomerReferralSourceCreate$outboundSchema = exports.CustomerReferralSourceCreate$inboundSchema = void 0;
+exports.customerReferralSourceCreateToJSON = customerReferralSourceCreateToJSON;
+exports.customerReferralSourceCreateFromJSON = customerReferralSourceCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CustomerReferralSourceCreate$inboundSchema = z.object({
     name: z.string(),
@@ -76,4 +79,10 @@ var CustomerReferralSourceCreate$;
     /** @deprecated use `CustomerReferralSourceCreate$outboundSchema` instead. */
     CustomerReferralSourceCreate$.outboundSchema = exports.CustomerReferralSourceCreate$outboundSchema;
 })(CustomerReferralSourceCreate$ || (exports.CustomerReferralSourceCreate$ = CustomerReferralSourceCreate$ = {}));
+function customerReferralSourceCreateToJSON(customerReferralSourceCreate) {
+    return JSON.stringify(exports.CustomerReferralSourceCreate$outboundSchema.parse(customerReferralSourceCreate));
+}
+function customerReferralSourceCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerReferralSourceCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerReferralSourceCreate' from JSON`);
+}
 //# sourceMappingURL=customerreferralsourcecreate.js.map

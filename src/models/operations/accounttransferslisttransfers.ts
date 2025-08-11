@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountTransfersListTransfersRequest = {
   /**
@@ -121,6 +124,27 @@ export namespace AccountTransfersListTransfersRequest$ {
   export type Outbound = AccountTransfersListTransfersRequest$Outbound;
 }
 
+export function accountTransfersListTransfersRequestToJSON(
+  accountTransfersListTransfersRequest: AccountTransfersListTransfersRequest,
+): string {
+  return JSON.stringify(
+    AccountTransfersListTransfersRequest$outboundSchema.parse(
+      accountTransfersListTransfersRequest,
+    ),
+  );
+}
+
+export function accountTransfersListTransfersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountTransfersListTransfersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountTransfersListTransfersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountTransfersListTransfersRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountTransfersListTransfersResponse$inboundSchema: z.ZodType<
   AccountTransfersListTransfersResponse,
@@ -177,4 +201,25 @@ export namespace AccountTransfersListTransfersResponse$ {
     AccountTransfersListTransfersResponse$outboundSchema;
   /** @deprecated use `AccountTransfersListTransfersResponse$Outbound` instead. */
   export type Outbound = AccountTransfersListTransfersResponse$Outbound;
+}
+
+export function accountTransfersListTransfersResponseToJSON(
+  accountTransfersListTransfersResponse: AccountTransfersListTransfersResponse,
+): string {
+  return JSON.stringify(
+    AccountTransfersListTransfersResponse$outboundSchema.parse(
+      accountTransfersListTransfersResponse,
+    ),
+  );
+}
+
+export function accountTransfersListTransfersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountTransfersListTransfersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountTransfersListTransfersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountTransfersListTransfersResponse' from JSON`,
+  );
 }

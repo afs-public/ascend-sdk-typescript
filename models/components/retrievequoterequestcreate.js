@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveQuoteRequestCreate$ = exports.RetrieveQuoteRequestCreate$outboundSchema = exports.RetrieveQuoteRequestCreate$inboundSchema = exports.RetrieveQuoteRequestCreateIdentifierType$ = exports.RetrieveQuoteRequestCreateIdentifierType$outboundSchema = exports.RetrieveQuoteRequestCreateIdentifierType$inboundSchema = exports.RetrieveQuoteRequestCreateBrokerCapacity$ = exports.RetrieveQuoteRequestCreateBrokerCapacity$outboundSchema = exports.RetrieveQuoteRequestCreateBrokerCapacity$inboundSchema = exports.RetrieveQuoteRequestCreateAssetType$ = exports.RetrieveQuoteRequestCreateAssetType$outboundSchema = exports.RetrieveQuoteRequestCreateAssetType$inboundSchema = exports.RetrieveQuoteRequestCreateIdentifierType = exports.RetrieveQuoteRequestCreateBrokerCapacity = exports.RetrieveQuoteRequestCreateAssetType = void 0;
+exports.retrieveQuoteRequestCreateToJSON = retrieveQuoteRequestCreateToJSON;
+exports.retrieveQuoteRequestCreateFromJSON = retrieveQuoteRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -177,4 +180,10 @@ var RetrieveQuoteRequestCreate$;
     /** @deprecated use `RetrieveQuoteRequestCreate$outboundSchema` instead. */
     RetrieveQuoteRequestCreate$.outboundSchema = exports.RetrieveQuoteRequestCreate$outboundSchema;
 })(RetrieveQuoteRequestCreate$ || (exports.RetrieveQuoteRequestCreate$ = RetrieveQuoteRequestCreate$ = {}));
+function retrieveQuoteRequestCreateToJSON(retrieveQuoteRequestCreate) {
+    return JSON.stringify(exports.RetrieveQuoteRequestCreate$outboundSchema.parse(retrieveQuoteRequestCreate));
+}
+function retrieveQuoteRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveQuoteRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetrieveQuoteRequestCreate' from JSON`);
+}
 //# sourceMappingURL=retrievequoterequestcreate.js.map

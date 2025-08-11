@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreditsCreateCreditRequest = {
   /**
@@ -75,6 +78,24 @@ export namespace CreditsCreateCreditRequest$ {
   export type Outbound = CreditsCreateCreditRequest$Outbound;
 }
 
+export function creditsCreateCreditRequestToJSON(
+  creditsCreateCreditRequest: CreditsCreateCreditRequest,
+): string {
+  return JSON.stringify(
+    CreditsCreateCreditRequest$outboundSchema.parse(creditsCreateCreditRequest),
+  );
+}
+
+export function creditsCreateCreditRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreditsCreateCreditRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreditsCreateCreditRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreditsCreateCreditRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreditsCreateCreditResponse$inboundSchema: z.ZodType<
   CreditsCreateCreditResponse,
@@ -127,4 +148,24 @@ export namespace CreditsCreateCreditResponse$ {
   export const outboundSchema = CreditsCreateCreditResponse$outboundSchema;
   /** @deprecated use `CreditsCreateCreditResponse$Outbound` instead. */
   export type Outbound = CreditsCreateCreditResponse$Outbound;
+}
+
+export function creditsCreateCreditResponseToJSON(
+  creditsCreateCreditResponse: CreditsCreateCreditResponse,
+): string {
+  return JSON.stringify(
+    CreditsCreateCreditResponse$outboundSchema.parse(
+      creditsCreateCreditResponse,
+    ),
+  );
+}
+
+export function creditsCreateCreditResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreditsCreateCreditResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreditsCreateCreditResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreditsCreateCreditResponse' from JSON`,
+  );
 }

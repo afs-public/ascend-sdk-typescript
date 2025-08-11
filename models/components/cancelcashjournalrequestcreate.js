@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelCashJournalRequestCreate$ = exports.CancelCashJournalRequestCreate$outboundSchema = exports.CancelCashJournalRequestCreate$inboundSchema = void 0;
+exports.cancelCashJournalRequestCreateToJSON = cancelCashJournalRequestCreateToJSON;
+exports.cancelCashJournalRequestCreateFromJSON = cancelCashJournalRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelCashJournalRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -59,4 +62,10 @@ var CancelCashJournalRequestCreate$;
     /** @deprecated use `CancelCashJournalRequestCreate$outboundSchema` instead. */
     CancelCashJournalRequestCreate$.outboundSchema = exports.CancelCashJournalRequestCreate$outboundSchema;
 })(CancelCashJournalRequestCreate$ || (exports.CancelCashJournalRequestCreate$ = CancelCashJournalRequestCreate$ = {}));
+function cancelCashJournalRequestCreateToJSON(cancelCashJournalRequestCreate) {
+    return JSON.stringify(exports.CancelCashJournalRequestCreate$outboundSchema.parse(cancelCashJournalRequestCreate));
+}
+function cancelCashJournalRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelCashJournalRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelCashJournalRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelcashjournalrequestcreate.js.map

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireWithdrawalsCancelWireWithdrawalResponse$ = exports.WireWithdrawalsCancelWireWithdrawalResponse$outboundSchema = exports.WireWithdrawalsCancelWireWithdrawalResponse$inboundSchema = exports.WireWithdrawalsCancelWireWithdrawalRequest$ = exports.WireWithdrawalsCancelWireWithdrawalRequest$outboundSchema = exports.WireWithdrawalsCancelWireWithdrawalRequest$inboundSchema = void 0;
+exports.wireWithdrawalsCancelWireWithdrawalRequestToJSON = wireWithdrawalsCancelWireWithdrawalRequestToJSON;
+exports.wireWithdrawalsCancelWireWithdrawalRequestFromJSON = wireWithdrawalsCancelWireWithdrawalRequestFromJSON;
+exports.wireWithdrawalsCancelWireWithdrawalResponseToJSON = wireWithdrawalsCancelWireWithdrawalResponseToJSON;
+exports.wireWithdrawalsCancelWireWithdrawalResponseFromJSON = wireWithdrawalsCancelWireWithdrawalResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.WireWithdrawalsCancelWireWithdrawalRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var WireWithdrawalsCancelWireWithdrawalRequest$;
     /** @deprecated use `WireWithdrawalsCancelWireWithdrawalRequest$outboundSchema` instead. */
     WireWithdrawalsCancelWireWithdrawalRequest$.outboundSchema = exports.WireWithdrawalsCancelWireWithdrawalRequest$outboundSchema;
 })(WireWithdrawalsCancelWireWithdrawalRequest$ || (exports.WireWithdrawalsCancelWireWithdrawalRequest$ = WireWithdrawalsCancelWireWithdrawalRequest$ = {}));
+function wireWithdrawalsCancelWireWithdrawalRequestToJSON(wireWithdrawalsCancelWireWithdrawalRequest) {
+    return JSON.stringify(exports.WireWithdrawalsCancelWireWithdrawalRequest$outboundSchema.parse(wireWithdrawalsCancelWireWithdrawalRequest));
+}
+function wireWithdrawalsCancelWireWithdrawalRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalsCancelWireWithdrawalRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalsCancelWireWithdrawalRequest' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalsCancelWireWithdrawalResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var WireWithdrawalsCancelWireWithdrawalResponse$;
     /** @deprecated use `WireWithdrawalsCancelWireWithdrawalResponse$outboundSchema` instead. */
     WireWithdrawalsCancelWireWithdrawalResponse$.outboundSchema = exports.WireWithdrawalsCancelWireWithdrawalResponse$outboundSchema;
 })(WireWithdrawalsCancelWireWithdrawalResponse$ || (exports.WireWithdrawalsCancelWireWithdrawalResponse$ = WireWithdrawalsCancelWireWithdrawalResponse$ = {}));
+function wireWithdrawalsCancelWireWithdrawalResponseToJSON(wireWithdrawalsCancelWireWithdrawalResponse) {
+    return JSON.stringify(exports.WireWithdrawalsCancelWireWithdrawalResponse$outboundSchema.parse(wireWithdrawalsCancelWireWithdrawalResponse));
+}
+function wireWithdrawalsCancelWireWithdrawalResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalsCancelWireWithdrawalResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalsCancelWireWithdrawalResponse' from JSON`);
+}
 //# sourceMappingURL=wirewithdrawalscancelwirewithdrawal.js.map

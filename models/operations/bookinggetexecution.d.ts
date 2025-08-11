@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BookingGetExecutionRequest = {
     /**
      * The account id.
@@ -47,6 +49,8 @@ export declare namespace BookingGetExecutionRequest$ {
     /** @deprecated use `BookingGetExecutionRequest$Outbound` instead. */
     type Outbound = BookingGetExecutionRequest$Outbound;
 }
+export declare function bookingGetExecutionRequestToJSON(bookingGetExecutionRequest: BookingGetExecutionRequest): string;
+export declare function bookingGetExecutionRequestFromJSON(jsonString: string): SafeParseResult<BookingGetExecutionRequest, SDKValidationError>;
 /** @internal */
 export declare const BookingGetExecutionResponse$inboundSchema: z.ZodType<BookingGetExecutionResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -69,4 +73,6 @@ export declare namespace BookingGetExecutionResponse$ {
     /** @deprecated use `BookingGetExecutionResponse$Outbound` instead. */
     type Outbound = BookingGetExecutionResponse$Outbound;
 }
+export declare function bookingGetExecutionResponseToJSON(bookingGetExecutionResponse: BookingGetExecutionResponse): string;
+export declare function bookingGetExecutionResponseFromJSON(jsonString: string): SafeParseResult<BookingGetExecutionResponse, SDKValidationError>;
 //# sourceMappingURL=bookinggetexecution.d.ts.map

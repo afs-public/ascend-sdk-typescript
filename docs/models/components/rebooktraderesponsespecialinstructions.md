@@ -6,7 +6,7 @@
 import { RebookTradeResponseSpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: RebookTradeResponseSpecialInstructions =
-  RebookTradeResponseSpecialInstructions.CustomerDirected;
+  RebookTradeResponseSpecialInstructions.ThirdMarket;
 ```
 
 ## Values

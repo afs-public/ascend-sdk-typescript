@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreditsGetCreditResponse$ = exports.CreditsGetCreditResponse$outboundSchema = exports.CreditsGetCreditResponse$inboundSchema = exports.CreditsGetCreditRequest$ = exports.CreditsGetCreditRequest$outboundSchema = exports.CreditsGetCreditRequest$inboundSchema = void 0;
+exports.creditsGetCreditRequestToJSON = creditsGetCreditRequestToJSON;
+exports.creditsGetCreditRequestFromJSON = creditsGetCreditRequestFromJSON;
+exports.creditsGetCreditResponseToJSON = creditsGetCreditResponseToJSON;
+exports.creditsGetCreditResponseFromJSON = creditsGetCreditResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.CreditsGetCreditRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var CreditsGetCreditRequest$;
     /** @deprecated use `CreditsGetCreditRequest$outboundSchema` instead. */
     CreditsGetCreditRequest$.outboundSchema = exports.CreditsGetCreditRequest$outboundSchema;
 })(CreditsGetCreditRequest$ || (exports.CreditsGetCreditRequest$ = CreditsGetCreditRequest$ = {}));
+function creditsGetCreditRequestToJSON(creditsGetCreditRequest) {
+    return JSON.stringify(exports.CreditsGetCreditRequest$outboundSchema.parse(creditsGetCreditRequest));
+}
+function creditsGetCreditRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CreditsGetCreditRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CreditsGetCreditRequest' from JSON`);
+}
 /** @internal */
 exports.CreditsGetCreditResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var CreditsGetCreditResponse$;
     /** @deprecated use `CreditsGetCreditResponse$outboundSchema` instead. */
     CreditsGetCreditResponse$.outboundSchema = exports.CreditsGetCreditResponse$outboundSchema;
 })(CreditsGetCreditResponse$ || (exports.CreditsGetCreditResponse$ = CreditsGetCreditResponse$ = {}));
+function creditsGetCreditResponseToJSON(creditsGetCreditResponse) {
+    return JSON.stringify(exports.CreditsGetCreditResponse$outboundSchema.parse(creditsGetCreditResponse));
+}
+function creditsGetCreditResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CreditsGetCreditResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CreditsGetCreditResponse' from JSON`);
+}
 //# sourceMappingURL=creditsgetcredit.js.map

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderCostPreviewRequestCreate$ = exports.OrderCostPreviewRequestCreate$outboundSchema = exports.OrderCostPreviewRequestCreate$inboundSchema = exports.OrderCostPreviewRequestCreateIdentifierType$ = exports.OrderCostPreviewRequestCreateIdentifierType$outboundSchema = exports.OrderCostPreviewRequestCreateIdentifierType$inboundSchema = exports.OrderCostPreviewRequestCreateBrokerCapacity$ = exports.OrderCostPreviewRequestCreateBrokerCapacity$outboundSchema = exports.OrderCostPreviewRequestCreateBrokerCapacity$inboundSchema = exports.OrderCostPreviewRequestCreateAssetType$ = exports.OrderCostPreviewRequestCreateAssetType$outboundSchema = exports.OrderCostPreviewRequestCreateAssetType$inboundSchema = exports.OrderCostPreviewRequestCreateIdentifierType = exports.OrderCostPreviewRequestCreateBrokerCapacity = exports.OrderCostPreviewRequestCreateAssetType = void 0;
+exports.orderCostPreviewRequestCreateToJSON = orderCostPreviewRequestCreateToJSON;
+exports.orderCostPreviewRequestCreateFromJSON = orderCostPreviewRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const limitpricecreate_js_1 = require("./limitpricecreate.js");
@@ -180,4 +183,10 @@ var OrderCostPreviewRequestCreate$;
     /** @deprecated use `OrderCostPreviewRequestCreate$outboundSchema` instead. */
     OrderCostPreviewRequestCreate$.outboundSchema = exports.OrderCostPreviewRequestCreate$outboundSchema;
 })(OrderCostPreviewRequestCreate$ || (exports.OrderCostPreviewRequestCreate$ = OrderCostPreviewRequestCreate$ = {}));
+function orderCostPreviewRequestCreateToJSON(orderCostPreviewRequestCreate) {
+    return JSON.stringify(exports.OrderCostPreviewRequestCreate$outboundSchema.parse(orderCostPreviewRequestCreate));
+}
+function orderCostPreviewRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderCostPreviewRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderCostPreviewRequestCreate' from JSON`);
+}
 //# sourceMappingURL=ordercostpreviewrequestcreate.js.map

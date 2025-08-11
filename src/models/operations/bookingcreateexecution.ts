@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingCreateExecutionRequest = {
   /**
@@ -87,6 +90,26 @@ export namespace BookingCreateExecutionRequest$ {
   export type Outbound = BookingCreateExecutionRequest$Outbound;
 }
 
+export function bookingCreateExecutionRequestToJSON(
+  bookingCreateExecutionRequest: BookingCreateExecutionRequest,
+): string {
+  return JSON.stringify(
+    BookingCreateExecutionRequest$outboundSchema.parse(
+      bookingCreateExecutionRequest,
+    ),
+  );
+}
+
+export function bookingCreateExecutionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCreateExecutionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCreateExecutionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCreateExecutionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingCreateExecutionResponse$inboundSchema: z.ZodType<
   BookingCreateExecutionResponse,
@@ -139,4 +162,24 @@ export namespace BookingCreateExecutionResponse$ {
   export const outboundSchema = BookingCreateExecutionResponse$outboundSchema;
   /** @deprecated use `BookingCreateExecutionResponse$Outbound` instead. */
   export type Outbound = BookingCreateExecutionResponse$Outbound;
+}
+
+export function bookingCreateExecutionResponseToJSON(
+  bookingCreateExecutionResponse: BookingCreateExecutionResponse,
+): string {
+  return JSON.stringify(
+    BookingCreateExecutionResponse$outboundSchema.parse(
+      bookingCreateExecutionResponse,
+    ),
+  );
+}
+
+export function bookingCreateExecutionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCreateExecutionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCreateExecutionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCreateExecutionResponse' from JSON`,
+  );
 }

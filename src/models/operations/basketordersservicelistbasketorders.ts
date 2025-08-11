@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BasketOrdersServiceListBasketOrdersRequest = {
   /**
@@ -23,6 +26,10 @@ export type BasketOrdersServiceListBasketOrdersRequest = {
    * A page token, received from a previous `ListBasketOrders` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBasketOrders` must match the call that provided the page token.
    */
   pageToken?: string | undefined;
+  /**
+   * Indicates whether basket orders with a status of REMOVED_BEFORE_SUBMISSION will be included in the response. By default, removed orders are not returned.
+   */
+  showRemoved?: boolean | undefined;
 };
 
 export type BasketOrdersServiceListBasketOrdersResponse = {
@@ -45,12 +52,14 @@ export const BasketOrdersServiceListBasketOrdersRequest$inboundSchema:
       basket_id: z.string(),
       page_size: z.number().int().optional(),
       page_token: z.string().optional(),
+      show_removed: z.boolean().optional(),
     }).transform((v) => {
       return remap$(v, {
         "correspondent_id": "correspondentId",
         "basket_id": "basketId",
         "page_size": "pageSize",
         "page_token": "pageToken",
+        "show_removed": "showRemoved",
       });
     });
 
@@ -60,6 +69,7 @@ export type BasketOrdersServiceListBasketOrdersRequest$Outbound = {
   basket_id: string;
   page_size?: number | undefined;
   page_token?: string | undefined;
+  show_removed?: boolean | undefined;
 };
 
 /** @internal */
@@ -73,12 +83,14 @@ export const BasketOrdersServiceListBasketOrdersRequest$outboundSchema:
     basketId: z.string(),
     pageSize: z.number().int().optional(),
     pageToken: z.string().optional(),
+    showRemoved: z.boolean().optional(),
   }).transform((v) => {
     return remap$(v, {
       correspondentId: "correspondent_id",
       basketId: "basket_id",
       pageSize: "page_size",
       pageToken: "page_token",
+      showRemoved: "show_removed",
     });
   });
 
@@ -95,6 +107,33 @@ export namespace BasketOrdersServiceListBasketOrdersRequest$ {
     BasketOrdersServiceListBasketOrdersRequest$outboundSchema;
   /** @deprecated use `BasketOrdersServiceListBasketOrdersRequest$Outbound` instead. */
   export type Outbound = BasketOrdersServiceListBasketOrdersRequest$Outbound;
+}
+
+export function basketOrdersServiceListBasketOrdersRequestToJSON(
+  basketOrdersServiceListBasketOrdersRequest:
+    BasketOrdersServiceListBasketOrdersRequest,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceListBasketOrdersRequest$outboundSchema.parse(
+      basketOrdersServiceListBasketOrdersRequest,
+    ),
+  );
+}
+
+export function basketOrdersServiceListBasketOrdersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BasketOrdersServiceListBasketOrdersRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceListBasketOrdersRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BasketOrdersServiceListBasketOrdersRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -157,4 +196,31 @@ export namespace BasketOrdersServiceListBasketOrdersResponse$ {
     BasketOrdersServiceListBasketOrdersResponse$outboundSchema;
   /** @deprecated use `BasketOrdersServiceListBasketOrdersResponse$Outbound` instead. */
   export type Outbound = BasketOrdersServiceListBasketOrdersResponse$Outbound;
+}
+
+export function basketOrdersServiceListBasketOrdersResponseToJSON(
+  basketOrdersServiceListBasketOrdersResponse:
+    BasketOrdersServiceListBasketOrdersResponse,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceListBasketOrdersResponse$outboundSchema.parse(
+      basketOrdersServiceListBasketOrdersResponse,
+    ),
+  );
+}
+
+export function basketOrdersServiceListBasketOrdersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BasketOrdersServiceListBasketOrdersResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceListBasketOrdersResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BasketOrdersServiceListBasketOrdersResponse' from JSON`,
+  );
 }

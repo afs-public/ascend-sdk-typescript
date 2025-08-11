@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type InvestigationServiceGetInvestigationRequest = {
     /**
      * The investigation id.
@@ -37,6 +39,8 @@ export declare namespace InvestigationServiceGetInvestigationRequest$ {
     /** @deprecated use `InvestigationServiceGetInvestigationRequest$Outbound` instead. */
     type Outbound = InvestigationServiceGetInvestigationRequest$Outbound;
 }
+export declare function investigationServiceGetInvestigationRequestToJSON(investigationServiceGetInvestigationRequest: InvestigationServiceGetInvestigationRequest): string;
+export declare function investigationServiceGetInvestigationRequestFromJSON(jsonString: string): SafeParseResult<InvestigationServiceGetInvestigationRequest, SDKValidationError>;
 /** @internal */
 export declare const InvestigationServiceGetInvestigationResponse$inboundSchema: z.ZodType<InvestigationServiceGetInvestigationResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace InvestigationServiceGetInvestigationResponse$ {
     /** @deprecated use `InvestigationServiceGetInvestigationResponse$Outbound` instead. */
     type Outbound = InvestigationServiceGetInvestigationResponse$Outbound;
 }
+export declare function investigationServiceGetInvestigationResponseToJSON(investigationServiceGetInvestigationResponse: InvestigationServiceGetInvestigationResponse): string;
+export declare function investigationServiceGetInvestigationResponseFromJSON(jsonString: string): SafeParseResult<InvestigationServiceGetInvestigationResponse, SDKValidationError>;
 //# sourceMappingURL=investigationservicegetinvestigation.d.ts.map

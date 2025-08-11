@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Position, Position$Outbound } from "./position.js";
 /**
  * positions with 0 values will be returned if there are offsetting position deltas or a position was reduced to 0
@@ -34,4 +36,6 @@ export declare namespace ListPositionsResponse$ {
     /** @deprecated use `ListPositionsResponse$Outbound` instead. */
     type Outbound = ListPositionsResponse$Outbound;
 }
+export declare function listPositionsResponseToJSON(listPositionsResponse: ListPositionsResponse): string;
+export declare function listPositionsResponseFromJSON(jsonString: string): SafeParseResult<ListPositionsResponse, SDKValidationError>;
 //# sourceMappingURL=listpositionsresponse.d.ts.map

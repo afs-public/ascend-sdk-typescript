@@ -4,7 +4,12 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { collectExtraKeys as collectExtraKeys$ } from "../../lib/schemas.js";
+import {
+  collectExtraKeys as collectExtraKeys$,
+  safeParse,
+} from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
@@ -14,7 +19,7 @@ export type Any = {
    * The type of the serialized message.
    */
   atType?: string | undefined;
-  additionalProperties: { [k: string]: any };
+  additionalProperties?: { [k: string]: any };
 };
 
 /** @internal */
@@ -24,6 +29,7 @@ export const Any$inboundSchema: z.ZodType<Any, z.ZodTypeDef, unknown> =
       "@type": z.string().optional(),
     }).catchall(z.any()),
     "additionalProperties",
+    true,
   ).transform((v) => {
     return remap$(v, {
       "@type": "atType",
@@ -62,4 +68,18 @@ export namespace Any$ {
   export const outboundSchema = Any$outboundSchema;
   /** @deprecated use `Any$Outbound` instead. */
   export type Outbound = Any$Outbound;
+}
+
+export function anyToJSON(any: Any): string {
+  return JSON.stringify(Any$outboundSchema.parse(any));
+}
+
+export function anyFromJSON(
+  jsonString: string,
+): SafeParseResult<Any, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Any$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Any' from JSON`,
+  );
 }

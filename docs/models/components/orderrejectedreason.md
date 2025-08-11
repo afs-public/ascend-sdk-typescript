@@ -49,5 +49,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `AssetNotSetUpToTrade`                                    | ASSET_NOT_SET_UP_TO_TRADE                                 |
 | `InvalidOrderQuantity`                                    | INVALID_ORDER_QUANTITY                                    |
 | `ClientReceivedTimeRequired`                              | CLIENT_RECEIVED_TIME_REQUIRED                             |
-| `ClientNotPermittedToUseTradingStrategy`                  | CLIENT_NOT_PERMITTED_TO_USE_TRADING_STRATEGY              |
+| `ClientNotPermittedToUseTradingSession`                   | CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION               |
 | -                                                         | `Unrecognized<string>`                                    |

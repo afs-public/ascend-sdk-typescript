@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsListLegalNaturalPersonsRequest = {
   /**
@@ -111,6 +114,28 @@ export namespace AccountsListLegalNaturalPersonsRequest$ {
   export type Outbound = AccountsListLegalNaturalPersonsRequest$Outbound;
 }
 
+export function accountsListLegalNaturalPersonsRequestToJSON(
+  accountsListLegalNaturalPersonsRequest:
+    AccountsListLegalNaturalPersonsRequest,
+): string {
+  return JSON.stringify(
+    AccountsListLegalNaturalPersonsRequest$outboundSchema.parse(
+      accountsListLegalNaturalPersonsRequest,
+    ),
+  );
+}
+
+export function accountsListLegalNaturalPersonsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListLegalNaturalPersonsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsListLegalNaturalPersonsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListLegalNaturalPersonsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsListLegalNaturalPersonsResponse$inboundSchema: z.ZodType<
   AccountsListLegalNaturalPersonsResponse,
@@ -169,4 +194,31 @@ export namespace AccountsListLegalNaturalPersonsResponse$ {
     AccountsListLegalNaturalPersonsResponse$outboundSchema;
   /** @deprecated use `AccountsListLegalNaturalPersonsResponse$Outbound` instead. */
   export type Outbound = AccountsListLegalNaturalPersonsResponse$Outbound;
+}
+
+export function accountsListLegalNaturalPersonsResponseToJSON(
+  accountsListLegalNaturalPersonsResponse:
+    AccountsListLegalNaturalPersonsResponse,
+): string {
+  return JSON.stringify(
+    AccountsListLegalNaturalPersonsResponse$outboundSchema.parse(
+      accountsListLegalNaturalPersonsResponse,
+    ),
+  );
+}
+
+export function accountsListLegalNaturalPersonsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsListLegalNaturalPersonsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsListLegalNaturalPersonsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsListLegalNaturalPersonsResponse' from JSON`,
+  );
 }

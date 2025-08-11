@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PhoneNumberUpdate$ = exports.PhoneNumberUpdate$outboundSchema = exports.PhoneNumberUpdate$inboundSchema = void 0;
+exports.phoneNumberUpdateToJSON = phoneNumberUpdateToJSON;
+exports.phoneNumberUpdateFromJSON = phoneNumberUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const phonenumbershortcodeupdate_js_1 = require("./phonenumbershortcodeupdate.js");
 /** @internal */
 exports.PhoneNumberUpdate$inboundSchema = z.object({
@@ -73,4 +76,10 @@ var PhoneNumberUpdate$;
     /** @deprecated use `PhoneNumberUpdate$outboundSchema` instead. */
     PhoneNumberUpdate$.outboundSchema = exports.PhoneNumberUpdate$outboundSchema;
 })(PhoneNumberUpdate$ || (exports.PhoneNumberUpdate$ = PhoneNumberUpdate$ = {}));
+function phoneNumberUpdateToJSON(phoneNumberUpdate) {
+    return JSON.stringify(exports.PhoneNumberUpdate$outboundSchema.parse(phoneNumberUpdate));
+}
+function phoneNumberUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PhoneNumberUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PhoneNumberUpdate' from JSON`);
+}
 //# sourceMappingURL=phonenumberupdate.js.map

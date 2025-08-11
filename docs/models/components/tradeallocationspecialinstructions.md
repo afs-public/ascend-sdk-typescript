@@ -6,7 +6,7 @@
 import { TradeAllocationSpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: TradeAllocationSpecialInstructions =
-  TradeAllocationSpecialInstructions.OddlotDiffOnRequest;
+  TradeAllocationSpecialInstructions.OpenContract;
 ```
 
 ## Values

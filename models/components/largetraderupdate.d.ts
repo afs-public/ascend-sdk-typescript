@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateUpdate, DateUpdate$Outbound } from "./dateupdate.js";
 /**
  * A large trader.
@@ -40,4 +42,6 @@ export declare namespace LargeTraderUpdate$ {
     /** @deprecated use `LargeTraderUpdate$Outbound` instead. */
     type Outbound = LargeTraderUpdate$Outbound;
 }
+export declare function largeTraderUpdateToJSON(largeTraderUpdate: LargeTraderUpdate): string;
+export declare function largeTraderUpdateFromJSON(jsonString: string): SafeParseResult<LargeTraderUpdate, SDKValidationError>;
 //# sourceMappingURL=largetraderupdate.d.ts.map

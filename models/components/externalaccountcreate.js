@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExternalAccountCreate$ = exports.ExternalAccountCreate$outboundSchema = exports.ExternalAccountCreate$inboundSchema = void 0;
+exports.externalAccountCreateToJSON = externalAccountCreateToJSON;
+exports.externalAccountCreateFromJSON = externalAccountCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ExternalAccountCreate$inboundSchema = z.object({
     account_number: z.string(),
@@ -70,4 +73,10 @@ var ExternalAccountCreate$;
     /** @deprecated use `ExternalAccountCreate$outboundSchema` instead. */
     ExternalAccountCreate$.outboundSchema = exports.ExternalAccountCreate$outboundSchema;
 })(ExternalAccountCreate$ || (exports.ExternalAccountCreate$ = ExternalAccountCreate$ = {}));
+function externalAccountCreateToJSON(externalAccountCreate) {
+    return JSON.stringify(exports.ExternalAccountCreate$outboundSchema.parse(externalAccountCreate));
+}
+function externalAccountCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExternalAccountCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExternalAccountCreate' from JSON`);
+}
 //# sourceMappingURL=externalaccountcreate.js.map

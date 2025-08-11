@@ -37,8 +37,17 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrustedContact$ = exports.TrustedContact$outboundSchema = exports.TrustedContact$inboundSchema = exports.TrustedContactPhoneNumber$ = exports.TrustedContactPhoneNumber$outboundSchema = exports.TrustedContactPhoneNumber$inboundSchema = exports.TrustedContactShortCode$ = exports.TrustedContactShortCode$outboundSchema = exports.TrustedContactShortCode$inboundSchema = exports.TrustedContactMailingAddress$ = exports.TrustedContactMailingAddress$outboundSchema = exports.TrustedContactMailingAddress$inboundSchema = void 0;
+exports.trustedContactMailingAddressToJSON = trustedContactMailingAddressToJSON;
+exports.trustedContactMailingAddressFromJSON = trustedContactMailingAddressFromJSON;
+exports.trustedContactShortCodeToJSON = trustedContactShortCodeToJSON;
+exports.trustedContactShortCodeFromJSON = trustedContactShortCodeFromJSON;
+exports.trustedContactPhoneNumberToJSON = trustedContactPhoneNumberToJSON;
+exports.trustedContactPhoneNumberFromJSON = trustedContactPhoneNumberFromJSON;
+exports.trustedContactToJSON = trustedContactToJSON;
+exports.trustedContactFromJSON = trustedContactFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.TrustedContactMailingAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -96,6 +105,12 @@ var TrustedContactMailingAddress$;
     /** @deprecated use `TrustedContactMailingAddress$outboundSchema` instead. */
     TrustedContactMailingAddress$.outboundSchema = exports.TrustedContactMailingAddress$outboundSchema;
 })(TrustedContactMailingAddress$ || (exports.TrustedContactMailingAddress$ = TrustedContactMailingAddress$ = {}));
+function trustedContactMailingAddressToJSON(trustedContactMailingAddress) {
+    return JSON.stringify(exports.TrustedContactMailingAddress$outboundSchema.parse(trustedContactMailingAddress));
+}
+function trustedContactMailingAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TrustedContactMailingAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TrustedContactMailingAddress' from JSON`);
+}
 /** @internal */
 exports.TrustedContactShortCode$inboundSchema = z.object({
     number: z.string().optional(),
@@ -125,6 +140,12 @@ var TrustedContactShortCode$;
     /** @deprecated use `TrustedContactShortCode$outboundSchema` instead. */
     TrustedContactShortCode$.outboundSchema = exports.TrustedContactShortCode$outboundSchema;
 })(TrustedContactShortCode$ || (exports.TrustedContactShortCode$ = TrustedContactShortCode$ = {}));
+function trustedContactShortCodeToJSON(trustedContactShortCode) {
+    return JSON.stringify(exports.TrustedContactShortCode$outboundSchema.parse(trustedContactShortCode));
+}
+function trustedContactShortCodeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TrustedContactShortCode$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TrustedContactShortCode' from JSON`);
+}
 /** @internal */
 exports.TrustedContactPhoneNumber$inboundSchema = z.object({
     e164_number: z.string().optional(),
@@ -160,6 +181,12 @@ var TrustedContactPhoneNumber$;
     /** @deprecated use `TrustedContactPhoneNumber$outboundSchema` instead. */
     TrustedContactPhoneNumber$.outboundSchema = exports.TrustedContactPhoneNumber$outboundSchema;
 })(TrustedContactPhoneNumber$ || (exports.TrustedContactPhoneNumber$ = TrustedContactPhoneNumber$ = {}));
+function trustedContactPhoneNumberToJSON(trustedContactPhoneNumber) {
+    return JSON.stringify(exports.TrustedContactPhoneNumber$outboundSchema.parse(trustedContactPhoneNumber));
+}
+function trustedContactPhoneNumberFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TrustedContactPhoneNumber$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TrustedContactPhoneNumber' from JSON`);
+}
 /** @internal */
 exports.TrustedContact$inboundSchema = z.object({
     email_address: z.string().optional(),
@@ -213,4 +240,10 @@ var TrustedContact$;
     /** @deprecated use `TrustedContact$outboundSchema` instead. */
     TrustedContact$.outboundSchema = exports.TrustedContact$outboundSchema;
 })(TrustedContact$ || (exports.TrustedContact$ = TrustedContact$ = {}));
+function trustedContactToJSON(trustedContact) {
+    return JSON.stringify(exports.TrustedContact$outboundSchema.parse(trustedContact));
+}
+function trustedContactFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TrustedContact$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TrustedContact' from JSON`);
+}
 //# sourceMappingURL=trustedcontact.js.map

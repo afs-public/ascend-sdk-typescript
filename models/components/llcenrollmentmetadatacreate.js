@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LLCEnrollmentMetadataCreate$ = exports.LLCEnrollmentMetadataCreate$outboundSchema = exports.LLCEnrollmentMetadataCreate$inboundSchema = exports.LLCEnrollmentMetadataCreateFdicCashSweep$ = exports.LLCEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.LLCEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.LLCEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.LLCEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.LLCEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.LLCEnrollmentMetadataCreateFdicCashSweep = exports.LLCEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.llcEnrollmentMetadataCreateToJSON = llcEnrollmentMetadataCreateToJSON;
+exports.llcEnrollmentMetadataCreateFromJSON = llcEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const eddaccountenrollmentmetadatacreate_js_1 = require("./eddaccountenrollmentmetadatacreate.js");
 /**
@@ -142,4 +145,10 @@ var LLCEnrollmentMetadataCreate$;
     /** @deprecated use `LLCEnrollmentMetadataCreate$outboundSchema` instead. */
     LLCEnrollmentMetadataCreate$.outboundSchema = exports.LLCEnrollmentMetadataCreate$outboundSchema;
 })(LLCEnrollmentMetadataCreate$ || (exports.LLCEnrollmentMetadataCreate$ = LLCEnrollmentMetadataCreate$ = {}));
+function llcEnrollmentMetadataCreateToJSON(llcEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.LLCEnrollmentMetadataCreate$outboundSchema.parse(llcEnrollmentMetadataCreate));
+}
+function llcEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LLCEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LLCEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=llcenrollmentmetadatacreate.js.map

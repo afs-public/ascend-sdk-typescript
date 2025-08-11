@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Custom request - adds identity verification documentIds to investigation request
  */
@@ -28,4 +30,6 @@ export declare namespace LinkDocumentsRequestCreate$ {
     /** @deprecated use `LinkDocumentsRequestCreate$Outbound` instead. */
     type Outbound = LinkDocumentsRequestCreate$Outbound;
 }
+export declare function linkDocumentsRequestCreateToJSON(linkDocumentsRequestCreate: LinkDocumentsRequestCreate): string;
+export declare function linkDocumentsRequestCreateFromJSON(jsonString: string): SafeParseResult<LinkDocumentsRequestCreate, SDKValidationError>;
 //# sourceMappingURL=linkdocumentsrequestcreate.d.ts.map

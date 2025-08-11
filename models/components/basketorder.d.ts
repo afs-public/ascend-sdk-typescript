@@ -1,6 +1,9 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BasketTradingExecutedPrice, BasketTradingExecutedPrice$Outbound } from "./baskettradingexecutedprice.js";
+import { BasketTradingExecutions, BasketTradingExecutions$Outbound } from "./baskettradingexecutions.js";
 /**
  * The type of the asset in this order
  */
@@ -82,7 +85,8 @@ export declare enum BasketOrderOrderRejectedReason {
     AssetNotSetUpToTrade = "ASSET_NOT_SET_UP_TO_TRADE",
     AnotherBasketOrderForAccountHasFailedRiskChecks = "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS",
     InsufficientPosition = "INSUFFICIENT_POSITION",
-    FailedBuyingPower = "FAILED_BUYING_POWER"
+    FailedBuyingPower = "FAILED_BUYING_POWER",
+    RoundUpAmountTooSmall = "ROUND_UP_AMOUNT_TOO_SMALL"
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -97,7 +101,8 @@ export declare enum BasketOrderOrderStatus {
     New = "NEW",
     PartiallyFilled = "PARTIALLY_FILLED",
     Filled = "FILLED",
-    Rejected = "REJECTED"
+    Rejected = "REJECTED",
+    RemovedBeforeSubmission = "REMOVED_BEFORE_SUBMISSION"
 }
 /**
  * The processing status of the order
@@ -202,6 +207,10 @@ export type BasketOrder = {
      */
     currencyCode?: string | undefined;
     /**
+     * The execution-level details that compose this order
+     */
+    executions?: Array<BasketTradingExecutions> | undefined;
+    /**
      * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
      */
     filledQuantity?: BasketOrderFilledQuantity | null | undefined;
@@ -288,6 +297,8 @@ export declare namespace BasketOrderCumulativeNotionalValue$ {
     /** @deprecated use `BasketOrderCumulativeNotionalValue$Outbound` instead. */
     type Outbound = BasketOrderCumulativeNotionalValue$Outbound;
 }
+export declare function basketOrderCumulativeNotionalValueToJSON(basketOrderCumulativeNotionalValue: BasketOrderCumulativeNotionalValue): string;
+export declare function basketOrderCumulativeNotionalValueFromJSON(jsonString: string): SafeParseResult<BasketOrderCumulativeNotionalValue, SDKValidationError>;
 /** @internal */
 export declare const BasketOrderFilledQuantity$inboundSchema: z.ZodType<BasketOrderFilledQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -308,6 +319,8 @@ export declare namespace BasketOrderFilledQuantity$ {
     /** @deprecated use `BasketOrderFilledQuantity$Outbound` instead. */
     type Outbound = BasketOrderFilledQuantity$Outbound;
 }
+export declare function basketOrderFilledQuantityToJSON(basketOrderFilledQuantity: BasketOrderFilledQuantity): string;
+export declare function basketOrderFilledQuantityFromJSON(jsonString: string): SafeParseResult<BasketOrderFilledQuantity, SDKValidationError>;
 /** @internal */
 export declare const BasketOrderIdentifierType$inboundSchema: z.ZodType<BasketOrderIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -342,6 +355,8 @@ export declare namespace BasketOrderNotionalValue$ {
     /** @deprecated use `BasketOrderNotionalValue$Outbound` instead. */
     type Outbound = BasketOrderNotionalValue$Outbound;
 }
+export declare function basketOrderNotionalValueToJSON(basketOrderNotionalValue: BasketOrderNotionalValue): string;
+export declare function basketOrderNotionalValueFromJSON(jsonString: string): SafeParseResult<BasketOrderNotionalValue, SDKValidationError>;
 /** @internal */
 export declare const BasketOrderOrderRejectedReason$inboundSchema: z.ZodType<BasketOrderOrderRejectedReasonOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -404,6 +419,8 @@ export declare namespace BasketOrderQuantity$ {
     /** @deprecated use `BasketOrderQuantity$Outbound` instead. */
     type Outbound = BasketOrderQuantity$Outbound;
 }
+export declare function basketOrderQuantityToJSON(basketOrderQuantity: BasketOrderQuantity): string;
+export declare function basketOrderQuantityFromJSON(jsonString: string): SafeParseResult<BasketOrderQuantity, SDKValidationError>;
 /** @internal */
 export declare const BasketOrderSide$inboundSchema: z.ZodType<BasketOrderSideOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -460,6 +477,7 @@ export type BasketOrder$Outbound = {
     create_time?: string | null | undefined;
     cumulative_notional_value?: BasketOrderCumulativeNotionalValue$Outbound | null | undefined;
     currency_code?: string | undefined;
+    executions?: Array<BasketTradingExecutions$Outbound> | undefined;
     filled_quantity?: BasketOrderFilledQuantity$Outbound | null | undefined;
     identifier?: string | undefined;
     identifier_type?: string | undefined;
@@ -488,4 +506,6 @@ export declare namespace BasketOrder$ {
     /** @deprecated use `BasketOrder$Outbound` instead. */
     type Outbound = BasketOrder$Outbound;
 }
+export declare function basketOrderToJSON(basketOrder: BasketOrder): string;
+export declare function basketOrderFromJSON(jsonString: string): SafeParseResult<BasketOrder, SDKValidationError>;
 //# sourceMappingURL=basketorder.d.ts.map

@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthenticationListSigningKeysResponse$ = exports.AuthenticationListSigningKeysResponse$outboundSchema = exports.AuthenticationListSigningKeysResponse$inboundSchema = exports.AuthenticationListSigningKeysRequest$ = exports.AuthenticationListSigningKeysRequest$outboundSchema = exports.AuthenticationListSigningKeysRequest$inboundSchema = exports.AuthenticationListSigningKeysSecurity$ = exports.AuthenticationListSigningKeysSecurity$outboundSchema = exports.AuthenticationListSigningKeysSecurity$inboundSchema = void 0;
+exports.authenticationListSigningKeysSecurityToJSON = authenticationListSigningKeysSecurityToJSON;
+exports.authenticationListSigningKeysSecurityFromJSON = authenticationListSigningKeysSecurityFromJSON;
+exports.authenticationListSigningKeysRequestToJSON = authenticationListSigningKeysRequestToJSON;
+exports.authenticationListSigningKeysRequestFromJSON = authenticationListSigningKeysRequestFromJSON;
+exports.authenticationListSigningKeysResponseToJSON = authenticationListSigningKeysResponseToJSON;
+exports.authenticationListSigningKeysResponseFromJSON = authenticationListSigningKeysResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AuthenticationListSigningKeysSecurity$inboundSchema = z.object({
@@ -67,6 +74,12 @@ var AuthenticationListSigningKeysSecurity$;
     /** @deprecated use `AuthenticationListSigningKeysSecurity$outboundSchema` instead. */
     AuthenticationListSigningKeysSecurity$.outboundSchema = exports.AuthenticationListSigningKeysSecurity$outboundSchema;
 })(AuthenticationListSigningKeysSecurity$ || (exports.AuthenticationListSigningKeysSecurity$ = AuthenticationListSigningKeysSecurity$ = {}));
+function authenticationListSigningKeysSecurityToJSON(authenticationListSigningKeysSecurity) {
+    return JSON.stringify(exports.AuthenticationListSigningKeysSecurity$outboundSchema.parse(authenticationListSigningKeysSecurity));
+}
+function authenticationListSigningKeysSecurityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AuthenticationListSigningKeysSecurity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AuthenticationListSigningKeysSecurity' from JSON`);
+}
 /** @internal */
 exports.AuthenticationListSigningKeysRequest$inboundSchema = z.object({
     page_size: z.number().int().optional(),
@@ -98,6 +111,12 @@ var AuthenticationListSigningKeysRequest$;
     /** @deprecated use `AuthenticationListSigningKeysRequest$outboundSchema` instead. */
     AuthenticationListSigningKeysRequest$.outboundSchema = exports.AuthenticationListSigningKeysRequest$outboundSchema;
 })(AuthenticationListSigningKeysRequest$ || (exports.AuthenticationListSigningKeysRequest$ = AuthenticationListSigningKeysRequest$ = {}));
+function authenticationListSigningKeysRequestToJSON(authenticationListSigningKeysRequest) {
+    return JSON.stringify(exports.AuthenticationListSigningKeysRequest$outboundSchema.parse(authenticationListSigningKeysRequest));
+}
+function authenticationListSigningKeysRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AuthenticationListSigningKeysRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AuthenticationListSigningKeysRequest' from JSON`);
+}
 /** @internal */
 exports.AuthenticationListSigningKeysResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -135,4 +154,10 @@ var AuthenticationListSigningKeysResponse$;
     /** @deprecated use `AuthenticationListSigningKeysResponse$outboundSchema` instead. */
     AuthenticationListSigningKeysResponse$.outboundSchema = exports.AuthenticationListSigningKeysResponse$outboundSchema;
 })(AuthenticationListSigningKeysResponse$ || (exports.AuthenticationListSigningKeysResponse$ = AuthenticationListSigningKeysResponse$ = {}));
+function authenticationListSigningKeysResponseToJSON(authenticationListSigningKeysResponse) {
+    return JSON.stringify(exports.AuthenticationListSigningKeysResponse$outboundSchema.parse(authenticationListSigningKeysResponse));
+}
+function authenticationListSigningKeysResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AuthenticationListSigningKeysResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AuthenticationListSigningKeysResponse' from JSON`);
+}
 //# sourceMappingURL=authenticationlistsigningkeys.js.map

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PushSubscription$ = exports.PushSubscription$outboundSchema = exports.PushSubscription$inboundSchema = exports.State$ = exports.State$outboundSchema = exports.State$inboundSchema = exports.HttpCallback$ = exports.HttpCallback$outboundSchema = exports.HttpCallback$inboundSchema = exports.State = void 0;
+exports.httpCallbackToJSON = httpCallbackToJSON;
+exports.httpCallbackFromJSON = httpCallbackFromJSON;
+exports.pushSubscriptionToJSON = pushSubscriptionToJSON;
+exports.pushSubscriptionFromJSON = pushSubscriptionFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The current status of the subscription
@@ -80,6 +85,12 @@ var HttpCallback$;
     /** @deprecated use `HttpCallback$outboundSchema` instead. */
     HttpCallback$.outboundSchema = exports.HttpCallback$outboundSchema;
 })(HttpCallback$ || (exports.HttpCallback$ = HttpCallback$ = {}));
+function httpCallbackToJSON(httpCallback) {
+    return JSON.stringify(exports.HttpCallback$outboundSchema.parse(httpCallback));
+}
+function httpCallbackFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.HttpCallback$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'HttpCallback' from JSON`);
+}
 /** @internal */
 exports.State$inboundSchema = z
     .union([
@@ -155,4 +166,10 @@ var PushSubscription$;
     /** @deprecated use `PushSubscription$outboundSchema` instead. */
     PushSubscription$.outboundSchema = exports.PushSubscription$outboundSchema;
 })(PushSubscription$ || (exports.PushSubscription$ = PushSubscription$ = {}));
+function pushSubscriptionToJSON(pushSubscription) {
+    return JSON.stringify(exports.PushSubscription$outboundSchema.parse(pushSubscription));
+}
+function pushSubscriptionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PushSubscription$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PushSubscription' from JSON`);
+}
 //# sourceMappingURL=pushsubscription.js.map

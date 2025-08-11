@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketTradingExecutions$ = exports.BasketTradingExecutions$outboundSchema = exports.BasketTradingExecutions$inboundSchema = exports.BasketTradingExecutionsQuantity$ = exports.BasketTradingExecutionsQuantity$outboundSchema = exports.BasketTradingExecutionsQuantity$inboundSchema = void 0;
+exports.basketTradingExecutionsQuantityToJSON = basketTradingExecutionsQuantityToJSON;
+exports.basketTradingExecutionsQuantityFromJSON = basketTradingExecutionsQuantityFromJSON;
+exports.basketTradingExecutionsToJSON = basketTradingExecutionsToJSON;
+exports.basketTradingExecutionsFromJSON = basketTradingExecutionsFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const baskettradingexecutedprice_js_1 = require("./baskettradingexecutedprice.js");
 /** @internal */
 exports.BasketTradingExecutionsQuantity$inboundSchema = z.object({
@@ -59,6 +64,12 @@ var BasketTradingExecutionsQuantity$;
     /** @deprecated use `BasketTradingExecutionsQuantity$outboundSchema` instead. */
     BasketTradingExecutionsQuantity$.outboundSchema = exports.BasketTradingExecutionsQuantity$outboundSchema;
 })(BasketTradingExecutionsQuantity$ || (exports.BasketTradingExecutionsQuantity$ = BasketTradingExecutionsQuantity$ = {}));
+function basketTradingExecutionsQuantityToJSON(basketTradingExecutionsQuantity) {
+    return JSON.stringify(exports.BasketTradingExecutionsQuantity$outboundSchema.parse(basketTradingExecutionsQuantity));
+}
+function basketTradingExecutionsQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketTradingExecutionsQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketTradingExecutionsQuantity' from JSON`);
+}
 /** @internal */
 exports.BasketTradingExecutions$inboundSchema = z.object({
     executed_prices: z.array(baskettradingexecutedprice_js_1.BasketTradingExecutedPrice$inboundSchema).optional(),
@@ -92,4 +103,10 @@ var BasketTradingExecutions$;
     /** @deprecated use `BasketTradingExecutions$outboundSchema` instead. */
     BasketTradingExecutions$.outboundSchema = exports.BasketTradingExecutions$outboundSchema;
 })(BasketTradingExecutions$ || (exports.BasketTradingExecutions$ = BasketTradingExecutions$ = {}));
+function basketTradingExecutionsToJSON(basketTradingExecutions) {
+    return JSON.stringify(exports.BasketTradingExecutions$outboundSchema.parse(basketTradingExecutions));
+}
+function basketTradingExecutionsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketTradingExecutions$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketTradingExecutions' from JSON`);
+}
 //# sourceMappingURL=baskettradingexecutions.js.map

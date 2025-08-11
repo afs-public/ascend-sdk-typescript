@@ -5,14 +5,7 @@
 ```typescript
 import { AccountsUpdateLegalNaturalPersonResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: AccountsUpdateLegalNaturalPersonResponse = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: AccountsUpdateLegalNaturalPersonResponse = {};
 ```
 
 ## Fields

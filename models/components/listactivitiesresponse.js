@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListActivitiesResponse$ = exports.ListActivitiesResponse$outboundSchema = exports.ListActivitiesResponse$inboundSchema = void 0;
+exports.listActivitiesResponseToJSON = listActivitiesResponseToJSON;
+exports.listActivitiesResponseFromJSON = listActivitiesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const activity_js_1 = require("./activity.js");
 /** @internal */
 exports.ListActivitiesResponse$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ListActivitiesResponse$;
     /** @deprecated use `ListActivitiesResponse$outboundSchema` instead. */
     ListActivitiesResponse$.outboundSchema = exports.ListActivitiesResponse$outboundSchema;
 })(ListActivitiesResponse$ || (exports.ListActivitiesResponse$ = ListActivitiesResponse$ = {}));
+function listActivitiesResponseToJSON(listActivitiesResponse) {
+    return JSON.stringify(exports.ListActivitiesResponse$outboundSchema.parse(listActivitiesResponse));
+}
+function listActivitiesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListActivitiesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListActivitiesResponse' from JSON`);
+}
 //# sourceMappingURL=listactivitiesresponse.js.map

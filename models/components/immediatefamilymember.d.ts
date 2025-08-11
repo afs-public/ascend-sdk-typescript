@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Immediate Family Member detail.
  */
@@ -33,4 +35,6 @@ export declare namespace ImmediateFamilyMember$ {
     /** @deprecated use `ImmediateFamilyMember$Outbound` instead. */
     type Outbound = ImmediateFamilyMember$Outbound;
 }
+export declare function immediateFamilyMemberToJSON(immediateFamilyMember: ImmediateFamilyMember): string;
+export declare function immediateFamilyMemberFromJSON(jsonString: string): SafeParseResult<ImmediateFamilyMember, SDKValidationError>;
 //# sourceMappingURL=immediatefamilymember.d.ts.map

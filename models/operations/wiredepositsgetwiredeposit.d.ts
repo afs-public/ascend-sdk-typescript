@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type WireDepositsGetWireDepositRequest = {
     /**
      * The account id.
@@ -42,6 +44,8 @@ export declare namespace WireDepositsGetWireDepositRequest$ {
     /** @deprecated use `WireDepositsGetWireDepositRequest$Outbound` instead. */
     type Outbound = WireDepositsGetWireDepositRequest$Outbound;
 }
+export declare function wireDepositsGetWireDepositRequestToJSON(wireDepositsGetWireDepositRequest: WireDepositsGetWireDepositRequest): string;
+export declare function wireDepositsGetWireDepositRequestFromJSON(jsonString: string): SafeParseResult<WireDepositsGetWireDepositRequest, SDKValidationError>;
 /** @internal */
 export declare const WireDepositsGetWireDepositResponse$inboundSchema: z.ZodType<WireDepositsGetWireDepositResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace WireDepositsGetWireDepositResponse$ {
     /** @deprecated use `WireDepositsGetWireDepositResponse$Outbound` instead. */
     type Outbound = WireDepositsGetWireDepositResponse$Outbound;
 }
+export declare function wireDepositsGetWireDepositResponseToJSON(wireDepositsGetWireDepositResponse: WireDepositsGetWireDepositResponse): string;
+export declare function wireDepositsGetWireDepositResponseFromJSON(jsonString: string): SafeParseResult<WireDepositsGetWireDepositResponse, SDKValidationError>;
 //# sourceMappingURL=wiredepositsgetwiredeposit.d.ts.map

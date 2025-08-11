@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -154,4 +157,22 @@ export namespace TransfersFeeCreate$ {
   export const outboundSchema = TransfersFeeCreate$outboundSchema;
   /** @deprecated use `TransfersFeeCreate$Outbound` instead. */
   export type Outbound = TransfersFeeCreate$Outbound;
+}
+
+export function transfersFeeCreateToJSON(
+  transfersFeeCreate: TransfersFeeCreate,
+): string {
+  return JSON.stringify(
+    TransfersFeeCreate$outboundSchema.parse(transfersFeeCreate),
+  );
+}
+
+export function transfersFeeCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TransfersFeeCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransfersFeeCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransfersFeeCreate' from JSON`,
+  );
 }

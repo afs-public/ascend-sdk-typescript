@@ -7,8 +7,7 @@ The nature of the U.S. Tax ID indicated in the related tax_id field; Examples in
 ```typescript
 import { BeneficiaryCreateTaxIdType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: BeneficiaryCreateTaxIdType =
-  BeneficiaryCreateTaxIdType.TaxIdTypeItin;
+let value: BeneficiaryCreateTaxIdType = BeneficiaryCreateTaxIdType.TaxIdTypeEin;
 ```
 
 ## Values

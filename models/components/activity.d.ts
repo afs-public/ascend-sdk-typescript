@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AccruedInterest, AccruedInterest$Outbound } from "./accruedinterest.js";
 import { Commission, Commission$Outbound } from "./commission.js";
 import { Fee, Fee$Outbound } from "./fee.js";
@@ -4023,6 +4025,8 @@ export declare namespace ActivityAcatsPendingOut$ {
     /** @deprecated use `ActivityAcatsPendingOut$Outbound` instead. */
     type Outbound = ActivityAcatsPendingOut$Outbound;
 }
+export declare function activityAcatsPendingOutToJSON(activityAcatsPendingOut: ActivityAcatsPendingOut): string;
+export declare function activityAcatsPendingOutFromJSON(jsonString: string): SafeParseResult<ActivityAcatsPendingOut, SDKValidationError>;
 /** @internal */
 export declare const ActivityAccountMemo$inboundSchema: z.ZodType<ActivityAccountMemoOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4107,6 +4111,8 @@ export declare namespace ActivityAccountTransfer$ {
     /** @deprecated use `ActivityAccountTransfer$Outbound` instead. */
     type Outbound = ActivityAccountTransfer$Outbound;
 }
+export declare function activityAccountTransferToJSON(activityAccountTransfer: ActivityAccountTransfer): string;
+export declare function activityAccountTransferFromJSON(jsonString: string): SafeParseResult<ActivityAccountTransfer, SDKValidationError>;
 /** @internal */
 export declare const AccruedInterestDesc$inboundSchema: z.ZodType<AccruedInterestDesc, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4125,6 +4131,8 @@ export declare namespace AccruedInterestDesc$ {
     /** @deprecated use `AccruedInterestDesc$Outbound` instead. */
     type Outbound = AccruedInterestDesc$Outbound;
 }
+export declare function accruedInterestDescToJSON(accruedInterestDesc: AccruedInterestDesc): string;
+export declare function accruedInterestDescFromJSON(jsonString: string): SafeParseResult<AccruedInterestDesc, SDKValidationError>;
 /** @internal */
 export declare const ActivityActivityDate$inboundSchema: z.ZodType<ActivityActivityDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4147,6 +4155,8 @@ export declare namespace ActivityActivityDate$ {
     /** @deprecated use `ActivityActivityDate$Outbound` instead. */
     type Outbound = ActivityActivityDate$Outbound;
 }
+export declare function activityActivityDateToJSON(activityActivityDate: ActivityActivityDate): string;
+export declare function activityActivityDateFromJSON(jsonString: string): SafeParseResult<ActivityActivityDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityBrokerCapacity$inboundSchema: z.ZodType<ActivityBrokerCapacityOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4181,6 +4191,8 @@ export declare namespace ActivityPrevailingMarketPrice$ {
     /** @deprecated use `ActivityPrevailingMarketPrice$Outbound` instead. */
     type Outbound = ActivityPrevailingMarketPrice$Outbound;
 }
+export declare function activityPrevailingMarketPriceToJSON(activityPrevailingMarketPrice: ActivityPrevailingMarketPrice): string;
+export declare function activityPrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<ActivityPrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const ActivityPriceAdjustmentAmount$inboundSchema: z.ZodType<ActivityPriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4201,6 +4213,8 @@ export declare namespace ActivityPriceAdjustmentAmount$ {
     /** @deprecated use `ActivityPriceAdjustmentAmount$Outbound` instead. */
     type Outbound = ActivityPriceAdjustmentAmount$Outbound;
 }
+export declare function activityPriceAdjustmentAmountToJSON(activityPriceAdjustmentAmount: ActivityPriceAdjustmentAmount): string;
+export declare function activityPriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<ActivityPriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const ActivityPriceAdjustmentPercent$inboundSchema: z.ZodType<ActivityPriceAdjustmentPercent, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4221,6 +4235,8 @@ export declare namespace ActivityPriceAdjustmentPercent$ {
     /** @deprecated use `ActivityPriceAdjustmentPercent$Outbound` instead. */
     type Outbound = ActivityPriceAdjustmentPercent$Outbound;
 }
+export declare function activityPriceAdjustmentPercentToJSON(activityPriceAdjustmentPercent: ActivityPriceAdjustmentPercent): string;
+export declare function activityPriceAdjustmentPercentFromJSON(jsonString: string): SafeParseResult<ActivityPriceAdjustmentPercent, SDKValidationError>;
 /** @internal */
 export declare const ActivityPriceAdjustmentType$inboundSchema: z.ZodType<ActivityPriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4257,6 +4273,8 @@ export declare namespace ActivityPriceAdjustmentRecord$ {
     /** @deprecated use `ActivityPriceAdjustmentRecord$Outbound` instead. */
     type Outbound = ActivityPriceAdjustmentRecord$Outbound;
 }
+export declare function activityPriceAdjustmentRecordToJSON(activityPriceAdjustmentRecord: ActivityPriceAdjustmentRecord): string;
+export declare function activityPriceAdjustmentRecordFromJSON(jsonString: string): SafeParseResult<ActivityPriceAdjustmentRecord, SDKValidationError>;
 /** @internal */
 export declare const ActivityAllocation$inboundSchema: z.ZodType<ActivityAllocation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4289,6 +4307,8 @@ export declare namespace ActivityAllocation$ {
     /** @deprecated use `ActivityAllocation$Outbound` instead. */
     type Outbound = ActivityAllocation$Outbound;
 }
+export declare function activityAllocationToJSON(activityAllocation: ActivityAllocation): string;
+export declare function activityAllocationFromJSON(jsonString: string): SafeParseResult<ActivityAllocation, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashRate$inboundSchema: z.ZodType<ActivityCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4309,6 +4329,8 @@ export declare namespace ActivityCashRate$ {
     /** @deprecated use `ActivityCashRate$Outbound` instead. */
     type Outbound = ActivityCashRate$Outbound;
 }
+export declare function activityCashRateToJSON(activityCashRate: ActivityCashRate): string;
+export declare function activityCashRateFromJSON(jsonString: string): SafeParseResult<ActivityCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4335,6 +4357,8 @@ export declare namespace ActivityCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityCorporateActionGeneralInformationToJSON(activityCorporateActionGeneralInformation: ActivityCorporateActionGeneralInformation): string;
+export declare function activityCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityPaymentDate$inboundSchema: z.ZodType<ActivityPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4357,6 +4381,8 @@ export declare namespace ActivityPaymentDate$ {
     /** @deprecated use `ActivityPaymentDate$Outbound` instead. */
     type Outbound = ActivityPaymentDate$Outbound;
 }
+export declare function activityPaymentDateToJSON(activityPaymentDate: ActivityPaymentDate): string;
+export declare function activityPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityBondDefaultQuantity$inboundSchema: z.ZodType<ActivityBondDefaultQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4377,6 +4403,8 @@ export declare namespace ActivityBondDefaultQuantity$ {
     /** @deprecated use `ActivityBondDefaultQuantity$Outbound` instead. */
     type Outbound = ActivityBondDefaultQuantity$Outbound;
 }
+export declare function activityBondDefaultQuantityToJSON(activityBondDefaultQuantity: ActivityBondDefaultQuantity): string;
+export declare function activityBondDefaultQuantityFromJSON(jsonString: string): SafeParseResult<ActivityBondDefaultQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityBondDefault$inboundSchema: z.ZodType<ActivityBondDefault, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4400,6 +4428,8 @@ export declare namespace ActivityBondDefault$ {
     /** @deprecated use `ActivityBondDefault$Outbound` instead. */
     type Outbound = ActivityBondDefault$Outbound;
 }
+export declare function activityBondDefaultToJSON(activityBondDefault: ActivityBondDefault): string;
+export declare function activityBondDefaultFromJSON(jsonString: string): SafeParseResult<ActivityBondDefault, SDKValidationError>;
 /** @internal */
 export declare const ActivityCapitalGainsCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityCapitalGainsCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4426,6 +4456,8 @@ export declare namespace ActivityCapitalGainsCorporateActionGeneralInformation$ 
     /** @deprecated use `ActivityCapitalGainsCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityCapitalGainsCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityCapitalGainsCorporateActionGeneralInformationToJSON(activityCapitalGainsCorporateActionGeneralInformation: ActivityCapitalGainsCorporateActionGeneralInformation): string;
+export declare function activityCapitalGainsCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityCapitalGainsCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityCapitalGainsPaymentDate$inboundSchema: z.ZodType<ActivityCapitalGainsPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4448,6 +4480,8 @@ export declare namespace ActivityCapitalGainsPaymentDate$ {
     /** @deprecated use `ActivityCapitalGainsPaymentDate$Outbound` instead. */
     type Outbound = ActivityCapitalGainsPaymentDate$Outbound;
 }
+export declare function activityCapitalGainsPaymentDateToJSON(activityCapitalGainsPaymentDate: ActivityCapitalGainsPaymentDate): string;
+export declare function activityCapitalGainsPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityCapitalGainsPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityCapitalGainsQuantity$inboundSchema: z.ZodType<ActivityCapitalGainsQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4468,6 +4502,8 @@ export declare namespace ActivityCapitalGainsQuantity$ {
     /** @deprecated use `ActivityCapitalGainsQuantity$Outbound` instead. */
     type Outbound = ActivityCapitalGainsQuantity$Outbound;
 }
+export declare function activityCapitalGainsQuantityToJSON(activityCapitalGainsQuantity: ActivityCapitalGainsQuantity): string;
+export declare function activityCapitalGainsQuantityFromJSON(jsonString: string): SafeParseResult<ActivityCapitalGainsQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityRecordDate$inboundSchema: z.ZodType<ActivityRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4490,6 +4526,8 @@ export declare namespace ActivityRecordDate$ {
     /** @deprecated use `ActivityRecordDate$Outbound` instead. */
     type Outbound = ActivityRecordDate$Outbound;
 }
+export declare function activityRecordDateToJSON(activityRecordDate: ActivityRecordDate): string;
+export declare function activityRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityCapitalGains$inboundSchema: z.ZodType<ActivityCapitalGains, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4515,6 +4553,8 @@ export declare namespace ActivityCapitalGains$ {
     /** @deprecated use `ActivityCapitalGains$Outbound` instead. */
     type Outbound = ActivityCapitalGains$Outbound;
 }
+export declare function activityCapitalGainsToJSON(activityCapitalGains: ActivityCapitalGains): string;
+export declare function activityCapitalGainsFromJSON(jsonString: string): SafeParseResult<ActivityCapitalGains, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashDividendCashRate$inboundSchema: z.ZodType<ActivityCashDividendCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4535,6 +4575,8 @@ export declare namespace ActivityCashDividendCashRate$ {
     /** @deprecated use `ActivityCashDividendCashRate$Outbound` instead. */
     type Outbound = ActivityCashDividendCashRate$Outbound;
 }
+export declare function activityCashDividendCashRateToJSON(activityCashDividendCashRate: ActivityCashDividendCashRate): string;
+export declare function activityCashDividendCashRateFromJSON(jsonString: string): SafeParseResult<ActivityCashDividendCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashDividendCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityCashDividendCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4561,6 +4603,8 @@ export declare namespace ActivityCashDividendCorporateActionGeneralInformation$ 
     /** @deprecated use `ActivityCashDividendCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityCashDividendCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityCashDividendCorporateActionGeneralInformationToJSON(activityCashDividendCorporateActionGeneralInformation: ActivityCashDividendCorporateActionGeneralInformation): string;
+export declare function activityCashDividendCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityCashDividendCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashDividendFpsl$inboundSchema: z.ZodType<ActivityCashDividendFpsl, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4581,6 +4625,8 @@ export declare namespace ActivityCashDividendFpsl$ {
     /** @deprecated use `ActivityCashDividendFpsl$Outbound` instead. */
     type Outbound = ActivityCashDividendFpsl$Outbound;
 }
+export declare function activityCashDividendFpslToJSON(activityCashDividendFpsl: ActivityCashDividendFpsl): string;
+export declare function activityCashDividendFpslFromJSON(jsonString: string): SafeParseResult<ActivityCashDividendFpsl, SDKValidationError>;
 /** @internal */
 export declare const ActivityFree$inboundSchema: z.ZodType<ActivityFree, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4601,6 +4647,8 @@ export declare namespace ActivityFree$ {
     /** @deprecated use `ActivityFree$Outbound` instead. */
     type Outbound = ActivityFree$Outbound;
 }
+export declare function activityFreeToJSON(activityFree: ActivityFree): string;
+export declare function activityFreeFromJSON(jsonString: string): SafeParseResult<ActivityFree, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashDividendPaymentDate$inboundSchema: z.ZodType<ActivityCashDividendPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4623,6 +4671,8 @@ export declare namespace ActivityCashDividendPaymentDate$ {
     /** @deprecated use `ActivityCashDividendPaymentDate$Outbound` instead. */
     type Outbound = ActivityCashDividendPaymentDate$Outbound;
 }
+export declare function activityCashDividendPaymentDateToJSON(activityCashDividendPaymentDate: ActivityCashDividendPaymentDate): string;
+export declare function activityCashDividendPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityCashDividendPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashDividendQuantity$inboundSchema: z.ZodType<ActivityCashDividendQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4643,6 +4693,8 @@ export declare namespace ActivityCashDividendQuantity$ {
     /** @deprecated use `ActivityCashDividendQuantity$Outbound` instead. */
     type Outbound = ActivityCashDividendQuantity$Outbound;
 }
+export declare function activityCashDividendQuantityToJSON(activityCashDividendQuantity: ActivityCashDividendQuantity): string;
+export declare function activityCashDividendQuantityFromJSON(jsonString: string): SafeParseResult<ActivityCashDividendQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashDividendRecordDate$inboundSchema: z.ZodType<ActivityCashDividendRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4665,6 +4717,8 @@ export declare namespace ActivityCashDividendRecordDate$ {
     /** @deprecated use `ActivityCashDividendRecordDate$Outbound` instead. */
     type Outbound = ActivityCashDividendRecordDate$Outbound;
 }
+export declare function activityCashDividendRecordDateToJSON(activityCashDividendRecordDate: ActivityCashDividendRecordDate): string;
+export declare function activityCashDividendRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityCashDividendRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivitySettled$inboundSchema: z.ZodType<ActivitySettled, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4685,6 +4739,8 @@ export declare namespace ActivitySettled$ {
     /** @deprecated use `ActivitySettled$Outbound` instead. */
     type Outbound = ActivitySettled$Outbound;
 }
+export declare function activitySettledToJSON(activitySettled: ActivitySettled): string;
+export declare function activitySettledFromJSON(jsonString: string): SafeParseResult<ActivitySettled, SDKValidationError>;
 /** @internal */
 export declare const ActivitySubtype$inboundSchema: z.ZodType<ActivitySubtypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4731,6 +4787,8 @@ export declare namespace ActivityCashDividend$ {
     /** @deprecated use `ActivityCashDividend$Outbound` instead. */
     type Outbound = ActivityCashDividend$Outbound;
 }
+export declare function activityCashDividendToJSON(activityCashDividend: ActivityCashDividend): string;
+export declare function activityCashDividendFromJSON(jsonString: string): SafeParseResult<ActivityCashDividend, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashInLieuCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityCashInLieuCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4757,6 +4815,8 @@ export declare namespace ActivityCashInLieuCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityCashInLieuCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityCashInLieuCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityCashInLieuCorporateActionGeneralInformationToJSON(activityCashInLieuCorporateActionGeneralInformation: ActivityCashInLieuCorporateActionGeneralInformation): string;
+export declare function activityCashInLieuCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityCashInLieuCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityCashInLieu$inboundSchema: z.ZodType<ActivityCashInLieu, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4777,6 +4837,8 @@ export declare namespace ActivityCashInLieu$ {
     /** @deprecated use `ActivityCashInLieu$Outbound` instead. */
     type Outbound = ActivityCashInLieu$Outbound;
 }
+export declare function activityCashInLieuToJSON(activityCashInLieu: ActivityCashInLieu): string;
+export declare function activityCashInLieuFromJSON(jsonString: string): SafeParseResult<ActivityCashInLieu, SDKValidationError>;
 /** @internal */
 export declare const ActivityCommission$inboundSchema: z.ZodType<ActivityCommission, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4795,6 +4857,8 @@ export declare namespace ActivityCommission$ {
     /** @deprecated use `ActivityCommission$Outbound` instead. */
     type Outbound = ActivityCommission$Outbound;
 }
+export declare function activityCommissionToJSON(activityCommission: ActivityCommission): string;
+export declare function activityCommissionFromJSON(jsonString: string): SafeParseResult<ActivityCommission, SDKValidationError>;
 /** @internal */
 export declare const ActivityConversionCashRate$inboundSchema: z.ZodType<ActivityConversionCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4815,6 +4879,8 @@ export declare namespace ActivityConversionCashRate$ {
     /** @deprecated use `ActivityConversionCashRate$Outbound` instead. */
     type Outbound = ActivityConversionCashRate$Outbound;
 }
+export declare function activityConversionCashRateToJSON(activityConversionCashRate: ActivityConversionCashRate): string;
+export declare function activityConversionCashRateFromJSON(jsonString: string): SafeParseResult<ActivityConversionCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityConversionCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityConversionCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4841,6 +4907,8 @@ export declare namespace ActivityConversionCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityConversionCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityConversionCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityConversionCorporateActionGeneralInformationToJSON(activityConversionCorporateActionGeneralInformation: ActivityConversionCorporateActionGeneralInformation): string;
+export declare function activityConversionCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityConversionCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockRate$inboundSchema: z.ZodType<ActivityStockRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4861,6 +4929,8 @@ export declare namespace ActivityStockRate$ {
     /** @deprecated use `ActivityStockRate$Outbound` instead. */
     type Outbound = ActivityStockRate$Outbound;
 }
+export declare function activityStockRateToJSON(activityStockRate: ActivityStockRate): string;
+export declare function activityStockRateFromJSON(jsonString: string): SafeParseResult<ActivityStockRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityConversionType$inboundSchema: z.ZodType<ActivityConversionTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4898,6 +4968,8 @@ export declare namespace ActivityConversion$ {
     /** @deprecated use `ActivityConversion$Outbound` instead. */
     type Outbound = ActivityConversion$Outbound;
 }
+export declare function activityConversionToJSON(activityConversion: ActivityConversion): string;
+export declare function activityConversionFromJSON(jsonString: string): SafeParseResult<ActivityConversion, SDKValidationError>;
 /** @internal */
 export declare const ActivityCorporateActionMemoAdjustment$inboundSchema: z.ZodType<ActivityCorporateActionMemoAdjustment, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4919,6 +4991,8 @@ export declare namespace ActivityCorporateActionMemoAdjustment$ {
     /** @deprecated use `ActivityCorporateActionMemoAdjustment$Outbound` instead. */
     type Outbound = ActivityCorporateActionMemoAdjustment$Outbound;
 }
+export declare function activityCorporateActionMemoAdjustmentToJSON(activityCorporateActionMemoAdjustment: ActivityCorporateActionMemoAdjustment): string;
+export declare function activityCorporateActionMemoAdjustmentFromJSON(jsonString: string): SafeParseResult<ActivityCorporateActionMemoAdjustment, SDKValidationError>;
 /** @internal */
 export declare const ActivityCreditType$inboundSchema: z.ZodType<ActivityCreditTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4955,6 +5029,8 @@ export declare namespace ActivityCredit$ {
     /** @deprecated use `ActivityCredit$Outbound` instead. */
     type Outbound = ActivityCredit$Outbound;
 }
+export declare function activityCreditToJSON(activityCredit: ActivityCredit): string;
+export declare function activityCreditFromJSON(jsonString: string): SafeParseResult<ActivityCredit, SDKValidationError>;
 /** @internal */
 export declare const ActivityContributionType$inboundSchema: z.ZodType<ActivityContributionTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5008,6 +5084,8 @@ export declare namespace ActivityDeposit$ {
     /** @deprecated use `ActivityDeposit$Outbound` instead. */
     type Outbound = ActivityDeposit$Outbound;
 }
+export declare function activityDepositToJSON(activityDeposit: ActivityDeposit): string;
+export declare function activityDepositFromJSON(jsonString: string): SafeParseResult<ActivityDeposit, SDKValidationError>;
 /** @internal */
 export declare const ActivityDripAction$inboundSchema: z.ZodType<ActivityDripActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5042,6 +5120,8 @@ export declare namespace ActivityDrip$ {
     /** @deprecated use `ActivityDrip$Outbound` instead. */
     type Outbound = ActivityDrip$Outbound;
 }
+export declare function activityDripToJSON(activityDrip: ActivityDrip): string;
+export declare function activityDripFromJSON(jsonString: string): SafeParseResult<ActivityDrip, SDKValidationError>;
 /** @internal */
 export declare const ActivityExchangeCashRate$inboundSchema: z.ZodType<ActivityExchangeCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5062,6 +5142,8 @@ export declare namespace ActivityExchangeCashRate$ {
     /** @deprecated use `ActivityExchangeCashRate$Outbound` instead. */
     type Outbound = ActivityExchangeCashRate$Outbound;
 }
+export declare function activityExchangeCashRateToJSON(activityExchangeCashRate: ActivityExchangeCashRate): string;
+export declare function activityExchangeCashRateFromJSON(jsonString: string): SafeParseResult<ActivityExchangeCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityExchangeCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityExchangeCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5088,6 +5170,8 @@ export declare namespace ActivityExchangeCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityExchangeCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityExchangeCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityExchangeCorporateActionGeneralInformationToJSON(activityExchangeCorporateActionGeneralInformation: ActivityExchangeCorporateActionGeneralInformation): string;
+export declare function activityExchangeCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityExchangeCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityExchangeStockRate$inboundSchema: z.ZodType<ActivityExchangeStockRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5108,6 +5192,8 @@ export declare namespace ActivityExchangeStockRate$ {
     /** @deprecated use `ActivityExchangeStockRate$Outbound` instead. */
     type Outbound = ActivityExchangeStockRate$Outbound;
 }
+export declare function activityExchangeStockRateToJSON(activityExchangeStockRate: ActivityExchangeStockRate): string;
+export declare function activityExchangeStockRateFromJSON(jsonString: string): SafeParseResult<ActivityExchangeStockRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityExchangeType$inboundSchema: z.ZodType<ActivityExchangeTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5145,6 +5231,8 @@ export declare namespace ActivityExchange$ {
     /** @deprecated use `ActivityExchange$Outbound` instead. */
     type Outbound = ActivityExchange$Outbound;
 }
+export declare function activityExchangeToJSON(activityExchange: ActivityExchange): string;
+export declare function activityExchangeFromJSON(jsonString: string): SafeParseResult<ActivityExchange, SDKValidationError>;
 /** @internal */
 export declare const ActivityFee$inboundSchema: z.ZodType<ActivityFee, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5165,6 +5253,8 @@ export declare namespace ActivityFee$ {
     /** @deprecated use `ActivityFee$Outbound` instead. */
     type Outbound = ActivityFee$Outbound;
 }
+export declare function activityFeeToJSON(activityFee: ActivityFee): string;
+export declare function activityFeeFromJSON(jsonString: string): SafeParseResult<ActivityFee, SDKValidationError>;
 /** @internal */
 export declare const ActivityFpslAction$inboundSchema: z.ZodType<ActivityFpslActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5199,6 +5289,8 @@ export declare namespace ActivityFpsl$ {
     /** @deprecated use `ActivityFpsl$Outbound` instead. */
     type Outbound = ActivityFpsl$Outbound;
 }
+export declare function activityFpslToJSON(activityFpsl: ActivityFpsl): string;
+export declare function activityFpslFromJSON(jsonString: string): SafeParseResult<ActivityFpsl, SDKValidationError>;
 /** @internal */
 export declare const ActivityGrossAmount$inboundSchema: z.ZodType<ActivityGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5219,6 +5311,8 @@ export declare namespace ActivityGrossAmount$ {
     /** @deprecated use `ActivityGrossAmount$Outbound` instead. */
     type Outbound = ActivityGrossAmount$Outbound;
 }
+export declare function activityGrossAmountToJSON(activityGrossAmount: ActivityGrossAmount): string;
+export declare function activityGrossAmountFromJSON(jsonString: string): SafeParseResult<ActivityGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestAccrualEndDate$inboundSchema: z.ZodType<ActivityInterestAccrualEndDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5241,6 +5335,8 @@ export declare namespace ActivityInterestAccrualEndDate$ {
     /** @deprecated use `ActivityInterestAccrualEndDate$Outbound` instead. */
     type Outbound = ActivityInterestAccrualEndDate$Outbound;
 }
+export declare function activityInterestAccrualEndDateToJSON(activityInterestAccrualEndDate: ActivityInterestAccrualEndDate): string;
+export declare function activityInterestAccrualEndDateFromJSON(jsonString: string): SafeParseResult<ActivityInterestAccrualEndDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestAccrualStartDate$inboundSchema: z.ZodType<ActivityInterestAccrualStartDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5263,6 +5359,8 @@ export declare namespace ActivityInterestAccrualStartDate$ {
     /** @deprecated use `ActivityInterestAccrualStartDate$Outbound` instead. */
     type Outbound = ActivityInterestAccrualStartDate$Outbound;
 }
+export declare function activityInterestAccrualStartDateToJSON(activityInterestAccrualStartDate: ActivityInterestAccrualStartDate): string;
+export declare function activityInterestAccrualStartDateFromJSON(jsonString: string): SafeParseResult<ActivityInterestAccrualStartDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestType$inboundSchema: z.ZodType<ActivityInterestTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5299,6 +5397,8 @@ export declare namespace ActivityInterest$ {
     /** @deprecated use `ActivityInterest$Outbound` instead. */
     type Outbound = ActivityInterest$Outbound;
 }
+export declare function activityInterestToJSON(activityInterest: ActivityInterest): string;
+export declare function activityInterestFromJSON(jsonString: string): SafeParseResult<ActivityInterest, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestPaymentCashRate$inboundSchema: z.ZodType<ActivityInterestPaymentCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5319,6 +5419,8 @@ export declare namespace ActivityInterestPaymentCashRate$ {
     /** @deprecated use `ActivityInterestPaymentCashRate$Outbound` instead. */
     type Outbound = ActivityInterestPaymentCashRate$Outbound;
 }
+export declare function activityInterestPaymentCashRateToJSON(activityInterestPaymentCashRate: ActivityInterestPaymentCashRate): string;
+export declare function activityInterestPaymentCashRateFromJSON(jsonString: string): SafeParseResult<ActivityInterestPaymentCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestPaymentCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityInterestPaymentCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5345,6 +5447,8 @@ export declare namespace ActivityInterestPaymentCorporateActionGeneralInformatio
     /** @deprecated use `ActivityInterestPaymentCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityInterestPaymentCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityInterestPaymentCorporateActionGeneralInformationToJSON(activityInterestPaymentCorporateActionGeneralInformation: ActivityInterestPaymentCorporateActionGeneralInformation): string;
+export declare function activityInterestPaymentCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityInterestPaymentCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestPaymentPaymentDate$inboundSchema: z.ZodType<ActivityInterestPaymentPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5367,6 +5471,8 @@ export declare namespace ActivityInterestPaymentPaymentDate$ {
     /** @deprecated use `ActivityInterestPaymentPaymentDate$Outbound` instead. */
     type Outbound = ActivityInterestPaymentPaymentDate$Outbound;
 }
+export declare function activityInterestPaymentPaymentDateToJSON(activityInterestPaymentPaymentDate: ActivityInterestPaymentPaymentDate): string;
+export declare function activityInterestPaymentPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityInterestPaymentPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestPaymentRecordDate$inboundSchema: z.ZodType<ActivityInterestPaymentRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5389,6 +5495,8 @@ export declare namespace ActivityInterestPaymentRecordDate$ {
     /** @deprecated use `ActivityInterestPaymentRecordDate$Outbound` instead. */
     type Outbound = ActivityInterestPaymentRecordDate$Outbound;
 }
+export declare function activityInterestPaymentRecordDateToJSON(activityInterestPaymentRecordDate: ActivityInterestPaymentRecordDate): string;
+export declare function activityInterestPaymentRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityInterestPaymentRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestPaymentSettled$inboundSchema: z.ZodType<ActivityInterestPaymentSettled, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5409,6 +5517,8 @@ export declare namespace ActivityInterestPaymentSettled$ {
     /** @deprecated use `ActivityInterestPaymentSettled$Outbound` instead. */
     type Outbound = ActivityInterestPaymentSettled$Outbound;
 }
+export declare function activityInterestPaymentSettledToJSON(activityInterestPaymentSettled: ActivityInterestPaymentSettled): string;
+export declare function activityInterestPaymentSettledFromJSON(jsonString: string): SafeParseResult<ActivityInterestPaymentSettled, SDKValidationError>;
 /** @internal */
 export declare const ActivityInterestPayment$inboundSchema: z.ZodType<ActivityInterestPayment, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5433,6 +5543,8 @@ export declare namespace ActivityInterestPayment$ {
     /** @deprecated use `ActivityInterestPayment$Outbound` instead. */
     type Outbound = ActivityInterestPayment$Outbound;
 }
+export declare function activityInterestPaymentToJSON(activityInterestPayment: ActivityInterestPayment): string;
+export declare function activityInterestPaymentFromJSON(jsonString: string): SafeParseResult<ActivityInterestPayment, SDKValidationError>;
 /** @internal */
 export declare const ActivityLiquidationAction$inboundSchema: z.ZodType<ActivityLiquidationActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5467,6 +5579,8 @@ export declare namespace ActivityLiquidationCashRate$ {
     /** @deprecated use `ActivityLiquidationCashRate$Outbound` instead. */
     type Outbound = ActivityLiquidationCashRate$Outbound;
 }
+export declare function activityLiquidationCashRateToJSON(activityLiquidationCashRate: ActivityLiquidationCashRate): string;
+export declare function activityLiquidationCashRateFromJSON(jsonString: string): SafeParseResult<ActivityLiquidationCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityLiquidationCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityLiquidationCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5493,6 +5607,8 @@ export declare namespace ActivityLiquidationCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityLiquidationCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityLiquidationCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityLiquidationCorporateActionGeneralInformationToJSON(activityLiquidationCorporateActionGeneralInformation: ActivityLiquidationCorporateActionGeneralInformation): string;
+export declare function activityLiquidationCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityLiquidationCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityEffectiveDate$inboundSchema: z.ZodType<ActivityEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5515,6 +5631,8 @@ export declare namespace ActivityEffectiveDate$ {
     /** @deprecated use `ActivityEffectiveDate$Outbound` instead. */
     type Outbound = ActivityEffectiveDate$Outbound;
 }
+export declare function activityEffectiveDateToJSON(activityEffectiveDate: ActivityEffectiveDate): string;
+export declare function activityEffectiveDateFromJSON(jsonString: string): SafeParseResult<ActivityEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityLiquidationPaymentDate$inboundSchema: z.ZodType<ActivityLiquidationPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5537,6 +5655,8 @@ export declare namespace ActivityLiquidationPaymentDate$ {
     /** @deprecated use `ActivityLiquidationPaymentDate$Outbound` instead. */
     type Outbound = ActivityLiquidationPaymentDate$Outbound;
 }
+export declare function activityLiquidationPaymentDateToJSON(activityLiquidationPaymentDate: ActivityLiquidationPaymentDate): string;
+export declare function activityLiquidationPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityLiquidationPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityLiquidationQuantity$inboundSchema: z.ZodType<ActivityLiquidationQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5557,6 +5677,8 @@ export declare namespace ActivityLiquidationQuantity$ {
     /** @deprecated use `ActivityLiquidationQuantity$Outbound` instead. */
     type Outbound = ActivityLiquidationQuantity$Outbound;
 }
+export declare function activityLiquidationQuantityToJSON(activityLiquidationQuantity: ActivityLiquidationQuantity): string;
+export declare function activityLiquidationQuantityFromJSON(jsonString: string): SafeParseResult<ActivityLiquidationQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityLiquidationRecordDate$inboundSchema: z.ZodType<ActivityLiquidationRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5579,6 +5701,8 @@ export declare namespace ActivityLiquidationRecordDate$ {
     /** @deprecated use `ActivityLiquidationRecordDate$Outbound` instead. */
     type Outbound = ActivityLiquidationRecordDate$Outbound;
 }
+export declare function activityLiquidationRecordDateToJSON(activityLiquidationRecordDate: ActivityLiquidationRecordDate): string;
+export declare function activityLiquidationRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityLiquidationRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityLiquidationSettled$inboundSchema: z.ZodType<ActivityLiquidationSettled, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5599,6 +5723,8 @@ export declare namespace ActivityLiquidationSettled$ {
     /** @deprecated use `ActivityLiquidationSettled$Outbound` instead. */
     type Outbound = ActivityLiquidationSettled$Outbound;
 }
+export declare function activityLiquidationSettledToJSON(activityLiquidationSettled: ActivityLiquidationSettled): string;
+export declare function activityLiquidationSettledFromJSON(jsonString: string): SafeParseResult<ActivityLiquidationSettled, SDKValidationError>;
 /** @internal */
 export declare const ActivityLiquidationSubtype$inboundSchema: z.ZodType<ActivityLiquidationSubtypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5641,6 +5767,8 @@ export declare namespace ActivityLiquidation$ {
     /** @deprecated use `ActivityLiquidation$Outbound` instead. */
     type Outbound = ActivityLiquidation$Outbound;
 }
+export declare function activityLiquidationToJSON(activityLiquidation: ActivityLiquidation): string;
+export declare function activityLiquidationFromJSON(jsonString: string): SafeParseResult<ActivityLiquidation, SDKValidationError>;
 /** @internal */
 export declare const ActivityMaturityCashRate$inboundSchema: z.ZodType<ActivityMaturityCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5661,6 +5789,8 @@ export declare namespace ActivityMaturityCashRate$ {
     /** @deprecated use `ActivityMaturityCashRate$Outbound` instead. */
     type Outbound = ActivityMaturityCashRate$Outbound;
 }
+export declare function activityMaturityCashRateToJSON(activityMaturityCashRate: ActivityMaturityCashRate): string;
+export declare function activityMaturityCashRateFromJSON(jsonString: string): SafeParseResult<ActivityMaturityCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityMaturityCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityMaturityCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5687,6 +5817,8 @@ export declare namespace ActivityMaturityCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityMaturityCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityMaturityCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityMaturityCorporateActionGeneralInformationToJSON(activityMaturityCorporateActionGeneralInformation: ActivityMaturityCorporateActionGeneralInformation): string;
+export declare function activityMaturityCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityMaturityCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityMaturityPaymentDate$inboundSchema: z.ZodType<ActivityMaturityPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5709,6 +5841,8 @@ export declare namespace ActivityMaturityPaymentDate$ {
     /** @deprecated use `ActivityMaturityPaymentDate$Outbound` instead. */
     type Outbound = ActivityMaturityPaymentDate$Outbound;
 }
+export declare function activityMaturityPaymentDateToJSON(activityMaturityPaymentDate: ActivityMaturityPaymentDate): string;
+export declare function activityMaturityPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityMaturityPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityMaturityQuantity$inboundSchema: z.ZodType<ActivityMaturityQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5729,6 +5863,8 @@ export declare namespace ActivityMaturityQuantity$ {
     /** @deprecated use `ActivityMaturityQuantity$Outbound` instead. */
     type Outbound = ActivityMaturityQuantity$Outbound;
 }
+export declare function activityMaturityQuantityToJSON(activityMaturityQuantity: ActivityMaturityQuantity): string;
+export declare function activityMaturityQuantityFromJSON(jsonString: string): SafeParseResult<ActivityMaturityQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityMaturity$inboundSchema: z.ZodType<ActivityMaturity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5752,6 +5888,8 @@ export declare namespace ActivityMaturity$ {
     /** @deprecated use `ActivityMaturity$Outbound` instead. */
     type Outbound = ActivityMaturity$Outbound;
 }
+export declare function activityMaturityToJSON(activityMaturity: ActivityMaturity): string;
+export declare function activityMaturityFromJSON(jsonString: string): SafeParseResult<ActivityMaturity, SDKValidationError>;
 /** @internal */
 export declare const ActivityMergerAction$inboundSchema: z.ZodType<ActivityMergerActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5786,6 +5924,8 @@ export declare namespace ActivityMergerCashRate$ {
     /** @deprecated use `ActivityMergerCashRate$Outbound` instead. */
     type Outbound = ActivityMergerCashRate$Outbound;
 }
+export declare function activityMergerCashRateToJSON(activityMergerCashRate: ActivityMergerCashRate): string;
+export declare function activityMergerCashRateFromJSON(jsonString: string): SafeParseResult<ActivityMergerCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityMergerCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityMergerCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5812,6 +5952,8 @@ export declare namespace ActivityMergerCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityMergerCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityMergerCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityMergerCorporateActionGeneralInformationToJSON(activityMergerCorporateActionGeneralInformation: ActivityMergerCorporateActionGeneralInformation): string;
+export declare function activityMergerCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityMergerCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityMergerEffectiveDate$inboundSchema: z.ZodType<ActivityMergerEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5834,6 +5976,8 @@ export declare namespace ActivityMergerEffectiveDate$ {
     /** @deprecated use `ActivityMergerEffectiveDate$Outbound` instead. */
     type Outbound = ActivityMergerEffectiveDate$Outbound;
 }
+export declare function activityMergerEffectiveDateToJSON(activityMergerEffectiveDate: ActivityMergerEffectiveDate): string;
+export declare function activityMergerEffectiveDateFromJSON(jsonString: string): SafeParseResult<ActivityMergerEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityMergerQuantity$inboundSchema: z.ZodType<ActivityMergerQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5854,6 +5998,8 @@ export declare namespace ActivityMergerQuantity$ {
     /** @deprecated use `ActivityMergerQuantity$Outbound` instead. */
     type Outbound = ActivityMergerQuantity$Outbound;
 }
+export declare function activityMergerQuantityToJSON(activityMergerQuantity: ActivityMergerQuantity): string;
+export declare function activityMergerQuantityFromJSON(jsonString: string): SafeParseResult<ActivityMergerQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityMergerStockRate$inboundSchema: z.ZodType<ActivityMergerStockRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5874,6 +6020,8 @@ export declare namespace ActivityMergerStockRate$ {
     /** @deprecated use `ActivityMergerStockRate$Outbound` instead. */
     type Outbound = ActivityMergerStockRate$Outbound;
 }
+export declare function activityMergerStockRateToJSON(activityMergerStockRate: ActivityMergerStockRate): string;
+export declare function activityMergerStockRateFromJSON(jsonString: string): SafeParseResult<ActivityMergerStockRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityMergerType$inboundSchema: z.ZodType<ActivityMergerTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5914,6 +6062,8 @@ export declare namespace ActivityMerger$ {
     /** @deprecated use `ActivityMerger$Outbound` instead. */
     type Outbound = ActivityMerger$Outbound;
 }
+export declare function activityMergerToJSON(activityMerger: ActivityMerger): string;
+export declare function activityMergerFromJSON(jsonString: string): SafeParseResult<ActivityMerger, SDKValidationError>;
 /** @internal */
 export declare const ActivityNameChangeAction$inboundSchema: z.ZodType<ActivityNameChangeActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5954,6 +6104,8 @@ export declare namespace ActivityNameChangeCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityNameChangeCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityNameChangeCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityNameChangeCorporateActionGeneralInformationToJSON(activityNameChangeCorporateActionGeneralInformation: ActivityNameChangeCorporateActionGeneralInformation): string;
+export declare function activityNameChangeCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityNameChangeCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityNameChangeEffectiveDate$inboundSchema: z.ZodType<ActivityNameChangeEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5976,6 +6128,8 @@ export declare namespace ActivityNameChangeEffectiveDate$ {
     /** @deprecated use `ActivityNameChangeEffectiveDate$Outbound` instead. */
     type Outbound = ActivityNameChangeEffectiveDate$Outbound;
 }
+export declare function activityNameChangeEffectiveDateToJSON(activityNameChangeEffectiveDate: ActivityNameChangeEffectiveDate): string;
+export declare function activityNameChangeEffectiveDateFromJSON(jsonString: string): SafeParseResult<ActivityNameChangeEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityNameChangeQuantity$inboundSchema: z.ZodType<ActivityNameChangeQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -5996,6 +6150,8 @@ export declare namespace ActivityNameChangeQuantity$ {
     /** @deprecated use `ActivityNameChangeQuantity$Outbound` instead. */
     type Outbound = ActivityNameChangeQuantity$Outbound;
 }
+export declare function activityNameChangeQuantityToJSON(activityNameChangeQuantity: ActivityNameChangeQuantity): string;
+export declare function activityNameChangeQuantityFromJSON(jsonString: string): SafeParseResult<ActivityNameChangeQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityNameChange$inboundSchema: z.ZodType<ActivityNameChange, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6019,6 +6175,8 @@ export declare namespace ActivityNameChange$ {
     /** @deprecated use `ActivityNameChange$Outbound` instead. */
     type Outbound = ActivityNameChange$Outbound;
 }
+export declare function activityNameChangeToJSON(activityNameChange: ActivityNameChange): string;
+export declare function activityNameChangeFromJSON(jsonString: string): SafeParseResult<ActivityNameChange, SDKValidationError>;
 /** @internal */
 export declare const ActivityNetAmount$inboundSchema: z.ZodType<ActivityNetAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6039,6 +6197,8 @@ export declare namespace ActivityNetAmount$ {
     /** @deprecated use `ActivityNetAmount$Outbound` instead. */
     type Outbound = ActivityNetAmount$Outbound;
 }
+export declare function activityNetAmountToJSON(activityNetAmount: ActivityNetAmount): string;
+export declare function activityNetAmountFromJSON(jsonString: string): SafeParseResult<ActivityNetAmount, SDKValidationError>;
 /** @internal */
 export declare const NextActivityProcessDate$inboundSchema: z.ZodType<NextActivityProcessDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6061,6 +6221,8 @@ export declare namespace NextActivityProcessDate$ {
     /** @deprecated use `NextActivityProcessDate$Outbound` instead. */
     type Outbound = NextActivityProcessDate$Outbound;
 }
+export declare function nextActivityProcessDateToJSON(nextActivityProcessDate: NextActivityProcessDate): string;
+export declare function nextActivityProcessDateFromJSON(jsonString: string): SafeParseResult<NextActivityProcessDate, SDKValidationError>;
 /** @internal */
 export declare const None$inboundSchema: z.ZodType<None, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6079,6 +6241,8 @@ export declare namespace None$ {
     /** @deprecated use `None$Outbound` instead. */
     type Outbound = None$Outbound;
 }
+export declare function noneToJSON(none: None): string;
+export declare function noneFromJSON(jsonString: string): SafeParseResult<None, SDKValidationError>;
 /** @internal */
 export declare const ActivityPaymentInKindCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityPaymentInKindCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6105,6 +6269,8 @@ export declare namespace ActivityPaymentInKindCorporateActionGeneralInformation$
     /** @deprecated use `ActivityPaymentInKindCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityPaymentInKindCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityPaymentInKindCorporateActionGeneralInformationToJSON(activityPaymentInKindCorporateActionGeneralInformation: ActivityPaymentInKindCorporateActionGeneralInformation): string;
+export declare function activityPaymentInKindCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityPaymentInKindCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityPaymentInKindPaymentDate$inboundSchema: z.ZodType<ActivityPaymentInKindPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6127,6 +6293,8 @@ export declare namespace ActivityPaymentInKindPaymentDate$ {
     /** @deprecated use `ActivityPaymentInKindPaymentDate$Outbound` instead. */
     type Outbound = ActivityPaymentInKindPaymentDate$Outbound;
 }
+export declare function activityPaymentInKindPaymentDateToJSON(activityPaymentInKindPaymentDate: ActivityPaymentInKindPaymentDate): string;
+export declare function activityPaymentInKindPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityPaymentInKindPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityPaymentInKindRecordDate$inboundSchema: z.ZodType<ActivityPaymentInKindRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6149,6 +6317,8 @@ export declare namespace ActivityPaymentInKindRecordDate$ {
     /** @deprecated use `ActivityPaymentInKindRecordDate$Outbound` instead. */
     type Outbound = ActivityPaymentInKindRecordDate$Outbound;
 }
+export declare function activityPaymentInKindRecordDateToJSON(activityPaymentInKindRecordDate: ActivityPaymentInKindRecordDate): string;
+export declare function activityPaymentInKindRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityPaymentInKindRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityPaymentInKindSettled$inboundSchema: z.ZodType<ActivityPaymentInKindSettled, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6169,6 +6339,8 @@ export declare namespace ActivityPaymentInKindSettled$ {
     /** @deprecated use `ActivityPaymentInKindSettled$Outbound` instead. */
     type Outbound = ActivityPaymentInKindSettled$Outbound;
 }
+export declare function activityPaymentInKindSettledToJSON(activityPaymentInKindSettled: ActivityPaymentInKindSettled): string;
+export declare function activityPaymentInKindSettledFromJSON(jsonString: string): SafeParseResult<ActivityPaymentInKindSettled, SDKValidationError>;
 /** @internal */
 export declare const ActivityPaymentInKindStockRate$inboundSchema: z.ZodType<ActivityPaymentInKindStockRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6189,6 +6361,8 @@ export declare namespace ActivityPaymentInKindStockRate$ {
     /** @deprecated use `ActivityPaymentInKindStockRate$Outbound` instead. */
     type Outbound = ActivityPaymentInKindStockRate$Outbound;
 }
+export declare function activityPaymentInKindStockRateToJSON(activityPaymentInKindStockRate: ActivityPaymentInKindStockRate): string;
+export declare function activityPaymentInKindStockRateFromJSON(jsonString: string): SafeParseResult<ActivityPaymentInKindStockRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityPaymentInKind$inboundSchema: z.ZodType<ActivityPaymentInKind, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6213,6 +6387,8 @@ export declare namespace ActivityPaymentInKind$ {
     /** @deprecated use `ActivityPaymentInKind$Outbound` instead. */
     type Outbound = ActivityPaymentInKind$Outbound;
 }
+export declare function activityPaymentInKindToJSON(activityPaymentInKind: ActivityPaymentInKind): string;
+export declare function activityPaymentInKindFromJSON(jsonString: string): SafeParseResult<ActivityPaymentInKind, SDKValidationError>;
 /** @internal */
 export declare const PreviousProcessDate$inboundSchema: z.ZodType<PreviousProcessDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6235,6 +6411,8 @@ export declare namespace PreviousProcessDate$ {
     /** @deprecated use `PreviousProcessDate$Outbound` instead. */
     type Outbound = PreviousProcessDate$Outbound;
 }
+export declare function previousProcessDateToJSON(previousProcessDate: PreviousProcessDate): string;
+export declare function previousProcessDateFromJSON(jsonString: string): SafeParseResult<PreviousProcessDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityPrice$inboundSchema: z.ZodType<ActivityPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6255,6 +6433,8 @@ export declare namespace ActivityPrice$ {
     /** @deprecated use `ActivityPrice$Outbound` instead. */
     type Outbound = ActivityPrice$Outbound;
 }
+export declare function activityPriceToJSON(activityPrice: ActivityPrice): string;
+export declare function activityPriceFromJSON(jsonString: string): SafeParseResult<ActivityPrice, SDKValidationError>;
 /** @internal */
 export declare const ActivityProcessDate$inboundSchema: z.ZodType<ActivityProcessDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6277,6 +6457,8 @@ export declare namespace ActivityProcessDate$ {
     /** @deprecated use `ActivityProcessDate$Outbound` instead. */
     type Outbound = ActivityProcessDate$Outbound;
 }
+export declare function activityProcessDateToJSON(activityProcessDate: ActivityProcessDate): string;
+export declare function activityProcessDateFromJSON(jsonString: string): SafeParseResult<ActivityProcessDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityQuantity$inboundSchema: z.ZodType<ActivityQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6297,6 +6479,8 @@ export declare namespace ActivityQuantity$ {
     /** @deprecated use `ActivityQuantity$Outbound` instead. */
     type Outbound = ActivityQuantity$Outbound;
 }
+export declare function activityQuantityToJSON(activityQuantity: ActivityQuantity): string;
+export declare function activityQuantityFromJSON(jsonString: string): SafeParseResult<ActivityQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionFullAction$inboundSchema: z.ZodType<ActivityRedemptionFullActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6331,6 +6515,8 @@ export declare namespace ActivityRedemptionFullCashRate$ {
     /** @deprecated use `ActivityRedemptionFullCashRate$Outbound` instead. */
     type Outbound = ActivityRedemptionFullCashRate$Outbound;
 }
+export declare function activityRedemptionFullCashRateToJSON(activityRedemptionFullCashRate: ActivityRedemptionFullCashRate): string;
+export declare function activityRedemptionFullCashRateFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionFullCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionFullCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityRedemptionFullCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6357,6 +6543,8 @@ export declare namespace ActivityRedemptionFullCorporateActionGeneralInformation
     /** @deprecated use `ActivityRedemptionFullCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityRedemptionFullCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityRedemptionFullCorporateActionGeneralInformationToJSON(activityRedemptionFullCorporateActionGeneralInformation: ActivityRedemptionFullCorporateActionGeneralInformation): string;
+export declare function activityRedemptionFullCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionFullCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionFullPaymentDate$inboundSchema: z.ZodType<ActivityRedemptionFullPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6379,6 +6567,8 @@ export declare namespace ActivityRedemptionFullPaymentDate$ {
     /** @deprecated use `ActivityRedemptionFullPaymentDate$Outbound` instead. */
     type Outbound = ActivityRedemptionFullPaymentDate$Outbound;
 }
+export declare function activityRedemptionFullPaymentDateToJSON(activityRedemptionFullPaymentDate: ActivityRedemptionFullPaymentDate): string;
+export declare function activityRedemptionFullPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionFullPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionFullQuantity$inboundSchema: z.ZodType<ActivityRedemptionFullQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6399,6 +6589,8 @@ export declare namespace ActivityRedemptionFullQuantity$ {
     /** @deprecated use `ActivityRedemptionFullQuantity$Outbound` instead. */
     type Outbound = ActivityRedemptionFullQuantity$Outbound;
 }
+export declare function activityRedemptionFullQuantityToJSON(activityRedemptionFullQuantity: ActivityRedemptionFullQuantity): string;
+export declare function activityRedemptionFullQuantityFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionFullQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionFullSubtype$inboundSchema: z.ZodType<ActivityRedemptionFullSubtypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6438,6 +6630,8 @@ export declare namespace ActivityRedemptionFull$ {
     /** @deprecated use `ActivityRedemptionFull$Outbound` instead. */
     type Outbound = ActivityRedemptionFull$Outbound;
 }
+export declare function activityRedemptionFullToJSON(activityRedemptionFull: ActivityRedemptionFull): string;
+export declare function activityRedemptionFullFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionFull, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionPartialAction$inboundSchema: z.ZodType<ActivityRedemptionPartialActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6472,6 +6666,8 @@ export declare namespace ActivityRedemptionPartialCashRate$ {
     /** @deprecated use `ActivityRedemptionPartialCashRate$Outbound` instead. */
     type Outbound = ActivityRedemptionPartialCashRate$Outbound;
 }
+export declare function activityRedemptionPartialCashRateToJSON(activityRedemptionPartialCashRate: ActivityRedemptionPartialCashRate): string;
+export declare function activityRedemptionPartialCashRateFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionPartialCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionPartialCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityRedemptionPartialCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6498,6 +6694,8 @@ export declare namespace ActivityRedemptionPartialCorporateActionGeneralInformat
     /** @deprecated use `ActivityRedemptionPartialCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityRedemptionPartialCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityRedemptionPartialCorporateActionGeneralInformationToJSON(activityRedemptionPartialCorporateActionGeneralInformation: ActivityRedemptionPartialCorporateActionGeneralInformation): string;
+export declare function activityRedemptionPartialCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionPartialCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionPartialPaymentDate$inboundSchema: z.ZodType<ActivityRedemptionPartialPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6520,6 +6718,8 @@ export declare namespace ActivityRedemptionPartialPaymentDate$ {
     /** @deprecated use `ActivityRedemptionPartialPaymentDate$Outbound` instead. */
     type Outbound = ActivityRedemptionPartialPaymentDate$Outbound;
 }
+export declare function activityRedemptionPartialPaymentDateToJSON(activityRedemptionPartialPaymentDate: ActivityRedemptionPartialPaymentDate): string;
+export declare function activityRedemptionPartialPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionPartialPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionPartialQuantity$inboundSchema: z.ZodType<ActivityRedemptionPartialQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6540,6 +6740,8 @@ export declare namespace ActivityRedemptionPartialQuantity$ {
     /** @deprecated use `ActivityRedemptionPartialQuantity$Outbound` instead. */
     type Outbound = ActivityRedemptionPartialQuantity$Outbound;
 }
+export declare function activityRedemptionPartialQuantityToJSON(activityRedemptionPartialQuantity: ActivityRedemptionPartialQuantity): string;
+export declare function activityRedemptionPartialQuantityFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionPartialQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityRedemptionPartial$inboundSchema: z.ZodType<ActivityRedemptionPartial, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6564,6 +6766,8 @@ export declare namespace ActivityRedemptionPartial$ {
     /** @deprecated use `ActivityRedemptionPartial$Outbound` instead. */
     type Outbound = ActivityRedemptionPartial$Outbound;
 }
+export declare function activityRedemptionPartialToJSON(activityRedemptionPartial: ActivityRedemptionPartial): string;
+export declare function activityRedemptionPartialFromJSON(jsonString: string): SafeParseResult<ActivityRedemptionPartial, SDKValidationError>;
 /** @internal */
 export declare const ActivityReverseStockSplitAction$inboundSchema: z.ZodType<ActivityReverseStockSplitActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6598,6 +6802,8 @@ export declare namespace ActivityReverseStockSplitCashRate$ {
     /** @deprecated use `ActivityReverseStockSplitCashRate$Outbound` instead. */
     type Outbound = ActivityReverseStockSplitCashRate$Outbound;
 }
+export declare function activityReverseStockSplitCashRateToJSON(activityReverseStockSplitCashRate: ActivityReverseStockSplitCashRate): string;
+export declare function activityReverseStockSplitCashRateFromJSON(jsonString: string): SafeParseResult<ActivityReverseStockSplitCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityReverseStockSplitCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityReverseStockSplitCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6624,6 +6830,8 @@ export declare namespace ActivityReverseStockSplitCorporateActionGeneralInformat
     /** @deprecated use `ActivityReverseStockSplitCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityReverseStockSplitCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityReverseStockSplitCorporateActionGeneralInformationToJSON(activityReverseStockSplitCorporateActionGeneralInformation: ActivityReverseStockSplitCorporateActionGeneralInformation): string;
+export declare function activityReverseStockSplitCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityReverseStockSplitCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityReverseStockSplitEffectiveDate$inboundSchema: z.ZodType<ActivityReverseStockSplitEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6646,6 +6854,8 @@ export declare namespace ActivityReverseStockSplitEffectiveDate$ {
     /** @deprecated use `ActivityReverseStockSplitEffectiveDate$Outbound` instead. */
     type Outbound = ActivityReverseStockSplitEffectiveDate$Outbound;
 }
+export declare function activityReverseStockSplitEffectiveDateToJSON(activityReverseStockSplitEffectiveDate: ActivityReverseStockSplitEffectiveDate): string;
+export declare function activityReverseStockSplitEffectiveDateFromJSON(jsonString: string): SafeParseResult<ActivityReverseStockSplitEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityFactorDenominator$inboundSchema: z.ZodType<ActivityFactorDenominator, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6666,6 +6876,8 @@ export declare namespace ActivityFactorDenominator$ {
     /** @deprecated use `ActivityFactorDenominator$Outbound` instead. */
     type Outbound = ActivityFactorDenominator$Outbound;
 }
+export declare function activityFactorDenominatorToJSON(activityFactorDenominator: ActivityFactorDenominator): string;
+export declare function activityFactorDenominatorFromJSON(jsonString: string): SafeParseResult<ActivityFactorDenominator, SDKValidationError>;
 /** @internal */
 export declare const ActivityFactorNumerator$inboundSchema: z.ZodType<ActivityFactorNumerator, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6686,6 +6898,8 @@ export declare namespace ActivityFactorNumerator$ {
     /** @deprecated use `ActivityFactorNumerator$Outbound` instead. */
     type Outbound = ActivityFactorNumerator$Outbound;
 }
+export declare function activityFactorNumeratorToJSON(activityFactorNumerator: ActivityFactorNumerator): string;
+export declare function activityFactorNumeratorFromJSON(jsonString: string): SafeParseResult<ActivityFactorNumerator, SDKValidationError>;
 /** @internal */
 export declare const ActivityReverseStockSplitQuantity$inboundSchema: z.ZodType<ActivityReverseStockSplitQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6706,6 +6920,8 @@ export declare namespace ActivityReverseStockSplitQuantity$ {
     /** @deprecated use `ActivityReverseStockSplitQuantity$Outbound` instead. */
     type Outbound = ActivityReverseStockSplitQuantity$Outbound;
 }
+export declare function activityReverseStockSplitQuantityToJSON(activityReverseStockSplitQuantity: ActivityReverseStockSplitQuantity): string;
+export declare function activityReverseStockSplitQuantityFromJSON(jsonString: string): SafeParseResult<ActivityReverseStockSplitQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityReverseStockSplit$inboundSchema: z.ZodType<ActivityReverseStockSplit, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6732,6 +6948,8 @@ export declare namespace ActivityReverseStockSplit$ {
     /** @deprecated use `ActivityReverseStockSplit$Outbound` instead. */
     type Outbound = ActivityReverseStockSplit$Outbound;
 }
+export declare function activityReverseStockSplitToJSON(activityReverseStockSplit: ActivityReverseStockSplit): string;
+export declare function activityReverseStockSplitFromJSON(jsonString: string): SafeParseResult<ActivityReverseStockSplit, SDKValidationError>;
 /** @internal */
 export declare const ActivityRightsDistributionCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityRightsDistributionCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6758,6 +6976,8 @@ export declare namespace ActivityRightsDistributionCorporateActionGeneralInforma
     /** @deprecated use `ActivityRightsDistributionCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityRightsDistributionCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityRightsDistributionCorporateActionGeneralInformationToJSON(activityRightsDistributionCorporateActionGeneralInformation: ActivityRightsDistributionCorporateActionGeneralInformation): string;
+export declare function activityRightsDistributionCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityRightsDistributionCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityRightsDistributionPaymentDate$inboundSchema: z.ZodType<ActivityRightsDistributionPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6780,6 +7000,8 @@ export declare namespace ActivityRightsDistributionPaymentDate$ {
     /** @deprecated use `ActivityRightsDistributionPaymentDate$Outbound` instead. */
     type Outbound = ActivityRightsDistributionPaymentDate$Outbound;
 }
+export declare function activityRightsDistributionPaymentDateToJSON(activityRightsDistributionPaymentDate: ActivityRightsDistributionPaymentDate): string;
+export declare function activityRightsDistributionPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityRightsDistributionPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityRightsDistributionRecordDate$inboundSchema: z.ZodType<ActivityRightsDistributionRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6802,6 +7024,8 @@ export declare namespace ActivityRightsDistributionRecordDate$ {
     /** @deprecated use `ActivityRightsDistributionRecordDate$Outbound` instead. */
     type Outbound = ActivityRightsDistributionRecordDate$Outbound;
 }
+export declare function activityRightsDistributionRecordDateToJSON(activityRightsDistributionRecordDate: ActivityRightsDistributionRecordDate): string;
+export declare function activityRightsDistributionRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityRightsDistributionRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityRightsDistributionSettled$inboundSchema: z.ZodType<ActivityRightsDistributionSettled, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6822,6 +7046,8 @@ export declare namespace ActivityRightsDistributionSettled$ {
     /** @deprecated use `ActivityRightsDistributionSettled$Outbound` instead. */
     type Outbound = ActivityRightsDistributionSettled$Outbound;
 }
+export declare function activityRightsDistributionSettledToJSON(activityRightsDistributionSettled: ActivityRightsDistributionSettled): string;
+export declare function activityRightsDistributionSettledFromJSON(jsonString: string): SafeParseResult<ActivityRightsDistributionSettled, SDKValidationError>;
 /** @internal */
 export declare const ActivityRightsDistribution$inboundSchema: z.ZodType<ActivityRightsDistribution, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6845,6 +7071,8 @@ export declare namespace ActivityRightsDistribution$ {
     /** @deprecated use `ActivityRightsDistribution$Outbound` instead. */
     type Outbound = ActivityRightsDistribution$Outbound;
 }
+export declare function activityRightsDistributionToJSON(activityRightsDistribution: ActivityRightsDistribution): string;
+export declare function activityRightsDistributionFromJSON(jsonString: string): SafeParseResult<ActivityRightsDistribution, SDKValidationError>;
 /** @internal */
 export declare const ActivityRightsSubscriptionCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityRightsSubscriptionCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6871,6 +7099,8 @@ export declare namespace ActivityRightsSubscriptionCorporateActionGeneralInforma
     /** @deprecated use `ActivityRightsSubscriptionCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityRightsSubscriptionCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityRightsSubscriptionCorporateActionGeneralInformationToJSON(activityRightsSubscriptionCorporateActionGeneralInformation: ActivityRightsSubscriptionCorporateActionGeneralInformation): string;
+export declare function activityRightsSubscriptionCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityRightsSubscriptionCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityRightsSubscription$inboundSchema: z.ZodType<ActivityRightsSubscription, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6891,6 +7121,8 @@ export declare namespace ActivityRightsSubscription$ {
     /** @deprecated use `ActivityRightsSubscription$Outbound` instead. */
     type Outbound = ActivityRightsSubscription$Outbound;
 }
+export declare function activityRightsSubscriptionToJSON(activityRightsSubscription: ActivityRightsSubscription): string;
+export declare function activityRightsSubscriptionFromJSON(jsonString: string): SafeParseResult<ActivityRightsSubscription, SDKValidationError>;
 /** @internal */
 export declare const ActivityRoundingAdjustment$inboundSchema: z.ZodType<ActivityRoundingAdjustment, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6911,6 +7143,8 @@ export declare namespace ActivityRoundingAdjustment$ {
     /** @deprecated use `ActivityRoundingAdjustment$Outbound` instead. */
     type Outbound = ActivityRoundingAdjustment$Outbound;
 }
+export declare function activityRoundingAdjustmentToJSON(activityRoundingAdjustment: ActivityRoundingAdjustment): string;
+export declare function activityRoundingAdjustmentFromJSON(jsonString: string): SafeParseResult<ActivityRoundingAdjustment, SDKValidationError>;
 /** @internal */
 export declare const RoundingAmount$inboundSchema: z.ZodType<RoundingAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6931,6 +7165,8 @@ export declare namespace RoundingAmount$ {
     /** @deprecated use `RoundingAmount$Outbound` instead. */
     type Outbound = RoundingAmount$Outbound;
 }
+export declare function roundingAmountToJSON(roundingAmount: RoundingAmount): string;
+export declare function roundingAmountFromJSON(jsonString: string): SafeParseResult<RoundingAmount, SDKValidationError>;
 /** @internal */
 export declare const ActivitySaleOfRightsCashRate$inboundSchema: z.ZodType<ActivitySaleOfRightsCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6951,6 +7187,8 @@ export declare namespace ActivitySaleOfRightsCashRate$ {
     /** @deprecated use `ActivitySaleOfRightsCashRate$Outbound` instead. */
     type Outbound = ActivitySaleOfRightsCashRate$Outbound;
 }
+export declare function activitySaleOfRightsCashRateToJSON(activitySaleOfRightsCashRate: ActivitySaleOfRightsCashRate): string;
+export declare function activitySaleOfRightsCashRateFromJSON(jsonString: string): SafeParseResult<ActivitySaleOfRightsCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivitySaleOfRightsCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivitySaleOfRightsCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6977,6 +7215,8 @@ export declare namespace ActivitySaleOfRightsCorporateActionGeneralInformation$ 
     /** @deprecated use `ActivitySaleOfRightsCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivitySaleOfRightsCorporateActionGeneralInformation$Outbound;
 }
+export declare function activitySaleOfRightsCorporateActionGeneralInformationToJSON(activitySaleOfRightsCorporateActionGeneralInformation: ActivitySaleOfRightsCorporateActionGeneralInformation): string;
+export declare function activitySaleOfRightsCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivitySaleOfRightsCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivitySaleOfRightsPaymentDate$inboundSchema: z.ZodType<ActivitySaleOfRightsPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -6999,6 +7239,8 @@ export declare namespace ActivitySaleOfRightsPaymentDate$ {
     /** @deprecated use `ActivitySaleOfRightsPaymentDate$Outbound` instead. */
     type Outbound = ActivitySaleOfRightsPaymentDate$Outbound;
 }
+export declare function activitySaleOfRightsPaymentDateToJSON(activitySaleOfRightsPaymentDate: ActivitySaleOfRightsPaymentDate): string;
+export declare function activitySaleOfRightsPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivitySaleOfRightsPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivitySaleOfRightsRecordDate$inboundSchema: z.ZodType<ActivitySaleOfRightsRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7021,6 +7263,8 @@ export declare namespace ActivitySaleOfRightsRecordDate$ {
     /** @deprecated use `ActivitySaleOfRightsRecordDate$Outbound` instead. */
     type Outbound = ActivitySaleOfRightsRecordDate$Outbound;
 }
+export declare function activitySaleOfRightsRecordDateToJSON(activitySaleOfRightsRecordDate: ActivitySaleOfRightsRecordDate): string;
+export declare function activitySaleOfRightsRecordDateFromJSON(jsonString: string): SafeParseResult<ActivitySaleOfRightsRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivitySaleOfRightsSettled$inboundSchema: z.ZodType<ActivitySaleOfRightsSettled, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7041,6 +7285,8 @@ export declare namespace ActivitySaleOfRightsSettled$ {
     /** @deprecated use `ActivitySaleOfRightsSettled$Outbound` instead. */
     type Outbound = ActivitySaleOfRightsSettled$Outbound;
 }
+export declare function activitySaleOfRightsSettledToJSON(activitySaleOfRightsSettled: ActivitySaleOfRightsSettled): string;
+export declare function activitySaleOfRightsSettledFromJSON(jsonString: string): SafeParseResult<ActivitySaleOfRightsSettled, SDKValidationError>;
 /** @internal */
 export declare const ActivitySaleOfRights$inboundSchema: z.ZodType<ActivitySaleOfRights, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7065,6 +7311,8 @@ export declare namespace ActivitySaleOfRights$ {
     /** @deprecated use `ActivitySaleOfRights$Outbound` instead. */
     type Outbound = ActivitySaleOfRights$Outbound;
 }
+export declare function activitySaleOfRightsToJSON(activitySaleOfRights: ActivitySaleOfRights): string;
+export declare function activitySaleOfRightsFromJSON(jsonString: string): SafeParseResult<ActivitySaleOfRights, SDKValidationError>;
 /** @internal */
 export declare const ActivitySettleDate$inboundSchema: z.ZodType<ActivitySettleDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7087,6 +7335,8 @@ export declare namespace ActivitySettleDate$ {
     /** @deprecated use `ActivitySettleDate$Outbound` instead. */
     type Outbound = ActivitySettleDate$Outbound;
 }
+export declare function activitySettleDateToJSON(activitySettleDate: ActivitySettleDate): string;
+export declare function activitySettleDateFromJSON(jsonString: string): SafeParseResult<ActivitySettleDate, SDKValidationError>;
 /** @internal */
 export declare const ActivitySide$inboundSchema: z.ZodType<ActivitySideOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7141,6 +7391,8 @@ export declare namespace ActivitySpinoffCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivitySpinoffCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivitySpinoffCorporateActionGeneralInformation$Outbound;
 }
+export declare function activitySpinoffCorporateActionGeneralInformationToJSON(activitySpinoffCorporateActionGeneralInformation: ActivitySpinoffCorporateActionGeneralInformation): string;
+export declare function activitySpinoffCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivitySpinoffCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityPayDate$inboundSchema: z.ZodType<ActivityPayDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7163,6 +7415,8 @@ export declare namespace ActivityPayDate$ {
     /** @deprecated use `ActivityPayDate$Outbound` instead. */
     type Outbound = ActivityPayDate$Outbound;
 }
+export declare function activityPayDateToJSON(activityPayDate: ActivityPayDate): string;
+export declare function activityPayDateFromJSON(jsonString: string): SafeParseResult<ActivityPayDate, SDKValidationError>;
 /** @internal */
 export declare const ActivitySpinoffQuantity$inboundSchema: z.ZodType<ActivitySpinoffQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7183,6 +7437,8 @@ export declare namespace ActivitySpinoffQuantity$ {
     /** @deprecated use `ActivitySpinoffQuantity$Outbound` instead. */
     type Outbound = ActivitySpinoffQuantity$Outbound;
 }
+export declare function activitySpinoffQuantityToJSON(activitySpinoffQuantity: ActivitySpinoffQuantity): string;
+export declare function activitySpinoffQuantityFromJSON(jsonString: string): SafeParseResult<ActivitySpinoffQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivitySpinoffRecordDate$inboundSchema: z.ZodType<ActivitySpinoffRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7205,6 +7461,8 @@ export declare namespace ActivitySpinoffRecordDate$ {
     /** @deprecated use `ActivitySpinoffRecordDate$Outbound` instead. */
     type Outbound = ActivitySpinoffRecordDate$Outbound;
 }
+export declare function activitySpinoffRecordDateToJSON(activitySpinoffRecordDate: ActivitySpinoffRecordDate): string;
+export declare function activitySpinoffRecordDateFromJSON(jsonString: string): SafeParseResult<ActivitySpinoffRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivitySpinoff$inboundSchema: z.ZodType<ActivitySpinoff, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7228,6 +7486,8 @@ export declare namespace ActivitySpinoff$ {
     /** @deprecated use `ActivitySpinoff$Outbound` instead. */
     type Outbound = ActivitySpinoff$Outbound;
 }
+export declare function activitySpinoffToJSON(activitySpinoff: ActivitySpinoff): string;
+export declare function activitySpinoffFromJSON(jsonString: string): SafeParseResult<ActivitySpinoff, SDKValidationError>;
 /** @internal */
 export declare const ActivityState$inboundSchema: z.ZodType<ActivityStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7268,6 +7528,8 @@ export declare namespace ActivityStockDividendCorporateActionGeneralInformation$
     /** @deprecated use `ActivityStockDividendCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityStockDividendCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityStockDividendCorporateActionGeneralInformationToJSON(activityStockDividendCorporateActionGeneralInformation: ActivityStockDividendCorporateActionGeneralInformation): string;
+export declare function activityStockDividendCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityStockDividendCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockDividendPayDate$inboundSchema: z.ZodType<ActivityStockDividendPayDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7290,6 +7552,8 @@ export declare namespace ActivityStockDividendPayDate$ {
     /** @deprecated use `ActivityStockDividendPayDate$Outbound` instead. */
     type Outbound = ActivityStockDividendPayDate$Outbound;
 }
+export declare function activityStockDividendPayDateToJSON(activityStockDividendPayDate: ActivityStockDividendPayDate): string;
+export declare function activityStockDividendPayDateFromJSON(jsonString: string): SafeParseResult<ActivityStockDividendPayDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockDividendQuantity$inboundSchema: z.ZodType<ActivityStockDividendQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7310,6 +7574,8 @@ export declare namespace ActivityStockDividendQuantity$ {
     /** @deprecated use `ActivityStockDividendQuantity$Outbound` instead. */
     type Outbound = ActivityStockDividendQuantity$Outbound;
 }
+export declare function activityStockDividendQuantityToJSON(activityStockDividendQuantity: ActivityStockDividendQuantity): string;
+export declare function activityStockDividendQuantityFromJSON(jsonString: string): SafeParseResult<ActivityStockDividendQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityRate$inboundSchema: z.ZodType<ActivityRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7330,6 +7596,8 @@ export declare namespace ActivityRate$ {
     /** @deprecated use `ActivityRate$Outbound` instead. */
     type Outbound = ActivityRate$Outbound;
 }
+export declare function activityRateToJSON(activityRate: ActivityRate): string;
+export declare function activityRateFromJSON(jsonString: string): SafeParseResult<ActivityRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockDividendRecordDate$inboundSchema: z.ZodType<ActivityStockDividendRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7352,6 +7620,8 @@ export declare namespace ActivityStockDividendRecordDate$ {
     /** @deprecated use `ActivityStockDividendRecordDate$Outbound` instead. */
     type Outbound = ActivityStockDividendRecordDate$Outbound;
 }
+export declare function activityStockDividendRecordDateToJSON(activityStockDividendRecordDate: ActivityStockDividendRecordDate): string;
+export declare function activityStockDividendRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityStockDividendRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockDividend$inboundSchema: z.ZodType<ActivityStockDividend, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7376,6 +7646,8 @@ export declare namespace ActivityStockDividend$ {
     /** @deprecated use `ActivityStockDividend$Outbound` instead. */
     type Outbound = ActivityStockDividend$Outbound;
 }
+export declare function activityStockDividendToJSON(activityStockDividend: ActivityStockDividend): string;
+export declare function activityStockDividendFromJSON(jsonString: string): SafeParseResult<ActivityStockDividend, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockSplitCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityStockSplitCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7402,6 +7674,8 @@ export declare namespace ActivityStockSplitCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityStockSplitCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityStockSplitCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityStockSplitCorporateActionGeneralInformationToJSON(activityStockSplitCorporateActionGeneralInformation: ActivityStockSplitCorporateActionGeneralInformation): string;
+export declare function activityStockSplitCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityStockSplitCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockSplitFactorDenominator$inboundSchema: z.ZodType<ActivityStockSplitFactorDenominator, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7422,6 +7696,8 @@ export declare namespace ActivityStockSplitFactorDenominator$ {
     /** @deprecated use `ActivityStockSplitFactorDenominator$Outbound` instead. */
     type Outbound = ActivityStockSplitFactorDenominator$Outbound;
 }
+export declare function activityStockSplitFactorDenominatorToJSON(activityStockSplitFactorDenominator: ActivityStockSplitFactorDenominator): string;
+export declare function activityStockSplitFactorDenominatorFromJSON(jsonString: string): SafeParseResult<ActivityStockSplitFactorDenominator, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockSplitFactorNumerator$inboundSchema: z.ZodType<ActivityStockSplitFactorNumerator, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7442,6 +7718,8 @@ export declare namespace ActivityStockSplitFactorNumerator$ {
     /** @deprecated use `ActivityStockSplitFactorNumerator$Outbound` instead. */
     type Outbound = ActivityStockSplitFactorNumerator$Outbound;
 }
+export declare function activityStockSplitFactorNumeratorToJSON(activityStockSplitFactorNumerator: ActivityStockSplitFactorNumerator): string;
+export declare function activityStockSplitFactorNumeratorFromJSON(jsonString: string): SafeParseResult<ActivityStockSplitFactorNumerator, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockSplitPayDate$inboundSchema: z.ZodType<ActivityStockSplitPayDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7464,6 +7742,8 @@ export declare namespace ActivityStockSplitPayDate$ {
     /** @deprecated use `ActivityStockSplitPayDate$Outbound` instead. */
     type Outbound = ActivityStockSplitPayDate$Outbound;
 }
+export declare function activityStockSplitPayDateToJSON(activityStockSplitPayDate: ActivityStockSplitPayDate): string;
+export declare function activityStockSplitPayDateFromJSON(jsonString: string): SafeParseResult<ActivityStockSplitPayDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockSplitQuantity$inboundSchema: z.ZodType<ActivityStockSplitQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7484,6 +7764,8 @@ export declare namespace ActivityStockSplitQuantity$ {
     /** @deprecated use `ActivityStockSplitQuantity$Outbound` instead. */
     type Outbound = ActivityStockSplitQuantity$Outbound;
 }
+export declare function activityStockSplitQuantityToJSON(activityStockSplitQuantity: ActivityStockSplitQuantity): string;
+export declare function activityStockSplitQuantityFromJSON(jsonString: string): SafeParseResult<ActivityStockSplitQuantity, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockSplitRecordDate$inboundSchema: z.ZodType<ActivityStockSplitRecordDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7506,6 +7788,8 @@ export declare namespace ActivityStockSplitRecordDate$ {
     /** @deprecated use `ActivityStockSplitRecordDate$Outbound` instead. */
     type Outbound = ActivityStockSplitRecordDate$Outbound;
 }
+export declare function activityStockSplitRecordDateToJSON(activityStockSplitRecordDate: ActivityStockSplitRecordDate): string;
+export declare function activityStockSplitRecordDateFromJSON(jsonString: string): SafeParseResult<ActivityStockSplitRecordDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityStockSplit$inboundSchema: z.ZodType<ActivityStockSplit, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7531,6 +7815,8 @@ export declare namespace ActivityStockSplit$ {
     /** @deprecated use `ActivityStockSplit$Outbound` instead. */
     type Outbound = ActivityStockSplit$Outbound;
 }
+export declare function activityStockSplitToJSON(activityStockSplit: ActivityStockSplit): string;
+export declare function activityStockSplitFromJSON(jsonString: string): SafeParseResult<ActivityStockSplit, SDKValidationError>;
 /** @internal */
 export declare const ActivitySweepAction$inboundSchema: z.ZodType<ActivitySweepActionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7581,6 +7867,8 @@ export declare namespace ActivitySweep$ {
     /** @deprecated use `ActivitySweep$Outbound` instead. */
     type Outbound = ActivitySweep$Outbound;
 }
+export declare function activitySweepToJSON(activitySweep: ActivitySweep): string;
+export declare function activitySweepFromJSON(jsonString: string): SafeParseResult<ActivitySweep, SDKValidationError>;
 /** @internal */
 export declare const ActivityTenderOfferCashRate$inboundSchema: z.ZodType<ActivityTenderOfferCashRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7601,6 +7889,8 @@ export declare namespace ActivityTenderOfferCashRate$ {
     /** @deprecated use `ActivityTenderOfferCashRate$Outbound` instead. */
     type Outbound = ActivityTenderOfferCashRate$Outbound;
 }
+export declare function activityTenderOfferCashRateToJSON(activityTenderOfferCashRate: ActivityTenderOfferCashRate): string;
+export declare function activityTenderOfferCashRateFromJSON(jsonString: string): SafeParseResult<ActivityTenderOfferCashRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityTenderOfferCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityTenderOfferCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7627,6 +7917,8 @@ export declare namespace ActivityTenderOfferCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityTenderOfferCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityTenderOfferCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityTenderOfferCorporateActionGeneralInformationToJSON(activityTenderOfferCorporateActionGeneralInformation: ActivityTenderOfferCorporateActionGeneralInformation): string;
+export declare function activityTenderOfferCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityTenderOfferCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityTenderOfferType$inboundSchema: z.ZodType<ActivityTenderOfferTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7663,6 +7955,8 @@ export declare namespace ActivityTenderOffer$ {
     /** @deprecated use `ActivityTenderOffer$Outbound` instead. */
     type Outbound = ActivityTenderOffer$Outbound;
 }
+export declare function activityTenderOfferToJSON(activityTenderOffer: ActivityTenderOffer): string;
+export declare function activityTenderOfferFromJSON(jsonString: string): SafeParseResult<ActivityTenderOffer, SDKValidationError>;
 /** @internal */
 export declare const ActivityTradeBrokerCapacity$inboundSchema: z.ZodType<ActivityTradeBrokerCapacityOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7697,6 +7991,8 @@ export declare namespace ActivityTradePrevailingMarketPrice$ {
     /** @deprecated use `ActivityTradePrevailingMarketPrice$Outbound` instead. */
     type Outbound = ActivityTradePrevailingMarketPrice$Outbound;
 }
+export declare function activityTradePrevailingMarketPriceToJSON(activityTradePrevailingMarketPrice: ActivityTradePrevailingMarketPrice): string;
+export declare function activityTradePrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<ActivityTradePrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const ActivityTradePriceAdjustmentAmount$inboundSchema: z.ZodType<ActivityTradePriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7717,6 +8013,8 @@ export declare namespace ActivityTradePriceAdjustmentAmount$ {
     /** @deprecated use `ActivityTradePriceAdjustmentAmount$Outbound` instead. */
     type Outbound = ActivityTradePriceAdjustmentAmount$Outbound;
 }
+export declare function activityTradePriceAdjustmentAmountToJSON(activityTradePriceAdjustmentAmount: ActivityTradePriceAdjustmentAmount): string;
+export declare function activityTradePriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<ActivityTradePriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const ActivityTradePriceAdjustmentPercent$inboundSchema: z.ZodType<ActivityTradePriceAdjustmentPercent, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7737,6 +8035,8 @@ export declare namespace ActivityTradePriceAdjustmentPercent$ {
     /** @deprecated use `ActivityTradePriceAdjustmentPercent$Outbound` instead. */
     type Outbound = ActivityTradePriceAdjustmentPercent$Outbound;
 }
+export declare function activityTradePriceAdjustmentPercentToJSON(activityTradePriceAdjustmentPercent: ActivityTradePriceAdjustmentPercent): string;
+export declare function activityTradePriceAdjustmentPercentFromJSON(jsonString: string): SafeParseResult<ActivityTradePriceAdjustmentPercent, SDKValidationError>;
 /** @internal */
 export declare const ActivityTradePriceAdjustmentType$inboundSchema: z.ZodType<ActivityTradePriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7773,6 +8073,8 @@ export declare namespace ActivityTradePriceAdjustmentRecord$ {
     /** @deprecated use `ActivityTradePriceAdjustmentRecord$Outbound` instead. */
     type Outbound = ActivityTradePriceAdjustmentRecord$Outbound;
 }
+export declare function activityTradePriceAdjustmentRecordToJSON(activityTradePriceAdjustmentRecord: ActivityTradePriceAdjustmentRecord): string;
+export declare function activityTradePriceAdjustmentRecordFromJSON(jsonString: string): SafeParseResult<ActivityTradePriceAdjustmentRecord, SDKValidationError>;
 /** @internal */
 export declare const ActivityTrade$inboundSchema: z.ZodType<ActivityTrade, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7817,6 +8119,8 @@ export declare namespace ActivityTrade$ {
     /** @deprecated use `ActivityTrade$Outbound` instead. */
     type Outbound = ActivityTrade$Outbound;
 }
+export declare function activityTradeToJSON(activityTrade: ActivityTrade): string;
+export declare function activityTradeFromJSON(jsonString: string): SafeParseResult<ActivityTrade, SDKValidationError>;
 /** @internal */
 export declare const ActivityTransferType$inboundSchema: z.ZodType<ActivityTransferTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7853,6 +8157,8 @@ export declare namespace ActivityTransfer$ {
     /** @deprecated use `ActivityTransfer$Outbound` instead. */
     type Outbound = ActivityTransfer$Outbound;
 }
+export declare function activityTransferToJSON(activityTransfer: ActivityTransfer): string;
+export declare function activityTransferFromJSON(jsonString: string): SafeParseResult<ActivityTransfer, SDKValidationError>;
 /** @internal */
 export declare const ActivityType$inboundSchema: z.ZodType<ActivityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7893,6 +8199,8 @@ export declare namespace ActivityUnitSplitCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityUnitSplitCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityUnitSplitCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityUnitSplitCorporateActionGeneralInformationToJSON(activityUnitSplitCorporateActionGeneralInformation: ActivityUnitSplitCorporateActionGeneralInformation): string;
+export declare function activityUnitSplitCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityUnitSplitCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityUnitSplitStockRate$inboundSchema: z.ZodType<ActivityUnitSplitStockRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7913,6 +8221,8 @@ export declare namespace ActivityUnitSplitStockRate$ {
     /** @deprecated use `ActivityUnitSplitStockRate$Outbound` instead. */
     type Outbound = ActivityUnitSplitStockRate$Outbound;
 }
+export declare function activityUnitSplitStockRateToJSON(activityUnitSplitStockRate: ActivityUnitSplitStockRate): string;
+export declare function activityUnitSplitStockRateFromJSON(jsonString: string): SafeParseResult<ActivityUnitSplitStockRate, SDKValidationError>;
 /** @internal */
 export declare const ActivityUnitSplit$inboundSchema: z.ZodType<ActivityUnitSplit, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7934,6 +8244,8 @@ export declare namespace ActivityUnitSplit$ {
     /** @deprecated use `ActivityUnitSplit$Outbound` instead. */
     type Outbound = ActivityUnitSplit$Outbound;
 }
+export declare function activityUnitSplitToJSON(activityUnitSplit: ActivityUnitSplit): string;
+export declare function activityUnitSplitFromJSON(jsonString: string): SafeParseResult<ActivityUnitSplit, SDKValidationError>;
 /** @internal */
 export declare const ActivityWarrantExerciseCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityWarrantExerciseCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7960,6 +8272,8 @@ export declare namespace ActivityWarrantExerciseCorporateActionGeneralInformatio
     /** @deprecated use `ActivityWarrantExerciseCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityWarrantExerciseCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityWarrantExerciseCorporateActionGeneralInformationToJSON(activityWarrantExerciseCorporateActionGeneralInformation: ActivityWarrantExerciseCorporateActionGeneralInformation): string;
+export declare function activityWarrantExerciseCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityWarrantExerciseCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityWarrantExercise$inboundSchema: z.ZodType<ActivityWarrantExercise, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -7980,6 +8294,8 @@ export declare namespace ActivityWarrantExercise$ {
     /** @deprecated use `ActivityWarrantExercise$Outbound` instead. */
     type Outbound = ActivityWarrantExercise$Outbound;
 }
+export declare function activityWarrantExerciseToJSON(activityWarrantExercise: ActivityWarrantExercise): string;
+export declare function activityWarrantExerciseFromJSON(jsonString: string): SafeParseResult<ActivityWarrantExercise, SDKValidationError>;
 /** @internal */
 export declare const ActivityDistributionType$inboundSchema: z.ZodType<ActivityDistributionTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8058,6 +8374,8 @@ export declare namespace ActivityWithdrawal$ {
     /** @deprecated use `ActivityWithdrawal$Outbound` instead. */
     type Outbound = ActivityWithdrawal$Outbound;
 }
+export declare function activityWithdrawalToJSON(activityWithdrawal: ActivityWithdrawal): string;
+export declare function activityWithdrawalFromJSON(jsonString: string): SafeParseResult<ActivityWithdrawal, SDKValidationError>;
 /** @internal */
 export declare const ActivityReview$inboundSchema: z.ZodType<ActivityReviewOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8092,6 +8410,8 @@ export declare namespace ActivityWithdrawalPendingReview$ {
     /** @deprecated use `ActivityWithdrawalPendingReview$Outbound` instead. */
     type Outbound = ActivityWithdrawalPendingReview$Outbound;
 }
+export declare function activityWithdrawalPendingReviewToJSON(activityWithdrawalPendingReview: ActivityWithdrawalPendingReview): string;
+export declare function activityWithdrawalPendingReviewFromJSON(jsonString: string): SafeParseResult<ActivityWithdrawalPendingReview, SDKValidationError>;
 /** @internal */
 export declare const ActivityWithholding$inboundSchema: z.ZodType<ActivityWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8112,6 +8432,8 @@ export declare namespace ActivityWithholding$ {
     /** @deprecated use `ActivityWithholding$Outbound` instead. */
     type Outbound = ActivityWithholding$Outbound;
 }
+export declare function activityWithholdingToJSON(activityWithholding: ActivityWithholding): string;
+export declare function activityWithholdingFromJSON(jsonString: string): SafeParseResult<ActivityWithholding, SDKValidationError>;
 /** @internal */
 export declare const ActivityWorthlessCorporateActionGeneralInformation$inboundSchema: z.ZodType<ActivityWorthlessCorporateActionGeneralInformation, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8138,6 +8460,8 @@ export declare namespace ActivityWorthlessCorporateActionGeneralInformation$ {
     /** @deprecated use `ActivityWorthlessCorporateActionGeneralInformation$Outbound` instead. */
     type Outbound = ActivityWorthlessCorporateActionGeneralInformation$Outbound;
 }
+export declare function activityWorthlessCorporateActionGeneralInformationToJSON(activityWorthlessCorporateActionGeneralInformation: ActivityWorthlessCorporateActionGeneralInformation): string;
+export declare function activityWorthlessCorporateActionGeneralInformationFromJSON(jsonString: string): SafeParseResult<ActivityWorthlessCorporateActionGeneralInformation, SDKValidationError>;
 /** @internal */
 export declare const ActivityWorthlessEffectiveDate$inboundSchema: z.ZodType<ActivityWorthlessEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8160,6 +8484,8 @@ export declare namespace ActivityWorthlessEffectiveDate$ {
     /** @deprecated use `ActivityWorthlessEffectiveDate$Outbound` instead. */
     type Outbound = ActivityWorthlessEffectiveDate$Outbound;
 }
+export declare function activityWorthlessEffectiveDateToJSON(activityWorthlessEffectiveDate: ActivityWorthlessEffectiveDate): string;
+export declare function activityWorthlessEffectiveDateFromJSON(jsonString: string): SafeParseResult<ActivityWorthlessEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityWorthlessPaymentDate$inboundSchema: z.ZodType<ActivityWorthlessPaymentDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8182,6 +8508,8 @@ export declare namespace ActivityWorthlessPaymentDate$ {
     /** @deprecated use `ActivityWorthlessPaymentDate$Outbound` instead. */
     type Outbound = ActivityWorthlessPaymentDate$Outbound;
 }
+export declare function activityWorthlessPaymentDateToJSON(activityWorthlessPaymentDate: ActivityWorthlessPaymentDate): string;
+export declare function activityWorthlessPaymentDateFromJSON(jsonString: string): SafeParseResult<ActivityWorthlessPaymentDate, SDKValidationError>;
 /** @internal */
 export declare const ActivityWorthless$inboundSchema: z.ZodType<ActivityWorthless, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8204,6 +8532,8 @@ export declare namespace ActivityWorthless$ {
     /** @deprecated use `ActivityWorthless$Outbound` instead. */
     type Outbound = ActivityWorthless$Outbound;
 }
+export declare function activityWorthlessToJSON(activityWorthless: ActivityWorthless): string;
+export declare function activityWorthlessFromJSON(jsonString: string): SafeParseResult<ActivityWorthless, SDKValidationError>;
 /** @internal */
 export declare const Activity$inboundSchema: z.ZodType<Activity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -8304,4 +8634,6 @@ export declare namespace Activity$ {
     /** @deprecated use `Activity$Outbound` instead. */
     type Outbound = Activity$Outbound;
 }
+export declare function activityToJSON(activity: Activity): string;
+export declare function activityFromJSON(jsonString: string): SafeParseResult<Activity, SDKValidationError>;
 //# sourceMappingURL=activity.d.ts.map

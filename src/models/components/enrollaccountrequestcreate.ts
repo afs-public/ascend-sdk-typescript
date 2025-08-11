@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EnrollmentCreate,
   EnrollmentCreate$inboundSchema,
@@ -54,4 +57,22 @@ export namespace EnrollAccountRequestCreate$ {
   export const outboundSchema = EnrollAccountRequestCreate$outboundSchema;
   /** @deprecated use `EnrollAccountRequestCreate$Outbound` instead. */
   export type Outbound = EnrollAccountRequestCreate$Outbound;
+}
+
+export function enrollAccountRequestCreateToJSON(
+  enrollAccountRequestCreate: EnrollAccountRequestCreate,
+): string {
+  return JSON.stringify(
+    EnrollAccountRequestCreate$outboundSchema.parse(enrollAccountRequestCreate),
+  );
+}
+
+export function enrollAccountRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollAccountRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollAccountRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollAccountRequestCreate' from JSON`,
+  );
 }

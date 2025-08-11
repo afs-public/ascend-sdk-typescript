@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BasketTradingExecutedPrice,
   BasketTradingExecutedPrice$inboundSchema,
@@ -75,6 +78,26 @@ export namespace BasketTradingExecutionsQuantity$ {
   export type Outbound = BasketTradingExecutionsQuantity$Outbound;
 }
 
+export function basketTradingExecutionsQuantityToJSON(
+  basketTradingExecutionsQuantity: BasketTradingExecutionsQuantity,
+): string {
+  return JSON.stringify(
+    BasketTradingExecutionsQuantity$outboundSchema.parse(
+      basketTradingExecutionsQuantity,
+    ),
+  );
+}
+
+export function basketTradingExecutionsQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketTradingExecutionsQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BasketTradingExecutionsQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketTradingExecutionsQuantity' from JSON`,
+  );
+}
+
 /** @internal */
 export const BasketTradingExecutions$inboundSchema: z.ZodType<
   BasketTradingExecutions,
@@ -131,4 +154,22 @@ export namespace BasketTradingExecutions$ {
   export const outboundSchema = BasketTradingExecutions$outboundSchema;
   /** @deprecated use `BasketTradingExecutions$Outbound` instead. */
   export type Outbound = BasketTradingExecutions$Outbound;
+}
+
+export function basketTradingExecutionsToJSON(
+  basketTradingExecutions: BasketTradingExecutions,
+): string {
+  return JSON.stringify(
+    BasketTradingExecutions$outboundSchema.parse(basketTradingExecutions),
+  );
+}
+
+export function basketTradingExecutionsFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketTradingExecutions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BasketTradingExecutions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketTradingExecutions' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContributionConstraints$ = exports.ContributionConstraints$outboundSchema = exports.ContributionConstraints$inboundSchema = void 0;
+exports.contributionConstraintsToJSON = contributionConstraintsToJSON;
+exports.contributionConstraintsFromJSON = contributionConstraintsFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const contributionconstraintscontributiontypeinfo_js_1 = require("./contributionconstraintscontributiontypeinfo.js");
 /** @internal */
 exports.ContributionConstraints$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ContributionConstraints$;
     /** @deprecated use `ContributionConstraints$outboundSchema` instead. */
     ContributionConstraints$.outboundSchema = exports.ContributionConstraints$outboundSchema;
 })(ContributionConstraints$ || (exports.ContributionConstraints$ = ContributionConstraints$ = {}));
+function contributionConstraintsToJSON(contributionConstraints) {
+    return JSON.stringify(exports.ContributionConstraints$outboundSchema.parse(contributionConstraints));
+}
+function contributionConstraintsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ContributionConstraints$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ContributionConstraints' from JSON`);
+}
 //# sourceMappingURL=contributionconstraints.js.map

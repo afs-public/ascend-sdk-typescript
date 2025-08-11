@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentityVerificationResultUpdate$ = exports.IdentityVerificationResultUpdate$outboundSchema = exports.IdentityVerificationResultUpdate$inboundSchema = void 0;
+exports.identityVerificationResultUpdateToJSON = identityVerificationResultUpdateToJSON;
+exports.identityVerificationResultUpdateFromJSON = identityVerificationResultUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const dateupdate_js_1 = require("./dateupdate.js");
 /** @internal */
 exports.IdentityVerificationResultUpdate$inboundSchema = z.object({
@@ -97,4 +100,10 @@ var IdentityVerificationResultUpdate$;
     /** @deprecated use `IdentityVerificationResultUpdate$outboundSchema` instead. */
     IdentityVerificationResultUpdate$.outboundSchema = exports.IdentityVerificationResultUpdate$outboundSchema;
 })(IdentityVerificationResultUpdate$ || (exports.IdentityVerificationResultUpdate$ = IdentityVerificationResultUpdate$ = {}));
+function identityVerificationResultUpdateToJSON(identityVerificationResultUpdate) {
+    return JSON.stringify(exports.IdentityVerificationResultUpdate$outboundSchema.parse(identityVerificationResultUpdate));
+}
+function identityVerificationResultUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IdentityVerificationResultUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IdentityVerificationResultUpdate' from JSON`);
+}
 //# sourceMappingURL=identityverificationresultupdate.js.map

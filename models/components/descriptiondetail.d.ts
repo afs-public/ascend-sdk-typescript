@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Description detail used for Dow Jones Profile details
  */
@@ -38,4 +40,6 @@ export declare namespace DescriptionDetail$ {
     /** @deprecated use `DescriptionDetail$Outbound` instead. */
     type Outbound = DescriptionDetail$Outbound;
 }
+export declare function descriptionDetailToJSON(descriptionDetail: DescriptionDetail): string;
+export declare function descriptionDetailFromJSON(jsonString: string): SafeParseResult<DescriptionDetail, SDKValidationError>;
 //# sourceMappingURL=descriptiondetail.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
@@ -149,4 +151,6 @@ export declare namespace JointCommunityPropertyEnrollmentMetadataCreate$ {
     /** @deprecated use `JointCommunityPropertyEnrollmentMetadataCreate$Outbound` instead. */
     type Outbound = JointCommunityPropertyEnrollmentMetadataCreate$Outbound;
 }
+export declare function jointCommunityPropertyEnrollmentMetadataCreateToJSON(jointCommunityPropertyEnrollmentMetadataCreate: JointCommunityPropertyEnrollmentMetadataCreate): string;
+export declare function jointCommunityPropertyEnrollmentMetadataCreateFromJSON(jsonString: string): SafeParseResult<JointCommunityPropertyEnrollmentMetadataCreate, SDKValidationError>;
 //# sourceMappingURL=jointcommunitypropertyenrollmentmetadatacreate.d.ts.map

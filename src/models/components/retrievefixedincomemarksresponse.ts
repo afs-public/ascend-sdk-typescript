@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RetrieveFixedIncomeMarksResponseAssetMark,
   RetrieveFixedIncomeMarksResponseAssetMark$inboundSchema,
@@ -67,4 +70,24 @@ export namespace RetrieveFixedIncomeMarksResponse$ {
   export const outboundSchema = RetrieveFixedIncomeMarksResponse$outboundSchema;
   /** @deprecated use `RetrieveFixedIncomeMarksResponse$Outbound` instead. */
   export type Outbound = RetrieveFixedIncomeMarksResponse$Outbound;
+}
+
+export function retrieveFixedIncomeMarksResponseToJSON(
+  retrieveFixedIncomeMarksResponse: RetrieveFixedIncomeMarksResponse,
+): string {
+  return JSON.stringify(
+    RetrieveFixedIncomeMarksResponse$outboundSchema.parse(
+      retrieveFixedIncomeMarksResponse,
+    ),
+  );
+}
+
+export function retrieveFixedIncomeMarksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveFixedIncomeMarksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveFixedIncomeMarksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveFixedIncomeMarksResponse' from JSON`,
+  );
 }

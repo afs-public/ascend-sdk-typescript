@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrustEnrollmentMetadataCreate$ = exports.TrustEnrollmentMetadataCreate$outboundSchema = exports.TrustEnrollmentMetadataCreate$inboundSchema = exports.OpenedOnBehalfOf$ = exports.OpenedOnBehalfOf$outboundSchema = exports.OpenedOnBehalfOf$inboundSchema = exports.TrustEnrollmentMetadataCreateFdicCashSweep$ = exports.TrustEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.TrustEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.TrustEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.TrustEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.TrustEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.OpenedOnBehalfOf = exports.TrustEnrollmentMetadataCreateFdicCashSweep = exports.TrustEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.trustEnrollmentMetadataCreateToJSON = trustEnrollmentMetadataCreateToJSON;
+exports.trustEnrollmentMetadataCreateFromJSON = trustEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -173,4 +176,10 @@ var TrustEnrollmentMetadataCreate$;
     /** @deprecated use `TrustEnrollmentMetadataCreate$outboundSchema` instead. */
     TrustEnrollmentMetadataCreate$.outboundSchema = exports.TrustEnrollmentMetadataCreate$outboundSchema;
 })(TrustEnrollmentMetadataCreate$ || (exports.TrustEnrollmentMetadataCreate$ = TrustEnrollmentMetadataCreate$ = {}));
+function trustEnrollmentMetadataCreateToJSON(trustEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.TrustEnrollmentMetadataCreate$outboundSchema.parse(trustEnrollmentMetadataCreate));
+}
+function trustEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TrustEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TrustEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=trustenrollmentmetadatacreate.js.map

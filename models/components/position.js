@@ -37,8 +37,35 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Position$ = exports.Position$outboundSchema = exports.Position$inboundSchema = exports.Unrestricted$ = exports.Unrestricted$outboundSchema = exports.Unrestricted$inboundSchema = exports.PositionTrade$ = exports.PositionTrade$outboundSchema = exports.PositionTrade$inboundSchema = exports.Settled$ = exports.Settled$outboundSchema = exports.Settled$inboundSchema = exports.PendingWithdrawal$ = exports.PendingWithdrawal$outboundSchema = exports.PendingWithdrawal$inboundSchema = exports.PendingOutgoingAcat$ = exports.PendingOutgoingAcat$outboundSchema = exports.PendingOutgoingAcat$inboundSchema = exports.PendingDrip$ = exports.PendingDrip$outboundSchema = exports.PendingDrip$inboundSchema = exports.LastAdjustedDate$ = exports.LastAdjustedDate$outboundSchema = exports.LastAdjustedDate$inboundSchema = exports.Free$ = exports.Free$outboundSchema = exports.Free$inboundSchema = exports.PositionFpsl$ = exports.PositionFpsl$outboundSchema = exports.PositionFpsl$inboundSchema = exports.DateT$ = exports.DateT$outboundSchema = exports.DateT$inboundSchema = exports.AdjustedTrade$ = exports.AdjustedTrade$outboundSchema = exports.AdjustedTrade$inboundSchema = exports.AdjustedSettled$ = exports.AdjustedSettled$outboundSchema = exports.AdjustedSettled$inboundSchema = void 0;
+exports.adjustedSettledToJSON = adjustedSettledToJSON;
+exports.adjustedSettledFromJSON = adjustedSettledFromJSON;
+exports.adjustedTradeToJSON = adjustedTradeToJSON;
+exports.adjustedTradeFromJSON = adjustedTradeFromJSON;
+exports.dateToJSON = dateToJSON;
+exports.dateFromJSON = dateFromJSON;
+exports.positionFpslToJSON = positionFpslToJSON;
+exports.positionFpslFromJSON = positionFpslFromJSON;
+exports.freeToJSON = freeToJSON;
+exports.freeFromJSON = freeFromJSON;
+exports.lastAdjustedDateToJSON = lastAdjustedDateToJSON;
+exports.lastAdjustedDateFromJSON = lastAdjustedDateFromJSON;
+exports.pendingDripToJSON = pendingDripToJSON;
+exports.pendingDripFromJSON = pendingDripFromJSON;
+exports.pendingOutgoingAcatToJSON = pendingOutgoingAcatToJSON;
+exports.pendingOutgoingAcatFromJSON = pendingOutgoingAcatFromJSON;
+exports.pendingWithdrawalToJSON = pendingWithdrawalToJSON;
+exports.pendingWithdrawalFromJSON = pendingWithdrawalFromJSON;
+exports.settledToJSON = settledToJSON;
+exports.settledFromJSON = settledFromJSON;
+exports.positionTradeToJSON = positionTradeToJSON;
+exports.positionTradeFromJSON = positionTradeFromJSON;
+exports.unrestrictedToJSON = unrestrictedToJSON;
+exports.unrestrictedFromJSON = unrestrictedFromJSON;
+exports.positionToJSON = positionToJSON;
+exports.positionFromJSON = positionFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AdjustedSettled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +85,12 @@ var AdjustedSettled$;
     /** @deprecated use `AdjustedSettled$outboundSchema` instead. */
     AdjustedSettled$.outboundSchema = exports.AdjustedSettled$outboundSchema;
 })(AdjustedSettled$ || (exports.AdjustedSettled$ = AdjustedSettled$ = {}));
+function adjustedSettledToJSON(adjustedSettled) {
+    return JSON.stringify(exports.AdjustedSettled$outboundSchema.parse(adjustedSettled));
+}
+function adjustedSettledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AdjustedSettled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AdjustedSettled' from JSON`);
+}
 /** @internal */
 exports.AdjustedTrade$inboundSchema = z.object({
     value: z.string().optional(),
@@ -77,6 +110,12 @@ var AdjustedTrade$;
     /** @deprecated use `AdjustedTrade$outboundSchema` instead. */
     AdjustedTrade$.outboundSchema = exports.AdjustedTrade$outboundSchema;
 })(AdjustedTrade$ || (exports.AdjustedTrade$ = AdjustedTrade$ = {}));
+function adjustedTradeToJSON(adjustedTrade) {
+    return JSON.stringify(exports.AdjustedTrade$outboundSchema.parse(adjustedTrade));
+}
+function adjustedTradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AdjustedTrade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AdjustedTrade' from JSON`);
+}
 /** @internal */
 exports.DateT$inboundSchema = z
     .object({
@@ -101,6 +140,12 @@ var DateT$;
     /** @deprecated use `DateT$outboundSchema` instead. */
     DateT$.outboundSchema = exports.DateT$outboundSchema;
 })(DateT$ || (exports.DateT$ = DateT$ = {}));
+function dateToJSON(dateT) {
+    return JSON.stringify(exports.DateT$outboundSchema.parse(dateT));
+}
+function dateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DateT$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DateT' from JSON`);
+}
 /** @internal */
 exports.PositionFpsl$inboundSchema = z.object({
     value: z.string().optional(),
@@ -120,6 +165,12 @@ var PositionFpsl$;
     /** @deprecated use `PositionFpsl$outboundSchema` instead. */
     PositionFpsl$.outboundSchema = exports.PositionFpsl$outboundSchema;
 })(PositionFpsl$ || (exports.PositionFpsl$ = PositionFpsl$ = {}));
+function positionFpslToJSON(positionFpsl) {
+    return JSON.stringify(exports.PositionFpsl$outboundSchema.parse(positionFpsl));
+}
+function positionFpslFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PositionFpsl$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PositionFpsl' from JSON`);
+}
 /** @internal */
 exports.Free$inboundSchema = z
     .object({
@@ -140,6 +191,12 @@ var Free$;
     /** @deprecated use `Free$outboundSchema` instead. */
     Free$.outboundSchema = exports.Free$outboundSchema;
 })(Free$ || (exports.Free$ = Free$ = {}));
+function freeToJSON(free) {
+    return JSON.stringify(exports.Free$outboundSchema.parse(free));
+}
+function freeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Free$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Free' from JSON`);
+}
 /** @internal */
 exports.LastAdjustedDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -163,6 +220,12 @@ var LastAdjustedDate$;
     /** @deprecated use `LastAdjustedDate$outboundSchema` instead. */
     LastAdjustedDate$.outboundSchema = exports.LastAdjustedDate$outboundSchema;
 })(LastAdjustedDate$ || (exports.LastAdjustedDate$ = LastAdjustedDate$ = {}));
+function lastAdjustedDateToJSON(lastAdjustedDate) {
+    return JSON.stringify(exports.LastAdjustedDate$outboundSchema.parse(lastAdjustedDate));
+}
+function lastAdjustedDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LastAdjustedDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LastAdjustedDate' from JSON`);
+}
 /** @internal */
 exports.PendingDrip$inboundSchema = z.object({
     value: z.string().optional(),
@@ -182,6 +245,12 @@ var PendingDrip$;
     /** @deprecated use `PendingDrip$outboundSchema` instead. */
     PendingDrip$.outboundSchema = exports.PendingDrip$outboundSchema;
 })(PendingDrip$ || (exports.PendingDrip$ = PendingDrip$ = {}));
+function pendingDripToJSON(pendingDrip) {
+    return JSON.stringify(exports.PendingDrip$outboundSchema.parse(pendingDrip));
+}
+function pendingDripFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PendingDrip$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PendingDrip' from JSON`);
+}
 /** @internal */
 exports.PendingOutgoingAcat$inboundSchema = z.object({
     value: z.string().optional(),
@@ -201,6 +270,12 @@ var PendingOutgoingAcat$;
     /** @deprecated use `PendingOutgoingAcat$outboundSchema` instead. */
     PendingOutgoingAcat$.outboundSchema = exports.PendingOutgoingAcat$outboundSchema;
 })(PendingOutgoingAcat$ || (exports.PendingOutgoingAcat$ = PendingOutgoingAcat$ = {}));
+function pendingOutgoingAcatToJSON(pendingOutgoingAcat) {
+    return JSON.stringify(exports.PendingOutgoingAcat$outboundSchema.parse(pendingOutgoingAcat));
+}
+function pendingOutgoingAcatFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PendingOutgoingAcat$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PendingOutgoingAcat' from JSON`);
+}
 /** @internal */
 exports.PendingWithdrawal$inboundSchema = z.object({
     value: z.string().optional(),
@@ -220,6 +295,12 @@ var PendingWithdrawal$;
     /** @deprecated use `PendingWithdrawal$outboundSchema` instead. */
     PendingWithdrawal$.outboundSchema = exports.PendingWithdrawal$outboundSchema;
 })(PendingWithdrawal$ || (exports.PendingWithdrawal$ = PendingWithdrawal$ = {}));
+function pendingWithdrawalToJSON(pendingWithdrawal) {
+    return JSON.stringify(exports.PendingWithdrawal$outboundSchema.parse(pendingWithdrawal));
+}
+function pendingWithdrawalFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PendingWithdrawal$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PendingWithdrawal' from JSON`);
+}
 /** @internal */
 exports.Settled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -239,6 +320,12 @@ var Settled$;
     /** @deprecated use `Settled$outboundSchema` instead. */
     Settled$.outboundSchema = exports.Settled$outboundSchema;
 })(Settled$ || (exports.Settled$ = Settled$ = {}));
+function settledToJSON(settled) {
+    return JSON.stringify(exports.Settled$outboundSchema.parse(settled));
+}
+function settledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Settled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Settled' from JSON`);
+}
 /** @internal */
 exports.PositionTrade$inboundSchema = z.object({
     value: z.string().optional(),
@@ -258,6 +345,12 @@ var PositionTrade$;
     /** @deprecated use `PositionTrade$outboundSchema` instead. */
     PositionTrade$.outboundSchema = exports.PositionTrade$outboundSchema;
 })(PositionTrade$ || (exports.PositionTrade$ = PositionTrade$ = {}));
+function positionTradeToJSON(positionTrade) {
+    return JSON.stringify(exports.PositionTrade$outboundSchema.parse(positionTrade));
+}
+function positionTradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PositionTrade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PositionTrade' from JSON`);
+}
 /** @internal */
 exports.Unrestricted$inboundSchema = z.object({
     value: z.string().optional(),
@@ -277,6 +370,12 @@ var Unrestricted$;
     /** @deprecated use `Unrestricted$outboundSchema` instead. */
     Unrestricted$.outboundSchema = exports.Unrestricted$outboundSchema;
 })(Unrestricted$ || (exports.Unrestricted$ = Unrestricted$ = {}));
+function unrestrictedToJSON(unrestricted) {
+    return JSON.stringify(exports.Unrestricted$outboundSchema.parse(unrestricted));
+}
+function unrestrictedFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Unrestricted$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Unrestricted' from JSON`);
+}
 /** @internal */
 exports.Position$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -363,4 +462,10 @@ var Position$;
     /** @deprecated use `Position$outboundSchema` instead. */
     Position$.outboundSchema = exports.Position$outboundSchema;
 })(Position$ || (exports.Position$ = Position$ = {}));
+function positionToJSON(position) {
+    return JSON.stringify(exports.Position$outboundSchema.parse(position));
+}
+function positionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Position$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Position' from JSON`);
+}
 //# sourceMappingURL=position.js.map

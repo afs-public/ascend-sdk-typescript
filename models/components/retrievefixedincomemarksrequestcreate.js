@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveFixedIncomeMarksRequestCreate$ = exports.RetrieveFixedIncomeMarksRequestCreate$outboundSchema = exports.RetrieveFixedIncomeMarksRequestCreate$inboundSchema = void 0;
+exports.retrieveFixedIncomeMarksRequestCreateToJSON = retrieveFixedIncomeMarksRequestCreateToJSON;
+exports.retrieveFixedIncomeMarksRequestCreateFromJSON = retrieveFixedIncomeMarksRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const retrievefixedincomemarksrequestsecurityidentifierscreate_js_1 = require("./retrievefixedincomemarksrequestsecurityidentifierscreate.js");
 /** @internal */
 exports.RetrieveFixedIncomeMarksRequestCreate$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var RetrieveFixedIncomeMarksRequestCreate$;
     /** @deprecated use `RetrieveFixedIncomeMarksRequestCreate$outboundSchema` instead. */
     RetrieveFixedIncomeMarksRequestCreate$.outboundSchema = exports.RetrieveFixedIncomeMarksRequestCreate$outboundSchema;
 })(RetrieveFixedIncomeMarksRequestCreate$ || (exports.RetrieveFixedIncomeMarksRequestCreate$ = RetrieveFixedIncomeMarksRequestCreate$ = {}));
+function retrieveFixedIncomeMarksRequestCreateToJSON(retrieveFixedIncomeMarksRequestCreate) {
+    return JSON.stringify(exports.RetrieveFixedIncomeMarksRequestCreate$outboundSchema.parse(retrieveFixedIncomeMarksRequestCreate));
+}
+function retrieveFixedIncomeMarksRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveFixedIncomeMarksRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetrieveFixedIncomeMarksRequestCreate' from JSON`);
+}
 //# sourceMappingURL=retrievefixedincomemarksrequestcreate.js.map

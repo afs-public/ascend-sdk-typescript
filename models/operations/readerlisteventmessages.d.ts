@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type ReaderListEventMessagesRequest = {
     /**
      * A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; If left empty, all events the user has permission to view are returned; Filter options include:
@@ -57,6 +59,8 @@ export declare namespace ReaderListEventMessagesRequest$ {
     /** @deprecated use `ReaderListEventMessagesRequest$Outbound` instead. */
     type Outbound = ReaderListEventMessagesRequest$Outbound;
 }
+export declare function readerListEventMessagesRequestToJSON(readerListEventMessagesRequest: ReaderListEventMessagesRequest): string;
+export declare function readerListEventMessagesRequestFromJSON(jsonString: string): SafeParseResult<ReaderListEventMessagesRequest, SDKValidationError>;
 /** @internal */
 export declare const ReaderListEventMessagesResponse$inboundSchema: z.ZodType<ReaderListEventMessagesResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -79,4 +83,6 @@ export declare namespace ReaderListEventMessagesResponse$ {
     /** @deprecated use `ReaderListEventMessagesResponse$Outbound` instead. */
     type Outbound = ReaderListEventMessagesResponse$Outbound;
 }
+export declare function readerListEventMessagesResponseToJSON(readerListEventMessagesResponse: ReaderListEventMessagesResponse): string;
+export declare function readerListEventMessagesResponseFromJSON(jsonString: string): SafeParseResult<ReaderListEventMessagesResponse, SDKValidationError>;
 //# sourceMappingURL=readerlisteventmessages.d.ts.map

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketOrderCreate$ = exports.BasketOrderCreate$outboundSchema = exports.BasketOrderCreate$inboundSchema = exports.BasketOrderCreateTimeInForce$ = exports.BasketOrderCreateTimeInForce$outboundSchema = exports.BasketOrderCreateTimeInForce$inboundSchema = exports.BasketOrderCreateSpecialReportingInstructions$ = exports.BasketOrderCreateSpecialReportingInstructions$outboundSchema = exports.BasketOrderCreateSpecialReportingInstructions$inboundSchema = exports.BasketOrderCreateSide$ = exports.BasketOrderCreateSide$outboundSchema = exports.BasketOrderCreateSide$inboundSchema = exports.BasketOrderCreateOrderType$ = exports.BasketOrderCreateOrderType$outboundSchema = exports.BasketOrderCreateOrderType$inboundSchema = exports.BasketOrderCreateIdentifierType$ = exports.BasketOrderCreateIdentifierType$outboundSchema = exports.BasketOrderCreateIdentifierType$inboundSchema = exports.BasketOrderCreateAssetType$ = exports.BasketOrderCreateAssetType$outboundSchema = exports.BasketOrderCreateAssetType$inboundSchema = exports.BasketOrderCreateTimeInForce = exports.BasketOrderCreateSpecialReportingInstructions = exports.BasketOrderCreateSide = exports.BasketOrderCreateOrderType = exports.BasketOrderCreateIdentifierType = exports.BasketOrderCreateAssetType = void 0;
+exports.basketOrderCreateToJSON = basketOrderCreateToJSON;
+exports.basketOrderCreateFromJSON = basketOrderCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -293,4 +296,10 @@ var BasketOrderCreate$;
     /** @deprecated use `BasketOrderCreate$outboundSchema` instead. */
     BasketOrderCreate$.outboundSchema = exports.BasketOrderCreate$outboundSchema;
 })(BasketOrderCreate$ || (exports.BasketOrderCreate$ = BasketOrderCreate$ = {}));
+function basketOrderCreateToJSON(basketOrderCreate) {
+    return JSON.stringify(exports.BasketOrderCreate$outboundSchema.parse(basketOrderCreate));
+}
+function basketOrderCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrderCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrderCreate' from JSON`);
+}
 //# sourceMappingURL=basketordercreate.js.map

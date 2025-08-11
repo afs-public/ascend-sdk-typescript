@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CustomerIdentificationResult, CustomerIdentificationResult$Outbound } from "./customeridentificationresult.js";
 import { IdentityIdentification, IdentityIdentification$Outbound } from "./identityidentification.js";
 export declare enum CheckTypes {
@@ -262,6 +264,8 @@ export declare namespace CustomerIdentificationBirthDate$ {
     /** @deprecated use `CustomerIdentificationBirthDate$Outbound` instead. */
     type Outbound = CustomerIdentificationBirthDate$Outbound;
 }
+export declare function customerIdentificationBirthDateToJSON(customerIdentificationBirthDate: CustomerIdentificationBirthDate): string;
+export declare function customerIdentificationBirthDateFromJSON(jsonString: string): SafeParseResult<CustomerIdentificationBirthDate, SDKValidationError>;
 /** @internal */
 export declare const CustomerIdentificationLegalAddress$inboundSchema: z.ZodType<CustomerIdentificationLegalAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -292,6 +296,8 @@ export declare namespace CustomerIdentificationLegalAddress$ {
     /** @deprecated use `CustomerIdentificationLegalAddress$Outbound` instead. */
     type Outbound = CustomerIdentificationLegalAddress$Outbound;
 }
+export declare function customerIdentificationLegalAddressToJSON(customerIdentificationLegalAddress: CustomerIdentificationLegalAddress): string;
+export declare function customerIdentificationLegalAddressFromJSON(jsonString: string): SafeParseResult<CustomerIdentificationLegalAddress, SDKValidationError>;
 /** @internal */
 export declare const Identity$inboundSchema: z.ZodType<Identity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -320,6 +326,8 @@ export declare namespace Identity$ {
     /** @deprecated use `Identity$Outbound` instead. */
     type Outbound = Identity$Outbound;
 }
+export declare function identityToJSON(identity: Identity): string;
+export declare function identityFromJSON(jsonString: string): SafeParseResult<Identity, SDKValidationError>;
 /** @internal */
 export declare const CustomerIdentification$inboundSchema: z.ZodType<CustomerIdentification, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -343,4 +351,6 @@ export declare namespace CustomerIdentification$ {
     /** @deprecated use `CustomerIdentification$Outbound` instead. */
     type Outbound = CustomerIdentification$Outbound;
 }
+export declare function customerIdentificationToJSON(customerIdentification: CustomerIdentification): string;
+export declare function customerIdentificationFromJSON(jsonString: string): SafeParseResult<CustomerIdentification, SDKValidationError>;
 //# sourceMappingURL=customeridentification.d.ts.map

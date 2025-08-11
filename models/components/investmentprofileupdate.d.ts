@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AccountGoalsUpdate, AccountGoalsUpdate$Outbound } from "./accountgoalsupdate.js";
 import { CustomerProfileUpdate, CustomerProfileUpdate$Outbound } from "./customerprofileupdate.js";
 /**
@@ -35,4 +37,6 @@ export declare namespace InvestmentProfileUpdate$ {
     /** @deprecated use `InvestmentProfileUpdate$Outbound` instead. */
     type Outbound = InvestmentProfileUpdate$Outbound;
 }
+export declare function investmentProfileUpdateToJSON(investmentProfileUpdate: InvestmentProfileUpdate): string;
+export declare function investmentProfileUpdateFromJSON(jsonString: string): SafeParseResult<InvestmentProfileUpdate, SDKValidationError>;
 //# sourceMappingURL=investmentprofileupdate.d.ts.map

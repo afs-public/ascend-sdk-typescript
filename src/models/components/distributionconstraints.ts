@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DistributionConstraintsDistributionTypeInfo,
   DistributionConstraintsDistributionTypeInfo$inboundSchema,
@@ -78,4 +81,22 @@ export namespace DistributionConstraints$ {
   export const outboundSchema = DistributionConstraints$outboundSchema;
   /** @deprecated use `DistributionConstraints$Outbound` instead. */
   export type Outbound = DistributionConstraints$Outbound;
+}
+
+export function distributionConstraintsToJSON(
+  distributionConstraints: DistributionConstraints,
+): string {
+  return JSON.stringify(
+    DistributionConstraints$outboundSchema.parse(distributionConstraints),
+  );
+}
+
+export function distributionConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<DistributionConstraints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DistributionConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DistributionConstraints' from JSON`,
+  );
 }

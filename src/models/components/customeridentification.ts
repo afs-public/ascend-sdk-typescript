@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomerIdentificationResult,
   CustomerIdentificationResult$inboundSchema,
@@ -325,6 +328,26 @@ export namespace CustomerIdentificationBirthDate$ {
   export type Outbound = CustomerIdentificationBirthDate$Outbound;
 }
 
+export function customerIdentificationBirthDateToJSON(
+  customerIdentificationBirthDate: CustomerIdentificationBirthDate,
+): string {
+  return JSON.stringify(
+    CustomerIdentificationBirthDate$outboundSchema.parse(
+      customerIdentificationBirthDate,
+    ),
+  );
+}
+
+export function customerIdentificationBirthDateFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerIdentificationBirthDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerIdentificationBirthDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerIdentificationBirthDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const CustomerIdentificationLegalAddress$inboundSchema: z.ZodType<
   CustomerIdentificationLegalAddress,
@@ -408,6 +431,27 @@ export namespace CustomerIdentificationLegalAddress$ {
     CustomerIdentificationLegalAddress$outboundSchema;
   /** @deprecated use `CustomerIdentificationLegalAddress$Outbound` instead. */
   export type Outbound = CustomerIdentificationLegalAddress$Outbound;
+}
+
+export function customerIdentificationLegalAddressToJSON(
+  customerIdentificationLegalAddress: CustomerIdentificationLegalAddress,
+): string {
+  return JSON.stringify(
+    CustomerIdentificationLegalAddress$outboundSchema.parse(
+      customerIdentificationLegalAddress,
+    ),
+  );
+}
+
+export function customerIdentificationLegalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerIdentificationLegalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CustomerIdentificationLegalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerIdentificationLegalAddress' from JSON`,
+  );
 }
 
 /** @internal */
@@ -503,6 +547,20 @@ export namespace Identity$ {
   export type Outbound = Identity$Outbound;
 }
 
+export function identityToJSON(identity: Identity): string {
+  return JSON.stringify(Identity$outboundSchema.parse(identity));
+}
+
+export function identityFromJSON(
+  jsonString: string,
+): SafeParseResult<Identity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Identity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Identity' from JSON`,
+  );
+}
+
 /** @internal */
 export const CustomerIdentification$inboundSchema: z.ZodType<
   CustomerIdentification,
@@ -554,4 +612,22 @@ export namespace CustomerIdentification$ {
   export const outboundSchema = CustomerIdentification$outboundSchema;
   /** @deprecated use `CustomerIdentification$Outbound` instead. */
   export type Outbound = CustomerIdentification$Outbound;
+}
+
+export function customerIdentificationToJSON(
+  customerIdentification: CustomerIdentification,
+): string {
+  return JSON.stringify(
+    CustomerIdentification$outboundSchema.parse(customerIdentification),
+  );
+}
+
+export function customerIdentificationFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerIdentification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerIdentification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerIdentification' from JSON`,
+  );
 }

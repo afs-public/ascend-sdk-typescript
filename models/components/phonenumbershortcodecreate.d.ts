@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * An object representing a short code, which is a phone number that is typically much shorter than regular phone numbers and can be used to address messages in MMS and SMS systems, as well as for abbreviated dialing (e.g. "Text 611 to see how many minutes you have remaining on your plan.").
  *
@@ -42,4 +44,6 @@ export declare namespace PhoneNumberShortCodeCreate$ {
     /** @deprecated use `PhoneNumberShortCodeCreate$Outbound` instead. */
     type Outbound = PhoneNumberShortCodeCreate$Outbound;
 }
+export declare function phoneNumberShortCodeCreateToJSON(phoneNumberShortCodeCreate: PhoneNumberShortCodeCreate): string;
+export declare function phoneNumberShortCodeCreateFromJSON(jsonString: string): SafeParseResult<PhoneNumberShortCodeCreate, SDKValidationError>;
 //# sourceMappingURL=phonenumbershortcodecreate.d.ts.map

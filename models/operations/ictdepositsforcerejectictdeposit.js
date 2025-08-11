@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IctDepositsForceRejectIctDepositResponse$ = exports.IctDepositsForceRejectIctDepositResponse$outboundSchema = exports.IctDepositsForceRejectIctDepositResponse$inboundSchema = exports.IctDepositsForceRejectIctDepositRequest$ = exports.IctDepositsForceRejectIctDepositRequest$outboundSchema = exports.IctDepositsForceRejectIctDepositRequest$inboundSchema = void 0;
+exports.ictDepositsForceRejectIctDepositRequestToJSON = ictDepositsForceRejectIctDepositRequestToJSON;
+exports.ictDepositsForceRejectIctDepositRequestFromJSON = ictDepositsForceRejectIctDepositRequestFromJSON;
+exports.ictDepositsForceRejectIctDepositResponseToJSON = ictDepositsForceRejectIctDepositResponseToJSON;
+exports.ictDepositsForceRejectIctDepositResponseFromJSON = ictDepositsForceRejectIctDepositResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.IctDepositsForceRejectIctDepositRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var IctDepositsForceRejectIctDepositRequest$;
     /** @deprecated use `IctDepositsForceRejectIctDepositRequest$outboundSchema` instead. */
     IctDepositsForceRejectIctDepositRequest$.outboundSchema = exports.IctDepositsForceRejectIctDepositRequest$outboundSchema;
 })(IctDepositsForceRejectIctDepositRequest$ || (exports.IctDepositsForceRejectIctDepositRequest$ = IctDepositsForceRejectIctDepositRequest$ = {}));
+function ictDepositsForceRejectIctDepositRequestToJSON(ictDepositsForceRejectIctDepositRequest) {
+    return JSON.stringify(exports.IctDepositsForceRejectIctDepositRequest$outboundSchema.parse(ictDepositsForceRejectIctDepositRequest));
+}
+function ictDepositsForceRejectIctDepositRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositsForceRejectIctDepositRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositsForceRejectIctDepositRequest' from JSON`);
+}
 /** @internal */
 exports.IctDepositsForceRejectIctDepositResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var IctDepositsForceRejectIctDepositResponse$;
     /** @deprecated use `IctDepositsForceRejectIctDepositResponse$outboundSchema` instead. */
     IctDepositsForceRejectIctDepositResponse$.outboundSchema = exports.IctDepositsForceRejectIctDepositResponse$outboundSchema;
 })(IctDepositsForceRejectIctDepositResponse$ || (exports.IctDepositsForceRejectIctDepositResponse$ = IctDepositsForceRejectIctDepositResponse$ = {}));
+function ictDepositsForceRejectIctDepositResponseToJSON(ictDepositsForceRejectIctDepositResponse) {
+    return JSON.stringify(exports.IctDepositsForceRejectIctDepositResponse$outboundSchema.parse(ictDepositsForceRejectIctDepositResponse));
+}
+function ictDepositsForceRejectIctDepositResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositsForceRejectIctDepositResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositsForceRejectIctDepositResponse' from JSON`);
+}
 //# sourceMappingURL=ictdepositsforcerejectictdeposit.js.map

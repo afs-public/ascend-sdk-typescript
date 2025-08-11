@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The view to return. Defaults to `BASIC`.
@@ -168,6 +171,26 @@ export namespace AccountsListAccountsRequest$ {
   export type Outbound = AccountsListAccountsRequest$Outbound;
 }
 
+export function accountsListAccountsRequestToJSON(
+  accountsListAccountsRequest: AccountsListAccountsRequest,
+): string {
+  return JSON.stringify(
+    AccountsListAccountsRequest$outboundSchema.parse(
+      accountsListAccountsRequest,
+    ),
+  );
+}
+
+export function accountsListAccountsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListAccountsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListAccountsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListAccountsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsListAccountsResponse$inboundSchema: z.ZodType<
   AccountsListAccountsResponse,
@@ -222,4 +245,24 @@ export namespace AccountsListAccountsResponse$ {
   export const outboundSchema = AccountsListAccountsResponse$outboundSchema;
   /** @deprecated use `AccountsListAccountsResponse$Outbound` instead. */
   export type Outbound = AccountsListAccountsResponse$Outbound;
+}
+
+export function accountsListAccountsResponseToJSON(
+  accountsListAccountsResponse: AccountsListAccountsResponse,
+): string {
+  return JSON.stringify(
+    AccountsListAccountsResponse$outboundSchema.parse(
+      accountsListAccountsResponse,
+    ),
+  );
+}
+
+export function accountsListAccountsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListAccountsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListAccountsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListAccountsResponse' from JSON`,
+  );
 }

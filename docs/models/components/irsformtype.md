@@ -7,7 +7,7 @@ IRS form type.
 ```typescript
 import { IrsFormType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: IrsFormType = IrsFormType.W8Ben;
+let value: IrsFormType = IrsFormType.W9;
 ```
 
 ## Values

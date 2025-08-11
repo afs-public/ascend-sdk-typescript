@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether or not the customer birth date was verified
@@ -191,6 +194,10 @@ export type CustomerIdentificationResult = {
    * Whether or not the customer email was verified
    */
   emailVerified?: EmailVerifiedOpen | undefined;
+  /**
+   * Whether or not the result is expired An expired result will cause all `VerificationState`'s to be `UNVERIFIED`, the `ExpirationState` will be `EXPIRED` Will always be `false` for synchronous checks such as `DATABASE` Will be `true` when an asynchronous check such as `DOCUMENTARY` hasn't been completed within the timeframe If `true` the `completed` field will be `false` since a check was never completed
+   */
+  expired?: boolean | undefined;
   /**
    * The name of the external vendor
    */
@@ -563,6 +570,7 @@ export const CustomerIdentificationResult$inboundSchema: z.ZodType<
   document_verification_ids: z.array(z.string()).optional(),
   documentary_session_uri: z.string().optional(),
   email_verified: EmailVerified$inboundSchema.optional(),
+  expired: z.boolean().optional(),
   external_vendor: z.string().optional(),
   external_vendor_id: z.string().optional(),
   identification_number_verified: IdentificationNumberVerified$inboundSchema
@@ -603,6 +611,7 @@ export type CustomerIdentificationResult$Outbound = {
   document_verification_ids?: Array<string> | undefined;
   documentary_session_uri?: string | undefined;
   email_verified?: string | undefined;
+  expired?: boolean | undefined;
   external_vendor?: string | undefined;
   external_vendor_id?: string | undefined;
   identification_number_verified?: string | undefined;
@@ -628,6 +637,7 @@ export const CustomerIdentificationResult$outboundSchema: z.ZodType<
   documentVerificationIds: z.array(z.string()).optional(),
   documentarySessionUri: z.string().optional(),
   emailVerified: EmailVerified$outboundSchema.optional(),
+  expired: z.boolean().optional(),
   externalVendor: z.string().optional(),
   externalVendorId: z.string().optional(),
   identificationNumberVerified: IdentificationNumberVerified$outboundSchema
@@ -670,4 +680,24 @@ export namespace CustomerIdentificationResult$ {
   export const outboundSchema = CustomerIdentificationResult$outboundSchema;
   /** @deprecated use `CustomerIdentificationResult$Outbound` instead. */
   export type Outbound = CustomerIdentificationResult$Outbound;
+}
+
+export function customerIdentificationResultToJSON(
+  customerIdentificationResult: CustomerIdentificationResult,
+): string {
+  return JSON.stringify(
+    CustomerIdentificationResult$outboundSchema.parse(
+      customerIdentificationResult,
+    ),
+  );
+}
+
+export function customerIdentificationResultFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerIdentificationResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerIdentificationResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerIdentificationResult' from JSON`,
+  );
 }

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositsForceApproveAchDepositResponse$ = exports.AchDepositsForceApproveAchDepositResponse$outboundSchema = exports.AchDepositsForceApproveAchDepositResponse$inboundSchema = exports.AchDepositsForceApproveAchDepositRequest$ = exports.AchDepositsForceApproveAchDepositRequest$outboundSchema = exports.AchDepositsForceApproveAchDepositRequest$inboundSchema = void 0;
+exports.achDepositsForceApproveAchDepositRequestToJSON = achDepositsForceApproveAchDepositRequestToJSON;
+exports.achDepositsForceApproveAchDepositRequestFromJSON = achDepositsForceApproveAchDepositRequestFromJSON;
+exports.achDepositsForceApproveAchDepositResponseToJSON = achDepositsForceApproveAchDepositResponseToJSON;
+exports.achDepositsForceApproveAchDepositResponseFromJSON = achDepositsForceApproveAchDepositResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AchDepositsForceApproveAchDepositRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AchDepositsForceApproveAchDepositRequest$;
     /** @deprecated use `AchDepositsForceApproveAchDepositRequest$outboundSchema` instead. */
     AchDepositsForceApproveAchDepositRequest$.outboundSchema = exports.AchDepositsForceApproveAchDepositRequest$outboundSchema;
 })(AchDepositsForceApproveAchDepositRequest$ || (exports.AchDepositsForceApproveAchDepositRequest$ = AchDepositsForceApproveAchDepositRequest$ = {}));
+function achDepositsForceApproveAchDepositRequestToJSON(achDepositsForceApproveAchDepositRequest) {
+    return JSON.stringify(exports.AchDepositsForceApproveAchDepositRequest$outboundSchema.parse(achDepositsForceApproveAchDepositRequest));
+}
+function achDepositsForceApproveAchDepositRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositsForceApproveAchDepositRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositsForceApproveAchDepositRequest' from JSON`);
+}
 /** @internal */
 exports.AchDepositsForceApproveAchDepositResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var AchDepositsForceApproveAchDepositResponse$;
     /** @deprecated use `AchDepositsForceApproveAchDepositResponse$outboundSchema` instead. */
     AchDepositsForceApproveAchDepositResponse$.outboundSchema = exports.AchDepositsForceApproveAchDepositResponse$outboundSchema;
 })(AchDepositsForceApproveAchDepositResponse$ || (exports.AchDepositsForceApproveAchDepositResponse$ = AchDepositsForceApproveAchDepositResponse$ = {}));
+function achDepositsForceApproveAchDepositResponseToJSON(achDepositsForceApproveAchDepositResponse) {
+    return JSON.stringify(exports.AchDepositsForceApproveAchDepositResponse$outboundSchema.parse(achDepositsForceApproveAchDepositResponse));
+}
+function achDepositsForceApproveAchDepositResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositsForceApproveAchDepositResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositsForceApproveAchDepositResponse' from JSON`);
+}
 //# sourceMappingURL=achdepositsforceapproveachdeposit.js.map

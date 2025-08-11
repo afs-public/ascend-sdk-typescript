@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest = {
     /**
      * The account id.
@@ -57,6 +59,8 @@ export declare namespace WireWithdrawalSchedulesListWireWithdrawalSchedulesReque
     /** @deprecated use `WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$Outbound` instead. */
     type Outbound = WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$Outbound;
 }
+export declare function wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestToJSON(wireWithdrawalSchedulesListWireWithdrawalSchedulesRequest: WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest): string;
+export declare function wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$inboundSchema: z.ZodType<WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -79,4 +83,6 @@ export declare namespace WireWithdrawalSchedulesListWireWithdrawalSchedulesRespo
     /** @deprecated use `WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$Outbound` instead. */
     type Outbound = WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$Outbound;
 }
+export declare function wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseToJSON(wireWithdrawalSchedulesListWireWithdrawalSchedulesResponse: WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse): string;
+export declare function wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalscheduleslistwirewithdrawalschedules.d.ts.map

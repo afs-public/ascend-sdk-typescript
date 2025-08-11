@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountTaxProfileUpdate$ = exports.AccountTaxProfileUpdate$outboundSchema = exports.AccountTaxProfileUpdate$inboundSchema = exports.AccountTaxProfileUpdateCostBasisLotDisposalMethod$ = exports.AccountTaxProfileUpdateCostBasisLotDisposalMethod$outboundSchema = exports.AccountTaxProfileUpdateCostBasisLotDisposalMethod$inboundSchema = exports.AccountTaxProfileUpdateCostBasisLotDisposalMethod = void 0;
+exports.accountTaxProfileUpdateToJSON = accountTaxProfileUpdateToJSON;
+exports.accountTaxProfileUpdateFromJSON = accountTaxProfileUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * A method of determining the cost basis of an asset that has been sold or disposed of, by identifying which specific lot of the asset was sold and using the cost of that lot to calculate the cost basis; this method is commonly used for tax purposes to determine the amount of reportable capital gains or losses By default, this is set to `COST_BASIS_LOT_DISPOSAL_MIN_TAX_TERM`
@@ -109,4 +112,10 @@ var AccountTaxProfileUpdate$;
     /** @deprecated use `AccountTaxProfileUpdate$outboundSchema` instead. */
     AccountTaxProfileUpdate$.outboundSchema = exports.AccountTaxProfileUpdate$outboundSchema;
 })(AccountTaxProfileUpdate$ || (exports.AccountTaxProfileUpdate$ = AccountTaxProfileUpdate$ = {}));
+function accountTaxProfileUpdateToJSON(accountTaxProfileUpdate) {
+    return JSON.stringify(exports.AccountTaxProfileUpdate$outboundSchema.parse(accountTaxProfileUpdate));
+}
+function accountTaxProfileUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountTaxProfileUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountTaxProfileUpdate' from JSON`);
+}
 //# sourceMappingURL=accounttaxprofileupdate.js.map

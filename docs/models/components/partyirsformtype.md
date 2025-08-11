@@ -7,7 +7,7 @@ IRS form type.
 ```typescript
 import { PartyIrsFormType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: PartyIrsFormType = PartyIrsFormType.W8Ben;
+let value: PartyIrsFormType = PartyIrsFormType.IrsFormTypeUnspecified;
 ```
 
 ## Values

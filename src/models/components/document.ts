@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the contents of a document and how it is used
@@ -278,6 +281,8 @@ export enum DocumentInvestorDocumentDocumentType {
   Form1099C = "FORM_1099_C",
   Form4806D = "FORM_480_6D",
   Form5498Esa = "FORM_5498_ESA",
+  FpslNegativeConsentForm = "FPSL_NEGATIVE_CONSENT_FORM",
+  CrsForm = "CRS_FORM",
 }
 /**
  * Describes the contents of a document and how it is used
@@ -426,6 +431,20 @@ export namespace UploadedDate$ {
   export type Outbound = UploadedDate$Outbound;
 }
 
+export function uploadedDateToJSON(uploadedDate: UploadedDate): string {
+  return JSON.stringify(UploadedDate$outboundSchema.parse(uploadedDate));
+}
+
+export function uploadedDateFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadedDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadedDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadedDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountDocument$inboundSchema: z.ZodType<
   AccountDocument,
@@ -480,6 +499,22 @@ export namespace AccountDocument$ {
   export const outboundSchema = AccountDocument$outboundSchema;
   /** @deprecated use `AccountDocument$Outbound` instead. */
   export type Outbound = AccountDocument$Outbound;
+}
+
+export function accountDocumentToJSON(
+  accountDocument: AccountDocument,
+): string {
+  return JSON.stringify(AccountDocument$outboundSchema.parse(accountDocument));
+}
+
+export function accountDocumentFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountDocument, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountDocument$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountDocument' from JSON`,
+  );
 }
 
 /** @internal */
@@ -556,6 +591,24 @@ export namespace DocumentUploadedDate$ {
   export type Outbound = DocumentUploadedDate$Outbound;
 }
 
+export function documentUploadedDateToJSON(
+  documentUploadedDate: DocumentUploadedDate,
+): string {
+  return JSON.stringify(
+    DocumentUploadedDate$outboundSchema.parse(documentUploadedDate),
+  );
+}
+
+export function documentUploadedDateFromJSON(
+  jsonString: string,
+): SafeParseResult<DocumentUploadedDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DocumentUploadedDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DocumentUploadedDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const IdDocument$inboundSchema: z.ZodType<
   IdDocument,
@@ -610,6 +663,20 @@ export namespace IdDocument$ {
   export const outboundSchema = IdDocument$outboundSchema;
   /** @deprecated use `IdDocument$Outbound` instead. */
   export type Outbound = IdDocument$Outbound;
+}
+
+export function idDocumentToJSON(idDocument: IdDocument): string {
+  return JSON.stringify(IdDocument$outboundSchema.parse(idDocument));
+}
+
+export function idDocumentFromJSON(
+  jsonString: string,
+): SafeParseResult<IdDocument, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IdDocument$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IdDocument' from JSON`,
+  );
 }
 
 /** @internal */
@@ -688,6 +755,24 @@ export namespace DocumentProcessDate$ {
   export type Outbound = DocumentProcessDate$Outbound;
 }
 
+export function documentProcessDateToJSON(
+  documentProcessDate: DocumentProcessDate,
+): string {
+  return JSON.stringify(
+    DocumentProcessDate$outboundSchema.parse(documentProcessDate),
+  );
+}
+
+export function documentProcessDateFromJSON(
+  jsonString: string,
+): SafeParseResult<DocumentProcessDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DocumentProcessDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DocumentProcessDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const InvestorDocument$inboundSchema: z.ZodType<
   InvestorDocument,
@@ -742,6 +827,24 @@ export namespace InvestorDocument$ {
   export const outboundSchema = InvestorDocument$outboundSchema;
   /** @deprecated use `InvestorDocument$Outbound` instead. */
   export type Outbound = InvestorDocument$Outbound;
+}
+
+export function investorDocumentToJSON(
+  investorDocument: InvestorDocument,
+): string {
+  return JSON.stringify(
+    InvestorDocument$outboundSchema.parse(investorDocument),
+  );
+}
+
+export function investorDocumentFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestorDocument, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestorDocument$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestorDocument' from JSON`,
+  );
 }
 
 /** @internal */
@@ -813,4 +916,18 @@ export namespace Document$ {
   export const outboundSchema = Document$outboundSchema;
   /** @deprecated use `Document$Outbound` instead. */
   export type Outbound = Document$Outbound;
+}
+
+export function documentToJSON(document: Document): string {
+  return JSON.stringify(Document$outboundSchema.parse(document));
+}
+
+export function documentFromJSON(
+  jsonString: string,
+): SafeParseResult<Document, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Document$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Document' from JSON`,
+  );
 }

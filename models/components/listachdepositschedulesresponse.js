@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListAchDepositSchedulesResponse$ = exports.ListAchDepositSchedulesResponse$outboundSchema = exports.ListAchDepositSchedulesResponse$inboundSchema = void 0;
+exports.listAchDepositSchedulesResponseToJSON = listAchDepositSchedulesResponseToJSON;
+exports.listAchDepositSchedulesResponseFromJSON = listAchDepositSchedulesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const achdepositschedule_js_1 = require("./achdepositschedule.js");
 /** @internal */
 exports.ListAchDepositSchedulesResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListAchDepositSchedulesResponse$;
     /** @deprecated use `ListAchDepositSchedulesResponse$outboundSchema` instead. */
     ListAchDepositSchedulesResponse$.outboundSchema = exports.ListAchDepositSchedulesResponse$outboundSchema;
 })(ListAchDepositSchedulesResponse$ || (exports.ListAchDepositSchedulesResponse$ = ListAchDepositSchedulesResponse$ = {}));
+function listAchDepositSchedulesResponseToJSON(listAchDepositSchedulesResponse) {
+    return JSON.stringify(exports.ListAchDepositSchedulesResponse$outboundSchema.parse(listAchDepositSchedulesResponse));
+}
+function listAchDepositSchedulesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListAchDepositSchedulesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListAchDepositSchedulesResponse' from JSON`);
+}
 //# sourceMappingURL=listachdepositschedulesresponse.js.map

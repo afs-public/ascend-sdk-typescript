@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BankAccountUpdate, BankAccountUpdate$Outbound } from "./bankaccountupdate.js";
 /**
  * A relationship between a bank account and an Apex account.
@@ -39,4 +41,6 @@ export declare namespace BankRelationshipUpdate$ {
     /** @deprecated use `BankRelationshipUpdate$Outbound` instead. */
     type Outbound = BankRelationshipUpdate$Outbound;
 }
+export declare function bankRelationshipUpdateToJSON(bankRelationshipUpdate: BankRelationshipUpdate): string;
+export declare function bankRelationshipUpdateFromJSON(jsonString: string): SafeParseResult<BankRelationshipUpdate, SDKValidationError>;
 //# sourceMappingURL=bankrelationshipupdate.d.ts.map

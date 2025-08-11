@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContributionConstraintsContributionTypeInfo$ = exports.ContributionConstraintsContributionTypeInfo$outboundSchema = exports.ContributionConstraintsContributionTypeInfo$inboundSchema = exports.ContributionConstraintsContributionTypeInfoType$ = exports.ContributionConstraintsContributionTypeInfoType$outboundSchema = exports.ContributionConstraintsContributionTypeInfoType$inboundSchema = exports.PreviousYearDeadline$ = exports.PreviousYearDeadline$outboundSchema = exports.PreviousYearDeadline$inboundSchema = exports.ContributionConstraintsContributionTypeInfoType = void 0;
+exports.previousYearDeadlineToJSON = previousYearDeadlineToJSON;
+exports.previousYearDeadlineFromJSON = previousYearDeadlineFromJSON;
+exports.contributionConstraintsContributionTypeInfoToJSON = contributionConstraintsContributionTypeInfoToJSON;
+exports.contributionConstraintsContributionTypeInfoFromJSON = contributionConstraintsContributionTypeInfoFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Retirement contribution type
@@ -81,6 +86,12 @@ var PreviousYearDeadline$;
     /** @deprecated use `PreviousYearDeadline$outboundSchema` instead. */
     PreviousYearDeadline$.outboundSchema = exports.PreviousYearDeadline$outboundSchema;
 })(PreviousYearDeadline$ || (exports.PreviousYearDeadline$ = PreviousYearDeadline$ = {}));
+function previousYearDeadlineToJSON(previousYearDeadline) {
+    return JSON.stringify(exports.PreviousYearDeadline$outboundSchema.parse(previousYearDeadline));
+}
+function previousYearDeadlineFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PreviousYearDeadline$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PreviousYearDeadline' from JSON`);
+}
 /** @internal */
 exports.ContributionConstraintsContributionTypeInfoType$inboundSchema = z
     .union([
@@ -138,4 +149,10 @@ var ContributionConstraintsContributionTypeInfo$;
     /** @deprecated use `ContributionConstraintsContributionTypeInfo$outboundSchema` instead. */
     ContributionConstraintsContributionTypeInfo$.outboundSchema = exports.ContributionConstraintsContributionTypeInfo$outboundSchema;
 })(ContributionConstraintsContributionTypeInfo$ || (exports.ContributionConstraintsContributionTypeInfo$ = ContributionConstraintsContributionTypeInfo$ = {}));
+function contributionConstraintsContributionTypeInfoToJSON(contributionConstraintsContributionTypeInfo) {
+    return JSON.stringify(exports.ContributionConstraintsContributionTypeInfo$outboundSchema.parse(contributionConstraintsContributionTypeInfo));
+}
+function contributionConstraintsContributionTypeInfoFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ContributionConstraintsContributionTypeInfo$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ContributionConstraintsContributionTypeInfo' from JSON`);
+}
 //# sourceMappingURL=contributionconstraintscontributiontypeinfo.js.map

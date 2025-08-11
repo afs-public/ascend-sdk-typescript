@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of the fee. This is a monetary value in the same currency as the order.
@@ -82,6 +85,24 @@ export namespace TradingFeeAmount$ {
   export type Outbound = TradingFeeAmount$Outbound;
 }
 
+export function tradingFeeAmountToJSON(
+  tradingFeeAmount: TradingFeeAmount,
+): string {
+  return JSON.stringify(
+    TradingFeeAmount$outboundSchema.parse(tradingFeeAmount),
+  );
+}
+
+export function tradingFeeAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TradingFeeAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradingFeeAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradingFeeAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const TradingFeeType$inboundSchema: z.ZodType<
   TradingFeeTypeOpen,
@@ -151,4 +172,18 @@ export namespace TradingFee$ {
   export const outboundSchema = TradingFee$outboundSchema;
   /** @deprecated use `TradingFee$Outbound` instead. */
   export type Outbound = TradingFee$Outbound;
+}
+
+export function tradingFeeToJSON(tradingFee: TradingFee): string {
+  return JSON.stringify(TradingFee$outboundSchema.parse(tradingFee));
+}
+
+export function tradingFeeFromJSON(
+  jsonString: string,
+): SafeParseResult<TradingFee, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradingFee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradingFee' from JSON`,
+  );
 }

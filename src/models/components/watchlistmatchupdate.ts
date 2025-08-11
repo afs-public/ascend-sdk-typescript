@@ -4,14 +4,24 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 export enum WatchlistMatchUpdateMatchState {
   MatchUnspecified = "MATCH_UNSPECIFIED",
@@ -21,7 +31,14 @@ export enum WatchlistMatchUpdateMatchState {
   Inconclusive = "INCONCLUSIVE",
 }
 /**
- * Match state - whether or not the match is confirmed
+ * The match state for a profile, one of:
+ *
+ * @remarks
+ * - `MATCH_UNSPECIFIED` - Default/Null value.
+ * - `CONFIRMED_MATCH` - Match is confirmed.
+ * - `POTENTIAL_MATCH` - Match is a potential.
+ * - `NO_MATCH` - Match is confirmed not to be a match.
+ * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
  */
 export type WatchlistMatchUpdateMatchStateOpen = OpenEnum<
   typeof WatchlistMatchUpdateMatchState
@@ -36,7 +53,14 @@ export type WatchlistMatchUpdate = {
    */
   excludeFromScreening?: boolean | undefined;
   /**
-   * Match state - whether or not the match is confirmed
+   * The match state for a profile, one of:
+   *
+   * @remarks
+   * - `MATCH_UNSPECIFIED` - Default/Null value.
+   * - `CONFIRMED_MATCH` - Match is confirmed.
+   * - `POTENTIAL_MATCH` - Match is a potential.
+   * - `NO_MATCH` - Match is confirmed not to be a match.
+   * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
    */
   matchState?: WatchlistMatchUpdateMatchStateOpen | undefined;
   /**
@@ -138,4 +162,22 @@ export namespace WatchlistMatchUpdate$ {
   export const outboundSchema = WatchlistMatchUpdate$outboundSchema;
   /** @deprecated use `WatchlistMatchUpdate$Outbound` instead. */
   export type Outbound = WatchlistMatchUpdate$Outbound;
+}
+
+export function watchlistMatchUpdateToJSON(
+  watchlistMatchUpdate: WatchlistMatchUpdate,
+): string {
+  return JSON.stringify(
+    WatchlistMatchUpdate$outboundSchema.parse(watchlistMatchUpdate),
+  );
+}
+
+export function watchlistMatchUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<WatchlistMatchUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WatchlistMatchUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WatchlistMatchUpdate' from JSON`,
+  );
 }

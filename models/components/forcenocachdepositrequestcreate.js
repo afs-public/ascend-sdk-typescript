@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForceNocAchDepositRequestCreate$ = exports.ForceNocAchDepositRequestCreate$outboundSchema = exports.ForceNocAchDepositRequestCreate$inboundSchema = void 0;
+exports.forceNocAchDepositRequestCreateToJSON = forceNocAchDepositRequestCreateToJSON;
+exports.forceNocAchDepositRequestCreateFromJSON = forceNocAchDepositRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const nachanoccreate_js_1 = require("./nachanoccreate.js");
 /** @internal */
 exports.ForceNocAchDepositRequestCreate$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ForceNocAchDepositRequestCreate$;
     /** @deprecated use `ForceNocAchDepositRequestCreate$outboundSchema` instead. */
     ForceNocAchDepositRequestCreate$.outboundSchema = exports.ForceNocAchDepositRequestCreate$outboundSchema;
 })(ForceNocAchDepositRequestCreate$ || (exports.ForceNocAchDepositRequestCreate$ = ForceNocAchDepositRequestCreate$ = {}));
+function forceNocAchDepositRequestCreateToJSON(forceNocAchDepositRequestCreate) {
+    return JSON.stringify(exports.ForceNocAchDepositRequestCreate$outboundSchema.parse(forceNocAchDepositRequestCreate));
+}
+function forceNocAchDepositRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForceNocAchDepositRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForceNocAchDepositRequestCreate' from JSON`);
+}
 //# sourceMappingURL=forcenocachdepositrequestcreate.js.map

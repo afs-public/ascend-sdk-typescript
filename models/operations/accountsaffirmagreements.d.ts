@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsAffirmAgreementsRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace AccountsAffirmAgreementsRequest$ {
     /** @deprecated use `AccountsAffirmAgreementsRequest$Outbound` instead. */
     type Outbound = AccountsAffirmAgreementsRequest$Outbound;
 }
+export declare function accountsAffirmAgreementsRequestToJSON(accountsAffirmAgreementsRequest: AccountsAffirmAgreementsRequest): string;
+export declare function accountsAffirmAgreementsRequestFromJSON(jsonString: string): SafeParseResult<AccountsAffirmAgreementsRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsAffirmAgreementsResponse$inboundSchema: z.ZodType<AccountsAffirmAgreementsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsAffirmAgreementsResponse$ {
     /** @deprecated use `AccountsAffirmAgreementsResponse$Outbound` instead. */
     type Outbound = AccountsAffirmAgreementsResponse$Outbound;
 }
+export declare function accountsAffirmAgreementsResponseToJSON(accountsAffirmAgreementsResponse: AccountsAffirmAgreementsResponse): string;
+export declare function accountsAffirmAgreementsResponseFromJSON(jsonString: string): SafeParseResult<AccountsAffirmAgreementsResponse, SDKValidationError>;
 //# sourceMappingURL=accountsaffirmagreements.d.ts.map

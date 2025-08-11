@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveFixedIncomeMarksResponseAssetMark$ = exports.RetrieveFixedIncomeMarksResponseAssetMark$outboundSchema = exports.RetrieveFixedIncomeMarksResponseAssetMark$inboundSchema = exports.MarkAbsenceReason$ = exports.MarkAbsenceReason$outboundSchema = exports.MarkAbsenceReason$inboundSchema = exports.RetrieveFixedIncomeMarksResponseAssetMarkIdentifierType$ = exports.RetrieveFixedIncomeMarksResponseAssetMarkIdentifierType$outboundSchema = exports.RetrieveFixedIncomeMarksResponseAssetMarkIdentifierType$inboundSchema = exports.RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$ = exports.RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$outboundSchema = exports.RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$inboundSchema = exports.MarkAbsenceReason = exports.RetrieveFixedIncomeMarksResponseAssetMarkIdentifierType = void 0;
+exports.retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountToJSON = retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountToJSON;
+exports.retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountFromJSON = retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountFromJSON;
+exports.retrieveFixedIncomeMarksResponseAssetMarkToJSON = retrieveFixedIncomeMarksResponseAssetMarkToJSON;
+exports.retrieveFixedIncomeMarksResponseAssetMarkFromJSON = retrieveFixedIncomeMarksResponseAssetMarkFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const markprice_js_1 = require("./markprice.js");
 /**
@@ -78,6 +83,14 @@ var RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$;
     /** @deprecated use `RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$outboundSchema` instead. */
     RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$.outboundSchema = exports.RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$outboundSchema;
 })(RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$ || (exports.RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$ = RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$ = {}));
+function retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountToJSON(retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount) {
+    return JSON.stringify(exports.RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$outboundSchema
+        .parse(retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount));
+}
+function retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount' from JSON`);
+}
 /** @internal */
 exports.RetrieveFixedIncomeMarksResponseAssetMarkIdentifierType$inboundSchema = z
     .union([
@@ -172,4 +185,10 @@ var RetrieveFixedIncomeMarksResponseAssetMark$;
     /** @deprecated use `RetrieveFixedIncomeMarksResponseAssetMark$outboundSchema` instead. */
     RetrieveFixedIncomeMarksResponseAssetMark$.outboundSchema = exports.RetrieveFixedIncomeMarksResponseAssetMark$outboundSchema;
 })(RetrieveFixedIncomeMarksResponseAssetMark$ || (exports.RetrieveFixedIncomeMarksResponseAssetMark$ = RetrieveFixedIncomeMarksResponseAssetMark$ = {}));
+function retrieveFixedIncomeMarksResponseAssetMarkToJSON(retrieveFixedIncomeMarksResponseAssetMark) {
+    return JSON.stringify(exports.RetrieveFixedIncomeMarksResponseAssetMark$outboundSchema.parse(retrieveFixedIncomeMarksResponseAssetMark));
+}
+function retrieveFixedIncomeMarksResponseAssetMarkFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveFixedIncomeMarksResponseAssetMark$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetrieveFixedIncomeMarksResponseAssetMark' from JSON`);
+}
 //# sourceMappingURL=retrievefixedincomemarksresponseassetmark.js.map

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   MarkPrice,
   MarkPrice$inboundSchema,
@@ -132,6 +135,31 @@ export namespace RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$
   /** @deprecated use `RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$Outbound` instead. */
   export type Outbound =
     RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$Outbound;
+}
+
+export function retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountToJSON(
+  retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount:
+    RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$outboundSchema
+      .parse(retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount),
+  );
+}
+
+export function retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -291,4 +319,31 @@ export namespace RetrieveFixedIncomeMarksResponseAssetMark$ {
     RetrieveFixedIncomeMarksResponseAssetMark$outboundSchema;
   /** @deprecated use `RetrieveFixedIncomeMarksResponseAssetMark$Outbound` instead. */
   export type Outbound = RetrieveFixedIncomeMarksResponseAssetMark$Outbound;
+}
+
+export function retrieveFixedIncomeMarksResponseAssetMarkToJSON(
+  retrieveFixedIncomeMarksResponseAssetMark:
+    RetrieveFixedIncomeMarksResponseAssetMark,
+): string {
+  return JSON.stringify(
+    RetrieveFixedIncomeMarksResponseAssetMark$outboundSchema.parse(
+      retrieveFixedIncomeMarksResponseAssetMark,
+    ),
+  );
+}
+
+export function retrieveFixedIncomeMarksResponseAssetMarkFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetrieveFixedIncomeMarksResponseAssetMark,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveFixedIncomeMarksResponseAssetMark$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetrieveFixedIncomeMarksResponseAssetMark' from JSON`,
+  );
 }

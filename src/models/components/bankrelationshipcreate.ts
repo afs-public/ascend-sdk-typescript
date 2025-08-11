@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BankAccountCreate,
   BankAccountCreate$inboundSchema,
@@ -146,4 +149,22 @@ export namespace BankRelationshipCreate$ {
   export const outboundSchema = BankRelationshipCreate$outboundSchema;
   /** @deprecated use `BankRelationshipCreate$Outbound` instead. */
   export type Outbound = BankRelationshipCreate$Outbound;
+}
+
+export function bankRelationshipCreateToJSON(
+  bankRelationshipCreate: BankRelationshipCreate,
+): string {
+  return JSON.stringify(
+    BankRelationshipCreate$outboundSchema.parse(bankRelationshipCreate),
+  );
+}
+
+export function bankRelationshipCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<BankRelationshipCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BankRelationshipCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BankRelationshipCreate' from JSON`,
+  );
 }

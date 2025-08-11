@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EddAccountEnrollmentMetadataCreate$ = exports.EddAccountEnrollmentMetadataCreate$outboundSchema = exports.EddAccountEnrollmentMetadataCreate$inboundSchema = exports.DeterminedAccountRiskRating$ = exports.DeterminedAccountRiskRating$outboundSchema = exports.DeterminedAccountRiskRating$inboundSchema = exports.DeterminedAccountRiskRating = void 0;
+exports.eddAccountEnrollmentMetadataCreateToJSON = eddAccountEnrollmentMetadataCreateToJSON;
+exports.eddAccountEnrollmentMetadataCreateFromJSON = eddAccountEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const depositedfundscreate_js_1 = require("./depositedfundscreate.js");
 const financialprofilecreate_js_1 = require("./financialprofilecreate.js");
@@ -123,4 +126,10 @@ var EddAccountEnrollmentMetadataCreate$;
     /** @deprecated use `EddAccountEnrollmentMetadataCreate$outboundSchema` instead. */
     EddAccountEnrollmentMetadataCreate$.outboundSchema = exports.EddAccountEnrollmentMetadataCreate$outboundSchema;
 })(EddAccountEnrollmentMetadataCreate$ || (exports.EddAccountEnrollmentMetadataCreate$ = EddAccountEnrollmentMetadataCreate$ = {}));
+function eddAccountEnrollmentMetadataCreateToJSON(eddAccountEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.EddAccountEnrollmentMetadataCreate$outboundSchema.parse(eddAccountEnrollmentMetadataCreate));
+}
+function eddAccountEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EddAccountEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EddAccountEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=eddaccountenrollmentmetadatacreate.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PostalAddressCreate, PostalAddressCreate$Outbound } from "./postaladdresscreate.js";
 /**
  * Classifies in what capacity (or if) the underlying natural person holds a job
@@ -101,4 +103,6 @@ export declare namespace EmploymentCreate$ {
     /** @deprecated use `EmploymentCreate$Outbound` instead. */
     type Outbound = EmploymentCreate$Outbound;
 }
+export declare function employmentCreateToJSON(employmentCreate: EmploymentCreate): string;
+export declare function employmentCreateFromJSON(jsonString: string): SafeParseResult<EmploymentCreate, SDKValidationError>;
 //# sourceMappingURL=employmentcreate.d.ts.map

@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelBankRelationshipRequestCreate$ = exports.CancelBankRelationshipRequestCreate$outboundSchema = exports.CancelBankRelationshipRequestCreate$inboundSchema = void 0;
+exports.cancelBankRelationshipRequestCreateToJSON = cancelBankRelationshipRequestCreateToJSON;
+exports.cancelBankRelationshipRequestCreateFromJSON = cancelBankRelationshipRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelBankRelationshipRequestCreate$inboundSchema = z.object({
     comment: z.string(),
@@ -59,4 +62,10 @@ var CancelBankRelationshipRequestCreate$;
     /** @deprecated use `CancelBankRelationshipRequestCreate$outboundSchema` instead. */
     CancelBankRelationshipRequestCreate$.outboundSchema = exports.CancelBankRelationshipRequestCreate$outboundSchema;
 })(CancelBankRelationshipRequestCreate$ || (exports.CancelBankRelationshipRequestCreate$ = CancelBankRelationshipRequestCreate$ = {}));
+function cancelBankRelationshipRequestCreateToJSON(cancelBankRelationshipRequestCreate) {
+    return JSON.stringify(exports.CancelBankRelationshipRequestCreate$outboundSchema.parse(cancelBankRelationshipRequestCreate));
+}
+function cancelBankRelationshipRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelBankRelationshipRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelBankRelationshipRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelbankrelationshiprequestcreate.js.map

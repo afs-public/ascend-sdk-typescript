@@ -53,7 +53,6 @@ let account_id;
     await (0, sdk_1.timeout)(5000);
 }, 60000);
 (0, vitest_1.test)("Investor Docs Investor Docs Batch Create Upload Links Batch Create Upload Links1", async () => {
-    var _a;
     if (typeof account_id !== "string") {
         throw new Error("account_id is undefined.");
     }
@@ -61,7 +60,7 @@ let account_id;
         createDocumentUploadLinkRequest: [
             {
                 accountDocumentUploadRequest: {
-                    correspondentId: (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "",
+                    correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
                     documentType: components.DocumentType.FdicSweepProgramAgreement,
                     accountId: account_id,
                 },

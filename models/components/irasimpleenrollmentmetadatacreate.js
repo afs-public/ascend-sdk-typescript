@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IRASimpleEnrollmentMetadataCreate$ = exports.IRASimpleEnrollmentMetadataCreate$outboundSchema = exports.IRASimpleEnrollmentMetadataCreate$inboundSchema = exports.IRASimpleEnrollmentMetadataCreateFdicCashSweep$ = exports.IRASimpleEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.IRASimpleEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.IRASimpleEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.IRASimpleEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.IRASimpleEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.IRASimpleEnrollmentMetadataCreateFdicCashSweep = exports.IRASimpleEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.iraSimpleEnrollmentMetadataCreateToJSON = iraSimpleEnrollmentMetadataCreateToJSON;
+exports.iraSimpleEnrollmentMetadataCreateFromJSON = iraSimpleEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -137,4 +140,10 @@ var IRASimpleEnrollmentMetadataCreate$;
     /** @deprecated use `IRASimpleEnrollmentMetadataCreate$outboundSchema` instead. */
     IRASimpleEnrollmentMetadataCreate$.outboundSchema = exports.IRASimpleEnrollmentMetadataCreate$outboundSchema;
 })(IRASimpleEnrollmentMetadataCreate$ || (exports.IRASimpleEnrollmentMetadataCreate$ = IRASimpleEnrollmentMetadataCreate$ = {}));
+function iraSimpleEnrollmentMetadataCreateToJSON(iraSimpleEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.IRASimpleEnrollmentMetadataCreate$outboundSchema.parse(iraSimpleEnrollmentMetadataCreate));
+}
+function iraSimpleEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IRASimpleEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IRASimpleEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=irasimpleenrollmentmetadatacreate.js.map

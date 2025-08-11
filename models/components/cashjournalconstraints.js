@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashJournalConstraints$ = exports.CashJournalConstraints$outboundSchema = exports.CashJournalConstraints$inboundSchema = exports.CashJournalConstraintsDistributionConstraints$ = exports.CashJournalConstraintsDistributionConstraints$outboundSchema = exports.CashJournalConstraintsDistributionConstraints$inboundSchema = exports.CashJournalConstraintsContributionConstraints$ = exports.CashJournalConstraintsContributionConstraints$outboundSchema = exports.CashJournalConstraintsContributionConstraints$inboundSchema = void 0;
+exports.cashJournalConstraintsContributionConstraintsToJSON = cashJournalConstraintsContributionConstraintsToJSON;
+exports.cashJournalConstraintsContributionConstraintsFromJSON = cashJournalConstraintsContributionConstraintsFromJSON;
+exports.cashJournalConstraintsDistributionConstraintsToJSON = cashJournalConstraintsDistributionConstraintsToJSON;
+exports.cashJournalConstraintsDistributionConstraintsFromJSON = cashJournalConstraintsDistributionConstraintsFromJSON;
+exports.cashJournalConstraintsToJSON = cashJournalConstraintsToJSON;
+exports.cashJournalConstraintsFromJSON = cashJournalConstraintsFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const contributionconstraintscontributiontypeinfo_js_1 = require("./contributionconstraintscontributiontypeinfo.js");
 const distributionconstraintsdistributiontypeinfo_js_1 = require("./distributionconstraintsdistributiontypeinfo.js");
 /** @internal */
@@ -72,6 +79,12 @@ var CashJournalConstraintsContributionConstraints$;
     /** @deprecated use `CashJournalConstraintsContributionConstraints$outboundSchema` instead. */
     CashJournalConstraintsContributionConstraints$.outboundSchema = exports.CashJournalConstraintsContributionConstraints$outboundSchema;
 })(CashJournalConstraintsContributionConstraints$ || (exports.CashJournalConstraintsContributionConstraints$ = CashJournalConstraintsContributionConstraints$ = {}));
+function cashJournalConstraintsContributionConstraintsToJSON(cashJournalConstraintsContributionConstraints) {
+    return JSON.stringify(exports.CashJournalConstraintsContributionConstraints$outboundSchema.parse(cashJournalConstraintsContributionConstraints));
+}
+function cashJournalConstraintsContributionConstraintsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalConstraintsContributionConstraints$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalConstraintsContributionConstraints' from JSON`);
+}
 /** @internal */
 exports.CashJournalConstraintsDistributionConstraints$inboundSchema = z.object({
     full_distribution_allowed: z.boolean().optional(),
@@ -103,6 +116,12 @@ var CashJournalConstraintsDistributionConstraints$;
     /** @deprecated use `CashJournalConstraintsDistributionConstraints$outboundSchema` instead. */
     CashJournalConstraintsDistributionConstraints$.outboundSchema = exports.CashJournalConstraintsDistributionConstraints$outboundSchema;
 })(CashJournalConstraintsDistributionConstraints$ || (exports.CashJournalConstraintsDistributionConstraints$ = CashJournalConstraintsDistributionConstraints$ = {}));
+function cashJournalConstraintsDistributionConstraintsToJSON(cashJournalConstraintsDistributionConstraints) {
+    return JSON.stringify(exports.CashJournalConstraintsDistributionConstraints$outboundSchema.parse(cashJournalConstraintsDistributionConstraints));
+}
+function cashJournalConstraintsDistributionConstraintsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalConstraintsDistributionConstraints$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalConstraintsDistributionConstraints' from JSON`);
+}
 /** @internal */
 exports.CashJournalConstraints$inboundSchema = z.object({
     contribution_constraints: z.nullable(z.lazy(() => exports.CashJournalConstraintsContributionConstraints$inboundSchema)).optional(),
@@ -134,4 +153,10 @@ var CashJournalConstraints$;
     /** @deprecated use `CashJournalConstraints$outboundSchema` instead. */
     CashJournalConstraints$.outboundSchema = exports.CashJournalConstraints$outboundSchema;
 })(CashJournalConstraints$ || (exports.CashJournalConstraints$ = CashJournalConstraints$ = {}));
+function cashJournalConstraintsToJSON(cashJournalConstraints) {
+    return JSON.stringify(exports.CashJournalConstraints$outboundSchema.parse(cashJournalConstraints));
+}
+function cashJournalConstraintsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalConstraints$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalConstraints' from JSON`);
+}
 //# sourceMappingURL=cashjournalconstraints.js.map

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeactivateEnrollmentRequestCreate$ = exports.DeactivateEnrollmentRequestCreate$outboundSchema = exports.DeactivateEnrollmentRequestCreate$inboundSchema = exports.DeactivateEnrollmentRequestCreateEnrollmentType$ = exports.DeactivateEnrollmentRequestCreateEnrollmentType$outboundSchema = exports.DeactivateEnrollmentRequestCreateEnrollmentType$inboundSchema = exports.DeactivateEnrollmentRequestCreateEnrollmentType = void 0;
+exports.deactivateEnrollmentRequestCreateToJSON = deactivateEnrollmentRequestCreateToJSON;
+exports.deactivateEnrollmentRequestCreateFromJSON = deactivateEnrollmentRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * **Field Dependencies:**
@@ -132,4 +135,10 @@ var DeactivateEnrollmentRequestCreate$;
     /** @deprecated use `DeactivateEnrollmentRequestCreate$outboundSchema` instead. */
     DeactivateEnrollmentRequestCreate$.outboundSchema = exports.DeactivateEnrollmentRequestCreate$outboundSchema;
 })(DeactivateEnrollmentRequestCreate$ || (exports.DeactivateEnrollmentRequestCreate$ = DeactivateEnrollmentRequestCreate$ = {}));
+function deactivateEnrollmentRequestCreateToJSON(deactivateEnrollmentRequestCreate) {
+    return JSON.stringify(exports.DeactivateEnrollmentRequestCreate$outboundSchema.parse(deactivateEnrollmentRequestCreate));
+}
+function deactivateEnrollmentRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DeactivateEnrollmentRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DeactivateEnrollmentRequestCreate' from JSON`);
+}
 //# sourceMappingURL=deactivateenrollmentrequestcreate.js.map

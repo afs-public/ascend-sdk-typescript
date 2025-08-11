@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BankRelationshipsGetMicroDepositAmountsRequest = {
   /**
@@ -83,6 +86,33 @@ export namespace BankRelationshipsGetMicroDepositAmountsRequest$ {
     BankRelationshipsGetMicroDepositAmountsRequest$Outbound;
 }
 
+export function bankRelationshipsGetMicroDepositAmountsRequestToJSON(
+  bankRelationshipsGetMicroDepositAmountsRequest:
+    BankRelationshipsGetMicroDepositAmountsRequest,
+): string {
+  return JSON.stringify(
+    BankRelationshipsGetMicroDepositAmountsRequest$outboundSchema.parse(
+      bankRelationshipsGetMicroDepositAmountsRequest,
+    ),
+  );
+}
+
+export function bankRelationshipsGetMicroDepositAmountsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsGetMicroDepositAmountsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsGetMicroDepositAmountsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsGetMicroDepositAmountsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BankRelationshipsGetMicroDepositAmountsResponse$inboundSchema:
   z.ZodType<
@@ -142,4 +172,31 @@ export namespace BankRelationshipsGetMicroDepositAmountsResponse$ {
   /** @deprecated use `BankRelationshipsGetMicroDepositAmountsResponse$Outbound` instead. */
   export type Outbound =
     BankRelationshipsGetMicroDepositAmountsResponse$Outbound;
+}
+
+export function bankRelationshipsGetMicroDepositAmountsResponseToJSON(
+  bankRelationshipsGetMicroDepositAmountsResponse:
+    BankRelationshipsGetMicroDepositAmountsResponse,
+): string {
+  return JSON.stringify(
+    BankRelationshipsGetMicroDepositAmountsResponse$outboundSchema.parse(
+      bankRelationshipsGetMicroDepositAmountsResponse,
+    ),
+  );
+}
+
+export function bankRelationshipsGetMicroDepositAmountsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsGetMicroDepositAmountsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsGetMicroDepositAmountsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsGetMicroDepositAmountsResponse' from JSON`,
+  );
 }

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetsListAssetsCorrespondentResponse$ = exports.AssetsListAssetsCorrespondentResponse$outboundSchema = exports.AssetsListAssetsCorrespondentResponse$inboundSchema = exports.AssetsListAssetsCorrespondentRequest$ = exports.AssetsListAssetsCorrespondentRequest$outboundSchema = exports.AssetsListAssetsCorrespondentRequest$inboundSchema = void 0;
+exports.assetsListAssetsCorrespondentRequestToJSON = assetsListAssetsCorrespondentRequestToJSON;
+exports.assetsListAssetsCorrespondentRequestFromJSON = assetsListAssetsCorrespondentRequestFromJSON;
+exports.assetsListAssetsCorrespondentResponseToJSON = assetsListAssetsCorrespondentResponseToJSON;
+exports.assetsListAssetsCorrespondentResponseFromJSON = assetsListAssetsCorrespondentResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AssetsListAssetsCorrespondentRequest$inboundSchema = z.object({
@@ -77,6 +82,12 @@ var AssetsListAssetsCorrespondentRequest$;
     /** @deprecated use `AssetsListAssetsCorrespondentRequest$outboundSchema` instead. */
     AssetsListAssetsCorrespondentRequest$.outboundSchema = exports.AssetsListAssetsCorrespondentRequest$outboundSchema;
 })(AssetsListAssetsCorrespondentRequest$ || (exports.AssetsListAssetsCorrespondentRequest$ = AssetsListAssetsCorrespondentRequest$ = {}));
+function assetsListAssetsCorrespondentRequestToJSON(assetsListAssetsCorrespondentRequest) {
+    return JSON.stringify(exports.AssetsListAssetsCorrespondentRequest$outboundSchema.parse(assetsListAssetsCorrespondentRequest));
+}
+function assetsListAssetsCorrespondentRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssetsListAssetsCorrespondentRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssetsListAssetsCorrespondentRequest' from JSON`);
+}
 /** @internal */
 exports.AssetsListAssetsCorrespondentResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -112,4 +123,10 @@ var AssetsListAssetsCorrespondentResponse$;
     /** @deprecated use `AssetsListAssetsCorrespondentResponse$outboundSchema` instead. */
     AssetsListAssetsCorrespondentResponse$.outboundSchema = exports.AssetsListAssetsCorrespondentResponse$outboundSchema;
 })(AssetsListAssetsCorrespondentResponse$ || (exports.AssetsListAssetsCorrespondentResponse$ = AssetsListAssetsCorrespondentResponse$ = {}));
+function assetsListAssetsCorrespondentResponseToJSON(assetsListAssetsCorrespondentResponse) {
+    return JSON.stringify(exports.AssetsListAssetsCorrespondentResponse$outboundSchema.parse(assetsListAssetsCorrespondentResponse));
+}
+function assetsListAssetsCorrespondentResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssetsListAssetsCorrespondentResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssetsListAssetsCorrespondentResponse' from JSON`);
+}
 //# sourceMappingURL=assetslistassetscorrespondent.js.map

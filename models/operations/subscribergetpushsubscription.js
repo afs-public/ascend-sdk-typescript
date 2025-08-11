@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubscriberGetPushSubscriptionResponse$ = exports.SubscriberGetPushSubscriptionResponse$outboundSchema = exports.SubscriberGetPushSubscriptionResponse$inboundSchema = exports.SubscriberGetPushSubscriptionRequest$ = exports.SubscriberGetPushSubscriptionRequest$outboundSchema = exports.SubscriberGetPushSubscriptionRequest$inboundSchema = void 0;
+exports.subscriberGetPushSubscriptionRequestToJSON = subscriberGetPushSubscriptionRequestToJSON;
+exports.subscriberGetPushSubscriptionRequestFromJSON = subscriberGetPushSubscriptionRequestFromJSON;
+exports.subscriberGetPushSubscriptionResponseToJSON = subscriberGetPushSubscriptionResponseToJSON;
+exports.subscriberGetPushSubscriptionResponseFromJSON = subscriberGetPushSubscriptionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.SubscriberGetPushSubscriptionRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var SubscriberGetPushSubscriptionRequest$;
     /** @deprecated use `SubscriberGetPushSubscriptionRequest$outboundSchema` instead. */
     SubscriberGetPushSubscriptionRequest$.outboundSchema = exports.SubscriberGetPushSubscriptionRequest$outboundSchema;
 })(SubscriberGetPushSubscriptionRequest$ || (exports.SubscriberGetPushSubscriptionRequest$ = SubscriberGetPushSubscriptionRequest$ = {}));
+function subscriberGetPushSubscriptionRequestToJSON(subscriberGetPushSubscriptionRequest) {
+    return JSON.stringify(exports.SubscriberGetPushSubscriptionRequest$outboundSchema.parse(subscriberGetPushSubscriptionRequest));
+}
+function subscriberGetPushSubscriptionRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberGetPushSubscriptionRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberGetPushSubscriptionRequest' from JSON`);
+}
 /** @internal */
 exports.SubscriberGetPushSubscriptionResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var SubscriberGetPushSubscriptionResponse$;
     /** @deprecated use `SubscriberGetPushSubscriptionResponse$outboundSchema` instead. */
     SubscriberGetPushSubscriptionResponse$.outboundSchema = exports.SubscriberGetPushSubscriptionResponse$outboundSchema;
 })(SubscriberGetPushSubscriptionResponse$ || (exports.SubscriberGetPushSubscriptionResponse$ = SubscriberGetPushSubscriptionResponse$ = {}));
+function subscriberGetPushSubscriptionResponseToJSON(subscriberGetPushSubscriptionResponse) {
+    return JSON.stringify(exports.SubscriberGetPushSubscriptionResponse$outboundSchema.parse(subscriberGetPushSubscriptionResponse));
+}
+function subscriberGetPushSubscriptionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberGetPushSubscriptionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberGetPushSubscriptionResponse' from JSON`);
+}
 //# sourceMappingURL=subscribergetpushsubscription.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type SubscriberListPushSubscriptionsRequest = {
     /**
      * A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; If empty, all subscriptions the user has permission to view will be returned; Filter options include:
@@ -58,6 +60,8 @@ export declare namespace SubscriberListPushSubscriptionsRequest$ {
     /** @deprecated use `SubscriberListPushSubscriptionsRequest$Outbound` instead. */
     type Outbound = SubscriberListPushSubscriptionsRequest$Outbound;
 }
+export declare function subscriberListPushSubscriptionsRequestToJSON(subscriberListPushSubscriptionsRequest: SubscriberListPushSubscriptionsRequest): string;
+export declare function subscriberListPushSubscriptionsRequestFromJSON(jsonString: string): SafeParseResult<SubscriberListPushSubscriptionsRequest, SDKValidationError>;
 /** @internal */
 export declare const SubscriberListPushSubscriptionsResponse$inboundSchema: z.ZodType<SubscriberListPushSubscriptionsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -80,4 +84,6 @@ export declare namespace SubscriberListPushSubscriptionsResponse$ {
     /** @deprecated use `SubscriberListPushSubscriptionsResponse$Outbound` instead. */
     type Outbound = SubscriberListPushSubscriptionsResponse$Outbound;
 }
+export declare function subscriberListPushSubscriptionsResponseToJSON(subscriberListPushSubscriptionsResponse: SubscriberListPushSubscriptionsResponse): string;
+export declare function subscriberListPushSubscriptionsResponseFromJSON(jsonString: string): SafeParseResult<SubscriberListPushSubscriptionsResponse, SDKValidationError>;
 //# sourceMappingURL=subscriberlistpushsubscriptions.d.ts.map

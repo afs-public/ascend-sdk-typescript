@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * GRANTED if it was activated via an enrollment, SUSPENDED if a restriction has temporarily disabled it, or DENIED if it has never before been GRANTED
@@ -154,4 +157,18 @@ export namespace Entitlement$ {
   export const outboundSchema = Entitlement$outboundSchema;
   /** @deprecated use `Entitlement$Outbound` instead. */
   export type Outbound = Entitlement$Outbound;
+}
+
+export function entitlementToJSON(entitlement: Entitlement): string {
+  return JSON.stringify(Entitlement$outboundSchema.parse(entitlement));
+}
+
+export function entitlementFromJSON(
+  jsonString: string,
+): SafeParseResult<Entitlement, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Entitlement$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Entitlement' from JSON`,
+  );
 }

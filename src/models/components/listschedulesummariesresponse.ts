@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TransferScheduleSummary,
   TransferScheduleSummary$inboundSchema,
@@ -72,4 +75,24 @@ export namespace ListScheduleSummariesResponse$ {
   export const outboundSchema = ListScheduleSummariesResponse$outboundSchema;
   /** @deprecated use `ListScheduleSummariesResponse$Outbound` instead. */
   export type Outbound = ListScheduleSummariesResponse$Outbound;
+}
+
+export function listScheduleSummariesResponseToJSON(
+  listScheduleSummariesResponse: ListScheduleSummariesResponse,
+): string {
+  return JSON.stringify(
+    ListScheduleSummariesResponse$outboundSchema.parse(
+      listScheduleSummariesResponse,
+    ),
+  );
+}
+
+export function listScheduleSummariesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListScheduleSummariesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListScheduleSummariesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListScheduleSummariesResponse' from JSON`,
+  );
 }

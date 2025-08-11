@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountRequestUpdate$ = exports.AccountRequestUpdate$outboundSchema = exports.AccountRequestUpdate$inboundSchema = exports.AccountRequestUpdateCatAccountHolderType$ = exports.AccountRequestUpdateCatAccountHolderType$outboundSchema = exports.AccountRequestUpdateCatAccountHolderType$inboundSchema = exports.AccountRequestUpdateCatAccountHolderType = void 0;
+exports.accountRequestUpdateToJSON = accountRequestUpdateToJSON;
+exports.accountRequestUpdateFromJSON = accountRequestUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const accounttaxprofileupdate_js_1 = require("./accounttaxprofileupdate.js");
 const identifierupdate_js_1 = require("./identifierupdate.js");
@@ -147,4 +150,10 @@ var AccountRequestUpdate$;
     /** @deprecated use `AccountRequestUpdate$outboundSchema` instead. */
     AccountRequestUpdate$.outboundSchema = exports.AccountRequestUpdate$outboundSchema;
 })(AccountRequestUpdate$ || (exports.AccountRequestUpdate$ = AccountRequestUpdate$ = {}));
+function accountRequestUpdateToJSON(accountRequestUpdate) {
+    return JSON.stringify(exports.AccountRequestUpdate$outboundSchema.parse(accountRequestUpdate));
+}
+function accountRequestUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountRequestUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountRequestUpdate' from JSON`);
+}
 //# sourceMappingURL=accountrequestupdate.js.map

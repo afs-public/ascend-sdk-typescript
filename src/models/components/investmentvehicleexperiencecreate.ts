@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Investment vehicle experience
@@ -140,4 +143,24 @@ export namespace InvestmentVehicleExperienceCreate$ {
     InvestmentVehicleExperienceCreate$outboundSchema;
   /** @deprecated use `InvestmentVehicleExperienceCreate$Outbound` instead. */
   export type Outbound = InvestmentVehicleExperienceCreate$Outbound;
+}
+
+export function investmentVehicleExperienceCreateToJSON(
+  investmentVehicleExperienceCreate: InvestmentVehicleExperienceCreate,
+): string {
+  return JSON.stringify(
+    InvestmentVehicleExperienceCreate$outboundSchema.parse(
+      investmentVehicleExperienceCreate,
+    ),
+  );
+}
+
+export function investmentVehicleExperienceCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestmentVehicleExperienceCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestmentVehicleExperienceCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestmentVehicleExperienceCreate' from JSON`,
+  );
 }

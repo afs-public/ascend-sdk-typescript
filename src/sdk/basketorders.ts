@@ -111,18 +111,12 @@ export class BasketOrders extends ClientSDK {
    *  Upon successful submission, returns a list of basket orders for the basket. If the list of basket orders becomes too large, a token is returned to retrieve the next page of basket orders.
    */
   async listBasketOrders(
-    correspondentId: string,
-    basketId: string,
-    pageSize?: number | undefined,
-    pageToken?: string | undefined,
+    request: operations.BasketOrdersServiceListBasketOrdersRequest,
     options?: RequestOptions,
   ): Promise<operations.BasketOrdersServiceListBasketOrdersResponse> {
     return unwrapAsync(basketOrdersListBasketOrders(
       this,
-      correspondentId,
-      basketId,
-      pageSize,
-      pageToken,
+      request,
       options,
     ));
   }

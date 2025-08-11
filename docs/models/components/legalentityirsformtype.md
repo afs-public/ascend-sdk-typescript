@@ -7,8 +7,7 @@ IRS form type.
 ```typescript
 import { LegalEntityIrsFormType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: LegalEntityIrsFormType =
-  LegalEntityIrsFormType.IrsFormTypeUnspecified;
+let value: LegalEntityIrsFormType = LegalEntityIrsFormType.W8Ben;
 ```
 
 ## Values

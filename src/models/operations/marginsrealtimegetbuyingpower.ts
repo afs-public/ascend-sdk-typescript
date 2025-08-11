@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type MarginsRealTimeGetBuyingPowerRequest = {
   /**
@@ -71,6 +74,27 @@ export namespace MarginsRealTimeGetBuyingPowerRequest$ {
   export type Outbound = MarginsRealTimeGetBuyingPowerRequest$Outbound;
 }
 
+export function marginsRealTimeGetBuyingPowerRequestToJSON(
+  marginsRealTimeGetBuyingPowerRequest: MarginsRealTimeGetBuyingPowerRequest,
+): string {
+  return JSON.stringify(
+    MarginsRealTimeGetBuyingPowerRequest$outboundSchema.parse(
+      marginsRealTimeGetBuyingPowerRequest,
+    ),
+  );
+}
+
+export function marginsRealTimeGetBuyingPowerRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarginsRealTimeGetBuyingPowerRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarginsRealTimeGetBuyingPowerRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarginsRealTimeGetBuyingPowerRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarginsRealTimeGetBuyingPowerResponse$inboundSchema: z.ZodType<
   MarginsRealTimeGetBuyingPowerResponse,
@@ -125,4 +149,25 @@ export namespace MarginsRealTimeGetBuyingPowerResponse$ {
     MarginsRealTimeGetBuyingPowerResponse$outboundSchema;
   /** @deprecated use `MarginsRealTimeGetBuyingPowerResponse$Outbound` instead. */
   export type Outbound = MarginsRealTimeGetBuyingPowerResponse$Outbound;
+}
+
+export function marginsRealTimeGetBuyingPowerResponseToJSON(
+  marginsRealTimeGetBuyingPowerResponse: MarginsRealTimeGetBuyingPowerResponse,
+): string {
+  return JSON.stringify(
+    MarginsRealTimeGetBuyingPowerResponse$outboundSchema.parse(
+      marginsRealTimeGetBuyingPowerResponse,
+    ),
+  );
+}
+
+export function marginsRealTimeGetBuyingPowerResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarginsRealTimeGetBuyingPowerResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarginsRealTimeGetBuyingPowerResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarginsRealTimeGetBuyingPowerResponse' from JSON`,
+  );
 }

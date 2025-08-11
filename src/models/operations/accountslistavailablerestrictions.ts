@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsListAvailableRestrictionsRequest = {
   /**
@@ -73,6 +76,33 @@ export namespace AccountsListAvailableRestrictionsRequest$ {
   export type Outbound = AccountsListAvailableRestrictionsRequest$Outbound;
 }
 
+export function accountsListAvailableRestrictionsRequestToJSON(
+  accountsListAvailableRestrictionsRequest:
+    AccountsListAvailableRestrictionsRequest,
+): string {
+  return JSON.stringify(
+    AccountsListAvailableRestrictionsRequest$outboundSchema.parse(
+      accountsListAvailableRestrictionsRequest,
+    ),
+  );
+}
+
+export function accountsListAvailableRestrictionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsListAvailableRestrictionsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsListAvailableRestrictionsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsListAvailableRestrictionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsListAvailableRestrictionsResponse$inboundSchema: z.ZodType<
   AccountsListAvailableRestrictionsResponse,
@@ -132,4 +162,31 @@ export namespace AccountsListAvailableRestrictionsResponse$ {
     AccountsListAvailableRestrictionsResponse$outboundSchema;
   /** @deprecated use `AccountsListAvailableRestrictionsResponse$Outbound` instead. */
   export type Outbound = AccountsListAvailableRestrictionsResponse$Outbound;
+}
+
+export function accountsListAvailableRestrictionsResponseToJSON(
+  accountsListAvailableRestrictionsResponse:
+    AccountsListAvailableRestrictionsResponse,
+): string {
+  return JSON.stringify(
+    AccountsListAvailableRestrictionsResponse$outboundSchema.parse(
+      accountsListAvailableRestrictionsResponse,
+    ),
+  );
+}
+
+export function accountsListAvailableRestrictionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsListAvailableRestrictionsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsListAvailableRestrictionsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsListAvailableRestrictionsResponse' from JSON`,
+  );
 }

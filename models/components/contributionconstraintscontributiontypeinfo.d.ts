@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The deadline for a previous year contribution. Previous year contributions are allowed when requested on or before this deadline. This field will be unset when previous year contributions are not allowed.
  */
@@ -77,6 +79,8 @@ export declare namespace PreviousYearDeadline$ {
     /** @deprecated use `PreviousYearDeadline$Outbound` instead. */
     type Outbound = PreviousYearDeadline$Outbound;
 }
+export declare function previousYearDeadlineToJSON(previousYearDeadline: PreviousYearDeadline): string;
+export declare function previousYearDeadlineFromJSON(jsonString: string): SafeParseResult<PreviousYearDeadline, SDKValidationError>;
 /** @internal */
 export declare const ContributionConstraintsContributionTypeInfoType$inboundSchema: z.ZodType<ContributionConstraintsContributionTypeInfoTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -113,4 +117,6 @@ export declare namespace ContributionConstraintsContributionTypeInfo$ {
     /** @deprecated use `ContributionConstraintsContributionTypeInfo$Outbound` instead. */
     type Outbound = ContributionConstraintsContributionTypeInfo$Outbound;
 }
+export declare function contributionConstraintsContributionTypeInfoToJSON(contributionConstraintsContributionTypeInfo: ContributionConstraintsContributionTypeInfo): string;
+export declare function contributionConstraintsContributionTypeInfoFromJSON(jsonString: string): SafeParseResult<ContributionConstraintsContributionTypeInfo, SDKValidationError>;
 //# sourceMappingURL=contributionconstraintscontributiontypeinfo.d.ts.map

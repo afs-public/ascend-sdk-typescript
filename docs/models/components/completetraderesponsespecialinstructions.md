@@ -6,7 +6,7 @@
 import { CompleteTradeResponseSpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: CompleteTradeResponseSpecialInstructions =
-  CompleteTradeResponseSpecialInstructions.CrossTrade;
+  CompleteTradeResponseSpecialInstructions.MakeMarketSolicited;
 ```
 
 ## Values

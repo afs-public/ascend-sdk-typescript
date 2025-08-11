@@ -37,8 +37,29 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CalculateCashBalanceResponse$ = exports.CalculateCashBalanceResponse$outboundSchema = exports.CalculateCashBalanceResponse$inboundSchema = exports.WithheldDepositThresholdAmount$ = exports.WithheldDepositThresholdAmount$outboundSchema = exports.WithheldDepositThresholdAmount$inboundSchema = exports.UnadjustedAvailableCashToWithdrawAmount$ = exports.UnadjustedAvailableCashToWithdrawAmount$outboundSchema = exports.UnadjustedAvailableCashToWithdrawAmount$inboundSchema = exports.PendingDebitInterestAmount$ = exports.PendingDebitInterestAmount$outboundSchema = exports.PendingDebitInterestAmount$inboundSchema = exports.PendingDebitDividendsAmount$ = exports.PendingDebitDividendsAmount$outboundSchema = exports.PendingDebitDividendsAmount$inboundSchema = exports.OpenLiquidityAmount$ = exports.OpenLiquidityAmount$outboundSchema = exports.OpenLiquidityAmount$inboundSchema = exports.OpenBalanceAmount$ = exports.OpenBalanceAmount$outboundSchema = exports.OpenBalanceAmount$inboundSchema = exports.FullyPaidUnsettledFundsAmount$ = exports.FullyPaidUnsettledFundsAmount$outboundSchema = exports.FullyPaidUnsettledFundsAmount$inboundSchema = exports.AvailableLiquidityAmount$ = exports.AvailableLiquidityAmount$outboundSchema = exports.AvailableLiquidityAmount$inboundSchema = exports.AvailableCashToWithdrawAmount$ = exports.AvailableCashToWithdrawAmount$outboundSchema = exports.AvailableCashToWithdrawAmount$inboundSchema = void 0;
+exports.availableCashToWithdrawAmountToJSON = availableCashToWithdrawAmountToJSON;
+exports.availableCashToWithdrawAmountFromJSON = availableCashToWithdrawAmountFromJSON;
+exports.availableLiquidityAmountToJSON = availableLiquidityAmountToJSON;
+exports.availableLiquidityAmountFromJSON = availableLiquidityAmountFromJSON;
+exports.fullyPaidUnsettledFundsAmountToJSON = fullyPaidUnsettledFundsAmountToJSON;
+exports.fullyPaidUnsettledFundsAmountFromJSON = fullyPaidUnsettledFundsAmountFromJSON;
+exports.openBalanceAmountToJSON = openBalanceAmountToJSON;
+exports.openBalanceAmountFromJSON = openBalanceAmountFromJSON;
+exports.openLiquidityAmountToJSON = openLiquidityAmountToJSON;
+exports.openLiquidityAmountFromJSON = openLiquidityAmountFromJSON;
+exports.pendingDebitDividendsAmountToJSON = pendingDebitDividendsAmountToJSON;
+exports.pendingDebitDividendsAmountFromJSON = pendingDebitDividendsAmountFromJSON;
+exports.pendingDebitInterestAmountToJSON = pendingDebitInterestAmountToJSON;
+exports.pendingDebitInterestAmountFromJSON = pendingDebitInterestAmountFromJSON;
+exports.unadjustedAvailableCashToWithdrawAmountToJSON = unadjustedAvailableCashToWithdrawAmountToJSON;
+exports.unadjustedAvailableCashToWithdrawAmountFromJSON = unadjustedAvailableCashToWithdrawAmountFromJSON;
+exports.withheldDepositThresholdAmountToJSON = withheldDepositThresholdAmountToJSON;
+exports.withheldDepositThresholdAmountFromJSON = withheldDepositThresholdAmountFromJSON;
+exports.calculateCashBalanceResponseToJSON = calculateCashBalanceResponseToJSON;
+exports.calculateCashBalanceResponseFromJSON = calculateCashBalanceResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const calculatecashbalanceresponseopenordersummary_js_1 = require("./calculatecashbalanceresponseopenordersummary.js");
 const calculatecashbalanceresponsetradesummary_js_1 = require("./calculatecashbalanceresponsetradesummary.js");
 const calculatecashbalanceresponsetransfersummary_js_1 = require("./calculatecashbalanceresponsetransfersummary.js");
@@ -61,6 +82,12 @@ var AvailableCashToWithdrawAmount$;
     /** @deprecated use `AvailableCashToWithdrawAmount$outboundSchema` instead. */
     AvailableCashToWithdrawAmount$.outboundSchema = exports.AvailableCashToWithdrawAmount$outboundSchema;
 })(AvailableCashToWithdrawAmount$ || (exports.AvailableCashToWithdrawAmount$ = AvailableCashToWithdrawAmount$ = {}));
+function availableCashToWithdrawAmountToJSON(availableCashToWithdrawAmount) {
+    return JSON.stringify(exports.AvailableCashToWithdrawAmount$outboundSchema.parse(availableCashToWithdrawAmount));
+}
+function availableCashToWithdrawAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AvailableCashToWithdrawAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AvailableCashToWithdrawAmount' from JSON`);
+}
 /** @internal */
 exports.AvailableLiquidityAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -80,6 +107,12 @@ var AvailableLiquidityAmount$;
     /** @deprecated use `AvailableLiquidityAmount$outboundSchema` instead. */
     AvailableLiquidityAmount$.outboundSchema = exports.AvailableLiquidityAmount$outboundSchema;
 })(AvailableLiquidityAmount$ || (exports.AvailableLiquidityAmount$ = AvailableLiquidityAmount$ = {}));
+function availableLiquidityAmountToJSON(availableLiquidityAmount) {
+    return JSON.stringify(exports.AvailableLiquidityAmount$outboundSchema.parse(availableLiquidityAmount));
+}
+function availableLiquidityAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AvailableLiquidityAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AvailableLiquidityAmount' from JSON`);
+}
 /** @internal */
 exports.FullyPaidUnsettledFundsAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -99,6 +132,12 @@ var FullyPaidUnsettledFundsAmount$;
     /** @deprecated use `FullyPaidUnsettledFundsAmount$outboundSchema` instead. */
     FullyPaidUnsettledFundsAmount$.outboundSchema = exports.FullyPaidUnsettledFundsAmount$outboundSchema;
 })(FullyPaidUnsettledFundsAmount$ || (exports.FullyPaidUnsettledFundsAmount$ = FullyPaidUnsettledFundsAmount$ = {}));
+function fullyPaidUnsettledFundsAmountToJSON(fullyPaidUnsettledFundsAmount) {
+    return JSON.stringify(exports.FullyPaidUnsettledFundsAmount$outboundSchema.parse(fullyPaidUnsettledFundsAmount));
+}
+function fullyPaidUnsettledFundsAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FullyPaidUnsettledFundsAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FullyPaidUnsettledFundsAmount' from JSON`);
+}
 /** @internal */
 exports.OpenBalanceAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -118,6 +157,12 @@ var OpenBalanceAmount$;
     /** @deprecated use `OpenBalanceAmount$outboundSchema` instead. */
     OpenBalanceAmount$.outboundSchema = exports.OpenBalanceAmount$outboundSchema;
 })(OpenBalanceAmount$ || (exports.OpenBalanceAmount$ = OpenBalanceAmount$ = {}));
+function openBalanceAmountToJSON(openBalanceAmount) {
+    return JSON.stringify(exports.OpenBalanceAmount$outboundSchema.parse(openBalanceAmount));
+}
+function openBalanceAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OpenBalanceAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OpenBalanceAmount' from JSON`);
+}
 /** @internal */
 exports.OpenLiquidityAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -137,6 +182,12 @@ var OpenLiquidityAmount$;
     /** @deprecated use `OpenLiquidityAmount$outboundSchema` instead. */
     OpenLiquidityAmount$.outboundSchema = exports.OpenLiquidityAmount$outboundSchema;
 })(OpenLiquidityAmount$ || (exports.OpenLiquidityAmount$ = OpenLiquidityAmount$ = {}));
+function openLiquidityAmountToJSON(openLiquidityAmount) {
+    return JSON.stringify(exports.OpenLiquidityAmount$outboundSchema.parse(openLiquidityAmount));
+}
+function openLiquidityAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OpenLiquidityAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OpenLiquidityAmount' from JSON`);
+}
 /** @internal */
 exports.PendingDebitDividendsAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -156,6 +207,12 @@ var PendingDebitDividendsAmount$;
     /** @deprecated use `PendingDebitDividendsAmount$outboundSchema` instead. */
     PendingDebitDividendsAmount$.outboundSchema = exports.PendingDebitDividendsAmount$outboundSchema;
 })(PendingDebitDividendsAmount$ || (exports.PendingDebitDividendsAmount$ = PendingDebitDividendsAmount$ = {}));
+function pendingDebitDividendsAmountToJSON(pendingDebitDividendsAmount) {
+    return JSON.stringify(exports.PendingDebitDividendsAmount$outboundSchema.parse(pendingDebitDividendsAmount));
+}
+function pendingDebitDividendsAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PendingDebitDividendsAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PendingDebitDividendsAmount' from JSON`);
+}
 /** @internal */
 exports.PendingDebitInterestAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -175,6 +232,12 @@ var PendingDebitInterestAmount$;
     /** @deprecated use `PendingDebitInterestAmount$outboundSchema` instead. */
     PendingDebitInterestAmount$.outboundSchema = exports.PendingDebitInterestAmount$outboundSchema;
 })(PendingDebitInterestAmount$ || (exports.PendingDebitInterestAmount$ = PendingDebitInterestAmount$ = {}));
+function pendingDebitInterestAmountToJSON(pendingDebitInterestAmount) {
+    return JSON.stringify(exports.PendingDebitInterestAmount$outboundSchema.parse(pendingDebitInterestAmount));
+}
+function pendingDebitInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PendingDebitInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PendingDebitInterestAmount' from JSON`);
+}
 /** @internal */
 exports.UnadjustedAvailableCashToWithdrawAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -194,6 +257,12 @@ var UnadjustedAvailableCashToWithdrawAmount$;
     /** @deprecated use `UnadjustedAvailableCashToWithdrawAmount$outboundSchema` instead. */
     UnadjustedAvailableCashToWithdrawAmount$.outboundSchema = exports.UnadjustedAvailableCashToWithdrawAmount$outboundSchema;
 })(UnadjustedAvailableCashToWithdrawAmount$ || (exports.UnadjustedAvailableCashToWithdrawAmount$ = UnadjustedAvailableCashToWithdrawAmount$ = {}));
+function unadjustedAvailableCashToWithdrawAmountToJSON(unadjustedAvailableCashToWithdrawAmount) {
+    return JSON.stringify(exports.UnadjustedAvailableCashToWithdrawAmount$outboundSchema.parse(unadjustedAvailableCashToWithdrawAmount));
+}
+function unadjustedAvailableCashToWithdrawAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.UnadjustedAvailableCashToWithdrawAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'UnadjustedAvailableCashToWithdrawAmount' from JSON`);
+}
 /** @internal */
 exports.WithheldDepositThresholdAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -213,6 +282,12 @@ var WithheldDepositThresholdAmount$;
     /** @deprecated use `WithheldDepositThresholdAmount$outboundSchema` instead. */
     WithheldDepositThresholdAmount$.outboundSchema = exports.WithheldDepositThresholdAmount$outboundSchema;
 })(WithheldDepositThresholdAmount$ || (exports.WithheldDepositThresholdAmount$ = WithheldDepositThresholdAmount$ = {}));
+function withheldDepositThresholdAmountToJSON(withheldDepositThresholdAmount) {
+    return JSON.stringify(exports.WithheldDepositThresholdAmount$outboundSchema.parse(withheldDepositThresholdAmount));
+}
+function withheldDepositThresholdAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WithheldDepositThresholdAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WithheldDepositThresholdAmount' from JSON`);
+}
 /** @internal */
 exports.CalculateCashBalanceResponse$inboundSchema = z.object({
     account: z.string().optional(),
@@ -308,4 +383,10 @@ var CalculateCashBalanceResponse$;
     /** @deprecated use `CalculateCashBalanceResponse$outboundSchema` instead. */
     CalculateCashBalanceResponse$.outboundSchema = exports.CalculateCashBalanceResponse$outboundSchema;
 })(CalculateCashBalanceResponse$ || (exports.CalculateCashBalanceResponse$ = CalculateCashBalanceResponse$ = {}));
+function calculateCashBalanceResponseToJSON(calculateCashBalanceResponse) {
+    return JSON.stringify(exports.CalculateCashBalanceResponse$outboundSchema.parse(calculateCashBalanceResponse));
+}
+function calculateCashBalanceResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CalculateCashBalanceResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CalculateCashBalanceResponse' from JSON`);
+}
 //# sourceMappingURL=calculatecashbalanceresponse.js.map

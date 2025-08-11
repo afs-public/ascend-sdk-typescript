@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { WireWithdrawalSchedule, WireWithdrawalSchedule$Outbound } from "./wirewithdrawalschedule.js";
 /**
  * A paged response containing a list of Wire withdrawal transfer schedules
@@ -34,4 +36,6 @@ export declare namespace ListWireWithdrawalSchedulesResponse$ {
     /** @deprecated use `ListWireWithdrawalSchedulesResponse$Outbound` instead. */
     type Outbound = ListWireWithdrawalSchedulesResponse$Outbound;
 }
+export declare function listWireWithdrawalSchedulesResponseToJSON(listWireWithdrawalSchedulesResponse: ListWireWithdrawalSchedulesResponse): string;
+export declare function listWireWithdrawalSchedulesResponseFromJSON(jsonString: string): SafeParseResult<ListWireWithdrawalSchedulesResponse, SDKValidationError>;
 //# sourceMappingURL=listwirewithdrawalschedulesresponse.d.ts.map

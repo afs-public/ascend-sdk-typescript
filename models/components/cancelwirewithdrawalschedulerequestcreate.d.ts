@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to cancel a Wire withdrawal transfer schedule
  */
@@ -33,4 +35,6 @@ export declare namespace CancelWireWithdrawalScheduleRequestCreate$ {
     /** @deprecated use `CancelWireWithdrawalScheduleRequestCreate$Outbound` instead. */
     type Outbound = CancelWireWithdrawalScheduleRequestCreate$Outbound;
 }
+export declare function cancelWireWithdrawalScheduleRequestCreateToJSON(cancelWireWithdrawalScheduleRequestCreate: CancelWireWithdrawalScheduleRequestCreate): string;
+export declare function cancelWireWithdrawalScheduleRequestCreateFromJSON(jsonString: string): SafeParseResult<CancelWireWithdrawalScheduleRequestCreate, SDKValidationError>;
 //# sourceMappingURL=cancelwirewithdrawalschedulerequestcreate.d.ts.map

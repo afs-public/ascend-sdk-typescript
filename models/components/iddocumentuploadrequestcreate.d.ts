@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Describes the contents of a document and how it is used; Required for all identity documents
  */
@@ -99,4 +101,6 @@ export declare namespace IDDocumentUploadRequestCreate$ {
     /** @deprecated use `IDDocumentUploadRequestCreate$Outbound` instead. */
     type Outbound = IDDocumentUploadRequestCreate$Outbound;
 }
+export declare function idDocumentUploadRequestCreateToJSON(idDocumentUploadRequestCreate: IDDocumentUploadRequestCreate): string;
+export declare function idDocumentUploadRequestCreateFromJSON(jsonString: string): SafeParseResult<IDDocumentUploadRequestCreate, SDKValidationError>;
 //# sourceMappingURL=iddocumentuploadrequestcreate.d.ts.map

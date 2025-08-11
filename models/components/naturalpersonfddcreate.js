@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NaturalPersonFddCreate$ = exports.NaturalPersonFddCreate$outboundSchema = exports.NaturalPersonFddCreate$inboundSchema = void 0;
+exports.naturalPersonFddCreateToJSON = naturalPersonFddCreateToJSON;
+exports.naturalPersonFddCreateFromJSON = naturalPersonFddCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const customerreferralsourcecreate_js_1 = require("./customerreferralsourcecreate.js");
 const negativenewscreate_js_1 = require("./negativenewscreate.js");
 const othersourcesofwealthcreate_js_1 = require("./othersourcesofwealthcreate.js");
@@ -87,4 +90,10 @@ var NaturalPersonFddCreate$;
     /** @deprecated use `NaturalPersonFddCreate$outboundSchema` instead. */
     NaturalPersonFddCreate$.outboundSchema = exports.NaturalPersonFddCreate$outboundSchema;
 })(NaturalPersonFddCreate$ || (exports.NaturalPersonFddCreate$ = NaturalPersonFddCreate$ = {}));
+function naturalPersonFddCreateToJSON(naturalPersonFddCreate) {
+    return JSON.stringify(exports.NaturalPersonFddCreate$outboundSchema.parse(naturalPersonFddCreate));
+}
+function naturalPersonFddCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NaturalPersonFddCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NaturalPersonFddCreate' from JSON`);
+}
 //# sourceMappingURL=naturalpersonfddcreate.js.map

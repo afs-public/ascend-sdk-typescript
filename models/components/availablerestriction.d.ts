@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Available Restriction on an Account.
  */
@@ -38,4 +40,6 @@ export declare namespace AvailableRestriction$ {
     /** @deprecated use `AvailableRestriction$Outbound` instead. */
     type Outbound = AvailableRestriction$Outbound;
 }
+export declare function availableRestrictionToJSON(availableRestriction: AvailableRestriction): string;
+export declare function availableRestrictionFromJSON(jsonString: string): SafeParseResult<AvailableRestriction, SDKValidationError>;
 //# sourceMappingURL=availablerestriction.d.ts.map

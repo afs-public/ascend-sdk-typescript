@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentifierCreate$ = exports.IdentifierCreate$outboundSchema = exports.IdentifierCreate$inboundSchema = exports.IdentifierCreateType$ = exports.IdentifierCreateType$outboundSchema = exports.IdentifierCreateType$inboundSchema = exports.IdentifierCreateType = void 0;
+exports.identifierCreateToJSON = identifierCreateToJSON;
+exports.identifierCreateFromJSON = identifierCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of identifier
@@ -93,4 +96,10 @@ var IdentifierCreate$;
     /** @deprecated use `IdentifierCreate$outboundSchema` instead. */
     IdentifierCreate$.outboundSchema = exports.IdentifierCreate$outboundSchema;
 })(IdentifierCreate$ || (exports.IdentifierCreate$ = IdentifierCreate$ = {}));
+function identifierCreateToJSON(identifierCreate) {
+    return JSON.stringify(exports.IdentifierCreate$outboundSchema.parse(identifierCreate));
+}
+function identifierCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IdentifierCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IdentifierCreate' from JSON`);
+}
 //# sourceMappingURL=identifiercreate.js.map

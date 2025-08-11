@@ -37,8 +37,17 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OptionDeliverable$ = exports.OptionDeliverable$outboundSchema = exports.OptionDeliverable$inboundSchema = exports.SettlementStatus$ = exports.SettlementStatus$outboundSchema = exports.SettlementStatus$inboundSchema = exports.SettlementConvention$ = exports.SettlementConvention$outboundSchema = exports.SettlementConvention$inboundSchema = exports.OptionDeliverableQuantity$ = exports.OptionDeliverableQuantity$outboundSchema = exports.OptionDeliverableQuantity$inboundSchema = exports.CashType$ = exports.CashType$outboundSchema = exports.CashType$inboundSchema = exports.CashAmount$ = exports.CashAmount$outboundSchema = exports.CashAmount$inboundSchema = exports.AllocationPercentage$ = exports.AllocationPercentage$outboundSchema = exports.AllocationPercentage$inboundSchema = exports.SettlementStatus = exports.SettlementConvention = exports.CashType = void 0;
+exports.allocationPercentageToJSON = allocationPercentageToJSON;
+exports.allocationPercentageFromJSON = allocationPercentageFromJSON;
+exports.cashAmountToJSON = cashAmountToJSON;
+exports.cashAmountFromJSON = cashAmountFromJSON;
+exports.optionDeliverableQuantityToJSON = optionDeliverableQuantityToJSON;
+exports.optionDeliverableQuantityFromJSON = optionDeliverableQuantityFromJSON;
+exports.optionDeliverableToJSON = optionDeliverableToJSON;
+exports.optionDeliverableFromJSON = optionDeliverableFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The cash type of the deliverable
@@ -86,6 +95,12 @@ var AllocationPercentage$;
     /** @deprecated use `AllocationPercentage$outboundSchema` instead. */
     AllocationPercentage$.outboundSchema = exports.AllocationPercentage$outboundSchema;
 })(AllocationPercentage$ || (exports.AllocationPercentage$ = AllocationPercentage$ = {}));
+function allocationPercentageToJSON(allocationPercentage) {
+    return JSON.stringify(exports.AllocationPercentage$outboundSchema.parse(allocationPercentage));
+}
+function allocationPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AllocationPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AllocationPercentage' from JSON`);
+}
 /** @internal */
 exports.CashAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -105,6 +120,12 @@ var CashAmount$;
     /** @deprecated use `CashAmount$outboundSchema` instead. */
     CashAmount$.outboundSchema = exports.CashAmount$outboundSchema;
 })(CashAmount$ || (exports.CashAmount$ = CashAmount$ = {}));
+function cashAmountToJSON(cashAmount) {
+    return JSON.stringify(exports.CashAmount$outboundSchema.parse(cashAmount));
+}
+function cashAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashAmount' from JSON`);
+}
 /** @internal */
 exports.CashType$inboundSchema = z
     .union([
@@ -146,6 +167,12 @@ var OptionDeliverableQuantity$;
     /** @deprecated use `OptionDeliverableQuantity$outboundSchema` instead. */
     OptionDeliverableQuantity$.outboundSchema = exports.OptionDeliverableQuantity$outboundSchema;
 })(OptionDeliverableQuantity$ || (exports.OptionDeliverableQuantity$ = OptionDeliverableQuantity$ = {}));
+function optionDeliverableQuantityToJSON(optionDeliverableQuantity) {
+    return JSON.stringify(exports.OptionDeliverableQuantity$outboundSchema.parse(optionDeliverableQuantity));
+}
+function optionDeliverableQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OptionDeliverableQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OptionDeliverableQuantity' from JSON`);
+}
 /** @internal */
 exports.SettlementConvention$inboundSchema = z
     .union([
@@ -247,4 +274,10 @@ var OptionDeliverable$;
     /** @deprecated use `OptionDeliverable$outboundSchema` instead. */
     OptionDeliverable$.outboundSchema = exports.OptionDeliverable$outboundSchema;
 })(OptionDeliverable$ || (exports.OptionDeliverable$ = OptionDeliverable$ = {}));
+function optionDeliverableToJSON(optionDeliverable) {
+    return JSON.stringify(exports.OptionDeliverable$outboundSchema.parse(optionDeliverable));
+}
+function optionDeliverableFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OptionDeliverable$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OptionDeliverable' from JSON`);
+}
 //# sourceMappingURL=optiondeliverable.js.map

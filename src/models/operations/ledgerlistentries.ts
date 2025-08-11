@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LedgerListEntriesRequest = {
   /**
@@ -94,6 +97,24 @@ export namespace LedgerListEntriesRequest$ {
   export type Outbound = LedgerListEntriesRequest$Outbound;
 }
 
+export function ledgerListEntriesRequestToJSON(
+  ledgerListEntriesRequest: LedgerListEntriesRequest,
+): string {
+  return JSON.stringify(
+    LedgerListEntriesRequest$outboundSchema.parse(ledgerListEntriesRequest),
+  );
+}
+
+export function ledgerListEntriesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LedgerListEntriesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LedgerListEntriesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LedgerListEntriesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LedgerListEntriesResponse$inboundSchema: z.ZodType<
   LedgerListEntriesResponse,
@@ -146,4 +167,22 @@ export namespace LedgerListEntriesResponse$ {
   export const outboundSchema = LedgerListEntriesResponse$outboundSchema;
   /** @deprecated use `LedgerListEntriesResponse$Outbound` instead. */
   export type Outbound = LedgerListEntriesResponse$Outbound;
+}
+
+export function ledgerListEntriesResponseToJSON(
+  ledgerListEntriesResponse: LedgerListEntriesResponse,
+): string {
+  return JSON.stringify(
+    LedgerListEntriesResponse$outboundSchema.parse(ledgerListEntriesResponse),
+  );
+}
+
+export function ledgerListEntriesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LedgerListEntriesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LedgerListEntriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LedgerListEntriesResponse' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CloseAccountRequestCreate$ = exports.CloseAccountRequestCreate$outboundSchema = exports.CloseAccountRequestCreate$inboundSchema = void 0;
+exports.closeAccountRequestCreateToJSON = closeAccountRequestCreateToJSON;
+exports.closeAccountRequestCreateFromJSON = closeAccountRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CloseAccountRequestCreate$inboundSchema = z.object({
     replaced_fdid: z.string().optional(),
@@ -66,4 +69,10 @@ var CloseAccountRequestCreate$;
     /** @deprecated use `CloseAccountRequestCreate$outboundSchema` instead. */
     CloseAccountRequestCreate$.outboundSchema = exports.CloseAccountRequestCreate$outboundSchema;
 })(CloseAccountRequestCreate$ || (exports.CloseAccountRequestCreate$ = CloseAccountRequestCreate$ = {}));
+function closeAccountRequestCreateToJSON(closeAccountRequestCreate) {
+    return JSON.stringify(exports.CloseAccountRequestCreate$outboundSchema.parse(closeAccountRequestCreate));
+}
+function closeAccountRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CloseAccountRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CloseAccountRequestCreate' from JSON`);
+}
 //# sourceMappingURL=closeaccountrequestcreate.js.map

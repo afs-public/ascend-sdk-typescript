@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
@@ -85,6 +87,8 @@ export declare namespace Money$ {
     /** @deprecated use `Money$Outbound` instead. */
     type Outbound = Money$Outbound;
 }
+export declare function moneyToJSON(money: Money): string;
+export declare function moneyFromJSON(jsonString: string): SafeParseResult<Money, SDKValidationError>;
 /** @internal */
 export declare const LotCreate$inboundSchema: z.ZodType<LotCreate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -109,4 +113,6 @@ export declare namespace LotCreate$ {
     /** @deprecated use `LotCreate$Outbound` instead. */
     type Outbound = LotCreate$Outbound;
 }
+export declare function lotCreateToJSON(lotCreate: LotCreate): string;
+export declare function lotCreateFromJSON(jsonString: string): SafeParseResult<LotCreate, SDKValidationError>;
 //# sourceMappingURL=lotcreate.d.ts.map

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountGoalsCreate$ = exports.AccountGoalsCreate$outboundSchema = exports.AccountGoalsCreate$inboundSchema = exports.TimeHorizon$ = exports.TimeHorizon$outboundSchema = exports.TimeHorizon$inboundSchema = exports.RiskTolerance$ = exports.RiskTolerance$outboundSchema = exports.RiskTolerance$inboundSchema = exports.LiquidityNeeds$ = exports.LiquidityNeeds$outboundSchema = exports.LiquidityNeeds$inboundSchema = exports.InvestmentObjective$ = exports.InvestmentObjective$outboundSchema = exports.InvestmentObjective$inboundSchema = exports.TimeHorizon = exports.RiskTolerance = exports.LiquidityNeeds = exports.InvestmentObjective = void 0;
+exports.accountGoalsCreateToJSON = accountGoalsCreateToJSON;
+exports.accountGoalsCreateFromJSON = accountGoalsCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The financial goal or purpose that an investor has in mind when making investment decisions; firms often ask investors to specify their investment objectives when opening an account, in order to provide appropriate investment recommendations and manage risk appropriately
@@ -217,4 +220,10 @@ var AccountGoalsCreate$;
     /** @deprecated use `AccountGoalsCreate$outboundSchema` instead. */
     AccountGoalsCreate$.outboundSchema = exports.AccountGoalsCreate$outboundSchema;
 })(AccountGoalsCreate$ || (exports.AccountGoalsCreate$ = AccountGoalsCreate$ = {}));
+function accountGoalsCreateToJSON(accountGoalsCreate) {
+    return JSON.stringify(exports.AccountGoalsCreate$outboundSchema.parse(accountGoalsCreate));
+}
+function accountGoalsCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountGoalsCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountGoalsCreate' from JSON`);
+}
 //# sourceMappingURL=accountgoalscreate.js.map

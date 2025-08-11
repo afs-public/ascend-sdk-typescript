@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Annual income range; the low number is exclusive, the high number is inclusive
  */
@@ -176,4 +178,6 @@ export declare namespace CustomerProfileCreate$ {
     /** @deprecated use `CustomerProfileCreate$Outbound` instead. */
     type Outbound = CustomerProfileCreate$Outbound;
 }
+export declare function customerProfileCreateToJSON(customerProfileCreate: CustomerProfileCreate): string;
+export declare function customerProfileCreateFromJSON(jsonString: string): SafeParseResult<CustomerProfileCreate, SDKValidationError>;
 //# sourceMappingURL=customerprofilecreate.d.ts.map

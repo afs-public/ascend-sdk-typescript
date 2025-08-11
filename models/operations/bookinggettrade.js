@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingGetTradeResponse$ = exports.BookingGetTradeResponse$outboundSchema = exports.BookingGetTradeResponse$inboundSchema = exports.BookingGetTradeRequest$ = exports.BookingGetTradeRequest$outboundSchema = exports.BookingGetTradeRequest$inboundSchema = void 0;
+exports.bookingGetTradeRequestToJSON = bookingGetTradeRequestToJSON;
+exports.bookingGetTradeRequestFromJSON = bookingGetTradeRequestFromJSON;
+exports.bookingGetTradeResponseToJSON = bookingGetTradeResponseToJSON;
+exports.bookingGetTradeResponseFromJSON = bookingGetTradeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BookingGetTradeRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var BookingGetTradeRequest$;
     /** @deprecated use `BookingGetTradeRequest$outboundSchema` instead. */
     BookingGetTradeRequest$.outboundSchema = exports.BookingGetTradeRequest$outboundSchema;
 })(BookingGetTradeRequest$ || (exports.BookingGetTradeRequest$ = BookingGetTradeRequest$ = {}));
+function bookingGetTradeRequestToJSON(bookingGetTradeRequest) {
+    return JSON.stringify(exports.BookingGetTradeRequest$outboundSchema.parse(bookingGetTradeRequest));
+}
+function bookingGetTradeRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingGetTradeRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingGetTradeRequest' from JSON`);
+}
 /** @internal */
 exports.BookingGetTradeResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var BookingGetTradeResponse$;
     /** @deprecated use `BookingGetTradeResponse$outboundSchema` instead. */
     BookingGetTradeResponse$.outboundSchema = exports.BookingGetTradeResponse$outboundSchema;
 })(BookingGetTradeResponse$ || (exports.BookingGetTradeResponse$ = BookingGetTradeResponse$ = {}));
+function bookingGetTradeResponseToJSON(bookingGetTradeResponse) {
+    return JSON.stringify(exports.BookingGetTradeResponse$outboundSchema.parse(bookingGetTradeResponse));
+}
+function bookingGetTradeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingGetTradeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingGetTradeResponse' from JSON`);
+}
 //# sourceMappingURL=bookinggettrade.js.map

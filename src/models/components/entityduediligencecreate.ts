@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NegativeNewsCreate,
   NegativeNewsCreate$inboundSchema,
@@ -72,4 +75,22 @@ export namespace EntityDueDiligenceCreate$ {
   export const outboundSchema = EntityDueDiligenceCreate$outboundSchema;
   /** @deprecated use `EntityDueDiligenceCreate$Outbound` instead. */
   export type Outbound = EntityDueDiligenceCreate$Outbound;
+}
+
+export function entityDueDiligenceCreateToJSON(
+  entityDueDiligenceCreate: EntityDueDiligenceCreate,
+): string {
+  return JSON.stringify(
+    EntityDueDiligenceCreate$outboundSchema.parse(entityDueDiligenceCreate),
+  );
+}
+
+export function entityDueDiligenceCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<EntityDueDiligenceCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntityDueDiligenceCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntityDueDiligenceCreate' from JSON`,
+  );
 }

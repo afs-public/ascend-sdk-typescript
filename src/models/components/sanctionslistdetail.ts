@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Sanctions list detail used for Dow Jones Profile details
@@ -111,4 +114,22 @@ export namespace SanctionsListDetail$ {
   export const outboundSchema = SanctionsListDetail$outboundSchema;
   /** @deprecated use `SanctionsListDetail$Outbound` instead. */
   export type Outbound = SanctionsListDetail$Outbound;
+}
+
+export function sanctionsListDetailToJSON(
+  sanctionsListDetail: SanctionsListDetail,
+): string {
+  return JSON.stringify(
+    SanctionsListDetail$outboundSchema.parse(sanctionsListDetail),
+  );
+}
+
+export function sanctionsListDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<SanctionsListDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SanctionsListDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SanctionsListDetail' from JSON`,
+  );
 }

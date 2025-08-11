@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A legal Agreement for an Enrollment.
  */
@@ -38,4 +40,6 @@ export declare namespace LegalAgreement$ {
     /** @deprecated use `LegalAgreement$Outbound` instead. */
     type Outbound = LegalAgreement$Outbound;
 }
+export declare function legalAgreementToJSON(legalAgreement: LegalAgreement): string;
+export declare function legalAgreementFromJSON(jsonString: string): SafeParseResult<LegalAgreement, SDKValidationError>;
 //# sourceMappingURL=legalagreement.d.ts.map

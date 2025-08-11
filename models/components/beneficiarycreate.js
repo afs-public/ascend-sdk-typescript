@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BeneficiaryCreate$ = exports.BeneficiaryCreate$outboundSchema = exports.BeneficiaryCreate$inboundSchema = exports.BeneficiaryCreateTaxIdType$ = exports.BeneficiaryCreateTaxIdType$outboundSchema = exports.BeneficiaryCreateTaxIdType$inboundSchema = exports.BeneficiaryCreateRelationType$ = exports.BeneficiaryCreateRelationType$outboundSchema = exports.BeneficiaryCreateRelationType$inboundSchema = exports.BeneficiaryCreateEntityType$ = exports.BeneficiaryCreateEntityType$outboundSchema = exports.BeneficiaryCreateEntityType$inboundSchema = exports.BeneficiaryCreateTaxIdType = exports.BeneficiaryCreateRelationType = exports.BeneficiaryCreateEntityType = void 0;
+exports.beneficiaryCreateToJSON = beneficiaryCreateToJSON;
+exports.beneficiaryCreateFromJSON = beneficiaryCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const datecreate_js_1 = require("./datecreate.js");
 const phonenumbercreate_js_1 = require("./phonenumbercreate.js");
@@ -214,4 +217,10 @@ var BeneficiaryCreate$;
     /** @deprecated use `BeneficiaryCreate$outboundSchema` instead. */
     BeneficiaryCreate$.outboundSchema = exports.BeneficiaryCreate$outboundSchema;
 })(BeneficiaryCreate$ || (exports.BeneficiaryCreate$ = BeneficiaryCreate$ = {}));
+function beneficiaryCreateToJSON(beneficiaryCreate) {
+    return JSON.stringify(exports.BeneficiaryCreate$outboundSchema.parse(beneficiaryCreate));
+}
+function beneficiaryCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BeneficiaryCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BeneficiaryCreate' from JSON`);
+}
 //# sourceMappingURL=beneficiarycreate.js.map

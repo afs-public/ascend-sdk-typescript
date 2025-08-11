@@ -18,6 +18,7 @@ Creates an ACH deposit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDeposits_CreateAchDeposit" method="post" path="/transfers/v1/accounts/{account_id}/achDeposits" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -40,7 +41,6 @@ async function run() {
     clientTransferId: "179dcd33-49f8-4615-989c-560fb387c4fd",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -75,15 +75,12 @@ async function run() {
     bankRelationship: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
     clientTransferId: "179dcd33-49f8-4615-989c-560fb387c4fd",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("achTransfersCreateACHDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -116,6 +113,7 @@ Gets an existing ACH deposit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDeposits_GetAchDeposit" method="get" path="/transfers/v1/accounts/{account_id}/achDeposits/{achDeposit_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -134,7 +132,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.achTransfers.getAchDeposit("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -165,15 +162,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await achTransfersGetACHDeposit(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("achTransfersGetACHDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -206,6 +200,7 @@ Cancels an existing ACH deposit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDeposits_CancelAchDeposit" method="post" path="/transfers/v1/accounts/{account_id}/achDeposits/{achDeposit_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -226,7 +221,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -259,15 +253,12 @@ async function run() {
   const res = await achTransfersCancelACHDeposit(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("achTransfersCancelACHDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -301,6 +292,7 @@ Creates an ACH withdrawal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawals_CreateAchWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawals" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -322,7 +314,6 @@ async function run() {
     clientTransferId: "179dcd33-49f8-4615-989c-560fb387c4fd",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -356,15 +347,12 @@ async function run() {
     bankRelationship: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/bankRelationships/651ef9de0dee00240813e60e",
     clientTransferId: "179dcd33-49f8-4615-989c-560fb387c4fd",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("achTransfersCreateACHWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -397,6 +385,7 @@ Gets an existing ACH withdrawal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawals_GetAchWithdrawal" method="get" path="/transfers/v1/accounts/{account_id}/achWithdrawals/{achWithdrawal_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -415,7 +404,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.achTransfers.getAchWithdrawal("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -446,15 +434,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await achTransfersGetACHWithdrawal(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("achTransfersGetACHWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -487,6 +472,7 @@ Cancels an existing ACH withdrawal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawals_CancelAchWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawals/{achWithdrawal_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -507,7 +493,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -540,15 +525,12 @@ async function run() {
   const res = await achTransfersCancelACHWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("achTransfersCancelACHWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

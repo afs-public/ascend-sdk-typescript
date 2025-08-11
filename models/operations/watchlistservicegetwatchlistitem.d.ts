@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type WatchlistServiceGetWatchlistItemRequest = {
     /**
      * The watchlist id.
@@ -42,6 +44,8 @@ export declare namespace WatchlistServiceGetWatchlistItemRequest$ {
     /** @deprecated use `WatchlistServiceGetWatchlistItemRequest$Outbound` instead. */
     type Outbound = WatchlistServiceGetWatchlistItemRequest$Outbound;
 }
+export declare function watchlistServiceGetWatchlistItemRequestToJSON(watchlistServiceGetWatchlistItemRequest: WatchlistServiceGetWatchlistItemRequest): string;
+export declare function watchlistServiceGetWatchlistItemRequestFromJSON(jsonString: string): SafeParseResult<WatchlistServiceGetWatchlistItemRequest, SDKValidationError>;
 /** @internal */
 export declare const WatchlistServiceGetWatchlistItemResponse$inboundSchema: z.ZodType<WatchlistServiceGetWatchlistItemResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace WatchlistServiceGetWatchlistItemResponse$ {
     /** @deprecated use `WatchlistServiceGetWatchlistItemResponse$Outbound` instead. */
     type Outbound = WatchlistServiceGetWatchlistItemResponse$Outbound;
 }
+export declare function watchlistServiceGetWatchlistItemResponseToJSON(watchlistServiceGetWatchlistItemResponse: WatchlistServiceGetWatchlistItemResponse): string;
+export declare function watchlistServiceGetWatchlistItemResponseFromJSON(jsonString: string): SafeParseResult<WatchlistServiceGetWatchlistItemResponse, SDKValidationError>;
 //# sourceMappingURL=watchlistservicegetwatchlistitem.d.ts.map

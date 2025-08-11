@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateCreate,
   DateCreate$inboundSchema,
@@ -126,6 +129,20 @@ export namespace Money$ {
   export type Outbound = Money$Outbound;
 }
 
+export function moneyToJSON(money: Money): string {
+  return JSON.stringify(Money$outboundSchema.parse(money));
+}
+
+export function moneyFromJSON(
+  jsonString: string,
+): SafeParseResult<Money, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Money$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Money' from JSON`,
+  );
+}
+
 /** @internal */
 export const LotCreate$inboundSchema: z.ZodType<
   LotCreate,
@@ -180,4 +197,18 @@ export namespace LotCreate$ {
   export const outboundSchema = LotCreate$outboundSchema;
   /** @deprecated use `LotCreate$Outbound` instead. */
   export type Outbound = LotCreate$Outbound;
+}
+
+export function lotCreateToJSON(lotCreate: LotCreate): string {
+  return JSON.stringify(LotCreate$outboundSchema.parse(lotCreate));
+}
+
+export function lotCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<LotCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LotCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LotCreate' from JSON`,
+  );
 }

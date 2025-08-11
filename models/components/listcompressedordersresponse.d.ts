@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CompressedOrder, CompressedOrder$Outbound } from "./compressedorder.js";
 /**
  * The response message for listing compressed orders within a basket
@@ -34,4 +36,6 @@ export declare namespace ListCompressedOrdersResponse$ {
     /** @deprecated use `ListCompressedOrdersResponse$Outbound` instead. */
     type Outbound = ListCompressedOrdersResponse$Outbound;
 }
+export declare function listCompressedOrdersResponseToJSON(listCompressedOrdersResponse: ListCompressedOrdersResponse): string;
+export declare function listCompressedOrdersResponseFromJSON(jsonString: string): SafeParseResult<ListCompressedOrdersResponse, SDKValidationError>;
 //# sourceMappingURL=listcompressedordersresponse.d.ts.map

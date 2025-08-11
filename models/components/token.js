@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Token$ = exports.Token$outboundSchema = exports.Token$inboundSchema = void 0;
+exports.tokenToJSON = tokenToJSON;
+exports.tokenFromJSON = tokenFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.Token$inboundSchema = z
     .object({
@@ -75,4 +78,10 @@ var Token$;
     /** @deprecated use `Token$outboundSchema` instead. */
     Token$.outboundSchema = exports.Token$outboundSchema;
 })(Token$ || (exports.Token$ = Token$ = {}));
+function tokenToJSON(token) {
+    return JSON.stringify(exports.Token$outboundSchema.parse(token));
+}
+function tokenFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Token$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Token' from JSON`);
+}
 //# sourceMappingURL=token.js.map

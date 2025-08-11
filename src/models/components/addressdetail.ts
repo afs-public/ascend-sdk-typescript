@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Address detail used for Dow Jones Profile details
@@ -93,4 +96,18 @@ export namespace AddressDetail$ {
   export const outboundSchema = AddressDetail$outboundSchema;
   /** @deprecated use `AddressDetail$Outbound` instead. */
   export type Outbound = AddressDetail$Outbound;
+}
+
+export function addressDetailToJSON(addressDetail: AddressDetail): string {
+  return JSON.stringify(AddressDetail$outboundSchema.parse(addressDetail));
+}
+
+export function addressDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<AddressDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddressDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddressDetail' from JSON`,
+  );
 }

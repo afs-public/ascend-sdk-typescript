@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LargeTrader$ = exports.LargeTrader$outboundSchema = exports.LargeTrader$inboundSchema = exports.EffectiveDate$ = exports.EffectiveDate$outboundSchema = exports.EffectiveDate$inboundSchema = void 0;
+exports.effectiveDateToJSON = effectiveDateToJSON;
+exports.effectiveDateFromJSON = effectiveDateFromJSON;
+exports.largeTraderToJSON = largeTraderToJSON;
+exports.largeTraderFromJSON = largeTraderFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.EffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -62,6 +67,12 @@ var EffectiveDate$;
     /** @deprecated use `EffectiveDate$outboundSchema` instead. */
     EffectiveDate$.outboundSchema = exports.EffectiveDate$outboundSchema;
 })(EffectiveDate$ || (exports.EffectiveDate$ = EffectiveDate$ = {}));
+function effectiveDateToJSON(effectiveDate) {
+    return JSON.stringify(exports.EffectiveDate$outboundSchema.parse(effectiveDate));
+}
+function effectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EffectiveDate' from JSON`);
+}
 /** @internal */
 exports.LargeTrader$inboundSchema = z.object({
     effective_date: z.nullable(z.lazy(() => exports.EffectiveDate$inboundSchema))
@@ -95,4 +106,10 @@ var LargeTrader$;
     /** @deprecated use `LargeTrader$outboundSchema` instead. */
     LargeTrader$.outboundSchema = exports.LargeTrader$outboundSchema;
 })(LargeTrader$ || (exports.LargeTrader$ = LargeTrader$ = {}));
+function largeTraderToJSON(largeTrader) {
+    return JSON.stringify(exports.LargeTrader$outboundSchema.parse(largeTrader));
+}
+function largeTraderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LargeTrader$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LargeTrader' from JSON`);
+}
 //# sourceMappingURL=largetrader.js.map

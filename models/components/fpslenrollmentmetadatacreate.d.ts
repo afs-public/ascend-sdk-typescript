@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Percentages for FPSL Enrollment, must equal 100
  */
@@ -21,4 +23,6 @@ export declare namespace FPSLEnrollmentMetaDataCreate$ {
     /** @deprecated use `FPSLEnrollmentMetaDataCreate$Outbound` instead. */
     type Outbound = FPSLEnrollmentMetaDataCreate$Outbound;
 }
+export declare function fpslEnrollmentMetaDataCreateToJSON(fpslEnrollmentMetaDataCreate: FPSLEnrollmentMetaDataCreate): string;
+export declare function fpslEnrollmentMetaDataCreateFromJSON(jsonString: string): SafeParseResult<FPSLEnrollmentMetaDataCreate, SDKValidationError>;
 //# sourceMappingURL=fpslenrollmentmetadatacreate.d.ts.map

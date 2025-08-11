@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForceApproveIctDepositRequestCreate$ = exports.ForceApproveIctDepositRequestCreate$outboundSchema = exports.ForceApproveIctDepositRequestCreate$inboundSchema = void 0;
+exports.forceApproveIctDepositRequestCreateToJSON = forceApproveIctDepositRequestCreateToJSON;
+exports.forceApproveIctDepositRequestCreateFromJSON = forceApproveIctDepositRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ForceApproveIctDepositRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -57,4 +60,10 @@ var ForceApproveIctDepositRequestCreate$;
     /** @deprecated use `ForceApproveIctDepositRequestCreate$outboundSchema` instead. */
     ForceApproveIctDepositRequestCreate$.outboundSchema = exports.ForceApproveIctDepositRequestCreate$outboundSchema;
 })(ForceApproveIctDepositRequestCreate$ || (exports.ForceApproveIctDepositRequestCreate$ = ForceApproveIctDepositRequestCreate$ = {}));
+function forceApproveIctDepositRequestCreateToJSON(forceApproveIctDepositRequestCreate) {
+    return JSON.stringify(exports.ForceApproveIctDepositRequestCreate$outboundSchema.parse(forceApproveIctDepositRequestCreate));
+}
+function forceApproveIctDepositRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForceApproveIctDepositRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForceApproveIctDepositRequestCreate' from JSON`);
+}
 //# sourceMappingURL=forceapproveictdepositrequestcreate.js.map

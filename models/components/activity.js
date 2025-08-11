@@ -49,8 +49,339 @@ exports.ActivitySpinoffRecordDate$ = exports.ActivitySpinoffRecordDate$outboundS
 exports.ActivitySweepType$outboundSchema = exports.ActivitySweepType$inboundSchema = exports.ActivitySweepAction$ = exports.ActivitySweepAction$outboundSchema = exports.ActivitySweepAction$inboundSchema = exports.ActivityStockSplit$ = exports.ActivityStockSplit$outboundSchema = exports.ActivityStockSplit$inboundSchema = exports.ActivityStockSplitRecordDate$ = exports.ActivityStockSplitRecordDate$outboundSchema = exports.ActivityStockSplitRecordDate$inboundSchema = exports.ActivityStockSplitQuantity$ = exports.ActivityStockSplitQuantity$outboundSchema = exports.ActivityStockSplitQuantity$inboundSchema = exports.ActivityStockSplitPayDate$ = exports.ActivityStockSplitPayDate$outboundSchema = exports.ActivityStockSplitPayDate$inboundSchema = exports.ActivityStockSplitFactorNumerator$ = exports.ActivityStockSplitFactorNumerator$outboundSchema = exports.ActivityStockSplitFactorNumerator$inboundSchema = exports.ActivityStockSplitFactorDenominator$ = exports.ActivityStockSplitFactorDenominator$outboundSchema = exports.ActivityStockSplitFactorDenominator$inboundSchema = exports.ActivityStockSplitCorporateActionGeneralInformation$ = exports.ActivityStockSplitCorporateActionGeneralInformation$outboundSchema = exports.ActivityStockSplitCorporateActionGeneralInformation$inboundSchema = exports.ActivityStockDividend$ = exports.ActivityStockDividend$outboundSchema = exports.ActivityStockDividend$inboundSchema = exports.ActivityStockDividendRecordDate$ = exports.ActivityStockDividendRecordDate$outboundSchema = exports.ActivityStockDividendRecordDate$inboundSchema = exports.ActivityRate$ = exports.ActivityRate$outboundSchema = exports.ActivityRate$inboundSchema = exports.ActivityStockDividendQuantity$ = exports.ActivityStockDividendQuantity$outboundSchema = exports.ActivityStockDividendQuantity$inboundSchema = exports.ActivityStockDividendPayDate$ = exports.ActivityStockDividendPayDate$outboundSchema = exports.ActivityStockDividendPayDate$inboundSchema = exports.ActivityStockDividendCorporateActionGeneralInformation$ = exports.ActivityStockDividendCorporateActionGeneralInformation$outboundSchema = exports.ActivityStockDividendCorporateActionGeneralInformation$inboundSchema = exports.ActivityState$ = exports.ActivityState$outboundSchema = exports.ActivityState$inboundSchema = exports.ActivitySpinoff$ = exports.ActivitySpinoff$outboundSchema = exports.ActivitySpinoff$inboundSchema = void 0;
 exports.ActivityUnitSplitStockRate$inboundSchema = exports.ActivityUnitSplitCorporateActionGeneralInformation$ = exports.ActivityUnitSplitCorporateActionGeneralInformation$outboundSchema = exports.ActivityUnitSplitCorporateActionGeneralInformation$inboundSchema = exports.ActivityType$ = exports.ActivityType$outboundSchema = exports.ActivityType$inboundSchema = exports.ActivityTransfer$ = exports.ActivityTransfer$outboundSchema = exports.ActivityTransfer$inboundSchema = exports.ActivityTransferType$ = exports.ActivityTransferType$outboundSchema = exports.ActivityTransferType$inboundSchema = exports.ActivityTrade$ = exports.ActivityTrade$outboundSchema = exports.ActivityTrade$inboundSchema = exports.ActivityTradePriceAdjustmentRecord$ = exports.ActivityTradePriceAdjustmentRecord$outboundSchema = exports.ActivityTradePriceAdjustmentRecord$inboundSchema = exports.ActivityTradePriceAdjustmentType$ = exports.ActivityTradePriceAdjustmentType$outboundSchema = exports.ActivityTradePriceAdjustmentType$inboundSchema = exports.ActivityTradePriceAdjustmentPercent$ = exports.ActivityTradePriceAdjustmentPercent$outboundSchema = exports.ActivityTradePriceAdjustmentPercent$inboundSchema = exports.ActivityTradePriceAdjustmentAmount$ = exports.ActivityTradePriceAdjustmentAmount$outboundSchema = exports.ActivityTradePriceAdjustmentAmount$inboundSchema = exports.ActivityTradePrevailingMarketPrice$ = exports.ActivityTradePrevailingMarketPrice$outboundSchema = exports.ActivityTradePrevailingMarketPrice$inboundSchema = exports.ActivityTradeBrokerCapacity$ = exports.ActivityTradeBrokerCapacity$outboundSchema = exports.ActivityTradeBrokerCapacity$inboundSchema = exports.ActivityTenderOffer$ = exports.ActivityTenderOffer$outboundSchema = exports.ActivityTenderOffer$inboundSchema = exports.ActivityTenderOfferType$ = exports.ActivityTenderOfferType$outboundSchema = exports.ActivityTenderOfferType$inboundSchema = exports.ActivityTenderOfferCorporateActionGeneralInformation$ = exports.ActivityTenderOfferCorporateActionGeneralInformation$outboundSchema = exports.ActivityTenderOfferCorporateActionGeneralInformation$inboundSchema = exports.ActivityTenderOfferCashRate$ = exports.ActivityTenderOfferCashRate$outboundSchema = exports.ActivityTenderOfferCashRate$inboundSchema = exports.ActivitySweep$ = exports.ActivitySweep$outboundSchema = exports.ActivitySweep$inboundSchema = exports.ActivitySweepType$ = void 0;
 exports.Activity$ = exports.Activity$outboundSchema = exports.Activity$inboundSchema = exports.ActivityWorthless$ = exports.ActivityWorthless$outboundSchema = exports.ActivityWorthless$inboundSchema = exports.ActivityWorthlessPaymentDate$ = exports.ActivityWorthlessPaymentDate$outboundSchema = exports.ActivityWorthlessPaymentDate$inboundSchema = exports.ActivityWorthlessEffectiveDate$ = exports.ActivityWorthlessEffectiveDate$outboundSchema = exports.ActivityWorthlessEffectiveDate$inboundSchema = exports.ActivityWorthlessCorporateActionGeneralInformation$ = exports.ActivityWorthlessCorporateActionGeneralInformation$outboundSchema = exports.ActivityWorthlessCorporateActionGeneralInformation$inboundSchema = exports.ActivityWithholding$ = exports.ActivityWithholding$outboundSchema = exports.ActivityWithholding$inboundSchema = exports.ActivityWithdrawalPendingReview$ = exports.ActivityWithdrawalPendingReview$outboundSchema = exports.ActivityWithdrawalPendingReview$inboundSchema = exports.ActivityReview$ = exports.ActivityReview$outboundSchema = exports.ActivityReview$inboundSchema = exports.ActivityWithdrawal$ = exports.ActivityWithdrawal$outboundSchema = exports.ActivityWithdrawal$inboundSchema = exports.ActivityWithdrawalType$ = exports.ActivityWithdrawalType$outboundSchema = exports.ActivityWithdrawalType$inboundSchema = exports.ActivityRetirementType$ = exports.ActivityRetirementType$outboundSchema = exports.ActivityRetirementType$inboundSchema = exports.ActivityDistributionType$ = exports.ActivityDistributionType$outboundSchema = exports.ActivityDistributionType$inboundSchema = exports.ActivityWarrantExercise$ = exports.ActivityWarrantExercise$outboundSchema = exports.ActivityWarrantExercise$inboundSchema = exports.ActivityWarrantExerciseCorporateActionGeneralInformation$ = exports.ActivityWarrantExerciseCorporateActionGeneralInformation$outboundSchema = exports.ActivityWarrantExerciseCorporateActionGeneralInformation$inboundSchema = exports.ActivityUnitSplit$ = exports.ActivityUnitSplit$outboundSchema = exports.ActivityUnitSplit$inboundSchema = exports.ActivityUnitSplitStockRate$ = exports.ActivityUnitSplitStockRate$outboundSchema = void 0;
+exports.activityAcatsPendingOutToJSON = activityAcatsPendingOutToJSON;
+exports.activityAcatsPendingOutFromJSON = activityAcatsPendingOutFromJSON;
+exports.activityAccountTransferToJSON = activityAccountTransferToJSON;
+exports.activityAccountTransferFromJSON = activityAccountTransferFromJSON;
+exports.accruedInterestDescToJSON = accruedInterestDescToJSON;
+exports.accruedInterestDescFromJSON = accruedInterestDescFromJSON;
+exports.activityActivityDateToJSON = activityActivityDateToJSON;
+exports.activityActivityDateFromJSON = activityActivityDateFromJSON;
+exports.activityPrevailingMarketPriceToJSON = activityPrevailingMarketPriceToJSON;
+exports.activityPrevailingMarketPriceFromJSON = activityPrevailingMarketPriceFromJSON;
+exports.activityPriceAdjustmentAmountToJSON = activityPriceAdjustmentAmountToJSON;
+exports.activityPriceAdjustmentAmountFromJSON = activityPriceAdjustmentAmountFromJSON;
+exports.activityPriceAdjustmentPercentToJSON = activityPriceAdjustmentPercentToJSON;
+exports.activityPriceAdjustmentPercentFromJSON = activityPriceAdjustmentPercentFromJSON;
+exports.activityPriceAdjustmentRecordToJSON = activityPriceAdjustmentRecordToJSON;
+exports.activityPriceAdjustmentRecordFromJSON = activityPriceAdjustmentRecordFromJSON;
+exports.activityAllocationToJSON = activityAllocationToJSON;
+exports.activityAllocationFromJSON = activityAllocationFromJSON;
+exports.activityCashRateToJSON = activityCashRateToJSON;
+exports.activityCashRateFromJSON = activityCashRateFromJSON;
+exports.activityCorporateActionGeneralInformationToJSON = activityCorporateActionGeneralInformationToJSON;
+exports.activityCorporateActionGeneralInformationFromJSON = activityCorporateActionGeneralInformationFromJSON;
+exports.activityPaymentDateToJSON = activityPaymentDateToJSON;
+exports.activityPaymentDateFromJSON = activityPaymentDateFromJSON;
+exports.activityBondDefaultQuantityToJSON = activityBondDefaultQuantityToJSON;
+exports.activityBondDefaultQuantityFromJSON = activityBondDefaultQuantityFromJSON;
+exports.activityBondDefaultToJSON = activityBondDefaultToJSON;
+exports.activityBondDefaultFromJSON = activityBondDefaultFromJSON;
+exports.activityCapitalGainsCorporateActionGeneralInformationToJSON = activityCapitalGainsCorporateActionGeneralInformationToJSON;
+exports.activityCapitalGainsCorporateActionGeneralInformationFromJSON = activityCapitalGainsCorporateActionGeneralInformationFromJSON;
+exports.activityCapitalGainsPaymentDateToJSON = activityCapitalGainsPaymentDateToJSON;
+exports.activityCapitalGainsPaymentDateFromJSON = activityCapitalGainsPaymentDateFromJSON;
+exports.activityCapitalGainsQuantityToJSON = activityCapitalGainsQuantityToJSON;
+exports.activityCapitalGainsQuantityFromJSON = activityCapitalGainsQuantityFromJSON;
+exports.activityRecordDateToJSON = activityRecordDateToJSON;
+exports.activityRecordDateFromJSON = activityRecordDateFromJSON;
+exports.activityCapitalGainsToJSON = activityCapitalGainsToJSON;
+exports.activityCapitalGainsFromJSON = activityCapitalGainsFromJSON;
+exports.activityCashDividendCashRateToJSON = activityCashDividendCashRateToJSON;
+exports.activityCashDividendCashRateFromJSON = activityCashDividendCashRateFromJSON;
+exports.activityCashDividendCorporateActionGeneralInformationToJSON = activityCashDividendCorporateActionGeneralInformationToJSON;
+exports.activityCashDividendCorporateActionGeneralInformationFromJSON = activityCashDividendCorporateActionGeneralInformationFromJSON;
+exports.activityCashDividendFpslToJSON = activityCashDividendFpslToJSON;
+exports.activityCashDividendFpslFromJSON = activityCashDividendFpslFromJSON;
+exports.activityFreeToJSON = activityFreeToJSON;
+exports.activityFreeFromJSON = activityFreeFromJSON;
+exports.activityCashDividendPaymentDateToJSON = activityCashDividendPaymentDateToJSON;
+exports.activityCashDividendPaymentDateFromJSON = activityCashDividendPaymentDateFromJSON;
+exports.activityCashDividendQuantityToJSON = activityCashDividendQuantityToJSON;
+exports.activityCashDividendQuantityFromJSON = activityCashDividendQuantityFromJSON;
+exports.activityCashDividendRecordDateToJSON = activityCashDividendRecordDateToJSON;
+exports.activityCashDividendRecordDateFromJSON = activityCashDividendRecordDateFromJSON;
+exports.activitySettledToJSON = activitySettledToJSON;
+exports.activitySettledFromJSON = activitySettledFromJSON;
+exports.activityCashDividendToJSON = activityCashDividendToJSON;
+exports.activityCashDividendFromJSON = activityCashDividendFromJSON;
+exports.activityCashInLieuCorporateActionGeneralInformationToJSON = activityCashInLieuCorporateActionGeneralInformationToJSON;
+exports.activityCashInLieuCorporateActionGeneralInformationFromJSON = activityCashInLieuCorporateActionGeneralInformationFromJSON;
+exports.activityCashInLieuToJSON = activityCashInLieuToJSON;
+exports.activityCashInLieuFromJSON = activityCashInLieuFromJSON;
+exports.activityCommissionToJSON = activityCommissionToJSON;
+exports.activityCommissionFromJSON = activityCommissionFromJSON;
+exports.activityConversionCashRateToJSON = activityConversionCashRateToJSON;
+exports.activityConversionCashRateFromJSON = activityConversionCashRateFromJSON;
+exports.activityConversionCorporateActionGeneralInformationToJSON = activityConversionCorporateActionGeneralInformationToJSON;
+exports.activityConversionCorporateActionGeneralInformationFromJSON = activityConversionCorporateActionGeneralInformationFromJSON;
+exports.activityStockRateToJSON = activityStockRateToJSON;
+exports.activityStockRateFromJSON = activityStockRateFromJSON;
+exports.activityConversionToJSON = activityConversionToJSON;
+exports.activityConversionFromJSON = activityConversionFromJSON;
+exports.activityCorporateActionMemoAdjustmentToJSON = activityCorporateActionMemoAdjustmentToJSON;
+exports.activityCorporateActionMemoAdjustmentFromJSON = activityCorporateActionMemoAdjustmentFromJSON;
+exports.activityCreditToJSON = activityCreditToJSON;
+exports.activityCreditFromJSON = activityCreditFromJSON;
+exports.activityDepositToJSON = activityDepositToJSON;
+exports.activityDepositFromJSON = activityDepositFromJSON;
+exports.activityDripToJSON = activityDripToJSON;
+exports.activityDripFromJSON = activityDripFromJSON;
+exports.activityExchangeCashRateToJSON = activityExchangeCashRateToJSON;
+exports.activityExchangeCashRateFromJSON = activityExchangeCashRateFromJSON;
+exports.activityExchangeCorporateActionGeneralInformationToJSON = activityExchangeCorporateActionGeneralInformationToJSON;
+exports.activityExchangeCorporateActionGeneralInformationFromJSON = activityExchangeCorporateActionGeneralInformationFromJSON;
+exports.activityExchangeStockRateToJSON = activityExchangeStockRateToJSON;
+exports.activityExchangeStockRateFromJSON = activityExchangeStockRateFromJSON;
+exports.activityExchangeToJSON = activityExchangeToJSON;
+exports.activityExchangeFromJSON = activityExchangeFromJSON;
+exports.activityFeeToJSON = activityFeeToJSON;
+exports.activityFeeFromJSON = activityFeeFromJSON;
+exports.activityFpslToJSON = activityFpslToJSON;
+exports.activityFpslFromJSON = activityFpslFromJSON;
+exports.activityGrossAmountToJSON = activityGrossAmountToJSON;
+exports.activityGrossAmountFromJSON = activityGrossAmountFromJSON;
+exports.activityInterestAccrualEndDateToJSON = activityInterestAccrualEndDateToJSON;
+exports.activityInterestAccrualEndDateFromJSON = activityInterestAccrualEndDateFromJSON;
+exports.activityInterestAccrualStartDateToJSON = activityInterestAccrualStartDateToJSON;
+exports.activityInterestAccrualStartDateFromJSON = activityInterestAccrualStartDateFromJSON;
+exports.activityInterestToJSON = activityInterestToJSON;
+exports.activityInterestFromJSON = activityInterestFromJSON;
+exports.activityInterestPaymentCashRateToJSON = activityInterestPaymentCashRateToJSON;
+exports.activityInterestPaymentCashRateFromJSON = activityInterestPaymentCashRateFromJSON;
+exports.activityInterestPaymentCorporateActionGeneralInformationToJSON = activityInterestPaymentCorporateActionGeneralInformationToJSON;
+exports.activityInterestPaymentCorporateActionGeneralInformationFromJSON = activityInterestPaymentCorporateActionGeneralInformationFromJSON;
+exports.activityInterestPaymentPaymentDateToJSON = activityInterestPaymentPaymentDateToJSON;
+exports.activityInterestPaymentPaymentDateFromJSON = activityInterestPaymentPaymentDateFromJSON;
+exports.activityInterestPaymentRecordDateToJSON = activityInterestPaymentRecordDateToJSON;
+exports.activityInterestPaymentRecordDateFromJSON = activityInterestPaymentRecordDateFromJSON;
+exports.activityInterestPaymentSettledToJSON = activityInterestPaymentSettledToJSON;
+exports.activityInterestPaymentSettledFromJSON = activityInterestPaymentSettledFromJSON;
+exports.activityInterestPaymentToJSON = activityInterestPaymentToJSON;
+exports.activityInterestPaymentFromJSON = activityInterestPaymentFromJSON;
+exports.activityLiquidationCashRateToJSON = activityLiquidationCashRateToJSON;
+exports.activityLiquidationCashRateFromJSON = activityLiquidationCashRateFromJSON;
+exports.activityLiquidationCorporateActionGeneralInformationToJSON = activityLiquidationCorporateActionGeneralInformationToJSON;
+exports.activityLiquidationCorporateActionGeneralInformationFromJSON = activityLiquidationCorporateActionGeneralInformationFromJSON;
+exports.activityEffectiveDateToJSON = activityEffectiveDateToJSON;
+exports.activityEffectiveDateFromJSON = activityEffectiveDateFromJSON;
+exports.activityLiquidationPaymentDateToJSON = activityLiquidationPaymentDateToJSON;
+exports.activityLiquidationPaymentDateFromJSON = activityLiquidationPaymentDateFromJSON;
+exports.activityLiquidationQuantityToJSON = activityLiquidationQuantityToJSON;
+exports.activityLiquidationQuantityFromJSON = activityLiquidationQuantityFromJSON;
+exports.activityLiquidationRecordDateToJSON = activityLiquidationRecordDateToJSON;
+exports.activityLiquidationRecordDateFromJSON = activityLiquidationRecordDateFromJSON;
+exports.activityLiquidationSettledToJSON = activityLiquidationSettledToJSON;
+exports.activityLiquidationSettledFromJSON = activityLiquidationSettledFromJSON;
+exports.activityLiquidationToJSON = activityLiquidationToJSON;
+exports.activityLiquidationFromJSON = activityLiquidationFromJSON;
+exports.activityMaturityCashRateToJSON = activityMaturityCashRateToJSON;
+exports.activityMaturityCashRateFromJSON = activityMaturityCashRateFromJSON;
+exports.activityMaturityCorporateActionGeneralInformationToJSON = activityMaturityCorporateActionGeneralInformationToJSON;
+exports.activityMaturityCorporateActionGeneralInformationFromJSON = activityMaturityCorporateActionGeneralInformationFromJSON;
+exports.activityMaturityPaymentDateToJSON = activityMaturityPaymentDateToJSON;
+exports.activityMaturityPaymentDateFromJSON = activityMaturityPaymentDateFromJSON;
+exports.activityMaturityQuantityToJSON = activityMaturityQuantityToJSON;
+exports.activityMaturityQuantityFromJSON = activityMaturityQuantityFromJSON;
+exports.activityMaturityToJSON = activityMaturityToJSON;
+exports.activityMaturityFromJSON = activityMaturityFromJSON;
+exports.activityMergerCashRateToJSON = activityMergerCashRateToJSON;
+exports.activityMergerCashRateFromJSON = activityMergerCashRateFromJSON;
+exports.activityMergerCorporateActionGeneralInformationToJSON = activityMergerCorporateActionGeneralInformationToJSON;
+exports.activityMergerCorporateActionGeneralInformationFromJSON = activityMergerCorporateActionGeneralInformationFromJSON;
+exports.activityMergerEffectiveDateToJSON = activityMergerEffectiveDateToJSON;
+exports.activityMergerEffectiveDateFromJSON = activityMergerEffectiveDateFromJSON;
+exports.activityMergerQuantityToJSON = activityMergerQuantityToJSON;
+exports.activityMergerQuantityFromJSON = activityMergerQuantityFromJSON;
+exports.activityMergerStockRateToJSON = activityMergerStockRateToJSON;
+exports.activityMergerStockRateFromJSON = activityMergerStockRateFromJSON;
+exports.activityMergerToJSON = activityMergerToJSON;
+exports.activityMergerFromJSON = activityMergerFromJSON;
+exports.activityNameChangeCorporateActionGeneralInformationToJSON = activityNameChangeCorporateActionGeneralInformationToJSON;
+exports.activityNameChangeCorporateActionGeneralInformationFromJSON = activityNameChangeCorporateActionGeneralInformationFromJSON;
+exports.activityNameChangeEffectiveDateToJSON = activityNameChangeEffectiveDateToJSON;
+exports.activityNameChangeEffectiveDateFromJSON = activityNameChangeEffectiveDateFromJSON;
+exports.activityNameChangeQuantityToJSON = activityNameChangeQuantityToJSON;
+exports.activityNameChangeQuantityFromJSON = activityNameChangeQuantityFromJSON;
+exports.activityNameChangeToJSON = activityNameChangeToJSON;
+exports.activityNameChangeFromJSON = activityNameChangeFromJSON;
+exports.activityNetAmountToJSON = activityNetAmountToJSON;
+exports.activityNetAmountFromJSON = activityNetAmountFromJSON;
+exports.nextActivityProcessDateToJSON = nextActivityProcessDateToJSON;
+exports.nextActivityProcessDateFromJSON = nextActivityProcessDateFromJSON;
+exports.noneToJSON = noneToJSON;
+exports.noneFromJSON = noneFromJSON;
+exports.activityPaymentInKindCorporateActionGeneralInformationToJSON = activityPaymentInKindCorporateActionGeneralInformationToJSON;
+exports.activityPaymentInKindCorporateActionGeneralInformationFromJSON = activityPaymentInKindCorporateActionGeneralInformationFromJSON;
+exports.activityPaymentInKindPaymentDateToJSON = activityPaymentInKindPaymentDateToJSON;
+exports.activityPaymentInKindPaymentDateFromJSON = activityPaymentInKindPaymentDateFromJSON;
+exports.activityPaymentInKindRecordDateToJSON = activityPaymentInKindRecordDateToJSON;
+exports.activityPaymentInKindRecordDateFromJSON = activityPaymentInKindRecordDateFromJSON;
+exports.activityPaymentInKindSettledToJSON = activityPaymentInKindSettledToJSON;
+exports.activityPaymentInKindSettledFromJSON = activityPaymentInKindSettledFromJSON;
+exports.activityPaymentInKindStockRateToJSON = activityPaymentInKindStockRateToJSON;
+exports.activityPaymentInKindStockRateFromJSON = activityPaymentInKindStockRateFromJSON;
+exports.activityPaymentInKindToJSON = activityPaymentInKindToJSON;
+exports.activityPaymentInKindFromJSON = activityPaymentInKindFromJSON;
+exports.previousProcessDateToJSON = previousProcessDateToJSON;
+exports.previousProcessDateFromJSON = previousProcessDateFromJSON;
+exports.activityPriceToJSON = activityPriceToJSON;
+exports.activityPriceFromJSON = activityPriceFromJSON;
+exports.activityProcessDateToJSON = activityProcessDateToJSON;
+exports.activityProcessDateFromJSON = activityProcessDateFromJSON;
+exports.activityQuantityToJSON = activityQuantityToJSON;
+exports.activityQuantityFromJSON = activityQuantityFromJSON;
+exports.activityRedemptionFullCashRateToJSON = activityRedemptionFullCashRateToJSON;
+exports.activityRedemptionFullCashRateFromJSON = activityRedemptionFullCashRateFromJSON;
+exports.activityRedemptionFullCorporateActionGeneralInformationToJSON = activityRedemptionFullCorporateActionGeneralInformationToJSON;
+exports.activityRedemptionFullCorporateActionGeneralInformationFromJSON = activityRedemptionFullCorporateActionGeneralInformationFromJSON;
+exports.activityRedemptionFullPaymentDateToJSON = activityRedemptionFullPaymentDateToJSON;
+exports.activityRedemptionFullPaymentDateFromJSON = activityRedemptionFullPaymentDateFromJSON;
+exports.activityRedemptionFullQuantityToJSON = activityRedemptionFullQuantityToJSON;
+exports.activityRedemptionFullQuantityFromJSON = activityRedemptionFullQuantityFromJSON;
+exports.activityRedemptionFullToJSON = activityRedemptionFullToJSON;
+exports.activityRedemptionFullFromJSON = activityRedemptionFullFromJSON;
+exports.activityRedemptionPartialCashRateToJSON = activityRedemptionPartialCashRateToJSON;
+exports.activityRedemptionPartialCashRateFromJSON = activityRedemptionPartialCashRateFromJSON;
+exports.activityRedemptionPartialCorporateActionGeneralInformationToJSON = activityRedemptionPartialCorporateActionGeneralInformationToJSON;
+exports.activityRedemptionPartialCorporateActionGeneralInformationFromJSON = activityRedemptionPartialCorporateActionGeneralInformationFromJSON;
+exports.activityRedemptionPartialPaymentDateToJSON = activityRedemptionPartialPaymentDateToJSON;
+exports.activityRedemptionPartialPaymentDateFromJSON = activityRedemptionPartialPaymentDateFromJSON;
+exports.activityRedemptionPartialQuantityToJSON = activityRedemptionPartialQuantityToJSON;
+exports.activityRedemptionPartialQuantityFromJSON = activityRedemptionPartialQuantityFromJSON;
+exports.activityRedemptionPartialToJSON = activityRedemptionPartialToJSON;
+exports.activityRedemptionPartialFromJSON = activityRedemptionPartialFromJSON;
+exports.activityReverseStockSplitCashRateToJSON = activityReverseStockSplitCashRateToJSON;
+exports.activityReverseStockSplitCashRateFromJSON = activityReverseStockSplitCashRateFromJSON;
+exports.activityReverseStockSplitCorporateActionGeneralInformationToJSON = activityReverseStockSplitCorporateActionGeneralInformationToJSON;
+exports.activityReverseStockSplitCorporateActionGeneralInformationFromJSON = activityReverseStockSplitCorporateActionGeneralInformationFromJSON;
+exports.activityReverseStockSplitEffectiveDateToJSON = activityReverseStockSplitEffectiveDateToJSON;
+exports.activityReverseStockSplitEffectiveDateFromJSON = activityReverseStockSplitEffectiveDateFromJSON;
+exports.activityFactorDenominatorToJSON = activityFactorDenominatorToJSON;
+exports.activityFactorDenominatorFromJSON = activityFactorDenominatorFromJSON;
+exports.activityFactorNumeratorToJSON = activityFactorNumeratorToJSON;
+exports.activityFactorNumeratorFromJSON = activityFactorNumeratorFromJSON;
+exports.activityReverseStockSplitQuantityToJSON = activityReverseStockSplitQuantityToJSON;
+exports.activityReverseStockSplitQuantityFromJSON = activityReverseStockSplitQuantityFromJSON;
+exports.activityReverseStockSplitToJSON = activityReverseStockSplitToJSON;
+exports.activityReverseStockSplitFromJSON = activityReverseStockSplitFromJSON;
+exports.activityRightsDistributionCorporateActionGeneralInformationToJSON = activityRightsDistributionCorporateActionGeneralInformationToJSON;
+exports.activityRightsDistributionCorporateActionGeneralInformationFromJSON = activityRightsDistributionCorporateActionGeneralInformationFromJSON;
+exports.activityRightsDistributionPaymentDateToJSON = activityRightsDistributionPaymentDateToJSON;
+exports.activityRightsDistributionPaymentDateFromJSON = activityRightsDistributionPaymentDateFromJSON;
+exports.activityRightsDistributionRecordDateToJSON = activityRightsDistributionRecordDateToJSON;
+exports.activityRightsDistributionRecordDateFromJSON = activityRightsDistributionRecordDateFromJSON;
+exports.activityRightsDistributionSettledToJSON = activityRightsDistributionSettledToJSON;
+exports.activityRightsDistributionSettledFromJSON = activityRightsDistributionSettledFromJSON;
+exports.activityRightsDistributionToJSON = activityRightsDistributionToJSON;
+exports.activityRightsDistributionFromJSON = activityRightsDistributionFromJSON;
+exports.activityRightsSubscriptionCorporateActionGeneralInformationToJSON = activityRightsSubscriptionCorporateActionGeneralInformationToJSON;
+exports.activityRightsSubscriptionCorporateActionGeneralInformationFromJSON = activityRightsSubscriptionCorporateActionGeneralInformationFromJSON;
+exports.activityRightsSubscriptionToJSON = activityRightsSubscriptionToJSON;
+exports.activityRightsSubscriptionFromJSON = activityRightsSubscriptionFromJSON;
+exports.activityRoundingAdjustmentToJSON = activityRoundingAdjustmentToJSON;
+exports.activityRoundingAdjustmentFromJSON = activityRoundingAdjustmentFromJSON;
+exports.roundingAmountToJSON = roundingAmountToJSON;
+exports.roundingAmountFromJSON = roundingAmountFromJSON;
+exports.activitySaleOfRightsCashRateToJSON = activitySaleOfRightsCashRateToJSON;
+exports.activitySaleOfRightsCashRateFromJSON = activitySaleOfRightsCashRateFromJSON;
+exports.activitySaleOfRightsCorporateActionGeneralInformationToJSON = activitySaleOfRightsCorporateActionGeneralInformationToJSON;
+exports.activitySaleOfRightsCorporateActionGeneralInformationFromJSON = activitySaleOfRightsCorporateActionGeneralInformationFromJSON;
+exports.activitySaleOfRightsPaymentDateToJSON = activitySaleOfRightsPaymentDateToJSON;
+exports.activitySaleOfRightsPaymentDateFromJSON = activitySaleOfRightsPaymentDateFromJSON;
+exports.activitySaleOfRightsRecordDateToJSON = activitySaleOfRightsRecordDateToJSON;
+exports.activitySaleOfRightsRecordDateFromJSON = activitySaleOfRightsRecordDateFromJSON;
+exports.activitySaleOfRightsSettledToJSON = activitySaleOfRightsSettledToJSON;
+exports.activitySaleOfRightsSettledFromJSON = activitySaleOfRightsSettledFromJSON;
+exports.activitySaleOfRightsToJSON = activitySaleOfRightsToJSON;
+exports.activitySaleOfRightsFromJSON = activitySaleOfRightsFromJSON;
+exports.activitySettleDateToJSON = activitySettleDateToJSON;
+exports.activitySettleDateFromJSON = activitySettleDateFromJSON;
+exports.activitySpinoffCorporateActionGeneralInformationToJSON = activitySpinoffCorporateActionGeneralInformationToJSON;
+exports.activitySpinoffCorporateActionGeneralInformationFromJSON = activitySpinoffCorporateActionGeneralInformationFromJSON;
+exports.activityPayDateToJSON = activityPayDateToJSON;
+exports.activityPayDateFromJSON = activityPayDateFromJSON;
+exports.activitySpinoffQuantityToJSON = activitySpinoffQuantityToJSON;
+exports.activitySpinoffQuantityFromJSON = activitySpinoffQuantityFromJSON;
+exports.activitySpinoffRecordDateToJSON = activitySpinoffRecordDateToJSON;
+exports.activitySpinoffRecordDateFromJSON = activitySpinoffRecordDateFromJSON;
+exports.activitySpinoffToJSON = activitySpinoffToJSON;
+exports.activitySpinoffFromJSON = activitySpinoffFromJSON;
+exports.activityStockDividendCorporateActionGeneralInformationToJSON = activityStockDividendCorporateActionGeneralInformationToJSON;
+exports.activityStockDividendCorporateActionGeneralInformationFromJSON = activityStockDividendCorporateActionGeneralInformationFromJSON;
+exports.activityStockDividendPayDateToJSON = activityStockDividendPayDateToJSON;
+exports.activityStockDividendPayDateFromJSON = activityStockDividendPayDateFromJSON;
+exports.activityStockDividendQuantityToJSON = activityStockDividendQuantityToJSON;
+exports.activityStockDividendQuantityFromJSON = activityStockDividendQuantityFromJSON;
+exports.activityRateToJSON = activityRateToJSON;
+exports.activityRateFromJSON = activityRateFromJSON;
+exports.activityStockDividendRecordDateToJSON = activityStockDividendRecordDateToJSON;
+exports.activityStockDividendRecordDateFromJSON = activityStockDividendRecordDateFromJSON;
+exports.activityStockDividendToJSON = activityStockDividendToJSON;
+exports.activityStockDividendFromJSON = activityStockDividendFromJSON;
+exports.activityStockSplitCorporateActionGeneralInformationToJSON = activityStockSplitCorporateActionGeneralInformationToJSON;
+exports.activityStockSplitCorporateActionGeneralInformationFromJSON = activityStockSplitCorporateActionGeneralInformationFromJSON;
+exports.activityStockSplitFactorDenominatorToJSON = activityStockSplitFactorDenominatorToJSON;
+exports.activityStockSplitFactorDenominatorFromJSON = activityStockSplitFactorDenominatorFromJSON;
+exports.activityStockSplitFactorNumeratorToJSON = activityStockSplitFactorNumeratorToJSON;
+exports.activityStockSplitFactorNumeratorFromJSON = activityStockSplitFactorNumeratorFromJSON;
+exports.activityStockSplitPayDateToJSON = activityStockSplitPayDateToJSON;
+exports.activityStockSplitPayDateFromJSON = activityStockSplitPayDateFromJSON;
+exports.activityStockSplitQuantityToJSON = activityStockSplitQuantityToJSON;
+exports.activityStockSplitQuantityFromJSON = activityStockSplitQuantityFromJSON;
+exports.activityStockSplitRecordDateToJSON = activityStockSplitRecordDateToJSON;
+exports.activityStockSplitRecordDateFromJSON = activityStockSplitRecordDateFromJSON;
+exports.activityStockSplitToJSON = activityStockSplitToJSON;
+exports.activityStockSplitFromJSON = activityStockSplitFromJSON;
+exports.activitySweepToJSON = activitySweepToJSON;
+exports.activitySweepFromJSON = activitySweepFromJSON;
+exports.activityTenderOfferCashRateToJSON = activityTenderOfferCashRateToJSON;
+exports.activityTenderOfferCashRateFromJSON = activityTenderOfferCashRateFromJSON;
+exports.activityTenderOfferCorporateActionGeneralInformationToJSON = activityTenderOfferCorporateActionGeneralInformationToJSON;
+exports.activityTenderOfferCorporateActionGeneralInformationFromJSON = activityTenderOfferCorporateActionGeneralInformationFromJSON;
+exports.activityTenderOfferToJSON = activityTenderOfferToJSON;
+exports.activityTenderOfferFromJSON = activityTenderOfferFromJSON;
+exports.activityTradePrevailingMarketPriceToJSON = activityTradePrevailingMarketPriceToJSON;
+exports.activityTradePrevailingMarketPriceFromJSON = activityTradePrevailingMarketPriceFromJSON;
+exports.activityTradePriceAdjustmentAmountToJSON = activityTradePriceAdjustmentAmountToJSON;
+exports.activityTradePriceAdjustmentAmountFromJSON = activityTradePriceAdjustmentAmountFromJSON;
+exports.activityTradePriceAdjustmentPercentToJSON = activityTradePriceAdjustmentPercentToJSON;
+exports.activityTradePriceAdjustmentPercentFromJSON = activityTradePriceAdjustmentPercentFromJSON;
+exports.activityTradePriceAdjustmentRecordToJSON = activityTradePriceAdjustmentRecordToJSON;
+exports.activityTradePriceAdjustmentRecordFromJSON = activityTradePriceAdjustmentRecordFromJSON;
+exports.activityTradeToJSON = activityTradeToJSON;
+exports.activityTradeFromJSON = activityTradeFromJSON;
+exports.activityTransferToJSON = activityTransferToJSON;
+exports.activityTransferFromJSON = activityTransferFromJSON;
+exports.activityUnitSplitCorporateActionGeneralInformationToJSON = activityUnitSplitCorporateActionGeneralInformationToJSON;
+exports.activityUnitSplitCorporateActionGeneralInformationFromJSON = activityUnitSplitCorporateActionGeneralInformationFromJSON;
+exports.activityUnitSplitStockRateToJSON = activityUnitSplitStockRateToJSON;
+exports.activityUnitSplitStockRateFromJSON = activityUnitSplitStockRateFromJSON;
+exports.activityUnitSplitToJSON = activityUnitSplitToJSON;
+exports.activityUnitSplitFromJSON = activityUnitSplitFromJSON;
+exports.activityWarrantExerciseCorporateActionGeneralInformationToJSON = activityWarrantExerciseCorporateActionGeneralInformationToJSON;
+exports.activityWarrantExerciseCorporateActionGeneralInformationFromJSON = activityWarrantExerciseCorporateActionGeneralInformationFromJSON;
+exports.activityWarrantExerciseToJSON = activityWarrantExerciseToJSON;
+exports.activityWarrantExerciseFromJSON = activityWarrantExerciseFromJSON;
+exports.activityWithdrawalToJSON = activityWithdrawalToJSON;
+exports.activityWithdrawalFromJSON = activityWithdrawalFromJSON;
+exports.activityWithdrawalPendingReviewToJSON = activityWithdrawalPendingReviewToJSON;
+exports.activityWithdrawalPendingReviewFromJSON = activityWithdrawalPendingReviewFromJSON;
+exports.activityWithholdingToJSON = activityWithholdingToJSON;
+exports.activityWithholdingFromJSON = activityWithholdingFromJSON;
+exports.activityWorthlessCorporateActionGeneralInformationToJSON = activityWorthlessCorporateActionGeneralInformationToJSON;
+exports.activityWorthlessCorporateActionGeneralInformationFromJSON = activityWorthlessCorporateActionGeneralInformationFromJSON;
+exports.activityWorthlessEffectiveDateToJSON = activityWorthlessEffectiveDateToJSON;
+exports.activityWorthlessEffectiveDateFromJSON = activityWorthlessEffectiveDateFromJSON;
+exports.activityWorthlessPaymentDateToJSON = activityWorthlessPaymentDateToJSON;
+exports.activityWorthlessPaymentDateFromJSON = activityWorthlessPaymentDateFromJSON;
+exports.activityWorthlessToJSON = activityWorthlessToJSON;
+exports.activityWorthlessFromJSON = activityWorthlessFromJSON;
+exports.activityToJSON = activityToJSON;
+exports.activityFromJSON = activityFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const accruedinterest_js_1 = require("./accruedinterest.js");
 const commission_js_1 = require("./commission.js");
@@ -603,6 +934,12 @@ var ActivityAcatsPendingOut$;
     /** @deprecated use `ActivityAcatsPendingOut$outboundSchema` instead. */
     ActivityAcatsPendingOut$.outboundSchema = exports.ActivityAcatsPendingOut$outboundSchema;
 })(ActivityAcatsPendingOut$ || (exports.ActivityAcatsPendingOut$ = ActivityAcatsPendingOut$ = {}));
+function activityAcatsPendingOutToJSON(activityAcatsPendingOut) {
+    return JSON.stringify(exports.ActivityAcatsPendingOut$outboundSchema.parse(activityAcatsPendingOut));
+}
+function activityAcatsPendingOutFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityAcatsPendingOut$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityAcatsPendingOut' from JSON`);
+}
 /** @internal */
 exports.ActivityAccountMemo$inboundSchema = z
     .union([
@@ -744,6 +1081,12 @@ var ActivityAccountTransfer$;
     /** @deprecated use `ActivityAccountTransfer$outboundSchema` instead. */
     ActivityAccountTransfer$.outboundSchema = exports.ActivityAccountTransfer$outboundSchema;
 })(ActivityAccountTransfer$ || (exports.ActivityAccountTransfer$ = ActivityAccountTransfer$ = {}));
+function activityAccountTransferToJSON(activityAccountTransfer) {
+    return JSON.stringify(exports.ActivityAccountTransfer$outboundSchema.parse(activityAccountTransfer));
+}
+function activityAccountTransferFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityAccountTransfer$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityAccountTransfer' from JSON`);
+}
 /** @internal */
 exports.AccruedInterestDesc$inboundSchema = z.object({});
 /** @internal */
@@ -759,6 +1102,12 @@ var AccruedInterestDesc$;
     /** @deprecated use `AccruedInterestDesc$outboundSchema` instead. */
     AccruedInterestDesc$.outboundSchema = exports.AccruedInterestDesc$outboundSchema;
 })(AccruedInterestDesc$ || (exports.AccruedInterestDesc$ = AccruedInterestDesc$ = {}));
+function accruedInterestDescToJSON(accruedInterestDesc) {
+    return JSON.stringify(exports.AccruedInterestDesc$outboundSchema.parse(accruedInterestDesc));
+}
+function accruedInterestDescFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccruedInterestDesc$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccruedInterestDesc' from JSON`);
+}
 /** @internal */
 exports.ActivityActivityDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -782,6 +1131,12 @@ var ActivityActivityDate$;
     /** @deprecated use `ActivityActivityDate$outboundSchema` instead. */
     ActivityActivityDate$.outboundSchema = exports.ActivityActivityDate$outboundSchema;
 })(ActivityActivityDate$ || (exports.ActivityActivityDate$ = ActivityActivityDate$ = {}));
+function activityActivityDateToJSON(activityActivityDate) {
+    return JSON.stringify(exports.ActivityActivityDate$outboundSchema.parse(activityActivityDate));
+}
+function activityActivityDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityActivityDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityActivityDate' from JSON`);
+}
 /** @internal */
 exports.ActivityBrokerCapacity$inboundSchema = z
     .union([
@@ -823,6 +1178,12 @@ var ActivityPrevailingMarketPrice$;
     /** @deprecated use `ActivityPrevailingMarketPrice$outboundSchema` instead. */
     ActivityPrevailingMarketPrice$.outboundSchema = exports.ActivityPrevailingMarketPrice$outboundSchema;
 })(ActivityPrevailingMarketPrice$ || (exports.ActivityPrevailingMarketPrice$ = ActivityPrevailingMarketPrice$ = {}));
+function activityPrevailingMarketPriceToJSON(activityPrevailingMarketPrice) {
+    return JSON.stringify(exports.ActivityPrevailingMarketPrice$outboundSchema.parse(activityPrevailingMarketPrice));
+}
+function activityPrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.ActivityPriceAdjustmentAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -842,6 +1203,12 @@ var ActivityPriceAdjustmentAmount$;
     /** @deprecated use `ActivityPriceAdjustmentAmount$outboundSchema` instead. */
     ActivityPriceAdjustmentAmount$.outboundSchema = exports.ActivityPriceAdjustmentAmount$outboundSchema;
 })(ActivityPriceAdjustmentAmount$ || (exports.ActivityPriceAdjustmentAmount$ = ActivityPriceAdjustmentAmount$ = {}));
+function activityPriceAdjustmentAmountToJSON(activityPriceAdjustmentAmount) {
+    return JSON.stringify(exports.ActivityPriceAdjustmentAmount$outboundSchema.parse(activityPriceAdjustmentAmount));
+}
+function activityPriceAdjustmentAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPriceAdjustmentAmount' from JSON`);
+}
 /** @internal */
 exports.ActivityPriceAdjustmentPercent$inboundSchema = z.object({
     value: z.string().optional(),
@@ -861,6 +1228,12 @@ var ActivityPriceAdjustmentPercent$;
     /** @deprecated use `ActivityPriceAdjustmentPercent$outboundSchema` instead. */
     ActivityPriceAdjustmentPercent$.outboundSchema = exports.ActivityPriceAdjustmentPercent$outboundSchema;
 })(ActivityPriceAdjustmentPercent$ || (exports.ActivityPriceAdjustmentPercent$ = ActivityPriceAdjustmentPercent$ = {}));
+function activityPriceAdjustmentPercentToJSON(activityPriceAdjustmentPercent) {
+    return JSON.stringify(exports.ActivityPriceAdjustmentPercent$outboundSchema.parse(activityPriceAdjustmentPercent));
+}
+function activityPriceAdjustmentPercentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPriceAdjustmentPercent$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPriceAdjustmentPercent' from JSON`);
+}
 /** @internal */
 exports.ActivityPriceAdjustmentType$inboundSchema = z
     .union([
@@ -918,6 +1291,12 @@ var ActivityPriceAdjustmentRecord$;
     /** @deprecated use `ActivityPriceAdjustmentRecord$outboundSchema` instead. */
     ActivityPriceAdjustmentRecord$.outboundSchema = exports.ActivityPriceAdjustmentRecord$outboundSchema;
 })(ActivityPriceAdjustmentRecord$ || (exports.ActivityPriceAdjustmentRecord$ = ActivityPriceAdjustmentRecord$ = {}));
+function activityPriceAdjustmentRecordToJSON(activityPriceAdjustmentRecord) {
+    return JSON.stringify(exports.ActivityPriceAdjustmentRecord$outboundSchema.parse(activityPriceAdjustmentRecord));
+}
+function activityPriceAdjustmentRecordFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPriceAdjustmentRecord$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPriceAdjustmentRecord' from JSON`);
+}
 /** @internal */
 exports.ActivityAllocation$inboundSchema = z.object({
     additional_instructions: z.array(z.string()).optional(),
@@ -991,6 +1370,12 @@ var ActivityAllocation$;
     /** @deprecated use `ActivityAllocation$outboundSchema` instead. */
     ActivityAllocation$.outboundSchema = exports.ActivityAllocation$outboundSchema;
 })(ActivityAllocation$ || (exports.ActivityAllocation$ = ActivityAllocation$ = {}));
+function activityAllocationToJSON(activityAllocation) {
+    return JSON.stringify(exports.ActivityAllocation$outboundSchema.parse(activityAllocation));
+}
+function activityAllocationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityAllocation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityAllocation' from JSON`);
+}
 /** @internal */
 exports.ActivityCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1010,6 +1395,12 @@ var ActivityCashRate$;
     /** @deprecated use `ActivityCashRate$outboundSchema` instead. */
     ActivityCashRate$.outboundSchema = exports.ActivityCashRate$outboundSchema;
 })(ActivityCashRate$ || (exports.ActivityCashRate$ = ActivityCashRate$ = {}));
+function activityCashRateToJSON(activityCashRate) {
+    return JSON.stringify(exports.ActivityCashRate$outboundSchema.parse(activityCashRate));
+}
+function activityCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -1061,6 +1452,12 @@ var ActivityCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityCorporateActionGeneralInformation$.outboundSchema = exports.ActivityCorporateActionGeneralInformation$outboundSchema;
 })(ActivityCorporateActionGeneralInformation$ || (exports.ActivityCorporateActionGeneralInformation$ = ActivityCorporateActionGeneralInformation$ = {}));
+function activityCorporateActionGeneralInformationToJSON(activityCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityCorporateActionGeneralInformation$outboundSchema.parse(activityCorporateActionGeneralInformation));
+}
+function activityCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1084,6 +1481,12 @@ var ActivityPaymentDate$;
     /** @deprecated use `ActivityPaymentDate$outboundSchema` instead. */
     ActivityPaymentDate$.outboundSchema = exports.ActivityPaymentDate$outboundSchema;
 })(ActivityPaymentDate$ || (exports.ActivityPaymentDate$ = ActivityPaymentDate$ = {}));
+function activityPaymentDateToJSON(activityPaymentDate) {
+    return JSON.stringify(exports.ActivityPaymentDate$outboundSchema.parse(activityPaymentDate));
+}
+function activityPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityBondDefaultQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1103,6 +1506,12 @@ var ActivityBondDefaultQuantity$;
     /** @deprecated use `ActivityBondDefaultQuantity$outboundSchema` instead. */
     ActivityBondDefaultQuantity$.outboundSchema = exports.ActivityBondDefaultQuantity$outboundSchema;
 })(ActivityBondDefaultQuantity$ || (exports.ActivityBondDefaultQuantity$ = ActivityBondDefaultQuantity$ = {}));
+function activityBondDefaultQuantityToJSON(activityBondDefaultQuantity) {
+    return JSON.stringify(exports.ActivityBondDefaultQuantity$outboundSchema.parse(activityBondDefaultQuantity));
+}
+function activityBondDefaultQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityBondDefaultQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityBondDefaultQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityBondDefault$inboundSchema = z.object({
     cash_rate: z.nullable(z.lazy(() => exports.ActivityCashRate$inboundSchema))
@@ -1146,6 +1555,12 @@ var ActivityBondDefault$;
     /** @deprecated use `ActivityBondDefault$outboundSchema` instead. */
     ActivityBondDefault$.outboundSchema = exports.ActivityBondDefault$outboundSchema;
 })(ActivityBondDefault$ || (exports.ActivityBondDefault$ = ActivityBondDefault$ = {}));
+function activityBondDefaultToJSON(activityBondDefault) {
+    return JSON.stringify(exports.ActivityBondDefault$outboundSchema.parse(activityBondDefault));
+}
+function activityBondDefaultFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityBondDefault$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityBondDefault' from JSON`);
+}
 /** @internal */
 exports.ActivityCapitalGainsCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -1197,6 +1612,12 @@ var ActivityCapitalGainsCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityCapitalGainsCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityCapitalGainsCorporateActionGeneralInformation$.outboundSchema = exports.ActivityCapitalGainsCorporateActionGeneralInformation$outboundSchema;
 })(ActivityCapitalGainsCorporateActionGeneralInformation$ || (exports.ActivityCapitalGainsCorporateActionGeneralInformation$ = ActivityCapitalGainsCorporateActionGeneralInformation$ = {}));
+function activityCapitalGainsCorporateActionGeneralInformationToJSON(activityCapitalGainsCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityCapitalGainsCorporateActionGeneralInformation$outboundSchema.parse(activityCapitalGainsCorporateActionGeneralInformation));
+}
+function activityCapitalGainsCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCapitalGainsCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCapitalGainsCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityCapitalGainsPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1220,6 +1641,12 @@ var ActivityCapitalGainsPaymentDate$;
     /** @deprecated use `ActivityCapitalGainsPaymentDate$outboundSchema` instead. */
     ActivityCapitalGainsPaymentDate$.outboundSchema = exports.ActivityCapitalGainsPaymentDate$outboundSchema;
 })(ActivityCapitalGainsPaymentDate$ || (exports.ActivityCapitalGainsPaymentDate$ = ActivityCapitalGainsPaymentDate$ = {}));
+function activityCapitalGainsPaymentDateToJSON(activityCapitalGainsPaymentDate) {
+    return JSON.stringify(exports.ActivityCapitalGainsPaymentDate$outboundSchema.parse(activityCapitalGainsPaymentDate));
+}
+function activityCapitalGainsPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCapitalGainsPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCapitalGainsPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityCapitalGainsQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1239,6 +1666,12 @@ var ActivityCapitalGainsQuantity$;
     /** @deprecated use `ActivityCapitalGainsQuantity$outboundSchema` instead. */
     ActivityCapitalGainsQuantity$.outboundSchema = exports.ActivityCapitalGainsQuantity$outboundSchema;
 })(ActivityCapitalGainsQuantity$ || (exports.ActivityCapitalGainsQuantity$ = ActivityCapitalGainsQuantity$ = {}));
+function activityCapitalGainsQuantityToJSON(activityCapitalGainsQuantity) {
+    return JSON.stringify(exports.ActivityCapitalGainsQuantity$outboundSchema.parse(activityCapitalGainsQuantity));
+}
+function activityCapitalGainsQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCapitalGainsQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCapitalGainsQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1262,6 +1695,12 @@ var ActivityRecordDate$;
     /** @deprecated use `ActivityRecordDate$outboundSchema` instead. */
     ActivityRecordDate$.outboundSchema = exports.ActivityRecordDate$outboundSchema;
 })(ActivityRecordDate$ || (exports.ActivityRecordDate$ = ActivityRecordDate$ = {}));
+function activityRecordDateToJSON(activityRecordDate) {
+    return JSON.stringify(exports.ActivityRecordDate$outboundSchema.parse(activityRecordDate));
+}
+function activityRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivityCapitalGains$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityCapitalGainsCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -1308,6 +1747,12 @@ var ActivityCapitalGains$;
     /** @deprecated use `ActivityCapitalGains$outboundSchema` instead. */
     ActivityCapitalGains$.outboundSchema = exports.ActivityCapitalGains$outboundSchema;
 })(ActivityCapitalGains$ || (exports.ActivityCapitalGains$ = ActivityCapitalGains$ = {}));
+function activityCapitalGainsToJSON(activityCapitalGains) {
+    return JSON.stringify(exports.ActivityCapitalGains$outboundSchema.parse(activityCapitalGains));
+}
+function activityCapitalGainsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCapitalGains$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCapitalGains' from JSON`);
+}
 /** @internal */
 exports.ActivityCashDividendCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1327,6 +1772,12 @@ var ActivityCashDividendCashRate$;
     /** @deprecated use `ActivityCashDividendCashRate$outboundSchema` instead. */
     ActivityCashDividendCashRate$.outboundSchema = exports.ActivityCashDividendCashRate$outboundSchema;
 })(ActivityCashDividendCashRate$ || (exports.ActivityCashDividendCashRate$ = ActivityCashDividendCashRate$ = {}));
+function activityCashDividendCashRateToJSON(activityCashDividendCashRate) {
+    return JSON.stringify(exports.ActivityCashDividendCashRate$outboundSchema.parse(activityCashDividendCashRate));
+}
+function activityCashDividendCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashDividendCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashDividendCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityCashDividendCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -1378,6 +1829,12 @@ var ActivityCashDividendCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityCashDividendCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityCashDividendCorporateActionGeneralInformation$.outboundSchema = exports.ActivityCashDividendCorporateActionGeneralInformation$outboundSchema;
 })(ActivityCashDividendCorporateActionGeneralInformation$ || (exports.ActivityCashDividendCorporateActionGeneralInformation$ = ActivityCashDividendCorporateActionGeneralInformation$ = {}));
+function activityCashDividendCorporateActionGeneralInformationToJSON(activityCashDividendCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityCashDividendCorporateActionGeneralInformation$outboundSchema.parse(activityCashDividendCorporateActionGeneralInformation));
+}
+function activityCashDividendCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashDividendCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashDividendCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityCashDividendFpsl$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1397,6 +1854,12 @@ var ActivityCashDividendFpsl$;
     /** @deprecated use `ActivityCashDividendFpsl$outboundSchema` instead. */
     ActivityCashDividendFpsl$.outboundSchema = exports.ActivityCashDividendFpsl$outboundSchema;
 })(ActivityCashDividendFpsl$ || (exports.ActivityCashDividendFpsl$ = ActivityCashDividendFpsl$ = {}));
+function activityCashDividendFpslToJSON(activityCashDividendFpsl) {
+    return JSON.stringify(exports.ActivityCashDividendFpsl$outboundSchema.parse(activityCashDividendFpsl));
+}
+function activityCashDividendFpslFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashDividendFpsl$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashDividendFpsl' from JSON`);
+}
 /** @internal */
 exports.ActivityFree$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1416,6 +1879,12 @@ var ActivityFree$;
     /** @deprecated use `ActivityFree$outboundSchema` instead. */
     ActivityFree$.outboundSchema = exports.ActivityFree$outboundSchema;
 })(ActivityFree$ || (exports.ActivityFree$ = ActivityFree$ = {}));
+function activityFreeToJSON(activityFree) {
+    return JSON.stringify(exports.ActivityFree$outboundSchema.parse(activityFree));
+}
+function activityFreeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityFree$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityFree' from JSON`);
+}
 /** @internal */
 exports.ActivityCashDividendPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1439,6 +1908,12 @@ var ActivityCashDividendPaymentDate$;
     /** @deprecated use `ActivityCashDividendPaymentDate$outboundSchema` instead. */
     ActivityCashDividendPaymentDate$.outboundSchema = exports.ActivityCashDividendPaymentDate$outboundSchema;
 })(ActivityCashDividendPaymentDate$ || (exports.ActivityCashDividendPaymentDate$ = ActivityCashDividendPaymentDate$ = {}));
+function activityCashDividendPaymentDateToJSON(activityCashDividendPaymentDate) {
+    return JSON.stringify(exports.ActivityCashDividendPaymentDate$outboundSchema.parse(activityCashDividendPaymentDate));
+}
+function activityCashDividendPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashDividendPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashDividendPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityCashDividendQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1458,6 +1933,12 @@ var ActivityCashDividendQuantity$;
     /** @deprecated use `ActivityCashDividendQuantity$outboundSchema` instead. */
     ActivityCashDividendQuantity$.outboundSchema = exports.ActivityCashDividendQuantity$outboundSchema;
 })(ActivityCashDividendQuantity$ || (exports.ActivityCashDividendQuantity$ = ActivityCashDividendQuantity$ = {}));
+function activityCashDividendQuantityToJSON(activityCashDividendQuantity) {
+    return JSON.stringify(exports.ActivityCashDividendQuantity$outboundSchema.parse(activityCashDividendQuantity));
+}
+function activityCashDividendQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashDividendQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashDividendQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityCashDividendRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1481,6 +1962,12 @@ var ActivityCashDividendRecordDate$;
     /** @deprecated use `ActivityCashDividendRecordDate$outboundSchema` instead. */
     ActivityCashDividendRecordDate$.outboundSchema = exports.ActivityCashDividendRecordDate$outboundSchema;
 })(ActivityCashDividendRecordDate$ || (exports.ActivityCashDividendRecordDate$ = ActivityCashDividendRecordDate$ = {}));
+function activityCashDividendRecordDateToJSON(activityCashDividendRecordDate) {
+    return JSON.stringify(exports.ActivityCashDividendRecordDate$outboundSchema.parse(activityCashDividendRecordDate));
+}
+function activityCashDividendRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashDividendRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashDividendRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivitySettled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1500,6 +1987,12 @@ var ActivitySettled$;
     /** @deprecated use `ActivitySettled$outboundSchema` instead. */
     ActivitySettled$.outboundSchema = exports.ActivitySettled$outboundSchema;
 })(ActivitySettled$ || (exports.ActivitySettled$ = ActivitySettled$ = {}));
+function activitySettledToJSON(activitySettled) {
+    return JSON.stringify(exports.ActivitySettled$outboundSchema.parse(activitySettled));
+}
+function activitySettledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySettled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySettled' from JSON`);
+}
 /** @internal */
 exports.ActivitySubtype$inboundSchema = z
     .union([
@@ -1586,6 +2079,12 @@ var ActivityCashDividend$;
     /** @deprecated use `ActivityCashDividend$outboundSchema` instead. */
     ActivityCashDividend$.outboundSchema = exports.ActivityCashDividend$outboundSchema;
 })(ActivityCashDividend$ || (exports.ActivityCashDividend$ = ActivityCashDividend$ = {}));
+function activityCashDividendToJSON(activityCashDividend) {
+    return JSON.stringify(exports.ActivityCashDividend$outboundSchema.parse(activityCashDividend));
+}
+function activityCashDividendFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashDividend$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashDividend' from JSON`);
+}
 /** @internal */
 exports.ActivityCashInLieuCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -1637,6 +2136,12 @@ var ActivityCashInLieuCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityCashInLieuCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityCashInLieuCorporateActionGeneralInformation$.outboundSchema = exports.ActivityCashInLieuCorporateActionGeneralInformation$outboundSchema;
 })(ActivityCashInLieuCorporateActionGeneralInformation$ || (exports.ActivityCashInLieuCorporateActionGeneralInformation$ = ActivityCashInLieuCorporateActionGeneralInformation$ = {}));
+function activityCashInLieuCorporateActionGeneralInformationToJSON(activityCashInLieuCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityCashInLieuCorporateActionGeneralInformation$outboundSchema.parse(activityCashInLieuCorporateActionGeneralInformation));
+}
+function activityCashInLieuCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashInLieuCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashInLieuCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityCashInLieu$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityCashInLieuCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -1664,6 +2169,12 @@ var ActivityCashInLieu$;
     /** @deprecated use `ActivityCashInLieu$outboundSchema` instead. */
     ActivityCashInLieu$.outboundSchema = exports.ActivityCashInLieu$outboundSchema;
 })(ActivityCashInLieu$ || (exports.ActivityCashInLieu$ = ActivityCashInLieu$ = {}));
+function activityCashInLieuToJSON(activityCashInLieu) {
+    return JSON.stringify(exports.ActivityCashInLieu$outboundSchema.parse(activityCashInLieu));
+}
+function activityCashInLieuFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCashInLieu$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCashInLieu' from JSON`);
+}
 /** @internal */
 exports.ActivityCommission$inboundSchema = z.object({});
 /** @internal */
@@ -1679,6 +2190,12 @@ var ActivityCommission$;
     /** @deprecated use `ActivityCommission$outboundSchema` instead. */
     ActivityCommission$.outboundSchema = exports.ActivityCommission$outboundSchema;
 })(ActivityCommission$ || (exports.ActivityCommission$ = ActivityCommission$ = {}));
+function activityCommissionToJSON(activityCommission) {
+    return JSON.stringify(exports.ActivityCommission$outboundSchema.parse(activityCommission));
+}
+function activityCommissionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCommission$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCommission' from JSON`);
+}
 /** @internal */
 exports.ActivityConversionCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1698,6 +2215,12 @@ var ActivityConversionCashRate$;
     /** @deprecated use `ActivityConversionCashRate$outboundSchema` instead. */
     ActivityConversionCashRate$.outboundSchema = exports.ActivityConversionCashRate$outboundSchema;
 })(ActivityConversionCashRate$ || (exports.ActivityConversionCashRate$ = ActivityConversionCashRate$ = {}));
+function activityConversionCashRateToJSON(activityConversionCashRate) {
+    return JSON.stringify(exports.ActivityConversionCashRate$outboundSchema.parse(activityConversionCashRate));
+}
+function activityConversionCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityConversionCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityConversionCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityConversionCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -1749,6 +2272,12 @@ var ActivityConversionCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityConversionCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityConversionCorporateActionGeneralInformation$.outboundSchema = exports.ActivityConversionCorporateActionGeneralInformation$outboundSchema;
 })(ActivityConversionCorporateActionGeneralInformation$ || (exports.ActivityConversionCorporateActionGeneralInformation$ = ActivityConversionCorporateActionGeneralInformation$ = {}));
+function activityConversionCorporateActionGeneralInformationToJSON(activityConversionCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityConversionCorporateActionGeneralInformation$outboundSchema.parse(activityConversionCorporateActionGeneralInformation));
+}
+function activityConversionCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityConversionCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityConversionCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityStockRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1768,6 +2297,12 @@ var ActivityStockRate$;
     /** @deprecated use `ActivityStockRate$outboundSchema` instead. */
     ActivityStockRate$.outboundSchema = exports.ActivityStockRate$outboundSchema;
 })(ActivityStockRate$ || (exports.ActivityStockRate$ = ActivityStockRate$ = {}));
+function activityStockRateToJSON(activityStockRate) {
+    return JSON.stringify(exports.ActivityStockRate$outboundSchema.parse(activityStockRate));
+}
+function activityStockRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockRate' from JSON`);
+}
 /** @internal */
 exports.ActivityConversionType$inboundSchema = z
     .union([
@@ -1831,6 +2366,12 @@ var ActivityConversion$;
     /** @deprecated use `ActivityConversion$outboundSchema` instead. */
     ActivityConversion$.outboundSchema = exports.ActivityConversion$outboundSchema;
 })(ActivityConversion$ || (exports.ActivityConversion$ = ActivityConversion$ = {}));
+function activityConversionToJSON(activityConversion) {
+    return JSON.stringify(exports.ActivityConversion$outboundSchema.parse(activityConversion));
+}
+function activityConversionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityConversion$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityConversion' from JSON`);
+}
 /** @internal */
 exports.ActivityCorporateActionMemoAdjustment$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -1862,6 +2403,12 @@ var ActivityCorporateActionMemoAdjustment$;
     /** @deprecated use `ActivityCorporateActionMemoAdjustment$outboundSchema` instead. */
     ActivityCorporateActionMemoAdjustment$.outboundSchema = exports.ActivityCorporateActionMemoAdjustment$outboundSchema;
 })(ActivityCorporateActionMemoAdjustment$ || (exports.ActivityCorporateActionMemoAdjustment$ = ActivityCorporateActionMemoAdjustment$ = {}));
+function activityCorporateActionMemoAdjustmentToJSON(activityCorporateActionMemoAdjustment) {
+    return JSON.stringify(exports.ActivityCorporateActionMemoAdjustment$outboundSchema.parse(activityCorporateActionMemoAdjustment));
+}
+function activityCorporateActionMemoAdjustmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCorporateActionMemoAdjustment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCorporateActionMemoAdjustment' from JSON`);
+}
 /** @internal */
 exports.ActivityCreditType$inboundSchema = z
     .union([
@@ -1917,6 +2464,12 @@ var ActivityCredit$;
     /** @deprecated use `ActivityCredit$outboundSchema` instead. */
     ActivityCredit$.outboundSchema = exports.ActivityCredit$outboundSchema;
 })(ActivityCredit$ || (exports.ActivityCredit$ = ActivityCredit$ = {}));
+function activityCreditToJSON(activityCredit) {
+    return JSON.stringify(exports.ActivityCredit$outboundSchema.parse(activityCredit));
+}
+function activityCreditFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityCredit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityCredit' from JSON`);
+}
 /** @internal */
 exports.ActivityContributionType$inboundSchema = z
     .union([
@@ -2006,6 +2559,12 @@ var ActivityDeposit$;
     /** @deprecated use `ActivityDeposit$outboundSchema` instead. */
     ActivityDeposit$.outboundSchema = exports.ActivityDeposit$outboundSchema;
 })(ActivityDeposit$ || (exports.ActivityDeposit$ = ActivityDeposit$ = {}));
+function activityDepositToJSON(activityDeposit) {
+    return JSON.stringify(exports.ActivityDeposit$outboundSchema.parse(activityDeposit));
+}
+function activityDepositFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityDeposit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityDeposit' from JSON`);
+}
 /** @internal */
 exports.ActivityDripAction$inboundSchema = z
     .union([
@@ -2047,6 +2606,12 @@ var ActivityDrip$;
     /** @deprecated use `ActivityDrip$outboundSchema` instead. */
     ActivityDrip$.outboundSchema = exports.ActivityDrip$outboundSchema;
 })(ActivityDrip$ || (exports.ActivityDrip$ = ActivityDrip$ = {}));
+function activityDripToJSON(activityDrip) {
+    return JSON.stringify(exports.ActivityDrip$outboundSchema.parse(activityDrip));
+}
+function activityDripFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityDrip$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityDrip' from JSON`);
+}
 /** @internal */
 exports.ActivityExchangeCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2066,6 +2631,12 @@ var ActivityExchangeCashRate$;
     /** @deprecated use `ActivityExchangeCashRate$outboundSchema` instead. */
     ActivityExchangeCashRate$.outboundSchema = exports.ActivityExchangeCashRate$outboundSchema;
 })(ActivityExchangeCashRate$ || (exports.ActivityExchangeCashRate$ = ActivityExchangeCashRate$ = {}));
+function activityExchangeCashRateToJSON(activityExchangeCashRate) {
+    return JSON.stringify(exports.ActivityExchangeCashRate$outboundSchema.parse(activityExchangeCashRate));
+}
+function activityExchangeCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityExchangeCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityExchangeCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityExchangeCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -2117,6 +2688,12 @@ var ActivityExchangeCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityExchangeCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityExchangeCorporateActionGeneralInformation$.outboundSchema = exports.ActivityExchangeCorporateActionGeneralInformation$outboundSchema;
 })(ActivityExchangeCorporateActionGeneralInformation$ || (exports.ActivityExchangeCorporateActionGeneralInformation$ = ActivityExchangeCorporateActionGeneralInformation$ = {}));
+function activityExchangeCorporateActionGeneralInformationToJSON(activityExchangeCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityExchangeCorporateActionGeneralInformation$outboundSchema.parse(activityExchangeCorporateActionGeneralInformation));
+}
+function activityExchangeCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityExchangeCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityExchangeCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityExchangeStockRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2136,6 +2713,12 @@ var ActivityExchangeStockRate$;
     /** @deprecated use `ActivityExchangeStockRate$outboundSchema` instead. */
     ActivityExchangeStockRate$.outboundSchema = exports.ActivityExchangeStockRate$outboundSchema;
 })(ActivityExchangeStockRate$ || (exports.ActivityExchangeStockRate$ = ActivityExchangeStockRate$ = {}));
+function activityExchangeStockRateToJSON(activityExchangeStockRate) {
+    return JSON.stringify(exports.ActivityExchangeStockRate$outboundSchema.parse(activityExchangeStockRate));
+}
+function activityExchangeStockRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityExchangeStockRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityExchangeStockRate' from JSON`);
+}
 /** @internal */
 exports.ActivityExchangeType$inboundSchema = z
     .union([
@@ -2199,6 +2782,12 @@ var ActivityExchange$;
     /** @deprecated use `ActivityExchange$outboundSchema` instead. */
     ActivityExchange$.outboundSchema = exports.ActivityExchange$outboundSchema;
 })(ActivityExchange$ || (exports.ActivityExchange$ = ActivityExchange$ = {}));
+function activityExchangeToJSON(activityExchange) {
+    return JSON.stringify(exports.ActivityExchange$outboundSchema.parse(activityExchange));
+}
+function activityExchangeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityExchange$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityExchange' from JSON`);
+}
 /** @internal */
 exports.ActivityFee$inboundSchema = z.object({
     additional_instructions: z.string().optional(),
@@ -2226,6 +2815,12 @@ var ActivityFee$;
     /** @deprecated use `ActivityFee$outboundSchema` instead. */
     ActivityFee$.outboundSchema = exports.ActivityFee$outboundSchema;
 })(ActivityFee$ || (exports.ActivityFee$ = ActivityFee$ = {}));
+function activityFeeToJSON(activityFee) {
+    return JSON.stringify(exports.ActivityFee$outboundSchema.parse(activityFee));
+}
+function activityFeeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityFee$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityFee' from JSON`);
+}
 /** @internal */
 exports.ActivityFpslAction$inboundSchema = z
     .union([
@@ -2267,6 +2862,12 @@ var ActivityFpsl$;
     /** @deprecated use `ActivityFpsl$outboundSchema` instead. */
     ActivityFpsl$.outboundSchema = exports.ActivityFpsl$outboundSchema;
 })(ActivityFpsl$ || (exports.ActivityFpsl$ = ActivityFpsl$ = {}));
+function activityFpslToJSON(activityFpsl) {
+    return JSON.stringify(exports.ActivityFpsl$outboundSchema.parse(activityFpsl));
+}
+function activityFpslFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityFpsl$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityFpsl' from JSON`);
+}
 /** @internal */
 exports.ActivityGrossAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2286,6 +2887,12 @@ var ActivityGrossAmount$;
     /** @deprecated use `ActivityGrossAmount$outboundSchema` instead. */
     ActivityGrossAmount$.outboundSchema = exports.ActivityGrossAmount$outboundSchema;
 })(ActivityGrossAmount$ || (exports.ActivityGrossAmount$ = ActivityGrossAmount$ = {}));
+function activityGrossAmountToJSON(activityGrossAmount) {
+    return JSON.stringify(exports.ActivityGrossAmount$outboundSchema.parse(activityGrossAmount));
+}
+function activityGrossAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityGrossAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityGrossAmount' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestAccrualEndDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2309,6 +2916,12 @@ var ActivityInterestAccrualEndDate$;
     /** @deprecated use `ActivityInterestAccrualEndDate$outboundSchema` instead. */
     ActivityInterestAccrualEndDate$.outboundSchema = exports.ActivityInterestAccrualEndDate$outboundSchema;
 })(ActivityInterestAccrualEndDate$ || (exports.ActivityInterestAccrualEndDate$ = ActivityInterestAccrualEndDate$ = {}));
+function activityInterestAccrualEndDateToJSON(activityInterestAccrualEndDate) {
+    return JSON.stringify(exports.ActivityInterestAccrualEndDate$outboundSchema.parse(activityInterestAccrualEndDate));
+}
+function activityInterestAccrualEndDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestAccrualEndDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterestAccrualEndDate' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestAccrualStartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2332,6 +2945,12 @@ var ActivityInterestAccrualStartDate$;
     /** @deprecated use `ActivityInterestAccrualStartDate$outboundSchema` instead. */
     ActivityInterestAccrualStartDate$.outboundSchema = exports.ActivityInterestAccrualStartDate$outboundSchema;
 })(ActivityInterestAccrualStartDate$ || (exports.ActivityInterestAccrualStartDate$ = ActivityInterestAccrualStartDate$ = {}));
+function activityInterestAccrualStartDateToJSON(activityInterestAccrualStartDate) {
+    return JSON.stringify(exports.ActivityInterestAccrualStartDate$outboundSchema.parse(activityInterestAccrualStartDate));
+}
+function activityInterestAccrualStartDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestAccrualStartDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterestAccrualStartDate' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestType$inboundSchema = z
     .union([
@@ -2389,6 +3008,12 @@ var ActivityInterest$;
     /** @deprecated use `ActivityInterest$outboundSchema` instead. */
     ActivityInterest$.outboundSchema = exports.ActivityInterest$outboundSchema;
 })(ActivityInterest$ || (exports.ActivityInterest$ = ActivityInterest$ = {}));
+function activityInterestToJSON(activityInterest) {
+    return JSON.stringify(exports.ActivityInterest$outboundSchema.parse(activityInterest));
+}
+function activityInterestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterest' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestPaymentCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2408,6 +3033,12 @@ var ActivityInterestPaymentCashRate$;
     /** @deprecated use `ActivityInterestPaymentCashRate$outboundSchema` instead. */
     ActivityInterestPaymentCashRate$.outboundSchema = exports.ActivityInterestPaymentCashRate$outboundSchema;
 })(ActivityInterestPaymentCashRate$ || (exports.ActivityInterestPaymentCashRate$ = ActivityInterestPaymentCashRate$ = {}));
+function activityInterestPaymentCashRateToJSON(activityInterestPaymentCashRate) {
+    return JSON.stringify(exports.ActivityInterestPaymentCashRate$outboundSchema.parse(activityInterestPaymentCashRate));
+}
+function activityInterestPaymentCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestPaymentCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterestPaymentCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestPaymentCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -2459,6 +3090,14 @@ var ActivityInterestPaymentCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityInterestPaymentCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityInterestPaymentCorporateActionGeneralInformation$.outboundSchema = exports.ActivityInterestPaymentCorporateActionGeneralInformation$outboundSchema;
 })(ActivityInterestPaymentCorporateActionGeneralInformation$ || (exports.ActivityInterestPaymentCorporateActionGeneralInformation$ = ActivityInterestPaymentCorporateActionGeneralInformation$ = {}));
+function activityInterestPaymentCorporateActionGeneralInformationToJSON(activityInterestPaymentCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityInterestPaymentCorporateActionGeneralInformation$outboundSchema
+        .parse(activityInterestPaymentCorporateActionGeneralInformation));
+}
+function activityInterestPaymentCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestPaymentCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityInterestPaymentCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestPaymentPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2482,6 +3121,12 @@ var ActivityInterestPaymentPaymentDate$;
     /** @deprecated use `ActivityInterestPaymentPaymentDate$outboundSchema` instead. */
     ActivityInterestPaymentPaymentDate$.outboundSchema = exports.ActivityInterestPaymentPaymentDate$outboundSchema;
 })(ActivityInterestPaymentPaymentDate$ || (exports.ActivityInterestPaymentPaymentDate$ = ActivityInterestPaymentPaymentDate$ = {}));
+function activityInterestPaymentPaymentDateToJSON(activityInterestPaymentPaymentDate) {
+    return JSON.stringify(exports.ActivityInterestPaymentPaymentDate$outboundSchema.parse(activityInterestPaymentPaymentDate));
+}
+function activityInterestPaymentPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestPaymentPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterestPaymentPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestPaymentRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2505,6 +3150,12 @@ var ActivityInterestPaymentRecordDate$;
     /** @deprecated use `ActivityInterestPaymentRecordDate$outboundSchema` instead. */
     ActivityInterestPaymentRecordDate$.outboundSchema = exports.ActivityInterestPaymentRecordDate$outboundSchema;
 })(ActivityInterestPaymentRecordDate$ || (exports.ActivityInterestPaymentRecordDate$ = ActivityInterestPaymentRecordDate$ = {}));
+function activityInterestPaymentRecordDateToJSON(activityInterestPaymentRecordDate) {
+    return JSON.stringify(exports.ActivityInterestPaymentRecordDate$outboundSchema.parse(activityInterestPaymentRecordDate));
+}
+function activityInterestPaymentRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestPaymentRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterestPaymentRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestPaymentSettled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2524,6 +3175,12 @@ var ActivityInterestPaymentSettled$;
     /** @deprecated use `ActivityInterestPaymentSettled$outboundSchema` instead. */
     ActivityInterestPaymentSettled$.outboundSchema = exports.ActivityInterestPaymentSettled$outboundSchema;
 })(ActivityInterestPaymentSettled$ || (exports.ActivityInterestPaymentSettled$ = ActivityInterestPaymentSettled$ = {}));
+function activityInterestPaymentSettledToJSON(activityInterestPaymentSettled) {
+    return JSON.stringify(exports.ActivityInterestPaymentSettled$outboundSchema.parse(activityInterestPaymentSettled));
+}
+function activityInterestPaymentSettledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestPaymentSettled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterestPaymentSettled' from JSON`);
+}
 /** @internal */
 exports.ActivityInterestPayment$inboundSchema = z.object({
     cash_rate: z.nullable(z.lazy(() => exports.ActivityInterestPaymentCashRate$inboundSchema)).optional(),
@@ -2565,6 +3222,12 @@ var ActivityInterestPayment$;
     /** @deprecated use `ActivityInterestPayment$outboundSchema` instead. */
     ActivityInterestPayment$.outboundSchema = exports.ActivityInterestPayment$outboundSchema;
 })(ActivityInterestPayment$ || (exports.ActivityInterestPayment$ = ActivityInterestPayment$ = {}));
+function activityInterestPaymentToJSON(activityInterestPayment) {
+    return JSON.stringify(exports.ActivityInterestPayment$outboundSchema.parse(activityInterestPayment));
+}
+function activityInterestPaymentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityInterestPayment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityInterestPayment' from JSON`);
+}
 /** @internal */
 exports.ActivityLiquidationAction$inboundSchema = z
     .union([
@@ -2606,6 +3269,12 @@ var ActivityLiquidationCashRate$;
     /** @deprecated use `ActivityLiquidationCashRate$outboundSchema` instead. */
     ActivityLiquidationCashRate$.outboundSchema = exports.ActivityLiquidationCashRate$outboundSchema;
 })(ActivityLiquidationCashRate$ || (exports.ActivityLiquidationCashRate$ = ActivityLiquidationCashRate$ = {}));
+function activityLiquidationCashRateToJSON(activityLiquidationCashRate) {
+    return JSON.stringify(exports.ActivityLiquidationCashRate$outboundSchema.parse(activityLiquidationCashRate));
+}
+function activityLiquidationCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityLiquidationCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityLiquidationCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityLiquidationCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -2657,6 +3326,12 @@ var ActivityLiquidationCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityLiquidationCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityLiquidationCorporateActionGeneralInformation$.outboundSchema = exports.ActivityLiquidationCorporateActionGeneralInformation$outboundSchema;
 })(ActivityLiquidationCorporateActionGeneralInformation$ || (exports.ActivityLiquidationCorporateActionGeneralInformation$ = ActivityLiquidationCorporateActionGeneralInformation$ = {}));
+function activityLiquidationCorporateActionGeneralInformationToJSON(activityLiquidationCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityLiquidationCorporateActionGeneralInformation$outboundSchema.parse(activityLiquidationCorporateActionGeneralInformation));
+}
+function activityLiquidationCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityLiquidationCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityLiquidationCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2680,6 +3355,12 @@ var ActivityEffectiveDate$;
     /** @deprecated use `ActivityEffectiveDate$outboundSchema` instead. */
     ActivityEffectiveDate$.outboundSchema = exports.ActivityEffectiveDate$outboundSchema;
 })(ActivityEffectiveDate$ || (exports.ActivityEffectiveDate$ = ActivityEffectiveDate$ = {}));
+function activityEffectiveDateToJSON(activityEffectiveDate) {
+    return JSON.stringify(exports.ActivityEffectiveDate$outboundSchema.parse(activityEffectiveDate));
+}
+function activityEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.ActivityLiquidationPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2703,6 +3384,12 @@ var ActivityLiquidationPaymentDate$;
     /** @deprecated use `ActivityLiquidationPaymentDate$outboundSchema` instead. */
     ActivityLiquidationPaymentDate$.outboundSchema = exports.ActivityLiquidationPaymentDate$outboundSchema;
 })(ActivityLiquidationPaymentDate$ || (exports.ActivityLiquidationPaymentDate$ = ActivityLiquidationPaymentDate$ = {}));
+function activityLiquidationPaymentDateToJSON(activityLiquidationPaymentDate) {
+    return JSON.stringify(exports.ActivityLiquidationPaymentDate$outboundSchema.parse(activityLiquidationPaymentDate));
+}
+function activityLiquidationPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityLiquidationPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityLiquidationPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityLiquidationQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2722,6 +3409,12 @@ var ActivityLiquidationQuantity$;
     /** @deprecated use `ActivityLiquidationQuantity$outboundSchema` instead. */
     ActivityLiquidationQuantity$.outboundSchema = exports.ActivityLiquidationQuantity$outboundSchema;
 })(ActivityLiquidationQuantity$ || (exports.ActivityLiquidationQuantity$ = ActivityLiquidationQuantity$ = {}));
+function activityLiquidationQuantityToJSON(activityLiquidationQuantity) {
+    return JSON.stringify(exports.ActivityLiquidationQuantity$outboundSchema.parse(activityLiquidationQuantity));
+}
+function activityLiquidationQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityLiquidationQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityLiquidationQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityLiquidationRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2745,6 +3438,12 @@ var ActivityLiquidationRecordDate$;
     /** @deprecated use `ActivityLiquidationRecordDate$outboundSchema` instead. */
     ActivityLiquidationRecordDate$.outboundSchema = exports.ActivityLiquidationRecordDate$outboundSchema;
 })(ActivityLiquidationRecordDate$ || (exports.ActivityLiquidationRecordDate$ = ActivityLiquidationRecordDate$ = {}));
+function activityLiquidationRecordDateToJSON(activityLiquidationRecordDate) {
+    return JSON.stringify(exports.ActivityLiquidationRecordDate$outboundSchema.parse(activityLiquidationRecordDate));
+}
+function activityLiquidationRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityLiquidationRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityLiquidationRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivityLiquidationSettled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2764,6 +3463,12 @@ var ActivityLiquidationSettled$;
     /** @deprecated use `ActivityLiquidationSettled$outboundSchema` instead. */
     ActivityLiquidationSettled$.outboundSchema = exports.ActivityLiquidationSettled$outboundSchema;
 })(ActivityLiquidationSettled$ || (exports.ActivityLiquidationSettled$ = ActivityLiquidationSettled$ = {}));
+function activityLiquidationSettledToJSON(activityLiquidationSettled) {
+    return JSON.stringify(exports.ActivityLiquidationSettled$outboundSchema.parse(activityLiquidationSettled));
+}
+function activityLiquidationSettledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityLiquidationSettled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityLiquidationSettled' from JSON`);
+}
 /** @internal */
 exports.ActivityLiquidationSubtype$inboundSchema = z
     .union([
@@ -2845,6 +3550,12 @@ var ActivityLiquidation$;
     /** @deprecated use `ActivityLiquidation$outboundSchema` instead. */
     ActivityLiquidation$.outboundSchema = exports.ActivityLiquidation$outboundSchema;
 })(ActivityLiquidation$ || (exports.ActivityLiquidation$ = ActivityLiquidation$ = {}));
+function activityLiquidationToJSON(activityLiquidation) {
+    return JSON.stringify(exports.ActivityLiquidation$outboundSchema.parse(activityLiquidation));
+}
+function activityLiquidationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityLiquidation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityLiquidation' from JSON`);
+}
 /** @internal */
 exports.ActivityMaturityCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2864,6 +3575,12 @@ var ActivityMaturityCashRate$;
     /** @deprecated use `ActivityMaturityCashRate$outboundSchema` instead. */
     ActivityMaturityCashRate$.outboundSchema = exports.ActivityMaturityCashRate$outboundSchema;
 })(ActivityMaturityCashRate$ || (exports.ActivityMaturityCashRate$ = ActivityMaturityCashRate$ = {}));
+function activityMaturityCashRateToJSON(activityMaturityCashRate) {
+    return JSON.stringify(exports.ActivityMaturityCashRate$outboundSchema.parse(activityMaturityCashRate));
+}
+function activityMaturityCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMaturityCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMaturityCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityMaturityCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -2915,6 +3632,12 @@ var ActivityMaturityCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityMaturityCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityMaturityCorporateActionGeneralInformation$.outboundSchema = exports.ActivityMaturityCorporateActionGeneralInformation$outboundSchema;
 })(ActivityMaturityCorporateActionGeneralInformation$ || (exports.ActivityMaturityCorporateActionGeneralInformation$ = ActivityMaturityCorporateActionGeneralInformation$ = {}));
+function activityMaturityCorporateActionGeneralInformationToJSON(activityMaturityCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityMaturityCorporateActionGeneralInformation$outboundSchema.parse(activityMaturityCorporateActionGeneralInformation));
+}
+function activityMaturityCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMaturityCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMaturityCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityMaturityPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2938,6 +3661,12 @@ var ActivityMaturityPaymentDate$;
     /** @deprecated use `ActivityMaturityPaymentDate$outboundSchema` instead. */
     ActivityMaturityPaymentDate$.outboundSchema = exports.ActivityMaturityPaymentDate$outboundSchema;
 })(ActivityMaturityPaymentDate$ || (exports.ActivityMaturityPaymentDate$ = ActivityMaturityPaymentDate$ = {}));
+function activityMaturityPaymentDateToJSON(activityMaturityPaymentDate) {
+    return JSON.stringify(exports.ActivityMaturityPaymentDate$outboundSchema.parse(activityMaturityPaymentDate));
+}
+function activityMaturityPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMaturityPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMaturityPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityMaturityQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2957,6 +3686,12 @@ var ActivityMaturityQuantity$;
     /** @deprecated use `ActivityMaturityQuantity$outboundSchema` instead. */
     ActivityMaturityQuantity$.outboundSchema = exports.ActivityMaturityQuantity$outboundSchema;
 })(ActivityMaturityQuantity$ || (exports.ActivityMaturityQuantity$ = ActivityMaturityQuantity$ = {}));
+function activityMaturityQuantityToJSON(activityMaturityQuantity) {
+    return JSON.stringify(exports.ActivityMaturityQuantity$outboundSchema.parse(activityMaturityQuantity));
+}
+function activityMaturityQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMaturityQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMaturityQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityMaturity$inboundSchema = z.object({
     cash_rate: z.nullable(z.lazy(() => exports.ActivityMaturityCashRate$inboundSchema))
@@ -2998,6 +3733,12 @@ var ActivityMaturity$;
     /** @deprecated use `ActivityMaturity$outboundSchema` instead. */
     ActivityMaturity$.outboundSchema = exports.ActivityMaturity$outboundSchema;
 })(ActivityMaturity$ || (exports.ActivityMaturity$ = ActivityMaturity$ = {}));
+function activityMaturityToJSON(activityMaturity) {
+    return JSON.stringify(exports.ActivityMaturity$outboundSchema.parse(activityMaturity));
+}
+function activityMaturityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMaturity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMaturity' from JSON`);
+}
 /** @internal */
 exports.ActivityMergerAction$inboundSchema = z
     .union([
@@ -3039,6 +3780,12 @@ var ActivityMergerCashRate$;
     /** @deprecated use `ActivityMergerCashRate$outboundSchema` instead. */
     ActivityMergerCashRate$.outboundSchema = exports.ActivityMergerCashRate$outboundSchema;
 })(ActivityMergerCashRate$ || (exports.ActivityMergerCashRate$ = ActivityMergerCashRate$ = {}));
+function activityMergerCashRateToJSON(activityMergerCashRate) {
+    return JSON.stringify(exports.ActivityMergerCashRate$outboundSchema.parse(activityMergerCashRate));
+}
+function activityMergerCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMergerCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMergerCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityMergerCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -3090,6 +3837,12 @@ var ActivityMergerCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityMergerCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityMergerCorporateActionGeneralInformation$.outboundSchema = exports.ActivityMergerCorporateActionGeneralInformation$outboundSchema;
 })(ActivityMergerCorporateActionGeneralInformation$ || (exports.ActivityMergerCorporateActionGeneralInformation$ = ActivityMergerCorporateActionGeneralInformation$ = {}));
+function activityMergerCorporateActionGeneralInformationToJSON(activityMergerCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityMergerCorporateActionGeneralInformation$outboundSchema.parse(activityMergerCorporateActionGeneralInformation));
+}
+function activityMergerCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMergerCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMergerCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityMergerEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3113,6 +3866,12 @@ var ActivityMergerEffectiveDate$;
     /** @deprecated use `ActivityMergerEffectiveDate$outboundSchema` instead. */
     ActivityMergerEffectiveDate$.outboundSchema = exports.ActivityMergerEffectiveDate$outboundSchema;
 })(ActivityMergerEffectiveDate$ || (exports.ActivityMergerEffectiveDate$ = ActivityMergerEffectiveDate$ = {}));
+function activityMergerEffectiveDateToJSON(activityMergerEffectiveDate) {
+    return JSON.stringify(exports.ActivityMergerEffectiveDate$outboundSchema.parse(activityMergerEffectiveDate));
+}
+function activityMergerEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMergerEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMergerEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.ActivityMergerQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3132,6 +3891,12 @@ var ActivityMergerQuantity$;
     /** @deprecated use `ActivityMergerQuantity$outboundSchema` instead. */
     ActivityMergerQuantity$.outboundSchema = exports.ActivityMergerQuantity$outboundSchema;
 })(ActivityMergerQuantity$ || (exports.ActivityMergerQuantity$ = ActivityMergerQuantity$ = {}));
+function activityMergerQuantityToJSON(activityMergerQuantity) {
+    return JSON.stringify(exports.ActivityMergerQuantity$outboundSchema.parse(activityMergerQuantity));
+}
+function activityMergerQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMergerQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMergerQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityMergerStockRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3151,6 +3916,12 @@ var ActivityMergerStockRate$;
     /** @deprecated use `ActivityMergerStockRate$outboundSchema` instead. */
     ActivityMergerStockRate$.outboundSchema = exports.ActivityMergerStockRate$outboundSchema;
 })(ActivityMergerStockRate$ || (exports.ActivityMergerStockRate$ = ActivityMergerStockRate$ = {}));
+function activityMergerStockRateToJSON(activityMergerStockRate) {
+    return JSON.stringify(exports.ActivityMergerStockRate$outboundSchema.parse(activityMergerStockRate));
+}
+function activityMergerStockRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMergerStockRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMergerStockRate' from JSON`);
+}
 /** @internal */
 exports.ActivityMergerType$inboundSchema = z
     .union([
@@ -3224,6 +3995,12 @@ var ActivityMerger$;
     /** @deprecated use `ActivityMerger$outboundSchema` instead. */
     ActivityMerger$.outboundSchema = exports.ActivityMerger$outboundSchema;
 })(ActivityMerger$ || (exports.ActivityMerger$ = ActivityMerger$ = {}));
+function activityMergerToJSON(activityMerger) {
+    return JSON.stringify(exports.ActivityMerger$outboundSchema.parse(activityMerger));
+}
+function activityMergerFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityMerger$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityMerger' from JSON`);
+}
 /** @internal */
 exports.ActivityNameChangeAction$inboundSchema = z
     .union([
@@ -3297,6 +4074,12 @@ var ActivityNameChangeCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityNameChangeCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityNameChangeCorporateActionGeneralInformation$.outboundSchema = exports.ActivityNameChangeCorporateActionGeneralInformation$outboundSchema;
 })(ActivityNameChangeCorporateActionGeneralInformation$ || (exports.ActivityNameChangeCorporateActionGeneralInformation$ = ActivityNameChangeCorporateActionGeneralInformation$ = {}));
+function activityNameChangeCorporateActionGeneralInformationToJSON(activityNameChangeCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityNameChangeCorporateActionGeneralInformation$outboundSchema.parse(activityNameChangeCorporateActionGeneralInformation));
+}
+function activityNameChangeCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityNameChangeCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityNameChangeCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityNameChangeEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3320,6 +4103,12 @@ var ActivityNameChangeEffectiveDate$;
     /** @deprecated use `ActivityNameChangeEffectiveDate$outboundSchema` instead. */
     ActivityNameChangeEffectiveDate$.outboundSchema = exports.ActivityNameChangeEffectiveDate$outboundSchema;
 })(ActivityNameChangeEffectiveDate$ || (exports.ActivityNameChangeEffectiveDate$ = ActivityNameChangeEffectiveDate$ = {}));
+function activityNameChangeEffectiveDateToJSON(activityNameChangeEffectiveDate) {
+    return JSON.stringify(exports.ActivityNameChangeEffectiveDate$outboundSchema.parse(activityNameChangeEffectiveDate));
+}
+function activityNameChangeEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityNameChangeEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityNameChangeEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.ActivityNameChangeQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3339,6 +4128,12 @@ var ActivityNameChangeQuantity$;
     /** @deprecated use `ActivityNameChangeQuantity$outboundSchema` instead. */
     ActivityNameChangeQuantity$.outboundSchema = exports.ActivityNameChangeQuantity$outboundSchema;
 })(ActivityNameChangeQuantity$ || (exports.ActivityNameChangeQuantity$ = ActivityNameChangeQuantity$ = {}));
+function activityNameChangeQuantityToJSON(activityNameChangeQuantity) {
+    return JSON.stringify(exports.ActivityNameChangeQuantity$outboundSchema.parse(activityNameChangeQuantity));
+}
+function activityNameChangeQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityNameChangeQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityNameChangeQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityNameChange$inboundSchema = z.object({
     action: exports.ActivityNameChangeAction$inboundSchema.optional(),
@@ -3376,6 +4171,12 @@ var ActivityNameChange$;
     /** @deprecated use `ActivityNameChange$outboundSchema` instead. */
     ActivityNameChange$.outboundSchema = exports.ActivityNameChange$outboundSchema;
 })(ActivityNameChange$ || (exports.ActivityNameChange$ = ActivityNameChange$ = {}));
+function activityNameChangeToJSON(activityNameChange) {
+    return JSON.stringify(exports.ActivityNameChange$outboundSchema.parse(activityNameChange));
+}
+function activityNameChangeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityNameChange$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityNameChange' from JSON`);
+}
 /** @internal */
 exports.ActivityNetAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3395,6 +4196,12 @@ var ActivityNetAmount$;
     /** @deprecated use `ActivityNetAmount$outboundSchema` instead. */
     ActivityNetAmount$.outboundSchema = exports.ActivityNetAmount$outboundSchema;
 })(ActivityNetAmount$ || (exports.ActivityNetAmount$ = ActivityNetAmount$ = {}));
+function activityNetAmountToJSON(activityNetAmount) {
+    return JSON.stringify(exports.ActivityNetAmount$outboundSchema.parse(activityNetAmount));
+}
+function activityNetAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityNetAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityNetAmount' from JSON`);
+}
 /** @internal */
 exports.NextActivityProcessDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3418,6 +4225,12 @@ var NextActivityProcessDate$;
     /** @deprecated use `NextActivityProcessDate$outboundSchema` instead. */
     NextActivityProcessDate$.outboundSchema = exports.NextActivityProcessDate$outboundSchema;
 })(NextActivityProcessDate$ || (exports.NextActivityProcessDate$ = NextActivityProcessDate$ = {}));
+function nextActivityProcessDateToJSON(nextActivityProcessDate) {
+    return JSON.stringify(exports.NextActivityProcessDate$outboundSchema.parse(nextActivityProcessDate));
+}
+function nextActivityProcessDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NextActivityProcessDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NextActivityProcessDate' from JSON`);
+}
 /** @internal */
 exports.None$inboundSchema = z
     .object({});
@@ -3434,6 +4247,12 @@ var None$;
     /** @deprecated use `None$outboundSchema` instead. */
     None$.outboundSchema = exports.None$outboundSchema;
 })(None$ || (exports.None$ = None$ = {}));
+function noneToJSON(none) {
+    return JSON.stringify(exports.None$outboundSchema.parse(none));
+}
+function noneFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.None$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'None' from JSON`);
+}
 /** @internal */
 exports.ActivityPaymentInKindCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -3485,6 +4304,13 @@ var ActivityPaymentInKindCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityPaymentInKindCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityPaymentInKindCorporateActionGeneralInformation$.outboundSchema = exports.ActivityPaymentInKindCorporateActionGeneralInformation$outboundSchema;
 })(ActivityPaymentInKindCorporateActionGeneralInformation$ || (exports.ActivityPaymentInKindCorporateActionGeneralInformation$ = ActivityPaymentInKindCorporateActionGeneralInformation$ = {}));
+function activityPaymentInKindCorporateActionGeneralInformationToJSON(activityPaymentInKindCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityPaymentInKindCorporateActionGeneralInformation$outboundSchema.parse(activityPaymentInKindCorporateActionGeneralInformation));
+}
+function activityPaymentInKindCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPaymentInKindCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityPaymentInKindCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityPaymentInKindPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3508,6 +4334,12 @@ var ActivityPaymentInKindPaymentDate$;
     /** @deprecated use `ActivityPaymentInKindPaymentDate$outboundSchema` instead. */
     ActivityPaymentInKindPaymentDate$.outboundSchema = exports.ActivityPaymentInKindPaymentDate$outboundSchema;
 })(ActivityPaymentInKindPaymentDate$ || (exports.ActivityPaymentInKindPaymentDate$ = ActivityPaymentInKindPaymentDate$ = {}));
+function activityPaymentInKindPaymentDateToJSON(activityPaymentInKindPaymentDate) {
+    return JSON.stringify(exports.ActivityPaymentInKindPaymentDate$outboundSchema.parse(activityPaymentInKindPaymentDate));
+}
+function activityPaymentInKindPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPaymentInKindPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPaymentInKindPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityPaymentInKindRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3531,6 +4363,12 @@ var ActivityPaymentInKindRecordDate$;
     /** @deprecated use `ActivityPaymentInKindRecordDate$outboundSchema` instead. */
     ActivityPaymentInKindRecordDate$.outboundSchema = exports.ActivityPaymentInKindRecordDate$outboundSchema;
 })(ActivityPaymentInKindRecordDate$ || (exports.ActivityPaymentInKindRecordDate$ = ActivityPaymentInKindRecordDate$ = {}));
+function activityPaymentInKindRecordDateToJSON(activityPaymentInKindRecordDate) {
+    return JSON.stringify(exports.ActivityPaymentInKindRecordDate$outboundSchema.parse(activityPaymentInKindRecordDate));
+}
+function activityPaymentInKindRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPaymentInKindRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPaymentInKindRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivityPaymentInKindSettled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3550,6 +4388,12 @@ var ActivityPaymentInKindSettled$;
     /** @deprecated use `ActivityPaymentInKindSettled$outboundSchema` instead. */
     ActivityPaymentInKindSettled$.outboundSchema = exports.ActivityPaymentInKindSettled$outboundSchema;
 })(ActivityPaymentInKindSettled$ || (exports.ActivityPaymentInKindSettled$ = ActivityPaymentInKindSettled$ = {}));
+function activityPaymentInKindSettledToJSON(activityPaymentInKindSettled) {
+    return JSON.stringify(exports.ActivityPaymentInKindSettled$outboundSchema.parse(activityPaymentInKindSettled));
+}
+function activityPaymentInKindSettledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPaymentInKindSettled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPaymentInKindSettled' from JSON`);
+}
 /** @internal */
 exports.ActivityPaymentInKindStockRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3569,6 +4413,12 @@ var ActivityPaymentInKindStockRate$;
     /** @deprecated use `ActivityPaymentInKindStockRate$outboundSchema` instead. */
     ActivityPaymentInKindStockRate$.outboundSchema = exports.ActivityPaymentInKindStockRate$outboundSchema;
 })(ActivityPaymentInKindStockRate$ || (exports.ActivityPaymentInKindStockRate$ = ActivityPaymentInKindStockRate$ = {}));
+function activityPaymentInKindStockRateToJSON(activityPaymentInKindStockRate) {
+    return JSON.stringify(exports.ActivityPaymentInKindStockRate$outboundSchema.parse(activityPaymentInKindStockRate));
+}
+function activityPaymentInKindStockRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPaymentInKindStockRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPaymentInKindStockRate' from JSON`);
+}
 /** @internal */
 exports.ActivityPaymentInKind$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityPaymentInKindCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -3612,6 +4462,12 @@ var ActivityPaymentInKind$;
     /** @deprecated use `ActivityPaymentInKind$outboundSchema` instead. */
     ActivityPaymentInKind$.outboundSchema = exports.ActivityPaymentInKind$outboundSchema;
 })(ActivityPaymentInKind$ || (exports.ActivityPaymentInKind$ = ActivityPaymentInKind$ = {}));
+function activityPaymentInKindToJSON(activityPaymentInKind) {
+    return JSON.stringify(exports.ActivityPaymentInKind$outboundSchema.parse(activityPaymentInKind));
+}
+function activityPaymentInKindFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPaymentInKind$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPaymentInKind' from JSON`);
+}
 /** @internal */
 exports.PreviousProcessDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3635,6 +4491,12 @@ var PreviousProcessDate$;
     /** @deprecated use `PreviousProcessDate$outboundSchema` instead. */
     PreviousProcessDate$.outboundSchema = exports.PreviousProcessDate$outboundSchema;
 })(PreviousProcessDate$ || (exports.PreviousProcessDate$ = PreviousProcessDate$ = {}));
+function previousProcessDateToJSON(previousProcessDate) {
+    return JSON.stringify(exports.PreviousProcessDate$outboundSchema.parse(previousProcessDate));
+}
+function previousProcessDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PreviousProcessDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PreviousProcessDate' from JSON`);
+}
 /** @internal */
 exports.ActivityPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3654,6 +4516,12 @@ var ActivityPrice$;
     /** @deprecated use `ActivityPrice$outboundSchema` instead. */
     ActivityPrice$.outboundSchema = exports.ActivityPrice$outboundSchema;
 })(ActivityPrice$ || (exports.ActivityPrice$ = ActivityPrice$ = {}));
+function activityPriceToJSON(activityPrice) {
+    return JSON.stringify(exports.ActivityPrice$outboundSchema.parse(activityPrice));
+}
+function activityPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPrice' from JSON`);
+}
 /** @internal */
 exports.ActivityProcessDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3677,6 +4545,12 @@ var ActivityProcessDate$;
     /** @deprecated use `ActivityProcessDate$outboundSchema` instead. */
     ActivityProcessDate$.outboundSchema = exports.ActivityProcessDate$outboundSchema;
 })(ActivityProcessDate$ || (exports.ActivityProcessDate$ = ActivityProcessDate$ = {}));
+function activityProcessDateToJSON(activityProcessDate) {
+    return JSON.stringify(exports.ActivityProcessDate$outboundSchema.parse(activityProcessDate));
+}
+function activityProcessDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityProcessDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityProcessDate' from JSON`);
+}
 /** @internal */
 exports.ActivityQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3696,6 +4570,12 @@ var ActivityQuantity$;
     /** @deprecated use `ActivityQuantity$outboundSchema` instead. */
     ActivityQuantity$.outboundSchema = exports.ActivityQuantity$outboundSchema;
 })(ActivityQuantity$ || (exports.ActivityQuantity$ = ActivityQuantity$ = {}));
+function activityQuantityToJSON(activityQuantity) {
+    return JSON.stringify(exports.ActivityQuantity$outboundSchema.parse(activityQuantity));
+}
+function activityQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionFullAction$inboundSchema = z
     .union([
@@ -3737,6 +4617,12 @@ var ActivityRedemptionFullCashRate$;
     /** @deprecated use `ActivityRedemptionFullCashRate$outboundSchema` instead. */
     ActivityRedemptionFullCashRate$.outboundSchema = exports.ActivityRedemptionFullCashRate$outboundSchema;
 })(ActivityRedemptionFullCashRate$ || (exports.ActivityRedemptionFullCashRate$ = ActivityRedemptionFullCashRate$ = {}));
+function activityRedemptionFullCashRateToJSON(activityRedemptionFullCashRate) {
+    return JSON.stringify(exports.ActivityRedemptionFullCashRate$outboundSchema.parse(activityRedemptionFullCashRate));
+}
+function activityRedemptionFullCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionFullCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionFullCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionFullCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -3788,6 +4674,14 @@ var ActivityRedemptionFullCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityRedemptionFullCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityRedemptionFullCorporateActionGeneralInformation$.outboundSchema = exports.ActivityRedemptionFullCorporateActionGeneralInformation$outboundSchema;
 })(ActivityRedemptionFullCorporateActionGeneralInformation$ || (exports.ActivityRedemptionFullCorporateActionGeneralInformation$ = ActivityRedemptionFullCorporateActionGeneralInformation$ = {}));
+function activityRedemptionFullCorporateActionGeneralInformationToJSON(activityRedemptionFullCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityRedemptionFullCorporateActionGeneralInformation$outboundSchema
+        .parse(activityRedemptionFullCorporateActionGeneralInformation));
+}
+function activityRedemptionFullCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionFullCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionFullCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionFullPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -3811,6 +4705,12 @@ var ActivityRedemptionFullPaymentDate$;
     /** @deprecated use `ActivityRedemptionFullPaymentDate$outboundSchema` instead. */
     ActivityRedemptionFullPaymentDate$.outboundSchema = exports.ActivityRedemptionFullPaymentDate$outboundSchema;
 })(ActivityRedemptionFullPaymentDate$ || (exports.ActivityRedemptionFullPaymentDate$ = ActivityRedemptionFullPaymentDate$ = {}));
+function activityRedemptionFullPaymentDateToJSON(activityRedemptionFullPaymentDate) {
+    return JSON.stringify(exports.ActivityRedemptionFullPaymentDate$outboundSchema.parse(activityRedemptionFullPaymentDate));
+}
+function activityRedemptionFullPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionFullPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionFullPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionFullQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3830,6 +4730,12 @@ var ActivityRedemptionFullQuantity$;
     /** @deprecated use `ActivityRedemptionFullQuantity$outboundSchema` instead. */
     ActivityRedemptionFullQuantity$.outboundSchema = exports.ActivityRedemptionFullQuantity$outboundSchema;
 })(ActivityRedemptionFullQuantity$ || (exports.ActivityRedemptionFullQuantity$ = ActivityRedemptionFullQuantity$ = {}));
+function activityRedemptionFullQuantityToJSON(activityRedemptionFullQuantity) {
+    return JSON.stringify(exports.ActivityRedemptionFullQuantity$outboundSchema.parse(activityRedemptionFullQuantity));
+}
+function activityRedemptionFullQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionFullQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionFullQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionFullSubtype$inboundSchema = z
     .union([
@@ -3893,6 +4799,12 @@ var ActivityRedemptionFull$;
     /** @deprecated use `ActivityRedemptionFull$outboundSchema` instead. */
     ActivityRedemptionFull$.outboundSchema = exports.ActivityRedemptionFull$outboundSchema;
 })(ActivityRedemptionFull$ || (exports.ActivityRedemptionFull$ = ActivityRedemptionFull$ = {}));
+function activityRedemptionFullToJSON(activityRedemptionFull) {
+    return JSON.stringify(exports.ActivityRedemptionFull$outboundSchema.parse(activityRedemptionFull));
+}
+function activityRedemptionFullFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionFull$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionFull' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionPartialAction$inboundSchema = z
     .union([
@@ -3934,6 +4846,12 @@ var ActivityRedemptionPartialCashRate$;
     /** @deprecated use `ActivityRedemptionPartialCashRate$outboundSchema` instead. */
     ActivityRedemptionPartialCashRate$.outboundSchema = exports.ActivityRedemptionPartialCashRate$outboundSchema;
 })(ActivityRedemptionPartialCashRate$ || (exports.ActivityRedemptionPartialCashRate$ = ActivityRedemptionPartialCashRate$ = {}));
+function activityRedemptionPartialCashRateToJSON(activityRedemptionPartialCashRate) {
+    return JSON.stringify(exports.ActivityRedemptionPartialCashRate$outboundSchema.parse(activityRedemptionPartialCashRate));
+}
+function activityRedemptionPartialCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionPartialCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionPartialCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionPartialCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -3985,6 +4903,14 @@ var ActivityRedemptionPartialCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityRedemptionPartialCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityRedemptionPartialCorporateActionGeneralInformation$.outboundSchema = exports.ActivityRedemptionPartialCorporateActionGeneralInformation$outboundSchema;
 })(ActivityRedemptionPartialCorporateActionGeneralInformation$ || (exports.ActivityRedemptionPartialCorporateActionGeneralInformation$ = ActivityRedemptionPartialCorporateActionGeneralInformation$ = {}));
+function activityRedemptionPartialCorporateActionGeneralInformationToJSON(activityRedemptionPartialCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityRedemptionPartialCorporateActionGeneralInformation$outboundSchema
+        .parse(activityRedemptionPartialCorporateActionGeneralInformation));
+}
+function activityRedemptionPartialCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionPartialCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionPartialCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionPartialPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4008,6 +4934,12 @@ var ActivityRedemptionPartialPaymentDate$;
     /** @deprecated use `ActivityRedemptionPartialPaymentDate$outboundSchema` instead. */
     ActivityRedemptionPartialPaymentDate$.outboundSchema = exports.ActivityRedemptionPartialPaymentDate$outboundSchema;
 })(ActivityRedemptionPartialPaymentDate$ || (exports.ActivityRedemptionPartialPaymentDate$ = ActivityRedemptionPartialPaymentDate$ = {}));
+function activityRedemptionPartialPaymentDateToJSON(activityRedemptionPartialPaymentDate) {
+    return JSON.stringify(exports.ActivityRedemptionPartialPaymentDate$outboundSchema.parse(activityRedemptionPartialPaymentDate));
+}
+function activityRedemptionPartialPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionPartialPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionPartialPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionPartialQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4027,6 +4959,12 @@ var ActivityRedemptionPartialQuantity$;
     /** @deprecated use `ActivityRedemptionPartialQuantity$outboundSchema` instead. */
     ActivityRedemptionPartialQuantity$.outboundSchema = exports.ActivityRedemptionPartialQuantity$outboundSchema;
 })(ActivityRedemptionPartialQuantity$ || (exports.ActivityRedemptionPartialQuantity$ = ActivityRedemptionPartialQuantity$ = {}));
+function activityRedemptionPartialQuantityToJSON(activityRedemptionPartialQuantity) {
+    return JSON.stringify(exports.ActivityRedemptionPartialQuantity$outboundSchema.parse(activityRedemptionPartialQuantity));
+}
+function activityRedemptionPartialQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionPartialQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionPartialQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityRedemptionPartial$inboundSchema = z.object({
     action: exports.ActivityRedemptionPartialAction$inboundSchema.optional(),
@@ -4066,6 +5004,12 @@ var ActivityRedemptionPartial$;
     /** @deprecated use `ActivityRedemptionPartial$outboundSchema` instead. */
     ActivityRedemptionPartial$.outboundSchema = exports.ActivityRedemptionPartial$outboundSchema;
 })(ActivityRedemptionPartial$ || (exports.ActivityRedemptionPartial$ = ActivityRedemptionPartial$ = {}));
+function activityRedemptionPartialToJSON(activityRedemptionPartial) {
+    return JSON.stringify(exports.ActivityRedemptionPartial$outboundSchema.parse(activityRedemptionPartial));
+}
+function activityRedemptionPartialFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRedemptionPartial$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRedemptionPartial' from JSON`);
+}
 /** @internal */
 exports.ActivityReverseStockSplitAction$inboundSchema = z
     .union([
@@ -4107,6 +5051,12 @@ var ActivityReverseStockSplitCashRate$;
     /** @deprecated use `ActivityReverseStockSplitCashRate$outboundSchema` instead. */
     ActivityReverseStockSplitCashRate$.outboundSchema = exports.ActivityReverseStockSplitCashRate$outboundSchema;
 })(ActivityReverseStockSplitCashRate$ || (exports.ActivityReverseStockSplitCashRate$ = ActivityReverseStockSplitCashRate$ = {}));
+function activityReverseStockSplitCashRateToJSON(activityReverseStockSplitCashRate) {
+    return JSON.stringify(exports.ActivityReverseStockSplitCashRate$outboundSchema.parse(activityReverseStockSplitCashRate));
+}
+function activityReverseStockSplitCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityReverseStockSplitCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityReverseStockSplitCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityReverseStockSplitCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -4158,6 +5108,14 @@ var ActivityReverseStockSplitCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityReverseStockSplitCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityReverseStockSplitCorporateActionGeneralInformation$.outboundSchema = exports.ActivityReverseStockSplitCorporateActionGeneralInformation$outboundSchema;
 })(ActivityReverseStockSplitCorporateActionGeneralInformation$ || (exports.ActivityReverseStockSplitCorporateActionGeneralInformation$ = ActivityReverseStockSplitCorporateActionGeneralInformation$ = {}));
+function activityReverseStockSplitCorporateActionGeneralInformationToJSON(activityReverseStockSplitCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityReverseStockSplitCorporateActionGeneralInformation$outboundSchema
+        .parse(activityReverseStockSplitCorporateActionGeneralInformation));
+}
+function activityReverseStockSplitCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityReverseStockSplitCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityReverseStockSplitCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityReverseStockSplitEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4181,6 +5139,12 @@ var ActivityReverseStockSplitEffectiveDate$;
     /** @deprecated use `ActivityReverseStockSplitEffectiveDate$outboundSchema` instead. */
     ActivityReverseStockSplitEffectiveDate$.outboundSchema = exports.ActivityReverseStockSplitEffectiveDate$outboundSchema;
 })(ActivityReverseStockSplitEffectiveDate$ || (exports.ActivityReverseStockSplitEffectiveDate$ = ActivityReverseStockSplitEffectiveDate$ = {}));
+function activityReverseStockSplitEffectiveDateToJSON(activityReverseStockSplitEffectiveDate) {
+    return JSON.stringify(exports.ActivityReverseStockSplitEffectiveDate$outboundSchema.parse(activityReverseStockSplitEffectiveDate));
+}
+function activityReverseStockSplitEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityReverseStockSplitEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityReverseStockSplitEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.ActivityFactorDenominator$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4200,6 +5164,12 @@ var ActivityFactorDenominator$;
     /** @deprecated use `ActivityFactorDenominator$outboundSchema` instead. */
     ActivityFactorDenominator$.outboundSchema = exports.ActivityFactorDenominator$outboundSchema;
 })(ActivityFactorDenominator$ || (exports.ActivityFactorDenominator$ = ActivityFactorDenominator$ = {}));
+function activityFactorDenominatorToJSON(activityFactorDenominator) {
+    return JSON.stringify(exports.ActivityFactorDenominator$outboundSchema.parse(activityFactorDenominator));
+}
+function activityFactorDenominatorFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityFactorDenominator$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityFactorDenominator' from JSON`);
+}
 /** @internal */
 exports.ActivityFactorNumerator$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4219,6 +5189,12 @@ var ActivityFactorNumerator$;
     /** @deprecated use `ActivityFactorNumerator$outboundSchema` instead. */
     ActivityFactorNumerator$.outboundSchema = exports.ActivityFactorNumerator$outboundSchema;
 })(ActivityFactorNumerator$ || (exports.ActivityFactorNumerator$ = ActivityFactorNumerator$ = {}));
+function activityFactorNumeratorToJSON(activityFactorNumerator) {
+    return JSON.stringify(exports.ActivityFactorNumerator$outboundSchema.parse(activityFactorNumerator));
+}
+function activityFactorNumeratorFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityFactorNumerator$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityFactorNumerator' from JSON`);
+}
 /** @internal */
 exports.ActivityReverseStockSplitQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4238,6 +5214,12 @@ var ActivityReverseStockSplitQuantity$;
     /** @deprecated use `ActivityReverseStockSplitQuantity$outboundSchema` instead. */
     ActivityReverseStockSplitQuantity$.outboundSchema = exports.ActivityReverseStockSplitQuantity$outboundSchema;
 })(ActivityReverseStockSplitQuantity$ || (exports.ActivityReverseStockSplitQuantity$ = ActivityReverseStockSplitQuantity$ = {}));
+function activityReverseStockSplitQuantityToJSON(activityReverseStockSplitQuantity) {
+    return JSON.stringify(exports.ActivityReverseStockSplitQuantity$outboundSchema.parse(activityReverseStockSplitQuantity));
+}
+function activityReverseStockSplitQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityReverseStockSplitQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityReverseStockSplitQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityReverseStockSplit$inboundSchema = z.object({
     action: exports.ActivityReverseStockSplitAction$inboundSchema.optional(),
@@ -4285,6 +5267,12 @@ var ActivityReverseStockSplit$;
     /** @deprecated use `ActivityReverseStockSplit$outboundSchema` instead. */
     ActivityReverseStockSplit$.outboundSchema = exports.ActivityReverseStockSplit$outboundSchema;
 })(ActivityReverseStockSplit$ || (exports.ActivityReverseStockSplit$ = ActivityReverseStockSplit$ = {}));
+function activityReverseStockSplitToJSON(activityReverseStockSplit) {
+    return JSON.stringify(exports.ActivityReverseStockSplit$outboundSchema.parse(activityReverseStockSplit));
+}
+function activityReverseStockSplitFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityReverseStockSplit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityReverseStockSplit' from JSON`);
+}
 /** @internal */
 exports.ActivityRightsDistributionCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -4336,6 +5324,14 @@ var ActivityRightsDistributionCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityRightsDistributionCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityRightsDistributionCorporateActionGeneralInformation$.outboundSchema = exports.ActivityRightsDistributionCorporateActionGeneralInformation$outboundSchema;
 })(ActivityRightsDistributionCorporateActionGeneralInformation$ || (exports.ActivityRightsDistributionCorporateActionGeneralInformation$ = ActivityRightsDistributionCorporateActionGeneralInformation$ = {}));
+function activityRightsDistributionCorporateActionGeneralInformationToJSON(activityRightsDistributionCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityRightsDistributionCorporateActionGeneralInformation$outboundSchema
+        .parse(activityRightsDistributionCorporateActionGeneralInformation));
+}
+function activityRightsDistributionCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRightsDistributionCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityRightsDistributionCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityRightsDistributionPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4359,6 +5355,12 @@ var ActivityRightsDistributionPaymentDate$;
     /** @deprecated use `ActivityRightsDistributionPaymentDate$outboundSchema` instead. */
     ActivityRightsDistributionPaymentDate$.outboundSchema = exports.ActivityRightsDistributionPaymentDate$outboundSchema;
 })(ActivityRightsDistributionPaymentDate$ || (exports.ActivityRightsDistributionPaymentDate$ = ActivityRightsDistributionPaymentDate$ = {}));
+function activityRightsDistributionPaymentDateToJSON(activityRightsDistributionPaymentDate) {
+    return JSON.stringify(exports.ActivityRightsDistributionPaymentDate$outboundSchema.parse(activityRightsDistributionPaymentDate));
+}
+function activityRightsDistributionPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRightsDistributionPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRightsDistributionPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityRightsDistributionRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4382,6 +5384,12 @@ var ActivityRightsDistributionRecordDate$;
     /** @deprecated use `ActivityRightsDistributionRecordDate$outboundSchema` instead. */
     ActivityRightsDistributionRecordDate$.outboundSchema = exports.ActivityRightsDistributionRecordDate$outboundSchema;
 })(ActivityRightsDistributionRecordDate$ || (exports.ActivityRightsDistributionRecordDate$ = ActivityRightsDistributionRecordDate$ = {}));
+function activityRightsDistributionRecordDateToJSON(activityRightsDistributionRecordDate) {
+    return JSON.stringify(exports.ActivityRightsDistributionRecordDate$outboundSchema.parse(activityRightsDistributionRecordDate));
+}
+function activityRightsDistributionRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRightsDistributionRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRightsDistributionRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivityRightsDistributionSettled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4401,6 +5409,12 @@ var ActivityRightsDistributionSettled$;
     /** @deprecated use `ActivityRightsDistributionSettled$outboundSchema` instead. */
     ActivityRightsDistributionSettled$.outboundSchema = exports.ActivityRightsDistributionSettled$outboundSchema;
 })(ActivityRightsDistributionSettled$ || (exports.ActivityRightsDistributionSettled$ = ActivityRightsDistributionSettled$ = {}));
+function activityRightsDistributionSettledToJSON(activityRightsDistributionSettled) {
+    return JSON.stringify(exports.ActivityRightsDistributionSettled$outboundSchema.parse(activityRightsDistributionSettled));
+}
+function activityRightsDistributionSettledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRightsDistributionSettled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRightsDistributionSettled' from JSON`);
+}
 /** @internal */
 exports.ActivityRightsDistribution$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityRightsDistributionCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -4438,6 +5452,12 @@ var ActivityRightsDistribution$;
     /** @deprecated use `ActivityRightsDistribution$outboundSchema` instead. */
     ActivityRightsDistribution$.outboundSchema = exports.ActivityRightsDistribution$outboundSchema;
 })(ActivityRightsDistribution$ || (exports.ActivityRightsDistribution$ = ActivityRightsDistribution$ = {}));
+function activityRightsDistributionToJSON(activityRightsDistribution) {
+    return JSON.stringify(exports.ActivityRightsDistribution$outboundSchema.parse(activityRightsDistribution));
+}
+function activityRightsDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRightsDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRightsDistribution' from JSON`);
+}
 /** @internal */
 exports.ActivityRightsSubscriptionCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -4489,6 +5509,14 @@ var ActivityRightsSubscriptionCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityRightsSubscriptionCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityRightsSubscriptionCorporateActionGeneralInformation$.outboundSchema = exports.ActivityRightsSubscriptionCorporateActionGeneralInformation$outboundSchema;
 })(ActivityRightsSubscriptionCorporateActionGeneralInformation$ || (exports.ActivityRightsSubscriptionCorporateActionGeneralInformation$ = ActivityRightsSubscriptionCorporateActionGeneralInformation$ = {}));
+function activityRightsSubscriptionCorporateActionGeneralInformationToJSON(activityRightsSubscriptionCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityRightsSubscriptionCorporateActionGeneralInformation$outboundSchema
+        .parse(activityRightsSubscriptionCorporateActionGeneralInformation));
+}
+function activityRightsSubscriptionCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRightsSubscriptionCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityRightsSubscriptionCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityRightsSubscription$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityRightsSubscriptionCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -4516,6 +5544,12 @@ var ActivityRightsSubscription$;
     /** @deprecated use `ActivityRightsSubscription$outboundSchema` instead. */
     ActivityRightsSubscription$.outboundSchema = exports.ActivityRightsSubscription$outboundSchema;
 })(ActivityRightsSubscription$ || (exports.ActivityRightsSubscription$ = ActivityRightsSubscription$ = {}));
+function activityRightsSubscriptionToJSON(activityRightsSubscription) {
+    return JSON.stringify(exports.ActivityRightsSubscription$outboundSchema.parse(activityRightsSubscription));
+}
+function activityRightsSubscriptionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRightsSubscription$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRightsSubscription' from JSON`);
+}
 /** @internal */
 exports.ActivityRoundingAdjustment$inboundSchema = z.object({
     rounding_reason: z.string().optional(),
@@ -4543,6 +5577,12 @@ var ActivityRoundingAdjustment$;
     /** @deprecated use `ActivityRoundingAdjustment$outboundSchema` instead. */
     ActivityRoundingAdjustment$.outboundSchema = exports.ActivityRoundingAdjustment$outboundSchema;
 })(ActivityRoundingAdjustment$ || (exports.ActivityRoundingAdjustment$ = ActivityRoundingAdjustment$ = {}));
+function activityRoundingAdjustmentToJSON(activityRoundingAdjustment) {
+    return JSON.stringify(exports.ActivityRoundingAdjustment$outboundSchema.parse(activityRoundingAdjustment));
+}
+function activityRoundingAdjustmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRoundingAdjustment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRoundingAdjustment' from JSON`);
+}
 /** @internal */
 exports.RoundingAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4562,6 +5602,12 @@ var RoundingAmount$;
     /** @deprecated use `RoundingAmount$outboundSchema` instead. */
     RoundingAmount$.outboundSchema = exports.RoundingAmount$outboundSchema;
 })(RoundingAmount$ || (exports.RoundingAmount$ = RoundingAmount$ = {}));
+function roundingAmountToJSON(roundingAmount) {
+    return JSON.stringify(exports.RoundingAmount$outboundSchema.parse(roundingAmount));
+}
+function roundingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RoundingAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RoundingAmount' from JSON`);
+}
 /** @internal */
 exports.ActivitySaleOfRightsCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4581,6 +5627,12 @@ var ActivitySaleOfRightsCashRate$;
     /** @deprecated use `ActivitySaleOfRightsCashRate$outboundSchema` instead. */
     ActivitySaleOfRightsCashRate$.outboundSchema = exports.ActivitySaleOfRightsCashRate$outboundSchema;
 })(ActivitySaleOfRightsCashRate$ || (exports.ActivitySaleOfRightsCashRate$ = ActivitySaleOfRightsCashRate$ = {}));
+function activitySaleOfRightsCashRateToJSON(activitySaleOfRightsCashRate) {
+    return JSON.stringify(exports.ActivitySaleOfRightsCashRate$outboundSchema.parse(activitySaleOfRightsCashRate));
+}
+function activitySaleOfRightsCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySaleOfRightsCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySaleOfRightsCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivitySaleOfRightsCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -4632,6 +5684,12 @@ var ActivitySaleOfRightsCorporateActionGeneralInformation$;
     /** @deprecated use `ActivitySaleOfRightsCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivitySaleOfRightsCorporateActionGeneralInformation$.outboundSchema = exports.ActivitySaleOfRightsCorporateActionGeneralInformation$outboundSchema;
 })(ActivitySaleOfRightsCorporateActionGeneralInformation$ || (exports.ActivitySaleOfRightsCorporateActionGeneralInformation$ = ActivitySaleOfRightsCorporateActionGeneralInformation$ = {}));
+function activitySaleOfRightsCorporateActionGeneralInformationToJSON(activitySaleOfRightsCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivitySaleOfRightsCorporateActionGeneralInformation$outboundSchema.parse(activitySaleOfRightsCorporateActionGeneralInformation));
+}
+function activitySaleOfRightsCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySaleOfRightsCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySaleOfRightsCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivitySaleOfRightsPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4655,6 +5713,12 @@ var ActivitySaleOfRightsPaymentDate$;
     /** @deprecated use `ActivitySaleOfRightsPaymentDate$outboundSchema` instead. */
     ActivitySaleOfRightsPaymentDate$.outboundSchema = exports.ActivitySaleOfRightsPaymentDate$outboundSchema;
 })(ActivitySaleOfRightsPaymentDate$ || (exports.ActivitySaleOfRightsPaymentDate$ = ActivitySaleOfRightsPaymentDate$ = {}));
+function activitySaleOfRightsPaymentDateToJSON(activitySaleOfRightsPaymentDate) {
+    return JSON.stringify(exports.ActivitySaleOfRightsPaymentDate$outboundSchema.parse(activitySaleOfRightsPaymentDate));
+}
+function activitySaleOfRightsPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySaleOfRightsPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySaleOfRightsPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivitySaleOfRightsRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4678,6 +5742,12 @@ var ActivitySaleOfRightsRecordDate$;
     /** @deprecated use `ActivitySaleOfRightsRecordDate$outboundSchema` instead. */
     ActivitySaleOfRightsRecordDate$.outboundSchema = exports.ActivitySaleOfRightsRecordDate$outboundSchema;
 })(ActivitySaleOfRightsRecordDate$ || (exports.ActivitySaleOfRightsRecordDate$ = ActivitySaleOfRightsRecordDate$ = {}));
+function activitySaleOfRightsRecordDateToJSON(activitySaleOfRightsRecordDate) {
+    return JSON.stringify(exports.ActivitySaleOfRightsRecordDate$outboundSchema.parse(activitySaleOfRightsRecordDate));
+}
+function activitySaleOfRightsRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySaleOfRightsRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySaleOfRightsRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivitySaleOfRightsSettled$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4697,6 +5767,12 @@ var ActivitySaleOfRightsSettled$;
     /** @deprecated use `ActivitySaleOfRightsSettled$outboundSchema` instead. */
     ActivitySaleOfRightsSettled$.outboundSchema = exports.ActivitySaleOfRightsSettled$outboundSchema;
 })(ActivitySaleOfRightsSettled$ || (exports.ActivitySaleOfRightsSettled$ = ActivitySaleOfRightsSettled$ = {}));
+function activitySaleOfRightsSettledToJSON(activitySaleOfRightsSettled) {
+    return JSON.stringify(exports.ActivitySaleOfRightsSettled$outboundSchema.parse(activitySaleOfRightsSettled));
+}
+function activitySaleOfRightsSettledFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySaleOfRightsSettled$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySaleOfRightsSettled' from JSON`);
+}
 /** @internal */
 exports.ActivitySaleOfRights$inboundSchema = z.object({
     cash_rate: z.nullable(z.lazy(() => exports.ActivitySaleOfRightsCashRate$inboundSchema)).optional(),
@@ -4740,6 +5816,12 @@ var ActivitySaleOfRights$;
     /** @deprecated use `ActivitySaleOfRights$outboundSchema` instead. */
     ActivitySaleOfRights$.outboundSchema = exports.ActivitySaleOfRights$outboundSchema;
 })(ActivitySaleOfRights$ || (exports.ActivitySaleOfRights$ = ActivitySaleOfRights$ = {}));
+function activitySaleOfRightsToJSON(activitySaleOfRights) {
+    return JSON.stringify(exports.ActivitySaleOfRights$outboundSchema.parse(activitySaleOfRights));
+}
+function activitySaleOfRightsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySaleOfRights$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySaleOfRights' from JSON`);
+}
 /** @internal */
 exports.ActivitySettleDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4763,6 +5845,12 @@ var ActivitySettleDate$;
     /** @deprecated use `ActivitySettleDate$outboundSchema` instead. */
     ActivitySettleDate$.outboundSchema = exports.ActivitySettleDate$outboundSchema;
 })(ActivitySettleDate$ || (exports.ActivitySettleDate$ = ActivitySettleDate$ = {}));
+function activitySettleDateToJSON(activitySettleDate) {
+    return JSON.stringify(exports.ActivitySettleDate$outboundSchema.parse(activitySettleDate));
+}
+function activitySettleDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySettleDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySettleDate' from JSON`);
+}
 /** @internal */
 exports.ActivitySide$inboundSchema = z
     .union([
@@ -4858,6 +5946,12 @@ var ActivitySpinoffCorporateActionGeneralInformation$;
     /** @deprecated use `ActivitySpinoffCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivitySpinoffCorporateActionGeneralInformation$.outboundSchema = exports.ActivitySpinoffCorporateActionGeneralInformation$outboundSchema;
 })(ActivitySpinoffCorporateActionGeneralInformation$ || (exports.ActivitySpinoffCorporateActionGeneralInformation$ = ActivitySpinoffCorporateActionGeneralInformation$ = {}));
+function activitySpinoffCorporateActionGeneralInformationToJSON(activitySpinoffCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivitySpinoffCorporateActionGeneralInformation$outboundSchema.parse(activitySpinoffCorporateActionGeneralInformation));
+}
+function activitySpinoffCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySpinoffCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySpinoffCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityPayDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4881,6 +5975,12 @@ var ActivityPayDate$;
     /** @deprecated use `ActivityPayDate$outboundSchema` instead. */
     ActivityPayDate$.outboundSchema = exports.ActivityPayDate$outboundSchema;
 })(ActivityPayDate$ || (exports.ActivityPayDate$ = ActivityPayDate$ = {}));
+function activityPayDateToJSON(activityPayDate) {
+    return JSON.stringify(exports.ActivityPayDate$outboundSchema.parse(activityPayDate));
+}
+function activityPayDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityPayDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityPayDate' from JSON`);
+}
 /** @internal */
 exports.ActivitySpinoffQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -4900,6 +6000,12 @@ var ActivitySpinoffQuantity$;
     /** @deprecated use `ActivitySpinoffQuantity$outboundSchema` instead. */
     ActivitySpinoffQuantity$.outboundSchema = exports.ActivitySpinoffQuantity$outboundSchema;
 })(ActivitySpinoffQuantity$ || (exports.ActivitySpinoffQuantity$ = ActivitySpinoffQuantity$ = {}));
+function activitySpinoffQuantityToJSON(activitySpinoffQuantity) {
+    return JSON.stringify(exports.ActivitySpinoffQuantity$outboundSchema.parse(activitySpinoffQuantity));
+}
+function activitySpinoffQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySpinoffQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySpinoffQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivitySpinoffRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -4923,6 +6029,12 @@ var ActivitySpinoffRecordDate$;
     /** @deprecated use `ActivitySpinoffRecordDate$outboundSchema` instead. */
     ActivitySpinoffRecordDate$.outboundSchema = exports.ActivitySpinoffRecordDate$outboundSchema;
 })(ActivitySpinoffRecordDate$ || (exports.ActivitySpinoffRecordDate$ = ActivitySpinoffRecordDate$ = {}));
+function activitySpinoffRecordDateToJSON(activitySpinoffRecordDate) {
+    return JSON.stringify(exports.ActivitySpinoffRecordDate$outboundSchema.parse(activitySpinoffRecordDate));
+}
+function activitySpinoffRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySpinoffRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySpinoffRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivitySpinoff$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivitySpinoffCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -4964,6 +6076,12 @@ var ActivitySpinoff$;
     /** @deprecated use `ActivitySpinoff$outboundSchema` instead. */
     ActivitySpinoff$.outboundSchema = exports.ActivitySpinoff$outboundSchema;
 })(ActivitySpinoff$ || (exports.ActivitySpinoff$ = ActivitySpinoff$ = {}));
+function activitySpinoffToJSON(activitySpinoff) {
+    return JSON.stringify(exports.ActivitySpinoff$outboundSchema.parse(activitySpinoff));
+}
+function activitySpinoffFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySpinoff$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySpinoff' from JSON`);
+}
 /** @internal */
 exports.ActivityState$inboundSchema = z
     .union([
@@ -5037,6 +6155,13 @@ var ActivityStockDividendCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityStockDividendCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityStockDividendCorporateActionGeneralInformation$.outboundSchema = exports.ActivityStockDividendCorporateActionGeneralInformation$outboundSchema;
 })(ActivityStockDividendCorporateActionGeneralInformation$ || (exports.ActivityStockDividendCorporateActionGeneralInformation$ = ActivityStockDividendCorporateActionGeneralInformation$ = {}));
+function activityStockDividendCorporateActionGeneralInformationToJSON(activityStockDividendCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityStockDividendCorporateActionGeneralInformation$outboundSchema.parse(activityStockDividendCorporateActionGeneralInformation));
+}
+function activityStockDividendCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockDividendCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityStockDividendCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityStockDividendPayDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -5060,6 +6185,12 @@ var ActivityStockDividendPayDate$;
     /** @deprecated use `ActivityStockDividendPayDate$outboundSchema` instead. */
     ActivityStockDividendPayDate$.outboundSchema = exports.ActivityStockDividendPayDate$outboundSchema;
 })(ActivityStockDividendPayDate$ || (exports.ActivityStockDividendPayDate$ = ActivityStockDividendPayDate$ = {}));
+function activityStockDividendPayDateToJSON(activityStockDividendPayDate) {
+    return JSON.stringify(exports.ActivityStockDividendPayDate$outboundSchema.parse(activityStockDividendPayDate));
+}
+function activityStockDividendPayDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockDividendPayDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockDividendPayDate' from JSON`);
+}
 /** @internal */
 exports.ActivityStockDividendQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5079,6 +6210,12 @@ var ActivityStockDividendQuantity$;
     /** @deprecated use `ActivityStockDividendQuantity$outboundSchema` instead. */
     ActivityStockDividendQuantity$.outboundSchema = exports.ActivityStockDividendQuantity$outboundSchema;
 })(ActivityStockDividendQuantity$ || (exports.ActivityStockDividendQuantity$ = ActivityStockDividendQuantity$ = {}));
+function activityStockDividendQuantityToJSON(activityStockDividendQuantity) {
+    return JSON.stringify(exports.ActivityStockDividendQuantity$outboundSchema.parse(activityStockDividendQuantity));
+}
+function activityStockDividendQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockDividendQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockDividendQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5098,6 +6235,12 @@ var ActivityRate$;
     /** @deprecated use `ActivityRate$outboundSchema` instead. */
     ActivityRate$.outboundSchema = exports.ActivityRate$outboundSchema;
 })(ActivityRate$ || (exports.ActivityRate$ = ActivityRate$ = {}));
+function activityRateToJSON(activityRate) {
+    return JSON.stringify(exports.ActivityRate$outboundSchema.parse(activityRate));
+}
+function activityRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityRate' from JSON`);
+}
 /** @internal */
 exports.ActivityStockDividendRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -5121,6 +6264,12 @@ var ActivityStockDividendRecordDate$;
     /** @deprecated use `ActivityStockDividendRecordDate$outboundSchema` instead. */
     ActivityStockDividendRecordDate$.outboundSchema = exports.ActivityStockDividendRecordDate$outboundSchema;
 })(ActivityStockDividendRecordDate$ || (exports.ActivityStockDividendRecordDate$ = ActivityStockDividendRecordDate$ = {}));
+function activityStockDividendRecordDateToJSON(activityStockDividendRecordDate) {
+    return JSON.stringify(exports.ActivityStockDividendRecordDate$outboundSchema.parse(activityStockDividendRecordDate));
+}
+function activityStockDividendRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockDividendRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockDividendRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivityStockDividend$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityStockDividendCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -5162,6 +6311,12 @@ var ActivityStockDividend$;
     /** @deprecated use `ActivityStockDividend$outboundSchema` instead. */
     ActivityStockDividend$.outboundSchema = exports.ActivityStockDividend$outboundSchema;
 })(ActivityStockDividend$ || (exports.ActivityStockDividend$ = ActivityStockDividend$ = {}));
+function activityStockDividendToJSON(activityStockDividend) {
+    return JSON.stringify(exports.ActivityStockDividend$outboundSchema.parse(activityStockDividend));
+}
+function activityStockDividendFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockDividend$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockDividend' from JSON`);
+}
 /** @internal */
 exports.ActivityStockSplitCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -5213,6 +6368,12 @@ var ActivityStockSplitCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityStockSplitCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityStockSplitCorporateActionGeneralInformation$.outboundSchema = exports.ActivityStockSplitCorporateActionGeneralInformation$outboundSchema;
 })(ActivityStockSplitCorporateActionGeneralInformation$ || (exports.ActivityStockSplitCorporateActionGeneralInformation$ = ActivityStockSplitCorporateActionGeneralInformation$ = {}));
+function activityStockSplitCorporateActionGeneralInformationToJSON(activityStockSplitCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityStockSplitCorporateActionGeneralInformation$outboundSchema.parse(activityStockSplitCorporateActionGeneralInformation));
+}
+function activityStockSplitCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockSplitCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockSplitCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityStockSplitFactorDenominator$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5232,6 +6393,12 @@ var ActivityStockSplitFactorDenominator$;
     /** @deprecated use `ActivityStockSplitFactorDenominator$outboundSchema` instead. */
     ActivityStockSplitFactorDenominator$.outboundSchema = exports.ActivityStockSplitFactorDenominator$outboundSchema;
 })(ActivityStockSplitFactorDenominator$ || (exports.ActivityStockSplitFactorDenominator$ = ActivityStockSplitFactorDenominator$ = {}));
+function activityStockSplitFactorDenominatorToJSON(activityStockSplitFactorDenominator) {
+    return JSON.stringify(exports.ActivityStockSplitFactorDenominator$outboundSchema.parse(activityStockSplitFactorDenominator));
+}
+function activityStockSplitFactorDenominatorFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockSplitFactorDenominator$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockSplitFactorDenominator' from JSON`);
+}
 /** @internal */
 exports.ActivityStockSplitFactorNumerator$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5251,6 +6418,12 @@ var ActivityStockSplitFactorNumerator$;
     /** @deprecated use `ActivityStockSplitFactorNumerator$outboundSchema` instead. */
     ActivityStockSplitFactorNumerator$.outboundSchema = exports.ActivityStockSplitFactorNumerator$outboundSchema;
 })(ActivityStockSplitFactorNumerator$ || (exports.ActivityStockSplitFactorNumerator$ = ActivityStockSplitFactorNumerator$ = {}));
+function activityStockSplitFactorNumeratorToJSON(activityStockSplitFactorNumerator) {
+    return JSON.stringify(exports.ActivityStockSplitFactorNumerator$outboundSchema.parse(activityStockSplitFactorNumerator));
+}
+function activityStockSplitFactorNumeratorFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockSplitFactorNumerator$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockSplitFactorNumerator' from JSON`);
+}
 /** @internal */
 exports.ActivityStockSplitPayDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -5274,6 +6447,12 @@ var ActivityStockSplitPayDate$;
     /** @deprecated use `ActivityStockSplitPayDate$outboundSchema` instead. */
     ActivityStockSplitPayDate$.outboundSchema = exports.ActivityStockSplitPayDate$outboundSchema;
 })(ActivityStockSplitPayDate$ || (exports.ActivityStockSplitPayDate$ = ActivityStockSplitPayDate$ = {}));
+function activityStockSplitPayDateToJSON(activityStockSplitPayDate) {
+    return JSON.stringify(exports.ActivityStockSplitPayDate$outboundSchema.parse(activityStockSplitPayDate));
+}
+function activityStockSplitPayDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockSplitPayDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockSplitPayDate' from JSON`);
+}
 /** @internal */
 exports.ActivityStockSplitQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5293,6 +6472,12 @@ var ActivityStockSplitQuantity$;
     /** @deprecated use `ActivityStockSplitQuantity$outboundSchema` instead. */
     ActivityStockSplitQuantity$.outboundSchema = exports.ActivityStockSplitQuantity$outboundSchema;
 })(ActivityStockSplitQuantity$ || (exports.ActivityStockSplitQuantity$ = ActivityStockSplitQuantity$ = {}));
+function activityStockSplitQuantityToJSON(activityStockSplitQuantity) {
+    return JSON.stringify(exports.ActivityStockSplitQuantity$outboundSchema.parse(activityStockSplitQuantity));
+}
+function activityStockSplitQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockSplitQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockSplitQuantity' from JSON`);
+}
 /** @internal */
 exports.ActivityStockSplitRecordDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -5316,6 +6501,12 @@ var ActivityStockSplitRecordDate$;
     /** @deprecated use `ActivityStockSplitRecordDate$outboundSchema` instead. */
     ActivityStockSplitRecordDate$.outboundSchema = exports.ActivityStockSplitRecordDate$outboundSchema;
 })(ActivityStockSplitRecordDate$ || (exports.ActivityStockSplitRecordDate$ = ActivityStockSplitRecordDate$ = {}));
+function activityStockSplitRecordDateToJSON(activityStockSplitRecordDate) {
+    return JSON.stringify(exports.ActivityStockSplitRecordDate$outboundSchema.parse(activityStockSplitRecordDate));
+}
+function activityStockSplitRecordDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockSplitRecordDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockSplitRecordDate' from JSON`);
+}
 /** @internal */
 exports.ActivityStockSplit$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityStockSplitCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -5365,6 +6556,12 @@ var ActivityStockSplit$;
     /** @deprecated use `ActivityStockSplit$outboundSchema` instead. */
     ActivityStockSplit$.outboundSchema = exports.ActivityStockSplit$outboundSchema;
 })(ActivityStockSplit$ || (exports.ActivityStockSplit$ = ActivityStockSplit$ = {}));
+function activityStockSplitToJSON(activityStockSplit) {
+    return JSON.stringify(exports.ActivityStockSplit$outboundSchema.parse(activityStockSplit));
+}
+function activityStockSplitFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityStockSplit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityStockSplit' from JSON`);
+}
 /** @internal */
 exports.ActivitySweepAction$inboundSchema = z
     .union([
@@ -5440,6 +6637,12 @@ var ActivitySweep$;
     /** @deprecated use `ActivitySweep$outboundSchema` instead. */
     ActivitySweep$.outboundSchema = exports.ActivitySweep$outboundSchema;
 })(ActivitySweep$ || (exports.ActivitySweep$ = ActivitySweep$ = {}));
+function activitySweepToJSON(activitySweep) {
+    return JSON.stringify(exports.ActivitySweep$outboundSchema.parse(activitySweep));
+}
+function activitySweepFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivitySweep$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivitySweep' from JSON`);
+}
 /** @internal */
 exports.ActivityTenderOfferCashRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5459,6 +6662,12 @@ var ActivityTenderOfferCashRate$;
     /** @deprecated use `ActivityTenderOfferCashRate$outboundSchema` instead. */
     ActivityTenderOfferCashRate$.outboundSchema = exports.ActivityTenderOfferCashRate$outboundSchema;
 })(ActivityTenderOfferCashRate$ || (exports.ActivityTenderOfferCashRate$ = ActivityTenderOfferCashRate$ = {}));
+function activityTenderOfferCashRateToJSON(activityTenderOfferCashRate) {
+    return JSON.stringify(exports.ActivityTenderOfferCashRate$outboundSchema.parse(activityTenderOfferCashRate));
+}
+function activityTenderOfferCashRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTenderOfferCashRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTenderOfferCashRate' from JSON`);
+}
 /** @internal */
 exports.ActivityTenderOfferCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -5510,6 +6719,12 @@ var ActivityTenderOfferCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityTenderOfferCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityTenderOfferCorporateActionGeneralInformation$.outboundSchema = exports.ActivityTenderOfferCorporateActionGeneralInformation$outboundSchema;
 })(ActivityTenderOfferCorporateActionGeneralInformation$ || (exports.ActivityTenderOfferCorporateActionGeneralInformation$ = ActivityTenderOfferCorporateActionGeneralInformation$ = {}));
+function activityTenderOfferCorporateActionGeneralInformationToJSON(activityTenderOfferCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityTenderOfferCorporateActionGeneralInformation$outboundSchema.parse(activityTenderOfferCorporateActionGeneralInformation));
+}
+function activityTenderOfferCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTenderOfferCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTenderOfferCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityTenderOfferType$inboundSchema = z
     .union([
@@ -5569,6 +6784,12 @@ var ActivityTenderOffer$;
     /** @deprecated use `ActivityTenderOffer$outboundSchema` instead. */
     ActivityTenderOffer$.outboundSchema = exports.ActivityTenderOffer$outboundSchema;
 })(ActivityTenderOffer$ || (exports.ActivityTenderOffer$ = ActivityTenderOffer$ = {}));
+function activityTenderOfferToJSON(activityTenderOffer) {
+    return JSON.stringify(exports.ActivityTenderOffer$outboundSchema.parse(activityTenderOffer));
+}
+function activityTenderOfferFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTenderOffer$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTenderOffer' from JSON`);
+}
 /** @internal */
 exports.ActivityTradeBrokerCapacity$inboundSchema = z
     .union([
@@ -5610,6 +6831,12 @@ var ActivityTradePrevailingMarketPrice$;
     /** @deprecated use `ActivityTradePrevailingMarketPrice$outboundSchema` instead. */
     ActivityTradePrevailingMarketPrice$.outboundSchema = exports.ActivityTradePrevailingMarketPrice$outboundSchema;
 })(ActivityTradePrevailingMarketPrice$ || (exports.ActivityTradePrevailingMarketPrice$ = ActivityTradePrevailingMarketPrice$ = {}));
+function activityTradePrevailingMarketPriceToJSON(activityTradePrevailingMarketPrice) {
+    return JSON.stringify(exports.ActivityTradePrevailingMarketPrice$outboundSchema.parse(activityTradePrevailingMarketPrice));
+}
+function activityTradePrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTradePrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTradePrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.ActivityTradePriceAdjustmentAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5629,6 +6856,12 @@ var ActivityTradePriceAdjustmentAmount$;
     /** @deprecated use `ActivityTradePriceAdjustmentAmount$outboundSchema` instead. */
     ActivityTradePriceAdjustmentAmount$.outboundSchema = exports.ActivityTradePriceAdjustmentAmount$outboundSchema;
 })(ActivityTradePriceAdjustmentAmount$ || (exports.ActivityTradePriceAdjustmentAmount$ = ActivityTradePriceAdjustmentAmount$ = {}));
+function activityTradePriceAdjustmentAmountToJSON(activityTradePriceAdjustmentAmount) {
+    return JSON.stringify(exports.ActivityTradePriceAdjustmentAmount$outboundSchema.parse(activityTradePriceAdjustmentAmount));
+}
+function activityTradePriceAdjustmentAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTradePriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTradePriceAdjustmentAmount' from JSON`);
+}
 /** @internal */
 exports.ActivityTradePriceAdjustmentPercent$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5648,6 +6881,12 @@ var ActivityTradePriceAdjustmentPercent$;
     /** @deprecated use `ActivityTradePriceAdjustmentPercent$outboundSchema` instead. */
     ActivityTradePriceAdjustmentPercent$.outboundSchema = exports.ActivityTradePriceAdjustmentPercent$outboundSchema;
 })(ActivityTradePriceAdjustmentPercent$ || (exports.ActivityTradePriceAdjustmentPercent$ = ActivityTradePriceAdjustmentPercent$ = {}));
+function activityTradePriceAdjustmentPercentToJSON(activityTradePriceAdjustmentPercent) {
+    return JSON.stringify(exports.ActivityTradePriceAdjustmentPercent$outboundSchema.parse(activityTradePriceAdjustmentPercent));
+}
+function activityTradePriceAdjustmentPercentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTradePriceAdjustmentPercent$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTradePriceAdjustmentPercent' from JSON`);
+}
 /** @internal */
 exports.ActivityTradePriceAdjustmentType$inboundSchema = z
     .union([
@@ -5707,6 +6946,12 @@ var ActivityTradePriceAdjustmentRecord$;
     /** @deprecated use `ActivityTradePriceAdjustmentRecord$outboundSchema` instead. */
     ActivityTradePriceAdjustmentRecord$.outboundSchema = exports.ActivityTradePriceAdjustmentRecord$outboundSchema;
 })(ActivityTradePriceAdjustmentRecord$ || (exports.ActivityTradePriceAdjustmentRecord$ = ActivityTradePriceAdjustmentRecord$ = {}));
+function activityTradePriceAdjustmentRecordToJSON(activityTradePriceAdjustmentRecord) {
+    return JSON.stringify(exports.ActivityTradePriceAdjustmentRecord$outboundSchema.parse(activityTradePriceAdjustmentRecord));
+}
+function activityTradePriceAdjustmentRecordFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTradePriceAdjustmentRecord$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTradePriceAdjustmentRecord' from JSON`);
+}
 /** @internal */
 exports.ActivityTrade$inboundSchema = z.object({
     additional_instructions: z.array(z.string()).optional(),
@@ -5822,6 +7067,12 @@ var ActivityTrade$;
     /** @deprecated use `ActivityTrade$outboundSchema` instead. */
     ActivityTrade$.outboundSchema = exports.ActivityTrade$outboundSchema;
 })(ActivityTrade$ || (exports.ActivityTrade$ = ActivityTrade$ = {}));
+function activityTradeToJSON(activityTrade) {
+    return JSON.stringify(exports.ActivityTrade$outboundSchema.parse(activityTrade));
+}
+function activityTradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTrade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTrade' from JSON`);
+}
 /** @internal */
 exports.ActivityTransferType$inboundSchema = z
     .union([
@@ -5879,6 +7130,12 @@ var ActivityTransfer$;
     /** @deprecated use `ActivityTransfer$outboundSchema` instead. */
     ActivityTransfer$.outboundSchema = exports.ActivityTransfer$outboundSchema;
 })(ActivityTransfer$ || (exports.ActivityTransfer$ = ActivityTransfer$ = {}));
+function activityTransferToJSON(activityTransfer) {
+    return JSON.stringify(exports.ActivityTransfer$outboundSchema.parse(activityTransfer));
+}
+function activityTransferFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityTransfer$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityTransfer' from JSON`);
+}
 /** @internal */
 exports.ActivityType$inboundSchema = z
     .union([
@@ -5952,6 +7209,12 @@ var ActivityUnitSplitCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityUnitSplitCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityUnitSplitCorporateActionGeneralInformation$.outboundSchema = exports.ActivityUnitSplitCorporateActionGeneralInformation$outboundSchema;
 })(ActivityUnitSplitCorporateActionGeneralInformation$ || (exports.ActivityUnitSplitCorporateActionGeneralInformation$ = ActivityUnitSplitCorporateActionGeneralInformation$ = {}));
+function activityUnitSplitCorporateActionGeneralInformationToJSON(activityUnitSplitCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityUnitSplitCorporateActionGeneralInformation$outboundSchema.parse(activityUnitSplitCorporateActionGeneralInformation));
+}
+function activityUnitSplitCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityUnitSplitCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityUnitSplitCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityUnitSplitStockRate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -5971,6 +7234,12 @@ var ActivityUnitSplitStockRate$;
     /** @deprecated use `ActivityUnitSplitStockRate$outboundSchema` instead. */
     ActivityUnitSplitStockRate$.outboundSchema = exports.ActivityUnitSplitStockRate$outboundSchema;
 })(ActivityUnitSplitStockRate$ || (exports.ActivityUnitSplitStockRate$ = ActivityUnitSplitStockRate$ = {}));
+function activityUnitSplitStockRateToJSON(activityUnitSplitStockRate) {
+    return JSON.stringify(exports.ActivityUnitSplitStockRate$outboundSchema.parse(activityUnitSplitStockRate));
+}
+function activityUnitSplitStockRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityUnitSplitStockRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityUnitSplitStockRate' from JSON`);
+}
 /** @internal */
 exports.ActivityUnitSplit$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityUnitSplitCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -6004,6 +7273,12 @@ var ActivityUnitSplit$;
     /** @deprecated use `ActivityUnitSplit$outboundSchema` instead. */
     ActivityUnitSplit$.outboundSchema = exports.ActivityUnitSplit$outboundSchema;
 })(ActivityUnitSplit$ || (exports.ActivityUnitSplit$ = ActivityUnitSplit$ = {}));
+function activityUnitSplitToJSON(activityUnitSplit) {
+    return JSON.stringify(exports.ActivityUnitSplit$outboundSchema.parse(activityUnitSplit));
+}
+function activityUnitSplitFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityUnitSplit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityUnitSplit' from JSON`);
+}
 /** @internal */
 exports.ActivityWarrantExerciseCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -6055,6 +7330,14 @@ var ActivityWarrantExerciseCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityWarrantExerciseCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityWarrantExerciseCorporateActionGeneralInformation$.outboundSchema = exports.ActivityWarrantExerciseCorporateActionGeneralInformation$outboundSchema;
 })(ActivityWarrantExerciseCorporateActionGeneralInformation$ || (exports.ActivityWarrantExerciseCorporateActionGeneralInformation$ = ActivityWarrantExerciseCorporateActionGeneralInformation$ = {}));
+function activityWarrantExerciseCorporateActionGeneralInformationToJSON(activityWarrantExerciseCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityWarrantExerciseCorporateActionGeneralInformation$outboundSchema
+        .parse(activityWarrantExerciseCorporateActionGeneralInformation));
+}
+function activityWarrantExerciseCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWarrantExerciseCorporateActionGeneralInformation$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'ActivityWarrantExerciseCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityWarrantExercise$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityWarrantExerciseCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -6082,6 +7365,12 @@ var ActivityWarrantExercise$;
     /** @deprecated use `ActivityWarrantExercise$outboundSchema` instead. */
     ActivityWarrantExercise$.outboundSchema = exports.ActivityWarrantExercise$outboundSchema;
 })(ActivityWarrantExercise$ || (exports.ActivityWarrantExercise$ = ActivityWarrantExercise$ = {}));
+function activityWarrantExerciseToJSON(activityWarrantExercise) {
+    return JSON.stringify(exports.ActivityWarrantExercise$outboundSchema.parse(activityWarrantExercise));
+}
+function activityWarrantExerciseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWarrantExercise$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWarrantExercise' from JSON`);
+}
 /** @internal */
 exports.ActivityDistributionType$inboundSchema = z
     .union([
@@ -6227,6 +7516,12 @@ var ActivityWithdrawal$;
     /** @deprecated use `ActivityWithdrawal$outboundSchema` instead. */
     ActivityWithdrawal$.outboundSchema = exports.ActivityWithdrawal$outboundSchema;
 })(ActivityWithdrawal$ || (exports.ActivityWithdrawal$ = ActivityWithdrawal$ = {}));
+function activityWithdrawalToJSON(activityWithdrawal) {
+    return JSON.stringify(exports.ActivityWithdrawal$outboundSchema.parse(activityWithdrawal));
+}
+function activityWithdrawalFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWithdrawal$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWithdrawal' from JSON`);
+}
 /** @internal */
 exports.ActivityReview$inboundSchema = z
     .union([
@@ -6268,6 +7563,12 @@ var ActivityWithdrawalPendingReview$;
     /** @deprecated use `ActivityWithdrawalPendingReview$outboundSchema` instead. */
     ActivityWithdrawalPendingReview$.outboundSchema = exports.ActivityWithdrawalPendingReview$outboundSchema;
 })(ActivityWithdrawalPendingReview$ || (exports.ActivityWithdrawalPendingReview$ = ActivityWithdrawalPendingReview$ = {}));
+function activityWithdrawalPendingReviewToJSON(activityWithdrawalPendingReview) {
+    return JSON.stringify(exports.ActivityWithdrawalPendingReview$outboundSchema.parse(activityWithdrawalPendingReview));
+}
+function activityWithdrawalPendingReviewFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWithdrawalPendingReview$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWithdrawalPendingReview' from JSON`);
+}
 /** @internal */
 exports.ActivityWithholding$inboundSchema = z.object({
     data: z.array(withholdingdata_js_1.WithholdingData$inboundSchema).optional(),
@@ -6287,6 +7588,12 @@ var ActivityWithholding$;
     /** @deprecated use `ActivityWithholding$outboundSchema` instead. */
     ActivityWithholding$.outboundSchema = exports.ActivityWithholding$outboundSchema;
 })(ActivityWithholding$ || (exports.ActivityWithholding$ = ActivityWithholding$ = {}));
+function activityWithholdingToJSON(activityWithholding) {
+    return JSON.stringify(exports.ActivityWithholding$outboundSchema.parse(activityWithholding));
+}
+function activityWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWithholding' from JSON`);
+}
 /** @internal */
 exports.ActivityWorthlessCorporateActionGeneralInformation$inboundSchema = z.object({
     corporate_action_id: z.string().optional(),
@@ -6338,6 +7645,12 @@ var ActivityWorthlessCorporateActionGeneralInformation$;
     /** @deprecated use `ActivityWorthlessCorporateActionGeneralInformation$outboundSchema` instead. */
     ActivityWorthlessCorporateActionGeneralInformation$.outboundSchema = exports.ActivityWorthlessCorporateActionGeneralInformation$outboundSchema;
 })(ActivityWorthlessCorporateActionGeneralInformation$ || (exports.ActivityWorthlessCorporateActionGeneralInformation$ = ActivityWorthlessCorporateActionGeneralInformation$ = {}));
+function activityWorthlessCorporateActionGeneralInformationToJSON(activityWorthlessCorporateActionGeneralInformation) {
+    return JSON.stringify(exports.ActivityWorthlessCorporateActionGeneralInformation$outboundSchema.parse(activityWorthlessCorporateActionGeneralInformation));
+}
+function activityWorthlessCorporateActionGeneralInformationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWorthlessCorporateActionGeneralInformation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWorthlessCorporateActionGeneralInformation' from JSON`);
+}
 /** @internal */
 exports.ActivityWorthlessEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -6361,6 +7674,12 @@ var ActivityWorthlessEffectiveDate$;
     /** @deprecated use `ActivityWorthlessEffectiveDate$outboundSchema` instead. */
     ActivityWorthlessEffectiveDate$.outboundSchema = exports.ActivityWorthlessEffectiveDate$outboundSchema;
 })(ActivityWorthlessEffectiveDate$ || (exports.ActivityWorthlessEffectiveDate$ = ActivityWorthlessEffectiveDate$ = {}));
+function activityWorthlessEffectiveDateToJSON(activityWorthlessEffectiveDate) {
+    return JSON.stringify(exports.ActivityWorthlessEffectiveDate$outboundSchema.parse(activityWorthlessEffectiveDate));
+}
+function activityWorthlessEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWorthlessEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWorthlessEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.ActivityWorthlessPaymentDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -6384,6 +7703,12 @@ var ActivityWorthlessPaymentDate$;
     /** @deprecated use `ActivityWorthlessPaymentDate$outboundSchema` instead. */
     ActivityWorthlessPaymentDate$.outboundSchema = exports.ActivityWorthlessPaymentDate$outboundSchema;
 })(ActivityWorthlessPaymentDate$ || (exports.ActivityWorthlessPaymentDate$ = ActivityWorthlessPaymentDate$ = {}));
+function activityWorthlessPaymentDateToJSON(activityWorthlessPaymentDate) {
+    return JSON.stringify(exports.ActivityWorthlessPaymentDate$outboundSchema.parse(activityWorthlessPaymentDate));
+}
+function activityWorthlessPaymentDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWorthlessPaymentDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWorthlessPaymentDate' from JSON`);
+}
 /** @internal */
 exports.ActivityWorthless$inboundSchema = z.object({
     corporate_action_general_information: z.nullable(z.lazy(() => exports.ActivityWorthlessCorporateActionGeneralInformation$inboundSchema)).optional(),
@@ -6419,6 +7744,12 @@ var ActivityWorthless$;
     /** @deprecated use `ActivityWorthless$outboundSchema` instead. */
     ActivityWorthless$.outboundSchema = exports.ActivityWorthless$outboundSchema;
 })(ActivityWorthless$ || (exports.ActivityWorthless$ = ActivityWorthless$ = {}));
+function activityWorthlessToJSON(activityWorthless) {
+    return JSON.stringify(exports.ActivityWorthless$outboundSchema.parse(activityWorthless));
+}
+function activityWorthlessFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ActivityWorthless$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ActivityWorthless' from JSON`);
+}
 /** @internal */
 exports.Activity$inboundSchema = z.object({
     acats_pending_out: z.nullable(z.lazy(() => exports.ActivityAcatsPendingOut$inboundSchema)).optional(),
@@ -6757,4 +8088,10 @@ var Activity$;
     /** @deprecated use `Activity$outboundSchema` instead. */
     Activity$.outboundSchema = exports.Activity$outboundSchema;
 })(Activity$ || (exports.Activity$ = Activity$ = {}));
+function activityToJSON(activity) {
+    return JSON.stringify(exports.Activity$outboundSchema.parse(activity));
+}
+function activityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Activity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Activity' from JSON`);
+}
 //# sourceMappingURL=activity.js.map

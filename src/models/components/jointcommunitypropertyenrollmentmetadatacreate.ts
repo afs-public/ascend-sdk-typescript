@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -290,4 +293,31 @@ export namespace JointCommunityPropertyEnrollmentMetadataCreate$ {
   /** @deprecated use `JointCommunityPropertyEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound =
     JointCommunityPropertyEnrollmentMetadataCreate$Outbound;
+}
+
+export function jointCommunityPropertyEnrollmentMetadataCreateToJSON(
+  jointCommunityPropertyEnrollmentMetadataCreate:
+    JointCommunityPropertyEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    JointCommunityPropertyEnrollmentMetadataCreate$outboundSchema.parse(
+      jointCommunityPropertyEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function jointCommunityPropertyEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  JointCommunityPropertyEnrollmentMetadataCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      JointCommunityPropertyEnrollmentMetadataCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'JointCommunityPropertyEnrollmentMetadataCreate' from JSON`,
+  );
 }

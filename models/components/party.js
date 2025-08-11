@@ -41,8 +41,83 @@ exports.PartyDeathDate$outboundSchema = exports.PartyDeathDate$inboundSchema = e
 exports.PartyNaturalPersonFdd$inboundSchema = exports.PartyOtherSourcesOfWealth$ = exports.PartyOtherSourcesOfWealth$outboundSchema = exports.PartyOtherSourcesOfWealth$inboundSchema = exports.PartyLegalNaturalPersonNegativeNews$ = exports.PartyLegalNaturalPersonNegativeNews$outboundSchema = exports.PartyLegalNaturalPersonNegativeNews$inboundSchema = exports.PartyCustomerReferralSource$ = exports.PartyCustomerReferralSource$outboundSchema = exports.PartyCustomerReferralSource$inboundSchema = exports.PartyNameSuffix$ = exports.PartyNameSuffix$outboundSchema = exports.PartyNameSuffix$inboundSchema = exports.PartyMaritalStatus$ = exports.PartyMaritalStatus$outboundSchema = exports.PartyMaritalStatus$inboundSchema = exports.PartyLegalNaturalPersonLargeTrader$ = exports.PartyLegalNaturalPersonLargeTrader$outboundSchema = exports.PartyLegalNaturalPersonLargeTrader$inboundSchema = exports.PartyLegalNaturalPersonEffectiveDate$ = exports.PartyLegalNaturalPersonEffectiveDate$outboundSchema = exports.PartyLegalNaturalPersonEffectiveDate$inboundSchema = exports.PartyIdentityVerificationResult$ = exports.PartyIdentityVerificationResult$outboundSchema = exports.PartyIdentityVerificationResult$inboundSchema = exports.PartyExecutionDate$ = exports.PartyExecutionDate$outboundSchema = exports.PartyExecutionDate$inboundSchema = exports.PartyForeignIdentification$ = exports.PartyForeignIdentification$outboundSchema = exports.PartyForeignIdentification$inboundSchema = exports.PartyLegalNaturalPersonType$ = exports.PartyLegalNaturalPersonType$outboundSchema = exports.PartyLegalNaturalPersonType$inboundSchema = exports.PartyIssueDate$ = exports.PartyIssueDate$outboundSchema = exports.PartyIssueDate$inboundSchema = exports.PartyExpirationDate$ = exports.PartyExpirationDate$outboundSchema = exports.PartyExpirationDate$inboundSchema = exports.PartyEmployment$ = exports.PartyEmployment$outboundSchema = exports.PartyEmployment$inboundSchema = exports.PartyEmploymentStatus$ = exports.PartyEmploymentStatus$outboundSchema = exports.PartyEmploymentStatus$inboundSchema = exports.PartyEmployerAddress$ = exports.PartyEmployerAddress$outboundSchema = exports.PartyEmployerAddress$inboundSchema = exports.PartyDeathDate$ = void 0;
 exports.PartyMailingAddress$ = exports.PartyMailingAddress$outboundSchema = exports.PartyMailingAddress$inboundSchema = exports.PartyLegalNaturalPerson$ = exports.PartyLegalNaturalPerson$outboundSchema = exports.PartyLegalNaturalPerson$inboundSchema = exports.PartyLegalNaturalPersonTaxProfile$ = exports.PartyLegalNaturalPersonTaxProfile$outboundSchema = exports.PartyLegalNaturalPersonTaxProfile$inboundSchema = exports.PartyLegalNaturalPersonWithholdingState$ = exports.PartyLegalNaturalPersonWithholdingState$outboundSchema = exports.PartyLegalNaturalPersonWithholdingState$inboundSchema = exports.PartyLegalNaturalPersonUsTinStatus$ = exports.PartyLegalNaturalPersonUsTinStatus$outboundSchema = exports.PartyLegalNaturalPersonUsTinStatus$inboundSchema = exports.PartyLegalNaturalPersonTaxpayerCertificationState$ = exports.PartyLegalNaturalPersonTaxpayerCertificationState$outboundSchema = exports.PartyLegalNaturalPersonTaxpayerCertificationState$inboundSchema = exports.PartyLegalNaturalPersonTaxCertificationDate$ = exports.PartyLegalNaturalPersonTaxCertificationDate$outboundSchema = exports.PartyLegalNaturalPersonTaxCertificationDate$inboundSchema = exports.PartyLegalNaturalPersonReportingEligibility$ = exports.PartyLegalNaturalPersonReportingEligibility$outboundSchema = exports.PartyLegalNaturalPersonReportingEligibility$inboundSchema = exports.PartyLegalNaturalPersonIrsFormType$ = exports.PartyLegalNaturalPersonIrsFormType$outboundSchema = exports.PartyLegalNaturalPersonIrsFormType$inboundSchema = exports.PartyLegalNaturalPersonFirstBNoticeDate$ = exports.PartyLegalNaturalPersonFirstBNoticeDate$outboundSchema = exports.PartyLegalNaturalPersonFirstBNoticeDate$inboundSchema = exports.PartyLegalNaturalPersonFederalTaxClassification$ = exports.PartyLegalNaturalPersonFederalTaxClassification$outboundSchema = exports.PartyLegalNaturalPersonFederalTaxClassification$inboundSchema = exports.PartyLegalNaturalPersonCNoticeDate$ = exports.PartyLegalNaturalPersonCNoticeDate$outboundSchema = exports.PartyLegalNaturalPersonCNoticeDate$inboundSchema = exports.PartyLegalNaturalPersonTaxIdType$ = exports.PartyLegalNaturalPersonTaxIdType$outboundSchema = exports.PartyLegalNaturalPersonTaxIdType$inboundSchema = exports.PartyPersonalAddress$ = exports.PartyPersonalAddress$outboundSchema = exports.PartyPersonalAddress$inboundSchema = exports.PartyNonCitizenResidency$ = exports.PartyNonCitizenResidency$outboundSchema = exports.PartyNonCitizenResidency$inboundSchema = exports.PartyResidencyStatus$ = exports.PartyResidencyStatus$outboundSchema = exports.PartyResidencyStatus$inboundSchema = exports.PartyNaturalPersonFdd$ = exports.PartyNaturalPersonFdd$outboundSchema = void 0;
 exports.Party$ = exports.Party$outboundSchema = exports.Party$inboundSchema = exports.PartyTradeConfirmationDeliveryPreference$ = exports.PartyTradeConfirmationDeliveryPreference$outboundSchema = exports.PartyTradeConfirmationDeliveryPreference$inboundSchema = exports.PartyTaxDocumentDeliveryPreference$ = exports.PartyTaxDocumentDeliveryPreference$outboundSchema = exports.PartyTaxDocumentDeliveryPreference$inboundSchema = exports.PartyStatementDeliveryPreference$ = exports.PartyStatementDeliveryPreference$outboundSchema = exports.PartyStatementDeliveryPreference$inboundSchema = exports.PartyRelationType$ = exports.PartyRelationType$outboundSchema = exports.PartyRelationType$inboundSchema = exports.PartyProxyDeliveryPreference$ = exports.PartyProxyDeliveryPreference$outboundSchema = exports.PartyProxyDeliveryPreference$inboundSchema = exports.PartyProspectusDeliveryPreference$ = exports.PartyProspectusDeliveryPreference$outboundSchema = exports.PartyProspectusDeliveryPreference$inboundSchema = exports.PartyPhoneNumber$ = exports.PartyPhoneNumber$outboundSchema = exports.PartyPhoneNumber$inboundSchema = exports.PartyShortCode$ = exports.PartyShortCode$outboundSchema = exports.PartyShortCode$inboundSchema = void 0;
+exports.partyNegativeNewsToJSON = partyNegativeNewsToJSON;
+exports.partyNegativeNewsFromJSON = partyNegativeNewsFromJSON;
+exports.partyEntityDueDiligenceToJSON = partyEntityDueDiligenceToJSON;
+exports.partyEntityDueDiligenceFromJSON = partyEntityDueDiligenceFromJSON;
+exports.partyFormationDateToJSON = partyFormationDateToJSON;
+exports.partyFormationDateFromJSON = partyFormationDateFromJSON;
+exports.partyEffectiveDateToJSON = partyEffectiveDateToJSON;
+exports.partyEffectiveDateFromJSON = partyEffectiveDateFromJSON;
+exports.partyLargeTraderToJSON = partyLargeTraderToJSON;
+exports.partyLargeTraderFromJSON = partyLargeTraderFromJSON;
+exports.partyLegalAddressToJSON = partyLegalAddressToJSON;
+exports.partyLegalAddressFromJSON = partyLegalAddressFromJSON;
+exports.partyCNoticeDateToJSON = partyCNoticeDateToJSON;
+exports.partyCNoticeDateFromJSON = partyCNoticeDateFromJSON;
+exports.partyFirstBNoticeDateToJSON = partyFirstBNoticeDateToJSON;
+exports.partyFirstBNoticeDateFromJSON = partyFirstBNoticeDateFromJSON;
+exports.partyTaxCertificationDateToJSON = partyTaxCertificationDateToJSON;
+exports.partyTaxCertificationDateFromJSON = partyTaxCertificationDateFromJSON;
+exports.partyTaxProfileToJSON = partyTaxProfileToJSON;
+exports.partyTaxProfileFromJSON = partyTaxProfileFromJSON;
+exports.partyLegalEntityToJSON = partyLegalEntityToJSON;
+exports.partyLegalEntityFromJSON = partyLegalEntityFromJSON;
+exports.partyBirthDateToJSON = partyBirthDateToJSON;
+exports.partyBirthDateFromJSON = partyBirthDateFromJSON;
+exports.partyDeathDateToJSON = partyDeathDateToJSON;
+exports.partyDeathDateFromJSON = partyDeathDateFromJSON;
+exports.partyEmployerAddressToJSON = partyEmployerAddressToJSON;
+exports.partyEmployerAddressFromJSON = partyEmployerAddressFromJSON;
+exports.partyEmploymentToJSON = partyEmploymentToJSON;
+exports.partyEmploymentFromJSON = partyEmploymentFromJSON;
+exports.partyExpirationDateToJSON = partyExpirationDateToJSON;
+exports.partyExpirationDateFromJSON = partyExpirationDateFromJSON;
+exports.partyIssueDateToJSON = partyIssueDateToJSON;
+exports.partyIssueDateFromJSON = partyIssueDateFromJSON;
+exports.partyForeignIdentificationToJSON = partyForeignIdentificationToJSON;
+exports.partyForeignIdentificationFromJSON = partyForeignIdentificationFromJSON;
+exports.partyExecutionDateToJSON = partyExecutionDateToJSON;
+exports.partyExecutionDateFromJSON = partyExecutionDateFromJSON;
+exports.partyIdentityVerificationResultToJSON = partyIdentityVerificationResultToJSON;
+exports.partyIdentityVerificationResultFromJSON = partyIdentityVerificationResultFromJSON;
+exports.partyLegalNaturalPersonEffectiveDateToJSON = partyLegalNaturalPersonEffectiveDateToJSON;
+exports.partyLegalNaturalPersonEffectiveDateFromJSON = partyLegalNaturalPersonEffectiveDateFromJSON;
+exports.partyLegalNaturalPersonLargeTraderToJSON = partyLegalNaturalPersonLargeTraderToJSON;
+exports.partyLegalNaturalPersonLargeTraderFromJSON = partyLegalNaturalPersonLargeTraderFromJSON;
+exports.partyCustomerReferralSourceToJSON = partyCustomerReferralSourceToJSON;
+exports.partyCustomerReferralSourceFromJSON = partyCustomerReferralSourceFromJSON;
+exports.partyLegalNaturalPersonNegativeNewsToJSON = partyLegalNaturalPersonNegativeNewsToJSON;
+exports.partyLegalNaturalPersonNegativeNewsFromJSON = partyLegalNaturalPersonNegativeNewsFromJSON;
+exports.partyOtherSourcesOfWealthToJSON = partyOtherSourcesOfWealthToJSON;
+exports.partyOtherSourcesOfWealthFromJSON = partyOtherSourcesOfWealthFromJSON;
+exports.partyNaturalPersonFddToJSON = partyNaturalPersonFddToJSON;
+exports.partyNaturalPersonFddFromJSON = partyNaturalPersonFddFromJSON;
+exports.partyNonCitizenResidencyToJSON = partyNonCitizenResidencyToJSON;
+exports.partyNonCitizenResidencyFromJSON = partyNonCitizenResidencyFromJSON;
+exports.partyPersonalAddressToJSON = partyPersonalAddressToJSON;
+exports.partyPersonalAddressFromJSON = partyPersonalAddressFromJSON;
+exports.partyLegalNaturalPersonCNoticeDateToJSON = partyLegalNaturalPersonCNoticeDateToJSON;
+exports.partyLegalNaturalPersonCNoticeDateFromJSON = partyLegalNaturalPersonCNoticeDateFromJSON;
+exports.partyLegalNaturalPersonFirstBNoticeDateToJSON = partyLegalNaturalPersonFirstBNoticeDateToJSON;
+exports.partyLegalNaturalPersonFirstBNoticeDateFromJSON = partyLegalNaturalPersonFirstBNoticeDateFromJSON;
+exports.partyLegalNaturalPersonTaxCertificationDateToJSON = partyLegalNaturalPersonTaxCertificationDateToJSON;
+exports.partyLegalNaturalPersonTaxCertificationDateFromJSON = partyLegalNaturalPersonTaxCertificationDateFromJSON;
+exports.partyLegalNaturalPersonTaxProfileToJSON = partyLegalNaturalPersonTaxProfileToJSON;
+exports.partyLegalNaturalPersonTaxProfileFromJSON = partyLegalNaturalPersonTaxProfileFromJSON;
+exports.partyLegalNaturalPersonToJSON = partyLegalNaturalPersonToJSON;
+exports.partyLegalNaturalPersonFromJSON = partyLegalNaturalPersonFromJSON;
+exports.partyMailingAddressToJSON = partyMailingAddressToJSON;
+exports.partyMailingAddressFromJSON = partyMailingAddressFromJSON;
+exports.partyShortCodeToJSON = partyShortCodeToJSON;
+exports.partyShortCodeFromJSON = partyShortCodeFromJSON;
+exports.partyPhoneNumberToJSON = partyPhoneNumberToJSON;
+exports.partyPhoneNumberFromJSON = partyPhoneNumberFromJSON;
+exports.partyToJSON = partyToJSON;
+exports.partyFromJSON = partyFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 var PartyBusinessIndustrialClassification;
 (function (PartyBusinessIndustrialClassification) {
@@ -447,6 +522,12 @@ var PartyNegativeNews$;
     /** @deprecated use `PartyNegativeNews$outboundSchema` instead. */
     PartyNegativeNews$.outboundSchema = exports.PartyNegativeNews$outboundSchema;
 })(PartyNegativeNews$ || (exports.PartyNegativeNews$ = PartyNegativeNews$ = {}));
+function partyNegativeNewsToJSON(partyNegativeNews) {
+    return JSON.stringify(exports.PartyNegativeNews$outboundSchema.parse(partyNegativeNews));
+}
+function partyNegativeNewsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyNegativeNews$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyNegativeNews' from JSON`);
+}
 /** @internal */
 exports.PartyEntityDueDiligence$inboundSchema = z.object({
     entity_issues_bearer_shares: z.boolean().optional(),
@@ -480,6 +561,12 @@ var PartyEntityDueDiligence$;
     /** @deprecated use `PartyEntityDueDiligence$outboundSchema` instead. */
     PartyEntityDueDiligence$.outboundSchema = exports.PartyEntityDueDiligence$outboundSchema;
 })(PartyEntityDueDiligence$ || (exports.PartyEntityDueDiligence$ = PartyEntityDueDiligence$ = {}));
+function partyEntityDueDiligenceToJSON(partyEntityDueDiligence) {
+    return JSON.stringify(exports.PartyEntityDueDiligence$outboundSchema.parse(partyEntityDueDiligence));
+}
+function partyEntityDueDiligenceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyEntityDueDiligence$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyEntityDueDiligence' from JSON`);
+}
 /** @internal */
 exports.PartyEntityType$inboundSchema = z
     .union([
@@ -547,6 +634,12 @@ var PartyFormationDate$;
     /** @deprecated use `PartyFormationDate$outboundSchema` instead. */
     PartyFormationDate$.outboundSchema = exports.PartyFormationDate$outboundSchema;
 })(PartyFormationDate$ || (exports.PartyFormationDate$ = PartyFormationDate$ = {}));
+function partyFormationDateToJSON(partyFormationDate) {
+    return JSON.stringify(exports.PartyFormationDate$outboundSchema.parse(partyFormationDate));
+}
+function partyFormationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyFormationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyFormationDate' from JSON`);
+}
 /** @internal */
 exports.PartyEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -570,6 +663,12 @@ var PartyEffectiveDate$;
     /** @deprecated use `PartyEffectiveDate$outboundSchema` instead. */
     PartyEffectiveDate$.outboundSchema = exports.PartyEffectiveDate$outboundSchema;
 })(PartyEffectiveDate$ || (exports.PartyEffectiveDate$ = PartyEffectiveDate$ = {}));
+function partyEffectiveDateToJSON(partyEffectiveDate) {
+    return JSON.stringify(exports.PartyEffectiveDate$outboundSchema.parse(partyEffectiveDate));
+}
+function partyEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.PartyLargeTrader$inboundSchema = z.object({
     effective_date: z.nullable(z.lazy(() => exports.PartyEffectiveDate$inboundSchema))
@@ -603,6 +702,12 @@ var PartyLargeTrader$;
     /** @deprecated use `PartyLargeTrader$outboundSchema` instead. */
     PartyLargeTrader$.outboundSchema = exports.PartyLargeTrader$outboundSchema;
 })(PartyLargeTrader$ || (exports.PartyLargeTrader$ = PartyLargeTrader$ = {}));
+function partyLargeTraderToJSON(partyLargeTrader) {
+    return JSON.stringify(exports.PartyLargeTrader$outboundSchema.parse(partyLargeTrader));
+}
+function partyLargeTraderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLargeTrader$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLargeTrader' from JSON`);
+}
 /** @internal */
 exports.PartyLegalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -660,6 +765,12 @@ var PartyLegalAddress$;
     /** @deprecated use `PartyLegalAddress$outboundSchema` instead. */
     PartyLegalAddress$.outboundSchema = exports.PartyLegalAddress$outboundSchema;
 })(PartyLegalAddress$ || (exports.PartyLegalAddress$ = PartyLegalAddress$ = {}));
+function partyLegalAddressToJSON(partyLegalAddress) {
+    return JSON.stringify(exports.PartyLegalAddress$outboundSchema.parse(partyLegalAddress));
+}
+function partyLegalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalAddress' from JSON`);
+}
 /** @internal */
 exports.PartyTaxIdType$inboundSchema = z
     .union([
@@ -705,6 +816,12 @@ var PartyCNoticeDate$;
     /** @deprecated use `PartyCNoticeDate$outboundSchema` instead. */
     PartyCNoticeDate$.outboundSchema = exports.PartyCNoticeDate$outboundSchema;
 })(PartyCNoticeDate$ || (exports.PartyCNoticeDate$ = PartyCNoticeDate$ = {}));
+function partyCNoticeDateToJSON(partyCNoticeDate) {
+    return JSON.stringify(exports.PartyCNoticeDate$outboundSchema.parse(partyCNoticeDate));
+}
+function partyCNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyCNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyCNoticeDate' from JSON`);
+}
 /** @internal */
 exports.PartyFederalTaxClassification$inboundSchema = z
     .union([
@@ -750,6 +867,12 @@ var PartyFirstBNoticeDate$;
     /** @deprecated use `PartyFirstBNoticeDate$outboundSchema` instead. */
     PartyFirstBNoticeDate$.outboundSchema = exports.PartyFirstBNoticeDate$outboundSchema;
 })(PartyFirstBNoticeDate$ || (exports.PartyFirstBNoticeDate$ = PartyFirstBNoticeDate$ = {}));
+function partyFirstBNoticeDateToJSON(partyFirstBNoticeDate) {
+    return JSON.stringify(exports.PartyFirstBNoticeDate$outboundSchema.parse(partyFirstBNoticeDate));
+}
+function partyFirstBNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyFirstBNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyFirstBNoticeDate' from JSON`);
+}
 /** @internal */
 exports.PartyIrsFormType$inboundSchema = z
     .union([
@@ -817,6 +940,12 @@ var PartyTaxCertificationDate$;
     /** @deprecated use `PartyTaxCertificationDate$outboundSchema` instead. */
     PartyTaxCertificationDate$.outboundSchema = exports.PartyTaxCertificationDate$outboundSchema;
 })(PartyTaxCertificationDate$ || (exports.PartyTaxCertificationDate$ = PartyTaxCertificationDate$ = {}));
+function partyTaxCertificationDateToJSON(partyTaxCertificationDate) {
+    return JSON.stringify(exports.PartyTaxCertificationDate$outboundSchema.parse(partyTaxCertificationDate));
+}
+function partyTaxCertificationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyTaxCertificationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyTaxCertificationDate' from JSON`);
+}
 /** @internal */
 exports.PartyTaxpayerCertificationState$inboundSchema = z
     .union([
@@ -952,6 +1081,12 @@ var PartyTaxProfile$;
     /** @deprecated use `PartyTaxProfile$outboundSchema` instead. */
     PartyTaxProfile$.outboundSchema = exports.PartyTaxProfile$outboundSchema;
 })(PartyTaxProfile$ || (exports.PartyTaxProfile$ = PartyTaxProfile$ = {}));
+function partyTaxProfileToJSON(partyTaxProfile) {
+    return JSON.stringify(exports.PartyTaxProfile$outboundSchema.parse(partyTaxProfile));
+}
+function partyTaxProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyTaxProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyTaxProfile' from JSON`);
+}
 /** @internal */
 exports.PartyLegalEntity$inboundSchema = z.object({
     accredited_investor: z.boolean().optional(),
@@ -1111,6 +1246,12 @@ var PartyLegalEntity$;
     /** @deprecated use `PartyLegalEntity$outboundSchema` instead. */
     PartyLegalEntity$.outboundSchema = exports.PartyLegalEntity$outboundSchema;
 })(PartyLegalEntity$ || (exports.PartyLegalEntity$ = PartyLegalEntity$ = {}));
+function partyLegalEntityToJSON(partyLegalEntity) {
+    return JSON.stringify(exports.PartyLegalEntity$outboundSchema.parse(partyLegalEntity));
+}
+function partyLegalEntityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalEntity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalEntity' from JSON`);
+}
 /** @internal */
 exports.PartyBirthDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1134,6 +1275,12 @@ var PartyBirthDate$;
     /** @deprecated use `PartyBirthDate$outboundSchema` instead. */
     PartyBirthDate$.outboundSchema = exports.PartyBirthDate$outboundSchema;
 })(PartyBirthDate$ || (exports.PartyBirthDate$ = PartyBirthDate$ = {}));
+function partyBirthDateToJSON(partyBirthDate) {
+    return JSON.stringify(exports.PartyBirthDate$outboundSchema.parse(partyBirthDate));
+}
+function partyBirthDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyBirthDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyBirthDate' from JSON`);
+}
 /** @internal */
 exports.PartyDeathDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1157,6 +1304,12 @@ var PartyDeathDate$;
     /** @deprecated use `PartyDeathDate$outboundSchema` instead. */
     PartyDeathDate$.outboundSchema = exports.PartyDeathDate$outboundSchema;
 })(PartyDeathDate$ || (exports.PartyDeathDate$ = PartyDeathDate$ = {}));
+function partyDeathDateToJSON(partyDeathDate) {
+    return JSON.stringify(exports.PartyDeathDate$outboundSchema.parse(partyDeathDate));
+}
+function partyDeathDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyDeathDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyDeathDate' from JSON`);
+}
 /** @internal */
 exports.PartyEmployerAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -1214,6 +1367,12 @@ var PartyEmployerAddress$;
     /** @deprecated use `PartyEmployerAddress$outboundSchema` instead. */
     PartyEmployerAddress$.outboundSchema = exports.PartyEmployerAddress$outboundSchema;
 })(PartyEmployerAddress$ || (exports.PartyEmployerAddress$ = PartyEmployerAddress$ = {}));
+function partyEmployerAddressToJSON(partyEmployerAddress) {
+    return JSON.stringify(exports.PartyEmployerAddress$outboundSchema.parse(partyEmployerAddress));
+}
+function partyEmployerAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyEmployerAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyEmployerAddress' from JSON`);
+}
 /** @internal */
 exports.PartyEmploymentStatus$inboundSchema = z
     .union([
@@ -1281,6 +1440,12 @@ var PartyEmployment$;
     /** @deprecated use `PartyEmployment$outboundSchema` instead. */
     PartyEmployment$.outboundSchema = exports.PartyEmployment$outboundSchema;
 })(PartyEmployment$ || (exports.PartyEmployment$ = PartyEmployment$ = {}));
+function partyEmploymentToJSON(partyEmployment) {
+    return JSON.stringify(exports.PartyEmployment$outboundSchema.parse(partyEmployment));
+}
+function partyEmploymentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyEmployment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyEmployment' from JSON`);
+}
 /** @internal */
 exports.PartyExpirationDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1304,6 +1469,12 @@ var PartyExpirationDate$;
     /** @deprecated use `PartyExpirationDate$outboundSchema` instead. */
     PartyExpirationDate$.outboundSchema = exports.PartyExpirationDate$outboundSchema;
 })(PartyExpirationDate$ || (exports.PartyExpirationDate$ = PartyExpirationDate$ = {}));
+function partyExpirationDateToJSON(partyExpirationDate) {
+    return JSON.stringify(exports.PartyExpirationDate$outboundSchema.parse(partyExpirationDate));
+}
+function partyExpirationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyExpirationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyExpirationDate' from JSON`);
+}
 /** @internal */
 exports.PartyIssueDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1327,6 +1498,12 @@ var PartyIssueDate$;
     /** @deprecated use `PartyIssueDate$outboundSchema` instead. */
     PartyIssueDate$.outboundSchema = exports.PartyIssueDate$outboundSchema;
 })(PartyIssueDate$ || (exports.PartyIssueDate$ = PartyIssueDate$ = {}));
+function partyIssueDateToJSON(partyIssueDate) {
+    return JSON.stringify(exports.PartyIssueDate$outboundSchema.parse(partyIssueDate));
+}
+function partyIssueDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyIssueDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyIssueDate' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonType$inboundSchema = z
     .union([
@@ -1394,6 +1571,12 @@ var PartyForeignIdentification$;
     /** @deprecated use `PartyForeignIdentification$outboundSchema` instead. */
     PartyForeignIdentification$.outboundSchema = exports.PartyForeignIdentification$outboundSchema;
 })(PartyForeignIdentification$ || (exports.PartyForeignIdentification$ = PartyForeignIdentification$ = {}));
+function partyForeignIdentificationToJSON(partyForeignIdentification) {
+    return JSON.stringify(exports.PartyForeignIdentification$outboundSchema.parse(partyForeignIdentification));
+}
+function partyForeignIdentificationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyForeignIdentification$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyForeignIdentification' from JSON`);
+}
 /** @internal */
 exports.PartyExecutionDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1417,6 +1600,12 @@ var PartyExecutionDate$;
     /** @deprecated use `PartyExecutionDate$outboundSchema` instead. */
     PartyExecutionDate$.outboundSchema = exports.PartyExecutionDate$outboundSchema;
 })(PartyExecutionDate$ || (exports.PartyExecutionDate$ = PartyExecutionDate$ = {}));
+function partyExecutionDateToJSON(partyExecutionDate) {
+    return JSON.stringify(exports.PartyExecutionDate$outboundSchema.parse(partyExecutionDate));
+}
+function partyExecutionDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyExecutionDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyExecutionDate' from JSON`);
+}
 /** @internal */
 exports.PartyIdentityVerificationResult$inboundSchema = z.object({
     address_verified: z.boolean().optional(),
@@ -1480,6 +1669,12 @@ var PartyIdentityVerificationResult$;
     /** @deprecated use `PartyIdentityVerificationResult$outboundSchema` instead. */
     PartyIdentityVerificationResult$.outboundSchema = exports.PartyIdentityVerificationResult$outboundSchema;
 })(PartyIdentityVerificationResult$ || (exports.PartyIdentityVerificationResult$ = PartyIdentityVerificationResult$ = {}));
+function partyIdentityVerificationResultToJSON(partyIdentityVerificationResult) {
+    return JSON.stringify(exports.PartyIdentityVerificationResult$outboundSchema.parse(partyIdentityVerificationResult));
+}
+function partyIdentityVerificationResultFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyIdentityVerificationResult$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyIdentityVerificationResult' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonEffectiveDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -1503,6 +1698,12 @@ var PartyLegalNaturalPersonEffectiveDate$;
     /** @deprecated use `PartyLegalNaturalPersonEffectiveDate$outboundSchema` instead. */
     PartyLegalNaturalPersonEffectiveDate$.outboundSchema = exports.PartyLegalNaturalPersonEffectiveDate$outboundSchema;
 })(PartyLegalNaturalPersonEffectiveDate$ || (exports.PartyLegalNaturalPersonEffectiveDate$ = PartyLegalNaturalPersonEffectiveDate$ = {}));
+function partyLegalNaturalPersonEffectiveDateToJSON(partyLegalNaturalPersonEffectiveDate) {
+    return JSON.stringify(exports.PartyLegalNaturalPersonEffectiveDate$outboundSchema.parse(partyLegalNaturalPersonEffectiveDate));
+}
+function partyLegalNaturalPersonEffectiveDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPersonEffectiveDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPersonEffectiveDate' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonLargeTrader$inboundSchema = z.object({
     effective_date: z.nullable(z.lazy(() => exports.PartyLegalNaturalPersonEffectiveDate$inboundSchema)).optional(),
@@ -1534,6 +1735,12 @@ var PartyLegalNaturalPersonLargeTrader$;
     /** @deprecated use `PartyLegalNaturalPersonLargeTrader$outboundSchema` instead. */
     PartyLegalNaturalPersonLargeTrader$.outboundSchema = exports.PartyLegalNaturalPersonLargeTrader$outboundSchema;
 })(PartyLegalNaturalPersonLargeTrader$ || (exports.PartyLegalNaturalPersonLargeTrader$ = PartyLegalNaturalPersonLargeTrader$ = {}));
+function partyLegalNaturalPersonLargeTraderToJSON(partyLegalNaturalPersonLargeTrader) {
+    return JSON.stringify(exports.PartyLegalNaturalPersonLargeTrader$outboundSchema.parse(partyLegalNaturalPersonLargeTrader));
+}
+function partyLegalNaturalPersonLargeTraderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPersonLargeTrader$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPersonLargeTrader' from JSON`);
+}
 /** @internal */
 exports.PartyMaritalStatus$inboundSchema = z
     .union([
@@ -1615,6 +1822,12 @@ var PartyCustomerReferralSource$;
     /** @deprecated use `PartyCustomerReferralSource$outboundSchema` instead. */
     PartyCustomerReferralSource$.outboundSchema = exports.PartyCustomerReferralSource$outboundSchema;
 })(PartyCustomerReferralSource$ || (exports.PartyCustomerReferralSource$ = PartyCustomerReferralSource$ = {}));
+function partyCustomerReferralSourceToJSON(partyCustomerReferralSource) {
+    return JSON.stringify(exports.PartyCustomerReferralSource$outboundSchema.parse(partyCustomerReferralSource));
+}
+function partyCustomerReferralSourceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyCustomerReferralSource$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyCustomerReferralSource' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonNegativeNews$inboundSchema = z.object({
     negative_news_against_related_parties: z.boolean().optional(),
@@ -1646,6 +1859,12 @@ var PartyLegalNaturalPersonNegativeNews$;
     /** @deprecated use `PartyLegalNaturalPersonNegativeNews$outboundSchema` instead. */
     PartyLegalNaturalPersonNegativeNews$.outboundSchema = exports.PartyLegalNaturalPersonNegativeNews$outboundSchema;
 })(PartyLegalNaturalPersonNegativeNews$ || (exports.PartyLegalNaturalPersonNegativeNews$ = PartyLegalNaturalPersonNegativeNews$ = {}));
+function partyLegalNaturalPersonNegativeNewsToJSON(partyLegalNaturalPersonNegativeNews) {
+    return JSON.stringify(exports.PartyLegalNaturalPersonNegativeNews$outboundSchema.parse(partyLegalNaturalPersonNegativeNews));
+}
+function partyLegalNaturalPersonNegativeNewsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPersonNegativeNews$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPersonNegativeNews' from JSON`);
+}
 /** @internal */
 exports.PartyOtherSourcesOfWealth$inboundSchema = z.object({
     applicant_has_other_sources_of_wealth: z.boolean().optional(),
@@ -1681,6 +1900,12 @@ var PartyOtherSourcesOfWealth$;
     /** @deprecated use `PartyOtherSourcesOfWealth$outboundSchema` instead. */
     PartyOtherSourcesOfWealth$.outboundSchema = exports.PartyOtherSourcesOfWealth$outboundSchema;
 })(PartyOtherSourcesOfWealth$ || (exports.PartyOtherSourcesOfWealth$ = PartyOtherSourcesOfWealth$ = {}));
+function partyOtherSourcesOfWealthToJSON(partyOtherSourcesOfWealth) {
+    return JSON.stringify(exports.PartyOtherSourcesOfWealth$outboundSchema.parse(partyOtherSourcesOfWealth));
+}
+function partyOtherSourcesOfWealthFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyOtherSourcesOfWealth$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyOtherSourcesOfWealth' from JSON`);
+}
 /** @internal */
 exports.PartyNaturalPersonFdd$inboundSchema = z.object({
     customer_non_referral_source: z.string().optional(),
@@ -1724,6 +1949,12 @@ var PartyNaturalPersonFdd$;
     /** @deprecated use `PartyNaturalPersonFdd$outboundSchema` instead. */
     PartyNaturalPersonFdd$.outboundSchema = exports.PartyNaturalPersonFdd$outboundSchema;
 })(PartyNaturalPersonFdd$ || (exports.PartyNaturalPersonFdd$ = PartyNaturalPersonFdd$ = {}));
+function partyNaturalPersonFddToJSON(partyNaturalPersonFdd) {
+    return JSON.stringify(exports.PartyNaturalPersonFdd$outboundSchema.parse(partyNaturalPersonFdd));
+}
+function partyNaturalPersonFddFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyNaturalPersonFdd$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyNaturalPersonFdd' from JSON`);
+}
 /** @internal */
 exports.PartyResidencyStatus$inboundSchema = z
     .union([
@@ -1773,6 +2004,12 @@ var PartyNonCitizenResidency$;
     /** @deprecated use `PartyNonCitizenResidency$outboundSchema` instead. */
     PartyNonCitizenResidency$.outboundSchema = exports.PartyNonCitizenResidency$outboundSchema;
 })(PartyNonCitizenResidency$ || (exports.PartyNonCitizenResidency$ = PartyNonCitizenResidency$ = {}));
+function partyNonCitizenResidencyToJSON(partyNonCitizenResidency) {
+    return JSON.stringify(exports.PartyNonCitizenResidency$outboundSchema.parse(partyNonCitizenResidency));
+}
+function partyNonCitizenResidencyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyNonCitizenResidency$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyNonCitizenResidency' from JSON`);
+}
 /** @internal */
 exports.PartyPersonalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -1830,6 +2067,12 @@ var PartyPersonalAddress$;
     /** @deprecated use `PartyPersonalAddress$outboundSchema` instead. */
     PartyPersonalAddress$.outboundSchema = exports.PartyPersonalAddress$outboundSchema;
 })(PartyPersonalAddress$ || (exports.PartyPersonalAddress$ = PartyPersonalAddress$ = {}));
+function partyPersonalAddressToJSON(partyPersonalAddress) {
+    return JSON.stringify(exports.PartyPersonalAddress$outboundSchema.parse(partyPersonalAddress));
+}
+function partyPersonalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyPersonalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyPersonalAddress' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonTaxIdType$inboundSchema = z
     .union([
@@ -1875,6 +2118,12 @@ var PartyLegalNaturalPersonCNoticeDate$;
     /** @deprecated use `PartyLegalNaturalPersonCNoticeDate$outboundSchema` instead. */
     PartyLegalNaturalPersonCNoticeDate$.outboundSchema = exports.PartyLegalNaturalPersonCNoticeDate$outboundSchema;
 })(PartyLegalNaturalPersonCNoticeDate$ || (exports.PartyLegalNaturalPersonCNoticeDate$ = PartyLegalNaturalPersonCNoticeDate$ = {}));
+function partyLegalNaturalPersonCNoticeDateToJSON(partyLegalNaturalPersonCNoticeDate) {
+    return JSON.stringify(exports.PartyLegalNaturalPersonCNoticeDate$outboundSchema.parse(partyLegalNaturalPersonCNoticeDate));
+}
+function partyLegalNaturalPersonCNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPersonCNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPersonCNoticeDate' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonFederalTaxClassification$inboundSchema = z
     .union([
@@ -1920,6 +2169,12 @@ var PartyLegalNaturalPersonFirstBNoticeDate$;
     /** @deprecated use `PartyLegalNaturalPersonFirstBNoticeDate$outboundSchema` instead. */
     PartyLegalNaturalPersonFirstBNoticeDate$.outboundSchema = exports.PartyLegalNaturalPersonFirstBNoticeDate$outboundSchema;
 })(PartyLegalNaturalPersonFirstBNoticeDate$ || (exports.PartyLegalNaturalPersonFirstBNoticeDate$ = PartyLegalNaturalPersonFirstBNoticeDate$ = {}));
+function partyLegalNaturalPersonFirstBNoticeDateToJSON(partyLegalNaturalPersonFirstBNoticeDate) {
+    return JSON.stringify(exports.PartyLegalNaturalPersonFirstBNoticeDate$outboundSchema.parse(partyLegalNaturalPersonFirstBNoticeDate));
+}
+function partyLegalNaturalPersonFirstBNoticeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPersonFirstBNoticeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPersonFirstBNoticeDate' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonIrsFormType$inboundSchema = z
     .union([
@@ -1987,6 +2242,12 @@ var PartyLegalNaturalPersonTaxCertificationDate$;
     /** @deprecated use `PartyLegalNaturalPersonTaxCertificationDate$outboundSchema` instead. */
     PartyLegalNaturalPersonTaxCertificationDate$.outboundSchema = exports.PartyLegalNaturalPersonTaxCertificationDate$outboundSchema;
 })(PartyLegalNaturalPersonTaxCertificationDate$ || (exports.PartyLegalNaturalPersonTaxCertificationDate$ = PartyLegalNaturalPersonTaxCertificationDate$ = {}));
+function partyLegalNaturalPersonTaxCertificationDateToJSON(partyLegalNaturalPersonTaxCertificationDate) {
+    return JSON.stringify(exports.PartyLegalNaturalPersonTaxCertificationDate$outboundSchema.parse(partyLegalNaturalPersonTaxCertificationDate));
+}
+function partyLegalNaturalPersonTaxCertificationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPersonTaxCertificationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPersonTaxCertificationDate' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPersonTaxpayerCertificationState$inboundSchema = z
     .union([
@@ -2118,6 +2379,12 @@ var PartyLegalNaturalPersonTaxProfile$;
     /** @deprecated use `PartyLegalNaturalPersonTaxProfile$outboundSchema` instead. */
     PartyLegalNaturalPersonTaxProfile$.outboundSchema = exports.PartyLegalNaturalPersonTaxProfile$outboundSchema;
 })(PartyLegalNaturalPersonTaxProfile$ || (exports.PartyLegalNaturalPersonTaxProfile$ = PartyLegalNaturalPersonTaxProfile$ = {}));
+function partyLegalNaturalPersonTaxProfileToJSON(partyLegalNaturalPersonTaxProfile) {
+    return JSON.stringify(exports.PartyLegalNaturalPersonTaxProfile$outboundSchema.parse(partyLegalNaturalPersonTaxProfile));
+}
+function partyLegalNaturalPersonTaxProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPersonTaxProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPersonTaxProfile' from JSON`);
+}
 /** @internal */
 exports.PartyLegalNaturalPerson$inboundSchema = z.object({
     accredited_investor: z.boolean().optional(),
@@ -2279,6 +2546,12 @@ var PartyLegalNaturalPerson$;
     /** @deprecated use `PartyLegalNaturalPerson$outboundSchema` instead. */
     PartyLegalNaturalPerson$.outboundSchema = exports.PartyLegalNaturalPerson$outboundSchema;
 })(PartyLegalNaturalPerson$ || (exports.PartyLegalNaturalPerson$ = PartyLegalNaturalPerson$ = {}));
+function partyLegalNaturalPersonToJSON(partyLegalNaturalPerson) {
+    return JSON.stringify(exports.PartyLegalNaturalPerson$outboundSchema.parse(partyLegalNaturalPerson));
+}
+function partyLegalNaturalPersonFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyLegalNaturalPerson$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyLegalNaturalPerson' from JSON`);
+}
 /** @internal */
 exports.PartyMailingAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -2336,6 +2609,12 @@ var PartyMailingAddress$;
     /** @deprecated use `PartyMailingAddress$outboundSchema` instead. */
     PartyMailingAddress$.outboundSchema = exports.PartyMailingAddress$outboundSchema;
 })(PartyMailingAddress$ || (exports.PartyMailingAddress$ = PartyMailingAddress$ = {}));
+function partyMailingAddressToJSON(partyMailingAddress) {
+    return JSON.stringify(exports.PartyMailingAddress$outboundSchema.parse(partyMailingAddress));
+}
+function partyMailingAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyMailingAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyMailingAddress' from JSON`);
+}
 /** @internal */
 exports.PartyShortCode$inboundSchema = z.object({
     number: z.string().optional(),
@@ -2365,6 +2644,12 @@ var PartyShortCode$;
     /** @deprecated use `PartyShortCode$outboundSchema` instead. */
     PartyShortCode$.outboundSchema = exports.PartyShortCode$outboundSchema;
 })(PartyShortCode$ || (exports.PartyShortCode$ = PartyShortCode$ = {}));
+function partyShortCodeToJSON(partyShortCode) {
+    return JSON.stringify(exports.PartyShortCode$outboundSchema.parse(partyShortCode));
+}
+function partyShortCodeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyShortCode$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyShortCode' from JSON`);
+}
 /** @internal */
 exports.PartyPhoneNumber$inboundSchema = z.object({
     e164_number: z.string().optional(),
@@ -2398,6 +2683,12 @@ var PartyPhoneNumber$;
     /** @deprecated use `PartyPhoneNumber$outboundSchema` instead. */
     PartyPhoneNumber$.outboundSchema = exports.PartyPhoneNumber$outboundSchema;
 })(PartyPhoneNumber$ || (exports.PartyPhoneNumber$ = PartyPhoneNumber$ = {}));
+function partyPhoneNumberToJSON(partyPhoneNumber) {
+    return JSON.stringify(exports.PartyPhoneNumber$outboundSchema.parse(partyPhoneNumber));
+}
+function partyPhoneNumberFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyPhoneNumber$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyPhoneNumber' from JSON`);
+}
 /** @internal */
 exports.PartyProspectusDeliveryPreference$inboundSchema = z
     .union([
@@ -2614,4 +2905,10 @@ var Party$;
     /** @deprecated use `Party$outboundSchema` instead. */
     Party$.outboundSchema = exports.Party$outboundSchema;
 })(Party$ || (exports.Party$ = Party$ = {}));
+function partyToJSON(party) {
+    return JSON.stringify(exports.Party$outboundSchema.parse(party));
+}
+function partyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Party$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Party' from JSON`);
+}
 //# sourceMappingURL=party.js.map

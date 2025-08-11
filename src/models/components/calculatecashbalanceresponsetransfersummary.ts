@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of the transfer in USD. The value will be positive for deposits and negative for withdrawals.
@@ -105,6 +108,33 @@ export namespace CalculateCashBalanceResponseTransferSummaryAmount$ {
     CalculateCashBalanceResponseTransferSummaryAmount$Outbound;
 }
 
+export function calculateCashBalanceResponseTransferSummaryAmountToJSON(
+  calculateCashBalanceResponseTransferSummaryAmount:
+    CalculateCashBalanceResponseTransferSummaryAmount,
+): string {
+  return JSON.stringify(
+    CalculateCashBalanceResponseTransferSummaryAmount$outboundSchema.parse(
+      calculateCashBalanceResponseTransferSummaryAmount,
+    ),
+  );
+}
+
+export function calculateCashBalanceResponseTransferSummaryAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CalculateCashBalanceResponseTransferSummaryAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CalculateCashBalanceResponseTransferSummaryAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CalculateCashBalanceResponseTransferSummaryAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CalculateCashBalanceResponseTransferSummaryMechanism$inboundSchema:
   z.ZodType<
@@ -200,4 +230,31 @@ export namespace CalculateCashBalanceResponseTransferSummary$ {
     CalculateCashBalanceResponseTransferSummary$outboundSchema;
   /** @deprecated use `CalculateCashBalanceResponseTransferSummary$Outbound` instead. */
   export type Outbound = CalculateCashBalanceResponseTransferSummary$Outbound;
+}
+
+export function calculateCashBalanceResponseTransferSummaryToJSON(
+  calculateCashBalanceResponseTransferSummary:
+    CalculateCashBalanceResponseTransferSummary,
+): string {
+  return JSON.stringify(
+    CalculateCashBalanceResponseTransferSummary$outboundSchema.parse(
+      calculateCashBalanceResponseTransferSummary,
+    ),
+  );
+}
+
+export function calculateCashBalanceResponseTransferSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CalculateCashBalanceResponseTransferSummary,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CalculateCashBalanceResponseTransferSummary$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CalculateCashBalanceResponseTransferSummary' from JSON`,
+  );
 }

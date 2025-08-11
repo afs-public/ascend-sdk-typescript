@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * **Field Dependencies:**
  *
@@ -106,4 +108,6 @@ export declare namespace DeactivateEnrollmentRequestCreate$ {
     /** @deprecated use `DeactivateEnrollmentRequestCreate$Outbound` instead. */
     type Outbound = DeactivateEnrollmentRequestCreate$Outbound;
 }
+export declare function deactivateEnrollmentRequestCreateToJSON(deactivateEnrollmentRequestCreate: DeactivateEnrollmentRequestCreate): string;
+export declare function deactivateEnrollmentRequestCreateFromJSON(jsonString: string): SafeParseResult<DeactivateEnrollmentRequestCreate, SDKValidationError>;
 //# sourceMappingURL=deactivateenrollmentrequestcreate.d.ts.map

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount to transfer in USD
@@ -362,6 +365,24 @@ export namespace CashJournalAmount$ {
   export type Outbound = CashJournalAmount$Outbound;
 }
 
+export function cashJournalAmountToJSON(
+  cashJournalAmount: CashJournalAmount,
+): string {
+  return JSON.stringify(
+    CashJournalAmount$outboundSchema.parse(cashJournalAmount),
+  );
+}
+
+export function cashJournalAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const PartyType$inboundSchema: z.ZodType<
   PartyTypeOpen,
@@ -474,6 +495,26 @@ export namespace CashJournalRetirementContribution$ {
   export type Outbound = CashJournalRetirementContribution$Outbound;
 }
 
+export function cashJournalRetirementContributionToJSON(
+  cashJournalRetirementContribution: CashJournalRetirementContribution,
+): string {
+  return JSON.stringify(
+    CashJournalRetirementContribution$outboundSchema.parse(
+      cashJournalRetirementContribution,
+    ),
+  );
+}
+
+export function cashJournalRetirementContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalRetirementContribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalRetirementContribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalRetirementContribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalRetirementDistributionAmount$inboundSchema: z.ZodType<
   CashJournalRetirementDistributionAmount,
@@ -512,6 +553,33 @@ export namespace CashJournalRetirementDistributionAmount$ {
   export type Outbound = CashJournalRetirementDistributionAmount$Outbound;
 }
 
+export function cashJournalRetirementDistributionAmountToJSON(
+  cashJournalRetirementDistributionAmount:
+    CashJournalRetirementDistributionAmount,
+): string {
+  return JSON.stringify(
+    CashJournalRetirementDistributionAmount$outboundSchema.parse(
+      cashJournalRetirementDistributionAmount,
+    ),
+  );
+}
+
+export function cashJournalRetirementDistributionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashJournalRetirementDistributionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalRetirementDistributionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashJournalRetirementDistributionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalPercentage$inboundSchema: z.ZodType<
   CashJournalPercentage,
@@ -546,6 +614,24 @@ export namespace CashJournalPercentage$ {
   export const outboundSchema = CashJournalPercentage$outboundSchema;
   /** @deprecated use `CashJournalPercentage$Outbound` instead. */
   export type Outbound = CashJournalPercentage$Outbound;
+}
+
+export function cashJournalPercentageToJSON(
+  cashJournalPercentage: CashJournalPercentage,
+): string {
+  return JSON.stringify(
+    CashJournalPercentage$outboundSchema.parse(cashJournalPercentage),
+  );
+}
+
+export function cashJournalPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalPercentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalPercentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -593,6 +679,26 @@ export namespace CashJournalFederalTaxWithholding$ {
   export type Outbound = CashJournalFederalTaxWithholding$Outbound;
 }
 
+export function cashJournalFederalTaxWithholdingToJSON(
+  cashJournalFederalTaxWithholding: CashJournalFederalTaxWithholding,
+): string {
+  return JSON.stringify(
+    CashJournalFederalTaxWithholding$outboundSchema.parse(
+      cashJournalFederalTaxWithholding,
+    ),
+  );
+}
+
+export function cashJournalFederalTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalFederalTaxWithholding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalFederalTaxWithholding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalFederalTaxWithholding' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalRetirementDistributionStateTaxWithholdingAmount$inboundSchema:
   z.ZodType<
@@ -635,6 +741,31 @@ export namespace CashJournalRetirementDistributionStateTaxWithholdingAmount$ {
     CashJournalRetirementDistributionStateTaxWithholdingAmount$Outbound;
 }
 
+export function cashJournalRetirementDistributionStateTaxWithholdingAmountToJSON(
+  cashJournalRetirementDistributionStateTaxWithholdingAmount:
+    CashJournalRetirementDistributionStateTaxWithholdingAmount,
+): string {
+  return JSON.stringify(
+    CashJournalRetirementDistributionStateTaxWithholdingAmount$outboundSchema
+      .parse(cashJournalRetirementDistributionStateTaxWithholdingAmount),
+  );
+}
+
+export function cashJournalRetirementDistributionStateTaxWithholdingAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashJournalRetirementDistributionStateTaxWithholdingAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalRetirementDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalRetirementDistributionStateTaxWithholdingAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalRetirementDistributionPercentage$inboundSchema:
   z.ZodType<
@@ -673,6 +804,33 @@ export namespace CashJournalRetirementDistributionPercentage$ {
     CashJournalRetirementDistributionPercentage$outboundSchema;
   /** @deprecated use `CashJournalRetirementDistributionPercentage$Outbound` instead. */
   export type Outbound = CashJournalRetirementDistributionPercentage$Outbound;
+}
+
+export function cashJournalRetirementDistributionPercentageToJSON(
+  cashJournalRetirementDistributionPercentage:
+    CashJournalRetirementDistributionPercentage,
+): string {
+  return JSON.stringify(
+    CashJournalRetirementDistributionPercentage$outboundSchema.parse(
+      cashJournalRetirementDistributionPercentage,
+    ),
+  );
+}
+
+export function cashJournalRetirementDistributionPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashJournalRetirementDistributionPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalRetirementDistributionPercentage$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashJournalRetirementDistributionPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -730,6 +888,26 @@ export namespace CashJournalStateTaxWithholding$ {
   export const outboundSchema = CashJournalStateTaxWithholding$outboundSchema;
   /** @deprecated use `CashJournalStateTaxWithholding$Outbound` instead. */
   export type Outbound = CashJournalStateTaxWithholding$Outbound;
+}
+
+export function cashJournalStateTaxWithholdingToJSON(
+  cashJournalStateTaxWithholding: CashJournalStateTaxWithholding,
+): string {
+  return JSON.stringify(
+    CashJournalStateTaxWithholding$outboundSchema.parse(
+      cashJournalStateTaxWithholding,
+    ),
+  );
+}
+
+export function cashJournalStateTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalStateTaxWithholding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalStateTaxWithholding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalStateTaxWithholding' from JSON`,
+  );
 }
 
 /** @internal */
@@ -848,6 +1026,26 @@ export namespace CashJournalRetirementDistribution$ {
   export type Outbound = CashJournalRetirementDistribution$Outbound;
 }
 
+export function cashJournalRetirementDistributionToJSON(
+  cashJournalRetirementDistribution: CashJournalRetirementDistribution,
+): string {
+  return JSON.stringify(
+    CashJournalRetirementDistribution$outboundSchema.parse(
+      cashJournalRetirementDistribution,
+    ),
+  );
+}
+
+export function cashJournalRetirementDistributionFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalRetirementDistribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalRetirementDistribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalRetirementDistribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalStateState$inboundSchema: z.ZodType<
   CashJournalStateStateOpen,
@@ -936,6 +1134,24 @@ export namespace CashJournalState$ {
   export const outboundSchema = CashJournalState$outboundSchema;
   /** @deprecated use `CashJournalState$Outbound` instead. */
   export type Outbound = CashJournalState$Outbound;
+}
+
+export function cashJournalStateToJSON(
+  cashJournalState: CashJournalState,
+): string {
+  return JSON.stringify(
+    CashJournalState$outboundSchema.parse(cashJournalState),
+  );
+}
+
+export function cashJournalStateFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalState' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1028,4 +1244,18 @@ export namespace CashJournal$ {
   export const outboundSchema = CashJournal$outboundSchema;
   /** @deprecated use `CashJournal$Outbound` instead. */
   export type Outbound = CashJournal$Outbound;
+}
+
+export function cashJournalToJSON(cashJournal: CashJournal): string {
+  return JSON.stringify(CashJournal$outboundSchema.parse(cashJournal));
+}
+
+export function cashJournalFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournal' from JSON`,
+  );
 }

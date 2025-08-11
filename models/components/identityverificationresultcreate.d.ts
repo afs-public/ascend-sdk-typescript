@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
 /**
  * An identity verification result that clients may supply. This result represents data and confirmation attesting to identity verification.
@@ -75,4 +77,6 @@ export declare namespace IdentityVerificationResultCreate$ {
     /** @deprecated use `IdentityVerificationResultCreate$Outbound` instead. */
     type Outbound = IdentityVerificationResultCreate$Outbound;
 }
+export declare function identityVerificationResultCreateToJSON(identityVerificationResultCreate: IdentityVerificationResultCreate): string;
+export declare function identityVerificationResultCreateFromJSON(jsonString: string): SafeParseResult<IdentityVerificationResultCreate, SDKValidationError>;
 //# sourceMappingURL=identityverificationresultcreate.d.ts.map

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SnapshotsListSnapshotsResponse$ = exports.SnapshotsListSnapshotsResponse$outboundSchema = exports.SnapshotsListSnapshotsResponse$inboundSchema = exports.SnapshotsListSnapshotsRequest$ = exports.SnapshotsListSnapshotsRequest$outboundSchema = exports.SnapshotsListSnapshotsRequest$inboundSchema = void 0;
+exports.snapshotsListSnapshotsRequestToJSON = snapshotsListSnapshotsRequestToJSON;
+exports.snapshotsListSnapshotsRequestFromJSON = snapshotsListSnapshotsRequestFromJSON;
+exports.snapshotsListSnapshotsResponseToJSON = snapshotsListSnapshotsResponseToJSON;
+exports.snapshotsListSnapshotsResponseFromJSON = snapshotsListSnapshotsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.SnapshotsListSnapshotsRequest$inboundSchema = z.object({
@@ -73,6 +78,12 @@ var SnapshotsListSnapshotsRequest$;
     /** @deprecated use `SnapshotsListSnapshotsRequest$outboundSchema` instead. */
     SnapshotsListSnapshotsRequest$.outboundSchema = exports.SnapshotsListSnapshotsRequest$outboundSchema;
 })(SnapshotsListSnapshotsRequest$ || (exports.SnapshotsListSnapshotsRequest$ = SnapshotsListSnapshotsRequest$ = {}));
+function snapshotsListSnapshotsRequestToJSON(snapshotsListSnapshotsRequest) {
+    return JSON.stringify(exports.SnapshotsListSnapshotsRequest$outboundSchema.parse(snapshotsListSnapshotsRequest));
+}
+function snapshotsListSnapshotsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SnapshotsListSnapshotsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SnapshotsListSnapshotsRequest' from JSON`);
+}
 /** @internal */
 exports.SnapshotsListSnapshotsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var SnapshotsListSnapshotsResponse$;
     /** @deprecated use `SnapshotsListSnapshotsResponse$outboundSchema` instead. */
     SnapshotsListSnapshotsResponse$.outboundSchema = exports.SnapshotsListSnapshotsResponse$outboundSchema;
 })(SnapshotsListSnapshotsResponse$ || (exports.SnapshotsListSnapshotsResponse$ = SnapshotsListSnapshotsResponse$ = {}));
+function snapshotsListSnapshotsResponseToJSON(snapshotsListSnapshotsResponse) {
+    return JSON.stringify(exports.SnapshotsListSnapshotsResponse$outboundSchema.parse(snapshotsListSnapshotsResponse));
+}
+function snapshotsListSnapshotsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SnapshotsListSnapshotsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SnapshotsListSnapshotsResponse' from JSON`);
+}
 //# sourceMappingURL=snapshotslistsnapshots.js.map

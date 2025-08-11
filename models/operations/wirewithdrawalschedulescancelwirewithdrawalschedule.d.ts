@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type WireWithdrawalSchedulesCancelWireWithdrawalScheduleRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace WireWithdrawalSchedulesCancelWireWithdrawalScheduleRequ
     /** @deprecated use `WireWithdrawalSchedulesCancelWireWithdrawalScheduleRequest$Outbound` instead. */
     type Outbound = WireWithdrawalSchedulesCancelWireWithdrawalScheduleRequest$Outbound;
 }
+export declare function wireWithdrawalSchedulesCancelWireWithdrawalScheduleRequestToJSON(wireWithdrawalSchedulesCancelWireWithdrawalScheduleRequest: WireWithdrawalSchedulesCancelWireWithdrawalScheduleRequest): string;
+export declare function wireWithdrawalSchedulesCancelWireWithdrawalScheduleRequestFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedulesCancelWireWithdrawalScheduleRequest, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse$inboundSchema: z.ZodType<WireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace WireWithdrawalSchedulesCancelWireWithdrawalScheduleResp
     /** @deprecated use `WireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse$Outbound` instead. */
     type Outbound = WireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse$Outbound;
 }
+export declare function wireWithdrawalSchedulesCancelWireWithdrawalScheduleResponseToJSON(wireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse: WireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse): string;
+export declare function wireWithdrawalSchedulesCancelWireWithdrawalScheduleResponseFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalschedulescancelwirewithdrawalschedule.d.ts.map

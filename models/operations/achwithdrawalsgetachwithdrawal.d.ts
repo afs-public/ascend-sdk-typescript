@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AchWithdrawalsGetAchWithdrawalRequest = {
     /**
      * The account id.
@@ -42,6 +44,8 @@ export declare namespace AchWithdrawalsGetAchWithdrawalRequest$ {
     /** @deprecated use `AchWithdrawalsGetAchWithdrawalRequest$Outbound` instead. */
     type Outbound = AchWithdrawalsGetAchWithdrawalRequest$Outbound;
 }
+export declare function achWithdrawalsGetAchWithdrawalRequestToJSON(achWithdrawalsGetAchWithdrawalRequest: AchWithdrawalsGetAchWithdrawalRequest): string;
+export declare function achWithdrawalsGetAchWithdrawalRequestFromJSON(jsonString: string): SafeParseResult<AchWithdrawalsGetAchWithdrawalRequest, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalsGetAchWithdrawalResponse$inboundSchema: z.ZodType<AchWithdrawalsGetAchWithdrawalResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace AchWithdrawalsGetAchWithdrawalResponse$ {
     /** @deprecated use `AchWithdrawalsGetAchWithdrawalResponse$Outbound` instead. */
     type Outbound = AchWithdrawalsGetAchWithdrawalResponse$Outbound;
 }
+export declare function achWithdrawalsGetAchWithdrawalResponseToJSON(achWithdrawalsGetAchWithdrawalResponse: AchWithdrawalsGetAchWithdrawalResponse): string;
+export declare function achWithdrawalsGetAchWithdrawalResponseFromJSON(jsonString: string): SafeParseResult<AchWithdrawalsGetAchWithdrawalResponse, SDKValidationError>;
 //# sourceMappingURL=achwithdrawalsgetachwithdrawal.d.ts.map

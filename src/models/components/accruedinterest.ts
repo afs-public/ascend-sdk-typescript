@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of accrued interest associated with this activity
@@ -57,6 +60,24 @@ export namespace AccruedInterestAmount1$ {
   export type Outbound = AccruedInterestAmount1$Outbound;
 }
 
+export function accruedInterestAmount1ToJSON(
+  accruedInterestAmount1: AccruedInterestAmount1,
+): string {
+  return JSON.stringify(
+    AccruedInterestAmount1$outboundSchema.parse(accruedInterestAmount1),
+  );
+}
+
+export function accruedInterestAmount1FromJSON(
+  jsonString: string,
+): SafeParseResult<AccruedInterestAmount1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccruedInterestAmount1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccruedInterestAmount1' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccruedInterest$inboundSchema: z.ZodType<
   AccruedInterest,
@@ -93,4 +114,20 @@ export namespace AccruedInterest$ {
   export const outboundSchema = AccruedInterest$outboundSchema;
   /** @deprecated use `AccruedInterest$Outbound` instead. */
   export type Outbound = AccruedInterest$Outbound;
+}
+
+export function accruedInterestToJSON(
+  accruedInterest: AccruedInterest,
+): string {
+  return JSON.stringify(AccruedInterest$outboundSchema.parse(accruedInterest));
+}
+
+export function accruedInterestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccruedInterest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccruedInterest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccruedInterest' from JSON`,
+  );
 }

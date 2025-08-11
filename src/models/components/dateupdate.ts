@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
@@ -68,4 +71,18 @@ export namespace DateUpdate$ {
   export const outboundSchema = DateUpdate$outboundSchema;
   /** @deprecated use `DateUpdate$Outbound` instead. */
   export type Outbound = DateUpdate$Outbound;
+}
+
+export function dateUpdateToJSON(dateUpdate: DateUpdate): string {
+  return JSON.stringify(DateUpdate$outboundSchema.parse(dateUpdate));
+}
+
+export function dateUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<DateUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DateUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DateUpdate' from JSON`,
+  );
 }

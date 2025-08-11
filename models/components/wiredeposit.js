@@ -37,8 +37,17 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireDeposit$ = exports.WireDeposit$outboundSchema = exports.WireDeposit$inboundSchema = exports.WireDepositState$ = exports.WireDepositState$outboundSchema = exports.WireDepositState$inboundSchema = exports.WireDepositStateState$ = exports.WireDepositStateState$outboundSchema = exports.WireDepositStateState$inboundSchema = exports.WireDepositRetirementContribution$ = exports.WireDepositRetirementContribution$outboundSchema = exports.WireDepositRetirementContribution$inboundSchema = exports.WireDepositType$ = exports.WireDepositType$outboundSchema = exports.WireDepositType$inboundSchema = exports.WireDepositAmount$ = exports.WireDepositAmount$outboundSchema = exports.WireDepositAmount$inboundSchema = exports.WireDepositStateState = exports.WireDepositType = void 0;
+exports.wireDepositAmountToJSON = wireDepositAmountToJSON;
+exports.wireDepositAmountFromJSON = wireDepositAmountFromJSON;
+exports.wireDepositRetirementContributionToJSON = wireDepositRetirementContributionToJSON;
+exports.wireDepositRetirementContributionFromJSON = wireDepositRetirementContributionFromJSON;
+exports.wireDepositStateToJSON = wireDepositStateToJSON;
+exports.wireDepositStateFromJSON = wireDepositStateFromJSON;
+exports.wireDepositToJSON = wireDepositToJSON;
+exports.wireDepositFromJSON = wireDepositFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of retirement contribution.
@@ -102,6 +111,12 @@ var WireDepositAmount$;
     /** @deprecated use `WireDepositAmount$outboundSchema` instead. */
     WireDepositAmount$.outboundSchema = exports.WireDepositAmount$outboundSchema;
 })(WireDepositAmount$ || (exports.WireDepositAmount$ = WireDepositAmount$ = {}));
+function wireDepositAmountToJSON(wireDepositAmount) {
+    return JSON.stringify(exports.WireDepositAmount$outboundSchema.parse(wireDepositAmount));
+}
+function wireDepositAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireDepositAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireDepositAmount' from JSON`);
+}
 /** @internal */
 exports.WireDepositType$inboundSchema = z
     .union([
@@ -153,6 +168,12 @@ var WireDepositRetirementContribution$;
     /** @deprecated use `WireDepositRetirementContribution$outboundSchema` instead. */
     WireDepositRetirementContribution$.outboundSchema = exports.WireDepositRetirementContribution$outboundSchema;
 })(WireDepositRetirementContribution$ || (exports.WireDepositRetirementContribution$ = WireDepositRetirementContribution$ = {}));
+function wireDepositRetirementContributionToJSON(wireDepositRetirementContribution) {
+    return JSON.stringify(exports.WireDepositRetirementContribution$outboundSchema.parse(wireDepositRetirementContribution));
+}
+function wireDepositRetirementContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireDepositRetirementContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireDepositRetirementContribution' from JSON`);
+}
 /** @internal */
 exports.WireDepositStateState$inboundSchema = z
     .union([
@@ -210,6 +231,12 @@ var WireDepositState$;
     /** @deprecated use `WireDepositState$outboundSchema` instead. */
     WireDepositState$.outboundSchema = exports.WireDepositState$outboundSchema;
 })(WireDepositState$ || (exports.WireDepositState$ = WireDepositState$ = {}));
+function wireDepositStateToJSON(wireDepositState) {
+    return JSON.stringify(exports.WireDepositState$outboundSchema.parse(wireDepositState));
+}
+function wireDepositStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireDepositState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireDepositState' from JSON`);
+}
 /** @internal */
 exports.WireDeposit$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.WireDepositAmount$inboundSchema)).optional(),
@@ -259,4 +286,10 @@ var WireDeposit$;
     /** @deprecated use `WireDeposit$outboundSchema` instead. */
     WireDeposit$.outboundSchema = exports.WireDeposit$outboundSchema;
 })(WireDeposit$ || (exports.WireDeposit$ = WireDeposit$ = {}));
+function wireDepositToJSON(wireDeposit) {
+    return JSON.stringify(exports.WireDeposit$outboundSchema.parse(wireDeposit));
+}
+function wireDepositFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireDeposit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireDeposit' from JSON`);
+}
 //# sourceMappingURL=wiredeposit.js.map

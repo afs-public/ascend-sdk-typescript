@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingGetExecutionRequest = {
   /**
@@ -87,6 +90,24 @@ export namespace BookingGetExecutionRequest$ {
   export type Outbound = BookingGetExecutionRequest$Outbound;
 }
 
+export function bookingGetExecutionRequestToJSON(
+  bookingGetExecutionRequest: BookingGetExecutionRequest,
+): string {
+  return JSON.stringify(
+    BookingGetExecutionRequest$outboundSchema.parse(bookingGetExecutionRequest),
+  );
+}
+
+export function bookingGetExecutionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingGetExecutionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingGetExecutionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingGetExecutionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingGetExecutionResponse$inboundSchema: z.ZodType<
   BookingGetExecutionResponse,
@@ -139,4 +160,24 @@ export namespace BookingGetExecutionResponse$ {
   export const outboundSchema = BookingGetExecutionResponse$outboundSchema;
   /** @deprecated use `BookingGetExecutionResponse$Outbound` instead. */
   export type Outbound = BookingGetExecutionResponse$Outbound;
+}
+
+export function bookingGetExecutionResponseToJSON(
+  bookingGetExecutionResponse: BookingGetExecutionResponse,
+): string {
+  return JSON.stringify(
+    BookingGetExecutionResponse$outboundSchema.parse(
+      bookingGetExecutionResponse,
+    ),
+  );
+}
+
+export function bookingGetExecutionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingGetExecutionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingGetExecutionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingGetExecutionResponse' from JSON`,
+  );
 }

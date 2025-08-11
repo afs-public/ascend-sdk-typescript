@@ -20,26 +20,33 @@ export type RequestOptions = {
      */
     retryCodes?: string[];
     /**
+     * Overrides the base server URL that will be used by an operation.
+     */
+    serverURL?: string | URL;
+    /**
+     * @deprecated `fetchOptions` has been flattened into `RequestOptions`.
+     *
      * Sets various request options on the `fetch` call made by an SDK method.
      *
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options|Request}
      */
     fetchOptions?: Omit<RequestInit, "method" | "body">;
-};
+} & Omit<RequestInit, "method" | "body">;
 type RequestConfig = {
     method: string;
     path: string;
-    baseURL?: string | URL;
+    baseURL?: string | URL | undefined;
     query?: string;
     body?: RequestInit["body"];
     headers?: HeadersInit;
     security?: SecurityState | null;
     uaHeader?: string;
+    userAgent?: string | undefined;
     timeoutMs?: number;
 };
 export declare class ClientSDK {
     #private;
-    protected readonly _baseURL: URL | null;
+    readonly _baseURL: URL | null;
     readonly _options: SDKOptions & {
         hooks?: SDKHooks;
     };
@@ -48,8 +55,8 @@ export declare class ClientSDK {
     _do(request: Request, options: {
         context: HookContext;
         errorCodes: number | string | (number | string)[];
-        retryConfig?: RetryConfig | undefined;
-        retryCodes?: string[] | undefined;
+        retryConfig: RetryConfig;
+        retryCodes: string[];
     }): Promise<Result<Response, RequestAbortedError | RequestTimeoutError | ConnectionError | UnexpectedClientError>>;
 }
 export {};

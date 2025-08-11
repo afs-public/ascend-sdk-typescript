@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -262,4 +265,22 @@ export namespace RetrieveQuoteRequestCreate$ {
   export const outboundSchema = RetrieveQuoteRequestCreate$outboundSchema;
   /** @deprecated use `RetrieveQuoteRequestCreate$Outbound` instead. */
   export type Outbound = RetrieveQuoteRequestCreate$Outbound;
+}
+
+export function retrieveQuoteRequestCreateToJSON(
+  retrieveQuoteRequestCreate: RetrieveQuoteRequestCreate,
+): string {
+  return JSON.stringify(
+    RetrieveQuoteRequestCreate$outboundSchema.parse(retrieveQuoteRequestCreate),
+  );
+}
+
+export function retrieveQuoteRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveQuoteRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveQuoteRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveQuoteRequestCreate' from JSON`,
+  );
 }

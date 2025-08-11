@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { EnrollmentCreate, EnrollmentCreate$Outbound } from "./enrollmentcreate.js";
 /**
  * The request for creating an Enrollment on an account.
@@ -29,4 +31,6 @@ export declare namespace EnrollAccountRequestCreate$ {
     /** @deprecated use `EnrollAccountRequestCreate$Outbound` instead. */
     type Outbound = EnrollAccountRequestCreate$Outbound;
 }
+export declare function enrollAccountRequestCreateToJSON(enrollAccountRequestCreate: EnrollAccountRequestCreate): string;
+export declare function enrollAccountRequestCreateFromJSON(jsonString: string): SafeParseResult<EnrollAccountRequestCreate, SDKValidationError>;
 //# sourceMappingURL=enrollaccountrequestcreate.d.ts.map

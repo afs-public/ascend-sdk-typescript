@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to force reject a pending cash journal
@@ -57,4 +60,25 @@ export namespace ForceRejectCashJournalRequestCreate$ {
     ForceRejectCashJournalRequestCreate$outboundSchema;
   /** @deprecated use `ForceRejectCashJournalRequestCreate$Outbound` instead. */
   export type Outbound = ForceRejectCashJournalRequestCreate$Outbound;
+}
+
+export function forceRejectCashJournalRequestCreateToJSON(
+  forceRejectCashJournalRequestCreate: ForceRejectCashJournalRequestCreate,
+): string {
+  return JSON.stringify(
+    ForceRejectCashJournalRequestCreate$outboundSchema.parse(
+      forceRejectCashJournalRequestCreate,
+    ),
+  );
+}
+
+export function forceRejectCashJournalRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ForceRejectCashJournalRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForceRejectCashJournalRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForceRejectCashJournalRequestCreate' from JSON`,
+  );
 }

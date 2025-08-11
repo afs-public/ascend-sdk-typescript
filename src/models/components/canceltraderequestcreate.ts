@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A request for canceling all executions underneath a trade.
@@ -48,4 +51,22 @@ export namespace CancelTradeRequestCreate$ {
   export const outboundSchema = CancelTradeRequestCreate$outboundSchema;
   /** @deprecated use `CancelTradeRequestCreate$Outbound` instead. */
   export type Outbound = CancelTradeRequestCreate$Outbound;
+}
+
+export function cancelTradeRequestCreateToJSON(
+  cancelTradeRequestCreate: CancelTradeRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelTradeRequestCreate$outboundSchema.parse(cancelTradeRequestCreate),
+  );
+}
+
+export function cancelTradeRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelTradeRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelTradeRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelTradeRequestCreate' from JSON`,
+  );
 }

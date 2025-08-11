@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsReplacePartyResponse$ = exports.AccountsReplacePartyResponse$outboundSchema = exports.AccountsReplacePartyResponse$inboundSchema = exports.AccountsReplacePartyRequest$ = exports.AccountsReplacePartyRequest$outboundSchema = exports.AccountsReplacePartyRequest$inboundSchema = void 0;
+exports.accountsReplacePartyRequestToJSON = accountsReplacePartyRequestToJSON;
+exports.accountsReplacePartyRequestFromJSON = accountsReplacePartyRequestFromJSON;
+exports.accountsReplacePartyResponseToJSON = accountsReplacePartyResponseToJSON;
+exports.accountsReplacePartyResponseFromJSON = accountsReplacePartyResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsReplacePartyRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountsReplacePartyRequest$;
     /** @deprecated use `AccountsReplacePartyRequest$outboundSchema` instead. */
     AccountsReplacePartyRequest$.outboundSchema = exports.AccountsReplacePartyRequest$outboundSchema;
 })(AccountsReplacePartyRequest$ || (exports.AccountsReplacePartyRequest$ = AccountsReplacePartyRequest$ = {}));
+function accountsReplacePartyRequestToJSON(accountsReplacePartyRequest) {
+    return JSON.stringify(exports.AccountsReplacePartyRequest$outboundSchema.parse(accountsReplacePartyRequest));
+}
+function accountsReplacePartyRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsReplacePartyRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsReplacePartyRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsReplacePartyResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var AccountsReplacePartyResponse$;
     /** @deprecated use `AccountsReplacePartyResponse$outboundSchema` instead. */
     AccountsReplacePartyResponse$.outboundSchema = exports.AccountsReplacePartyResponse$outboundSchema;
 })(AccountsReplacePartyResponse$ || (exports.AccountsReplacePartyResponse$ = AccountsReplacePartyResponse$ = {}));
+function accountsReplacePartyResponseToJSON(accountsReplacePartyResponse) {
+    return JSON.stringify(exports.AccountsReplacePartyResponse$outboundSchema.parse(accountsReplacePartyResponse));
+}
+function accountsReplacePartyResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsReplacePartyResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsReplacePartyResponse' from JSON`);
+}
 //# sourceMappingURL=accountsreplaceparty.js.map

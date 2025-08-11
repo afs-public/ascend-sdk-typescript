@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of the transfer being deposited into the customer's account in USD
  */
@@ -668,6 +670,8 @@ export declare namespace IctDepositAmount$ {
     /** @deprecated use `IctDepositAmount$Outbound` instead. */
     type Outbound = IctDepositAmount$Outbound;
 }
+export declare function ictDepositAmountToJSON(ictDepositAmount: IctDepositAmount): string;
+export declare function ictDepositAmountFromJSON(jsonString: string): SafeParseResult<IctDepositAmount, SDKValidationError>;
 /** @internal */
 export declare const IctDepositProgram$inboundSchema: z.ZodType<IctDepositProgramOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -717,6 +721,8 @@ export declare namespace IctDepositRetirementContribution$ {
     /** @deprecated use `IctDepositRetirementContribution$Outbound` instead. */
     type Outbound = IctDepositRetirementContribution$Outbound;
 }
+export declare function ictDepositRetirementContributionToJSON(ictDepositRetirementContribution: IctDepositRetirementContribution): string;
+export declare function ictDepositRetirementContributionFromJSON(jsonString: string): SafeParseResult<IctDepositRetirementContribution, SDKValidationError>;
 /** @internal */
 export declare const IctDepositStateState$inboundSchema: z.ZodType<IctDepositStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -757,6 +763,8 @@ export declare namespace IctDepositState$ {
     /** @deprecated use `IctDepositState$Outbound` instead. */
     type Outbound = IctDepositState$Outbound;
 }
+export declare function ictDepositStateToJSON(ictDepositState: IctDepositState): string;
+export declare function ictDepositStateFromJSON(jsonString: string): SafeParseResult<IctDepositState, SDKValidationError>;
 /** @internal */
 export declare const IctDepositTransferStateState$inboundSchema: z.ZodType<IctDepositTransferStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -797,6 +805,8 @@ export declare namespace TransferState$ {
     /** @deprecated use `TransferState$Outbound` instead. */
     type Outbound = TransferState$Outbound;
 }
+export declare function transferStateToJSON(transferState: TransferState): string;
+export declare function transferStateFromJSON(jsonString: string): SafeParseResult<TransferState, SDKValidationError>;
 /** @internal */
 export declare const IctDepositTravelRuleEntityOriginatingPartyAddress$inboundSchema: z.ZodType<IctDepositTravelRuleEntityOriginatingPartyAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -827,6 +837,8 @@ export declare namespace IctDepositTravelRuleEntityOriginatingPartyAddress$ {
     /** @deprecated use `IctDepositTravelRuleEntityOriginatingPartyAddress$Outbound` instead. */
     type Outbound = IctDepositTravelRuleEntityOriginatingPartyAddress$Outbound;
 }
+export declare function ictDepositTravelRuleEntityOriginatingPartyAddressToJSON(ictDepositTravelRuleEntityOriginatingPartyAddress: IctDepositTravelRuleEntityOriginatingPartyAddress): string;
+export declare function ictDepositTravelRuleEntityOriginatingPartyAddressFromJSON(jsonString: string): SafeParseResult<IctDepositTravelRuleEntityOriginatingPartyAddress, SDKValidationError>;
 /** @internal */
 export declare const EntityOriginatingParty$inboundSchema: z.ZodType<EntityOriginatingParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -849,6 +861,8 @@ export declare namespace EntityOriginatingParty$ {
     /** @deprecated use `EntityOriginatingParty$Outbound` instead. */
     type Outbound = EntityOriginatingParty$Outbound;
 }
+export declare function entityOriginatingPartyToJSON(entityOriginatingParty: EntityOriginatingParty): string;
+export declare function entityOriginatingPartyFromJSON(jsonString: string): SafeParseResult<EntityOriginatingParty, SDKValidationError>;
 /** @internal */
 export declare const IctDepositAddress$inboundSchema: z.ZodType<IctDepositAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -879,6 +893,8 @@ export declare namespace IctDepositAddress$ {
     /** @deprecated use `IctDepositAddress$Outbound` instead. */
     type Outbound = IctDepositAddress$Outbound;
 }
+export declare function ictDepositAddressToJSON(ictDepositAddress: IctDepositAddress): string;
+export declare function ictDepositAddressFromJSON(jsonString: string): SafeParseResult<IctDepositAddress, SDKValidationError>;
 /** @internal */
 export declare const EntityRecipientParty$inboundSchema: z.ZodType<EntityRecipientParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -901,6 +917,8 @@ export declare namespace EntityRecipientParty$ {
     /** @deprecated use `EntityRecipientParty$Outbound` instead. */
     type Outbound = EntityRecipientParty$Outbound;
 }
+export declare function entityRecipientPartyToJSON(entityRecipientParty: EntityRecipientParty): string;
+export declare function entityRecipientPartyFromJSON(jsonString: string): SafeParseResult<EntityRecipientParty, SDKValidationError>;
 /** @internal */
 export declare const IctDepositTravelRuleAddress$inboundSchema: z.ZodType<IctDepositTravelRuleAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -931,6 +949,8 @@ export declare namespace IctDepositTravelRuleAddress$ {
     /** @deprecated use `IctDepositTravelRuleAddress$Outbound` instead. */
     type Outbound = IctDepositTravelRuleAddress$Outbound;
 }
+export declare function ictDepositTravelRuleAddressToJSON(ictDepositTravelRuleAddress: IctDepositTravelRuleAddress): string;
+export declare function ictDepositTravelRuleAddressFromJSON(jsonString: string): SafeParseResult<IctDepositTravelRuleAddress, SDKValidationError>;
 /** @internal */
 export declare const IndividualOriginatingParty$inboundSchema: z.ZodType<IndividualOriginatingParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -953,6 +973,8 @@ export declare namespace IndividualOriginatingParty$ {
     /** @deprecated use `IndividualOriginatingParty$Outbound` instead. */
     type Outbound = IndividualOriginatingParty$Outbound;
 }
+export declare function individualOriginatingPartyToJSON(individualOriginatingParty: IndividualOriginatingParty): string;
+export declare function individualOriginatingPartyFromJSON(jsonString: string): SafeParseResult<IndividualOriginatingParty, SDKValidationError>;
 /** @internal */
 export declare const IctDepositTravelRuleIndividualRecipientPartyAddress$inboundSchema: z.ZodType<IctDepositTravelRuleIndividualRecipientPartyAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -983,6 +1005,8 @@ export declare namespace IctDepositTravelRuleIndividualRecipientPartyAddress$ {
     /** @deprecated use `IctDepositTravelRuleIndividualRecipientPartyAddress$Outbound` instead. */
     type Outbound = IctDepositTravelRuleIndividualRecipientPartyAddress$Outbound;
 }
+export declare function ictDepositTravelRuleIndividualRecipientPartyAddressToJSON(ictDepositTravelRuleIndividualRecipientPartyAddress: IctDepositTravelRuleIndividualRecipientPartyAddress): string;
+export declare function ictDepositTravelRuleIndividualRecipientPartyAddressFromJSON(jsonString: string): SafeParseResult<IctDepositTravelRuleIndividualRecipientPartyAddress, SDKValidationError>;
 /** @internal */
 export declare const IndividualRecipientParty$inboundSchema: z.ZodType<IndividualRecipientParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1005,6 +1029,8 @@ export declare namespace IndividualRecipientParty$ {
     /** @deprecated use `IndividualRecipientParty$Outbound` instead. */
     type Outbound = IndividualRecipientParty$Outbound;
 }
+export declare function individualRecipientPartyToJSON(individualRecipientParty: IndividualRecipientParty): string;
+export declare function individualRecipientPartyFromJSON(jsonString: string): SafeParseResult<IndividualRecipientParty, SDKValidationError>;
 /** @internal */
 export declare const OriginatingInstitution$inboundSchema: z.ZodType<OriginatingInstitution, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1026,6 +1052,8 @@ export declare namespace OriginatingInstitution$ {
     /** @deprecated use `OriginatingInstitution$Outbound` instead. */
     type Outbound = OriginatingInstitution$Outbound;
 }
+export declare function originatingInstitutionToJSON(originatingInstitution: OriginatingInstitution): string;
+export declare function originatingInstitutionFromJSON(jsonString: string): SafeParseResult<OriginatingInstitution, SDKValidationError>;
 /** @internal */
 export declare const RecipientInstitution$inboundSchema: z.ZodType<RecipientInstitution, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1047,6 +1075,8 @@ export declare namespace RecipientInstitution$ {
     /** @deprecated use `RecipientInstitution$Outbound` instead. */
     type Outbound = RecipientInstitution$Outbound;
 }
+export declare function recipientInstitutionToJSON(recipientInstitution: RecipientInstitution): string;
+export declare function recipientInstitutionFromJSON(jsonString: string): SafeParseResult<RecipientInstitution, SDKValidationError>;
 /** @internal */
 export declare const TravelRule$inboundSchema: z.ZodType<TravelRule, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1072,6 +1102,8 @@ export declare namespace TravelRule$ {
     /** @deprecated use `TravelRule$Outbound` instead. */
     type Outbound = TravelRule$Outbound;
 }
+export declare function travelRuleToJSON(travelRule: TravelRule): string;
+export declare function travelRuleFromJSON(jsonString: string): SafeParseResult<TravelRule, SDKValidationError>;
 /** @internal */
 export declare const IctDeposit$inboundSchema: z.ZodType<IctDeposit, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1099,4 +1131,6 @@ export declare namespace IctDeposit$ {
     /** @deprecated use `IctDeposit$Outbound` instead. */
     type Outbound = IctDeposit$Outbound;
 }
+export declare function ictDepositToJSON(ictDeposit: IctDeposit): string;
+export declare function ictDepositFromJSON(jsonString: string): SafeParseResult<IctDeposit, SDKValidationError>;
 //# sourceMappingURL=ictdeposit.d.ts.map

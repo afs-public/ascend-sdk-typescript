@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PhoneNumberUpdate, PhoneNumberUpdate$Outbound } from "./phonenumberupdate.js";
 import { PostalAddressUpdate, PostalAddressUpdate$Outbound } from "./postaladdressupdate.js";
 /**
@@ -80,4 +82,6 @@ export declare namespace TrustedContactUpdate$ {
     /** @deprecated use `TrustedContactUpdate$Outbound` instead. */
     type Outbound = TrustedContactUpdate$Outbound;
 }
+export declare function trustedContactUpdateToJSON(trustedContactUpdate: TrustedContactUpdate): string;
+export declare function trustedContactUpdateFromJSON(jsonString: string): SafeParseResult<TrustedContactUpdate, SDKValidationError>;
 //# sourceMappingURL=trustedcontactupdate.d.ts.map

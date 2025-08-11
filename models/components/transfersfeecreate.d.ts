@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The type of the fee being charged
@@ -85,4 +87,6 @@ export declare namespace TransfersFeeCreate$ {
     /** @deprecated use `TransfersFeeCreate$Outbound` instead. */
     type Outbound = TransfersFeeCreate$Outbound;
 }
+export declare function transfersFeeCreateToJSON(transfersFeeCreate: TransfersFeeCreate): string;
+export declare function transfersFeeCreateFromJSON(jsonString: string): SafeParseResult<TransfersFeeCreate, SDKValidationError>;
 //# sourceMappingURL=transfersfeecreate.d.ts.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYieldCreate, BondYieldCreate$Outbound } from "./bondyieldcreate.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 import { PriceAdjustmentCreate, PriceAdjustmentCreate$Outbound } from "./priceadjustmentcreate.js";
@@ -122,4 +124,6 @@ export declare namespace ExecutionCreate$ {
     /** @deprecated use `ExecutionCreate$Outbound` instead. */
     type Outbound = ExecutionCreate$Outbound;
 }
+export declare function executionCreateToJSON(executionCreate: ExecutionCreate): string;
+export declare function executionCreateFromJSON(jsonString: string): SafeParseResult<ExecutionCreate, SDKValidationError>;
 //# sourceMappingURL=executioncreate.d.ts.map

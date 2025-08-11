@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AchDepositSchedulesCancelAchDepositScheduleRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace AchDepositSchedulesCancelAchDepositScheduleRequest$ {
     /** @deprecated use `AchDepositSchedulesCancelAchDepositScheduleRequest$Outbound` instead. */
     type Outbound = AchDepositSchedulesCancelAchDepositScheduleRequest$Outbound;
 }
+export declare function achDepositSchedulesCancelAchDepositScheduleRequestToJSON(achDepositSchedulesCancelAchDepositScheduleRequest: AchDepositSchedulesCancelAchDepositScheduleRequest): string;
+export declare function achDepositSchedulesCancelAchDepositScheduleRequestFromJSON(jsonString: string): SafeParseResult<AchDepositSchedulesCancelAchDepositScheduleRequest, SDKValidationError>;
 /** @internal */
 export declare const AchDepositSchedulesCancelAchDepositScheduleResponse$inboundSchema: z.ZodType<AchDepositSchedulesCancelAchDepositScheduleResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace AchDepositSchedulesCancelAchDepositScheduleResponse$ {
     /** @deprecated use `AchDepositSchedulesCancelAchDepositScheduleResponse$Outbound` instead. */
     type Outbound = AchDepositSchedulesCancelAchDepositScheduleResponse$Outbound;
 }
+export declare function achDepositSchedulesCancelAchDepositScheduleResponseToJSON(achDepositSchedulesCancelAchDepositScheduleResponse: AchDepositSchedulesCancelAchDepositScheduleResponse): string;
+export declare function achDepositSchedulesCancelAchDepositScheduleResponseFromJSON(jsonString: string): SafeParseResult<AchDepositSchedulesCancelAchDepositScheduleResponse, SDKValidationError>;
 //# sourceMappingURL=achdepositschedulescancelachdepositschedule.d.ts.map

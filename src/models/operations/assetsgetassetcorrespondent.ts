@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AssetsGetAssetCorrespondentRequest = {
   /**
@@ -79,6 +82,27 @@ export namespace AssetsGetAssetCorrespondentRequest$ {
   export type Outbound = AssetsGetAssetCorrespondentRequest$Outbound;
 }
 
+export function assetsGetAssetCorrespondentRequestToJSON(
+  assetsGetAssetCorrespondentRequest: AssetsGetAssetCorrespondentRequest,
+): string {
+  return JSON.stringify(
+    AssetsGetAssetCorrespondentRequest$outboundSchema.parse(
+      assetsGetAssetCorrespondentRequest,
+    ),
+  );
+}
+
+export function assetsGetAssetCorrespondentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetsGetAssetCorrespondentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AssetsGetAssetCorrespondentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetsGetAssetCorrespondentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssetsGetAssetCorrespondentResponse$inboundSchema: z.ZodType<
   AssetsGetAssetCorrespondentResponse,
@@ -133,4 +157,25 @@ export namespace AssetsGetAssetCorrespondentResponse$ {
     AssetsGetAssetCorrespondentResponse$outboundSchema;
   /** @deprecated use `AssetsGetAssetCorrespondentResponse$Outbound` instead. */
   export type Outbound = AssetsGetAssetCorrespondentResponse$Outbound;
+}
+
+export function assetsGetAssetCorrespondentResponseToJSON(
+  assetsGetAssetCorrespondentResponse: AssetsGetAssetCorrespondentResponse,
+): string {
+  return JSON.stringify(
+    AssetsGetAssetCorrespondentResponse$outboundSchema.parse(
+      assetsGetAssetCorrespondentResponse,
+    ),
+  );
+}
+
+export function assetsGetAssetCorrespondentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetsGetAssetCorrespondentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AssetsGetAssetCorrespondentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetsGetAssetCorrespondentResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -137,4 +140,22 @@ export namespace CashJournalCreate$ {
   export const outboundSchema = CashJournalCreate$outboundSchema;
   /** @deprecated use `CashJournalCreate$Outbound` instead. */
   export type Outbound = CashJournalCreate$Outbound;
+}
+
+export function cashJournalCreateToJSON(
+  cashJournalCreate: CashJournalCreate,
+): string {
+  return JSON.stringify(
+    CashJournalCreate$outboundSchema.parse(cashJournalCreate),
+  );
+}
+
+export function cashJournalCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CashJournalCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashJournalCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashJournalCreate' from JSON`,
+  );
 }

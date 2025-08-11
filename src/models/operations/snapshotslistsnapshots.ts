@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SnapshotsListSnapshotsRequest = {
   /**
@@ -85,6 +88,26 @@ export namespace SnapshotsListSnapshotsRequest$ {
   export type Outbound = SnapshotsListSnapshotsRequest$Outbound;
 }
 
+export function snapshotsListSnapshotsRequestToJSON(
+  snapshotsListSnapshotsRequest: SnapshotsListSnapshotsRequest,
+): string {
+  return JSON.stringify(
+    SnapshotsListSnapshotsRequest$outboundSchema.parse(
+      snapshotsListSnapshotsRequest,
+    ),
+  );
+}
+
+export function snapshotsListSnapshotsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SnapshotsListSnapshotsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SnapshotsListSnapshotsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SnapshotsListSnapshotsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const SnapshotsListSnapshotsResponse$inboundSchema: z.ZodType<
   SnapshotsListSnapshotsResponse,
@@ -139,4 +162,24 @@ export namespace SnapshotsListSnapshotsResponse$ {
   export const outboundSchema = SnapshotsListSnapshotsResponse$outboundSchema;
   /** @deprecated use `SnapshotsListSnapshotsResponse$Outbound` instead. */
   export type Outbound = SnapshotsListSnapshotsResponse$Outbound;
+}
+
+export function snapshotsListSnapshotsResponseToJSON(
+  snapshotsListSnapshotsResponse: SnapshotsListSnapshotsResponse,
+): string {
+  return JSON.stringify(
+    SnapshotsListSnapshotsResponse$outboundSchema.parse(
+      snapshotsListSnapshotsResponse,
+    ),
+  );
+}
+
+export function snapshotsListSnapshotsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<SnapshotsListSnapshotsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SnapshotsListSnapshotsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SnapshotsListSnapshotsResponse' from JSON`,
+  );
 }

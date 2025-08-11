@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankAccountUpdate$ = exports.BankAccountUpdate$outboundSchema = exports.BankAccountUpdate$inboundSchema = exports.BankAccountUpdateType$ = exports.BankAccountUpdateType$outboundSchema = exports.BankAccountUpdateType$inboundSchema = exports.BankAccountUpdateType = void 0;
+exports.bankAccountUpdateToJSON = bankAccountUpdateToJSON;
+exports.bankAccountUpdateFromJSON = bankAccountUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The bank account type.
@@ -106,4 +109,10 @@ var BankAccountUpdate$;
     /** @deprecated use `BankAccountUpdate$outboundSchema` instead. */
     BankAccountUpdate$.outboundSchema = exports.BankAccountUpdate$outboundSchema;
 })(BankAccountUpdate$ || (exports.BankAccountUpdate$ = BankAccountUpdate$ = {}));
+function bankAccountUpdateToJSON(bankAccountUpdate) {
+    return JSON.stringify(exports.BankAccountUpdate$outboundSchema.parse(bankAccountUpdate));
+}
+function bankAccountUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankAccountUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankAccountUpdate' from JSON`);
+}
 //# sourceMappingURL=bankaccountupdate.js.map

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetsListAssets1Response$ = exports.AssetsListAssets1Response$outboundSchema = exports.AssetsListAssets1Response$inboundSchema = exports.AssetsListAssets1Request$ = exports.AssetsListAssets1Request$outboundSchema = exports.AssetsListAssets1Request$inboundSchema = void 0;
+exports.assetsListAssets1RequestToJSON = assetsListAssets1RequestToJSON;
+exports.assetsListAssets1RequestFromJSON = assetsListAssets1RequestFromJSON;
+exports.assetsListAssets1ResponseToJSON = assetsListAssets1ResponseToJSON;
+exports.assetsListAssets1ResponseFromJSON = assetsListAssets1ResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AssetsListAssets1Request$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AssetsListAssets1Request$;
     /** @deprecated use `AssetsListAssets1Request$outboundSchema` instead. */
     AssetsListAssets1Request$.outboundSchema = exports.AssetsListAssets1Request$outboundSchema;
 })(AssetsListAssets1Request$ || (exports.AssetsListAssets1Request$ = AssetsListAssets1Request$ = {}));
+function assetsListAssets1RequestToJSON(assetsListAssets1Request) {
+    return JSON.stringify(exports.AssetsListAssets1Request$outboundSchema.parse(assetsListAssets1Request));
+}
+function assetsListAssets1RequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssetsListAssets1Request$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssetsListAssets1Request' from JSON`);
+}
 /** @internal */
 exports.AssetsListAssets1Response$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var AssetsListAssets1Response$;
     /** @deprecated use `AssetsListAssets1Response$outboundSchema` instead. */
     AssetsListAssets1Response$.outboundSchema = exports.AssetsListAssets1Response$outboundSchema;
 })(AssetsListAssets1Response$ || (exports.AssetsListAssets1Response$ = AssetsListAssets1Response$ = {}));
+function assetsListAssets1ResponseToJSON(assetsListAssets1Response) {
+    return JSON.stringify(exports.AssetsListAssets1Response$outboundSchema.parse(assetsListAssets1Response));
+}
+function assetsListAssets1ResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssetsListAssets1Response$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssetsListAssets1Response' from JSON`);
+}
 //# sourceMappingURL=assetslistassets1.js.map

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddressDetail$ = exports.AddressDetail$outboundSchema = exports.AddressDetail$inboundSchema = void 0;
+exports.addressDetailToJSON = addressDetailToJSON;
+exports.addressDetailFromJSON = addressDetailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AddressDetail$inboundSchema = z.object({
     address_city: z.string().optional(),
@@ -82,4 +85,10 @@ var AddressDetail$;
     /** @deprecated use `AddressDetail$outboundSchema` instead. */
     AddressDetail$.outboundSchema = exports.AddressDetail$outboundSchema;
 })(AddressDetail$ || (exports.AddressDetail$ = AddressDetail$ = {}));
+function addressDetailToJSON(addressDetail) {
+    return JSON.stringify(exports.AddressDetail$outboundSchema.parse(addressDetail));
+}
+function addressDetailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AddressDetail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AddressDetail' from JSON`);
+}
 //# sourceMappingURL=addressdetail.js.map

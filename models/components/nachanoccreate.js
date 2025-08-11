@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NachaNocCreate$ = exports.NachaNocCreate$outboundSchema = exports.NachaNocCreate$inboundSchema = exports.UpdatedBankAccountType$ = exports.UpdatedBankAccountType$outboundSchema = exports.UpdatedBankAccountType$inboundSchema = exports.Code$ = exports.Code$outboundSchema = exports.Code$inboundSchema = exports.UpdatedBankAccountType = exports.Code = void 0;
+exports.nachaNocCreateToJSON = nachaNocCreateToJSON;
+exports.nachaNocCreateFromJSON = nachaNocCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The notice of change reason code.
@@ -157,4 +160,10 @@ var NachaNocCreate$;
     /** @deprecated use `NachaNocCreate$outboundSchema` instead. */
     NachaNocCreate$.outboundSchema = exports.NachaNocCreate$outboundSchema;
 })(NachaNocCreate$ || (exports.NachaNocCreate$ = NachaNocCreate$ = {}));
+function nachaNocCreateToJSON(nachaNocCreate) {
+    return JSON.stringify(exports.NachaNocCreate$outboundSchema.parse(nachaNocCreate));
+}
+function nachaNocCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NachaNocCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NachaNocCreate' from JSON`);
+}
 //# sourceMappingURL=nachanoccreate.js.map

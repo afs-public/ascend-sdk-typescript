@@ -37,8 +37,19 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TradingExecutions$ = exports.TradingExecutions$outboundSchema = exports.TradingExecutions$inboundSchema = exports.Quantity$ = exports.Quantity$outboundSchema = exports.Quantity$inboundSchema = exports.PrevailingMarketPrice$ = exports.PrevailingMarketPrice$outboundSchema = exports.PrevailingMarketPrice$inboundSchema = exports.GrossCreditAmount$ = exports.GrossCreditAmount$outboundSchema = exports.GrossCreditAmount$inboundSchema = exports.AccruedInterestAmount$ = exports.AccruedInterestAmount$outboundSchema = exports.AccruedInterestAmount$inboundSchema = void 0;
+exports.accruedInterestAmountToJSON = accruedInterestAmountToJSON;
+exports.accruedInterestAmountFromJSON = accruedInterestAmountFromJSON;
+exports.grossCreditAmountToJSON = grossCreditAmountToJSON;
+exports.grossCreditAmountFromJSON = grossCreditAmountFromJSON;
+exports.prevailingMarketPriceToJSON = prevailingMarketPriceToJSON;
+exports.prevailingMarketPriceFromJSON = prevailingMarketPriceFromJSON;
+exports.quantityToJSON = quantityToJSON;
+exports.quantityFromJSON = quantityFromJSON;
+exports.tradingExecutionsToJSON = tradingExecutionsToJSON;
+exports.tradingExecutionsFromJSON = tradingExecutionsFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const tradingexecutedprice_js_1 = require("./tradingexecutedprice.js");
 /** @internal */
 exports.AccruedInterestAmount$inboundSchema = z.object({
@@ -59,6 +70,12 @@ var AccruedInterestAmount$;
     /** @deprecated use `AccruedInterestAmount$outboundSchema` instead. */
     AccruedInterestAmount$.outboundSchema = exports.AccruedInterestAmount$outboundSchema;
 })(AccruedInterestAmount$ || (exports.AccruedInterestAmount$ = AccruedInterestAmount$ = {}));
+function accruedInterestAmountToJSON(accruedInterestAmount) {
+    return JSON.stringify(exports.AccruedInterestAmount$outboundSchema.parse(accruedInterestAmount));
+}
+function accruedInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccruedInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccruedInterestAmount' from JSON`);
+}
 /** @internal */
 exports.GrossCreditAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -78,6 +95,12 @@ var GrossCreditAmount$;
     /** @deprecated use `GrossCreditAmount$outboundSchema` instead. */
     GrossCreditAmount$.outboundSchema = exports.GrossCreditAmount$outboundSchema;
 })(GrossCreditAmount$ || (exports.GrossCreditAmount$ = GrossCreditAmount$ = {}));
+function grossCreditAmountToJSON(grossCreditAmount) {
+    return JSON.stringify(exports.GrossCreditAmount$outboundSchema.parse(grossCreditAmount));
+}
+function grossCreditAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.GrossCreditAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'GrossCreditAmount' from JSON`);
+}
 /** @internal */
 exports.PrevailingMarketPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -97,6 +120,12 @@ var PrevailingMarketPrice$;
     /** @deprecated use `PrevailingMarketPrice$outboundSchema` instead. */
     PrevailingMarketPrice$.outboundSchema = exports.PrevailingMarketPrice$outboundSchema;
 })(PrevailingMarketPrice$ || (exports.PrevailingMarketPrice$ = PrevailingMarketPrice$ = {}));
+function prevailingMarketPriceToJSON(prevailingMarketPrice) {
+    return JSON.stringify(exports.PrevailingMarketPrice$outboundSchema.parse(prevailingMarketPrice));
+}
+function prevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.Quantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -116,6 +145,12 @@ var Quantity$;
     /** @deprecated use `Quantity$outboundSchema` instead. */
     Quantity$.outboundSchema = exports.Quantity$outboundSchema;
 })(Quantity$ || (exports.Quantity$ = Quantity$ = {}));
+function quantityToJSON(quantity) {
+    return JSON.stringify(exports.Quantity$outboundSchema.parse(quantity));
+}
+function quantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Quantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Quantity' from JSON`);
+}
 /** @internal */
 exports.TradingExecutions$inboundSchema = z.object({
     accrued_interest_amount: z.nullable(z.lazy(() => exports.AccruedInterestAmount$inboundSchema)).optional(),
@@ -163,4 +198,10 @@ var TradingExecutions$;
     /** @deprecated use `TradingExecutions$outboundSchema` instead. */
     TradingExecutions$.outboundSchema = exports.TradingExecutions$outboundSchema;
 })(TradingExecutions$ || (exports.TradingExecutions$ = TradingExecutions$ = {}));
+function tradingExecutionsToJSON(tradingExecutions) {
+    return JSON.stringify(exports.TradingExecutions$outboundSchema.parse(tradingExecutions));
+}
+function tradingExecutionsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradingExecutions$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradingExecutions' from JSON`);
+}
 //# sourceMappingURL=tradingexecutions.js.map

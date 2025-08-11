@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ForeignBondTradingDetailsCreate,
   ForeignBondTradingDetailsCreate$inboundSchema,
@@ -196,4 +199,22 @@ export namespace PlannedActivityCreate$ {
   export const outboundSchema = PlannedActivityCreate$outboundSchema;
   /** @deprecated use `PlannedActivityCreate$Outbound` instead. */
   export type Outbound = PlannedActivityCreate$Outbound;
+}
+
+export function plannedActivityCreateToJSON(
+  plannedActivityCreate: PlannedActivityCreate,
+): string {
+  return JSON.stringify(
+    PlannedActivityCreate$outboundSchema.parse(plannedActivityCreate),
+  );
+}
+
+export function plannedActivityCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<PlannedActivityCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PlannedActivityCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PlannedActivityCreate' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ExternalAccountCreate, ExternalAccountCreate$Outbound } from "./externalaccountcreate.js";
 /**
  * The delivering/receiving party information
@@ -34,4 +36,6 @@ export declare namespace TransferAccountCreate$ {
     /** @deprecated use `TransferAccountCreate$Outbound` instead. */
     type Outbound = TransferAccountCreate$Outbound;
 }
+export declare function transferAccountCreateToJSON(transferAccountCreate: TransferAccountCreate): string;
+export declare function transferAccountCreateFromJSON(jsonString: string): SafeParseResult<TransferAccountCreate, SDKValidationError>;
 //# sourceMappingURL=transferaccountcreate.d.ts.map

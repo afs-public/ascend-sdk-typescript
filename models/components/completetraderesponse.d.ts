@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
 import { Execution, Execution$Outbound } from "./execution.js";
@@ -406,6 +408,8 @@ export declare namespace CompleteTradeResponseLocalMarketTradeDate$ {
     /** @deprecated use `CompleteTradeResponseLocalMarketTradeDate$Outbound` instead. */
     type Outbound = CompleteTradeResponseLocalMarketTradeDate$Outbound;
 }
+export declare function completeTradeResponseLocalMarketTradeDateToJSON(completeTradeResponseLocalMarketTradeDate: CompleteTradeResponseLocalMarketTradeDate): string;
+export declare function completeTradeResponseLocalMarketTradeDateFromJSON(jsonString: string): SafeParseResult<CompleteTradeResponseLocalMarketTradeDate, SDKValidationError>;
 /** @internal */
 export declare const CompleteTradeResponseRouteType$inboundSchema: z.ZodType<CompleteTradeResponseRouteTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -442,6 +446,8 @@ export declare namespace CompleteTradeResponseSettlementDate$ {
     /** @deprecated use `CompleteTradeResponseSettlementDate$Outbound` instead. */
     type Outbound = CompleteTradeResponseSettlementDate$Outbound;
 }
+export declare function completeTradeResponseSettlementDateToJSON(completeTradeResponseSettlementDate: CompleteTradeResponseSettlementDate): string;
+export declare function completeTradeResponseSettlementDateFromJSON(jsonString: string): SafeParseResult<CompleteTradeResponseSettlementDate, SDKValidationError>;
 /** @internal */
 export declare const CompleteTradeResponseSide$inboundSchema: z.ZodType<CompleteTradeResponseSideOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -559,6 +565,8 @@ export declare namespace Trade$ {
     /** @deprecated use `Trade$Outbound` instead. */
     type Outbound = Trade$Outbound;
 }
+export declare function tradeToJSON(trade: Trade): string;
+export declare function tradeFromJSON(jsonString: string): SafeParseResult<Trade, SDKValidationError>;
 /** @internal */
 export declare const CompleteTradeResponse$inboundSchema: z.ZodType<CompleteTradeResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -579,4 +587,6 @@ export declare namespace CompleteTradeResponse$ {
     /** @deprecated use `CompleteTradeResponse$Outbound` instead. */
     type Outbound = CompleteTradeResponse$Outbound;
 }
+export declare function completeTradeResponseToJSON(completeTradeResponse: CompleteTradeResponse): string;
+export declare function completeTradeResponseFromJSON(jsonString: string): SafeParseResult<CompleteTradeResponse, SDKValidationError>;
 //# sourceMappingURL=completetraderesponse.d.ts.map

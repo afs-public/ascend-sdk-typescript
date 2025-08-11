@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AchWithdrawalSchedulesListAchWithdrawalSchedulesRequest = {
     /**
      * The account id.
@@ -57,6 +59,8 @@ export declare namespace AchWithdrawalSchedulesListAchWithdrawalSchedulesRequest
     /** @deprecated use `AchWithdrawalSchedulesListAchWithdrawalSchedulesRequest$Outbound` instead. */
     type Outbound = AchWithdrawalSchedulesListAchWithdrawalSchedulesRequest$Outbound;
 }
+export declare function achWithdrawalSchedulesListAchWithdrawalSchedulesRequestToJSON(achWithdrawalSchedulesListAchWithdrawalSchedulesRequest: AchWithdrawalSchedulesListAchWithdrawalSchedulesRequest): string;
+export declare function achWithdrawalSchedulesListAchWithdrawalSchedulesRequestFromJSON(jsonString: string): SafeParseResult<AchWithdrawalSchedulesListAchWithdrawalSchedulesRequest, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse$inboundSchema: z.ZodType<AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -79,4 +83,6 @@ export declare namespace AchWithdrawalSchedulesListAchWithdrawalSchedulesRespons
     /** @deprecated use `AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse$Outbound` instead. */
     type Outbound = AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse$Outbound;
 }
+export declare function achWithdrawalSchedulesListAchWithdrawalSchedulesResponseToJSON(achWithdrawalSchedulesListAchWithdrawalSchedulesResponse: AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse): string;
+export declare function achWithdrawalSchedulesListAchWithdrawalSchedulesResponseFromJSON(jsonString: string): SafeParseResult<AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse, SDKValidationError>;
 //# sourceMappingURL=achwithdrawalscheduleslistachwithdrawalschedules.d.ts.map

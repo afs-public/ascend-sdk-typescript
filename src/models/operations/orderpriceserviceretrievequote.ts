@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OrderPriceServiceRetrieveQuoteRequest = {
   /**
@@ -79,6 +82,27 @@ export namespace OrderPriceServiceRetrieveQuoteRequest$ {
   export type Outbound = OrderPriceServiceRetrieveQuoteRequest$Outbound;
 }
 
+export function orderPriceServiceRetrieveQuoteRequestToJSON(
+  orderPriceServiceRetrieveQuoteRequest: OrderPriceServiceRetrieveQuoteRequest,
+): string {
+  return JSON.stringify(
+    OrderPriceServiceRetrieveQuoteRequest$outboundSchema.parse(
+      orderPriceServiceRetrieveQuoteRequest,
+    ),
+  );
+}
+
+export function orderPriceServiceRetrieveQuoteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderPriceServiceRetrieveQuoteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrderPriceServiceRetrieveQuoteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderPriceServiceRetrieveQuoteRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const OrderPriceServiceRetrieveQuoteResponse$inboundSchema: z.ZodType<
   OrderPriceServiceRetrieveQuoteResponse,
@@ -135,4 +159,26 @@ export namespace OrderPriceServiceRetrieveQuoteResponse$ {
     OrderPriceServiceRetrieveQuoteResponse$outboundSchema;
   /** @deprecated use `OrderPriceServiceRetrieveQuoteResponse$Outbound` instead. */
   export type Outbound = OrderPriceServiceRetrieveQuoteResponse$Outbound;
+}
+
+export function orderPriceServiceRetrieveQuoteResponseToJSON(
+  orderPriceServiceRetrieveQuoteResponse:
+    OrderPriceServiceRetrieveQuoteResponse,
+): string {
+  return JSON.stringify(
+    OrderPriceServiceRetrieveQuoteResponse$outboundSchema.parse(
+      orderPriceServiceRetrieveQuoteResponse,
+    ),
+  );
+}
+
+export function orderPriceServiceRetrieveQuoteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderPriceServiceRetrieveQuoteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrderPriceServiceRetrieveQuoteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderPriceServiceRetrieveQuoteResponse' from JSON`,
+  );
 }

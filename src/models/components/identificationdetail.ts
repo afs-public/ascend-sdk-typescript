@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Identification details used for Dow Jones Profile details
@@ -75,4 +78,22 @@ export namespace IdentificationDetail$ {
   export const outboundSchema = IdentificationDetail$outboundSchema;
   /** @deprecated use `IdentificationDetail$Outbound` instead. */
   export type Outbound = IdentificationDetail$Outbound;
+}
+
+export function identificationDetailToJSON(
+  identificationDetail: IdentificationDetail,
+): string {
+  return JSON.stringify(
+    IdentificationDetail$outboundSchema.parse(identificationDetail),
+  );
+}
+
+export function identificationDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<IdentificationDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IdentificationDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IdentificationDetail' from JSON`,
+  );
 }

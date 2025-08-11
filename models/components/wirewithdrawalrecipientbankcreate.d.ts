@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { RecipientBankBankDetailsCreate, RecipientBankBankDetailsCreate$Outbound } from "./recipientbankbankdetailscreate.js";
 import { RecipientBankBankIdCreate, RecipientBankBankIdCreate$Outbound } from "./recipientbankbankidcreate.js";
 /**
@@ -35,4 +37,6 @@ export declare namespace WireWithdrawalRecipientBankCreate$ {
     /** @deprecated use `WireWithdrawalRecipientBankCreate$Outbound` instead. */
     type Outbound = WireWithdrawalRecipientBankCreate$Outbound;
 }
+export declare function wireWithdrawalRecipientBankCreateToJSON(wireWithdrawalRecipientBankCreate: WireWithdrawalRecipientBankCreate): string;
+export declare function wireWithdrawalRecipientBankCreateFromJSON(jsonString: string): SafeParseResult<WireWithdrawalRecipientBankCreate, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalrecipientbankcreate.d.ts.map

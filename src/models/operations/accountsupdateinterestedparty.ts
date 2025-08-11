@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsUpdateInterestedPartyRequest = {
   /**
@@ -95,6 +98,27 @@ export namespace AccountsUpdateInterestedPartyRequest$ {
   export type Outbound = AccountsUpdateInterestedPartyRequest$Outbound;
 }
 
+export function accountsUpdateInterestedPartyRequestToJSON(
+  accountsUpdateInterestedPartyRequest: AccountsUpdateInterestedPartyRequest,
+): string {
+  return JSON.stringify(
+    AccountsUpdateInterestedPartyRequest$outboundSchema.parse(
+      accountsUpdateInterestedPartyRequest,
+    ),
+  );
+}
+
+export function accountsUpdateInterestedPartyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateInterestedPartyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsUpdateInterestedPartyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateInterestedPartyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsUpdateInterestedPartyResponse$inboundSchema: z.ZodType<
   AccountsUpdateInterestedPartyResponse,
@@ -149,4 +173,25 @@ export namespace AccountsUpdateInterestedPartyResponse$ {
     AccountsUpdateInterestedPartyResponse$outboundSchema;
   /** @deprecated use `AccountsUpdateInterestedPartyResponse$Outbound` instead. */
   export type Outbound = AccountsUpdateInterestedPartyResponse$Outbound;
+}
+
+export function accountsUpdateInterestedPartyResponseToJSON(
+  accountsUpdateInterestedPartyResponse: AccountsUpdateInterestedPartyResponse,
+): string {
+  return JSON.stringify(
+    AccountsUpdateInterestedPartyResponse$outboundSchema.parse(
+      accountsUpdateInterestedPartyResponse,
+    ),
+  );
+}
+
+export function accountsUpdateInterestedPartyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateInterestedPartyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsUpdateInterestedPartyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateInterestedPartyResponse' from JSON`,
+  );
 }

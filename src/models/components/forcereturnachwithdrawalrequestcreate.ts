@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NachaReturnCreate,
   NachaReturnCreate$inboundSchema,
@@ -72,4 +75,25 @@ export namespace ForceReturnAchWithdrawalRequestCreate$ {
     ForceReturnAchWithdrawalRequestCreate$outboundSchema;
   /** @deprecated use `ForceReturnAchWithdrawalRequestCreate$Outbound` instead. */
   export type Outbound = ForceReturnAchWithdrawalRequestCreate$Outbound;
+}
+
+export function forceReturnAchWithdrawalRequestCreateToJSON(
+  forceReturnAchWithdrawalRequestCreate: ForceReturnAchWithdrawalRequestCreate,
+): string {
+  return JSON.stringify(
+    ForceReturnAchWithdrawalRequestCreate$outboundSchema.parse(
+      forceReturnAchWithdrawalRequestCreate,
+    ),
+  );
+}
+
+export function forceReturnAchWithdrawalRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ForceReturnAchWithdrawalRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForceReturnAchWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForceReturnAchWithdrawalRequestCreate' from JSON`,
+  );
 }

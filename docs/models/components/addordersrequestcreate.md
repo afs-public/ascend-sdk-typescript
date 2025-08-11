@@ -5,28 +5,10 @@ The message to add a list of basket orders to a basket
 ## Example Usage
 
 ```typescript
-import {
-  AddOrdersRequestCreate,
-  BasketOrderCreateAssetType,
-  BasketOrderCreateIdentifierType,
-  BasketOrderCreateOrderType,
-  BasketOrderCreateSide,
-  BasketOrderCreateTimeInForce,
-} from "@apexfintechsolutions/ascend-sdk/models/components";
+import { AddOrdersRequestCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: AddOrdersRequestCreate = {
-  basketOrders: [
-    {
-      accountId: "01HBRQ5BW6ZAY4BNWP4GWRD80X",
-      assetType: BasketOrderCreateAssetType.Equity,
-      clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
-      identifier: "SBUX",
-      identifierType: BasketOrderCreateIdentifierType.Symbol,
-      orderType: BasketOrderCreateOrderType.Market,
-      side: BasketOrderCreateSide.Buy,
-      timeInForce: BasketOrderCreateTimeInForce.Day,
-    },
-  ],
+  basketOrders: [],
   name:
     "correspondents/01HPMZZM6RKMVZA1JQ63RQKJRP/baskets/fffd326-72fa-4d2b-bd1f-45384fe5d521",
 };

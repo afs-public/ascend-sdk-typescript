@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateCreate,
   DateCreate$inboundSchema,
@@ -248,4 +251,26 @@ export namespace IRABeneficiaryEnrollmentMetadataCreate$ {
     IRABeneficiaryEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `IRABeneficiaryEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = IRABeneficiaryEnrollmentMetadataCreate$Outbound;
+}
+
+export function iraBeneficiaryEnrollmentMetadataCreateToJSON(
+  iraBeneficiaryEnrollmentMetadataCreate:
+    IRABeneficiaryEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    IRABeneficiaryEnrollmentMetadataCreate$outboundSchema.parse(
+      iraBeneficiaryEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function iraBeneficiaryEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<IRABeneficiaryEnrollmentMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IRABeneficiaryEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IRABeneficiaryEnrollmentMetadataCreate' from JSON`,
+  );
 }

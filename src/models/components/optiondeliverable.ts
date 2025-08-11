@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The percentage used to determine the proportion of the deliverable asset(s) or cash assigned to each option contract in a settlement or corporate action scenario.
@@ -157,6 +160,24 @@ export namespace AllocationPercentage$ {
   export type Outbound = AllocationPercentage$Outbound;
 }
 
+export function allocationPercentageToJSON(
+  allocationPercentage: AllocationPercentage,
+): string {
+  return JSON.stringify(
+    AllocationPercentage$outboundSchema.parse(allocationPercentage),
+  );
+}
+
+export function allocationPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<AllocationPercentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AllocationPercentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AllocationPercentage' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashAmount$inboundSchema: z.ZodType<
   CashAmount,
@@ -191,6 +212,20 @@ export namespace CashAmount$ {
   export const outboundSchema = CashAmount$outboundSchema;
   /** @deprecated use `CashAmount$Outbound` instead. */
   export type Outbound = CashAmount$Outbound;
+}
+
+export function cashAmountToJSON(cashAmount: CashAmount): string {
+  return JSON.stringify(CashAmount$outboundSchema.parse(cashAmount));
+}
+
+export function cashAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<CashAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CashAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CashAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -259,6 +294,24 @@ export namespace OptionDeliverableQuantity$ {
   export const outboundSchema = OptionDeliverableQuantity$outboundSchema;
   /** @deprecated use `OptionDeliverableQuantity$Outbound` instead. */
   export type Outbound = OptionDeliverableQuantity$Outbound;
+}
+
+export function optionDeliverableQuantityToJSON(
+  optionDeliverableQuantity: OptionDeliverableQuantity,
+): string {
+  return JSON.stringify(
+    OptionDeliverableQuantity$outboundSchema.parse(optionDeliverableQuantity),
+  );
+}
+
+export function optionDeliverableQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<OptionDeliverableQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OptionDeliverableQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionDeliverableQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -409,4 +462,22 @@ export namespace OptionDeliverable$ {
   export const outboundSchema = OptionDeliverable$outboundSchema;
   /** @deprecated use `OptionDeliverable$Outbound` instead. */
   export type Outbound = OptionDeliverable$Outbound;
+}
+
+export function optionDeliverableToJSON(
+  optionDeliverable: OptionDeliverable,
+): string {
+  return JSON.stringify(
+    OptionDeliverable$outboundSchema.parse(optionDeliverable),
+  );
+}
+
+export function optionDeliverableFromJSON(
+  jsonString: string,
+): SafeParseResult<OptionDeliverable, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OptionDeliverable$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionDeliverable' from JSON`,
+  );
 }

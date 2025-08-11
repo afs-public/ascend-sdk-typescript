@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsEnrollAccountResponse$ = exports.AccountsEnrollAccountResponse$outboundSchema = exports.AccountsEnrollAccountResponse$inboundSchema = exports.AccountsEnrollAccountRequest$ = exports.AccountsEnrollAccountRequest$outboundSchema = exports.AccountsEnrollAccountRequest$inboundSchema = void 0;
+exports.accountsEnrollAccountRequestToJSON = accountsEnrollAccountRequestToJSON;
+exports.accountsEnrollAccountRequestFromJSON = accountsEnrollAccountRequestFromJSON;
+exports.accountsEnrollAccountResponseToJSON = accountsEnrollAccountResponseToJSON;
+exports.accountsEnrollAccountResponseFromJSON = accountsEnrollAccountResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsEnrollAccountRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsEnrollAccountRequest$;
     /** @deprecated use `AccountsEnrollAccountRequest$outboundSchema` instead. */
     AccountsEnrollAccountRequest$.outboundSchema = exports.AccountsEnrollAccountRequest$outboundSchema;
 })(AccountsEnrollAccountRequest$ || (exports.AccountsEnrollAccountRequest$ = AccountsEnrollAccountRequest$ = {}));
+function accountsEnrollAccountRequestToJSON(accountsEnrollAccountRequest) {
+    return JSON.stringify(exports.AccountsEnrollAccountRequest$outboundSchema.parse(accountsEnrollAccountRequest));
+}
+function accountsEnrollAccountRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEnrollAccountRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEnrollAccountRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsEnrollAccountResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +119,10 @@ var AccountsEnrollAccountResponse$;
     /** @deprecated use `AccountsEnrollAccountResponse$outboundSchema` instead. */
     AccountsEnrollAccountResponse$.outboundSchema = exports.AccountsEnrollAccountResponse$outboundSchema;
 })(AccountsEnrollAccountResponse$ || (exports.AccountsEnrollAccountResponse$ = AccountsEnrollAccountResponse$ = {}));
+function accountsEnrollAccountResponseToJSON(accountsEnrollAccountResponse) {
+    return JSON.stringify(exports.AccountsEnrollAccountResponse$outboundSchema.parse(accountsEnrollAccountResponse));
+}
+function accountsEnrollAccountResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEnrollAccountResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEnrollAccountResponse' from JSON`);
+}
 //# sourceMappingURL=accountsenrollaccount.js.map

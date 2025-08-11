@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * Rights of Accumulation (ROA). An ROA allows an investor to aggregate their own fund shares with the holdings of certain related parties toward achieving the investment thresholds at which sales charge discounts become available.
@@ -35,4 +37,6 @@ export declare namespace RightsOfAccumulationCreate$ {
     /** @deprecated use `RightsOfAccumulationCreate$Outbound` instead. */
     type Outbound = RightsOfAccumulationCreate$Outbound;
 }
+export declare function rightsOfAccumulationCreateToJSON(rightsOfAccumulationCreate: RightsOfAccumulationCreate): string;
+export declare function rightsOfAccumulationCreateFromJSON(jsonString: string): SafeParseResult<RightsOfAccumulationCreate, SDKValidationError>;
 //# sourceMappingURL=rightsofaccumulationcreate.d.ts.map

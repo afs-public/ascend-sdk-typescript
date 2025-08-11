@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsListLegalNaturalPersonsResponse$ = exports.AccountsListLegalNaturalPersonsResponse$outboundSchema = exports.AccountsListLegalNaturalPersonsResponse$inboundSchema = exports.AccountsListLegalNaturalPersonsRequest$ = exports.AccountsListLegalNaturalPersonsRequest$outboundSchema = exports.AccountsListLegalNaturalPersonsRequest$inboundSchema = void 0;
+exports.accountsListLegalNaturalPersonsRequestToJSON = accountsListLegalNaturalPersonsRequestToJSON;
+exports.accountsListLegalNaturalPersonsRequestFromJSON = accountsListLegalNaturalPersonsRequestFromJSON;
+exports.accountsListLegalNaturalPersonsResponseToJSON = accountsListLegalNaturalPersonsResponseToJSON;
+exports.accountsListLegalNaturalPersonsResponseFromJSON = accountsListLegalNaturalPersonsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsListLegalNaturalPersonsRequest$inboundSchema = z.object({
@@ -77,6 +82,12 @@ var AccountsListLegalNaturalPersonsRequest$;
     /** @deprecated use `AccountsListLegalNaturalPersonsRequest$outboundSchema` instead. */
     AccountsListLegalNaturalPersonsRequest$.outboundSchema = exports.AccountsListLegalNaturalPersonsRequest$outboundSchema;
 })(AccountsListLegalNaturalPersonsRequest$ || (exports.AccountsListLegalNaturalPersonsRequest$ = AccountsListLegalNaturalPersonsRequest$ = {}));
+function accountsListLegalNaturalPersonsRequestToJSON(accountsListLegalNaturalPersonsRequest) {
+    return JSON.stringify(exports.AccountsListLegalNaturalPersonsRequest$outboundSchema.parse(accountsListLegalNaturalPersonsRequest));
+}
+function accountsListLegalNaturalPersonsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListLegalNaturalPersonsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListLegalNaturalPersonsRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsListLegalNaturalPersonsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var AccountsListLegalNaturalPersonsResponse$;
     /** @deprecated use `AccountsListLegalNaturalPersonsResponse$outboundSchema` instead. */
     AccountsListLegalNaturalPersonsResponse$.outboundSchema = exports.AccountsListLegalNaturalPersonsResponse$outboundSchema;
 })(AccountsListLegalNaturalPersonsResponse$ || (exports.AccountsListLegalNaturalPersonsResponse$ = AccountsListLegalNaturalPersonsResponse$ = {}));
+function accountsListLegalNaturalPersonsResponseToJSON(accountsListLegalNaturalPersonsResponse) {
+    return JSON.stringify(exports.AccountsListLegalNaturalPersonsResponse$outboundSchema.parse(accountsListLegalNaturalPersonsResponse));
+}
+function accountsListLegalNaturalPersonsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListLegalNaturalPersonsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListLegalNaturalPersonsResponse' from JSON`);
+}
 //# sourceMappingURL=accountslistlegalnaturalpersons.js.map

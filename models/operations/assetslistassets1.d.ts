@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AssetsListAssets1Request = {
     /**
      * The parent resource name, which is the correspondent ID.
@@ -52,6 +54,8 @@ export declare namespace AssetsListAssets1Request$ {
     /** @deprecated use `AssetsListAssets1Request$Outbound` instead. */
     type Outbound = AssetsListAssets1Request$Outbound;
 }
+export declare function assetsListAssets1RequestToJSON(assetsListAssets1Request: AssetsListAssets1Request): string;
+export declare function assetsListAssets1RequestFromJSON(jsonString: string): SafeParseResult<AssetsListAssets1Request, SDKValidationError>;
 /** @internal */
 export declare const AssetsListAssets1Response$inboundSchema: z.ZodType<AssetsListAssets1Response, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -74,4 +78,6 @@ export declare namespace AssetsListAssets1Response$ {
     /** @deprecated use `AssetsListAssets1Response$Outbound` instead. */
     type Outbound = AssetsListAssets1Response$Outbound;
 }
+export declare function assetsListAssets1ResponseToJSON(assetsListAssets1Response: AssetsListAssets1Response): string;
+export declare function assetsListAssets1ResponseFromJSON(jsonString: string): SafeParseResult<AssetsListAssets1Response, SDKValidationError>;
 //# sourceMappingURL=assetslistassets1.d.ts.map

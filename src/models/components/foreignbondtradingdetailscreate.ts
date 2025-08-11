@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ForeignBondTradingDetailCreate,
   ForeignBondTradingDetailCreate$inboundSchema,
@@ -78,4 +81,24 @@ export namespace ForeignBondTradingDetailsCreate$ {
   export const outboundSchema = ForeignBondTradingDetailsCreate$outboundSchema;
   /** @deprecated use `ForeignBondTradingDetailsCreate$Outbound` instead. */
   export type Outbound = ForeignBondTradingDetailsCreate$Outbound;
+}
+
+export function foreignBondTradingDetailsCreateToJSON(
+  foreignBondTradingDetailsCreate: ForeignBondTradingDetailsCreate,
+): string {
+  return JSON.stringify(
+    ForeignBondTradingDetailsCreate$outboundSchema.parse(
+      foreignBondTradingDetailsCreate,
+    ),
+  );
+}
+
+export function foreignBondTradingDetailsCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ForeignBondTradingDetailsCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ForeignBondTradingDetailsCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForeignBondTradingDetailsCreate' from JSON`,
+  );
 }

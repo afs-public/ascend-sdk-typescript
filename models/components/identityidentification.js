@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentityIdentification$ = exports.IdentityIdentification$outboundSchema = exports.IdentityIdentification$inboundSchema = exports.IdentityIdentificationType$ = exports.IdentityIdentificationType$outboundSchema = exports.IdentityIdentificationType$inboundSchema = exports.IdentityIdentificationType = void 0;
+exports.identityIdentificationToJSON = identityIdentificationToJSON;
+exports.identityIdentificationFromJSON = identityIdentificationFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * **Field Dependencies:**
@@ -116,4 +119,10 @@ var IdentityIdentification$;
     /** @deprecated use `IdentityIdentification$outboundSchema` instead. */
     IdentityIdentification$.outboundSchema = exports.IdentityIdentification$outboundSchema;
 })(IdentityIdentification$ || (exports.IdentityIdentification$ = IdentityIdentification$ = {}));
+function identityIdentificationToJSON(identityIdentification) {
+    return JSON.stringify(exports.IdentityIdentification$outboundSchema.parse(identityIdentification));
+}
+function identityIdentificationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IdentityIdentification$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IdentityIdentification' from JSON`);
+}
 //# sourceMappingURL=identityidentification.js.map

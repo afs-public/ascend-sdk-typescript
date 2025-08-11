@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A cash amount in the format of decimal value
@@ -498,6 +501,24 @@ export namespace WireWithdrawalAmount$ {
   export type Outbound = WireWithdrawalAmount$Outbound;
 }
 
+export function wireWithdrawalAmountToJSON(
+  wireWithdrawalAmount: WireWithdrawalAmount,
+): string {
+  return JSON.stringify(
+    WireWithdrawalAmount$outboundSchema.parse(wireWithdrawalAmount),
+  );
+}
+
+export function wireWithdrawalAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalAddress$inboundSchema: z.ZodType<
   WireWithdrawalAddress,
@@ -552,6 +573,24 @@ export namespace WireWithdrawalAddress$ {
   export const outboundSchema = WireWithdrawalAddress$outboundSchema;
   /** @deprecated use `WireWithdrawalAddress$Outbound` instead. */
   export type Outbound = WireWithdrawalAddress$Outbound;
+}
+
+export function wireWithdrawalAddressToJSON(
+  wireWithdrawalAddress: WireWithdrawalAddress,
+): string {
+  return JSON.stringify(
+    WireWithdrawalAddress$outboundSchema.parse(wireWithdrawalAddress),
+  );
+}
+
+export function wireWithdrawalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalAddress' from JSON`,
+  );
 }
 
 /** @internal */
@@ -611,6 +650,24 @@ export namespace WireWithdrawalBeneficiary$ {
   export type Outbound = WireWithdrawalBeneficiary$Outbound;
 }
 
+export function wireWithdrawalBeneficiaryToJSON(
+  wireWithdrawalBeneficiary: WireWithdrawalBeneficiary,
+): string {
+  return JSON.stringify(
+    WireWithdrawalBeneficiary$outboundSchema.parse(wireWithdrawalBeneficiary),
+  );
+}
+
+export function wireWithdrawalBeneficiaryFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalBeneficiary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalBeneficiary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalBeneficiary' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalIntermediaryAddress$inboundSchema: z.ZodType<
   WireWithdrawalIntermediaryAddress,
@@ -668,6 +725,26 @@ export namespace WireWithdrawalIntermediaryAddress$ {
   export type Outbound = WireWithdrawalIntermediaryAddress$Outbound;
 }
 
+export function wireWithdrawalIntermediaryAddressToJSON(
+  wireWithdrawalIntermediaryAddress: WireWithdrawalIntermediaryAddress,
+): string {
+  return JSON.stringify(
+    WireWithdrawalIntermediaryAddress$outboundSchema.parse(
+      wireWithdrawalIntermediaryAddress,
+    ),
+  );
+}
+
+export function wireWithdrawalIntermediaryAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalIntermediaryAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalIntermediaryAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalIntermediaryAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalIntermediary$inboundSchema: z.ZodType<
   WireWithdrawalIntermediary,
@@ -722,6 +799,24 @@ export namespace WireWithdrawalIntermediary$ {
   export type Outbound = WireWithdrawalIntermediary$Outbound;
 }
 
+export function wireWithdrawalIntermediaryToJSON(
+  wireWithdrawalIntermediary: WireWithdrawalIntermediary,
+): string {
+  return JSON.stringify(
+    WireWithdrawalIntermediary$outboundSchema.parse(wireWithdrawalIntermediary),
+  );
+}
+
+export function wireWithdrawalIntermediaryFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalIntermediary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalIntermediary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalIntermediary' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalIraDistributionAmount$inboundSchema: z.ZodType<
   WireWithdrawalIraDistributionAmount,
@@ -760,6 +855,27 @@ export namespace WireWithdrawalIraDistributionAmount$ {
   export type Outbound = WireWithdrawalIraDistributionAmount$Outbound;
 }
 
+export function wireWithdrawalIraDistributionAmountToJSON(
+  wireWithdrawalIraDistributionAmount: WireWithdrawalIraDistributionAmount,
+): string {
+  return JSON.stringify(
+    WireWithdrawalIraDistributionAmount$outboundSchema.parse(
+      wireWithdrawalIraDistributionAmount,
+    ),
+  );
+}
+
+export function wireWithdrawalIraDistributionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalIraDistributionAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalIraDistributionAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalIraDistributionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalPercentage$inboundSchema: z.ZodType<
   WireWithdrawalPercentage,
@@ -794,6 +910,24 @@ export namespace WireWithdrawalPercentage$ {
   export const outboundSchema = WireWithdrawalPercentage$outboundSchema;
   /** @deprecated use `WireWithdrawalPercentage$Outbound` instead. */
   export type Outbound = WireWithdrawalPercentage$Outbound;
+}
+
+export function wireWithdrawalPercentageToJSON(
+  wireWithdrawalPercentage: WireWithdrawalPercentage,
+): string {
+  return JSON.stringify(
+    WireWithdrawalPercentage$outboundSchema.parse(wireWithdrawalPercentage),
+  );
+}
+
+export function wireWithdrawalPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalPercentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalPercentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -843,6 +977,27 @@ export namespace WireWithdrawalFederalTaxWithholding$ {
   export type Outbound = WireWithdrawalFederalTaxWithholding$Outbound;
 }
 
+export function wireWithdrawalFederalTaxWithholdingToJSON(
+  wireWithdrawalFederalTaxWithholding: WireWithdrawalFederalTaxWithholding,
+): string {
+  return JSON.stringify(
+    WireWithdrawalFederalTaxWithholding$outboundSchema.parse(
+      wireWithdrawalFederalTaxWithholding,
+    ),
+  );
+}
+
+export function wireWithdrawalFederalTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalFederalTaxWithholding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalFederalTaxWithholding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalFederalTaxWithholding' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalIraDistributionStateTaxWithholdingAmount$inboundSchema:
   z.ZodType<
@@ -884,6 +1039,32 @@ export namespace WireWithdrawalIraDistributionStateTaxWithholdingAmount$ {
     WireWithdrawalIraDistributionStateTaxWithholdingAmount$Outbound;
 }
 
+export function wireWithdrawalIraDistributionStateTaxWithholdingAmountToJSON(
+  wireWithdrawalIraDistributionStateTaxWithholdingAmount:
+    WireWithdrawalIraDistributionStateTaxWithholdingAmount,
+): string {
+  return JSON.stringify(
+    WireWithdrawalIraDistributionStateTaxWithholdingAmount$outboundSchema.parse(
+      wireWithdrawalIraDistributionStateTaxWithholdingAmount,
+    ),
+  );
+}
+
+export function wireWithdrawalIraDistributionStateTaxWithholdingAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalIraDistributionStateTaxWithholdingAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalIraDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalIraDistributionStateTaxWithholdingAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalIraDistributionPercentage$inboundSchema: z.ZodType<
   WireWithdrawalIraDistributionPercentage,
@@ -920,6 +1101,33 @@ export namespace WireWithdrawalIraDistributionPercentage$ {
     WireWithdrawalIraDistributionPercentage$outboundSchema;
   /** @deprecated use `WireWithdrawalIraDistributionPercentage$Outbound` instead. */
   export type Outbound = WireWithdrawalIraDistributionPercentage$Outbound;
+}
+
+export function wireWithdrawalIraDistributionPercentageToJSON(
+  wireWithdrawalIraDistributionPercentage:
+    WireWithdrawalIraDistributionPercentage,
+): string {
+  return JSON.stringify(
+    WireWithdrawalIraDistributionPercentage$outboundSchema.parse(
+      wireWithdrawalIraDistributionPercentage,
+    ),
+  );
+}
+
+export function wireWithdrawalIraDistributionPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalIraDistributionPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalIraDistributionPercentage$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WireWithdrawalIraDistributionPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -978,6 +1186,26 @@ export namespace WireWithdrawalStateTaxWithholding$ {
     WireWithdrawalStateTaxWithholding$outboundSchema;
   /** @deprecated use `WireWithdrawalStateTaxWithholding$Outbound` instead. */
   export type Outbound = WireWithdrawalStateTaxWithholding$Outbound;
+}
+
+export function wireWithdrawalStateTaxWithholdingToJSON(
+  wireWithdrawalStateTaxWithholding: WireWithdrawalStateTaxWithholding,
+): string {
+  return JSON.stringify(
+    WireWithdrawalStateTaxWithholding$outboundSchema.parse(
+      wireWithdrawalStateTaxWithholding,
+    ),
+  );
+}
+
+export function wireWithdrawalStateTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalStateTaxWithholding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalStateTaxWithholding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalStateTaxWithholding' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1093,6 +1321,26 @@ export namespace WireWithdrawalIraDistribution$ {
   export type Outbound = WireWithdrawalIraDistribution$Outbound;
 }
 
+export function wireWithdrawalIraDistributionToJSON(
+  wireWithdrawalIraDistribution: WireWithdrawalIraDistribution,
+): string {
+  return JSON.stringify(
+    WireWithdrawalIraDistribution$outboundSchema.parse(
+      wireWithdrawalIraDistribution,
+    ),
+  );
+}
+
+export function wireWithdrawalIraDistributionFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalIraDistribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalIraDistribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalIraDistribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalRecipientBankType$inboundSchema: z.ZodType<
   WireWithdrawalRecipientBankTypeOpen,
@@ -1164,6 +1412,24 @@ export namespace WireWithdrawalBankId$ {
   export type Outbound = WireWithdrawalBankId$Outbound;
 }
 
+export function wireWithdrawalBankIdToJSON(
+  wireWithdrawalBankId: WireWithdrawalBankId,
+): string {
+  return JSON.stringify(
+    WireWithdrawalBankId$outboundSchema.parse(wireWithdrawalBankId),
+  );
+}
+
+export function wireWithdrawalBankIdFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalBankId, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalBankId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalBankId' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalRecipientBankAddress$inboundSchema: z.ZodType<
   WireWithdrawalRecipientBankAddress,
@@ -1219,6 +1485,27 @@ export namespace WireWithdrawalRecipientBankAddress$ {
     WireWithdrawalRecipientBankAddress$outboundSchema;
   /** @deprecated use `WireWithdrawalRecipientBankAddress$Outbound` instead. */
   export type Outbound = WireWithdrawalRecipientBankAddress$Outbound;
+}
+
+export function wireWithdrawalRecipientBankAddressToJSON(
+  wireWithdrawalRecipientBankAddress: WireWithdrawalRecipientBankAddress,
+): string {
+  return JSON.stringify(
+    WireWithdrawalRecipientBankAddress$outboundSchema.parse(
+      wireWithdrawalRecipientBankAddress,
+    ),
+  );
+}
+
+export function wireWithdrawalRecipientBankAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalRecipientBankAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalRecipientBankAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalRecipientBankAddress' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1279,6 +1566,28 @@ export namespace WireWithdrawalInternationalBankDetails$ {
   export type Outbound = WireWithdrawalInternationalBankDetails$Outbound;
 }
 
+export function wireWithdrawalInternationalBankDetailsToJSON(
+  wireWithdrawalInternationalBankDetails:
+    WireWithdrawalInternationalBankDetails,
+): string {
+  return JSON.stringify(
+    WireWithdrawalInternationalBankDetails$outboundSchema.parse(
+      wireWithdrawalInternationalBankDetails,
+    ),
+  );
+}
+
+export function wireWithdrawalInternationalBankDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalInternationalBankDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalInternationalBankDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalInternationalBankDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalRecipientBank$inboundSchema: z.ZodType<
   WireWithdrawalRecipientBank,
@@ -1335,6 +1644,26 @@ export namespace WireWithdrawalRecipientBank$ {
   export const outboundSchema = WireWithdrawalRecipientBank$outboundSchema;
   /** @deprecated use `WireWithdrawalRecipientBank$Outbound` instead. */
   export type Outbound = WireWithdrawalRecipientBank$Outbound;
+}
+
+export function wireWithdrawalRecipientBankToJSON(
+  wireWithdrawalRecipientBank: WireWithdrawalRecipientBank,
+): string {
+  return JSON.stringify(
+    WireWithdrawalRecipientBank$outboundSchema.parse(
+      wireWithdrawalRecipientBank,
+    ),
+  );
+}
+
+export function wireWithdrawalRecipientBankFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalRecipientBank, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalRecipientBank$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalRecipientBank' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1427,6 +1756,24 @@ export namespace WireWithdrawalState$ {
   export type Outbound = WireWithdrawalState$Outbound;
 }
 
+export function wireWithdrawalStateToJSON(
+  wireWithdrawalState: WireWithdrawalState,
+): string {
+  return JSON.stringify(
+    WireWithdrawalState$outboundSchema.parse(wireWithdrawalState),
+  );
+}
+
+export function wireWithdrawalStateFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalState' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawal$inboundSchema: z.ZodType<
   WireWithdrawal,
@@ -1517,4 +1864,18 @@ export namespace WireWithdrawal$ {
   export const outboundSchema = WireWithdrawal$outboundSchema;
   /** @deprecated use `WireWithdrawal$Outbound` instead. */
   export type Outbound = WireWithdrawal$Outbound;
+}
+
+export function wireWithdrawalToJSON(wireWithdrawal: WireWithdrawal): string {
+  return JSON.stringify(WireWithdrawal$outboundSchema.parse(wireWithdrawal));
+}
+
+export function wireWithdrawalFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawal' from JSON`,
+  );
 }

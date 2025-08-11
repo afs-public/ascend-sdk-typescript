@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -73,4 +76,22 @@ export namespace MicroDepositAmountsCreate$ {
   export const outboundSchema = MicroDepositAmountsCreate$outboundSchema;
   /** @deprecated use `MicroDepositAmountsCreate$Outbound` instead. */
   export type Outbound = MicroDepositAmountsCreate$Outbound;
+}
+
+export function microDepositAmountsCreateToJSON(
+  microDepositAmountsCreate: MicroDepositAmountsCreate,
+): string {
+  return JSON.stringify(
+    MicroDepositAmountsCreate$outboundSchema.parse(microDepositAmountsCreate),
+  );
+}
+
+export function microDepositAmountsCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<MicroDepositAmountsCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MicroDepositAmountsCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MicroDepositAmountsCreate' from JSON`,
+  );
 }

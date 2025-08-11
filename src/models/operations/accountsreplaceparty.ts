@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsReplacePartyRequest = {
   /**
@@ -85,6 +88,26 @@ export namespace AccountsReplacePartyRequest$ {
   export type Outbound = AccountsReplacePartyRequest$Outbound;
 }
 
+export function accountsReplacePartyRequestToJSON(
+  accountsReplacePartyRequest: AccountsReplacePartyRequest,
+): string {
+  return JSON.stringify(
+    AccountsReplacePartyRequest$outboundSchema.parse(
+      accountsReplacePartyRequest,
+    ),
+  );
+}
+
+export function accountsReplacePartyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsReplacePartyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsReplacePartyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsReplacePartyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsReplacePartyResponse$inboundSchema: z.ZodType<
   AccountsReplacePartyResponse,
@@ -137,4 +160,24 @@ export namespace AccountsReplacePartyResponse$ {
   export const outboundSchema = AccountsReplacePartyResponse$outboundSchema;
   /** @deprecated use `AccountsReplacePartyResponse$Outbound` instead. */
   export type Outbound = AccountsReplacePartyResponse$Outbound;
+}
+
+export function accountsReplacePartyResponseToJSON(
+  accountsReplacePartyResponse: AccountsReplacePartyResponse,
+): string {
+  return JSON.stringify(
+    AccountsReplacePartyResponse$outboundSchema.parse(
+      accountsReplacePartyResponse,
+    ),
+  );
+}
+
+export function accountsReplacePartyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsReplacePartyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsReplacePartyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsReplacePartyResponse' from JSON`,
+  );
 }

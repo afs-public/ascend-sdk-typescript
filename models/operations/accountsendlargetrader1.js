@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsEndLargeTrader1Response$ = exports.AccountsEndLargeTrader1Response$outboundSchema = exports.AccountsEndLargeTrader1Response$inboundSchema = exports.AccountsEndLargeTrader1Request$ = exports.AccountsEndLargeTrader1Request$outboundSchema = exports.AccountsEndLargeTrader1Request$inboundSchema = void 0;
+exports.accountsEndLargeTrader1RequestToJSON = accountsEndLargeTrader1RequestToJSON;
+exports.accountsEndLargeTrader1RequestFromJSON = accountsEndLargeTrader1RequestFromJSON;
+exports.accountsEndLargeTrader1ResponseToJSON = accountsEndLargeTrader1ResponseToJSON;
+exports.accountsEndLargeTrader1ResponseFromJSON = accountsEndLargeTrader1ResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsEndLargeTrader1Request$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsEndLargeTrader1Request$;
     /** @deprecated use `AccountsEndLargeTrader1Request$outboundSchema` instead. */
     AccountsEndLargeTrader1Request$.outboundSchema = exports.AccountsEndLargeTrader1Request$outboundSchema;
 })(AccountsEndLargeTrader1Request$ || (exports.AccountsEndLargeTrader1Request$ = AccountsEndLargeTrader1Request$ = {}));
+function accountsEndLargeTrader1RequestToJSON(accountsEndLargeTrader1Request) {
+    return JSON.stringify(exports.AccountsEndLargeTrader1Request$outboundSchema.parse(accountsEndLargeTrader1Request));
+}
+function accountsEndLargeTrader1RequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEndLargeTrader1Request$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEndLargeTrader1Request' from JSON`);
+}
 /** @internal */
 exports.AccountsEndLargeTrader1Response$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var AccountsEndLargeTrader1Response$;
     /** @deprecated use `AccountsEndLargeTrader1Response$outboundSchema` instead. */
     AccountsEndLargeTrader1Response$.outboundSchema = exports.AccountsEndLargeTrader1Response$outboundSchema;
 })(AccountsEndLargeTrader1Response$ || (exports.AccountsEndLargeTrader1Response$ = AccountsEndLargeTrader1Response$ = {}));
+function accountsEndLargeTrader1ResponseToJSON(accountsEndLargeTrader1Response) {
+    return JSON.stringify(exports.AccountsEndLargeTrader1Response$outboundSchema.parse(accountsEndLargeTrader1Response));
+}
+function accountsEndLargeTrader1ResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEndLargeTrader1Response$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEndLargeTrader1Response' from JSON`);
+}
 //# sourceMappingURL=accountsendlargetrader1.js.map
