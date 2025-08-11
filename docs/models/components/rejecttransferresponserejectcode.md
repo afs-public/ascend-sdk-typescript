@@ -8,8 +8,7 @@ The reject code
 import { RejectTransferResponseRejectCode } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: RejectTransferResponseRejectCode =
-  RejectTransferResponseRejectCode
-    .RejectCodeAccountViolatesCreditPolicyOfReceivingFirm;
+  RejectTransferResponseRejectCode.RejectCodeAccountTitleMismatch;
 ```
 
 ## Values

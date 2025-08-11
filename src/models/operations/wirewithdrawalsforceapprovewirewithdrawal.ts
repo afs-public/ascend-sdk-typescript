@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WireWithdrawalsForceApproveWireWithdrawalRequest = {
   /**
@@ -95,6 +98,33 @@ export namespace WireWithdrawalsForceApproveWireWithdrawalRequest$ {
     WireWithdrawalsForceApproveWireWithdrawalRequest$Outbound;
 }
 
+export function wireWithdrawalsForceApproveWireWithdrawalRequestToJSON(
+  wireWithdrawalsForceApproveWireWithdrawalRequest:
+    WireWithdrawalsForceApproveWireWithdrawalRequest,
+): string {
+  return JSON.stringify(
+    WireWithdrawalsForceApproveWireWithdrawalRequest$outboundSchema.parse(
+      wireWithdrawalsForceApproveWireWithdrawalRequest,
+    ),
+  );
+}
+
+export function wireWithdrawalsForceApproveWireWithdrawalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalsForceApproveWireWithdrawalRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalsForceApproveWireWithdrawalRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WireWithdrawalsForceApproveWireWithdrawalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalsForceApproveWireWithdrawalResponse$inboundSchema:
   z.ZodType<
@@ -152,4 +182,31 @@ export namespace WireWithdrawalsForceApproveWireWithdrawalResponse$ {
   /** @deprecated use `WireWithdrawalsForceApproveWireWithdrawalResponse$Outbound` instead. */
   export type Outbound =
     WireWithdrawalsForceApproveWireWithdrawalResponse$Outbound;
+}
+
+export function wireWithdrawalsForceApproveWireWithdrawalResponseToJSON(
+  wireWithdrawalsForceApproveWireWithdrawalResponse:
+    WireWithdrawalsForceApproveWireWithdrawalResponse,
+): string {
+  return JSON.stringify(
+    WireWithdrawalsForceApproveWireWithdrawalResponse$outboundSchema.parse(
+      wireWithdrawalsForceApproveWireWithdrawalResponse,
+    ),
+  );
+}
+
+export function wireWithdrawalsForceApproveWireWithdrawalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalsForceApproveWireWithdrawalResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalsForceApproveWireWithdrawalResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WireWithdrawalsForceApproveWireWithdrawalResponse' from JSON`,
+  );
 }

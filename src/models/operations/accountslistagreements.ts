@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsListAgreementsRequest = {
   /**
@@ -91,6 +94,26 @@ export namespace AccountsListAgreementsRequest$ {
   export type Outbound = AccountsListAgreementsRequest$Outbound;
 }
 
+export function accountsListAgreementsRequestToJSON(
+  accountsListAgreementsRequest: AccountsListAgreementsRequest,
+): string {
+  return JSON.stringify(
+    AccountsListAgreementsRequest$outboundSchema.parse(
+      accountsListAgreementsRequest,
+    ),
+  );
+}
+
+export function accountsListAgreementsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListAgreementsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListAgreementsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListAgreementsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsListAgreementsResponse$inboundSchema: z.ZodType<
   AccountsListAgreementsResponse,
@@ -147,4 +170,24 @@ export namespace AccountsListAgreementsResponse$ {
   export const outboundSchema = AccountsListAgreementsResponse$outboundSchema;
   /** @deprecated use `AccountsListAgreementsResponse$Outbound` instead. */
   export type Outbound = AccountsListAgreementsResponse$Outbound;
+}
+
+export function accountsListAgreementsResponseToJSON(
+  accountsListAgreementsResponse: AccountsListAgreementsResponse,
+): string {
+  return JSON.stringify(
+    AccountsListAgreementsResponse$outboundSchema.parse(
+      accountsListAgreementsResponse,
+    ),
+  );
+}
+
+export function accountsListAgreementsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsListAgreementsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsListAgreementsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsListAgreementsResponse' from JSON`,
+  );
 }

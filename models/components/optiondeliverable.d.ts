@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The percentage used to determine the proportion of the deliverable asset(s) or cash assigned to each option contract in a settlement or corporate action scenario.
  */
@@ -124,6 +126,8 @@ export declare namespace AllocationPercentage$ {
     /** @deprecated use `AllocationPercentage$Outbound` instead. */
     type Outbound = AllocationPercentage$Outbound;
 }
+export declare function allocationPercentageToJSON(allocationPercentage: AllocationPercentage): string;
+export declare function allocationPercentageFromJSON(jsonString: string): SafeParseResult<AllocationPercentage, SDKValidationError>;
 /** @internal */
 export declare const CashAmount$inboundSchema: z.ZodType<CashAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -144,6 +148,8 @@ export declare namespace CashAmount$ {
     /** @deprecated use `CashAmount$Outbound` instead. */
     type Outbound = CashAmount$Outbound;
 }
+export declare function cashAmountToJSON(cashAmount: CashAmount): string;
+export declare function cashAmountFromJSON(jsonString: string): SafeParseResult<CashAmount, SDKValidationError>;
 /** @internal */
 export declare const CashType$inboundSchema: z.ZodType<CashTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -178,6 +184,8 @@ export declare namespace OptionDeliverableQuantity$ {
     /** @deprecated use `OptionDeliverableQuantity$Outbound` instead. */
     type Outbound = OptionDeliverableQuantity$Outbound;
 }
+export declare function optionDeliverableQuantityToJSON(optionDeliverableQuantity: OptionDeliverableQuantity): string;
+export declare function optionDeliverableQuantityFromJSON(jsonString: string): SafeParseResult<OptionDeliverableQuantity, SDKValidationError>;
 /** @internal */
 export declare const SettlementConvention$inboundSchema: z.ZodType<SettlementConventionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -234,4 +242,6 @@ export declare namespace OptionDeliverable$ {
     /** @deprecated use `OptionDeliverable$Outbound` instead. */
     type Outbound = OptionDeliverable$Outbound;
 }
+export declare function optionDeliverableToJSON(optionDeliverable: OptionDeliverable): string;
+export declare function optionDeliverableFromJSON(jsonString: string): SafeParseResult<OptionDeliverable, SDKValidationError>;
 //# sourceMappingURL=optiondeliverable.d.ts.map

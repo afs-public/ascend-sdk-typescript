@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MicroDepositAmountsCreate$ = exports.MicroDepositAmountsCreate$outboundSchema = exports.MicroDepositAmountsCreate$inboundSchema = void 0;
+exports.microDepositAmountsCreateToJSON = microDepositAmountsCreateToJSON;
+exports.microDepositAmountsCreateFromJSON = microDepositAmountsCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
 exports.MicroDepositAmountsCreate$inboundSchema = z.object({
@@ -60,4 +63,10 @@ var MicroDepositAmountsCreate$;
     /** @deprecated use `MicroDepositAmountsCreate$outboundSchema` instead. */
     MicroDepositAmountsCreate$.outboundSchema = exports.MicroDepositAmountsCreate$outboundSchema;
 })(MicroDepositAmountsCreate$ || (exports.MicroDepositAmountsCreate$ = MicroDepositAmountsCreate$ = {}));
+function microDepositAmountsCreateToJSON(microDepositAmountsCreate) {
+    return JSON.stringify(exports.MicroDepositAmountsCreate$outboundSchema.parse(microDepositAmountsCreate));
+}
+function microDepositAmountsCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MicroDepositAmountsCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MicroDepositAmountsCreate' from JSON`);
+}
 //# sourceMappingURL=microdepositamountscreate.js.map

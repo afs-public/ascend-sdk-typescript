@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to determine if a potential cash journal will be considered first party or third party
  */
@@ -33,4 +35,6 @@ export declare namespace CheckPartyTypeRequestCreate$ {
     /** @deprecated use `CheckPartyTypeRequestCreate$Outbound` instead. */
     type Outbound = CheckPartyTypeRequestCreate$Outbound;
 }
+export declare function checkPartyTypeRequestCreateToJSON(checkPartyTypeRequestCreate: CheckPartyTypeRequestCreate): string;
+export declare function checkPartyTypeRequestCreateFromJSON(jsonString: string): SafeParseResult<CheckPartyTypeRequestCreate, SDKValidationError>;
 //# sourceMappingURL=checkpartytyperequestcreate.d.ts.map

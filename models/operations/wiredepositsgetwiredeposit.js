@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireDepositsGetWireDepositResponse$ = exports.WireDepositsGetWireDepositResponse$outboundSchema = exports.WireDepositsGetWireDepositResponse$inboundSchema = exports.WireDepositsGetWireDepositRequest$ = exports.WireDepositsGetWireDepositRequest$outboundSchema = exports.WireDepositsGetWireDepositRequest$inboundSchema = void 0;
+exports.wireDepositsGetWireDepositRequestToJSON = wireDepositsGetWireDepositRequestToJSON;
+exports.wireDepositsGetWireDepositRequestFromJSON = wireDepositsGetWireDepositRequestFromJSON;
+exports.wireDepositsGetWireDepositResponseToJSON = wireDepositsGetWireDepositResponseToJSON;
+exports.wireDepositsGetWireDepositResponseFromJSON = wireDepositsGetWireDepositResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.WireDepositsGetWireDepositRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var WireDepositsGetWireDepositRequest$;
     /** @deprecated use `WireDepositsGetWireDepositRequest$outboundSchema` instead. */
     WireDepositsGetWireDepositRequest$.outboundSchema = exports.WireDepositsGetWireDepositRequest$outboundSchema;
 })(WireDepositsGetWireDepositRequest$ || (exports.WireDepositsGetWireDepositRequest$ = WireDepositsGetWireDepositRequest$ = {}));
+function wireDepositsGetWireDepositRequestToJSON(wireDepositsGetWireDepositRequest) {
+    return JSON.stringify(exports.WireDepositsGetWireDepositRequest$outboundSchema.parse(wireDepositsGetWireDepositRequest));
+}
+function wireDepositsGetWireDepositRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireDepositsGetWireDepositRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireDepositsGetWireDepositRequest' from JSON`);
+}
 /** @internal */
 exports.WireDepositsGetWireDepositResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var WireDepositsGetWireDepositResponse$;
     /** @deprecated use `WireDepositsGetWireDepositResponse$outboundSchema` instead. */
     WireDepositsGetWireDepositResponse$.outboundSchema = exports.WireDepositsGetWireDepositResponse$outboundSchema;
 })(WireDepositsGetWireDepositResponse$ || (exports.WireDepositsGetWireDepositResponse$ = WireDepositsGetWireDepositResponse$ = {}));
+function wireDepositsGetWireDepositResponseToJSON(wireDepositsGetWireDepositResponse) {
+    return JSON.stringify(exports.WireDepositsGetWireDepositResponse$outboundSchema.parse(wireDepositsGetWireDepositResponse));
+}
+function wireDepositsGetWireDepositResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireDepositsGetWireDepositResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireDepositsGetWireDepositResponse' from JSON`);
+}
 //# sourceMappingURL=wiredepositsgetwiredeposit.js.map

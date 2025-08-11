@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$ = exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$outboundSchema = exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$inboundSchema = exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$ = exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$outboundSchema = exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$inboundSchema = void 0;
+exports.orderPriceServiceRetrieveFixedIncomeMarksRequestToJSON = orderPriceServiceRetrieveFixedIncomeMarksRequestToJSON;
+exports.orderPriceServiceRetrieveFixedIncomeMarksRequestFromJSON = orderPriceServiceRetrieveFixedIncomeMarksRequestFromJSON;
+exports.orderPriceServiceRetrieveFixedIncomeMarksResponseToJSON = orderPriceServiceRetrieveFixedIncomeMarksResponseToJSON;
+exports.orderPriceServiceRetrieveFixedIncomeMarksResponseFromJSON = orderPriceServiceRetrieveFixedIncomeMarksResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var OrderPriceServiceRetrieveFixedIncomeMarksRequest$;
     /** @deprecated use `OrderPriceServiceRetrieveFixedIncomeMarksRequest$outboundSchema` instead. */
     OrderPriceServiceRetrieveFixedIncomeMarksRequest$.outboundSchema = exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$outboundSchema;
 })(OrderPriceServiceRetrieveFixedIncomeMarksRequest$ || (exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$ = OrderPriceServiceRetrieveFixedIncomeMarksRequest$ = {}));
+function orderPriceServiceRetrieveFixedIncomeMarksRequestToJSON(orderPriceServiceRetrieveFixedIncomeMarksRequest) {
+    return JSON.stringify(exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$outboundSchema.parse(orderPriceServiceRetrieveFixedIncomeMarksRequest));
+}
+function orderPriceServiceRetrieveFixedIncomeMarksRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderPriceServiceRetrieveFixedIncomeMarksRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderPriceServiceRetrieveFixedIncomeMarksRequest' from JSON`);
+}
 /** @internal */
 exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +119,10 @@ var OrderPriceServiceRetrieveFixedIncomeMarksResponse$;
     /** @deprecated use `OrderPriceServiceRetrieveFixedIncomeMarksResponse$outboundSchema` instead. */
     OrderPriceServiceRetrieveFixedIncomeMarksResponse$.outboundSchema = exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$outboundSchema;
 })(OrderPriceServiceRetrieveFixedIncomeMarksResponse$ || (exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$ = OrderPriceServiceRetrieveFixedIncomeMarksResponse$ = {}));
+function orderPriceServiceRetrieveFixedIncomeMarksResponseToJSON(orderPriceServiceRetrieveFixedIncomeMarksResponse) {
+    return JSON.stringify(exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$outboundSchema.parse(orderPriceServiceRetrieveFixedIncomeMarksResponse));
+}
+function orderPriceServiceRetrieveFixedIncomeMarksResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderPriceServiceRetrieveFixedIncomeMarksResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderPriceServiceRetrieveFixedIncomeMarksResponse' from JSON`);
+}
 //# sourceMappingURL=orderpriceserviceretrievefixedincomemarks.js.map

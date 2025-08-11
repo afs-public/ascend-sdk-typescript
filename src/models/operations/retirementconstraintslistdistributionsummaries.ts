@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetirementConstraintsListDistributionSummariesRequest = {
   /**
@@ -94,6 +97,33 @@ export namespace RetirementConstraintsListDistributionSummariesRequest$ {
     RetirementConstraintsListDistributionSummariesRequest$Outbound;
 }
 
+export function retirementConstraintsListDistributionSummariesRequestToJSON(
+  retirementConstraintsListDistributionSummariesRequest:
+    RetirementConstraintsListDistributionSummariesRequest,
+): string {
+  return JSON.stringify(
+    RetirementConstraintsListDistributionSummariesRequest$outboundSchema.parse(
+      retirementConstraintsListDistributionSummariesRequest,
+    ),
+  );
+}
+
+export function retirementConstraintsListDistributionSummariesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetirementConstraintsListDistributionSummariesRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetirementConstraintsListDistributionSummariesRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetirementConstraintsListDistributionSummariesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const RetirementConstraintsListDistributionSummariesResponse$inboundSchema:
   z.ZodType<
@@ -155,4 +185,30 @@ export namespace RetirementConstraintsListDistributionSummariesResponse$ {
   /** @deprecated use `RetirementConstraintsListDistributionSummariesResponse$Outbound` instead. */
   export type Outbound =
     RetirementConstraintsListDistributionSummariesResponse$Outbound;
+}
+
+export function retirementConstraintsListDistributionSummariesResponseToJSON(
+  retirementConstraintsListDistributionSummariesResponse:
+    RetirementConstraintsListDistributionSummariesResponse,
+): string {
+  return JSON.stringify(
+    RetirementConstraintsListDistributionSummariesResponse$outboundSchema.parse(
+      retirementConstraintsListDistributionSummariesResponse,
+    ),
+  );
+}
+
+export function retirementConstraintsListDistributionSummariesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetirementConstraintsListDistributionSummariesResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetirementConstraintsListDistributionSummariesResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RetirementConstraintsListDistributionSummariesResponse' from JSON`,
+  );
 }

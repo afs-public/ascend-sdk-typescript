@@ -39,18 +39,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.investigationsGetCustomerIdentification = investigationsGetCustomerIdentification;
 const encodings_js_1 = require("../lib/encodings.js");
 const M = __importStar(require("../lib/matchers.js"));
+const primitives_js_1 = require("../lib/primitives.js");
 const schemas_js_1 = require("../lib/schemas.js");
 const security_js_1 = require("../lib/security.js");
 const url_js_1 = require("../lib/url.js");
 const errors = __importStar(require("../models/errors/index.js"));
 const operations = __importStar(require("../models/operations/index.js"));
+const async_js_1 = require("../types/async.js");
 /**
  * Get Identity Verification
  *
  * @remarks
  * Gets a CustomerIdentification by CustomerIdentification ID.
  */
-async function investigationsGetCustomerIdentification(client, correspondentId, customerIdentificationId, view, options) {
+function investigationsGetCustomerIdentification(client, correspondentId, customerIdentificationId, view, options) {
+    return new async_js_1.APIPromise($do(client, correspondentId, customerIdentificationId, view, options));
+}
+async function $do(client, correspondentId, customerIdentificationId, view, options) {
     const input = {
         correspondentId: correspondentId,
         customerIdentificationId: customerIdentificationId,
@@ -60,7 +65,7 @@ async function investigationsGetCustomerIdentification(client, correspondentId, 
         .CustomerIdentificationResultServiceGetCustomerIdentificationRequest$outboundSchema
         .parse(value), "Input validation failed");
     if (!parsed.ok) {
-        return parsed;
+        return [parsed, { status: "invalid" }];
     }
     const payload = parsed.value;
     const body = null;
@@ -72,49 +77,57 @@ async function investigationsGetCustomerIdentification(client, correspondentId, 
     const query = (0, encodings_js_1.encodeFormQuery)({
         "view": payload.view,
     });
-    const headers = new Headers({
+    const headers = new Headers((0, primitives_js_1.compactMap)({
         Accept: "application/json",
-    });
+    }));
     const securityInput = await (0, security_js_1.extractSecurity)(client._options.security);
+    const requestSecurity = (0, security_js_1.resolveGlobalSecurity)(securityInput);
     const context = {
+        options: client._options,
+        baseURL: options?.serverURL ?? client._baseURL ?? "",
         operationID: "CustomerIdentificationResultService_GetCustomerIdentification",
         oAuth2Scopes: [],
+        resolvedSecurity: requestSecurity,
         securitySource: client._options.security,
+        retryConfig: options?.retries
+            || client._options.retryConfig
+            || { strategy: "none" },
+        retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
     };
-    const requestSecurity = (0, security_js_1.resolveGlobalSecurity)(securityInput);
     const requestRes = client._createRequest(context, {
         security: requestSecurity,
         method: "GET",
+        baseURL: options?.serverURL,
         path: path,
         headers: headers,
         query: query,
         body: body,
-        timeoutMs: (options === null || options === void 0 ? void 0 : options.timeoutMs) || client._options.timeoutMs || -1,
+        userAgent: client._options.userAgent,
+        timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
     }, options);
     if (!requestRes.ok) {
-        return requestRes;
+        return [requestRes, { status: "invalid" }];
     }
     const req = requestRes.value;
     const doResult = await client._do(req, {
         context,
         errorCodes: ["400", "403", "404", "4XX", "500", "503", "5XX"],
-        retryConfig: (options === null || options === void 0 ? void 0 : options.retries)
-            || client._options.retryConfig,
-        retryCodes: (options === null || options === void 0 ? void 0 : options.retryCodes) || ["429", "500", "502", "503", "504"],
+        retryConfig: context.retryConfig,
+        retryCodes: context.retryCodes,
     });
     if (!doResult.ok) {
-        return doResult;
+        return [doResult, { status: "request-error", request: req }];
     }
     const response = doResult.value;
     const responseFields = {
         HttpMeta: { Response: response, Request: req },
     };
     const [result] = await M.match(M.json(200, operations
-        .CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema, { key: "CustomerIdentification" }), M.jsonErr([400, 403, 404, 500, 503], errors.Status$inboundSchema), M.fail(["4XX", "5XX"]), M.json("default", operations
+        .CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema, { key: "CustomerIdentification" }), M.jsonErr([400, 403, 404], errors.Status$inboundSchema), M.jsonErr([500, 503], errors.Status$inboundSchema), M.fail("4XX"), M.fail("5XX"), M.json("default", operations
         .CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema, { key: "Status" }))(response, req, { extraFields: responseFields });
     if (!result.ok) {
-        return result;
+        return [result, { status: "complete", request: req, response }];
     }
-    return result;
+    return [result, { status: "complete", request: req, response }];
 }
 //# sourceMappingURL=investigationsGetCustomerIdentification.js.map

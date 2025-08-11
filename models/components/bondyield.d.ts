@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The percentage yield.
  */
@@ -56,6 +58,8 @@ export declare namespace Percent$ {
     /** @deprecated use `Percent$Outbound` instead. */
     type Outbound = Percent$Outbound;
 }
+export declare function percentToJSON(percent: Percent): string;
+export declare function percentFromJSON(jsonString: string): SafeParseResult<Percent, SDKValidationError>;
 /** @internal */
 export declare const BondYieldYieldType$inboundSchema: z.ZodType<BondYieldYieldTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -91,4 +95,6 @@ export declare namespace BondYield$ {
     /** @deprecated use `BondYield$Outbound` instead. */
     type Outbound = BondYield$Outbound;
 }
+export declare function bondYieldToJSON(bondYield: BondYield): string;
+export declare function bondYieldFromJSON(jsonString: string): SafeParseResult<BondYield, SDKValidationError>;
 //# sourceMappingURL=bondyield.d.ts.map

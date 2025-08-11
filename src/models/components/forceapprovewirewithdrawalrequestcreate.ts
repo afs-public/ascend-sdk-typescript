@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to simulate approve of a wire withdrawal
@@ -50,4 +53,31 @@ export namespace ForceApproveWireWithdrawalRequestCreate$ {
     ForceApproveWireWithdrawalRequestCreate$outboundSchema;
   /** @deprecated use `ForceApproveWireWithdrawalRequestCreate$Outbound` instead. */
   export type Outbound = ForceApproveWireWithdrawalRequestCreate$Outbound;
+}
+
+export function forceApproveWireWithdrawalRequestCreateToJSON(
+  forceApproveWireWithdrawalRequestCreate:
+    ForceApproveWireWithdrawalRequestCreate,
+): string {
+  return JSON.stringify(
+    ForceApproveWireWithdrawalRequestCreate$outboundSchema.parse(
+      forceApproveWireWithdrawalRequestCreate,
+    ),
+  );
+}
+
+export function forceApproveWireWithdrawalRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ForceApproveWireWithdrawalRequestCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForceApproveWireWithdrawalRequestCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ForceApproveWireWithdrawalRequestCreate' from JSON`,
+  );
 }

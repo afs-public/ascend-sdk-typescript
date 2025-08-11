@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -117,4 +120,18 @@ export namespace FeeCreate$ {
   export const outboundSchema = FeeCreate$outboundSchema;
   /** @deprecated use `FeeCreate$Outbound` instead. */
   export type Outbound = FeeCreate$Outbound;
+}
+
+export function feeCreateToJSON(feeCreate: FeeCreate): string {
+  return JSON.stringify(FeeCreate$outboundSchema.parse(feeCreate));
+}
+
+export function feeCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<FeeCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FeeCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FeeCreate' from JSON`,
+  );
 }

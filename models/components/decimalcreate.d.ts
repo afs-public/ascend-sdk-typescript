@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
  *
@@ -34,4 +36,6 @@ export declare namespace DecimalCreate$ {
     /** @deprecated use `DecimalCreate$Outbound` instead. */
     type Outbound = DecimalCreate$Outbound;
 }
+export declare function decimalCreateToJSON(decimalCreate: DecimalCreate): string;
+export declare function decimalCreateFromJSON(jsonString: string): SafeParseResult<DecimalCreate, SDKValidationError>;
 //# sourceMappingURL=decimalcreate.d.ts.map

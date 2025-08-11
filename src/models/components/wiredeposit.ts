@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of the wire deposit being issued to the investor in USD
@@ -209,6 +212,24 @@ export namespace WireDepositAmount$ {
   export type Outbound = WireDepositAmount$Outbound;
 }
 
+export function wireDepositAmountToJSON(
+  wireDepositAmount: WireDepositAmount,
+): string {
+  return JSON.stringify(
+    WireDepositAmount$outboundSchema.parse(wireDepositAmount),
+  );
+}
+
+export function wireDepositAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<WireDepositAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireDepositAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireDepositAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireDepositType$inboundSchema: z.ZodType<
   WireDepositTypeOpen,
@@ -287,6 +308,26 @@ export namespace WireDepositRetirementContribution$ {
     WireDepositRetirementContribution$outboundSchema;
   /** @deprecated use `WireDepositRetirementContribution$Outbound` instead. */
   export type Outbound = WireDepositRetirementContribution$Outbound;
+}
+
+export function wireDepositRetirementContributionToJSON(
+  wireDepositRetirementContribution: WireDepositRetirementContribution,
+): string {
+  return JSON.stringify(
+    WireDepositRetirementContribution$outboundSchema.parse(
+      wireDepositRetirementContribution,
+    ),
+  );
+}
+
+export function wireDepositRetirementContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<WireDepositRetirementContribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireDepositRetirementContribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireDepositRetirementContribution' from JSON`,
+  );
 }
 
 /** @internal */
@@ -379,6 +420,24 @@ export namespace WireDepositState$ {
   export type Outbound = WireDepositState$Outbound;
 }
 
+export function wireDepositStateToJSON(
+  wireDepositState: WireDepositState,
+): string {
+  return JSON.stringify(
+    WireDepositState$outboundSchema.parse(wireDepositState),
+  );
+}
+
+export function wireDepositStateFromJSON(
+  jsonString: string,
+): SafeParseResult<WireDepositState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireDepositState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireDepositState' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireDeposit$inboundSchema: z.ZodType<
   WireDeposit,
@@ -457,4 +516,18 @@ export namespace WireDeposit$ {
   export const outboundSchema = WireDeposit$outboundSchema;
   /** @deprecated use `WireDeposit$Outbound` instead. */
   export type Outbound = WireDeposit$Outbound;
+}
+
+export function wireDepositToJSON(wireDeposit: WireDeposit): string {
+  return JSON.stringify(WireDeposit$outboundSchema.parse(wireDeposit));
+}
+
+export function wireDepositFromJSON(
+  jsonString: string,
+): SafeParseResult<WireDeposit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireDeposit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireDeposit' from JSON`,
+  );
 }

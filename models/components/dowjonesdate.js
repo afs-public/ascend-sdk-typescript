@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DowJonesDate$ = exports.DowJonesDate$outboundSchema = exports.DowJonesDate$inboundSchema = void 0;
+exports.dowJonesDateToJSON = dowJonesDateToJSON;
+exports.dowJonesDateFromJSON = dowJonesDateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.DowJonesDate$inboundSchema = z.object({
     day: z.string().optional(),
@@ -61,4 +64,10 @@ var DowJonesDate$;
     /** @deprecated use `DowJonesDate$outboundSchema` instead. */
     DowJonesDate$.outboundSchema = exports.DowJonesDate$outboundSchema;
 })(DowJonesDate$ || (exports.DowJonesDate$ = DowJonesDate$ = {}));
+function dowJonesDateToJSON(dowJonesDate) {
+    return JSON.stringify(exports.DowJonesDate$outboundSchema.parse(dowJonesDate));
+}
+function dowJonesDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DowJonesDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DowJonesDate' from JSON`);
+}
 //# sourceMappingURL=dowjonesdate.js.map

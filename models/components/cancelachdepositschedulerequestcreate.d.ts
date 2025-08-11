@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to cancel an ACH deposit transfer schedule
  */
@@ -33,4 +35,6 @@ export declare namespace CancelAchDepositScheduleRequestCreate$ {
     /** @deprecated use `CancelAchDepositScheduleRequestCreate$Outbound` instead. */
     type Outbound = CancelAchDepositScheduleRequestCreate$Outbound;
 }
+export declare function cancelAchDepositScheduleRequestCreateToJSON(cancelAchDepositScheduleRequestCreate: CancelAchDepositScheduleRequestCreate): string;
+export declare function cancelAchDepositScheduleRequestCreateFromJSON(jsonString: string): SafeParseResult<CancelAchDepositScheduleRequestCreate, SDKValidationError>;
 //# sourceMappingURL=cancelachdepositschedulerequestcreate.d.ts.map

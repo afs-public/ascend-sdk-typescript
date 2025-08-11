@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to retrieve retirement constraints for two accounts in a cash journal transfer
  */
@@ -33,4 +35,6 @@ export declare namespace RetrieveCashJournalConstraintsRequestCreate$ {
     /** @deprecated use `RetrieveCashJournalConstraintsRequestCreate$Outbound` instead. */
     type Outbound = RetrieveCashJournalConstraintsRequestCreate$Outbound;
 }
+export declare function retrieveCashJournalConstraintsRequestCreateToJSON(retrieveCashJournalConstraintsRequestCreate: RetrieveCashJournalConstraintsRequestCreate): string;
+export declare function retrieveCashJournalConstraintsRequestCreateFromJSON(jsonString: string): SafeParseResult<RetrieveCashJournalConstraintsRequestCreate, SDKValidationError>;
 //# sourceMappingURL=retrievecashjournalconstraintsrequestcreate.d.ts.map

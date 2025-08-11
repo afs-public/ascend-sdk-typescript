@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The external account information
@@ -66,4 +69,22 @@ export namespace ExternalAccountCreate$ {
   export const outboundSchema = ExternalAccountCreate$outboundSchema;
   /** @deprecated use `ExternalAccountCreate$Outbound` instead. */
   export type Outbound = ExternalAccountCreate$Outbound;
+}
+
+export function externalAccountCreateToJSON(
+  externalAccountCreate: ExternalAccountCreate,
+): string {
+  return JSON.stringify(
+    ExternalAccountCreate$outboundSchema.parse(externalAccountCreate),
+  );
+}
+
+export function externalAccountCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ExternalAccountCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExternalAccountCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExternalAccountCreate' from JSON`,
+  );
 }

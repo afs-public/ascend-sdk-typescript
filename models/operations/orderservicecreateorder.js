@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderServiceCreateOrderResponse$ = exports.OrderServiceCreateOrderResponse$outboundSchema = exports.OrderServiceCreateOrderResponse$inboundSchema = exports.OrderServiceCreateOrderRequest$ = exports.OrderServiceCreateOrderRequest$outboundSchema = exports.OrderServiceCreateOrderRequest$inboundSchema = void 0;
+exports.orderServiceCreateOrderRequestToJSON = orderServiceCreateOrderRequestToJSON;
+exports.orderServiceCreateOrderRequestFromJSON = orderServiceCreateOrderRequestFromJSON;
+exports.orderServiceCreateOrderResponseToJSON = orderServiceCreateOrderResponseToJSON;
+exports.orderServiceCreateOrderResponseFromJSON = orderServiceCreateOrderResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.OrderServiceCreateOrderRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var OrderServiceCreateOrderRequest$;
     /** @deprecated use `OrderServiceCreateOrderRequest$outboundSchema` instead. */
     OrderServiceCreateOrderRequest$.outboundSchema = exports.OrderServiceCreateOrderRequest$outboundSchema;
 })(OrderServiceCreateOrderRequest$ || (exports.OrderServiceCreateOrderRequest$ = OrderServiceCreateOrderRequest$ = {}));
+function orderServiceCreateOrderRequestToJSON(orderServiceCreateOrderRequest) {
+    return JSON.stringify(exports.OrderServiceCreateOrderRequest$outboundSchema.parse(orderServiceCreateOrderRequest));
+}
+function orderServiceCreateOrderRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderServiceCreateOrderRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderServiceCreateOrderRequest' from JSON`);
+}
 /** @internal */
 exports.OrderServiceCreateOrderResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var OrderServiceCreateOrderResponse$;
     /** @deprecated use `OrderServiceCreateOrderResponse$outboundSchema` instead. */
     OrderServiceCreateOrderResponse$.outboundSchema = exports.OrderServiceCreateOrderResponse$outboundSchema;
 })(OrderServiceCreateOrderResponse$ || (exports.OrderServiceCreateOrderResponse$ = OrderServiceCreateOrderResponse$ = {}));
+function orderServiceCreateOrderResponseToJSON(orderServiceCreateOrderResponse) {
+    return JSON.stringify(exports.OrderServiceCreateOrderResponse$outboundSchema.parse(orderServiceCreateOrderResponse));
+}
+function orderServiceCreateOrderResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderServiceCreateOrderResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderServiceCreateOrderResponse' from JSON`);
+}
 //# sourceMappingURL=orderservicecreateorder.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Monetary amount associated with the withholding
  */
@@ -127,6 +129,8 @@ export declare namespace WithholdingAmount$ {
     /** @deprecated use `WithholdingAmount$Outbound` instead. */
     type Outbound = WithholdingAmount$Outbound;
 }
+export declare function withholdingAmountToJSON(withholdingAmount: WithholdingAmount): string;
+export declare function withholdingAmountFromJSON(jsonString: string): SafeParseResult<WithholdingAmount, SDKValidationError>;
 /** @internal */
 export declare const WithholdingRate$inboundSchema: z.ZodType<WithholdingRate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -147,6 +151,8 @@ export declare namespace WithholdingRate$ {
     /** @deprecated use `WithholdingRate$Outbound` instead. */
     type Outbound = WithholdingRate$Outbound;
 }
+export declare function withholdingRateToJSON(withholdingRate: WithholdingRate): string;
+export declare function withholdingRateFromJSON(jsonString: string): SafeParseResult<WithholdingRate, SDKValidationError>;
 /** @internal */
 export declare const WithholdingState$inboundSchema: z.ZodType<WithholdingStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -199,4 +205,6 @@ export declare namespace Withholding$ {
     /** @deprecated use `Withholding$Outbound` instead. */
     type Outbound = Withholding$Outbound;
 }
+export declare function withholdingToJSON(withholding: Withholding): string;
+export declare function withholdingFromJSON(jsonString: string): SafeParseResult<Withholding, SDKValidationError>;
 //# sourceMappingURL=withholding.d.ts.map

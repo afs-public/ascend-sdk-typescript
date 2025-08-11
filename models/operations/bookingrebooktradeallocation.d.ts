@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BookingRebookTradeAllocationRequest = {
     /**
      * The account id.
@@ -47,6 +49,8 @@ export declare namespace BookingRebookTradeAllocationRequest$ {
     /** @deprecated use `BookingRebookTradeAllocationRequest$Outbound` instead. */
     type Outbound = BookingRebookTradeAllocationRequest$Outbound;
 }
+export declare function bookingRebookTradeAllocationRequestToJSON(bookingRebookTradeAllocationRequest: BookingRebookTradeAllocationRequest): string;
+export declare function bookingRebookTradeAllocationRequestFromJSON(jsonString: string): SafeParseResult<BookingRebookTradeAllocationRequest, SDKValidationError>;
 /** @internal */
 export declare const BookingRebookTradeAllocationResponse$inboundSchema: z.ZodType<BookingRebookTradeAllocationResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -69,4 +73,6 @@ export declare namespace BookingRebookTradeAllocationResponse$ {
     /** @deprecated use `BookingRebookTradeAllocationResponse$Outbound` instead. */
     type Outbound = BookingRebookTradeAllocationResponse$Outbound;
 }
+export declare function bookingRebookTradeAllocationResponseToJSON(bookingRebookTradeAllocationResponse: BookingRebookTradeAllocationResponse): string;
+export declare function bookingRebookTradeAllocationResponseFromJSON(jsonString: string): SafeParseResult<BookingRebookTradeAllocationResponse, SDKValidationError>;
 //# sourceMappingURL=bookingrebooktradeallocation.d.ts.map

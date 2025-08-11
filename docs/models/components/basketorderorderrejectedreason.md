@@ -44,4 +44,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `AnotherBasketOrderForAccountHasFailedRiskChecks`         | ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS   |
 | `InsufficientPosition`                                    | INSUFFICIENT_POSITION                                     |
 | `FailedBuyingPower`                                       | FAILED_BUYING_POWER                                       |
+| `RoundUpAmountTooSmall`                                   | ROUND_UP_AMOUNT_TOO_SMALL                                 |
 | -                                                         | `Unrecognized<string>`                                    |

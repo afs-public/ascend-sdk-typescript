@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { TradingExecutedPrice, TradingExecutedPrice$Outbound } from "./tradingexecutedprice.js";
 /**
  * The amount of accrued interest exchanged in this execution. Will only be present for orders of Fixed Income assets.
@@ -85,6 +87,8 @@ export declare namespace AccruedInterestAmount$ {
     /** @deprecated use `AccruedInterestAmount$Outbound` instead. */
     type Outbound = AccruedInterestAmount$Outbound;
 }
+export declare function accruedInterestAmountToJSON(accruedInterestAmount: AccruedInterestAmount): string;
+export declare function accruedInterestAmountFromJSON(jsonString: string): SafeParseResult<AccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const GrossCreditAmount$inboundSchema: z.ZodType<GrossCreditAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -105,6 +109,8 @@ export declare namespace GrossCreditAmount$ {
     /** @deprecated use `GrossCreditAmount$Outbound` instead. */
     type Outbound = GrossCreditAmount$Outbound;
 }
+export declare function grossCreditAmountToJSON(grossCreditAmount: GrossCreditAmount): string;
+export declare function grossCreditAmountFromJSON(jsonString: string): SafeParseResult<GrossCreditAmount, SDKValidationError>;
 /** @internal */
 export declare const PrevailingMarketPrice$inboundSchema: z.ZodType<PrevailingMarketPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -125,6 +131,8 @@ export declare namespace PrevailingMarketPrice$ {
     /** @deprecated use `PrevailingMarketPrice$Outbound` instead. */
     type Outbound = PrevailingMarketPrice$Outbound;
 }
+export declare function prevailingMarketPriceToJSON(prevailingMarketPrice: PrevailingMarketPrice): string;
+export declare function prevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<PrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const Quantity$inboundSchema: z.ZodType<Quantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -145,6 +153,8 @@ export declare namespace Quantity$ {
     /** @deprecated use `Quantity$Outbound` instead. */
     type Outbound = Quantity$Outbound;
 }
+export declare function quantityToJSON(quantity: Quantity): string;
+export declare function quantityFromJSON(jsonString: string): SafeParseResult<Quantity, SDKValidationError>;
 /** @internal */
 export declare const TradingExecutions$inboundSchema: z.ZodType<TradingExecutions, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -170,4 +180,6 @@ export declare namespace TradingExecutions$ {
     /** @deprecated use `TradingExecutions$Outbound` instead. */
     type Outbound = TradingExecutions$Outbound;
 }
+export declare function tradingExecutionsToJSON(tradingExecutions: TradingExecutions): string;
+export declare function tradingExecutionsFromJSON(jsonString: string): SafeParseResult<TradingExecutions, SDKValidationError>;
 //# sourceMappingURL=tradingexecutions.d.ts.map

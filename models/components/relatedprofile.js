@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RelatedProfile$ = exports.RelatedProfile$outboundSchema = exports.RelatedProfile$inboundSchema = void 0;
+exports.relatedProfileToJSON = relatedProfileToJSON;
+exports.relatedProfileFromJSON = relatedProfileFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const descriptiondetail_js_1 = require("./descriptiondetail.js");
 const sanctionslistdetail_js_1 = require("./sanctionslistdetail.js");
 /** @internal */
@@ -98,4 +101,10 @@ var RelatedProfile$;
     /** @deprecated use `RelatedProfile$outboundSchema` instead. */
     RelatedProfile$.outboundSchema = exports.RelatedProfile$outboundSchema;
 })(RelatedProfile$ || (exports.RelatedProfile$ = RelatedProfile$ = {}));
+function relatedProfileToJSON(relatedProfile) {
+    return JSON.stringify(exports.RelatedProfile$outboundSchema.parse(relatedProfile));
+}
+function relatedProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RelatedProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RelatedProfile' from JSON`);
+}
 //# sourceMappingURL=relatedprofile.js.map

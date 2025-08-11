@@ -20,6 +20,7 @@ Creates an empty basket
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BasketOrdersService_CreateBasket" method="post" path="/baskettrading/v1/correspondents/{correspondent_id}/baskets" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -41,7 +42,6 @@ async function run() {
     correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
   }, "01HPMZZM6RKMVZA1JQ63RQKJRP");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -75,15 +75,12 @@ async function run() {
     clientBasketId: "39347a0d-860b-48e8-a04d-511133f057e3",
     correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
   }, "01HPMZZM6RKMVZA1JQ63RQKJRP");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("basketOrdersCreateBasket failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -105,10 +102,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 409, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 409 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## addOrders
 
@@ -118,15 +116,9 @@ Adds a list of basket orders to a basket
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BasketOrdersService_AddOrders" method="post" path="/baskettrading/v1/correspondents/{correspondent_id}/baskets/{basket_id}:addOrders" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import {
-  BasketOrderCreateAssetType,
-  BasketOrderCreateIdentifierType,
-  BasketOrderCreateOrderType,
-  BasketOrderCreateSide,
-  BasketOrderCreateTimeInForce,
-} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 const apexascend = new Apexascend({
   security: {
@@ -142,32 +134,10 @@ const apexascend = new Apexascend({
 
 async function run() {
   const result = await apexascend.basketOrders.addOrders({
-    basketOrders: [
-      {
-        accountId: "01HBRQ5BW6ZAY4BNWP4GWRD80X",
-        assetType: BasketOrderCreateAssetType.Equity,
-        clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
-        identifier: "SBUX",
-        identifierType: BasketOrderCreateIdentifierType.Symbol,
-        orderType: BasketOrderCreateOrderType.Market,
-        side: BasketOrderCreateSide.Buy,
-        timeInForce: BasketOrderCreateTimeInForce.Day,
-      },
-      {
-        accountId: "01HBRQ5BW6ZAY4BNWP4GWRD80X",
-        assetType: BasketOrderCreateAssetType.Equity,
-        clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
-        identifier: "SBUX",
-        identifierType: BasketOrderCreateIdentifierType.Symbol,
-        orderType: BasketOrderCreateOrderType.Market,
-        side: BasketOrderCreateSide.Buy,
-        timeInForce: BasketOrderCreateTimeInForce.Day,
-      },
-    ],
+    basketOrders: [],
     name: "correspondents/01HPMZZM6RKMVZA1JQ63RQKJRP/baskets/fffd326-72fa-4d2b-bd1f-45384fe5d521",
   }, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -181,13 +151,6 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { basketOrdersAddOrders } from "@apexfintechsolutions/ascend-sdk/funcs/basketOrdersAddOrders.js";
-import {
-  BasketOrderCreateAssetType,
-  BasketOrderCreateIdentifierType,
-  BasketOrderCreateOrderType,
-  BasketOrderCreateSide,
-  BasketOrderCreateTimeInForce,
-} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -205,39 +168,15 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await basketOrdersAddOrders(apexascend, {
-    basketOrders: [
-      {
-        accountId: "01HBRQ5BW6ZAY4BNWP4GWRD80X",
-        assetType: BasketOrderCreateAssetType.Equity,
-        clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
-        identifier: "SBUX",
-        identifierType: BasketOrderCreateIdentifierType.Symbol,
-        orderType: BasketOrderCreateOrderType.Market,
-        side: BasketOrderCreateSide.Buy,
-        timeInForce: BasketOrderCreateTimeInForce.Day,
-      },
-      {
-        accountId: "01HBRQ5BW6ZAY4BNWP4GWRD80X",
-        assetType: BasketOrderCreateAssetType.Equity,
-        clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
-        identifier: "SBUX",
-        identifierType: BasketOrderCreateIdentifierType.Symbol,
-        orderType: BasketOrderCreateOrderType.Market,
-        side: BasketOrderCreateSide.Buy,
-        timeInForce: BasketOrderCreateTimeInForce.Day,
-      },
-    ],
+    basketOrders: [],
     name: "correspondents/01HPMZZM6RKMVZA1JQ63RQKJRP/baskets/fffd326-72fa-4d2b-bd1f-45384fe5d521",
   }, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("basketOrdersAddOrders failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -260,10 +199,11 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.Status                     | 400, 401, 403, 404, 409, 500, 503 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| errors.Status           | 400, 401, 403, 404, 409 | application/json        |
+| errors.Status           | 500, 503                | application/json        |
+| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## getBasket
 
@@ -273,6 +213,7 @@ Gets a basket by basket ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BasketOrdersService_GetBasket" method="get" path="/baskettrading/v1/correspondents/{correspondent_id}/baskets/{basket_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -291,7 +232,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.basketOrders.getBasket("01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -322,15 +262,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await basketOrdersGetBasket(apexascend, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("basketOrdersGetBasket failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -352,10 +289,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 404, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## submitBasket
 
@@ -365,6 +303,7 @@ Submits a basket for execution in the market
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BasketOrdersService_SubmitBasket" method="post" path="/baskettrading/v1/correspondents/{correspondent_id}/baskets/{basket_id}:submit" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -385,7 +324,6 @@ async function run() {
     name: "correspondents/01HPMZZM6RKMVZA1JQ63RQKJRP/baskets/fffd326-72fa-4d2b-bd1f-45384fe5d521",
   }, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -418,15 +356,12 @@ async function run() {
   const res = await basketOrdersSubmitBasket(apexascend, {
     name: "correspondents/01HPMZZM6RKMVZA1JQ63RQKJRP/baskets/fffd326-72fa-4d2b-bd1f-45384fe5d521",
   }, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("basketOrdersSubmitBasket failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -449,10 +384,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 404, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## listBasketOrders
 
@@ -462,6 +398,7 @@ Gets a list of basket orders within a basket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BasketOrdersService_ListBasketOrders" method="get" path="/baskettrading/v1/correspondents/{correspondent_id}/baskets/{basket_id}/basketOrders" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -478,9 +415,14 @@ const apexascend = new Apexascend({
 });
 
 async function run() {
-  const result = await apexascend.basketOrders.listBasketOrders("01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
+  const result = await apexascend.basketOrders.listBasketOrders({
+    correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
+    basketId: "fffd326-72fa-4d2b-bd1f-45384fe5d521",
+    pageSize: 25,
+    pageToken: "AbTYnwAkMjIyZDNjYTAtZmVjZS00N2Q5LTgyMDctNzI3MDdkMjFiZj3h",
+    showRemoved: true,
+  });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -510,16 +452,19 @@ const apexascend = new ApexascendCore({
 });
 
 async function run() {
-  const res = await basketOrdersListBasketOrders(apexascend, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
-
-  if (!res.ok) {
-    throw res.error;
+  const res = await basketOrdersListBasketOrders(apexascend, {
+    correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
+    basketId: "fffd326-72fa-4d2b-bd1f-45384fe5d521",
+    pageSize: 25,
+    pageToken: "AbTYnwAkMjIyZDNjYTAtZmVjZS00N2Q5LTgyMDctNzI3MDdkMjFiZj3h",
+    showRemoved: true,
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("basketOrdersListBasketOrders failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -527,15 +472,12 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                            | Type                                                                                                                                                                                                                                 | Required                                                                                                                                                                                                                             | Description                                                                                                                                                                                                                          | Example                                                                                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `correspondentId`                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                   | The correspondent id.                                                                                                                                                                                                                | [object Object]                                                                                                                                                                                                                      |
-| `basketId`                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                   | The basket id.                                                                                                                                                                                                                       | [object Object]                                                                                                                                                                                                                      |
-| `pageSize`                                                                                                                                                                                                                           | *number*                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                   | The maximum number of basket orders to return. The service may return fewer than this value. If unspecified, at most 1000 basket orders will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.      | [object Object]                                                                                                                                                                                                                      |
-| `pageToken`                                                                                                                                                                                                                          | *string*                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                   | A page token, received from a previous `ListBasketOrders` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBasketOrders` must match the call that provided the page token. | [object Object]                                                                                                                                                                                                                      |
-| `options`                                                                                                                                                                                                                            | RequestOptions                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                   | Used to set various options for making HTTP requests.                                                                                                                                                                                |                                                                                                                                                                                                                                      |
-| `options.fetchOptions`                                                                                                                                                                                                               | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                   | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                       |                                                                                                                                                                                                                                      |
-| `options.retries`                                                                                                                                                                                                                    | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                   | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                     |                                                                                                                                                                                                                                      |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.BasketOrdersServiceListBasketOrdersRequest](../../models/operations/basketordersservicelistbasketordersrequest.md)                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -543,10 +485,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 404, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## listCompressedOrders
 
@@ -556,6 +499,7 @@ Gets a list of compressed orders within a basket.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BasketOrdersService_ListCompressedOrders" method="get" path="/baskettrading/v1/correspondents/{correspondent_id}/baskets/{basket_id}/compressedOrders" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -574,7 +518,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.basketOrders.listCompressedOrders("01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -605,15 +548,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await basketOrdersListCompressedOrders(apexascend, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("basketOrdersListCompressedOrders failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -637,7 +577,8 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 404, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |

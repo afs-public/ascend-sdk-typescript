@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Whether or not the customer birth date was verified
  */
@@ -164,6 +166,10 @@ export type CustomerIdentificationResult = {
      * Whether or not the customer email was verified
      */
     emailVerified?: EmailVerifiedOpen | undefined;
+    /**
+     * Whether or not the result is expired An expired result will cause all `VerificationState`'s to be `UNVERIFIED`, the `ExpirationState` will be `EXPIRED` Will always be `false` for synchronous checks such as `DATABASE` Will be `true` when an asynchronous check such as `DOCUMENTARY` hasn't been completed within the timeframe If `true` the `completed` field will be `false` since a check was never completed
+     */
+    expired?: boolean | undefined;
     /**
      * The name of the external vendor
      */
@@ -352,6 +358,7 @@ export type CustomerIdentificationResult$Outbound = {
     document_verification_ids?: Array<string> | undefined;
     documentary_session_uri?: string | undefined;
     email_verified?: string | undefined;
+    expired?: boolean | undefined;
     external_vendor?: string | undefined;
     external_vendor_id?: string | undefined;
     identification_number_verified?: string | undefined;
@@ -376,4 +383,6 @@ export declare namespace CustomerIdentificationResult$ {
     /** @deprecated use `CustomerIdentificationResult$Outbound` instead. */
     type Outbound = CustomerIdentificationResult$Outbound;
 }
+export declare function customerIdentificationResultToJSON(customerIdentificationResult: CustomerIdentificationResult): string;
+export declare function customerIdentificationResultFromJSON(jsonString: string): SafeParseResult<CustomerIdentificationResult, SDKValidationError>;
 //# sourceMappingURL=customeridentificationresult.d.ts.map

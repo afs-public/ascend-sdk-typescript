@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The withdraw mechanism to calculate the balance for. The mechanism determines what account activity will affect the balance.
  */
@@ -74,6 +76,8 @@ export declare namespace CashBalancesCalculateCashBalanceRequest$ {
     /** @deprecated use `CashBalancesCalculateCashBalanceRequest$Outbound` instead. */
     type Outbound = CashBalancesCalculateCashBalanceRequest$Outbound;
 }
+export declare function cashBalancesCalculateCashBalanceRequestToJSON(cashBalancesCalculateCashBalanceRequest: CashBalancesCalculateCashBalanceRequest): string;
+export declare function cashBalancesCalculateCashBalanceRequestFromJSON(jsonString: string): SafeParseResult<CashBalancesCalculateCashBalanceRequest, SDKValidationError>;
 /** @internal */
 export declare const CashBalancesCalculateCashBalanceResponse$inboundSchema: z.ZodType<CashBalancesCalculateCashBalanceResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -96,4 +100,6 @@ export declare namespace CashBalancesCalculateCashBalanceResponse$ {
     /** @deprecated use `CashBalancesCalculateCashBalanceResponse$Outbound` instead. */
     type Outbound = CashBalancesCalculateCashBalanceResponse$Outbound;
 }
+export declare function cashBalancesCalculateCashBalanceResponseToJSON(cashBalancesCalculateCashBalanceResponse: CashBalancesCalculateCashBalanceResponse): string;
+export declare function cashBalancesCalculateCashBalanceResponseFromJSON(jsonString: string): SafeParseResult<CashBalancesCalculateCashBalanceResponse, SDKValidationError>;
 //# sourceMappingURL=cashbalancescalculatecashbalance.d.ts.map

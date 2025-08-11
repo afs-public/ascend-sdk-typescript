@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BankRelationshipsReuseBankRelationshipRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace BankRelationshipsReuseBankRelationshipRequest$ {
     /** @deprecated use `BankRelationshipsReuseBankRelationshipRequest$Outbound` instead. */
     type Outbound = BankRelationshipsReuseBankRelationshipRequest$Outbound;
 }
+export declare function bankRelationshipsReuseBankRelationshipRequestToJSON(bankRelationshipsReuseBankRelationshipRequest: BankRelationshipsReuseBankRelationshipRequest): string;
+export declare function bankRelationshipsReuseBankRelationshipRequestFromJSON(jsonString: string): SafeParseResult<BankRelationshipsReuseBankRelationshipRequest, SDKValidationError>;
 /** @internal */
 export declare const BankRelationshipsReuseBankRelationshipResponse$inboundSchema: z.ZodType<BankRelationshipsReuseBankRelationshipResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace BankRelationshipsReuseBankRelationshipResponse$ {
     /** @deprecated use `BankRelationshipsReuseBankRelationshipResponse$Outbound` instead. */
     type Outbound = BankRelationshipsReuseBankRelationshipResponse$Outbound;
 }
+export declare function bankRelationshipsReuseBankRelationshipResponseToJSON(bankRelationshipsReuseBankRelationshipResponse: BankRelationshipsReuseBankRelationshipResponse): string;
+export declare function bankRelationshipsReuseBankRelationshipResponseFromJSON(jsonString: string): SafeParseResult<BankRelationshipsReuseBankRelationshipResponse, SDKValidationError>;
 //# sourceMappingURL=bankrelationshipsreusebankrelationship.d.ts.map

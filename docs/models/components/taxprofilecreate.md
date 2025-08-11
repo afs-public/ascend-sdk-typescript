@@ -9,7 +9,7 @@ import { FederalTaxClassification, IrsFormType, TaxProfileCreate, UsTinStatus } 
 
 let value: TaxProfileCreate = {
   federalTaxClassification: FederalTaxClassification.CCorporation,
-  irsFormType: IrsFormType.W9,
+  irsFormType: IrsFormType.W8Ben,
   legalTaxRegionCode: "US",
   usTinStatus: UsTinStatus.Passing,
 };

@@ -17,6 +17,7 @@ Creates a transfer
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AccountTransfers_CreateTransfer" method="post" path="/acats/v1/correspondents/{correspondent_id}/accounts/{account_id}/transfers" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -37,7 +38,6 @@ async function run() {
     deliverer: {},
   }, "00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -70,15 +70,12 @@ async function run() {
   const res = await accountTransfersCreateTransfer(apexascend, {
     deliverer: {},
   }, "00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransfersCreateTransfer failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -113,6 +110,7 @@ Lists existing transfers using a CEL filter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AccountTransfers_ListTransfers" method="get" path="/acats/v1/correspondents/{correspondent_id}/accounts/{account_id}/transfers" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -132,9 +130,11 @@ async function run() {
   const result = await apexascend.accountTransfers.listTransfers({
     correspondentId: "00000000-0000-0000-0000-000000000002",
     accountId: "01FAKEACCOUNT",
+    pageSize: 25,
+    pageToken: "CgwI5uHttgYQyJXO2wESJDAxOTFjOTMxLTA3YjMtYzU0ZC0yMDNmLWU1M2U0OTBkY2FhZRoicmVjZWl2ZXIuYWNjb3VudF9pZCBpbiBbJzEwMDAwQUEnXQ",
+    filter: "deliverer.account_number == \"R9AHY8P\"",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -167,16 +167,16 @@ async function run() {
   const res = await accountTransfersListTransfers(apexascend, {
     correspondentId: "00000000-0000-0000-0000-000000000002",
     accountId: "01FAKEACCOUNT",
+    pageSize: 25,
+    pageToken: "CgwI5uHttgYQyJXO2wESJDAxOTFjOTMxLTA3YjMtYzU0ZC0yMDNmLWU1M2U0OTBkY2FhZRoicmVjZWl2ZXIuYWNjb3VudF9pZCBpbiBbJzEwMDAwQUEnXQ",
+    filter: "deliverer.account_number == \"R9AHY8P\"",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransfersListTransfers failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -197,10 +197,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## acceptTransfer
 
@@ -208,6 +209,7 @@ Accept one side (incoming/outgoing) of an internal Ascend transfer. When both th
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AccountTransfers_AcceptTransfer" method="post" path="/acats/v1/correspondents/{correspondent_id}/accounts/{account_id}/transfers/{transfer_id}:accept" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -228,7 +230,6 @@ async function run() {
     name: "correspondents/00000000-0000-0000-0000-000000000002/accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/transfers/00000000-0000-0000-0000-000000000000",
   }, "00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "00000000-0000-0000-0000-000000000000");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -261,15 +262,12 @@ async function run() {
   const res = await accountTransfersAcceptTransfer(apexascend, {
     name: "correspondents/00000000-0000-0000-0000-000000000002/accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/transfers/00000000-0000-0000-0000-000000000000",
   }, "00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "00000000-0000-0000-0000-000000000000");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransfersAcceptTransfer failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -293,10 +291,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## rejectTransfer
 
@@ -304,6 +303,7 @@ Reject one side (incoming/outgoing) of an internal Ascend transfer. Rejecting on
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AccountTransfers_RejectTransfer" method="post" path="/acats/v1/correspondents/{correspondent_id}/accounts/{account_id}/transfers/{transfer_id}:reject" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -324,7 +324,6 @@ async function run() {
     name: "correspondents/00000000-0000-0000-0000-000000000002/accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/transfers/00000000-0000-0000-0000-000000000000",
   }, "00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "00000000-0000-0000-0000-000000000000");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -357,15 +356,12 @@ async function run() {
   const res = await accountTransfersRejectTransfer(apexascend, {
     name: "correspondents/00000000-0000-0000-0000-000000000002/accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/transfers/00000000-0000-0000-0000-000000000000",
   }, "00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "00000000-0000-0000-0000-000000000000");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransfersRejectTransfer failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -389,10 +385,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getTransfer
 
@@ -400,6 +397,7 @@ Gets an existing transfer
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AccountTransfers_GetTransfer" method="get" path="/acats/v1/correspondents/{correspondent_id}/accounts/{account_id}/transfers/{transfer_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -418,7 +416,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountTransfers.getTransfer("00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "00000000-0000-0000-0000-000000000000");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -449,15 +446,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountTransfersGetTransfer(apexascend, "00000000-0000-0000-0000-000000000002", "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "00000000-0000-0000-0000-000000000000");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransfersGetTransfer failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

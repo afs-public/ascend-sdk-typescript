@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type InvestigationServiceUpdateInvestigationRequest = {
     /**
      * The investigation id.
@@ -57,6 +59,8 @@ export declare namespace InvestigationServiceUpdateInvestigationRequest$ {
     /** @deprecated use `InvestigationServiceUpdateInvestigationRequest$Outbound` instead. */
     type Outbound = InvestigationServiceUpdateInvestigationRequest$Outbound;
 }
+export declare function investigationServiceUpdateInvestigationRequestToJSON(investigationServiceUpdateInvestigationRequest: InvestigationServiceUpdateInvestigationRequest): string;
+export declare function investigationServiceUpdateInvestigationRequestFromJSON(jsonString: string): SafeParseResult<InvestigationServiceUpdateInvestigationRequest, SDKValidationError>;
 /** @internal */
 export declare const InvestigationServiceUpdateInvestigationResponse$inboundSchema: z.ZodType<InvestigationServiceUpdateInvestigationResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -79,4 +83,6 @@ export declare namespace InvestigationServiceUpdateInvestigationResponse$ {
     /** @deprecated use `InvestigationServiceUpdateInvestigationResponse$Outbound` instead. */
     type Outbound = InvestigationServiceUpdateInvestigationResponse$Outbound;
 }
+export declare function investigationServiceUpdateInvestigationResponseToJSON(investigationServiceUpdateInvestigationResponse: InvestigationServiceUpdateInvestigationResponse): string;
+export declare function investigationServiceUpdateInvestigationResponseFromJSON(jsonString: string): SafeParseResult<InvestigationServiceUpdateInvestigationResponse, SDKValidationError>;
 //# sourceMappingURL=investigationserviceupdateinvestigation.d.ts.map

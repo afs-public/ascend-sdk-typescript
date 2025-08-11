@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The date on which the trader meets or exceeds the large trader reporting threshold, which is defined by the U.S. Securities and Exchange Commission (SEC) as trades of 2 million shares or $20 million in a single day or 20 million shares or $200 million during a calendar month
  */
@@ -51,6 +53,8 @@ export declare namespace EffectiveDate$ {
     /** @deprecated use `EffectiveDate$Outbound` instead. */
     type Outbound = EffectiveDate$Outbound;
 }
+export declare function effectiveDateToJSON(effectiveDate: EffectiveDate): string;
+export declare function effectiveDateFromJSON(jsonString: string): SafeParseResult<EffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const LargeTrader$inboundSchema: z.ZodType<LargeTrader, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -72,4 +76,6 @@ export declare namespace LargeTrader$ {
     /** @deprecated use `LargeTrader$Outbound` instead. */
     type Outbound = LargeTrader$Outbound;
 }
+export declare function largeTraderToJSON(largeTrader: LargeTrader): string;
+export declare function largeTraderFromJSON(jsonString: string): SafeParseResult<LargeTrader, SDKValidationError>;
 //# sourceMappingURL=largetrader.d.ts.map

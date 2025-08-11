@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestmentProfileCreate$ = exports.InvestmentProfileCreate$outboundSchema = exports.InvestmentProfileCreate$inboundSchema = void 0;
+exports.investmentProfileCreateToJSON = investmentProfileCreateToJSON;
+exports.investmentProfileCreateFromJSON = investmentProfileCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const accountgoalscreate_js_1 = require("./accountgoalscreate.js");
 const customerprofilecreate_js_1 = require("./customerprofilecreate.js");
 /** @internal */
@@ -72,4 +75,10 @@ var InvestmentProfileCreate$;
     /** @deprecated use `InvestmentProfileCreate$outboundSchema` instead. */
     InvestmentProfileCreate$.outboundSchema = exports.InvestmentProfileCreate$outboundSchema;
 })(InvestmentProfileCreate$ || (exports.InvestmentProfileCreate$ = InvestmentProfileCreate$ = {}));
+function investmentProfileCreateToJSON(investmentProfileCreate) {
+    return JSON.stringify(exports.InvestmentProfileCreate$outboundSchema.parse(investmentProfileCreate));
+}
+function investmentProfileCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestmentProfileCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestmentProfileCreate' from JSON`);
+}
 //# sourceMappingURL=investmentprofilecreate.js.map

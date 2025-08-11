@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Agreement, Agreement$Outbound } from "./agreement.js";
 import { Enrollment, Enrollment$Outbound } from "./enrollment.js";
 import { Identifier, Identifier$Outbound } from "./identifier.js";
@@ -702,6 +704,8 @@ export declare namespace AccountGoals$ {
     /** @deprecated use `AccountGoals$Outbound` instead. */
     type Outbound = AccountGoals$Outbound;
 }
+export declare function accountGoalsToJSON(accountGoals: AccountGoals): string;
+export declare function accountGoalsFromJSON(jsonString: string): SafeParseResult<AccountGoals, SDKValidationError>;
 /** @internal */
 export declare const AccountAnnualIncomeRangeUsd$inboundSchema: z.ZodType<AccountAnnualIncomeRangeUsdOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -782,6 +786,8 @@ export declare namespace CustomerProfile$ {
     /** @deprecated use `CustomerProfile$Outbound` instead. */
     type Outbound = CustomerProfile$Outbound;
 }
+export declare function customerProfileToJSON(customerProfile: CustomerProfile): string;
+export declare function customerProfileFromJSON(jsonString: string): SafeParseResult<CustomerProfile, SDKValidationError>;
 /** @internal */
 export declare const InvestmentProfile$inboundSchema: z.ZodType<InvestmentProfile, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -804,6 +810,8 @@ export declare namespace InvestmentProfile$ {
     /** @deprecated use `InvestmentProfile$Outbound` instead. */
     type Outbound = InvestmentProfile$Outbound;
 }
+export declare function investmentProfileToJSON(investmentProfile: InvestmentProfile): string;
+export declare function investmentProfileFromJSON(jsonString: string): SafeParseResult<InvestmentProfile, SDKValidationError>;
 /** @internal */
 export declare const OwnershipType$inboundSchema: z.ZodType<OwnershipTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -895,6 +903,8 @@ export declare namespace AccountTaxProfile$ {
     /** @deprecated use `AccountTaxProfile$Outbound` instead. */
     type Outbound = AccountTaxProfile$Outbound;
 }
+export declare function accountTaxProfileToJSON(accountTaxProfile: AccountTaxProfile): string;
+export declare function accountTaxProfileFromJSON(jsonString: string): SafeParseResult<AccountTaxProfile, SDKValidationError>;
 /** @internal */
 export declare const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -948,4 +958,6 @@ export declare namespace Account$ {
     /** @deprecated use `Account$Outbound` instead. */
     type Outbound = Account$Outbound;
 }
+export declare function accountToJSON(account: Account): string;
+export declare function accountFromJSON(jsonString: string): SafeParseResult<Account, SDKValidationError>;
 //# sourceMappingURL=account.d.ts.map

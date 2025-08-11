@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The request to affirm Agreements for an Account.
@@ -57,4 +60,24 @@ export namespace AffirmAgreementsRequestCreate$ {
   export const outboundSchema = AffirmAgreementsRequestCreate$outboundSchema;
   /** @deprecated use `AffirmAgreementsRequestCreate$Outbound` instead. */
   export type Outbound = AffirmAgreementsRequestCreate$Outbound;
+}
+
+export function affirmAgreementsRequestCreateToJSON(
+  affirmAgreementsRequestCreate: AffirmAgreementsRequestCreate,
+): string {
+  return JSON.stringify(
+    AffirmAgreementsRequestCreate$outboundSchema.parse(
+      affirmAgreementsRequestCreate,
+    ),
+  );
+}
+
+export function affirmAgreementsRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AffirmAgreementsRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AffirmAgreementsRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AffirmAgreementsRequestCreate' from JSON`,
+  );
 }

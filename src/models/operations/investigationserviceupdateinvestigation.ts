@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InvestigationServiceUpdateInvestigationRequest = {
   /**
@@ -102,6 +105,33 @@ export namespace InvestigationServiceUpdateInvestigationRequest$ {
     InvestigationServiceUpdateInvestigationRequest$Outbound;
 }
 
+export function investigationServiceUpdateInvestigationRequestToJSON(
+  investigationServiceUpdateInvestigationRequest:
+    InvestigationServiceUpdateInvestigationRequest,
+): string {
+  return JSON.stringify(
+    InvestigationServiceUpdateInvestigationRequest$outboundSchema.parse(
+      investigationServiceUpdateInvestigationRequest,
+    ),
+  );
+}
+
+export function investigationServiceUpdateInvestigationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  InvestigationServiceUpdateInvestigationRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      InvestigationServiceUpdateInvestigationRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'InvestigationServiceUpdateInvestigationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const InvestigationServiceUpdateInvestigationResponse$inboundSchema:
   z.ZodType<
@@ -159,4 +189,31 @@ export namespace InvestigationServiceUpdateInvestigationResponse$ {
   /** @deprecated use `InvestigationServiceUpdateInvestigationResponse$Outbound` instead. */
   export type Outbound =
     InvestigationServiceUpdateInvestigationResponse$Outbound;
+}
+
+export function investigationServiceUpdateInvestigationResponseToJSON(
+  investigationServiceUpdateInvestigationResponse:
+    InvestigationServiceUpdateInvestigationResponse,
+): string {
+  return JSON.stringify(
+    InvestigationServiceUpdateInvestigationResponse$outboundSchema.parse(
+      investigationServiceUpdateInvestigationResponse,
+    ),
+  );
+}
+
+export function investigationServiceUpdateInvestigationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  InvestigationServiceUpdateInvestigationResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      InvestigationServiceUpdateInvestigationResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'InvestigationServiceUpdateInvestigationResponse' from JSON`,
+  );
 }

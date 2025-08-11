@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TradingExecutedPrice,
   TradingExecutedPrice$inboundSchema,
@@ -117,6 +120,24 @@ export namespace AccruedInterestAmount$ {
   export type Outbound = AccruedInterestAmount$Outbound;
 }
 
+export function accruedInterestAmountToJSON(
+  accruedInterestAmount: AccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    AccruedInterestAmount$outboundSchema.parse(accruedInterestAmount),
+  );
+}
+
+export function accruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<AccruedInterestAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccruedInterestAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccruedInterestAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const GrossCreditAmount$inboundSchema: z.ZodType<
   GrossCreditAmount,
@@ -151,6 +172,24 @@ export namespace GrossCreditAmount$ {
   export const outboundSchema = GrossCreditAmount$outboundSchema;
   /** @deprecated use `GrossCreditAmount$Outbound` instead. */
   export type Outbound = GrossCreditAmount$Outbound;
+}
+
+export function grossCreditAmountToJSON(
+  grossCreditAmount: GrossCreditAmount,
+): string {
+  return JSON.stringify(
+    GrossCreditAmount$outboundSchema.parse(grossCreditAmount),
+  );
+}
+
+export function grossCreditAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<GrossCreditAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GrossCreditAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GrossCreditAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -189,6 +228,24 @@ export namespace PrevailingMarketPrice$ {
   export type Outbound = PrevailingMarketPrice$Outbound;
 }
 
+export function prevailingMarketPriceToJSON(
+  prevailingMarketPrice: PrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    PrevailingMarketPrice$outboundSchema.parse(prevailingMarketPrice),
+  );
+}
+
+export function prevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<PrevailingMarketPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PrevailingMarketPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const Quantity$inboundSchema: z.ZodType<
   Quantity,
@@ -223,6 +280,20 @@ export namespace Quantity$ {
   export const outboundSchema = Quantity$outboundSchema;
   /** @deprecated use `Quantity$Outbound` instead. */
   export type Outbound = Quantity$Outbound;
+}
+
+export function quantityToJSON(quantity: Quantity): string {
+  return JSON.stringify(Quantity$outboundSchema.parse(quantity));
+}
+
+export function quantityFromJSON(
+  jsonString: string,
+): SafeParseResult<Quantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Quantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Quantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -302,4 +373,22 @@ export namespace TradingExecutions$ {
   export const outboundSchema = TradingExecutions$outboundSchema;
   /** @deprecated use `TradingExecutions$Outbound` instead. */
   export type Outbound = TradingExecutions$Outbound;
+}
+
+export function tradingExecutionsToJSON(
+  tradingExecutions: TradingExecutions,
+): string {
+  return JSON.stringify(
+    TradingExecutions$outboundSchema.parse(tradingExecutions),
+  );
+}
+
+export function tradingExecutionsFromJSON(
+  jsonString: string,
+): SafeParseResult<TradingExecutions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradingExecutions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradingExecutions' from JSON`,
+  );
 }

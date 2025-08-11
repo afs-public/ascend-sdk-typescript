@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AuthenticationListSigningKeysSecurity = {
   apiKeyAuth: string;
@@ -79,6 +82,27 @@ export namespace AuthenticationListSigningKeysSecurity$ {
   export type Outbound = AuthenticationListSigningKeysSecurity$Outbound;
 }
 
+export function authenticationListSigningKeysSecurityToJSON(
+  authenticationListSigningKeysSecurity: AuthenticationListSigningKeysSecurity,
+): string {
+  return JSON.stringify(
+    AuthenticationListSigningKeysSecurity$outboundSchema.parse(
+      authenticationListSigningKeysSecurity,
+    ),
+  );
+}
+
+export function authenticationListSigningKeysSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<AuthenticationListSigningKeysSecurity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AuthenticationListSigningKeysSecurity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthenticationListSigningKeysSecurity' from JSON`,
+  );
+}
+
 /** @internal */
 export const AuthenticationListSigningKeysRequest$inboundSchema: z.ZodType<
   AuthenticationListSigningKeysRequest,
@@ -128,6 +152,27 @@ export namespace AuthenticationListSigningKeysRequest$ {
     AuthenticationListSigningKeysRequest$outboundSchema;
   /** @deprecated use `AuthenticationListSigningKeysRequest$Outbound` instead. */
   export type Outbound = AuthenticationListSigningKeysRequest$Outbound;
+}
+
+export function authenticationListSigningKeysRequestToJSON(
+  authenticationListSigningKeysRequest: AuthenticationListSigningKeysRequest,
+): string {
+  return JSON.stringify(
+    AuthenticationListSigningKeysRequest$outboundSchema.parse(
+      authenticationListSigningKeysRequest,
+    ),
+  );
+}
+
+export function authenticationListSigningKeysRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AuthenticationListSigningKeysRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AuthenticationListSigningKeysRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthenticationListSigningKeysRequest' from JSON`,
+  );
 }
 
 /** @internal */
@@ -188,4 +233,25 @@ export namespace AuthenticationListSigningKeysResponse$ {
     AuthenticationListSigningKeysResponse$outboundSchema;
   /** @deprecated use `AuthenticationListSigningKeysResponse$Outbound` instead. */
   export type Outbound = AuthenticationListSigningKeysResponse$Outbound;
+}
+
+export function authenticationListSigningKeysResponseToJSON(
+  authenticationListSigningKeysResponse: AuthenticationListSigningKeysResponse,
+): string {
+  return JSON.stringify(
+    AuthenticationListSigningKeysResponse$outboundSchema.parse(
+      authenticationListSigningKeysResponse,
+    ),
+  );
+}
+
+export function authenticationListSigningKeysResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AuthenticationListSigningKeysResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AuthenticationListSigningKeysResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthenticationListSigningKeysResponse' from JSON`,
+  );
 }

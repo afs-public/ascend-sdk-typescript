@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to reject internal Ascend transfers.
@@ -71,4 +74,24 @@ export namespace RejectTransferRequestCreate$ {
   export const outboundSchema = RejectTransferRequestCreate$outboundSchema;
   /** @deprecated use `RejectTransferRequestCreate$Outbound` instead. */
   export type Outbound = RejectTransferRequestCreate$Outbound;
+}
+
+export function rejectTransferRequestCreateToJSON(
+  rejectTransferRequestCreate: RejectTransferRequestCreate,
+): string {
+  return JSON.stringify(
+    RejectTransferRequestCreate$outboundSchema.parse(
+      rejectTransferRequestCreate,
+    ),
+  );
+}
+
+export function rejectTransferRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectTransferRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectTransferRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectTransferRequestCreate' from JSON`,
+  );
 }

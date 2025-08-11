@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type RetirementConstraintsListDistributionSummariesRequest = {
     /**
      * The account id.
@@ -47,6 +49,8 @@ export declare namespace RetirementConstraintsListDistributionSummariesRequest$ 
     /** @deprecated use `RetirementConstraintsListDistributionSummariesRequest$Outbound` instead. */
     type Outbound = RetirementConstraintsListDistributionSummariesRequest$Outbound;
 }
+export declare function retirementConstraintsListDistributionSummariesRequestToJSON(retirementConstraintsListDistributionSummariesRequest: RetirementConstraintsListDistributionSummariesRequest): string;
+export declare function retirementConstraintsListDistributionSummariesRequestFromJSON(jsonString: string): SafeParseResult<RetirementConstraintsListDistributionSummariesRequest, SDKValidationError>;
 /** @internal */
 export declare const RetirementConstraintsListDistributionSummariesResponse$inboundSchema: z.ZodType<RetirementConstraintsListDistributionSummariesResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -69,4 +73,6 @@ export declare namespace RetirementConstraintsListDistributionSummariesResponse$
     /** @deprecated use `RetirementConstraintsListDistributionSummariesResponse$Outbound` instead. */
     type Outbound = RetirementConstraintsListDistributionSummariesResponse$Outbound;
 }
+export declare function retirementConstraintsListDistributionSummariesResponseToJSON(retirementConstraintsListDistributionSummariesResponse: RetirementConstraintsListDistributionSummariesResponse): string;
+export declare function retirementConstraintsListDistributionSummariesResponseFromJSON(jsonString: string): SafeParseResult<RetirementConstraintsListDistributionSummariesResponse, SDKValidationError>;
 //# sourceMappingURL=retirementconstraintslistdistributionsummaries.d.ts.map

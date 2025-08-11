@@ -37,8 +37,21 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveQuoteResponse$ = exports.RetrieveQuoteResponse$outboundSchema = exports.RetrieveQuoteResponse$inboundSchema = exports.MinimumQuantity$ = exports.MinimumQuantity$outboundSchema = exports.MinimumQuantity$inboundSchema = exports.RetrieveQuoteResponseIdentifierType$ = exports.RetrieveQuoteResponseIdentifierType$outboundSchema = exports.RetrieveQuoteResponseIdentifierType$inboundSchema = exports.RetrieveQuoteResponseBrokerCapacity$ = exports.RetrieveQuoteResponseBrokerCapacity$outboundSchema = exports.RetrieveQuoteResponseBrokerCapacity$inboundSchema = exports.BidQuantity$ = exports.BidQuantity$outboundSchema = exports.BidQuantity$inboundSchema = exports.BidMinimumQuantity$ = exports.BidMinimumQuantity$outboundSchema = exports.BidMinimumQuantity$inboundSchema = exports.RetrieveQuoteResponseAssetType$ = exports.RetrieveQuoteResponseAssetType$outboundSchema = exports.RetrieveQuoteResponseAssetType$inboundSchema = exports.AskQuantity$ = exports.AskQuantity$outboundSchema = exports.AskQuantity$inboundSchema = exports.AskMinimumQuantity$ = exports.AskMinimumQuantity$outboundSchema = exports.AskMinimumQuantity$inboundSchema = exports.RetrieveQuoteResponseIdentifierType = exports.RetrieveQuoteResponseBrokerCapacity = exports.RetrieveQuoteResponseAssetType = void 0;
+exports.askMinimumQuantityToJSON = askMinimumQuantityToJSON;
+exports.askMinimumQuantityFromJSON = askMinimumQuantityFromJSON;
+exports.askQuantityToJSON = askQuantityToJSON;
+exports.askQuantityFromJSON = askQuantityFromJSON;
+exports.bidMinimumQuantityToJSON = bidMinimumQuantityToJSON;
+exports.bidMinimumQuantityFromJSON = bidMinimumQuantityFromJSON;
+exports.bidQuantityToJSON = bidQuantityToJSON;
+exports.bidQuantityFromJSON = bidQuantityFromJSON;
+exports.minimumQuantityToJSON = minimumQuantityToJSON;
+exports.minimumQuantityFromJSON = minimumQuantityFromJSON;
+exports.retrieveQuoteResponseToJSON = retrieveQuoteResponseToJSON;
+exports.retrieveQuoteResponseFromJSON = retrieveQuoteResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bidaskprice_js_1 = require("./bidaskprice.js");
 /**
@@ -89,6 +102,12 @@ var AskMinimumQuantity$;
     /** @deprecated use `AskMinimumQuantity$outboundSchema` instead. */
     AskMinimumQuantity$.outboundSchema = exports.AskMinimumQuantity$outboundSchema;
 })(AskMinimumQuantity$ || (exports.AskMinimumQuantity$ = AskMinimumQuantity$ = {}));
+function askMinimumQuantityToJSON(askMinimumQuantity) {
+    return JSON.stringify(exports.AskMinimumQuantity$outboundSchema.parse(askMinimumQuantity));
+}
+function askMinimumQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AskMinimumQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AskMinimumQuantity' from JSON`);
+}
 /** @internal */
 exports.AskQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -108,6 +127,12 @@ var AskQuantity$;
     /** @deprecated use `AskQuantity$outboundSchema` instead. */
     AskQuantity$.outboundSchema = exports.AskQuantity$outboundSchema;
 })(AskQuantity$ || (exports.AskQuantity$ = AskQuantity$ = {}));
+function askQuantityToJSON(askQuantity) {
+    return JSON.stringify(exports.AskQuantity$outboundSchema.parse(askQuantity));
+}
+function askQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AskQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AskQuantity' from JSON`);
+}
 /** @internal */
 exports.RetrieveQuoteResponseAssetType$inboundSchema = z
     .union([
@@ -149,6 +174,12 @@ var BidMinimumQuantity$;
     /** @deprecated use `BidMinimumQuantity$outboundSchema` instead. */
     BidMinimumQuantity$.outboundSchema = exports.BidMinimumQuantity$outboundSchema;
 })(BidMinimumQuantity$ || (exports.BidMinimumQuantity$ = BidMinimumQuantity$ = {}));
+function bidMinimumQuantityToJSON(bidMinimumQuantity) {
+    return JSON.stringify(exports.BidMinimumQuantity$outboundSchema.parse(bidMinimumQuantity));
+}
+function bidMinimumQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BidMinimumQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BidMinimumQuantity' from JSON`);
+}
 /** @internal */
 exports.BidQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -168,6 +199,12 @@ var BidQuantity$;
     /** @deprecated use `BidQuantity$outboundSchema` instead. */
     BidQuantity$.outboundSchema = exports.BidQuantity$outboundSchema;
 })(BidQuantity$ || (exports.BidQuantity$ = BidQuantity$ = {}));
+function bidQuantityToJSON(bidQuantity) {
+    return JSON.stringify(exports.BidQuantity$outboundSchema.parse(bidQuantity));
+}
+function bidQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BidQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BidQuantity' from JSON`);
+}
 /** @internal */
 exports.RetrieveQuoteResponseBrokerCapacity$inboundSchema = z
     .union([
@@ -231,6 +268,12 @@ var MinimumQuantity$;
     /** @deprecated use `MinimumQuantity$outboundSchema` instead. */
     MinimumQuantity$.outboundSchema = exports.MinimumQuantity$outboundSchema;
 })(MinimumQuantity$ || (exports.MinimumQuantity$ = MinimumQuantity$ = {}));
+function minimumQuantityToJSON(minimumQuantity) {
+    return JSON.stringify(exports.MinimumQuantity$outboundSchema.parse(minimumQuantity));
+}
+function minimumQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MinimumQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MinimumQuantity' from JSON`);
+}
 /** @internal */
 exports.RetrieveQuoteResponse$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -311,4 +354,10 @@ var RetrieveQuoteResponse$;
     /** @deprecated use `RetrieveQuoteResponse$outboundSchema` instead. */
     RetrieveQuoteResponse$.outboundSchema = exports.RetrieveQuoteResponse$outboundSchema;
 })(RetrieveQuoteResponse$ || (exports.RetrieveQuoteResponse$ = RetrieveQuoteResponse$ = {}));
+function retrieveQuoteResponseToJSON(retrieveQuoteResponse) {
+    return JSON.stringify(exports.RetrieveQuoteResponse$outboundSchema.parse(retrieveQuoteResponse));
+}
+function retrieveQuoteResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveQuoteResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetrieveQuoteResponse' from JSON`);
+}
 //# sourceMappingURL=retrievequoteresponse.js.map

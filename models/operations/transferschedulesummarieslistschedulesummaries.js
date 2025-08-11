@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransferScheduleSummariesListScheduleSummariesResponse$ = exports.TransferScheduleSummariesListScheduleSummariesResponse$outboundSchema = exports.TransferScheduleSummariesListScheduleSummariesResponse$inboundSchema = exports.TransferScheduleSummariesListScheduleSummariesRequest$ = exports.TransferScheduleSummariesListScheduleSummariesRequest$outboundSchema = exports.TransferScheduleSummariesListScheduleSummariesRequest$inboundSchema = void 0;
+exports.transferScheduleSummariesListScheduleSummariesRequestToJSON = transferScheduleSummariesListScheduleSummariesRequestToJSON;
+exports.transferScheduleSummariesListScheduleSummariesRequestFromJSON = transferScheduleSummariesListScheduleSummariesRequestFromJSON;
+exports.transferScheduleSummariesListScheduleSummariesResponseToJSON = transferScheduleSummariesListScheduleSummariesResponseToJSON;
+exports.transferScheduleSummariesListScheduleSummariesResponseFromJSON = transferScheduleSummariesListScheduleSummariesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.TransferScheduleSummariesListScheduleSummariesRequest$inboundSchema = z.object({
@@ -73,6 +78,12 @@ var TransferScheduleSummariesListScheduleSummariesRequest$;
     /** @deprecated use `TransferScheduleSummariesListScheduleSummariesRequest$outboundSchema` instead. */
     TransferScheduleSummariesListScheduleSummariesRequest$.outboundSchema = exports.TransferScheduleSummariesListScheduleSummariesRequest$outboundSchema;
 })(TransferScheduleSummariesListScheduleSummariesRequest$ || (exports.TransferScheduleSummariesListScheduleSummariesRequest$ = TransferScheduleSummariesListScheduleSummariesRequest$ = {}));
+function transferScheduleSummariesListScheduleSummariesRequestToJSON(transferScheduleSummariesListScheduleSummariesRequest) {
+    return JSON.stringify(exports.TransferScheduleSummariesListScheduleSummariesRequest$outboundSchema.parse(transferScheduleSummariesListScheduleSummariesRequest));
+}
+function transferScheduleSummariesListScheduleSummariesRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummariesListScheduleSummariesRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummariesListScheduleSummariesRequest' from JSON`);
+}
 /** @internal */
 exports.TransferScheduleSummariesListScheduleSummariesResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,11 @@ var TransferScheduleSummariesListScheduleSummariesResponse$;
     /** @deprecated use `TransferScheduleSummariesListScheduleSummariesResponse$outboundSchema` instead. */
     TransferScheduleSummariesListScheduleSummariesResponse$.outboundSchema = exports.TransferScheduleSummariesListScheduleSummariesResponse$outboundSchema;
 })(TransferScheduleSummariesListScheduleSummariesResponse$ || (exports.TransferScheduleSummariesListScheduleSummariesResponse$ = TransferScheduleSummariesListScheduleSummariesResponse$ = {}));
+function transferScheduleSummariesListScheduleSummariesResponseToJSON(transferScheduleSummariesListScheduleSummariesResponse) {
+    return JSON.stringify(exports.TransferScheduleSummariesListScheduleSummariesResponse$outboundSchema.parse(transferScheduleSummariesListScheduleSummariesResponse));
+}
+function transferScheduleSummariesListScheduleSummariesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferScheduleSummariesListScheduleSummariesResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummariesListScheduleSummariesResponse' from JSON`);
+}
 //# sourceMappingURL=transferschedulesummarieslistschedulesummaries.js.map

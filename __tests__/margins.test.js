@@ -5,19 +5,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vitest_1 = require("vitest");
 const index_js_1 = require("../index.js");
-(0, vitest_1.test)("Margins Margins Real Time Get Buying Power Get Buying Power1", async () => {
-    var _a, _b, _c, _d;
+const testclient_js_1 = require("./testclient.js");
+(0, vitest_1.test)("Margins Margins Real Time Get Buying Power", async () => {
+    const testHttpClient = (0, testclient_js_1.createTestHTTPClient)("MarginsRealTime_GetBuyingPower");
     const apexascend = new index_js_1.Apexascend({
-        serverURL: "https://uat.apexapis.com",
+        serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
         security: {
-            apiKey: (_a = process.env["API_KEY"]) !== null && _a !== void 0 ? _a : "",
+            apiKey: process.env["API_KEY"] ?? "value",
             serviceAccountCreds: {
-                privateKey: (_b = process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"]) !== null && _b !== void 0 ? _b : "",
-                name: (_c = process.env["SERVICE_ACCOUNT_CREDS_NAME"]) !== null && _c !== void 0 ? _c : "",
-                organization: (_d = process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]) !== null && _d !== void 0 ? _d : "",
-                type: "serviceAccount",
+                privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+                name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+                organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+                    ?? "value",
+                type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
             },
         },
+        httpClient: testHttpClient,
     });
     const result = await apexascend.margins.getBuyingPower("01JHGTEPC6ZTAHCFRH2MD3VJJT");
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);

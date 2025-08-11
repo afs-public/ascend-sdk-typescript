@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to force approval of an existing ACH withdrawal that is pending review. FOR TESTING ONLY!
@@ -50,4 +53,26 @@ export namespace ForceApproveAchWithdrawalRequestCreate$ {
     ForceApproveAchWithdrawalRequestCreate$outboundSchema;
   /** @deprecated use `ForceApproveAchWithdrawalRequestCreate$Outbound` instead. */
   export type Outbound = ForceApproveAchWithdrawalRequestCreate$Outbound;
+}
+
+export function forceApproveAchWithdrawalRequestCreateToJSON(
+  forceApproveAchWithdrawalRequestCreate:
+    ForceApproveAchWithdrawalRequestCreate,
+): string {
+  return JSON.stringify(
+    ForceApproveAchWithdrawalRequestCreate$outboundSchema.parse(
+      forceApproveAchWithdrawalRequestCreate,
+    ),
+  );
+}
+
+export function forceApproveAchWithdrawalRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ForceApproveAchWithdrawalRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForceApproveAchWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForceApproveAchWithdrawalRequestCreate' from JSON`,
+  );
 }

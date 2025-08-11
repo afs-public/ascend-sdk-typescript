@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostalAddressCreate$ = exports.PostalAddressCreate$outboundSchema = exports.PostalAddressCreate$inboundSchema = void 0;
+exports.postalAddressCreateToJSON = postalAddressCreateToJSON;
+exports.postalAddressCreateFromJSON = postalAddressCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.PostalAddressCreate$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -96,4 +99,10 @@ var PostalAddressCreate$;
     /** @deprecated use `PostalAddressCreate$outboundSchema` instead. */
     PostalAddressCreate$.outboundSchema = exports.PostalAddressCreate$outboundSchema;
 })(PostalAddressCreate$ || (exports.PostalAddressCreate$ = PostalAddressCreate$ = {}));
+function postalAddressCreateToJSON(postalAddressCreate) {
+    return JSON.stringify(exports.PostalAddressCreate$outboundSchema.parse(postalAddressCreate));
+}
+function postalAddressCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PostalAddressCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PostalAddressCreate' from JSON`);
+}
 //# sourceMappingURL=postaladdresscreate.js.map

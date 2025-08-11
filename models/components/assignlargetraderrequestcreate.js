@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssignLargeTraderRequestCreate$ = exports.AssignLargeTraderRequestCreate$outboundSchema = exports.AssignLargeTraderRequestCreate$inboundSchema = void 0;
+exports.assignLargeTraderRequestCreateToJSON = assignLargeTraderRequestCreateToJSON;
+exports.assignLargeTraderRequestCreateFromJSON = assignLargeTraderRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AssignLargeTraderRequestCreate$inboundSchema = z.object({
     large_trader_id: z.string(),
@@ -66,4 +69,10 @@ var AssignLargeTraderRequestCreate$;
     /** @deprecated use `AssignLargeTraderRequestCreate$outboundSchema` instead. */
     AssignLargeTraderRequestCreate$.outboundSchema = exports.AssignLargeTraderRequestCreate$outboundSchema;
 })(AssignLargeTraderRequestCreate$ || (exports.AssignLargeTraderRequestCreate$ = AssignLargeTraderRequestCreate$ = {}));
+function assignLargeTraderRequestCreateToJSON(assignLargeTraderRequestCreate) {
+    return JSON.stringify(exports.AssignLargeTraderRequestCreate$outboundSchema.parse(assignLargeTraderRequestCreate));
+}
+function assignLargeTraderRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssignLargeTraderRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssignLargeTraderRequestCreate' from JSON`);
+}
 //# sourceMappingURL=assignlargetraderrequestcreate.js.map

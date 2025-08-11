@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OtherSourcesOfWealthUpdate$ = exports.OtherSourcesOfWealthUpdate$outboundSchema = exports.OtherSourcesOfWealthUpdate$inboundSchema = void 0;
+exports.otherSourcesOfWealthUpdateToJSON = otherSourcesOfWealthUpdateToJSON;
+exports.otherSourcesOfWealthUpdateFromJSON = otherSourcesOfWealthUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.OtherSourcesOfWealthUpdate$inboundSchema = z.object({
     applicant_has_other_sources_of_wealth: z.boolean().optional(),
@@ -74,4 +77,10 @@ var OtherSourcesOfWealthUpdate$;
     /** @deprecated use `OtherSourcesOfWealthUpdate$outboundSchema` instead. */
     OtherSourcesOfWealthUpdate$.outboundSchema = exports.OtherSourcesOfWealthUpdate$outboundSchema;
 })(OtherSourcesOfWealthUpdate$ || (exports.OtherSourcesOfWealthUpdate$ = OtherSourcesOfWealthUpdate$ = {}));
+function otherSourcesOfWealthUpdateToJSON(otherSourcesOfWealthUpdate) {
+    return JSON.stringify(exports.OtherSourcesOfWealthUpdate$outboundSchema.parse(otherSourcesOfWealthUpdate));
+}
+function otherSourcesOfWealthUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OtherSourcesOfWealthUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OtherSourcesOfWealthUpdate' from JSON`);
+}
 //# sourceMappingURL=othersourcesofwealthupdate.js.map

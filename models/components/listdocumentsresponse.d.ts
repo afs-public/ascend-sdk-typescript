@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Document, Document$Outbound } from "./document.js";
 /**
  * List of documents that match a set of search parameters.
@@ -34,4 +36,6 @@ export declare namespace ListDocumentsResponse$ {
     /** @deprecated use `ListDocumentsResponse$Outbound` instead. */
     type Outbound = ListDocumentsResponse$Outbound;
 }
+export declare function listDocumentsResponseToJSON(listDocumentsResponse: ListDocumentsResponse): string;
+export declare function listDocumentsResponseFromJSON(jsonString: string): SafeParseResult<ListDocumentsResponse, SDKValidationError>;
 //# sourceMappingURL=listdocumentsresponse.d.ts.map

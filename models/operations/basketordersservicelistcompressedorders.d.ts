@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BasketOrdersServiceListCompressedOrdersRequest = {
     /**
      * The correspondent id.
@@ -52,6 +54,8 @@ export declare namespace BasketOrdersServiceListCompressedOrdersRequest$ {
     /** @deprecated use `BasketOrdersServiceListCompressedOrdersRequest$Outbound` instead. */
     type Outbound = BasketOrdersServiceListCompressedOrdersRequest$Outbound;
 }
+export declare function basketOrdersServiceListCompressedOrdersRequestToJSON(basketOrdersServiceListCompressedOrdersRequest: BasketOrdersServiceListCompressedOrdersRequest): string;
+export declare function basketOrdersServiceListCompressedOrdersRequestFromJSON(jsonString: string): SafeParseResult<BasketOrdersServiceListCompressedOrdersRequest, SDKValidationError>;
 /** @internal */
 export declare const BasketOrdersServiceListCompressedOrdersResponse$inboundSchema: z.ZodType<BasketOrdersServiceListCompressedOrdersResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -74,4 +78,6 @@ export declare namespace BasketOrdersServiceListCompressedOrdersResponse$ {
     /** @deprecated use `BasketOrdersServiceListCompressedOrdersResponse$Outbound` instead. */
     type Outbound = BasketOrdersServiceListCompressedOrdersResponse$Outbound;
 }
+export declare function basketOrdersServiceListCompressedOrdersResponseToJSON(basketOrdersServiceListCompressedOrdersResponse: BasketOrdersServiceListCompressedOrdersResponse): string;
+export declare function basketOrdersServiceListCompressedOrdersResponseFromJSON(jsonString: string): SafeParseResult<BasketOrdersServiceListCompressedOrdersResponse, SDKValidationError>;
 //# sourceMappingURL=basketordersservicelistcompressedorders.d.ts.map

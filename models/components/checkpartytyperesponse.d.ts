@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Whether the cash journal is considered first party or third party
  */
@@ -60,4 +62,6 @@ export declare namespace CheckPartyTypeResponse$ {
     /** @deprecated use `CheckPartyTypeResponse$Outbound` instead. */
     type Outbound = CheckPartyTypeResponse$Outbound;
 }
+export declare function checkPartyTypeResponseToJSON(checkPartyTypeResponse: CheckPartyTypeResponse): string;
+export declare function checkPartyTypeResponseFromJSON(jsonString: string): SafeParseResult<CheckPartyTypeResponse, SDKValidationError>;
 //# sourceMappingURL=checkpartytyperesponse.d.ts.map

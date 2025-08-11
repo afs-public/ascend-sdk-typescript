@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DepositedFundsCreate,
   DepositedFundsCreate$inboundSchema,
@@ -113,4 +116,31 @@ export namespace ForeignNaturalPersonAccountEnrollmentMetadataCreate$ {
   /** @deprecated use `ForeignNaturalPersonAccountEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound =
     ForeignNaturalPersonAccountEnrollmentMetadataCreate$Outbound;
+}
+
+export function foreignNaturalPersonAccountEnrollmentMetadataCreateToJSON(
+  foreignNaturalPersonAccountEnrollmentMetadataCreate:
+    ForeignNaturalPersonAccountEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    ForeignNaturalPersonAccountEnrollmentMetadataCreate$outboundSchema.parse(
+      foreignNaturalPersonAccountEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function foreignNaturalPersonAccountEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ForeignNaturalPersonAccountEnrollmentMetadataCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForeignNaturalPersonAccountEnrollmentMetadataCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ForeignNaturalPersonAccountEnrollmentMetadataCreate' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LetterOfIntentCreate$ = exports.LetterOfIntentCreate$outboundSchema = exports.LetterOfIntentCreate$inboundSchema = void 0;
+exports.letterOfIntentCreateToJSON = letterOfIntentCreateToJSON;
+exports.letterOfIntentCreateFromJSON = letterOfIntentCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const datecreate_js_1 = require("./datecreate.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
@@ -70,4 +73,10 @@ var LetterOfIntentCreate$;
     /** @deprecated use `LetterOfIntentCreate$outboundSchema` instead. */
     LetterOfIntentCreate$.outboundSchema = exports.LetterOfIntentCreate$outboundSchema;
 })(LetterOfIntentCreate$ || (exports.LetterOfIntentCreate$ = LetterOfIntentCreate$ = {}));
+function letterOfIntentCreateToJSON(letterOfIntentCreate) {
+    return JSON.stringify(exports.LetterOfIntentCreate$outboundSchema.parse(letterOfIntentCreate));
+}
+function letterOfIntentCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LetterOfIntentCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LetterOfIntentCreate' from JSON`);
+}
 //# sourceMappingURL=letterofintentcreate.js.map

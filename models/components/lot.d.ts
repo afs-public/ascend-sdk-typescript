@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Price of the trade lot
  */
@@ -85,6 +87,8 @@ export declare namespace LotPrice$ {
     /** @deprecated use `LotPrice$Outbound` instead. */
     type Outbound = LotPrice$Outbound;
 }
+export declare function lotPriceToJSON(lotPrice: LotPrice): string;
+export declare function lotPriceFromJSON(jsonString: string): SafeParseResult<LotPrice, SDKValidationError>;
 /** @internal */
 export declare const LotMoney$inboundSchema: z.ZodType<LotMoney, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -106,6 +110,8 @@ export declare namespace LotMoney$ {
     /** @deprecated use `LotMoney$Outbound` instead. */
     type Outbound = LotMoney$Outbound;
 }
+export declare function lotMoneyToJSON(lotMoney: LotMoney): string;
+export declare function lotMoneyFromJSON(jsonString: string): SafeParseResult<LotMoney, SDKValidationError>;
 /** @internal */
 export declare const LotQuantity$inboundSchema: z.ZodType<LotQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -126,6 +132,8 @@ export declare namespace LotQuantity$ {
     /** @deprecated use `LotQuantity$Outbound` instead. */
     type Outbound = LotQuantity$Outbound;
 }
+export declare function lotQuantityToJSON(lotQuantity: LotQuantity): string;
+export declare function lotQuantityFromJSON(jsonString: string): SafeParseResult<LotQuantity, SDKValidationError>;
 /** @internal */
 export declare const LotTradeDate$inboundSchema: z.ZodType<LotTradeDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -148,6 +156,8 @@ export declare namespace LotTradeDate$ {
     /** @deprecated use `LotTradeDate$Outbound` instead. */
     type Outbound = LotTradeDate$Outbound;
 }
+export declare function lotTradeDateToJSON(lotTradeDate: LotTradeDate): string;
+export declare function lotTradeDateFromJSON(jsonString: string): SafeParseResult<LotTradeDate, SDKValidationError>;
 /** @internal */
 export declare const Lot$inboundSchema: z.ZodType<Lot, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -171,4 +181,6 @@ export declare namespace Lot$ {
     /** @deprecated use `Lot$Outbound` instead. */
     type Outbound = Lot$Outbound;
 }
+export declare function lotToJSON(lot: Lot): string;
+export declare function lotFromJSON(jsonString: string): SafeParseResult<Lot, SDKValidationError>;
 //# sourceMappingURL=lot.d.ts.map

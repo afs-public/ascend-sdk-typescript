@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AvailableRestriction,
   AvailableRestriction$inboundSchema,
@@ -66,4 +69,24 @@ export namespace ListAvailableRestrictionsResponse$ {
     ListAvailableRestrictionsResponse$outboundSchema;
   /** @deprecated use `ListAvailableRestrictionsResponse$Outbound` instead. */
   export type Outbound = ListAvailableRestrictionsResponse$Outbound;
+}
+
+export function listAvailableRestrictionsResponseToJSON(
+  listAvailableRestrictionsResponse: ListAvailableRestrictionsResponse,
+): string {
+  return JSON.stringify(
+    ListAvailableRestrictionsResponse$outboundSchema.parse(
+      listAvailableRestrictionsResponse,
+    ),
+  );
+}
+
+export function listAvailableRestrictionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListAvailableRestrictionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListAvailableRestrictionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListAvailableRestrictionsResponse' from JSON`,
+  );
 }

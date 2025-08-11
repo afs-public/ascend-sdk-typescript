@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AssetsGetAssetRequest = {
   /**
@@ -69,6 +72,24 @@ export namespace AssetsGetAssetRequest$ {
   export type Outbound = AssetsGetAssetRequest$Outbound;
 }
 
+export function assetsGetAssetRequestToJSON(
+  assetsGetAssetRequest: AssetsGetAssetRequest,
+): string {
+  return JSON.stringify(
+    AssetsGetAssetRequest$outboundSchema.parse(assetsGetAssetRequest),
+  );
+}
+
+export function assetsGetAssetRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetsGetAssetRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssetsGetAssetRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetsGetAssetRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssetsGetAssetResponse$inboundSchema: z.ZodType<
   AssetsGetAssetResponse,
@@ -121,4 +142,22 @@ export namespace AssetsGetAssetResponse$ {
   export const outboundSchema = AssetsGetAssetResponse$outboundSchema;
   /** @deprecated use `AssetsGetAssetResponse$Outbound` instead. */
   export type Outbound = AssetsGetAssetResponse$Outbound;
+}
+
+export function assetsGetAssetResponseToJSON(
+  assetsGetAssetResponse: AssetsGetAssetResponse,
+): string {
+  return JSON.stringify(
+    AssetsGetAssetResponse$outboundSchema.parse(assetsGetAssetResponse),
+  );
+}
+
+export function assetsGetAssetResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetsGetAssetResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssetsGetAssetResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetsGetAssetResponse' from JSON`,
+  );
 }

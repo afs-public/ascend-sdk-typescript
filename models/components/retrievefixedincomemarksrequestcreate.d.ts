@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate, RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$Outbound } from "./retrievefixedincomemarksrequestsecurityidentifierscreate.js";
 /**
  * Request object for retrieving fixed income marks
@@ -34,4 +36,6 @@ export declare namespace RetrieveFixedIncomeMarksRequestCreate$ {
     /** @deprecated use `RetrieveFixedIncomeMarksRequestCreate$Outbound` instead. */
     type Outbound = RetrieveFixedIncomeMarksRequestCreate$Outbound;
 }
+export declare function retrieveFixedIncomeMarksRequestCreateToJSON(retrieveFixedIncomeMarksRequestCreate: RetrieveFixedIncomeMarksRequestCreate): string;
+export declare function retrieveFixedIncomeMarksRequestCreateFromJSON(jsonString: string): SafeParseResult<RetrieveFixedIncomeMarksRequestCreate, SDKValidationError>;
 //# sourceMappingURL=retrievefixedincomemarksrequestcreate.d.ts.map

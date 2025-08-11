@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingGetTradeRequest = {
   /**
@@ -78,6 +81,24 @@ export namespace BookingGetTradeRequest$ {
   export type Outbound = BookingGetTradeRequest$Outbound;
 }
 
+export function bookingGetTradeRequestToJSON(
+  bookingGetTradeRequest: BookingGetTradeRequest,
+): string {
+  return JSON.stringify(
+    BookingGetTradeRequest$outboundSchema.parse(bookingGetTradeRequest),
+  );
+}
+
+export function bookingGetTradeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingGetTradeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingGetTradeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingGetTradeRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingGetTradeResponse$inboundSchema: z.ZodType<
   BookingGetTradeResponse,
@@ -130,4 +151,22 @@ export namespace BookingGetTradeResponse$ {
   export const outboundSchema = BookingGetTradeResponse$outboundSchema;
   /** @deprecated use `BookingGetTradeResponse$Outbound` instead. */
   export type Outbound = BookingGetTradeResponse$Outbound;
+}
+
+export function bookingGetTradeResponseToJSON(
+  bookingGetTradeResponse: BookingGetTradeResponse,
+): string {
+  return JSON.stringify(
+    BookingGetTradeResponse$outboundSchema.parse(bookingGetTradeResponse),
+  );
+}
+
+export function bookingGetTradeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingGetTradeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingGetTradeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingGetTradeResponse' from JSON`,
+  );
 }

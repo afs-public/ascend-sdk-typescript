@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IctWithdrawalsForceApproveIctWithdrawalRequest = {
   /**
@@ -95,6 +98,33 @@ export namespace IctWithdrawalsForceApproveIctWithdrawalRequest$ {
     IctWithdrawalsForceApproveIctWithdrawalRequest$Outbound;
 }
 
+export function ictWithdrawalsForceApproveIctWithdrawalRequestToJSON(
+  ictWithdrawalsForceApproveIctWithdrawalRequest:
+    IctWithdrawalsForceApproveIctWithdrawalRequest,
+): string {
+  return JSON.stringify(
+    IctWithdrawalsForceApproveIctWithdrawalRequest$outboundSchema.parse(
+      ictWithdrawalsForceApproveIctWithdrawalRequest,
+    ),
+  );
+}
+
+export function ictWithdrawalsForceApproveIctWithdrawalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctWithdrawalsForceApproveIctWithdrawalRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctWithdrawalsForceApproveIctWithdrawalRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctWithdrawalsForceApproveIctWithdrawalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctWithdrawalsForceApproveIctWithdrawalResponse$inboundSchema:
   z.ZodType<
@@ -152,4 +182,31 @@ export namespace IctWithdrawalsForceApproveIctWithdrawalResponse$ {
   /** @deprecated use `IctWithdrawalsForceApproveIctWithdrawalResponse$Outbound` instead. */
   export type Outbound =
     IctWithdrawalsForceApproveIctWithdrawalResponse$Outbound;
+}
+
+export function ictWithdrawalsForceApproveIctWithdrawalResponseToJSON(
+  ictWithdrawalsForceApproveIctWithdrawalResponse:
+    IctWithdrawalsForceApproveIctWithdrawalResponse,
+): string {
+  return JSON.stringify(
+    IctWithdrawalsForceApproveIctWithdrawalResponse$outboundSchema.parse(
+      ictWithdrawalsForceApproveIctWithdrawalResponse,
+    ),
+  );
+}
+
+export function ictWithdrawalsForceApproveIctWithdrawalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctWithdrawalsForceApproveIctWithdrawalResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctWithdrawalsForceApproveIctWithdrawalResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctWithdrawalsForceApproveIctWithdrawalResponse' from JSON`,
+  );
 }

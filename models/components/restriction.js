@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Restriction$ = exports.Restriction$outboundSchema = exports.Restriction$inboundSchema = void 0;
+exports.restrictionToJSON = restrictionToJSON;
+exports.restrictionFromJSON = restrictionFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.Restriction$inboundSchema = z.object({
     active: z.boolean().optional(),
@@ -92,4 +95,10 @@ var Restriction$;
     /** @deprecated use `Restriction$outboundSchema` instead. */
     Restriction$.outboundSchema = exports.Restriction$outboundSchema;
 })(Restriction$ || (exports.Restriction$ = Restriction$ = {}));
+function restrictionToJSON(restriction) {
+    return JSON.stringify(exports.Restriction$outboundSchema.parse(restriction));
+}
+function restrictionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Restriction$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Restriction' from JSON`);
+}
 //# sourceMappingURL=restriction.js.map

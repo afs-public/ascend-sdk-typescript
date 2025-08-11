@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYieldCreate,
   BondYieldCreate$inboundSchema,
@@ -206,4 +209,20 @@ export namespace ExecutionCreate$ {
   export const outboundSchema = ExecutionCreate$outboundSchema;
   /** @deprecated use `ExecutionCreate$Outbound` instead. */
   export type Outbound = ExecutionCreate$Outbound;
+}
+
+export function executionCreateToJSON(
+  executionCreate: ExecutionCreate,
+): string {
+  return JSON.stringify(ExecutionCreate$outboundSchema.parse(executionCreate));
+}
+
+export function executionCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ExecutionCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExecutionCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExecutionCreate' from JSON`,
+  );
 }

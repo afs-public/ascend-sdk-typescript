@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubscriberGetPushSubscriptionDeliveryResponse$ = exports.SubscriberGetPushSubscriptionDeliveryResponse$outboundSchema = exports.SubscriberGetPushSubscriptionDeliveryResponse$inboundSchema = exports.SubscriberGetPushSubscriptionDeliveryRequest$ = exports.SubscriberGetPushSubscriptionDeliveryRequest$outboundSchema = exports.SubscriberGetPushSubscriptionDeliveryRequest$inboundSchema = void 0;
+exports.subscriberGetPushSubscriptionDeliveryRequestToJSON = subscriberGetPushSubscriptionDeliveryRequestToJSON;
+exports.subscriberGetPushSubscriptionDeliveryRequestFromJSON = subscriberGetPushSubscriptionDeliveryRequestFromJSON;
+exports.subscriberGetPushSubscriptionDeliveryResponseToJSON = subscriberGetPushSubscriptionDeliveryResponseToJSON;
+exports.subscriberGetPushSubscriptionDeliveryResponseFromJSON = subscriberGetPushSubscriptionDeliveryResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.SubscriberGetPushSubscriptionDeliveryRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var SubscriberGetPushSubscriptionDeliveryRequest$;
     /** @deprecated use `SubscriberGetPushSubscriptionDeliveryRequest$outboundSchema` instead. */
     SubscriberGetPushSubscriptionDeliveryRequest$.outboundSchema = exports.SubscriberGetPushSubscriptionDeliveryRequest$outboundSchema;
 })(SubscriberGetPushSubscriptionDeliveryRequest$ || (exports.SubscriberGetPushSubscriptionDeliveryRequest$ = SubscriberGetPushSubscriptionDeliveryRequest$ = {}));
+function subscriberGetPushSubscriptionDeliveryRequestToJSON(subscriberGetPushSubscriptionDeliveryRequest) {
+    return JSON.stringify(exports.SubscriberGetPushSubscriptionDeliveryRequest$outboundSchema.parse(subscriberGetPushSubscriptionDeliveryRequest));
+}
+function subscriberGetPushSubscriptionDeliveryRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberGetPushSubscriptionDeliveryRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberGetPushSubscriptionDeliveryRequest' from JSON`);
+}
 /** @internal */
 exports.SubscriberGetPushSubscriptionDeliveryResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +119,10 @@ var SubscriberGetPushSubscriptionDeliveryResponse$;
     /** @deprecated use `SubscriberGetPushSubscriptionDeliveryResponse$outboundSchema` instead. */
     SubscriberGetPushSubscriptionDeliveryResponse$.outboundSchema = exports.SubscriberGetPushSubscriptionDeliveryResponse$outboundSchema;
 })(SubscriberGetPushSubscriptionDeliveryResponse$ || (exports.SubscriberGetPushSubscriptionDeliveryResponse$ = SubscriberGetPushSubscriptionDeliveryResponse$ = {}));
+function subscriberGetPushSubscriptionDeliveryResponseToJSON(subscriberGetPushSubscriptionDeliveryResponse) {
+    return JSON.stringify(exports.SubscriberGetPushSubscriptionDeliveryResponse$outboundSchema.parse(subscriberGetPushSubscriptionDeliveryResponse));
+}
+function subscriberGetPushSubscriptionDeliveryResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberGetPushSubscriptionDeliveryResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberGetPushSubscriptionDeliveryResponse' from JSON`);
+}
 //# sourceMappingURL=subscribergetpushsubscriptiondelivery.js.map

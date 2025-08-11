@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Federal tax classification.
@@ -234,4 +237,22 @@ export namespace TaxProfileCreate$ {
   export const outboundSchema = TaxProfileCreate$outboundSchema;
   /** @deprecated use `TaxProfileCreate$Outbound` instead. */
   export type Outbound = TaxProfileCreate$Outbound;
+}
+
+export function taxProfileCreateToJSON(
+  taxProfileCreate: TaxProfileCreate,
+): string {
+  return JSON.stringify(
+    TaxProfileCreate$outboundSchema.parse(taxProfileCreate),
+  );
+}
+
+export function taxProfileCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TaxProfileCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TaxProfileCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TaxProfileCreate' from JSON`,
+  );
 }

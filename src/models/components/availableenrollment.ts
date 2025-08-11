@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LegalAgreement,
   LegalAgreement$inboundSchema,
@@ -143,4 +146,22 @@ export namespace AvailableEnrollment$ {
   export const outboundSchema = AvailableEnrollment$outboundSchema;
   /** @deprecated use `AvailableEnrollment$Outbound` instead. */
   export type Outbound = AvailableEnrollment$Outbound;
+}
+
+export function availableEnrollmentToJSON(
+  availableEnrollment: AvailableEnrollment,
+): string {
+  return JSON.stringify(
+    AvailableEnrollment$outboundSchema.parse(availableEnrollment),
+  );
+}
+
+export function availableEnrollmentFromJSON(
+  jsonString: string,
+): SafeParseResult<AvailableEnrollment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AvailableEnrollment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AvailableEnrollment' from JSON`,
+  );
 }

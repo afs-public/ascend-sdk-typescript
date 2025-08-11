@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the contents of a document and how it is used; Required for all account documents
@@ -240,4 +243,25 @@ export namespace AccountDocumentUploadRequestCreate$ {
     AccountDocumentUploadRequestCreate$outboundSchema;
   /** @deprecated use `AccountDocumentUploadRequestCreate$Outbound` instead. */
   export type Outbound = AccountDocumentUploadRequestCreate$Outbound;
+}
+
+export function accountDocumentUploadRequestCreateToJSON(
+  accountDocumentUploadRequestCreate: AccountDocumentUploadRequestCreate,
+): string {
+  return JSON.stringify(
+    AccountDocumentUploadRequestCreate$outboundSchema.parse(
+      accountDocumentUploadRequestCreate,
+    ),
+  );
+}
+
+export function accountDocumentUploadRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountDocumentUploadRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountDocumentUploadRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountDocumentUploadRequestCreate' from JSON`,
+  );
 }

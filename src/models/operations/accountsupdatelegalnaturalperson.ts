@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsUpdateLegalNaturalPersonRequest = {
   /**
@@ -86,6 +89,33 @@ export namespace AccountsUpdateLegalNaturalPersonRequest$ {
   export type Outbound = AccountsUpdateLegalNaturalPersonRequest$Outbound;
 }
 
+export function accountsUpdateLegalNaturalPersonRequestToJSON(
+  accountsUpdateLegalNaturalPersonRequest:
+    AccountsUpdateLegalNaturalPersonRequest,
+): string {
+  return JSON.stringify(
+    AccountsUpdateLegalNaturalPersonRequest$outboundSchema.parse(
+      accountsUpdateLegalNaturalPersonRequest,
+    ),
+  );
+}
+
+export function accountsUpdateLegalNaturalPersonRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsUpdateLegalNaturalPersonRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsUpdateLegalNaturalPersonRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsUpdateLegalNaturalPersonRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsUpdateLegalNaturalPersonResponse$inboundSchema: z.ZodType<
   AccountsUpdateLegalNaturalPersonResponse,
@@ -140,4 +170,31 @@ export namespace AccountsUpdateLegalNaturalPersonResponse$ {
     AccountsUpdateLegalNaturalPersonResponse$outboundSchema;
   /** @deprecated use `AccountsUpdateLegalNaturalPersonResponse$Outbound` instead. */
   export type Outbound = AccountsUpdateLegalNaturalPersonResponse$Outbound;
+}
+
+export function accountsUpdateLegalNaturalPersonResponseToJSON(
+  accountsUpdateLegalNaturalPersonResponse:
+    AccountsUpdateLegalNaturalPersonResponse,
+): string {
+  return JSON.stringify(
+    AccountsUpdateLegalNaturalPersonResponse$outboundSchema.parse(
+      accountsUpdateLegalNaturalPersonResponse,
+    ),
+  );
+}
+
+export function accountsUpdateLegalNaturalPersonResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsUpdateLegalNaturalPersonResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsUpdateLegalNaturalPersonResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsUpdateLegalNaturalPersonResponse' from JSON`,
+  );
 }

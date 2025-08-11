@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RecipientBankBankDetailsCreate$ = exports.RecipientBankBankDetailsCreate$outboundSchema = exports.RecipientBankBankDetailsCreate$inboundSchema = void 0;
+exports.recipientBankBankDetailsCreateToJSON = recipientBankBankDetailsCreateToJSON;
+exports.recipientBankBankDetailsCreateFromJSON = recipientBankBankDetailsCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const addresscreate_js_1 = require("./addresscreate.js");
 /** @internal */
 exports.RecipientBankBankDetailsCreate$inboundSchema = z.object({
@@ -73,4 +76,10 @@ var RecipientBankBankDetailsCreate$;
     /** @deprecated use `RecipientBankBankDetailsCreate$outboundSchema` instead. */
     RecipientBankBankDetailsCreate$.outboundSchema = exports.RecipientBankBankDetailsCreate$outboundSchema;
 })(RecipientBankBankDetailsCreate$ || (exports.RecipientBankBankDetailsCreate$ = RecipientBankBankDetailsCreate$ = {}));
+function recipientBankBankDetailsCreateToJSON(recipientBankBankDetailsCreate) {
+    return JSON.stringify(exports.RecipientBankBankDetailsCreate$outboundSchema.parse(recipientBankBankDetailsCreate));
+}
+function recipientBankBankDetailsCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RecipientBankBankDetailsCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RecipientBankBankDetailsCreate' from JSON`);
+}
 //# sourceMappingURL=recipientbankbankdetailscreate.js.map

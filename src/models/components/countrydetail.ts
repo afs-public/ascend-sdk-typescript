@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Country detail used for Dow Jones Profile details
@@ -66,4 +69,18 @@ export namespace CountryDetail$ {
   export const outboundSchema = CountryDetail$outboundSchema;
   /** @deprecated use `CountryDetail$Outbound` instead. */
   export type Outbound = CountryDetail$Outbound;
+}
+
+export function countryDetailToJSON(countryDetail: CountryDetail): string {
+  return JSON.stringify(CountryDetail$outboundSchema.parse(countryDetail));
+}
+
+export function countryDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<CountryDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountryDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountryDetail' from JSON`,
+  );
 }

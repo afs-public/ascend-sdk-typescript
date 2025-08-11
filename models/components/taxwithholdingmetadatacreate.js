@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaxWithholdingMetadataCreate$ = exports.TaxWithholdingMetadataCreate$outboundSchema = exports.TaxWithholdingMetadataCreate$inboundSchema = exports.WithholdingType$ = exports.WithholdingType$outboundSchema = exports.WithholdingType$inboundSchema = exports.TaxAuthority$ = exports.TaxAuthority$outboundSchema = exports.TaxAuthority$inboundSchema = exports.WithholdingType = exports.TaxAuthority = void 0;
+exports.taxWithholdingMetadataCreateToJSON = taxWithholdingMetadataCreateToJSON;
+exports.taxWithholdingMetadataCreateFromJSON = taxWithholdingMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Tax Authority for Enrollment
@@ -184,4 +187,10 @@ var TaxWithholdingMetadataCreate$;
     /** @deprecated use `TaxWithholdingMetadataCreate$outboundSchema` instead. */
     TaxWithholdingMetadataCreate$.outboundSchema = exports.TaxWithholdingMetadataCreate$outboundSchema;
 })(TaxWithholdingMetadataCreate$ || (exports.TaxWithholdingMetadataCreate$ = TaxWithholdingMetadataCreate$ = {}));
+function taxWithholdingMetadataCreateToJSON(taxWithholdingMetadataCreate) {
+    return JSON.stringify(exports.TaxWithholdingMetadataCreate$outboundSchema.parse(taxWithholdingMetadataCreate));
+}
+function taxWithholdingMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TaxWithholdingMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TaxWithholdingMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=taxwithholdingmetadatacreate.js.map

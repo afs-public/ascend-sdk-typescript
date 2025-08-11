@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListCompressedOrdersResponse$ = exports.ListCompressedOrdersResponse$outboundSchema = exports.ListCompressedOrdersResponse$inboundSchema = void 0;
+exports.listCompressedOrdersResponseToJSON = listCompressedOrdersResponseToJSON;
+exports.listCompressedOrdersResponseFromJSON = listCompressedOrdersResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const compressedorder_js_1 = require("./compressedorder.js");
 /** @internal */
 exports.ListCompressedOrdersResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListCompressedOrdersResponse$;
     /** @deprecated use `ListCompressedOrdersResponse$outboundSchema` instead. */
     ListCompressedOrdersResponse$.outboundSchema = exports.ListCompressedOrdersResponse$outboundSchema;
 })(ListCompressedOrdersResponse$ || (exports.ListCompressedOrdersResponse$ = ListCompressedOrdersResponse$ = {}));
+function listCompressedOrdersResponseToJSON(listCompressedOrdersResponse) {
+    return JSON.stringify(exports.ListCompressedOrdersResponse$outboundSchema.parse(listCompressedOrdersResponse));
+}
+function listCompressedOrdersResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListCompressedOrdersResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListCompressedOrdersResponse' from JSON`);
+}
 //# sourceMappingURL=listcompressedordersresponse.js.map

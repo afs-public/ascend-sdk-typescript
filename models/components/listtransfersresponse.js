@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListTransfersResponse$ = exports.ListTransfersResponse$outboundSchema = exports.ListTransfersResponse$inboundSchema = void 0;
+exports.listTransfersResponseToJSON = listTransfersResponseToJSON;
+exports.listTransfersResponseFromJSON = listTransfersResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const acatstransfer_js_1 = require("./acatstransfer.js");
 /** @internal */
 exports.ListTransfersResponse$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ListTransfersResponse$;
     /** @deprecated use `ListTransfersResponse$outboundSchema` instead. */
     ListTransfersResponse$.outboundSchema = exports.ListTransfersResponse$outboundSchema;
 })(ListTransfersResponse$ || (exports.ListTransfersResponse$ = ListTransfersResponse$ = {}));
+function listTransfersResponseToJSON(listTransfersResponse) {
+    return JSON.stringify(exports.ListTransfersResponse$outboundSchema.parse(listTransfersResponse));
+}
+function listTransfersResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListTransfersResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListTransfersResponse' from JSON`);
+}
 //# sourceMappingURL=listtransfersresponse.js.map

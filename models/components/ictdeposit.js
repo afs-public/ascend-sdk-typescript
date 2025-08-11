@@ -38,8 +38,41 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IndividualRecipientParty$inboundSchema = exports.IctDepositTravelRuleIndividualRecipientPartyAddress$ = exports.IctDepositTravelRuleIndividualRecipientPartyAddress$outboundSchema = exports.IctDepositTravelRuleIndividualRecipientPartyAddress$inboundSchema = exports.IndividualOriginatingParty$ = exports.IndividualOriginatingParty$outboundSchema = exports.IndividualOriginatingParty$inboundSchema = exports.IctDepositTravelRuleAddress$ = exports.IctDepositTravelRuleAddress$outboundSchema = exports.IctDepositTravelRuleAddress$inboundSchema = exports.EntityRecipientParty$ = exports.EntityRecipientParty$outboundSchema = exports.EntityRecipientParty$inboundSchema = exports.IctDepositAddress$ = exports.IctDepositAddress$outboundSchema = exports.IctDepositAddress$inboundSchema = exports.EntityOriginatingParty$ = exports.EntityOriginatingParty$outboundSchema = exports.EntityOriginatingParty$inboundSchema = exports.IctDepositTravelRuleEntityOriginatingPartyAddress$ = exports.IctDepositTravelRuleEntityOriginatingPartyAddress$outboundSchema = exports.IctDepositTravelRuleEntityOriginatingPartyAddress$inboundSchema = exports.TransferState$ = exports.TransferState$outboundSchema = exports.TransferState$inboundSchema = exports.IctDepositTransferStateState$ = exports.IctDepositTransferStateState$outboundSchema = exports.IctDepositTransferStateState$inboundSchema = exports.IctDepositState$ = exports.IctDepositState$outboundSchema = exports.IctDepositState$inboundSchema = exports.IctDepositStateState$ = exports.IctDepositStateState$outboundSchema = exports.IctDepositStateState$inboundSchema = exports.IctDepositRetirementContribution$ = exports.IctDepositRetirementContribution$outboundSchema = exports.IctDepositRetirementContribution$inboundSchema = exports.IctDepositType$ = exports.IctDepositType$outboundSchema = exports.IctDepositType$inboundSchema = exports.IctDepositProgram$ = exports.IctDepositProgram$outboundSchema = exports.IctDepositProgram$inboundSchema = exports.IctDepositAmount$ = exports.IctDepositAmount$outboundSchema = exports.IctDepositAmount$inboundSchema = exports.IctDepositTransferStateState = exports.IctDepositStateState = exports.IctDepositType = exports.IctDepositProgram = void 0;
 exports.IctDeposit$ = exports.IctDeposit$outboundSchema = exports.IctDeposit$inboundSchema = exports.TravelRule$ = exports.TravelRule$outboundSchema = exports.TravelRule$inboundSchema = exports.RecipientInstitution$ = exports.RecipientInstitution$outboundSchema = exports.RecipientInstitution$inboundSchema = exports.OriginatingInstitution$ = exports.OriginatingInstitution$outboundSchema = exports.OriginatingInstitution$inboundSchema = exports.IndividualRecipientParty$ = exports.IndividualRecipientParty$outboundSchema = void 0;
+exports.ictDepositAmountToJSON = ictDepositAmountToJSON;
+exports.ictDepositAmountFromJSON = ictDepositAmountFromJSON;
+exports.ictDepositRetirementContributionToJSON = ictDepositRetirementContributionToJSON;
+exports.ictDepositRetirementContributionFromJSON = ictDepositRetirementContributionFromJSON;
+exports.ictDepositStateToJSON = ictDepositStateToJSON;
+exports.ictDepositStateFromJSON = ictDepositStateFromJSON;
+exports.transferStateToJSON = transferStateToJSON;
+exports.transferStateFromJSON = transferStateFromJSON;
+exports.ictDepositTravelRuleEntityOriginatingPartyAddressToJSON = ictDepositTravelRuleEntityOriginatingPartyAddressToJSON;
+exports.ictDepositTravelRuleEntityOriginatingPartyAddressFromJSON = ictDepositTravelRuleEntityOriginatingPartyAddressFromJSON;
+exports.entityOriginatingPartyToJSON = entityOriginatingPartyToJSON;
+exports.entityOriginatingPartyFromJSON = entityOriginatingPartyFromJSON;
+exports.ictDepositAddressToJSON = ictDepositAddressToJSON;
+exports.ictDepositAddressFromJSON = ictDepositAddressFromJSON;
+exports.entityRecipientPartyToJSON = entityRecipientPartyToJSON;
+exports.entityRecipientPartyFromJSON = entityRecipientPartyFromJSON;
+exports.ictDepositTravelRuleAddressToJSON = ictDepositTravelRuleAddressToJSON;
+exports.ictDepositTravelRuleAddressFromJSON = ictDepositTravelRuleAddressFromJSON;
+exports.individualOriginatingPartyToJSON = individualOriginatingPartyToJSON;
+exports.individualOriginatingPartyFromJSON = individualOriginatingPartyFromJSON;
+exports.ictDepositTravelRuleIndividualRecipientPartyAddressToJSON = ictDepositTravelRuleIndividualRecipientPartyAddressToJSON;
+exports.ictDepositTravelRuleIndividualRecipientPartyAddressFromJSON = ictDepositTravelRuleIndividualRecipientPartyAddressFromJSON;
+exports.individualRecipientPartyToJSON = individualRecipientPartyToJSON;
+exports.individualRecipientPartyFromJSON = individualRecipientPartyFromJSON;
+exports.originatingInstitutionToJSON = originatingInstitutionToJSON;
+exports.originatingInstitutionFromJSON = originatingInstitutionFromJSON;
+exports.recipientInstitutionToJSON = recipientInstitutionToJSON;
+exports.recipientInstitutionFromJSON = recipientInstitutionFromJSON;
+exports.travelRuleToJSON = travelRuleToJSON;
+exports.travelRuleFromJSON = travelRuleFromJSON;
+exports.ictDepositToJSON = ictDepositToJSON;
+exports.ictDepositFromJSON = ictDepositFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The name of the program the ICT deposit is associated with
@@ -140,6 +173,12 @@ var IctDepositAmount$;
     /** @deprecated use `IctDepositAmount$outboundSchema` instead. */
     IctDepositAmount$.outboundSchema = exports.IctDepositAmount$outboundSchema;
 })(IctDepositAmount$ || (exports.IctDepositAmount$ = IctDepositAmount$ = {}));
+function ictDepositAmountToJSON(ictDepositAmount) {
+    return JSON.stringify(exports.IctDepositAmount$outboundSchema.parse(ictDepositAmount));
+}
+function ictDepositAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositAmount' from JSON`);
+}
 /** @internal */
 exports.IctDepositProgram$inboundSchema = z
     .union([
@@ -213,6 +252,12 @@ var IctDepositRetirementContribution$;
     /** @deprecated use `IctDepositRetirementContribution$outboundSchema` instead. */
     IctDepositRetirementContribution$.outboundSchema = exports.IctDepositRetirementContribution$outboundSchema;
 })(IctDepositRetirementContribution$ || (exports.IctDepositRetirementContribution$ = IctDepositRetirementContribution$ = {}));
+function ictDepositRetirementContributionToJSON(ictDepositRetirementContribution) {
+    return JSON.stringify(exports.IctDepositRetirementContribution$outboundSchema.parse(ictDepositRetirementContribution));
+}
+function ictDepositRetirementContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositRetirementContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositRetirementContribution' from JSON`);
+}
 /** @internal */
 exports.IctDepositStateState$inboundSchema = z
     .union([
@@ -270,6 +315,12 @@ var IctDepositState$;
     /** @deprecated use `IctDepositState$outboundSchema` instead. */
     IctDepositState$.outboundSchema = exports.IctDepositState$outboundSchema;
 })(IctDepositState$ || (exports.IctDepositState$ = IctDepositState$ = {}));
+function ictDepositStateToJSON(ictDepositState) {
+    return JSON.stringify(exports.IctDepositState$outboundSchema.parse(ictDepositState));
+}
+function ictDepositStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositState' from JSON`);
+}
 /** @internal */
 exports.IctDepositTransferStateState$inboundSchema = z
     .union([
@@ -327,6 +378,12 @@ var TransferState$;
     /** @deprecated use `TransferState$outboundSchema` instead. */
     TransferState$.outboundSchema = exports.TransferState$outboundSchema;
 })(TransferState$ || (exports.TransferState$ = TransferState$ = {}));
+function transferStateToJSON(transferState) {
+    return JSON.stringify(exports.TransferState$outboundSchema.parse(transferState));
+}
+function transferStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferState' from JSON`);
+}
 /** @internal */
 exports.IctDepositTravelRuleEntityOriginatingPartyAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -384,6 +441,12 @@ var IctDepositTravelRuleEntityOriginatingPartyAddress$;
     /** @deprecated use `IctDepositTravelRuleEntityOriginatingPartyAddress$outboundSchema` instead. */
     IctDepositTravelRuleEntityOriginatingPartyAddress$.outboundSchema = exports.IctDepositTravelRuleEntityOriginatingPartyAddress$outboundSchema;
 })(IctDepositTravelRuleEntityOriginatingPartyAddress$ || (exports.IctDepositTravelRuleEntityOriginatingPartyAddress$ = IctDepositTravelRuleEntityOriginatingPartyAddress$ = {}));
+function ictDepositTravelRuleEntityOriginatingPartyAddressToJSON(ictDepositTravelRuleEntityOriginatingPartyAddress) {
+    return JSON.stringify(exports.IctDepositTravelRuleEntityOriginatingPartyAddress$outboundSchema.parse(ictDepositTravelRuleEntityOriginatingPartyAddress));
+}
+function ictDepositTravelRuleEntityOriginatingPartyAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositTravelRuleEntityOriginatingPartyAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositTravelRuleEntityOriginatingPartyAddress' from JSON`);
+}
 /** @internal */
 exports.EntityOriginatingParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctDepositTravelRuleEntityOriginatingPartyAddress$inboundSchema)).optional(),
@@ -415,6 +478,12 @@ var EntityOriginatingParty$;
     /** @deprecated use `EntityOriginatingParty$outboundSchema` instead. */
     EntityOriginatingParty$.outboundSchema = exports.EntityOriginatingParty$outboundSchema;
 })(EntityOriginatingParty$ || (exports.EntityOriginatingParty$ = EntityOriginatingParty$ = {}));
+function entityOriginatingPartyToJSON(entityOriginatingParty) {
+    return JSON.stringify(exports.EntityOriginatingParty$outboundSchema.parse(entityOriginatingParty));
+}
+function entityOriginatingPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EntityOriginatingParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EntityOriginatingParty' from JSON`);
+}
 /** @internal */
 exports.IctDepositAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -472,6 +541,12 @@ var IctDepositAddress$;
     /** @deprecated use `IctDepositAddress$outboundSchema` instead. */
     IctDepositAddress$.outboundSchema = exports.IctDepositAddress$outboundSchema;
 })(IctDepositAddress$ || (exports.IctDepositAddress$ = IctDepositAddress$ = {}));
+function ictDepositAddressToJSON(ictDepositAddress) {
+    return JSON.stringify(exports.IctDepositAddress$outboundSchema.parse(ictDepositAddress));
+}
+function ictDepositAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositAddress' from JSON`);
+}
 /** @internal */
 exports.EntityRecipientParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctDepositAddress$inboundSchema)).optional(),
@@ -504,6 +579,12 @@ var EntityRecipientParty$;
     /** @deprecated use `EntityRecipientParty$outboundSchema` instead. */
     EntityRecipientParty$.outboundSchema = exports.EntityRecipientParty$outboundSchema;
 })(EntityRecipientParty$ || (exports.EntityRecipientParty$ = EntityRecipientParty$ = {}));
+function entityRecipientPartyToJSON(entityRecipientParty) {
+    return JSON.stringify(exports.EntityRecipientParty$outboundSchema.parse(entityRecipientParty));
+}
+function entityRecipientPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EntityRecipientParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EntityRecipientParty' from JSON`);
+}
 /** @internal */
 exports.IctDepositTravelRuleAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -561,6 +642,12 @@ var IctDepositTravelRuleAddress$;
     /** @deprecated use `IctDepositTravelRuleAddress$outboundSchema` instead. */
     IctDepositTravelRuleAddress$.outboundSchema = exports.IctDepositTravelRuleAddress$outboundSchema;
 })(IctDepositTravelRuleAddress$ || (exports.IctDepositTravelRuleAddress$ = IctDepositTravelRuleAddress$ = {}));
+function ictDepositTravelRuleAddressToJSON(ictDepositTravelRuleAddress) {
+    return JSON.stringify(exports.IctDepositTravelRuleAddress$outboundSchema.parse(ictDepositTravelRuleAddress));
+}
+function ictDepositTravelRuleAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositTravelRuleAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositTravelRuleAddress' from JSON`);
+}
 /** @internal */
 exports.IndividualOriginatingParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctDepositTravelRuleAddress$inboundSchema))
@@ -596,6 +683,12 @@ var IndividualOriginatingParty$;
     /** @deprecated use `IndividualOriginatingParty$outboundSchema` instead. */
     IndividualOriginatingParty$.outboundSchema = exports.IndividualOriginatingParty$outboundSchema;
 })(IndividualOriginatingParty$ || (exports.IndividualOriginatingParty$ = IndividualOriginatingParty$ = {}));
+function individualOriginatingPartyToJSON(individualOriginatingParty) {
+    return JSON.stringify(exports.IndividualOriginatingParty$outboundSchema.parse(individualOriginatingParty));
+}
+function individualOriginatingPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IndividualOriginatingParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IndividualOriginatingParty' from JSON`);
+}
 /** @internal */
 exports.IctDepositTravelRuleIndividualRecipientPartyAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -653,6 +746,12 @@ var IctDepositTravelRuleIndividualRecipientPartyAddress$;
     /** @deprecated use `IctDepositTravelRuleIndividualRecipientPartyAddress$outboundSchema` instead. */
     IctDepositTravelRuleIndividualRecipientPartyAddress$.outboundSchema = exports.IctDepositTravelRuleIndividualRecipientPartyAddress$outboundSchema;
 })(IctDepositTravelRuleIndividualRecipientPartyAddress$ || (exports.IctDepositTravelRuleIndividualRecipientPartyAddress$ = IctDepositTravelRuleIndividualRecipientPartyAddress$ = {}));
+function ictDepositTravelRuleIndividualRecipientPartyAddressToJSON(ictDepositTravelRuleIndividualRecipientPartyAddress) {
+    return JSON.stringify(exports.IctDepositTravelRuleIndividualRecipientPartyAddress$outboundSchema.parse(ictDepositTravelRuleIndividualRecipientPartyAddress));
+}
+function ictDepositTravelRuleIndividualRecipientPartyAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDepositTravelRuleIndividualRecipientPartyAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDepositTravelRuleIndividualRecipientPartyAddress' from JSON`);
+}
 /** @internal */
 exports.IndividualRecipientParty$inboundSchema = z.object({
     address: z.nullable(z.lazy(() => exports.IctDepositTravelRuleIndividualRecipientPartyAddress$inboundSchema)).optional(),
@@ -686,6 +785,12 @@ var IndividualRecipientParty$;
     /** @deprecated use `IndividualRecipientParty$outboundSchema` instead. */
     IndividualRecipientParty$.outboundSchema = exports.IndividualRecipientParty$outboundSchema;
 })(IndividualRecipientParty$ || (exports.IndividualRecipientParty$ = IndividualRecipientParty$ = {}));
+function individualRecipientPartyToJSON(individualRecipientParty) {
+    return JSON.stringify(exports.IndividualRecipientParty$outboundSchema.parse(individualRecipientParty));
+}
+function individualRecipientPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IndividualRecipientParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IndividualRecipientParty' from JSON`);
+}
 /** @internal */
 exports.OriginatingInstitution$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -715,6 +820,12 @@ var OriginatingInstitution$;
     /** @deprecated use `OriginatingInstitution$outboundSchema` instead. */
     OriginatingInstitution$.outboundSchema = exports.OriginatingInstitution$outboundSchema;
 })(OriginatingInstitution$ || (exports.OriginatingInstitution$ = OriginatingInstitution$ = {}));
+function originatingInstitutionToJSON(originatingInstitution) {
+    return JSON.stringify(exports.OriginatingInstitution$outboundSchema.parse(originatingInstitution));
+}
+function originatingInstitutionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OriginatingInstitution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OriginatingInstitution' from JSON`);
+}
 /** @internal */
 exports.RecipientInstitution$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -744,6 +855,12 @@ var RecipientInstitution$;
     /** @deprecated use `RecipientInstitution$outboundSchema` instead. */
     RecipientInstitution$.outboundSchema = exports.RecipientInstitution$outboundSchema;
 })(RecipientInstitution$ || (exports.RecipientInstitution$ = RecipientInstitution$ = {}));
+function recipientInstitutionToJSON(recipientInstitution) {
+    return JSON.stringify(exports.RecipientInstitution$outboundSchema.parse(recipientInstitution));
+}
+function recipientInstitutionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RecipientInstitution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RecipientInstitution' from JSON`);
+}
 /** @internal */
 exports.TravelRule$inboundSchema = z.object({
     entity_originating_party: z.nullable(z.lazy(() => exports.EntityOriginatingParty$inboundSchema)).optional(),
@@ -791,6 +908,12 @@ var TravelRule$;
     /** @deprecated use `TravelRule$outboundSchema` instead. */
     TravelRule$.outboundSchema = exports.TravelRule$outboundSchema;
 })(TravelRule$ || (exports.TravelRule$ = TravelRule$ = {}));
+function travelRuleToJSON(travelRule) {
+    return JSON.stringify(exports.TravelRule$outboundSchema.parse(travelRule));
+}
+function travelRuleFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TravelRule$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TravelRule' from JSON`);
+}
 /** @internal */
 exports.IctDeposit$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.IctDepositAmount$inboundSchema)).optional(),
@@ -840,4 +963,10 @@ var IctDeposit$;
     /** @deprecated use `IctDeposit$outboundSchema` instead. */
     IctDeposit$.outboundSchema = exports.IctDeposit$outboundSchema;
 })(IctDeposit$ || (exports.IctDeposit$ = IctDeposit$ = {}));
+function ictDepositToJSON(ictDeposit) {
+    return JSON.stringify(exports.IctDeposit$outboundSchema.parse(ictDeposit));
+}
+function ictDepositFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctDeposit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctDeposit' from JSON`);
+}
 //# sourceMappingURL=ictdeposit.js.map

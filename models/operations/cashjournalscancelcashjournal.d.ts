@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CashJournalsCancelCashJournalRequest = {
     /**
      * The cashJournal id.
@@ -39,6 +41,8 @@ export declare namespace CashJournalsCancelCashJournalRequest$ {
     /** @deprecated use `CashJournalsCancelCashJournalRequest$Outbound` instead. */
     type Outbound = CashJournalsCancelCashJournalRequest$Outbound;
 }
+export declare function cashJournalsCancelCashJournalRequestToJSON(cashJournalsCancelCashJournalRequest: CashJournalsCancelCashJournalRequest): string;
+export declare function cashJournalsCancelCashJournalRequestFromJSON(jsonString: string): SafeParseResult<CashJournalsCancelCashJournalRequest, SDKValidationError>;
 /** @internal */
 export declare const CashJournalsCancelCashJournalResponse$inboundSchema: z.ZodType<CashJournalsCancelCashJournalResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace CashJournalsCancelCashJournalResponse$ {
     /** @deprecated use `CashJournalsCancelCashJournalResponse$Outbound` instead. */
     type Outbound = CashJournalsCancelCashJournalResponse$Outbound;
 }
+export declare function cashJournalsCancelCashJournalResponseToJSON(cashJournalsCancelCashJournalResponse: CashJournalsCancelCashJournalResponse): string;
+export declare function cashJournalsCancelCashJournalResponseFromJSON(jsonString: string): SafeParseResult<CashJournalsCancelCashJournalResponse, SDKValidationError>;
 //# sourceMappingURL=cashjournalscancelcashjournal.d.ts.map

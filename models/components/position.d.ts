@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * `settled` + any as of settled amounts for the date
  */
@@ -216,6 +218,8 @@ export declare namespace AdjustedSettled$ {
     /** @deprecated use `AdjustedSettled$Outbound` instead. */
     type Outbound = AdjustedSettled$Outbound;
 }
+export declare function adjustedSettledToJSON(adjustedSettled: AdjustedSettled): string;
+export declare function adjustedSettledFromJSON(jsonString: string): SafeParseResult<AdjustedSettled, SDKValidationError>;
 /** @internal */
 export declare const AdjustedTrade$inboundSchema: z.ZodType<AdjustedTrade, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -236,6 +240,8 @@ export declare namespace AdjustedTrade$ {
     /** @deprecated use `AdjustedTrade$Outbound` instead. */
     type Outbound = AdjustedTrade$Outbound;
 }
+export declare function adjustedTradeToJSON(adjustedTrade: AdjustedTrade): string;
+export declare function adjustedTradeFromJSON(jsonString: string): SafeParseResult<AdjustedTrade, SDKValidationError>;
 /** @internal */
 export declare const DateT$inboundSchema: z.ZodType<DateT, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -258,6 +264,8 @@ export declare namespace DateT$ {
     /** @deprecated use `DateT$Outbound` instead. */
     type Outbound = DateT$Outbound;
 }
+export declare function dateToJSON(dateT: DateT): string;
+export declare function dateFromJSON(jsonString: string): SafeParseResult<DateT, SDKValidationError>;
 /** @internal */
 export declare const PositionFpsl$inboundSchema: z.ZodType<PositionFpsl, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -278,6 +286,8 @@ export declare namespace PositionFpsl$ {
     /** @deprecated use `PositionFpsl$Outbound` instead. */
     type Outbound = PositionFpsl$Outbound;
 }
+export declare function positionFpslToJSON(positionFpsl: PositionFpsl): string;
+export declare function positionFpslFromJSON(jsonString: string): SafeParseResult<PositionFpsl, SDKValidationError>;
 /** @internal */
 export declare const Free$inboundSchema: z.ZodType<Free, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -298,6 +308,8 @@ export declare namespace Free$ {
     /** @deprecated use `Free$Outbound` instead. */
     type Outbound = Free$Outbound;
 }
+export declare function freeToJSON(free: Free): string;
+export declare function freeFromJSON(jsonString: string): SafeParseResult<Free, SDKValidationError>;
 /** @internal */
 export declare const LastAdjustedDate$inboundSchema: z.ZodType<LastAdjustedDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -320,6 +332,8 @@ export declare namespace LastAdjustedDate$ {
     /** @deprecated use `LastAdjustedDate$Outbound` instead. */
     type Outbound = LastAdjustedDate$Outbound;
 }
+export declare function lastAdjustedDateToJSON(lastAdjustedDate: LastAdjustedDate): string;
+export declare function lastAdjustedDateFromJSON(jsonString: string): SafeParseResult<LastAdjustedDate, SDKValidationError>;
 /** @internal */
 export declare const PendingDrip$inboundSchema: z.ZodType<PendingDrip, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -340,6 +354,8 @@ export declare namespace PendingDrip$ {
     /** @deprecated use `PendingDrip$Outbound` instead. */
     type Outbound = PendingDrip$Outbound;
 }
+export declare function pendingDripToJSON(pendingDrip: PendingDrip): string;
+export declare function pendingDripFromJSON(jsonString: string): SafeParseResult<PendingDrip, SDKValidationError>;
 /** @internal */
 export declare const PendingOutgoingAcat$inboundSchema: z.ZodType<PendingOutgoingAcat, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -360,6 +376,8 @@ export declare namespace PendingOutgoingAcat$ {
     /** @deprecated use `PendingOutgoingAcat$Outbound` instead. */
     type Outbound = PendingOutgoingAcat$Outbound;
 }
+export declare function pendingOutgoingAcatToJSON(pendingOutgoingAcat: PendingOutgoingAcat): string;
+export declare function pendingOutgoingAcatFromJSON(jsonString: string): SafeParseResult<PendingOutgoingAcat, SDKValidationError>;
 /** @internal */
 export declare const PendingWithdrawal$inboundSchema: z.ZodType<PendingWithdrawal, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -380,6 +398,8 @@ export declare namespace PendingWithdrawal$ {
     /** @deprecated use `PendingWithdrawal$Outbound` instead. */
     type Outbound = PendingWithdrawal$Outbound;
 }
+export declare function pendingWithdrawalToJSON(pendingWithdrawal: PendingWithdrawal): string;
+export declare function pendingWithdrawalFromJSON(jsonString: string): SafeParseResult<PendingWithdrawal, SDKValidationError>;
 /** @internal */
 export declare const Settled$inboundSchema: z.ZodType<Settled, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -400,6 +420,8 @@ export declare namespace Settled$ {
     /** @deprecated use `Settled$Outbound` instead. */
     type Outbound = Settled$Outbound;
 }
+export declare function settledToJSON(settled: Settled): string;
+export declare function settledFromJSON(jsonString: string): SafeParseResult<Settled, SDKValidationError>;
 /** @internal */
 export declare const PositionTrade$inboundSchema: z.ZodType<PositionTrade, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -420,6 +442,8 @@ export declare namespace PositionTrade$ {
     /** @deprecated use `PositionTrade$Outbound` instead. */
     type Outbound = PositionTrade$Outbound;
 }
+export declare function positionTradeToJSON(positionTrade: PositionTrade): string;
+export declare function positionTradeFromJSON(jsonString: string): SafeParseResult<PositionTrade, SDKValidationError>;
 /** @internal */
 export declare const Unrestricted$inboundSchema: z.ZodType<Unrestricted, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -440,6 +464,8 @@ export declare namespace Unrestricted$ {
     /** @deprecated use `Unrestricted$Outbound` instead. */
     type Outbound = Unrestricted$Outbound;
 }
+export declare function unrestrictedToJSON(unrestricted: Unrestricted): string;
+export declare function unrestrictedFromJSON(jsonString: string): SafeParseResult<Unrestricted, SDKValidationError>;
 /** @internal */
 export declare const Position$inboundSchema: z.ZodType<Position, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -476,4 +502,6 @@ export declare namespace Position$ {
     /** @deprecated use `Position$Outbound` instead. */
     type Outbound = Position$Outbound;
 }
+export declare function positionToJSON(position: Position): string;
+export declare function positionFromJSON(jsonString: string): SafeParseResult<Position, SDKValidationError>;
 //# sourceMappingURL=position.d.ts.map

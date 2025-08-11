@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BidAskPrice, BidAskPrice$Outbound } from "./bidaskprice.js";
 /**
  * The best ask minimum quantity. This will be absent if no ask information is available
@@ -165,6 +167,8 @@ export declare namespace AskMinimumQuantity$ {
     /** @deprecated use `AskMinimumQuantity$Outbound` instead. */
     type Outbound = AskMinimumQuantity$Outbound;
 }
+export declare function askMinimumQuantityToJSON(askMinimumQuantity: AskMinimumQuantity): string;
+export declare function askMinimumQuantityFromJSON(jsonString: string): SafeParseResult<AskMinimumQuantity, SDKValidationError>;
 /** @internal */
 export declare const AskQuantity$inboundSchema: z.ZodType<AskQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -185,6 +189,8 @@ export declare namespace AskQuantity$ {
     /** @deprecated use `AskQuantity$Outbound` instead. */
     type Outbound = AskQuantity$Outbound;
 }
+export declare function askQuantityToJSON(askQuantity: AskQuantity): string;
+export declare function askQuantityFromJSON(jsonString: string): SafeParseResult<AskQuantity, SDKValidationError>;
 /** @internal */
 export declare const RetrieveQuoteResponseAssetType$inboundSchema: z.ZodType<RetrieveQuoteResponseAssetTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -219,6 +225,8 @@ export declare namespace BidMinimumQuantity$ {
     /** @deprecated use `BidMinimumQuantity$Outbound` instead. */
     type Outbound = BidMinimumQuantity$Outbound;
 }
+export declare function bidMinimumQuantityToJSON(bidMinimumQuantity: BidMinimumQuantity): string;
+export declare function bidMinimumQuantityFromJSON(jsonString: string): SafeParseResult<BidMinimumQuantity, SDKValidationError>;
 /** @internal */
 export declare const BidQuantity$inboundSchema: z.ZodType<BidQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -239,6 +247,8 @@ export declare namespace BidQuantity$ {
     /** @deprecated use `BidQuantity$Outbound` instead. */
     type Outbound = BidQuantity$Outbound;
 }
+export declare function bidQuantityToJSON(bidQuantity: BidQuantity): string;
+export declare function bidQuantityFromJSON(jsonString: string): SafeParseResult<BidQuantity, SDKValidationError>;
 /** @internal */
 export declare const RetrieveQuoteResponseBrokerCapacity$inboundSchema: z.ZodType<RetrieveQuoteResponseBrokerCapacityOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -287,6 +297,8 @@ export declare namespace MinimumQuantity$ {
     /** @deprecated use `MinimumQuantity$Outbound` instead. */
     type Outbound = MinimumQuantity$Outbound;
 }
+export declare function minimumQuantityToJSON(minimumQuantity: MinimumQuantity): string;
+export declare function minimumQuantityFromJSON(jsonString: string): SafeParseResult<MinimumQuantity, SDKValidationError>;
 /** @internal */
 export declare const RetrieveQuoteResponse$inboundSchema: z.ZodType<RetrieveQuoteResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -320,4 +332,6 @@ export declare namespace RetrieveQuoteResponse$ {
     /** @deprecated use `RetrieveQuoteResponse$Outbound` instead. */
     type Outbound = RetrieveQuoteResponse$Outbound;
 }
+export declare function retrieveQuoteResponseToJSON(retrieveQuoteResponse: RetrieveQuoteResponse): string;
+export declare function retrieveQuoteResponseFromJSON(jsonString: string): SafeParseResult<RetrieveQuoteResponse, SDKValidationError>;
 //# sourceMappingURL=retrievequoteresponse.d.ts.map

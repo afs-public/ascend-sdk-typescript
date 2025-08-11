@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest = {
   /**
@@ -83,6 +86,31 @@ export namespace WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$ {
     WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$Outbound;
 }
 
+export function wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestToJSON(
+  wireWithdrawalSchedulesGetWireWithdrawalScheduleRequest:
+    WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest,
+): string {
+  return JSON.stringify(
+    WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$outboundSchema
+      .parse(wireWithdrawalSchedulesGetWireWithdrawalScheduleRequest),
+  );
+}
+
+export function wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$inboundSchema:
   z.ZodType<
@@ -145,4 +173,29 @@ export namespace WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$ {
   /** @deprecated use `WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$Outbound` instead. */
   export type Outbound =
     WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$Outbound;
+}
+
+export function wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseToJSON(
+  wireWithdrawalSchedulesGetWireWithdrawalScheduleResponse:
+    WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse,
+): string {
+  return JSON.stringify(
+    WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$outboundSchema
+      .parse(wireWithdrawalSchedulesGetWireWithdrawalScheduleResponse),
+  );
+}
+
+export function wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse' from JSON`,
+  );
 }

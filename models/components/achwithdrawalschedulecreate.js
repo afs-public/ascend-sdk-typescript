@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawalScheduleCreate$ = exports.AchWithdrawalScheduleCreate$outboundSchema = exports.AchWithdrawalScheduleCreate$inboundSchema = void 0;
+exports.achWithdrawalScheduleCreateToJSON = achWithdrawalScheduleCreateToJSON;
+exports.achWithdrawalScheduleCreateFromJSON = achWithdrawalScheduleCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const retirementdistributioncreate_js_1 = require("./retirementdistributioncreate.js");
 const withdrawalscheduledetailscreate_js_1 = require("./withdrawalscheduledetailscreate.js");
 /** @internal */
@@ -76,4 +79,10 @@ var AchWithdrawalScheduleCreate$;
     /** @deprecated use `AchWithdrawalScheduleCreate$outboundSchema` instead. */
     AchWithdrawalScheduleCreate$.outboundSchema = exports.AchWithdrawalScheduleCreate$outboundSchema;
 })(AchWithdrawalScheduleCreate$ || (exports.AchWithdrawalScheduleCreate$ = AchWithdrawalScheduleCreate$ = {}));
+function achWithdrawalScheduleCreateToJSON(achWithdrawalScheduleCreate) {
+    return JSON.stringify(exports.AchWithdrawalScheduleCreate$outboundSchema.parse(achWithdrawalScheduleCreate));
+}
+function achWithdrawalScheduleCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleCreate' from JSON`);
+}
 //# sourceMappingURL=achwithdrawalschedulecreate.js.map

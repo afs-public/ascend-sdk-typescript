@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DecimalUpdate$ = exports.DecimalUpdate$outboundSchema = exports.DecimalUpdate$inboundSchema = void 0;
+exports.decimalUpdateToJSON = decimalUpdateToJSON;
+exports.decimalUpdateFromJSON = decimalUpdateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.DecimalUpdate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -57,4 +60,10 @@ var DecimalUpdate$;
     /** @deprecated use `DecimalUpdate$outboundSchema` instead. */
     DecimalUpdate$.outboundSchema = exports.DecimalUpdate$outboundSchema;
 })(DecimalUpdate$ || (exports.DecimalUpdate$ = DecimalUpdate$ = {}));
+function decimalUpdateToJSON(decimalUpdate) {
+    return JSON.stringify(exports.DecimalUpdate$outboundSchema.parse(decimalUpdate));
+}
+function decimalUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DecimalUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DecimalUpdate' from JSON`);
+}
 //# sourceMappingURL=decimalupdate.js.map

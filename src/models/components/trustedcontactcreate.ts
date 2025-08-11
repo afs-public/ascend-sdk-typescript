@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PhoneNumberCreate,
   PhoneNumberCreate$inboundSchema,
@@ -139,4 +142,22 @@ export namespace TrustedContactCreate$ {
   export const outboundSchema = TrustedContactCreate$outboundSchema;
   /** @deprecated use `TrustedContactCreate$Outbound` instead. */
   export type Outbound = TrustedContactCreate$Outbound;
+}
+
+export function trustedContactCreateToJSON(
+  trustedContactCreate: TrustedContactCreate,
+): string {
+  return JSON.stringify(
+    TrustedContactCreate$outboundSchema.parse(trustedContactCreate),
+  );
+}
+
+export function trustedContactCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedContactCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedContactCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedContactCreate' from JSON`,
+  );
 }

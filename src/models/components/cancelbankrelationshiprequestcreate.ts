@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing bank relationship.
@@ -57,4 +60,25 @@ export namespace CancelBankRelationshipRequestCreate$ {
     CancelBankRelationshipRequestCreate$outboundSchema;
   /** @deprecated use `CancelBankRelationshipRequestCreate$Outbound` instead. */
   export type Outbound = CancelBankRelationshipRequestCreate$Outbound;
+}
+
+export function cancelBankRelationshipRequestCreateToJSON(
+  cancelBankRelationshipRequestCreate: CancelBankRelationshipRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelBankRelationshipRequestCreate$outboundSchema.parse(
+      cancelBankRelationshipRequestCreate,
+    ),
+  );
+}
+
+export function cancelBankRelationshipRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelBankRelationshipRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelBankRelationshipRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelBankRelationshipRequestCreate' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AddressDetail, AddressDetail$Outbound } from "./addressdetail.js";
 import { CountryDetail, CountryDetail$Outbound } from "./countrydetail.js";
 import { DescriptionDetail, DescriptionDetail$Outbound } from "./descriptiondetail.js";
@@ -265,6 +267,8 @@ export declare namespace CreatedDate$ {
     /** @deprecated use `CreatedDate$Outbound` instead. */
     type Outbound = CreatedDate$Outbound;
 }
+export declare function createdDateToJSON(createdDate: CreatedDate): string;
+export declare function createdDateFromJSON(jsonString: string): SafeParseResult<CreatedDate, SDKValidationError>;
 /** @internal */
 export declare const Dob$inboundSchema: z.ZodType<Dob, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -287,6 +291,8 @@ export declare namespace Dob$ {
     /** @deprecated use `Dob$Outbound` instead. */
     type Outbound = Dob$Outbound;
 }
+export declare function dobToJSON(dob: Dob): string;
+export declare function dobFromJSON(jsonString: string): SafeParseResult<Dob, SDKValidationError>;
 /** @internal */
 export declare const EndDate$inboundSchema: z.ZodType<EndDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -309,6 +315,8 @@ export declare namespace EndDate$ {
     /** @deprecated use `EndDate$Outbound` instead. */
     type Outbound = EndDate$Outbound;
 }
+export declare function endDateToJSON(endDate: EndDate): string;
+export declare function endDateFromJSON(jsonString: string): SafeParseResult<EndDate, SDKValidationError>;
 /** @internal */
 export declare const DndbDetails$inboundSchema: z.ZodType<DndbDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -342,6 +350,8 @@ export declare namespace DndbDetails$ {
     /** @deprecated use `DndbDetails$Outbound` instead. */
     type Outbound = DndbDetails$Outbound;
 }
+export declare function dndbDetailsToJSON(dndbDetails: DndbDetails): string;
+export declare function dndbDetailsFromJSON(jsonString: string): SafeParseResult<DndbDetails, SDKValidationError>;
 /** @internal */
 export declare const LastChangedDate$inboundSchema: z.ZodType<LastChangedDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -364,6 +374,8 @@ export declare namespace LastChangedDate$ {
     /** @deprecated use `LastChangedDate$Outbound` instead. */
     type Outbound = LastChangedDate$Outbound;
 }
+export declare function lastChangedDateToJSON(lastChangedDate: LastChangedDate): string;
+export declare function lastChangedDateFromJSON(jsonString: string): SafeParseResult<LastChangedDate, SDKValidationError>;
 /** @internal */
 export declare const DowJonesDetails$inboundSchema: z.ZodType<DowJonesDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -402,6 +414,8 @@ export declare namespace DowJonesDetails$ {
     /** @deprecated use `DowJonesDetails$Outbound` instead. */
     type Outbound = DowJonesDetails$Outbound;
 }
+export declare function dowJonesDetailsToJSON(dowJonesDetails: DowJonesDetails): string;
+export declare function dowJonesDetailsFromJSON(jsonString: string): SafeParseResult<DowJonesDetails, SDKValidationError>;
 /** @internal */
 export declare const WatchlistItem$inboundSchema: z.ZodType<WatchlistItem, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -426,4 +440,6 @@ export declare namespace WatchlistItem$ {
     /** @deprecated use `WatchlistItem$Outbound` instead. */
     type Outbound = WatchlistItem$Outbound;
 }
+export declare function watchlistItemToJSON(watchlistItem: WatchlistItem): string;
+export declare function watchlistItemFromJSON(jsonString: string): SafeParseResult<WatchlistItem, SDKValidationError>;
 //# sourceMappingURL=watchlistitem.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The end reason of the LTID.
  */
@@ -59,4 +61,6 @@ export declare namespace EndLargeTraderRequestCreate$ {
     /** @deprecated use `EndLargeTraderRequestCreate$Outbound` instead. */
     type Outbound = EndLargeTraderRequestCreate$Outbound;
 }
+export declare function endLargeTraderRequestCreateToJSON(endLargeTraderRequestCreate: EndLargeTraderRequestCreate): string;
+export declare function endLargeTraderRequestCreateFromJSON(jsonString: string): SafeParseResult<EndLargeTraderRequestCreate, SDKValidationError>;
 //# sourceMappingURL=endlargetraderrequestcreate.d.ts.map

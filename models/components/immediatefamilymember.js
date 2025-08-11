@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImmediateFamilyMember$ = exports.ImmediateFamilyMember$outboundSchema = exports.ImmediateFamilyMember$inboundSchema = void 0;
+exports.immediateFamilyMemberToJSON = immediateFamilyMemberToJSON;
+exports.immediateFamilyMemberFromJSON = immediateFamilyMemberFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ImmediateFamilyMember$inboundSchema = z.object({
     family_member_name: z.string().optional(),
@@ -68,4 +71,10 @@ var ImmediateFamilyMember$;
     /** @deprecated use `ImmediateFamilyMember$outboundSchema` instead. */
     ImmediateFamilyMember$.outboundSchema = exports.ImmediateFamilyMember$outboundSchema;
 })(ImmediateFamilyMember$ || (exports.ImmediateFamilyMember$ = ImmediateFamilyMember$ = {}));
+function immediateFamilyMemberToJSON(immediateFamilyMember) {
+    return JSON.stringify(exports.ImmediateFamilyMember$outboundSchema.parse(immediateFamilyMember));
+}
+function immediateFamilyMemberFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ImmediateFamilyMember$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ImmediateFamilyMember' from JSON`);
+}
 //# sourceMappingURL=immediatefamilymember.js.map

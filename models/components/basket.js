@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Basket$ = exports.Basket$outboundSchema = exports.Basket$inboundSchema = exports.BasketState$ = exports.BasketState$outboundSchema = exports.BasketState$inboundSchema = exports.BasketState = void 0;
+exports.basketToJSON = basketToJSON;
+exports.basketFromJSON = basketFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The processing status of the basket
@@ -151,4 +154,10 @@ var Basket$;
     /** @deprecated use `Basket$outboundSchema` instead. */
     Basket$.outboundSchema = exports.Basket$outboundSchema;
 })(Basket$ || (exports.Basket$ = Basket$ = {}));
+function basketToJSON(basket) {
+    return JSON.stringify(exports.Basket$outboundSchema.parse(basket));
+}
+function basketFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Basket$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Basket' from JSON`);
+}
 //# sourceMappingURL=basket.js.map

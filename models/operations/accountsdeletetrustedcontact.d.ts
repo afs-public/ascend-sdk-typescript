@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsDeleteTrustedContactRequest = {
     /**
      * The account id.
@@ -38,6 +40,8 @@ export declare namespace AccountsDeleteTrustedContactRequest$ {
     /** @deprecated use `AccountsDeleteTrustedContactRequest$Outbound` instead. */
     type Outbound = AccountsDeleteTrustedContactRequest$Outbound;
 }
+export declare function accountsDeleteTrustedContactRequestToJSON(accountsDeleteTrustedContactRequest: AccountsDeleteTrustedContactRequest): string;
+export declare function accountsDeleteTrustedContactRequestFromJSON(jsonString: string): SafeParseResult<AccountsDeleteTrustedContactRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsDeleteTrustedContactResponse$inboundSchema: z.ZodType<AccountsDeleteTrustedContactResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace AccountsDeleteTrustedContactResponse$ {
     /** @deprecated use `AccountsDeleteTrustedContactResponse$Outbound` instead. */
     type Outbound = AccountsDeleteTrustedContactResponse$Outbound;
 }
+export declare function accountsDeleteTrustedContactResponseToJSON(accountsDeleteTrustedContactResponse: AccountsDeleteTrustedContactResponse): string;
+export declare function accountsDeleteTrustedContactResponseFromJSON(jsonString: string): SafeParseResult<AccountsDeleteTrustedContactResponse, SDKValidationError>;
 //# sourceMappingURL=accountsdeletetrustedcontact.d.ts.map

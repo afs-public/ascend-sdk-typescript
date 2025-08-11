@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScheduledRetirementContributionCreate$ = exports.ScheduledRetirementContributionCreate$outboundSchema = exports.ScheduledRetirementContributionCreate$inboundSchema = exports.ScheduledRetirementContributionCreateType$ = exports.ScheduledRetirementContributionCreateType$outboundSchema = exports.ScheduledRetirementContributionCreateType$inboundSchema = exports.TemporalTaxYear$ = exports.TemporalTaxYear$outboundSchema = exports.TemporalTaxYear$inboundSchema = exports.ScheduledRetirementContributionCreateType = exports.TemporalTaxYear = void 0;
+exports.scheduledRetirementContributionCreateToJSON = scheduledRetirementContributionCreateToJSON;
+exports.scheduledRetirementContributionCreateFromJSON = scheduledRetirementContributionCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * A temporal tax year value. This will always evaluate to a year based on the date the transfer was initiated.
@@ -144,4 +147,10 @@ var ScheduledRetirementContributionCreate$;
     /** @deprecated use `ScheduledRetirementContributionCreate$outboundSchema` instead. */
     ScheduledRetirementContributionCreate$.outboundSchema = exports.ScheduledRetirementContributionCreate$outboundSchema;
 })(ScheduledRetirementContributionCreate$ || (exports.ScheduledRetirementContributionCreate$ = ScheduledRetirementContributionCreate$ = {}));
+function scheduledRetirementContributionCreateToJSON(scheduledRetirementContributionCreate) {
+    return JSON.stringify(exports.ScheduledRetirementContributionCreate$outboundSchema.parse(scheduledRetirementContributionCreate));
+}
+function scheduledRetirementContributionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ScheduledRetirementContributionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ScheduledRetirementContributionCreate' from JSON`);
+}
 //# sourceMappingURL=scheduledretirementcontributioncreate.js.map

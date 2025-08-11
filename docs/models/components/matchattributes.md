@@ -5,7 +5,7 @@
 ```typescript
 import { MatchAttributes } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: MatchAttributes = MatchAttributes.BirthDate;
+let value: MatchAttributes = MatchAttributes.Identification;
 ```
 
 ## Values

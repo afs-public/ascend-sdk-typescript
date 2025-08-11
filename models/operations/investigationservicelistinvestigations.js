@@ -37,18 +37,25 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestigationServiceListInvestigationsResponse$ = exports.InvestigationServiceListInvestigationsResponse$outboundSchema = exports.InvestigationServiceListInvestigationsResponse$inboundSchema = exports.InvestigationServiceListInvestigationsRequest$ = exports.InvestigationServiceListInvestigationsRequest$outboundSchema = exports.InvestigationServiceListInvestigationsRequest$inboundSchema = void 0;
+exports.investigationServiceListInvestigationsRequestToJSON = investigationServiceListInvestigationsRequestToJSON;
+exports.investigationServiceListInvestigationsRequestFromJSON = investigationServiceListInvestigationsRequestFromJSON;
+exports.investigationServiceListInvestigationsResponseToJSON = investigationServiceListInvestigationsResponseToJSON;
+exports.investigationServiceListInvestigationsResponseFromJSON = investigationServiceListInvestigationsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.InvestigationServiceListInvestigationsRequest$inboundSchema = z.object({
     page_size: z.number().int().optional(),
     page_token: z.string().optional(),
     filter: z.string().optional(),
+    order_by: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "page_size": "pageSize",
         "page_token": "pageToken",
+        "order_by": "orderBy",
     });
 });
 /** @internal */
@@ -56,10 +63,12 @@ exports.InvestigationServiceListInvestigationsRequest$outboundSchema = z.object(
     pageSize: z.number().int().optional(),
     pageToken: z.string().optional(),
     filter: z.string().optional(),
+    orderBy: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         pageSize: "page_size",
         pageToken: "page_token",
+        orderBy: "order_by",
     });
 });
 /**
@@ -73,6 +82,12 @@ var InvestigationServiceListInvestigationsRequest$;
     /** @deprecated use `InvestigationServiceListInvestigationsRequest$outboundSchema` instead. */
     InvestigationServiceListInvestigationsRequest$.outboundSchema = exports.InvestigationServiceListInvestigationsRequest$outboundSchema;
 })(InvestigationServiceListInvestigationsRequest$ || (exports.InvestigationServiceListInvestigationsRequest$ = InvestigationServiceListInvestigationsRequest$ = {}));
+function investigationServiceListInvestigationsRequestToJSON(investigationServiceListInvestigationsRequest) {
+    return JSON.stringify(exports.InvestigationServiceListInvestigationsRequest$outboundSchema.parse(investigationServiceListInvestigationsRequest));
+}
+function investigationServiceListInvestigationsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationServiceListInvestigationsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationServiceListInvestigationsRequest' from JSON`);
+}
 /** @internal */
 exports.InvestigationServiceListInvestigationsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +125,10 @@ var InvestigationServiceListInvestigationsResponse$;
     /** @deprecated use `InvestigationServiceListInvestigationsResponse$outboundSchema` instead. */
     InvestigationServiceListInvestigationsResponse$.outboundSchema = exports.InvestigationServiceListInvestigationsResponse$outboundSchema;
 })(InvestigationServiceListInvestigationsResponse$ || (exports.InvestigationServiceListInvestigationsResponse$ = InvestigationServiceListInvestigationsResponse$ = {}));
+function investigationServiceListInvestigationsResponseToJSON(investigationServiceListInvestigationsResponse) {
+    return JSON.stringify(exports.InvestigationServiceListInvestigationsResponse$outboundSchema.parse(investigationServiceListInvestigationsResponse));
+}
+function investigationServiceListInvestigationsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationServiceListInvestigationsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationServiceListInvestigationsResponse' from JSON`);
+}
 //# sourceMappingURL=investigationservicelistinvestigations.js.map

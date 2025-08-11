@@ -5,14 +5,7 @@
 ```typescript
 import { CashJournalsGetCashJournalResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: CashJournalsGetCashJournalResponse = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: CashJournalsGetCashJournalResponse = {};
 ```
 
 ## Fields

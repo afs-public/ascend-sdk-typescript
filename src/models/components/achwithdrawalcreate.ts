@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -118,4 +121,22 @@ export namespace AchWithdrawalCreate$ {
   export const outboundSchema = AchWithdrawalCreate$outboundSchema;
   /** @deprecated use `AchWithdrawalCreate$Outbound` instead. */
   export type Outbound = AchWithdrawalCreate$Outbound;
+}
+
+export function achWithdrawalCreateToJSON(
+  achWithdrawalCreate: AchWithdrawalCreate,
+): string {
+  return JSON.stringify(
+    AchWithdrawalCreate$outboundSchema.parse(achWithdrawalCreate),
+  );
+}
+
+export function achWithdrawalCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalCreate' from JSON`,
+  );
 }

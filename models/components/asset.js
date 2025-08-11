@@ -37,11 +37,68 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FixedIncomeStatus$inboundSchema = exports.FirstCouponDate$ = exports.FirstCouponDate$outboundSchema = exports.FirstCouponDate$inboundSchema = exports.Duration$ = exports.Duration$outboundSchema = exports.Duration$inboundSchema = exports.CouponType$ = exports.CouponType$outboundSchema = exports.CouponType$inboundSchema = exports.CouponRate$ = exports.CouponRate$outboundSchema = exports.CouponRate$inboundSchema = exports.CouponFrequency$ = exports.CouponFrequency$outboundSchema = exports.CouponFrequency$inboundSchema = exports.CallType$ = exports.CallType$outboundSchema = exports.CallType$inboundSchema = exports.Equity$ = exports.Equity$outboundSchema = exports.Equity$inboundSchema = exports.AssetEquityType$ = exports.AssetEquityType$outboundSchema = exports.AssetEquityType$inboundSchema = exports.Currency$ = exports.Currency$outboundSchema = exports.Currency$inboundSchema = exports.CurrencyType$ = exports.CurrencyType$outboundSchema = exports.CurrencyType$inboundSchema = exports.AssetType1 = exports.SettlementType = exports.SettlementMethod = exports.OptionType = exports.SettlementStyle = exports.PennyPilotIndicator = exports.Classification = exports.ExerciseStyle = exports.CallPut = exports.MutualFundType = exports.SpRating = exports.FixedIncomeType = exports.FixedIncomeSubtype = exports.FixedIncomeStatus = exports.CouponType = exports.CouponFrequency = exports.CallType = exports.AssetEquityType = exports.CurrencyType = void 0;
-exports.MutualFundType$ = exports.MutualFundType$outboundSchema = exports.MutualFundType$inboundSchema = exports.LargeOrderNotificationAmount$ = exports.LargeOrderNotificationAmount$outboundSchema = exports.LargeOrderNotificationAmount$inboundSchema = exports.IndexT$ = exports.IndexT$outboundSchema = exports.IndexT$inboundSchema = exports.FixedIncome$ = exports.FixedIncome$outboundSchema = exports.FixedIncome$inboundSchema = exports.SpRatingDate$ = exports.SpRatingDate$outboundSchema = exports.SpRatingDate$inboundSchema = exports.SpRating$ = exports.SpRating$outboundSchema = exports.SpRating$inboundSchema = exports.PriceAtIssuance$ = exports.PriceAtIssuance$outboundSchema = exports.PriceAtIssuance$inboundSchema = exports.ParValue$ = exports.ParValue$outboundSchema = exports.ParValue$inboundSchema = exports.NextCouponDate$ = exports.NextCouponDate$outboundSchema = exports.NextCouponDate$inboundSchema = exports.NextCallDate$ = exports.NextCallDate$outboundSchema = exports.NextCallDate$inboundSchema = exports.MaturityDate$ = exports.MaturityDate$outboundSchema = exports.MaturityDate$inboundSchema = exports.LastCouponDate$ = exports.LastCouponDate$outboundSchema = exports.LastCouponDate$inboundSchema = exports.IssueSize$ = exports.IssueSize$outboundSchema = exports.IssueSize$inboundSchema = exports.AssetIssueDate$ = exports.AssetIssueDate$outboundSchema = exports.AssetIssueDate$inboundSchema = exports.FixedIncomeType$ = exports.FixedIncomeType$outboundSchema = exports.FixedIncomeType$inboundSchema = exports.FixedIncomeSubtype$ = exports.FixedIncomeSubtype$outboundSchema = exports.FixedIncomeSubtype$inboundSchema = exports.FixedIncomeStatus$ = exports.FixedIncomeStatus$outboundSchema = void 0;
+exports.MutualFundType$ = exports.MutualFundType$outboundSchema = exports.MutualFundType$inboundSchema = exports.LargeOrderNotificationAmount$ = exports.LargeOrderNotificationAmount$outboundSchema = exports.LargeOrderNotificationAmount$inboundSchema = exports.Index$ = exports.Index$outboundSchema = exports.Index$inboundSchema = exports.FixedIncome$ = exports.FixedIncome$outboundSchema = exports.FixedIncome$inboundSchema = exports.SpRatingDate$ = exports.SpRatingDate$outboundSchema = exports.SpRatingDate$inboundSchema = exports.SpRating$ = exports.SpRating$outboundSchema = exports.SpRating$inboundSchema = exports.PriceAtIssuance$ = exports.PriceAtIssuance$outboundSchema = exports.PriceAtIssuance$inboundSchema = exports.ParValue$ = exports.ParValue$outboundSchema = exports.ParValue$inboundSchema = exports.NextCouponDate$ = exports.NextCouponDate$outboundSchema = exports.NextCouponDate$inboundSchema = exports.NextCallDate$ = exports.NextCallDate$outboundSchema = exports.NextCallDate$inboundSchema = exports.MaturityDate$ = exports.MaturityDate$outboundSchema = exports.MaturityDate$inboundSchema = exports.LastCouponDate$ = exports.LastCouponDate$outboundSchema = exports.LastCouponDate$inboundSchema = exports.IssueSize$ = exports.IssueSize$outboundSchema = exports.IssueSize$inboundSchema = exports.AssetIssueDate$ = exports.AssetIssueDate$outboundSchema = exports.AssetIssueDate$inboundSchema = exports.FixedIncomeType$ = exports.FixedIncomeType$outboundSchema = exports.FixedIncomeType$inboundSchema = exports.FixedIncomeSubtype$ = exports.FixedIncomeSubtype$outboundSchema = exports.FixedIncomeSubtype$inboundSchema = exports.FixedIncomeStatus$ = exports.FixedIncomeStatus$outboundSchema = void 0;
 exports.StrikePrice$outboundSchema = exports.StrikePrice$inboundSchema = exports.SettlementType$ = exports.SettlementType$outboundSchema = exports.SettlementType$inboundSchema = exports.SettlementMethod$ = exports.SettlementMethod$outboundSchema = exports.SettlementMethod$inboundSchema = exports.SeriesDate$ = exports.SeriesDate$outboundSchema = exports.SeriesDate$inboundSchema = exports.OptionType$ = exports.OptionType$outboundSchema = exports.OptionType$inboundSchema = exports.OptionRoot$ = exports.OptionRoot$outboundSchema = exports.OptionRoot$inboundSchema = exports.TradeValueMultiplier$ = exports.TradeValueMultiplier$outboundSchema = exports.TradeValueMultiplier$inboundSchema = exports.StrikePriceMultiplier$ = exports.StrikePriceMultiplier$outboundSchema = exports.StrikePriceMultiplier$inboundSchema = exports.StrikeMultiplier$ = exports.StrikeMultiplier$outboundSchema = exports.StrikeMultiplier$inboundSchema = exports.SettlementStyle$ = exports.SettlementStyle$outboundSchema = exports.SettlementStyle$inboundSchema = exports.PositionLimit$ = exports.PositionLimit$outboundSchema = exports.PositionLimit$inboundSchema = exports.PennyPilotIndicator$ = exports.PennyPilotIndicator$outboundSchema = exports.PennyPilotIndicator$inboundSchema = exports.Classification$ = exports.Classification$outboundSchema = exports.Classification$inboundSchema = exports.AssetExpirationDate$ = exports.AssetExpirationDate$outboundSchema = exports.AssetExpirationDate$inboundSchema = exports.ExerciseStyle$ = exports.ExerciseStyle$outboundSchema = exports.ExerciseStyle$inboundSchema = exports.CallPut$ = exports.CallPut$outboundSchema = exports.CallPut$inboundSchema = exports.MutualFund$ = exports.MutualFund$outboundSchema = exports.MutualFund$inboundSchema = void 0;
 exports.Asset$ = exports.Asset$outboundSchema = exports.Asset$inboundSchema = exports.AssetType1$ = exports.AssetType1$outboundSchema = exports.AssetType1$inboundSchema = exports.Option$ = exports.Option$outboundSchema = exports.Option$inboundSchema = exports.StrikePrice$ = void 0;
+exports.currencyToJSON = currencyToJSON;
+exports.currencyFromJSON = currencyFromJSON;
+exports.equityToJSON = equityToJSON;
+exports.equityFromJSON = equityFromJSON;
+exports.couponRateToJSON = couponRateToJSON;
+exports.couponRateFromJSON = couponRateFromJSON;
+exports.durationToJSON = durationToJSON;
+exports.durationFromJSON = durationFromJSON;
+exports.firstCouponDateToJSON = firstCouponDateToJSON;
+exports.firstCouponDateFromJSON = firstCouponDateFromJSON;
+exports.assetIssueDateToJSON = assetIssueDateToJSON;
+exports.assetIssueDateFromJSON = assetIssueDateFromJSON;
+exports.issueSizeToJSON = issueSizeToJSON;
+exports.issueSizeFromJSON = issueSizeFromJSON;
+exports.lastCouponDateToJSON = lastCouponDateToJSON;
+exports.lastCouponDateFromJSON = lastCouponDateFromJSON;
+exports.maturityDateToJSON = maturityDateToJSON;
+exports.maturityDateFromJSON = maturityDateFromJSON;
+exports.nextCallDateToJSON = nextCallDateToJSON;
+exports.nextCallDateFromJSON = nextCallDateFromJSON;
+exports.nextCouponDateToJSON = nextCouponDateToJSON;
+exports.nextCouponDateFromJSON = nextCouponDateFromJSON;
+exports.parValueToJSON = parValueToJSON;
+exports.parValueFromJSON = parValueFromJSON;
+exports.priceAtIssuanceToJSON = priceAtIssuanceToJSON;
+exports.priceAtIssuanceFromJSON = priceAtIssuanceFromJSON;
+exports.spRatingDateToJSON = spRatingDateToJSON;
+exports.spRatingDateFromJSON = spRatingDateFromJSON;
+exports.fixedIncomeToJSON = fixedIncomeToJSON;
+exports.fixedIncomeFromJSON = fixedIncomeFromJSON;
+exports.indexToJSON = indexToJSON;
+exports.indexFromJSON = indexFromJSON;
+exports.largeOrderNotificationAmountToJSON = largeOrderNotificationAmountToJSON;
+exports.largeOrderNotificationAmountFromJSON = largeOrderNotificationAmountFromJSON;
+exports.mutualFundToJSON = mutualFundToJSON;
+exports.mutualFundFromJSON = mutualFundFromJSON;
+exports.assetExpirationDateToJSON = assetExpirationDateToJSON;
+exports.assetExpirationDateFromJSON = assetExpirationDateFromJSON;
+exports.positionLimitToJSON = positionLimitToJSON;
+exports.positionLimitFromJSON = positionLimitFromJSON;
+exports.strikeMultiplierToJSON = strikeMultiplierToJSON;
+exports.strikeMultiplierFromJSON = strikeMultiplierFromJSON;
+exports.strikePriceMultiplierToJSON = strikePriceMultiplierToJSON;
+exports.strikePriceMultiplierFromJSON = strikePriceMultiplierFromJSON;
+exports.tradeValueMultiplierToJSON = tradeValueMultiplierToJSON;
+exports.tradeValueMultiplierFromJSON = tradeValueMultiplierFromJSON;
+exports.optionRootToJSON = optionRootToJSON;
+exports.optionRootFromJSON = optionRootFromJSON;
+exports.seriesDateToJSON = seriesDateToJSON;
+exports.seriesDateFromJSON = seriesDateFromJSON;
+exports.strikePriceToJSON = strikePriceToJSON;
+exports.strikePriceFromJSON = strikePriceFromJSON;
+exports.optionToJSON = optionToJSON;
+exports.optionFromJSON = optionFromJSON;
+exports.assetToJSON = assetToJSON;
+exports.assetFromJSON = assetFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const optiondeliverable_js_1 = require("./optiondeliverable.js");
 /**
@@ -340,6 +397,12 @@ var Currency$;
     /** @deprecated use `Currency$outboundSchema` instead. */
     Currency$.outboundSchema = exports.Currency$outboundSchema;
 })(Currency$ || (exports.Currency$ = Currency$ = {}));
+function currencyToJSON(currency) {
+    return JSON.stringify(exports.Currency$outboundSchema.parse(currency));
+}
+function currencyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Currency$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Currency' from JSON`);
+}
 /** @internal */
 exports.AssetEquityType$inboundSchema = z
     .union([
@@ -386,6 +449,12 @@ var Equity$;
     /** @deprecated use `Equity$outboundSchema` instead. */
     Equity$.outboundSchema = exports.Equity$outboundSchema;
 })(Equity$ || (exports.Equity$ = Equity$ = {}));
+function equityToJSON(equity) {
+    return JSON.stringify(exports.Equity$outboundSchema.parse(equity));
+}
+function equityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Equity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Equity' from JSON`);
+}
 /** @internal */
 exports.CallType$inboundSchema = z
     .union([
@@ -449,6 +518,12 @@ var CouponRate$;
     /** @deprecated use `CouponRate$outboundSchema` instead. */
     CouponRate$.outboundSchema = exports.CouponRate$outboundSchema;
 })(CouponRate$ || (exports.CouponRate$ = CouponRate$ = {}));
+function couponRateToJSON(couponRate) {
+    return JSON.stringify(exports.CouponRate$outboundSchema.parse(couponRate));
+}
+function couponRateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CouponRate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CouponRate' from JSON`);
+}
 /** @internal */
 exports.CouponType$inboundSchema = z
     .union([
@@ -490,6 +565,12 @@ var Duration$;
     /** @deprecated use `Duration$outboundSchema` instead. */
     Duration$.outboundSchema = exports.Duration$outboundSchema;
 })(Duration$ || (exports.Duration$ = Duration$ = {}));
+function durationToJSON(duration) {
+    return JSON.stringify(exports.Duration$outboundSchema.parse(duration));
+}
+function durationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Duration$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Duration' from JSON`);
+}
 /** @internal */
 exports.FirstCouponDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -513,6 +594,12 @@ var FirstCouponDate$;
     /** @deprecated use `FirstCouponDate$outboundSchema` instead. */
     FirstCouponDate$.outboundSchema = exports.FirstCouponDate$outboundSchema;
 })(FirstCouponDate$ || (exports.FirstCouponDate$ = FirstCouponDate$ = {}));
+function firstCouponDateToJSON(firstCouponDate) {
+    return JSON.stringify(exports.FirstCouponDate$outboundSchema.parse(firstCouponDate));
+}
+function firstCouponDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FirstCouponDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FirstCouponDate' from JSON`);
+}
 /** @internal */
 exports.FixedIncomeStatus$inboundSchema = z
     .union([
@@ -602,6 +689,12 @@ var AssetIssueDate$;
     /** @deprecated use `AssetIssueDate$outboundSchema` instead. */
     AssetIssueDate$.outboundSchema = exports.AssetIssueDate$outboundSchema;
 })(AssetIssueDate$ || (exports.AssetIssueDate$ = AssetIssueDate$ = {}));
+function assetIssueDateToJSON(assetIssueDate) {
+    return JSON.stringify(exports.AssetIssueDate$outboundSchema.parse(assetIssueDate));
+}
+function assetIssueDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssetIssueDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssetIssueDate' from JSON`);
+}
 /** @internal */
 exports.IssueSize$inboundSchema = z.object({
     value: z.string().optional(),
@@ -621,6 +714,12 @@ var IssueSize$;
     /** @deprecated use `IssueSize$outboundSchema` instead. */
     IssueSize$.outboundSchema = exports.IssueSize$outboundSchema;
 })(IssueSize$ || (exports.IssueSize$ = IssueSize$ = {}));
+function issueSizeToJSON(issueSize) {
+    return JSON.stringify(exports.IssueSize$outboundSchema.parse(issueSize));
+}
+function issueSizeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IssueSize$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IssueSize' from JSON`);
+}
 /** @internal */
 exports.LastCouponDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -644,6 +743,12 @@ var LastCouponDate$;
     /** @deprecated use `LastCouponDate$outboundSchema` instead. */
     LastCouponDate$.outboundSchema = exports.LastCouponDate$outboundSchema;
 })(LastCouponDate$ || (exports.LastCouponDate$ = LastCouponDate$ = {}));
+function lastCouponDateToJSON(lastCouponDate) {
+    return JSON.stringify(exports.LastCouponDate$outboundSchema.parse(lastCouponDate));
+}
+function lastCouponDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LastCouponDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LastCouponDate' from JSON`);
+}
 /** @internal */
 exports.MaturityDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -667,6 +772,12 @@ var MaturityDate$;
     /** @deprecated use `MaturityDate$outboundSchema` instead. */
     MaturityDate$.outboundSchema = exports.MaturityDate$outboundSchema;
 })(MaturityDate$ || (exports.MaturityDate$ = MaturityDate$ = {}));
+function maturityDateToJSON(maturityDate) {
+    return JSON.stringify(exports.MaturityDate$outboundSchema.parse(maturityDate));
+}
+function maturityDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MaturityDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MaturityDate' from JSON`);
+}
 /** @internal */
 exports.NextCallDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -690,6 +801,12 @@ var NextCallDate$;
     /** @deprecated use `NextCallDate$outboundSchema` instead. */
     NextCallDate$.outboundSchema = exports.NextCallDate$outboundSchema;
 })(NextCallDate$ || (exports.NextCallDate$ = NextCallDate$ = {}));
+function nextCallDateToJSON(nextCallDate) {
+    return JSON.stringify(exports.NextCallDate$outboundSchema.parse(nextCallDate));
+}
+function nextCallDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NextCallDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NextCallDate' from JSON`);
+}
 /** @internal */
 exports.NextCouponDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -713,6 +830,12 @@ var NextCouponDate$;
     /** @deprecated use `NextCouponDate$outboundSchema` instead. */
     NextCouponDate$.outboundSchema = exports.NextCouponDate$outboundSchema;
 })(NextCouponDate$ || (exports.NextCouponDate$ = NextCouponDate$ = {}));
+function nextCouponDateToJSON(nextCouponDate) {
+    return JSON.stringify(exports.NextCouponDate$outboundSchema.parse(nextCouponDate));
+}
+function nextCouponDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NextCouponDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NextCouponDate' from JSON`);
+}
 /** @internal */
 exports.ParValue$inboundSchema = z.object({
     value: z.string().optional(),
@@ -732,6 +855,12 @@ var ParValue$;
     /** @deprecated use `ParValue$outboundSchema` instead. */
     ParValue$.outboundSchema = exports.ParValue$outboundSchema;
 })(ParValue$ || (exports.ParValue$ = ParValue$ = {}));
+function parValueToJSON(parValue) {
+    return JSON.stringify(exports.ParValue$outboundSchema.parse(parValue));
+}
+function parValueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ParValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ParValue' from JSON`);
+}
 /** @internal */
 exports.PriceAtIssuance$inboundSchema = z.object({
     value: z.string().optional(),
@@ -751,6 +880,12 @@ var PriceAtIssuance$;
     /** @deprecated use `PriceAtIssuance$outboundSchema` instead. */
     PriceAtIssuance$.outboundSchema = exports.PriceAtIssuance$outboundSchema;
 })(PriceAtIssuance$ || (exports.PriceAtIssuance$ = PriceAtIssuance$ = {}));
+function priceAtIssuanceToJSON(priceAtIssuance) {
+    return JSON.stringify(exports.PriceAtIssuance$outboundSchema.parse(priceAtIssuance));
+}
+function priceAtIssuanceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PriceAtIssuance$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PriceAtIssuance' from JSON`);
+}
 /** @internal */
 exports.SpRating$inboundSchema = z
     .union([
@@ -796,6 +931,12 @@ var SpRatingDate$;
     /** @deprecated use `SpRatingDate$outboundSchema` instead. */
     SpRatingDate$.outboundSchema = exports.SpRatingDate$outboundSchema;
 })(SpRatingDate$ || (exports.SpRatingDate$ = SpRatingDate$ = {}));
+function spRatingDateToJSON(spRatingDate) {
+    return JSON.stringify(exports.SpRatingDate$outboundSchema.parse(spRatingDate));
+}
+function spRatingDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SpRatingDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SpRatingDate' from JSON`);
+}
 /** @internal */
 exports.FixedIncome$inboundSchema = z.object({
     call_type: exports.CallType$inboundSchema.optional(),
@@ -921,22 +1062,34 @@ var FixedIncome$;
     /** @deprecated use `FixedIncome$outboundSchema` instead. */
     FixedIncome$.outboundSchema = exports.FixedIncome$outboundSchema;
 })(FixedIncome$ || (exports.FixedIncome$ = FixedIncome$ = {}));
+function fixedIncomeToJSON(fixedIncome) {
+    return JSON.stringify(exports.FixedIncome$outboundSchema.parse(fixedIncome));
+}
+function fixedIncomeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FixedIncome$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FixedIncome' from JSON`);
+}
 /** @internal */
-exports.IndexT$inboundSchema = z
+exports.Index$inboundSchema = z
     .object({});
 /** @internal */
-exports.IndexT$outboundSchema = z.object({});
+exports.Index$outboundSchema = z.object({});
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-var IndexT$;
-(function (IndexT$) {
-    /** @deprecated use `IndexT$inboundSchema` instead. */
-    IndexT$.inboundSchema = exports.IndexT$inboundSchema;
-    /** @deprecated use `IndexT$outboundSchema` instead. */
-    IndexT$.outboundSchema = exports.IndexT$outboundSchema;
-})(IndexT$ || (exports.IndexT$ = IndexT$ = {}));
+var Index$;
+(function (Index$) {
+    /** @deprecated use `Index$inboundSchema` instead. */
+    Index$.inboundSchema = exports.Index$inboundSchema;
+    /** @deprecated use `Index$outboundSchema` instead. */
+    Index$.outboundSchema = exports.Index$outboundSchema;
+})(Index$ || (exports.Index$ = Index$ = {}));
+function indexToJSON(index) {
+    return JSON.stringify(exports.Index$outboundSchema.parse(index));
+}
+function indexFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Index$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Index' from JSON`);
+}
 /** @internal */
 exports.LargeOrderNotificationAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -956,6 +1109,12 @@ var LargeOrderNotificationAmount$;
     /** @deprecated use `LargeOrderNotificationAmount$outboundSchema` instead. */
     LargeOrderNotificationAmount$.outboundSchema = exports.LargeOrderNotificationAmount$outboundSchema;
 })(LargeOrderNotificationAmount$ || (exports.LargeOrderNotificationAmount$ = LargeOrderNotificationAmount$ = {}));
+function largeOrderNotificationAmountToJSON(largeOrderNotificationAmount) {
+    return JSON.stringify(exports.LargeOrderNotificationAmount$outboundSchema.parse(largeOrderNotificationAmount));
+}
+function largeOrderNotificationAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LargeOrderNotificationAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LargeOrderNotificationAmount' from JSON`);
+}
 /** @internal */
 exports.MutualFundType$inboundSchema = z
     .union([
@@ -1017,6 +1176,12 @@ var MutualFund$;
     /** @deprecated use `MutualFund$outboundSchema` instead. */
     MutualFund$.outboundSchema = exports.MutualFund$outboundSchema;
 })(MutualFund$ || (exports.MutualFund$ = MutualFund$ = {}));
+function mutualFundToJSON(mutualFund) {
+    return JSON.stringify(exports.MutualFund$outboundSchema.parse(mutualFund));
+}
+function mutualFundFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MutualFund$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MutualFund' from JSON`);
+}
 /** @internal */
 exports.CallPut$inboundSchema = z
     .union([
@@ -1084,6 +1249,12 @@ var AssetExpirationDate$;
     /** @deprecated use `AssetExpirationDate$outboundSchema` instead. */
     AssetExpirationDate$.outboundSchema = exports.AssetExpirationDate$outboundSchema;
 })(AssetExpirationDate$ || (exports.AssetExpirationDate$ = AssetExpirationDate$ = {}));
+function assetExpirationDateToJSON(assetExpirationDate) {
+    return JSON.stringify(exports.AssetExpirationDate$outboundSchema.parse(assetExpirationDate));
+}
+function assetExpirationDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AssetExpirationDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AssetExpirationDate' from JSON`);
+}
 /** @internal */
 exports.Classification$inboundSchema = z
     .union([
@@ -1147,6 +1318,12 @@ var PositionLimit$;
     /** @deprecated use `PositionLimit$outboundSchema` instead. */
     PositionLimit$.outboundSchema = exports.PositionLimit$outboundSchema;
 })(PositionLimit$ || (exports.PositionLimit$ = PositionLimit$ = {}));
+function positionLimitToJSON(positionLimit) {
+    return JSON.stringify(exports.PositionLimit$outboundSchema.parse(positionLimit));
+}
+function positionLimitFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PositionLimit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PositionLimit' from JSON`);
+}
 /** @internal */
 exports.SettlementStyle$inboundSchema = z
     .union([
@@ -1188,6 +1365,12 @@ var StrikeMultiplier$;
     /** @deprecated use `StrikeMultiplier$outboundSchema` instead. */
     StrikeMultiplier$.outboundSchema = exports.StrikeMultiplier$outboundSchema;
 })(StrikeMultiplier$ || (exports.StrikeMultiplier$ = StrikeMultiplier$ = {}));
+function strikeMultiplierToJSON(strikeMultiplier) {
+    return JSON.stringify(exports.StrikeMultiplier$outboundSchema.parse(strikeMultiplier));
+}
+function strikeMultiplierFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.StrikeMultiplier$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'StrikeMultiplier' from JSON`);
+}
 /** @internal */
 exports.StrikePriceMultiplier$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1207,6 +1390,12 @@ var StrikePriceMultiplier$;
     /** @deprecated use `StrikePriceMultiplier$outboundSchema` instead. */
     StrikePriceMultiplier$.outboundSchema = exports.StrikePriceMultiplier$outboundSchema;
 })(StrikePriceMultiplier$ || (exports.StrikePriceMultiplier$ = StrikePriceMultiplier$ = {}));
+function strikePriceMultiplierToJSON(strikePriceMultiplier) {
+    return JSON.stringify(exports.StrikePriceMultiplier$outboundSchema.parse(strikePriceMultiplier));
+}
+function strikePriceMultiplierFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.StrikePriceMultiplier$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'StrikePriceMultiplier' from JSON`);
+}
 /** @internal */
 exports.TradeValueMultiplier$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1226,6 +1415,12 @@ var TradeValueMultiplier$;
     /** @deprecated use `TradeValueMultiplier$outboundSchema` instead. */
     TradeValueMultiplier$.outboundSchema = exports.TradeValueMultiplier$outboundSchema;
 })(TradeValueMultiplier$ || (exports.TradeValueMultiplier$ = TradeValueMultiplier$ = {}));
+function tradeValueMultiplierToJSON(tradeValueMultiplier) {
+    return JSON.stringify(exports.TradeValueMultiplier$outboundSchema.parse(tradeValueMultiplier));
+}
+function tradeValueMultiplierFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeValueMultiplier$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeValueMultiplier' from JSON`);
+}
 /** @internal */
 exports.OptionRoot$inboundSchema = z.object({
     classification: exports.Classification$inboundSchema.optional(),
@@ -1285,6 +1480,12 @@ var OptionRoot$;
     /** @deprecated use `OptionRoot$outboundSchema` instead. */
     OptionRoot$.outboundSchema = exports.OptionRoot$outboundSchema;
 })(OptionRoot$ || (exports.OptionRoot$ = OptionRoot$ = {}));
+function optionRootToJSON(optionRoot) {
+    return JSON.stringify(exports.OptionRoot$outboundSchema.parse(optionRoot));
+}
+function optionRootFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OptionRoot$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OptionRoot' from JSON`);
+}
 /** @internal */
 exports.OptionType$inboundSchema = z
     .union([
@@ -1330,6 +1531,12 @@ var SeriesDate$;
     /** @deprecated use `SeriesDate$outboundSchema` instead. */
     SeriesDate$.outboundSchema = exports.SeriesDate$outboundSchema;
 })(SeriesDate$ || (exports.SeriesDate$ = SeriesDate$ = {}));
+function seriesDateToJSON(seriesDate) {
+    return JSON.stringify(exports.SeriesDate$outboundSchema.parse(seriesDate));
+}
+function seriesDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SeriesDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SeriesDate' from JSON`);
+}
 /** @internal */
 exports.SettlementMethod$inboundSchema = z
     .union([
@@ -1393,6 +1600,12 @@ var StrikePrice$;
     /** @deprecated use `StrikePrice$outboundSchema` instead. */
     StrikePrice$.outboundSchema = exports.StrikePrice$outboundSchema;
 })(StrikePrice$ || (exports.StrikePrice$ = StrikePrice$ = {}));
+function strikePriceToJSON(strikePrice) {
+    return JSON.stringify(exports.StrikePrice$outboundSchema.parse(strikePrice));
+}
+function strikePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.StrikePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'StrikePrice' from JSON`);
+}
 /** @internal */
 exports.Option$inboundSchema = z
     .object({
@@ -1460,6 +1673,12 @@ var Option$;
     /** @deprecated use `Option$outboundSchema` instead. */
     Option$.outboundSchema = exports.Option$outboundSchema;
 })(Option$ || (exports.Option$ = Option$ = {}));
+function optionToJSON(option) {
+    return JSON.stringify(exports.Option$outboundSchema.parse(option));
+}
+function optionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Option$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Option' from JSON`);
+}
 /** @internal */
 exports.AssetType1$inboundSchema = z
     .union([
@@ -1492,7 +1711,7 @@ exports.Asset$inboundSchema = z
     equity: z.nullable(z.lazy(() => exports.Equity$inboundSchema)).optional(),
     fixed_income: z.nullable(z.lazy(() => exports.FixedIncome$inboundSchema))
         .optional(),
-    index: z.nullable(z.lazy(() => exports.IndexT$inboundSchema)).optional(),
+    index: z.nullable(z.lazy(() => exports.Index$inboundSchema)).optional(),
     isin: z.string().optional(),
     issuing_region_code: z.string().optional(),
     mutual_fund: z.nullable(z.lazy(() => exports.MutualFund$inboundSchema)).optional(),
@@ -1519,7 +1738,7 @@ exports.Asset$outboundSchema = z.object({
     description: z.string().optional(),
     equity: z.nullable(z.lazy(() => exports.Equity$outboundSchema)).optional(),
     fixedIncome: z.nullable(z.lazy(() => exports.FixedIncome$outboundSchema)).optional(),
-    index: z.nullable(z.lazy(() => exports.IndexT$outboundSchema)).optional(),
+    index: z.nullable(z.lazy(() => exports.Index$outboundSchema)).optional(),
     isin: z.string().optional(),
     issuingRegionCode: z.string().optional(),
     mutualFund: z.nullable(z.lazy(() => exports.MutualFund$outboundSchema)).optional(),
@@ -1549,4 +1768,10 @@ var Asset$;
     /** @deprecated use `Asset$outboundSchema` instead. */
     Asset$.outboundSchema = exports.Asset$outboundSchema;
 })(Asset$ || (exports.Asset$ = Asset$ = {}));
+function assetToJSON(asset) {
+    return JSON.stringify(exports.Asset$outboundSchema.parse(asset));
+}
+function assetFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Asset$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Asset' from JSON`);
+}
 //# sourceMappingURL=asset.js.map

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DepositScheduleDetailsCreate,
   DepositScheduleDetailsCreate$inboundSchema,
@@ -165,6 +168,22 @@ export namespace IraContribution$ {
   export type Outbound = IraContribution$Outbound;
 }
 
+export function iraContributionToJSON(
+  iraContribution: IraContribution,
+): string {
+  return JSON.stringify(IraContribution$outboundSchema.parse(iraContribution));
+}
+
+export function iraContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<IraContribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraContribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraContribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositScheduleCreate$inboundSchema: z.ZodType<
   AchDepositScheduleCreate,
@@ -226,4 +245,22 @@ export namespace AchDepositScheduleCreate$ {
   export const outboundSchema = AchDepositScheduleCreate$outboundSchema;
   /** @deprecated use `AchDepositScheduleCreate$Outbound` instead. */
   export type Outbound = AchDepositScheduleCreate$Outbound;
+}
+
+export function achDepositScheduleCreateToJSON(
+  achDepositScheduleCreate: AchDepositScheduleCreate,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleCreate$outboundSchema.parse(achDepositScheduleCreate),
+  );
+}
+
+export function achDepositScheduleCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositScheduleCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositScheduleCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositScheduleCreate' from JSON`,
+  );
 }

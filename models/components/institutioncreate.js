@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InstitutionCreate$ = exports.InstitutionCreate$outboundSchema = exports.InstitutionCreate$inboundSchema = void 0;
+exports.institutionCreateToJSON = institutionCreateToJSON;
+exports.institutionCreateFromJSON = institutionCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.InstitutionCreate$inboundSchema = z.object({
     account_id: z.string(),
@@ -68,4 +71,10 @@ var InstitutionCreate$;
     /** @deprecated use `InstitutionCreate$outboundSchema` instead. */
     InstitutionCreate$.outboundSchema = exports.InstitutionCreate$outboundSchema;
 })(InstitutionCreate$ || (exports.InstitutionCreate$ = InstitutionCreate$ = {}));
+function institutionCreateToJSON(institutionCreate) {
+    return JSON.stringify(exports.InstitutionCreate$outboundSchema.parse(institutionCreate));
+}
+function institutionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InstitutionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InstitutionCreate' from JSON`);
+}
 //# sourceMappingURL=institutioncreate.js.map

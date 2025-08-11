@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsCloseAccountResponse$ = exports.AccountsCloseAccountResponse$outboundSchema = exports.AccountsCloseAccountResponse$inboundSchema = exports.AccountsCloseAccountRequest$ = exports.AccountsCloseAccountRequest$outboundSchema = exports.AccountsCloseAccountRequest$inboundSchema = void 0;
+exports.accountsCloseAccountRequestToJSON = accountsCloseAccountRequestToJSON;
+exports.accountsCloseAccountRequestFromJSON = accountsCloseAccountRequestFromJSON;
+exports.accountsCloseAccountResponseToJSON = accountsCloseAccountResponseToJSON;
+exports.accountsCloseAccountResponseFromJSON = accountsCloseAccountResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsCloseAccountRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsCloseAccountRequest$;
     /** @deprecated use `AccountsCloseAccountRequest$outboundSchema` instead. */
     AccountsCloseAccountRequest$.outboundSchema = exports.AccountsCloseAccountRequest$outboundSchema;
 })(AccountsCloseAccountRequest$ || (exports.AccountsCloseAccountRequest$ = AccountsCloseAccountRequest$ = {}));
+function accountsCloseAccountRequestToJSON(accountsCloseAccountRequest) {
+    return JSON.stringify(exports.AccountsCloseAccountRequest$outboundSchema.parse(accountsCloseAccountRequest));
+}
+function accountsCloseAccountRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsCloseAccountRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsCloseAccountRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsCloseAccountResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsCloseAccountResponse$;
     /** @deprecated use `AccountsCloseAccountResponse$outboundSchema` instead. */
     AccountsCloseAccountResponse$.outboundSchema = exports.AccountsCloseAccountResponse$outboundSchema;
 })(AccountsCloseAccountResponse$ || (exports.AccountsCloseAccountResponse$ = AccountsCloseAccountResponse$ = {}));
+function accountsCloseAccountResponseToJSON(accountsCloseAccountResponse) {
+    return JSON.stringify(exports.AccountsCloseAccountResponse$outboundSchema.parse(accountsCloseAccountResponse));
+}
+function accountsCloseAccountResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsCloseAccountResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsCloseAccountResponse' from JSON`);
+}
 //# sourceMappingURL=accountscloseaccount.js.map

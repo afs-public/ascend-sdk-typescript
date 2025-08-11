@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to simulate approve of a wire withdrawal
  */
@@ -28,4 +30,6 @@ export declare namespace ForceApproveWireWithdrawalRequestCreate$ {
     /** @deprecated use `ForceApproveWireWithdrawalRequestCreate$Outbound` instead. */
     type Outbound = ForceApproveWireWithdrawalRequestCreate$Outbound;
 }
+export declare function forceApproveWireWithdrawalRequestCreateToJSON(forceApproveWireWithdrawalRequestCreate: ForceApproveWireWithdrawalRequestCreate): string;
+export declare function forceApproveWireWithdrawalRequestCreateFromJSON(jsonString: string): SafeParseResult<ForceApproveWireWithdrawalRequestCreate, SDKValidationError>;
 //# sourceMappingURL=forceapprovewirewithdrawalrequestcreate.d.ts.map

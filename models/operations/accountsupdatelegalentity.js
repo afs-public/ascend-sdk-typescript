@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsUpdateLegalEntityResponse$ = exports.AccountsUpdateLegalEntityResponse$outboundSchema = exports.AccountsUpdateLegalEntityResponse$inboundSchema = exports.AccountsUpdateLegalEntityRequest$ = exports.AccountsUpdateLegalEntityRequest$outboundSchema = exports.AccountsUpdateLegalEntityRequest$inboundSchema = void 0;
+exports.accountsUpdateLegalEntityRequestToJSON = accountsUpdateLegalEntityRequestToJSON;
+exports.accountsUpdateLegalEntityRequestFromJSON = accountsUpdateLegalEntityRequestFromJSON;
+exports.accountsUpdateLegalEntityResponseToJSON = accountsUpdateLegalEntityResponseToJSON;
+exports.accountsUpdateLegalEntityResponseFromJSON = accountsUpdateLegalEntityResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsUpdateLegalEntityRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountsUpdateLegalEntityRequest$;
     /** @deprecated use `AccountsUpdateLegalEntityRequest$outboundSchema` instead. */
     AccountsUpdateLegalEntityRequest$.outboundSchema = exports.AccountsUpdateLegalEntityRequest$outboundSchema;
 })(AccountsUpdateLegalEntityRequest$ || (exports.AccountsUpdateLegalEntityRequest$ = AccountsUpdateLegalEntityRequest$ = {}));
+function accountsUpdateLegalEntityRequestToJSON(accountsUpdateLegalEntityRequest) {
+    return JSON.stringify(exports.AccountsUpdateLegalEntityRequest$outboundSchema.parse(accountsUpdateLegalEntityRequest));
+}
+function accountsUpdateLegalEntityRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateLegalEntityRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateLegalEntityRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsUpdateLegalEntityResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var AccountsUpdateLegalEntityResponse$;
     /** @deprecated use `AccountsUpdateLegalEntityResponse$outboundSchema` instead. */
     AccountsUpdateLegalEntityResponse$.outboundSchema = exports.AccountsUpdateLegalEntityResponse$outboundSchema;
 })(AccountsUpdateLegalEntityResponse$ || (exports.AccountsUpdateLegalEntityResponse$ = AccountsUpdateLegalEntityResponse$ = {}));
+function accountsUpdateLegalEntityResponseToJSON(accountsUpdateLegalEntityResponse) {
+    return JSON.stringify(exports.AccountsUpdateLegalEntityResponse$outboundSchema.parse(accountsUpdateLegalEntityResponse));
+}
+function accountsUpdateLegalEntityResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateLegalEntityResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateLegalEntityResponse' from JSON`);
+}
 //# sourceMappingURL=accountsupdatelegalentity.js.map

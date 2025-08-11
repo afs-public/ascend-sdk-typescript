@@ -38,8 +38,31 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelTradeAllocationResponseSideModifier$outboundSchema = exports.CancelTradeAllocationResponseSideModifier$inboundSchema = exports.CancelTradeAllocationResponseSettlementDate$ = exports.CancelTradeAllocationResponseSettlementDate$outboundSchema = exports.CancelTradeAllocationResponseSettlementDate$inboundSchema = exports.CancelTradeAllocationResponseQuantity$ = exports.CancelTradeAllocationResponseQuantity$outboundSchema = exports.CancelTradeAllocationResponseQuantity$inboundSchema = exports.CancelTradeAllocationResponsePriceAdjustment$ = exports.CancelTradeAllocationResponsePriceAdjustment$outboundSchema = exports.CancelTradeAllocationResponsePriceAdjustment$inboundSchema = exports.CancelTradeAllocationResponsePriceAdjustmentType$ = exports.CancelTradeAllocationResponsePriceAdjustmentType$outboundSchema = exports.CancelTradeAllocationResponsePriceAdjustmentType$inboundSchema = exports.CancelTradeAllocationResponsePriceAdjustmentAmount$ = exports.CancelTradeAllocationResponsePriceAdjustmentAmount$outboundSchema = exports.CancelTradeAllocationResponsePriceAdjustmentAmount$inboundSchema = exports.CancelTradeAllocationResponsePrice$ = exports.CancelTradeAllocationResponsePrice$outboundSchema = exports.CancelTradeAllocationResponsePrice$inboundSchema = exports.CancelTradeAllocationResponsePrevailingMarketPrice$ = exports.CancelTradeAllocationResponsePrevailingMarketPrice$outboundSchema = exports.CancelTradeAllocationResponsePrevailingMarketPrice$inboundSchema = exports.CancelTradeAllocationResponseIdentifierType$ = exports.CancelTradeAllocationResponseIdentifierType$outboundSchema = exports.CancelTradeAllocationResponseIdentifierType$inboundSchema = exports.CancelTradeAllocationResponseGrossAmount$ = exports.CancelTradeAllocationResponseGrossAmount$outboundSchema = exports.CancelTradeAllocationResponseGrossAmount$inboundSchema = exports.CancelTradeAllocationResponseCommissionAmount$ = exports.CancelTradeAllocationResponseCommissionAmount$outboundSchema = exports.CancelTradeAllocationResponseCommissionAmount$inboundSchema = exports.CancelTradeAllocationResponseBrokerCapacity$ = exports.CancelTradeAllocationResponseBrokerCapacity$outboundSchema = exports.CancelTradeAllocationResponseBrokerCapacity$inboundSchema = exports.CancelTradeAllocationResponseAssetType$ = exports.CancelTradeAllocationResponseAssetType$outboundSchema = exports.CancelTradeAllocationResponseAssetType$inboundSchema = exports.CancelTradeAllocationResponseAccruedInterestAmount$ = exports.CancelTradeAllocationResponseAccruedInterestAmount$outboundSchema = exports.CancelTradeAllocationResponseAccruedInterestAmount$inboundSchema = exports.CancelTradeAllocationResponseWhenIssued = exports.CancelTradeAllocationResponseToSide = exports.CancelTradeAllocationResponseState = exports.CancelTradeAllocationResponseSpecialInstructions = exports.CancelTradeAllocationResponseSideModifier = exports.CancelTradeAllocationResponsePriceAdjustmentType = exports.CancelTradeAllocationResponseIdentifierType = exports.CancelTradeAllocationResponseBrokerCapacity = exports.CancelTradeAllocationResponseAssetType = void 0;
 exports.CancelTradeAllocationResponse$ = exports.CancelTradeAllocationResponse$outboundSchema = exports.CancelTradeAllocationResponse$inboundSchema = exports.CancelTradeAllocationResponseTradeAllocation$ = exports.CancelTradeAllocationResponseTradeAllocation$outboundSchema = exports.CancelTradeAllocationResponseTradeAllocation$inboundSchema = exports.CancelTradeAllocationResponseWhenIssued$ = exports.CancelTradeAllocationResponseWhenIssued$outboundSchema = exports.CancelTradeAllocationResponseWhenIssued$inboundSchema = exports.CancelTradeAllocationResponseToSide$ = exports.CancelTradeAllocationResponseToSide$outboundSchema = exports.CancelTradeAllocationResponseToSide$inboundSchema = exports.CancelTradeAllocationResponseState$ = exports.CancelTradeAllocationResponseState$outboundSchema = exports.CancelTradeAllocationResponseState$inboundSchema = exports.CancelTradeAllocationResponseSpecialInstructions$ = exports.CancelTradeAllocationResponseSpecialInstructions$outboundSchema = exports.CancelTradeAllocationResponseSpecialInstructions$inboundSchema = exports.CancelTradeAllocationResponseSideModifier$ = void 0;
+exports.cancelTradeAllocationResponseAccruedInterestAmountToJSON = cancelTradeAllocationResponseAccruedInterestAmountToJSON;
+exports.cancelTradeAllocationResponseAccruedInterestAmountFromJSON = cancelTradeAllocationResponseAccruedInterestAmountFromJSON;
+exports.cancelTradeAllocationResponseCommissionAmountToJSON = cancelTradeAllocationResponseCommissionAmountToJSON;
+exports.cancelTradeAllocationResponseCommissionAmountFromJSON = cancelTradeAllocationResponseCommissionAmountFromJSON;
+exports.cancelTradeAllocationResponseGrossAmountToJSON = cancelTradeAllocationResponseGrossAmountToJSON;
+exports.cancelTradeAllocationResponseGrossAmountFromJSON = cancelTradeAllocationResponseGrossAmountFromJSON;
+exports.cancelTradeAllocationResponsePrevailingMarketPriceToJSON = cancelTradeAllocationResponsePrevailingMarketPriceToJSON;
+exports.cancelTradeAllocationResponsePrevailingMarketPriceFromJSON = cancelTradeAllocationResponsePrevailingMarketPriceFromJSON;
+exports.cancelTradeAllocationResponsePriceToJSON = cancelTradeAllocationResponsePriceToJSON;
+exports.cancelTradeAllocationResponsePriceFromJSON = cancelTradeAllocationResponsePriceFromJSON;
+exports.cancelTradeAllocationResponsePriceAdjustmentAmountToJSON = cancelTradeAllocationResponsePriceAdjustmentAmountToJSON;
+exports.cancelTradeAllocationResponsePriceAdjustmentAmountFromJSON = cancelTradeAllocationResponsePriceAdjustmentAmountFromJSON;
+exports.cancelTradeAllocationResponsePriceAdjustmentToJSON = cancelTradeAllocationResponsePriceAdjustmentToJSON;
+exports.cancelTradeAllocationResponsePriceAdjustmentFromJSON = cancelTradeAllocationResponsePriceAdjustmentFromJSON;
+exports.cancelTradeAllocationResponseQuantityToJSON = cancelTradeAllocationResponseQuantityToJSON;
+exports.cancelTradeAllocationResponseQuantityFromJSON = cancelTradeAllocationResponseQuantityFromJSON;
+exports.cancelTradeAllocationResponseSettlementDateToJSON = cancelTradeAllocationResponseSettlementDateToJSON;
+exports.cancelTradeAllocationResponseSettlementDateFromJSON = cancelTradeAllocationResponseSettlementDateFromJSON;
+exports.cancelTradeAllocationResponseTradeAllocationToJSON = cancelTradeAllocationResponseTradeAllocationToJSON;
+exports.cancelTradeAllocationResponseTradeAllocationFromJSON = cancelTradeAllocationResponseTradeAllocationFromJSON;
+exports.cancelTradeAllocationResponseToJSON = cancelTradeAllocationResponseToJSON;
+exports.cancelTradeAllocationResponseFromJSON = cancelTradeAllocationResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bondyield_js_1 = require("./bondyield.js");
 const bookingfee_js_1 = require("./bookingfee.js");
@@ -197,6 +220,12 @@ var CancelTradeAllocationResponseAccruedInterestAmount$;
     /** @deprecated use `CancelTradeAllocationResponseAccruedInterestAmount$outboundSchema` instead. */
     CancelTradeAllocationResponseAccruedInterestAmount$.outboundSchema = exports.CancelTradeAllocationResponseAccruedInterestAmount$outboundSchema;
 })(CancelTradeAllocationResponseAccruedInterestAmount$ || (exports.CancelTradeAllocationResponseAccruedInterestAmount$ = CancelTradeAllocationResponseAccruedInterestAmount$ = {}));
+function cancelTradeAllocationResponseAccruedInterestAmountToJSON(cancelTradeAllocationResponseAccruedInterestAmount) {
+    return JSON.stringify(exports.CancelTradeAllocationResponseAccruedInterestAmount$outboundSchema.parse(cancelTradeAllocationResponseAccruedInterestAmount));
+}
+function cancelTradeAllocationResponseAccruedInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponseAccruedInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponseAccruedInterestAmount' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponseAssetType$inboundSchema = z
     .union([
@@ -260,6 +289,12 @@ var CancelTradeAllocationResponseCommissionAmount$;
     /** @deprecated use `CancelTradeAllocationResponseCommissionAmount$outboundSchema` instead. */
     CancelTradeAllocationResponseCommissionAmount$.outboundSchema = exports.CancelTradeAllocationResponseCommissionAmount$outboundSchema;
 })(CancelTradeAllocationResponseCommissionAmount$ || (exports.CancelTradeAllocationResponseCommissionAmount$ = CancelTradeAllocationResponseCommissionAmount$ = {}));
+function cancelTradeAllocationResponseCommissionAmountToJSON(cancelTradeAllocationResponseCommissionAmount) {
+    return JSON.stringify(exports.CancelTradeAllocationResponseCommissionAmount$outboundSchema.parse(cancelTradeAllocationResponseCommissionAmount));
+}
+function cancelTradeAllocationResponseCommissionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponseCommissionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponseCommissionAmount' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponseGrossAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -279,6 +314,12 @@ var CancelTradeAllocationResponseGrossAmount$;
     /** @deprecated use `CancelTradeAllocationResponseGrossAmount$outboundSchema` instead. */
     CancelTradeAllocationResponseGrossAmount$.outboundSchema = exports.CancelTradeAllocationResponseGrossAmount$outboundSchema;
 })(CancelTradeAllocationResponseGrossAmount$ || (exports.CancelTradeAllocationResponseGrossAmount$ = CancelTradeAllocationResponseGrossAmount$ = {}));
+function cancelTradeAllocationResponseGrossAmountToJSON(cancelTradeAllocationResponseGrossAmount) {
+    return JSON.stringify(exports.CancelTradeAllocationResponseGrossAmount$outboundSchema.parse(cancelTradeAllocationResponseGrossAmount));
+}
+function cancelTradeAllocationResponseGrossAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponseGrossAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponseGrossAmount' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponseIdentifierType$inboundSchema = z
     .union([
@@ -320,6 +361,12 @@ var CancelTradeAllocationResponsePrevailingMarketPrice$;
     /** @deprecated use `CancelTradeAllocationResponsePrevailingMarketPrice$outboundSchema` instead. */
     CancelTradeAllocationResponsePrevailingMarketPrice$.outboundSchema = exports.CancelTradeAllocationResponsePrevailingMarketPrice$outboundSchema;
 })(CancelTradeAllocationResponsePrevailingMarketPrice$ || (exports.CancelTradeAllocationResponsePrevailingMarketPrice$ = CancelTradeAllocationResponsePrevailingMarketPrice$ = {}));
+function cancelTradeAllocationResponsePrevailingMarketPriceToJSON(cancelTradeAllocationResponsePrevailingMarketPrice) {
+    return JSON.stringify(exports.CancelTradeAllocationResponsePrevailingMarketPrice$outboundSchema.parse(cancelTradeAllocationResponsePrevailingMarketPrice));
+}
+function cancelTradeAllocationResponsePrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponsePrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponsePrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponsePrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -339,6 +386,12 @@ var CancelTradeAllocationResponsePrice$;
     /** @deprecated use `CancelTradeAllocationResponsePrice$outboundSchema` instead. */
     CancelTradeAllocationResponsePrice$.outboundSchema = exports.CancelTradeAllocationResponsePrice$outboundSchema;
 })(CancelTradeAllocationResponsePrice$ || (exports.CancelTradeAllocationResponsePrice$ = CancelTradeAllocationResponsePrice$ = {}));
+function cancelTradeAllocationResponsePriceToJSON(cancelTradeAllocationResponsePrice) {
+    return JSON.stringify(exports.CancelTradeAllocationResponsePrice$outboundSchema.parse(cancelTradeAllocationResponsePrice));
+}
+function cancelTradeAllocationResponsePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponsePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponsePrice' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponsePriceAdjustmentAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -358,6 +411,12 @@ var CancelTradeAllocationResponsePriceAdjustmentAmount$;
     /** @deprecated use `CancelTradeAllocationResponsePriceAdjustmentAmount$outboundSchema` instead. */
     CancelTradeAllocationResponsePriceAdjustmentAmount$.outboundSchema = exports.CancelTradeAllocationResponsePriceAdjustmentAmount$outboundSchema;
 })(CancelTradeAllocationResponsePriceAdjustmentAmount$ || (exports.CancelTradeAllocationResponsePriceAdjustmentAmount$ = CancelTradeAllocationResponsePriceAdjustmentAmount$ = {}));
+function cancelTradeAllocationResponsePriceAdjustmentAmountToJSON(cancelTradeAllocationResponsePriceAdjustmentAmount) {
+    return JSON.stringify(exports.CancelTradeAllocationResponsePriceAdjustmentAmount$outboundSchema.parse(cancelTradeAllocationResponsePriceAdjustmentAmount));
+}
+function cancelTradeAllocationResponsePriceAdjustmentAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponsePriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponsePriceAdjustmentAmount' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponsePriceAdjustmentType$inboundSchema = z
     .union([
@@ -412,6 +471,12 @@ var CancelTradeAllocationResponsePriceAdjustment$;
     /** @deprecated use `CancelTradeAllocationResponsePriceAdjustment$outboundSchema` instead. */
     CancelTradeAllocationResponsePriceAdjustment$.outboundSchema = exports.CancelTradeAllocationResponsePriceAdjustment$outboundSchema;
 })(CancelTradeAllocationResponsePriceAdjustment$ || (exports.CancelTradeAllocationResponsePriceAdjustment$ = CancelTradeAllocationResponsePriceAdjustment$ = {}));
+function cancelTradeAllocationResponsePriceAdjustmentToJSON(cancelTradeAllocationResponsePriceAdjustment) {
+    return JSON.stringify(exports.CancelTradeAllocationResponsePriceAdjustment$outboundSchema.parse(cancelTradeAllocationResponsePriceAdjustment));
+}
+function cancelTradeAllocationResponsePriceAdjustmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponsePriceAdjustment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponsePriceAdjustment' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponseQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -431,6 +496,12 @@ var CancelTradeAllocationResponseQuantity$;
     /** @deprecated use `CancelTradeAllocationResponseQuantity$outboundSchema` instead. */
     CancelTradeAllocationResponseQuantity$.outboundSchema = exports.CancelTradeAllocationResponseQuantity$outboundSchema;
 })(CancelTradeAllocationResponseQuantity$ || (exports.CancelTradeAllocationResponseQuantity$ = CancelTradeAllocationResponseQuantity$ = {}));
+function cancelTradeAllocationResponseQuantityToJSON(cancelTradeAllocationResponseQuantity) {
+    return JSON.stringify(exports.CancelTradeAllocationResponseQuantity$outboundSchema.parse(cancelTradeAllocationResponseQuantity));
+}
+function cancelTradeAllocationResponseQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponseQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponseQuantity' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponseSettlementDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -454,6 +525,12 @@ var CancelTradeAllocationResponseSettlementDate$;
     /** @deprecated use `CancelTradeAllocationResponseSettlementDate$outboundSchema` instead. */
     CancelTradeAllocationResponseSettlementDate$.outboundSchema = exports.CancelTradeAllocationResponseSettlementDate$outboundSchema;
 })(CancelTradeAllocationResponseSettlementDate$ || (exports.CancelTradeAllocationResponseSettlementDate$ = CancelTradeAllocationResponseSettlementDate$ = {}));
+function cancelTradeAllocationResponseSettlementDateToJSON(cancelTradeAllocationResponseSettlementDate) {
+    return JSON.stringify(exports.CancelTradeAllocationResponseSettlementDate$outboundSchema.parse(cancelTradeAllocationResponseSettlementDate));
+}
+function cancelTradeAllocationResponseSettlementDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponseSettlementDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponseSettlementDate' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponseSideModifier$inboundSchema = z
     .union([
@@ -710,6 +787,12 @@ var CancelTradeAllocationResponseTradeAllocation$;
     /** @deprecated use `CancelTradeAllocationResponseTradeAllocation$outboundSchema` instead. */
     CancelTradeAllocationResponseTradeAllocation$.outboundSchema = exports.CancelTradeAllocationResponseTradeAllocation$outboundSchema;
 })(CancelTradeAllocationResponseTradeAllocation$ || (exports.CancelTradeAllocationResponseTradeAllocation$ = CancelTradeAllocationResponseTradeAllocation$ = {}));
+function cancelTradeAllocationResponseTradeAllocationToJSON(cancelTradeAllocationResponseTradeAllocation) {
+    return JSON.stringify(exports.CancelTradeAllocationResponseTradeAllocation$outboundSchema.parse(cancelTradeAllocationResponseTradeAllocation));
+}
+function cancelTradeAllocationResponseTradeAllocationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponseTradeAllocation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponseTradeAllocation' from JSON`);
+}
 /** @internal */
 exports.CancelTradeAllocationResponse$inboundSchema = z.object({
     trade_allocation: z.nullable(z.lazy(() => exports.CancelTradeAllocationResponseTradeAllocation$inboundSchema)).optional(),
@@ -737,4 +820,10 @@ var CancelTradeAllocationResponse$;
     /** @deprecated use `CancelTradeAllocationResponse$outboundSchema` instead. */
     CancelTradeAllocationResponse$.outboundSchema = exports.CancelTradeAllocationResponse$outboundSchema;
 })(CancelTradeAllocationResponse$ || (exports.CancelTradeAllocationResponse$ = CancelTradeAllocationResponse$ = {}));
+function cancelTradeAllocationResponseToJSON(cancelTradeAllocationResponse) {
+    return JSON.stringify(exports.CancelTradeAllocationResponse$outboundSchema.parse(cancelTradeAllocationResponse));
+}
+function cancelTradeAllocationResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeAllocationResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeAllocationResponse' from JSON`);
+}
 //# sourceMappingURL=canceltradeallocationresponse.js.map

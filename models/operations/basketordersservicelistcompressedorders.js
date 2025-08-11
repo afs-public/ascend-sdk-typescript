@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketOrdersServiceListCompressedOrdersResponse$ = exports.BasketOrdersServiceListCompressedOrdersResponse$outboundSchema = exports.BasketOrdersServiceListCompressedOrdersResponse$inboundSchema = exports.BasketOrdersServiceListCompressedOrdersRequest$ = exports.BasketOrdersServiceListCompressedOrdersRequest$outboundSchema = exports.BasketOrdersServiceListCompressedOrdersRequest$inboundSchema = void 0;
+exports.basketOrdersServiceListCompressedOrdersRequestToJSON = basketOrdersServiceListCompressedOrdersRequestToJSON;
+exports.basketOrdersServiceListCompressedOrdersRequestFromJSON = basketOrdersServiceListCompressedOrdersRequestFromJSON;
+exports.basketOrdersServiceListCompressedOrdersResponseToJSON = basketOrdersServiceListCompressedOrdersResponseToJSON;
+exports.basketOrdersServiceListCompressedOrdersResponseFromJSON = basketOrdersServiceListCompressedOrdersResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BasketOrdersServiceListCompressedOrdersRequest$inboundSchema = z.object({
@@ -79,6 +84,12 @@ var BasketOrdersServiceListCompressedOrdersRequest$;
     /** @deprecated use `BasketOrdersServiceListCompressedOrdersRequest$outboundSchema` instead. */
     BasketOrdersServiceListCompressedOrdersRequest$.outboundSchema = exports.BasketOrdersServiceListCompressedOrdersRequest$outboundSchema;
 })(BasketOrdersServiceListCompressedOrdersRequest$ || (exports.BasketOrdersServiceListCompressedOrdersRequest$ = BasketOrdersServiceListCompressedOrdersRequest$ = {}));
+function basketOrdersServiceListCompressedOrdersRequestToJSON(basketOrdersServiceListCompressedOrdersRequest) {
+    return JSON.stringify(exports.BasketOrdersServiceListCompressedOrdersRequest$outboundSchema.parse(basketOrdersServiceListCompressedOrdersRequest));
+}
+function basketOrdersServiceListCompressedOrdersRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrdersServiceListCompressedOrdersRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrdersServiceListCompressedOrdersRequest' from JSON`);
+}
 /** @internal */
 exports.BasketOrdersServiceListCompressedOrdersResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -116,4 +127,10 @@ var BasketOrdersServiceListCompressedOrdersResponse$;
     /** @deprecated use `BasketOrdersServiceListCompressedOrdersResponse$outboundSchema` instead. */
     BasketOrdersServiceListCompressedOrdersResponse$.outboundSchema = exports.BasketOrdersServiceListCompressedOrdersResponse$outboundSchema;
 })(BasketOrdersServiceListCompressedOrdersResponse$ || (exports.BasketOrdersServiceListCompressedOrdersResponse$ = BasketOrdersServiceListCompressedOrdersResponse$ = {}));
+function basketOrdersServiceListCompressedOrdersResponseToJSON(basketOrdersServiceListCompressedOrdersResponse) {
+    return JSON.stringify(exports.BasketOrdersServiceListCompressedOrdersResponse$outboundSchema.parse(basketOrdersServiceListCompressedOrdersResponse));
+}
+function basketOrdersServiceListCompressedOrdersResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrdersServiceListCompressedOrdersResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrdersServiceListCompressedOrdersResponse' from JSON`);
+}
 //# sourceMappingURL=basketordersservicelistcompressedorders.js.map

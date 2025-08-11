@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RejectTransferRequestCreate$ = exports.RejectTransferRequestCreate$outboundSchema = exports.RejectTransferRequestCreate$inboundSchema = void 0;
+exports.rejectTransferRequestCreateToJSON = rejectTransferRequestCreateToJSON;
+exports.rejectTransferRequestCreateFromJSON = rejectTransferRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.RejectTransferRequestCreate$inboundSchema = z.object({
     comment: z.string().optional(),
@@ -70,4 +73,10 @@ var RejectTransferRequestCreate$;
     /** @deprecated use `RejectTransferRequestCreate$outboundSchema` instead. */
     RejectTransferRequestCreate$.outboundSchema = exports.RejectTransferRequestCreate$outboundSchema;
 })(RejectTransferRequestCreate$ || (exports.RejectTransferRequestCreate$ = RejectTransferRequestCreate$ = {}));
+function rejectTransferRequestCreateToJSON(rejectTransferRequestCreate) {
+    return JSON.stringify(exports.RejectTransferRequestCreate$outboundSchema.parse(rejectTransferRequestCreate));
+}
+function rejectTransferRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RejectTransferRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RejectTransferRequestCreate' from JSON`);
+}
 //# sourceMappingURL=rejecttransferrequestcreate.js.map

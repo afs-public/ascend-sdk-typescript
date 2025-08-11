@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The notice of change reason code.
@@ -190,4 +193,18 @@ export namespace NachaNocCreate$ {
   export const outboundSchema = NachaNocCreate$outboundSchema;
   /** @deprecated use `NachaNocCreate$Outbound` instead. */
   export type Outbound = NachaNocCreate$Outbound;
+}
+
+export function nachaNocCreateToJSON(nachaNocCreate: NachaNocCreate): string {
+  return JSON.stringify(NachaNocCreate$outboundSchema.parse(nachaNocCreate));
+}
+
+export function nachaNocCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<NachaNocCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NachaNocCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NachaNocCreate' from JSON`,
+  );
 }

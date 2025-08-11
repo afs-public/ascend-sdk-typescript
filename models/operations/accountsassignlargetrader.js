@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsAssignLargeTraderResponse$ = exports.AccountsAssignLargeTraderResponse$outboundSchema = exports.AccountsAssignLargeTraderResponse$inboundSchema = exports.AccountsAssignLargeTraderRequest$ = exports.AccountsAssignLargeTraderRequest$outboundSchema = exports.AccountsAssignLargeTraderRequest$inboundSchema = void 0;
+exports.accountsAssignLargeTraderRequestToJSON = accountsAssignLargeTraderRequestToJSON;
+exports.accountsAssignLargeTraderRequestFromJSON = accountsAssignLargeTraderRequestFromJSON;
+exports.accountsAssignLargeTraderResponseToJSON = accountsAssignLargeTraderResponseToJSON;
+exports.accountsAssignLargeTraderResponseFromJSON = accountsAssignLargeTraderResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsAssignLargeTraderRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsAssignLargeTraderRequest$;
     /** @deprecated use `AccountsAssignLargeTraderRequest$outboundSchema` instead. */
     AccountsAssignLargeTraderRequest$.outboundSchema = exports.AccountsAssignLargeTraderRequest$outboundSchema;
 })(AccountsAssignLargeTraderRequest$ || (exports.AccountsAssignLargeTraderRequest$ = AccountsAssignLargeTraderRequest$ = {}));
+function accountsAssignLargeTraderRequestToJSON(accountsAssignLargeTraderRequest) {
+    return JSON.stringify(exports.AccountsAssignLargeTraderRequest$outboundSchema.parse(accountsAssignLargeTraderRequest));
+}
+function accountsAssignLargeTraderRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAssignLargeTraderRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAssignLargeTraderRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsAssignLargeTraderResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsAssignLargeTraderResponse$;
     /** @deprecated use `AccountsAssignLargeTraderResponse$outboundSchema` instead. */
     AccountsAssignLargeTraderResponse$.outboundSchema = exports.AccountsAssignLargeTraderResponse$outboundSchema;
 })(AccountsAssignLargeTraderResponse$ || (exports.AccountsAssignLargeTraderResponse$ = AccountsAssignLargeTraderResponse$ = {}));
+function accountsAssignLargeTraderResponseToJSON(accountsAssignLargeTraderResponse) {
+    return JSON.stringify(exports.AccountsAssignLargeTraderResponse$outboundSchema.parse(accountsAssignLargeTraderResponse));
+}
+function accountsAssignLargeTraderResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsAssignLargeTraderResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsAssignLargeTraderResponse' from JSON`);
+}
 //# sourceMappingURL=accountsassignlargetrader.js.map

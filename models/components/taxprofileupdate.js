@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaxProfileUpdate$ = exports.TaxProfileUpdate$outboundSchema = exports.TaxProfileUpdate$inboundSchema = exports.TaxProfileUpdateUsTinStatus$ = exports.TaxProfileUpdateUsTinStatus$outboundSchema = exports.TaxProfileUpdateUsTinStatus$inboundSchema = exports.TaxProfileUpdateIrsFormType$ = exports.TaxProfileUpdateIrsFormType$outboundSchema = exports.TaxProfileUpdateIrsFormType$inboundSchema = exports.TaxProfileUpdateFederalTaxClassification$ = exports.TaxProfileUpdateFederalTaxClassification$outboundSchema = exports.TaxProfileUpdateFederalTaxClassification$inboundSchema = exports.TaxProfileUpdateUsTinStatus = exports.TaxProfileUpdateIrsFormType = exports.TaxProfileUpdateFederalTaxClassification = void 0;
+exports.taxProfileUpdateToJSON = taxProfileUpdateToJSON;
+exports.taxProfileUpdateFromJSON = taxProfileUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Federal tax classification.
@@ -179,4 +182,10 @@ var TaxProfileUpdate$;
     /** @deprecated use `TaxProfileUpdate$outboundSchema` instead. */
     TaxProfileUpdate$.outboundSchema = exports.TaxProfileUpdate$outboundSchema;
 })(TaxProfileUpdate$ || (exports.TaxProfileUpdate$ = TaxProfileUpdate$ = {}));
+function taxProfileUpdateToJSON(taxProfileUpdate) {
+    return JSON.stringify(exports.TaxProfileUpdate$outboundSchema.parse(taxProfileUpdate));
+}
+function taxProfileUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TaxProfileUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TaxProfileUpdate' from JSON`);
+}
 //# sourceMappingURL=taxprofileupdate.js.map

@@ -9,7 +9,7 @@ import { IRABeneficiaryEnrollmentMetadataCreate } from "@apexfintechsolutions/as
 
 let value: IRABeneficiaryEnrollmentMetadataCreate = {
   inheritedFromOwnerName: "<value>",
-  inheritorIsDecedentsSpouse: false,
+  inheritorIsDecedentsSpouse: true,
 };
 ```
 

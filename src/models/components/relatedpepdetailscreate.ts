@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RelatedPepCreate,
   RelatedPepCreate$inboundSchema,
@@ -72,4 +75,22 @@ export namespace RelatedPepDetailsCreate$ {
   export const outboundSchema = RelatedPepDetailsCreate$outboundSchema;
   /** @deprecated use `RelatedPepDetailsCreate$Outbound` instead. */
   export type Outbound = RelatedPepDetailsCreate$Outbound;
+}
+
+export function relatedPepDetailsCreateToJSON(
+  relatedPepDetailsCreate: RelatedPepDetailsCreate,
+): string {
+  return JSON.stringify(
+    RelatedPepDetailsCreate$outboundSchema.parse(relatedPepDetailsCreate),
+  );
+}
+
+export function relatedPepDetailsCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RelatedPepDetailsCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RelatedPepDetailsCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RelatedPepDetailsCreate' from JSON`,
+  );
 }

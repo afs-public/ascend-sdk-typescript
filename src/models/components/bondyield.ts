@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The percentage yield.
@@ -80,6 +83,20 @@ export namespace Percent$ {
   export const outboundSchema = Percent$outboundSchema;
   /** @deprecated use `Percent$Outbound` instead. */
   export type Outbound = Percent$Outbound;
+}
+
+export function percentToJSON(percent: Percent): string {
+  return JSON.stringify(Percent$outboundSchema.parse(percent));
+}
+
+export function percentFromJSON(
+  jsonString: string,
+): SafeParseResult<Percent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Percent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Percent' from JSON`,
+  );
 }
 
 /** @internal */
@@ -159,4 +176,18 @@ export namespace BondYield$ {
   export const outboundSchema = BondYield$outboundSchema;
   /** @deprecated use `BondYield$Outbound` instead. */
   export type Outbound = BondYield$Outbound;
+}
+
+export function bondYieldToJSON(bondYield: BondYield): string {
+  return JSON.stringify(BondYield$outboundSchema.parse(bondYield));
+}
+
+export function bondYieldFromJSON(
+  jsonString: string,
+): SafeParseResult<BondYield, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BondYield$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BondYield' from JSON`,
+  );
 }

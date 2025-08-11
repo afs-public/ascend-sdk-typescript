@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IctDepositsForceApproveIctDepositRequest = {
   /**
@@ -91,6 +94,33 @@ export namespace IctDepositsForceApproveIctDepositRequest$ {
   export type Outbound = IctDepositsForceApproveIctDepositRequest$Outbound;
 }
 
+export function ictDepositsForceApproveIctDepositRequestToJSON(
+  ictDepositsForceApproveIctDepositRequest:
+    IctDepositsForceApproveIctDepositRequest,
+): string {
+  return JSON.stringify(
+    IctDepositsForceApproveIctDepositRequest$outboundSchema.parse(
+      ictDepositsForceApproveIctDepositRequest,
+    ),
+  );
+}
+
+export function ictDepositsForceApproveIctDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctDepositsForceApproveIctDepositRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositsForceApproveIctDepositRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctDepositsForceApproveIctDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDepositsForceApproveIctDepositResponse$inboundSchema: z.ZodType<
   IctDepositsForceApproveIctDepositResponse,
@@ -146,4 +176,31 @@ export namespace IctDepositsForceApproveIctDepositResponse$ {
     IctDepositsForceApproveIctDepositResponse$outboundSchema;
   /** @deprecated use `IctDepositsForceApproveIctDepositResponse$Outbound` instead. */
   export type Outbound = IctDepositsForceApproveIctDepositResponse$Outbound;
+}
+
+export function ictDepositsForceApproveIctDepositResponseToJSON(
+  ictDepositsForceApproveIctDepositResponse:
+    IctDepositsForceApproveIctDepositResponse,
+): string {
+  return JSON.stringify(
+    IctDepositsForceApproveIctDepositResponse$outboundSchema.parse(
+      ictDepositsForceApproveIctDepositResponse,
+    ),
+  );
+}
+
+export function ictDepositsForceApproveIctDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctDepositsForceApproveIctDepositResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositsForceApproveIctDepositResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctDepositsForceApproveIctDepositResponse' from JSON`,
+  );
 }

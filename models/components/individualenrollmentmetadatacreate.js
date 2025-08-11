@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IndividualEnrollmentMetadataCreate$ = exports.IndividualEnrollmentMetadataCreate$outboundSchema = exports.IndividualEnrollmentMetadataCreate$inboundSchema = exports.IndividualEnrollmentMetadataCreateFdicCashSweep$ = exports.IndividualEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.IndividualEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.IndividualEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.IndividualEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.IndividualEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.IndividualEnrollmentMetadataCreateFdicCashSweep = exports.IndividualEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.individualEnrollmentMetadataCreateToJSON = individualEnrollmentMetadataCreateToJSON;
+exports.individualEnrollmentMetadataCreateFromJSON = individualEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -137,4 +140,10 @@ var IndividualEnrollmentMetadataCreate$;
     /** @deprecated use `IndividualEnrollmentMetadataCreate$outboundSchema` instead. */
     IndividualEnrollmentMetadataCreate$.outboundSchema = exports.IndividualEnrollmentMetadataCreate$outboundSchema;
 })(IndividualEnrollmentMetadataCreate$ || (exports.IndividualEnrollmentMetadataCreate$ = IndividualEnrollmentMetadataCreate$ = {}));
+function individualEnrollmentMetadataCreateToJSON(individualEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.IndividualEnrollmentMetadataCreate$outboundSchema.parse(individualEnrollmentMetadataCreate));
+}
+function individualEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IndividualEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IndividualEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=individualenrollmentmetadatacreate.js.map

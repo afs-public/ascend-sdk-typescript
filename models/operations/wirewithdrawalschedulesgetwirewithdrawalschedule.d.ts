@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest = {
     /**
      * The account id.
@@ -42,6 +44,8 @@ export declare namespace WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest
     /** @deprecated use `WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$Outbound` instead. */
     type Outbound = WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$Outbound;
 }
+export declare function wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestToJSON(wireWithdrawalSchedulesGetWireWithdrawalScheduleRequest: WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest): string;
+export declare function wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$inboundSchema: z.ZodType<WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace WireWithdrawalSchedulesGetWireWithdrawalScheduleRespons
     /** @deprecated use `WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$Outbound` instead. */
     type Outbound = WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$Outbound;
 }
+export declare function wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseToJSON(wireWithdrawalSchedulesGetWireWithdrawalScheduleResponse: WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse): string;
+export declare function wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalschedulesgetwirewithdrawalschedule.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PostalAddressUpdate, PostalAddressUpdate$Outbound } from "./postaladdressupdate.js";
 /**
  * Classifies in what capacity (or if) the underlying natural person holds a job
@@ -101,4 +103,6 @@ export declare namespace EmploymentUpdate$ {
     /** @deprecated use `EmploymentUpdate$Outbound` instead. */
     type Outbound = EmploymentUpdate$Outbound;
 }
+export declare function employmentUpdateToJSON(employmentUpdate: EmploymentUpdate): string;
+export declare function employmentUpdateFromJSON(jsonString: string): SafeParseResult<EmploymentUpdate, SDKValidationError>;
 //# sourceMappingURL=employmentupdate.d.ts.map

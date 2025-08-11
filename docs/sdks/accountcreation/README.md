@@ -14,9 +14,9 @@ CREATE Creates an account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_CreateAccount" method="post" path="/accounts/v1/accounts" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import { RelationType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 const apexascend = new Apexascend({
   security: {
@@ -34,23 +34,9 @@ async function run() {
   const result = await apexascend.accountCreation.createAccount({
     accountGroupId: "01ARZ3NDEKTSV4RRFFQ69G5FAV",
     correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
-    parties: [
-      {
-        emailAddress: "example@domain.com",
-        mailingAddress: {},
-        phoneNumber: {},
-        relationType: RelationType.PrimaryOwner,
-      },
-      {
-        emailAddress: "example@domain.com",
-        mailingAddress: {},
-        phoneNumber: {},
-        relationType: RelationType.PrimaryOwner,
-      },
-    ],
+    parties: [],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -64,7 +50,6 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { accountCreationCreateAccount } from "@apexfintechsolutions/ascend-sdk/funcs/accountCreationCreateAccount.js";
-import { RelationType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -84,30 +69,14 @@ async function run() {
   const res = await accountCreationCreateAccount(apexascend, {
     accountGroupId: "01ARZ3NDEKTSV4RRFFQ69G5FAV",
     correspondentId: "01HPMZZM6RKMVZA1JQ63RQKJRP",
-    parties: [
-      {
-        emailAddress: "example@domain.com",
-        mailingAddress: {},
-        phoneNumber: {},
-        relationType: RelationType.PrimaryOwner,
-      },
-      {
-        emailAddress: "example@domain.com",
-        mailingAddress: {},
-        phoneNumber: {},
-        relationType: RelationType.PrimaryOwner,
-      },
-    ],
+    parties: [],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountCreationCreateAccount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -128,10 +97,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getAccount
 
@@ -139,6 +109,7 @@ READ Get Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_GetAccount" method="get" path="/accounts/v1/accounts/{account_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -157,7 +128,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.accountCreation.getAccount("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -188,15 +158,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await accountCreationGetAccount(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountCreationGetAccount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -218,7 +185,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

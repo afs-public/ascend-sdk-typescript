@@ -37,10 +37,22 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketOrder$ = exports.BasketOrder$outboundSchema = exports.BasketOrder$inboundSchema = exports.BasketOrderTimeInForce$ = exports.BasketOrderTimeInForce$outboundSchema = exports.BasketOrderTimeInForce$inboundSchema = exports.BasketOrderSpecialReportingInstructions$ = exports.BasketOrderSpecialReportingInstructions$outboundSchema = exports.BasketOrderSpecialReportingInstructions$inboundSchema = exports.BasketOrderSide$ = exports.BasketOrderSide$outboundSchema = exports.BasketOrderSide$inboundSchema = exports.BasketOrderQuantity$ = exports.BasketOrderQuantity$outboundSchema = exports.BasketOrderQuantity$inboundSchema = exports.BasketOrderOrderType$ = exports.BasketOrderOrderType$outboundSchema = exports.BasketOrderOrderType$inboundSchema = exports.BasketOrderOrderStatus$ = exports.BasketOrderOrderStatus$outboundSchema = exports.BasketOrderOrderStatus$inboundSchema = exports.BasketOrderOrderRejectedReason$ = exports.BasketOrderOrderRejectedReason$outboundSchema = exports.BasketOrderOrderRejectedReason$inboundSchema = exports.BasketOrderNotionalValue$ = exports.BasketOrderNotionalValue$outboundSchema = exports.BasketOrderNotionalValue$inboundSchema = exports.BasketOrderIdentifierType$ = exports.BasketOrderIdentifierType$outboundSchema = exports.BasketOrderIdentifierType$inboundSchema = exports.BasketOrderFilledQuantity$ = exports.BasketOrderFilledQuantity$outboundSchema = exports.BasketOrderFilledQuantity$inboundSchema = exports.BasketOrderCumulativeNotionalValue$ = exports.BasketOrderCumulativeNotionalValue$outboundSchema = exports.BasketOrderCumulativeNotionalValue$inboundSchema = exports.BasketOrderAssetType$ = exports.BasketOrderAssetType$outboundSchema = exports.BasketOrderAssetType$inboundSchema = exports.BasketOrderTimeInForce = exports.BasketOrderSpecialReportingInstructions = exports.BasketOrderSide = exports.BasketOrderOrderType = exports.BasketOrderOrderStatus = exports.BasketOrderOrderRejectedReason = exports.BasketOrderIdentifierType = exports.BasketOrderAssetType = void 0;
+exports.basketOrderCumulativeNotionalValueToJSON = basketOrderCumulativeNotionalValueToJSON;
+exports.basketOrderCumulativeNotionalValueFromJSON = basketOrderCumulativeNotionalValueFromJSON;
+exports.basketOrderFilledQuantityToJSON = basketOrderFilledQuantityToJSON;
+exports.basketOrderFilledQuantityFromJSON = basketOrderFilledQuantityFromJSON;
+exports.basketOrderNotionalValueToJSON = basketOrderNotionalValueToJSON;
+exports.basketOrderNotionalValueFromJSON = basketOrderNotionalValueFromJSON;
+exports.basketOrderQuantityToJSON = basketOrderQuantityToJSON;
+exports.basketOrderQuantityFromJSON = basketOrderQuantityFromJSON;
+exports.basketOrderToJSON = basketOrderToJSON;
+exports.basketOrderFromJSON = basketOrderFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const baskettradingexecutedprice_js_1 = require("./baskettradingexecutedprice.js");
+const baskettradingexecutions_js_1 = require("./baskettradingexecutions.js");
 /**
  * The type of the asset in this order
  */
@@ -91,6 +103,7 @@ var BasketOrderOrderRejectedReason;
     BasketOrderOrderRejectedReason["AnotherBasketOrderForAccountHasFailedRiskChecks"] = "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS";
     BasketOrderOrderRejectedReason["InsufficientPosition"] = "INSUFFICIENT_POSITION";
     BasketOrderOrderRejectedReason["FailedBuyingPower"] = "FAILED_BUYING_POWER";
+    BasketOrderOrderRejectedReason["RoundUpAmountTooSmall"] = "ROUND_UP_AMOUNT_TOO_SMALL";
 })(BasketOrderOrderRejectedReason || (exports.BasketOrderOrderRejectedReason = BasketOrderOrderRejectedReason = {}));
 /**
  * The processing status of the order
@@ -103,6 +116,7 @@ var BasketOrderOrderStatus;
     BasketOrderOrderStatus["PartiallyFilled"] = "PARTIALLY_FILLED";
     BasketOrderOrderStatus["Filled"] = "FILLED";
     BasketOrderOrderStatus["Rejected"] = "REJECTED";
+    BasketOrderOrderStatus["RemovedBeforeSubmission"] = "REMOVED_BEFORE_SUBMISSION";
 })(BasketOrderOrderStatus || (exports.BasketOrderOrderStatus = BasketOrderOrderStatus = {}));
 /**
  * The execution type of this order.
@@ -177,6 +191,12 @@ var BasketOrderCumulativeNotionalValue$;
     /** @deprecated use `BasketOrderCumulativeNotionalValue$outboundSchema` instead. */
     BasketOrderCumulativeNotionalValue$.outboundSchema = exports.BasketOrderCumulativeNotionalValue$outboundSchema;
 })(BasketOrderCumulativeNotionalValue$ || (exports.BasketOrderCumulativeNotionalValue$ = BasketOrderCumulativeNotionalValue$ = {}));
+function basketOrderCumulativeNotionalValueToJSON(basketOrderCumulativeNotionalValue) {
+    return JSON.stringify(exports.BasketOrderCumulativeNotionalValue$outboundSchema.parse(basketOrderCumulativeNotionalValue));
+}
+function basketOrderCumulativeNotionalValueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrderCumulativeNotionalValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrderCumulativeNotionalValue' from JSON`);
+}
 /** @internal */
 exports.BasketOrderFilledQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -196,6 +216,12 @@ var BasketOrderFilledQuantity$;
     /** @deprecated use `BasketOrderFilledQuantity$outboundSchema` instead. */
     BasketOrderFilledQuantity$.outboundSchema = exports.BasketOrderFilledQuantity$outboundSchema;
 })(BasketOrderFilledQuantity$ || (exports.BasketOrderFilledQuantity$ = BasketOrderFilledQuantity$ = {}));
+function basketOrderFilledQuantityToJSON(basketOrderFilledQuantity) {
+    return JSON.stringify(exports.BasketOrderFilledQuantity$outboundSchema.parse(basketOrderFilledQuantity));
+}
+function basketOrderFilledQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrderFilledQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrderFilledQuantity' from JSON`);
+}
 /** @internal */
 exports.BasketOrderIdentifierType$inboundSchema = z
     .union([
@@ -237,6 +263,12 @@ var BasketOrderNotionalValue$;
     /** @deprecated use `BasketOrderNotionalValue$outboundSchema` instead. */
     BasketOrderNotionalValue$.outboundSchema = exports.BasketOrderNotionalValue$outboundSchema;
 })(BasketOrderNotionalValue$ || (exports.BasketOrderNotionalValue$ = BasketOrderNotionalValue$ = {}));
+function basketOrderNotionalValueToJSON(basketOrderNotionalValue) {
+    return JSON.stringify(exports.BasketOrderNotionalValue$outboundSchema.parse(basketOrderNotionalValue));
+}
+function basketOrderNotionalValueFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrderNotionalValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrderNotionalValue' from JSON`);
+}
 /** @internal */
 exports.BasketOrderOrderRejectedReason$inboundSchema = z
     .union([
@@ -322,6 +354,12 @@ var BasketOrderQuantity$;
     /** @deprecated use `BasketOrderQuantity$outboundSchema` instead. */
     BasketOrderQuantity$.outboundSchema = exports.BasketOrderQuantity$outboundSchema;
 })(BasketOrderQuantity$ || (exports.BasketOrderQuantity$ = BasketOrderQuantity$ = {}));
+function basketOrderQuantityToJSON(basketOrderQuantity) {
+    return JSON.stringify(exports.BasketOrderQuantity$outboundSchema.parse(basketOrderQuantity));
+}
+function basketOrderQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrderQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrderQuantity' from JSON`);
+}
 /** @internal */
 exports.BasketOrderSide$inboundSchema = z
     .union([
@@ -400,6 +438,7 @@ exports.BasketOrder$inboundSchema = z.object({
     create_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
     cumulative_notional_value: z.nullable(z.lazy(() => exports.BasketOrderCumulativeNotionalValue$inboundSchema)).optional(),
     currency_code: z.string().optional(),
+    executions: z.array(baskettradingexecutions_js_1.BasketTradingExecutions$inboundSchema).optional(),
     filled_quantity: z.nullable(z.lazy(() => exports.BasketOrderFilledQuantity$inboundSchema)).optional(),
     identifier: z.string().optional(),
     identifier_type: exports.BasketOrderIdentifierType$inboundSchema.optional(),
@@ -451,6 +490,7 @@ exports.BasketOrder$outboundSchema = z.object({
     createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
     cumulativeNotionalValue: z.nullable(z.lazy(() => exports.BasketOrderCumulativeNotionalValue$outboundSchema)).optional(),
     currencyCode: z.string().optional(),
+    executions: z.array(baskettradingexecutions_js_1.BasketTradingExecutions$outboundSchema).optional(),
     filledQuantity: z.nullable(z.lazy(() => exports.BasketOrderFilledQuantity$outboundSchema)).optional(),
     identifier: z.string().optional(),
     identifierType: exports.BasketOrderIdentifierType$outboundSchema.optional(),
@@ -500,4 +540,10 @@ var BasketOrder$;
     /** @deprecated use `BasketOrder$outboundSchema` instead. */
     BasketOrder$.outboundSchema = exports.BasketOrder$outboundSchema;
 })(BasketOrder$ || (exports.BasketOrder$ = BasketOrder$ = {}));
+function basketOrderToJSON(basketOrder) {
+    return JSON.stringify(exports.BasketOrder$outboundSchema.parse(basketOrder));
+}
+function basketOrderFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrder$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrder' from JSON`);
+}
 //# sourceMappingURL=basketorder.js.map

@@ -37,8 +37,29 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelExecutionResponse$ = exports.CancelExecutionResponse$outboundSchema = exports.CancelExecutionResponse$inboundSchema = exports.CancelExecutionResponseExecution$ = exports.CancelExecutionResponseExecution$outboundSchema = exports.CancelExecutionResponseExecution$inboundSchema = exports.CancelExecutionResponseState$ = exports.CancelExecutionResponseState$outboundSchema = exports.CancelExecutionResponseState$inboundSchema = exports.CancelExecutionResponseQuantity$ = exports.CancelExecutionResponseQuantity$outboundSchema = exports.CancelExecutionResponseQuantity$inboundSchema = exports.CancelExecutionResponsePriceAdjustment$ = exports.CancelExecutionResponsePriceAdjustment$outboundSchema = exports.CancelExecutionResponsePriceAdjustment$inboundSchema = exports.CancelExecutionResponsePriceAdjustmentType$ = exports.CancelExecutionResponsePriceAdjustmentType$outboundSchema = exports.CancelExecutionResponsePriceAdjustmentType$inboundSchema = exports.CancelExecutionResponsePriceAdjustmentAmount$ = exports.CancelExecutionResponsePriceAdjustmentAmount$outboundSchema = exports.CancelExecutionResponsePriceAdjustmentAmount$inboundSchema = exports.CancelExecutionResponsePrice$ = exports.CancelExecutionResponsePrice$outboundSchema = exports.CancelExecutionResponsePrice$inboundSchema = exports.CancelExecutionResponsePrevailingMarketPrice$ = exports.CancelExecutionResponsePrevailingMarketPrice$outboundSchema = exports.CancelExecutionResponsePrevailingMarketPrice$inboundSchema = exports.CancelExecutionResponseGrossAmount$ = exports.CancelExecutionResponseGrossAmount$outboundSchema = exports.CancelExecutionResponseGrossAmount$inboundSchema = exports.CancelExecutionResponseCommissionAmount$ = exports.CancelExecutionResponseCommissionAmount$outboundSchema = exports.CancelExecutionResponseCommissionAmount$inboundSchema = exports.CancelExecutionResponseAccruedInterestAmount$ = exports.CancelExecutionResponseAccruedInterestAmount$outboundSchema = exports.CancelExecutionResponseAccruedInterestAmount$inboundSchema = exports.CancelExecutionResponseState = exports.CancelExecutionResponsePriceAdjustmentType = void 0;
+exports.cancelExecutionResponseAccruedInterestAmountToJSON = cancelExecutionResponseAccruedInterestAmountToJSON;
+exports.cancelExecutionResponseAccruedInterestAmountFromJSON = cancelExecutionResponseAccruedInterestAmountFromJSON;
+exports.cancelExecutionResponseCommissionAmountToJSON = cancelExecutionResponseCommissionAmountToJSON;
+exports.cancelExecutionResponseCommissionAmountFromJSON = cancelExecutionResponseCommissionAmountFromJSON;
+exports.cancelExecutionResponseGrossAmountToJSON = cancelExecutionResponseGrossAmountToJSON;
+exports.cancelExecutionResponseGrossAmountFromJSON = cancelExecutionResponseGrossAmountFromJSON;
+exports.cancelExecutionResponsePrevailingMarketPriceToJSON = cancelExecutionResponsePrevailingMarketPriceToJSON;
+exports.cancelExecutionResponsePrevailingMarketPriceFromJSON = cancelExecutionResponsePrevailingMarketPriceFromJSON;
+exports.cancelExecutionResponsePriceToJSON = cancelExecutionResponsePriceToJSON;
+exports.cancelExecutionResponsePriceFromJSON = cancelExecutionResponsePriceFromJSON;
+exports.cancelExecutionResponsePriceAdjustmentAmountToJSON = cancelExecutionResponsePriceAdjustmentAmountToJSON;
+exports.cancelExecutionResponsePriceAdjustmentAmountFromJSON = cancelExecutionResponsePriceAdjustmentAmountFromJSON;
+exports.cancelExecutionResponsePriceAdjustmentToJSON = cancelExecutionResponsePriceAdjustmentToJSON;
+exports.cancelExecutionResponsePriceAdjustmentFromJSON = cancelExecutionResponsePriceAdjustmentFromJSON;
+exports.cancelExecutionResponseQuantityToJSON = cancelExecutionResponseQuantityToJSON;
+exports.cancelExecutionResponseQuantityFromJSON = cancelExecutionResponseQuantityFromJSON;
+exports.cancelExecutionResponseExecutionToJSON = cancelExecutionResponseExecutionToJSON;
+exports.cancelExecutionResponseExecutionFromJSON = cancelExecutionResponseExecutionFromJSON;
+exports.cancelExecutionResponseToJSON = cancelExecutionResponseToJSON;
+exports.cancelExecutionResponseFromJSON = cancelExecutionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bondyield_js_1 = require("./bondyield.js");
 /**
@@ -84,6 +105,12 @@ var CancelExecutionResponseAccruedInterestAmount$;
     /** @deprecated use `CancelExecutionResponseAccruedInterestAmount$outboundSchema` instead. */
     CancelExecutionResponseAccruedInterestAmount$.outboundSchema = exports.CancelExecutionResponseAccruedInterestAmount$outboundSchema;
 })(CancelExecutionResponseAccruedInterestAmount$ || (exports.CancelExecutionResponseAccruedInterestAmount$ = CancelExecutionResponseAccruedInterestAmount$ = {}));
+function cancelExecutionResponseAccruedInterestAmountToJSON(cancelExecutionResponseAccruedInterestAmount) {
+    return JSON.stringify(exports.CancelExecutionResponseAccruedInterestAmount$outboundSchema.parse(cancelExecutionResponseAccruedInterestAmount));
+}
+function cancelExecutionResponseAccruedInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponseAccruedInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponseAccruedInterestAmount' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponseCommissionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -103,6 +130,12 @@ var CancelExecutionResponseCommissionAmount$;
     /** @deprecated use `CancelExecutionResponseCommissionAmount$outboundSchema` instead. */
     CancelExecutionResponseCommissionAmount$.outboundSchema = exports.CancelExecutionResponseCommissionAmount$outboundSchema;
 })(CancelExecutionResponseCommissionAmount$ || (exports.CancelExecutionResponseCommissionAmount$ = CancelExecutionResponseCommissionAmount$ = {}));
+function cancelExecutionResponseCommissionAmountToJSON(cancelExecutionResponseCommissionAmount) {
+    return JSON.stringify(exports.CancelExecutionResponseCommissionAmount$outboundSchema.parse(cancelExecutionResponseCommissionAmount));
+}
+function cancelExecutionResponseCommissionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponseCommissionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponseCommissionAmount' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponseGrossAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -122,6 +155,12 @@ var CancelExecutionResponseGrossAmount$;
     /** @deprecated use `CancelExecutionResponseGrossAmount$outboundSchema` instead. */
     CancelExecutionResponseGrossAmount$.outboundSchema = exports.CancelExecutionResponseGrossAmount$outboundSchema;
 })(CancelExecutionResponseGrossAmount$ || (exports.CancelExecutionResponseGrossAmount$ = CancelExecutionResponseGrossAmount$ = {}));
+function cancelExecutionResponseGrossAmountToJSON(cancelExecutionResponseGrossAmount) {
+    return JSON.stringify(exports.CancelExecutionResponseGrossAmount$outboundSchema.parse(cancelExecutionResponseGrossAmount));
+}
+function cancelExecutionResponseGrossAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponseGrossAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponseGrossAmount' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponsePrevailingMarketPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -141,6 +180,12 @@ var CancelExecutionResponsePrevailingMarketPrice$;
     /** @deprecated use `CancelExecutionResponsePrevailingMarketPrice$outboundSchema` instead. */
     CancelExecutionResponsePrevailingMarketPrice$.outboundSchema = exports.CancelExecutionResponsePrevailingMarketPrice$outboundSchema;
 })(CancelExecutionResponsePrevailingMarketPrice$ || (exports.CancelExecutionResponsePrevailingMarketPrice$ = CancelExecutionResponsePrevailingMarketPrice$ = {}));
+function cancelExecutionResponsePrevailingMarketPriceToJSON(cancelExecutionResponsePrevailingMarketPrice) {
+    return JSON.stringify(exports.CancelExecutionResponsePrevailingMarketPrice$outboundSchema.parse(cancelExecutionResponsePrevailingMarketPrice));
+}
+function cancelExecutionResponsePrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponsePrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponsePrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponsePrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -160,6 +205,12 @@ var CancelExecutionResponsePrice$;
     /** @deprecated use `CancelExecutionResponsePrice$outboundSchema` instead. */
     CancelExecutionResponsePrice$.outboundSchema = exports.CancelExecutionResponsePrice$outboundSchema;
 })(CancelExecutionResponsePrice$ || (exports.CancelExecutionResponsePrice$ = CancelExecutionResponsePrice$ = {}));
+function cancelExecutionResponsePriceToJSON(cancelExecutionResponsePrice) {
+    return JSON.stringify(exports.CancelExecutionResponsePrice$outboundSchema.parse(cancelExecutionResponsePrice));
+}
+function cancelExecutionResponsePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponsePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponsePrice' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponsePriceAdjustmentAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -179,6 +230,12 @@ var CancelExecutionResponsePriceAdjustmentAmount$;
     /** @deprecated use `CancelExecutionResponsePriceAdjustmentAmount$outboundSchema` instead. */
     CancelExecutionResponsePriceAdjustmentAmount$.outboundSchema = exports.CancelExecutionResponsePriceAdjustmentAmount$outboundSchema;
 })(CancelExecutionResponsePriceAdjustmentAmount$ || (exports.CancelExecutionResponsePriceAdjustmentAmount$ = CancelExecutionResponsePriceAdjustmentAmount$ = {}));
+function cancelExecutionResponsePriceAdjustmentAmountToJSON(cancelExecutionResponsePriceAdjustmentAmount) {
+    return JSON.stringify(exports.CancelExecutionResponsePriceAdjustmentAmount$outboundSchema.parse(cancelExecutionResponsePriceAdjustmentAmount));
+}
+function cancelExecutionResponsePriceAdjustmentAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponsePriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponsePriceAdjustmentAmount' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponsePriceAdjustmentType$inboundSchema = z
     .union([
@@ -233,6 +290,12 @@ var CancelExecutionResponsePriceAdjustment$;
     /** @deprecated use `CancelExecutionResponsePriceAdjustment$outboundSchema` instead. */
     CancelExecutionResponsePriceAdjustment$.outboundSchema = exports.CancelExecutionResponsePriceAdjustment$outboundSchema;
 })(CancelExecutionResponsePriceAdjustment$ || (exports.CancelExecutionResponsePriceAdjustment$ = CancelExecutionResponsePriceAdjustment$ = {}));
+function cancelExecutionResponsePriceAdjustmentToJSON(cancelExecutionResponsePriceAdjustment) {
+    return JSON.stringify(exports.CancelExecutionResponsePriceAdjustment$outboundSchema.parse(cancelExecutionResponsePriceAdjustment));
+}
+function cancelExecutionResponsePriceAdjustmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponsePriceAdjustment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponsePriceAdjustment' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponseQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -252,6 +315,12 @@ var CancelExecutionResponseQuantity$;
     /** @deprecated use `CancelExecutionResponseQuantity$outboundSchema` instead. */
     CancelExecutionResponseQuantity$.outboundSchema = exports.CancelExecutionResponseQuantity$outboundSchema;
 })(CancelExecutionResponseQuantity$ || (exports.CancelExecutionResponseQuantity$ = CancelExecutionResponseQuantity$ = {}));
+function cancelExecutionResponseQuantityToJSON(cancelExecutionResponseQuantity) {
+    return JSON.stringify(exports.CancelExecutionResponseQuantity$outboundSchema.parse(cancelExecutionResponseQuantity));
+}
+function cancelExecutionResponseQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponseQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponseQuantity' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponseState$inboundSchema = z
     .union([
@@ -358,6 +427,12 @@ var CancelExecutionResponseExecution$;
     /** @deprecated use `CancelExecutionResponseExecution$outboundSchema` instead. */
     CancelExecutionResponseExecution$.outboundSchema = exports.CancelExecutionResponseExecution$outboundSchema;
 })(CancelExecutionResponseExecution$ || (exports.CancelExecutionResponseExecution$ = CancelExecutionResponseExecution$ = {}));
+function cancelExecutionResponseExecutionToJSON(cancelExecutionResponseExecution) {
+    return JSON.stringify(exports.CancelExecutionResponseExecution$outboundSchema.parse(cancelExecutionResponseExecution));
+}
+function cancelExecutionResponseExecutionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponseExecution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponseExecution' from JSON`);
+}
 /** @internal */
 exports.CancelExecutionResponse$inboundSchema = z.object({
     execution: z.nullable(z.lazy(() => exports.CancelExecutionResponseExecution$inboundSchema)).optional(),
@@ -377,4 +452,10 @@ var CancelExecutionResponse$;
     /** @deprecated use `CancelExecutionResponse$outboundSchema` instead. */
     CancelExecutionResponse$.outboundSchema = exports.CancelExecutionResponse$outboundSchema;
 })(CancelExecutionResponse$ || (exports.CancelExecutionResponse$ = CancelExecutionResponse$ = {}));
+function cancelExecutionResponseToJSON(cancelExecutionResponse) {
+    return JSON.stringify(exports.CancelExecutionResponse$outboundSchema.parse(cancelExecutionResponse));
+}
+function cancelExecutionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionResponse' from JSON`);
+}
 //# sourceMappingURL=cancelexecutionresponse.js.map

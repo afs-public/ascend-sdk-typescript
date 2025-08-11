@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountTaxProfileCreate$ = exports.AccountTaxProfileCreate$outboundSchema = exports.AccountTaxProfileCreate$inboundSchema = exports.CostBasisLotDisposalMethod$ = exports.CostBasisLotDisposalMethod$outboundSchema = exports.CostBasisLotDisposalMethod$inboundSchema = exports.CostBasisLotDisposalMethod = void 0;
+exports.accountTaxProfileCreateToJSON = accountTaxProfileCreateToJSON;
+exports.accountTaxProfileCreateFromJSON = accountTaxProfileCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * A method of determining the cost basis of an asset that has been sold or disposed of, by identifying which specific lot of the asset was sold and using the cost of that lot to calculate the cost basis; this method is commonly used for tax purposes to determine the amount of reportable capital gains or losses By default, this is set to `COST_BASIS_LOT_DISPOSAL_MIN_TAX_TERM`
@@ -111,4 +114,10 @@ var AccountTaxProfileCreate$;
     /** @deprecated use `AccountTaxProfileCreate$outboundSchema` instead. */
     AccountTaxProfileCreate$.outboundSchema = exports.AccountTaxProfileCreate$outboundSchema;
 })(AccountTaxProfileCreate$ || (exports.AccountTaxProfileCreate$ = AccountTaxProfileCreate$ = {}));
+function accountTaxProfileCreateToJSON(accountTaxProfileCreate) {
+    return JSON.stringify(exports.AccountTaxProfileCreate$outboundSchema.parse(accountTaxProfileCreate));
+}
+function accountTaxProfileCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountTaxProfileCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountTaxProfileCreate' from JSON`);
+}
 //# sourceMappingURL=accounttaxprofilecreate.js.map

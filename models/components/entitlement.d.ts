@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * GRANTED if it was activated via an enrollment, SUSPENDED if a restriction has temporarily disabled it, or DENIED if it has never before been GRANTED
  */
@@ -81,4 +83,6 @@ export declare namespace Entitlement$ {
     /** @deprecated use `Entitlement$Outbound` instead. */
     type Outbound = Entitlement$Outbound;
 }
+export declare function entitlementToJSON(entitlement: Entitlement): string;
+export declare function entitlementFromJSON(jsonString: string): SafeParseResult<Entitlement, SDKValidationError>;
 //# sourceMappingURL=entitlement.d.ts.map

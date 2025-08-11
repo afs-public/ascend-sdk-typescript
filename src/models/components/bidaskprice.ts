@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The price value
@@ -82,6 +85,24 @@ export namespace BidAskPricePrice$ {
   export type Outbound = BidAskPricePrice$Outbound;
 }
 
+export function bidAskPricePriceToJSON(
+  bidAskPricePrice: BidAskPricePrice,
+): string {
+  return JSON.stringify(
+    BidAskPricePrice$outboundSchema.parse(bidAskPricePrice),
+  );
+}
+
+export function bidAskPricePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<BidAskPricePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BidAskPricePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BidAskPricePrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const BidAskPriceType$inboundSchema: z.ZodType<
   BidAskPriceTypeOpen,
@@ -151,4 +172,18 @@ export namespace BidAskPrice$ {
   export const outboundSchema = BidAskPrice$outboundSchema;
   /** @deprecated use `BidAskPrice$Outbound` instead. */
   export type Outbound = BidAskPrice$Outbound;
+}
+
+export function bidAskPriceToJSON(bidAskPrice: BidAskPrice): string {
+  return JSON.stringify(BidAskPrice$outboundSchema.parse(bidAskPrice));
+}
+
+export function bidAskPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<BidAskPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BidAskPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BidAskPrice' from JSON`,
+  );
 }

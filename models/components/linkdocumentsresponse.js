@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LinkDocumentsResponse$ = exports.LinkDocumentsResponse$outboundSchema = exports.LinkDocumentsResponse$inboundSchema = void 0;
+exports.linkDocumentsResponseToJSON = linkDocumentsResponseToJSON;
+exports.linkDocumentsResponseFromJSON = linkDocumentsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.LinkDocumentsResponse$inboundSchema = z.object({
     identity_verification_document_ids: z.array(z.string()).optional(),
@@ -68,4 +71,10 @@ var LinkDocumentsResponse$;
     /** @deprecated use `LinkDocumentsResponse$outboundSchema` instead. */
     LinkDocumentsResponse$.outboundSchema = exports.LinkDocumentsResponse$outboundSchema;
 })(LinkDocumentsResponse$ || (exports.LinkDocumentsResponse$ = LinkDocumentsResponse$ = {}));
+function linkDocumentsResponseToJSON(linkDocumentsResponse) {
+    return JSON.stringify(exports.LinkDocumentsResponse$outboundSchema.parse(linkDocumentsResponse));
+}
+function linkDocumentsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LinkDocumentsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LinkDocumentsResponse' from JSON`);
+}
 //# sourceMappingURL=linkdocumentsresponse.js.map

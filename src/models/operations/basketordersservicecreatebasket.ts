@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BasketOrdersServiceCreateBasketRequest = {
   /**
@@ -77,6 +80,28 @@ export namespace BasketOrdersServiceCreateBasketRequest$ {
   export type Outbound = BasketOrdersServiceCreateBasketRequest$Outbound;
 }
 
+export function basketOrdersServiceCreateBasketRequestToJSON(
+  basketOrdersServiceCreateBasketRequest:
+    BasketOrdersServiceCreateBasketRequest,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceCreateBasketRequest$outboundSchema.parse(
+      basketOrdersServiceCreateBasketRequest,
+    ),
+  );
+}
+
+export function basketOrdersServiceCreateBasketRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketOrdersServiceCreateBasketRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceCreateBasketRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketOrdersServiceCreateBasketRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BasketOrdersServiceCreateBasketResponse$inboundSchema: z.ZodType<
   BasketOrdersServiceCreateBasketResponse,
@@ -131,4 +156,31 @@ export namespace BasketOrdersServiceCreateBasketResponse$ {
     BasketOrdersServiceCreateBasketResponse$outboundSchema;
   /** @deprecated use `BasketOrdersServiceCreateBasketResponse$Outbound` instead. */
   export type Outbound = BasketOrdersServiceCreateBasketResponse$Outbound;
+}
+
+export function basketOrdersServiceCreateBasketResponseToJSON(
+  basketOrdersServiceCreateBasketResponse:
+    BasketOrdersServiceCreateBasketResponse,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceCreateBasketResponse$outboundSchema.parse(
+      basketOrdersServiceCreateBasketResponse,
+    ),
+  );
+}
+
+export function basketOrdersServiceCreateBasketResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BasketOrdersServiceCreateBasketResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceCreateBasketResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BasketOrdersServiceCreateBasketResponse' from JSON`,
+  );
 }

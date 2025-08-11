@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListAchWithdrawalSchedulesResponse$ = exports.ListAchWithdrawalSchedulesResponse$outboundSchema = exports.ListAchWithdrawalSchedulesResponse$inboundSchema = void 0;
+exports.listAchWithdrawalSchedulesResponseToJSON = listAchWithdrawalSchedulesResponseToJSON;
+exports.listAchWithdrawalSchedulesResponseFromJSON = listAchWithdrawalSchedulesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const achwithdrawalschedule_js_1 = require("./achwithdrawalschedule.js");
 /** @internal */
 exports.ListAchWithdrawalSchedulesResponse$inboundSchema = z.object({
@@ -73,4 +76,10 @@ var ListAchWithdrawalSchedulesResponse$;
     /** @deprecated use `ListAchWithdrawalSchedulesResponse$outboundSchema` instead. */
     ListAchWithdrawalSchedulesResponse$.outboundSchema = exports.ListAchWithdrawalSchedulesResponse$outboundSchema;
 })(ListAchWithdrawalSchedulesResponse$ || (exports.ListAchWithdrawalSchedulesResponse$ = ListAchWithdrawalSchedulesResponse$ = {}));
+function listAchWithdrawalSchedulesResponseToJSON(listAchWithdrawalSchedulesResponse) {
+    return JSON.stringify(exports.ListAchWithdrawalSchedulesResponse$outboundSchema.parse(listAchWithdrawalSchedulesResponse));
+}
+function listAchWithdrawalSchedulesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListAchWithdrawalSchedulesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListAchWithdrawalSchedulesResponse' from JSON`);
+}
 //# sourceMappingURL=listachwithdrawalschedulesresponse.js.map

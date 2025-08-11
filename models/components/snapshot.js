@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Snapshot$ = exports.Snapshot$outboundSchema = exports.Snapshot$inboundSchema = exports.SnapshotProcessDate$ = exports.SnapshotProcessDate$outboundSchema = exports.SnapshotProcessDate$inboundSchema = exports.FileT$ = exports.FileT$outboundSchema = exports.FileT$inboundSchema = void 0;
+exports.fileToJSON = fileToJSON;
+exports.fileFromJSON = fileFromJSON;
+exports.snapshotProcessDateToJSON = snapshotProcessDateToJSON;
+exports.snapshotProcessDateFromJSON = snapshotProcessDateFromJSON;
+exports.snapshotToJSON = snapshotToJSON;
+exports.snapshotFromJSON = snapshotFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.FileT$inboundSchema = z
     .object({
@@ -72,6 +79,12 @@ var FileT$;
     /** @deprecated use `FileT$outboundSchema` instead. */
     FileT$.outboundSchema = exports.FileT$outboundSchema;
 })(FileT$ || (exports.FileT$ = FileT$ = {}));
+function fileToJSON(fileT) {
+    return JSON.stringify(exports.FileT$outboundSchema.parse(fileT));
+}
+function fileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FileT$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FileT' from JSON`);
+}
 /** @internal */
 exports.SnapshotProcessDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -95,6 +108,12 @@ var SnapshotProcessDate$;
     /** @deprecated use `SnapshotProcessDate$outboundSchema` instead. */
     SnapshotProcessDate$.outboundSchema = exports.SnapshotProcessDate$outboundSchema;
 })(SnapshotProcessDate$ || (exports.SnapshotProcessDate$ = SnapshotProcessDate$ = {}));
+function snapshotProcessDateToJSON(snapshotProcessDate) {
+    return JSON.stringify(exports.SnapshotProcessDate$outboundSchema.parse(snapshotProcessDate));
+}
+function snapshotProcessDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SnapshotProcessDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SnapshotProcessDate' from JSON`);
+}
 /** @internal */
 exports.Snapshot$inboundSchema = z.object({
     create_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
@@ -142,4 +161,10 @@ var Snapshot$;
     /** @deprecated use `Snapshot$outboundSchema` instead. */
     Snapshot$.outboundSchema = exports.Snapshot$outboundSchema;
 })(Snapshot$ || (exports.Snapshot$ = Snapshot$ = {}));
+function snapshotToJSON(snapshot) {
+    return JSON.stringify(exports.Snapshot$outboundSchema.parse(snapshot));
+}
+function snapshotFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Snapshot$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Snapshot' from JSON`);
+}
 //# sourceMappingURL=snapshot.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The rate at which monies were withheld, expressed as a value between 0-1
  */
@@ -118,6 +120,8 @@ export declare namespace Rate$ {
     /** @deprecated use `Rate$Outbound` instead. */
     type Outbound = Rate$Outbound;
 }
+export declare function rateToJSON(rate: Rate): string;
+export declare function rateFromJSON(jsonString: string): SafeParseResult<Rate, SDKValidationError>;
 /** @internal */
 export declare const WithholdingDataState$inboundSchema: z.ZodType<WithholdingDataStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -170,4 +174,6 @@ export declare namespace WithholdingData$ {
     /** @deprecated use `WithholdingData$Outbound` instead. */
     type Outbound = WithholdingData$Outbound;
 }
+export declare function withholdingDataToJSON(withholdingData: WithholdingData): string;
+export declare function withholdingDataFromJSON(jsonString: string): SafeParseResult<WithholdingData, SDKValidationError>;
 //# sourceMappingURL=withholdingdata.d.ts.map

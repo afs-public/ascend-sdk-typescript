@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Customer Referral Source
@@ -82,4 +85,24 @@ export namespace CustomerReferralSourceUpdate$ {
   export const outboundSchema = CustomerReferralSourceUpdate$outboundSchema;
   /** @deprecated use `CustomerReferralSourceUpdate$Outbound` instead. */
   export type Outbound = CustomerReferralSourceUpdate$Outbound;
+}
+
+export function customerReferralSourceUpdateToJSON(
+  customerReferralSourceUpdate: CustomerReferralSourceUpdate,
+): string {
+  return JSON.stringify(
+    CustomerReferralSourceUpdate$outboundSchema.parse(
+      customerReferralSourceUpdate,
+    ),
+  );
+}
+
+export function customerReferralSourceUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerReferralSourceUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerReferralSourceUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerReferralSourceUpdate' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The end reason of the LTID.
@@ -112,4 +115,24 @@ export namespace EndLargeTraderRequestCreate$ {
   export const outboundSchema = EndLargeTraderRequestCreate$outboundSchema;
   /** @deprecated use `EndLargeTraderRequestCreate$Outbound` instead. */
   export type Outbound = EndLargeTraderRequestCreate$Outbound;
+}
+
+export function endLargeTraderRequestCreateToJSON(
+  endLargeTraderRequestCreate: EndLargeTraderRequestCreate,
+): string {
+  return JSON.stringify(
+    EndLargeTraderRequestCreate$outboundSchema.parse(
+      endLargeTraderRequestCreate,
+    ),
+  );
+}
+
+export function endLargeTraderRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<EndLargeTraderRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EndLargeTraderRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EndLargeTraderRequestCreate' from JSON`,
+  );
 }

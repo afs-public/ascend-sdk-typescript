@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsUpdateTrustedContactRequest = {
   /**
@@ -95,6 +98,27 @@ export namespace AccountsUpdateTrustedContactRequest$ {
   export type Outbound = AccountsUpdateTrustedContactRequest$Outbound;
 }
 
+export function accountsUpdateTrustedContactRequestToJSON(
+  accountsUpdateTrustedContactRequest: AccountsUpdateTrustedContactRequest,
+): string {
+  return JSON.stringify(
+    AccountsUpdateTrustedContactRequest$outboundSchema.parse(
+      accountsUpdateTrustedContactRequest,
+    ),
+  );
+}
+
+export function accountsUpdateTrustedContactRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateTrustedContactRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsUpdateTrustedContactRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateTrustedContactRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsUpdateTrustedContactResponse$inboundSchema: z.ZodType<
   AccountsUpdateTrustedContactResponse,
@@ -149,4 +173,25 @@ export namespace AccountsUpdateTrustedContactResponse$ {
     AccountsUpdateTrustedContactResponse$outboundSchema;
   /** @deprecated use `AccountsUpdateTrustedContactResponse$Outbound` instead. */
   export type Outbound = AccountsUpdateTrustedContactResponse$Outbound;
+}
+
+export function accountsUpdateTrustedContactResponseToJSON(
+  accountsUpdateTrustedContactResponse: AccountsUpdateTrustedContactResponse,
+): string {
+  return JSON.stringify(
+    AccountsUpdateTrustedContactResponse$outboundSchema.parse(
+      accountsUpdateTrustedContactResponse,
+    ),
+  );
+}
+
+export function accountsUpdateTrustedContactResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateTrustedContactResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsUpdateTrustedContactResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateTrustedContactResponse' from JSON`,
+  );
 }

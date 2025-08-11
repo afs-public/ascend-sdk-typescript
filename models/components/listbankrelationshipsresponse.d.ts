@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BankRelationship, BankRelationship$Outbound } from "./bankrelationship.js";
 /**
  * Returns bank relationships for a parent account.
@@ -34,4 +36,6 @@ export declare namespace ListBankRelationshipsResponse$ {
     /** @deprecated use `ListBankRelationshipsResponse$Outbound` instead. */
     type Outbound = ListBankRelationshipsResponse$Outbound;
 }
+export declare function listBankRelationshipsResponseToJSON(listBankRelationshipsResponse: ListBankRelationshipsResponse): string;
+export declare function listBankRelationshipsResponseFromJSON(jsonString: string): SafeParseResult<ListBankRelationshipsResponse, SDKValidationError>;
 //# sourceMappingURL=listbankrelationshipsresponse.d.ts.map

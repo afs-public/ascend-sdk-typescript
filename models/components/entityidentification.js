@@ -37,11 +37,20 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EntityIdentification$ = exports.EntityIdentification$outboundSchema = exports.EntityIdentification$inboundSchema = exports.EntityIdentificationType$ = exports.EntityIdentificationType$outboundSchema = exports.EntityIdentificationType$inboundSchema = exports.EntityIdentificationType = void 0;
+exports.entityIdentificationToJSON = entityIdentificationToJSON;
+exports.entityIdentificationFromJSON = entityIdentificationFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
- * Tax id type for entities (e.g. ein, lei, etc.))
+ * The entity tax id type, one of:
+ *
+ * @remarks
+ * - `ID_ENTITY_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `EIN` - Employer Identification Number (US government issued, 9 digits, XX-XXXXXXX).
+ * - `LEI` - Legal Entity Identifier (20 digit alphanumeric).
+ * - `DUNS` - Dun and Bradstreet number.
  */
 var EntityIdentificationType;
 (function (EntityIdentificationType) {
@@ -111,4 +120,10 @@ var EntityIdentification$;
     /** @deprecated use `EntityIdentification$outboundSchema` instead. */
     EntityIdentification$.outboundSchema = exports.EntityIdentification$outboundSchema;
 })(EntityIdentification$ || (exports.EntityIdentification$ = EntityIdentification$ = {}));
+function entityIdentificationToJSON(entityIdentification) {
+    return JSON.stringify(exports.EntityIdentification$outboundSchema.parse(entityIdentification));
+}
+function entityIdentificationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EntityIdentification$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EntityIdentification' from JSON`);
+}
 //# sourceMappingURL=entityidentification.js.map

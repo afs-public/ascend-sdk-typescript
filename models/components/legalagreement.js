@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegalAgreement$ = exports.LegalAgreement$outboundSchema = exports.LegalAgreement$inboundSchema = void 0;
+exports.legalAgreementToJSON = legalAgreementToJSON;
+exports.legalAgreementFromJSON = legalAgreementFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.LegalAgreement$inboundSchema = z.object({
     agreement_name: z.string().optional(),
@@ -74,4 +77,10 @@ var LegalAgreement$;
     /** @deprecated use `LegalAgreement$outboundSchema` instead. */
     LegalAgreement$.outboundSchema = exports.LegalAgreement$outboundSchema;
 })(LegalAgreement$ || (exports.LegalAgreement$ = LegalAgreement$ = {}));
+function legalAgreementToJSON(legalAgreement) {
+    return JSON.stringify(exports.LegalAgreement$outboundSchema.parse(legalAgreement));
+}
+function legalAgreementFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalAgreement$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalAgreement' from JSON`);
+}
 //# sourceMappingURL=legalagreement.js.map

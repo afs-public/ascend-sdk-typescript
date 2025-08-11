@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The rate at which monies were withheld, expressed as a value between 0-1
@@ -142,6 +145,20 @@ export namespace Rate$ {
   export type Outbound = Rate$Outbound;
 }
 
+export function rateToJSON(rate: Rate): string {
+  return JSON.stringify(Rate$outboundSchema.parse(rate));
+}
+
+export function rateFromJSON(
+  jsonString: string,
+): SafeParseResult<Rate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Rate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Rate' from JSON`,
+  );
+}
+
 /** @internal */
 export const WithholdingDataState$inboundSchema: z.ZodType<
   WithholdingDataStateOpen,
@@ -262,4 +279,20 @@ export namespace WithholdingData$ {
   export const outboundSchema = WithholdingData$outboundSchema;
   /** @deprecated use `WithholdingData$Outbound` instead. */
   export type Outbound = WithholdingData$Outbound;
+}
+
+export function withholdingDataToJSON(
+  withholdingData: WithholdingData,
+): string {
+  return JSON.stringify(WithholdingData$outboundSchema.parse(withholdingData));
+}
+
+export function withholdingDataFromJSON(
+  jsonString: string,
+): SafeParseResult<WithholdingData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WithholdingData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WithholdingData' from JSON`,
+  );
 }

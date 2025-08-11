@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The data structure containing attributes describing the location of an underlying entity.
  */
@@ -48,4 +50,6 @@ export declare namespace AddressCreate$ {
     /** @deprecated use `AddressCreate$Outbound` instead. */
     type Outbound = AddressCreate$Outbound;
 }
+export declare function addressCreateToJSON(addressCreate: AddressCreate): string;
+export declare function addressCreateFromJSON(jsonString: string): SafeParseResult<AddressCreate, SDKValidationError>;
 //# sourceMappingURL=addresscreate.d.ts.map

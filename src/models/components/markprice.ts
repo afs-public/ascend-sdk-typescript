@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The price value
@@ -83,6 +86,20 @@ export namespace MarkPricePrice$ {
   export type Outbound = MarkPricePrice$Outbound;
 }
 
+export function markPricePriceToJSON(markPricePrice: MarkPricePrice): string {
+  return JSON.stringify(MarkPricePrice$outboundSchema.parse(markPricePrice));
+}
+
+export function markPricePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<MarkPricePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarkPricePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarkPricePrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarkPriceType$inboundSchema: z.ZodType<
   MarkPriceTypeOpen,
@@ -152,4 +169,18 @@ export namespace MarkPrice$ {
   export const outboundSchema = MarkPrice$outboundSchema;
   /** @deprecated use `MarkPrice$Outbound` instead. */
   export type Outbound = MarkPrice$Outbound;
+}
+
+export function markPriceToJSON(markPrice: MarkPrice): string {
+  return JSON.stringify(MarkPrice$outboundSchema.parse(markPrice));
+}
+
+export function markPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<MarkPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarkPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarkPrice' from JSON`,
+  );
 }

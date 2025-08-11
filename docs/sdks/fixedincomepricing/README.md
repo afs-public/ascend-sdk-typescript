@@ -15,6 +15,7 @@ Returns a calculation estimating the costs involved in ordering a given quantity
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="OrderPriceService_PreviewOrderCost" method="post" path="/trading/v1/accounts/{account_id}/orders:previewOrderCost" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import {
@@ -48,7 +49,6 @@ async function run() {
     quantity: {},
   }, "<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -94,15 +94,12 @@ async function run() {
     parent: "<value>",
     quantity: {},
   }, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("fixedIncomePricingPreviewOrderCost failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -124,10 +121,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 401, 403    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## retrieveQuote
 
@@ -135,6 +133,7 @@ Returns quote information containing the best bid/ask for the given Fixed Income
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="OrderPriceService_RetrieveQuote" method="post" path="/trading/v1/accounts/{account_id}/orders:retrieveAssetQuote" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RetrieveQuoteRequestCreateAssetType, RetrieveQuoteRequestCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -159,7 +158,6 @@ async function run() {
     parent: "<value>",
   }, "<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -196,15 +194,12 @@ async function run() {
     identifierType: RetrieveQuoteRequestCreateIdentifierType.Cusip,
     parent: "<value>",
   }, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("fixedIncomePricingRetrieveQuote failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -226,10 +221,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 401, 403    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## retrieveFixedIncomeMarks
 
@@ -237,6 +233,7 @@ Returns marks for a specified set of Fixed Income assets (up to 100 per request)
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="OrderPriceService_RetrieveFixedIncomeMarks" method="post" path="/trading/v1/correspondents/{correspondent_id}/prices:retrieveFixedIncomeMarks" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -258,17 +255,16 @@ async function run() {
     parent: "<value>",
     securityIdentifiers: [
       {
-        identifier: "37833100",
-        identifierType: RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType.Cusip,
+        identifier: "US0378331005",
+        identifierType: RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType.Isin,
       },
       {
-        identifier: "37833100",
+        identifier: "38259P508",
         identifierType: RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType.Cusip,
       },
     ],
   }, "<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -303,24 +299,21 @@ async function run() {
     parent: "<value>",
     securityIdentifiers: [
       {
-        identifier: "37833100",
-        identifierType: RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType.Cusip,
+        identifier: "US0378331005",
+        identifierType: RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType.Isin,
       },
       {
-        identifier: "37833100",
+        identifier: "38259P508",
         identifierType: RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType.Cusip,
       },
     ],
   }, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("fixedIncomePricingRetrieveFixedIncomeMarks failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -342,7 +335,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 401, 403    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

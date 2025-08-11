@@ -16,6 +16,7 @@ Gets an existing wire deposit
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireDeposits_GetWireDeposit" method="get" path="/transfers/v1/accounts/{account_id}/wireDeposits/{wireDeposit_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -34,7 +35,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.wires.getWireDeposit("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -65,15 +65,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await wiresGetWireDeposit(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("wiresGetWireDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -106,6 +103,7 @@ Creates a wire withdrawal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawals_CreateWireWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/wireWithdrawals" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RecipientBankBankIdCreateType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -136,7 +134,6 @@ async function run() {
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -179,15 +176,12 @@ async function run() {
       },
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("wiresCreateWireWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -220,6 +214,7 @@ Gets an existing wire withdrawal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawals_GetWireWithdrawal" method="get" path="/transfers/v1/accounts/{account_id}/wireWithdrawals/{wireWithdrawal_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -238,7 +233,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.wires.getWireWithdrawal("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -269,15 +263,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await wiresGetWireWithdrawal(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("wiresGetWireWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -310,6 +301,7 @@ Cancels an existing wire withdrawal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawals_CancelWireWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/wireWithdrawals/{wireWithdrawal_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -330,7 +322,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawals/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -363,15 +354,12 @@ async function run() {
   const res = await wiresCancelWireWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawals/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("wiresCancelWireWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

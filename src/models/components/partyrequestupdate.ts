@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PhoneNumberUpdate,
   PhoneNumberUpdate$inboundSchema,
@@ -526,4 +529,22 @@ export namespace PartyRequestUpdate$ {
   export const outboundSchema = PartyRequestUpdate$outboundSchema;
   /** @deprecated use `PartyRequestUpdate$Outbound` instead. */
   export type Outbound = PartyRequestUpdate$Outbound;
+}
+
+export function partyRequestUpdateToJSON(
+  partyRequestUpdate: PartyRequestUpdate,
+): string {
+  return JSON.stringify(
+    PartyRequestUpdate$outboundSchema.parse(partyRequestUpdate),
+  );
+}
+
+export function partyRequestUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<PartyRequestUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartyRequestUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartyRequestUpdate' from JSON`,
+  );
 }

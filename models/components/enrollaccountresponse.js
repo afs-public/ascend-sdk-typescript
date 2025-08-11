@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EnrollAccountResponse$ = exports.EnrollAccountResponse$outboundSchema = exports.EnrollAccountResponse$inboundSchema = void 0;
+exports.enrollAccountResponseToJSON = enrollAccountResponseToJSON;
+exports.enrollAccountResponseFromJSON = enrollAccountResponseFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const agreement_js_1 = require("./agreement.js");
 /** @internal */
 exports.EnrollAccountResponse$inboundSchema = z.object({
@@ -58,4 +61,10 @@ var EnrollAccountResponse$;
     /** @deprecated use `EnrollAccountResponse$outboundSchema` instead. */
     EnrollAccountResponse$.outboundSchema = exports.EnrollAccountResponse$outboundSchema;
 })(EnrollAccountResponse$ || (exports.EnrollAccountResponse$ = EnrollAccountResponse$ = {}));
+function enrollAccountResponseToJSON(enrollAccountResponse) {
+    return JSON.stringify(exports.EnrollAccountResponse$outboundSchema.parse(enrollAccountResponse));
+}
+function enrollAccountResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollAccountResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollAccountResponse' from JSON`);
+}
 //# sourceMappingURL=enrollaccountresponse.js.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The net amount of the trade in USD. This value is always positive.
  */
@@ -45,6 +47,8 @@ export declare namespace NetAmount$ {
     /** @deprecated use `NetAmount$Outbound` instead. */
     type Outbound = NetAmount$Outbound;
 }
+export declare function netAmountToJSON(netAmount: NetAmount): string;
+export declare function netAmountFromJSON(jsonString: string): SafeParseResult<NetAmount, SDKValidationError>;
 /** @internal */
 export declare const CalculateCashBalanceResponseTradeSummary$inboundSchema: z.ZodType<CalculateCashBalanceResponseTradeSummary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -67,4 +71,6 @@ export declare namespace CalculateCashBalanceResponseTradeSummary$ {
     /** @deprecated use `CalculateCashBalanceResponseTradeSummary$Outbound` instead. */
     type Outbound = CalculateCashBalanceResponseTradeSummary$Outbound;
 }
+export declare function calculateCashBalanceResponseTradeSummaryToJSON(calculateCashBalanceResponseTradeSummary: CalculateCashBalanceResponseTradeSummary): string;
+export declare function calculateCashBalanceResponseTradeSummaryFromJSON(jsonString: string): SafeParseResult<CalculateCashBalanceResponseTradeSummary, SDKValidationError>;
 //# sourceMappingURL=calculatecashbalanceresponsetradesummary.d.ts.map

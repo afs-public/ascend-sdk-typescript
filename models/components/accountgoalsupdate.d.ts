@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The financial goal or purpose that an investor has in mind when making investment decisions; firms often ask investors to specify their investment objectives when opening an account, in order to provide appropriate investment recommendations and manage risk appropriately
  */
@@ -162,4 +164,6 @@ export declare namespace AccountGoalsUpdate$ {
     /** @deprecated use `AccountGoalsUpdate$Outbound` instead. */
     type Outbound = AccountGoalsUpdate$Outbound;
 }
+export declare function accountGoalsUpdateToJSON(accountGoalsUpdate: AccountGoalsUpdate): string;
+export declare function accountGoalsUpdateFromJSON(jsonString: string): SafeParseResult<AccountGoalsUpdate, SDKValidationError>;
 //# sourceMappingURL=accountgoalsupdate.d.ts.map

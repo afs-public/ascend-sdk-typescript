@@ -37,8 +37,17 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerIdentification$ = exports.CustomerIdentification$outboundSchema = exports.CustomerIdentification$inboundSchema = exports.Identity$ = exports.Identity$outboundSchema = exports.Identity$inboundSchema = exports.CustomerIdentificationLegalAddress$ = exports.CustomerIdentificationLegalAddress$outboundSchema = exports.CustomerIdentificationLegalAddress$inboundSchema = exports.CustomerIdentificationBirthDate$ = exports.CustomerIdentificationBirthDate$outboundSchema = exports.CustomerIdentificationBirthDate$inboundSchema = exports.CheckTypes$ = exports.CheckTypes$outboundSchema = exports.CheckTypes$inboundSchema = exports.CheckTypes = void 0;
+exports.customerIdentificationBirthDateToJSON = customerIdentificationBirthDateToJSON;
+exports.customerIdentificationBirthDateFromJSON = customerIdentificationBirthDateFromJSON;
+exports.customerIdentificationLegalAddressToJSON = customerIdentificationLegalAddressToJSON;
+exports.customerIdentificationLegalAddressFromJSON = customerIdentificationLegalAddressFromJSON;
+exports.identityToJSON = identityToJSON;
+exports.identityFromJSON = identityFromJSON;
+exports.customerIdentificationToJSON = customerIdentificationToJSON;
+exports.customerIdentificationFromJSON = customerIdentificationFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const customeridentificationresult_js_1 = require("./customeridentificationresult.js");
 const identityidentification_js_1 = require("./identityidentification.js");
@@ -93,6 +102,12 @@ var CustomerIdentificationBirthDate$;
     /** @deprecated use `CustomerIdentificationBirthDate$outboundSchema` instead. */
     CustomerIdentificationBirthDate$.outboundSchema = exports.CustomerIdentificationBirthDate$outboundSchema;
 })(CustomerIdentificationBirthDate$ || (exports.CustomerIdentificationBirthDate$ = CustomerIdentificationBirthDate$ = {}));
+function customerIdentificationBirthDateToJSON(customerIdentificationBirthDate) {
+    return JSON.stringify(exports.CustomerIdentificationBirthDate$outboundSchema.parse(customerIdentificationBirthDate));
+}
+function customerIdentificationBirthDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerIdentificationBirthDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerIdentificationBirthDate' from JSON`);
+}
 /** @internal */
 exports.CustomerIdentificationLegalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -150,6 +165,12 @@ var CustomerIdentificationLegalAddress$;
     /** @deprecated use `CustomerIdentificationLegalAddress$outboundSchema` instead. */
     CustomerIdentificationLegalAddress$.outboundSchema = exports.CustomerIdentificationLegalAddress$outboundSchema;
 })(CustomerIdentificationLegalAddress$ || (exports.CustomerIdentificationLegalAddress$ = CustomerIdentificationLegalAddress$ = {}));
+function customerIdentificationLegalAddressToJSON(customerIdentificationLegalAddress) {
+    return JSON.stringify(exports.CustomerIdentificationLegalAddress$outboundSchema.parse(customerIdentificationLegalAddress));
+}
+function customerIdentificationLegalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerIdentificationLegalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerIdentificationLegalAddress' from JSON`);
+}
 /** @internal */
 exports.Identity$inboundSchema = z.object({
     birth_date: z.nullable(z.lazy(() => exports.CustomerIdentificationBirthDate$inboundSchema)).optional(),
@@ -207,6 +228,12 @@ var Identity$;
     /** @deprecated use `Identity$outboundSchema` instead. */
     Identity$.outboundSchema = exports.Identity$outboundSchema;
 })(Identity$ || (exports.Identity$ = Identity$ = {}));
+function identityToJSON(identity) {
+    return JSON.stringify(exports.Identity$outboundSchema.parse(identity));
+}
+function identityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Identity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Identity' from JSON`);
+}
 /** @internal */
 exports.CustomerIdentification$inboundSchema = z.object({
     check_types: z.array(exports.CheckTypes$inboundSchema).optional(),
@@ -240,4 +267,10 @@ var CustomerIdentification$;
     /** @deprecated use `CustomerIdentification$outboundSchema` instead. */
     CustomerIdentification$.outboundSchema = exports.CustomerIdentification$outboundSchema;
 })(CustomerIdentification$ || (exports.CustomerIdentification$ = CustomerIdentification$ = {}));
+function customerIdentificationToJSON(customerIdentification) {
+    return JSON.stringify(exports.CustomerIdentification$outboundSchema.parse(customerIdentification));
+}
+function customerIdentificationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerIdentification$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerIdentification' from JSON`);
+}
 //# sourceMappingURL=customeridentification.js.map

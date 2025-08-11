@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The position or amount of the asset
@@ -35,4 +37,6 @@ export declare namespace PositionCreate$ {
     /** @deprecated use `PositionCreate$Outbound` instead. */
     type Outbound = PositionCreate$Outbound;
 }
+export declare function positionCreateToJSON(positionCreate: PositionCreate): string;
+export declare function positionCreateFromJSON(jsonString: string): SafeParseResult<PositionCreate, SDKValidationError>;
 //# sourceMappingURL=positioncreate.d.ts.map

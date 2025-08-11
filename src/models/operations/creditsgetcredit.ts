@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreditsGetCreditRequest = {
   /**
@@ -78,6 +81,24 @@ export namespace CreditsGetCreditRequest$ {
   export type Outbound = CreditsGetCreditRequest$Outbound;
 }
 
+export function creditsGetCreditRequestToJSON(
+  creditsGetCreditRequest: CreditsGetCreditRequest,
+): string {
+  return JSON.stringify(
+    CreditsGetCreditRequest$outboundSchema.parse(creditsGetCreditRequest),
+  );
+}
+
+export function creditsGetCreditRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreditsGetCreditRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreditsGetCreditRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreditsGetCreditRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreditsGetCreditResponse$inboundSchema: z.ZodType<
   CreditsGetCreditResponse,
@@ -130,4 +151,22 @@ export namespace CreditsGetCreditResponse$ {
   export const outboundSchema = CreditsGetCreditResponse$outboundSchema;
   /** @deprecated use `CreditsGetCreditResponse$Outbound` instead. */
   export type Outbound = CreditsGetCreditResponse$Outbound;
+}
+
+export function creditsGetCreditResponseToJSON(
+  creditsGetCreditResponse: CreditsGetCreditResponse,
+): string {
+  return JSON.stringify(
+    CreditsGetCreditResponse$outboundSchema.parse(creditsGetCreditResponse),
+  );
+}
+
+export function creditsGetCreditResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreditsGetCreditResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreditsGetCreditResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreditsGetCreditResponse' from JSON`,
+  );
 }

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type InvestigationServiceListInvestigationsRequest = {
     /**
      * The maximum number of records to return. Default is 50 The maximum is 200, values exceeding this will be set to 200
@@ -16,6 +18,22 @@ export type InvestigationServiceListInvestigationsRequest = {
      *  ListInvestigationStatesResponse.investigation_states
      */
     filter?: string | undefined;
+    /**
+     * The order in which investigations are listed. Only one field and direction can be specified. Supported fields (followed by 'asc' or 'desc'; 'asc' is default if left blank):
+     *
+     * @remarks
+     *   - investigation_request_state
+     *   - correspondent_id
+     *   - scope
+     *   - identity_verification
+     *   - watchlist_screen
+     *   - person.given_name
+     *   - person.family_name
+     *   - entity.legal_name
+     *   - created_at
+     *   - updated_at
+     */
+    orderBy?: string | undefined;
 };
 export type InvestigationServiceListInvestigationsResponse = {
     httpMeta: components.HTTPMetadata;
@@ -35,6 +53,7 @@ export type InvestigationServiceListInvestigationsRequest$Outbound = {
     page_size?: number | undefined;
     page_token?: string | undefined;
     filter?: string | undefined;
+    order_by?: string | undefined;
 };
 /** @internal */
 export declare const InvestigationServiceListInvestigationsRequest$outboundSchema: z.ZodType<InvestigationServiceListInvestigationsRequest$Outbound, z.ZodTypeDef, InvestigationServiceListInvestigationsRequest>;
@@ -50,6 +69,8 @@ export declare namespace InvestigationServiceListInvestigationsRequest$ {
     /** @deprecated use `InvestigationServiceListInvestigationsRequest$Outbound` instead. */
     type Outbound = InvestigationServiceListInvestigationsRequest$Outbound;
 }
+export declare function investigationServiceListInvestigationsRequestToJSON(investigationServiceListInvestigationsRequest: InvestigationServiceListInvestigationsRequest): string;
+export declare function investigationServiceListInvestigationsRequestFromJSON(jsonString: string): SafeParseResult<InvestigationServiceListInvestigationsRequest, SDKValidationError>;
 /** @internal */
 export declare const InvestigationServiceListInvestigationsResponse$inboundSchema: z.ZodType<InvestigationServiceListInvestigationsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -72,4 +93,6 @@ export declare namespace InvestigationServiceListInvestigationsResponse$ {
     /** @deprecated use `InvestigationServiceListInvestigationsResponse$Outbound` instead. */
     type Outbound = InvestigationServiceListInvestigationsResponse$Outbound;
 }
+export declare function investigationServiceListInvestigationsResponseToJSON(investigationServiceListInvestigationsResponse: InvestigationServiceListInvestigationsResponse): string;
+export declare function investigationServiceListInvestigationsResponseFromJSON(jsonString: string): SafeParseResult<InvestigationServiceListInvestigationsResponse, SDKValidationError>;
 //# sourceMappingURL=investigationservicelistinvestigations.d.ts.map

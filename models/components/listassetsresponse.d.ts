@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Asset, Asset$Outbound } from "./asset.js";
 /**
  * ListAssetsResponse is the response message for ListAssets method.
@@ -34,4 +36,6 @@ export declare namespace ListAssetsResponse$ {
     /** @deprecated use `ListAssetsResponse$Outbound` instead. */
     type Outbound = ListAssetsResponse$Outbound;
 }
+export declare function listAssetsResponseToJSON(listAssetsResponse: ListAssetsResponse): string;
+export declare function listAssetsResponseFromJSON(jsonString: string): SafeParseResult<ListAssetsResponse, SDKValidationError>;
 //# sourceMappingURL=listassetsresponse.d.ts.map

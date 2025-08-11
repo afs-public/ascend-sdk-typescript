@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Monetary amount associated with the withholding
@@ -158,6 +161,24 @@ export namespace WithholdingAmount$ {
   export type Outbound = WithholdingAmount$Outbound;
 }
 
+export function withholdingAmountToJSON(
+  withholdingAmount: WithholdingAmount,
+): string {
+  return JSON.stringify(
+    WithholdingAmount$outboundSchema.parse(withholdingAmount),
+  );
+}
+
+export function withholdingAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<WithholdingAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WithholdingAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WithholdingAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const WithholdingRate$inboundSchema: z.ZodType<
   WithholdingRate,
@@ -192,6 +213,22 @@ export namespace WithholdingRate$ {
   export const outboundSchema = WithholdingRate$outboundSchema;
   /** @deprecated use `WithholdingRate$Outbound` instead. */
   export type Outbound = WithholdingRate$Outbound;
+}
+
+export function withholdingRateToJSON(
+  withholdingRate: WithholdingRate,
+): string {
+  return JSON.stringify(WithholdingRate$outboundSchema.parse(withholdingRate));
+}
+
+export function withholdingRateFromJSON(
+  jsonString: string,
+): SafeParseResult<WithholdingRate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WithholdingRate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WithholdingRate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -312,4 +349,18 @@ export namespace Withholding$ {
   export const outboundSchema = Withholding$outboundSchema;
   /** @deprecated use `Withholding$Outbound` instead. */
   export type Outbound = Withholding$Outbound;
+}
+
+export function withholdingToJSON(withholding: Withholding): string {
+  return JSON.stringify(Withholding$outboundSchema.parse(withholding));
+}
+
+export function withholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<Withholding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Withholding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Withholding' from JSON`,
+  );
 }

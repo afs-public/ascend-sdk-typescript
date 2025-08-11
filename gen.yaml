@@ -4,15 +4,24 @@ generation:
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: never
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
+    securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: true
+    oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 typescript:
-  version: 1.5.9
+  version: 1.6.0
   additionalDependencies:
     dependencies:
       jsonwebtoken: ^9.0.0
@@ -26,10 +35,17 @@ typescript:
     homepage: https://apexfintechsolutions.com
     license: MIT
   author: Apex Fintech Solutions
+  baseErrorName: ApexascendError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
+  defaultErrorName: SDKError
+  enableCustomCodeRegions: false
+  enableMCPServer: false
+  enableReactQuery: false
   enumFormat: enum
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  generateExamples: true
   imports:
     option: openapi
     paths:
@@ -39,6 +55,7 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
+  jsonpath: legacy
   maxMethodParams: 4
   methodArguments: require-security-and-request
   moduleFormat: commonjs

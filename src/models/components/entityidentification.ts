@@ -4,14 +4,23 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Tax id type for entities (e.g. ein, lei, etc.))
+ * The entity tax id type, one of:
+ *
+ * @remarks
+ * - `ID_ENTITY_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `EIN` - Employer Identification Number (US government issued, 9 digits, XX-XXXXXXX).
+ * - `LEI` - Legal Entity Identifier (20 digit alphanumeric).
+ * - `DUNS` - Dun and Bradstreet number.
  */
 export enum EntityIdentificationType {
   IdEntityTypeUnspecified = "ID_ENTITY_TYPE_UNSPECIFIED",
@@ -20,7 +29,13 @@ export enum EntityIdentificationType {
   Duns = "DUNS",
 }
 /**
- * Tax id type for entities (e.g. ein, lei, etc.))
+ * The entity tax id type, one of:
+ *
+ * @remarks
+ * - `ID_ENTITY_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `EIN` - Employer Identification Number (US government issued, 9 digits, XX-XXXXXXX).
+ * - `LEI` - Legal Entity Identifier (20 digit alphanumeric).
+ * - `DUNS` - Dun and Bradstreet number.
  */
 export type EntityIdentificationTypeOpen = OpenEnum<
   typeof EntityIdentificationType
@@ -43,7 +58,13 @@ export type EntityIdentification = {
    */
   regionCode?: string | undefined;
   /**
-   * Tax id type for entities (e.g. ein, lei, etc.))
+   * The entity tax id type, one of:
+   *
+   * @remarks
+   * - `ID_ENTITY_TYPE_UNSPECIFIED` - Default/Null value.
+   * - `EIN` - Employer Identification Number (US government issued, 9 digits, XX-XXXXXXX).
+   * - `LEI` - Legal Entity Identifier (20 digit alphanumeric).
+   * - `DUNS` - Dun and Bradstreet number.
    */
   type?: EntityIdentificationTypeOpen | undefined;
   /**
@@ -142,4 +163,22 @@ export namespace EntityIdentification$ {
   export const outboundSchema = EntityIdentification$outboundSchema;
   /** @deprecated use `EntityIdentification$Outbound` instead. */
   export type Outbound = EntityIdentification$Outbound;
+}
+
+export function entityIdentificationToJSON(
+  entityIdentification: EntityIdentification,
+): string {
+  return JSON.stringify(
+    EntityIdentification$outboundSchema.parse(entityIdentification),
+  );
+}
+
+export function entityIdentificationFromJSON(
+  jsonString: string,
+): SafeParseResult<EntityIdentification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntityIdentification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntityIdentification' from JSON`,
+  );
 }

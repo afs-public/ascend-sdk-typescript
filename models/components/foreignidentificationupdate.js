@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForeignIdentificationUpdate$ = exports.ForeignIdentificationUpdate$outboundSchema = exports.ForeignIdentificationUpdate$inboundSchema = exports.ForeignIdentificationUpdateType$ = exports.ForeignIdentificationUpdateType$outboundSchema = exports.ForeignIdentificationUpdateType$inboundSchema = exports.ForeignIdentificationUpdateType = void 0;
+exports.foreignIdentificationUpdateToJSON = foreignIdentificationUpdateToJSON;
+exports.foreignIdentificationUpdateFromJSON = foreignIdentificationUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const dateupdate_js_1 = require("./dateupdate.js");
 /**
@@ -116,4 +119,10 @@ var ForeignIdentificationUpdate$;
     /** @deprecated use `ForeignIdentificationUpdate$outboundSchema` instead. */
     ForeignIdentificationUpdate$.outboundSchema = exports.ForeignIdentificationUpdate$outboundSchema;
 })(ForeignIdentificationUpdate$ || (exports.ForeignIdentificationUpdate$ = ForeignIdentificationUpdate$ = {}));
+function foreignIdentificationUpdateToJSON(foreignIdentificationUpdate) {
+    return JSON.stringify(exports.ForeignIdentificationUpdate$outboundSchema.parse(foreignIdentificationUpdate));
+}
+function foreignIdentificationUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignIdentificationUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignIdentificationUpdate' from JSON`);
+}
 //# sourceMappingURL=foreignidentificationupdate.js.map

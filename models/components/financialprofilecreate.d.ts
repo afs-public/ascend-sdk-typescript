@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { OtherAccountsCreate, OtherAccountsCreate$Outbound } from "./otheraccountscreate.js";
 /**
  * Disclosure of the entity account owner's financial relationships and source of brokerage funds; facilitates the creation of the overall customer risk profile
@@ -39,4 +41,6 @@ export declare namespace FinancialProfileCreate$ {
     /** @deprecated use `FinancialProfileCreate$Outbound` instead. */
     type Outbound = FinancialProfileCreate$Outbound;
 }
+export declare function financialProfileCreateToJSON(financialProfileCreate: FinancialProfileCreate): string;
+export declare function financialProfileCreateFromJSON(jsonString: string): SafeParseResult<FinancialProfileCreate, SDKValidationError>;
 //# sourceMappingURL=financialprofilecreate.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Beneficiary, Beneficiary$Outbound } from "./beneficiary.js";
 import { ForeignBondTradingDetail, ForeignBondTradingDetail$Outbound } from "./foreignbondtradingdetail.js";
 import { RelatedPep, RelatedPep$Outbound } from "./relatedpep.js";
@@ -2031,6 +2033,8 @@ export declare namespace BeneficiaryEnrollmentMetadata$ {
     /** @deprecated use `BeneficiaryEnrollmentMetadata$Outbound` instead. */
     type Outbound = BeneficiaryEnrollmentMetadata$Outbound;
 }
+export declare function beneficiaryEnrollmentMetadataToJSON(beneficiaryEnrollmentMetadata: BeneficiaryEnrollmentMetadata): string;
+export declare function beneficiaryEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<BeneficiaryEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const ConsentMethod$inboundSchema: z.ZodType<ConsentMethodOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2079,6 +2083,8 @@ export declare namespace InitialDepositAmount$ {
     /** @deprecated use `InitialDepositAmount$Outbound` instead. */
     type Outbound = InitialDepositAmount$Outbound;
 }
+export declare function initialDepositAmountToJSON(initialDepositAmount: InitialDepositAmount): string;
+export declare function initialDepositAmountFromJSON(jsonString: string): SafeParseResult<InitialDepositAmount, SDKValidationError>;
 /** @internal */
 export declare const DepositedFunds$inboundSchema: z.ZodType<DepositedFunds, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2100,6 +2106,8 @@ export declare namespace DepositedFunds$ {
     /** @deprecated use `DepositedFunds$Outbound` instead. */
     type Outbound = DepositedFunds$Outbound;
 }
+export declare function depositedFundsToJSON(depositedFunds: DepositedFunds): string;
+export declare function depositedFundsFromJSON(jsonString: string): SafeParseResult<DepositedFunds, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentCorporationEnrollmentMetadataDeterminedAccountRiskRating$inboundSchema: z.ZodType<EnrollmentCorporationEnrollmentMetadataDeterminedAccountRiskRatingOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2136,6 +2144,8 @@ export declare namespace OtherAccounts$ {
     /** @deprecated use `OtherAccounts$Outbound` instead. */
     type Outbound = OtherAccounts$Outbound;
 }
+export declare function otherAccountsToJSON(otherAccounts: OtherAccounts): string;
+export declare function otherAccountsFromJSON(jsonString: string): SafeParseResult<OtherAccounts, SDKValidationError>;
 /** @internal */
 export declare const FinancialProfile$inboundSchema: z.ZodType<FinancialProfile, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2158,6 +2168,8 @@ export declare namespace FinancialProfile$ {
     /** @deprecated use `FinancialProfile$Outbound` instead. */
     type Outbound = FinancialProfile$Outbound;
 }
+export declare function financialProfileToJSON(financialProfile: FinancialProfile): string;
+export declare function financialProfileFromJSON(jsonString: string): SafeParseResult<FinancialProfile, SDKValidationError>;
 /** @internal */
 export declare const ForeignBondTradingDetails$inboundSchema: z.ZodType<ForeignBondTradingDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2179,6 +2191,8 @@ export declare namespace ForeignBondTradingDetails$ {
     /** @deprecated use `ForeignBondTradingDetails$Outbound` instead. */
     type Outbound = ForeignBondTradingDetails$Outbound;
 }
+export declare function foreignBondTradingDetailsToJSON(foreignBondTradingDetails: ForeignBondTradingDetails): string;
+export declare function foreignBondTradingDetailsFromJSON(jsonString: string): SafeParseResult<ForeignBondTradingDetails, SDKValidationError>;
 /** @internal */
 export declare const LowPricedSecuritiesPercentage$inboundSchema: z.ZodType<LowPricedSecuritiesPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2199,6 +2213,8 @@ export declare namespace LowPricedSecuritiesPercentage$ {
     /** @deprecated use `LowPricedSecuritiesPercentage$Outbound` instead. */
     type Outbound = LowPricedSecuritiesPercentage$Outbound;
 }
+export declare function lowPricedSecuritiesPercentageToJSON(lowPricedSecuritiesPercentage: LowPricedSecuritiesPercentage): string;
+export declare function lowPricedSecuritiesPercentageFromJSON(jsonString: string): SafeParseResult<LowPricedSecuritiesPercentage, SDKValidationError>;
 /** @internal */
 export declare const LowPricedSecurities$inboundSchema: z.ZodType<LowPricedSecurities, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2220,6 +2236,8 @@ export declare namespace LowPricedSecurities$ {
     /** @deprecated use `LowPricedSecurities$Outbound` instead. */
     type Outbound = LowPricedSecurities$Outbound;
 }
+export declare function lowPricedSecuritiesToJSON(lowPricedSecurities: LowPricedSecurities): string;
+export declare function lowPricedSecuritiesFromJSON(jsonString: string): SafeParseResult<LowPricedSecurities, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentCorporationEnrollmentMetadataPrimaryAccountActivityType$inboundSchema: z.ZodType<EnrollmentCorporationEnrollmentMetadataPrimaryAccountActivityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2271,6 +2289,8 @@ export declare namespace PlannedActivity$ {
     /** @deprecated use `PlannedActivity$Outbound` instead. */
     type Outbound = PlannedActivity$Outbound;
 }
+export declare function plannedActivityToJSON(plannedActivity: PlannedActivity): string;
+export declare function plannedActivityFromJSON(jsonString: string): SafeParseResult<PlannedActivity, SDKValidationError>;
 /** @internal */
 export declare const RelatedPepDetails$inboundSchema: z.ZodType<RelatedPepDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2292,6 +2312,8 @@ export declare namespace RelatedPepDetails$ {
     /** @deprecated use `RelatedPepDetails$Outbound` instead. */
     type Outbound = RelatedPepDetails$Outbound;
 }
+export declare function relatedPepDetailsToJSON(relatedPepDetails: RelatedPepDetails): string;
+export declare function relatedPepDetailsFromJSON(jsonString: string): SafeParseResult<RelatedPepDetails, SDKValidationError>;
 /** @internal */
 export declare const EddAccountEnrollmentMetadata$inboundSchema: z.ZodType<EddAccountEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2317,6 +2339,8 @@ export declare namespace EddAccountEnrollmentMetadata$ {
     /** @deprecated use `EddAccountEnrollmentMetadata$Outbound` instead. */
     type Outbound = EddAccountEnrollmentMetadata$Outbound;
 }
+export declare function eddAccountEnrollmentMetadataToJSON(eddAccountEnrollmentMetadata: EddAccountEnrollmentMetadata): string;
+export declare function eddAccountEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<EddAccountEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentCorporationEnrollmentMetadataFdicCashSweep$inboundSchema: z.ZodType<EnrollmentCorporationEnrollmentMetadataFdicCashSweepOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2353,6 +2377,8 @@ export declare namespace CorporationEnrollmentMetadata$ {
     /** @deprecated use `CorporationEnrollmentMetadata$Outbound` instead. */
     type Outbound = CorporationEnrollmentMetadata$Outbound;
 }
+export declare function corporationEnrollmentMetadataToJSON(corporationEnrollmentMetadata: CorporationEnrollmentMetadata): string;
+export declare function corporationEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<CorporationEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2402,6 +2428,8 @@ export declare namespace CustodialEnrollmentMetadata$ {
     /** @deprecated use `CustodialEnrollmentMetadata$Outbound` instead. */
     type Outbound = CustodialEnrollmentMetadata$Outbound;
 }
+export declare function custodialEnrollmentMetadataToJSON(custodialEnrollmentMetadata: CustodialEnrollmentMetadata): string;
+export declare function custodialEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<CustodialEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2437,6 +2465,8 @@ export declare namespace EstateEnrollmentMetadata$ {
     /** @deprecated use `EstateEnrollmentMetadata$Outbound` instead. */
     type Outbound = EstateEnrollmentMetadata$Outbound;
 }
+export declare function estateEnrollmentMetadataToJSON(estateEnrollmentMetadata: EstateEnrollmentMetadata): string;
+export declare function estateEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<EstateEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2485,6 +2515,8 @@ export declare namespace EnrollmentInitialDepositAmount$ {
     /** @deprecated use `EnrollmentInitialDepositAmount$Outbound` instead. */
     type Outbound = EnrollmentInitialDepositAmount$Outbound;
 }
+export declare function enrollmentInitialDepositAmountToJSON(enrollmentInitialDepositAmount: EnrollmentInitialDepositAmount): string;
+export declare function enrollmentInitialDepositAmountFromJSON(jsonString: string): SafeParseResult<EnrollmentInitialDepositAmount, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentDepositedFunds$inboundSchema: z.ZodType<EnrollmentDepositedFunds, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2506,6 +2538,8 @@ export declare namespace EnrollmentDepositedFunds$ {
     /** @deprecated use `EnrollmentDepositedFunds$Outbound` instead. */
     type Outbound = EnrollmentDepositedFunds$Outbound;
 }
+export declare function enrollmentDepositedFundsToJSON(enrollmentDepositedFunds: EnrollmentDepositedFunds): string;
+export declare function enrollmentDepositedFundsFromJSON(jsonString: string): SafeParseResult<EnrollmentDepositedFunds, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentOtherAccounts$inboundSchema: z.ZodType<EnrollmentOtherAccounts, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2528,6 +2562,8 @@ export declare namespace EnrollmentOtherAccounts$ {
     /** @deprecated use `EnrollmentOtherAccounts$Outbound` instead. */
     type Outbound = EnrollmentOtherAccounts$Outbound;
 }
+export declare function enrollmentOtherAccountsToJSON(enrollmentOtherAccounts: EnrollmentOtherAccounts): string;
+export declare function enrollmentOtherAccountsFromJSON(jsonString: string): SafeParseResult<EnrollmentOtherAccounts, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentFinancialProfile$inboundSchema: z.ZodType<EnrollmentFinancialProfile, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2550,6 +2586,8 @@ export declare namespace EnrollmentFinancialProfile$ {
     /** @deprecated use `EnrollmentFinancialProfile$Outbound` instead. */
     type Outbound = EnrollmentFinancialProfile$Outbound;
 }
+export declare function enrollmentFinancialProfileToJSON(enrollmentFinancialProfile: EnrollmentFinancialProfile): string;
+export declare function enrollmentFinancialProfileFromJSON(jsonString: string): SafeParseResult<EnrollmentFinancialProfile, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignBondTradingDetails$inboundSchema: z.ZodType<EnrollmentForeignBondTradingDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2571,6 +2609,8 @@ export declare namespace EnrollmentForeignBondTradingDetails$ {
     /** @deprecated use `EnrollmentForeignBondTradingDetails$Outbound` instead. */
     type Outbound = EnrollmentForeignBondTradingDetails$Outbound;
 }
+export declare function enrollmentForeignBondTradingDetailsToJSON(enrollmentForeignBondTradingDetails: EnrollmentForeignBondTradingDetails): string;
+export declare function enrollmentForeignBondTradingDetailsFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignBondTradingDetails, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLowPricedSecuritiesPercentage$inboundSchema: z.ZodType<EnrollmentLowPricedSecuritiesPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2591,6 +2631,8 @@ export declare namespace EnrollmentLowPricedSecuritiesPercentage$ {
     /** @deprecated use `EnrollmentLowPricedSecuritiesPercentage$Outbound` instead. */
     type Outbound = EnrollmentLowPricedSecuritiesPercentage$Outbound;
 }
+export declare function enrollmentLowPricedSecuritiesPercentageToJSON(enrollmentLowPricedSecuritiesPercentage: EnrollmentLowPricedSecuritiesPercentage): string;
+export declare function enrollmentLowPricedSecuritiesPercentageFromJSON(jsonString: string): SafeParseResult<EnrollmentLowPricedSecuritiesPercentage, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLowPricedSecurities$inboundSchema: z.ZodType<EnrollmentLowPricedSecurities, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2612,6 +2654,8 @@ export declare namespace EnrollmentLowPricedSecurities$ {
     /** @deprecated use `EnrollmentLowPricedSecurities$Outbound` instead. */
     type Outbound = EnrollmentLowPricedSecurities$Outbound;
 }
+export declare function enrollmentLowPricedSecuritiesToJSON(enrollmentLowPricedSecurities: EnrollmentLowPricedSecurities): string;
+export declare function enrollmentLowPricedSecuritiesFromJSON(jsonString: string): SafeParseResult<EnrollmentLowPricedSecurities, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentPrimaryAccountActivityType$inboundSchema: z.ZodType<EnrollmentPrimaryAccountActivityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2663,6 +2707,8 @@ export declare namespace EnrollmentPlannedActivity$ {
     /** @deprecated use `EnrollmentPlannedActivity$Outbound` instead. */
     type Outbound = EnrollmentPlannedActivity$Outbound;
 }
+export declare function enrollmentPlannedActivityToJSON(enrollmentPlannedActivity: EnrollmentPlannedActivity): string;
+export declare function enrollmentPlannedActivityFromJSON(jsonString: string): SafeParseResult<EnrollmentPlannedActivity, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentRelatedPepDetails$inboundSchema: z.ZodType<EnrollmentRelatedPepDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2684,6 +2730,8 @@ export declare namespace EnrollmentRelatedPepDetails$ {
     /** @deprecated use `EnrollmentRelatedPepDetails$Outbound` instead. */
     type Outbound = EnrollmentRelatedPepDetails$Outbound;
 }
+export declare function enrollmentRelatedPepDetailsToJSON(enrollmentRelatedPepDetails: EnrollmentRelatedPepDetails): string;
+export declare function enrollmentRelatedPepDetailsFromJSON(jsonString: string): SafeParseResult<EnrollmentRelatedPepDetails, SDKValidationError>;
 /** @internal */
 export declare const ForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema: z.ZodType<ForeignNaturalPersonAccountEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2707,6 +2755,8 @@ export declare namespace ForeignNaturalPersonAccountEnrollmentMetadata$ {
     /** @deprecated use `ForeignNaturalPersonAccountEnrollmentMetadata$Outbound` instead. */
     type Outbound = ForeignNaturalPersonAccountEnrollmentMetadata$Outbound;
 }
+export declare function foreignNaturalPersonAccountEnrollmentMetadataToJSON(foreignNaturalPersonAccountEnrollmentMetadata: ForeignNaturalPersonAccountEnrollmentMetadata): string;
+export declare function foreignNaturalPersonAccountEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<ForeignNaturalPersonAccountEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const ForeignIndividualAccountEnrollmentMetadata$inboundSchema: z.ZodType<ForeignIndividualAccountEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2729,6 +2779,8 @@ export declare namespace ForeignIndividualAccountEnrollmentMetadata$ {
     /** @deprecated use `ForeignIndividualAccountEnrollmentMetadata$Outbound` instead. */
     type Outbound = ForeignIndividualAccountEnrollmentMetadata$Outbound;
 }
+export declare function foreignIndividualAccountEnrollmentMetadataToJSON(foreignIndividualAccountEnrollmentMetadata: ForeignIndividualAccountEnrollmentMetadata): string;
+export declare function foreignIndividualAccountEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<ForeignIndividualAccountEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2777,6 +2829,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataInitialD
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountToJSON(enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount: EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2798,6 +2852,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataDeposite
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsToJSON(enrollmentForeignJointAccountEnrollmentMetadataDepositedFunds: EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2820,6 +2876,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataOtherAcc
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsToJSON(enrollmentForeignJointAccountEnrollmentMetadataOtherAccounts: EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2842,6 +2900,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataFinancia
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileToJSON(enrollmentForeignJointAccountEnrollmentMetadataFinancialProfile: EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2863,6 +2923,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataForeignB
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsToJSON(enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails: EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2883,6 +2945,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataLowPrice
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageToJSON(enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage: EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2904,6 +2968,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataLowPrice
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesToJSON(enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities: EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2955,6 +3021,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataPlannedA
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityToJSON(enrollmentForeignJointAccountEnrollmentMetadataPlannedActivity: EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema: z.ZodType<EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2976,6 +3044,8 @@ export declare namespace EnrollmentForeignJointAccountEnrollmentMetadataRelatedP
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound` instead. */
     type Outbound = EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound;
 }
+export declare function enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsToJSON(enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails: EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails): string;
+export declare function enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema: z.ZodType<EnrollmentForeignNaturalPersonAccountEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2999,6 +3069,8 @@ export declare namespace EnrollmentForeignNaturalPersonAccountEnrollmentMetadata
     /** @deprecated use `EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound` instead. */
     type Outbound = EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound;
 }
+export declare function enrollmentForeignNaturalPersonAccountEnrollmentMetadataToJSON(enrollmentForeignNaturalPersonAccountEnrollmentMetadata: EnrollmentForeignNaturalPersonAccountEnrollmentMetadata): string;
+export declare function enrollmentForeignNaturalPersonAccountEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<EnrollmentForeignNaturalPersonAccountEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const ForeignJointAccountEnrollmentMetadata$inboundSchema: z.ZodType<ForeignJointAccountEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3021,6 +3093,8 @@ export declare namespace ForeignJointAccountEnrollmentMetadata$ {
     /** @deprecated use `ForeignJointAccountEnrollmentMetadata$Outbound` instead. */
     type Outbound = ForeignJointAccountEnrollmentMetadata$Outbound;
 }
+export declare function foreignJointAccountEnrollmentMetadataToJSON(foreignJointAccountEnrollmentMetadata: ForeignJointAccountEnrollmentMetadata): string;
+export declare function foreignJointAccountEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<ForeignJointAccountEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const FpslEnrollmentMetadata$inboundSchema: z.ZodType<FpslEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3044,6 +3118,8 @@ export declare namespace FpslEnrollmentMetadata$ {
     /** @deprecated use `FpslEnrollmentMetadata$Outbound` instead. */
     type Outbound = FpslEnrollmentMetadata$Outbound;
 }
+export declare function fpslEnrollmentMetadataToJSON(fpslEnrollmentMetadata: FpslEnrollmentMetadata): string;
+export declare function fpslEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<FpslEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3093,6 +3169,8 @@ export declare namespace IndividualEnrollmentMetadata$ {
     /** @deprecated use `IndividualEnrollmentMetadata$Outbound` instead. */
     type Outbound = IndividualEnrollmentMetadata$Outbound;
 }
+export declare function individualEnrollmentMetadataToJSON(individualEnrollmentMetadata: IndividualEnrollmentMetadata): string;
+export declare function individualEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<IndividualEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3143,6 +3221,8 @@ export declare namespace InheritedFromOwnerBirthDate$ {
     /** @deprecated use `InheritedFromOwnerBirthDate$Outbound` instead. */
     type Outbound = InheritedFromOwnerBirthDate$Outbound;
 }
+export declare function inheritedFromOwnerBirthDateToJSON(inheritedFromOwnerBirthDate: InheritedFromOwnerBirthDate): string;
+export declare function inheritedFromOwnerBirthDateFromJSON(jsonString: string): SafeParseResult<InheritedFromOwnerBirthDate, SDKValidationError>;
 /** @internal */
 export declare const InheritedFromOwnerDeathDate$inboundSchema: z.ZodType<InheritedFromOwnerDeathDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3165,6 +3245,8 @@ export declare namespace InheritedFromOwnerDeathDate$ {
     /** @deprecated use `InheritedFromOwnerDeathDate$Outbound` instead. */
     type Outbound = InheritedFromOwnerDeathDate$Outbound;
 }
+export declare function inheritedFromOwnerDeathDateToJSON(inheritedFromOwnerDeathDate: InheritedFromOwnerDeathDate): string;
+export declare function inheritedFromOwnerDeathDateFromJSON(jsonString: string): SafeParseResult<InheritedFromOwnerDeathDate, SDKValidationError>;
 /** @internal */
 export declare const IraBeneficiaryEnrollmentMetadata$inboundSchema: z.ZodType<IraBeneficiaryEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3190,6 +3272,8 @@ export declare namespace IraBeneficiaryEnrollmentMetadata$ {
     /** @deprecated use `IraBeneficiaryEnrollmentMetadata$Outbound` instead. */
     type Outbound = IraBeneficiaryEnrollmentMetadata$Outbound;
 }
+export declare function iraBeneficiaryEnrollmentMetadataToJSON(iraBeneficiaryEnrollmentMetadata: IraBeneficiaryEnrollmentMetadata): string;
+export declare function iraBeneficiaryEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<IraBeneficiaryEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3239,6 +3323,8 @@ export declare namespace IraRolloverEnrollmentMetadata$ {
     /** @deprecated use `IraRolloverEnrollmentMetadata$Outbound` instead. */
     type Outbound = IraRolloverEnrollmentMetadata$Outbound;
 }
+export declare function iraRolloverEnrollmentMetadataToJSON(iraRolloverEnrollmentMetadata: IraRolloverEnrollmentMetadata): string;
+export declare function iraRolloverEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<IraRolloverEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3288,6 +3374,8 @@ export declare namespace IraRothEnrollmentMetadata$ {
     /** @deprecated use `IraRothEnrollmentMetadata$Outbound` instead. */
     type Outbound = IraRothEnrollmentMetadata$Outbound;
 }
+export declare function iraRothEnrollmentMetadataToJSON(iraRothEnrollmentMetadata: IraRothEnrollmentMetadata): string;
+export declare function iraRothEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<IraRothEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3337,6 +3425,8 @@ export declare namespace IraSepEnrollmentMetadata$ {
     /** @deprecated use `IraSepEnrollmentMetadata$Outbound` instead. */
     type Outbound = IraSepEnrollmentMetadata$Outbound;
 }
+export declare function iraSepEnrollmentMetadataToJSON(iraSepEnrollmentMetadata: IraSepEnrollmentMetadata): string;
+export declare function iraSepEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<IraSepEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3386,6 +3476,8 @@ export declare namespace IraSimpleEnrollmentMetadata$ {
     /** @deprecated use `IraSimpleEnrollmentMetadata$Outbound` instead. */
     type Outbound = IraSimpleEnrollmentMetadata$Outbound;
 }
+export declare function iraSimpleEnrollmentMetadataToJSON(iraSimpleEnrollmentMetadata: IraSimpleEnrollmentMetadata): string;
+export declare function iraSimpleEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<IraSimpleEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3435,6 +3527,8 @@ export declare namespace IraTraditionalEnrollmentMetadata$ {
     /** @deprecated use `IraTraditionalEnrollmentMetadata$Outbound` instead. */
     type Outbound = IraTraditionalEnrollmentMetadata$Outbound;
 }
+export declare function iraTraditionalEnrollmentMetadataToJSON(iraTraditionalEnrollmentMetadata: IraTraditionalEnrollmentMetadata): string;
+export declare function iraTraditionalEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<IraTraditionalEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3499,6 +3593,8 @@ export declare namespace JointCommunityPropertyEnrollmentMetadata$ {
     /** @deprecated use `JointCommunityPropertyEnrollmentMetadata$Outbound` instead. */
     type Outbound = JointCommunityPropertyEnrollmentMetadata$Outbound;
 }
+export declare function jointCommunityPropertyEnrollmentMetadataToJSON(jointCommunityPropertyEnrollmentMetadata: JointCommunityPropertyEnrollmentMetadata): string;
+export declare function jointCommunityPropertyEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<JointCommunityPropertyEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3563,6 +3659,8 @@ export declare namespace JointTenantsByEntiretyEnrollmentMetadata$ {
     /** @deprecated use `JointTenantsByEntiretyEnrollmentMetadata$Outbound` instead. */
     type Outbound = JointTenantsByEntiretyEnrollmentMetadata$Outbound;
 }
+export declare function jointTenantsByEntiretyEnrollmentMetadataToJSON(jointTenantsByEntiretyEnrollmentMetadata: JointTenantsByEntiretyEnrollmentMetadata): string;
+export declare function jointTenantsByEntiretyEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<JointTenantsByEntiretyEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3612,6 +3710,8 @@ export declare namespace JointTenantsInCommonEnrollmentMetadata$ {
     /** @deprecated use `JointTenantsInCommonEnrollmentMetadata$Outbound` instead. */
     type Outbound = JointTenantsInCommonEnrollmentMetadata$Outbound;
 }
+export declare function jointTenantsInCommonEnrollmentMetadataToJSON(jointTenantsInCommonEnrollmentMetadata: JointTenantsInCommonEnrollmentMetadata): string;
+export declare function jointTenantsInCommonEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<JointTenantsInCommonEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3661,6 +3761,8 @@ export declare namespace JointWithRightsOfSurvivorshipEnrollmentMetadata$ {
     /** @deprecated use `JointWithRightsOfSurvivorshipEnrollmentMetadata$Outbound` instead. */
     type Outbound = JointWithRightsOfSurvivorshipEnrollmentMetadata$Outbound;
 }
+export declare function jointWithRightsOfSurvivorshipEnrollmentMetadataToJSON(jointWithRightsOfSurvivorshipEnrollmentMetadata: JointWithRightsOfSurvivorshipEnrollmentMetadata): string;
+export declare function jointWithRightsOfSurvivorshipEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<JointWithRightsOfSurvivorshipEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlanOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3695,6 +3797,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataInitialDepositAmount$ {
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataInitialDepositAmount$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataInitialDepositAmount$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataInitialDepositAmountToJSON(enrollmentLlcEnrollmentMetadataInitialDepositAmount: EnrollmentLlcEnrollmentMetadataInitialDepositAmount): string;
+export declare function enrollmentLlcEnrollmentMetadataInitialDepositAmountFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataInitialDepositAmount, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataDepositedFunds$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataDepositedFunds, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3716,6 +3820,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataDepositedFunds$ {
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataDepositedFunds$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataDepositedFunds$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataDepositedFundsToJSON(enrollmentLlcEnrollmentMetadataDepositedFunds: EnrollmentLlcEnrollmentMetadataDepositedFunds): string;
+export declare function enrollmentLlcEnrollmentMetadataDepositedFundsFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataDepositedFunds, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentDeterminedAccountRiskRating$inboundSchema: z.ZodType<EnrollmentDeterminedAccountRiskRatingOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3752,6 +3858,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataOtherAccounts$ {
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataOtherAccounts$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataOtherAccounts$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataOtherAccountsToJSON(enrollmentLlcEnrollmentMetadataOtherAccounts: EnrollmentLlcEnrollmentMetadataOtherAccounts): string;
+export declare function enrollmentLlcEnrollmentMetadataOtherAccountsFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataOtherAccounts, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataFinancialProfile$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataFinancialProfile, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3774,6 +3882,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataFinancialProfile$ {
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataFinancialProfile$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataFinancialProfile$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataFinancialProfileToJSON(enrollmentLlcEnrollmentMetadataFinancialProfile: EnrollmentLlcEnrollmentMetadataFinancialProfile): string;
+export declare function enrollmentLlcEnrollmentMetadataFinancialProfileFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataFinancialProfile, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3795,6 +3905,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataForeignBondTradingDetail
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsToJSON(enrollmentLlcEnrollmentMetadataForeignBondTradingDetails: EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails): string;
+export declare function enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3815,6 +3927,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPerce
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageToJSON(enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage: EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage): string;
+export declare function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataLowPricedSecurities$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataLowPricedSecurities, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3836,6 +3950,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataLowPricedSecurities$ {
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataLowPricedSecurities$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataLowPricedSecurities$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesToJSON(enrollmentLlcEnrollmentMetadataLowPricedSecurities: EnrollmentLlcEnrollmentMetadataLowPricedSecurities): string;
+export declare function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataLowPricedSecurities, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataPrimaryAccountActivityType$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataPrimaryAccountActivityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3887,6 +4003,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataPlannedActivity$ {
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataPlannedActivity$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataPlannedActivity$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataPlannedActivityToJSON(enrollmentLlcEnrollmentMetadataPlannedActivity: EnrollmentLlcEnrollmentMetadataPlannedActivity): string;
+export declare function enrollmentLlcEnrollmentMetadataPlannedActivityFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataPlannedActivity, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataRelatedPepDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3908,6 +4026,8 @@ export declare namespace EnrollmentLlcEnrollmentMetadataRelatedPepDetails$ {
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataRelatedPepDetails$Outbound` instead. */
     type Outbound = EnrollmentLlcEnrollmentMetadataRelatedPepDetails$Outbound;
 }
+export declare function enrollmentLlcEnrollmentMetadataRelatedPepDetailsToJSON(enrollmentLlcEnrollmentMetadataRelatedPepDetails: EnrollmentLlcEnrollmentMetadataRelatedPepDetails): string;
+export declare function enrollmentLlcEnrollmentMetadataRelatedPepDetailsFromJSON(jsonString: string): SafeParseResult<EnrollmentLlcEnrollmentMetadataRelatedPepDetails, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentEddAccountEnrollmentMetadata$inboundSchema: z.ZodType<EnrollmentEddAccountEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3933,6 +4053,8 @@ export declare namespace EnrollmentEddAccountEnrollmentMetadata$ {
     /** @deprecated use `EnrollmentEddAccountEnrollmentMetadata$Outbound` instead. */
     type Outbound = EnrollmentEddAccountEnrollmentMetadata$Outbound;
 }
+export declare function enrollmentEddAccountEnrollmentMetadataToJSON(enrollmentEddAccountEnrollmentMetadata: EnrollmentEddAccountEnrollmentMetadata): string;
+export declare function enrollmentEddAccountEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<EnrollmentEddAccountEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentLlcEnrollmentMetadataFdicCashSweep$inboundSchema: z.ZodType<EnrollmentLlcEnrollmentMetadataFdicCashSweepOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3969,6 +4091,8 @@ export declare namespace LlcEnrollmentMetadata$ {
     /** @deprecated use `LlcEnrollmentMetadata$Outbound` instead. */
     type Outbound = LlcEnrollmentMetadata$Outbound;
 }
+export declare function llcEnrollmentMetadataToJSON(llcEnrollmentMetadata: LlcEnrollmentMetadata): string;
+export declare function llcEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<LlcEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentOperatingPurpose$inboundSchema: z.ZodType<EnrollmentOperatingPurposeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4032,6 +4156,8 @@ export declare namespace TaxWithholdingMetadata$ {
     /** @deprecated use `TaxWithholdingMetadata$Outbound` instead. */
     type Outbound = TaxWithholdingMetadata$Outbound;
 }
+export declare function taxWithholdingMetadataToJSON(taxWithholdingMetadata: TaxWithholdingMetadata): string;
+export declare function taxWithholdingMetadataFromJSON(jsonString: string): SafeParseResult<TaxWithholdingMetadata, SDKValidationError>;
 /** @internal */
 export declare const OperatingEnrollmentMetadata$inboundSchema: z.ZodType<OperatingEnrollmentMetadata, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4054,6 +4180,8 @@ export declare namespace OperatingEnrollmentMetadata$ {
     /** @deprecated use `OperatingEnrollmentMetadata$Outbound` instead. */
     type Outbound = OperatingEnrollmentMetadata$Outbound;
 }
+export declare function operatingEnrollmentMetadataToJSON(operatingEnrollmentMetadata: OperatingEnrollmentMetadata): string;
+export declare function operatingEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<OperatingEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const InvestmentVehicleExperience$inboundSchema: z.ZodType<InvestmentVehicleExperience, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4082,6 +4210,8 @@ export declare namespace InvestmentVehicleExperience$ {
     /** @deprecated use `InvestmentVehicleExperience$Outbound` instead. */
     type Outbound = InvestmentVehicleExperience$Outbound;
 }
+export declare function investmentVehicleExperienceToJSON(investmentVehicleExperience: InvestmentVehicleExperience): string;
+export declare function investmentVehicleExperienceFromJSON(jsonString: string): SafeParseResult<InvestmentVehicleExperience, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentOptionsLevel$inboundSchema: z.ZodType<EnrollmentOptionsLevelOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4118,6 +4248,8 @@ export declare namespace OrdersOptionsTradingEnrollmentMetadata$ {
     /** @deprecated use `OrdersOptionsTradingEnrollmentMetadata$Outbound` instead. */
     type Outbound = OrdersOptionsTradingEnrollmentMetadata$Outbound;
 }
+export declare function ordersOptionsTradingEnrollmentMetadataToJSON(ordersOptionsTradingEnrollmentMetadata: OrdersOptionsTradingEnrollmentMetadata): string;
+export declare function ordersOptionsTradingEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<OrdersOptionsTradingEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentState$inboundSchema: z.ZodType<EnrollmentStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4196,6 +4328,8 @@ export declare namespace TrustEnrollmentMetadata$ {
     /** @deprecated use `TrustEnrollmentMetadata$Outbound` instead. */
     type Outbound = TrustEnrollmentMetadata$Outbound;
 }
+export declare function trustEnrollmentMetadataToJSON(trustEnrollmentMetadata: TrustEnrollmentMetadata): string;
+export declare function trustEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<TrustEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const EnrollmentType1$inboundSchema: z.ZodType<EnrollmentType1Open, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4231,6 +4365,8 @@ export declare namespace VirtualAccountNumberEnrollmentMetadata$ {
     /** @deprecated use `VirtualAccountNumberEnrollmentMetadata$Outbound` instead. */
     type Outbound = VirtualAccountNumberEnrollmentMetadata$Outbound;
 }
+export declare function virtualAccountNumberEnrollmentMetadataToJSON(virtualAccountNumberEnrollmentMetadata: VirtualAccountNumberEnrollmentMetadata): string;
+export declare function virtualAccountNumberEnrollmentMetadataFromJSON(jsonString: string): SafeParseResult<VirtualAccountNumberEnrollmentMetadata, SDKValidationError>;
 /** @internal */
 export declare const Enrollment$inboundSchema: z.ZodType<Enrollment, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -4281,4 +4417,6 @@ export declare namespace Enrollment$ {
     /** @deprecated use `Enrollment$Outbound` instead. */
     type Outbound = Enrollment$Outbound;
 }
+export declare function enrollmentToJSON(enrollment: Enrollment): string;
+export declare function enrollmentFromJSON(jsonString: string): SafeParseResult<Enrollment, SDKValidationError>;
 //# sourceMappingURL=enrollment.d.ts.map

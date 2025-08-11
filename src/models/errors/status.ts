@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { ApexascendError } from "./apexascenderror.js";
 
 /**
  * The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
@@ -26,7 +27,7 @@ export type StatusData = {
 /**
  * The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
  */
-export class Status extends Error {
+export class Status extends ApexascendError {
   /**
    * The code field contains an enum value of google.rpc.Code.
    */
@@ -39,13 +40,13 @@ export class Status extends Error {
   /** The original data that was passed to this error instance. */
   data$: StatusData;
 
-  constructor(err: StatusData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: StatusData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.code != null) this.code = err.code;
     if (err.details != null) this.details = err.details;
 
@@ -59,9 +60,16 @@ export const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> = z
     code: z.number().int().optional(),
     details: z.array(components.Any$inboundSchema).optional(),
     message: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
   .transform((v) => {
-    return new Status(v);
+    return new Status(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

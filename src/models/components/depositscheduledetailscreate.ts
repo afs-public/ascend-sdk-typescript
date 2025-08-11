@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -91,4 +94,24 @@ export namespace DepositScheduleDetailsCreate$ {
   export const outboundSchema = DepositScheduleDetailsCreate$outboundSchema;
   /** @deprecated use `DepositScheduleDetailsCreate$Outbound` instead. */
   export type Outbound = DepositScheduleDetailsCreate$Outbound;
+}
+
+export function depositScheduleDetailsCreateToJSON(
+  depositScheduleDetailsCreate: DepositScheduleDetailsCreate,
+): string {
+  return JSON.stringify(
+    DepositScheduleDetailsCreate$outboundSchema.parse(
+      depositScheduleDetailsCreate,
+    ),
+  );
+}
+
+export function depositScheduleDetailsCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<DepositScheduleDetailsCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DepositScheduleDetailsCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DepositScheduleDetailsCreate' from JSON`,
+  );
 }

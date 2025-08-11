@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawalCreate$ = exports.AchWithdrawalCreate$outboundSchema = exports.AchWithdrawalCreate$inboundSchema = void 0;
+exports.achWithdrawalCreateToJSON = achWithdrawalCreateToJSON;
+exports.achWithdrawalCreateFromJSON = achWithdrawalCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const retirementdistributioncreate_js_1 = require("./retirementdistributioncreate.js");
 /** @internal */
@@ -86,4 +89,10 @@ var AchWithdrawalCreate$;
     /** @deprecated use `AchWithdrawalCreate$outboundSchema` instead. */
     AchWithdrawalCreate$.outboundSchema = exports.AchWithdrawalCreate$outboundSchema;
 })(AchWithdrawalCreate$ || (exports.AchWithdrawalCreate$ = AchWithdrawalCreate$ = {}));
+function achWithdrawalCreateToJSON(achWithdrawalCreate) {
+    return JSON.stringify(exports.AchWithdrawalCreate$outboundSchema.parse(achWithdrawalCreate));
+}
+function achWithdrawalCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalCreate' from JSON`);
+}
 //# sourceMappingURL=achwithdrawalcreate.js.map

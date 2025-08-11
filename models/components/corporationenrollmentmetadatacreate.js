@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CorporationEnrollmentMetadataCreate$ = exports.CorporationEnrollmentMetadataCreate$outboundSchema = exports.CorporationEnrollmentMetadataCreate$inboundSchema = exports.FdicCashSweep$ = exports.FdicCashSweep$outboundSchema = exports.FdicCashSweep$inboundSchema = exports.DividendReinvestmentPlan$ = exports.DividendReinvestmentPlan$outboundSchema = exports.DividendReinvestmentPlan$inboundSchema = exports.FdicCashSweep = exports.DividendReinvestmentPlan = void 0;
+exports.corporationEnrollmentMetadataCreateToJSON = corporationEnrollmentMetadataCreateToJSON;
+exports.corporationEnrollmentMetadataCreateFromJSON = corporationEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const eddaccountenrollmentmetadatacreate_js_1 = require("./eddaccountenrollmentmetadatacreate.js");
 /**
@@ -138,4 +141,10 @@ var CorporationEnrollmentMetadataCreate$;
     /** @deprecated use `CorporationEnrollmentMetadataCreate$outboundSchema` instead. */
     CorporationEnrollmentMetadataCreate$.outboundSchema = exports.CorporationEnrollmentMetadataCreate$outboundSchema;
 })(CorporationEnrollmentMetadataCreate$ || (exports.CorporationEnrollmentMetadataCreate$ = CorporationEnrollmentMetadataCreate$ = {}));
+function corporationEnrollmentMetadataCreateToJSON(corporationEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.CorporationEnrollmentMetadataCreate$outboundSchema.parse(corporationEnrollmentMetadataCreate));
+}
+function corporationEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CorporationEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CorporationEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=corporationenrollmentmetadatacreate.js.map

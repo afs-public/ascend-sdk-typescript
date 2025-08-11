@@ -6,8 +6,7 @@
 import { BasketOrderSpecialReportingInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: BasketOrderSpecialReportingInstructions =
-  BasketOrderSpecialReportingInstructions
-    .SpecialReportingInstructionsUnspecified;
+  BasketOrderSpecialReportingInstructions.Unsolicited;
 ```
 
 ## Values

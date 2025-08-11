@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Custom request - adds identity verification documentIds to investigation request
@@ -57,4 +60,22 @@ export namespace LinkDocumentsRequestCreate$ {
   export const outboundSchema = LinkDocumentsRequestCreate$outboundSchema;
   /** @deprecated use `LinkDocumentsRequestCreate$Outbound` instead. */
   export type Outbound = LinkDocumentsRequestCreate$Outbound;
+}
+
+export function linkDocumentsRequestCreateToJSON(
+  linkDocumentsRequestCreate: LinkDocumentsRequestCreate,
+): string {
+  return JSON.stringify(
+    LinkDocumentsRequestCreate$outboundSchema.parse(linkDocumentsRequestCreate),
+  );
+}
+
+export function linkDocumentsRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkDocumentsRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkDocumentsRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkDocumentsRequestCreate' from JSON`,
+  );
 }

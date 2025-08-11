@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountRequestCreate$ = exports.AccountRequestCreate$outboundSchema = exports.AccountRequestCreate$inboundSchema = exports.CatAccountHolderType$ = exports.CatAccountHolderType$outboundSchema = exports.CatAccountHolderType$inboundSchema = exports.CatAccountHolderType = void 0;
+exports.accountRequestCreateToJSON = accountRequestCreateToJSON;
+exports.accountRequestCreateFromJSON = accountRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const accounttaxprofilecreate_js_1 = require("./accounttaxprofilecreate.js");
 const identifiercreate_js_1 = require("./identifiercreate.js");
@@ -154,4 +157,10 @@ var AccountRequestCreate$;
     /** @deprecated use `AccountRequestCreate$outboundSchema` instead. */
     AccountRequestCreate$.outboundSchema = exports.AccountRequestCreate$outboundSchema;
 })(AccountRequestCreate$ || (exports.AccountRequestCreate$ = AccountRequestCreate$ = {}));
+function accountRequestCreateToJSON(accountRequestCreate) {
+    return JSON.stringify(exports.AccountRequestCreate$outboundSchema.parse(accountRequestCreate));
+}
+function accountRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountRequestCreate' from JSON`);
+}
 //# sourceMappingURL=accountrequestcreate.js.map

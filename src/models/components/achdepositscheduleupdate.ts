@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DepositScheduleDetailsUpdate,
   DepositScheduleDetailsUpdate$inboundSchema,
@@ -63,4 +66,22 @@ export namespace AchDepositScheduleUpdate$ {
   export const outboundSchema = AchDepositScheduleUpdate$outboundSchema;
   /** @deprecated use `AchDepositScheduleUpdate$Outbound` instead. */
   export type Outbound = AchDepositScheduleUpdate$Outbound;
+}
+
+export function achDepositScheduleUpdateToJSON(
+  achDepositScheduleUpdate: AchDepositScheduleUpdate,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleUpdate$outboundSchema.parse(achDepositScheduleUpdate),
+  );
+}
+
+export function achDepositScheduleUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositScheduleUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositScheduleUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositScheduleUpdate' from JSON`,
+  );
 }

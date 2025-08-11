@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The cause of the return.
@@ -164,4 +167,22 @@ export namespace NachaReturnCreate$ {
   export const outboundSchema = NachaReturnCreate$outboundSchema;
   /** @deprecated use `NachaReturnCreate$Outbound` instead. */
   export type Outbound = NachaReturnCreate$Outbound;
+}
+
+export function nachaReturnCreateToJSON(
+  nachaReturnCreate: NachaReturnCreate,
+): string {
+  return JSON.stringify(
+    NachaReturnCreate$outboundSchema.parse(nachaReturnCreate),
+  );
+}
+
+export function nachaReturnCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<NachaReturnCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NachaReturnCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NachaReturnCreate' from JSON`,
+  );
 }

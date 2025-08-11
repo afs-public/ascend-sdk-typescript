@@ -37,8 +37,27 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuyingPower$ = exports.BuyingPower$outboundSchema = exports.BuyingPower$inboundSchema = exports.SmaAmount$ = exports.SmaAmount$outboundSchema = exports.SmaAmount$inboundSchema = exports.Requirements$ = exports.Requirements$outboundSchema = exports.Requirements$inboundSchema = exports.TotalRequirementsAmount$ = exports.TotalRequirementsAmount$outboundSchema = exports.TotalRequirementsAmount$inboundSchema = exports.TotalExcessAmount$ = exports.TotalExcessAmount$outboundSchema = exports.TotalExcessAmount$inboundSchema = exports.PositionMarketValueAmount$ = exports.PositionMarketValueAmount$outboundSchema = exports.PositionMarketValueAmount$inboundSchema = exports.DayTradeBuyingPowerAmount$ = exports.DayTradeBuyingPowerAmount$outboundSchema = exports.DayTradeBuyingPowerAmount$inboundSchema = exports.BuyingPowerAmount$ = exports.BuyingPowerAmount$outboundSchema = exports.BuyingPowerAmount$inboundSchema = exports.AccountEquityAmount$ = exports.AccountEquityAmount$outboundSchema = exports.AccountEquityAmount$inboundSchema = void 0;
+exports.accountEquityAmountToJSON = accountEquityAmountToJSON;
+exports.accountEquityAmountFromJSON = accountEquityAmountFromJSON;
+exports.buyingPowerAmountToJSON = buyingPowerAmountToJSON;
+exports.buyingPowerAmountFromJSON = buyingPowerAmountFromJSON;
+exports.dayTradeBuyingPowerAmountToJSON = dayTradeBuyingPowerAmountToJSON;
+exports.dayTradeBuyingPowerAmountFromJSON = dayTradeBuyingPowerAmountFromJSON;
+exports.positionMarketValueAmountToJSON = positionMarketValueAmountToJSON;
+exports.positionMarketValueAmountFromJSON = positionMarketValueAmountFromJSON;
+exports.totalExcessAmountToJSON = totalExcessAmountToJSON;
+exports.totalExcessAmountFromJSON = totalExcessAmountFromJSON;
+exports.totalRequirementsAmountToJSON = totalRequirementsAmountToJSON;
+exports.totalRequirementsAmountFromJSON = totalRequirementsAmountFromJSON;
+exports.requirementsToJSON = requirementsToJSON;
+exports.requirementsFromJSON = requirementsFromJSON;
+exports.smaAmountToJSON = smaAmountToJSON;
+exports.smaAmountFromJSON = smaAmountFromJSON;
+exports.buyingPowerToJSON = buyingPowerToJSON;
+exports.buyingPowerFromJSON = buyingPowerFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AccountEquityAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +77,12 @@ var AccountEquityAmount$;
     /** @deprecated use `AccountEquityAmount$outboundSchema` instead. */
     AccountEquityAmount$.outboundSchema = exports.AccountEquityAmount$outboundSchema;
 })(AccountEquityAmount$ || (exports.AccountEquityAmount$ = AccountEquityAmount$ = {}));
+function accountEquityAmountToJSON(accountEquityAmount) {
+    return JSON.stringify(exports.AccountEquityAmount$outboundSchema.parse(accountEquityAmount));
+}
+function accountEquityAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountEquityAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountEquityAmount' from JSON`);
+}
 /** @internal */
 exports.BuyingPowerAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -77,6 +102,12 @@ var BuyingPowerAmount$;
     /** @deprecated use `BuyingPowerAmount$outboundSchema` instead. */
     BuyingPowerAmount$.outboundSchema = exports.BuyingPowerAmount$outboundSchema;
 })(BuyingPowerAmount$ || (exports.BuyingPowerAmount$ = BuyingPowerAmount$ = {}));
+function buyingPowerAmountToJSON(buyingPowerAmount) {
+    return JSON.stringify(exports.BuyingPowerAmount$outboundSchema.parse(buyingPowerAmount));
+}
+function buyingPowerAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BuyingPowerAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BuyingPowerAmount' from JSON`);
+}
 /** @internal */
 exports.DayTradeBuyingPowerAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -96,6 +127,12 @@ var DayTradeBuyingPowerAmount$;
     /** @deprecated use `DayTradeBuyingPowerAmount$outboundSchema` instead. */
     DayTradeBuyingPowerAmount$.outboundSchema = exports.DayTradeBuyingPowerAmount$outboundSchema;
 })(DayTradeBuyingPowerAmount$ || (exports.DayTradeBuyingPowerAmount$ = DayTradeBuyingPowerAmount$ = {}));
+function dayTradeBuyingPowerAmountToJSON(dayTradeBuyingPowerAmount) {
+    return JSON.stringify(exports.DayTradeBuyingPowerAmount$outboundSchema.parse(dayTradeBuyingPowerAmount));
+}
+function dayTradeBuyingPowerAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DayTradeBuyingPowerAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DayTradeBuyingPowerAmount' from JSON`);
+}
 /** @internal */
 exports.PositionMarketValueAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -115,6 +152,12 @@ var PositionMarketValueAmount$;
     /** @deprecated use `PositionMarketValueAmount$outboundSchema` instead. */
     PositionMarketValueAmount$.outboundSchema = exports.PositionMarketValueAmount$outboundSchema;
 })(PositionMarketValueAmount$ || (exports.PositionMarketValueAmount$ = PositionMarketValueAmount$ = {}));
+function positionMarketValueAmountToJSON(positionMarketValueAmount) {
+    return JSON.stringify(exports.PositionMarketValueAmount$outboundSchema.parse(positionMarketValueAmount));
+}
+function positionMarketValueAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PositionMarketValueAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PositionMarketValueAmount' from JSON`);
+}
 /** @internal */
 exports.TotalExcessAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -134,6 +177,12 @@ var TotalExcessAmount$;
     /** @deprecated use `TotalExcessAmount$outboundSchema` instead. */
     TotalExcessAmount$.outboundSchema = exports.TotalExcessAmount$outboundSchema;
 })(TotalExcessAmount$ || (exports.TotalExcessAmount$ = TotalExcessAmount$ = {}));
+function totalExcessAmountToJSON(totalExcessAmount) {
+    return JSON.stringify(exports.TotalExcessAmount$outboundSchema.parse(totalExcessAmount));
+}
+function totalExcessAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TotalExcessAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TotalExcessAmount' from JSON`);
+}
 /** @internal */
 exports.TotalRequirementsAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -153,6 +202,12 @@ var TotalRequirementsAmount$;
     /** @deprecated use `TotalRequirementsAmount$outboundSchema` instead. */
     TotalRequirementsAmount$.outboundSchema = exports.TotalRequirementsAmount$outboundSchema;
 })(TotalRequirementsAmount$ || (exports.TotalRequirementsAmount$ = TotalRequirementsAmount$ = {}));
+function totalRequirementsAmountToJSON(totalRequirementsAmount) {
+    return JSON.stringify(exports.TotalRequirementsAmount$outboundSchema.parse(totalRequirementsAmount));
+}
+function totalRequirementsAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TotalRequirementsAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TotalRequirementsAmount' from JSON`);
+}
 /** @internal */
 exports.Requirements$inboundSchema = z.object({
     total_excess_amount: z.nullable(z.lazy(() => exports.TotalExcessAmount$inboundSchema))
@@ -186,6 +241,12 @@ var Requirements$;
     /** @deprecated use `Requirements$outboundSchema` instead. */
     Requirements$.outboundSchema = exports.Requirements$outboundSchema;
 })(Requirements$ || (exports.Requirements$ = Requirements$ = {}));
+function requirementsToJSON(requirements) {
+    return JSON.stringify(exports.Requirements$outboundSchema.parse(requirements));
+}
+function requirementsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Requirements$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Requirements' from JSON`);
+}
 /** @internal */
 exports.SmaAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -205,6 +266,12 @@ var SmaAmount$;
     /** @deprecated use `SmaAmount$outboundSchema` instead. */
     SmaAmount$.outboundSchema = exports.SmaAmount$outboundSchema;
 })(SmaAmount$ || (exports.SmaAmount$ = SmaAmount$ = {}));
+function smaAmountToJSON(smaAmount) {
+    return JSON.stringify(exports.SmaAmount$outboundSchema.parse(smaAmount));
+}
+function smaAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SmaAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SmaAmount' from JSON`);
+}
 /** @internal */
 exports.BuyingPower$inboundSchema = z.object({
     account_equity_amount: z.nullable(z.lazy(() => exports.AccountEquityAmount$inboundSchema)).optional(),
@@ -263,4 +330,10 @@ var BuyingPower$;
     /** @deprecated use `BuyingPower$outboundSchema` instead. */
     BuyingPower$.outboundSchema = exports.BuyingPower$outboundSchema;
 })(BuyingPower$ || (exports.BuyingPower$ = BuyingPower$ = {}));
+function buyingPowerToJSON(buyingPower) {
+    return JSON.stringify(exports.BuyingPower$outboundSchema.parse(buyingPower));
+}
+function buyingPowerFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BuyingPower$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BuyingPower' from JSON`);
+}
 //# sourceMappingURL=buyingpower.js.map

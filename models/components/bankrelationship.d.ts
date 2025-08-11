@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The bank account type.
  */
@@ -164,6 +166,8 @@ export declare namespace BankAccount$ {
     /** @deprecated use `BankAccount$Outbound` instead. */
     type Outbound = BankAccount$Outbound;
 }
+export declare function bankAccountToJSON(bankAccount: BankAccount): string;
+export declare function bankAccountFromJSON(jsonString: string): SafeParseResult<BankAccount, SDKValidationError>;
 /** @internal */
 export declare const BankRelationshipStateState$inboundSchema: z.ZodType<BankRelationshipStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -203,6 +207,8 @@ export declare namespace BankRelationshipState$ {
     /** @deprecated use `BankRelationshipState$Outbound` instead. */
     type Outbound = BankRelationshipState$Outbound;
 }
+export declare function bankRelationshipStateToJSON(bankRelationshipState: BankRelationshipState): string;
+export declare function bankRelationshipStateFromJSON(jsonString: string): SafeParseResult<BankRelationshipState, SDKValidationError>;
 /** @internal */
 export declare const BankRelationshipVerificationMethod$inboundSchema: z.ZodType<BankRelationshipVerificationMethodOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -243,4 +249,6 @@ export declare namespace BankRelationship$ {
     /** @deprecated use `BankRelationship$Outbound` instead. */
     type Outbound = BankRelationship$Outbound;
 }
+export declare function bankRelationshipToJSON(bankRelationship: BankRelationship): string;
+export declare function bankRelationshipFromJSON(jsonString: string): SafeParseResult<BankRelationship, SDKValidationError>;
 //# sourceMappingURL=bankrelationship.d.ts.map

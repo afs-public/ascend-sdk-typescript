@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositScheduleCreate$ = exports.AchDepositScheduleCreate$outboundSchema = exports.AchDepositScheduleCreate$inboundSchema = exports.IraContribution$ = exports.IraContribution$outboundSchema = exports.IraContribution$inboundSchema = exports.AchDepositScheduleCreateType$ = exports.AchDepositScheduleCreateType$outboundSchema = exports.AchDepositScheduleCreateType$inboundSchema = exports.AchDepositScheduleCreateType = void 0;
+exports.iraContributionToJSON = iraContributionToJSON;
+exports.iraContributionFromJSON = iraContributionFromJSON;
+exports.achDepositScheduleCreateToJSON = achDepositScheduleCreateToJSON;
+exports.achDepositScheduleCreateFromJSON = achDepositScheduleCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const depositscheduledetailscreate_js_1 = require("./depositscheduledetailscreate.js");
 const scheduledretirementcontributioncreate_js_1 = require("./scheduledretirementcontributioncreate.js");
@@ -111,6 +116,12 @@ var IraContribution$;
     /** @deprecated use `IraContribution$outboundSchema` instead. */
     IraContribution$.outboundSchema = exports.IraContribution$outboundSchema;
 })(IraContribution$ || (exports.IraContribution$ = IraContribution$ = {}));
+function iraContributionToJSON(iraContribution) {
+    return JSON.stringify(exports.IraContribution$outboundSchema.parse(iraContribution));
+}
+function iraContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraContribution' from JSON`);
+}
 /** @internal */
 exports.AchDepositScheduleCreate$inboundSchema = z.object({
     bank_relationship: z.string(),
@@ -152,4 +163,10 @@ var AchDepositScheduleCreate$;
     /** @deprecated use `AchDepositScheduleCreate$outboundSchema` instead. */
     AchDepositScheduleCreate$.outboundSchema = exports.AchDepositScheduleCreate$outboundSchema;
 })(AchDepositScheduleCreate$ || (exports.AchDepositScheduleCreate$ = AchDepositScheduleCreate$ = {}));
+function achDepositScheduleCreateToJSON(achDepositScheduleCreate) {
+    return JSON.stringify(exports.AchDepositScheduleCreate$outboundSchema.parse(achDepositScheduleCreate));
+}
+function achDepositScheduleCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositScheduleCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleCreate' from JSON`);
+}
 //# sourceMappingURL=achdepositschedulecreate.js.map

@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Commission$ = exports.Commission$outboundSchema = exports.Commission$inboundSchema = exports.CommissionAmount1$ = exports.CommissionAmount1$outboundSchema = exports.CommissionAmount1$inboundSchema = void 0;
+exports.commissionAmount1ToJSON = commissionAmount1ToJSON;
+exports.commissionAmount1FromJSON = commissionAmount1FromJSON;
+exports.commissionToJSON = commissionToJSON;
+exports.commissionFromJSON = commissionFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CommissionAmount1$inboundSchema = z.object({
     value: z.string().optional(),
@@ -57,6 +62,12 @@ var CommissionAmount1$;
     /** @deprecated use `CommissionAmount1$outboundSchema` instead. */
     CommissionAmount1$.outboundSchema = exports.CommissionAmount1$outboundSchema;
 })(CommissionAmount1$ || (exports.CommissionAmount1$ = CommissionAmount1$ = {}));
+function commissionAmount1ToJSON(commissionAmount1) {
+    return JSON.stringify(exports.CommissionAmount1$outboundSchema.parse(commissionAmount1));
+}
+function commissionAmount1FromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CommissionAmount1$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CommissionAmount1' from JSON`);
+}
 /** @internal */
 exports.Commission$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.CommissionAmount1$inboundSchema)).optional(),
@@ -76,4 +87,10 @@ var Commission$;
     /** @deprecated use `Commission$outboundSchema` instead. */
     Commission$.outboundSchema = exports.Commission$outboundSchema;
 })(Commission$ || (exports.Commission$ = Commission$ = {}));
+function commissionToJSON(commission) {
+    return JSON.stringify(exports.Commission$outboundSchema.parse(commission));
+}
+function commissionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Commission$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Commission' from JSON`);
+}
 //# sourceMappingURL=commission.js.map

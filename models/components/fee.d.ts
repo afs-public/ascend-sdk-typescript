@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Monetary amount associated with the fee
  */
@@ -82,6 +84,8 @@ export declare namespace FeeAmount$ {
     /** @deprecated use `FeeAmount$Outbound` instead. */
     type Outbound = FeeAmount$Outbound;
 }
+export declare function feeAmountToJSON(feeAmount: FeeAmount): string;
+export declare function feeAmountFromJSON(jsonString: string): SafeParseResult<FeeAmount, SDKValidationError>;
 /** @internal */
 export declare const FeeType$inboundSchema: z.ZodType<FeeTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -117,4 +121,6 @@ export declare namespace Fee$ {
     /** @deprecated use `Fee$Outbound` instead. */
     type Outbound = Fee$Outbound;
 }
+export declare function feeToJSON(fee: Fee): string;
+export declare function feeFromJSON(jsonString: string): SafeParseResult<Fee, SDKValidationError>;
 //# sourceMappingURL=fee.d.ts.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BookingCancelExecutionRequest = {
   /**
@@ -99,6 +102,26 @@ export namespace BookingCancelExecutionRequest$ {
   export type Outbound = BookingCancelExecutionRequest$Outbound;
 }
 
+export function bookingCancelExecutionRequestToJSON(
+  bookingCancelExecutionRequest: BookingCancelExecutionRequest,
+): string {
+  return JSON.stringify(
+    BookingCancelExecutionRequest$outboundSchema.parse(
+      bookingCancelExecutionRequest,
+    ),
+  );
+}
+
+export function bookingCancelExecutionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCancelExecutionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCancelExecutionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCancelExecutionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingCancelExecutionResponse$inboundSchema: z.ZodType<
   BookingCancelExecutionResponse,
@@ -155,4 +178,24 @@ export namespace BookingCancelExecutionResponse$ {
   export const outboundSchema = BookingCancelExecutionResponse$outboundSchema;
   /** @deprecated use `BookingCancelExecutionResponse$Outbound` instead. */
   export type Outbound = BookingCancelExecutionResponse$Outbound;
+}
+
+export function bookingCancelExecutionResponseToJSON(
+  bookingCancelExecutionResponse: BookingCancelExecutionResponse,
+): string {
+  return JSON.stringify(
+    BookingCancelExecutionResponse$outboundSchema.parse(
+      bookingCancelExecutionResponse,
+    ),
+  );
+}
+
+export function bookingCancelExecutionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingCancelExecutionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingCancelExecutionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingCancelExecutionResponse' from JSON`,
+  );
 }

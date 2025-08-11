@@ -12,14 +12,7 @@ let value: BookingCreateTradeRequest = {
     accountId: "02HASWB2DTMRT3DAM45P56J2T2",
     brokerCapacity: TradeCreateBrokerCapacity.Agency,
     clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
-    executions: [
-      {
-        executionTime: new Date("2024-07-17T12:00:00Z"),
-        externalId: "0H06HAP3A3Y",
-        price: {},
-        quantity: {},
-      },
-    ],
+    executions: [],
     identifier: "AAPL",
     identifierType: TradeCreateIdentifierType.Symbol,
     routeType: RouteType.Mngd,

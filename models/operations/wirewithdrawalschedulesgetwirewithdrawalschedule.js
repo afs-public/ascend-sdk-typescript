@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$ = exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$outboundSchema = exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$inboundSchema = exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$ = exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$outboundSchema = exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$inboundSchema = void 0;
+exports.wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestToJSON = wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestToJSON;
+exports.wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestFromJSON = wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestFromJSON;
+exports.wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseToJSON = wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseToJSON;
+exports.wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseFromJSON = wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$inboundSchema = z.object({
@@ -71,6 +76,14 @@ var WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$;
     /** @deprecated use `WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$outboundSchema` instead. */
     WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$.outboundSchema = exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$outboundSchema;
 })(WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$ || (exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$ = WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$ = {}));
+function wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestToJSON(wireWithdrawalSchedulesGetWireWithdrawalScheduleRequest) {
+    return JSON.stringify(exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$outboundSchema
+        .parse(wireWithdrawalSchedulesGetWireWithdrawalScheduleRequest));
+}
+function wireWithdrawalSchedulesGetWireWithdrawalScheduleRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalSchedulesGetWireWithdrawalScheduleRequest' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +121,12 @@ var WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$;
     /** @deprecated use `WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$outboundSchema` instead. */
     WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$.outboundSchema = exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$outboundSchema;
 })(WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$ || (exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$ = WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$ = {}));
+function wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseToJSON(wireWithdrawalSchedulesGetWireWithdrawalScheduleResponse) {
+    return JSON.stringify(exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$outboundSchema
+        .parse(wireWithdrawalSchedulesGetWireWithdrawalScheduleResponse));
+}
+function wireWithdrawalSchedulesGetWireWithdrawalScheduleResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalSchedulesGetWireWithdrawalScheduleResponse' from JSON`);
+}
 //# sourceMappingURL=wirewithdrawalschedulesgetwirewithdrawalschedule.js.map

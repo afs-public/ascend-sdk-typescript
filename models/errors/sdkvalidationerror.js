@@ -40,6 +40,20 @@ exports.SDKValidationError = void 0;
 exports.formatZodError = formatZodError;
 const z = __importStar(require("zod"));
 class SDKValidationError extends Error {
+    // Allows for backwards compatibility for `instanceof` checks of `ResponseValidationError`
+    static [Symbol.hasInstance](instance) {
+        if (!(instance instanceof Error))
+            return false;
+        if (!("rawValue" in instance))
+            return false;
+        if (!("rawMessage" in instance))
+            return false;
+        if (!("pretty" in instance))
+            return false;
+        if (typeof instance.pretty !== "function")
+            return false;
+        return true;
+    }
     constructor(message, cause, rawValue) {
         super(`${message}: ${cause}`);
         this.name = "SDKValidationError";

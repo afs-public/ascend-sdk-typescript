@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LedgerGetActivityResponse$ = exports.LedgerGetActivityResponse$outboundSchema = exports.LedgerGetActivityResponse$inboundSchema = exports.LedgerGetActivityRequest$ = exports.LedgerGetActivityRequest$outboundSchema = exports.LedgerGetActivityRequest$inboundSchema = void 0;
+exports.ledgerGetActivityRequestToJSON = ledgerGetActivityRequestToJSON;
+exports.ledgerGetActivityRequestFromJSON = ledgerGetActivityRequestFromJSON;
+exports.ledgerGetActivityResponseToJSON = ledgerGetActivityResponseToJSON;
+exports.ledgerGetActivityResponseFromJSON = ledgerGetActivityResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.LedgerGetActivityRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var LedgerGetActivityRequest$;
     /** @deprecated use `LedgerGetActivityRequest$outboundSchema` instead. */
     LedgerGetActivityRequest$.outboundSchema = exports.LedgerGetActivityRequest$outboundSchema;
 })(LedgerGetActivityRequest$ || (exports.LedgerGetActivityRequest$ = LedgerGetActivityRequest$ = {}));
+function ledgerGetActivityRequestToJSON(ledgerGetActivityRequest) {
+    return JSON.stringify(exports.LedgerGetActivityRequest$outboundSchema.parse(ledgerGetActivityRequest));
+}
+function ledgerGetActivityRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LedgerGetActivityRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LedgerGetActivityRequest' from JSON`);
+}
 /** @internal */
 exports.LedgerGetActivityResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var LedgerGetActivityResponse$;
     /** @deprecated use `LedgerGetActivityResponse$outboundSchema` instead. */
     LedgerGetActivityResponse$.outboundSchema = exports.LedgerGetActivityResponse$outboundSchema;
 })(LedgerGetActivityResponse$ || (exports.LedgerGetActivityResponse$ = LedgerGetActivityResponse$ = {}));
+function ledgerGetActivityResponseToJSON(ledgerGetActivityResponse) {
+    return JSON.stringify(exports.LedgerGetActivityResponse$outboundSchema.parse(ledgerGetActivityResponse));
+}
+function ledgerGetActivityResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LedgerGetActivityResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LedgerGetActivityResponse' from JSON`);
+}
 //# sourceMappingURL=ledgergetactivity.js.map

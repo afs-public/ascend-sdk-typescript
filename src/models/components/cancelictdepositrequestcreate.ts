@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing ICT deposit
@@ -55,4 +58,24 @@ export namespace CancelIctDepositRequestCreate$ {
   export const outboundSchema = CancelIctDepositRequestCreate$outboundSchema;
   /** @deprecated use `CancelIctDepositRequestCreate$Outbound` instead. */
   export type Outbound = CancelIctDepositRequestCreate$Outbound;
+}
+
+export function cancelIctDepositRequestCreateToJSON(
+  cancelIctDepositRequestCreate: CancelIctDepositRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelIctDepositRequestCreate$outboundSchema.parse(
+      cancelIctDepositRequestCreate,
+    ),
+  );
+}
+
+export function cancelIctDepositRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelIctDepositRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelIctDepositRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelIctDepositRequestCreate' from JSON`,
+  );
 }

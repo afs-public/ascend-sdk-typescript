@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsAffirmAgreementsRequest = {
   /**
@@ -78,6 +81,26 @@ export namespace AccountsAffirmAgreementsRequest$ {
   export type Outbound = AccountsAffirmAgreementsRequest$Outbound;
 }
 
+export function accountsAffirmAgreementsRequestToJSON(
+  accountsAffirmAgreementsRequest: AccountsAffirmAgreementsRequest,
+): string {
+  return JSON.stringify(
+    AccountsAffirmAgreementsRequest$outboundSchema.parse(
+      accountsAffirmAgreementsRequest,
+    ),
+  );
+}
+
+export function accountsAffirmAgreementsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsAffirmAgreementsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsAffirmAgreementsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsAffirmAgreementsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsAffirmAgreementsResponse$inboundSchema: z.ZodType<
   AccountsAffirmAgreementsResponse,
@@ -134,4 +157,24 @@ export namespace AccountsAffirmAgreementsResponse$ {
   export const outboundSchema = AccountsAffirmAgreementsResponse$outboundSchema;
   /** @deprecated use `AccountsAffirmAgreementsResponse$Outbound` instead. */
   export type Outbound = AccountsAffirmAgreementsResponse$Outbound;
+}
+
+export function accountsAffirmAgreementsResponseToJSON(
+  accountsAffirmAgreementsResponse: AccountsAffirmAgreementsResponse,
+): string {
+  return JSON.stringify(
+    AccountsAffirmAgreementsResponse$outboundSchema.parse(
+      accountsAffirmAgreementsResponse,
+    ),
+  );
+}
+
+export function accountsAffirmAgreementsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsAffirmAgreementsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsAffirmAgreementsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsAffirmAgreementsResponse' from JSON`,
+  );
 }

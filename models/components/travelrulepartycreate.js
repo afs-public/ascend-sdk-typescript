@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TravelRulePartyCreate$ = exports.TravelRulePartyCreate$outboundSchema = exports.TravelRulePartyCreate$inboundSchema = void 0;
+exports.travelRulePartyCreateToJSON = travelRulePartyCreateToJSON;
+exports.travelRulePartyCreateFromJSON = travelRulePartyCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const postaladdresscreate_js_1 = require("./postaladdresscreate.js");
 /** @internal */
 exports.TravelRulePartyCreate$inboundSchema = z.object({
@@ -73,4 +76,10 @@ var TravelRulePartyCreate$;
     /** @deprecated use `TravelRulePartyCreate$outboundSchema` instead. */
     TravelRulePartyCreate$.outboundSchema = exports.TravelRulePartyCreate$outboundSchema;
 })(TravelRulePartyCreate$ || (exports.TravelRulePartyCreate$ = TravelRulePartyCreate$ = {}));
+function travelRulePartyCreateToJSON(travelRulePartyCreate) {
+    return JSON.stringify(exports.TravelRulePartyCreate$outboundSchema.parse(travelRulePartyCreate));
+}
+function travelRulePartyCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TravelRulePartyCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TravelRulePartyCreate' from JSON`);
+}
 //# sourceMappingURL=travelrulepartycreate.js.map

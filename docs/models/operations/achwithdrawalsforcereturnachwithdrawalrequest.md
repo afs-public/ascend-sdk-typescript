@@ -11,7 +11,7 @@ let value: AchWithdrawalsForceReturnAchWithdrawalRequest = {
   achWithdrawalId: "20230620500726",
   forceReturnAchWithdrawalRequestCreate: {
     nachaReturn: {
-      code: NachaReturnCreateCode.R37,
+      code: NachaReturnCreateCode.R69,
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   },

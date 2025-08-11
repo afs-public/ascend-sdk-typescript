@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RecipientBankBankIdCreate$ = exports.RecipientBankBankIdCreate$outboundSchema = exports.RecipientBankBankIdCreate$inboundSchema = exports.RecipientBankBankIdCreateType$ = exports.RecipientBankBankIdCreateType$outboundSchema = exports.RecipientBankBankIdCreateType$inboundSchema = exports.RecipientBankBankIdCreateType = void 0;
+exports.recipientBankBankIdCreateToJSON = recipientBankBankIdCreateToJSON;
+exports.recipientBankBankIdCreateFromJSON = recipientBankBankIdCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of bank identifier specified
@@ -91,4 +94,10 @@ var RecipientBankBankIdCreate$;
     /** @deprecated use `RecipientBankBankIdCreate$outboundSchema` instead. */
     RecipientBankBankIdCreate$.outboundSchema = exports.RecipientBankBankIdCreate$outboundSchema;
 })(RecipientBankBankIdCreate$ || (exports.RecipientBankBankIdCreate$ = RecipientBankBankIdCreate$ = {}));
+function recipientBankBankIdCreateToJSON(recipientBankBankIdCreate) {
+    return JSON.stringify(exports.RecipientBankBankIdCreate$outboundSchema.parse(recipientBankBankIdCreate));
+}
+function recipientBankBankIdCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RecipientBankBankIdCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RecipientBankBankIdCreate' from JSON`);
+}
 //# sourceMappingURL=recipientbankbankidcreate.js.map

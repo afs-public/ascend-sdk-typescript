@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Available Restriction on an Account.
@@ -73,4 +76,22 @@ export namespace AvailableRestriction$ {
   export const outboundSchema = AvailableRestriction$outboundSchema;
   /** @deprecated use `AvailableRestriction$Outbound` instead. */
   export type Outbound = AvailableRestriction$Outbound;
+}
+
+export function availableRestrictionToJSON(
+  availableRestriction: AvailableRestriction,
+): string {
+  return JSON.stringify(
+    AvailableRestriction$outboundSchema.parse(availableRestriction),
+  );
+}
+
+export function availableRestrictionFromJSON(
+  jsonString: string,
+): SafeParseResult<AvailableRestriction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AvailableRestriction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AvailableRestriction' from JSON`,
+  );
 }

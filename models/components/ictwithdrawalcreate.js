@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IctWithdrawalCreate$ = exports.IctWithdrawalCreate$outboundSchema = exports.IctWithdrawalCreate$inboundSchema = exports.IctWithdrawalCreateProgram$ = exports.IctWithdrawalCreateProgram$outboundSchema = exports.IctWithdrawalCreateProgram$inboundSchema = exports.IctWithdrawalCreateProgram = void 0;
+exports.ictWithdrawalCreateToJSON = ictWithdrawalCreateToJSON;
+exports.ictWithdrawalCreateFromJSON = ictWithdrawalCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const ictwithdrawaltravelrulecreate_js_1 = require("./ictwithdrawaltravelrulecreate.js");
@@ -122,4 +125,10 @@ var IctWithdrawalCreate$;
     /** @deprecated use `IctWithdrawalCreate$outboundSchema` instead. */
     IctWithdrawalCreate$.outboundSchema = exports.IctWithdrawalCreate$outboundSchema;
 })(IctWithdrawalCreate$ || (exports.IctWithdrawalCreate$ = IctWithdrawalCreate$ = {}));
+function ictWithdrawalCreateToJSON(ictWithdrawalCreate) {
+    return JSON.stringify(exports.IctWithdrawalCreate$outboundSchema.parse(ictWithdrawalCreate));
+}
+function ictWithdrawalCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalCreate' from JSON`);
+}
 //# sourceMappingURL=ictwithdrawalcreate.js.map

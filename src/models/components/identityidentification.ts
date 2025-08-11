@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * **Field Dependencies:**
@@ -174,4 +177,22 @@ export namespace IdentityIdentification$ {
   export const outboundSchema = IdentityIdentification$outboundSchema;
   /** @deprecated use `IdentityIdentification$Outbound` instead. */
   export type Outbound = IdentityIdentification$Outbound;
+}
+
+export function identityIdentificationToJSON(
+  identityIdentification: IdentityIdentification,
+): string {
+  return JSON.stringify(
+    IdentityIdentification$outboundSchema.parse(identityIdentification),
+  );
+}
+
+export function identityIdentificationFromJSON(
+  jsonString: string,
+): SafeParseResult<IdentityIdentification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IdentityIdentification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IdentityIdentification' from JSON`,
+  );
 }

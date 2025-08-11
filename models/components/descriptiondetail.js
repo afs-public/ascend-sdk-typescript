@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DescriptionDetail$ = exports.DescriptionDetail$outboundSchema = exports.DescriptionDetail$inboundSchema = void 0;
+exports.descriptionDetailToJSON = descriptionDetailToJSON;
+exports.descriptionDetailFromJSON = descriptionDetailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.DescriptionDetail$inboundSchema = z.object({
     description_one: z.string().optional(),
@@ -74,4 +77,10 @@ var DescriptionDetail$;
     /** @deprecated use `DescriptionDetail$outboundSchema` instead. */
     DescriptionDetail$.outboundSchema = exports.DescriptionDetail$outboundSchema;
 })(DescriptionDetail$ || (exports.DescriptionDetail$ = DescriptionDetail$ = {}));
+function descriptionDetailToJSON(descriptionDetail) {
+    return JSON.stringify(exports.DescriptionDetail$outboundSchema.parse(descriptionDetail));
+}
+function descriptionDetailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DescriptionDetail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DescriptionDetail' from JSON`);
+}
 //# sourceMappingURL=descriptiondetail.js.map

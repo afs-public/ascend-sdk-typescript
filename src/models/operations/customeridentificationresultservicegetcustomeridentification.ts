@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Optional. The view to return. Defaults to BASIC.
@@ -136,6 +139,33 @@ export namespace CustomerIdentificationResultServiceGetCustomerIdentificationReq
     CustomerIdentificationResultServiceGetCustomerIdentificationRequest$Outbound;
 }
 
+export function customerIdentificationResultServiceGetCustomerIdentificationRequestToJSON(
+  customerIdentificationResultServiceGetCustomerIdentificationRequest:
+    CustomerIdentificationResultServiceGetCustomerIdentificationRequest,
+): string {
+  return JSON.stringify(
+    CustomerIdentificationResultServiceGetCustomerIdentificationRequest$outboundSchema
+      .parse(
+        customerIdentificationResultServiceGetCustomerIdentificationRequest,
+      ),
+  );
+}
+
+export function customerIdentificationResultServiceGetCustomerIdentificationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CustomerIdentificationResultServiceGetCustomerIdentificationRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CustomerIdentificationResultServiceGetCustomerIdentificationRequest$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CustomerIdentificationResultServiceGetCustomerIdentificationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema:
   z.ZodType<
@@ -198,4 +228,31 @@ export namespace CustomerIdentificationResultServiceGetCustomerIdentificationRes
   /** @deprecated use `CustomerIdentificationResultServiceGetCustomerIdentificationResponse$Outbound` instead. */
   export type Outbound =
     CustomerIdentificationResultServiceGetCustomerIdentificationResponse$Outbound;
+}
+
+export function customerIdentificationResultServiceGetCustomerIdentificationResponseToJSON(
+  customerIdentificationResultServiceGetCustomerIdentificationResponse:
+    CustomerIdentificationResultServiceGetCustomerIdentificationResponse,
+): string {
+  return JSON.stringify(
+    CustomerIdentificationResultServiceGetCustomerIdentificationResponse$outboundSchema
+      .parse(
+        customerIdentificationResultServiceGetCustomerIdentificationResponse,
+      ),
+  );
+}
+
+export function customerIdentificationResultServiceGetCustomerIdentificationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CustomerIdentificationResultServiceGetCustomerIdentificationResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CustomerIdentificationResultServiceGetCustomerIdentificationResponse' from JSON`,
+  );
 }

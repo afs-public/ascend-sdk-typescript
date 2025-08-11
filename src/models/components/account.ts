@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Agreement,
   Agreement$inboundSchema,
@@ -969,6 +972,20 @@ export namespace AccountGoals$ {
   export type Outbound = AccountGoals$Outbound;
 }
 
+export function accountGoalsToJSON(accountGoals: AccountGoals): string {
+  return JSON.stringify(AccountGoals$outboundSchema.parse(accountGoals));
+}
+
+export function accountGoalsFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountGoals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountGoals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountGoals' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountAnnualIncomeRangeUsd$inboundSchema: z.ZodType<
   AccountAnnualIncomeRangeUsdOpen,
@@ -1164,6 +1181,22 @@ export namespace CustomerProfile$ {
   export type Outbound = CustomerProfile$Outbound;
 }
 
+export function customerProfileToJSON(
+  customerProfile: CustomerProfile,
+): string {
+  return JSON.stringify(CustomerProfile$outboundSchema.parse(customerProfile));
+}
+
+export function customerProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerProfile' from JSON`,
+  );
+}
+
 /** @internal */
 export const InvestmentProfile$inboundSchema: z.ZodType<
   InvestmentProfile,
@@ -1220,6 +1253,24 @@ export namespace InvestmentProfile$ {
   export const outboundSchema = InvestmentProfile$outboundSchema;
   /** @deprecated use `InvestmentProfile$Outbound` instead. */
   export type Outbound = InvestmentProfile$Outbound;
+}
+
+export function investmentProfileToJSON(
+  investmentProfile: InvestmentProfile,
+): string {
+  return JSON.stringify(
+    InvestmentProfile$outboundSchema.parse(investmentProfile),
+  );
+}
+
+export function investmentProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestmentProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestmentProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestmentProfile' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1434,6 +1485,24 @@ export namespace AccountTaxProfile$ {
   export type Outbound = AccountTaxProfile$Outbound;
 }
 
+export function accountTaxProfileToJSON(
+  accountTaxProfile: AccountTaxProfile,
+): string {
+  return JSON.stringify(
+    AccountTaxProfile$outboundSchema.parse(accountTaxProfile),
+  );
+}
+
+export function accountTaxProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountTaxProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountTaxProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountTaxProfile' from JSON`,
+  );
+}
+
 /** @internal */
 export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
   z.object({
@@ -1628,4 +1697,18 @@ export namespace Account$ {
   export const outboundSchema = Account$outboundSchema;
   /** @deprecated use `Account$Outbound` instead. */
   export type Outbound = Account$Outbound;
+}
+
+export function accountToJSON(account: Account): string {
+  return JSON.stringify(Account$outboundSchema.parse(account));
+}
+
+export function accountFromJSON(
+  jsonString: string,
+): SafeParseResult<Account, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Account$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Account' from JSON`,
+  );
 }

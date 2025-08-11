@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ExecutionCreate,
   ExecutionCreate$inboundSchema,
@@ -61,4 +64,24 @@ export namespace RebookExecutionRequestCreate$ {
   export const outboundSchema = RebookExecutionRequestCreate$outboundSchema;
   /** @deprecated use `RebookExecutionRequestCreate$Outbound` instead. */
   export type Outbound = RebookExecutionRequestCreate$Outbound;
+}
+
+export function rebookExecutionRequestCreateToJSON(
+  rebookExecutionRequestCreate: RebookExecutionRequestCreate,
+): string {
+  return JSON.stringify(
+    RebookExecutionRequestCreate$outboundSchema.parse(
+      rebookExecutionRequestCreate,
+    ),
+  );
+}
+
+export function rebookExecutionRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookExecutionRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookExecutionRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookExecutionRequestCreate' from JSON`,
+  );
 }

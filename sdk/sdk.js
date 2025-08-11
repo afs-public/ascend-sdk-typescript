@@ -36,120 +36,91 @@ const tradebooking_js_1 = require("./tradebooking.js");
 const wires_js_1 = require("./wires.js");
 class Apexascend extends sdks_js_1.ClientSDK {
     get authentication() {
-        var _a;
-        return ((_a = this._authentication) !== null && _a !== void 0 ? _a : (this._authentication = new authentication_js_1.Authentication(this._options)));
+        return (this._authentication ?? (this._authentication = new authentication_js_1.Authentication(this._options)));
     }
     get reader() {
-        var _a;
-        return ((_a = this._reader) !== null && _a !== void 0 ? _a : (this._reader = new reader_js_1.Reader(this._options)));
+        return (this._reader ?? (this._reader = new reader_js_1.Reader(this._options)));
     }
     get subscriber() {
-        var _a;
-        return ((_a = this._subscriber) !== null && _a !== void 0 ? _a : (this._subscriber = new subscriber_js_1.Subscriber(this._options)));
+        return (this._subscriber ?? (this._subscriber = new subscriber_js_1.Subscriber(this._options)));
     }
     get personManagement() {
-        var _a;
-        return ((_a = this._personManagement) !== null && _a !== void 0 ? _a : (this._personManagement = new personmanagement_js_1.PersonManagement(this._options)));
+        return (this._personManagement ?? (this._personManagement = new personmanagement_js_1.PersonManagement(this._options)));
     }
     get accountCreation() {
-        var _a;
-        return ((_a = this._accountCreation) !== null && _a !== void 0 ? _a : (this._accountCreation = new accountcreation_js_1.AccountCreation(this._options)));
+        return (this._accountCreation ?? (this._accountCreation = new accountcreation_js_1.AccountCreation(this._options)));
     }
     get accountManagement() {
-        var _a;
-        return ((_a = this._accountManagement) !== null && _a !== void 0 ? _a : (this._accountManagement = new accountmanagement_js_1.AccountManagement(this._options)));
+        return (this._accountManagement ?? (this._accountManagement = new accountmanagement_js_1.AccountManagement(this._options)));
     }
     get enrollmentsAndAgreements() {
-        var _a;
-        return ((_a = this._enrollmentsAndAgreements) !== null && _a !== void 0 ? _a : (this._enrollmentsAndAgreements = new enrollmentsandagreements_js_1.EnrollmentsAndAgreements(this._options)));
+        return (this._enrollmentsAndAgreements ?? (this._enrollmentsAndAgreements = new enrollmentsandagreements_js_1.EnrollmentsAndAgreements(this._options)));
     }
     get investigations() {
-        var _a;
-        return ((_a = this._investigations) !== null && _a !== void 0 ? _a : (this._investigations = new investigations_js_1.Investigations(this._options)));
+        return (this._investigations ?? (this._investigations = new investigations_js_1.Investigations(this._options)));
     }
     get bankRelationships() {
-        var _a;
-        return ((_a = this._bankRelationships) !== null && _a !== void 0 ? _a : (this._bankRelationships = new bankrelationships_js_1.BankRelationships(this._options)));
+        return (this._bankRelationships ?? (this._bankRelationships = new bankrelationships_js_1.BankRelationships(this._options)));
     }
     get achTransfers() {
-        var _a;
-        return ((_a = this._achTransfers) !== null && _a !== void 0 ? _a : (this._achTransfers = new achtransfers_js_1.ACHTransfers(this._options)));
+        return (this._achTransfers ?? (this._achTransfers = new achtransfers_js_1.ACHTransfers(this._options)));
     }
     get instantCashTransferICT() {
-        var _a;
-        return ((_a = this._instantCashTransferICT) !== null && _a !== void 0 ? _a : (this._instantCashTransferICT = new instantcashtransferict_js_1.InstantCashTransferICT(this._options)));
+        return (this._instantCashTransferICT ?? (this._instantCashTransferICT = new instantcashtransferict_js_1.InstantCashTransferICT(this._options)));
     }
     get retirements() {
-        var _a;
-        return ((_a = this._retirements) !== null && _a !== void 0 ? _a : (this._retirements = new retirements_js_1.Retirements(this._options)));
+        return (this._retirements ?? (this._retirements = new retirements_js_1.Retirements(this._options)));
     }
     get journals() {
-        var _a;
-        return ((_a = this._journals) !== null && _a !== void 0 ? _a : (this._journals = new journals_js_1.Journals(this._options)));
+        return (this._journals ?? (this._journals = new journals_js_1.Journals(this._options)));
     }
     get scheduleTransfers() {
-        var _a;
-        return ((_a = this._scheduleTransfers) !== null && _a !== void 0 ? _a : (this._scheduleTransfers = new scheduletransfers_js_1.ScheduleTransfers(this._options)));
+        return (this._scheduleTransfers ?? (this._scheduleTransfers = new scheduletransfers_js_1.ScheduleTransfers(this._options)));
     }
     get wires() {
-        var _a;
-        return ((_a = this._wires) !== null && _a !== void 0 ? _a : (this._wires = new wires_js_1.Wires(this._options)));
+        return (this._wires ?? (this._wires = new wires_js_1.Wires(this._options)));
     }
     get cashBalances() {
-        var _a;
-        return ((_a = this._cashBalances) !== null && _a !== void 0 ? _a : (this._cashBalances = new cashbalances_js_1.CashBalances(this._options)));
+        return (this._cashBalances ?? (this._cashBalances = new cashbalances_js_1.CashBalances(this._options)));
     }
     get feesAndCredits() {
-        var _a;
-        return ((_a = this._feesAndCredits) !== null && _a !== void 0 ? _a : (this._feesAndCredits = new feesandcredits_js_1.FeesAndCredits(this._options)));
+        return (this._feesAndCredits ?? (this._feesAndCredits = new feesandcredits_js_1.FeesAndCredits(this._options)));
     }
     get testSimulation() {
-        var _a;
-        return ((_a = this._testSimulation) !== null && _a !== void 0 ? _a : (this._testSimulation = new testsimulation_js_1.TestSimulation(this._options)));
+        return (this._testSimulation ?? (this._testSimulation = new testsimulation_js_1.TestSimulation(this._options)));
     }
     get accountTransfers() {
-        var _a;
-        return ((_a = this._accountTransfers) !== null && _a !== void 0 ? _a : (this._accountTransfers = new accounttransfers_js_1.AccountTransfers(this._options)));
+        return (this._accountTransfers ?? (this._accountTransfers = new accounttransfers_js_1.AccountTransfers(this._options)));
     }
     get createOrder() {
-        var _a;
-        return ((_a = this._createOrder) !== null && _a !== void 0 ? _a : (this._createOrder = new createorder_js_1.CreateOrder(this._options)));
+        return (this._createOrder ?? (this._createOrder = new createorder_js_1.CreateOrder(this._options)));
     }
     get fixedIncomePricing() {
-        var _a;
-        return ((_a = this._fixedIncomePricing) !== null && _a !== void 0 ? _a : (this._fixedIncomePricing = new fixedincomepricing_js_1.FixedIncomePricing(this._options)));
+        return (this._fixedIncomePricing ?? (this._fixedIncomePricing = new fixedincomepricing_js_1.FixedIncomePricing(this._options)));
     }
     get basketOrders() {
-        var _a;
-        return ((_a = this._basketOrders) !== null && _a !== void 0 ? _a : (this._basketOrders = new basketorders_js_1.BasketOrders(this._options)));
+        return (this._basketOrders ?? (this._basketOrders = new basketorders_js_1.BasketOrders(this._options)));
     }
     get tradeBooking() {
-        var _a;
-        return ((_a = this._tradeBooking) !== null && _a !== void 0 ? _a : (this._tradeBooking = new tradebooking_js_1.TradeBooking(this._options)));
+        return (this._tradeBooking ?? (this._tradeBooking = new tradebooking_js_1.TradeBooking(this._options)));
     }
     get tradeAllocation() {
-        var _a;
-        return ((_a = this._tradeAllocation) !== null && _a !== void 0 ? _a : (this._tradeAllocation = new tradeallocation_js_1.TradeAllocation(this._options)));
+        return (this._tradeAllocation ?? (this._tradeAllocation = new tradeallocation_js_1.TradeAllocation(this._options)));
     }
     get assets() {
-        var _a;
-        return ((_a = this._assets) !== null && _a !== void 0 ? _a : (this._assets = new assets_js_1.Assets(this._options)));
+        return (this._assets ?? (this._assets = new assets_js_1.Assets(this._options)));
     }
     get ledger() {
-        var _a;
-        return ((_a = this._ledger) !== null && _a !== void 0 ? _a : (this._ledger = new ledger_js_1.Ledger(this._options)));
+        return (this._ledger ?? (this._ledger = new ledger_js_1.Ledger(this._options)));
     }
     get margins() {
-        var _a;
-        return ((_a = this._margins) !== null && _a !== void 0 ? _a : (this._margins = new margins_js_1.Margins(this._options)));
+        return (this._margins ?? (this._margins = new margins_js_1.Margins(this._options)));
     }
     get investorDocs() {
-        var _a;
-        return ((_a = this._investorDocs) !== null && _a !== void 0 ? _a : (this._investorDocs = new investordocs_js_1.InvestorDocs(this._options)));
+        return (this._investorDocs ?? (this._investorDocs = new investordocs_js_1.InvestorDocs(this._options)));
     }
     get dataRetrieval() {
-        var _a;
-        return ((_a = this._dataRetrieval) !== null && _a !== void 0 ? _a : (this._dataRetrieval = new dataretrieval_js_1.DataRetrieval(this._options)));
+        return (this._dataRetrieval ?? (this._dataRetrieval = new dataretrieval_js_1.DataRetrieval(this._options)));
     }
 }
 exports.Apexascend = Apexascend;

@@ -37,8 +37,21 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingLot$ = exports.BookingLot$outboundSchema = exports.BookingLot$inboundSchema = exports.TradeDate$ = exports.TradeDate$outboundSchema = exports.TradeDate$inboundSchema = exports.BookingLotQuantity$ = exports.BookingLotQuantity$outboundSchema = exports.BookingLotQuantity$inboundSchema = exports.BookingLotPrice$ = exports.BookingLotPrice$outboundSchema = exports.BookingLotPrice$inboundSchema = exports.BookingLotMoney$ = exports.BookingLotMoney$outboundSchema = exports.BookingLotMoney$inboundSchema = exports.BookingLotMoneyPrice$ = exports.BookingLotMoneyPrice$outboundSchema = exports.BookingLotMoneyPrice$inboundSchema = void 0;
+exports.bookingLotMoneyPriceToJSON = bookingLotMoneyPriceToJSON;
+exports.bookingLotMoneyPriceFromJSON = bookingLotMoneyPriceFromJSON;
+exports.bookingLotMoneyToJSON = bookingLotMoneyToJSON;
+exports.bookingLotMoneyFromJSON = bookingLotMoneyFromJSON;
+exports.bookingLotPriceToJSON = bookingLotPriceToJSON;
+exports.bookingLotPriceFromJSON = bookingLotPriceFromJSON;
+exports.bookingLotQuantityToJSON = bookingLotQuantityToJSON;
+exports.bookingLotQuantityFromJSON = bookingLotQuantityFromJSON;
+exports.tradeDateToJSON = tradeDateToJSON;
+exports.tradeDateFromJSON = tradeDateFromJSON;
+exports.bookingLotToJSON = bookingLotToJSON;
+exports.bookingLotFromJSON = bookingLotFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.BookingLotMoneyPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +71,12 @@ var BookingLotMoneyPrice$;
     /** @deprecated use `BookingLotMoneyPrice$outboundSchema` instead. */
     BookingLotMoneyPrice$.outboundSchema = exports.BookingLotMoneyPrice$outboundSchema;
 })(BookingLotMoneyPrice$ || (exports.BookingLotMoneyPrice$ = BookingLotMoneyPrice$ = {}));
+function bookingLotMoneyPriceToJSON(bookingLotMoneyPrice) {
+    return JSON.stringify(exports.BookingLotMoneyPrice$outboundSchema.parse(bookingLotMoneyPrice));
+}
+function bookingLotMoneyPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingLotMoneyPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingLotMoneyPrice' from JSON`);
+}
 /** @internal */
 exports.BookingLotMoney$inboundSchema = z.object({
     currency_code: z.string().optional(),
@@ -89,6 +108,12 @@ var BookingLotMoney$;
     /** @deprecated use `BookingLotMoney$outboundSchema` instead. */
     BookingLotMoney$.outboundSchema = exports.BookingLotMoney$outboundSchema;
 })(BookingLotMoney$ || (exports.BookingLotMoney$ = BookingLotMoney$ = {}));
+function bookingLotMoneyToJSON(bookingLotMoney) {
+    return JSON.stringify(exports.BookingLotMoney$outboundSchema.parse(bookingLotMoney));
+}
+function bookingLotMoneyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingLotMoney$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingLotMoney' from JSON`);
+}
 /** @internal */
 exports.BookingLotPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -108,6 +133,12 @@ var BookingLotPrice$;
     /** @deprecated use `BookingLotPrice$outboundSchema` instead. */
     BookingLotPrice$.outboundSchema = exports.BookingLotPrice$outboundSchema;
 })(BookingLotPrice$ || (exports.BookingLotPrice$ = BookingLotPrice$ = {}));
+function bookingLotPriceToJSON(bookingLotPrice) {
+    return JSON.stringify(exports.BookingLotPrice$outboundSchema.parse(bookingLotPrice));
+}
+function bookingLotPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingLotPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingLotPrice' from JSON`);
+}
 /** @internal */
 exports.BookingLotQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -127,6 +158,12 @@ var BookingLotQuantity$;
     /** @deprecated use `BookingLotQuantity$outboundSchema` instead. */
     BookingLotQuantity$.outboundSchema = exports.BookingLotQuantity$outboundSchema;
 })(BookingLotQuantity$ || (exports.BookingLotQuantity$ = BookingLotQuantity$ = {}));
+function bookingLotQuantityToJSON(bookingLotQuantity) {
+    return JSON.stringify(exports.BookingLotQuantity$outboundSchema.parse(bookingLotQuantity));
+}
+function bookingLotQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingLotQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingLotQuantity' from JSON`);
+}
 /** @internal */
 exports.TradeDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -150,6 +187,12 @@ var TradeDate$;
     /** @deprecated use `TradeDate$outboundSchema` instead. */
     TradeDate$.outboundSchema = exports.TradeDate$outboundSchema;
 })(TradeDate$ || (exports.TradeDate$ = TradeDate$ = {}));
+function tradeDateToJSON(tradeDate) {
+    return JSON.stringify(exports.TradeDate$outboundSchema.parse(tradeDate));
+}
+function tradeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeDate' from JSON`);
+}
 /** @internal */
 exports.BookingLot$inboundSchema = z.object({
     id: z.string().optional(),
@@ -187,4 +230,10 @@ var BookingLot$;
     /** @deprecated use `BookingLot$outboundSchema` instead. */
     BookingLot$.outboundSchema = exports.BookingLot$outboundSchema;
 })(BookingLot$ || (exports.BookingLot$ = BookingLot$ = {}));
+function bookingLotToJSON(bookingLot) {
+    return JSON.stringify(exports.BookingLot$outboundSchema.parse(bookingLot));
+}
+function bookingLotFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingLot$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingLot' from JSON`);
+}
 //# sourceMappingURL=bookinglot.js.map

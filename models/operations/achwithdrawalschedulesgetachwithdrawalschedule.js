@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$ = exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$outboundSchema = exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$inboundSchema = exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$ = exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$outboundSchema = exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$inboundSchema = void 0;
+exports.achWithdrawalSchedulesGetAchWithdrawalScheduleRequestToJSON = achWithdrawalSchedulesGetAchWithdrawalScheduleRequestToJSON;
+exports.achWithdrawalSchedulesGetAchWithdrawalScheduleRequestFromJSON = achWithdrawalSchedulesGetAchWithdrawalScheduleRequestFromJSON;
+exports.achWithdrawalSchedulesGetAchWithdrawalScheduleResponseToJSON = achWithdrawalSchedulesGetAchWithdrawalScheduleResponseToJSON;
+exports.achWithdrawalSchedulesGetAchWithdrawalScheduleResponseFromJSON = achWithdrawalSchedulesGetAchWithdrawalScheduleResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$;
     /** @deprecated use `AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$outboundSchema` instead. */
     AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$.outboundSchema = exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$outboundSchema;
 })(AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$ || (exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$ = AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$ = {}));
+function achWithdrawalSchedulesGetAchWithdrawalScheduleRequestToJSON(achWithdrawalSchedulesGetAchWithdrawalScheduleRequest) {
+    return JSON.stringify(exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$outboundSchema.parse(achWithdrawalSchedulesGetAchWithdrawalScheduleRequest));
+}
+function achWithdrawalSchedulesGetAchWithdrawalScheduleRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalSchedulesGetAchWithdrawalScheduleRequest' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +119,11 @@ var AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$;
     /** @deprecated use `AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$outboundSchema` instead. */
     AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$.outboundSchema = exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$outboundSchema;
 })(AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$ || (exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$ = AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$ = {}));
+function achWithdrawalSchedulesGetAchWithdrawalScheduleResponseToJSON(achWithdrawalSchedulesGetAchWithdrawalScheduleResponse) {
+    return JSON.stringify(exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$outboundSchema.parse(achWithdrawalSchedulesGetAchWithdrawalScheduleResponse));
+}
+function achWithdrawalSchedulesGetAchWithdrawalScheduleResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse' from JSON`);
+}
 //# sourceMappingURL=achwithdrawalschedulesgetachwithdrawalschedule.js.map

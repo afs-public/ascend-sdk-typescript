@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Describes the contents of a document and how it is used
  */
@@ -254,7 +256,9 @@ export declare enum DocumentInvestorDocumentDocumentType {
     StatementQuarterly = "STATEMENT_QUARTERLY",
     Form1099C = "FORM_1099_C",
     Form4806D = "FORM_480_6D",
-    Form5498Esa = "FORM_5498_ESA"
+    Form5498Esa = "FORM_5498_ESA",
+    FpslNegativeConsentForm = "FPSL_NEGATIVE_CONSENT_FORM",
+    CrsForm = "CRS_FORM"
 }
 /**
  * Describes the contents of a document and how it is used
@@ -359,6 +363,8 @@ export declare namespace UploadedDate$ {
     /** @deprecated use `UploadedDate$Outbound` instead. */
     type Outbound = UploadedDate$Outbound;
 }
+export declare function uploadedDateToJSON(uploadedDate: UploadedDate): string;
+export declare function uploadedDateFromJSON(jsonString: string): SafeParseResult<UploadedDate, SDKValidationError>;
 /** @internal */
 export declare const AccountDocument$inboundSchema: z.ZodType<AccountDocument, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -381,6 +387,8 @@ export declare namespace AccountDocument$ {
     /** @deprecated use `AccountDocument$Outbound` instead. */
     type Outbound = AccountDocument$Outbound;
 }
+export declare function accountDocumentToJSON(accountDocument: AccountDocument): string;
+export declare function accountDocumentFromJSON(jsonString: string): SafeParseResult<AccountDocument, SDKValidationError>;
 /** @internal */
 export declare const DocumentIdDocumentDocumentType$inboundSchema: z.ZodType<DocumentIdDocumentDocumentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -417,6 +425,8 @@ export declare namespace DocumentUploadedDate$ {
     /** @deprecated use `DocumentUploadedDate$Outbound` instead. */
     type Outbound = DocumentUploadedDate$Outbound;
 }
+export declare function documentUploadedDateToJSON(documentUploadedDate: DocumentUploadedDate): string;
+export declare function documentUploadedDateFromJSON(jsonString: string): SafeParseResult<DocumentUploadedDate, SDKValidationError>;
 /** @internal */
 export declare const IdDocument$inboundSchema: z.ZodType<IdDocument, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -439,6 +449,8 @@ export declare namespace IdDocument$ {
     /** @deprecated use `IdDocument$Outbound` instead. */
     type Outbound = IdDocument$Outbound;
 }
+export declare function idDocumentToJSON(idDocument: IdDocument): string;
+export declare function idDocumentFromJSON(jsonString: string): SafeParseResult<IdDocument, SDKValidationError>;
 /** @internal */
 export declare const DocumentInvestorDocumentDocumentType$inboundSchema: z.ZodType<DocumentInvestorDocumentDocumentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -475,6 +487,8 @@ export declare namespace DocumentProcessDate$ {
     /** @deprecated use `DocumentProcessDate$Outbound` instead. */
     type Outbound = DocumentProcessDate$Outbound;
 }
+export declare function documentProcessDateToJSON(documentProcessDate: DocumentProcessDate): string;
+export declare function documentProcessDateFromJSON(jsonString: string): SafeParseResult<DocumentProcessDate, SDKValidationError>;
 /** @internal */
 export declare const InvestorDocument$inboundSchema: z.ZodType<InvestorDocument, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -497,6 +511,8 @@ export declare namespace InvestorDocument$ {
     /** @deprecated use `InvestorDocument$Outbound` instead. */
     type Outbound = InvestorDocument$Outbound;
 }
+export declare function investorDocumentToJSON(investorDocument: InvestorDocument): string;
+export declare function investorDocumentFromJSON(jsonString: string): SafeParseResult<InvestorDocument, SDKValidationError>;
 /** @internal */
 export declare const Document$inboundSchema: z.ZodType<Document, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -522,4 +538,6 @@ export declare namespace Document$ {
     /** @deprecated use `Document$Outbound` instead. */
     type Outbound = Document$Outbound;
 }
+export declare function documentToJSON(document: Document): string;
+export declare function documentFromJSON(jsonString: string): SafeParseResult<Document, SDKValidationError>;
 //# sourceMappingURL=document.d.ts.map

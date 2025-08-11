@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The financial goal or purpose that an investor has in mind when making investment decisions; firms often ask investors to specify their investment objectives when opening an account, in order to provide appropriate investment recommendations and manage risk appropriately
@@ -295,4 +298,22 @@ export namespace AccountGoalsUpdate$ {
   export const outboundSchema = AccountGoalsUpdate$outboundSchema;
   /** @deprecated use `AccountGoalsUpdate$Outbound` instead. */
   export type Outbound = AccountGoalsUpdate$Outbound;
+}
+
+export function accountGoalsUpdateToJSON(
+  accountGoalsUpdate: AccountGoalsUpdate,
+): string {
+  return JSON.stringify(
+    AccountGoalsUpdate$outboundSchema.parse(accountGoalsUpdate),
+  );
+}
+
+export function accountGoalsUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountGoalsUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountGoalsUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountGoalsUpdate' from JSON`,
+  );
 }

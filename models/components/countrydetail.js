@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CountryDetail$ = exports.CountryDetail$outboundSchema = exports.CountryDetail$inboundSchema = void 0;
+exports.countryDetailToJSON = countryDetailToJSON;
+exports.countryDetailFromJSON = countryDetailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CountryDetail$inboundSchema = z.object({
     country_type: z.string().optional(),
@@ -70,4 +73,10 @@ var CountryDetail$;
     /** @deprecated use `CountryDetail$outboundSchema` instead. */
     CountryDetail$.outboundSchema = exports.CountryDetail$outboundSchema;
 })(CountryDetail$ || (exports.CountryDetail$ = CountryDetail$ = {}));
+function countryDetailToJSON(countryDetail) {
+    return JSON.stringify(exports.CountryDetail$outboundSchema.parse(countryDetail));
+}
+function countryDetailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CountryDetail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CountryDetail' from JSON`);
+}
 //# sourceMappingURL=countrydetail.js.map

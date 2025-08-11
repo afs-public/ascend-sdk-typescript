@@ -37,8 +37,25 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Investigation$ = exports.Investigation$outboundSchema = exports.Investigation$inboundSchema = exports.WatchlistScreen$ = exports.WatchlistScreen$outboundSchema = exports.WatchlistScreen$inboundSchema = exports.Person$ = exports.Person$outboundSchema = exports.Person$inboundSchema = exports.ProvidedIdentityVerification$ = exports.ProvidedIdentityVerification$outboundSchema = exports.ProvidedIdentityVerification$inboundSchema = exports.InvestigationExecutionDate$ = exports.InvestigationExecutionDate$outboundSchema = exports.InvestigationExecutionDate$inboundSchema = exports.InvestigationNameSuffix$ = exports.InvestigationNameSuffix$outboundSchema = exports.InvestigationNameSuffix$inboundSchema = exports.InvestigationPersonLegalAddress$ = exports.InvestigationPersonLegalAddress$outboundSchema = exports.InvestigationPersonLegalAddress$inboundSchema = exports.InvestigationBirthDate$ = exports.InvestigationBirthDate$outboundSchema = exports.InvestigationBirthDate$inboundSchema = exports.InvestigationRequestState$ = exports.InvestigationRequestState$outboundSchema = exports.InvestigationRequestState$inboundSchema = exports.IdentityVerificationScope$ = exports.IdentityVerificationScope$outboundSchema = exports.IdentityVerificationScope$inboundSchema = exports.IdentityVerification$ = exports.IdentityVerification$outboundSchema = exports.IdentityVerification$inboundSchema = exports.Entity$ = exports.Entity$outboundSchema = exports.Entity$inboundSchema = exports.InvestigationLegalAddress$ = exports.InvestigationLegalAddress$outboundSchema = exports.InvestigationLegalAddress$inboundSchema = exports.WatchlistScreen = exports.InvestigationNameSuffix = exports.InvestigationRequestState = exports.IdentityVerificationScope = exports.IdentityVerification = void 0;
+exports.investigationLegalAddressToJSON = investigationLegalAddressToJSON;
+exports.investigationLegalAddressFromJSON = investigationLegalAddressFromJSON;
+exports.entityToJSON = entityToJSON;
+exports.entityFromJSON = entityFromJSON;
+exports.investigationBirthDateToJSON = investigationBirthDateToJSON;
+exports.investigationBirthDateFromJSON = investigationBirthDateFromJSON;
+exports.investigationPersonLegalAddressToJSON = investigationPersonLegalAddressToJSON;
+exports.investigationPersonLegalAddressFromJSON = investigationPersonLegalAddressFromJSON;
+exports.investigationExecutionDateToJSON = investigationExecutionDateToJSON;
+exports.investigationExecutionDateFromJSON = investigationExecutionDateFromJSON;
+exports.providedIdentityVerificationToJSON = providedIdentityVerificationToJSON;
+exports.providedIdentityVerificationFromJSON = providedIdentityVerificationFromJSON;
+exports.personToJSON = personToJSON;
+exports.personFromJSON = personFromJSON;
+exports.investigationToJSON = investigationToJSON;
+exports.investigationFromJSON = investigationFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const audittrail_js_1 = require("./audittrail.js");
 const entityidentification_js_1 = require("./entityidentification.js");
@@ -47,7 +64,16 @@ const personidentification_js_1 = require("./personidentification.js");
 const postaladdress_js_1 = require("./postaladdress.js");
 const watchlistmatch_js_1 = require("./watchlistmatch.js");
 /**
- * Indicates the current state of identity verification
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 var IdentityVerification;
 (function (IdentityVerification) {
@@ -60,7 +86,12 @@ var IdentityVerification;
     IdentityVerification["OutOfScope"] = "OUT_OF_SCOPE";
 })(IdentityVerification || (exports.IdentityVerification = IdentityVerification = {}));
 /**
- * Used to determine who is responsible for running identity verification checks
+ * Used to determine who is responsible for running identity verification checks, one of:
+ *
+ * @remarks
+ * - `IDENTITY_VERIFICATION_SCOPE_UNSPECIFIED` - Default/Null value.
+ * - `PERFORMED_BY_APEX` - Run CIP and CDD checks.
+ * - `PROVIDED_BY_CLIENT` - Run CDD checks with CIP provided in request.
  */
 var IdentityVerificationScope;
 (function (IdentityVerificationScope) {
@@ -69,7 +100,12 @@ var IdentityVerificationScope;
     IdentityVerificationScope["ProvidedByClient"] = "PROVIDED_BY_CLIENT";
 })(IdentityVerificationScope || (exports.IdentityVerificationScope = IdentityVerificationScope = {}));
 /**
- * Current state of investigation request
+ * The state of an investigation request, one of:
+ *
+ * @remarks
+ * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+ * - `OPEN` - The investigation request is open.
+ * - `CLOSED` - The investigation request is closed.
  */
 var InvestigationRequestState;
 (function (InvestigationRequestState) {
@@ -78,7 +114,15 @@ var InvestigationRequestState;
     InvestigationRequestState["Closed"] = "CLOSED";
 })(InvestigationRequestState || (exports.InvestigationRequestState = InvestigationRequestState = {}));
 /**
- * Suffix of the person's name
+ * The name suffix for individuals, one of:
+ *
+ * @remarks
+ * - `NAME_SUFFIX_UNSPECIFIED` - Default/Null value.
+ * - `SR` - Senior.
+ * - `JR` - Junior.
+ * - `III` - The third.
+ * - `IV` - The fourth.
+ * - `V` - The fifth.
  */
 var InvestigationNameSuffix;
 (function (InvestigationNameSuffix) {
@@ -90,7 +134,16 @@ var InvestigationNameSuffix;
     InvestigationNameSuffix["V"] = "V";
 })(InvestigationNameSuffix || (exports.InvestigationNameSuffix = InvestigationNameSuffix = {}));
 /**
- * Indicates the current state of the watchlist screen
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 var WatchlistScreen;
 (function (WatchlistScreen) {
@@ -159,6 +212,12 @@ var InvestigationLegalAddress$;
     /** @deprecated use `InvestigationLegalAddress$outboundSchema` instead. */
     InvestigationLegalAddress$.outboundSchema = exports.InvestigationLegalAddress$outboundSchema;
 })(InvestigationLegalAddress$ || (exports.InvestigationLegalAddress$ = InvestigationLegalAddress$ = {}));
+function investigationLegalAddressToJSON(investigationLegalAddress) {
+    return JSON.stringify(exports.InvestigationLegalAddress$outboundSchema.parse(investigationLegalAddress));
+}
+function investigationLegalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationLegalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationLegalAddress' from JSON`);
+}
 /** @internal */
 exports.Entity$inboundSchema = z
     .object({
@@ -217,6 +276,12 @@ var Entity$;
     /** @deprecated use `Entity$outboundSchema` instead. */
     Entity$.outboundSchema = exports.Entity$outboundSchema;
 })(Entity$ || (exports.Entity$ = Entity$ = {}));
+function entityToJSON(entity) {
+    return JSON.stringify(exports.Entity$outboundSchema.parse(entity));
+}
+function entityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Entity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Entity' from JSON`);
+}
 /** @internal */
 exports.IdentityVerification$inboundSchema = z
     .union([
@@ -306,6 +371,12 @@ var InvestigationBirthDate$;
     /** @deprecated use `InvestigationBirthDate$outboundSchema` instead. */
     InvestigationBirthDate$.outboundSchema = exports.InvestigationBirthDate$outboundSchema;
 })(InvestigationBirthDate$ || (exports.InvestigationBirthDate$ = InvestigationBirthDate$ = {}));
+function investigationBirthDateToJSON(investigationBirthDate) {
+    return JSON.stringify(exports.InvestigationBirthDate$outboundSchema.parse(investigationBirthDate));
+}
+function investigationBirthDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationBirthDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationBirthDate' from JSON`);
+}
 /** @internal */
 exports.InvestigationPersonLegalAddress$inboundSchema = z.object({
     address_lines: z.array(z.string()).optional(),
@@ -363,6 +434,12 @@ var InvestigationPersonLegalAddress$;
     /** @deprecated use `InvestigationPersonLegalAddress$outboundSchema` instead. */
     InvestigationPersonLegalAddress$.outboundSchema = exports.InvestigationPersonLegalAddress$outboundSchema;
 })(InvestigationPersonLegalAddress$ || (exports.InvestigationPersonLegalAddress$ = InvestigationPersonLegalAddress$ = {}));
+function investigationPersonLegalAddressToJSON(investigationPersonLegalAddress) {
+    return JSON.stringify(exports.InvestigationPersonLegalAddress$outboundSchema.parse(investigationPersonLegalAddress));
+}
+function investigationPersonLegalAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationPersonLegalAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationPersonLegalAddress' from JSON`);
+}
 /** @internal */
 exports.InvestigationNameSuffix$inboundSchema = z
     .union([
@@ -408,6 +485,12 @@ var InvestigationExecutionDate$;
     /** @deprecated use `InvestigationExecutionDate$outboundSchema` instead. */
     InvestigationExecutionDate$.outboundSchema = exports.InvestigationExecutionDate$outboundSchema;
 })(InvestigationExecutionDate$ || (exports.InvestigationExecutionDate$ = InvestigationExecutionDate$ = {}));
+function investigationExecutionDateToJSON(investigationExecutionDate) {
+    return JSON.stringify(exports.InvestigationExecutionDate$outboundSchema.parse(investigationExecutionDate));
+}
+function investigationExecutionDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestigationExecutionDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestigationExecutionDate' from JSON`);
+}
 /** @internal */
 exports.ProvidedIdentityVerification$inboundSchema = z.object({
     address_verified: z.boolean().optional(),
@@ -469,6 +552,12 @@ var ProvidedIdentityVerification$;
     /** @deprecated use `ProvidedIdentityVerification$outboundSchema` instead. */
     ProvidedIdentityVerification$.outboundSchema = exports.ProvidedIdentityVerification$outboundSchema;
 })(ProvidedIdentityVerification$ || (exports.ProvidedIdentityVerification$ = ProvidedIdentityVerification$ = {}));
+function providedIdentityVerificationToJSON(providedIdentityVerification) {
+    return JSON.stringify(exports.ProvidedIdentityVerification$outboundSchema.parse(providedIdentityVerification));
+}
+function providedIdentityVerificationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ProvidedIdentityVerification$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ProvidedIdentityVerification' from JSON`);
+}
 /** @internal */
 exports.Person$inboundSchema = z
     .object({
@@ -549,6 +638,12 @@ var Person$;
     /** @deprecated use `Person$outboundSchema` instead. */
     Person$.outboundSchema = exports.Person$outboundSchema;
 })(Person$ || (exports.Person$ = Person$ = {}));
+function personToJSON(person) {
+    return JSON.stringify(exports.Person$outboundSchema.parse(person));
+}
+function personFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Person$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Person' from JSON`);
+}
 /** @internal */
 exports.WatchlistScreen$inboundSchema = z
     .union([
@@ -574,6 +669,7 @@ var WatchlistScreen$;
 /** @internal */
 exports.Investigation$inboundSchema = z.object({
     audit_trail: z.array(audittrail_js_1.AuditTrail$inboundSchema).optional(),
+    client_id: z.string().optional(),
     correspondent_id: z.string().optional(),
     create_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
     entity: z.nullable(z.lazy(() => exports.Entity$inboundSchema)).optional(),
@@ -591,6 +687,7 @@ exports.Investigation$inboundSchema = z.object({
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "audit_trail": "auditTrail",
+        "client_id": "clientId",
         "correspondent_id": "correspondentId",
         "create_time": "createTime",
         "identity_verification": "identityVerification",
@@ -605,6 +702,7 @@ exports.Investigation$inboundSchema = z.object({
 /** @internal */
 exports.Investigation$outboundSchema = z.object({
     auditTrail: z.array(audittrail_js_1.AuditTrail$outboundSchema).optional(),
+    clientId: z.string().optional(),
     correspondentId: z.string().optional(),
     createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
     entity: z.nullable(z.lazy(() => exports.Entity$outboundSchema)).optional(),
@@ -622,6 +720,7 @@ exports.Investigation$outboundSchema = z.object({
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         auditTrail: "audit_trail",
+        clientId: "client_id",
         correspondentId: "correspondent_id",
         createTime: "create_time",
         identityVerification: "identity_verification",
@@ -644,4 +743,10 @@ var Investigation$;
     /** @deprecated use `Investigation$outboundSchema` instead. */
     Investigation$.outboundSchema = exports.Investigation$outboundSchema;
 })(Investigation$ || (exports.Investigation$ = Investigation$ = {}));
+function investigationToJSON(investigation) {
+    return JSON.stringify(exports.Investigation$outboundSchema.parse(investigation));
+}
+function investigationFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Investigation$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Investigation' from JSON`);
+}
 //# sourceMappingURL=investigation.js.map

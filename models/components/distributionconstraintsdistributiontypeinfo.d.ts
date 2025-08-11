@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Retirement distribution type
  */
@@ -83,4 +85,6 @@ export declare namespace DistributionConstraintsDistributionTypeInfo$ {
     /** @deprecated use `DistributionConstraintsDistributionTypeInfo$Outbound` instead. */
     type Outbound = DistributionConstraintsDistributionTypeInfo$Outbound;
 }
+export declare function distributionConstraintsDistributionTypeInfoToJSON(distributionConstraintsDistributionTypeInfo: DistributionConstraintsDistributionTypeInfo): string;
+export declare function distributionConstraintsDistributionTypeInfoFromJSON(jsonString: string): SafeParseResult<DistributionConstraintsDistributionTypeInfo, SDKValidationError>;
 //# sourceMappingURL=distributionconstraintsdistributiontypeinfo.d.ts.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Identification details used for Dow Jones Profile details
  */
@@ -38,4 +40,6 @@ export declare namespace IdentificationDetail$ {
     /** @deprecated use `IdentificationDetail$Outbound` instead. */
     type Outbound = IdentificationDetail$Outbound;
 }
+export declare function identificationDetailToJSON(identificationDetail: IdentificationDetail): string;
+export declare function identificationDetailFromJSON(jsonString: string): SafeParseResult<IdentificationDetail, SDKValidationError>;
 //# sourceMappingURL=identificationdetail.d.ts.map

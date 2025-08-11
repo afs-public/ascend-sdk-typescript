@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchWithdrawalsGetAchWithdrawalRequest = {
   /**
@@ -80,6 +83,27 @@ export namespace AchWithdrawalsGetAchWithdrawalRequest$ {
   export type Outbound = AchWithdrawalsGetAchWithdrawalRequest$Outbound;
 }
 
+export function achWithdrawalsGetAchWithdrawalRequestToJSON(
+  achWithdrawalsGetAchWithdrawalRequest: AchWithdrawalsGetAchWithdrawalRequest,
+): string {
+  return JSON.stringify(
+    AchWithdrawalsGetAchWithdrawalRequest$outboundSchema.parse(
+      achWithdrawalsGetAchWithdrawalRequest,
+    ),
+  );
+}
+
+export function achWithdrawalsGetAchWithdrawalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalsGetAchWithdrawalRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalsGetAchWithdrawalRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalsGetAchWithdrawalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalsGetAchWithdrawalResponse$inboundSchema: z.ZodType<
   AchWithdrawalsGetAchWithdrawalResponse,
@@ -134,4 +158,26 @@ export namespace AchWithdrawalsGetAchWithdrawalResponse$ {
     AchWithdrawalsGetAchWithdrawalResponse$outboundSchema;
   /** @deprecated use `AchWithdrawalsGetAchWithdrawalResponse$Outbound` instead. */
   export type Outbound = AchWithdrawalsGetAchWithdrawalResponse$Outbound;
+}
+
+export function achWithdrawalsGetAchWithdrawalResponseToJSON(
+  achWithdrawalsGetAchWithdrawalResponse:
+    AchWithdrawalsGetAchWithdrawalResponse,
+): string {
+  return JSON.stringify(
+    AchWithdrawalsGetAchWithdrawalResponse$outboundSchema.parse(
+      achWithdrawalsGetAchWithdrawalResponse,
+    ),
+  );
+}
+
+export function achWithdrawalsGetAchWithdrawalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalsGetAchWithdrawalResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalsGetAchWithdrawalResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalsGetAchWithdrawalResponse' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Monetary amount associated with the commission
  */
@@ -34,6 +36,8 @@ export declare namespace CommissionAmount1$ {
     /** @deprecated use `CommissionAmount1$Outbound` instead. */
     type Outbound = CommissionAmount1$Outbound;
 }
+export declare function commissionAmount1ToJSON(commissionAmount1: CommissionAmount1): string;
+export declare function commissionAmount1FromJSON(jsonString: string): SafeParseResult<CommissionAmount1, SDKValidationError>;
 /** @internal */
 export declare const Commission$inboundSchema: z.ZodType<Commission, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -54,4 +58,6 @@ export declare namespace Commission$ {
     /** @deprecated use `Commission$Outbound` instead. */
     type Outbound = Commission$Outbound;
 }
+export declare function commissionToJSON(commission: Commission): string;
+export declare function commissionFromJSON(jsonString: string): SafeParseResult<Commission, SDKValidationError>;
 //# sourceMappingURL=commission.d.ts.map

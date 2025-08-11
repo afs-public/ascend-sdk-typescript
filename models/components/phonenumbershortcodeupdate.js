@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PhoneNumberShortCodeUpdate$ = exports.PhoneNumberShortCodeUpdate$outboundSchema = exports.PhoneNumberShortCodeUpdate$inboundSchema = void 0;
+exports.phoneNumberShortCodeUpdateToJSON = phoneNumberShortCodeUpdateToJSON;
+exports.phoneNumberShortCodeUpdateFromJSON = phoneNumberShortCodeUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.PhoneNumberShortCodeUpdate$inboundSchema = z.object({
     number: z.string().optional(),
@@ -68,4 +71,10 @@ var PhoneNumberShortCodeUpdate$;
     /** @deprecated use `PhoneNumberShortCodeUpdate$outboundSchema` instead. */
     PhoneNumberShortCodeUpdate$.outboundSchema = exports.PhoneNumberShortCodeUpdate$outboundSchema;
 })(PhoneNumberShortCodeUpdate$ || (exports.PhoneNumberShortCodeUpdate$ = PhoneNumberShortCodeUpdate$ = {}));
+function phoneNumberShortCodeUpdateToJSON(phoneNumberShortCodeUpdate) {
+    return JSON.stringify(exports.PhoneNumberShortCodeUpdate$outboundSchema.parse(phoneNumberShortCodeUpdate));
+}
+function phoneNumberShortCodeUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PhoneNumberShortCodeUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PhoneNumberShortCodeUpdate' from JSON`);
+}
 //# sourceMappingURL=phonenumbershortcodeupdate.js.map

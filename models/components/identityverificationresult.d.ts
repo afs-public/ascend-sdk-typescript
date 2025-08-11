@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A summary of the results from a identity verification check
  */
@@ -58,4 +60,6 @@ export declare namespace IdentityVerificationResult$ {
     /** @deprecated use `IdentityVerificationResult$Outbound` instead. */
     type Outbound = IdentityVerificationResult$Outbound;
 }
+export declare function identityVerificationResultToJSON(identityVerificationResult: IdentityVerificationResult): string;
+export declare function identityVerificationResultFromJSON(jsonString: string): SafeParseResult<IdentityVerificationResult, SDKValidationError>;
 //# sourceMappingURL=identityverificationresult.d.ts.map

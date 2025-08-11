@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddOrdersRequestCreate$ = exports.AddOrdersRequestCreate$outboundSchema = exports.AddOrdersRequestCreate$inboundSchema = void 0;
+exports.addOrdersRequestCreateToJSON = addOrdersRequestCreateToJSON;
+exports.addOrdersRequestCreateFromJSON = addOrdersRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const basketordercreate_js_1 = require("./basketordercreate.js");
 /** @internal */
 exports.AddOrdersRequestCreate$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var AddOrdersRequestCreate$;
     /** @deprecated use `AddOrdersRequestCreate$outboundSchema` instead. */
     AddOrdersRequestCreate$.outboundSchema = exports.AddOrdersRequestCreate$outboundSchema;
 })(AddOrdersRequestCreate$ || (exports.AddOrdersRequestCreate$ = AddOrdersRequestCreate$ = {}));
+function addOrdersRequestCreateToJSON(addOrdersRequestCreate) {
+    return JSON.stringify(exports.AddOrdersRequestCreate$outboundSchema.parse(addOrdersRequestCreate));
+}
+function addOrdersRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AddOrdersRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AddOrdersRequestCreate' from JSON`);
+}
 //# sourceMappingURL=addordersrequestcreate.js.map

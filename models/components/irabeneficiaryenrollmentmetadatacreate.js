@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IRABeneficiaryEnrollmentMetadataCreate$ = exports.IRABeneficiaryEnrollmentMetadataCreate$outboundSchema = exports.IRABeneficiaryEnrollmentMetadataCreate$inboundSchema = exports.IRABeneficiaryEnrollmentMetadataCreateFdicCashSweep$ = exports.IRABeneficiaryEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.IRABeneficiaryEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.IRABeneficiaryEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.IRABeneficiaryEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.IRABeneficiaryEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.IRABeneficiaryEnrollmentMetadataCreateFdicCashSweep = exports.IRABeneficiaryEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.iraBeneficiaryEnrollmentMetadataCreateToJSON = iraBeneficiaryEnrollmentMetadataCreateToJSON;
+exports.iraBeneficiaryEnrollmentMetadataCreateFromJSON = iraBeneficiaryEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const datecreate_js_1 = require("./datecreate.js");
 /**
@@ -154,4 +157,10 @@ var IRABeneficiaryEnrollmentMetadataCreate$;
     /** @deprecated use `IRABeneficiaryEnrollmentMetadataCreate$outboundSchema` instead. */
     IRABeneficiaryEnrollmentMetadataCreate$.outboundSchema = exports.IRABeneficiaryEnrollmentMetadataCreate$outboundSchema;
 })(IRABeneficiaryEnrollmentMetadataCreate$ || (exports.IRABeneficiaryEnrollmentMetadataCreate$ = IRABeneficiaryEnrollmentMetadataCreate$ = {}));
+function iraBeneficiaryEnrollmentMetadataCreateToJSON(iraBeneficiaryEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.IRABeneficiaryEnrollmentMetadataCreate$outboundSchema.parse(iraBeneficiaryEnrollmentMetadataCreate));
+}
+function iraBeneficiaryEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IRABeneficiaryEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IRABeneficiaryEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=irabeneficiaryenrollmentmetadatacreate.js.map

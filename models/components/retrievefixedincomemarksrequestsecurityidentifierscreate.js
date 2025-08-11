@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$ = exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$outboundSchema = exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$inboundSchema = exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType$ = exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType$outboundSchema = exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType$inboundSchema = exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreateIdentifierType = void 0;
+exports.retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateToJSON = retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateToJSON;
+exports.retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateFromJSON = retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The identifier type of the asset being sought
@@ -100,4 +103,12 @@ var RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$;
     /** @deprecated use `RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$outboundSchema` instead. */
     RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$.outboundSchema = exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$outboundSchema;
 })(RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$ || (exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$ = RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$ = {}));
+function retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateToJSON(retrieveFixedIncomeMarksRequestSecurityIdentifiersCreate) {
+    return JSON.stringify(exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$outboundSchema
+        .parse(retrieveFixedIncomeMarksRequestSecurityIdentifiersCreate));
+}
+function retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate' from JSON`);
+}
 //# sourceMappingURL=retrievefixedincomemarksrequestsecurityidentifierscreate.js.map

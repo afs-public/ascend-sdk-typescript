@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Customer Referral Source
  */
@@ -43,4 +45,6 @@ export declare namespace CustomerReferralSourceUpdate$ {
     /** @deprecated use `CustomerReferralSourceUpdate$Outbound` instead. */
     type Outbound = CustomerReferralSourceUpdate$Outbound;
 }
+export declare function customerReferralSourceUpdateToJSON(customerReferralSourceUpdate: CustomerReferralSourceUpdate): string;
+export declare function customerReferralSourceUpdateFromJSON(jsonString: string): SafeParseResult<CustomerReferralSourceUpdate, SDKValidationError>;
 //# sourceMappingURL=customerreferralsourceupdate.d.ts.map

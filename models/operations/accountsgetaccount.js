@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsGetAccountResponse$ = exports.AccountsGetAccountResponse$outboundSchema = exports.AccountsGetAccountResponse$inboundSchema = exports.AccountsGetAccountRequest$ = exports.AccountsGetAccountRequest$outboundSchema = exports.AccountsGetAccountRequest$inboundSchema = exports.QueryParamView$ = exports.QueryParamView$outboundSchema = exports.QueryParamView$inboundSchema = exports.QueryParamView = void 0;
+exports.accountsGetAccountRequestToJSON = accountsGetAccountRequestToJSON;
+exports.accountsGetAccountRequestFromJSON = accountsGetAccountRequestFromJSON;
+exports.accountsGetAccountResponseToJSON = accountsGetAccountResponseToJSON;
+exports.accountsGetAccountResponseFromJSON = accountsGetAccountResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /**
  * The view to return. Defaults to `FULL`.
@@ -93,6 +98,12 @@ var AccountsGetAccountRequest$;
     /** @deprecated use `AccountsGetAccountRequest$outboundSchema` instead. */
     AccountsGetAccountRequest$.outboundSchema = exports.AccountsGetAccountRequest$outboundSchema;
 })(AccountsGetAccountRequest$ || (exports.AccountsGetAccountRequest$ = AccountsGetAccountRequest$ = {}));
+function accountsGetAccountRequestToJSON(accountsGetAccountRequest) {
+    return JSON.stringify(exports.AccountsGetAccountRequest$outboundSchema.parse(accountsGetAccountRequest));
+}
+function accountsGetAccountRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsGetAccountRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsGetAccountRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsGetAccountResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -128,4 +139,10 @@ var AccountsGetAccountResponse$;
     /** @deprecated use `AccountsGetAccountResponse$outboundSchema` instead. */
     AccountsGetAccountResponse$.outboundSchema = exports.AccountsGetAccountResponse$outboundSchema;
 })(AccountsGetAccountResponse$ || (exports.AccountsGetAccountResponse$ = AccountsGetAccountResponse$ = {}));
+function accountsGetAccountResponseToJSON(accountsGetAccountResponse) {
+    return JSON.stringify(exports.AccountsGetAccountResponse$outboundSchema.parse(accountsGetAccountResponse));
+}
+function accountsGetAccountResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsGetAccountResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsGetAccountResponse' from JSON`);
+}
 //# sourceMappingURL=accountsgetaccount.js.map

@@ -20,6 +20,7 @@ Adds an Enrollment to an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_EnrollAccount" method="post" path="/accounts/v1/accounts/{account_id}:enroll" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { EnrollmentCreateType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -44,7 +45,6 @@ async function run() {
     },
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -81,15 +81,12 @@ async function run() {
       type: EnrollmentCreateType.RegistrationIndividual,
     },
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsEnrollAccount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -111,10 +108,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listAvailableEnrollments
 
@@ -122,6 +120,7 @@ Get a list of Enrollments available for an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListAvailableEnrollments" method="get" path="/accounts/v1/accounts/{account_id}/availableEnrollments" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -140,7 +139,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.listAvailableEnrollments("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -171,15 +169,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await enrollmentsAndAgreementsListAvailableEnrollments(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsListAvailableEnrollments failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -203,10 +198,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## accountsListAvailableEnrollmentsByAccountGroup
 
@@ -214,6 +210,7 @@ Get a list of Enrollments available for an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListAvailableEnrollments_1" method="get" path="/accounts/v1/accountGroups/{accountGroup_id}/availableEnrollments" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -232,7 +229,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.accountsListAvailableEnrollmentsByAccountGroup("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -263,15 +259,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await enrollmentsAndAgreementsAccountsListAvailableEnrollmentsByAccountGroup(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsAccountsListAvailableEnrollmentsByAccountGroup failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -295,10 +288,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## deactivateEnrollment
 
@@ -306,6 +300,7 @@ Deactivates an Account Enrollment.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_DeactivateEnrollment" method="post" path="/accounts/v1/accounts/{account_id}/enrollments:deactivate" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -324,7 +319,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.deactivateEnrollment({}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -355,15 +349,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await enrollmentsAndAgreementsDeactivateEnrollment(apexascend, {}, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsDeactivateEnrollment failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -385,10 +376,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listEnrollments
 
@@ -396,6 +388,7 @@ Gets a list of Enrollments for an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListEnrollments" method="get" path="/accounts/v1/accounts/{account_id}/enrollments" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -414,7 +407,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.listEnrollments("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -445,15 +437,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await enrollmentsAndAgreementsListEnrollments(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsListEnrollments failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -476,10 +465,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## affirmAgreements
 
@@ -487,6 +477,7 @@ Affirm Agreements for an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_AffirmAgreements" method="post" path="/accounts/v1/accounts/{account_id}/agreements:affirm" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -509,7 +500,6 @@ async function run() {
     ],
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -544,15 +534,12 @@ async function run() {
       "fa2f181c-f2fb-4bc2-b75a-79302c634ae5",
     ],
   }, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsAffirmAgreements failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -574,10 +561,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listAgreements
 
@@ -585,6 +573,7 @@ Gets a list of Agreements on an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListAgreements" method="get" path="/accounts/v1/accounts/{account_id}/agreements" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -603,7 +592,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.listAgreements("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -634,15 +622,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await enrollmentsAndAgreementsListAgreements(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsListAgreements failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -665,10 +650,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listEntitlements
 
@@ -676,6 +662,7 @@ Gets a list of Entitlements for an Account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListEntitlements" method="get" path="/accounts/v1/accounts/{account_id}/entitlements" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -694,7 +681,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.listEntitlements("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -725,15 +711,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await enrollmentsAndAgreementsListEntitlements(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("enrollmentsAndAgreementsListEntitlements failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -756,7 +739,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

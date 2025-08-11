@@ -45,8 +45,145 @@ exports.EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPl
 exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$ = exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$ = exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataOtherAccounts$ = exports.EnrollmentLlcEnrollmentMetadataOtherAccounts$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataOtherAccounts$inboundSchema = exports.EnrollmentDeterminedAccountRiskRating$ = exports.EnrollmentDeterminedAccountRiskRating$outboundSchema = exports.EnrollmentDeterminedAccountRiskRating$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$ = exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$ = exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan$ = exports.EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadata$ = exports.JointWithRightsOfSurvivorshipEnrollmentMetadata$outboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadata$inboundSchema = exports.EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSweep$ = exports.EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSweep$outboundSchema = exports.EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataFdicCashSweep$inboundSchema = exports.EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlan$ = exports.EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlan$outboundSchema = exports.EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = exports.JointTenantsInCommonEnrollmentMetadata$ = exports.JointTenantsInCommonEnrollmentMetadata$outboundSchema = exports.JointTenantsInCommonEnrollmentMetadata$inboundSchema = exports.EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweep$ = exports.EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweep$outboundSchema = exports.EnrollmentJointTenantsInCommonEnrollmentMetadataFdicCashSweep$inboundSchema = exports.EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlan$ = exports.EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlan$outboundSchema = exports.EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadata$ = exports.JointTenantsByEntiretyEnrollmentMetadata$outboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadata$inboundSchema = exports.EnrollmentLegalResidencyStateOfMarriedCouple$ = exports.EnrollmentLegalResidencyStateOfMarriedCouple$outboundSchema = exports.EnrollmentLegalResidencyStateOfMarriedCouple$inboundSchema = exports.EnrollmentJointTenantsByEntiretyEnrollmentMetadataFdicCashSweep$ = exports.EnrollmentJointTenantsByEntiretyEnrollmentMetadataFdicCashSweep$outboundSchema = exports.EnrollmentJointTenantsByEntiretyEnrollmentMetadataFdicCashSweep$inboundSchema = exports.EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlan$ = void 0;
 exports.OrdersOptionsTradingEnrollmentMetadata$ = exports.OrdersOptionsTradingEnrollmentMetadata$outboundSchema = exports.OrdersOptionsTradingEnrollmentMetadata$inboundSchema = exports.EnrollmentOptionsLevel$ = exports.EnrollmentOptionsLevel$outboundSchema = exports.EnrollmentOptionsLevel$inboundSchema = exports.InvestmentVehicleExperience$ = exports.InvestmentVehicleExperience$outboundSchema = exports.InvestmentVehicleExperience$inboundSchema = exports.OperatingEnrollmentMetadata$ = exports.OperatingEnrollmentMetadata$outboundSchema = exports.OperatingEnrollmentMetadata$inboundSchema = exports.TaxWithholdingMetadata$ = exports.TaxWithholdingMetadata$outboundSchema = exports.TaxWithholdingMetadata$inboundSchema = exports.EnrollmentWithholdingType$ = exports.EnrollmentWithholdingType$outboundSchema = exports.EnrollmentWithholdingType$inboundSchema = exports.EnrollmentTaxAuthority$ = exports.EnrollmentTaxAuthority$outboundSchema = exports.EnrollmentTaxAuthority$inboundSchema = exports.EnrollmentOperatingPurpose$ = exports.EnrollmentOperatingPurpose$outboundSchema = exports.EnrollmentOperatingPurpose$inboundSchema = exports.LlcEnrollmentMetadata$ = exports.LlcEnrollmentMetadata$outboundSchema = exports.LlcEnrollmentMetadata$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataFdicCashSweep$ = exports.EnrollmentLlcEnrollmentMetadataFdicCashSweep$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataFdicCashSweep$inboundSchema = exports.EnrollmentEddAccountEnrollmentMetadata$ = exports.EnrollmentEddAccountEnrollmentMetadata$outboundSchema = exports.EnrollmentEddAccountEnrollmentMetadata$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$ = exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataPlannedActivity$ = exports.EnrollmentLlcEnrollmentMetadataPlannedActivity$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataPlannedActivity$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataWithdrawalFrequency$ = exports.EnrollmentLlcEnrollmentMetadataWithdrawalFrequency$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataWithdrawalFrequency$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataPrimaryAccountActivityType$ = exports.EnrollmentLlcEnrollmentMetadataPrimaryAccountActivityType$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataPrimaryAccountActivityType$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$ = exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$outboundSchema = exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$inboundSchema = exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$ = exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema = void 0;
 exports.Enrollment$ = exports.Enrollment$outboundSchema = exports.Enrollment$inboundSchema = exports.VirtualAccountNumberEnrollmentMetadata$ = exports.VirtualAccountNumberEnrollmentMetadata$outboundSchema = exports.VirtualAccountNumberEnrollmentMetadata$inboundSchema = exports.EnrollmentType1$ = exports.EnrollmentType1$outboundSchema = exports.EnrollmentType1$inboundSchema = exports.TrustEnrollmentMetadata$ = exports.TrustEnrollmentMetadata$outboundSchema = exports.TrustEnrollmentMetadata$inboundSchema = exports.EnrollmentOpenedOnBehalfOf$ = exports.EnrollmentOpenedOnBehalfOf$outboundSchema = exports.EnrollmentOpenedOnBehalfOf$inboundSchema = exports.EnrollmentTrustEnrollmentMetadataFdicCashSweep$ = exports.EnrollmentTrustEnrollmentMetadataFdicCashSweep$outboundSchema = exports.EnrollmentTrustEnrollmentMetadataFdicCashSweep$inboundSchema = exports.EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlan$ = exports.EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlan$outboundSchema = exports.EnrollmentTrustEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = exports.EnrollmentState$ = exports.EnrollmentState$outboundSchema = exports.EnrollmentState$inboundSchema = void 0;
+exports.beneficiaryEnrollmentMetadataToJSON = beneficiaryEnrollmentMetadataToJSON;
+exports.beneficiaryEnrollmentMetadataFromJSON = beneficiaryEnrollmentMetadataFromJSON;
+exports.initialDepositAmountToJSON = initialDepositAmountToJSON;
+exports.initialDepositAmountFromJSON = initialDepositAmountFromJSON;
+exports.depositedFundsToJSON = depositedFundsToJSON;
+exports.depositedFundsFromJSON = depositedFundsFromJSON;
+exports.otherAccountsToJSON = otherAccountsToJSON;
+exports.otherAccountsFromJSON = otherAccountsFromJSON;
+exports.financialProfileToJSON = financialProfileToJSON;
+exports.financialProfileFromJSON = financialProfileFromJSON;
+exports.foreignBondTradingDetailsToJSON = foreignBondTradingDetailsToJSON;
+exports.foreignBondTradingDetailsFromJSON = foreignBondTradingDetailsFromJSON;
+exports.lowPricedSecuritiesPercentageToJSON = lowPricedSecuritiesPercentageToJSON;
+exports.lowPricedSecuritiesPercentageFromJSON = lowPricedSecuritiesPercentageFromJSON;
+exports.lowPricedSecuritiesToJSON = lowPricedSecuritiesToJSON;
+exports.lowPricedSecuritiesFromJSON = lowPricedSecuritiesFromJSON;
+exports.plannedActivityToJSON = plannedActivityToJSON;
+exports.plannedActivityFromJSON = plannedActivityFromJSON;
+exports.relatedPepDetailsToJSON = relatedPepDetailsToJSON;
+exports.relatedPepDetailsFromJSON = relatedPepDetailsFromJSON;
+exports.eddAccountEnrollmentMetadataToJSON = eddAccountEnrollmentMetadataToJSON;
+exports.eddAccountEnrollmentMetadataFromJSON = eddAccountEnrollmentMetadataFromJSON;
+exports.corporationEnrollmentMetadataToJSON = corporationEnrollmentMetadataToJSON;
+exports.corporationEnrollmentMetadataFromJSON = corporationEnrollmentMetadataFromJSON;
+exports.custodialEnrollmentMetadataToJSON = custodialEnrollmentMetadataToJSON;
+exports.custodialEnrollmentMetadataFromJSON = custodialEnrollmentMetadataFromJSON;
+exports.estateEnrollmentMetadataToJSON = estateEnrollmentMetadataToJSON;
+exports.estateEnrollmentMetadataFromJSON = estateEnrollmentMetadataFromJSON;
+exports.enrollmentInitialDepositAmountToJSON = enrollmentInitialDepositAmountToJSON;
+exports.enrollmentInitialDepositAmountFromJSON = enrollmentInitialDepositAmountFromJSON;
+exports.enrollmentDepositedFundsToJSON = enrollmentDepositedFundsToJSON;
+exports.enrollmentDepositedFundsFromJSON = enrollmentDepositedFundsFromJSON;
+exports.enrollmentOtherAccountsToJSON = enrollmentOtherAccountsToJSON;
+exports.enrollmentOtherAccountsFromJSON = enrollmentOtherAccountsFromJSON;
+exports.enrollmentFinancialProfileToJSON = enrollmentFinancialProfileToJSON;
+exports.enrollmentFinancialProfileFromJSON = enrollmentFinancialProfileFromJSON;
+exports.enrollmentForeignBondTradingDetailsToJSON = enrollmentForeignBondTradingDetailsToJSON;
+exports.enrollmentForeignBondTradingDetailsFromJSON = enrollmentForeignBondTradingDetailsFromJSON;
+exports.enrollmentLowPricedSecuritiesPercentageToJSON = enrollmentLowPricedSecuritiesPercentageToJSON;
+exports.enrollmentLowPricedSecuritiesPercentageFromJSON = enrollmentLowPricedSecuritiesPercentageFromJSON;
+exports.enrollmentLowPricedSecuritiesToJSON = enrollmentLowPricedSecuritiesToJSON;
+exports.enrollmentLowPricedSecuritiesFromJSON = enrollmentLowPricedSecuritiesFromJSON;
+exports.enrollmentPlannedActivityToJSON = enrollmentPlannedActivityToJSON;
+exports.enrollmentPlannedActivityFromJSON = enrollmentPlannedActivityFromJSON;
+exports.enrollmentRelatedPepDetailsToJSON = enrollmentRelatedPepDetailsToJSON;
+exports.enrollmentRelatedPepDetailsFromJSON = enrollmentRelatedPepDetailsFromJSON;
+exports.foreignNaturalPersonAccountEnrollmentMetadataToJSON = foreignNaturalPersonAccountEnrollmentMetadataToJSON;
+exports.foreignNaturalPersonAccountEnrollmentMetadataFromJSON = foreignNaturalPersonAccountEnrollmentMetadataFromJSON;
+exports.foreignIndividualAccountEnrollmentMetadataToJSON = foreignIndividualAccountEnrollmentMetadataToJSON;
+exports.foreignIndividualAccountEnrollmentMetadataFromJSON = foreignIndividualAccountEnrollmentMetadataFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountToJSON = enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountFromJSON = enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsToJSON = enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsFromJSON = enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsToJSON = enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsFromJSON = enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileToJSON = enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileFromJSON = enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsToJSON = enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsFromJSON = enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageToJSON = enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON = enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesToJSON = enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesFromJSON = enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityToJSON = enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityFromJSON = enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityFromJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsToJSON = enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsToJSON;
+exports.enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsFromJSON = enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsFromJSON;
+exports.enrollmentForeignNaturalPersonAccountEnrollmentMetadataToJSON = enrollmentForeignNaturalPersonAccountEnrollmentMetadataToJSON;
+exports.enrollmentForeignNaturalPersonAccountEnrollmentMetadataFromJSON = enrollmentForeignNaturalPersonAccountEnrollmentMetadataFromJSON;
+exports.foreignJointAccountEnrollmentMetadataToJSON = foreignJointAccountEnrollmentMetadataToJSON;
+exports.foreignJointAccountEnrollmentMetadataFromJSON = foreignJointAccountEnrollmentMetadataFromJSON;
+exports.fpslEnrollmentMetadataToJSON = fpslEnrollmentMetadataToJSON;
+exports.fpslEnrollmentMetadataFromJSON = fpslEnrollmentMetadataFromJSON;
+exports.individualEnrollmentMetadataToJSON = individualEnrollmentMetadataToJSON;
+exports.individualEnrollmentMetadataFromJSON = individualEnrollmentMetadataFromJSON;
+exports.inheritedFromOwnerBirthDateToJSON = inheritedFromOwnerBirthDateToJSON;
+exports.inheritedFromOwnerBirthDateFromJSON = inheritedFromOwnerBirthDateFromJSON;
+exports.inheritedFromOwnerDeathDateToJSON = inheritedFromOwnerDeathDateToJSON;
+exports.inheritedFromOwnerDeathDateFromJSON = inheritedFromOwnerDeathDateFromJSON;
+exports.iraBeneficiaryEnrollmentMetadataToJSON = iraBeneficiaryEnrollmentMetadataToJSON;
+exports.iraBeneficiaryEnrollmentMetadataFromJSON = iraBeneficiaryEnrollmentMetadataFromJSON;
+exports.iraRolloverEnrollmentMetadataToJSON = iraRolloverEnrollmentMetadataToJSON;
+exports.iraRolloverEnrollmentMetadataFromJSON = iraRolloverEnrollmentMetadataFromJSON;
+exports.iraRothEnrollmentMetadataToJSON = iraRothEnrollmentMetadataToJSON;
+exports.iraRothEnrollmentMetadataFromJSON = iraRothEnrollmentMetadataFromJSON;
+exports.iraSepEnrollmentMetadataToJSON = iraSepEnrollmentMetadataToJSON;
+exports.iraSepEnrollmentMetadataFromJSON = iraSepEnrollmentMetadataFromJSON;
+exports.iraSimpleEnrollmentMetadataToJSON = iraSimpleEnrollmentMetadataToJSON;
+exports.iraSimpleEnrollmentMetadataFromJSON = iraSimpleEnrollmentMetadataFromJSON;
+exports.iraTraditionalEnrollmentMetadataToJSON = iraTraditionalEnrollmentMetadataToJSON;
+exports.iraTraditionalEnrollmentMetadataFromJSON = iraTraditionalEnrollmentMetadataFromJSON;
+exports.jointCommunityPropertyEnrollmentMetadataToJSON = jointCommunityPropertyEnrollmentMetadataToJSON;
+exports.jointCommunityPropertyEnrollmentMetadataFromJSON = jointCommunityPropertyEnrollmentMetadataFromJSON;
+exports.jointTenantsByEntiretyEnrollmentMetadataToJSON = jointTenantsByEntiretyEnrollmentMetadataToJSON;
+exports.jointTenantsByEntiretyEnrollmentMetadataFromJSON = jointTenantsByEntiretyEnrollmentMetadataFromJSON;
+exports.jointTenantsInCommonEnrollmentMetadataToJSON = jointTenantsInCommonEnrollmentMetadataToJSON;
+exports.jointTenantsInCommonEnrollmentMetadataFromJSON = jointTenantsInCommonEnrollmentMetadataFromJSON;
+exports.jointWithRightsOfSurvivorshipEnrollmentMetadataToJSON = jointWithRightsOfSurvivorshipEnrollmentMetadataToJSON;
+exports.jointWithRightsOfSurvivorshipEnrollmentMetadataFromJSON = jointWithRightsOfSurvivorshipEnrollmentMetadataFromJSON;
+exports.enrollmentLlcEnrollmentMetadataInitialDepositAmountToJSON = enrollmentLlcEnrollmentMetadataInitialDepositAmountToJSON;
+exports.enrollmentLlcEnrollmentMetadataInitialDepositAmountFromJSON = enrollmentLlcEnrollmentMetadataInitialDepositAmountFromJSON;
+exports.enrollmentLlcEnrollmentMetadataDepositedFundsToJSON = enrollmentLlcEnrollmentMetadataDepositedFundsToJSON;
+exports.enrollmentLlcEnrollmentMetadataDepositedFundsFromJSON = enrollmentLlcEnrollmentMetadataDepositedFundsFromJSON;
+exports.enrollmentLlcEnrollmentMetadataOtherAccountsToJSON = enrollmentLlcEnrollmentMetadataOtherAccountsToJSON;
+exports.enrollmentLlcEnrollmentMetadataOtherAccountsFromJSON = enrollmentLlcEnrollmentMetadataOtherAccountsFromJSON;
+exports.enrollmentLlcEnrollmentMetadataFinancialProfileToJSON = enrollmentLlcEnrollmentMetadataFinancialProfileToJSON;
+exports.enrollmentLlcEnrollmentMetadataFinancialProfileFromJSON = enrollmentLlcEnrollmentMetadataFinancialProfileFromJSON;
+exports.enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsToJSON = enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsToJSON;
+exports.enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsFromJSON = enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsFromJSON;
+exports.enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageToJSON = enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageToJSON;
+exports.enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON = enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON;
+exports.enrollmentLlcEnrollmentMetadataLowPricedSecuritiesToJSON = enrollmentLlcEnrollmentMetadataLowPricedSecuritiesToJSON;
+exports.enrollmentLlcEnrollmentMetadataLowPricedSecuritiesFromJSON = enrollmentLlcEnrollmentMetadataLowPricedSecuritiesFromJSON;
+exports.enrollmentLlcEnrollmentMetadataPlannedActivityToJSON = enrollmentLlcEnrollmentMetadataPlannedActivityToJSON;
+exports.enrollmentLlcEnrollmentMetadataPlannedActivityFromJSON = enrollmentLlcEnrollmentMetadataPlannedActivityFromJSON;
+exports.enrollmentLlcEnrollmentMetadataRelatedPepDetailsToJSON = enrollmentLlcEnrollmentMetadataRelatedPepDetailsToJSON;
+exports.enrollmentLlcEnrollmentMetadataRelatedPepDetailsFromJSON = enrollmentLlcEnrollmentMetadataRelatedPepDetailsFromJSON;
+exports.enrollmentEddAccountEnrollmentMetadataToJSON = enrollmentEddAccountEnrollmentMetadataToJSON;
+exports.enrollmentEddAccountEnrollmentMetadataFromJSON = enrollmentEddAccountEnrollmentMetadataFromJSON;
+exports.llcEnrollmentMetadataToJSON = llcEnrollmentMetadataToJSON;
+exports.llcEnrollmentMetadataFromJSON = llcEnrollmentMetadataFromJSON;
+exports.taxWithholdingMetadataToJSON = taxWithholdingMetadataToJSON;
+exports.taxWithholdingMetadataFromJSON = taxWithholdingMetadataFromJSON;
+exports.operatingEnrollmentMetadataToJSON = operatingEnrollmentMetadataToJSON;
+exports.operatingEnrollmentMetadataFromJSON = operatingEnrollmentMetadataFromJSON;
+exports.investmentVehicleExperienceToJSON = investmentVehicleExperienceToJSON;
+exports.investmentVehicleExperienceFromJSON = investmentVehicleExperienceFromJSON;
+exports.ordersOptionsTradingEnrollmentMetadataToJSON = ordersOptionsTradingEnrollmentMetadataToJSON;
+exports.ordersOptionsTradingEnrollmentMetadataFromJSON = ordersOptionsTradingEnrollmentMetadataFromJSON;
+exports.trustEnrollmentMetadataToJSON = trustEnrollmentMetadataToJSON;
+exports.trustEnrollmentMetadataFromJSON = trustEnrollmentMetadataFromJSON;
+exports.virtualAccountNumberEnrollmentMetadataToJSON = virtualAccountNumberEnrollmentMetadataToJSON;
+exports.virtualAccountNumberEnrollmentMetadataFromJSON = virtualAccountNumberEnrollmentMetadataFromJSON;
+exports.enrollmentToJSON = enrollmentToJSON;
+exports.enrollmentFromJSON = enrollmentFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const beneficiary_js_1 = require("./beneficiary.js");
 const foreignbondtradingdetail_js_1 = require("./foreignbondtradingdetail.js");
@@ -748,6 +885,12 @@ var BeneficiaryEnrollmentMetadata$;
     /** @deprecated use `BeneficiaryEnrollmentMetadata$outboundSchema` instead. */
     BeneficiaryEnrollmentMetadata$.outboundSchema = exports.BeneficiaryEnrollmentMetadata$outboundSchema;
 })(BeneficiaryEnrollmentMetadata$ || (exports.BeneficiaryEnrollmentMetadata$ = BeneficiaryEnrollmentMetadata$ = {}));
+function beneficiaryEnrollmentMetadataToJSON(beneficiaryEnrollmentMetadata) {
+    return JSON.stringify(exports.BeneficiaryEnrollmentMetadata$outboundSchema.parse(beneficiaryEnrollmentMetadata));
+}
+function beneficiaryEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BeneficiaryEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BeneficiaryEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.ConsentMethod$inboundSchema = z
     .union([
@@ -811,6 +954,12 @@ var InitialDepositAmount$;
     /** @deprecated use `InitialDepositAmount$outboundSchema` instead. */
     InitialDepositAmount$.outboundSchema = exports.InitialDepositAmount$outboundSchema;
 })(InitialDepositAmount$ || (exports.InitialDepositAmount$ = InitialDepositAmount$ = {}));
+function initialDepositAmountToJSON(initialDepositAmount) {
+    return JSON.stringify(exports.InitialDepositAmount$outboundSchema.parse(initialDepositAmount));
+}
+function initialDepositAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InitialDepositAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InitialDepositAmount' from JSON`);
+}
 /** @internal */
 exports.DepositedFunds$inboundSchema = z.object({
     initial_deposit_amount: z.nullable(z.lazy(() => exports.InitialDepositAmount$inboundSchema)).optional(),
@@ -842,6 +991,12 @@ var DepositedFunds$;
     /** @deprecated use `DepositedFunds$outboundSchema` instead. */
     DepositedFunds$.outboundSchema = exports.DepositedFunds$outboundSchema;
 })(DepositedFunds$ || (exports.DepositedFunds$ = DepositedFunds$ = {}));
+function depositedFundsToJSON(depositedFunds) {
+    return JSON.stringify(exports.DepositedFunds$outboundSchema.parse(depositedFunds));
+}
+function depositedFundsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DepositedFunds$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DepositedFunds' from JSON`);
+}
 /** @internal */
 exports.EnrollmentCorporationEnrollmentMetadataDeterminedAccountRiskRating$inboundSchema = z
     .union([
@@ -899,6 +1054,12 @@ var OtherAccounts$;
     /** @deprecated use `OtherAccounts$outboundSchema` instead. */
     OtherAccounts$.outboundSchema = exports.OtherAccounts$outboundSchema;
 })(OtherAccounts$ || (exports.OtherAccounts$ = OtherAccounts$ = {}));
+function otherAccountsToJSON(otherAccounts) {
+    return JSON.stringify(exports.OtherAccounts$outboundSchema.parse(otherAccounts));
+}
+function otherAccountsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OtherAccounts$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OtherAccounts' from JSON`);
+}
 /** @internal */
 exports.FinancialProfile$inboundSchema = z.object({
     banking_relationships: z.array(z.string()).optional(),
@@ -936,6 +1097,12 @@ var FinancialProfile$;
     /** @deprecated use `FinancialProfile$outboundSchema` instead. */
     FinancialProfile$.outboundSchema = exports.FinancialProfile$outboundSchema;
 })(FinancialProfile$ || (exports.FinancialProfile$ = FinancialProfile$ = {}));
+function financialProfileToJSON(financialProfile) {
+    return JSON.stringify(exports.FinancialProfile$outboundSchema.parse(financialProfile));
+}
+function financialProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FinancialProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FinancialProfile' from JSON`);
+}
 /** @internal */
 exports.ForeignBondTradingDetails$inboundSchema = z.object({
     foreign_bond_trading: z.boolean().optional(),
@@ -969,6 +1136,12 @@ var ForeignBondTradingDetails$;
     /** @deprecated use `ForeignBondTradingDetails$outboundSchema` instead. */
     ForeignBondTradingDetails$.outboundSchema = exports.ForeignBondTradingDetails$outboundSchema;
 })(ForeignBondTradingDetails$ || (exports.ForeignBondTradingDetails$ = ForeignBondTradingDetails$ = {}));
+function foreignBondTradingDetailsToJSON(foreignBondTradingDetails) {
+    return JSON.stringify(exports.ForeignBondTradingDetails$outboundSchema.parse(foreignBondTradingDetails));
+}
+function foreignBondTradingDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignBondTradingDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignBondTradingDetails' from JSON`);
+}
 /** @internal */
 exports.LowPricedSecuritiesPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -988,6 +1161,12 @@ var LowPricedSecuritiesPercentage$;
     /** @deprecated use `LowPricedSecuritiesPercentage$outboundSchema` instead. */
     LowPricedSecuritiesPercentage$.outboundSchema = exports.LowPricedSecuritiesPercentage$outboundSchema;
 })(LowPricedSecuritiesPercentage$ || (exports.LowPricedSecuritiesPercentage$ = LowPricedSecuritiesPercentage$ = {}));
+function lowPricedSecuritiesPercentageToJSON(lowPricedSecuritiesPercentage) {
+    return JSON.stringify(exports.LowPricedSecuritiesPercentage$outboundSchema.parse(lowPricedSecuritiesPercentage));
+}
+function lowPricedSecuritiesPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LowPricedSecuritiesPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LowPricedSecuritiesPercentage' from JSON`);
+}
 /** @internal */
 exports.LowPricedSecurities$inboundSchema = z.object({
     low_priced_securities: z.boolean().optional(),
@@ -1019,6 +1198,12 @@ var LowPricedSecurities$;
     /** @deprecated use `LowPricedSecurities$outboundSchema` instead. */
     LowPricedSecurities$.outboundSchema = exports.LowPricedSecurities$outboundSchema;
 })(LowPricedSecurities$ || (exports.LowPricedSecurities$ = LowPricedSecurities$ = {}));
+function lowPricedSecuritiesToJSON(lowPricedSecurities) {
+    return JSON.stringify(exports.LowPricedSecurities$outboundSchema.parse(lowPricedSecurities));
+}
+function lowPricedSecuritiesFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LowPricedSecurities$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LowPricedSecurities' from JSON`);
+}
 /** @internal */
 exports.EnrollmentCorporationEnrollmentMetadataPrimaryAccountActivityType$inboundSchema = z
     .union([
@@ -1106,6 +1291,12 @@ var PlannedActivity$;
     /** @deprecated use `PlannedActivity$outboundSchema` instead. */
     PlannedActivity$.outboundSchema = exports.PlannedActivity$outboundSchema;
 })(PlannedActivity$ || (exports.PlannedActivity$ = PlannedActivity$ = {}));
+function plannedActivityToJSON(plannedActivity) {
+    return JSON.stringify(exports.PlannedActivity$outboundSchema.parse(plannedActivity));
+}
+function plannedActivityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PlannedActivity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PlannedActivity' from JSON`);
+}
 /** @internal */
 exports.RelatedPepDetails$inboundSchema = z.object({
     direct_or_indirect_related_peps: z.boolean().optional(),
@@ -1137,6 +1328,12 @@ var RelatedPepDetails$;
     /** @deprecated use `RelatedPepDetails$outboundSchema` instead. */
     RelatedPepDetails$.outboundSchema = exports.RelatedPepDetails$outboundSchema;
 })(RelatedPepDetails$ || (exports.RelatedPepDetails$ = RelatedPepDetails$ = {}));
+function relatedPepDetailsToJSON(relatedPepDetails) {
+    return JSON.stringify(exports.RelatedPepDetails$outboundSchema.parse(relatedPepDetails));
+}
+function relatedPepDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RelatedPepDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RelatedPepDetails' from JSON`);
+}
 /** @internal */
 exports.EddAccountEnrollmentMetadata$inboundSchema = z.object({
     deposited_funds: z.nullable(z.lazy(() => exports.DepositedFunds$inboundSchema))
@@ -1194,6 +1391,12 @@ var EddAccountEnrollmentMetadata$;
     /** @deprecated use `EddAccountEnrollmentMetadata$outboundSchema` instead. */
     EddAccountEnrollmentMetadata$.outboundSchema = exports.EddAccountEnrollmentMetadata$outboundSchema;
 })(EddAccountEnrollmentMetadata$ || (exports.EddAccountEnrollmentMetadata$ = EddAccountEnrollmentMetadata$ = {}));
+function eddAccountEnrollmentMetadataToJSON(eddAccountEnrollmentMetadata) {
+    return JSON.stringify(exports.EddAccountEnrollmentMetadata$outboundSchema.parse(eddAccountEnrollmentMetadata));
+}
+function eddAccountEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EddAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EddAccountEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentCorporationEnrollmentMetadataFdicCashSweep$inboundSchema = z
     .union([
@@ -1255,6 +1458,12 @@ var CorporationEnrollmentMetadata$;
     /** @deprecated use `CorporationEnrollmentMetadata$outboundSchema` instead. */
     CorporationEnrollmentMetadata$.outboundSchema = exports.CorporationEnrollmentMetadata$outboundSchema;
 })(CorporationEnrollmentMetadata$ || (exports.CorporationEnrollmentMetadata$ = CorporationEnrollmentMetadata$ = {}));
+function corporationEnrollmentMetadataToJSON(corporationEnrollmentMetadata) {
+    return JSON.stringify(exports.CorporationEnrollmentMetadata$outboundSchema.parse(corporationEnrollmentMetadata));
+}
+function corporationEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CorporationEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CorporationEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -1332,6 +1541,12 @@ var CustodialEnrollmentMetadata$;
     /** @deprecated use `CustodialEnrollmentMetadata$outboundSchema` instead. */
     CustodialEnrollmentMetadata$.outboundSchema = exports.CustodialEnrollmentMetadata$outboundSchema;
 })(CustodialEnrollmentMetadata$ || (exports.CustodialEnrollmentMetadata$ = CustodialEnrollmentMetadata$ = {}));
+function custodialEnrollmentMetadataToJSON(custodialEnrollmentMetadata) {
+    return JSON.stringify(exports.CustodialEnrollmentMetadata$outboundSchema.parse(custodialEnrollmentMetadata));
+}
+function custodialEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustodialEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustodialEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -1387,6 +1602,12 @@ var EstateEnrollmentMetadata$;
     /** @deprecated use `EstateEnrollmentMetadata$outboundSchema` instead. */
     EstateEnrollmentMetadata$.outboundSchema = exports.EstateEnrollmentMetadata$outboundSchema;
 })(EstateEnrollmentMetadata$ || (exports.EstateEnrollmentMetadata$ = EstateEnrollmentMetadata$ = {}));
+function estateEnrollmentMetadataToJSON(estateEnrollmentMetadata) {
+    return JSON.stringify(exports.EstateEnrollmentMetadata$outboundSchema.parse(estateEnrollmentMetadata));
+}
+function estateEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EstateEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EstateEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -1450,6 +1671,12 @@ var EnrollmentInitialDepositAmount$;
     /** @deprecated use `EnrollmentInitialDepositAmount$outboundSchema` instead. */
     EnrollmentInitialDepositAmount$.outboundSchema = exports.EnrollmentInitialDepositAmount$outboundSchema;
 })(EnrollmentInitialDepositAmount$ || (exports.EnrollmentInitialDepositAmount$ = EnrollmentInitialDepositAmount$ = {}));
+function enrollmentInitialDepositAmountToJSON(enrollmentInitialDepositAmount) {
+    return JSON.stringify(exports.EnrollmentInitialDepositAmount$outboundSchema.parse(enrollmentInitialDepositAmount));
+}
+function enrollmentInitialDepositAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentInitialDepositAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentInitialDepositAmount' from JSON`);
+}
 /** @internal */
 exports.EnrollmentDepositedFunds$inboundSchema = z.object({
     initial_deposit_amount: z.nullable(z.lazy(() => exports.EnrollmentInitialDepositAmount$inboundSchema)).optional(),
@@ -1481,6 +1708,12 @@ var EnrollmentDepositedFunds$;
     /** @deprecated use `EnrollmentDepositedFunds$outboundSchema` instead. */
     EnrollmentDepositedFunds$.outboundSchema = exports.EnrollmentDepositedFunds$outboundSchema;
 })(EnrollmentDepositedFunds$ || (exports.EnrollmentDepositedFunds$ = EnrollmentDepositedFunds$ = {}));
+function enrollmentDepositedFundsToJSON(enrollmentDepositedFunds) {
+    return JSON.stringify(exports.EnrollmentDepositedFunds$outboundSchema.parse(enrollmentDepositedFunds));
+}
+function enrollmentDepositedFundsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentDepositedFunds$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentDepositedFunds' from JSON`);
+}
 /** @internal */
 exports.EnrollmentOtherAccounts$inboundSchema = z.object({
     account_names: z.array(z.string()).optional(),
@@ -1516,6 +1749,12 @@ var EnrollmentOtherAccounts$;
     /** @deprecated use `EnrollmentOtherAccounts$outboundSchema` instead. */
     EnrollmentOtherAccounts$.outboundSchema = exports.EnrollmentOtherAccounts$outboundSchema;
 })(EnrollmentOtherAccounts$ || (exports.EnrollmentOtherAccounts$ = EnrollmentOtherAccounts$ = {}));
+function enrollmentOtherAccountsToJSON(enrollmentOtherAccounts) {
+    return JSON.stringify(exports.EnrollmentOtherAccounts$outboundSchema.parse(enrollmentOtherAccounts));
+}
+function enrollmentOtherAccountsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentOtherAccounts$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentOtherAccounts' from JSON`);
+}
 /** @internal */
 exports.EnrollmentFinancialProfile$inboundSchema = z.object({
     banking_relationships: z.array(z.string()).optional(),
@@ -1551,6 +1790,12 @@ var EnrollmentFinancialProfile$;
     /** @deprecated use `EnrollmentFinancialProfile$outboundSchema` instead. */
     EnrollmentFinancialProfile$.outboundSchema = exports.EnrollmentFinancialProfile$outboundSchema;
 })(EnrollmentFinancialProfile$ || (exports.EnrollmentFinancialProfile$ = EnrollmentFinancialProfile$ = {}));
+function enrollmentFinancialProfileToJSON(enrollmentFinancialProfile) {
+    return JSON.stringify(exports.EnrollmentFinancialProfile$outboundSchema.parse(enrollmentFinancialProfile));
+}
+function enrollmentFinancialProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentFinancialProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentFinancialProfile' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignBondTradingDetails$inboundSchema = z.object({
     foreign_bond_trading: z.boolean().optional(),
@@ -1584,6 +1829,12 @@ var EnrollmentForeignBondTradingDetails$;
     /** @deprecated use `EnrollmentForeignBondTradingDetails$outboundSchema` instead. */
     EnrollmentForeignBondTradingDetails$.outboundSchema = exports.EnrollmentForeignBondTradingDetails$outboundSchema;
 })(EnrollmentForeignBondTradingDetails$ || (exports.EnrollmentForeignBondTradingDetails$ = EnrollmentForeignBondTradingDetails$ = {}));
+function enrollmentForeignBondTradingDetailsToJSON(enrollmentForeignBondTradingDetails) {
+    return JSON.stringify(exports.EnrollmentForeignBondTradingDetails$outboundSchema.parse(enrollmentForeignBondTradingDetails));
+}
+function enrollmentForeignBondTradingDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignBondTradingDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignBondTradingDetails' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLowPricedSecuritiesPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -1603,6 +1854,12 @@ var EnrollmentLowPricedSecuritiesPercentage$;
     /** @deprecated use `EnrollmentLowPricedSecuritiesPercentage$outboundSchema` instead. */
     EnrollmentLowPricedSecuritiesPercentage$.outboundSchema = exports.EnrollmentLowPricedSecuritiesPercentage$outboundSchema;
 })(EnrollmentLowPricedSecuritiesPercentage$ || (exports.EnrollmentLowPricedSecuritiesPercentage$ = EnrollmentLowPricedSecuritiesPercentage$ = {}));
+function enrollmentLowPricedSecuritiesPercentageToJSON(enrollmentLowPricedSecuritiesPercentage) {
+    return JSON.stringify(exports.EnrollmentLowPricedSecuritiesPercentage$outboundSchema.parse(enrollmentLowPricedSecuritiesPercentage));
+}
+function enrollmentLowPricedSecuritiesPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLowPricedSecuritiesPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLowPricedSecuritiesPercentage' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLowPricedSecurities$inboundSchema = z.object({
     low_priced_securities: z.boolean().optional(),
@@ -1634,6 +1891,12 @@ var EnrollmentLowPricedSecurities$;
     /** @deprecated use `EnrollmentLowPricedSecurities$outboundSchema` instead. */
     EnrollmentLowPricedSecurities$.outboundSchema = exports.EnrollmentLowPricedSecurities$outboundSchema;
 })(EnrollmentLowPricedSecurities$ || (exports.EnrollmentLowPricedSecurities$ = EnrollmentLowPricedSecurities$ = {}));
+function enrollmentLowPricedSecuritiesToJSON(enrollmentLowPricedSecurities) {
+    return JSON.stringify(exports.EnrollmentLowPricedSecurities$outboundSchema.parse(enrollmentLowPricedSecurities));
+}
+function enrollmentLowPricedSecuritiesFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLowPricedSecurities$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLowPricedSecurities' from JSON`);
+}
 /** @internal */
 exports.EnrollmentPrimaryAccountActivityType$inboundSchema = z
     .union([
@@ -1717,6 +1980,12 @@ var EnrollmentPlannedActivity$;
     /** @deprecated use `EnrollmentPlannedActivity$outboundSchema` instead. */
     EnrollmentPlannedActivity$.outboundSchema = exports.EnrollmentPlannedActivity$outboundSchema;
 })(EnrollmentPlannedActivity$ || (exports.EnrollmentPlannedActivity$ = EnrollmentPlannedActivity$ = {}));
+function enrollmentPlannedActivityToJSON(enrollmentPlannedActivity) {
+    return JSON.stringify(exports.EnrollmentPlannedActivity$outboundSchema.parse(enrollmentPlannedActivity));
+}
+function enrollmentPlannedActivityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentPlannedActivity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentPlannedActivity' from JSON`);
+}
 /** @internal */
 exports.EnrollmentRelatedPepDetails$inboundSchema = z.object({
     direct_or_indirect_related_peps: z.boolean().optional(),
@@ -1748,6 +2017,12 @@ var EnrollmentRelatedPepDetails$;
     /** @deprecated use `EnrollmentRelatedPepDetails$outboundSchema` instead. */
     EnrollmentRelatedPepDetails$.outboundSchema = exports.EnrollmentRelatedPepDetails$outboundSchema;
 })(EnrollmentRelatedPepDetails$ || (exports.EnrollmentRelatedPepDetails$ = EnrollmentRelatedPepDetails$ = {}));
+function enrollmentRelatedPepDetailsToJSON(enrollmentRelatedPepDetails) {
+    return JSON.stringify(exports.EnrollmentRelatedPepDetails$outboundSchema.parse(enrollmentRelatedPepDetails));
+}
+function enrollmentRelatedPepDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentRelatedPepDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentRelatedPepDetails' from JSON`);
+}
 /** @internal */
 exports.ForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema = z.object({
     deposited_funds: z.nullable(z.lazy(() => exports.EnrollmentDepositedFunds$inboundSchema)).optional(),
@@ -1787,6 +2062,12 @@ var ForeignNaturalPersonAccountEnrollmentMetadata$;
     /** @deprecated use `ForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema` instead. */
     ForeignNaturalPersonAccountEnrollmentMetadata$.outboundSchema = exports.ForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema;
 })(ForeignNaturalPersonAccountEnrollmentMetadata$ || (exports.ForeignNaturalPersonAccountEnrollmentMetadata$ = ForeignNaturalPersonAccountEnrollmentMetadata$ = {}));
+function foreignNaturalPersonAccountEnrollmentMetadataToJSON(foreignNaturalPersonAccountEnrollmentMetadata) {
+    return JSON.stringify(exports.ForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema.parse(foreignNaturalPersonAccountEnrollmentMetadata));
+}
+function foreignNaturalPersonAccountEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignNaturalPersonAccountEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.ForeignIndividualAccountEnrollmentMetadata$inboundSchema = z.object({
     dividend_reinvestment_plan: exports.EnrollmentForeignIndividualAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema
@@ -1826,6 +2107,12 @@ var ForeignIndividualAccountEnrollmentMetadata$;
     /** @deprecated use `ForeignIndividualAccountEnrollmentMetadata$outboundSchema` instead. */
     ForeignIndividualAccountEnrollmentMetadata$.outboundSchema = exports.ForeignIndividualAccountEnrollmentMetadata$outboundSchema;
 })(ForeignIndividualAccountEnrollmentMetadata$ || (exports.ForeignIndividualAccountEnrollmentMetadata$ = ForeignIndividualAccountEnrollmentMetadata$ = {}));
+function foreignIndividualAccountEnrollmentMetadataToJSON(foreignIndividualAccountEnrollmentMetadata) {
+    return JSON.stringify(exports.ForeignIndividualAccountEnrollmentMetadata$outboundSchema.parse(foreignIndividualAccountEnrollmentMetadata));
+}
+function foreignIndividualAccountEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignIndividualAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignIndividualAccountEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -1889,6 +2176,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$ = EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountToJSON(enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema = z.object({
     initial_deposit_amount: z.nullable(z.lazy(() => exports.EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$inboundSchema)).optional(),
@@ -1920,6 +2215,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$ = EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsToJSON(enrollmentForeignJointAccountEnrollmentMetadataDepositedFunds) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataDepositedFunds));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema = z.object({
     account_names: z.array(z.string()).optional(),
@@ -1955,6 +2258,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$ = EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsToJSON(enrollmentForeignJointAccountEnrollmentMetadataOtherAccounts) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataOtherAccounts));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema = z.object({
     banking_relationships: z.array(z.string()).optional(),
@@ -1990,6 +2301,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$ = EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileToJSON(enrollmentForeignJointAccountEnrollmentMetadataFinancialProfile) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataFinancialProfile));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema = z.object({
     foreign_bond_trading: z.boolean().optional(),
@@ -2023,6 +2342,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$ = EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsToJSON(enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -2042,6 +2369,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$ = EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageToJSON(enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema = z.object({
     low_priced_securities: z.boolean().optional(),
@@ -2073,6 +2408,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$ = EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesToJSON(enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataPrimaryAccountActivityType$inboundSchema = z
     .union([
@@ -2160,6 +2503,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$ = EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityToJSON(enrollmentForeignJointAccountEnrollmentMetadataPlannedActivity) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataPlannedActivity));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema = z.object({
     direct_or_indirect_related_peps: z.boolean().optional(),
@@ -2191,6 +2542,14 @@ var EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$;
     /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema` instead. */
     EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$.outboundSchema = exports.EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema;
 })(EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$ || (exports.EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$ = EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$ = {}));
+function enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsToJSON(enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails) {
+    return JSON.stringify(exports.EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema
+        .parse(enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails));
+}
+function enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails' from JSON`);
+}
 /** @internal */
 exports.EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema = z.object({
     deposited_funds: z.nullable(z.lazy(() => exports.EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema)).optional(),
@@ -2230,6 +2589,14 @@ var EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$;
     /** @deprecated use `EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema` instead. */
     EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$.outboundSchema = exports.EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema;
 })(EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$ || (exports.EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$ = EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$ = {}));
+function enrollmentForeignNaturalPersonAccountEnrollmentMetadataToJSON(enrollmentForeignNaturalPersonAccountEnrollmentMetadata) {
+    return JSON.stringify(exports.EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema
+        .parse(enrollmentForeignNaturalPersonAccountEnrollmentMetadata));
+}
+function enrollmentForeignNaturalPersonAccountEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentForeignNaturalPersonAccountEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.ForeignJointAccountEnrollmentMetadata$inboundSchema = z.object({
     dividend_reinvestment_plan: exports.EnrollmentForeignJointAccountEnrollmentMetadataDividendReinvestmentPlan$inboundSchema
@@ -2269,6 +2636,12 @@ var ForeignJointAccountEnrollmentMetadata$;
     /** @deprecated use `ForeignJointAccountEnrollmentMetadata$outboundSchema` instead. */
     ForeignJointAccountEnrollmentMetadata$.outboundSchema = exports.ForeignJointAccountEnrollmentMetadata$outboundSchema;
 })(ForeignJointAccountEnrollmentMetadata$ || (exports.ForeignJointAccountEnrollmentMetadata$ = ForeignJointAccountEnrollmentMetadata$ = {}));
+function foreignJointAccountEnrollmentMetadataToJSON(foreignJointAccountEnrollmentMetadata) {
+    return JSON.stringify(exports.ForeignJointAccountEnrollmentMetadata$outboundSchema.parse(foreignJointAccountEnrollmentMetadata));
+}
+function foreignJointAccountEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignJointAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignJointAccountEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.FpslEnrollmentMetadata$inboundSchema = z.object({
     customer_percentage: z.number().optional(),
@@ -2308,6 +2681,12 @@ var FpslEnrollmentMetadata$;
     /** @deprecated use `FpslEnrollmentMetadata$outboundSchema` instead. */
     FpslEnrollmentMetadata$.outboundSchema = exports.FpslEnrollmentMetadata$outboundSchema;
 })(FpslEnrollmentMetadata$ || (exports.FpslEnrollmentMetadata$ = FpslEnrollmentMetadata$ = {}));
+function fpslEnrollmentMetadataToJSON(fpslEnrollmentMetadata) {
+    return JSON.stringify(exports.FpslEnrollmentMetadata$outboundSchema.parse(fpslEnrollmentMetadata));
+}
+function fpslEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FpslEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FpslEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentIndividualEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -2387,6 +2766,12 @@ var IndividualEnrollmentMetadata$;
     /** @deprecated use `IndividualEnrollmentMetadata$outboundSchema` instead. */
     IndividualEnrollmentMetadata$.outboundSchema = exports.IndividualEnrollmentMetadata$outboundSchema;
 })(IndividualEnrollmentMetadata$ || (exports.IndividualEnrollmentMetadata$ = IndividualEnrollmentMetadata$ = {}));
+function individualEnrollmentMetadataToJSON(individualEnrollmentMetadata) {
+    return JSON.stringify(exports.IndividualEnrollmentMetadata$outboundSchema.parse(individualEnrollmentMetadata));
+}
+function individualEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IndividualEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IndividualEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -2454,6 +2839,12 @@ var InheritedFromOwnerBirthDate$;
     /** @deprecated use `InheritedFromOwnerBirthDate$outboundSchema` instead. */
     InheritedFromOwnerBirthDate$.outboundSchema = exports.InheritedFromOwnerBirthDate$outboundSchema;
 })(InheritedFromOwnerBirthDate$ || (exports.InheritedFromOwnerBirthDate$ = InheritedFromOwnerBirthDate$ = {}));
+function inheritedFromOwnerBirthDateToJSON(inheritedFromOwnerBirthDate) {
+    return JSON.stringify(exports.InheritedFromOwnerBirthDate$outboundSchema.parse(inheritedFromOwnerBirthDate));
+}
+function inheritedFromOwnerBirthDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InheritedFromOwnerBirthDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InheritedFromOwnerBirthDate' from JSON`);
+}
 /** @internal */
 exports.InheritedFromOwnerDeathDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -2477,6 +2868,12 @@ var InheritedFromOwnerDeathDate$;
     /** @deprecated use `InheritedFromOwnerDeathDate$outboundSchema` instead. */
     InheritedFromOwnerDeathDate$.outboundSchema = exports.InheritedFromOwnerDeathDate$outboundSchema;
 })(InheritedFromOwnerDeathDate$ || (exports.InheritedFromOwnerDeathDate$ = InheritedFromOwnerDeathDate$ = {}));
+function inheritedFromOwnerDeathDateToJSON(inheritedFromOwnerDeathDate) {
+    return JSON.stringify(exports.InheritedFromOwnerDeathDate$outboundSchema.parse(inheritedFromOwnerDeathDate));
+}
+function inheritedFromOwnerDeathDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InheritedFromOwnerDeathDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InheritedFromOwnerDeathDate' from JSON`);
+}
 /** @internal */
 exports.IraBeneficiaryEnrollmentMetadata$inboundSchema = z.object({
     dividend_reinvestment_plan: exports.EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlan$inboundSchema
@@ -2528,6 +2925,12 @@ var IraBeneficiaryEnrollmentMetadata$;
     /** @deprecated use `IraBeneficiaryEnrollmentMetadata$outboundSchema` instead. */
     IraBeneficiaryEnrollmentMetadata$.outboundSchema = exports.IraBeneficiaryEnrollmentMetadata$outboundSchema;
 })(IraBeneficiaryEnrollmentMetadata$ || (exports.IraBeneficiaryEnrollmentMetadata$ = IraBeneficiaryEnrollmentMetadata$ = {}));
+function iraBeneficiaryEnrollmentMetadataToJSON(iraBeneficiaryEnrollmentMetadata) {
+    return JSON.stringify(exports.IraBeneficiaryEnrollmentMetadata$outboundSchema.parse(iraBeneficiaryEnrollmentMetadata));
+}
+function iraBeneficiaryEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraBeneficiaryEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraBeneficiaryEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentIraRolloverEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -2607,6 +3010,12 @@ var IraRolloverEnrollmentMetadata$;
     /** @deprecated use `IraRolloverEnrollmentMetadata$outboundSchema` instead. */
     IraRolloverEnrollmentMetadata$.outboundSchema = exports.IraRolloverEnrollmentMetadata$outboundSchema;
 })(IraRolloverEnrollmentMetadata$ || (exports.IraRolloverEnrollmentMetadata$ = IraRolloverEnrollmentMetadata$ = {}));
+function iraRolloverEnrollmentMetadataToJSON(iraRolloverEnrollmentMetadata) {
+    return JSON.stringify(exports.IraRolloverEnrollmentMetadata$outboundSchema.parse(iraRolloverEnrollmentMetadata));
+}
+function iraRolloverEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraRolloverEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraRolloverEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -2685,6 +3094,12 @@ var IraRothEnrollmentMetadata$;
     /** @deprecated use `IraRothEnrollmentMetadata$outboundSchema` instead. */
     IraRothEnrollmentMetadata$.outboundSchema = exports.IraRothEnrollmentMetadata$outboundSchema;
 })(IraRothEnrollmentMetadata$ || (exports.IraRothEnrollmentMetadata$ = IraRothEnrollmentMetadata$ = {}));
+function iraRothEnrollmentMetadataToJSON(iraRothEnrollmentMetadata) {
+    return JSON.stringify(exports.IraRothEnrollmentMetadata$outboundSchema.parse(iraRothEnrollmentMetadata));
+}
+function iraRothEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraRothEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraRothEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -2764,6 +3179,12 @@ var IraSepEnrollmentMetadata$;
     /** @deprecated use `IraSepEnrollmentMetadata$outboundSchema` instead. */
     IraSepEnrollmentMetadata$.outboundSchema = exports.IraSepEnrollmentMetadata$outboundSchema;
 })(IraSepEnrollmentMetadata$ || (exports.IraSepEnrollmentMetadata$ = IraSepEnrollmentMetadata$ = {}));
+function iraSepEnrollmentMetadataToJSON(iraSepEnrollmentMetadata) {
+    return JSON.stringify(exports.IraSepEnrollmentMetadata$outboundSchema.parse(iraSepEnrollmentMetadata));
+}
+function iraSepEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraSepEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraSepEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentIraSimpleEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -2842,6 +3263,12 @@ var IraSimpleEnrollmentMetadata$;
     /** @deprecated use `IraSimpleEnrollmentMetadata$outboundSchema` instead. */
     IraSimpleEnrollmentMetadata$.outboundSchema = exports.IraSimpleEnrollmentMetadata$outboundSchema;
 })(IraSimpleEnrollmentMetadata$ || (exports.IraSimpleEnrollmentMetadata$ = IraSimpleEnrollmentMetadata$ = {}));
+function iraSimpleEnrollmentMetadataToJSON(iraSimpleEnrollmentMetadata) {
+    return JSON.stringify(exports.IraSimpleEnrollmentMetadata$outboundSchema.parse(iraSimpleEnrollmentMetadata));
+}
+function iraSimpleEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraSimpleEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraSimpleEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentIraTraditionalEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -2921,6 +3348,12 @@ var IraTraditionalEnrollmentMetadata$;
     /** @deprecated use `IraTraditionalEnrollmentMetadata$outboundSchema` instead. */
     IraTraditionalEnrollmentMetadata$.outboundSchema = exports.IraTraditionalEnrollmentMetadata$outboundSchema;
 })(IraTraditionalEnrollmentMetadata$ || (exports.IraTraditionalEnrollmentMetadata$ = IraTraditionalEnrollmentMetadata$ = {}));
+function iraTraditionalEnrollmentMetadataToJSON(iraTraditionalEnrollmentMetadata) {
+    return JSON.stringify(exports.IraTraditionalEnrollmentMetadata$outboundSchema.parse(iraTraditionalEnrollmentMetadata));
+}
+function iraTraditionalEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraTraditionalEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraTraditionalEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentJointCommunityPropertyEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -3028,6 +3461,12 @@ var JointCommunityPropertyEnrollmentMetadata$;
     /** @deprecated use `JointCommunityPropertyEnrollmentMetadata$outboundSchema` instead. */
     JointCommunityPropertyEnrollmentMetadata$.outboundSchema = exports.JointCommunityPropertyEnrollmentMetadata$outboundSchema;
 })(JointCommunityPropertyEnrollmentMetadata$ || (exports.JointCommunityPropertyEnrollmentMetadata$ = JointCommunityPropertyEnrollmentMetadata$ = {}));
+function jointCommunityPropertyEnrollmentMetadataToJSON(jointCommunityPropertyEnrollmentMetadata) {
+    return JSON.stringify(exports.JointCommunityPropertyEnrollmentMetadata$outboundSchema.parse(jointCommunityPropertyEnrollmentMetadata));
+}
+function jointCommunityPropertyEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.JointCommunityPropertyEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'JointCommunityPropertyEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -3133,6 +3572,12 @@ var JointTenantsByEntiretyEnrollmentMetadata$;
     /** @deprecated use `JointTenantsByEntiretyEnrollmentMetadata$outboundSchema` instead. */
     JointTenantsByEntiretyEnrollmentMetadata$.outboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadata$outboundSchema;
 })(JointTenantsByEntiretyEnrollmentMetadata$ || (exports.JointTenantsByEntiretyEnrollmentMetadata$ = JointTenantsByEntiretyEnrollmentMetadata$ = {}));
+function jointTenantsByEntiretyEnrollmentMetadataToJSON(jointTenantsByEntiretyEnrollmentMetadata) {
+    return JSON.stringify(exports.JointTenantsByEntiretyEnrollmentMetadata$outboundSchema.parse(jointTenantsByEntiretyEnrollmentMetadata));
+}
+function jointTenantsByEntiretyEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.JointTenantsByEntiretyEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'JointTenantsByEntiretyEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -3212,6 +3657,12 @@ var JointTenantsInCommonEnrollmentMetadata$;
     /** @deprecated use `JointTenantsInCommonEnrollmentMetadata$outboundSchema` instead. */
     JointTenantsInCommonEnrollmentMetadata$.outboundSchema = exports.JointTenantsInCommonEnrollmentMetadata$outboundSchema;
 })(JointTenantsInCommonEnrollmentMetadata$ || (exports.JointTenantsInCommonEnrollmentMetadata$ = JointTenantsInCommonEnrollmentMetadata$ = {}));
+function jointTenantsInCommonEnrollmentMetadataToJSON(jointTenantsInCommonEnrollmentMetadata) {
+    return JSON.stringify(exports.JointTenantsInCommonEnrollmentMetadata$outboundSchema.parse(jointTenantsInCommonEnrollmentMetadata));
+}
+function jointTenantsInCommonEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.JointTenantsInCommonEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'JointTenantsInCommonEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentJointWithRightsOfSurvivorshipEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -3291,6 +3742,12 @@ var JointWithRightsOfSurvivorshipEnrollmentMetadata$;
     /** @deprecated use `JointWithRightsOfSurvivorshipEnrollmentMetadata$outboundSchema` instead. */
     JointWithRightsOfSurvivorshipEnrollmentMetadata$.outboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadata$outboundSchema;
 })(JointWithRightsOfSurvivorshipEnrollmentMetadata$ || (exports.JointWithRightsOfSurvivorshipEnrollmentMetadata$ = JointWithRightsOfSurvivorshipEnrollmentMetadata$ = {}));
+function jointWithRightsOfSurvivorshipEnrollmentMetadataToJSON(jointWithRightsOfSurvivorshipEnrollmentMetadata) {
+    return JSON.stringify(exports.JointWithRightsOfSurvivorshipEnrollmentMetadata$outboundSchema.parse(jointWithRightsOfSurvivorshipEnrollmentMetadata));
+}
+function jointWithRightsOfSurvivorshipEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.JointWithRightsOfSurvivorshipEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'JointWithRightsOfSurvivorshipEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan$inboundSchema = z
     .union([
@@ -3332,6 +3789,12 @@ var EnrollmentLlcEnrollmentMetadataInitialDepositAmount$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataInitialDepositAmount$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataInitialDepositAmount$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataInitialDepositAmount$ || (exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$ = EnrollmentLlcEnrollmentMetadataInitialDepositAmount$ = {}));
+function enrollmentLlcEnrollmentMetadataInitialDepositAmountToJSON(enrollmentLlcEnrollmentMetadataInitialDepositAmount) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$outboundSchema.parse(enrollmentLlcEnrollmentMetadataInitialDepositAmount));
+}
+function enrollmentLlcEnrollmentMetadataInitialDepositAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataInitialDepositAmount' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$inboundSchema = z.object({
     initial_deposit_amount: z.nullable(z.lazy(() => exports.EnrollmentLlcEnrollmentMetadataInitialDepositAmount$inboundSchema)).optional(),
@@ -3363,6 +3826,12 @@ var EnrollmentLlcEnrollmentMetadataDepositedFunds$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataDepositedFunds$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataDepositedFunds$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataDepositedFunds$ || (exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$ = EnrollmentLlcEnrollmentMetadataDepositedFunds$ = {}));
+function enrollmentLlcEnrollmentMetadataDepositedFundsToJSON(enrollmentLlcEnrollmentMetadataDepositedFunds) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$outboundSchema.parse(enrollmentLlcEnrollmentMetadataDepositedFunds));
+}
+function enrollmentLlcEnrollmentMetadataDepositedFundsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataDepositedFunds' from JSON`);
+}
 /** @internal */
 exports.EnrollmentDeterminedAccountRiskRating$inboundSchema = z
     .union([
@@ -3420,6 +3889,12 @@ var EnrollmentLlcEnrollmentMetadataOtherAccounts$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataOtherAccounts$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataOtherAccounts$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataOtherAccounts$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataOtherAccounts$ || (exports.EnrollmentLlcEnrollmentMetadataOtherAccounts$ = EnrollmentLlcEnrollmentMetadataOtherAccounts$ = {}));
+function enrollmentLlcEnrollmentMetadataOtherAccountsToJSON(enrollmentLlcEnrollmentMetadataOtherAccounts) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataOtherAccounts$outboundSchema.parse(enrollmentLlcEnrollmentMetadataOtherAccounts));
+}
+function enrollmentLlcEnrollmentMetadataOtherAccountsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataOtherAccounts$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataOtherAccounts' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$inboundSchema = z.object({
     banking_relationships: z.array(z.string()).optional(),
@@ -3455,6 +3930,12 @@ var EnrollmentLlcEnrollmentMetadataFinancialProfile$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataFinancialProfile$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataFinancialProfile$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataFinancialProfile$ || (exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$ = EnrollmentLlcEnrollmentMetadataFinancialProfile$ = {}));
+function enrollmentLlcEnrollmentMetadataFinancialProfileToJSON(enrollmentLlcEnrollmentMetadataFinancialProfile) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$outboundSchema.parse(enrollmentLlcEnrollmentMetadataFinancialProfile));
+}
+function enrollmentLlcEnrollmentMetadataFinancialProfileFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataFinancialProfile$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataFinancialProfile' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSchema = z.object({
     foreign_bond_trading: z.boolean().optional(),
@@ -3488,6 +3969,14 @@ var EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$ || (exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$ = EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$ = {}));
+function enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsToJSON(enrollmentLlcEnrollmentMetadataForeignBondTradingDetails) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$outboundSchema
+        .parse(enrollmentLlcEnrollmentMetadataForeignBondTradingDetails));
+}
+function enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -3507,6 +3996,14 @@ var EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$ || (exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$ = EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$ = {}));
+function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageToJSON(enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
+        .parse(enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage));
+}
+function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$inboundSchema = z.object({
     low_priced_securities: z.boolean().optional(),
@@ -3538,6 +4035,12 @@ var EnrollmentLlcEnrollmentMetadataLowPricedSecurities$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataLowPricedSecurities$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataLowPricedSecurities$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataLowPricedSecurities$ || (exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$ = EnrollmentLlcEnrollmentMetadataLowPricedSecurities$ = {}));
+function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesToJSON(enrollmentLlcEnrollmentMetadataLowPricedSecurities) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$outboundSchema.parse(enrollmentLlcEnrollmentMetadataLowPricedSecurities));
+}
+function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataLowPricedSecurities$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataLowPricedSecurities' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataPrimaryAccountActivityType$inboundSchema = z
     .union([
@@ -3625,6 +4128,12 @@ var EnrollmentLlcEnrollmentMetadataPlannedActivity$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataPlannedActivity$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataPlannedActivity$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataPlannedActivity$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataPlannedActivity$ || (exports.EnrollmentLlcEnrollmentMetadataPlannedActivity$ = EnrollmentLlcEnrollmentMetadataPlannedActivity$ = {}));
+function enrollmentLlcEnrollmentMetadataPlannedActivityToJSON(enrollmentLlcEnrollmentMetadataPlannedActivity) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataPlannedActivity$outboundSchema.parse(enrollmentLlcEnrollmentMetadataPlannedActivity));
+}
+function enrollmentLlcEnrollmentMetadataPlannedActivityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataPlannedActivity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataPlannedActivity' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema = z.object({
     direct_or_indirect_related_peps: z.boolean().optional(),
@@ -3656,6 +4165,12 @@ var EnrollmentLlcEnrollmentMetadataRelatedPepDetails$;
     /** @deprecated use `EnrollmentLlcEnrollmentMetadataRelatedPepDetails$outboundSchema` instead. */
     EnrollmentLlcEnrollmentMetadataRelatedPepDetails$.outboundSchema = exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$outboundSchema;
 })(EnrollmentLlcEnrollmentMetadataRelatedPepDetails$ || (exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$ = EnrollmentLlcEnrollmentMetadataRelatedPepDetails$ = {}));
+function enrollmentLlcEnrollmentMetadataRelatedPepDetailsToJSON(enrollmentLlcEnrollmentMetadataRelatedPepDetails) {
+    return JSON.stringify(exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$outboundSchema.parse(enrollmentLlcEnrollmentMetadataRelatedPepDetails));
+}
+function enrollmentLlcEnrollmentMetadataRelatedPepDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentLlcEnrollmentMetadataRelatedPepDetails' from JSON`);
+}
 /** @internal */
 exports.EnrollmentEddAccountEnrollmentMetadata$inboundSchema = z.object({
     deposited_funds: z.nullable(z.lazy(() => exports.EnrollmentLlcEnrollmentMetadataDepositedFunds$inboundSchema)).optional(),
@@ -3703,6 +4218,12 @@ var EnrollmentEddAccountEnrollmentMetadata$;
     /** @deprecated use `EnrollmentEddAccountEnrollmentMetadata$outboundSchema` instead. */
     EnrollmentEddAccountEnrollmentMetadata$.outboundSchema = exports.EnrollmentEddAccountEnrollmentMetadata$outboundSchema;
 })(EnrollmentEddAccountEnrollmentMetadata$ || (exports.EnrollmentEddAccountEnrollmentMetadata$ = EnrollmentEddAccountEnrollmentMetadata$ = {}));
+function enrollmentEddAccountEnrollmentMetadataToJSON(enrollmentEddAccountEnrollmentMetadata) {
+    return JSON.stringify(exports.EnrollmentEddAccountEnrollmentMetadata$outboundSchema.parse(enrollmentEddAccountEnrollmentMetadata));
+}
+function enrollmentEddAccountEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollmentEddAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollmentEddAccountEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentLlcEnrollmentMetadataFdicCashSweep$inboundSchema = z
     .union([
@@ -3764,6 +4285,12 @@ var LlcEnrollmentMetadata$;
     /** @deprecated use `LlcEnrollmentMetadata$outboundSchema` instead. */
     LlcEnrollmentMetadata$.outboundSchema = exports.LlcEnrollmentMetadata$outboundSchema;
 })(LlcEnrollmentMetadata$ || (exports.LlcEnrollmentMetadata$ = LlcEnrollmentMetadata$ = {}));
+function llcEnrollmentMetadataToJSON(llcEnrollmentMetadata) {
+    return JSON.stringify(exports.LlcEnrollmentMetadata$outboundSchema.parse(llcEnrollmentMetadata));
+}
+function llcEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LlcEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LlcEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentOperatingPurpose$inboundSchema = z
     .union([
@@ -3861,6 +4388,12 @@ var TaxWithholdingMetadata$;
     /** @deprecated use `TaxWithholdingMetadata$outboundSchema` instead. */
     TaxWithholdingMetadata$.outboundSchema = exports.TaxWithholdingMetadata$outboundSchema;
 })(TaxWithholdingMetadata$ || (exports.TaxWithholdingMetadata$ = TaxWithholdingMetadata$ = {}));
+function taxWithholdingMetadataToJSON(taxWithholdingMetadata) {
+    return JSON.stringify(exports.TaxWithholdingMetadata$outboundSchema.parse(taxWithholdingMetadata));
+}
+function taxWithholdingMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TaxWithholdingMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TaxWithholdingMetadata' from JSON`);
+}
 /** @internal */
 exports.OperatingEnrollmentMetadata$inboundSchema = z.object({
     operating_purpose: exports.EnrollmentOperatingPurpose$inboundSchema.optional(),
@@ -3894,6 +4427,12 @@ var OperatingEnrollmentMetadata$;
     /** @deprecated use `OperatingEnrollmentMetadata$outboundSchema` instead. */
     OperatingEnrollmentMetadata$.outboundSchema = exports.OperatingEnrollmentMetadata$outboundSchema;
 })(OperatingEnrollmentMetadata$ || (exports.OperatingEnrollmentMetadata$ = OperatingEnrollmentMetadata$ = {}));
+function operatingEnrollmentMetadataToJSON(operatingEnrollmentMetadata) {
+    return JSON.stringify(exports.OperatingEnrollmentMetadata$outboundSchema.parse(operatingEnrollmentMetadata));
+}
+function operatingEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OperatingEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OperatingEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.InvestmentVehicleExperience$inboundSchema = z.object({
     commodities_average_annual_trade_count: z.number().int().optional(),
@@ -3953,6 +4492,12 @@ var InvestmentVehicleExperience$;
     /** @deprecated use `InvestmentVehicleExperience$outboundSchema` instead. */
     InvestmentVehicleExperience$.outboundSchema = exports.InvestmentVehicleExperience$outboundSchema;
 })(InvestmentVehicleExperience$ || (exports.InvestmentVehicleExperience$ = InvestmentVehicleExperience$ = {}));
+function investmentVehicleExperienceToJSON(investmentVehicleExperience) {
+    return JSON.stringify(exports.InvestmentVehicleExperience$outboundSchema.parse(investmentVehicleExperience));
+}
+function investmentVehicleExperienceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestmentVehicleExperience$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestmentVehicleExperience' from JSON`);
+}
 /** @internal */
 exports.EnrollmentOptionsLevel$inboundSchema = z
     .union([
@@ -4010,6 +4555,12 @@ var OrdersOptionsTradingEnrollmentMetadata$;
     /** @deprecated use `OrdersOptionsTradingEnrollmentMetadata$outboundSchema` instead. */
     OrdersOptionsTradingEnrollmentMetadata$.outboundSchema = exports.OrdersOptionsTradingEnrollmentMetadata$outboundSchema;
 })(OrdersOptionsTradingEnrollmentMetadata$ || (exports.OrdersOptionsTradingEnrollmentMetadata$ = OrdersOptionsTradingEnrollmentMetadata$ = {}));
+function ordersOptionsTradingEnrollmentMetadataToJSON(ordersOptionsTradingEnrollmentMetadata) {
+    return JSON.stringify(exports.OrdersOptionsTradingEnrollmentMetadata$outboundSchema.parse(ordersOptionsTradingEnrollmentMetadata));
+}
+function ordersOptionsTradingEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrdersOptionsTradingEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrdersOptionsTradingEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentState$inboundSchema = z
     .union([
@@ -4137,6 +4688,12 @@ var TrustEnrollmentMetadata$;
     /** @deprecated use `TrustEnrollmentMetadata$outboundSchema` instead. */
     TrustEnrollmentMetadata$.outboundSchema = exports.TrustEnrollmentMetadata$outboundSchema;
 })(TrustEnrollmentMetadata$ || (exports.TrustEnrollmentMetadata$ = TrustEnrollmentMetadata$ = {}));
+function trustEnrollmentMetadataToJSON(trustEnrollmentMetadata) {
+    return JSON.stringify(exports.TrustEnrollmentMetadata$outboundSchema.parse(trustEnrollmentMetadata));
+}
+function trustEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TrustEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TrustEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.EnrollmentType1$inboundSchema = z
     .union([
@@ -4190,6 +4747,12 @@ var VirtualAccountNumberEnrollmentMetadata$;
     /** @deprecated use `VirtualAccountNumberEnrollmentMetadata$outboundSchema` instead. */
     VirtualAccountNumberEnrollmentMetadata$.outboundSchema = exports.VirtualAccountNumberEnrollmentMetadata$outboundSchema;
 })(VirtualAccountNumberEnrollmentMetadata$ || (exports.VirtualAccountNumberEnrollmentMetadata$ = VirtualAccountNumberEnrollmentMetadata$ = {}));
+function virtualAccountNumberEnrollmentMetadataToJSON(virtualAccountNumberEnrollmentMetadata) {
+    return JSON.stringify(exports.VirtualAccountNumberEnrollmentMetadata$outboundSchema.parse(virtualAccountNumberEnrollmentMetadata));
+}
+function virtualAccountNumberEnrollmentMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.VirtualAccountNumberEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'VirtualAccountNumberEnrollmentMetadata' from JSON`);
+}
 /** @internal */
 exports.Enrollment$inboundSchema = z.object({
     beneficiary_enrollment_metadata: z.nullable(z.lazy(() => exports.BeneficiaryEnrollmentMetadata$inboundSchema)).optional(),
@@ -4333,4 +4896,10 @@ var Enrollment$;
     /** @deprecated use `Enrollment$outboundSchema` instead. */
     Enrollment$.outboundSchema = exports.Enrollment$outboundSchema;
 })(Enrollment$ || (exports.Enrollment$ = Enrollment$ = {}));
+function enrollmentToJSON(enrollment) {
+    return JSON.stringify(exports.Enrollment$outboundSchema.parse(enrollment));
+}
+function enrollmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Enrollment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Enrollment' from JSON`);
+}
 //# sourceMappingURL=enrollment.js.map

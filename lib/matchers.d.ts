@@ -1,8 +1,8 @@
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKError } from "../models/errors/sdkerror.js";
-import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { Result } from "../types/fp.js";
 import { StatusCodePredicate } from "./http.js";
-export type Encoding = "json" | "text" | "bytes" | "stream" | "sse" | "nil" | "fail";
+export type Encoding = "jsonl" | "json" | "text" | "bytes" | "stream" | "sse" | "nil" | "fail";
 type Schema<T> = {
     parse(raw: unknown): T;
 };
@@ -30,6 +30,8 @@ export type FailMatcher = {
 export type Matcher<T, E> = ValueMatcher<T> | ErrorMatcher<E> | FailMatcher;
 export declare function jsonErr<E>(codes: StatusCodePredicate, schema: Schema<E>, options?: MatchOptions): ErrorMatcher<E>;
 export declare function json<T>(codes: StatusCodePredicate, schema: Schema<T>, options?: MatchOptions): ValueMatcher<T>;
+export declare function jsonl<T>(codes: StatusCodePredicate, schema: Schema<T>, options?: MatchOptions): ValueMatcher<T>;
+export declare function jsonlErr<E>(codes: StatusCodePredicate, schema: Schema<E>, options?: MatchOptions): ErrorMatcher<E>;
 export declare function textErr<E>(codes: StatusCodePredicate, schema: Schema<E>, options?: MatchOptions): ErrorMatcher<E>;
 export declare function text<T>(codes: StatusCodePredicate, schema: Schema<T>, options?: MatchOptions): ValueMatcher<T>;
 export declare function bytesErr<E>(codes: StatusCodePredicate, schema: Schema<E>, options?: MatchOptions): ErrorMatcher<E>;
@@ -47,18 +49,11 @@ export type MatchFunc<T, E> = (response: Response, request: Request, options?: {
     resultKey?: string;
     extraFields?: Record<string, unknown>;
 }) => Promise<[result: Result<T, E>, raw: unknown]>;
-export declare function match<T, E>(...matchers: Array<Matcher<T, E>>): MatchFunc<T, E | SDKError | SDKValidationError>;
+export declare function match<T, E>(...matchers: Array<Matcher<T, E>>): MatchFunc<T, E | SDKError | ResponseValidationError>;
 /**
  * Iterates over a Headers object and returns an object with all the header
  * entries. Values are represented as an array to account for repeated headers.
  */
 export declare function unpackHeaders(headers: Headers): Record<string, string[]>;
-/**
- * Discards the response body to free up resources.
- *
- * To learn why this is need, see the undici docs:
- * https://undici.nodejs.org/#/?id=garbage-collection
- */
-export declare function discardResponseBody(res: Response): Promise<void>;
 export {};
 //# sourceMappingURL=matchers.d.ts.map

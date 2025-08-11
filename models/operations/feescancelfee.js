@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FeesCancelFeeResponse$ = exports.FeesCancelFeeResponse$outboundSchema = exports.FeesCancelFeeResponse$inboundSchema = exports.FeesCancelFeeRequest$ = exports.FeesCancelFeeRequest$outboundSchema = exports.FeesCancelFeeRequest$inboundSchema = void 0;
+exports.feesCancelFeeRequestToJSON = feesCancelFeeRequestToJSON;
+exports.feesCancelFeeRequestFromJSON = feesCancelFeeRequestFromJSON;
+exports.feesCancelFeeResponseToJSON = feesCancelFeeResponseToJSON;
+exports.feesCancelFeeResponseFromJSON = feesCancelFeeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.FeesCancelFeeRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var FeesCancelFeeRequest$;
     /** @deprecated use `FeesCancelFeeRequest$outboundSchema` instead. */
     FeesCancelFeeRequest$.outboundSchema = exports.FeesCancelFeeRequest$outboundSchema;
 })(FeesCancelFeeRequest$ || (exports.FeesCancelFeeRequest$ = FeesCancelFeeRequest$ = {}));
+function feesCancelFeeRequestToJSON(feesCancelFeeRequest) {
+    return JSON.stringify(exports.FeesCancelFeeRequest$outboundSchema.parse(feesCancelFeeRequest));
+}
+function feesCancelFeeRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FeesCancelFeeRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FeesCancelFeeRequest' from JSON`);
+}
 /** @internal */
 exports.FeesCancelFeeResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var FeesCancelFeeResponse$;
     /** @deprecated use `FeesCancelFeeResponse$outboundSchema` instead. */
     FeesCancelFeeResponse$.outboundSchema = exports.FeesCancelFeeResponse$outboundSchema;
 })(FeesCancelFeeResponse$ || (exports.FeesCancelFeeResponse$ = FeesCancelFeeResponse$ = {}));
+function feesCancelFeeResponseToJSON(feesCancelFeeResponse) {
+    return JSON.stringify(exports.FeesCancelFeeResponse$outboundSchema.parse(feesCancelFeeResponse));
+}
+function feesCancelFeeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FeesCancelFeeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FeesCancelFeeResponse' from JSON`);
+}
 //# sourceMappingURL=feescancelfee.js.map

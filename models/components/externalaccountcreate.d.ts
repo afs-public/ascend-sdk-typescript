@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The external account information
  */
@@ -33,4 +35,6 @@ export declare namespace ExternalAccountCreate$ {
     /** @deprecated use `ExternalAccountCreate$Outbound` instead. */
     type Outbound = ExternalAccountCreate$Outbound;
 }
+export declare function externalAccountCreateToJSON(externalAccountCreate: ExternalAccountCreate): string;
+export declare function externalAccountCreateFromJSON(jsonString: string): SafeParseResult<ExternalAccountCreate, SDKValidationError>;
 //# sourceMappingURL=externalaccountcreate.d.ts.map

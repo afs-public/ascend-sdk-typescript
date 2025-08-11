@@ -7,7 +7,7 @@ The enrollment type.
 ```typescript
 import { EnrollmentType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: EnrollmentType = EnrollmentType.BeneficiaryDesignation;
+let value: EnrollmentType = EnrollmentType.RegistrationJointWros;
 ```
 
 ## Values

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PhoneNumberShortCodeCreate$ = exports.PhoneNumberShortCodeCreate$outboundSchema = exports.PhoneNumberShortCodeCreate$inboundSchema = void 0;
+exports.phoneNumberShortCodeCreateToJSON = phoneNumberShortCodeCreateToJSON;
+exports.phoneNumberShortCodeCreateFromJSON = phoneNumberShortCodeCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.PhoneNumberShortCodeCreate$inboundSchema = z.object({
     number: z.string().optional(),
@@ -68,4 +71,10 @@ var PhoneNumberShortCodeCreate$;
     /** @deprecated use `PhoneNumberShortCodeCreate$outboundSchema` instead. */
     PhoneNumberShortCodeCreate$.outboundSchema = exports.PhoneNumberShortCodeCreate$outboundSchema;
 })(PhoneNumberShortCodeCreate$ || (exports.PhoneNumberShortCodeCreate$ = PhoneNumberShortCodeCreate$ = {}));
+function phoneNumberShortCodeCreateToJSON(phoneNumberShortCodeCreate) {
+    return JSON.stringify(exports.PhoneNumberShortCodeCreate$outboundSchema.parse(phoneNumberShortCodeCreate));
+}
+function phoneNumberShortCodeCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PhoneNumberShortCodeCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PhoneNumberShortCodeCreate' from JSON`);
+}
 //# sourceMappingURL=phonenumbershortcodecreate.js.map

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -179,4 +182,22 @@ export namespace IctWithdrawalCreate$ {
   export const outboundSchema = IctWithdrawalCreate$outboundSchema;
   /** @deprecated use `IctWithdrawalCreate$Outbound` instead. */
   export type Outbound = IctWithdrawalCreate$Outbound;
+}
+
+export function ictWithdrawalCreateToJSON(
+  ictWithdrawalCreate: IctWithdrawalCreate,
+): string {
+  return JSON.stringify(
+    IctWithdrawalCreate$outboundSchema.parse(ictWithdrawalCreate),
+  );
+}
+
+export function ictWithdrawalCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<IctWithdrawalCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctWithdrawalCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctWithdrawalCreate' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CalculateCashBalanceResponseOpenOrderSummary,
   CalculateCashBalanceResponseOpenOrderSummary$inboundSchema,
@@ -253,6 +256,26 @@ export namespace AvailableCashToWithdrawAmount$ {
   export type Outbound = AvailableCashToWithdrawAmount$Outbound;
 }
 
+export function availableCashToWithdrawAmountToJSON(
+  availableCashToWithdrawAmount: AvailableCashToWithdrawAmount,
+): string {
+  return JSON.stringify(
+    AvailableCashToWithdrawAmount$outboundSchema.parse(
+      availableCashToWithdrawAmount,
+    ),
+  );
+}
+
+export function availableCashToWithdrawAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<AvailableCashToWithdrawAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AvailableCashToWithdrawAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AvailableCashToWithdrawAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const AvailableLiquidityAmount$inboundSchema: z.ZodType<
   AvailableLiquidityAmount,
@@ -287,6 +310,24 @@ export namespace AvailableLiquidityAmount$ {
   export const outboundSchema = AvailableLiquidityAmount$outboundSchema;
   /** @deprecated use `AvailableLiquidityAmount$Outbound` instead. */
   export type Outbound = AvailableLiquidityAmount$Outbound;
+}
+
+export function availableLiquidityAmountToJSON(
+  availableLiquidityAmount: AvailableLiquidityAmount,
+): string {
+  return JSON.stringify(
+    AvailableLiquidityAmount$outboundSchema.parse(availableLiquidityAmount),
+  );
+}
+
+export function availableLiquidityAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<AvailableLiquidityAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AvailableLiquidityAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AvailableLiquidityAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -325,6 +366,26 @@ export namespace FullyPaidUnsettledFundsAmount$ {
   export type Outbound = FullyPaidUnsettledFundsAmount$Outbound;
 }
 
+export function fullyPaidUnsettledFundsAmountToJSON(
+  fullyPaidUnsettledFundsAmount: FullyPaidUnsettledFundsAmount,
+): string {
+  return JSON.stringify(
+    FullyPaidUnsettledFundsAmount$outboundSchema.parse(
+      fullyPaidUnsettledFundsAmount,
+    ),
+  );
+}
+
+export function fullyPaidUnsettledFundsAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<FullyPaidUnsettledFundsAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FullyPaidUnsettledFundsAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FullyPaidUnsettledFundsAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const OpenBalanceAmount$inboundSchema: z.ZodType<
   OpenBalanceAmount,
@@ -359,6 +420,24 @@ export namespace OpenBalanceAmount$ {
   export const outboundSchema = OpenBalanceAmount$outboundSchema;
   /** @deprecated use `OpenBalanceAmount$Outbound` instead. */
   export type Outbound = OpenBalanceAmount$Outbound;
+}
+
+export function openBalanceAmountToJSON(
+  openBalanceAmount: OpenBalanceAmount,
+): string {
+  return JSON.stringify(
+    OpenBalanceAmount$outboundSchema.parse(openBalanceAmount),
+  );
+}
+
+export function openBalanceAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<OpenBalanceAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OpenBalanceAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OpenBalanceAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -397,6 +476,24 @@ export namespace OpenLiquidityAmount$ {
   export type Outbound = OpenLiquidityAmount$Outbound;
 }
 
+export function openLiquidityAmountToJSON(
+  openLiquidityAmount: OpenLiquidityAmount,
+): string {
+  return JSON.stringify(
+    OpenLiquidityAmount$outboundSchema.parse(openLiquidityAmount),
+  );
+}
+
+export function openLiquidityAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<OpenLiquidityAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OpenLiquidityAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OpenLiquidityAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const PendingDebitDividendsAmount$inboundSchema: z.ZodType<
   PendingDebitDividendsAmount,
@@ -433,6 +530,26 @@ export namespace PendingDebitDividendsAmount$ {
   export type Outbound = PendingDebitDividendsAmount$Outbound;
 }
 
+export function pendingDebitDividendsAmountToJSON(
+  pendingDebitDividendsAmount: PendingDebitDividendsAmount,
+): string {
+  return JSON.stringify(
+    PendingDebitDividendsAmount$outboundSchema.parse(
+      pendingDebitDividendsAmount,
+    ),
+  );
+}
+
+export function pendingDebitDividendsAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingDebitDividendsAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingDebitDividendsAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingDebitDividendsAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const PendingDebitInterestAmount$inboundSchema: z.ZodType<
   PendingDebitInterestAmount,
@@ -467,6 +584,24 @@ export namespace PendingDebitInterestAmount$ {
   export const outboundSchema = PendingDebitInterestAmount$outboundSchema;
   /** @deprecated use `PendingDebitInterestAmount$Outbound` instead. */
   export type Outbound = PendingDebitInterestAmount$Outbound;
+}
+
+export function pendingDebitInterestAmountToJSON(
+  pendingDebitInterestAmount: PendingDebitInterestAmount,
+): string {
+  return JSON.stringify(
+    PendingDebitInterestAmount$outboundSchema.parse(pendingDebitInterestAmount),
+  );
+}
+
+export function pendingDebitInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<PendingDebitInterestAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PendingDebitInterestAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PendingDebitInterestAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -507,6 +642,33 @@ export namespace UnadjustedAvailableCashToWithdrawAmount$ {
   export type Outbound = UnadjustedAvailableCashToWithdrawAmount$Outbound;
 }
 
+export function unadjustedAvailableCashToWithdrawAmountToJSON(
+  unadjustedAvailableCashToWithdrawAmount:
+    UnadjustedAvailableCashToWithdrawAmount,
+): string {
+  return JSON.stringify(
+    UnadjustedAvailableCashToWithdrawAmount$outboundSchema.parse(
+      unadjustedAvailableCashToWithdrawAmount,
+    ),
+  );
+}
+
+export function unadjustedAvailableCashToWithdrawAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnadjustedAvailableCashToWithdrawAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnadjustedAvailableCashToWithdrawAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnadjustedAvailableCashToWithdrawAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const WithheldDepositThresholdAmount$inboundSchema: z.ZodType<
   WithheldDepositThresholdAmount,
@@ -541,6 +703,26 @@ export namespace WithheldDepositThresholdAmount$ {
   export const outboundSchema = WithheldDepositThresholdAmount$outboundSchema;
   /** @deprecated use `WithheldDepositThresholdAmount$Outbound` instead. */
   export type Outbound = WithheldDepositThresholdAmount$Outbound;
+}
+
+export function withheldDepositThresholdAmountToJSON(
+  withheldDepositThresholdAmount: WithheldDepositThresholdAmount,
+): string {
+  return JSON.stringify(
+    WithheldDepositThresholdAmount$outboundSchema.parse(
+      withheldDepositThresholdAmount,
+    ),
+  );
+}
+
+export function withheldDepositThresholdAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<WithheldDepositThresholdAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WithheldDepositThresholdAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WithheldDepositThresholdAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -767,4 +949,24 @@ export namespace CalculateCashBalanceResponse$ {
   export const outboundSchema = CalculateCashBalanceResponse$outboundSchema;
   /** @deprecated use `CalculateCashBalanceResponse$Outbound` instead. */
   export type Outbound = CalculateCashBalanceResponse$Outbound;
+}
+
+export function calculateCashBalanceResponseToJSON(
+  calculateCashBalanceResponse: CalculateCashBalanceResponse,
+): string {
+  return JSON.stringify(
+    CalculateCashBalanceResponse$outboundSchema.parse(
+      calculateCashBalanceResponse,
+    ),
+  );
+}
+
+export function calculateCashBalanceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CalculateCashBalanceResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CalculateCashBalanceResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CalculateCashBalanceResponse' from JSON`,
+  );
 }

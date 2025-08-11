@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The percentage of the account's trades which will involve foreign bond
  */
@@ -41,6 +43,8 @@ export declare namespace Percentage$ {
     /** @deprecated use `Percentage$Outbound` instead. */
     type Outbound = Percentage$Outbound;
 }
+export declare function percentageToJSON(percentage: Percentage): string;
+export declare function percentageFromJSON(jsonString: string): SafeParseResult<Percentage, SDKValidationError>;
 /** @internal */
 export declare const ForeignBondTradingDetail$inboundSchema: z.ZodType<ForeignBondTradingDetail, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -62,4 +66,6 @@ export declare namespace ForeignBondTradingDetail$ {
     /** @deprecated use `ForeignBondTradingDetail$Outbound` instead. */
     type Outbound = ForeignBondTradingDetail$Outbound;
 }
+export declare function foreignBondTradingDetailToJSON(foreignBondTradingDetail: ForeignBondTradingDetail): string;
+export declare function foreignBondTradingDetailFromJSON(jsonString: string): SafeParseResult<ForeignBondTradingDetail, SDKValidationError>;
 //# sourceMappingURL=foreignbondtradingdetail.d.ts.map

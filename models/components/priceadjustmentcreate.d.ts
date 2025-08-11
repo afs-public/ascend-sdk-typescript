@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The type of price adjustment being applied by the broker to the net price of the security.
@@ -68,4 +70,6 @@ export declare namespace PriceAdjustmentCreate$ {
     /** @deprecated use `PriceAdjustmentCreate$Outbound` instead. */
     type Outbound = PriceAdjustmentCreate$Outbound;
 }
+export declare function priceAdjustmentCreateToJSON(priceAdjustmentCreate: PriceAdjustmentCreate): string;
+export declare function priceAdjustmentCreateFromJSON(jsonString: string): SafeParseResult<PriceAdjustmentCreate, SDKValidationError>;
 //# sourceMappingURL=priceadjustmentcreate.d.ts.map

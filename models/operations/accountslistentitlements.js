@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsListEntitlementsResponse$ = exports.AccountsListEntitlementsResponse$outboundSchema = exports.AccountsListEntitlementsResponse$inboundSchema = exports.AccountsListEntitlementsRequest$ = exports.AccountsListEntitlementsRequest$outboundSchema = exports.AccountsListEntitlementsRequest$inboundSchema = void 0;
+exports.accountsListEntitlementsRequestToJSON = accountsListEntitlementsRequestToJSON;
+exports.accountsListEntitlementsRequestFromJSON = accountsListEntitlementsRequestFromJSON;
+exports.accountsListEntitlementsResponseToJSON = accountsListEntitlementsResponseToJSON;
+exports.accountsListEntitlementsResponseFromJSON = accountsListEntitlementsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsListEntitlementsRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountsListEntitlementsRequest$;
     /** @deprecated use `AccountsListEntitlementsRequest$outboundSchema` instead. */
     AccountsListEntitlementsRequest$.outboundSchema = exports.AccountsListEntitlementsRequest$outboundSchema;
 })(AccountsListEntitlementsRequest$ || (exports.AccountsListEntitlementsRequest$ = AccountsListEntitlementsRequest$ = {}));
+function accountsListEntitlementsRequestToJSON(accountsListEntitlementsRequest) {
+    return JSON.stringify(exports.AccountsListEntitlementsRequest$outboundSchema.parse(accountsListEntitlementsRequest));
+}
+function accountsListEntitlementsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListEntitlementsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListEntitlementsRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsListEntitlementsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -112,4 +123,10 @@ var AccountsListEntitlementsResponse$;
     /** @deprecated use `AccountsListEntitlementsResponse$outboundSchema` instead. */
     AccountsListEntitlementsResponse$.outboundSchema = exports.AccountsListEntitlementsResponse$outboundSchema;
 })(AccountsListEntitlementsResponse$ || (exports.AccountsListEntitlementsResponse$ = AccountsListEntitlementsResponse$ = {}));
+function accountsListEntitlementsResponseToJSON(accountsListEntitlementsResponse) {
+    return JSON.stringify(exports.AccountsListEntitlementsResponse$outboundSchema.parse(accountsListEntitlementsResponse));
+}
+function accountsListEntitlementsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListEntitlementsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListEntitlementsResponse' from JSON`);
+}
 //# sourceMappingURL=accountslistentitlements.js.map

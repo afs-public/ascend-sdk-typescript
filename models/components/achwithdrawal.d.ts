@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount to withdraw in USD. The value should not be set if the withdrawal is `full_disbursement`.
  */
@@ -262,6 +264,8 @@ export declare namespace AchWithdrawalAmount$ {
     /** @deprecated use `AchWithdrawalAmount$Outbound` instead. */
     type Outbound = AchWithdrawalAmount$Outbound;
 }
+export declare function achWithdrawalAmountToJSON(achWithdrawalAmount: AchWithdrawalAmount): string;
+export declare function achWithdrawalAmountFromJSON(jsonString: string): SafeParseResult<AchWithdrawalAmount, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalRetirementDistributionAmount$inboundSchema: z.ZodType<AchWithdrawalRetirementDistributionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -282,6 +286,8 @@ export declare namespace AchWithdrawalRetirementDistributionAmount$ {
     /** @deprecated use `AchWithdrawalRetirementDistributionAmount$Outbound` instead. */
     type Outbound = AchWithdrawalRetirementDistributionAmount$Outbound;
 }
+export declare function achWithdrawalRetirementDistributionAmountToJSON(achWithdrawalRetirementDistributionAmount: AchWithdrawalRetirementDistributionAmount): string;
+export declare function achWithdrawalRetirementDistributionAmountFromJSON(jsonString: string): SafeParseResult<AchWithdrawalRetirementDistributionAmount, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalPercentage$inboundSchema: z.ZodType<AchWithdrawalPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -302,6 +308,8 @@ export declare namespace AchWithdrawalPercentage$ {
     /** @deprecated use `AchWithdrawalPercentage$Outbound` instead. */
     type Outbound = AchWithdrawalPercentage$Outbound;
 }
+export declare function achWithdrawalPercentageToJSON(achWithdrawalPercentage: AchWithdrawalPercentage): string;
+export declare function achWithdrawalPercentageFromJSON(jsonString: string): SafeParseResult<AchWithdrawalPercentage, SDKValidationError>;
 /** @internal */
 export declare const FederalTaxWithholding$inboundSchema: z.ZodType<FederalTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -323,6 +331,8 @@ export declare namespace FederalTaxWithholding$ {
     /** @deprecated use `FederalTaxWithholding$Outbound` instead. */
     type Outbound = FederalTaxWithholding$Outbound;
 }
+export declare function federalTaxWithholdingToJSON(federalTaxWithholding: FederalTaxWithholding): string;
+export declare function federalTaxWithholdingFromJSON(jsonString: string): SafeParseResult<FederalTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema: z.ZodType<AchWithdrawalRetirementDistributionStateTaxWithholdingAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -343,6 +353,8 @@ export declare namespace AchWithdrawalRetirementDistributionStateTaxWithholdingA
     /** @deprecated use `AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$Outbound` instead. */
     type Outbound = AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$Outbound;
 }
+export declare function achWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON(achWithdrawalRetirementDistributionStateTaxWithholdingAmount: AchWithdrawalRetirementDistributionStateTaxWithholdingAmount): string;
+export declare function achWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString: string): SafeParseResult<AchWithdrawalRetirementDistributionStateTaxWithholdingAmount, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalRetirementDistributionPercentage$inboundSchema: z.ZodType<AchWithdrawalRetirementDistributionPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -363,6 +375,8 @@ export declare namespace AchWithdrawalRetirementDistributionPercentage$ {
     /** @deprecated use `AchWithdrawalRetirementDistributionPercentage$Outbound` instead. */
     type Outbound = AchWithdrawalRetirementDistributionPercentage$Outbound;
 }
+export declare function achWithdrawalRetirementDistributionPercentageToJSON(achWithdrawalRetirementDistributionPercentage: AchWithdrawalRetirementDistributionPercentage): string;
+export declare function achWithdrawalRetirementDistributionPercentageFromJSON(jsonString: string): SafeParseResult<AchWithdrawalRetirementDistributionPercentage, SDKValidationError>;
 /** @internal */
 export declare const StateTaxWithholding$inboundSchema: z.ZodType<StateTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -384,6 +398,8 @@ export declare namespace StateTaxWithholding$ {
     /** @deprecated use `StateTaxWithholding$Outbound` instead. */
     type Outbound = StateTaxWithholding$Outbound;
 }
+export declare function stateTaxWithholdingToJSON(stateTaxWithholding: StateTaxWithholding): string;
+export declare function stateTaxWithholdingFromJSON(jsonString: string): SafeParseResult<StateTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalType$inboundSchema: z.ZodType<AchWithdrawalTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -423,6 +439,8 @@ export declare namespace RetirementDistribution$ {
     /** @deprecated use `RetirementDistribution$Outbound` instead. */
     type Outbound = RetirementDistribution$Outbound;
 }
+export declare function retirementDistributionToJSON(retirementDistribution: RetirementDistribution): string;
+export declare function retirementDistributionFromJSON(jsonString: string): SafeParseResult<RetirementDistribution, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalStateState$inboundSchema: z.ZodType<AchWithdrawalStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -463,6 +481,8 @@ export declare namespace AchWithdrawalState$ {
     /** @deprecated use `AchWithdrawalState$Outbound` instead. */
     type Outbound = AchWithdrawalState$Outbound;
 }
+export declare function achWithdrawalStateToJSON(achWithdrawalState: AchWithdrawalState): string;
+export declare function achWithdrawalStateFromJSON(jsonString: string): SafeParseResult<AchWithdrawalState, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawal$inboundSchema: z.ZodType<AchWithdrawal, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -489,4 +509,6 @@ export declare namespace AchWithdrawal$ {
     /** @deprecated use `AchWithdrawal$Outbound` instead. */
     type Outbound = AchWithdrawal$Outbound;
 }
+export declare function achWithdrawalToJSON(achWithdrawal: AchWithdrawal): string;
+export declare function achWithdrawalFromJSON(jsonString: string): SafeParseResult<AchWithdrawal, SDKValidationError>;
 //# sourceMappingURL=achwithdrawal.d.ts.map

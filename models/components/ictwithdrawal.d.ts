@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of the transfer being withdrawn from the customer's account in USD. A value should not be provided if the withdrawal is a full disbursement.
  */
@@ -755,6 +757,8 @@ export declare namespace IctWithdrawalAmount$ {
     /** @deprecated use `IctWithdrawalAmount$Outbound` instead. */
     type Outbound = IctWithdrawalAmount$Outbound;
 }
+export declare function ictWithdrawalAmountToJSON(ictWithdrawalAmount: IctWithdrawalAmount): string;
+export declare function ictWithdrawalAmountFromJSON(jsonString: string): SafeParseResult<IctWithdrawalAmount, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalProgram$inboundSchema: z.ZodType<IctWithdrawalProgramOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -789,6 +793,8 @@ export declare namespace IctWithdrawalRetirementDistributionAmount$ {
     /** @deprecated use `IctWithdrawalRetirementDistributionAmount$Outbound` instead. */
     type Outbound = IctWithdrawalRetirementDistributionAmount$Outbound;
 }
+export declare function ictWithdrawalRetirementDistributionAmountToJSON(ictWithdrawalRetirementDistributionAmount: IctWithdrawalRetirementDistributionAmount): string;
+export declare function ictWithdrawalRetirementDistributionAmountFromJSON(jsonString: string): SafeParseResult<IctWithdrawalRetirementDistributionAmount, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalPercentage$inboundSchema: z.ZodType<IctWithdrawalPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -809,6 +815,8 @@ export declare namespace IctWithdrawalPercentage$ {
     /** @deprecated use `IctWithdrawalPercentage$Outbound` instead. */
     type Outbound = IctWithdrawalPercentage$Outbound;
 }
+export declare function ictWithdrawalPercentageToJSON(ictWithdrawalPercentage: IctWithdrawalPercentage): string;
+export declare function ictWithdrawalPercentageFromJSON(jsonString: string): SafeParseResult<IctWithdrawalPercentage, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalFederalTaxWithholding$inboundSchema: z.ZodType<IctWithdrawalFederalTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -830,6 +838,8 @@ export declare namespace IctWithdrawalFederalTaxWithholding$ {
     /** @deprecated use `IctWithdrawalFederalTaxWithholding$Outbound` instead. */
     type Outbound = IctWithdrawalFederalTaxWithholding$Outbound;
 }
+export declare function ictWithdrawalFederalTaxWithholdingToJSON(ictWithdrawalFederalTaxWithholding: IctWithdrawalFederalTaxWithholding): string;
+export declare function ictWithdrawalFederalTaxWithholdingFromJSON(jsonString: string): SafeParseResult<IctWithdrawalFederalTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema: z.ZodType<IctWithdrawalRetirementDistributionStateTaxWithholdingAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -850,6 +860,8 @@ export declare namespace IctWithdrawalRetirementDistributionStateTaxWithholdingA
     /** @deprecated use `IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$Outbound` instead. */
     type Outbound = IctWithdrawalRetirementDistributionStateTaxWithholdingAmount$Outbound;
 }
+export declare function ictWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON(ictWithdrawalRetirementDistributionStateTaxWithholdingAmount: IctWithdrawalRetirementDistributionStateTaxWithholdingAmount): string;
+export declare function ictWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString: string): SafeParseResult<IctWithdrawalRetirementDistributionStateTaxWithholdingAmount, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalRetirementDistributionPercentage$inboundSchema: z.ZodType<IctWithdrawalRetirementDistributionPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -870,6 +882,8 @@ export declare namespace IctWithdrawalRetirementDistributionPercentage$ {
     /** @deprecated use `IctWithdrawalRetirementDistributionPercentage$Outbound` instead. */
     type Outbound = IctWithdrawalRetirementDistributionPercentage$Outbound;
 }
+export declare function ictWithdrawalRetirementDistributionPercentageToJSON(ictWithdrawalRetirementDistributionPercentage: IctWithdrawalRetirementDistributionPercentage): string;
+export declare function ictWithdrawalRetirementDistributionPercentageFromJSON(jsonString: string): SafeParseResult<IctWithdrawalRetirementDistributionPercentage, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalStateTaxWithholding$inboundSchema: z.ZodType<IctWithdrawalStateTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -891,6 +905,8 @@ export declare namespace IctWithdrawalStateTaxWithholding$ {
     /** @deprecated use `IctWithdrawalStateTaxWithholding$Outbound` instead. */
     type Outbound = IctWithdrawalStateTaxWithholding$Outbound;
 }
+export declare function ictWithdrawalStateTaxWithholdingToJSON(ictWithdrawalStateTaxWithholding: IctWithdrawalStateTaxWithholding): string;
+export declare function ictWithdrawalStateTaxWithholdingFromJSON(jsonString: string): SafeParseResult<IctWithdrawalStateTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalType$inboundSchema: z.ZodType<IctWithdrawalTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -930,6 +946,8 @@ export declare namespace IctWithdrawalRetirementDistribution$ {
     /** @deprecated use `IctWithdrawalRetirementDistribution$Outbound` instead. */
     type Outbound = IctWithdrawalRetirementDistribution$Outbound;
 }
+export declare function ictWithdrawalRetirementDistributionToJSON(ictWithdrawalRetirementDistribution: IctWithdrawalRetirementDistribution): string;
+export declare function ictWithdrawalRetirementDistributionFromJSON(jsonString: string): SafeParseResult<IctWithdrawalRetirementDistribution, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalStateState$inboundSchema: z.ZodType<IctWithdrawalStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -970,6 +988,8 @@ export declare namespace IctWithdrawalState$ {
     /** @deprecated use `IctWithdrawalState$Outbound` instead. */
     type Outbound = IctWithdrawalState$Outbound;
 }
+export declare function ictWithdrawalStateToJSON(ictWithdrawalState: IctWithdrawalState): string;
+export declare function ictWithdrawalStateFromJSON(jsonString: string): SafeParseResult<IctWithdrawalState, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalTransferStateState$inboundSchema: z.ZodType<IctWithdrawalTransferStateStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1010,6 +1030,8 @@ export declare namespace IctWithdrawalTransferState$ {
     /** @deprecated use `IctWithdrawalTransferState$Outbound` instead. */
     type Outbound = IctWithdrawalTransferState$Outbound;
 }
+export declare function ictWithdrawalTransferStateToJSON(ictWithdrawalTransferState: IctWithdrawalTransferState): string;
+export declare function ictWithdrawalTransferStateFromJSON(jsonString: string): SafeParseResult<IctWithdrawalTransferState, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalAddress$inboundSchema: z.ZodType<IctWithdrawalAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1040,6 +1062,8 @@ export declare namespace IctWithdrawalAddress$ {
     /** @deprecated use `IctWithdrawalAddress$Outbound` instead. */
     type Outbound = IctWithdrawalAddress$Outbound;
 }
+export declare function ictWithdrawalAddressToJSON(ictWithdrawalAddress: IctWithdrawalAddress): string;
+export declare function ictWithdrawalAddressFromJSON(jsonString: string): SafeParseResult<IctWithdrawalAddress, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalEntityOriginatingParty$inboundSchema: z.ZodType<IctWithdrawalEntityOriginatingParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1062,6 +1086,8 @@ export declare namespace IctWithdrawalEntityOriginatingParty$ {
     /** @deprecated use `IctWithdrawalEntityOriginatingParty$Outbound` instead. */
     type Outbound = IctWithdrawalEntityOriginatingParty$Outbound;
 }
+export declare function ictWithdrawalEntityOriginatingPartyToJSON(ictWithdrawalEntityOriginatingParty: IctWithdrawalEntityOriginatingParty): string;
+export declare function ictWithdrawalEntityOriginatingPartyFromJSON(jsonString: string): SafeParseResult<IctWithdrawalEntityOriginatingParty, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalTravelRuleAddress$inboundSchema: z.ZodType<IctWithdrawalTravelRuleAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1092,6 +1118,8 @@ export declare namespace IctWithdrawalTravelRuleAddress$ {
     /** @deprecated use `IctWithdrawalTravelRuleAddress$Outbound` instead. */
     type Outbound = IctWithdrawalTravelRuleAddress$Outbound;
 }
+export declare function ictWithdrawalTravelRuleAddressToJSON(ictWithdrawalTravelRuleAddress: IctWithdrawalTravelRuleAddress): string;
+export declare function ictWithdrawalTravelRuleAddressFromJSON(jsonString: string): SafeParseResult<IctWithdrawalTravelRuleAddress, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalEntityRecipientParty$inboundSchema: z.ZodType<IctWithdrawalEntityRecipientParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1114,6 +1142,8 @@ export declare namespace IctWithdrawalEntityRecipientParty$ {
     /** @deprecated use `IctWithdrawalEntityRecipientParty$Outbound` instead. */
     type Outbound = IctWithdrawalEntityRecipientParty$Outbound;
 }
+export declare function ictWithdrawalEntityRecipientPartyToJSON(ictWithdrawalEntityRecipientParty: IctWithdrawalEntityRecipientParty): string;
+export declare function ictWithdrawalEntityRecipientPartyFromJSON(jsonString: string): SafeParseResult<IctWithdrawalEntityRecipientParty, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$inboundSchema: z.ZodType<IctWithdrawalTravelRuleIndividualOriginatingPartyAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1144,6 +1174,8 @@ export declare namespace IctWithdrawalTravelRuleIndividualOriginatingPartyAddres
     /** @deprecated use `IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$Outbound` instead. */
     type Outbound = IctWithdrawalTravelRuleIndividualOriginatingPartyAddress$Outbound;
 }
+export declare function ictWithdrawalTravelRuleIndividualOriginatingPartyAddressToJSON(ictWithdrawalTravelRuleIndividualOriginatingPartyAddress: IctWithdrawalTravelRuleIndividualOriginatingPartyAddress): string;
+export declare function ictWithdrawalTravelRuleIndividualOriginatingPartyAddressFromJSON(jsonString: string): SafeParseResult<IctWithdrawalTravelRuleIndividualOriginatingPartyAddress, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalIndividualOriginatingParty$inboundSchema: z.ZodType<IctWithdrawalIndividualOriginatingParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1166,6 +1198,8 @@ export declare namespace IctWithdrawalIndividualOriginatingParty$ {
     /** @deprecated use `IctWithdrawalIndividualOriginatingParty$Outbound` instead. */
     type Outbound = IctWithdrawalIndividualOriginatingParty$Outbound;
 }
+export declare function ictWithdrawalIndividualOriginatingPartyToJSON(ictWithdrawalIndividualOriginatingParty: IctWithdrawalIndividualOriginatingParty): string;
+export declare function ictWithdrawalIndividualOriginatingPartyFromJSON(jsonString: string): SafeParseResult<IctWithdrawalIndividualOriginatingParty, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalTravelRuleIndividualRecipientPartyAddress$inboundSchema: z.ZodType<IctWithdrawalTravelRuleIndividualRecipientPartyAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1196,6 +1230,8 @@ export declare namespace IctWithdrawalTravelRuleIndividualRecipientPartyAddress$
     /** @deprecated use `IctWithdrawalTravelRuleIndividualRecipientPartyAddress$Outbound` instead. */
     type Outbound = IctWithdrawalTravelRuleIndividualRecipientPartyAddress$Outbound;
 }
+export declare function ictWithdrawalTravelRuleIndividualRecipientPartyAddressToJSON(ictWithdrawalTravelRuleIndividualRecipientPartyAddress: IctWithdrawalTravelRuleIndividualRecipientPartyAddress): string;
+export declare function ictWithdrawalTravelRuleIndividualRecipientPartyAddressFromJSON(jsonString: string): SafeParseResult<IctWithdrawalTravelRuleIndividualRecipientPartyAddress, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalIndividualRecipientParty$inboundSchema: z.ZodType<IctWithdrawalIndividualRecipientParty, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1218,6 +1254,8 @@ export declare namespace IctWithdrawalIndividualRecipientParty$ {
     /** @deprecated use `IctWithdrawalIndividualRecipientParty$Outbound` instead. */
     type Outbound = IctWithdrawalIndividualRecipientParty$Outbound;
 }
+export declare function ictWithdrawalIndividualRecipientPartyToJSON(ictWithdrawalIndividualRecipientParty: IctWithdrawalIndividualRecipientParty): string;
+export declare function ictWithdrawalIndividualRecipientPartyFromJSON(jsonString: string): SafeParseResult<IctWithdrawalIndividualRecipientParty, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalOriginatingInstitution$inboundSchema: z.ZodType<IctWithdrawalOriginatingInstitution, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1239,6 +1277,8 @@ export declare namespace IctWithdrawalOriginatingInstitution$ {
     /** @deprecated use `IctWithdrawalOriginatingInstitution$Outbound` instead. */
     type Outbound = IctWithdrawalOriginatingInstitution$Outbound;
 }
+export declare function ictWithdrawalOriginatingInstitutionToJSON(ictWithdrawalOriginatingInstitution: IctWithdrawalOriginatingInstitution): string;
+export declare function ictWithdrawalOriginatingInstitutionFromJSON(jsonString: string): SafeParseResult<IctWithdrawalOriginatingInstitution, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalRecipientInstitution$inboundSchema: z.ZodType<IctWithdrawalRecipientInstitution, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1260,6 +1300,8 @@ export declare namespace IctWithdrawalRecipientInstitution$ {
     /** @deprecated use `IctWithdrawalRecipientInstitution$Outbound` instead. */
     type Outbound = IctWithdrawalRecipientInstitution$Outbound;
 }
+export declare function ictWithdrawalRecipientInstitutionToJSON(ictWithdrawalRecipientInstitution: IctWithdrawalRecipientInstitution): string;
+export declare function ictWithdrawalRecipientInstitutionFromJSON(jsonString: string): SafeParseResult<IctWithdrawalRecipientInstitution, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawalTravelRule$inboundSchema: z.ZodType<IctWithdrawalTravelRule, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1285,6 +1327,8 @@ export declare namespace IctWithdrawalTravelRule$ {
     /** @deprecated use `IctWithdrawalTravelRule$Outbound` instead. */
     type Outbound = IctWithdrawalTravelRule$Outbound;
 }
+export declare function ictWithdrawalTravelRuleToJSON(ictWithdrawalTravelRule: IctWithdrawalTravelRule): string;
+export declare function ictWithdrawalTravelRuleFromJSON(jsonString: string): SafeParseResult<IctWithdrawalTravelRule, SDKValidationError>;
 /** @internal */
 export declare const IctWithdrawal$inboundSchema: z.ZodType<IctWithdrawal, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1312,4 +1356,6 @@ export declare namespace IctWithdrawal$ {
     /** @deprecated use `IctWithdrawal$Outbound` instead. */
     type Outbound = IctWithdrawal$Outbound;
 }
+export declare function ictWithdrawalToJSON(ictWithdrawal: IctWithdrawal): string;
+export declare function ictWithdrawalFromJSON(jsonString: string): SafeParseResult<IctWithdrawal, SDKValidationError>;
 //# sourceMappingURL=ictwithdrawal.d.ts.map

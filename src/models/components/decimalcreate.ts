@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
@@ -54,4 +57,18 @@ export namespace DecimalCreate$ {
   export const outboundSchema = DecimalCreate$outboundSchema;
   /** @deprecated use `DecimalCreate$Outbound` instead. */
   export type Outbound = DecimalCreate$Outbound;
+}
+
+export function decimalCreateToJSON(decimalCreate: DecimalCreate): string {
+  return JSON.stringify(DecimalCreate$outboundSchema.parse(decimalCreate));
+}
+
+export function decimalCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<DecimalCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DecimalCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DecimalCreate' from JSON`,
+  );
 }

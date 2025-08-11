@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EndLargeTraderRequestCreate$ = exports.EndLargeTraderRequestCreate$outboundSchema = exports.EndLargeTraderRequestCreate$inboundSchema = exports.EndReason$ = exports.EndReason$outboundSchema = exports.EndReason$inboundSchema = exports.EndReason = void 0;
+exports.endLargeTraderRequestCreateToJSON = endLargeTraderRequestCreateToJSON;
+exports.endLargeTraderRequestCreateFromJSON = endLargeTraderRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The end reason of the LTID.
@@ -102,4 +105,10 @@ var EndLargeTraderRequestCreate$;
     /** @deprecated use `EndLargeTraderRequestCreate$outboundSchema` instead. */
     EndLargeTraderRequestCreate$.outboundSchema = exports.EndLargeTraderRequestCreate$outboundSchema;
 })(EndLargeTraderRequestCreate$ || (exports.EndLargeTraderRequestCreate$ = EndLargeTraderRequestCreate$ = {}));
+function endLargeTraderRequestCreateToJSON(endLargeTraderRequestCreate) {
+    return JSON.stringify(exports.EndLargeTraderRequestCreate$outboundSchema.parse(endLargeTraderRequestCreate));
+}
+function endLargeTraderRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EndLargeTraderRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EndLargeTraderRequestCreate' from JSON`);
+}
 //# sourceMappingURL=endlargetraderrequestcreate.js.map

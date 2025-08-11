@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
 /**
  * Identification type
@@ -94,4 +96,6 @@ export declare namespace ForeignIdentificationCreate$ {
     /** @deprecated use `ForeignIdentificationCreate$Outbound` instead. */
     type Outbound = ForeignIdentificationCreate$Outbound;
 }
+export declare function foreignIdentificationCreateToJSON(foreignIdentificationCreate: ForeignIdentificationCreate): string;
+export declare function foreignIdentificationCreateFromJSON(jsonString: string): SafeParseResult<ForeignIdentificationCreate, SDKValidationError>;
 //# sourceMappingURL=foreignidentificationcreate.d.ts.map

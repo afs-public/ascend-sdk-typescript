@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export declare enum PartyBusinessIndustrialClassification {
     BusinessIndustrialClassificationUnspecified = "BUSINESS_INDUSTRIAL_CLASSIFICATION_UNSPECIFIED",
     AgricultureForestryAndFishing = "AGRICULTURE_FORESTRY_AND_FISHING",
@@ -1780,6 +1782,8 @@ export declare namespace PartyNegativeNews$ {
     /** @deprecated use `PartyNegativeNews$Outbound` instead. */
     type Outbound = PartyNegativeNews$Outbound;
 }
+export declare function partyNegativeNewsToJSON(partyNegativeNews: PartyNegativeNews): string;
+export declare function partyNegativeNewsFromJSON(jsonString: string): SafeParseResult<PartyNegativeNews, SDKValidationError>;
 /** @internal */
 export declare const PartyEntityDueDiligence$inboundSchema: z.ZodType<PartyEntityDueDiligence, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1801,6 +1805,8 @@ export declare namespace PartyEntityDueDiligence$ {
     /** @deprecated use `PartyEntityDueDiligence$Outbound` instead. */
     type Outbound = PartyEntityDueDiligence$Outbound;
 }
+export declare function partyEntityDueDiligenceToJSON(partyEntityDueDiligence: PartyEntityDueDiligence): string;
+export declare function partyEntityDueDiligenceFromJSON(jsonString: string): SafeParseResult<PartyEntityDueDiligence, SDKValidationError>;
 /** @internal */
 export declare const PartyEntityType$inboundSchema: z.ZodType<PartyEntityTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1851,6 +1857,8 @@ export declare namespace PartyFormationDate$ {
     /** @deprecated use `PartyFormationDate$Outbound` instead. */
     type Outbound = PartyFormationDate$Outbound;
 }
+export declare function partyFormationDateToJSON(partyFormationDate: PartyFormationDate): string;
+export declare function partyFormationDateFromJSON(jsonString: string): SafeParseResult<PartyFormationDate, SDKValidationError>;
 /** @internal */
 export declare const PartyEffectiveDate$inboundSchema: z.ZodType<PartyEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1873,6 +1881,8 @@ export declare namespace PartyEffectiveDate$ {
     /** @deprecated use `PartyEffectiveDate$Outbound` instead. */
     type Outbound = PartyEffectiveDate$Outbound;
 }
+export declare function partyEffectiveDateToJSON(partyEffectiveDate: PartyEffectiveDate): string;
+export declare function partyEffectiveDateFromJSON(jsonString: string): SafeParseResult<PartyEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const PartyLargeTrader$inboundSchema: z.ZodType<PartyLargeTrader, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1894,6 +1904,8 @@ export declare namespace PartyLargeTrader$ {
     /** @deprecated use `PartyLargeTrader$Outbound` instead. */
     type Outbound = PartyLargeTrader$Outbound;
 }
+export declare function partyLargeTraderToJSON(partyLargeTrader: PartyLargeTrader): string;
+export declare function partyLargeTraderFromJSON(jsonString: string): SafeParseResult<PartyLargeTrader, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalAddress$inboundSchema: z.ZodType<PartyLegalAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1924,6 +1936,8 @@ export declare namespace PartyLegalAddress$ {
     /** @deprecated use `PartyLegalAddress$Outbound` instead. */
     type Outbound = PartyLegalAddress$Outbound;
 }
+export declare function partyLegalAddressToJSON(partyLegalAddress: PartyLegalAddress): string;
+export declare function partyLegalAddressFromJSON(jsonString: string): SafeParseResult<PartyLegalAddress, SDKValidationError>;
 /** @internal */
 export declare const PartyTaxIdType$inboundSchema: z.ZodType<PartyTaxIdTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1960,6 +1974,8 @@ export declare namespace PartyCNoticeDate$ {
     /** @deprecated use `PartyCNoticeDate$Outbound` instead. */
     type Outbound = PartyCNoticeDate$Outbound;
 }
+export declare function partyCNoticeDateToJSON(partyCNoticeDate: PartyCNoticeDate): string;
+export declare function partyCNoticeDateFromJSON(jsonString: string): SafeParseResult<PartyCNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const PartyFederalTaxClassification$inboundSchema: z.ZodType<PartyFederalTaxClassificationOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1996,6 +2012,8 @@ export declare namespace PartyFirstBNoticeDate$ {
     /** @deprecated use `PartyFirstBNoticeDate$Outbound` instead. */
     type Outbound = PartyFirstBNoticeDate$Outbound;
 }
+export declare function partyFirstBNoticeDateToJSON(partyFirstBNoticeDate: PartyFirstBNoticeDate): string;
+export declare function partyFirstBNoticeDateFromJSON(jsonString: string): SafeParseResult<PartyFirstBNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const PartyIrsFormType$inboundSchema: z.ZodType<PartyIrsFormTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2046,6 +2064,8 @@ export declare namespace PartyTaxCertificationDate$ {
     /** @deprecated use `PartyTaxCertificationDate$Outbound` instead. */
     type Outbound = PartyTaxCertificationDate$Outbound;
 }
+export declare function partyTaxCertificationDateToJSON(partyTaxCertificationDate: PartyTaxCertificationDate): string;
+export declare function partyTaxCertificationDateFromJSON(jsonString: string): SafeParseResult<PartyTaxCertificationDate, SDKValidationError>;
 /** @internal */
 export declare const PartyTaxpayerCertificationState$inboundSchema: z.ZodType<PartyTaxpayerCertificationStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2117,6 +2137,8 @@ export declare namespace PartyTaxProfile$ {
     /** @deprecated use `PartyTaxProfile$Outbound` instead. */
     type Outbound = PartyTaxProfile$Outbound;
 }
+export declare function partyTaxProfileToJSON(partyTaxProfile: PartyTaxProfile): string;
+export declare function partyTaxProfileFromJSON(jsonString: string): SafeParseResult<PartyTaxProfile, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalEntity$inboundSchema: z.ZodType<PartyLegalEntity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2169,6 +2191,8 @@ export declare namespace PartyLegalEntity$ {
     /** @deprecated use `PartyLegalEntity$Outbound` instead. */
     type Outbound = PartyLegalEntity$Outbound;
 }
+export declare function partyLegalEntityToJSON(partyLegalEntity: PartyLegalEntity): string;
+export declare function partyLegalEntityFromJSON(jsonString: string): SafeParseResult<PartyLegalEntity, SDKValidationError>;
 /** @internal */
 export declare const PartyBirthDate$inboundSchema: z.ZodType<PartyBirthDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2191,6 +2215,8 @@ export declare namespace PartyBirthDate$ {
     /** @deprecated use `PartyBirthDate$Outbound` instead. */
     type Outbound = PartyBirthDate$Outbound;
 }
+export declare function partyBirthDateToJSON(partyBirthDate: PartyBirthDate): string;
+export declare function partyBirthDateFromJSON(jsonString: string): SafeParseResult<PartyBirthDate, SDKValidationError>;
 /** @internal */
 export declare const PartyDeathDate$inboundSchema: z.ZodType<PartyDeathDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2213,6 +2239,8 @@ export declare namespace PartyDeathDate$ {
     /** @deprecated use `PartyDeathDate$Outbound` instead. */
     type Outbound = PartyDeathDate$Outbound;
 }
+export declare function partyDeathDateToJSON(partyDeathDate: PartyDeathDate): string;
+export declare function partyDeathDateFromJSON(jsonString: string): SafeParseResult<PartyDeathDate, SDKValidationError>;
 /** @internal */
 export declare const PartyEmployerAddress$inboundSchema: z.ZodType<PartyEmployerAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2243,6 +2271,8 @@ export declare namespace PartyEmployerAddress$ {
     /** @deprecated use `PartyEmployerAddress$Outbound` instead. */
     type Outbound = PartyEmployerAddress$Outbound;
 }
+export declare function partyEmployerAddressToJSON(partyEmployerAddress: PartyEmployerAddress): string;
+export declare function partyEmployerAddressFromJSON(jsonString: string): SafeParseResult<PartyEmployerAddress, SDKValidationError>;
 /** @internal */
 export declare const PartyEmploymentStatus$inboundSchema: z.ZodType<PartyEmploymentStatusOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2282,6 +2312,8 @@ export declare namespace PartyEmployment$ {
     /** @deprecated use `PartyEmployment$Outbound` instead. */
     type Outbound = PartyEmployment$Outbound;
 }
+export declare function partyEmploymentToJSON(partyEmployment: PartyEmployment): string;
+export declare function partyEmploymentFromJSON(jsonString: string): SafeParseResult<PartyEmployment, SDKValidationError>;
 /** @internal */
 export declare const PartyExpirationDate$inboundSchema: z.ZodType<PartyExpirationDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2304,6 +2336,8 @@ export declare namespace PartyExpirationDate$ {
     /** @deprecated use `PartyExpirationDate$Outbound` instead. */
     type Outbound = PartyExpirationDate$Outbound;
 }
+export declare function partyExpirationDateToJSON(partyExpirationDate: PartyExpirationDate): string;
+export declare function partyExpirationDateFromJSON(jsonString: string): SafeParseResult<PartyExpirationDate, SDKValidationError>;
 /** @internal */
 export declare const PartyIssueDate$inboundSchema: z.ZodType<PartyIssueDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2326,6 +2360,8 @@ export declare namespace PartyIssueDate$ {
     /** @deprecated use `PartyIssueDate$Outbound` instead. */
     type Outbound = PartyIssueDate$Outbound;
 }
+export declare function partyIssueDateToJSON(partyIssueDate: PartyIssueDate): string;
+export declare function partyIssueDateFromJSON(jsonString: string): SafeParseResult<PartyIssueDate, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonType$inboundSchema: z.ZodType<PartyLegalNaturalPersonTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2365,6 +2401,8 @@ export declare namespace PartyForeignIdentification$ {
     /** @deprecated use `PartyForeignIdentification$Outbound` instead. */
     type Outbound = PartyForeignIdentification$Outbound;
 }
+export declare function partyForeignIdentificationToJSON(partyForeignIdentification: PartyForeignIdentification): string;
+export declare function partyForeignIdentificationFromJSON(jsonString: string): SafeParseResult<PartyForeignIdentification, SDKValidationError>;
 /** @internal */
 export declare const PartyExecutionDate$inboundSchema: z.ZodType<PartyExecutionDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2387,6 +2425,8 @@ export declare namespace PartyExecutionDate$ {
     /** @deprecated use `PartyExecutionDate$Outbound` instead. */
     type Outbound = PartyExecutionDate$Outbound;
 }
+export declare function partyExecutionDateToJSON(partyExecutionDate: PartyExecutionDate): string;
+export declare function partyExecutionDateFromJSON(jsonString: string): SafeParseResult<PartyExecutionDate, SDKValidationError>;
 /** @internal */
 export declare const PartyIdentityVerificationResult$inboundSchema: z.ZodType<PartyIdentityVerificationResult, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2416,6 +2456,8 @@ export declare namespace PartyIdentityVerificationResult$ {
     /** @deprecated use `PartyIdentityVerificationResult$Outbound` instead. */
     type Outbound = PartyIdentityVerificationResult$Outbound;
 }
+export declare function partyIdentityVerificationResultToJSON(partyIdentityVerificationResult: PartyIdentityVerificationResult): string;
+export declare function partyIdentityVerificationResultFromJSON(jsonString: string): SafeParseResult<PartyIdentityVerificationResult, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonEffectiveDate$inboundSchema: z.ZodType<PartyLegalNaturalPersonEffectiveDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2438,6 +2480,8 @@ export declare namespace PartyLegalNaturalPersonEffectiveDate$ {
     /** @deprecated use `PartyLegalNaturalPersonEffectiveDate$Outbound` instead. */
     type Outbound = PartyLegalNaturalPersonEffectiveDate$Outbound;
 }
+export declare function partyLegalNaturalPersonEffectiveDateToJSON(partyLegalNaturalPersonEffectiveDate: PartyLegalNaturalPersonEffectiveDate): string;
+export declare function partyLegalNaturalPersonEffectiveDateFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPersonEffectiveDate, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonLargeTrader$inboundSchema: z.ZodType<PartyLegalNaturalPersonLargeTrader, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2459,6 +2503,8 @@ export declare namespace PartyLegalNaturalPersonLargeTrader$ {
     /** @deprecated use `PartyLegalNaturalPersonLargeTrader$Outbound` instead. */
     type Outbound = PartyLegalNaturalPersonLargeTrader$Outbound;
 }
+export declare function partyLegalNaturalPersonLargeTraderToJSON(partyLegalNaturalPersonLargeTrader: PartyLegalNaturalPersonLargeTrader): string;
+export declare function partyLegalNaturalPersonLargeTraderFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPersonLargeTrader, SDKValidationError>;
 /** @internal */
 export declare const PartyMaritalStatus$inboundSchema: z.ZodType<PartyMaritalStatusOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2510,6 +2556,8 @@ export declare namespace PartyCustomerReferralSource$ {
     /** @deprecated use `PartyCustomerReferralSource$Outbound` instead. */
     type Outbound = PartyCustomerReferralSource$Outbound;
 }
+export declare function partyCustomerReferralSourceToJSON(partyCustomerReferralSource: PartyCustomerReferralSource): string;
+export declare function partyCustomerReferralSourceFromJSON(jsonString: string): SafeParseResult<PartyCustomerReferralSource, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonNegativeNews$inboundSchema: z.ZodType<PartyLegalNaturalPersonNegativeNews, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2531,6 +2579,8 @@ export declare namespace PartyLegalNaturalPersonNegativeNews$ {
     /** @deprecated use `PartyLegalNaturalPersonNegativeNews$Outbound` instead. */
     type Outbound = PartyLegalNaturalPersonNegativeNews$Outbound;
 }
+export declare function partyLegalNaturalPersonNegativeNewsToJSON(partyLegalNaturalPersonNegativeNews: PartyLegalNaturalPersonNegativeNews): string;
+export declare function partyLegalNaturalPersonNegativeNewsFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPersonNegativeNews, SDKValidationError>;
 /** @internal */
 export declare const PartyOtherSourcesOfWealth$inboundSchema: z.ZodType<PartyOtherSourcesOfWealth, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2553,6 +2603,8 @@ export declare namespace PartyOtherSourcesOfWealth$ {
     /** @deprecated use `PartyOtherSourcesOfWealth$Outbound` instead. */
     type Outbound = PartyOtherSourcesOfWealth$Outbound;
 }
+export declare function partyOtherSourcesOfWealthToJSON(partyOtherSourcesOfWealth: PartyOtherSourcesOfWealth): string;
+export declare function partyOtherSourcesOfWealthFromJSON(jsonString: string): SafeParseResult<PartyOtherSourcesOfWealth, SDKValidationError>;
 /** @internal */
 export declare const PartyNaturalPersonFdd$inboundSchema: z.ZodType<PartyNaturalPersonFdd, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2577,6 +2629,8 @@ export declare namespace PartyNaturalPersonFdd$ {
     /** @deprecated use `PartyNaturalPersonFdd$Outbound` instead. */
     type Outbound = PartyNaturalPersonFdd$Outbound;
 }
+export declare function partyNaturalPersonFddToJSON(partyNaturalPersonFdd: PartyNaturalPersonFdd): string;
+export declare function partyNaturalPersonFddFromJSON(jsonString: string): SafeParseResult<PartyNaturalPersonFdd, SDKValidationError>;
 /** @internal */
 export declare const PartyResidencyStatus$inboundSchema: z.ZodType<PartyResidencyStatusOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2611,6 +2665,8 @@ export declare namespace PartyNonCitizenResidency$ {
     /** @deprecated use `PartyNonCitizenResidency$Outbound` instead. */
     type Outbound = PartyNonCitizenResidency$Outbound;
 }
+export declare function partyNonCitizenResidencyToJSON(partyNonCitizenResidency: PartyNonCitizenResidency): string;
+export declare function partyNonCitizenResidencyFromJSON(jsonString: string): SafeParseResult<PartyNonCitizenResidency, SDKValidationError>;
 /** @internal */
 export declare const PartyPersonalAddress$inboundSchema: z.ZodType<PartyPersonalAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2641,6 +2697,8 @@ export declare namespace PartyPersonalAddress$ {
     /** @deprecated use `PartyPersonalAddress$Outbound` instead. */
     type Outbound = PartyPersonalAddress$Outbound;
 }
+export declare function partyPersonalAddressToJSON(partyPersonalAddress: PartyPersonalAddress): string;
+export declare function partyPersonalAddressFromJSON(jsonString: string): SafeParseResult<PartyPersonalAddress, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonTaxIdType$inboundSchema: z.ZodType<PartyLegalNaturalPersonTaxIdTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2677,6 +2735,8 @@ export declare namespace PartyLegalNaturalPersonCNoticeDate$ {
     /** @deprecated use `PartyLegalNaturalPersonCNoticeDate$Outbound` instead. */
     type Outbound = PartyLegalNaturalPersonCNoticeDate$Outbound;
 }
+export declare function partyLegalNaturalPersonCNoticeDateToJSON(partyLegalNaturalPersonCNoticeDate: PartyLegalNaturalPersonCNoticeDate): string;
+export declare function partyLegalNaturalPersonCNoticeDateFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPersonCNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonFederalTaxClassification$inboundSchema: z.ZodType<PartyLegalNaturalPersonFederalTaxClassificationOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2713,6 +2773,8 @@ export declare namespace PartyLegalNaturalPersonFirstBNoticeDate$ {
     /** @deprecated use `PartyLegalNaturalPersonFirstBNoticeDate$Outbound` instead. */
     type Outbound = PartyLegalNaturalPersonFirstBNoticeDate$Outbound;
 }
+export declare function partyLegalNaturalPersonFirstBNoticeDateToJSON(partyLegalNaturalPersonFirstBNoticeDate: PartyLegalNaturalPersonFirstBNoticeDate): string;
+export declare function partyLegalNaturalPersonFirstBNoticeDateFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPersonFirstBNoticeDate, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonIrsFormType$inboundSchema: z.ZodType<PartyLegalNaturalPersonIrsFormTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2763,6 +2825,8 @@ export declare namespace PartyLegalNaturalPersonTaxCertificationDate$ {
     /** @deprecated use `PartyLegalNaturalPersonTaxCertificationDate$Outbound` instead. */
     type Outbound = PartyLegalNaturalPersonTaxCertificationDate$Outbound;
 }
+export declare function partyLegalNaturalPersonTaxCertificationDateToJSON(partyLegalNaturalPersonTaxCertificationDate: PartyLegalNaturalPersonTaxCertificationDate): string;
+export declare function partyLegalNaturalPersonTaxCertificationDateFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPersonTaxCertificationDate, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPersonTaxpayerCertificationState$inboundSchema: z.ZodType<PartyLegalNaturalPersonTaxpayerCertificationStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2834,6 +2898,8 @@ export declare namespace PartyLegalNaturalPersonTaxProfile$ {
     /** @deprecated use `PartyLegalNaturalPersonTaxProfile$Outbound` instead. */
     type Outbound = PartyLegalNaturalPersonTaxProfile$Outbound;
 }
+export declare function partyLegalNaturalPersonTaxProfileToJSON(partyLegalNaturalPersonTaxProfile: PartyLegalNaturalPersonTaxProfile): string;
+export declare function partyLegalNaturalPersonTaxProfileFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPersonTaxProfile, SDKValidationError>;
 /** @internal */
 export declare const PartyLegalNaturalPerson$inboundSchema: z.ZodType<PartyLegalNaturalPerson, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2888,6 +2954,8 @@ export declare namespace PartyLegalNaturalPerson$ {
     /** @deprecated use `PartyLegalNaturalPerson$Outbound` instead. */
     type Outbound = PartyLegalNaturalPerson$Outbound;
 }
+export declare function partyLegalNaturalPersonToJSON(partyLegalNaturalPerson: PartyLegalNaturalPerson): string;
+export declare function partyLegalNaturalPersonFromJSON(jsonString: string): SafeParseResult<PartyLegalNaturalPerson, SDKValidationError>;
 /** @internal */
 export declare const PartyMailingAddress$inboundSchema: z.ZodType<PartyMailingAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2918,6 +2986,8 @@ export declare namespace PartyMailingAddress$ {
     /** @deprecated use `PartyMailingAddress$Outbound` instead. */
     type Outbound = PartyMailingAddress$Outbound;
 }
+export declare function partyMailingAddressToJSON(partyMailingAddress: PartyMailingAddress): string;
+export declare function partyMailingAddressFromJSON(jsonString: string): SafeParseResult<PartyMailingAddress, SDKValidationError>;
 /** @internal */
 export declare const PartyShortCode$inboundSchema: z.ZodType<PartyShortCode, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2939,6 +3009,8 @@ export declare namespace PartyShortCode$ {
     /** @deprecated use `PartyShortCode$Outbound` instead. */
     type Outbound = PartyShortCode$Outbound;
 }
+export declare function partyShortCodeToJSON(partyShortCode: PartyShortCode): string;
+export declare function partyShortCodeFromJSON(jsonString: string): SafeParseResult<PartyShortCode, SDKValidationError>;
 /** @internal */
 export declare const PartyPhoneNumber$inboundSchema: z.ZodType<PartyPhoneNumber, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -2961,6 +3033,8 @@ export declare namespace PartyPhoneNumber$ {
     /** @deprecated use `PartyPhoneNumber$Outbound` instead. */
     type Outbound = PartyPhoneNumber$Outbound;
 }
+export declare function partyPhoneNumberToJSON(partyPhoneNumber: PartyPhoneNumber): string;
+export declare function partyPhoneNumberFromJSON(jsonString: string): SafeParseResult<PartyPhoneNumber, SDKValidationError>;
 /** @internal */
 export declare const PartyProspectusDeliveryPreference$inboundSchema: z.ZodType<PartyProspectusDeliveryPreferenceOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -3077,4 +3151,6 @@ export declare namespace Party$ {
     /** @deprecated use `Party$Outbound` instead. */
     type Outbound = Party$Outbound;
 }
+export declare function partyToJSON(party: Party): string;
+export declare function partyFromJSON(jsonString: string): SafeParseResult<Party, SDKValidationError>;
 //# sourceMappingURL=party.d.ts.map

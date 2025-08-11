@@ -13,6 +13,7 @@ Gets the buying power for an account
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="MarginsRealTime_GetBuyingPower" method="get" path="/buyingpower/v1/accounts/{account_id}/buyingPower" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -31,7 +32,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.margins.getBuyingPower("01HMS9S15AKBHBD8GPW33P2PMH");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -62,15 +62,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await marginsGetBuyingPower(apexascend, "01HMS9S15AKBHBD8GPW33P2PMH");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("marginsGetBuyingPower failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -91,7 +88,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 404, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |

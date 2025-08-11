@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Beneficiary,
   Beneficiary$inboundSchema,
@@ -2574,6 +2577,26 @@ export namespace BeneficiaryEnrollmentMetadata$ {
   export type Outbound = BeneficiaryEnrollmentMetadata$Outbound;
 }
 
+export function beneficiaryEnrollmentMetadataToJSON(
+  beneficiaryEnrollmentMetadata: BeneficiaryEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    BeneficiaryEnrollmentMetadata$outboundSchema.parse(
+      beneficiaryEnrollmentMetadata,
+    ),
+  );
+}
+
+export function beneficiaryEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<BeneficiaryEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BeneficiaryEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BeneficiaryEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const ConsentMethod$inboundSchema: z.ZodType<
   ConsentMethodOpen,
@@ -2682,6 +2705,24 @@ export namespace InitialDepositAmount$ {
   export type Outbound = InitialDepositAmount$Outbound;
 }
 
+export function initialDepositAmountToJSON(
+  initialDepositAmount: InitialDepositAmount,
+): string {
+  return JSON.stringify(
+    InitialDepositAmount$outboundSchema.parse(initialDepositAmount),
+  );
+}
+
+export function initialDepositAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<InitialDepositAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InitialDepositAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InitialDepositAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const DepositedFunds$inboundSchema: z.ZodType<
   DepositedFunds,
@@ -2733,6 +2774,20 @@ export namespace DepositedFunds$ {
   export const outboundSchema = DepositedFunds$outboundSchema;
   /** @deprecated use `DepositedFunds$Outbound` instead. */
   export type Outbound = DepositedFunds$Outbound;
+}
+
+export function depositedFundsToJSON(depositedFunds: DepositedFunds): string {
+  return JSON.stringify(DepositedFunds$outboundSchema.parse(depositedFunds));
+}
+
+export function depositedFundsFromJSON(
+  jsonString: string,
+): SafeParseResult<DepositedFunds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DepositedFunds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DepositedFunds' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2829,6 +2884,20 @@ export namespace OtherAccounts$ {
   export type Outbound = OtherAccounts$Outbound;
 }
 
+export function otherAccountsToJSON(otherAccounts: OtherAccounts): string {
+  return JSON.stringify(OtherAccounts$outboundSchema.parse(otherAccounts));
+}
+
+export function otherAccountsFromJSON(
+  jsonString: string,
+): SafeParseResult<OtherAccounts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OtherAccounts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OtherAccounts' from JSON`,
+  );
+}
+
 /** @internal */
 export const FinancialProfile$inboundSchema: z.ZodType<
   FinancialProfile,
@@ -2885,6 +2954,24 @@ export namespace FinancialProfile$ {
   export type Outbound = FinancialProfile$Outbound;
 }
 
+export function financialProfileToJSON(
+  financialProfile: FinancialProfile,
+): string {
+  return JSON.stringify(
+    FinancialProfile$outboundSchema.parse(financialProfile),
+  );
+}
+
+export function financialProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<FinancialProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FinancialProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FinancialProfile' from JSON`,
+  );
+}
+
 /** @internal */
 export const ForeignBondTradingDetails$inboundSchema: z.ZodType<
   ForeignBondTradingDetails,
@@ -2938,6 +3025,24 @@ export namespace ForeignBondTradingDetails$ {
   export type Outbound = ForeignBondTradingDetails$Outbound;
 }
 
+export function foreignBondTradingDetailsToJSON(
+  foreignBondTradingDetails: ForeignBondTradingDetails,
+): string {
+  return JSON.stringify(
+    ForeignBondTradingDetails$outboundSchema.parse(foreignBondTradingDetails),
+  );
+}
+
+export function foreignBondTradingDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ForeignBondTradingDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ForeignBondTradingDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForeignBondTradingDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const LowPricedSecuritiesPercentage$inboundSchema: z.ZodType<
   LowPricedSecuritiesPercentage,
@@ -2972,6 +3077,26 @@ export namespace LowPricedSecuritiesPercentage$ {
   export const outboundSchema = LowPricedSecuritiesPercentage$outboundSchema;
   /** @deprecated use `LowPricedSecuritiesPercentage$Outbound` instead. */
   export type Outbound = LowPricedSecuritiesPercentage$Outbound;
+}
+
+export function lowPricedSecuritiesPercentageToJSON(
+  lowPricedSecuritiesPercentage: LowPricedSecuritiesPercentage,
+): string {
+  return JSON.stringify(
+    LowPricedSecuritiesPercentage$outboundSchema.parse(
+      lowPricedSecuritiesPercentage,
+    ),
+  );
+}
+
+export function lowPricedSecuritiesPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<LowPricedSecuritiesPercentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LowPricedSecuritiesPercentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LowPricedSecuritiesPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3028,6 +3153,24 @@ export namespace LowPricedSecurities$ {
   export const outboundSchema = LowPricedSecurities$outboundSchema;
   /** @deprecated use `LowPricedSecurities$Outbound` instead. */
   export type Outbound = LowPricedSecurities$Outbound;
+}
+
+export function lowPricedSecuritiesToJSON(
+  lowPricedSecurities: LowPricedSecurities,
+): string {
+  return JSON.stringify(
+    LowPricedSecurities$outboundSchema.parse(lowPricedSecurities),
+  );
+}
+
+export function lowPricedSecuritiesFromJSON(
+  jsonString: string,
+): SafeParseResult<LowPricedSecurities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LowPricedSecurities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LowPricedSecurities' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3184,6 +3327,22 @@ export namespace PlannedActivity$ {
   export type Outbound = PlannedActivity$Outbound;
 }
 
+export function plannedActivityToJSON(
+  plannedActivity: PlannedActivity,
+): string {
+  return JSON.stringify(PlannedActivity$outboundSchema.parse(plannedActivity));
+}
+
+export function plannedActivityFromJSON(
+  jsonString: string,
+): SafeParseResult<PlannedActivity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PlannedActivity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PlannedActivity' from JSON`,
+  );
+}
+
 /** @internal */
 export const RelatedPepDetails$inboundSchema: z.ZodType<
   RelatedPepDetails,
@@ -3231,6 +3390,24 @@ export namespace RelatedPepDetails$ {
   export const outboundSchema = RelatedPepDetails$outboundSchema;
   /** @deprecated use `RelatedPepDetails$Outbound` instead. */
   export type Outbound = RelatedPepDetails$Outbound;
+}
+
+export function relatedPepDetailsToJSON(
+  relatedPepDetails: RelatedPepDetails,
+): string {
+  return JSON.stringify(
+    RelatedPepDetails$outboundSchema.parse(relatedPepDetails),
+  );
+}
+
+export function relatedPepDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<RelatedPepDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RelatedPepDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RelatedPepDetails' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3312,6 +3489,26 @@ export namespace EddAccountEnrollmentMetadata$ {
   export const outboundSchema = EddAccountEnrollmentMetadata$outboundSchema;
   /** @deprecated use `EddAccountEnrollmentMetadata$Outbound` instead. */
   export type Outbound = EddAccountEnrollmentMetadata$Outbound;
+}
+
+export function eddAccountEnrollmentMetadataToJSON(
+  eddAccountEnrollmentMetadata: EddAccountEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    EddAccountEnrollmentMetadata$outboundSchema.parse(
+      eddAccountEnrollmentMetadata,
+    ),
+  );
+}
+
+export function eddAccountEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<EddAccountEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EddAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EddAccountEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3417,6 +3614,26 @@ export namespace CorporationEnrollmentMetadata$ {
   export const outboundSchema = CorporationEnrollmentMetadata$outboundSchema;
   /** @deprecated use `CorporationEnrollmentMetadata$Outbound` instead. */
   export type Outbound = CorporationEnrollmentMetadata$Outbound;
+}
+
+export function corporationEnrollmentMetadataToJSON(
+  corporationEnrollmentMetadata: CorporationEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    CorporationEnrollmentMetadata$outboundSchema.parse(
+      corporationEnrollmentMetadata,
+    ),
+  );
+}
+
+export function corporationEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<CorporationEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CorporationEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CorporationEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3535,6 +3752,26 @@ export namespace CustodialEnrollmentMetadata$ {
   export type Outbound = CustodialEnrollmentMetadata$Outbound;
 }
 
+export function custodialEnrollmentMetadataToJSON(
+  custodialEnrollmentMetadata: CustodialEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    CustodialEnrollmentMetadata$outboundSchema.parse(
+      custodialEnrollmentMetadata,
+    ),
+  );
+}
+
+export function custodialEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<CustodialEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustodialEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustodialEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
   z.ZodType<
@@ -3624,6 +3861,24 @@ export namespace EstateEnrollmentMetadata$ {
   export const outboundSchema = EstateEnrollmentMetadata$outboundSchema;
   /** @deprecated use `EstateEnrollmentMetadata$Outbound` instead. */
   export type Outbound = EstateEnrollmentMetadata$Outbound;
+}
+
+export function estateEnrollmentMetadataToJSON(
+  estateEnrollmentMetadata: EstateEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    EstateEnrollmentMetadata$outboundSchema.parse(estateEnrollmentMetadata),
+  );
+}
+
+export function estateEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<EstateEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EstateEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EstateEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3742,6 +3997,26 @@ export namespace EnrollmentInitialDepositAmount$ {
   export type Outbound = EnrollmentInitialDepositAmount$Outbound;
 }
 
+export function enrollmentInitialDepositAmountToJSON(
+  enrollmentInitialDepositAmount: EnrollmentInitialDepositAmount,
+): string {
+  return JSON.stringify(
+    EnrollmentInitialDepositAmount$outboundSchema.parse(
+      enrollmentInitialDepositAmount,
+    ),
+  );
+}
+
+export function enrollmentInitialDepositAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentInitialDepositAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollmentInitialDepositAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentInitialDepositAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentDepositedFunds$inboundSchema: z.ZodType<
   EnrollmentDepositedFunds,
@@ -3798,6 +4073,24 @@ export namespace EnrollmentDepositedFunds$ {
   export type Outbound = EnrollmentDepositedFunds$Outbound;
 }
 
+export function enrollmentDepositedFundsToJSON(
+  enrollmentDepositedFunds: EnrollmentDepositedFunds,
+): string {
+  return JSON.stringify(
+    EnrollmentDepositedFunds$outboundSchema.parse(enrollmentDepositedFunds),
+  );
+}
+
+export function enrollmentDepositedFundsFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentDepositedFunds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollmentDepositedFunds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentDepositedFunds' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentOtherAccounts$inboundSchema: z.ZodType<
   EnrollmentOtherAccounts,
@@ -3850,6 +4143,24 @@ export namespace EnrollmentOtherAccounts$ {
   export const outboundSchema = EnrollmentOtherAccounts$outboundSchema;
   /** @deprecated use `EnrollmentOtherAccounts$Outbound` instead. */
   export type Outbound = EnrollmentOtherAccounts$Outbound;
+}
+
+export function enrollmentOtherAccountsToJSON(
+  enrollmentOtherAccounts: EnrollmentOtherAccounts,
+): string {
+  return JSON.stringify(
+    EnrollmentOtherAccounts$outboundSchema.parse(enrollmentOtherAccounts),
+  );
+}
+
+export function enrollmentOtherAccountsFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentOtherAccounts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollmentOtherAccounts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentOtherAccounts' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3910,6 +4221,24 @@ export namespace EnrollmentFinancialProfile$ {
   export type Outbound = EnrollmentFinancialProfile$Outbound;
 }
 
+export function enrollmentFinancialProfileToJSON(
+  enrollmentFinancialProfile: EnrollmentFinancialProfile,
+): string {
+  return JSON.stringify(
+    EnrollmentFinancialProfile$outboundSchema.parse(enrollmentFinancialProfile),
+  );
+}
+
+export function enrollmentFinancialProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentFinancialProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollmentFinancialProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentFinancialProfile' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentForeignBondTradingDetails$inboundSchema: z.ZodType<
   EnrollmentForeignBondTradingDetails,
@@ -3965,6 +4294,27 @@ export namespace EnrollmentForeignBondTradingDetails$ {
   export type Outbound = EnrollmentForeignBondTradingDetails$Outbound;
 }
 
+export function enrollmentForeignBondTradingDetailsToJSON(
+  enrollmentForeignBondTradingDetails: EnrollmentForeignBondTradingDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignBondTradingDetails$outboundSchema.parse(
+      enrollmentForeignBondTradingDetails,
+    ),
+  );
+}
+
+export function enrollmentForeignBondTradingDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentForeignBondTradingDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignBondTradingDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignBondTradingDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLowPricedSecuritiesPercentage$inboundSchema: z.ZodType<
   EnrollmentLowPricedSecuritiesPercentage,
@@ -4001,6 +4351,33 @@ export namespace EnrollmentLowPricedSecuritiesPercentage$ {
     EnrollmentLowPricedSecuritiesPercentage$outboundSchema;
   /** @deprecated use `EnrollmentLowPricedSecuritiesPercentage$Outbound` instead. */
   export type Outbound = EnrollmentLowPricedSecuritiesPercentage$Outbound;
+}
+
+export function enrollmentLowPricedSecuritiesPercentageToJSON(
+  enrollmentLowPricedSecuritiesPercentage:
+    EnrollmentLowPricedSecuritiesPercentage,
+): string {
+  return JSON.stringify(
+    EnrollmentLowPricedSecuritiesPercentage$outboundSchema.parse(
+      enrollmentLowPricedSecuritiesPercentage,
+    ),
+  );
+}
+
+export function enrollmentLowPricedSecuritiesPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLowPricedSecuritiesPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLowPricedSecuritiesPercentage$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLowPricedSecuritiesPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4057,6 +4434,26 @@ export namespace EnrollmentLowPricedSecurities$ {
   export const outboundSchema = EnrollmentLowPricedSecurities$outboundSchema;
   /** @deprecated use `EnrollmentLowPricedSecurities$Outbound` instead. */
   export type Outbound = EnrollmentLowPricedSecurities$Outbound;
+}
+
+export function enrollmentLowPricedSecuritiesToJSON(
+  enrollmentLowPricedSecurities: EnrollmentLowPricedSecurities,
+): string {
+  return JSON.stringify(
+    EnrollmentLowPricedSecurities$outboundSchema.parse(
+      enrollmentLowPricedSecurities,
+    ),
+  );
+}
+
+export function enrollmentLowPricedSecuritiesFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentLowPricedSecurities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollmentLowPricedSecurities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentLowPricedSecurities' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4200,6 +4597,24 @@ export namespace EnrollmentPlannedActivity$ {
   export type Outbound = EnrollmentPlannedActivity$Outbound;
 }
 
+export function enrollmentPlannedActivityToJSON(
+  enrollmentPlannedActivity: EnrollmentPlannedActivity,
+): string {
+  return JSON.stringify(
+    EnrollmentPlannedActivity$outboundSchema.parse(enrollmentPlannedActivity),
+  );
+}
+
+export function enrollmentPlannedActivityFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentPlannedActivity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollmentPlannedActivity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPlannedActivity' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentRelatedPepDetails$inboundSchema: z.ZodType<
   EnrollmentRelatedPepDetails,
@@ -4247,6 +4662,26 @@ export namespace EnrollmentRelatedPepDetails$ {
   export const outboundSchema = EnrollmentRelatedPepDetails$outboundSchema;
   /** @deprecated use `EnrollmentRelatedPepDetails$Outbound` instead. */
   export type Outbound = EnrollmentRelatedPepDetails$Outbound;
+}
+
+export function enrollmentRelatedPepDetailsToJSON(
+  enrollmentRelatedPepDetails: EnrollmentRelatedPepDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentRelatedPepDetails$outboundSchema.parse(
+      enrollmentRelatedPepDetails,
+    ),
+  );
+}
+
+export function enrollmentRelatedPepDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentRelatedPepDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EnrollmentRelatedPepDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentRelatedPepDetails' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4328,6 +4763,33 @@ export namespace ForeignNaturalPersonAccountEnrollmentMetadata$ {
   export type Outbound = ForeignNaturalPersonAccountEnrollmentMetadata$Outbound;
 }
 
+export function foreignNaturalPersonAccountEnrollmentMetadataToJSON(
+  foreignNaturalPersonAccountEnrollmentMetadata:
+    ForeignNaturalPersonAccountEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    ForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema.parse(
+      foreignNaturalPersonAccountEnrollmentMetadata,
+    ),
+  );
+}
+
+export function foreignNaturalPersonAccountEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ForeignNaturalPersonAccountEnrollmentMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ForeignNaturalPersonAccountEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const ForeignIndividualAccountEnrollmentMetadata$inboundSchema:
   z.ZodType<ForeignIndividualAccountEnrollmentMetadata, z.ZodTypeDef, unknown> =
@@ -4402,6 +4864,33 @@ export namespace ForeignIndividualAccountEnrollmentMetadata$ {
     ForeignIndividualAccountEnrollmentMetadata$outboundSchema;
   /** @deprecated use `ForeignIndividualAccountEnrollmentMetadata$Outbound` instead. */
   export type Outbound = ForeignIndividualAccountEnrollmentMetadata$Outbound;
+}
+
+export function foreignIndividualAccountEnrollmentMetadataToJSON(
+  foreignIndividualAccountEnrollmentMetadata:
+    ForeignIndividualAccountEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    ForeignIndividualAccountEnrollmentMetadata$outboundSchema.parse(
+      foreignIndividualAccountEnrollmentMetadata,
+    ),
+  );
+}
+
+export function foreignIndividualAccountEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ForeignIndividualAccountEnrollmentMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForeignIndividualAccountEnrollmentMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ForeignIndividualAccountEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4524,6 +5013,33 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAm
     EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$Outbound;
 }
 
+export function enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount:
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$outboundSchema
+      .parse(
+        enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount,
+      ),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataInitialDepositAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema:
   z.ZodType<
@@ -4590,6 +5106,31 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$ 
     EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$Outbound;
 }
 
+export function enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataDepositedFunds:
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$outboundSchema
+      .parse(enrollmentForeignJointAccountEnrollmentMetadataDepositedFunds),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataDepositedFundsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataDepositedFunds' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema:
   z.ZodType<
@@ -4648,6 +5189,31 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$ {
   /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound` instead. */
   export type Outbound =
     EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outbound;
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataOtherAccounts:
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outboundSchema
+      .parse(enrollmentForeignJointAccountEnrollmentMetadataOtherAccounts),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataOtherAccountsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4721,6 +5287,31 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile
     EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$Outbound;
 }
 
+export function enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataFinancialProfile:
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$outboundSchema
+      .parse(enrollmentForeignJointAccountEnrollmentMetadataFinancialProfile),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataFinancialProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataFinancialProfile' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema:
   z.ZodType<
@@ -4780,6 +5371,33 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradi
     EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound;
 }
 
+export function enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails:
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$outboundSchema
+      .parse(
+        enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails,
+      ),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema:
   z.ZodType<
@@ -4820,6 +5438,33 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurit
   /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound` instead. */
   export type Outbound =
     EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound;
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage:
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
+      .parse(
+        enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage,
+      ),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4886,6 +5531,33 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurit
   /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound` instead. */
   export type Outbound =
     EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound;
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities:
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$outboundSchema
+      .parse(
+        enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities,
+      ),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5063,6 +5735,31 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$
     EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$Outbound;
 }
 
+export function enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataPlannedActivity:
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$outboundSchema
+      .parse(enrollmentForeignJointAccountEnrollmentMetadataPlannedActivity),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataPlannedActivityFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataPlannedActivity' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema:
   z.ZodType<
@@ -5116,6 +5813,31 @@ export namespace EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetail
   /** @deprecated use `EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound` instead. */
   export type Outbound =
     EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound;
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsToJSON(
+  enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails:
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$outboundSchema
+      .parse(enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails),
+  );
+}
+
+export function enrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5226,6 +5948,31 @@ export namespace EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$ {
     EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$Outbound;
 }
 
+export function enrollmentForeignNaturalPersonAccountEnrollmentMetadataToJSON(
+  enrollmentForeignNaturalPersonAccountEnrollmentMetadata:
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$outboundSchema
+      .parse(enrollmentForeignNaturalPersonAccountEnrollmentMetadata),
+  );
+}
+
+export function enrollmentForeignNaturalPersonAccountEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentForeignNaturalPersonAccountEnrollmentMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentForeignNaturalPersonAccountEnrollmentMetadata$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentForeignNaturalPersonAccountEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const ForeignJointAccountEnrollmentMetadata$inboundSchema: z.ZodType<
   ForeignJointAccountEnrollmentMetadata,
@@ -5303,6 +6050,27 @@ export namespace ForeignJointAccountEnrollmentMetadata$ {
   export type Outbound = ForeignJointAccountEnrollmentMetadata$Outbound;
 }
 
+export function foreignJointAccountEnrollmentMetadataToJSON(
+  foreignJointAccountEnrollmentMetadata: ForeignJointAccountEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    ForeignJointAccountEnrollmentMetadata$outboundSchema.parse(
+      foreignJointAccountEnrollmentMetadata,
+    ),
+  );
+}
+
+export function foreignJointAccountEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<ForeignJointAccountEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForeignJointAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForeignJointAccountEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const FpslEnrollmentMetadata$inboundSchema: z.ZodType<
   FpslEnrollmentMetadata,
@@ -5360,6 +6128,24 @@ export namespace FpslEnrollmentMetadata$ {
   export const outboundSchema = FpslEnrollmentMetadata$outboundSchema;
   /** @deprecated use `FpslEnrollmentMetadata$Outbound` instead. */
   export type Outbound = FpslEnrollmentMetadata$Outbound;
+}
+
+export function fpslEnrollmentMetadataToJSON(
+  fpslEnrollmentMetadata: FpslEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    FpslEnrollmentMetadata$outboundSchema.parse(fpslEnrollmentMetadata),
+  );
+}
+
+export function fpslEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<FpslEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FpslEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FpslEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5495,6 +6281,26 @@ export namespace IndividualEnrollmentMetadata$ {
   export type Outbound = IndividualEnrollmentMetadata$Outbound;
 }
 
+export function individualEnrollmentMetadataToJSON(
+  individualEnrollmentMetadata: IndividualEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    IndividualEnrollmentMetadata$outboundSchema.parse(
+      individualEnrollmentMetadata,
+    ),
+  );
+}
+
+export function individualEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<IndividualEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IndividualEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IndividualEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentIraBeneficiaryEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
   z.ZodType<
@@ -5613,6 +6419,26 @@ export namespace InheritedFromOwnerBirthDate$ {
   export type Outbound = InheritedFromOwnerBirthDate$Outbound;
 }
 
+export function inheritedFromOwnerBirthDateToJSON(
+  inheritedFromOwnerBirthDate: InheritedFromOwnerBirthDate,
+): string {
+  return JSON.stringify(
+    InheritedFromOwnerBirthDate$outboundSchema.parse(
+      inheritedFromOwnerBirthDate,
+    ),
+  );
+}
+
+export function inheritedFromOwnerBirthDateFromJSON(
+  jsonString: string,
+): SafeParseResult<InheritedFromOwnerBirthDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InheritedFromOwnerBirthDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InheritedFromOwnerBirthDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const InheritedFromOwnerDeathDate$inboundSchema: z.ZodType<
   InheritedFromOwnerDeathDate,
@@ -5653,6 +6479,26 @@ export namespace InheritedFromOwnerDeathDate$ {
   export const outboundSchema = InheritedFromOwnerDeathDate$outboundSchema;
   /** @deprecated use `InheritedFromOwnerDeathDate$Outbound` instead. */
   export type Outbound = InheritedFromOwnerDeathDate$Outbound;
+}
+
+export function inheritedFromOwnerDeathDateToJSON(
+  inheritedFromOwnerDeathDate: InheritedFromOwnerDeathDate,
+): string {
+  return JSON.stringify(
+    InheritedFromOwnerDeathDate$outboundSchema.parse(
+      inheritedFromOwnerDeathDate,
+    ),
+  );
+}
+
+export function inheritedFromOwnerDeathDateFromJSON(
+  jsonString: string,
+): SafeParseResult<InheritedFromOwnerDeathDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InheritedFromOwnerDeathDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InheritedFromOwnerDeathDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5744,6 +6590,26 @@ export namespace IraBeneficiaryEnrollmentMetadata$ {
   export const outboundSchema = IraBeneficiaryEnrollmentMetadata$outboundSchema;
   /** @deprecated use `IraBeneficiaryEnrollmentMetadata$Outbound` instead. */
   export type Outbound = IraBeneficiaryEnrollmentMetadata$Outbound;
+}
+
+export function iraBeneficiaryEnrollmentMetadataToJSON(
+  iraBeneficiaryEnrollmentMetadata: IraBeneficiaryEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    IraBeneficiaryEnrollmentMetadata$outboundSchema.parse(
+      iraBeneficiaryEnrollmentMetadata,
+    ),
+  );
+}
+
+export function iraBeneficiaryEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<IraBeneficiaryEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraBeneficiaryEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraBeneficiaryEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5879,6 +6745,26 @@ export namespace IraRolloverEnrollmentMetadata$ {
   export type Outbound = IraRolloverEnrollmentMetadata$Outbound;
 }
 
+export function iraRolloverEnrollmentMetadataToJSON(
+  iraRolloverEnrollmentMetadata: IraRolloverEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    IraRolloverEnrollmentMetadata$outboundSchema.parse(
+      iraRolloverEnrollmentMetadata,
+    ),
+  );
+}
+
+export function iraRolloverEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<IraRolloverEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraRolloverEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraRolloverEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentIraRothEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
   z.ZodType<
@@ -6006,6 +6892,24 @@ export namespace IraRothEnrollmentMetadata$ {
   export type Outbound = IraRothEnrollmentMetadata$Outbound;
 }
 
+export function iraRothEnrollmentMetadataToJSON(
+  iraRothEnrollmentMetadata: IraRothEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    IraRothEnrollmentMetadata$outboundSchema.parse(iraRothEnrollmentMetadata),
+  );
+}
+
+export function iraRothEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<IraRothEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraRothEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraRothEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentIraSepEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
   z.ZodType<
@@ -6131,6 +7035,24 @@ export namespace IraSepEnrollmentMetadata$ {
   export const outboundSchema = IraSepEnrollmentMetadata$outboundSchema;
   /** @deprecated use `IraSepEnrollmentMetadata$Outbound` instead. */
   export type Outbound = IraSepEnrollmentMetadata$Outbound;
+}
+
+export function iraSepEnrollmentMetadataToJSON(
+  iraSepEnrollmentMetadata: IraSepEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    IraSepEnrollmentMetadata$outboundSchema.parse(iraSepEnrollmentMetadata),
+  );
+}
+
+export function iraSepEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<IraSepEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraSepEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraSepEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -6261,6 +7183,26 @@ export namespace IraSimpleEnrollmentMetadata$ {
   export const outboundSchema = IraSimpleEnrollmentMetadata$outboundSchema;
   /** @deprecated use `IraSimpleEnrollmentMetadata$Outbound` instead. */
   export type Outbound = IraSimpleEnrollmentMetadata$Outbound;
+}
+
+export function iraSimpleEnrollmentMetadataToJSON(
+  iraSimpleEnrollmentMetadata: IraSimpleEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    IraSimpleEnrollmentMetadata$outboundSchema.parse(
+      iraSimpleEnrollmentMetadata,
+    ),
+  );
+}
+
+export function iraSimpleEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<IraSimpleEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraSimpleEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraSimpleEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -6394,6 +7336,26 @@ export namespace IraTraditionalEnrollmentMetadata$ {
   export const outboundSchema = IraTraditionalEnrollmentMetadata$outboundSchema;
   /** @deprecated use `IraTraditionalEnrollmentMetadata$Outbound` instead. */
   export type Outbound = IraTraditionalEnrollmentMetadata$Outbound;
+}
+
+export function iraTraditionalEnrollmentMetadataToJSON(
+  iraTraditionalEnrollmentMetadata: IraTraditionalEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    IraTraditionalEnrollmentMetadata$outboundSchema.parse(
+      iraTraditionalEnrollmentMetadata,
+    ),
+  );
+}
+
+export function iraTraditionalEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<IraTraditionalEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IraTraditionalEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IraTraditionalEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -6586,6 +7548,33 @@ export namespace JointCommunityPropertyEnrollmentMetadata$ {
   export type Outbound = JointCommunityPropertyEnrollmentMetadata$Outbound;
 }
 
+export function jointCommunityPropertyEnrollmentMetadataToJSON(
+  jointCommunityPropertyEnrollmentMetadata:
+    JointCommunityPropertyEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    JointCommunityPropertyEnrollmentMetadata$outboundSchema.parse(
+      jointCommunityPropertyEnrollmentMetadata,
+    ),
+  );
+}
+
+export function jointCommunityPropertyEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  JointCommunityPropertyEnrollmentMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      JointCommunityPropertyEnrollmentMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'JointCommunityPropertyEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentJointTenantsByEntiretyEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
   z.ZodType<
@@ -6770,6 +7759,33 @@ export namespace JointTenantsByEntiretyEnrollmentMetadata$ {
   export type Outbound = JointTenantsByEntiretyEnrollmentMetadata$Outbound;
 }
 
+export function jointTenantsByEntiretyEnrollmentMetadataToJSON(
+  jointTenantsByEntiretyEnrollmentMetadata:
+    JointTenantsByEntiretyEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    JointTenantsByEntiretyEnrollmentMetadata$outboundSchema.parse(
+      jointTenantsByEntiretyEnrollmentMetadata,
+    ),
+  );
+}
+
+export function jointTenantsByEntiretyEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  JointTenantsByEntiretyEnrollmentMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      JointTenantsByEntiretyEnrollmentMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'JointTenantsByEntiretyEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentJointTenantsInCommonEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
   z.ZodType<
@@ -6905,6 +7921,28 @@ export namespace JointTenantsInCommonEnrollmentMetadata$ {
     JointTenantsInCommonEnrollmentMetadata$outboundSchema;
   /** @deprecated use `JointTenantsInCommonEnrollmentMetadata$Outbound` instead. */
   export type Outbound = JointTenantsInCommonEnrollmentMetadata$Outbound;
+}
+
+export function jointTenantsInCommonEnrollmentMetadataToJSON(
+  jointTenantsInCommonEnrollmentMetadata:
+    JointTenantsInCommonEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    JointTenantsInCommonEnrollmentMetadata$outboundSchema.parse(
+      jointTenantsInCommonEnrollmentMetadata,
+    ),
+  );
+}
+
+export function jointTenantsInCommonEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<JointTenantsInCommonEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      JointTenantsInCommonEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JointTenantsInCommonEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -7049,6 +8087,33 @@ export namespace JointWithRightsOfSurvivorshipEnrollmentMetadata$ {
     JointWithRightsOfSurvivorshipEnrollmentMetadata$Outbound;
 }
 
+export function jointWithRightsOfSurvivorshipEnrollmentMetadataToJSON(
+  jointWithRightsOfSurvivorshipEnrollmentMetadata:
+    JointWithRightsOfSurvivorshipEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    JointWithRightsOfSurvivorshipEnrollmentMetadata$outboundSchema.parse(
+      jointWithRightsOfSurvivorshipEnrollmentMetadata,
+    ),
+  );
+}
+
+export function jointWithRightsOfSurvivorshipEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  JointWithRightsOfSurvivorshipEnrollmentMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      JointWithRightsOfSurvivorshipEnrollmentMetadata$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'JointWithRightsOfSurvivorshipEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLlcEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
   z.ZodType<
@@ -7126,6 +8191,33 @@ export namespace EnrollmentLlcEnrollmentMetadataInitialDepositAmount$ {
     EnrollmentLlcEnrollmentMetadataInitialDepositAmount$Outbound;
 }
 
+export function enrollmentLlcEnrollmentMetadataInitialDepositAmountToJSON(
+  enrollmentLlcEnrollmentMetadataInitialDepositAmount:
+    EnrollmentLlcEnrollmentMetadataInitialDepositAmount,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataInitialDepositAmount$outboundSchema.parse(
+      enrollmentLlcEnrollmentMetadataInitialDepositAmount,
+    ),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataInitialDepositAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataInitialDepositAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataInitialDepositAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataInitialDepositAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLlcEnrollmentMetadataDepositedFunds$inboundSchema:
   z.ZodType<
@@ -7188,6 +8280,33 @@ export namespace EnrollmentLlcEnrollmentMetadataDepositedFunds$ {
     EnrollmentLlcEnrollmentMetadataDepositedFunds$outboundSchema;
   /** @deprecated use `EnrollmentLlcEnrollmentMetadataDepositedFunds$Outbound` instead. */
   export type Outbound = EnrollmentLlcEnrollmentMetadataDepositedFunds$Outbound;
+}
+
+export function enrollmentLlcEnrollmentMetadataDepositedFundsToJSON(
+  enrollmentLlcEnrollmentMetadataDepositedFunds:
+    EnrollmentLlcEnrollmentMetadataDepositedFunds,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataDepositedFunds$outboundSchema.parse(
+      enrollmentLlcEnrollmentMetadataDepositedFunds,
+    ),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataDepositedFundsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataDepositedFunds,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataDepositedFunds$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataDepositedFunds' from JSON`,
+  );
 }
 
 /** @internal */
@@ -7282,6 +8401,33 @@ export namespace EnrollmentLlcEnrollmentMetadataOtherAccounts$ {
   export type Outbound = EnrollmentLlcEnrollmentMetadataOtherAccounts$Outbound;
 }
 
+export function enrollmentLlcEnrollmentMetadataOtherAccountsToJSON(
+  enrollmentLlcEnrollmentMetadataOtherAccounts:
+    EnrollmentLlcEnrollmentMetadataOtherAccounts,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataOtherAccounts$outboundSchema.parse(
+      enrollmentLlcEnrollmentMetadataOtherAccounts,
+    ),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataOtherAccountsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataOtherAccounts,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataOtherAccounts$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataOtherAccounts' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLlcEnrollmentMetadataFinancialProfile$inboundSchema:
   z.ZodType<
@@ -7348,6 +8494,33 @@ export namespace EnrollmentLlcEnrollmentMetadataFinancialProfile$ {
     EnrollmentLlcEnrollmentMetadataFinancialProfile$Outbound;
 }
 
+export function enrollmentLlcEnrollmentMetadataFinancialProfileToJSON(
+  enrollmentLlcEnrollmentMetadataFinancialProfile:
+    EnrollmentLlcEnrollmentMetadataFinancialProfile,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataFinancialProfile$outboundSchema.parse(
+      enrollmentLlcEnrollmentMetadataFinancialProfile,
+    ),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataFinancialProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataFinancialProfile,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataFinancialProfile$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataFinancialProfile' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSchema:
   z.ZodType<
@@ -7407,6 +8580,31 @@ export namespace EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$ {
     EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$Outbound;
 }
 
+export function enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsToJSON(
+  enrollmentLlcEnrollmentMetadataForeignBondTradingDetails:
+    EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$outboundSchema
+      .parse(enrollmentLlcEnrollmentMetadataForeignBondTradingDetails),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataForeignBondTradingDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema:
   z.ZodType<
@@ -7447,6 +8645,31 @@ export namespace EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$ {
   /** @deprecated use `EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound` instead. */
   export type Outbound =
     EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound;
+}
+
+export function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageToJSON(
+  enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage:
+    EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
+      .parse(enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -7512,6 +8735,33 @@ export namespace EnrollmentLlcEnrollmentMetadataLowPricedSecurities$ {
   /** @deprecated use `EnrollmentLlcEnrollmentMetadataLowPricedSecurities$Outbound` instead. */
   export type Outbound =
     EnrollmentLlcEnrollmentMetadataLowPricedSecurities$Outbound;
+}
+
+export function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesToJSON(
+  enrollmentLlcEnrollmentMetadataLowPricedSecurities:
+    EnrollmentLlcEnrollmentMetadataLowPricedSecurities,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataLowPricedSecurities$outboundSchema.parse(
+      enrollmentLlcEnrollmentMetadataLowPricedSecurities,
+    ),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataLowPricedSecuritiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataLowPricedSecurities,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataLowPricedSecurities$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataLowPricedSecurities' from JSON`,
+  );
 }
 
 /** @internal */
@@ -7680,6 +8930,33 @@ export namespace EnrollmentLlcEnrollmentMetadataPlannedActivity$ {
     EnrollmentLlcEnrollmentMetadataPlannedActivity$Outbound;
 }
 
+export function enrollmentLlcEnrollmentMetadataPlannedActivityToJSON(
+  enrollmentLlcEnrollmentMetadataPlannedActivity:
+    EnrollmentLlcEnrollmentMetadataPlannedActivity,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataPlannedActivity$outboundSchema.parse(
+      enrollmentLlcEnrollmentMetadataPlannedActivity,
+    ),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataPlannedActivityFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataPlannedActivity,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataPlannedActivity$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataPlannedActivity' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema:
   z.ZodType<
@@ -7732,6 +9009,33 @@ export namespace EnrollmentLlcEnrollmentMetadataRelatedPepDetails$ {
   /** @deprecated use `EnrollmentLlcEnrollmentMetadataRelatedPepDetails$Outbound` instead. */
   export type Outbound =
     EnrollmentLlcEnrollmentMetadataRelatedPepDetails$Outbound;
+}
+
+export function enrollmentLlcEnrollmentMetadataRelatedPepDetailsToJSON(
+  enrollmentLlcEnrollmentMetadataRelatedPepDetails:
+    EnrollmentLlcEnrollmentMetadataRelatedPepDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentLlcEnrollmentMetadataRelatedPepDetails$outboundSchema.parse(
+      enrollmentLlcEnrollmentMetadataRelatedPepDetails,
+    ),
+  );
+}
+
+export function enrollmentLlcEnrollmentMetadataRelatedPepDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentLlcEnrollmentMetadataRelatedPepDetails,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentLlcEnrollmentMetadataRelatedPepDetails' from JSON`,
+  );
 }
 
 /** @internal */
@@ -7841,6 +9145,28 @@ export namespace EnrollmentEddAccountEnrollmentMetadata$ {
   export type Outbound = EnrollmentEddAccountEnrollmentMetadata$Outbound;
 }
 
+export function enrollmentEddAccountEnrollmentMetadataToJSON(
+  enrollmentEddAccountEnrollmentMetadata:
+    EnrollmentEddAccountEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    EnrollmentEddAccountEnrollmentMetadata$outboundSchema.parse(
+      enrollmentEddAccountEnrollmentMetadata,
+    ),
+  );
+}
+
+export function enrollmentEddAccountEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<EnrollmentEddAccountEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentEddAccountEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentEddAccountEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentLlcEnrollmentMetadataFdicCashSweep$inboundSchema:
   z.ZodType<
@@ -7942,6 +9268,24 @@ export namespace LlcEnrollmentMetadata$ {
   export const outboundSchema = LlcEnrollmentMetadata$outboundSchema;
   /** @deprecated use `LlcEnrollmentMetadata$Outbound` instead. */
   export type Outbound = LlcEnrollmentMetadata$Outbound;
+}
+
+export function llcEnrollmentMetadataToJSON(
+  llcEnrollmentMetadata: LlcEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    LlcEnrollmentMetadata$outboundSchema.parse(llcEnrollmentMetadata),
+  );
+}
+
+export function llcEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<LlcEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LlcEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LlcEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -8089,6 +9433,24 @@ export namespace TaxWithholdingMetadata$ {
   export type Outbound = TaxWithholdingMetadata$Outbound;
 }
 
+export function taxWithholdingMetadataToJSON(
+  taxWithholdingMetadata: TaxWithholdingMetadata,
+): string {
+  return JSON.stringify(
+    TaxWithholdingMetadata$outboundSchema.parse(taxWithholdingMetadata),
+  );
+}
+
+export function taxWithholdingMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<TaxWithholdingMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TaxWithholdingMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TaxWithholdingMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const OperatingEnrollmentMetadata$inboundSchema: z.ZodType<
   OperatingEnrollmentMetadata,
@@ -8143,6 +9505,26 @@ export namespace OperatingEnrollmentMetadata$ {
   export const outboundSchema = OperatingEnrollmentMetadata$outboundSchema;
   /** @deprecated use `OperatingEnrollmentMetadata$Outbound` instead. */
   export type Outbound = OperatingEnrollmentMetadata$Outbound;
+}
+
+export function operatingEnrollmentMetadataToJSON(
+  operatingEnrollmentMetadata: OperatingEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    OperatingEnrollmentMetadata$outboundSchema.parse(
+      operatingEnrollmentMetadata,
+    ),
+  );
+}
+
+export function operatingEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<OperatingEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OperatingEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OperatingEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -8237,6 +9619,26 @@ export namespace InvestmentVehicleExperience$ {
   export const outboundSchema = InvestmentVehicleExperience$outboundSchema;
   /** @deprecated use `InvestmentVehicleExperience$Outbound` instead. */
   export type Outbound = InvestmentVehicleExperience$Outbound;
+}
+
+export function investmentVehicleExperienceToJSON(
+  investmentVehicleExperience: InvestmentVehicleExperience,
+): string {
+  return JSON.stringify(
+    InvestmentVehicleExperience$outboundSchema.parse(
+      investmentVehicleExperience,
+    ),
+  );
+}
+
+export function investmentVehicleExperienceFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestmentVehicleExperience, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestmentVehicleExperience$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestmentVehicleExperience' from JSON`,
+  );
 }
 
 /** @internal */
@@ -8334,6 +9736,28 @@ export namespace OrdersOptionsTradingEnrollmentMetadata$ {
     OrdersOptionsTradingEnrollmentMetadata$outboundSchema;
   /** @deprecated use `OrdersOptionsTradingEnrollmentMetadata$Outbound` instead. */
   export type Outbound = OrdersOptionsTradingEnrollmentMetadata$Outbound;
+}
+
+export function ordersOptionsTradingEnrollmentMetadataToJSON(
+  ordersOptionsTradingEnrollmentMetadata:
+    OrdersOptionsTradingEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    OrdersOptionsTradingEnrollmentMetadata$outboundSchema.parse(
+      ordersOptionsTradingEnrollmentMetadata,
+    ),
+  );
+}
+
+export function ordersOptionsTradingEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<OrdersOptionsTradingEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrdersOptionsTradingEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrdersOptionsTradingEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -8532,6 +9956,24 @@ export namespace TrustEnrollmentMetadata$ {
   export type Outbound = TrustEnrollmentMetadata$Outbound;
 }
 
+export function trustEnrollmentMetadataToJSON(
+  trustEnrollmentMetadata: TrustEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    TrustEnrollmentMetadata$outboundSchema.parse(trustEnrollmentMetadata),
+  );
+}
+
+export function trustEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<TrustEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustEnrollmentMetadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const EnrollmentType1$inboundSchema: z.ZodType<
   EnrollmentType1Open,
@@ -8613,6 +10055,28 @@ export namespace VirtualAccountNumberEnrollmentMetadata$ {
     VirtualAccountNumberEnrollmentMetadata$outboundSchema;
   /** @deprecated use `VirtualAccountNumberEnrollmentMetadata$Outbound` instead. */
   export type Outbound = VirtualAccountNumberEnrollmentMetadata$Outbound;
+}
+
+export function virtualAccountNumberEnrollmentMetadataToJSON(
+  virtualAccountNumberEnrollmentMetadata:
+    VirtualAccountNumberEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    VirtualAccountNumberEnrollmentMetadata$outboundSchema.parse(
+      virtualAccountNumberEnrollmentMetadata,
+    ),
+  );
+}
+
+export function virtualAccountNumberEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<VirtualAccountNumberEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      VirtualAccountNumberEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'VirtualAccountNumberEnrollmentMetadata' from JSON`,
+  );
 }
 
 /** @internal */
@@ -8980,4 +10444,18 @@ export namespace Enrollment$ {
   export const outboundSchema = Enrollment$outboundSchema;
   /** @deprecated use `Enrollment$Outbound` instead. */
   export type Outbound = Enrollment$Outbound;
+}
+
+export function enrollmentToJSON(enrollment: Enrollment): string {
+  return JSON.stringify(Enrollment$outboundSchema.parse(enrollment));
+}
+
+export function enrollmentFromJSON(
+  jsonString: string,
+): SafeParseResult<Enrollment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Enrollment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Enrollment' from JSON`,
+  );
 }

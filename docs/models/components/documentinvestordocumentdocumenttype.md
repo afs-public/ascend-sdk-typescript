@@ -33,4 +33,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Form1099C`                        | FORM_1099_C                        |
 | `Form4806D`                        | FORM_480_6D                        |
 | `Form5498Esa`                      | FORM_5498_ESA                      |
+| `FpslNegativeConsentForm`          | FPSL_NEGATIVE_CONSENT_FORM         |
+| `CrsForm`                          | CRS_FORM                           |
 | -                                  | `Unrecognized<string>`             |

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYield, BondYield$Outbound } from "./bondyield.js";
 import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
@@ -407,6 +409,8 @@ export declare namespace TradeAllocationAccruedInterestAmount$ {
     /** @deprecated use `TradeAllocationAccruedInterestAmount$Outbound` instead. */
     type Outbound = TradeAllocationAccruedInterestAmount$Outbound;
 }
+export declare function tradeAllocationAccruedInterestAmountToJSON(tradeAllocationAccruedInterestAmount: TradeAllocationAccruedInterestAmount): string;
+export declare function tradeAllocationAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<TradeAllocationAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationAssetType$inboundSchema: z.ZodType<TradeAllocationAssetTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -455,6 +459,8 @@ export declare namespace TradeAllocationCommissionAmount$ {
     /** @deprecated use `TradeAllocationCommissionAmount$Outbound` instead. */
     type Outbound = TradeAllocationCommissionAmount$Outbound;
 }
+export declare function tradeAllocationCommissionAmountToJSON(tradeAllocationCommissionAmount: TradeAllocationCommissionAmount): string;
+export declare function tradeAllocationCommissionAmountFromJSON(jsonString: string): SafeParseResult<TradeAllocationCommissionAmount, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationGrossAmount$inboundSchema: z.ZodType<TradeAllocationGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -475,6 +481,8 @@ export declare namespace TradeAllocationGrossAmount$ {
     /** @deprecated use `TradeAllocationGrossAmount$Outbound` instead. */
     type Outbound = TradeAllocationGrossAmount$Outbound;
 }
+export declare function tradeAllocationGrossAmountToJSON(tradeAllocationGrossAmount: TradeAllocationGrossAmount): string;
+export declare function tradeAllocationGrossAmountFromJSON(jsonString: string): SafeParseResult<TradeAllocationGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationIdentifierType$inboundSchema: z.ZodType<TradeAllocationIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -509,6 +517,8 @@ export declare namespace TradeAllocationPrevailingMarketPrice$ {
     /** @deprecated use `TradeAllocationPrevailingMarketPrice$Outbound` instead. */
     type Outbound = TradeAllocationPrevailingMarketPrice$Outbound;
 }
+export declare function tradeAllocationPrevailingMarketPriceToJSON(tradeAllocationPrevailingMarketPrice: TradeAllocationPrevailingMarketPrice): string;
+export declare function tradeAllocationPrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<TradeAllocationPrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationPrice$inboundSchema: z.ZodType<TradeAllocationPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -529,6 +539,8 @@ export declare namespace TradeAllocationPrice$ {
     /** @deprecated use `TradeAllocationPrice$Outbound` instead. */
     type Outbound = TradeAllocationPrice$Outbound;
 }
+export declare function tradeAllocationPriceToJSON(tradeAllocationPrice: TradeAllocationPrice): string;
+export declare function tradeAllocationPriceFromJSON(jsonString: string): SafeParseResult<TradeAllocationPrice, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationPriceAdjustmentAmount$inboundSchema: z.ZodType<TradeAllocationPriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -549,6 +561,8 @@ export declare namespace TradeAllocationPriceAdjustmentAmount$ {
     /** @deprecated use `TradeAllocationPriceAdjustmentAmount$Outbound` instead. */
     type Outbound = TradeAllocationPriceAdjustmentAmount$Outbound;
 }
+export declare function tradeAllocationPriceAdjustmentAmountToJSON(tradeAllocationPriceAdjustmentAmount: TradeAllocationPriceAdjustmentAmount): string;
+export declare function tradeAllocationPriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<TradeAllocationPriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationPriceAdjustmentType$inboundSchema: z.ZodType<TradeAllocationPriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -584,6 +598,8 @@ export declare namespace TradeAllocationPriceAdjustment$ {
     /** @deprecated use `TradeAllocationPriceAdjustment$Outbound` instead. */
     type Outbound = TradeAllocationPriceAdjustment$Outbound;
 }
+export declare function tradeAllocationPriceAdjustmentToJSON(tradeAllocationPriceAdjustment: TradeAllocationPriceAdjustment): string;
+export declare function tradeAllocationPriceAdjustmentFromJSON(jsonString: string): SafeParseResult<TradeAllocationPriceAdjustment, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationQuantity$inboundSchema: z.ZodType<TradeAllocationQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -604,6 +620,8 @@ export declare namespace TradeAllocationQuantity$ {
     /** @deprecated use `TradeAllocationQuantity$Outbound` instead. */
     type Outbound = TradeAllocationQuantity$Outbound;
 }
+export declare function tradeAllocationQuantityToJSON(tradeAllocationQuantity: TradeAllocationQuantity): string;
+export declare function tradeAllocationQuantityFromJSON(jsonString: string): SafeParseResult<TradeAllocationQuantity, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationSettlementDate$inboundSchema: z.ZodType<TradeAllocationSettlementDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -626,6 +644,8 @@ export declare namespace TradeAllocationSettlementDate$ {
     /** @deprecated use `TradeAllocationSettlementDate$Outbound` instead. */
     type Outbound = TradeAllocationSettlementDate$Outbound;
 }
+export declare function tradeAllocationSettlementDateToJSON(tradeAllocationSettlementDate: TradeAllocationSettlementDate): string;
+export declare function tradeAllocationSettlementDateFromJSON(jsonString: string): SafeParseResult<TradeAllocationSettlementDate, SDKValidationError>;
 /** @internal */
 export declare const TradeAllocationSideModifier$inboundSchema: z.ZodType<TradeAllocationSideModifierOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -747,4 +767,6 @@ export declare namespace TradeAllocation$ {
     /** @deprecated use `TradeAllocation$Outbound` instead. */
     type Outbound = TradeAllocation$Outbound;
 }
+export declare function tradeAllocationToJSON(tradeAllocation: TradeAllocation): string;
+export declare function tradeAllocationFromJSON(jsonString: string): SafeParseResult<TradeAllocation, SDKValidationError>;
 //# sourceMappingURL=tradeallocation.d.ts.map

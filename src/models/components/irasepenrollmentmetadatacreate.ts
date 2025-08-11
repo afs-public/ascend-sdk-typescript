@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -182,4 +185,24 @@ export namespace IRASEPEnrollmentMetadataCreate$ {
   export const outboundSchema = IRASEPEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `IRASEPEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = IRASEPEnrollmentMetadataCreate$Outbound;
+}
+
+export function irasepEnrollmentMetadataCreateToJSON(
+  irasepEnrollmentMetadataCreate: IRASEPEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    IRASEPEnrollmentMetadataCreate$outboundSchema.parse(
+      irasepEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function irasepEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<IRASEPEnrollmentMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IRASEPEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IRASEPEnrollmentMetadataCreate' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WireDepositsGetWireDepositRequest = {
   /**
@@ -79,6 +82,26 @@ export namespace WireDepositsGetWireDepositRequest$ {
   export type Outbound = WireDepositsGetWireDepositRequest$Outbound;
 }
 
+export function wireDepositsGetWireDepositRequestToJSON(
+  wireDepositsGetWireDepositRequest: WireDepositsGetWireDepositRequest,
+): string {
+  return JSON.stringify(
+    WireDepositsGetWireDepositRequest$outboundSchema.parse(
+      wireDepositsGetWireDepositRequest,
+    ),
+  );
+}
+
+export function wireDepositsGetWireDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<WireDepositsGetWireDepositRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireDepositsGetWireDepositRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireDepositsGetWireDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireDepositsGetWireDepositResponse$inboundSchema: z.ZodType<
   WireDepositsGetWireDepositResponse,
@@ -132,4 +155,25 @@ export namespace WireDepositsGetWireDepositResponse$ {
     WireDepositsGetWireDepositResponse$outboundSchema;
   /** @deprecated use `WireDepositsGetWireDepositResponse$Outbound` instead. */
   export type Outbound = WireDepositsGetWireDepositResponse$Outbound;
+}
+
+export function wireDepositsGetWireDepositResponseToJSON(
+  wireDepositsGetWireDepositResponse: WireDepositsGetWireDepositResponse,
+): string {
+  return JSON.stringify(
+    WireDepositsGetWireDepositResponse$outboundSchema.parse(
+      wireDepositsGetWireDepositResponse,
+    ),
+  );
+}
+
+export function wireDepositsGetWireDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<WireDepositsGetWireDepositResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireDepositsGetWireDepositResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireDepositsGetWireDepositResponse' from JSON`,
+  );
 }

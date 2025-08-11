@@ -22,7 +22,7 @@ export declare class Investigations extends ClientSDK {
      * @remarks
      * Use this endpoint to retrieve a list of investigation summaries based on optional search parameters
      */
-    listInvestigations(pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.InvestigationServiceListInvestigationsResponse>;
+    listInvestigations(pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, orderBy?: string | undefined, options?: RequestOptions): Promise<operations.InvestigationServiceListInvestigationsResponse>;
     /**
      * Link Documents
      *

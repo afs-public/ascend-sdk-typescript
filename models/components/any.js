@@ -37,13 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Any$ = exports.Any$outboundSchema = exports.Any$inboundSchema = void 0;
+exports.anyToJSON = anyToJSON;
+exports.anyFromJSON = anyFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
 const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.Any$inboundSchema = (0, schemas_js_1.collectExtraKeys)(z.object({
     "@type": z.string().optional(),
-}).catchall(z.any()), "additionalProperties").transform((v) => {
+}).catchall(z.any()), "additionalProperties", true).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "@type": "atType",
     });
@@ -73,4 +75,10 @@ var Any$;
     /** @deprecated use `Any$outboundSchema` instead. */
     Any$.outboundSchema = exports.Any$outboundSchema;
 })(Any$ || (exports.Any$ = Any$ = {}));
+function anyToJSON(any) {
+    return JSON.stringify(exports.Any$outboundSchema.parse(any));
+}
+function anyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Any$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Any' from JSON`);
+}
 //# sourceMappingURL=any.js.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsGetLegalEntityRequest = {
   /**
@@ -69,6 +72,26 @@ export namespace AccountsGetLegalEntityRequest$ {
   export type Outbound = AccountsGetLegalEntityRequest$Outbound;
 }
 
+export function accountsGetLegalEntityRequestToJSON(
+  accountsGetLegalEntityRequest: AccountsGetLegalEntityRequest,
+): string {
+  return JSON.stringify(
+    AccountsGetLegalEntityRequest$outboundSchema.parse(
+      accountsGetLegalEntityRequest,
+    ),
+  );
+}
+
+export function accountsGetLegalEntityRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsGetLegalEntityRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsGetLegalEntityRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsGetLegalEntityRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsGetLegalEntityResponse$inboundSchema: z.ZodType<
   AccountsGetLegalEntityResponse,
@@ -121,4 +144,24 @@ export namespace AccountsGetLegalEntityResponse$ {
   export const outboundSchema = AccountsGetLegalEntityResponse$outboundSchema;
   /** @deprecated use `AccountsGetLegalEntityResponse$Outbound` instead. */
   export type Outbound = AccountsGetLegalEntityResponse$Outbound;
+}
+
+export function accountsGetLegalEntityResponseToJSON(
+  accountsGetLegalEntityResponse: AccountsGetLegalEntityResponse,
+): string {
+  return JSON.stringify(
+    AccountsGetLegalEntityResponse$outboundSchema.parse(
+      accountsGetLegalEntityResponse,
+    ),
+  );
+}
+
+export function accountsGetLegalEntityResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsGetLegalEntityResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsGetLegalEntityResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsGetLegalEntityResponse' from JSON`,
+  );
 }

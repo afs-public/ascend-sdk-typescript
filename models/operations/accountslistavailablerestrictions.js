@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsListAvailableRestrictionsResponse$ = exports.AccountsListAvailableRestrictionsResponse$outboundSchema = exports.AccountsListAvailableRestrictionsResponse$inboundSchema = exports.AccountsListAvailableRestrictionsRequest$ = exports.AccountsListAvailableRestrictionsRequest$outboundSchema = exports.AccountsListAvailableRestrictionsRequest$inboundSchema = void 0;
+exports.accountsListAvailableRestrictionsRequestToJSON = accountsListAvailableRestrictionsRequestToJSON;
+exports.accountsListAvailableRestrictionsRequestFromJSON = accountsListAvailableRestrictionsRequestFromJSON;
+exports.accountsListAvailableRestrictionsResponseToJSON = accountsListAvailableRestrictionsResponseToJSON;
+exports.accountsListAvailableRestrictionsResponseFromJSON = accountsListAvailableRestrictionsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsListAvailableRestrictionsRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var AccountsListAvailableRestrictionsRequest$;
     /** @deprecated use `AccountsListAvailableRestrictionsRequest$outboundSchema` instead. */
     AccountsListAvailableRestrictionsRequest$.outboundSchema = exports.AccountsListAvailableRestrictionsRequest$outboundSchema;
 })(AccountsListAvailableRestrictionsRequest$ || (exports.AccountsListAvailableRestrictionsRequest$ = AccountsListAvailableRestrictionsRequest$ = {}));
+function accountsListAvailableRestrictionsRequestToJSON(accountsListAvailableRestrictionsRequest) {
+    return JSON.stringify(exports.AccountsListAvailableRestrictionsRequest$outboundSchema.parse(accountsListAvailableRestrictionsRequest));
+}
+function accountsListAvailableRestrictionsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAvailableRestrictionsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAvailableRestrictionsRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsListAvailableRestrictionsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -104,4 +115,10 @@ var AccountsListAvailableRestrictionsResponse$;
     /** @deprecated use `AccountsListAvailableRestrictionsResponse$outboundSchema` instead. */
     AccountsListAvailableRestrictionsResponse$.outboundSchema = exports.AccountsListAvailableRestrictionsResponse$outboundSchema;
 })(AccountsListAvailableRestrictionsResponse$ || (exports.AccountsListAvailableRestrictionsResponse$ = AccountsListAvailableRestrictionsResponse$ = {}));
+function accountsListAvailableRestrictionsResponseToJSON(accountsListAvailableRestrictionsResponse) {
+    return JSON.stringify(exports.AccountsListAvailableRestrictionsResponse$outboundSchema.parse(accountsListAvailableRestrictionsResponse));
+}
+function accountsListAvailableRestrictionsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAvailableRestrictionsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAvailableRestrictionsResponse' from JSON`);
+}
 //# sourceMappingURL=accountslistavailablerestrictions.js.map

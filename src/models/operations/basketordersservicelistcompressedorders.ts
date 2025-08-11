@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BasketOrdersServiceListCompressedOrdersRequest = {
   /**
@@ -103,6 +106,33 @@ export namespace BasketOrdersServiceListCompressedOrdersRequest$ {
     BasketOrdersServiceListCompressedOrdersRequest$Outbound;
 }
 
+export function basketOrdersServiceListCompressedOrdersRequestToJSON(
+  basketOrdersServiceListCompressedOrdersRequest:
+    BasketOrdersServiceListCompressedOrdersRequest,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceListCompressedOrdersRequest$outboundSchema.parse(
+      basketOrdersServiceListCompressedOrdersRequest,
+    ),
+  );
+}
+
+export function basketOrdersServiceListCompressedOrdersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BasketOrdersServiceListCompressedOrdersRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceListCompressedOrdersRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BasketOrdersServiceListCompressedOrdersRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BasketOrdersServiceListCompressedOrdersResponse$inboundSchema:
   z.ZodType<
@@ -164,4 +194,31 @@ export namespace BasketOrdersServiceListCompressedOrdersResponse$ {
   /** @deprecated use `BasketOrdersServiceListCompressedOrdersResponse$Outbound` instead. */
   export type Outbound =
     BasketOrdersServiceListCompressedOrdersResponse$Outbound;
+}
+
+export function basketOrdersServiceListCompressedOrdersResponseToJSON(
+  basketOrdersServiceListCompressedOrdersResponse:
+    BasketOrdersServiceListCompressedOrdersResponse,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceListCompressedOrdersResponse$outboundSchema.parse(
+      basketOrdersServiceListCompressedOrdersResponse,
+    ),
+  );
+}
+
+export function basketOrdersServiceListCompressedOrdersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BasketOrdersServiceListCompressedOrdersResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceListCompressedOrdersResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BasketOrdersServiceListCompressedOrdersResponse' from JSON`,
+  );
 }

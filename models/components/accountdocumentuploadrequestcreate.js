@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountDocumentUploadRequestCreate$ = exports.AccountDocumentUploadRequestCreate$outboundSchema = exports.AccountDocumentUploadRequestCreate$inboundSchema = exports.DocumentType$ = exports.DocumentType$outboundSchema = exports.DocumentType$inboundSchema = exports.DocumentType = void 0;
+exports.accountDocumentUploadRequestCreateToJSON = accountDocumentUploadRequestCreateToJSON;
+exports.accountDocumentUploadRequestCreateFromJSON = accountDocumentUploadRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Describes the contents of a document and how it is used; Required for all account documents
@@ -215,4 +218,10 @@ var AccountDocumentUploadRequestCreate$;
     /** @deprecated use `AccountDocumentUploadRequestCreate$outboundSchema` instead. */
     AccountDocumentUploadRequestCreate$.outboundSchema = exports.AccountDocumentUploadRequestCreate$outboundSchema;
 })(AccountDocumentUploadRequestCreate$ || (exports.AccountDocumentUploadRequestCreate$ = AccountDocumentUploadRequestCreate$ = {}));
+function accountDocumentUploadRequestCreateToJSON(accountDocumentUploadRequestCreate) {
+    return JSON.stringify(exports.AccountDocumentUploadRequestCreate$outboundSchema.parse(accountDocumentUploadRequestCreate));
+}
+function accountDocumentUploadRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountDocumentUploadRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountDocumentUploadRequestCreate' from JSON`);
+}
 //# sourceMappingURL=accountdocumentuploadrequestcreate.js.map

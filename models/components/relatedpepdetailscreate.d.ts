@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { RelatedPepCreate, RelatedPepCreate$Outbound } from "./relatedpepcreate.js";
 /**
  * Details surrounding the related politically exposed persons
@@ -34,4 +36,6 @@ export declare namespace RelatedPepDetailsCreate$ {
     /** @deprecated use `RelatedPepDetailsCreate$Outbound` instead. */
     type Outbound = RelatedPepDetailsCreate$Outbound;
 }
+export declare function relatedPepDetailsCreateToJSON(relatedPepDetailsCreate: RelatedPepDetailsCreate): string;
+export declare function relatedPepDetailsCreateFromJSON(jsonString: string): SafeParseResult<RelatedPepDetailsCreate, SDKValidationError>;
 //# sourceMappingURL=relatedpepdetailscreate.d.ts.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsAssignLargeTraderRequest = {
   /**
@@ -78,6 +81,26 @@ export namespace AccountsAssignLargeTraderRequest$ {
   export type Outbound = AccountsAssignLargeTraderRequest$Outbound;
 }
 
+export function accountsAssignLargeTraderRequestToJSON(
+  accountsAssignLargeTraderRequest: AccountsAssignLargeTraderRequest,
+): string {
+  return JSON.stringify(
+    AccountsAssignLargeTraderRequest$outboundSchema.parse(
+      accountsAssignLargeTraderRequest,
+    ),
+  );
+}
+
+export function accountsAssignLargeTraderRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsAssignLargeTraderRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsAssignLargeTraderRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsAssignLargeTraderRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsAssignLargeTraderResponse$inboundSchema: z.ZodType<
   AccountsAssignLargeTraderResponse,
@@ -131,4 +154,24 @@ export namespace AccountsAssignLargeTraderResponse$ {
     AccountsAssignLargeTraderResponse$outboundSchema;
   /** @deprecated use `AccountsAssignLargeTraderResponse$Outbound` instead. */
   export type Outbound = AccountsAssignLargeTraderResponse$Outbound;
+}
+
+export function accountsAssignLargeTraderResponseToJSON(
+  accountsAssignLargeTraderResponse: AccountsAssignLargeTraderResponse,
+): string {
+  return JSON.stringify(
+    AccountsAssignLargeTraderResponse$outboundSchema.parse(
+      accountsAssignLargeTraderResponse,
+    ),
+  );
+}
+
+export function accountsAssignLargeTraderResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsAssignLargeTraderResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsAssignLargeTraderResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsAssignLargeTraderResponse' from JSON`,
+  );
 }

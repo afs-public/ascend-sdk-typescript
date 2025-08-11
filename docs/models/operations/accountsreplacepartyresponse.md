@@ -5,14 +5,7 @@
 ```typescript
 import { AccountsReplacePartyResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: AccountsReplacePartyResponse = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: AccountsReplacePartyResponse = {};
 ```
 
 ## Fields

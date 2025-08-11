@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Price of the trade lot
@@ -112,6 +115,20 @@ export namespace LotPrice$ {
   export type Outbound = LotPrice$Outbound;
 }
 
+export function lotPriceToJSON(lotPrice: LotPrice): string {
+  return JSON.stringify(LotPrice$outboundSchema.parse(lotPrice));
+}
+
+export function lotPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<LotPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LotPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LotPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const LotMoney$inboundSchema: z.ZodType<
   LotMoney,
@@ -159,6 +176,20 @@ export namespace LotMoney$ {
   export type Outbound = LotMoney$Outbound;
 }
 
+export function lotMoneyToJSON(lotMoney: LotMoney): string {
+  return JSON.stringify(LotMoney$outboundSchema.parse(lotMoney));
+}
+
+export function lotMoneyFromJSON(
+  jsonString: string,
+): SafeParseResult<LotMoney, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LotMoney$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LotMoney' from JSON`,
+  );
+}
+
 /** @internal */
 export const LotQuantity$inboundSchema: z.ZodType<
   LotQuantity,
@@ -193,6 +224,20 @@ export namespace LotQuantity$ {
   export const outboundSchema = LotQuantity$outboundSchema;
   /** @deprecated use `LotQuantity$Outbound` instead. */
   export type Outbound = LotQuantity$Outbound;
+}
+
+export function lotQuantityToJSON(lotQuantity: LotQuantity): string {
+  return JSON.stringify(LotQuantity$outboundSchema.parse(lotQuantity));
+}
+
+export function lotQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<LotQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LotQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LotQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -235,6 +280,20 @@ export namespace LotTradeDate$ {
   export const outboundSchema = LotTradeDate$outboundSchema;
   /** @deprecated use `LotTradeDate$Outbound` instead. */
   export type Outbound = LotTradeDate$Outbound;
+}
+
+export function lotTradeDateToJSON(lotTradeDate: LotTradeDate): string {
+  return JSON.stringify(LotTradeDate$outboundSchema.parse(lotTradeDate));
+}
+
+export function lotTradeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LotTradeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LotTradeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LotTradeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -282,4 +341,18 @@ export namespace Lot$ {
   export const outboundSchema = Lot$outboundSchema;
   /** @deprecated use `Lot$Outbound` instead. */
   export type Outbound = Lot$Outbound;
+}
+
+export function lotToJSON(lot: Lot): string {
+  return JSON.stringify(Lot$outboundSchema.parse(lot));
+}
+
+export function lotFromJSON(
+  jsonString: string,
+): SafeParseResult<Lot, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Lot$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Lot' from JSON`,
+  );
 }

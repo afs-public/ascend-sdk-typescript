@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { TransferScheduleSummary, TransferScheduleSummary$Outbound } from "./transferschedulesummary.js";
 /**
  * Response to a search transfer schedules request
@@ -34,4 +36,6 @@ export declare namespace ListScheduleSummariesResponse$ {
     /** @deprecated use `ListScheduleSummariesResponse$Outbound` instead. */
     type Outbound = ListScheduleSummariesResponse$Outbound;
 }
+export declare function listScheduleSummariesResponseToJSON(listScheduleSummariesResponse: ListScheduleSummariesResponse): string;
+export declare function listScheduleSummariesResponseFromJSON(jsonString: string): SafeParseResult<ListScheduleSummariesResponse, SDKValidationError>;
 //# sourceMappingURL=listschedulesummariesresponse.d.ts.map

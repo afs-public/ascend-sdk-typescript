@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EndRestrictionRequestCreate$ = exports.EndRestrictionRequestCreate$outboundSchema = exports.EndRestrictionRequestCreate$inboundSchema = void 0;
+exports.endRestrictionRequestCreateToJSON = endRestrictionRequestCreateToJSON;
+exports.endRestrictionRequestCreateFromJSON = endRestrictionRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.EndRestrictionRequestCreate$inboundSchema = z.object({
     reason: z.string(),
@@ -57,4 +60,10 @@ var EndRestrictionRequestCreate$;
     /** @deprecated use `EndRestrictionRequestCreate$outboundSchema` instead. */
     EndRestrictionRequestCreate$.outboundSchema = exports.EndRestrictionRequestCreate$outboundSchema;
 })(EndRestrictionRequestCreate$ || (exports.EndRestrictionRequestCreate$ = EndRestrictionRequestCreate$ = {}));
+function endRestrictionRequestCreateToJSON(endRestrictionRequestCreate) {
+    return JSON.stringify(exports.EndRestrictionRequestCreate$outboundSchema.parse(endRestrictionRequestCreate));
+}
+function endRestrictionRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EndRestrictionRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EndRestrictionRequestCreate' from JSON`);
+}
 //# sourceMappingURL=endrestrictionrequestcreate.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Cash transfer mechanism to search constraints for
  */
@@ -59,4 +61,6 @@ export declare namespace RetrieveDistributionConstraintsRequestCreate$ {
     /** @deprecated use `RetrieveDistributionConstraintsRequestCreate$Outbound` instead. */
     type Outbound = RetrieveDistributionConstraintsRequestCreate$Outbound;
 }
+export declare function retrieveDistributionConstraintsRequestCreateToJSON(retrieveDistributionConstraintsRequestCreate: RetrieveDistributionConstraintsRequestCreate): string;
+export declare function retrieveDistributionConstraintsRequestCreateFromJSON(jsonString: string): SafeParseResult<RetrieveDistributionConstraintsRequestCreate, SDKValidationError>;
 //# sourceMappingURL=retrievedistributionconstraintsrequestcreate.d.ts.map

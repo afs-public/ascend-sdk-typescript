@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The fee amount. Not required if the fee is suppressed
  */
@@ -67,6 +69,8 @@ export declare namespace BookingFeeAmount$ {
     /** @deprecated use `BookingFeeAmount$Outbound` instead. */
     type Outbound = BookingFeeAmount$Outbound;
 }
+export declare function bookingFeeAmountToJSON(bookingFeeAmount: BookingFeeAmount): string;
+export declare function bookingFeeAmountFromJSON(jsonString: string): SafeParseResult<BookingFeeAmount, SDKValidationError>;
 /** @internal */
 export declare const BookingFeeType$inboundSchema: z.ZodType<BookingFeeTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -103,4 +107,6 @@ export declare namespace BookingFee$ {
     /** @deprecated use `BookingFee$Outbound` instead. */
     type Outbound = BookingFee$Outbound;
 }
+export declare function bookingFeeToJSON(bookingFee: BookingFee): string;
+export declare function bookingFeeFromJSON(jsonString: string): SafeParseResult<BookingFee, SDKValidationError>;
 //# sourceMappingURL=bookingfee.d.ts.map

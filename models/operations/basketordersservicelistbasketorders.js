@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketOrdersServiceListBasketOrdersResponse$ = exports.BasketOrdersServiceListBasketOrdersResponse$outboundSchema = exports.BasketOrdersServiceListBasketOrdersResponse$inboundSchema = exports.BasketOrdersServiceListBasketOrdersRequest$ = exports.BasketOrdersServiceListBasketOrdersRequest$outboundSchema = exports.BasketOrdersServiceListBasketOrdersRequest$inboundSchema = void 0;
+exports.basketOrdersServiceListBasketOrdersRequestToJSON = basketOrdersServiceListBasketOrdersRequestToJSON;
+exports.basketOrdersServiceListBasketOrdersRequestFromJSON = basketOrdersServiceListBasketOrdersRequestFromJSON;
+exports.basketOrdersServiceListBasketOrdersResponseToJSON = basketOrdersServiceListBasketOrdersResponseToJSON;
+exports.basketOrdersServiceListBasketOrdersResponseFromJSON = basketOrdersServiceListBasketOrdersResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BasketOrdersServiceListBasketOrdersRequest$inboundSchema = z.object({
@@ -46,12 +51,14 @@ exports.BasketOrdersServiceListBasketOrdersRequest$inboundSchema = z.object({
     basket_id: z.string(),
     page_size: z.number().int().optional(),
     page_token: z.string().optional(),
+    show_removed: z.boolean().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "correspondent_id": "correspondentId",
         "basket_id": "basketId",
         "page_size": "pageSize",
         "page_token": "pageToken",
+        "show_removed": "showRemoved",
     });
 });
 /** @internal */
@@ -60,12 +67,14 @@ exports.BasketOrdersServiceListBasketOrdersRequest$outboundSchema = z.object({
     basketId: z.string(),
     pageSize: z.number().int().optional(),
     pageToken: z.string().optional(),
+    showRemoved: z.boolean().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         correspondentId: "correspondent_id",
         basketId: "basket_id",
         pageSize: "page_size",
         pageToken: "page_token",
+        showRemoved: "show_removed",
     });
 });
 /**
@@ -79,6 +88,12 @@ var BasketOrdersServiceListBasketOrdersRequest$;
     /** @deprecated use `BasketOrdersServiceListBasketOrdersRequest$outboundSchema` instead. */
     BasketOrdersServiceListBasketOrdersRequest$.outboundSchema = exports.BasketOrdersServiceListBasketOrdersRequest$outboundSchema;
 })(BasketOrdersServiceListBasketOrdersRequest$ || (exports.BasketOrdersServiceListBasketOrdersRequest$ = BasketOrdersServiceListBasketOrdersRequest$ = {}));
+function basketOrdersServiceListBasketOrdersRequestToJSON(basketOrdersServiceListBasketOrdersRequest) {
+    return JSON.stringify(exports.BasketOrdersServiceListBasketOrdersRequest$outboundSchema.parse(basketOrdersServiceListBasketOrdersRequest));
+}
+function basketOrdersServiceListBasketOrdersRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrdersServiceListBasketOrdersRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrdersServiceListBasketOrdersRequest' from JSON`);
+}
 /** @internal */
 exports.BasketOrdersServiceListBasketOrdersResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -116,4 +131,10 @@ var BasketOrdersServiceListBasketOrdersResponse$;
     /** @deprecated use `BasketOrdersServiceListBasketOrdersResponse$outboundSchema` instead. */
     BasketOrdersServiceListBasketOrdersResponse$.outboundSchema = exports.BasketOrdersServiceListBasketOrdersResponse$outboundSchema;
 })(BasketOrdersServiceListBasketOrdersResponse$ || (exports.BasketOrdersServiceListBasketOrdersResponse$ = BasketOrdersServiceListBasketOrdersResponse$ = {}));
+function basketOrdersServiceListBasketOrdersResponseToJSON(basketOrdersServiceListBasketOrdersResponse) {
+    return JSON.stringify(exports.BasketOrdersServiceListBasketOrdersResponse$outboundSchema.parse(basketOrdersServiceListBasketOrdersResponse));
+}
+function basketOrdersServiceListBasketOrdersResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrdersServiceListBasketOrdersResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrdersServiceListBasketOrdersResponse' from JSON`);
+}
 //# sourceMappingURL=basketordersservicelistbasketorders.js.map

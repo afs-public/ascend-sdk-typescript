@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the contents of a document and how it is used; Required for all identity documents
@@ -164,4 +167,24 @@ export namespace IDDocumentUploadRequestCreate$ {
   export const outboundSchema = IDDocumentUploadRequestCreate$outboundSchema;
   /** @deprecated use `IDDocumentUploadRequestCreate$Outbound` instead. */
   export type Outbound = IDDocumentUploadRequestCreate$Outbound;
+}
+
+export function idDocumentUploadRequestCreateToJSON(
+  idDocumentUploadRequestCreate: IDDocumentUploadRequestCreate,
+): string {
+  return JSON.stringify(
+    IDDocumentUploadRequestCreate$outboundSchema.parse(
+      idDocumentUploadRequestCreate,
+    ),
+  );
+}
+
+export function idDocumentUploadRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<IDDocumentUploadRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IDDocumentUploadRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IDDocumentUploadRequestCreate' from JSON`,
+  );
 }

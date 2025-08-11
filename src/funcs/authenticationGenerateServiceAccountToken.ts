@@ -5,11 +5,13 @@
 import { ApexascendCore } from "../core.js";
 import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { resolveSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
+import { ApexascendError } from "../models/errors/apexascenderror.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -18,9 +20,10 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
-import { SDKError } from "../models/errors/sdkerror.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -29,23 +32,54 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Creates an access token for a service account.
  */
-export async function authenticationGenerateServiceAccountToken(
+export function authenticationGenerateServiceAccountToken(
+  client: ApexascendCore,
+  security: operations.AuthenticationGenerateServiceAccountTokenSecurity,
+  request: components.GenerateServiceAccountTokenRequestCreate,
+  options?: RequestOptions,
+): APIPromise<
+  Result<
+    operations.AuthenticationGenerateServiceAccountTokenResponse,
+    | errors.Status
+    | ApexascendError
+    | ResponseValidationError
+    | ConnectionError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
+  >
+> {
+  return new APIPromise($do(
+    client,
+    security,
+    request,
+    options,
+  ));
+}
+
+async function $do(
   client: ApexascendCore,
   security: operations.AuthenticationGenerateServiceAccountTokenSecurity,
   request: components.GenerateServiceAccountTokenRequestCreate,
   options?: RequestOptions,
 ): Promise<
-  Result<
-    operations.AuthenticationGenerateServiceAccountTokenResponse,
-    | errors.Status
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | ConnectionError
-  >
+  [
+    Result<
+      operations.AuthenticationGenerateServiceAccountTokenResponse,
+      | errors.Status
+      | ApexascendError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    APICall,
+  ]
 > {
   const parsed = safeParse(
     request,
@@ -56,17 +90,17 @@ export async function authenticationGenerateServiceAccountToken(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/iam/v1/serviceAccounts:generateAccessToken")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const requestSecurity = resolveSecurity(
     [
@@ -77,34 +111,45 @@ export async function authenticationGenerateServiceAccountToken(
       },
     ],
   );
+
   const context = {
+    options: client._options,
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "Authentication_GenerateServiceAccountToken",
-    oAuth2Scopes: [],
+    oAuth2Scopes: null,
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: security,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "POST",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
   const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "401", "4XX", "500", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -115,13 +160,14 @@ export async function authenticationGenerateServiceAccountToken(
   const [result] = await M.match<
     operations.AuthenticationGenerateServiceAccountTokenResponse,
     | errors.Status
-    | SDKError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | ApexascendError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(
       200,
@@ -129,8 +175,10 @@ export async function authenticationGenerateServiceAccountToken(
         .AuthenticationGenerateServiceAccountTokenResponse$inboundSchema,
       { key: "Token" },
     ),
-    M.jsonErr([400, 401, 500], errors.Status$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.jsonErr([400, 401], errors.Status$inboundSchema),
+    M.jsonErr(500, errors.Status$inboundSchema),
+    M.fail("4XX"),
+    M.fail("5XX"),
     M.json(
       "default",
       operations
@@ -139,8 +187,8 @@ export async function authenticationGenerateServiceAccountToken(
     ),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

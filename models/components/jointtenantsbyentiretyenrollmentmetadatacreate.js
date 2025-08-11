@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JointTenantsByEntiretyEnrollmentMetadataCreate$ = exports.JointTenantsByEntiretyEnrollmentMetadataCreate$outboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreate$inboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreateLegalResidencyStateOfMarriedCouple$ = exports.JointTenantsByEntiretyEnrollmentMetadataCreateLegalResidencyStateOfMarriedCouple$outboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreateLegalResidencyStateOfMarriedCouple$inboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweep$ = exports.JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreateLegalResidencyStateOfMarriedCouple = exports.JointTenantsByEntiretyEnrollmentMetadataCreateFdicCashSweep = exports.JointTenantsByEntiretyEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.jointTenantsByEntiretyEnrollmentMetadataCreateToJSON = jointTenantsByEntiretyEnrollmentMetadataCreateToJSON;
+exports.jointTenantsByEntiretyEnrollmentMetadataCreateFromJSON = jointTenantsByEntiretyEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -204,4 +207,10 @@ var JointTenantsByEntiretyEnrollmentMetadataCreate$;
     /** @deprecated use `JointTenantsByEntiretyEnrollmentMetadataCreate$outboundSchema` instead. */
     JointTenantsByEntiretyEnrollmentMetadataCreate$.outboundSchema = exports.JointTenantsByEntiretyEnrollmentMetadataCreate$outboundSchema;
 })(JointTenantsByEntiretyEnrollmentMetadataCreate$ || (exports.JointTenantsByEntiretyEnrollmentMetadataCreate$ = JointTenantsByEntiretyEnrollmentMetadataCreate$ = {}));
+function jointTenantsByEntiretyEnrollmentMetadataCreateToJSON(jointTenantsByEntiretyEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.JointTenantsByEntiretyEnrollmentMetadataCreate$outboundSchema.parse(jointTenantsByEntiretyEnrollmentMetadataCreate));
+}
+function jointTenantsByEntiretyEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.JointTenantsByEntiretyEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'JointTenantsByEntiretyEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=jointtenantsbyentiretyenrollmentmetadatacreate.js.map

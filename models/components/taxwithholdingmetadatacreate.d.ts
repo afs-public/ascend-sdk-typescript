@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Tax Authority for Enrollment
  */
@@ -137,4 +139,6 @@ export declare namespace TaxWithholdingMetadataCreate$ {
     /** @deprecated use `TaxWithholdingMetadataCreate$Outbound` instead. */
     type Outbound = TaxWithholdingMetadataCreate$Outbound;
 }
+export declare function taxWithholdingMetadataCreateToJSON(taxWithholdingMetadataCreate: TaxWithholdingMetadataCreate): string;
+export declare function taxWithholdingMetadataCreateFromJSON(jsonString: string): SafeParseResult<TaxWithholdingMetadataCreate, SDKValidationError>;
 //# sourceMappingURL=taxwithholdingmetadatacreate.d.ts.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BasketOrdersServiceGetBasketRequest = {
   /**
@@ -80,6 +83,27 @@ export namespace BasketOrdersServiceGetBasketRequest$ {
   export type Outbound = BasketOrdersServiceGetBasketRequest$Outbound;
 }
 
+export function basketOrdersServiceGetBasketRequestToJSON(
+  basketOrdersServiceGetBasketRequest: BasketOrdersServiceGetBasketRequest,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceGetBasketRequest$outboundSchema.parse(
+      basketOrdersServiceGetBasketRequest,
+    ),
+  );
+}
+
+export function basketOrdersServiceGetBasketRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketOrdersServiceGetBasketRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceGetBasketRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketOrdersServiceGetBasketRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BasketOrdersServiceGetBasketResponse$inboundSchema: z.ZodType<
   BasketOrdersServiceGetBasketResponse,
@@ -134,4 +158,25 @@ export namespace BasketOrdersServiceGetBasketResponse$ {
     BasketOrdersServiceGetBasketResponse$outboundSchema;
   /** @deprecated use `BasketOrdersServiceGetBasketResponse$Outbound` instead. */
   export type Outbound = BasketOrdersServiceGetBasketResponse$Outbound;
+}
+
+export function basketOrdersServiceGetBasketResponseToJSON(
+  basketOrdersServiceGetBasketResponse: BasketOrdersServiceGetBasketResponse,
+): string {
+  return JSON.stringify(
+    BasketOrdersServiceGetBasketResponse$outboundSchema.parse(
+      basketOrdersServiceGetBasketResponse,
+    ),
+  );
+}
+
+export function basketOrdersServiceGetBasketResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketOrdersServiceGetBasketResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BasketOrdersServiceGetBasketResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketOrdersServiceGetBasketResponse' from JSON`,
+  );
 }

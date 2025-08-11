@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CommissionCreate,
   CommissionCreate$inboundSchema,
@@ -104,16 +107,14 @@ export enum IdentifierType {
 export type IdentifierTypeOpen = OpenEnum<typeof IdentifierType>;
 
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export enum OrderType {
-  OrderTypeUnspecified = "ORDER_TYPE_UNSPECIFIED",
   Limit = "LIMIT",
   Market = "MARKET",
-  Stop = "STOP",
 }
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export type OrderTypeOpen = OpenEnum<typeof OrderType>;
 
@@ -165,7 +166,6 @@ export type SpecialReportingInstructionsOpen = OpenEnum<
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export enum TimeInForce {
-  TimeInForceUnspecified = "TIME_IN_FORCE_UNSPECIFIED",
   Day = "DAY",
 }
 /**
@@ -174,15 +174,21 @@ export enum TimeInForce {
 export type TimeInForceOpen = OpenEnum<typeof TimeInForce>;
 
 /**
- * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
  */
-export enum TradingStrategy {
+export enum TradingSession {
+  TradingSessionUnspecified = "TRADING_SESSION_UNSPECIFIED",
   Core = "CORE",
+  Pre = "PRE",
+  Post = "POST",
+  Overnight = "OVERNIGHT",
+  Apex24 = "APEX24",
+  Gtx = "GTX",
 }
 /**
- * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
  */
-export type TradingStrategyOpen = OpenEnum<typeof TradingStrategy>;
+export type TradingSessionOpen = OpenEnum<typeof TradingSession>;
 
 /**
  * The message describing an order
@@ -270,7 +276,7 @@ export type OrderCreate = {
    */
   orderDate: DateCreate;
   /**
-   * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+   * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
    */
   orderType: OrderTypeOpen;
   /**
@@ -306,9 +312,9 @@ export type OrderCreate = {
    */
   timeInForce: TimeInForceOpen;
   /**
-   * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+   * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
    */
-  tradingStrategy?: TradingStrategyOpen | undefined;
+  tradingSession?: TradingSessionOpen | undefined;
 };
 
 /** @internal */
@@ -529,23 +535,23 @@ export namespace TimeInForce$ {
 }
 
 /** @internal */
-export const TradingStrategy$inboundSchema: z.ZodType<
-  TradingStrategyOpen,
+export const TradingSession$inboundSchema: z.ZodType<
+  TradingSessionOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(TradingStrategy),
+    z.nativeEnum(TradingSession),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const TradingStrategy$outboundSchema: z.ZodType<
-  TradingStrategyOpen,
+export const TradingSession$outboundSchema: z.ZodType<
+  TradingSessionOpen,
   z.ZodTypeDef,
-  TradingStrategyOpen
+  TradingSessionOpen
 > = z.union([
-  z.nativeEnum(TradingStrategy),
+  z.nativeEnum(TradingSession),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -553,11 +559,11 @@ export const TradingStrategy$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace TradingStrategy$ {
-  /** @deprecated use `TradingStrategy$inboundSchema` instead. */
-  export const inboundSchema = TradingStrategy$inboundSchema;
-  /** @deprecated use `TradingStrategy$outboundSchema` instead. */
-  export const outboundSchema = TradingStrategy$outboundSchema;
+export namespace TradingSession$ {
+  /** @deprecated use `TradingSession$inboundSchema` instead. */
+  export const inboundSchema = TradingSession$inboundSchema;
+  /** @deprecated use `TradingSession$outboundSchema` instead. */
+  export const outboundSchema = TradingSession$outboundSchema;
 }
 
 /** @internal */
@@ -592,7 +598,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
   ).optional(),
   stop_price: StopPriceCreate$inboundSchema.optional(),
   time_in_force: TimeInForce$inboundSchema,
-  trading_strategy: TradingStrategy$inboundSchema.optional(),
+  trading_session: TradingSession$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "asset_type": "assetType",
@@ -612,7 +618,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
     "special_reporting_instructions": "specialReportingInstructions",
     "stop_price": "stopPrice",
     "time_in_force": "timeInForce",
-    "trading_strategy": "tradingStrategy",
+    "trading_session": "tradingSession",
   });
 });
 
@@ -640,7 +646,7 @@ export type OrderCreate$Outbound = {
   special_reporting_instructions?: Array<string> | undefined;
   stop_price?: StopPriceCreate$Outbound | undefined;
   time_in_force: string;
-  trading_strategy?: string | undefined;
+  trading_session?: string | undefined;
 };
 
 /** @internal */
@@ -674,7 +680,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
   ).optional(),
   stopPrice: StopPriceCreate$outboundSchema.optional(),
   timeInForce: TimeInForce$outboundSchema,
-  tradingStrategy: TradingStrategy$outboundSchema.optional(),
+  tradingSession: TradingSession$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     assetType: "asset_type",
@@ -694,7 +700,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
     specialReportingInstructions: "special_reporting_instructions",
     stopPrice: "stop_price",
     timeInForce: "time_in_force",
-    tradingStrategy: "trading_strategy",
+    tradingSession: "trading_session",
   });
 });
 
@@ -709,4 +715,18 @@ export namespace OrderCreate$ {
   export const outboundSchema = OrderCreate$outboundSchema;
   /** @deprecated use `OrderCreate$Outbound` instead. */
   export type Outbound = OrderCreate$Outbound;
+}
+
+export function orderCreateToJSON(orderCreate: OrderCreate): string {
+  return JSON.stringify(OrderCreate$outboundSchema.parse(orderCreate));
+}
+
+export function orderCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderCreate' from JSON`,
+  );
 }

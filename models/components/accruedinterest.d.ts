@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of accrued interest associated with this activity
  */
@@ -34,6 +36,8 @@ export declare namespace AccruedInterestAmount1$ {
     /** @deprecated use `AccruedInterestAmount1$Outbound` instead. */
     type Outbound = AccruedInterestAmount1$Outbound;
 }
+export declare function accruedInterestAmount1ToJSON(accruedInterestAmount1: AccruedInterestAmount1): string;
+export declare function accruedInterestAmount1FromJSON(jsonString: string): SafeParseResult<AccruedInterestAmount1, SDKValidationError>;
 /** @internal */
 export declare const AccruedInterest$inboundSchema: z.ZodType<AccruedInterest, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -54,4 +58,6 @@ export declare namespace AccruedInterest$ {
     /** @deprecated use `AccruedInterest$Outbound` instead. */
     type Outbound = AccruedInterest$Outbound;
 }
+export declare function accruedInterestToJSON(accruedInterest: AccruedInterest): string;
+export declare function accruedInterestFromJSON(jsonString: string): SafeParseResult<AccruedInterest, SDKValidationError>;
 //# sourceMappingURL=accruedinterest.d.ts.map

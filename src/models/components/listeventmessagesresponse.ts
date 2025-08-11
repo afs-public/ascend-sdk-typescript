@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EventMessage,
   EventMessage$inboundSchema,
@@ -72,4 +75,22 @@ export namespace ListEventMessagesResponse$ {
   export const outboundSchema = ListEventMessagesResponse$outboundSchema;
   /** @deprecated use `ListEventMessagesResponse$Outbound` instead. */
   export type Outbound = ListEventMessagesResponse$Outbound;
+}
+
+export function listEventMessagesResponseToJSON(
+  listEventMessagesResponse: ListEventMessagesResponse,
+): string {
+  return JSON.stringify(
+    ListEventMessagesResponse$outboundSchema.parse(listEventMessagesResponse),
+  );
+}
+
+export function listEventMessagesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEventMessagesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEventMessagesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEventMessagesResponse' from JSON`,
+  );
 }

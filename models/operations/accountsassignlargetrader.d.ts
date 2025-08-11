@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsAssignLargeTraderRequest = {
     /**
      * The legalNaturalPerson id.
@@ -39,6 +41,8 @@ export declare namespace AccountsAssignLargeTraderRequest$ {
     /** @deprecated use `AccountsAssignLargeTraderRequest$Outbound` instead. */
     type Outbound = AccountsAssignLargeTraderRequest$Outbound;
 }
+export declare function accountsAssignLargeTraderRequestToJSON(accountsAssignLargeTraderRequest: AccountsAssignLargeTraderRequest): string;
+export declare function accountsAssignLargeTraderRequestFromJSON(jsonString: string): SafeParseResult<AccountsAssignLargeTraderRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsAssignLargeTraderResponse$inboundSchema: z.ZodType<AccountsAssignLargeTraderResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsAssignLargeTraderResponse$ {
     /** @deprecated use `AccountsAssignLargeTraderResponse$Outbound` instead. */
     type Outbound = AccountsAssignLargeTraderResponse$Outbound;
 }
+export declare function accountsAssignLargeTraderResponseToJSON(accountsAssignLargeTraderResponse: AccountsAssignLargeTraderResponse): string;
+export declare function accountsAssignLargeTraderResponseFromJSON(jsonString: string): SafeParseResult<AccountsAssignLargeTraderResponse, SDKValidationError>;
 //# sourceMappingURL=accountsassignlargetrader.d.ts.map

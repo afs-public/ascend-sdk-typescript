@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetrieveCashJournalConstraintsRequestCreate$ = exports.RetrieveCashJournalConstraintsRequestCreate$outboundSchema = exports.RetrieveCashJournalConstraintsRequestCreate$inboundSchema = void 0;
+exports.retrieveCashJournalConstraintsRequestCreateToJSON = retrieveCashJournalConstraintsRequestCreateToJSON;
+exports.retrieveCashJournalConstraintsRequestCreateFromJSON = retrieveCashJournalConstraintsRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.RetrieveCashJournalConstraintsRequestCreate$inboundSchema = z.object({
     destination_account: z.string(),
@@ -70,4 +73,10 @@ var RetrieveCashJournalConstraintsRequestCreate$;
     /** @deprecated use `RetrieveCashJournalConstraintsRequestCreate$outboundSchema` instead. */
     RetrieveCashJournalConstraintsRequestCreate$.outboundSchema = exports.RetrieveCashJournalConstraintsRequestCreate$outboundSchema;
 })(RetrieveCashJournalConstraintsRequestCreate$ || (exports.RetrieveCashJournalConstraintsRequestCreate$ = RetrieveCashJournalConstraintsRequestCreate$ = {}));
+function retrieveCashJournalConstraintsRequestCreateToJSON(retrieveCashJournalConstraintsRequestCreate) {
+    return JSON.stringify(exports.RetrieveCashJournalConstraintsRequestCreate$outboundSchema.parse(retrieveCashJournalConstraintsRequestCreate));
+}
+function retrieveCashJournalConstraintsRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetrieveCashJournalConstraintsRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetrieveCashJournalConstraintsRequestCreate' from JSON`);
+}
 //# sourceMappingURL=retrievecashjournalconstraintsrequestcreate.js.map

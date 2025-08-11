@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ExecutionCreate, ExecutionCreate$Outbound } from "./executioncreate.js";
 /**
  * A response for the rebook execution method.
@@ -34,4 +36,6 @@ export declare namespace RebookExecutionRequestCreate$ {
     /** @deprecated use `RebookExecutionRequestCreate$Outbound` instead. */
     type Outbound = RebookExecutionRequestCreate$Outbound;
 }
+export declare function rebookExecutionRequestCreateToJSON(rebookExecutionRequestCreate: RebookExecutionRequestCreate): string;
+export declare function rebookExecutionRequestCreateFromJSON(jsonString: string): SafeParseResult<RebookExecutionRequestCreate, SDKValidationError>;
 //# sourceMappingURL=rebookexecutionrequestcreate.d.ts.map

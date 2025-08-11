@@ -29,6 +29,7 @@ Forces approval of an existing ACH deposit that is pending review. FOR TESTING O
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDeposits_ForceApproveAchDeposit" method="post" path="/transfers/v1/accounts/{account_id}/achDeposits/{achDeposit_id}:forceApprove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -49,7 +50,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -82,15 +82,12 @@ async function run() {
   const res = await testSimulationForceApproveAchDeposit(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApproveAchDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -124,6 +121,7 @@ Forces a Nacha notice of change (NOC) on a completed ACH deposit. FOR TESTING ON
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDeposits_ForceNocAchDeposit" method="post" path="/transfers/v1/accounts/{account_id}/achDeposits/{achDeposit_id}:forceNoc" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { Code } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -148,7 +146,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -185,15 +182,12 @@ async function run() {
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceNocAchDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -227,6 +221,7 @@ Forces rejection of an existing ACH deposit that is pending review. FOR TESTING 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDeposits_ForceRejectAchDeposit" method="post" path="/transfers/v1/accounts/{account_id}/achDeposits/{achDeposit_id}:forceReject" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -247,7 +242,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -280,15 +274,12 @@ async function run() {
   const res = await testSimulationForceRejectAchDeposit(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceRejectAchDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -322,6 +313,7 @@ Forces a Nacha return on a completed ACH deposit. FOR TESTING ONLY!
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDeposits_ForceReturnAchDeposit" method="post" path="/transfers/v1/accounts/{account_id}/achDeposits/{achDeposit_id}:forceReturn" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { NachaReturnCreateCode } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -341,12 +333,11 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.testSimulation.forceReturnAchDeposit({
     nachaReturn: {
-      code: NachaReturnCreateCode.R34,
+      code: NachaReturnCreateCode.R13,
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -379,19 +370,16 @@ const apexascend = new ApexascendCore({
 async function run() {
   const res = await testSimulationForceReturnAchDeposit(apexascend, {
     nachaReturn: {
-      code: NachaReturnCreateCode.R34,
+      code: NachaReturnCreateCode.R13,
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceReturnAchDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -425,6 +413,7 @@ Forces approval of an existing ACH withdrawal that is pending review. FOR TESTIN
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawals_ForceApproveAchWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawals/{achWithdrawal_id}:forceApprove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -445,7 +434,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -478,15 +466,12 @@ async function run() {
   const res = await testSimulationForceApproveAchWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApproveAchWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -520,6 +505,7 @@ Forces a Nacha notice of change (NOC) on a completed ACH withdrawal. FOR TESTING
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawals_ForceNocAchWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawals/{achWithdrawal_id}:forceNoc" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { Code } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -544,7 +530,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -581,15 +566,12 @@ async function run() {
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceNocAchWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -623,6 +605,7 @@ Forces rejection of an existing ACH withdrawal that is pending review. FOR TESTI
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawals_ForceRejectAchWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawals/{achWithdrawal_id}:forceReject" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -643,7 +626,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -676,15 +658,12 @@ async function run() {
   const res = await testSimulationForceRejectAchWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceRejectAchWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -718,6 +697,7 @@ Forces a Nacha return on a completed ACH withdrawal. FOR TESTING ONLY!
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawals_ForceReturnAchWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawals/{achWithdrawal_id}:forceReturn" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { NachaReturnCreateCode } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -737,12 +717,11 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.testSimulation.forceReturnAchWithdrawal({
     nachaReturn: {
-      code: NachaReturnCreateCode.R28,
+      code: NachaReturnCreateCode.R15,
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -775,19 +754,16 @@ const apexascend = new ApexascendCore({
 async function run() {
   const res = await testSimulationForceReturnAchWithdrawal(apexascend, {
     nachaReturn: {
-      code: NachaReturnCreateCode.R28,
+      code: NachaReturnCreateCode.R15,
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230620500726");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceReturnAchWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -821,6 +797,7 @@ Gets micro deposit amounts for bank relationships with the `MICRO_DEPOSIT` verif
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="BankRelationships_GetMicroDepositAmounts" method="get" path="/transfers/v1/accounts/{account_id}/bankRelationships/{bankRelationship_id}:getMicroDepositAmounts" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -839,7 +816,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.testSimulation.getMicroDepositAmounts("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -870,15 +846,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await testSimulationGetMicroDepositAmounts(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "651ef9de0dee00240813e60e");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationGetMicroDepositAmounts failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -911,6 +884,7 @@ Forces an approval on an existing ICT deposit pending review - FOR TESTING
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctDeposits_ForceApproveIctDeposit" method="post" path="/transfers/v1/accounts/{account_id}/ictDeposits/{ictDeposit_id}:forceApprove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -931,7 +905,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictDeposits/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -964,15 +937,12 @@ async function run() {
   const res = await testSimulationForceApproveIctDeposit(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictDeposits/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApproveIctDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1006,6 +976,7 @@ Forces a rejection on an existing ICT deposit pending review - FOR TESTING
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctDeposits_ForceRejectIctDeposit" method="post" path="/transfers/v1/accounts/{account_id}/ictDeposits/{ictDeposit_id}:forceReject" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1026,7 +997,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictDeposits/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1059,15 +1029,12 @@ async function run() {
   const res = await testSimulationForceRejectIctDeposit(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictDeposits/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceRejectIctDeposit failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1101,6 +1068,7 @@ Forces an approval on an existing ICT withdrawal pending review - FOR TESTING
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctWithdrawals_ForceApproveIctWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/ictWithdrawals/{ictWithdrawal_id}:forceApprove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1121,7 +1089,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictWithdrawals/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1154,15 +1121,12 @@ async function run() {
   const res = await testSimulationForceApproveIctWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictWithdrawals/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApproveIctWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1196,6 +1160,7 @@ Forces a rejection on an existing ICT withdrawal pending review - FOR TESTING
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="IctWithdrawals_ForceRejectIctWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/ictWithdrawals/{ictWithdrawal_id}:forceReject" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1216,7 +1181,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictWithdrawals/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1249,15 +1213,12 @@ async function run() {
   const res = await testSimulationForceRejectIctWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/ictWithdrawals/20240321000472",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20240321000472");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceRejectIctWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1291,6 +1252,7 @@ Forces an approval on an existing wire withdrawal pending review - FOR TESTING
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawals_ForceApproveWireWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/wireWithdrawals/{wireWithdrawal_id}:forceApprove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1311,7 +1273,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawals/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1344,15 +1305,12 @@ async function run() {
   const res = await testSimulationForceApproveWireWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawals/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApproveWireWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1386,6 +1344,7 @@ Forces a rejection on an existing wire withdrawal pending review - FOR TESTING
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawals_ForceRejectWireWithdrawal" method="post" path="/transfers/v1/accounts/{account_id}/wireWithdrawals/{wireWithdrawal_id}:forceReject" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1406,7 +1365,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawals/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1439,15 +1397,12 @@ async function run() {
   const res = await testSimulationForceRejectWireWithdrawal(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawals/20230817000319",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceRejectWireWithdrawal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1481,6 +1436,7 @@ Forces approval of an existing cash journal that is pending review FOR TESTING O
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CashJournals_ForceApproveCashJournal" method="post" path="/transfers/v1/cashJournals/{cashJournal_id}:forceApprove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1501,7 +1457,6 @@ async function run() {
     name: "cashJournals/20230817000319",
   }, "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1534,15 +1489,12 @@ async function run() {
   const res = await testSimulationForceApproveCashJournal(apexascend, {
     name: "cashJournals/20230817000319",
   }, "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApproveCashJournal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1575,6 +1527,7 @@ Forces rejection of an existing cash journal that is pending review FOR TESTING 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CashJournals_ForceRejectCashJournal" method="post" path="/transfers/v1/cashJournals/{cashJournal_id}:forceReject" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1595,7 +1548,6 @@ async function run() {
     name: "cashJournals/20230817000319",
   }, "20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1628,15 +1580,12 @@ async function run() {
   const res = await testSimulationForceRejectCashJournal(apexascend, {
     name: "cashJournals/20230817000319",
   }, "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceRejectCashJournal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

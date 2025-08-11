@@ -37,8 +37,19 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Lot$ = exports.Lot$outboundSchema = exports.Lot$inboundSchema = exports.LotTradeDate$ = exports.LotTradeDate$outboundSchema = exports.LotTradeDate$inboundSchema = exports.LotQuantity$ = exports.LotQuantity$outboundSchema = exports.LotQuantity$inboundSchema = exports.LotMoney$ = exports.LotMoney$outboundSchema = exports.LotMoney$inboundSchema = exports.LotPrice$ = exports.LotPrice$outboundSchema = exports.LotPrice$inboundSchema = void 0;
+exports.lotPriceToJSON = lotPriceToJSON;
+exports.lotPriceFromJSON = lotPriceFromJSON;
+exports.lotMoneyToJSON = lotMoneyToJSON;
+exports.lotMoneyFromJSON = lotMoneyFromJSON;
+exports.lotQuantityToJSON = lotQuantityToJSON;
+exports.lotQuantityFromJSON = lotQuantityFromJSON;
+exports.lotTradeDateToJSON = lotTradeDateToJSON;
+exports.lotTradeDateFromJSON = lotTradeDateFromJSON;
+exports.lotToJSON = lotToJSON;
+exports.lotFromJSON = lotFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.LotPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +69,12 @@ var LotPrice$;
     /** @deprecated use `LotPrice$outboundSchema` instead. */
     LotPrice$.outboundSchema = exports.LotPrice$outboundSchema;
 })(LotPrice$ || (exports.LotPrice$ = LotPrice$ = {}));
+function lotPriceToJSON(lotPrice) {
+    return JSON.stringify(exports.LotPrice$outboundSchema.parse(lotPrice));
+}
+function lotPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LotPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LotPrice' from JSON`);
+}
 /** @internal */
 exports.LotMoney$inboundSchema = z.object({
     currency_code: z.string().optional(),
@@ -87,6 +104,12 @@ var LotMoney$;
     /** @deprecated use `LotMoney$outboundSchema` instead. */
     LotMoney$.outboundSchema = exports.LotMoney$outboundSchema;
 })(LotMoney$ || (exports.LotMoney$ = LotMoney$ = {}));
+function lotMoneyToJSON(lotMoney) {
+    return JSON.stringify(exports.LotMoney$outboundSchema.parse(lotMoney));
+}
+function lotMoneyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LotMoney$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LotMoney' from JSON`);
+}
 /** @internal */
 exports.LotQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -106,6 +129,12 @@ var LotQuantity$;
     /** @deprecated use `LotQuantity$outboundSchema` instead. */
     LotQuantity$.outboundSchema = exports.LotQuantity$outboundSchema;
 })(LotQuantity$ || (exports.LotQuantity$ = LotQuantity$ = {}));
+function lotQuantityToJSON(lotQuantity) {
+    return JSON.stringify(exports.LotQuantity$outboundSchema.parse(lotQuantity));
+}
+function lotQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LotQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LotQuantity' from JSON`);
+}
 /** @internal */
 exports.LotTradeDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -129,6 +158,12 @@ var LotTradeDate$;
     /** @deprecated use `LotTradeDate$outboundSchema` instead. */
     LotTradeDate$.outboundSchema = exports.LotTradeDate$outboundSchema;
 })(LotTradeDate$ || (exports.LotTradeDate$ = LotTradeDate$ = {}));
+function lotTradeDateToJSON(lotTradeDate) {
+    return JSON.stringify(exports.LotTradeDate$outboundSchema.parse(lotTradeDate));
+}
+function lotTradeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LotTradeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LotTradeDate' from JSON`);
+}
 /** @internal */
 exports.Lot$inboundSchema = z
     .object({
@@ -164,4 +199,10 @@ var Lot$;
     /** @deprecated use `Lot$outboundSchema` instead. */
     Lot$.outboundSchema = exports.Lot$outboundSchema;
 })(Lot$ || (exports.Lot$ = Lot$ = {}));
+function lotToJSON(lot) {
+    return JSON.stringify(exports.Lot$outboundSchema.parse(lot));
+}
+function lotFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Lot$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Lot' from JSON`);
+}
 //# sourceMappingURL=lot.js.map

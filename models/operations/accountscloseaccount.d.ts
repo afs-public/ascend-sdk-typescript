@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsCloseAccountRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace AccountsCloseAccountRequest$ {
     /** @deprecated use `AccountsCloseAccountRequest$Outbound` instead. */
     type Outbound = AccountsCloseAccountRequest$Outbound;
 }
+export declare function accountsCloseAccountRequestToJSON(accountsCloseAccountRequest: AccountsCloseAccountRequest): string;
+export declare function accountsCloseAccountRequestFromJSON(jsonString: string): SafeParseResult<AccountsCloseAccountRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsCloseAccountResponse$inboundSchema: z.ZodType<AccountsCloseAccountResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsCloseAccountResponse$ {
     /** @deprecated use `AccountsCloseAccountResponse$Outbound` instead. */
     type Outbound = AccountsCloseAccountResponse$Outbound;
 }
+export declare function accountsCloseAccountResponseToJSON(accountsCloseAccountResponse: AccountsCloseAccountResponse): string;
+export declare function accountsCloseAccountResponseFromJSON(jsonString: string): SafeParseResult<AccountsCloseAccountResponse, SDKValidationError>;
 //# sourceMappingURL=accountscloseaccount.d.ts.map

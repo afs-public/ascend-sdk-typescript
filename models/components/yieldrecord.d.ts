@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The yield percentage at which the transaction was effected
  */
@@ -56,6 +58,8 @@ export declare namespace YieldPercent$ {
     /** @deprecated use `YieldPercent$Outbound` instead. */
     type Outbound = YieldPercent$Outbound;
 }
+export declare function yieldPercentToJSON(yieldPercent: YieldPercent): string;
+export declare function yieldPercentFromJSON(jsonString: string): SafeParseResult<YieldPercent, SDKValidationError>;
 /** @internal */
 export declare const YieldRecordYieldType$inboundSchema: z.ZodType<YieldRecordYieldTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -91,4 +95,6 @@ export declare namespace YieldRecord$ {
     /** @deprecated use `YieldRecord$Outbound` instead. */
     type Outbound = YieldRecord$Outbound;
 }
+export declare function yieldRecordToJSON(yieldRecord: YieldRecord): string;
+export declare function yieldRecordFromJSON(jsonString: string): SafeParseResult<YieldRecord, SDKValidationError>;
 //# sourceMappingURL=yieldrecord.d.ts.map

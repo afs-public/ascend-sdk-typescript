@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The identifier type of the asset being sought
  */
@@ -60,4 +62,6 @@ export declare namespace RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreat
     /** @deprecated use `RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$Outbound` instead. */
     type Outbound = RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$Outbound;
 }
+export declare function retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateToJSON(retrieveFixedIncomeMarksRequestSecurityIdentifiersCreate: RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate): string;
+export declare function retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateFromJSON(jsonString: string): SafeParseResult<RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate, SDKValidationError>;
 //# sourceMappingURL=retrievefixedincomemarksrequestsecurityidentifierscreate.d.ts.map

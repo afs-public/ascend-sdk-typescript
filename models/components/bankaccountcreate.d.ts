@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The bank account type.
  */
@@ -70,4 +72,6 @@ export declare namespace BankAccountCreate$ {
     /** @deprecated use `BankAccountCreate$Outbound` instead. */
     type Outbound = BankAccountCreate$Outbound;
 }
+export declare function bankAccountCreateToJSON(bankAccountCreate: BankAccountCreate): string;
+export declare function bankAccountCreateFromJSON(jsonString: string): SafeParseResult<BankAccountCreate, SDKValidationError>;
 //# sourceMappingURL=bankaccountcreate.d.ts.map

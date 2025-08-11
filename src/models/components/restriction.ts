@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * An account restriction.
@@ -122,4 +125,18 @@ export namespace Restriction$ {
   export const outboundSchema = Restriction$outboundSchema;
   /** @deprecated use `Restriction$Outbound` instead. */
   export type Outbound = Restriction$Outbound;
+}
+
+export function restrictionToJSON(restriction: Restriction): string {
+  return JSON.stringify(Restriction$outboundSchema.parse(restriction));
+}
+
+export function restrictionFromJSON(
+  jsonString: string,
+): SafeParseResult<Restriction, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Restriction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Restriction' from JSON`,
+  );
 }

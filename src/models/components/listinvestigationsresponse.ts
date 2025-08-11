@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Investigation,
   Investigation$inboundSchema,
@@ -23,6 +26,10 @@ export type ListInvestigationsResponse = {
    * The next pagination token in the Search response; an empty value means no more results
    */
   nextPageToken?: string | undefined;
+  /**
+   * The total number of investigations matching the search criteria. This is the total number of results available across all pages of the query, not the number of investigations returned in the current page. For example, if the search query matches 1,000 investigations but only 50 results are returned per page, `total_size` will be 1,000.
+   */
+  totalSize?: number | undefined;
 };
 
 /** @internal */
@@ -33,9 +40,11 @@ export const ListInvestigationsResponse$inboundSchema: z.ZodType<
 > = z.object({
   investigations: z.array(Investigation$inboundSchema).optional(),
   next_page_token: z.string().optional(),
+  total_size: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
     "next_page_token": "nextPageToken",
+    "total_size": "totalSize",
   });
 });
 
@@ -43,6 +52,7 @@ export const ListInvestigationsResponse$inboundSchema: z.ZodType<
 export type ListInvestigationsResponse$Outbound = {
   investigations?: Array<Investigation$Outbound> | undefined;
   next_page_token?: string | undefined;
+  total_size?: number | undefined;
 };
 
 /** @internal */
@@ -53,9 +63,11 @@ export const ListInvestigationsResponse$outboundSchema: z.ZodType<
 > = z.object({
   investigations: z.array(Investigation$outboundSchema).optional(),
   nextPageToken: z.string().optional(),
+  totalSize: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
     nextPageToken: "next_page_token",
+    totalSize: "total_size",
   });
 });
 
@@ -70,4 +82,22 @@ export namespace ListInvestigationsResponse$ {
   export const outboundSchema = ListInvestigationsResponse$outboundSchema;
   /** @deprecated use `ListInvestigationsResponse$Outbound` instead. */
   export type Outbound = ListInvestigationsResponse$Outbound;
+}
+
+export function listInvestigationsResponseToJSON(
+  listInvestigationsResponse: ListInvestigationsResponse,
+): string {
+  return JSON.stringify(
+    ListInvestigationsResponse$outboundSchema.parse(listInvestigationsResponse),
+  );
+}
+
+export function listInvestigationsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListInvestigationsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListInvestigationsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListInvestigationsResponse' from JSON`,
+  );
 }

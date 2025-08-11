@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateCreate,
   DateCreate$inboundSchema,
@@ -88,4 +91,22 @@ export namespace LetterOfIntentCreate$ {
   export const outboundSchema = LetterOfIntentCreate$outboundSchema;
   /** @deprecated use `LetterOfIntentCreate$Outbound` instead. */
   export type Outbound = LetterOfIntentCreate$Outbound;
+}
+
+export function letterOfIntentCreateToJSON(
+  letterOfIntentCreate: LetterOfIntentCreate,
+): string {
+  return JSON.stringify(
+    LetterOfIntentCreate$outboundSchema.parse(letterOfIntentCreate),
+  );
+}
+
+export function letterOfIntentCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<LetterOfIntentCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LetterOfIntentCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LetterOfIntentCreate' from JSON`,
+  );
 }

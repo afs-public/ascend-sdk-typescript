@@ -37,8 +37,19 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Beneficiary$ = exports.Beneficiary$outboundSchema = exports.Beneficiary$inboundSchema = exports.BeneficiaryTaxIdType$ = exports.BeneficiaryTaxIdType$outboundSchema = exports.BeneficiaryTaxIdType$inboundSchema = exports.BeneficiaryRelationType$ = exports.BeneficiaryRelationType$outboundSchema = exports.BeneficiaryRelationType$inboundSchema = exports.PhoneNumber$ = exports.PhoneNumber$outboundSchema = exports.PhoneNumber$inboundSchema = exports.ShortCode$ = exports.ShortCode$outboundSchema = exports.ShortCode$inboundSchema = exports.MailingAddress$ = exports.MailingAddress$outboundSchema = exports.MailingAddress$inboundSchema = exports.BeneficiaryEntityType$ = exports.BeneficiaryEntityType$outboundSchema = exports.BeneficiaryEntityType$inboundSchema = exports.BeneficiaryBirthDate$ = exports.BeneficiaryBirthDate$outboundSchema = exports.BeneficiaryBirthDate$inboundSchema = exports.BeneficiaryTaxIdType = exports.BeneficiaryRelationType = exports.BeneficiaryEntityType = void 0;
+exports.beneficiaryBirthDateToJSON = beneficiaryBirthDateToJSON;
+exports.beneficiaryBirthDateFromJSON = beneficiaryBirthDateFromJSON;
+exports.mailingAddressToJSON = mailingAddressToJSON;
+exports.mailingAddressFromJSON = mailingAddressFromJSON;
+exports.shortCodeToJSON = shortCodeToJSON;
+exports.shortCodeFromJSON = shortCodeFromJSON;
+exports.phoneNumberToJSON = phoneNumberToJSON;
+exports.phoneNumberFromJSON = phoneNumberFromJSON;
+exports.beneficiaryToJSON = beneficiaryToJSON;
+exports.beneficiaryFromJSON = beneficiaryFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The entity type of the beneficiary; Required if the beneficiary is a legal entity.
@@ -95,6 +106,12 @@ var BeneficiaryBirthDate$;
     /** @deprecated use `BeneficiaryBirthDate$outboundSchema` instead. */
     BeneficiaryBirthDate$.outboundSchema = exports.BeneficiaryBirthDate$outboundSchema;
 })(BeneficiaryBirthDate$ || (exports.BeneficiaryBirthDate$ = BeneficiaryBirthDate$ = {}));
+function beneficiaryBirthDateToJSON(beneficiaryBirthDate) {
+    return JSON.stringify(exports.BeneficiaryBirthDate$outboundSchema.parse(beneficiaryBirthDate));
+}
+function beneficiaryBirthDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BeneficiaryBirthDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BeneficiaryBirthDate' from JSON`);
+}
 /** @internal */
 exports.BeneficiaryEntityType$inboundSchema = z
     .union([
@@ -174,6 +191,12 @@ var MailingAddress$;
     /** @deprecated use `MailingAddress$outboundSchema` instead. */
     MailingAddress$.outboundSchema = exports.MailingAddress$outboundSchema;
 })(MailingAddress$ || (exports.MailingAddress$ = MailingAddress$ = {}));
+function mailingAddressToJSON(mailingAddress) {
+    return JSON.stringify(exports.MailingAddress$outboundSchema.parse(mailingAddress));
+}
+function mailingAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MailingAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MailingAddress' from JSON`);
+}
 /** @internal */
 exports.ShortCode$inboundSchema = z.object({
     number: z.string().optional(),
@@ -203,6 +226,12 @@ var ShortCode$;
     /** @deprecated use `ShortCode$outboundSchema` instead. */
     ShortCode$.outboundSchema = exports.ShortCode$outboundSchema;
 })(ShortCode$ || (exports.ShortCode$ = ShortCode$ = {}));
+function shortCodeToJSON(shortCode) {
+    return JSON.stringify(exports.ShortCode$outboundSchema.parse(shortCode));
+}
+function shortCodeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ShortCode$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ShortCode' from JSON`);
+}
 /** @internal */
 exports.PhoneNumber$inboundSchema = z.object({
     e164_number: z.string().optional(),
@@ -236,6 +265,12 @@ var PhoneNumber$;
     /** @deprecated use `PhoneNumber$outboundSchema` instead. */
     PhoneNumber$.outboundSchema = exports.PhoneNumber$outboundSchema;
 })(PhoneNumber$ || (exports.PhoneNumber$ = PhoneNumber$ = {}));
+function phoneNumberToJSON(phoneNumber) {
+    return JSON.stringify(exports.PhoneNumber$outboundSchema.parse(phoneNumber));
+}
+function phoneNumberFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PhoneNumber$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PhoneNumber' from JSON`);
+}
 /** @internal */
 exports.BeneficiaryRelationType$inboundSchema = z
     .union([
@@ -357,4 +392,10 @@ var Beneficiary$;
     /** @deprecated use `Beneficiary$outboundSchema` instead. */
     Beneficiary$.outboundSchema = exports.Beneficiary$outboundSchema;
 })(Beneficiary$ || (exports.Beneficiary$ = Beneficiary$ = {}));
+function beneficiaryToJSON(beneficiary) {
+    return JSON.stringify(exports.Beneficiary$outboundSchema.parse(beneficiary));
+}
+function beneficiaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Beneficiary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Beneficiary' from JSON`);
+}
 //# sourceMappingURL=beneficiary.js.map

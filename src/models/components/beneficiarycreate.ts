@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateCreate,
   DateCreate$inboundSchema,
@@ -363,4 +366,22 @@ export namespace BeneficiaryCreate$ {
   export const outboundSchema = BeneficiaryCreate$outboundSchema;
   /** @deprecated use `BeneficiaryCreate$Outbound` instead. */
   export type Outbound = BeneficiaryCreate$Outbound;
+}
+
+export function beneficiaryCreateToJSON(
+  beneficiaryCreate: BeneficiaryCreate,
+): string {
+  return JSON.stringify(
+    BeneficiaryCreate$outboundSchema.parse(beneficiaryCreate),
+  );
+}
+
+export function beneficiaryCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<BeneficiaryCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BeneficiaryCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BeneficiaryCreate' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CashJournalsForceApproveCashJournalRequest = {
   /**
@@ -82,6 +85,33 @@ export namespace CashJournalsForceApproveCashJournalRequest$ {
   export type Outbound = CashJournalsForceApproveCashJournalRequest$Outbound;
 }
 
+export function cashJournalsForceApproveCashJournalRequestToJSON(
+  cashJournalsForceApproveCashJournalRequest:
+    CashJournalsForceApproveCashJournalRequest,
+): string {
+  return JSON.stringify(
+    CashJournalsForceApproveCashJournalRequest$outboundSchema.parse(
+      cashJournalsForceApproveCashJournalRequest,
+    ),
+  );
+}
+
+export function cashJournalsForceApproveCashJournalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashJournalsForceApproveCashJournalRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalsForceApproveCashJournalRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashJournalsForceApproveCashJournalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashJournalsForceApproveCashJournalResponse$inboundSchema:
   z.ZodType<
@@ -138,4 +168,31 @@ export namespace CashJournalsForceApproveCashJournalResponse$ {
     CashJournalsForceApproveCashJournalResponse$outboundSchema;
   /** @deprecated use `CashJournalsForceApproveCashJournalResponse$Outbound` instead. */
   export type Outbound = CashJournalsForceApproveCashJournalResponse$Outbound;
+}
+
+export function cashJournalsForceApproveCashJournalResponseToJSON(
+  cashJournalsForceApproveCashJournalResponse:
+    CashJournalsForceApproveCashJournalResponse,
+): string {
+  return JSON.stringify(
+    CashJournalsForceApproveCashJournalResponse$outboundSchema.parse(
+      cashJournalsForceApproveCashJournalResponse,
+    ),
+  );
+}
+
+export function cashJournalsForceApproveCashJournalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashJournalsForceApproveCashJournalResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashJournalsForceApproveCashJournalResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashJournalsForceApproveCashJournalResponse' from JSON`,
+  );
 }

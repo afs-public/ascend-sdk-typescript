@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of retirement contribution.
@@ -320,6 +323,26 @@ export namespace AchDepositScheduleIraContribution$ {
   export type Outbound = AchDepositScheduleIraContribution$Outbound;
 }
 
+export function achDepositScheduleIraContributionToJSON(
+  achDepositScheduleIraContribution: AchDepositScheduleIraContribution,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleIraContribution$outboundSchema.parse(
+      achDepositScheduleIraContribution,
+    ),
+  );
+}
+
+export function achDepositScheduleIraContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositScheduleIraContribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositScheduleIraContribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositScheduleIraContribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositScheduleTemporalTaxYear$inboundSchema: z.ZodType<
   AchDepositScheduleTemporalTaxYearOpen,
@@ -443,6 +466,33 @@ export namespace AchDepositScheduleRetirementContribution$ {
   export type Outbound = AchDepositScheduleRetirementContribution$Outbound;
 }
 
+export function achDepositScheduleRetirementContributionToJSON(
+  achDepositScheduleRetirementContribution:
+    AchDepositScheduleRetirementContribution,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleRetirementContribution$outboundSchema.parse(
+      achDepositScheduleRetirementContribution,
+    ),
+  );
+}
+
+export function achDepositScheduleRetirementContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchDepositScheduleRetirementContribution,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositScheduleRetirementContribution$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchDepositScheduleRetirementContribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositScheduleAmount$inboundSchema: z.ZodType<
   AchDepositScheduleAmount,
@@ -477,6 +527,24 @@ export namespace AchDepositScheduleAmount$ {
   export const outboundSchema = AchDepositScheduleAmount$outboundSchema;
   /** @deprecated use `AchDepositScheduleAmount$Outbound` instead. */
   export type Outbound = AchDepositScheduleAmount$Outbound;
+}
+
+export function achDepositScheduleAmountToJSON(
+  achDepositScheduleAmount: AchDepositScheduleAmount,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleAmount$outboundSchema.parse(achDepositScheduleAmount),
+  );
+}
+
+export function achDepositScheduleAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositScheduleAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositScheduleAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositScheduleAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -519,6 +587,26 @@ export namespace AchDepositScheduleStartDate$ {
   export const outboundSchema = AchDepositScheduleStartDate$outboundSchema;
   /** @deprecated use `AchDepositScheduleStartDate$Outbound` instead. */
   export type Outbound = AchDepositScheduleStartDate$Outbound;
+}
+
+export function achDepositScheduleStartDateToJSON(
+  achDepositScheduleStartDate: AchDepositScheduleStartDate,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleStartDate$outboundSchema.parse(
+      achDepositScheduleStartDate,
+    ),
+  );
+}
+
+export function achDepositScheduleStartDateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositScheduleStartDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositScheduleStartDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositScheduleStartDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -651,6 +739,27 @@ export namespace AchDepositScheduleScheduleProperties$ {
   export type Outbound = AchDepositScheduleScheduleProperties$Outbound;
 }
 
+export function achDepositScheduleSchedulePropertiesToJSON(
+  achDepositScheduleScheduleProperties: AchDepositScheduleScheduleProperties,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleScheduleProperties$outboundSchema.parse(
+      achDepositScheduleScheduleProperties,
+    ),
+  );
+}
+
+export function achDepositScheduleSchedulePropertiesFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositScheduleScheduleProperties, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositScheduleScheduleProperties$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositScheduleScheduleProperties' from JSON`,
+  );
+}
+
 /** @internal */
 export const ScheduleDetails$inboundSchema: z.ZodType<
   ScheduleDetails,
@@ -710,6 +819,22 @@ export namespace ScheduleDetails$ {
   export const outboundSchema = ScheduleDetails$outboundSchema;
   /** @deprecated use `ScheduleDetails$Outbound` instead. */
   export type Outbound = ScheduleDetails$Outbound;
+}
+
+export function scheduleDetailsToJSON(
+  scheduleDetails: ScheduleDetails,
+): string {
+  return JSON.stringify(ScheduleDetails$outboundSchema.parse(scheduleDetails));
+}
+
+export function scheduleDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduleDetails, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduleDetails$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduleDetails' from JSON`,
+  );
 }
 
 /** @internal */
@@ -788,4 +913,22 @@ export namespace AchDepositSchedule$ {
   export const outboundSchema = AchDepositSchedule$outboundSchema;
   /** @deprecated use `AchDepositSchedule$Outbound` instead. */
   export type Outbound = AchDepositSchedule$Outbound;
+}
+
+export function achDepositScheduleToJSON(
+  achDepositSchedule: AchDepositSchedule,
+): string {
+  return JSON.stringify(
+    AchDepositSchedule$outboundSchema.parse(achDepositSchedule),
+  );
+}
+
+export function achDepositScheduleFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositSchedule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositSchedule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositSchedule' from JSON`,
+  );
 }

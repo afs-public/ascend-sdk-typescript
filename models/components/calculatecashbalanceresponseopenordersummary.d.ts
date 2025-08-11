@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The notional value the order is not reasonably expected to exceed in USD. This value is always positive.
  */
@@ -41,6 +43,8 @@ export declare namespace ExpectedNotionalCeilingAmount$ {
     /** @deprecated use `ExpectedNotionalCeilingAmount$Outbound` instead. */
     type Outbound = ExpectedNotionalCeilingAmount$Outbound;
 }
+export declare function expectedNotionalCeilingAmountToJSON(expectedNotionalCeilingAmount: ExpectedNotionalCeilingAmount): string;
+export declare function expectedNotionalCeilingAmountFromJSON(jsonString: string): SafeParseResult<ExpectedNotionalCeilingAmount, SDKValidationError>;
 /** @internal */
 export declare const CalculateCashBalanceResponseOpenOrderSummary$inboundSchema: z.ZodType<CalculateCashBalanceResponseOpenOrderSummary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -62,4 +66,6 @@ export declare namespace CalculateCashBalanceResponseOpenOrderSummary$ {
     /** @deprecated use `CalculateCashBalanceResponseOpenOrderSummary$Outbound` instead. */
     type Outbound = CalculateCashBalanceResponseOpenOrderSummary$Outbound;
 }
+export declare function calculateCashBalanceResponseOpenOrderSummaryToJSON(calculateCashBalanceResponseOpenOrderSummary: CalculateCashBalanceResponseOpenOrderSummary): string;
+export declare function calculateCashBalanceResponseOpenOrderSummaryFromJSON(jsonString: string): SafeParseResult<CalculateCashBalanceResponseOpenOrderSummary, SDKValidationError>;
 //# sourceMappingURL=calculatecashbalanceresponseopenordersummary.d.ts.map

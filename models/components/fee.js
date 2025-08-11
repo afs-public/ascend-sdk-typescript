@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Fee$ = exports.Fee$outboundSchema = exports.Fee$inboundSchema = exports.FeeType$ = exports.FeeType$outboundSchema = exports.FeeType$inboundSchema = exports.FeeAmount$ = exports.FeeAmount$outboundSchema = exports.FeeAmount$inboundSchema = exports.FeeType = void 0;
+exports.feeAmountToJSON = feeAmountToJSON;
+exports.feeAmountFromJSON = feeAmountFromJSON;
+exports.feeToJSON = feeToJSON;
+exports.feeFromJSON = feeFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of fee being assessed
@@ -98,6 +103,12 @@ var FeeAmount$;
     /** @deprecated use `FeeAmount$outboundSchema` instead. */
     FeeAmount$.outboundSchema = exports.FeeAmount$outboundSchema;
 })(FeeAmount$ || (exports.FeeAmount$ = FeeAmount$ = {}));
+function feeAmountToJSON(feeAmount) {
+    return JSON.stringify(exports.FeeAmount$outboundSchema.parse(feeAmount));
+}
+function feeAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FeeAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FeeAmount' from JSON`);
+}
 /** @internal */
 exports.FeeType$inboundSchema = z
     .union([
@@ -143,4 +154,10 @@ var Fee$;
     /** @deprecated use `Fee$outboundSchema` instead. */
     Fee$.outboundSchema = exports.Fee$outboundSchema;
 })(Fee$ || (exports.Fee$ = Fee$ = {}));
+function feeToJSON(fee) {
+    return JSON.stringify(exports.Fee$outboundSchema.parse(fee));
+}
+function feeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Fee$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Fee' from JSON`);
+}
 //# sourceMappingURL=fee.js.map

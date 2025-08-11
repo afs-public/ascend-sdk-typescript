@@ -37,8 +37,31 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashJournal$ = exports.CashJournal$outboundSchema = exports.CashJournal$inboundSchema = exports.CashJournalState$ = exports.CashJournalState$outboundSchema = exports.CashJournalState$inboundSchema = exports.CashJournalStateState$ = exports.CashJournalStateState$outboundSchema = exports.CashJournalStateState$inboundSchema = exports.CashJournalRetirementDistribution$ = exports.CashJournalRetirementDistribution$outboundSchema = exports.CashJournalRetirementDistribution$inboundSchema = exports.CashJournalRetirementDistributionType$ = exports.CashJournalRetirementDistributionType$outboundSchema = exports.CashJournalRetirementDistributionType$inboundSchema = exports.CashJournalStateTaxWithholding$ = exports.CashJournalStateTaxWithholding$outboundSchema = exports.CashJournalStateTaxWithholding$inboundSchema = exports.CashJournalRetirementDistributionPercentage$ = exports.CashJournalRetirementDistributionPercentage$outboundSchema = exports.CashJournalRetirementDistributionPercentage$inboundSchema = exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$ = exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$outboundSchema = exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$inboundSchema = exports.CashJournalFederalTaxWithholding$ = exports.CashJournalFederalTaxWithholding$outboundSchema = exports.CashJournalFederalTaxWithholding$inboundSchema = exports.CashJournalPercentage$ = exports.CashJournalPercentage$outboundSchema = exports.CashJournalPercentage$inboundSchema = exports.CashJournalRetirementDistributionAmount$ = exports.CashJournalRetirementDistributionAmount$outboundSchema = exports.CashJournalRetirementDistributionAmount$inboundSchema = exports.CashJournalRetirementContribution$ = exports.CashJournalRetirementContribution$outboundSchema = exports.CashJournalRetirementContribution$inboundSchema = exports.CashJournalType$ = exports.CashJournalType$outboundSchema = exports.CashJournalType$inboundSchema = exports.PartyType$ = exports.PartyType$outboundSchema = exports.PartyType$inboundSchema = exports.CashJournalAmount$ = exports.CashJournalAmount$outboundSchema = exports.CashJournalAmount$inboundSchema = exports.CashJournalStateState = exports.CashJournalRetirementDistributionType = exports.CashJournalType = exports.PartyType = void 0;
+exports.cashJournalAmountToJSON = cashJournalAmountToJSON;
+exports.cashJournalAmountFromJSON = cashJournalAmountFromJSON;
+exports.cashJournalRetirementContributionToJSON = cashJournalRetirementContributionToJSON;
+exports.cashJournalRetirementContributionFromJSON = cashJournalRetirementContributionFromJSON;
+exports.cashJournalRetirementDistributionAmountToJSON = cashJournalRetirementDistributionAmountToJSON;
+exports.cashJournalRetirementDistributionAmountFromJSON = cashJournalRetirementDistributionAmountFromJSON;
+exports.cashJournalPercentageToJSON = cashJournalPercentageToJSON;
+exports.cashJournalPercentageFromJSON = cashJournalPercentageFromJSON;
+exports.cashJournalFederalTaxWithholdingToJSON = cashJournalFederalTaxWithholdingToJSON;
+exports.cashJournalFederalTaxWithholdingFromJSON = cashJournalFederalTaxWithholdingFromJSON;
+exports.cashJournalRetirementDistributionStateTaxWithholdingAmountToJSON = cashJournalRetirementDistributionStateTaxWithholdingAmountToJSON;
+exports.cashJournalRetirementDistributionStateTaxWithholdingAmountFromJSON = cashJournalRetirementDistributionStateTaxWithholdingAmountFromJSON;
+exports.cashJournalRetirementDistributionPercentageToJSON = cashJournalRetirementDistributionPercentageToJSON;
+exports.cashJournalRetirementDistributionPercentageFromJSON = cashJournalRetirementDistributionPercentageFromJSON;
+exports.cashJournalStateTaxWithholdingToJSON = cashJournalStateTaxWithholdingToJSON;
+exports.cashJournalStateTaxWithholdingFromJSON = cashJournalStateTaxWithholdingFromJSON;
+exports.cashJournalRetirementDistributionToJSON = cashJournalRetirementDistributionToJSON;
+exports.cashJournalRetirementDistributionFromJSON = cashJournalRetirementDistributionFromJSON;
+exports.cashJournalStateToJSON = cashJournalStateToJSON;
+exports.cashJournalStateFromJSON = cashJournalStateFromJSON;
+exports.cashJournalToJSON = cashJournalToJSON;
+exports.cashJournalFromJSON = cashJournalFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Whether a cash journal is first party or third party Determined asynchronously when the transfer is processing, and will be set by the time the transfer is posted
@@ -138,6 +161,12 @@ var CashJournalAmount$;
     /** @deprecated use `CashJournalAmount$outboundSchema` instead. */
     CashJournalAmount$.outboundSchema = exports.CashJournalAmount$outboundSchema;
 })(CashJournalAmount$ || (exports.CashJournalAmount$ = CashJournalAmount$ = {}));
+function cashJournalAmountToJSON(cashJournalAmount) {
+    return JSON.stringify(exports.CashJournalAmount$outboundSchema.parse(cashJournalAmount));
+}
+function cashJournalAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalAmount' from JSON`);
+}
 /** @internal */
 exports.PartyType$inboundSchema = z
     .union([
@@ -211,6 +240,12 @@ var CashJournalRetirementContribution$;
     /** @deprecated use `CashJournalRetirementContribution$outboundSchema` instead. */
     CashJournalRetirementContribution$.outboundSchema = exports.CashJournalRetirementContribution$outboundSchema;
 })(CashJournalRetirementContribution$ || (exports.CashJournalRetirementContribution$ = CashJournalRetirementContribution$ = {}));
+function cashJournalRetirementContributionToJSON(cashJournalRetirementContribution) {
+    return JSON.stringify(exports.CashJournalRetirementContribution$outboundSchema.parse(cashJournalRetirementContribution));
+}
+function cashJournalRetirementContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalRetirementContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalRetirementContribution' from JSON`);
+}
 /** @internal */
 exports.CashJournalRetirementDistributionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -230,6 +265,12 @@ var CashJournalRetirementDistributionAmount$;
     /** @deprecated use `CashJournalRetirementDistributionAmount$outboundSchema` instead. */
     CashJournalRetirementDistributionAmount$.outboundSchema = exports.CashJournalRetirementDistributionAmount$outboundSchema;
 })(CashJournalRetirementDistributionAmount$ || (exports.CashJournalRetirementDistributionAmount$ = CashJournalRetirementDistributionAmount$ = {}));
+function cashJournalRetirementDistributionAmountToJSON(cashJournalRetirementDistributionAmount) {
+    return JSON.stringify(exports.CashJournalRetirementDistributionAmount$outboundSchema.parse(cashJournalRetirementDistributionAmount));
+}
+function cashJournalRetirementDistributionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalRetirementDistributionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalRetirementDistributionAmount' from JSON`);
+}
 /** @internal */
 exports.CashJournalPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -249,6 +290,12 @@ var CashJournalPercentage$;
     /** @deprecated use `CashJournalPercentage$outboundSchema` instead. */
     CashJournalPercentage$.outboundSchema = exports.CashJournalPercentage$outboundSchema;
 })(CashJournalPercentage$ || (exports.CashJournalPercentage$ = CashJournalPercentage$ = {}));
+function cashJournalPercentageToJSON(cashJournalPercentage) {
+    return JSON.stringify(exports.CashJournalPercentage$outboundSchema.parse(cashJournalPercentage));
+}
+function cashJournalPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalPercentage' from JSON`);
+}
 /** @internal */
 exports.CashJournalFederalTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.CashJournalRetirementDistributionAmount$inboundSchema)).optional(),
@@ -272,6 +319,12 @@ var CashJournalFederalTaxWithholding$;
     /** @deprecated use `CashJournalFederalTaxWithholding$outboundSchema` instead. */
     CashJournalFederalTaxWithholding$.outboundSchema = exports.CashJournalFederalTaxWithholding$outboundSchema;
 })(CashJournalFederalTaxWithholding$ || (exports.CashJournalFederalTaxWithholding$ = CashJournalFederalTaxWithholding$ = {}));
+function cashJournalFederalTaxWithholdingToJSON(cashJournalFederalTaxWithholding) {
+    return JSON.stringify(exports.CashJournalFederalTaxWithholding$outboundSchema.parse(cashJournalFederalTaxWithholding));
+}
+function cashJournalFederalTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalFederalTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalFederalTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -291,6 +344,14 @@ var CashJournalRetirementDistributionStateTaxWithholdingAmount$;
     /** @deprecated use `CashJournalRetirementDistributionStateTaxWithholdingAmount$outboundSchema` instead. */
     CashJournalRetirementDistributionStateTaxWithholdingAmount$.outboundSchema = exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$outboundSchema;
 })(CashJournalRetirementDistributionStateTaxWithholdingAmount$ || (exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$ = CashJournalRetirementDistributionStateTaxWithholdingAmount$ = {}));
+function cashJournalRetirementDistributionStateTaxWithholdingAmountToJSON(cashJournalRetirementDistributionStateTaxWithholdingAmount) {
+    return JSON.stringify(exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$outboundSchema
+        .parse(cashJournalRetirementDistributionStateTaxWithholdingAmount));
+}
+function cashJournalRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'CashJournalRetirementDistributionStateTaxWithholdingAmount' from JSON`);
+}
 /** @internal */
 exports.CashJournalRetirementDistributionPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -310,6 +371,12 @@ var CashJournalRetirementDistributionPercentage$;
     /** @deprecated use `CashJournalRetirementDistributionPercentage$outboundSchema` instead. */
     CashJournalRetirementDistributionPercentage$.outboundSchema = exports.CashJournalRetirementDistributionPercentage$outboundSchema;
 })(CashJournalRetirementDistributionPercentage$ || (exports.CashJournalRetirementDistributionPercentage$ = CashJournalRetirementDistributionPercentage$ = {}));
+function cashJournalRetirementDistributionPercentageToJSON(cashJournalRetirementDistributionPercentage) {
+    return JSON.stringify(exports.CashJournalRetirementDistributionPercentage$outboundSchema.parse(cashJournalRetirementDistributionPercentage));
+}
+function cashJournalRetirementDistributionPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalRetirementDistributionPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalRetirementDistributionPercentage' from JSON`);
+}
 /** @internal */
 exports.CashJournalStateTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.CashJournalRetirementDistributionStateTaxWithholdingAmount$inboundSchema)).optional(),
@@ -331,6 +398,12 @@ var CashJournalStateTaxWithholding$;
     /** @deprecated use `CashJournalStateTaxWithholding$outboundSchema` instead. */
     CashJournalStateTaxWithholding$.outboundSchema = exports.CashJournalStateTaxWithholding$outboundSchema;
 })(CashJournalStateTaxWithholding$ || (exports.CashJournalStateTaxWithholding$ = CashJournalStateTaxWithholding$ = {}));
+function cashJournalStateTaxWithholdingToJSON(cashJournalStateTaxWithholding) {
+    return JSON.stringify(exports.CashJournalStateTaxWithholding$outboundSchema.parse(cashJournalStateTaxWithholding));
+}
+function cashJournalStateTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalStateTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalStateTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.CashJournalRetirementDistributionType$inboundSchema = z
     .union([
@@ -398,6 +471,12 @@ var CashJournalRetirementDistribution$;
     /** @deprecated use `CashJournalRetirementDistribution$outboundSchema` instead. */
     CashJournalRetirementDistribution$.outboundSchema = exports.CashJournalRetirementDistribution$outboundSchema;
 })(CashJournalRetirementDistribution$ || (exports.CashJournalRetirementDistribution$ = CashJournalRetirementDistribution$ = {}));
+function cashJournalRetirementDistributionToJSON(cashJournalRetirementDistribution) {
+    return JSON.stringify(exports.CashJournalRetirementDistribution$outboundSchema.parse(cashJournalRetirementDistribution));
+}
+function cashJournalRetirementDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalRetirementDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalRetirementDistribution' from JSON`);
+}
 /** @internal */
 exports.CashJournalStateState$inboundSchema = z
     .union([
@@ -455,6 +534,12 @@ var CashJournalState$;
     /** @deprecated use `CashJournalState$outboundSchema` instead. */
     CashJournalState$.outboundSchema = exports.CashJournalState$outboundSchema;
 })(CashJournalState$ || (exports.CashJournalState$ = CashJournalState$ = {}));
+function cashJournalStateToJSON(cashJournalState) {
+    return JSON.stringify(exports.CashJournalState$outboundSchema.parse(cashJournalState));
+}
+function cashJournalStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalState' from JSON`);
+}
 /** @internal */
 exports.CashJournal$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.CashJournalAmount$inboundSchema)).optional(),
@@ -508,4 +593,10 @@ var CashJournal$;
     /** @deprecated use `CashJournal$outboundSchema` instead. */
     CashJournal$.outboundSchema = exports.CashJournal$outboundSchema;
 })(CashJournal$ || (exports.CashJournal$ = CashJournal$ = {}));
+function cashJournalToJSON(cashJournal) {
+    return JSON.stringify(exports.CashJournal$outboundSchema.parse(cashJournal));
+}
+function cashJournalFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournal$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournal' from JSON`);
+}
 //# sourceMappingURL=cashjournal.js.map

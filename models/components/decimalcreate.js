@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DecimalCreate$ = exports.DecimalCreate$outboundSchema = exports.DecimalCreate$inboundSchema = void 0;
+exports.decimalCreateToJSON = decimalCreateToJSON;
+exports.decimalCreateFromJSON = decimalCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.DecimalCreate$inboundSchema = z.object({
     value: z.string().optional(),
@@ -57,4 +60,10 @@ var DecimalCreate$;
     /** @deprecated use `DecimalCreate$outboundSchema` instead. */
     DecimalCreate$.outboundSchema = exports.DecimalCreate$outboundSchema;
 })(DecimalCreate$ || (exports.DecimalCreate$ = DecimalCreate$ = {}));
+function decimalCreateToJSON(decimalCreate) {
+    return JSON.stringify(exports.DecimalCreate$outboundSchema.parse(decimalCreate));
+}
+function decimalCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DecimalCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DecimalCreate' from JSON`);
+}
 //# sourceMappingURL=decimalcreate.js.map

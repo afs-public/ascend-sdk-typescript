@@ -17,6 +17,7 @@ Retrieves retirement contribution and distribution constraints for a cash journa
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="RetirementConstraints_RetrieveCashJournalConstraints" method="post" path="/transfers/v1/cashJournals:retrieveCashJournalConstraints" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -38,7 +39,6 @@ async function run() {
     sourceAccount: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -72,15 +72,12 @@ async function run() {
     destinationAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
     sourceAccount: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("journalsRetrieveCashJournalConstraints failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +109,7 @@ Creates a cash journal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CashJournals_CreateCashJournal" method="post" path="/transfers/v1/cashJournals" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -134,7 +132,6 @@ async function run() {
     sourceAccount: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -169,15 +166,12 @@ async function run() {
     destinationAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
     sourceAccount: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("journalsCreateCashJournal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -209,6 +203,7 @@ Gets an existing cash journal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CashJournals_GetCashJournal" method="get" path="/transfers/v1/cashJournals/{cashJournal_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -227,7 +222,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.journals.getCashJournal("20230817000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -258,15 +252,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await journalsGetCashJournal(apexascend, "20230817000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("journalsGetCashJournal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -298,6 +289,7 @@ Cancels an existing cash journal
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CashJournals_CancelCashJournal" method="post" path="/transfers/v1/cashJournals/{cashJournal_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -318,7 +310,6 @@ async function run() {
     name: "cashJournals/20240717000319",
   }, "20240717000319");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -351,15 +342,12 @@ async function run() {
   const res = await journalsCancelCashJournal(apexascend, {
     name: "cashJournals/20240717000319",
   }, "20240717000319");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("journalsCancelCashJournal failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -392,6 +380,7 @@ Determines whether a potential cash journal will be considered first party or th
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CashJournals_CheckPartyType" method="post" path="/transfers/v1/cashJournals:checkPartyType" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -413,7 +402,6 @@ async function run() {
     sourceAccount: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -447,15 +435,12 @@ async function run() {
     destinationAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
     sourceAccount: "accounts/01H8FM6EXVH77SAW3TC8KAWMES",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("journalsCheckPartyType failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

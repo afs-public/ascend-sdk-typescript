@@ -1,7 +1,15 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
- * The type of audit that was performed on the investigation
+ * The audit record type, one of:
+ *
+ * @remarks
+ * - `AUDIT_TYPE_UNSPECIFIED` - Default/Null audit type.
+ * - `INVESTIGATION_REQUEST_UPDATE` - Used to update an investigation request.
+ * - `INVESTIGATION_STATE` - Used for recording investigation state changed events.
+ * - `COMMENT` - Used for adding a comment to investigation.
  */
 export declare enum AuditType {
     AuditTypeUnspecified = "AUDIT_TYPE_UNSPECIFIED",
@@ -10,7 +18,13 @@ export declare enum AuditType {
     Comment = "COMMENT"
 }
 /**
- * The type of audit that was performed on the investigation
+ * The audit record type, one of:
+ *
+ * @remarks
+ * - `AUDIT_TYPE_UNSPECIFIED` - Default/Null audit type.
+ * - `INVESTIGATION_REQUEST_UPDATE` - Used to update an investigation request.
+ * - `INVESTIGATION_STATE` - Used for recording investigation state changed events.
+ * - `COMMENT` - Used for adding a comment to investigation.
  */
 export type AuditTypeOpen = OpenEnum<typeof AuditType>;
 /**
@@ -18,7 +32,13 @@ export type AuditTypeOpen = OpenEnum<typeof AuditType>;
  */
 export type AuditTrail = {
     /**
-     * The type of audit that was performed on the investigation
+     * The audit record type, one of:
+     *
+     * @remarks
+     * - `AUDIT_TYPE_UNSPECIFIED` - Default/Null audit type.
+     * - `INVESTIGATION_REQUEST_UPDATE` - Used to update an investigation request.
+     * - `INVESTIGATION_STATE` - Used for recording investigation state changed events.
+     * - `COMMENT` - Used for adding a comment to investigation.
      */
     auditType?: AuditTypeOpen | undefined;
     /**
@@ -86,4 +106,6 @@ export declare namespace AuditTrail$ {
     /** @deprecated use `AuditTrail$Outbound` instead. */
     type Outbound = AuditTrail$Outbound;
 }
+export declare function auditTrailToJSON(auditTrail: AuditTrail): string;
+export declare function auditTrailFromJSON(jsonString: string): SafeParseResult<AuditTrail, SDKValidationError>;
 //# sourceMappingURL=audittrail.d.ts.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { NegativeNewsCreate, NegativeNewsCreate$Outbound } from "./negativenewscreate.js";
 /**
  * Due Diligence for Legal Entities required when a Legal Entity is the Primary Owner on an Account.
@@ -34,4 +36,6 @@ export declare namespace EntityDueDiligenceCreate$ {
     /** @deprecated use `EntityDueDiligenceCreate$Outbound` instead. */
     type Outbound = EntityDueDiligenceCreate$Outbound;
 }
+export declare function entityDueDiligenceCreateToJSON(entityDueDiligenceCreate: EntityDueDiligenceCreate): string;
+export declare function entityDueDiligenceCreateFromJSON(jsonString: string): SafeParseResult<EntityDueDiligenceCreate, SDKValidationError>;
 //# sourceMappingURL=entityduediligencecreate.d.ts.map

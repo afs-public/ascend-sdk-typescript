@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BankRelationshipsUpdateBankRelationshipRequest = {
   /**
@@ -98,6 +101,33 @@ export namespace BankRelationshipsUpdateBankRelationshipRequest$ {
     BankRelationshipsUpdateBankRelationshipRequest$Outbound;
 }
 
+export function bankRelationshipsUpdateBankRelationshipRequestToJSON(
+  bankRelationshipsUpdateBankRelationshipRequest:
+    BankRelationshipsUpdateBankRelationshipRequest,
+): string {
+  return JSON.stringify(
+    BankRelationshipsUpdateBankRelationshipRequest$outboundSchema.parse(
+      bankRelationshipsUpdateBankRelationshipRequest,
+    ),
+  );
+}
+
+export function bankRelationshipsUpdateBankRelationshipRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsUpdateBankRelationshipRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsUpdateBankRelationshipRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsUpdateBankRelationshipRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BankRelationshipsUpdateBankRelationshipResponse$inboundSchema:
   z.ZodType<
@@ -155,4 +185,31 @@ export namespace BankRelationshipsUpdateBankRelationshipResponse$ {
   /** @deprecated use `BankRelationshipsUpdateBankRelationshipResponse$Outbound` instead. */
   export type Outbound =
     BankRelationshipsUpdateBankRelationshipResponse$Outbound;
+}
+
+export function bankRelationshipsUpdateBankRelationshipResponseToJSON(
+  bankRelationshipsUpdateBankRelationshipResponse:
+    BankRelationshipsUpdateBankRelationshipResponse,
+): string {
+  return JSON.stringify(
+    BankRelationshipsUpdateBankRelationshipResponse$outboundSchema.parse(
+      bankRelationshipsUpdateBankRelationshipResponse,
+    ),
+  );
+}
+
+export function bankRelationshipsUpdateBankRelationshipResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsUpdateBankRelationshipResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsUpdateBankRelationshipResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsUpdateBankRelationshipResponse' from JSON`,
+  );
 }

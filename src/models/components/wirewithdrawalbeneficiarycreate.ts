@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddressCreate,
   AddressCreate$inboundSchema,
@@ -86,4 +89,24 @@ export namespace WireWithdrawalBeneficiaryCreate$ {
   export const outboundSchema = WireWithdrawalBeneficiaryCreate$outboundSchema;
   /** @deprecated use `WireWithdrawalBeneficiaryCreate$Outbound` instead. */
   export type Outbound = WireWithdrawalBeneficiaryCreate$Outbound;
+}
+
+export function wireWithdrawalBeneficiaryCreateToJSON(
+  wireWithdrawalBeneficiaryCreate: WireWithdrawalBeneficiaryCreate,
+): string {
+  return JSON.stringify(
+    WireWithdrawalBeneficiaryCreate$outboundSchema.parse(
+      wireWithdrawalBeneficiaryCreate,
+    ),
+  );
+}
+
+export function wireWithdrawalBeneficiaryCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalBeneficiaryCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalBeneficiaryCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalBeneficiaryCreate' from JSON`,
+  );
 }

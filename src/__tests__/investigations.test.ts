@@ -4,56 +4,83 @@
 
 import { expect, test } from "vitest";
 import { Apexascend } from "../index.js";
+import { createTestHTTPClient } from "./testclient.js";
 
-test("Investigations Investigation Service Get Investigation Get Investigation1", async () => {
+test("Investigations Investigation Service Get Investigation", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "InvestigationService_GetInvestigation",
+  );
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
+
   const result = await apexascend.investigations.getInvestigation(
     "01JHGRJG62CZ0TV805CSWYHJ31",
   );
   expect(result.httpMeta.response.status).toBe(200);
 });
 
-test("Investigations Investigation Service List Investigations List Investigations1", async () => {
+test("Investigations Investigation Service List Investigations", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "InvestigationService_ListInvestigations",
+  );
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
-  const result = await apexascend.investigations.listInvestigations();
+
+  const result = await apexascend.investigations.listInvestigations(
+    25,
+    "",
+    "",
+    "person.given_name desc",
+  );
   expect(result.httpMeta.response.status).toBe(200);
 });
 
-test("Investigations Watchlist Service Get Watchlist Item Get Watchlist Item1", async () => {
+test("Investigations Watchlist Service Get Watchlist Item", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "WatchlistService_GetWatchlistItem",
+  );
+
   const apexascend = new Apexascend({
-    serverURL: "https://uat.apexapis.com",
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
     security: {
-      apiKey: process.env["API_KEY"] ?? "",
+      apiKey: process.env["API_KEY"] ?? "value",
       serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"] ?? "",
-        type: "serviceAccount",
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
       },
     },
+    httpClient: testHttpClient,
   });
+
   const result = await apexascend.investigations.getWatchlistItem(
     "DOWJONES",
     "123456",

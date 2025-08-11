@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SchedulePropertiesCreate$ = exports.SchedulePropertiesCreate$outboundSchema = exports.SchedulePropertiesCreate$inboundSchema = exports.TimeUnit$ = exports.TimeUnit$outboundSchema = exports.TimeUnit$inboundSchema = exports.TimeUnit = void 0;
+exports.schedulePropertiesCreateToJSON = schedulePropertiesCreateToJSON;
+exports.schedulePropertiesCreateFromJSON = schedulePropertiesCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const datecreate_js_1 = require("./datecreate.js");
 /**
@@ -109,4 +112,10 @@ var SchedulePropertiesCreate$;
     /** @deprecated use `SchedulePropertiesCreate$outboundSchema` instead. */
     SchedulePropertiesCreate$.outboundSchema = exports.SchedulePropertiesCreate$outboundSchema;
 })(SchedulePropertiesCreate$ || (exports.SchedulePropertiesCreate$ = SchedulePropertiesCreate$ = {}));
+function schedulePropertiesCreateToJSON(schedulePropertiesCreate) {
+    return JSON.stringify(exports.SchedulePropertiesCreate$outboundSchema.parse(schedulePropertiesCreate));
+}
+function schedulePropertiesCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SchedulePropertiesCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SchedulePropertiesCreate' from JSON`);
+}
 //# sourceMappingURL=schedulepropertiescreate.js.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type SubscriberCreatePushSubscriptionResponse = {
     httpMeta: components.HTTPMetadata;
     /**
@@ -33,4 +35,6 @@ export declare namespace SubscriberCreatePushSubscriptionResponse$ {
     /** @deprecated use `SubscriberCreatePushSubscriptionResponse$Outbound` instead. */
     type Outbound = SubscriberCreatePushSubscriptionResponse$Outbound;
 }
+export declare function subscriberCreatePushSubscriptionResponseToJSON(subscriberCreatePushSubscriptionResponse: SubscriberCreatePushSubscriptionResponse): string;
+export declare function subscriberCreatePushSubscriptionResponseFromJSON(jsonString: string): SafeParseResult<SubscriberCreatePushSubscriptionResponse, SDKValidationError>;
 //# sourceMappingURL=subscribercreatepushsubscription.d.ts.map

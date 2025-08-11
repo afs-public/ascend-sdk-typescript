@@ -36,9 +36,12 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderCreate$ = exports.OrderCreate$outboundSchema = exports.OrderCreate$inboundSchema = exports.TradingStrategy$ = exports.TradingStrategy$outboundSchema = exports.TradingStrategy$inboundSchema = exports.TimeInForce$ = exports.TimeInForce$outboundSchema = exports.TimeInForce$inboundSchema = exports.SpecialReportingInstructions$ = exports.SpecialReportingInstructions$outboundSchema = exports.SpecialReportingInstructions$inboundSchema = exports.Side$ = exports.Side$outboundSchema = exports.Side$inboundSchema = exports.OrderType$ = exports.OrderType$outboundSchema = exports.OrderType$inboundSchema = exports.IdentifierType$ = exports.IdentifierType$outboundSchema = exports.IdentifierType$inboundSchema = exports.BrokerCapacity$ = exports.BrokerCapacity$outboundSchema = exports.BrokerCapacity$inboundSchema = exports.AssetType$ = exports.AssetType$outboundSchema = exports.AssetType$inboundSchema = exports.TradingStrategy = exports.TimeInForce = exports.SpecialReportingInstructions = exports.Side = exports.OrderType = exports.IdentifierType = exports.BrokerCapacity = exports.AssetType = void 0;
+exports.OrderCreate$ = exports.OrderCreate$outboundSchema = exports.OrderCreate$inboundSchema = exports.TradingSession$ = exports.TradingSession$outboundSchema = exports.TradingSession$inboundSchema = exports.TimeInForce$ = exports.TimeInForce$outboundSchema = exports.TimeInForce$inboundSchema = exports.SpecialReportingInstructions$ = exports.SpecialReportingInstructions$outboundSchema = exports.SpecialReportingInstructions$inboundSchema = exports.Side$ = exports.Side$outboundSchema = exports.Side$inboundSchema = exports.OrderType$ = exports.OrderType$outboundSchema = exports.OrderType$inboundSchema = exports.IdentifierType$ = exports.IdentifierType$outboundSchema = exports.IdentifierType$inboundSchema = exports.BrokerCapacity$ = exports.BrokerCapacity$outboundSchema = exports.BrokerCapacity$inboundSchema = exports.AssetType$ = exports.AssetType$outboundSchema = exports.AssetType$inboundSchema = exports.TradingSession = exports.TimeInForce = exports.SpecialReportingInstructions = exports.Side = exports.OrderType = exports.IdentifierType = exports.BrokerCapacity = exports.AssetType = void 0;
+exports.orderCreateToJSON = orderCreateToJSON;
+exports.orderCreateFromJSON = orderCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const commissioncreate_js_1 = require("./commissioncreate.js");
 const datecreate_js_1 = require("./datecreate.js");
@@ -79,14 +82,12 @@ var IdentifierType;
     IdentifierType["Isin"] = "ISIN";
 })(IdentifierType || (exports.IdentifierType = IdentifierType = {}));
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, or STOP are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 var OrderType;
 (function (OrderType) {
-    OrderType["OrderTypeUnspecified"] = "ORDER_TYPE_UNSPECIFIED";
     OrderType["Limit"] = "LIMIT";
     OrderType["Market"] = "MARKET";
-    OrderType["Stop"] = "STOP";
 })(OrderType || (exports.OrderType = OrderType = {}));
 /**
  * The side of this order.
@@ -129,16 +130,21 @@ var SpecialReportingInstructions;
  */
 var TimeInForce;
 (function (TimeInForce) {
-    TimeInForce["TimeInForceUnspecified"] = "TIME_IN_FORCE_UNSPECIFIED";
     TimeInForce["Day"] = "DAY";
 })(TimeInForce || (exports.TimeInForce = TimeInForce = {}));
 /**
- * Which TradingStrategy Session to trade in, defaults to 'CORE'. Only available for Equity orders.
+ * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
  */
-var TradingStrategy;
-(function (TradingStrategy) {
-    TradingStrategy["Core"] = "CORE";
-})(TradingStrategy || (exports.TradingStrategy = TradingStrategy = {}));
+var TradingSession;
+(function (TradingSession) {
+    TradingSession["TradingSessionUnspecified"] = "TRADING_SESSION_UNSPECIFIED";
+    TradingSession["Core"] = "CORE";
+    TradingSession["Pre"] = "PRE";
+    TradingSession["Post"] = "POST";
+    TradingSession["Overnight"] = "OVERNIGHT";
+    TradingSession["Apex24"] = "APEX24";
+    TradingSession["Gtx"] = "GTX";
+})(TradingSession || (exports.TradingSession = TradingSession = {}));
 /** @internal */
 exports.AssetType$inboundSchema = z
     .union([
@@ -294,27 +300,27 @@ var TimeInForce$;
     TimeInForce$.outboundSchema = exports.TimeInForce$outboundSchema;
 })(TimeInForce$ || (exports.TimeInForce$ = TimeInForce$ = {}));
 /** @internal */
-exports.TradingStrategy$inboundSchema = z
+exports.TradingSession$inboundSchema = z
     .union([
-    z.nativeEnum(TradingStrategy),
+    z.nativeEnum(TradingSession),
     z.string().transform(enums_js_1.catchUnrecognizedEnum),
 ]);
 /** @internal */
-exports.TradingStrategy$outboundSchema = z.union([
-    z.nativeEnum(TradingStrategy),
+exports.TradingSession$outboundSchema = z.union([
+    z.nativeEnum(TradingSession),
     z.string().and(z.custom()),
 ]);
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-var TradingStrategy$;
-(function (TradingStrategy$) {
-    /** @deprecated use `TradingStrategy$inboundSchema` instead. */
-    TradingStrategy$.inboundSchema = exports.TradingStrategy$inboundSchema;
-    /** @deprecated use `TradingStrategy$outboundSchema` instead. */
-    TradingStrategy$.outboundSchema = exports.TradingStrategy$outboundSchema;
-})(TradingStrategy$ || (exports.TradingStrategy$ = TradingStrategy$ = {}));
+var TradingSession$;
+(function (TradingSession$) {
+    /** @deprecated use `TradingSession$inboundSchema` instead. */
+    TradingSession$.inboundSchema = exports.TradingSession$inboundSchema;
+    /** @deprecated use `TradingSession$outboundSchema` instead. */
+    TradingSession$.outboundSchema = exports.TradingSession$outboundSchema;
+})(TradingSession$ || (exports.TradingSession$ = TradingSession$ = {}));
 /** @internal */
 exports.OrderCreate$inboundSchema = z.object({
     asset_type: exports.AssetType$inboundSchema,
@@ -339,7 +345,7 @@ exports.OrderCreate$inboundSchema = z.object({
     special_reporting_instructions: z.array(exports.SpecialReportingInstructions$inboundSchema).optional(),
     stop_price: stoppricecreate_js_1.StopPriceCreate$inboundSchema.optional(),
     time_in_force: exports.TimeInForce$inboundSchema,
-    trading_strategy: exports.TradingStrategy$inboundSchema.optional(),
+    trading_session: exports.TradingSession$inboundSchema.optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "asset_type": "assetType",
@@ -359,7 +365,7 @@ exports.OrderCreate$inboundSchema = z.object({
         "special_reporting_instructions": "specialReportingInstructions",
         "stop_price": "stopPrice",
         "time_in_force": "timeInForce",
-        "trading_strategy": "tradingStrategy",
+        "trading_session": "tradingSession",
     });
 });
 /** @internal */
@@ -387,7 +393,7 @@ exports.OrderCreate$outboundSchema = z.object({
     specialReportingInstructions: z.array(exports.SpecialReportingInstructions$outboundSchema).optional(),
     stopPrice: stoppricecreate_js_1.StopPriceCreate$outboundSchema.optional(),
     timeInForce: exports.TimeInForce$outboundSchema,
-    tradingStrategy: exports.TradingStrategy$outboundSchema.optional(),
+    tradingSession: exports.TradingSession$outboundSchema.optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         assetType: "asset_type",
@@ -407,7 +413,7 @@ exports.OrderCreate$outboundSchema = z.object({
         specialReportingInstructions: "special_reporting_instructions",
         stopPrice: "stop_price",
         timeInForce: "time_in_force",
-        tradingStrategy: "trading_strategy",
+        tradingSession: "trading_session",
     });
 });
 /**
@@ -421,4 +427,10 @@ var OrderCreate$;
     /** @deprecated use `OrderCreate$outboundSchema` instead. */
     OrderCreate$.outboundSchema = exports.OrderCreate$outboundSchema;
 })(OrderCreate$ || (exports.OrderCreate$ = OrderCreate$ = {}));
+function orderCreateToJSON(orderCreate) {
+    return JSON.stringify(exports.OrderCreate$outboundSchema.parse(orderCreate));
+}
+function orderCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderCreate' from JSON`);
+}
 //# sourceMappingURL=ordercreate.js.map

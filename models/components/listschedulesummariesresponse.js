@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListScheduleSummariesResponse$ = exports.ListScheduleSummariesResponse$outboundSchema = exports.ListScheduleSummariesResponse$inboundSchema = void 0;
+exports.listScheduleSummariesResponseToJSON = listScheduleSummariesResponseToJSON;
+exports.listScheduleSummariesResponseFromJSON = listScheduleSummariesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const transferschedulesummary_js_1 = require("./transferschedulesummary.js");
 /** @internal */
 exports.ListScheduleSummariesResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListScheduleSummariesResponse$;
     /** @deprecated use `ListScheduleSummariesResponse$outboundSchema` instead. */
     ListScheduleSummariesResponse$.outboundSchema = exports.ListScheduleSummariesResponse$outboundSchema;
 })(ListScheduleSummariesResponse$ || (exports.ListScheduleSummariesResponse$ = ListScheduleSummariesResponse$ = {}));
+function listScheduleSummariesResponseToJSON(listScheduleSummariesResponse) {
+    return JSON.stringify(exports.ListScheduleSummariesResponse$outboundSchema.parse(listScheduleSummariesResponse));
+}
+function listScheduleSummariesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListScheduleSummariesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListScheduleSummariesResponse' from JSON`);
+}
 //# sourceMappingURL=listschedulesummariesresponse.js.map

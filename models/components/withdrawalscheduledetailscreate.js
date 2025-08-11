@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WithdrawalScheduleDetailsCreate$ = exports.WithdrawalScheduleDetailsCreate$outboundSchema = exports.WithdrawalScheduleDetailsCreate$inboundSchema = void 0;
+exports.withdrawalScheduleDetailsCreateToJSON = withdrawalScheduleDetailsCreateToJSON;
+exports.withdrawalScheduleDetailsCreateFromJSON = withdrawalScheduleDetailsCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 const schedulepropertiescreate_js_1 = require("./schedulepropertiescreate.js");
 /** @internal */
@@ -78,4 +81,10 @@ var WithdrawalScheduleDetailsCreate$;
     /** @deprecated use `WithdrawalScheduleDetailsCreate$outboundSchema` instead. */
     WithdrawalScheduleDetailsCreate$.outboundSchema = exports.WithdrawalScheduleDetailsCreate$outboundSchema;
 })(WithdrawalScheduleDetailsCreate$ || (exports.WithdrawalScheduleDetailsCreate$ = WithdrawalScheduleDetailsCreate$ = {}));
+function withdrawalScheduleDetailsCreateToJSON(withdrawalScheduleDetailsCreate) {
+    return JSON.stringify(exports.WithdrawalScheduleDetailsCreate$outboundSchema.parse(withdrawalScheduleDetailsCreate));
+}
+function withdrawalScheduleDetailsCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WithdrawalScheduleDetailsCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WithdrawalScheduleDetailsCreate' from JSON`);
+}
 //# sourceMappingURL=withdrawalscheduledetailscreate.js.map

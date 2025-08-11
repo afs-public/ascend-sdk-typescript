@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HTTPMetadata$ = exports.HTTPMetadata$outboundSchema = exports.HTTPMetadata$inboundSchema = void 0;
+exports.httpMetadataToJSON = httpMetadataToJSON;
+exports.httpMetadataFromJSON = httpMetadataFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.HTTPMetadata$inboundSchema = z.object({
     Response: z.instanceof(Response),
@@ -74,4 +77,10 @@ var HTTPMetadata$;
     /** @deprecated use `HTTPMetadata$outboundSchema` instead. */
     HTTPMetadata$.outboundSchema = exports.HTTPMetadata$outboundSchema;
 })(HTTPMetadata$ || (exports.HTTPMetadata$ = HTTPMetadata$ = {}));
+function httpMetadataToJSON(httpMetadata) {
+    return JSON.stringify(exports.HTTPMetadata$outboundSchema.parse(httpMetadata));
+}
+function httpMetadataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.HTTPMetadata$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'HTTPMetadata' from JSON`);
+}
 //# sourceMappingURL=httpmetadata.js.map

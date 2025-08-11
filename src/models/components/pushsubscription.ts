@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The information about an HTTP target callback
@@ -124,6 +127,20 @@ export namespace HttpCallback$ {
   export type Outbound = HttpCallback$Outbound;
 }
 
+export function httpCallbackToJSON(httpCallback: HttpCallback): string {
+  return JSON.stringify(HttpCallback$outboundSchema.parse(httpCallback));
+}
+
+export function httpCallbackFromJSON(
+  jsonString: string,
+): SafeParseResult<HttpCallback, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HttpCallback$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HttpCallback' from JSON`,
+  );
+}
+
 /** @internal */
 export const State$inboundSchema: z.ZodType<StateOpen, z.ZodTypeDef, unknown> =
   z
@@ -228,4 +245,22 @@ export namespace PushSubscription$ {
   export const outboundSchema = PushSubscription$outboundSchema;
   /** @deprecated use `PushSubscription$Outbound` instead. */
   export type Outbound = PushSubscription$Outbound;
+}
+
+export function pushSubscriptionToJSON(
+  pushSubscription: PushSubscription,
+): string {
+  return JSON.stringify(
+    PushSubscription$outboundSchema.parse(pushSubscription),
+  );
+}
+
+export function pushSubscriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<PushSubscription, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushSubscription$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushSubscription' from JSON`,
+  );
 }

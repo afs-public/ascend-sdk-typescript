@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EnrollAccountRequestCreate$ = exports.EnrollAccountRequestCreate$outboundSchema = exports.EnrollAccountRequestCreate$inboundSchema = void 0;
+exports.enrollAccountRequestCreateToJSON = enrollAccountRequestCreateToJSON;
+exports.enrollAccountRequestCreateFromJSON = enrollAccountRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enrollmentcreate_js_1 = require("./enrollmentcreate.js");
 /** @internal */
 exports.EnrollAccountRequestCreate$inboundSchema = z.object({
@@ -58,4 +61,10 @@ var EnrollAccountRequestCreate$;
     /** @deprecated use `EnrollAccountRequestCreate$outboundSchema` instead. */
     EnrollAccountRequestCreate$.outboundSchema = exports.EnrollAccountRequestCreate$outboundSchema;
 })(EnrollAccountRequestCreate$ || (exports.EnrollAccountRequestCreate$ = EnrollAccountRequestCreate$ = {}));
+function enrollAccountRequestCreateToJSON(enrollAccountRequestCreate) {
+    return JSON.stringify(exports.EnrollAccountRequestCreate$outboundSchema.parse(enrollAccountRequestCreate));
+}
+function enrollAccountRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EnrollAccountRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EnrollAccountRequestCreate' from JSON`);
+}
 //# sourceMappingURL=enrollaccountrequestcreate.js.map

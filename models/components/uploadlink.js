@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UploadLink$ = exports.UploadLink$outboundSchema = exports.UploadLink$inboundSchema = void 0;
+exports.uploadLinkToJSON = uploadLinkToJSON;
+exports.uploadLinkFromJSON = uploadLinkFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.UploadLink$inboundSchema = z.object({
     client_batch_source_id: z.string().optional(),
@@ -72,4 +75,10 @@ var UploadLink$;
     /** @deprecated use `UploadLink$outboundSchema` instead. */
     UploadLink$.outboundSchema = exports.UploadLink$outboundSchema;
 })(UploadLink$ || (exports.UploadLink$ = UploadLink$ = {}));
+function uploadLinkToJSON(uploadLink) {
+    return JSON.stringify(exports.UploadLink$outboundSchema.parse(uploadLink));
+}
+function uploadLinkFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.UploadLink$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'UploadLink' from JSON`);
+}
 //# sourceMappingURL=uploadlink.js.map

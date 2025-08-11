@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BookingFeeCreate,
   BookingFeeCreate$inboundSchema,
@@ -61,4 +64,22 @@ export namespace CompleteTradeRequestCreate$ {
   export const outboundSchema = CompleteTradeRequestCreate$outboundSchema;
   /** @deprecated use `CompleteTradeRequestCreate$Outbound` instead. */
   export type Outbound = CompleteTradeRequestCreate$Outbound;
+}
+
+export function completeTradeRequestCreateToJSON(
+  completeTradeRequestCreate: CompleteTradeRequestCreate,
+): string {
+  return JSON.stringify(
+    CompleteTradeRequestCreate$outboundSchema.parse(completeTradeRequestCreate),
+  );
+}
+
+export function completeTradeRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CompleteTradeRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompleteTradeRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompleteTradeRequestCreate' from JSON`,
+  );
 }

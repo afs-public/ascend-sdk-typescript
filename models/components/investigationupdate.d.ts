@@ -1,8 +1,19 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { WatchlistMatchUpdate, WatchlistMatchUpdate$Outbound } from "./watchlistmatchupdate.js";
 /**
- * Indicates the current state of identity verification
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 export declare enum InvestigationUpdateIdentityVerification {
     ScreenStateUnspecified = "SCREEN_STATE_UNSPECIFIED",
@@ -14,11 +25,25 @@ export declare enum InvestigationUpdateIdentityVerification {
     OutOfScope = "OUT_OF_SCOPE"
 }
 /**
- * Indicates the current state of identity verification
+ * The screen state of one screening within an investigation, one of:
+ *
+ * @remarks
+ * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+ * - `PENDING` - Screen result is pending.
+ * - `PASSED` - Screen result has passed.
+ * - `FAILED` - Screen result has failed.
+ * - `NEEDS_REVIEW` - Screen result needs manual review.
+ * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+ * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
  */
 export type InvestigationUpdateIdentityVerificationOpen = OpenEnum<typeof InvestigationUpdateIdentityVerification>;
 /**
- * Current state of investigation request
+ * The state of an investigation request, one of:
+ *
+ * @remarks
+ * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+ * - `OPEN` - The investigation request is open.
+ * - `CLOSED` - The investigation request is closed.
  */
 export declare enum InvestigationUpdateInvestigationRequestState {
     InvestigationRequestStateUnspecified = "INVESTIGATION_REQUEST_STATE_UNSPECIFIED",
@@ -26,7 +51,12 @@ export declare enum InvestigationUpdateInvestigationRequestState {
     Closed = "CLOSED"
 }
 /**
- * Current state of investigation request
+ * The state of an investigation request, one of:
+ *
+ * @remarks
+ * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+ * - `OPEN` - The investigation request is open.
+ * - `CLOSED` - The investigation request is closed.
  */
 export type InvestigationUpdateInvestigationRequestStateOpen = OpenEnum<typeof InvestigationUpdateInvestigationRequestState>;
 /**
@@ -34,15 +64,33 @@ export type InvestigationUpdateInvestigationRequestStateOpen = OpenEnum<typeof I
  */
 export type InvestigationUpdate = {
     /**
+     * A unique identifier referencing a client The client ID serves as the unique identifier for the apex client positioned above the correspondent within the apex client configurator hierarchy. Moving forward, the account service will internally assign the client ID for all investigations.
+     */
+    clientId?: string | undefined;
+    /**
      * Comment relating to why the investigation state was updated
      */
     comment?: string | undefined;
     /**
-     * Indicates the current state of identity verification
+     * The screen state of one screening within an investigation, one of:
+     *
+     * @remarks
+     * - `SCREEN_STATE_UNSPECIFIED` - Default/Null value.
+     * - `PENDING` - Screen result is pending.
+     * - `PASSED` - Screen result has passed.
+     * - `FAILED` - Screen result has failed.
+     * - `NEEDS_REVIEW` - Screen result needs manual review.
+     * - `DEFERRED_REVIEW` - Screen result is deferred for review at a later date.
+     * - `OUT_OF_SCOPE` - Screen state is out of scope for this investigation type.
      */
     identityVerification?: InvestigationUpdateIdentityVerificationOpen | undefined;
     /**
-     * Current state of investigation request
+     * The state of an investigation request, one of:
+     *
+     * @remarks
+     * - `INVESTIGATION_REQUEST_STATE_UNSPECIFIED` - Default/Null value.
+     * - `OPEN` - The investigation request is open.
+     * - `CLOSED` - The investigation request is closed.
      */
     investigationRequestState?: InvestigationUpdateInvestigationRequestStateOpen | undefined;
     /**
@@ -82,6 +130,7 @@ export declare namespace InvestigationUpdateInvestigationRequestState$ {
 export declare const InvestigationUpdate$inboundSchema: z.ZodType<InvestigationUpdate, z.ZodTypeDef, unknown>;
 /** @internal */
 export type InvestigationUpdate$Outbound = {
+    client_id?: string | undefined;
     comment?: string | undefined;
     identity_verification?: string | undefined;
     investigation_request_state?: string | undefined;
@@ -101,4 +150,6 @@ export declare namespace InvestigationUpdate$ {
     /** @deprecated use `InvestigationUpdate$Outbound` instead. */
     type Outbound = InvestigationUpdate$Outbound;
 }
+export declare function investigationUpdateToJSON(investigationUpdate: InvestigationUpdate): string;
+export declare function investigationUpdateFromJSON(jsonString: string): SafeParseResult<InvestigationUpdate, SDKValidationError>;
 //# sourceMappingURL=investigationupdate.d.ts.map

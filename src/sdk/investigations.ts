@@ -62,6 +62,7 @@ export class Investigations extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     filter?: string | undefined,
+    orderBy?: string | undefined,
     options?: RequestOptions,
   ): Promise<operations.InvestigationServiceListInvestigationsResponse> {
     return unwrapAsync(investigationsListInvestigations(
@@ -69,6 +70,7 @@ export class Investigations extends ClientSDK {
       pageSize,
       pageToken,
       filter,
+      orderBy,
       options,
     ));
   }

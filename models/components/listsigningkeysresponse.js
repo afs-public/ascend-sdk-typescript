@@ -37,11 +37,14 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListSigningKeysResponse$ = exports.ListSigningKeysResponse$outboundSchema = exports.ListSigningKeysResponse$inboundSchema = void 0;
+exports.listSigningKeysResponseToJSON = listSigningKeysResponseToJSON;
+exports.listSigningKeysResponseFromJSON = listSigningKeysResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ListSigningKeysResponse$inboundSchema = z.object({
-    keys: z.array(z.record(z.any())).optional(),
+    keys: z.array(z.nullable(z.record(z.any()))).optional(),
     next_page_token: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
@@ -50,7 +53,7 @@ exports.ListSigningKeysResponse$inboundSchema = z.object({
 });
 /** @internal */
 exports.ListSigningKeysResponse$outboundSchema = z.object({
-    keys: z.array(z.record(z.any())).optional(),
+    keys: z.array(z.nullable(z.record(z.any()))).optional(),
     nextPageToken: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
@@ -68,4 +71,10 @@ var ListSigningKeysResponse$;
     /** @deprecated use `ListSigningKeysResponse$outboundSchema` instead. */
     ListSigningKeysResponse$.outboundSchema = exports.ListSigningKeysResponse$outboundSchema;
 })(ListSigningKeysResponse$ || (exports.ListSigningKeysResponse$ = ListSigningKeysResponse$ = {}));
+function listSigningKeysResponseToJSON(listSigningKeysResponse) {
+    return JSON.stringify(exports.ListSigningKeysResponse$outboundSchema.parse(listSigningKeysResponse));
+}
+function listSigningKeysResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListSigningKeysResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListSigningKeysResponse' from JSON`);
+}
 //# sourceMappingURL=listsigningkeysresponse.js.map

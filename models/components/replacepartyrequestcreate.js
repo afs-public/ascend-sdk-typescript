@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReplacePartyRequestCreate$ = exports.ReplacePartyRequestCreate$outboundSchema = exports.ReplacePartyRequestCreate$inboundSchema = void 0;
+exports.replacePartyRequestCreateToJSON = replacePartyRequestCreateToJSON;
+exports.replacePartyRequestCreateFromJSON = replacePartyRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const partyrequestcreate_js_1 = require("./partyrequestcreate.js");
 /** @internal */
 exports.ReplacePartyRequestCreate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ReplacePartyRequestCreate$;
     /** @deprecated use `ReplacePartyRequestCreate$outboundSchema` instead. */
     ReplacePartyRequestCreate$.outboundSchema = exports.ReplacePartyRequestCreate$outboundSchema;
 })(ReplacePartyRequestCreate$ || (exports.ReplacePartyRequestCreate$ = ReplacePartyRequestCreate$ = {}));
+function replacePartyRequestCreateToJSON(replacePartyRequestCreate) {
+    return JSON.stringify(exports.ReplacePartyRequestCreate$outboundSchema.parse(replacePartyRequestCreate));
+}
+function replacePartyRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ReplacePartyRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ReplacePartyRequestCreate' from JSON`);
+}
 //# sourceMappingURL=replacepartyrequestcreate.js.map

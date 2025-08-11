@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestmentProfileUpdate$ = exports.InvestmentProfileUpdate$outboundSchema = exports.InvestmentProfileUpdate$inboundSchema = void 0;
+exports.investmentProfileUpdateToJSON = investmentProfileUpdateToJSON;
+exports.investmentProfileUpdateFromJSON = investmentProfileUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const accountgoalsupdate_js_1 = require("./accountgoalsupdate.js");
 const customerprofileupdate_js_1 = require("./customerprofileupdate.js");
 /** @internal */
@@ -72,4 +75,10 @@ var InvestmentProfileUpdate$;
     /** @deprecated use `InvestmentProfileUpdate$outboundSchema` instead. */
     InvestmentProfileUpdate$.outboundSchema = exports.InvestmentProfileUpdate$outboundSchema;
 })(InvestmentProfileUpdate$ || (exports.InvestmentProfileUpdate$ = InvestmentProfileUpdate$ = {}));
+function investmentProfileUpdateToJSON(investmentProfileUpdate) {
+    return JSON.stringify(exports.InvestmentProfileUpdate$outboundSchema.parse(investmentProfileUpdate));
+}
+function investmentProfileUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestmentProfileUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestmentProfileUpdate' from JSON`);
+}
 //# sourceMappingURL=investmentprofileupdate.js.map

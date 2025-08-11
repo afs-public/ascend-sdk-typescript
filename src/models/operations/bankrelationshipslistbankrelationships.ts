@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The state of bank relationships to filter by. Unspecified returns relationships of all states.
@@ -131,6 +134,33 @@ export namespace BankRelationshipsListBankRelationshipsRequest$ {
   export type Outbound = BankRelationshipsListBankRelationshipsRequest$Outbound;
 }
 
+export function bankRelationshipsListBankRelationshipsRequestToJSON(
+  bankRelationshipsListBankRelationshipsRequest:
+    BankRelationshipsListBankRelationshipsRequest,
+): string {
+  return JSON.stringify(
+    BankRelationshipsListBankRelationshipsRequest$outboundSchema.parse(
+      bankRelationshipsListBankRelationshipsRequest,
+    ),
+  );
+}
+
+export function bankRelationshipsListBankRelationshipsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsListBankRelationshipsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsListBankRelationshipsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsListBankRelationshipsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BankRelationshipsListBankRelationshipsResponse$inboundSchema:
   z.ZodType<
@@ -192,4 +222,31 @@ export namespace BankRelationshipsListBankRelationshipsResponse$ {
   /** @deprecated use `BankRelationshipsListBankRelationshipsResponse$Outbound` instead. */
   export type Outbound =
     BankRelationshipsListBankRelationshipsResponse$Outbound;
+}
+
+export function bankRelationshipsListBankRelationshipsResponseToJSON(
+  bankRelationshipsListBankRelationshipsResponse:
+    BankRelationshipsListBankRelationshipsResponse,
+): string {
+  return JSON.stringify(
+    BankRelationshipsListBankRelationshipsResponse$outboundSchema.parse(
+      bankRelationshipsListBankRelationshipsResponse,
+    ),
+  );
+}
+
+export function bankRelationshipsListBankRelationshipsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsListBankRelationshipsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsListBankRelationshipsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsListBankRelationshipsResponse' from JSON`,
+  );
 }

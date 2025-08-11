@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsDeactivateEnrollmentResponse$ = exports.AccountsDeactivateEnrollmentResponse$outboundSchema = exports.AccountsDeactivateEnrollmentResponse$inboundSchema = exports.AccountsDeactivateEnrollmentRequest$ = exports.AccountsDeactivateEnrollmentRequest$outboundSchema = exports.AccountsDeactivateEnrollmentRequest$inboundSchema = void 0;
+exports.accountsDeactivateEnrollmentRequestToJSON = accountsDeactivateEnrollmentRequestToJSON;
+exports.accountsDeactivateEnrollmentRequestFromJSON = accountsDeactivateEnrollmentRequestFromJSON;
+exports.accountsDeactivateEnrollmentResponseToJSON = accountsDeactivateEnrollmentResponseToJSON;
+exports.accountsDeactivateEnrollmentResponseFromJSON = accountsDeactivateEnrollmentResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsDeactivateEnrollmentRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsDeactivateEnrollmentRequest$;
     /** @deprecated use `AccountsDeactivateEnrollmentRequest$outboundSchema` instead. */
     AccountsDeactivateEnrollmentRequest$.outboundSchema = exports.AccountsDeactivateEnrollmentRequest$outboundSchema;
 })(AccountsDeactivateEnrollmentRequest$ || (exports.AccountsDeactivateEnrollmentRequest$ = AccountsDeactivateEnrollmentRequest$ = {}));
+function accountsDeactivateEnrollmentRequestToJSON(accountsDeactivateEnrollmentRequest) {
+    return JSON.stringify(exports.AccountsDeactivateEnrollmentRequest$outboundSchema.parse(accountsDeactivateEnrollmentRequest));
+}
+function accountsDeactivateEnrollmentRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsDeactivateEnrollmentRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsDeactivateEnrollmentRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsDeactivateEnrollmentResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AccountsDeactivateEnrollmentResponse$;
     /** @deprecated use `AccountsDeactivateEnrollmentResponse$outboundSchema` instead. */
     AccountsDeactivateEnrollmentResponse$.outboundSchema = exports.AccountsDeactivateEnrollmentResponse$outboundSchema;
 })(AccountsDeactivateEnrollmentResponse$ || (exports.AccountsDeactivateEnrollmentResponse$ = AccountsDeactivateEnrollmentResponse$ = {}));
+function accountsDeactivateEnrollmentResponseToJSON(accountsDeactivateEnrollmentResponse) {
+    return JSON.stringify(exports.AccountsDeactivateEnrollmentResponse$outboundSchema.parse(accountsDeactivateEnrollmentResponse));
+}
+function accountsDeactivateEnrollmentResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsDeactivateEnrollmentResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsDeactivateEnrollmentResponse' from JSON`);
+}
 //# sourceMappingURL=accountsdeactivateenrollment.js.map

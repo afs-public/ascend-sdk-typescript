@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PostalAddressCreate,
   PostalAddressCreate$inboundSchema,
@@ -87,4 +90,22 @@ export namespace TravelRulePartyCreate$ {
   export const outboundSchema = TravelRulePartyCreate$outboundSchema;
   /** @deprecated use `TravelRulePartyCreate$Outbound` instead. */
   export type Outbound = TravelRulePartyCreate$Outbound;
+}
+
+export function travelRulePartyCreateToJSON(
+  travelRulePartyCreate: TravelRulePartyCreate,
+): string {
+  return JSON.stringify(
+    TravelRulePartyCreate$outboundSchema.parse(travelRulePartyCreate),
+  );
+}
+
+export function travelRulePartyCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TravelRulePartyCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TravelRulePartyCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TravelRulePartyCreate' from JSON`,
+  );
 }

@@ -70,9 +70,8 @@ let enrollment_ids;
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Test Instant Cash Transfer Transfers Locate Ict Report Locate Ict Report1", async () => {
-    var _a;
     const request = {
-        correspondentId: (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "",
+        correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
         programDateFilterProgram: operations_1.ProgramDateFilterProgram.BrokerPartner,
         programDateFilterProcessDateYear: 2025,
         programDateFilterProcessDateMonth: 5,

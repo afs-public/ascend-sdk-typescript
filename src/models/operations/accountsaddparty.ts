@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsAddPartyRequest = {
   /**
@@ -75,6 +78,24 @@ export namespace AccountsAddPartyRequest$ {
   export type Outbound = AccountsAddPartyRequest$Outbound;
 }
 
+export function accountsAddPartyRequestToJSON(
+  accountsAddPartyRequest: AccountsAddPartyRequest,
+): string {
+  return JSON.stringify(
+    AccountsAddPartyRequest$outboundSchema.parse(accountsAddPartyRequest),
+  );
+}
+
+export function accountsAddPartyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsAddPartyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsAddPartyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsAddPartyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsAddPartyResponse$inboundSchema: z.ZodType<
   AccountsAddPartyResponse,
@@ -127,4 +148,22 @@ export namespace AccountsAddPartyResponse$ {
   export const outboundSchema = AccountsAddPartyResponse$outboundSchema;
   /** @deprecated use `AccountsAddPartyResponse$Outbound` instead. */
   export type Outbound = AccountsAddPartyResponse$Outbound;
+}
+
+export function accountsAddPartyResponseToJSON(
+  accountsAddPartyResponse: AccountsAddPartyResponse,
+): string {
+  return JSON.stringify(
+    AccountsAddPartyResponse$outboundSchema.parse(accountsAddPartyResponse),
+  );
+}
+
+export function accountsAddPartyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsAddPartyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsAddPartyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsAddPartyResponse' from JSON`,
+  );
 }

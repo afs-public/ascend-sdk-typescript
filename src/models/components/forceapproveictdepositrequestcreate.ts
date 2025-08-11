@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to simulate the approval of an ICT deposit
@@ -50,4 +53,25 @@ export namespace ForceApproveIctDepositRequestCreate$ {
     ForceApproveIctDepositRequestCreate$outboundSchema;
   /** @deprecated use `ForceApproveIctDepositRequestCreate$Outbound` instead. */
   export type Outbound = ForceApproveIctDepositRequestCreate$Outbound;
+}
+
+export function forceApproveIctDepositRequestCreateToJSON(
+  forceApproveIctDepositRequestCreate: ForceApproveIctDepositRequestCreate,
+): string {
+  return JSON.stringify(
+    ForceApproveIctDepositRequestCreate$outboundSchema.parse(
+      forceApproveIctDepositRequestCreate,
+    ),
+  );
+}
+
+export function forceApproveIctDepositRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ForceApproveIctDepositRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ForceApproveIctDepositRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForceApproveIctDepositRequestCreate' from JSON`,
+  );
 }

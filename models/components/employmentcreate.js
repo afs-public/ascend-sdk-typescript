@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmploymentCreate$ = exports.EmploymentCreate$outboundSchema = exports.EmploymentCreate$inboundSchema = exports.EmploymentStatus$ = exports.EmploymentStatus$outboundSchema = exports.EmploymentStatus$inboundSchema = exports.EmploymentStatus = void 0;
+exports.employmentCreateToJSON = employmentCreateToJSON;
+exports.employmentCreateFromJSON = employmentCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const postaladdresscreate_js_1 = require("./postaladdresscreate.js");
 /**
@@ -114,4 +117,10 @@ var EmploymentCreate$;
     /** @deprecated use `EmploymentCreate$outboundSchema` instead. */
     EmploymentCreate$.outboundSchema = exports.EmploymentCreate$outboundSchema;
 })(EmploymentCreate$ || (exports.EmploymentCreate$ = EmploymentCreate$ = {}));
+function employmentCreateToJSON(employmentCreate) {
+    return JSON.stringify(exports.EmploymentCreate$outboundSchema.parse(employmentCreate));
+}
+function employmentCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EmploymentCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EmploymentCreate' from JSON`);
+}
 //# sourceMappingURL=employmentcreate.js.map

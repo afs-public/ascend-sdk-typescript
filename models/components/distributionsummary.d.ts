@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Summed distribution amounts throughout the year
  */
@@ -119,6 +121,8 @@ export declare namespace DistributionSummaryRegularAmount$ {
     /** @deprecated use `DistributionSummaryRegularAmount$Outbound` instead. */
     type Outbound = DistributionSummaryRegularAmount$Outbound;
 }
+export declare function distributionSummaryRegularAmountToJSON(distributionSummaryRegularAmount: DistributionSummaryRegularAmount): string;
+export declare function distributionSummaryRegularAmountFromJSON(jsonString: string): SafeParseResult<DistributionSummaryRegularAmount, SDKValidationError>;
 /** @internal */
 export declare const DistributionSummaryAmount$inboundSchema: z.ZodType<DistributionSummaryAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -139,6 +143,8 @@ export declare namespace DistributionSummaryAmount$ {
     /** @deprecated use `DistributionSummaryAmount$Outbound` instead. */
     type Outbound = DistributionSummaryAmount$Outbound;
 }
+export declare function distributionSummaryAmountToJSON(distributionSummaryAmount: DistributionSummaryAmount): string;
+export declare function distributionSummaryAmountFromJSON(jsonString: string): SafeParseResult<DistributionSummaryAmount, SDKValidationError>;
 /** @internal */
 export declare const LifeExpectancyFactor$inboundSchema: z.ZodType<LifeExpectancyFactor, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -159,6 +165,8 @@ export declare namespace LifeExpectancyFactor$ {
     /** @deprecated use `LifeExpectancyFactor$Outbound` instead. */
     type Outbound = LifeExpectancyFactor$Outbound;
 }
+export declare function lifeExpectancyFactorToJSON(lifeExpectancyFactor: LifeExpectancyFactor): string;
+export declare function lifeExpectancyFactorFromJSON(jsonString: string): SafeParseResult<LifeExpectancyFactor, SDKValidationError>;
 /** @internal */
 export declare const PriorYearEndAccountBalance$inboundSchema: z.ZodType<PriorYearEndAccountBalance, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -179,6 +187,8 @@ export declare namespace PriorYearEndAccountBalance$ {
     /** @deprecated use `PriorYearEndAccountBalance$Outbound` instead. */
     type Outbound = PriorYearEndAccountBalance$Outbound;
 }
+export declare function priorYearEndAccountBalanceToJSON(priorYearEndAccountBalance: PriorYearEndAccountBalance): string;
+export declare function priorYearEndAccountBalanceFromJSON(jsonString: string): SafeParseResult<PriorYearEndAccountBalance, SDKValidationError>;
 /** @internal */
 export declare const RemainingDistributionRequired$inboundSchema: z.ZodType<RemainingDistributionRequired, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -199,6 +209,8 @@ export declare namespace RemainingDistributionRequired$ {
     /** @deprecated use `RemainingDistributionRequired$Outbound` instead. */
     type Outbound = RemainingDistributionRequired$Outbound;
 }
+export declare function remainingDistributionRequiredToJSON(remainingDistributionRequired: RemainingDistributionRequired): string;
+export declare function remainingDistributionRequiredFromJSON(jsonString: string): SafeParseResult<RemainingDistributionRequired, SDKValidationError>;
 /** @internal */
 export declare const RequiredMinimumDistribution$inboundSchema: z.ZodType<RequiredMinimumDistribution, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -222,6 +234,8 @@ export declare namespace RequiredMinimumDistribution$ {
     /** @deprecated use `RequiredMinimumDistribution$Outbound` instead. */
     type Outbound = RequiredMinimumDistribution$Outbound;
 }
+export declare function requiredMinimumDistributionToJSON(requiredMinimumDistribution: RequiredMinimumDistribution): string;
+export declare function requiredMinimumDistributionFromJSON(jsonString: string): SafeParseResult<RequiredMinimumDistribution, SDKValidationError>;
 /** @internal */
 export declare const DistributionSummaryRolloverAmount$inboundSchema: z.ZodType<DistributionSummaryRolloverAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -242,6 +256,8 @@ export declare namespace DistributionSummaryRolloverAmount$ {
     /** @deprecated use `DistributionSummaryRolloverAmount$Outbound` instead. */
     type Outbound = DistributionSummaryRolloverAmount$Outbound;
 }
+export declare function distributionSummaryRolloverAmountToJSON(distributionSummaryRolloverAmount: DistributionSummaryRolloverAmount): string;
+export declare function distributionSummaryRolloverAmountFromJSON(jsonString: string): SafeParseResult<DistributionSummaryRolloverAmount, SDKValidationError>;
 /** @internal */
 export declare const DistributionSummary$inboundSchema: z.ZodType<DistributionSummary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -266,4 +282,6 @@ export declare namespace DistributionSummary$ {
     /** @deprecated use `DistributionSummary$Outbound` instead. */
     type Outbound = DistributionSummary$Outbound;
 }
+export declare function distributionSummaryToJSON(distributionSummary: DistributionSummary): string;
+export declare function distributionSummaryFromJSON(jsonString: string): SafeParseResult<DistributionSummary, SDKValidationError>;
 //# sourceMappingURL=distributionsummary.d.ts.map

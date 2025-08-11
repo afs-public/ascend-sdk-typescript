@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReaderGetEventMessageResponse$ = exports.ReaderGetEventMessageResponse$outboundSchema = exports.ReaderGetEventMessageResponse$inboundSchema = exports.ReaderGetEventMessageRequest$ = exports.ReaderGetEventMessageRequest$outboundSchema = exports.ReaderGetEventMessageRequest$inboundSchema = void 0;
+exports.readerGetEventMessageRequestToJSON = readerGetEventMessageRequestToJSON;
+exports.readerGetEventMessageRequestFromJSON = readerGetEventMessageRequestFromJSON;
+exports.readerGetEventMessageResponseToJSON = readerGetEventMessageResponseToJSON;
+exports.readerGetEventMessageResponseFromJSON = readerGetEventMessageResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.ReaderGetEventMessageRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var ReaderGetEventMessageRequest$;
     /** @deprecated use `ReaderGetEventMessageRequest$outboundSchema` instead. */
     ReaderGetEventMessageRequest$.outboundSchema = exports.ReaderGetEventMessageRequest$outboundSchema;
 })(ReaderGetEventMessageRequest$ || (exports.ReaderGetEventMessageRequest$ = ReaderGetEventMessageRequest$ = {}));
+function readerGetEventMessageRequestToJSON(readerGetEventMessageRequest) {
+    return JSON.stringify(exports.ReaderGetEventMessageRequest$outboundSchema.parse(readerGetEventMessageRequest));
+}
+function readerGetEventMessageRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ReaderGetEventMessageRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ReaderGetEventMessageRequest' from JSON`);
+}
 /** @internal */
 exports.ReaderGetEventMessageResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var ReaderGetEventMessageResponse$;
     /** @deprecated use `ReaderGetEventMessageResponse$outboundSchema` instead. */
     ReaderGetEventMessageResponse$.outboundSchema = exports.ReaderGetEventMessageResponse$outboundSchema;
 })(ReaderGetEventMessageResponse$ || (exports.ReaderGetEventMessageResponse$ = ReaderGetEventMessageResponse$ = {}));
+function readerGetEventMessageResponseToJSON(readerGetEventMessageResponse) {
+    return JSON.stringify(exports.ReaderGetEventMessageResponse$outboundSchema.parse(readerGetEventMessageResponse));
+}
+function readerGetEventMessageResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ReaderGetEventMessageResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ReaderGetEventMessageResponse' from JSON`);
+}
 //# sourceMappingURL=readergeteventmessage.js.map

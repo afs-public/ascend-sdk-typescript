@@ -1,10 +1,12 @@
 import { ApexascendCore } from "../core.js";
 import { RequestOptions } from "../lib/sdks.js";
+import { ApexascendError } from "../models/errors/apexascenderror.js";
 import { ConnectionError, InvalidRequestError, RequestAbortedError, RequestTimeoutError, UnexpectedClientError } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
-import { SDKError } from "../models/errors/sdkerror.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 /**
  * Get ACH Withdrawal Schedule
@@ -12,5 +14,5 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Gets an ACH withdrawal transfer schedule
  */
-export declare function scheduleTransfersGetAchWithdrawalSchedule(client: ApexascendCore, accountId: string, achWithdrawalScheduleId: string, options?: RequestOptions): Promise<Result<operations.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse, errors.Status | SDKError | SDKValidationError | UnexpectedClientError | InvalidRequestError | RequestAbortedError | RequestTimeoutError | ConnectionError>>;
+export declare function scheduleTransfersGetAchWithdrawalSchedule(client: ApexascendCore, accountId: string, achWithdrawalScheduleId: string, options?: RequestOptions): APIPromise<Result<operations.AchWithdrawalSchedulesGetAchWithdrawalScheduleResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
 //# sourceMappingURL=scheduleTransfersGetAchWithdrawalSchedule.d.ts.map

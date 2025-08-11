@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AchWithdrawalSchedulesUpdateAchWithdrawalScheduleRequest = {
     /**
      * The account id.
@@ -49,6 +51,8 @@ export declare namespace AchWithdrawalSchedulesUpdateAchWithdrawalScheduleReques
     /** @deprecated use `AchWithdrawalSchedulesUpdateAchWithdrawalScheduleRequest$Outbound` instead. */
     type Outbound = AchWithdrawalSchedulesUpdateAchWithdrawalScheduleRequest$Outbound;
 }
+export declare function achWithdrawalSchedulesUpdateAchWithdrawalScheduleRequestToJSON(achWithdrawalSchedulesUpdateAchWithdrawalScheduleRequest: AchWithdrawalSchedulesUpdateAchWithdrawalScheduleRequest): string;
+export declare function achWithdrawalSchedulesUpdateAchWithdrawalScheduleRequestFromJSON(jsonString: string): SafeParseResult<AchWithdrawalSchedulesUpdateAchWithdrawalScheduleRequest, SDKValidationError>;
 /** @internal */
 export declare const AchWithdrawalSchedulesUpdateAchWithdrawalScheduleResponse$inboundSchema: z.ZodType<AchWithdrawalSchedulesUpdateAchWithdrawalScheduleResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -71,4 +75,6 @@ export declare namespace AchWithdrawalSchedulesUpdateAchWithdrawalScheduleRespon
     /** @deprecated use `AchWithdrawalSchedulesUpdateAchWithdrawalScheduleResponse$Outbound` instead. */
     type Outbound = AchWithdrawalSchedulesUpdateAchWithdrawalScheduleResponse$Outbound;
 }
+export declare function achWithdrawalSchedulesUpdateAchWithdrawalScheduleResponseToJSON(achWithdrawalSchedulesUpdateAchWithdrawalScheduleResponse: AchWithdrawalSchedulesUpdateAchWithdrawalScheduleResponse): string;
+export declare function achWithdrawalSchedulesUpdateAchWithdrawalScheduleResponseFromJSON(jsonString: string): SafeParseResult<AchWithdrawalSchedulesUpdateAchWithdrawalScheduleResponse, SDKValidationError>;
 //# sourceMappingURL=achwithdrawalschedulesupdateachwithdrawalschedule.d.ts.map

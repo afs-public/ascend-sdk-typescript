@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelCreditRequestCreate$ = exports.CancelCreditRequestCreate$outboundSchema = exports.CancelCreditRequestCreate$inboundSchema = void 0;
+exports.cancelCreditRequestCreateToJSON = cancelCreditRequestCreateToJSON;
+exports.cancelCreditRequestCreateFromJSON = cancelCreditRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelCreditRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -59,4 +62,10 @@ var CancelCreditRequestCreate$;
     /** @deprecated use `CancelCreditRequestCreate$outboundSchema` instead. */
     CancelCreditRequestCreate$.outboundSchema = exports.CancelCreditRequestCreate$outboundSchema;
 })(CancelCreditRequestCreate$ || (exports.CancelCreditRequestCreate$ = CancelCreditRequestCreate$ = {}));
+function cancelCreditRequestCreateToJSON(cancelCreditRequestCreate) {
+    return JSON.stringify(exports.CancelCreditRequestCreate$outboundSchema.parse(cancelCreditRequestCreate));
+}
+function cancelCreditRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelCreditRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelCreditRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelcreditrequestcreate.js.map

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The legal day, month, and year of birth for a natural person.
@@ -1002,6 +1005,20 @@ export namespace BirthDate$ {
   export type Outbound = BirthDate$Outbound;
 }
 
+export function birthDateToJSON(birthDate: BirthDate): string {
+  return JSON.stringify(BirthDate$outboundSchema.parse(birthDate));
+}
+
+export function birthDateFromJSON(
+  jsonString: string,
+): SafeParseResult<BirthDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BirthDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BirthDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeathDate$inboundSchema: z.ZodType<
   DeathDate,
@@ -1042,6 +1059,20 @@ export namespace DeathDate$ {
   export const outboundSchema = DeathDate$outboundSchema;
   /** @deprecated use `DeathDate$Outbound` instead. */
   export type Outbound = DeathDate$Outbound;
+}
+
+export function deathDateToJSON(deathDate: DeathDate): string {
+  return JSON.stringify(DeathDate$outboundSchema.parse(deathDate));
+}
+
+export function deathDateFromJSON(
+  jsonString: string,
+): SafeParseResult<DeathDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeathDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeathDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1126,6 +1157,22 @@ export namespace EmployerAddress$ {
   export const outboundSchema = EmployerAddress$outboundSchema;
   /** @deprecated use `EmployerAddress$Outbound` instead. */
   export type Outbound = EmployerAddress$Outbound;
+}
+
+export function employerAddressToJSON(
+  employerAddress: EmployerAddress,
+): string {
+  return JSON.stringify(EmployerAddress$outboundSchema.parse(employerAddress));
+}
+
+export function employerAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployerAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployerAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployerAddress' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1230,6 +1277,20 @@ export namespace Employment$ {
   export type Outbound = Employment$Outbound;
 }
 
+export function employmentToJSON(employment: Employment): string {
+  return JSON.stringify(Employment$outboundSchema.parse(employment));
+}
+
+export function employmentFromJSON(
+  jsonString: string,
+): SafeParseResult<Employment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Employment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Employment' from JSON`,
+  );
+}
+
 /** @internal */
 export const ExpirationDate$inboundSchema: z.ZodType<
   ExpirationDate,
@@ -1272,6 +1333,20 @@ export namespace ExpirationDate$ {
   export type Outbound = ExpirationDate$Outbound;
 }
 
+export function expirationDateToJSON(expirationDate: ExpirationDate): string {
+  return JSON.stringify(ExpirationDate$outboundSchema.parse(expirationDate));
+}
+
+export function expirationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<ExpirationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExpirationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExpirationDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const IssueDate$inboundSchema: z.ZodType<
   IssueDate,
@@ -1312,6 +1387,20 @@ export namespace IssueDate$ {
   export const outboundSchema = IssueDate$outboundSchema;
   /** @deprecated use `IssueDate$Outbound` instead. */
   export type Outbound = IssueDate$Outbound;
+}
+
+export function issueDateToJSON(issueDate: IssueDate): string {
+  return JSON.stringify(IssueDate$outboundSchema.parse(issueDate));
+}
+
+export function issueDateFromJSON(
+  jsonString: string,
+): SafeParseResult<IssueDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IssueDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IssueDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1413,6 +1502,24 @@ export namespace ForeignIdentification$ {
   export type Outbound = ForeignIdentification$Outbound;
 }
 
+export function foreignIdentificationToJSON(
+  foreignIdentification: ForeignIdentification,
+): string {
+  return JSON.stringify(
+    ForeignIdentification$outboundSchema.parse(foreignIdentification),
+  );
+}
+
+export function foreignIdentificationFromJSON(
+  jsonString: string,
+): SafeParseResult<ForeignIdentification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ForeignIdentification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForeignIdentification' from JSON`,
+  );
+}
+
 /** @internal */
 export const ExecutionDate$inboundSchema: z.ZodType<
   ExecutionDate,
@@ -1453,6 +1560,20 @@ export namespace ExecutionDate$ {
   export const outboundSchema = ExecutionDate$outboundSchema;
   /** @deprecated use `ExecutionDate$Outbound` instead. */
   export type Outbound = ExecutionDate$Outbound;
+}
+
+export function executionDateToJSON(executionDate: ExecutionDate): string {
+  return JSON.stringify(ExecutionDate$outboundSchema.parse(executionDate));
+}
+
+export function executionDateFromJSON(
+  jsonString: string,
+): SafeParseResult<ExecutionDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExecutionDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExecutionDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1548,6 +1669,33 @@ export namespace LegalNaturalPersonIdentityVerificationResult$ {
   export type Outbound = LegalNaturalPersonIdentityVerificationResult$Outbound;
 }
 
+export function legalNaturalPersonIdentityVerificationResultToJSON(
+  legalNaturalPersonIdentityVerificationResult:
+    LegalNaturalPersonIdentityVerificationResult,
+): string {
+  return JSON.stringify(
+    LegalNaturalPersonIdentityVerificationResult$outboundSchema.parse(
+      legalNaturalPersonIdentityVerificationResult,
+    ),
+  );
+}
+
+export function legalNaturalPersonIdentityVerificationResultFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  LegalNaturalPersonIdentityVerificationResult,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      LegalNaturalPersonIdentityVerificationResult$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'LegalNaturalPersonIdentityVerificationResult' from JSON`,
+  );
+}
+
 /** @internal */
 export const LegalNaturalPersonEffectiveDate$inboundSchema: z.ZodType<
   LegalNaturalPersonEffectiveDate,
@@ -1588,6 +1736,26 @@ export namespace LegalNaturalPersonEffectiveDate$ {
   export const outboundSchema = LegalNaturalPersonEffectiveDate$outboundSchema;
   /** @deprecated use `LegalNaturalPersonEffectiveDate$Outbound` instead. */
   export type Outbound = LegalNaturalPersonEffectiveDate$Outbound;
+}
+
+export function legalNaturalPersonEffectiveDateToJSON(
+  legalNaturalPersonEffectiveDate: LegalNaturalPersonEffectiveDate,
+): string {
+  return JSON.stringify(
+    LegalNaturalPersonEffectiveDate$outboundSchema.parse(
+      legalNaturalPersonEffectiveDate,
+    ),
+  );
+}
+
+export function legalNaturalPersonEffectiveDateFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalNaturalPersonEffectiveDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalNaturalPersonEffectiveDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalNaturalPersonEffectiveDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1641,6 +1809,26 @@ export namespace LegalNaturalPersonLargeTrader$ {
   export const outboundSchema = LegalNaturalPersonLargeTrader$outboundSchema;
   /** @deprecated use `LegalNaturalPersonLargeTrader$Outbound` instead. */
   export type Outbound = LegalNaturalPersonLargeTrader$Outbound;
+}
+
+export function legalNaturalPersonLargeTraderToJSON(
+  legalNaturalPersonLargeTrader: LegalNaturalPersonLargeTrader,
+): string {
+  return JSON.stringify(
+    LegalNaturalPersonLargeTrader$outboundSchema.parse(
+      legalNaturalPersonLargeTrader,
+    ),
+  );
+}
+
+export function legalNaturalPersonLargeTraderFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalNaturalPersonLargeTrader, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalNaturalPersonLargeTrader$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalNaturalPersonLargeTrader' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1764,6 +1952,24 @@ export namespace CustomerReferralSource$ {
   export type Outbound = CustomerReferralSource$Outbound;
 }
 
+export function customerReferralSourceToJSON(
+  customerReferralSource: CustomerReferralSource,
+): string {
+  return JSON.stringify(
+    CustomerReferralSource$outboundSchema.parse(customerReferralSource),
+  );
+}
+
+export function customerReferralSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomerReferralSource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomerReferralSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomerReferralSource' from JSON`,
+  );
+}
+
 /** @internal */
 export const NegativeNews$inboundSchema: z.ZodType<
   NegativeNews,
@@ -1814,6 +2020,20 @@ export namespace NegativeNews$ {
   export const outboundSchema = NegativeNews$outboundSchema;
   /** @deprecated use `NegativeNews$Outbound` instead. */
   export type Outbound = NegativeNews$Outbound;
+}
+
+export function negativeNewsToJSON(negativeNews: NegativeNews): string {
+  return JSON.stringify(NegativeNews$outboundSchema.parse(negativeNews));
+}
+
+export function negativeNewsFromJSON(
+  jsonString: string,
+): SafeParseResult<NegativeNews, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NegativeNews$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NegativeNews' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1868,6 +2088,24 @@ export namespace OtherSourcesOfWealth$ {
   export const outboundSchema = OtherSourcesOfWealth$outboundSchema;
   /** @deprecated use `OtherSourcesOfWealth$Outbound` instead. */
   export type Outbound = OtherSourcesOfWealth$Outbound;
+}
+
+export function otherSourcesOfWealthToJSON(
+  otherSourcesOfWealth: OtherSourcesOfWealth,
+): string {
+  return JSON.stringify(
+    OtherSourcesOfWealth$outboundSchema.parse(otherSourcesOfWealth),
+  );
+}
+
+export function otherSourcesOfWealthFromJSON(
+  jsonString: string,
+): SafeParseResult<OtherSourcesOfWealth, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OtherSourcesOfWealth$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OtherSourcesOfWealth' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1942,6 +2180,24 @@ export namespace NaturalPersonFdd$ {
   export const outboundSchema = NaturalPersonFdd$outboundSchema;
   /** @deprecated use `NaturalPersonFdd$Outbound` instead. */
   export type Outbound = NaturalPersonFdd$Outbound;
+}
+
+export function naturalPersonFddToJSON(
+  naturalPersonFdd: NaturalPersonFdd,
+): string {
+  return JSON.stringify(
+    NaturalPersonFdd$outboundSchema.parse(naturalPersonFdd),
+  );
+}
+
+export function naturalPersonFddFromJSON(
+  jsonString: string,
+): SafeParseResult<NaturalPersonFdd, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NaturalPersonFdd$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NaturalPersonFdd' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2019,6 +2275,24 @@ export namespace NonCitizenResidency$ {
   export const outboundSchema = NonCitizenResidency$outboundSchema;
   /** @deprecated use `NonCitizenResidency$Outbound` instead. */
   export type Outbound = NonCitizenResidency$Outbound;
+}
+
+export function nonCitizenResidencyToJSON(
+  nonCitizenResidency: NonCitizenResidency,
+): string {
+  return JSON.stringify(
+    NonCitizenResidency$outboundSchema.parse(nonCitizenResidency),
+  );
+}
+
+export function nonCitizenResidencyFromJSON(
+  jsonString: string,
+): SafeParseResult<NonCitizenResidency, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NonCitizenResidency$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NonCitizenResidency' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2105,6 +2379,22 @@ export namespace PersonalAddress$ {
   export type Outbound = PersonalAddress$Outbound;
 }
 
+export function personalAddressToJSON(
+  personalAddress: PersonalAddress,
+): string {
+  return JSON.stringify(PersonalAddress$outboundSchema.parse(personalAddress));
+}
+
+export function personalAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<PersonalAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PersonalAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PersonalAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const LegalNaturalPersonTaxIdType$inboundSchema: z.ZodType<
   LegalNaturalPersonTaxIdTypeOpen,
@@ -2177,6 +2467,20 @@ export namespace CNoticeDate$ {
   export const outboundSchema = CNoticeDate$outboundSchema;
   /** @deprecated use `CNoticeDate$Outbound` instead. */
   export type Outbound = CNoticeDate$Outbound;
+}
+
+export function cNoticeDateToJSON(cNoticeDate: CNoticeDate): string {
+  return JSON.stringify(CNoticeDate$outboundSchema.parse(cNoticeDate));
+}
+
+export function cNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<CNoticeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CNoticeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CNoticeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2255,6 +2559,24 @@ export namespace FirstBNoticeDate$ {
   export const outboundSchema = FirstBNoticeDate$outboundSchema;
   /** @deprecated use `FirstBNoticeDate$Outbound` instead. */
   export type Outbound = FirstBNoticeDate$Outbound;
+}
+
+export function firstBNoticeDateToJSON(
+  firstBNoticeDate: FirstBNoticeDate,
+): string {
+  return JSON.stringify(
+    FirstBNoticeDate$outboundSchema.parse(firstBNoticeDate),
+  );
+}
+
+export function firstBNoticeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<FirstBNoticeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FirstBNoticeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FirstBNoticeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2361,6 +2683,24 @@ export namespace TaxCertificationDate$ {
   export const outboundSchema = TaxCertificationDate$outboundSchema;
   /** @deprecated use `TaxCertificationDate$Outbound` instead. */
   export type Outbound = TaxCertificationDate$Outbound;
+}
+
+export function taxCertificationDateToJSON(
+  taxCertificationDate: TaxCertificationDate,
+): string {
+  return JSON.stringify(
+    TaxCertificationDate$outboundSchema.parse(taxCertificationDate),
+  );
+}
+
+export function taxCertificationDateFromJSON(
+  jsonString: string,
+): SafeParseResult<TaxCertificationDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TaxCertificationDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TaxCertificationDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2559,6 +2899,20 @@ export namespace TaxProfile$ {
   export const outboundSchema = TaxProfile$outboundSchema;
   /** @deprecated use `TaxProfile$Outbound` instead. */
   export type Outbound = TaxProfile$Outbound;
+}
+
+export function taxProfileToJSON(taxProfile: TaxProfile): string {
+  return JSON.stringify(TaxProfile$outboundSchema.parse(taxProfile));
+}
+
+export function taxProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<TaxProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TaxProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TaxProfile' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2792,4 +3146,22 @@ export namespace LegalNaturalPerson$ {
   export const outboundSchema = LegalNaturalPerson$outboundSchema;
   /** @deprecated use `LegalNaturalPerson$Outbound` instead. */
   export type Outbound = LegalNaturalPerson$Outbound;
+}
+
+export function legalNaturalPersonToJSON(
+  legalNaturalPerson: LegalNaturalPerson,
+): string {
+  return JSON.stringify(
+    LegalNaturalPerson$outboundSchema.parse(legalNaturalPerson),
+  );
+}
+
+export function legalNaturalPersonFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalNaturalPerson, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalNaturalPerson$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalNaturalPerson' from JSON`,
+  );
 }

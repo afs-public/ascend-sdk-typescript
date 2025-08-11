@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of one of the micro deposits.
  */
@@ -50,6 +52,8 @@ export declare namespace Amount1$ {
     /** @deprecated use `Amount1$Outbound` instead. */
     type Outbound = Amount1$Outbound;
 }
+export declare function amount1ToJSON(amount1: Amount1): string;
+export declare function amount1FromJSON(jsonString: string): SafeParseResult<Amount1, SDKValidationError>;
 /** @internal */
 export declare const Amount2$inboundSchema: z.ZodType<Amount2, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -70,6 +74,8 @@ export declare namespace Amount2$ {
     /** @deprecated use `Amount2$Outbound` instead. */
     type Outbound = Amount2$Outbound;
 }
+export declare function amount2ToJSON(amount2: Amount2): string;
+export declare function amount2FromJSON(jsonString: string): SafeParseResult<Amount2, SDKValidationError>;
 /** @internal */
 export declare const MicroDepositAmounts$inboundSchema: z.ZodType<MicroDepositAmounts, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -91,4 +97,6 @@ export declare namespace MicroDepositAmounts$ {
     /** @deprecated use `MicroDepositAmounts$Outbound` instead. */
     type Outbound = MicroDepositAmounts$Outbound;
 }
+export declare function microDepositAmountsToJSON(microDepositAmounts: MicroDepositAmounts): string;
+export declare function microDepositAmountsFromJSON(jsonString: string): SafeParseResult<MicroDepositAmounts, SDKValidationError>;
 //# sourceMappingURL=microdepositamounts.d.ts.map

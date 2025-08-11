@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InvestorCommunicationServiceBatchCreateUploadLinksResponse = {
   httpMeta: components.HTTPMetadata;
@@ -82,4 +85,29 @@ export namespace InvestorCommunicationServiceBatchCreateUploadLinksResponse$ {
   /** @deprecated use `InvestorCommunicationServiceBatchCreateUploadLinksResponse$Outbound` instead. */
   export type Outbound =
     InvestorCommunicationServiceBatchCreateUploadLinksResponse$Outbound;
+}
+
+export function investorCommunicationServiceBatchCreateUploadLinksResponseToJSON(
+  investorCommunicationServiceBatchCreateUploadLinksResponse:
+    InvestorCommunicationServiceBatchCreateUploadLinksResponse,
+): string {
+  return JSON.stringify(
+    InvestorCommunicationServiceBatchCreateUploadLinksResponse$outboundSchema
+      .parse(investorCommunicationServiceBatchCreateUploadLinksResponse),
+  );
+}
+
+export function investorCommunicationServiceBatchCreateUploadLinksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  InvestorCommunicationServiceBatchCreateUploadLinksResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      InvestorCommunicationServiceBatchCreateUploadLinksResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'InvestorCommunicationServiceBatchCreateUploadLinksResponse' from JSON`,
+  );
 }

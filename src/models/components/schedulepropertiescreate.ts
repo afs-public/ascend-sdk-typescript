@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateCreate,
   DateCreate$inboundSchema,
@@ -144,4 +147,22 @@ export namespace SchedulePropertiesCreate$ {
   export const outboundSchema = SchedulePropertiesCreate$outboundSchema;
   /** @deprecated use `SchedulePropertiesCreate$Outbound` instead. */
   export type Outbound = SchedulePropertiesCreate$Outbound;
+}
+
+export function schedulePropertiesCreateToJSON(
+  schedulePropertiesCreate: SchedulePropertiesCreate,
+): string {
+  return JSON.stringify(
+    SchedulePropertiesCreate$outboundSchema.parse(schedulePropertiesCreate),
+  );
+}
+
+export function schedulePropertiesCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<SchedulePropertiesCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SchedulePropertiesCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SchedulePropertiesCreate' from JSON`,
+  );
 }

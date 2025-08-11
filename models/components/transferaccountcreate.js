@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransferAccountCreate$ = exports.TransferAccountCreate$outboundSchema = exports.TransferAccountCreate$inboundSchema = void 0;
+exports.transferAccountCreateToJSON = transferAccountCreateToJSON;
+exports.transferAccountCreateFromJSON = transferAccountCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const externalaccountcreate_js_1 = require("./externalaccountcreate.js");
 /** @internal */
 exports.TransferAccountCreate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var TransferAccountCreate$;
     /** @deprecated use `TransferAccountCreate$outboundSchema` instead. */
     TransferAccountCreate$.outboundSchema = exports.TransferAccountCreate$outboundSchema;
 })(TransferAccountCreate$ || (exports.TransferAccountCreate$ = TransferAccountCreate$ = {}));
+function transferAccountCreateToJSON(transferAccountCreate) {
+    return JSON.stringify(exports.TransferAccountCreate$outboundSchema.parse(transferAccountCreate));
+}
+function transferAccountCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransferAccountCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferAccountCreate' from JSON`);
+}
 //# sourceMappingURL=transferaccountcreate.js.map

@@ -39,15 +39,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Status$ = exports.Status$outboundSchema = exports.Status$inboundSchema = exports.Status = void 0;
 const z = __importStar(require("zod"));
 const components = __importStar(require("../components/index.js"));
+const apexascenderror_js_1 = require("./apexascenderror.js");
 /**
  * The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
  */
-class Status extends Error {
-    constructor(err) {
-        const message = "message" in err && typeof err.message === "string"
-            ? err.message
-            : `API error occurred: ${JSON.stringify(err)}`;
-        super(message);
+class Status extends apexascenderror_js_1.ApexascendError {
+    constructor(err, httpMeta) {
+        const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+        super(message, httpMeta);
         this.data$ = err;
         if (err.code != null)
             this.code = err.code;
@@ -63,9 +62,16 @@ exports.Status$inboundSchema = z
     code: z.number().int().optional(),
     details: z.array(components.Any$inboundSchema).optional(),
     message: z.string().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
 })
     .transform((v) => {
-    return new Status(v);
+    return new Status(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+    });
 });
 /** @internal */
 exports.Status$outboundSchema = z.instanceof(Status)

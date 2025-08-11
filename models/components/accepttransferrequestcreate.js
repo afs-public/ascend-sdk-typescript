@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AcceptTransferRequestCreate$ = exports.AcceptTransferRequestCreate$outboundSchema = exports.AcceptTransferRequestCreate$inboundSchema = void 0;
+exports.acceptTransferRequestCreateToJSON = acceptTransferRequestCreateToJSON;
+exports.acceptTransferRequestCreateFromJSON = acceptTransferRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AcceptTransferRequestCreate$inboundSchema = z.object({
     comment: z.string().optional(),
@@ -59,4 +62,10 @@ var AcceptTransferRequestCreate$;
     /** @deprecated use `AcceptTransferRequestCreate$outboundSchema` instead. */
     AcceptTransferRequestCreate$.outboundSchema = exports.AcceptTransferRequestCreate$outboundSchema;
 })(AcceptTransferRequestCreate$ || (exports.AcceptTransferRequestCreate$ = AcceptTransferRequestCreate$ = {}));
+function acceptTransferRequestCreateToJSON(acceptTransferRequestCreate) {
+    return JSON.stringify(exports.AcceptTransferRequestCreate$outboundSchema.parse(acceptTransferRequestCreate));
+}
+function acceptTransferRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcceptTransferRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcceptTransferRequestCreate' from JSON`);
+}
 //# sourceMappingURL=accepttransferrequestcreate.js.map

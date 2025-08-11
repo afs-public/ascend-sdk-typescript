@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * A representation of a tax withholding.
@@ -46,4 +48,6 @@ export declare namespace RetirementDistributionTaxWithholdingCreate$ {
     /** @deprecated use `RetirementDistributionTaxWithholdingCreate$Outbound` instead. */
     type Outbound = RetirementDistributionTaxWithholdingCreate$Outbound;
 }
+export declare function retirementDistributionTaxWithholdingCreateToJSON(retirementDistributionTaxWithholdingCreate: RetirementDistributionTaxWithholdingCreate): string;
+export declare function retirementDistributionTaxWithholdingCreateFromJSON(jsonString: string): SafeParseResult<RetirementDistributionTaxWithholdingCreate, SDKValidationError>;
 //# sourceMappingURL=retirementdistributiontaxwithholdingcreate.d.ts.map

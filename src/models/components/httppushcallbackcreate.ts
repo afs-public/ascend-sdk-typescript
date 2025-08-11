@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Configuration information about an HTTP target callback
@@ -73,4 +76,22 @@ export namespace HttpPushCallbackCreate$ {
   export const outboundSchema = HttpPushCallbackCreate$outboundSchema;
   /** @deprecated use `HttpPushCallbackCreate$Outbound` instead. */
   export type Outbound = HttpPushCallbackCreate$Outbound;
+}
+
+export function httpPushCallbackCreateToJSON(
+  httpPushCallbackCreate: HttpPushCallbackCreate,
+): string {
+  return JSON.stringify(
+    HttpPushCallbackCreate$outboundSchema.parse(httpPushCallbackCreate),
+  );
+}
+
+export function httpPushCallbackCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<HttpPushCallbackCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HttpPushCallbackCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HttpPushCallbackCreate' from JSON`,
+  );
 }

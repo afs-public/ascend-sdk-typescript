@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AvailableRestriction$ = exports.AvailableRestriction$outboundSchema = exports.AvailableRestriction$inboundSchema = void 0;
+exports.availableRestrictionToJSON = availableRestrictionToJSON;
+exports.availableRestrictionFromJSON = availableRestrictionFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AvailableRestriction$inboundSchema = z.object({
     description: z.string().optional(),
@@ -72,4 +75,10 @@ var AvailableRestriction$;
     /** @deprecated use `AvailableRestriction$outboundSchema` instead. */
     AvailableRestriction$.outboundSchema = exports.AvailableRestriction$outboundSchema;
 })(AvailableRestriction$ || (exports.AvailableRestriction$ = AvailableRestriction$ = {}));
+function availableRestrictionToJSON(availableRestriction) {
+    return JSON.stringify(exports.AvailableRestriction$outboundSchema.parse(availableRestriction));
+}
+function availableRestrictionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AvailableRestriction$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AvailableRestriction' from JSON`);
+}
 //# sourceMappingURL=availablerestriction.js.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ContributionSummary, ContributionSummary$Outbound } from "./contributionsummary.js";
 /**
  * Response object for aggregated contribution retirement summaries
@@ -34,4 +36,6 @@ export declare namespace ListContributionSummariesResponse$ {
     /** @deprecated use `ListContributionSummariesResponse$Outbound` instead. */
     type Outbound = ListContributionSummariesResponse$Outbound;
 }
+export declare function listContributionSummariesResponseToJSON(listContributionSummariesResponse: ListContributionSummariesResponse): string;
+export declare function listContributionSummariesResponseFromJSON(jsonString: string): SafeParseResult<ListContributionSummariesResponse, SDKValidationError>;
 //# sourceMappingURL=listcontributionsummariesresponse.d.ts.map

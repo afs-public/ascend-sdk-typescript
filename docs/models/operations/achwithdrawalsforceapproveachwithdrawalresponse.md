@@ -5,14 +5,7 @@
 ```typescript
 import { AchWithdrawalsForceApproveAchWithdrawalResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: AchWithdrawalsForceApproveAchWithdrawalResponse = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: AchWithdrawalsForceApproveAchWithdrawalResponse = {};
 ```
 
 ## Fields

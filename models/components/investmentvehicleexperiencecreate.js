@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestmentVehicleExperienceCreate$ = exports.InvestmentVehicleExperienceCreate$outboundSchema = exports.InvestmentVehicleExperienceCreate$inboundSchema = void 0;
+exports.investmentVehicleExperienceCreateToJSON = investmentVehicleExperienceCreateToJSON;
+exports.investmentVehicleExperienceCreateFromJSON = investmentVehicleExperienceCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.InvestmentVehicleExperienceCreate$inboundSchema = z.object({
     commodities_average_annual_trade_count: z.number().int(),
@@ -98,4 +101,10 @@ var InvestmentVehicleExperienceCreate$;
     /** @deprecated use `InvestmentVehicleExperienceCreate$outboundSchema` instead. */
     InvestmentVehicleExperienceCreate$.outboundSchema = exports.InvestmentVehicleExperienceCreate$outboundSchema;
 })(InvestmentVehicleExperienceCreate$ || (exports.InvestmentVehicleExperienceCreate$ = InvestmentVehicleExperienceCreate$ = {}));
+function investmentVehicleExperienceCreateToJSON(investmentVehicleExperienceCreate) {
+    return JSON.stringify(exports.InvestmentVehicleExperienceCreate$outboundSchema.parse(investmentVehicleExperienceCreate));
+}
+function investmentVehicleExperienceCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestmentVehicleExperienceCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestmentVehicleExperienceCreate' from JSON`);
+}
 //# sourceMappingURL=investmentvehicleexperiencecreate.js.map

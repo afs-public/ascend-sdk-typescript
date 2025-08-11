@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerReferralSourceUpdate$ = exports.CustomerReferralSourceUpdate$outboundSchema = exports.CustomerReferralSourceUpdate$inboundSchema = void 0;
+exports.customerReferralSourceUpdateToJSON = customerReferralSourceUpdateToJSON;
+exports.customerReferralSourceUpdateFromJSON = customerReferralSourceUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CustomerReferralSourceUpdate$inboundSchema = z.object({
     name: z.string().optional(),
@@ -76,4 +79,10 @@ var CustomerReferralSourceUpdate$;
     /** @deprecated use `CustomerReferralSourceUpdate$outboundSchema` instead. */
     CustomerReferralSourceUpdate$.outboundSchema = exports.CustomerReferralSourceUpdate$outboundSchema;
 })(CustomerReferralSourceUpdate$ || (exports.CustomerReferralSourceUpdate$ = CustomerReferralSourceUpdate$ = {}));
+function customerReferralSourceUpdateToJSON(customerReferralSourceUpdate) {
+    return JSON.stringify(exports.CustomerReferralSourceUpdate$outboundSchema.parse(customerReferralSourceUpdate));
+}
+function customerReferralSourceUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerReferralSourceUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerReferralSourceUpdate' from JSON`);
+}
 //# sourceMappingURL=customerreferralsourceupdate.js.map

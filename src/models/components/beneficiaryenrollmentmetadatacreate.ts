@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BeneficiaryCreate,
   BeneficiaryCreate$inboundSchema,
@@ -74,4 +77,25 @@ export namespace BeneficiaryEnrollmentMetadataCreate$ {
     BeneficiaryEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `BeneficiaryEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = BeneficiaryEnrollmentMetadataCreate$Outbound;
+}
+
+export function beneficiaryEnrollmentMetadataCreateToJSON(
+  beneficiaryEnrollmentMetadataCreate: BeneficiaryEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    BeneficiaryEnrollmentMetadataCreate$outboundSchema.parse(
+      beneficiaryEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function beneficiaryEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<BeneficiaryEnrollmentMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BeneficiaryEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BeneficiaryEnrollmentMetadataCreate' from JSON`,
+  );
 }

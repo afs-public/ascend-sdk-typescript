@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The identifier type of the asset being sought
@@ -134,4 +137,29 @@ export namespace RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$ {
   /** @deprecated use `RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$Outbound` instead. */
   export type Outbound =
     RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$Outbound;
+}
+
+export function retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateToJSON(
+  retrieveFixedIncomeMarksRequestSecurityIdentifiersCreate:
+    RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate,
+): string {
+  return JSON.stringify(
+    RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$outboundSchema
+      .parse(retrieveFixedIncomeMarksRequestSecurityIdentifiersCreate),
+  );
+}
+
+export function retrieveFixedIncomeMarksRequestSecurityIdentifiersCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate' from JSON`,
+  );
 }

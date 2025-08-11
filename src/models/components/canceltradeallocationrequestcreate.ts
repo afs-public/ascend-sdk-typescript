@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A request for canceling a trade allocation.
@@ -49,4 +52,25 @@ export namespace CancelTradeAllocationRequestCreate$ {
     CancelTradeAllocationRequestCreate$outboundSchema;
   /** @deprecated use `CancelTradeAllocationRequestCreate$Outbound` instead. */
   export type Outbound = CancelTradeAllocationRequestCreate$Outbound;
+}
+
+export function cancelTradeAllocationRequestCreateToJSON(
+  cancelTradeAllocationRequestCreate: CancelTradeAllocationRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationRequestCreate$outboundSchema.parse(
+      cancelTradeAllocationRequestCreate,
+    ),
+  );
+}
+
+export function cancelTradeAllocationRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelTradeAllocationRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelTradeAllocationRequestCreate' from JSON`,
+  );
 }

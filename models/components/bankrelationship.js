@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankRelationship$ = exports.BankRelationship$outboundSchema = exports.BankRelationship$inboundSchema = exports.BankRelationshipVerificationMethod$ = exports.BankRelationshipVerificationMethod$outboundSchema = exports.BankRelationshipVerificationMethod$inboundSchema = exports.BankRelationshipState$ = exports.BankRelationshipState$outboundSchema = exports.BankRelationshipState$inboundSchema = exports.BankRelationshipStateState$ = exports.BankRelationshipStateState$outboundSchema = exports.BankRelationshipStateState$inboundSchema = exports.BankAccount$ = exports.BankAccount$outboundSchema = exports.BankAccount$inboundSchema = exports.BankRelationshipType$ = exports.BankRelationshipType$outboundSchema = exports.BankRelationshipType$inboundSchema = exports.BankRelationshipVerificationMethod = exports.BankRelationshipStateState = exports.BankRelationshipType = void 0;
+exports.bankAccountToJSON = bankAccountToJSON;
+exports.bankAccountFromJSON = bankAccountFromJSON;
+exports.bankRelationshipStateToJSON = bankRelationshipStateToJSON;
+exports.bankRelationshipStateFromJSON = bankRelationshipStateFromJSON;
+exports.bankRelationshipToJSON = bankRelationshipToJSON;
+exports.bankRelationshipFromJSON = bankRelationshipFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The bank account type.
@@ -134,6 +141,12 @@ var BankAccount$;
     /** @deprecated use `BankAccount$outboundSchema` instead. */
     BankAccount$.outboundSchema = exports.BankAccount$outboundSchema;
 })(BankAccount$ || (exports.BankAccount$ = BankAccount$ = {}));
+function bankAccountToJSON(bankAccount) {
+    return JSON.stringify(exports.BankAccount$outboundSchema.parse(bankAccount));
+}
+function bankAccountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankAccount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankAccount' from JSON`);
+}
 /** @internal */
 exports.BankRelationshipStateState$inboundSchema = z
     .union([
@@ -189,6 +202,12 @@ var BankRelationshipState$;
     /** @deprecated use `BankRelationshipState$outboundSchema` instead. */
     BankRelationshipState$.outboundSchema = exports.BankRelationshipState$outboundSchema;
 })(BankRelationshipState$ || (exports.BankRelationshipState$ = BankRelationshipState$ = {}));
+function bankRelationshipStateToJSON(bankRelationshipState) {
+    return JSON.stringify(exports.BankRelationshipState$outboundSchema.parse(bankRelationshipState));
+}
+function bankRelationshipStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipState' from JSON`);
+}
 /** @internal */
 exports.BankRelationshipVerificationMethod$inboundSchema = z
     .union([
@@ -260,4 +279,10 @@ var BankRelationship$;
     /** @deprecated use `BankRelationship$outboundSchema` instead. */
     BankRelationship$.outboundSchema = exports.BankRelationship$outboundSchema;
 })(BankRelationship$ || (exports.BankRelationship$ = BankRelationship$ = {}));
+function bankRelationshipToJSON(bankRelationship) {
+    return JSON.stringify(exports.BankRelationship$outboundSchema.parse(bankRelationship));
+}
+function bankRelationshipFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationship$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationship' from JSON`);
+}
 //# sourceMappingURL=bankrelationship.js.map

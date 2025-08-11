@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { InstitutionCreate, InstitutionCreate$Outbound } from "./institutioncreate.js";
 /**
  * The travel rules associated with an ICT withdrawal
@@ -29,4 +31,6 @@ export declare namespace IctWithdrawalTravelRuleCreate$ {
     /** @deprecated use `IctWithdrawalTravelRuleCreate$Outbound` instead. */
     type Outbound = IctWithdrawalTravelRuleCreate$Outbound;
 }
+export declare function ictWithdrawalTravelRuleCreateToJSON(ictWithdrawalTravelRuleCreate: IctWithdrawalTravelRuleCreate): string;
+export declare function ictWithdrawalTravelRuleCreateFromJSON(jsonString: string): SafeParseResult<IctWithdrawalTravelRuleCreate, SDKValidationError>;
 //# sourceMappingURL=ictwithdrawaltravelrulecreate.d.ts.map

@@ -19,6 +19,7 @@ Creates a new order for equity or fixed income securities.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="OrderService_CreateOrder" method="post" path="/trading/v1/accounts/{account_id}/orders" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { AssetType, IdentifierType, OrderType, Side, TimeInForce } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -47,7 +48,6 @@ async function run() {
     timeInForce: TimeInForce.Day,
   }, "01HBRQ5BW6ZAY4BNWP4GWRD80X");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -88,15 +88,12 @@ async function run() {
     side: Side.Buy,
     timeInForce: TimeInForce.Day,
   }, "01HBRQ5BW6ZAY4BNWP4GWRD80X");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("createOrderCreateOrder failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -118,10 +115,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 409, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 409 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## getOrder
 
@@ -131,6 +129,7 @@ Gets an order by order ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="OrderService_GetOrder" method="get" path="/trading/v1/accounts/{account_id}/orders/{order_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -149,7 +148,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.createOrder.getOrder("01HBRQ5BW6ZAY4BNWP4GWRD80X", "ebb0c9b5-2c74-45c9-a4ab-40596b778706");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -180,15 +178,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await createOrderGetOrder(apexascend, "01HBRQ5BW6ZAY4BNWP4GWRD80X", "ebb0c9b5-2c74-45c9-a4ab-40596b778706");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("createOrderGetOrder failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -210,10 +205,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 404, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## cancelOrder
 
@@ -223,6 +219,7 @@ Submits an order cancellation request by order ID. Confirmation of order cancell
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="OrderService_CancelOrder" method="post" path="/trading/v1/accounts/{account_id}/orders/{order_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -243,7 +240,6 @@ async function run() {
     name: "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X/orders/ebb0c9b5-2c74-45c9-a4ab-40596b778706",
   }, "01HBRQ5BW6ZAY4BNWP4GWRD80X", "ebb0c9b5-2c74-45c9-a4ab-40596b778706");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -276,15 +272,12 @@ async function run() {
   const res = await createOrderCancelOrder(apexascend, {
     name: "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X/orders/ebb0c9b5-2c74-45c9-a4ab-40596b778706",
   }, "01HBRQ5BW6ZAY4BNWP4GWRD80X", "ebb0c9b5-2c74-45c9-a4ab-40596b778706");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("createOrderCancelOrder failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -307,7 +300,8 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 401, 403, 404, 500, 503 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |

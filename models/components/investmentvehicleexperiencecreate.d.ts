@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Investment vehicle experience
  */
@@ -68,4 +70,6 @@ export declare namespace InvestmentVehicleExperienceCreate$ {
     /** @deprecated use `InvestmentVehicleExperienceCreate$Outbound` instead. */
     type Outbound = InvestmentVehicleExperienceCreate$Outbound;
 }
+export declare function investmentVehicleExperienceCreateToJSON(investmentVehicleExperienceCreate: InvestmentVehicleExperienceCreate): string;
+export declare function investmentVehicleExperienceCreateFromJSON(jsonString: string): SafeParseResult<InvestmentVehicleExperienceCreate, SDKValidationError>;
 //# sourceMappingURL=investmentvehicleexperiencecreate.d.ts.map

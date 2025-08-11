@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchDepositSchedulesCreateAchDepositScheduleRequest = {
   /**
@@ -81,6 +84,33 @@ export namespace AchDepositSchedulesCreateAchDepositScheduleRequest$ {
     AchDepositSchedulesCreateAchDepositScheduleRequest$Outbound;
 }
 
+export function achDepositSchedulesCreateAchDepositScheduleRequestToJSON(
+  achDepositSchedulesCreateAchDepositScheduleRequest:
+    AchDepositSchedulesCreateAchDepositScheduleRequest,
+): string {
+  return JSON.stringify(
+    AchDepositSchedulesCreateAchDepositScheduleRequest$outboundSchema.parse(
+      achDepositSchedulesCreateAchDepositScheduleRequest,
+    ),
+  );
+}
+
+export function achDepositSchedulesCreateAchDepositScheduleRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchDepositSchedulesCreateAchDepositScheduleRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositSchedulesCreateAchDepositScheduleRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchDepositSchedulesCreateAchDepositScheduleRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositSchedulesCreateAchDepositScheduleResponse$inboundSchema:
   z.ZodType<
@@ -138,4 +168,31 @@ export namespace AchDepositSchedulesCreateAchDepositScheduleResponse$ {
   /** @deprecated use `AchDepositSchedulesCreateAchDepositScheduleResponse$Outbound` instead. */
   export type Outbound =
     AchDepositSchedulesCreateAchDepositScheduleResponse$Outbound;
+}
+
+export function achDepositSchedulesCreateAchDepositScheduleResponseToJSON(
+  achDepositSchedulesCreateAchDepositScheduleResponse:
+    AchDepositSchedulesCreateAchDepositScheduleResponse,
+): string {
+  return JSON.stringify(
+    AchDepositSchedulesCreateAchDepositScheduleResponse$outboundSchema.parse(
+      achDepositSchedulesCreateAchDepositScheduleResponse,
+    ),
+  );
+}
+
+export function achDepositSchedulesCreateAchDepositScheduleResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchDepositSchedulesCreateAchDepositScheduleResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositSchedulesCreateAchDepositScheduleResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchDepositSchedulesCreateAchDepositScheduleResponse' from JSON`,
+  );
 }

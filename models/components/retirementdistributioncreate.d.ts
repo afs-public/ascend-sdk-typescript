@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { RetirementDistributionTaxWithholdingCreate, RetirementDistributionTaxWithholdingCreate$Outbound } from "./retirementdistributiontaxwithholdingcreate.js";
 /**
  * The type of retirement distribution.
@@ -94,4 +96,6 @@ export declare namespace RetirementDistributionCreate$ {
     /** @deprecated use `RetirementDistributionCreate$Outbound` instead. */
     type Outbound = RetirementDistributionCreate$Outbound;
 }
+export declare function retirementDistributionCreateToJSON(retirementDistributionCreate: RetirementDistributionCreate): string;
+export declare function retirementDistributionCreateFromJSON(jsonString: string): SafeParseResult<RetirementDistributionCreate, SDKValidationError>;
 //# sourceMappingURL=retirementdistributioncreate.d.ts.map

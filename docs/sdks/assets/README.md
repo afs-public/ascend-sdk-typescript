@@ -16,6 +16,7 @@ Lists assets
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Assets_ListAssets_1" method="get" path="/assets/v1/assets" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -34,7 +35,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.assets.listAssets();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -65,15 +65,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await assetsListAssets(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assetsListAssets failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -97,10 +94,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getAsset
 
@@ -108,6 +106,7 @@ Gets assets
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Assets_GetAsset" method="get" path="/assets/v1/assets/{asset_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -126,7 +125,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.assets.getAsset("8395");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -157,15 +155,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await assetsGetAsset(apexascend, "8395");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assetsGetAsset failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -186,10 +181,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listAssetsCorrespondent
 
@@ -197,6 +193,7 @@ Lists assets
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Assets_ListAssets_Correspondent" method="get" path="/assets/v1/correspondents/{correspondent_id}/assets" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -215,7 +212,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.assets.listAssetsCorrespondent("1234");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -246,15 +242,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await assetsListAssetsCorrespondent(apexascend, "1234");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assetsListAssetsCorrespondent failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -278,10 +271,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getAssetCorrespondent
 
@@ -289,6 +283,7 @@ Gets assets
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Assets_GetAsset_Correspondent" method="get" path="/assets/v1/correspondents/{correspondent_id}/assets/{asset_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -307,7 +302,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.assets.getAssetCorrespondent("8395", "<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -338,15 +332,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await assetsGetAssetCorrespondent(apexascend, "8395", "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assetsGetAssetCorrespondent failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -368,7 +359,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

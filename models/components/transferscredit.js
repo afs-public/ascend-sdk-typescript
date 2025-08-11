@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransfersCredit$ = exports.TransfersCredit$outboundSchema = exports.TransfersCredit$inboundSchema = exports.TransfersCreditType$ = exports.TransfersCreditType$outboundSchema = exports.TransfersCreditType$inboundSchema = exports.TransfersCreditState$ = exports.TransfersCreditState$outboundSchema = exports.TransfersCreditState$inboundSchema = exports.TransfersCreditStateState$ = exports.TransfersCreditStateState$outboundSchema = exports.TransfersCreditStateState$inboundSchema = exports.TransfersCreditAmount$ = exports.TransfersCreditAmount$outboundSchema = exports.TransfersCreditAmount$inboundSchema = exports.TransfersCreditType = exports.TransfersCreditStateState = void 0;
+exports.transfersCreditAmountToJSON = transfersCreditAmountToJSON;
+exports.transfersCreditAmountFromJSON = transfersCreditAmountFromJSON;
+exports.transfersCreditStateToJSON = transfersCreditStateToJSON;
+exports.transfersCreditStateFromJSON = transfersCreditStateFromJSON;
+exports.transfersCreditToJSON = transfersCreditToJSON;
+exports.transfersCreditFromJSON = transfersCreditFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The high level state of a transfer, one of:
@@ -94,6 +101,12 @@ var TransfersCreditAmount$;
     /** @deprecated use `TransfersCreditAmount$outboundSchema` instead. */
     TransfersCreditAmount$.outboundSchema = exports.TransfersCreditAmount$outboundSchema;
 })(TransfersCreditAmount$ || (exports.TransfersCreditAmount$ = TransfersCreditAmount$ = {}));
+function transfersCreditAmountToJSON(transfersCreditAmount) {
+    return JSON.stringify(exports.TransfersCreditAmount$outboundSchema.parse(transfersCreditAmount));
+}
+function transfersCreditAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransfersCreditAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransfersCreditAmount' from JSON`);
+}
 /** @internal */
 exports.TransfersCreditStateState$inboundSchema = z
     .union([
@@ -151,6 +164,12 @@ var TransfersCreditState$;
     /** @deprecated use `TransfersCreditState$outboundSchema` instead. */
     TransfersCreditState$.outboundSchema = exports.TransfersCreditState$outboundSchema;
 })(TransfersCreditState$ || (exports.TransfersCreditState$ = TransfersCreditState$ = {}));
+function transfersCreditStateToJSON(transfersCreditState) {
+    return JSON.stringify(exports.TransfersCreditState$outboundSchema.parse(transfersCreditState));
+}
+function transfersCreditStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransfersCreditState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransfersCreditState' from JSON`);
+}
 /** @internal */
 exports.TransfersCreditType$inboundSchema = z
     .union([
@@ -218,4 +237,10 @@ var TransfersCredit$;
     /** @deprecated use `TransfersCredit$outboundSchema` instead. */
     TransfersCredit$.outboundSchema = exports.TransfersCredit$outboundSchema;
 })(TransfersCredit$ || (exports.TransfersCredit$ = TransfersCredit$ = {}));
+function transfersCreditToJSON(transfersCredit) {
+    return JSON.stringify(exports.TransfersCredit$outboundSchema.parse(transfersCredit));
+}
+function transfersCreditFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransfersCredit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransfersCredit' from JSON`);
+}
 //# sourceMappingURL=transferscredit.js.map

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing fee
@@ -55,4 +58,22 @@ export namespace CancelFeeRequestCreate$ {
   export const outboundSchema = CancelFeeRequestCreate$outboundSchema;
   /** @deprecated use `CancelFeeRequestCreate$Outbound` instead. */
   export type Outbound = CancelFeeRequestCreate$Outbound;
+}
+
+export function cancelFeeRequestCreateToJSON(
+  cancelFeeRequestCreate: CancelFeeRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelFeeRequestCreate$outboundSchema.parse(cancelFeeRequestCreate),
+  );
+}
+
+export function cancelFeeRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelFeeRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelFeeRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelFeeRequestCreate' from JSON`,
+  );
 }

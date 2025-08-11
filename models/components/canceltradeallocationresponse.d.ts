@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYield, BondYield$Outbound } from "./bondyield.js";
 import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
@@ -416,6 +418,8 @@ export declare namespace CancelTradeAllocationResponseAccruedInterestAmount$ {
     /** @deprecated use `CancelTradeAllocationResponseAccruedInterestAmount$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponseAccruedInterestAmount$Outbound;
 }
+export declare function cancelTradeAllocationResponseAccruedInterestAmountToJSON(cancelTradeAllocationResponseAccruedInterestAmount: CancelTradeAllocationResponseAccruedInterestAmount): string;
+export declare function cancelTradeAllocationResponseAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponseAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponseAssetType$inboundSchema: z.ZodType<CancelTradeAllocationResponseAssetTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -464,6 +468,8 @@ export declare namespace CancelTradeAllocationResponseCommissionAmount$ {
     /** @deprecated use `CancelTradeAllocationResponseCommissionAmount$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponseCommissionAmount$Outbound;
 }
+export declare function cancelTradeAllocationResponseCommissionAmountToJSON(cancelTradeAllocationResponseCommissionAmount: CancelTradeAllocationResponseCommissionAmount): string;
+export declare function cancelTradeAllocationResponseCommissionAmountFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponseCommissionAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponseGrossAmount$inboundSchema: z.ZodType<CancelTradeAllocationResponseGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -484,6 +490,8 @@ export declare namespace CancelTradeAllocationResponseGrossAmount$ {
     /** @deprecated use `CancelTradeAllocationResponseGrossAmount$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponseGrossAmount$Outbound;
 }
+export declare function cancelTradeAllocationResponseGrossAmountToJSON(cancelTradeAllocationResponseGrossAmount: CancelTradeAllocationResponseGrossAmount): string;
+export declare function cancelTradeAllocationResponseGrossAmountFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponseGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponseIdentifierType$inboundSchema: z.ZodType<CancelTradeAllocationResponseIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -518,6 +526,8 @@ export declare namespace CancelTradeAllocationResponsePrevailingMarketPrice$ {
     /** @deprecated use `CancelTradeAllocationResponsePrevailingMarketPrice$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponsePrevailingMarketPrice$Outbound;
 }
+export declare function cancelTradeAllocationResponsePrevailingMarketPriceToJSON(cancelTradeAllocationResponsePrevailingMarketPrice: CancelTradeAllocationResponsePrevailingMarketPrice): string;
+export declare function cancelTradeAllocationResponsePrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponsePrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponsePrice$inboundSchema: z.ZodType<CancelTradeAllocationResponsePrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -538,6 +548,8 @@ export declare namespace CancelTradeAllocationResponsePrice$ {
     /** @deprecated use `CancelTradeAllocationResponsePrice$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponsePrice$Outbound;
 }
+export declare function cancelTradeAllocationResponsePriceToJSON(cancelTradeAllocationResponsePrice: CancelTradeAllocationResponsePrice): string;
+export declare function cancelTradeAllocationResponsePriceFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponsePrice, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponsePriceAdjustmentAmount$inboundSchema: z.ZodType<CancelTradeAllocationResponsePriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -558,6 +570,8 @@ export declare namespace CancelTradeAllocationResponsePriceAdjustmentAmount$ {
     /** @deprecated use `CancelTradeAllocationResponsePriceAdjustmentAmount$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponsePriceAdjustmentAmount$Outbound;
 }
+export declare function cancelTradeAllocationResponsePriceAdjustmentAmountToJSON(cancelTradeAllocationResponsePriceAdjustmentAmount: CancelTradeAllocationResponsePriceAdjustmentAmount): string;
+export declare function cancelTradeAllocationResponsePriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponsePriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponsePriceAdjustmentType$inboundSchema: z.ZodType<CancelTradeAllocationResponsePriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -593,6 +607,8 @@ export declare namespace CancelTradeAllocationResponsePriceAdjustment$ {
     /** @deprecated use `CancelTradeAllocationResponsePriceAdjustment$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponsePriceAdjustment$Outbound;
 }
+export declare function cancelTradeAllocationResponsePriceAdjustmentToJSON(cancelTradeAllocationResponsePriceAdjustment: CancelTradeAllocationResponsePriceAdjustment): string;
+export declare function cancelTradeAllocationResponsePriceAdjustmentFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponsePriceAdjustment, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponseQuantity$inboundSchema: z.ZodType<CancelTradeAllocationResponseQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -613,6 +629,8 @@ export declare namespace CancelTradeAllocationResponseQuantity$ {
     /** @deprecated use `CancelTradeAllocationResponseQuantity$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponseQuantity$Outbound;
 }
+export declare function cancelTradeAllocationResponseQuantityToJSON(cancelTradeAllocationResponseQuantity: CancelTradeAllocationResponseQuantity): string;
+export declare function cancelTradeAllocationResponseQuantityFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponseQuantity, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponseSettlementDate$inboundSchema: z.ZodType<CancelTradeAllocationResponseSettlementDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -635,6 +653,8 @@ export declare namespace CancelTradeAllocationResponseSettlementDate$ {
     /** @deprecated use `CancelTradeAllocationResponseSettlementDate$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponseSettlementDate$Outbound;
 }
+export declare function cancelTradeAllocationResponseSettlementDateToJSON(cancelTradeAllocationResponseSettlementDate: CancelTradeAllocationResponseSettlementDate): string;
+export declare function cancelTradeAllocationResponseSettlementDateFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponseSettlementDate, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponseSideModifier$inboundSchema: z.ZodType<CancelTradeAllocationResponseSideModifierOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -756,6 +776,8 @@ export declare namespace CancelTradeAllocationResponseTradeAllocation$ {
     /** @deprecated use `CancelTradeAllocationResponseTradeAllocation$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponseTradeAllocation$Outbound;
 }
+export declare function cancelTradeAllocationResponseTradeAllocationToJSON(cancelTradeAllocationResponseTradeAllocation: CancelTradeAllocationResponseTradeAllocation): string;
+export declare function cancelTradeAllocationResponseTradeAllocationFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponseTradeAllocation, SDKValidationError>;
 /** @internal */
 export declare const CancelTradeAllocationResponse$inboundSchema: z.ZodType<CancelTradeAllocationResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -776,4 +798,6 @@ export declare namespace CancelTradeAllocationResponse$ {
     /** @deprecated use `CancelTradeAllocationResponse$Outbound` instead. */
     type Outbound = CancelTradeAllocationResponse$Outbound;
 }
+export declare function cancelTradeAllocationResponseToJSON(cancelTradeAllocationResponse: CancelTradeAllocationResponse): string;
+export declare function cancelTradeAllocationResponseFromJSON(jsonString: string): SafeParseResult<CancelTradeAllocationResponse, SDKValidationError>;
 //# sourceMappingURL=canceltradeallocationresponse.d.ts.map

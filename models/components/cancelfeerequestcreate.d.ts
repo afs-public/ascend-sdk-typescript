@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to cancel an existing fee
  */
@@ -33,4 +35,6 @@ export declare namespace CancelFeeRequestCreate$ {
     /** @deprecated use `CancelFeeRequestCreate$Outbound` instead. */
     type Outbound = CancelFeeRequestCreate$Outbound;
 }
+export declare function cancelFeeRequestCreateToJSON(cancelFeeRequestCreate: CancelFeeRequestCreate): string;
+export declare function cancelFeeRequestCreateFromJSON(jsonString: string): SafeParseResult<CancelFeeRequestCreate, SDKValidationError>;
 //# sourceMappingURL=cancelfeerequestcreate.d.ts.map

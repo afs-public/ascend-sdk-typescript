@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListBankRelationshipsResponse$ = exports.ListBankRelationshipsResponse$outboundSchema = exports.ListBankRelationshipsResponse$inboundSchema = void 0;
+exports.listBankRelationshipsResponseToJSON = listBankRelationshipsResponseToJSON;
+exports.listBankRelationshipsResponseFromJSON = listBankRelationshipsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const bankrelationship_js_1 = require("./bankrelationship.js");
 /** @internal */
 exports.ListBankRelationshipsResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListBankRelationshipsResponse$;
     /** @deprecated use `ListBankRelationshipsResponse$outboundSchema` instead. */
     ListBankRelationshipsResponse$.outboundSchema = exports.ListBankRelationshipsResponse$outboundSchema;
 })(ListBankRelationshipsResponse$ || (exports.ListBankRelationshipsResponse$ = ListBankRelationshipsResponse$ = {}));
+function listBankRelationshipsResponseToJSON(listBankRelationshipsResponse) {
+    return JSON.stringify(exports.ListBankRelationshipsResponse$outboundSchema.parse(listBankRelationshipsResponse));
+}
+function listBankRelationshipsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListBankRelationshipsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListBankRelationshipsResponse' from JSON`);
+}
 //# sourceMappingURL=listbankrelationshipsresponse.js.map

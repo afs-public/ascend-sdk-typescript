@@ -37,8 +37,29 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawal$ = exports.AchWithdrawal$outboundSchema = exports.AchWithdrawal$inboundSchema = exports.AchWithdrawalState$ = exports.AchWithdrawalState$outboundSchema = exports.AchWithdrawalState$inboundSchema = exports.AchWithdrawalStateState$ = exports.AchWithdrawalStateState$outboundSchema = exports.AchWithdrawalStateState$inboundSchema = exports.RetirementDistribution$ = exports.RetirementDistribution$outboundSchema = exports.RetirementDistribution$inboundSchema = exports.AchWithdrawalType$ = exports.AchWithdrawalType$outboundSchema = exports.AchWithdrawalType$inboundSchema = exports.StateTaxWithholding$ = exports.StateTaxWithholding$outboundSchema = exports.StateTaxWithholding$inboundSchema = exports.AchWithdrawalRetirementDistributionPercentage$ = exports.AchWithdrawalRetirementDistributionPercentage$outboundSchema = exports.AchWithdrawalRetirementDistributionPercentage$inboundSchema = exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$ = exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema = exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema = exports.FederalTaxWithholding$ = exports.FederalTaxWithholding$outboundSchema = exports.FederalTaxWithholding$inboundSchema = exports.AchWithdrawalPercentage$ = exports.AchWithdrawalPercentage$outboundSchema = exports.AchWithdrawalPercentage$inboundSchema = exports.AchWithdrawalRetirementDistributionAmount$ = exports.AchWithdrawalRetirementDistributionAmount$outboundSchema = exports.AchWithdrawalRetirementDistributionAmount$inboundSchema = exports.AchWithdrawalAmount$ = exports.AchWithdrawalAmount$outboundSchema = exports.AchWithdrawalAmount$inboundSchema = exports.AchWithdrawalStateState = exports.AchWithdrawalType = void 0;
+exports.achWithdrawalAmountToJSON = achWithdrawalAmountToJSON;
+exports.achWithdrawalAmountFromJSON = achWithdrawalAmountFromJSON;
+exports.achWithdrawalRetirementDistributionAmountToJSON = achWithdrawalRetirementDistributionAmountToJSON;
+exports.achWithdrawalRetirementDistributionAmountFromJSON = achWithdrawalRetirementDistributionAmountFromJSON;
+exports.achWithdrawalPercentageToJSON = achWithdrawalPercentageToJSON;
+exports.achWithdrawalPercentageFromJSON = achWithdrawalPercentageFromJSON;
+exports.federalTaxWithholdingToJSON = federalTaxWithholdingToJSON;
+exports.federalTaxWithholdingFromJSON = federalTaxWithholdingFromJSON;
+exports.achWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON = achWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON;
+exports.achWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON = achWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON;
+exports.achWithdrawalRetirementDistributionPercentageToJSON = achWithdrawalRetirementDistributionPercentageToJSON;
+exports.achWithdrawalRetirementDistributionPercentageFromJSON = achWithdrawalRetirementDistributionPercentageFromJSON;
+exports.stateTaxWithholdingToJSON = stateTaxWithholdingToJSON;
+exports.stateTaxWithholdingFromJSON = stateTaxWithholdingFromJSON;
+exports.retirementDistributionToJSON = retirementDistributionToJSON;
+exports.retirementDistributionFromJSON = retirementDistributionFromJSON;
+exports.achWithdrawalStateToJSON = achWithdrawalStateToJSON;
+exports.achWithdrawalStateFromJSON = achWithdrawalStateFromJSON;
+exports.achWithdrawalToJSON = achWithdrawalToJSON;
+exports.achWithdrawalFromJSON = achWithdrawalFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of retirement distribution.
@@ -111,6 +132,12 @@ var AchWithdrawalAmount$;
     /** @deprecated use `AchWithdrawalAmount$outboundSchema` instead. */
     AchWithdrawalAmount$.outboundSchema = exports.AchWithdrawalAmount$outboundSchema;
 })(AchWithdrawalAmount$ || (exports.AchWithdrawalAmount$ = AchWithdrawalAmount$ = {}));
+function achWithdrawalAmountToJSON(achWithdrawalAmount) {
+    return JSON.stringify(exports.AchWithdrawalAmount$outboundSchema.parse(achWithdrawalAmount));
+}
+function achWithdrawalAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalAmount' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalRetirementDistributionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -130,6 +157,12 @@ var AchWithdrawalRetirementDistributionAmount$;
     /** @deprecated use `AchWithdrawalRetirementDistributionAmount$outboundSchema` instead. */
     AchWithdrawalRetirementDistributionAmount$.outboundSchema = exports.AchWithdrawalRetirementDistributionAmount$outboundSchema;
 })(AchWithdrawalRetirementDistributionAmount$ || (exports.AchWithdrawalRetirementDistributionAmount$ = AchWithdrawalRetirementDistributionAmount$ = {}));
+function achWithdrawalRetirementDistributionAmountToJSON(achWithdrawalRetirementDistributionAmount) {
+    return JSON.stringify(exports.AchWithdrawalRetirementDistributionAmount$outboundSchema.parse(achWithdrawalRetirementDistributionAmount));
+}
+function achWithdrawalRetirementDistributionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalRetirementDistributionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalRetirementDistributionAmount' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -149,6 +182,12 @@ var AchWithdrawalPercentage$;
     /** @deprecated use `AchWithdrawalPercentage$outboundSchema` instead. */
     AchWithdrawalPercentage$.outboundSchema = exports.AchWithdrawalPercentage$outboundSchema;
 })(AchWithdrawalPercentage$ || (exports.AchWithdrawalPercentage$ = AchWithdrawalPercentage$ = {}));
+function achWithdrawalPercentageToJSON(achWithdrawalPercentage) {
+    return JSON.stringify(exports.AchWithdrawalPercentage$outboundSchema.parse(achWithdrawalPercentage));
+}
+function achWithdrawalPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalPercentage' from JSON`);
+}
 /** @internal */
 exports.FederalTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AchWithdrawalRetirementDistributionAmount$inboundSchema)).optional(),
@@ -172,6 +211,12 @@ var FederalTaxWithholding$;
     /** @deprecated use `FederalTaxWithholding$outboundSchema` instead. */
     FederalTaxWithholding$.outboundSchema = exports.FederalTaxWithholding$outboundSchema;
 })(FederalTaxWithholding$ || (exports.FederalTaxWithholding$ = FederalTaxWithholding$ = {}));
+function federalTaxWithholdingToJSON(federalTaxWithholding) {
+    return JSON.stringify(exports.FederalTaxWithholding$outboundSchema.parse(federalTaxWithholding));
+}
+function federalTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FederalTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FederalTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -191,6 +236,14 @@ var AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$;
     /** @deprecated use `AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema` instead. */
     AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$.outboundSchema = exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema;
 })(AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$ || (exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$ = AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$ = {}));
+function achWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON(achWithdrawalRetirementDistributionStateTaxWithholdingAmount) {
+    return JSON.stringify(exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema
+        .parse(achWithdrawalRetirementDistributionStateTaxWithholdingAmount));
+}
+function achWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalRetirementDistributionStateTaxWithholdingAmount' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalRetirementDistributionPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -210,6 +263,12 @@ var AchWithdrawalRetirementDistributionPercentage$;
     /** @deprecated use `AchWithdrawalRetirementDistributionPercentage$outboundSchema` instead. */
     AchWithdrawalRetirementDistributionPercentage$.outboundSchema = exports.AchWithdrawalRetirementDistributionPercentage$outboundSchema;
 })(AchWithdrawalRetirementDistributionPercentage$ || (exports.AchWithdrawalRetirementDistributionPercentage$ = AchWithdrawalRetirementDistributionPercentage$ = {}));
+function achWithdrawalRetirementDistributionPercentageToJSON(achWithdrawalRetirementDistributionPercentage) {
+    return JSON.stringify(exports.AchWithdrawalRetirementDistributionPercentage$outboundSchema.parse(achWithdrawalRetirementDistributionPercentage));
+}
+function achWithdrawalRetirementDistributionPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalRetirementDistributionPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalRetirementDistributionPercentage' from JSON`);
+}
 /** @internal */
 exports.StateTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema)).optional(),
@@ -231,6 +290,12 @@ var StateTaxWithholding$;
     /** @deprecated use `StateTaxWithholding$outboundSchema` instead. */
     StateTaxWithholding$.outboundSchema = exports.StateTaxWithholding$outboundSchema;
 })(StateTaxWithholding$ || (exports.StateTaxWithholding$ = StateTaxWithholding$ = {}));
+function stateTaxWithholdingToJSON(stateTaxWithholding) {
+    return JSON.stringify(exports.StateTaxWithholding$outboundSchema.parse(stateTaxWithholding));
+}
+function stateTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.StateTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'StateTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalType$inboundSchema = z
     .union([
@@ -298,6 +363,12 @@ var RetirementDistribution$;
     /** @deprecated use `RetirementDistribution$outboundSchema` instead. */
     RetirementDistribution$.outboundSchema = exports.RetirementDistribution$outboundSchema;
 })(RetirementDistribution$ || (exports.RetirementDistribution$ = RetirementDistribution$ = {}));
+function retirementDistributionToJSON(retirementDistribution) {
+    return JSON.stringify(exports.RetirementDistribution$outboundSchema.parse(retirementDistribution));
+}
+function retirementDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetirementDistribution' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalStateState$inboundSchema = z
     .union([
@@ -355,6 +426,12 @@ var AchWithdrawalState$;
     /** @deprecated use `AchWithdrawalState$outboundSchema` instead. */
     AchWithdrawalState$.outboundSchema = exports.AchWithdrawalState$outboundSchema;
 })(AchWithdrawalState$ || (exports.AchWithdrawalState$ = AchWithdrawalState$ = {}));
+function achWithdrawalStateToJSON(achWithdrawalState) {
+    return JSON.stringify(exports.AchWithdrawalState$outboundSchema.parse(achWithdrawalState));
+}
+function achWithdrawalStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalState' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawal$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AchWithdrawalAmount$inboundSchema))
@@ -400,4 +477,10 @@ var AchWithdrawal$;
     /** @deprecated use `AchWithdrawal$outboundSchema` instead. */
     AchWithdrawal$.outboundSchema = exports.AchWithdrawal$outboundSchema;
 })(AchWithdrawal$ || (exports.AchWithdrawal$ = AchWithdrawal$ = {}));
+function achWithdrawalToJSON(achWithdrawal) {
+    return JSON.stringify(exports.AchWithdrawal$outboundSchema.parse(achWithdrawal));
+}
+function achWithdrawalFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawal$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawal' from JSON`);
+}
 //# sourceMappingURL=achwithdrawal.js.map

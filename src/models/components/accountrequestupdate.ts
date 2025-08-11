@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountTaxProfileUpdate,
   AccountTaxProfileUpdate$inboundSchema,
@@ -248,4 +251,22 @@ export namespace AccountRequestUpdate$ {
   export const outboundSchema = AccountRequestUpdate$outboundSchema;
   /** @deprecated use `AccountRequestUpdate$Outbound` instead. */
   export type Outbound = AccountRequestUpdate$Outbound;
+}
+
+export function accountRequestUpdateToJSON(
+  accountRequestUpdate: AccountRequestUpdate,
+): string {
+  return JSON.stringify(
+    AccountRequestUpdate$outboundSchema.parse(accountRequestUpdate),
+  );
+}
+
+export function accountRequestUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountRequestUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountRequestUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountRequestUpdate' from JSON`,
+  );
 }

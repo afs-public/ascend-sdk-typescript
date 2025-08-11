@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYield,
   BondYield$inboundSchema,
@@ -525,6 +528,33 @@ export namespace CancelTradeAllocationResponseAccruedInterestAmount$ {
     CancelTradeAllocationResponseAccruedInterestAmount$Outbound;
 }
 
+export function cancelTradeAllocationResponseAccruedInterestAmountToJSON(
+  cancelTradeAllocationResponseAccruedInterestAmount:
+    CancelTradeAllocationResponseAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponseAccruedInterestAmount$outboundSchema.parse(
+      cancelTradeAllocationResponseAccruedInterestAmount,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponseAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponseAccruedInterestAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponseAccruedInterestAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponseAccruedInterestAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelTradeAllocationResponseAssetType$inboundSchema: z.ZodType<
   CancelTradeAllocationResponseAssetTypeOpen,
@@ -635,6 +665,33 @@ export namespace CancelTradeAllocationResponseCommissionAmount$ {
   export type Outbound = CancelTradeAllocationResponseCommissionAmount$Outbound;
 }
 
+export function cancelTradeAllocationResponseCommissionAmountToJSON(
+  cancelTradeAllocationResponseCommissionAmount:
+    CancelTradeAllocationResponseCommissionAmount,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponseCommissionAmount$outboundSchema.parse(
+      cancelTradeAllocationResponseCommissionAmount,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponseCommissionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponseCommissionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponseCommissionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponseCommissionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelTradeAllocationResponseGrossAmount$inboundSchema: z.ZodType<
   CancelTradeAllocationResponseGrossAmount,
@@ -671,6 +728,33 @@ export namespace CancelTradeAllocationResponseGrossAmount$ {
     CancelTradeAllocationResponseGrossAmount$outboundSchema;
   /** @deprecated use `CancelTradeAllocationResponseGrossAmount$Outbound` instead. */
   export type Outbound = CancelTradeAllocationResponseGrossAmount$Outbound;
+}
+
+export function cancelTradeAllocationResponseGrossAmountToJSON(
+  cancelTradeAllocationResponseGrossAmount:
+    CancelTradeAllocationResponseGrossAmount,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponseGrossAmount$outboundSchema.parse(
+      cancelTradeAllocationResponseGrossAmount,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponseGrossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponseGrossAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponseGrossAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponseGrossAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -750,6 +834,33 @@ export namespace CancelTradeAllocationResponsePrevailingMarketPrice$ {
     CancelTradeAllocationResponsePrevailingMarketPrice$Outbound;
 }
 
+export function cancelTradeAllocationResponsePrevailingMarketPriceToJSON(
+  cancelTradeAllocationResponsePrevailingMarketPrice:
+    CancelTradeAllocationResponsePrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponsePrevailingMarketPrice$outboundSchema.parse(
+      cancelTradeAllocationResponsePrevailingMarketPrice,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponsePrevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponsePrevailingMarketPrice,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponsePrevailingMarketPrice$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponsePrevailingMarketPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelTradeAllocationResponsePrice$inboundSchema: z.ZodType<
   CancelTradeAllocationResponsePrice,
@@ -785,6 +896,27 @@ export namespace CancelTradeAllocationResponsePrice$ {
     CancelTradeAllocationResponsePrice$outboundSchema;
   /** @deprecated use `CancelTradeAllocationResponsePrice$Outbound` instead. */
   export type Outbound = CancelTradeAllocationResponsePrice$Outbound;
+}
+
+export function cancelTradeAllocationResponsePriceToJSON(
+  cancelTradeAllocationResponsePrice: CancelTradeAllocationResponsePrice,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponsePrice$outboundSchema.parse(
+      cancelTradeAllocationResponsePrice,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponsePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelTradeAllocationResponsePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponsePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelTradeAllocationResponsePrice' from JSON`,
+  );
 }
 
 /** @internal */
@@ -826,6 +958,33 @@ export namespace CancelTradeAllocationResponsePriceAdjustmentAmount$ {
   /** @deprecated use `CancelTradeAllocationResponsePriceAdjustmentAmount$Outbound` instead. */
   export type Outbound =
     CancelTradeAllocationResponsePriceAdjustmentAmount$Outbound;
+}
+
+export function cancelTradeAllocationResponsePriceAdjustmentAmountToJSON(
+  cancelTradeAllocationResponsePriceAdjustmentAmount:
+    CancelTradeAllocationResponsePriceAdjustmentAmount,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponsePriceAdjustmentAmount$outboundSchema.parse(
+      cancelTradeAllocationResponsePriceAdjustmentAmount,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponsePriceAdjustmentAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponsePriceAdjustmentAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponsePriceAdjustmentAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponsePriceAdjustmentAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -931,6 +1090,33 @@ export namespace CancelTradeAllocationResponsePriceAdjustment$ {
   export type Outbound = CancelTradeAllocationResponsePriceAdjustment$Outbound;
 }
 
+export function cancelTradeAllocationResponsePriceAdjustmentToJSON(
+  cancelTradeAllocationResponsePriceAdjustment:
+    CancelTradeAllocationResponsePriceAdjustment,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponsePriceAdjustment$outboundSchema.parse(
+      cancelTradeAllocationResponsePriceAdjustment,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponsePriceAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponsePriceAdjustment,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponsePriceAdjustment$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponsePriceAdjustment' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelTradeAllocationResponseQuantity$inboundSchema: z.ZodType<
   CancelTradeAllocationResponseQuantity,
@@ -967,6 +1153,27 @@ export namespace CancelTradeAllocationResponseQuantity$ {
     CancelTradeAllocationResponseQuantity$outboundSchema;
   /** @deprecated use `CancelTradeAllocationResponseQuantity$Outbound` instead. */
   export type Outbound = CancelTradeAllocationResponseQuantity$Outbound;
+}
+
+export function cancelTradeAllocationResponseQuantityToJSON(
+  cancelTradeAllocationResponseQuantity: CancelTradeAllocationResponseQuantity,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponseQuantity$outboundSchema.parse(
+      cancelTradeAllocationResponseQuantity,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponseQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelTradeAllocationResponseQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponseQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelTradeAllocationResponseQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1013,6 +1220,33 @@ export namespace CancelTradeAllocationResponseSettlementDate$ {
     CancelTradeAllocationResponseSettlementDate$outboundSchema;
   /** @deprecated use `CancelTradeAllocationResponseSettlementDate$Outbound` instead. */
   export type Outbound = CancelTradeAllocationResponseSettlementDate$Outbound;
+}
+
+export function cancelTradeAllocationResponseSettlementDateToJSON(
+  cancelTradeAllocationResponseSettlementDate:
+    CancelTradeAllocationResponseSettlementDate,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponseSettlementDate$outboundSchema.parse(
+      cancelTradeAllocationResponseSettlementDate,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponseSettlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponseSettlementDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponseSettlementDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponseSettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1451,6 +1685,33 @@ export namespace CancelTradeAllocationResponseTradeAllocation$ {
   export type Outbound = CancelTradeAllocationResponseTradeAllocation$Outbound;
 }
 
+export function cancelTradeAllocationResponseTradeAllocationToJSON(
+  cancelTradeAllocationResponseTradeAllocation:
+    CancelTradeAllocationResponseTradeAllocation,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponseTradeAllocation$outboundSchema.parse(
+      cancelTradeAllocationResponseTradeAllocation,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponseTradeAllocationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelTradeAllocationResponseTradeAllocation,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelTradeAllocationResponseTradeAllocation$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelTradeAllocationResponseTradeAllocation' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelTradeAllocationResponse$inboundSchema: z.ZodType<
   CancelTradeAllocationResponse,
@@ -1500,4 +1761,24 @@ export namespace CancelTradeAllocationResponse$ {
   export const outboundSchema = CancelTradeAllocationResponse$outboundSchema;
   /** @deprecated use `CancelTradeAllocationResponse$Outbound` instead. */
   export type Outbound = CancelTradeAllocationResponse$Outbound;
+}
+
+export function cancelTradeAllocationResponseToJSON(
+  cancelTradeAllocationResponse: CancelTradeAllocationResponse,
+): string {
+  return JSON.stringify(
+    CancelTradeAllocationResponse$outboundSchema.parse(
+      cancelTradeAllocationResponse,
+    ),
+  );
+}
+
+export function cancelTradeAllocationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelTradeAllocationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelTradeAllocationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelTradeAllocationResponse' from JSON`,
+  );
 }

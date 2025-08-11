@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A legal Agreement for an Enrollment.
@@ -75,4 +78,18 @@ export namespace LegalAgreement$ {
   export const outboundSchema = LegalAgreement$outboundSchema;
   /** @deprecated use `LegalAgreement$Outbound` instead. */
   export type Outbound = LegalAgreement$Outbound;
+}
+
+export function legalAgreementToJSON(legalAgreement: LegalAgreement): string {
+  return JSON.stringify(LegalAgreement$outboundSchema.parse(legalAgreement));
+}
+
+export function legalAgreementFromJSON(
+  jsonString: string,
+): SafeParseResult<LegalAgreement, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LegalAgreement$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LegalAgreement' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to cancel an existing ICT deposit
  */
@@ -33,4 +35,6 @@ export declare namespace CancelIctDepositRequestCreate$ {
     /** @deprecated use `CancelIctDepositRequestCreate$Outbound` instead. */
     type Outbound = CancelIctDepositRequestCreate$Outbound;
 }
+export declare function cancelIctDepositRequestCreateToJSON(cancelIctDepositRequestCreate: CancelIctDepositRequestCreate): string;
+export declare function cancelIctDepositRequestCreateFromJSON(jsonString: string): SafeParseResult<CancelIctDepositRequestCreate, SDKValidationError>;
 //# sourceMappingURL=cancelictdepositrequestcreate.d.ts.map

@@ -24,6 +24,7 @@ Creates a Legal Natural Person.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_CreateLegalNaturalPerson" method="post" path="/accounts/v1/legalNaturalPersons" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { EmploymentStatus, FederalTaxClassification, IrsFormType, UsTinStatus } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -56,13 +57,12 @@ async function run() {
     personalAddress: {},
     taxProfile: {
       federalTaxClassification: FederalTaxClassification.CCorporation,
-      irsFormType: IrsFormType.W9,
+      irsFormType: IrsFormType.IrsFormTypeUnspecified,
       legalTaxRegionCode: "US",
       usTinStatus: UsTinStatus.Passing,
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -108,20 +108,17 @@ async function run() {
     personalAddress: {},
     taxProfile: {
       federalTaxClassification: FederalTaxClassification.CCorporation,
-      irsFormType: IrsFormType.W9,
+      irsFormType: IrsFormType.IrsFormTypeUnspecified,
       legalTaxRegionCode: "US",
       usTinStatus: UsTinStatus.Passing,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementCreateLegalNaturalPerson failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -142,10 +139,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listLegalNaturalPersons
 
@@ -153,6 +151,7 @@ Gets a list of Legal Natural Person records based on search criteria.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListLegalNaturalPersons" method="get" path="/accounts/v1/legalNaturalPersons" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -171,7 +170,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.listLegalNaturalPersons();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -202,15 +200,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementListLegalNaturalPersons(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementListLegalNaturalPersons failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -234,10 +229,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getLegalNaturalPerson
 
@@ -245,6 +241,7 @@ Get Legal Natural Person
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_GetLegalNaturalPerson" method="get" path="/accounts/v1/legalNaturalPersons/{legalNaturalPerson_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -263,7 +260,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.getLegalNaturalPerson("e6716139-da77-46d1-9f15-13599161db0b");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -294,15 +290,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementGetLegalNaturalPerson(apexascend, "e6716139-da77-46d1-9f15-13599161db0b");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementGetLegalNaturalPerson failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -323,10 +316,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## updateLegalNaturalPerson
 
@@ -334,6 +328,7 @@ Updates a Legal Natural Person.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_UpdateLegalNaturalPerson" method="patch" path="/accounts/v1/legalNaturalPersons/{legalNaturalPerson_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -352,7 +347,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.updateLegalNaturalPerson({}, "e6716139-da77-46d1-9f15-13599161db0b");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -383,15 +377,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementUpdateLegalNaturalPerson(apexascend, {}, "e6716139-da77-46d1-9f15-13599161db0b");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementUpdateLegalNaturalPerson failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -414,10 +405,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## assignLargeTrader
 
@@ -425,6 +417,7 @@ Assigns a person's Large Trader ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_AssignLargeTrader" method="post" path="/accounts/v1/legalNaturalPersons/{legalNaturalPerson_id}/largeTrader:assign" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -445,7 +438,6 @@ async function run() {
     largeTraderId: "1234567890",
   }, "e6716139-da77-46d1-9f15-13599161db0b");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -478,15 +470,12 @@ async function run() {
   const res = await personManagementAssignLargeTrader(apexascend, {
     largeTraderId: "1234567890",
   }, "e6716139-da77-46d1-9f15-13599161db0b");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementAssignLargeTrader failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -508,10 +497,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## endLargeTraderLegalNaturalPerson
 
@@ -519,6 +509,7 @@ Removes a person's Large Trader ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_EndLargeTrader_LegalNaturalPerson" method="post" path="/accounts/v1/legalNaturalPersons/{legalNaturalPerson_id}/largeTrader:remove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { EndReason } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -537,10 +528,9 @@ const apexascend = new Apexascend({
 
 async function run() {
   const result = await apexascend.personManagement.endLargeTraderLegalNaturalPerson({
-    endReason: EndReason.EventReasonOther,
+    endReason: EndReason.EventReasonEnded,
   }, "e6716139-da77-46d1-9f15-13599161db0b");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -572,17 +562,14 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementEndLargeTraderLegalNaturalPerson(apexascend, {
-    endReason: EndReason.EventReasonOther,
+    endReason: EndReason.EventReasonEnded,
   }, "e6716139-da77-46d1-9f15-13599161db0b");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementEndLargeTraderLegalNaturalPerson failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -604,10 +591,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## createLegalEntity
 
@@ -615,6 +603,7 @@ Creates a Legal Entity.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_CreateLegalEntity" method="post" path="/accounts/v1/legalEntities" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import {
@@ -649,16 +638,15 @@ async function run() {
     ],
     registrationRegion: "US",
     taxId: "987-65-4321",
-    taxIdType: LegalEntityCreateTaxIdType.TaxIdTypeItin,
+    taxIdType: LegalEntityCreateTaxIdType.TaxIdTypeSsn,
     taxProfile: {
       federalTaxClassification: FederalTaxClassification.CCorporation,
-      irsFormType: IrsFormType.W9,
+      irsFormType: IrsFormType.IrsFormTypeUnspecified,
       legalTaxRegionCode: "US",
       usTinStatus: UsTinStatus.Passing,
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -706,23 +694,20 @@ async function run() {
     ],
     registrationRegion: "US",
     taxId: "987-65-4321",
-    taxIdType: LegalEntityCreateTaxIdType.TaxIdTypeItin,
+    taxIdType: LegalEntityCreateTaxIdType.TaxIdTypeSsn,
     taxProfile: {
       federalTaxClassification: FederalTaxClassification.CCorporation,
-      irsFormType: IrsFormType.W9,
+      irsFormType: IrsFormType.IrsFormTypeUnspecified,
       legalTaxRegionCode: "US",
       usTinStatus: UsTinStatus.Passing,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementCreateLegalEntity failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -743,10 +728,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## listLegalEntities
 
@@ -754,6 +740,7 @@ Gets a list of Legal Entity records based on search criteria.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_ListLegalEntities" method="get" path="/accounts/v1/legalEntities" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -772,7 +759,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.listLegalEntities();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -803,15 +789,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementListLegalEntities(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementListLegalEntities failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -835,10 +818,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 403, 500, 503 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getLegalEntity
 
@@ -846,6 +830,7 @@ Get Legal Entity
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_GetLegalEntity" method="get" path="/accounts/v1/legalEntities/{legalEntity_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -864,7 +849,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.getLegalEntity("e6716139-da77-46d1-9f15-13599161db0b");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -895,15 +879,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementGetLegalEntity(apexascend, "e6716139-da77-46d1-9f15-13599161db0b");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementGetLegalEntity failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -924,10 +905,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## updateLegalEntity
 
@@ -935,6 +917,7 @@ Updates a Legal Entity.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_UpdateLegalEntity" method="patch" path="/accounts/v1/legalEntities/{legalEntity_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -953,7 +936,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.updateLegalEntity({}, "42567868-9373-4872-9d24-2e33f6c19b75");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -984,15 +966,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementUpdateLegalEntity(apexascend, {}, "42567868-9373-4872-9d24-2e33f6c19b75");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementUpdateLegalEntity failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1015,10 +994,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## assignLargeTraderLegalEntity
 
@@ -1026,6 +1006,7 @@ Assigns a person's Large Trader ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_AssignLargeTrader_LegalEntity" method="post" path="/accounts/v1/legalEntities/{legalEntity_id}/largeTrader:assign" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1046,7 +1027,6 @@ async function run() {
     largeTraderId: "1234567890",
   }, "e6716139-da77-46d1-9f15-13599161db0b");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1079,15 +1059,12 @@ async function run() {
   const res = await personManagementAssignLargeTraderLegalEntity(apexascend, {
     largeTraderId: "1234567890",
   }, "e6716139-da77-46d1-9f15-13599161db0b");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementAssignLargeTraderLegalEntity failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1109,10 +1086,11 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## endLargeTrader
 
@@ -1120,6 +1098,7 @@ Removes a person's Large Trader ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Accounts_EndLargeTrader_1" method="post" path="/accounts/v1/legalEntities/{legalEntity_id}/largeTrader:remove" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { EndReason } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -1138,10 +1117,9 @@ const apexascend = new Apexascend({
 
 async function run() {
   const result = await apexascend.personManagement.endLargeTrader({
-    endReason: EndReason.EventReasonCreated,
+    endReason: EndReason.EventReasonEnded,
   }, "e6716139-da77-46d1-9f15-13599161db0b");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1173,17 +1151,14 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await personManagementEndLargeTrader(apexascend, {
-    endReason: EndReason.EventReasonCreated,
+    endReason: EndReason.EventReasonEnded,
   }, "e6716139-da77-46d1-9f15-13599161db0b");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("personManagementEndLargeTrader failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1205,7 +1180,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

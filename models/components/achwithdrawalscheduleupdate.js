@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawalScheduleUpdate$ = exports.AchWithdrawalScheduleUpdate$outboundSchema = exports.AchWithdrawalScheduleUpdate$inboundSchema = void 0;
+exports.achWithdrawalScheduleUpdateToJSON = achWithdrawalScheduleUpdateToJSON;
+exports.achWithdrawalScheduleUpdateFromJSON = achWithdrawalScheduleUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const withdrawalscheduledetailsupdate_js_1 = require("./withdrawalscheduledetailsupdate.js");
 /** @internal */
 exports.AchWithdrawalScheduleUpdate$inboundSchema = z.object({
@@ -67,4 +70,10 @@ var AchWithdrawalScheduleUpdate$;
     /** @deprecated use `AchWithdrawalScheduleUpdate$outboundSchema` instead. */
     AchWithdrawalScheduleUpdate$.outboundSchema = exports.AchWithdrawalScheduleUpdate$outboundSchema;
 })(AchWithdrawalScheduleUpdate$ || (exports.AchWithdrawalScheduleUpdate$ = AchWithdrawalScheduleUpdate$ = {}));
+function achWithdrawalScheduleUpdateToJSON(achWithdrawalScheduleUpdate) {
+    return JSON.stringify(exports.AchWithdrawalScheduleUpdate$outboundSchema.parse(achWithdrawalScheduleUpdate));
+}
+function achWithdrawalScheduleUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleUpdate' from JSON`);
+}
 //# sourceMappingURL=achwithdrawalscheduleupdate.js.map

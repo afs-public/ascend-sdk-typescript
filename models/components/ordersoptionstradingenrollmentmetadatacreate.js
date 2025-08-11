@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrdersOptionsTradingEnrollmentMetadataCreate$ = exports.OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema = exports.OrdersOptionsTradingEnrollmentMetadataCreate$inboundSchema = exports.OptionsLevel$ = exports.OptionsLevel$outboundSchema = exports.OptionsLevel$inboundSchema = exports.OptionsLevel = void 0;
+exports.ordersOptionsTradingEnrollmentMetadataCreateToJSON = ordersOptionsTradingEnrollmentMetadataCreateToJSON;
+exports.ordersOptionsTradingEnrollmentMetadataCreateFromJSON = ordersOptionsTradingEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const investmentvehicleexperiencecreate_js_1 = require("./investmentvehicleexperiencecreate.js");
 /**
@@ -106,4 +109,10 @@ var OrdersOptionsTradingEnrollmentMetadataCreate$;
     /** @deprecated use `OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema` instead. */
     OrdersOptionsTradingEnrollmentMetadataCreate$.outboundSchema = exports.OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema;
 })(OrdersOptionsTradingEnrollmentMetadataCreate$ || (exports.OrdersOptionsTradingEnrollmentMetadataCreate$ = OrdersOptionsTradingEnrollmentMetadataCreate$ = {}));
+function ordersOptionsTradingEnrollmentMetadataCreateToJSON(ordersOptionsTradingEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema.parse(ordersOptionsTradingEnrollmentMetadataCreate));
+}
+function ordersOptionsTradingEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrdersOptionsTradingEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrdersOptionsTradingEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=ordersoptionstradingenrollmentmetadatacreate.js.map

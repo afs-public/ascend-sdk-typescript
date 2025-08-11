@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsListAccountsResponse$ = exports.AccountsListAccountsResponse$outboundSchema = exports.AccountsListAccountsResponse$inboundSchema = exports.AccountsListAccountsRequest$ = exports.AccountsListAccountsRequest$outboundSchema = exports.AccountsListAccountsRequest$inboundSchema = exports.View$ = exports.View$outboundSchema = exports.View$inboundSchema = exports.View = void 0;
+exports.accountsListAccountsRequestToJSON = accountsListAccountsRequestToJSON;
+exports.accountsListAccountsRequestFromJSON = accountsListAccountsRequestFromJSON;
+exports.accountsListAccountsResponseToJSON = accountsListAccountsResponseToJSON;
+exports.accountsListAccountsResponseFromJSON = accountsListAccountsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /**
  * The view to return. Defaults to `BASIC`.
@@ -103,6 +108,12 @@ var AccountsListAccountsRequest$;
     /** @deprecated use `AccountsListAccountsRequest$outboundSchema` instead. */
     AccountsListAccountsRequest$.outboundSchema = exports.AccountsListAccountsRequest$outboundSchema;
 })(AccountsListAccountsRequest$ || (exports.AccountsListAccountsRequest$ = AccountsListAccountsRequest$ = {}));
+function accountsListAccountsRequestToJSON(accountsListAccountsRequest) {
+    return JSON.stringify(exports.AccountsListAccountsRequest$outboundSchema.parse(accountsListAccountsRequest));
+}
+function accountsListAccountsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAccountsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAccountsRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsListAccountsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -140,4 +151,10 @@ var AccountsListAccountsResponse$;
     /** @deprecated use `AccountsListAccountsResponse$outboundSchema` instead. */
     AccountsListAccountsResponse$.outboundSchema = exports.AccountsListAccountsResponse$outboundSchema;
 })(AccountsListAccountsResponse$ || (exports.AccountsListAccountsResponse$ = AccountsListAccountsResponse$ = {}));
+function accountsListAccountsResponseToJSON(accountsListAccountsResponse) {
+    return JSON.stringify(exports.AccountsListAccountsResponse$outboundSchema.parse(accountsListAccountsResponse));
+}
+function accountsListAccountsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsListAccountsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsListAccountsResponse' from JSON`);
+}
 //# sourceMappingURL=accountslistaccounts.js.map

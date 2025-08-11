@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireWithdrawalBeneficiaryCreate$ = exports.WireWithdrawalBeneficiaryCreate$outboundSchema = exports.WireWithdrawalBeneficiaryCreate$inboundSchema = void 0;
+exports.wireWithdrawalBeneficiaryCreateToJSON = wireWithdrawalBeneficiaryCreateToJSON;
+exports.wireWithdrawalBeneficiaryCreateFromJSON = wireWithdrawalBeneficiaryCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const addresscreate_js_1 = require("./addresscreate.js");
 /** @internal */
 exports.WireWithdrawalBeneficiaryCreate$inboundSchema = z.object({
@@ -75,4 +78,10 @@ var WireWithdrawalBeneficiaryCreate$;
     /** @deprecated use `WireWithdrawalBeneficiaryCreate$outboundSchema` instead. */
     WireWithdrawalBeneficiaryCreate$.outboundSchema = exports.WireWithdrawalBeneficiaryCreate$outboundSchema;
 })(WireWithdrawalBeneficiaryCreate$ || (exports.WireWithdrawalBeneficiaryCreate$ = WireWithdrawalBeneficiaryCreate$ = {}));
+function wireWithdrawalBeneficiaryCreateToJSON(wireWithdrawalBeneficiaryCreate) {
+    return JSON.stringify(exports.WireWithdrawalBeneficiaryCreate$outboundSchema.parse(wireWithdrawalBeneficiaryCreate));
+}
+function wireWithdrawalBeneficiaryCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalBeneficiaryCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalBeneficiaryCreate' from JSON`);
+}
 //# sourceMappingURL=wirewithdrawalbeneficiarycreate.js.map

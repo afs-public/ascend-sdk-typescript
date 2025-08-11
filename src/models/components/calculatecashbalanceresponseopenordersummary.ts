@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The notional value the order is not reasonably expected to exceed in USD. This value is always positive.
@@ -68,6 +71,26 @@ export namespace ExpectedNotionalCeilingAmount$ {
   export type Outbound = ExpectedNotionalCeilingAmount$Outbound;
 }
 
+export function expectedNotionalCeilingAmountToJSON(
+  expectedNotionalCeilingAmount: ExpectedNotionalCeilingAmount,
+): string {
+  return JSON.stringify(
+    ExpectedNotionalCeilingAmount$outboundSchema.parse(
+      expectedNotionalCeilingAmount,
+    ),
+  );
+}
+
+export function expectedNotionalCeilingAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<ExpectedNotionalCeilingAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExpectedNotionalCeilingAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExpectedNotionalCeilingAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CalculateCashBalanceResponseOpenOrderSummary$inboundSchema:
   z.ZodType<
@@ -124,4 +147,31 @@ export namespace CalculateCashBalanceResponseOpenOrderSummary$ {
     CalculateCashBalanceResponseOpenOrderSummary$outboundSchema;
   /** @deprecated use `CalculateCashBalanceResponseOpenOrderSummary$Outbound` instead. */
   export type Outbound = CalculateCashBalanceResponseOpenOrderSummary$Outbound;
+}
+
+export function calculateCashBalanceResponseOpenOrderSummaryToJSON(
+  calculateCashBalanceResponseOpenOrderSummary:
+    CalculateCashBalanceResponseOpenOrderSummary,
+): string {
+  return JSON.stringify(
+    CalculateCashBalanceResponseOpenOrderSummary$outboundSchema.parse(
+      calculateCashBalanceResponseOpenOrderSummary,
+    ),
+  );
+}
+
+export function calculateCashBalanceResponseOpenOrderSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CalculateCashBalanceResponseOpenOrderSummary,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CalculateCashBalanceResponseOpenOrderSummary$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CalculateCashBalanceResponseOpenOrderSummary' from JSON`,
+  );
 }

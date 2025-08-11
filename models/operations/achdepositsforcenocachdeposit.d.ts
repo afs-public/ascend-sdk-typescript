@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AchDepositsForceNocAchDepositRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace AchDepositsForceNocAchDepositRequest$ {
     /** @deprecated use `AchDepositsForceNocAchDepositRequest$Outbound` instead. */
     type Outbound = AchDepositsForceNocAchDepositRequest$Outbound;
 }
+export declare function achDepositsForceNocAchDepositRequestToJSON(achDepositsForceNocAchDepositRequest: AchDepositsForceNocAchDepositRequest): string;
+export declare function achDepositsForceNocAchDepositRequestFromJSON(jsonString: string): SafeParseResult<AchDepositsForceNocAchDepositRequest, SDKValidationError>;
 /** @internal */
 export declare const AchDepositsForceNocAchDepositResponse$inboundSchema: z.ZodType<AchDepositsForceNocAchDepositResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace AchDepositsForceNocAchDepositResponse$ {
     /** @deprecated use `AchDepositsForceNocAchDepositResponse$Outbound` instead. */
     type Outbound = AchDepositsForceNocAchDepositResponse$Outbound;
 }
+export declare function achDepositsForceNocAchDepositResponseToJSON(achDepositsForceNocAchDepositResponse: AchDepositsForceNocAchDepositResponse): string;
+export declare function achDepositsForceNocAchDepositResponseFromJSON(jsonString: string): SafeParseResult<AchDepositsForceNocAchDepositResponse, SDKValidationError>;
 //# sourceMappingURL=achdepositsforcenocachdeposit.d.ts.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The message describing a basket
  */
@@ -33,4 +35,6 @@ export declare namespace BasketCreate$ {
     /** @deprecated use `BasketCreate$Outbound` instead. */
     type Outbound = BasketCreate$Outbound;
 }
+export declare function basketCreateToJSON(basketCreate: BasketCreate): string;
+export declare function basketCreateFromJSON(jsonString: string): SafeParseResult<BasketCreate, SDKValidationError>;
 //# sourceMappingURL=basketcreate.d.ts.map

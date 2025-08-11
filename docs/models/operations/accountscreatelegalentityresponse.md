@@ -5,14 +5,7 @@
 ```typescript
 import { AccountsCreateLegalEntityResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: AccountsCreateLegalEntityResponse = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: AccountsCreateLegalEntityResponse = {};
 ```
 
 ## Fields

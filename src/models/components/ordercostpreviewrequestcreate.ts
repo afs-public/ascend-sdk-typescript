@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -279,4 +282,24 @@ export namespace OrderCostPreviewRequestCreate$ {
   export const outboundSchema = OrderCostPreviewRequestCreate$outboundSchema;
   /** @deprecated use `OrderCostPreviewRequestCreate$Outbound` instead. */
   export type Outbound = OrderCostPreviewRequestCreate$Outbound;
+}
+
+export function orderCostPreviewRequestCreateToJSON(
+  orderCostPreviewRequestCreate: OrderCostPreviewRequestCreate,
+): string {
+  return JSON.stringify(
+    OrderCostPreviewRequestCreate$outboundSchema.parse(
+      orderCostPreviewRequestCreate,
+    ),
+  );
+}
+
+export function orderCostPreviewRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderCostPreviewRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderCostPreviewRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderCostPreviewRequestCreate' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A request to remove a party from an account
  */
@@ -33,4 +35,6 @@ export declare namespace RemovePartyRequestCreate$ {
     /** @deprecated use `RemovePartyRequestCreate$Outbound` instead. */
     type Outbound = RemovePartyRequestCreate$Outbound;
 }
+export declare function removePartyRequestCreateToJSON(removePartyRequestCreate: RemovePartyRequestCreate): string;
+export declare function removePartyRequestCreateFromJSON(jsonString: string): SafeParseResult<RemovePartyRequestCreate, SDKValidationError>;
 //# sourceMappingURL=removepartyrequestcreate.d.ts.map

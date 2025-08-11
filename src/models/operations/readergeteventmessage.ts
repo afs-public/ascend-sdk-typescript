@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ReaderGetEventMessageRequest = {
   /**
@@ -69,6 +72,26 @@ export namespace ReaderGetEventMessageRequest$ {
   export type Outbound = ReaderGetEventMessageRequest$Outbound;
 }
 
+export function readerGetEventMessageRequestToJSON(
+  readerGetEventMessageRequest: ReaderGetEventMessageRequest,
+): string {
+  return JSON.stringify(
+    ReaderGetEventMessageRequest$outboundSchema.parse(
+      readerGetEventMessageRequest,
+    ),
+  );
+}
+
+export function readerGetEventMessageRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<ReaderGetEventMessageRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReaderGetEventMessageRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReaderGetEventMessageRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const ReaderGetEventMessageResponse$inboundSchema: z.ZodType<
   ReaderGetEventMessageResponse,
@@ -121,4 +144,24 @@ export namespace ReaderGetEventMessageResponse$ {
   export const outboundSchema = ReaderGetEventMessageResponse$outboundSchema;
   /** @deprecated use `ReaderGetEventMessageResponse$Outbound` instead. */
   export type Outbound = ReaderGetEventMessageResponse$Outbound;
+}
+
+export function readerGetEventMessageResponseToJSON(
+  readerGetEventMessageResponse: ReaderGetEventMessageResponse,
+): string {
+  return JSON.stringify(
+    ReaderGetEventMessageResponse$outboundSchema.parse(
+      readerGetEventMessageResponse,
+    ),
+  );
+}
+
+export function readerGetEventMessageResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ReaderGetEventMessageResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReaderGetEventMessageResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReaderGetEventMessageResponse' from JSON`,
+  );
 }

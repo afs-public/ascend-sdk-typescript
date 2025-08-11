@@ -8,6 +8,7 @@ export declare class SDKValidationError extends Error {
      * The raw message that failed validation.
      */
     readonly rawMessage: unknown;
+    static [Symbol.hasInstance](instance: unknown): instance is SDKValidationError;
     constructor(message: string, cause: unknown, rawValue: unknown);
     /**
      * Return a pretty-formatted error message if the underlying validation error

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsDeactivateEnrollmentRequest = {
   /**
@@ -81,6 +84,27 @@ export namespace AccountsDeactivateEnrollmentRequest$ {
   export type Outbound = AccountsDeactivateEnrollmentRequest$Outbound;
 }
 
+export function accountsDeactivateEnrollmentRequestToJSON(
+  accountsDeactivateEnrollmentRequest: AccountsDeactivateEnrollmentRequest,
+): string {
+  return JSON.stringify(
+    AccountsDeactivateEnrollmentRequest$outboundSchema.parse(
+      accountsDeactivateEnrollmentRequest,
+    ),
+  );
+}
+
+export function accountsDeactivateEnrollmentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsDeactivateEnrollmentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsDeactivateEnrollmentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsDeactivateEnrollmentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsDeactivateEnrollmentResponse$inboundSchema: z.ZodType<
   AccountsDeactivateEnrollmentResponse,
@@ -135,4 +159,25 @@ export namespace AccountsDeactivateEnrollmentResponse$ {
     AccountsDeactivateEnrollmentResponse$outboundSchema;
   /** @deprecated use `AccountsDeactivateEnrollmentResponse$Outbound` instead. */
   export type Outbound = AccountsDeactivateEnrollmentResponse$Outbound;
+}
+
+export function accountsDeactivateEnrollmentResponseToJSON(
+  accountsDeactivateEnrollmentResponse: AccountsDeactivateEnrollmentResponse,
+): string {
+  return JSON.stringify(
+    AccountsDeactivateEnrollmentResponse$outboundSchema.parse(
+      accountsDeactivateEnrollmentResponse,
+    ),
+  );
+}
+
+export function accountsDeactivateEnrollmentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsDeactivateEnrollmentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsDeactivateEnrollmentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsDeactivateEnrollmentResponse' from JSON`,
+  );
 }

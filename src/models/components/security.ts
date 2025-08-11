@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ServiceAccountCreds = {
   privateKey: string;
@@ -61,6 +64,24 @@ export namespace ServiceAccountCreds$ {
   export type Outbound = ServiceAccountCreds$Outbound;
 }
 
+export function serviceAccountCredsToJSON(
+  serviceAccountCreds: ServiceAccountCreds,
+): string {
+  return JSON.stringify(
+    ServiceAccountCreds$outboundSchema.parse(serviceAccountCreds),
+  );
+}
+
+export function serviceAccountCredsFromJSON(
+  jsonString: string,
+): SafeParseResult<ServiceAccountCreds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServiceAccountCreds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServiceAccountCreds' from JSON`,
+  );
+}
+
 /** @internal */
 export const Security$inboundSchema: z.ZodType<
   Security,
@@ -100,4 +121,18 @@ export namespace Security$ {
   export const outboundSchema = Security$outboundSchema;
   /** @deprecated use `Security$Outbound` instead. */
   export type Outbound = Security$Outbound;
+}
+
+export function securityToJSON(security: Security): string {
+  return JSON.stringify(Security$outboundSchema.parse(security));
+}
+
+export function securityFromJSON(
+  jsonString: string,
+): SafeParseResult<Security, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Security$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Security' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The request to assign a Large Trader ID to a Legal Natural Person/Legal Entity.
@@ -54,4 +57,24 @@ export namespace AssignLargeTraderRequestCreate$ {
   export const outboundSchema = AssignLargeTraderRequestCreate$outboundSchema;
   /** @deprecated use `AssignLargeTraderRequestCreate$Outbound` instead. */
   export type Outbound = AssignLargeTraderRequestCreate$Outbound;
+}
+
+export function assignLargeTraderRequestCreateToJSON(
+  assignLargeTraderRequestCreate: AssignLargeTraderRequestCreate,
+): string {
+  return JSON.stringify(
+    AssignLargeTraderRequestCreate$outboundSchema.parse(
+      assignLargeTraderRequestCreate,
+    ),
+  );
+}
+
+export function assignLargeTraderRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AssignLargeTraderRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssignLargeTraderRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignLargeTraderRequestCreate' from JSON`,
+  );
 }

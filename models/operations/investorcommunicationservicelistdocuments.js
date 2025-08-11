@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InvestorCommunicationServiceListDocumentsResponse$ = exports.InvestorCommunicationServiceListDocumentsResponse$outboundSchema = exports.InvestorCommunicationServiceListDocumentsResponse$inboundSchema = exports.InvestorCommunicationServiceListDocumentsRequest$ = exports.InvestorCommunicationServiceListDocumentsRequest$outboundSchema = exports.InvestorCommunicationServiceListDocumentsRequest$inboundSchema = void 0;
+exports.investorCommunicationServiceListDocumentsRequestToJSON = investorCommunicationServiceListDocumentsRequestToJSON;
+exports.investorCommunicationServiceListDocumentsRequestFromJSON = investorCommunicationServiceListDocumentsRequestFromJSON;
+exports.investorCommunicationServiceListDocumentsResponseToJSON = investorCommunicationServiceListDocumentsResponseToJSON;
+exports.investorCommunicationServiceListDocumentsResponseFromJSON = investorCommunicationServiceListDocumentsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.InvestorCommunicationServiceListDocumentsRequest$inboundSchema = z.object({
@@ -73,6 +78,12 @@ var InvestorCommunicationServiceListDocumentsRequest$;
     /** @deprecated use `InvestorCommunicationServiceListDocumentsRequest$outboundSchema` instead. */
     InvestorCommunicationServiceListDocumentsRequest$.outboundSchema = exports.InvestorCommunicationServiceListDocumentsRequest$outboundSchema;
 })(InvestorCommunicationServiceListDocumentsRequest$ || (exports.InvestorCommunicationServiceListDocumentsRequest$ = InvestorCommunicationServiceListDocumentsRequest$ = {}));
+function investorCommunicationServiceListDocumentsRequestToJSON(investorCommunicationServiceListDocumentsRequest) {
+    return JSON.stringify(exports.InvestorCommunicationServiceListDocumentsRequest$outboundSchema.parse(investorCommunicationServiceListDocumentsRequest));
+}
+function investorCommunicationServiceListDocumentsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestorCommunicationServiceListDocumentsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestorCommunicationServiceListDocumentsRequest' from JSON`);
+}
 /** @internal */
 exports.InvestorCommunicationServiceListDocumentsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var InvestorCommunicationServiceListDocumentsResponse$;
     /** @deprecated use `InvestorCommunicationServiceListDocumentsResponse$outboundSchema` instead. */
     InvestorCommunicationServiceListDocumentsResponse$.outboundSchema = exports.InvestorCommunicationServiceListDocumentsResponse$outboundSchema;
 })(InvestorCommunicationServiceListDocumentsResponse$ || (exports.InvestorCommunicationServiceListDocumentsResponse$ = InvestorCommunicationServiceListDocumentsResponse$ = {}));
+function investorCommunicationServiceListDocumentsResponseToJSON(investorCommunicationServiceListDocumentsResponse) {
+    return JSON.stringify(exports.InvestorCommunicationServiceListDocumentsResponse$outboundSchema.parse(investorCommunicationServiceListDocumentsResponse));
+}
+function investorCommunicationServiceListDocumentsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestorCommunicationServiceListDocumentsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestorCommunicationServiceListDocumentsResponse' from JSON`);
+}
 //# sourceMappingURL=investorcommunicationservicelistdocuments.js.map

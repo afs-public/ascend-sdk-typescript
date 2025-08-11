@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetirementDistributionTaxWithholdingCreate$ = exports.RetirementDistributionTaxWithholdingCreate$outboundSchema = exports.RetirementDistributionTaxWithholdingCreate$inboundSchema = void 0;
+exports.retirementDistributionTaxWithholdingCreateToJSON = retirementDistributionTaxWithholdingCreateToJSON;
+exports.retirementDistributionTaxWithholdingCreateFromJSON = retirementDistributionTaxWithholdingCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
 exports.RetirementDistributionTaxWithholdingCreate$inboundSchema = z.object({
@@ -60,4 +63,10 @@ var RetirementDistributionTaxWithholdingCreate$;
     /** @deprecated use `RetirementDistributionTaxWithholdingCreate$outboundSchema` instead. */
     RetirementDistributionTaxWithholdingCreate$.outboundSchema = exports.RetirementDistributionTaxWithholdingCreate$outboundSchema;
 })(RetirementDistributionTaxWithholdingCreate$ || (exports.RetirementDistributionTaxWithholdingCreate$ = RetirementDistributionTaxWithholdingCreate$ = {}));
+function retirementDistributionTaxWithholdingCreateToJSON(retirementDistributionTaxWithholdingCreate) {
+    return JSON.stringify(exports.RetirementDistributionTaxWithholdingCreate$outboundSchema.parse(retirementDistributionTaxWithholdingCreate));
+}
+function retirementDistributionTaxWithholdingCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementDistributionTaxWithholdingCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetirementDistributionTaxWithholdingCreate' from JSON`);
+}
 //# sourceMappingURL=retirementdistributiontaxwithholdingcreate.js.map

@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BidAskPrice$ = exports.BidAskPrice$outboundSchema = exports.BidAskPrice$inboundSchema = exports.BidAskPriceType$ = exports.BidAskPriceType$outboundSchema = exports.BidAskPriceType$inboundSchema = exports.BidAskPricePrice$ = exports.BidAskPricePrice$outboundSchema = exports.BidAskPricePrice$inboundSchema = exports.BidAskPriceType = void 0;
+exports.bidAskPricePriceToJSON = bidAskPricePriceToJSON;
+exports.bidAskPricePriceFromJSON = bidAskPricePriceFromJSON;
+exports.bidAskPriceToJSON = bidAskPriceToJSON;
+exports.bidAskPriceFromJSON = bidAskPriceFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The calculation type of this price
@@ -67,6 +72,12 @@ var BidAskPricePrice$;
     /** @deprecated use `BidAskPricePrice$outboundSchema` instead. */
     BidAskPricePrice$.outboundSchema = exports.BidAskPricePrice$outboundSchema;
 })(BidAskPricePrice$ || (exports.BidAskPricePrice$ = BidAskPricePrice$ = {}));
+function bidAskPricePriceToJSON(bidAskPricePrice) {
+    return JSON.stringify(exports.BidAskPricePrice$outboundSchema.parse(bidAskPricePrice));
+}
+function bidAskPricePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BidAskPricePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BidAskPricePrice' from JSON`);
+}
 /** @internal */
 exports.BidAskPriceType$inboundSchema = z
     .union([
@@ -110,4 +121,10 @@ var BidAskPrice$;
     /** @deprecated use `BidAskPrice$outboundSchema` instead. */
     BidAskPrice$.outboundSchema = exports.BidAskPrice$outboundSchema;
 })(BidAskPrice$ || (exports.BidAskPrice$ = BidAskPrice$ = {}));
+function bidAskPriceToJSON(bidAskPrice) {
+    return JSON.stringify(exports.BidAskPrice$outboundSchema.parse(bidAskPrice));
+}
+function bidAskPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BidAskPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BidAskPrice' from JSON`);
+}
 //# sourceMappingURL=bidaskprice.js.map

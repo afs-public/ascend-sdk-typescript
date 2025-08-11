@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LedgerListPositionsResponse$ = exports.LedgerListPositionsResponse$outboundSchema = exports.LedgerListPositionsResponse$inboundSchema = exports.LedgerListPositionsRequest$ = exports.LedgerListPositionsRequest$outboundSchema = exports.LedgerListPositionsRequest$inboundSchema = void 0;
+exports.ledgerListPositionsRequestToJSON = ledgerListPositionsRequestToJSON;
+exports.ledgerListPositionsRequestFromJSON = ledgerListPositionsRequestFromJSON;
+exports.ledgerListPositionsResponseToJSON = ledgerListPositionsResponseToJSON;
+exports.ledgerListPositionsResponseFromJSON = ledgerListPositionsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.LedgerListPositionsRequest$inboundSchema = z.object({
@@ -77,6 +82,12 @@ var LedgerListPositionsRequest$;
     /** @deprecated use `LedgerListPositionsRequest$outboundSchema` instead. */
     LedgerListPositionsRequest$.outboundSchema = exports.LedgerListPositionsRequest$outboundSchema;
 })(LedgerListPositionsRequest$ || (exports.LedgerListPositionsRequest$ = LedgerListPositionsRequest$ = {}));
+function ledgerListPositionsRequestToJSON(ledgerListPositionsRequest) {
+    return JSON.stringify(exports.LedgerListPositionsRequest$outboundSchema.parse(ledgerListPositionsRequest));
+}
+function ledgerListPositionsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LedgerListPositionsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LedgerListPositionsRequest' from JSON`);
+}
 /** @internal */
 exports.LedgerListPositionsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var LedgerListPositionsResponse$;
     /** @deprecated use `LedgerListPositionsResponse$outboundSchema` instead. */
     LedgerListPositionsResponse$.outboundSchema = exports.LedgerListPositionsResponse$outboundSchema;
 })(LedgerListPositionsResponse$ || (exports.LedgerListPositionsResponse$ = LedgerListPositionsResponse$ = {}));
+function ledgerListPositionsResponseToJSON(ledgerListPositionsResponse) {
+    return JSON.stringify(exports.LedgerListPositionsResponse$outboundSchema.parse(ledgerListPositionsResponse));
+}
+function ledgerListPositionsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LedgerListPositionsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LedgerListPositionsResponse' from JSON`);
+}
 //# sourceMappingURL=ledgerlistpositions.js.map

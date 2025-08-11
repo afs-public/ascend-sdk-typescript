@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$ = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$outboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$inboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweep$ = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateFdicCashSweep = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.jointWithRightsOfSurvivorshipEnrollmentMetadataCreateToJSON = jointWithRightsOfSurvivorshipEnrollmentMetadataCreateToJSON;
+exports.jointWithRightsOfSurvivorshipEnrollmentMetadataCreateFromJSON = jointWithRightsOfSurvivorshipEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -137,4 +140,10 @@ var JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$;
     /** @deprecated use `JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$outboundSchema` instead. */
     JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$.outboundSchema = exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$outboundSchema;
 })(JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$ || (exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$ = JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$ = {}));
+function jointWithRightsOfSurvivorshipEnrollmentMetadataCreateToJSON(jointWithRightsOfSurvivorshipEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$outboundSchema.parse(jointWithRightsOfSurvivorshipEnrollmentMetadataCreate));
+}
+function jointWithRightsOfSurvivorshipEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.JointWithRightsOfSurvivorshipEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'JointWithRightsOfSurvivorshipEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=jointwithrightsofsurvivorshipenrollmentmetadatacreate.js.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SubscriberDeletePushSubscriptionRequest = {
   /**
@@ -70,6 +73,33 @@ export namespace SubscriberDeletePushSubscriptionRequest$ {
   export type Outbound = SubscriberDeletePushSubscriptionRequest$Outbound;
 }
 
+export function subscriberDeletePushSubscriptionRequestToJSON(
+  subscriberDeletePushSubscriptionRequest:
+    SubscriberDeletePushSubscriptionRequest,
+): string {
+  return JSON.stringify(
+    SubscriberDeletePushSubscriptionRequest$outboundSchema.parse(
+      subscriberDeletePushSubscriptionRequest,
+    ),
+  );
+}
+
+export function subscriberDeletePushSubscriptionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SubscriberDeletePushSubscriptionRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SubscriberDeletePushSubscriptionRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SubscriberDeletePushSubscriptionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const SubscriberDeletePushSubscriptionResponse$inboundSchema: z.ZodType<
   SubscriberDeletePushSubscriptionResponse,
@@ -119,4 +149,31 @@ export namespace SubscriberDeletePushSubscriptionResponse$ {
     SubscriberDeletePushSubscriptionResponse$outboundSchema;
   /** @deprecated use `SubscriberDeletePushSubscriptionResponse$Outbound` instead. */
   export type Outbound = SubscriberDeletePushSubscriptionResponse$Outbound;
+}
+
+export function subscriberDeletePushSubscriptionResponseToJSON(
+  subscriberDeletePushSubscriptionResponse:
+    SubscriberDeletePushSubscriptionResponse,
+): string {
+  return JSON.stringify(
+    SubscriberDeletePushSubscriptionResponse$outboundSchema.parse(
+      subscriberDeletePushSubscriptionResponse,
+    ),
+  );
+}
+
+export function subscriberDeletePushSubscriptionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SubscriberDeletePushSubscriptionResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SubscriberDeletePushSubscriptionResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SubscriberDeletePushSubscriptionResponse' from JSON`,
+  );
 }

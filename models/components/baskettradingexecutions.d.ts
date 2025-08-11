@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BasketTradingExecutedPrice, BasketTradingExecutedPrice$Outbound } from "./baskettradingexecutedprice.js";
 /**
  * The quantity of the order. For Equities: measured in shares. For Fixed Income assets: measured in the face value of the currency of the order.
@@ -46,6 +48,8 @@ export declare namespace BasketTradingExecutionsQuantity$ {
     /** @deprecated use `BasketTradingExecutionsQuantity$Outbound` instead. */
     type Outbound = BasketTradingExecutionsQuantity$Outbound;
 }
+export declare function basketTradingExecutionsQuantityToJSON(basketTradingExecutionsQuantity: BasketTradingExecutionsQuantity): string;
+export declare function basketTradingExecutionsQuantityFromJSON(jsonString: string): SafeParseResult<BasketTradingExecutionsQuantity, SDKValidationError>;
 /** @internal */
 export declare const BasketTradingExecutions$inboundSchema: z.ZodType<BasketTradingExecutions, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -68,4 +72,6 @@ export declare namespace BasketTradingExecutions$ {
     /** @deprecated use `BasketTradingExecutions$Outbound` instead. */
     type Outbound = BasketTradingExecutions$Outbound;
 }
+export declare function basketTradingExecutionsToJSON(basketTradingExecutions: BasketTradingExecutions): string;
+export declare function basketTradingExecutionsFromJSON(jsonString: string): SafeParseResult<BasketTradingExecutions, SDKValidationError>;
 //# sourceMappingURL=baskettradingexecutions.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type RetirementConstraintsRetrieveCashJournalConstraintsResponse = {
     httpMeta: components.HTTPMetadata;
     /**
@@ -33,4 +35,6 @@ export declare namespace RetirementConstraintsRetrieveCashJournalConstraintsResp
     /** @deprecated use `RetirementConstraintsRetrieveCashJournalConstraintsResponse$Outbound` instead. */
     type Outbound = RetirementConstraintsRetrieveCashJournalConstraintsResponse$Outbound;
 }
+export declare function retirementConstraintsRetrieveCashJournalConstraintsResponseToJSON(retirementConstraintsRetrieveCashJournalConstraintsResponse: RetirementConstraintsRetrieveCashJournalConstraintsResponse): string;
+export declare function retirementConstraintsRetrieveCashJournalConstraintsResponseFromJSON(jsonString: string): SafeParseResult<RetirementConstraintsRetrieveCashJournalConstraintsResponse, SDKValidationError>;
 //# sourceMappingURL=retirementconstraintsretrievecashjournalconstraints.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The object containing data for the purpose of delivery physical mailings to a party; Typically used for statements, account updates, tax documents, and other postal mailings; May also be used as an alternative identity verification address to personalAddress. Required fields within the `mailing_address` object include:
  *
@@ -162,6 +164,8 @@ export declare namespace InterestedPartyMailingAddress$ {
     /** @deprecated use `InterestedPartyMailingAddress$Outbound` instead. */
     type Outbound = InterestedPartyMailingAddress$Outbound;
 }
+export declare function interestedPartyMailingAddressToJSON(interestedPartyMailingAddress: InterestedPartyMailingAddress): string;
+export declare function interestedPartyMailingAddressFromJSON(jsonString: string): SafeParseResult<InterestedPartyMailingAddress, SDKValidationError>;
 /** @internal */
 export declare const InterestedPartyStatementDeliveryPreference$inboundSchema: z.ZodType<InterestedPartyStatementDeliveryPreferenceOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -215,4 +219,6 @@ export declare namespace InterestedParty$ {
     /** @deprecated use `InterestedParty$Outbound` instead. */
     type Outbound = InterestedParty$Outbound;
 }
+export declare function interestedPartyToJSON(interestedParty: InterestedParty): string;
+export declare function interestedPartyFromJSON(jsonString: string): SafeParseResult<InterestedParty, SDKValidationError>;
 //# sourceMappingURL=interestedparty.d.ts.map

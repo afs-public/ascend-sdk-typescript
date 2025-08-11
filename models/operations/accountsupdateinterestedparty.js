@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsUpdateInterestedPartyResponse$ = exports.AccountsUpdateInterestedPartyResponse$outboundSchema = exports.AccountsUpdateInterestedPartyResponse$inboundSchema = exports.AccountsUpdateInterestedPartyRequest$ = exports.AccountsUpdateInterestedPartyRequest$outboundSchema = exports.AccountsUpdateInterestedPartyRequest$inboundSchema = void 0;
+exports.accountsUpdateInterestedPartyRequestToJSON = accountsUpdateInterestedPartyRequestToJSON;
+exports.accountsUpdateInterestedPartyRequestFromJSON = accountsUpdateInterestedPartyRequestFromJSON;
+exports.accountsUpdateInterestedPartyResponseToJSON = accountsUpdateInterestedPartyResponseToJSON;
+exports.accountsUpdateInterestedPartyResponseFromJSON = accountsUpdateInterestedPartyResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsUpdateInterestedPartyRequest$inboundSchema = z.object({
@@ -79,6 +84,12 @@ var AccountsUpdateInterestedPartyRequest$;
     /** @deprecated use `AccountsUpdateInterestedPartyRequest$outboundSchema` instead. */
     AccountsUpdateInterestedPartyRequest$.outboundSchema = exports.AccountsUpdateInterestedPartyRequest$outboundSchema;
 })(AccountsUpdateInterestedPartyRequest$ || (exports.AccountsUpdateInterestedPartyRequest$ = AccountsUpdateInterestedPartyRequest$ = {}));
+function accountsUpdateInterestedPartyRequestToJSON(accountsUpdateInterestedPartyRequest) {
+    return JSON.stringify(exports.AccountsUpdateInterestedPartyRequest$outboundSchema.parse(accountsUpdateInterestedPartyRequest));
+}
+function accountsUpdateInterestedPartyRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateInterestedPartyRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateInterestedPartyRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsUpdateInterestedPartyResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var AccountsUpdateInterestedPartyResponse$;
     /** @deprecated use `AccountsUpdateInterestedPartyResponse$outboundSchema` instead. */
     AccountsUpdateInterestedPartyResponse$.outboundSchema = exports.AccountsUpdateInterestedPartyResponse$outboundSchema;
 })(AccountsUpdateInterestedPartyResponse$ || (exports.AccountsUpdateInterestedPartyResponse$ = AccountsUpdateInterestedPartyResponse$ = {}));
+function accountsUpdateInterestedPartyResponseToJSON(accountsUpdateInterestedPartyResponse) {
+    return JSON.stringify(exports.AccountsUpdateInterestedPartyResponse$outboundSchema.parse(accountsUpdateInterestedPartyResponse));
+}
+function accountsUpdateInterestedPartyResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsUpdateInterestedPartyResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsUpdateInterestedPartyResponse' from JSON`);
+}
 //# sourceMappingURL=accountsupdateinterestedparty.js.map

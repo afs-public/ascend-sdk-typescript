@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AuthenticationListSigningKeysSecurity = {
     apiKeyAuth: string;
 };
@@ -44,6 +46,8 @@ export declare namespace AuthenticationListSigningKeysSecurity$ {
     /** @deprecated use `AuthenticationListSigningKeysSecurity$Outbound` instead. */
     type Outbound = AuthenticationListSigningKeysSecurity$Outbound;
 }
+export declare function authenticationListSigningKeysSecurityToJSON(authenticationListSigningKeysSecurity: AuthenticationListSigningKeysSecurity): string;
+export declare function authenticationListSigningKeysSecurityFromJSON(jsonString: string): SafeParseResult<AuthenticationListSigningKeysSecurity, SDKValidationError>;
 /** @internal */
 export declare const AuthenticationListSigningKeysRequest$inboundSchema: z.ZodType<AuthenticationListSigningKeysRequest, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -65,6 +69,8 @@ export declare namespace AuthenticationListSigningKeysRequest$ {
     /** @deprecated use `AuthenticationListSigningKeysRequest$Outbound` instead. */
     type Outbound = AuthenticationListSigningKeysRequest$Outbound;
 }
+export declare function authenticationListSigningKeysRequestToJSON(authenticationListSigningKeysRequest: AuthenticationListSigningKeysRequest): string;
+export declare function authenticationListSigningKeysRequestFromJSON(jsonString: string): SafeParseResult<AuthenticationListSigningKeysRequest, SDKValidationError>;
 /** @internal */
 export declare const AuthenticationListSigningKeysResponse$inboundSchema: z.ZodType<AuthenticationListSigningKeysResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -87,4 +93,6 @@ export declare namespace AuthenticationListSigningKeysResponse$ {
     /** @deprecated use `AuthenticationListSigningKeysResponse$Outbound` instead. */
     type Outbound = AuthenticationListSigningKeysResponse$Outbound;
 }
+export declare function authenticationListSigningKeysResponseToJSON(authenticationListSigningKeysResponse: AuthenticationListSigningKeysResponse): string;
+export declare function authenticationListSigningKeysResponseFromJSON(jsonString: string): SafeParseResult<AuthenticationListSigningKeysResponse, SDKValidationError>;
 //# sourceMappingURL=authenticationlistsigningkeys.d.ts.map

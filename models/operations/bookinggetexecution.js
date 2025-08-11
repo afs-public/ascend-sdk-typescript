@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingGetExecutionResponse$ = exports.BookingGetExecutionResponse$outboundSchema = exports.BookingGetExecutionResponse$inboundSchema = exports.BookingGetExecutionRequest$ = exports.BookingGetExecutionRequest$outboundSchema = exports.BookingGetExecutionRequest$inboundSchema = void 0;
+exports.bookingGetExecutionRequestToJSON = bookingGetExecutionRequestToJSON;
+exports.bookingGetExecutionRequestFromJSON = bookingGetExecutionRequestFromJSON;
+exports.bookingGetExecutionResponseToJSON = bookingGetExecutionResponseToJSON;
+exports.bookingGetExecutionResponseFromJSON = bookingGetExecutionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BookingGetExecutionRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var BookingGetExecutionRequest$;
     /** @deprecated use `BookingGetExecutionRequest$outboundSchema` instead. */
     BookingGetExecutionRequest$.outboundSchema = exports.BookingGetExecutionRequest$outboundSchema;
 })(BookingGetExecutionRequest$ || (exports.BookingGetExecutionRequest$ = BookingGetExecutionRequest$ = {}));
+function bookingGetExecutionRequestToJSON(bookingGetExecutionRequest) {
+    return JSON.stringify(exports.BookingGetExecutionRequest$outboundSchema.parse(bookingGetExecutionRequest));
+}
+function bookingGetExecutionRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingGetExecutionRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingGetExecutionRequest' from JSON`);
+}
 /** @internal */
 exports.BookingGetExecutionResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var BookingGetExecutionResponse$;
     /** @deprecated use `BookingGetExecutionResponse$outboundSchema` instead. */
     BookingGetExecutionResponse$.outboundSchema = exports.BookingGetExecutionResponse$outboundSchema;
 })(BookingGetExecutionResponse$ || (exports.BookingGetExecutionResponse$ = BookingGetExecutionResponse$ = {}));
+function bookingGetExecutionResponseToJSON(bookingGetExecutionResponse) {
+    return JSON.stringify(exports.BookingGetExecutionResponse$outboundSchema.parse(bookingGetExecutionResponse));
+}
+function bookingGetExecutionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingGetExecutionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingGetExecutionResponse' from JSON`);
+}
 //# sourceMappingURL=bookinggetexecution.js.map

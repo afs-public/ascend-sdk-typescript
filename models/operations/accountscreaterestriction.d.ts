@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsCreateRestrictionRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace AccountsCreateRestrictionRequest$ {
     /** @deprecated use `AccountsCreateRestrictionRequest$Outbound` instead. */
     type Outbound = AccountsCreateRestrictionRequest$Outbound;
 }
+export declare function accountsCreateRestrictionRequestToJSON(accountsCreateRestrictionRequest: AccountsCreateRestrictionRequest): string;
+export declare function accountsCreateRestrictionRequestFromJSON(jsonString: string): SafeParseResult<AccountsCreateRestrictionRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsCreateRestrictionResponse$inboundSchema: z.ZodType<AccountsCreateRestrictionResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsCreateRestrictionResponse$ {
     /** @deprecated use `AccountsCreateRestrictionResponse$Outbound` instead. */
     type Outbound = AccountsCreateRestrictionResponse$Outbound;
 }
+export declare function accountsCreateRestrictionResponseToJSON(accountsCreateRestrictionResponse: AccountsCreateRestrictionResponse): string;
+export declare function accountsCreateRestrictionResponseFromJSON(jsonString: string): SafeParseResult<AccountsCreateRestrictionResponse, SDKValidationError>;
 //# sourceMappingURL=accountscreaterestriction.d.ts.map

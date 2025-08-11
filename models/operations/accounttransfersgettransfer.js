@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountTransfersGetTransferResponse$ = exports.AccountTransfersGetTransferResponse$outboundSchema = exports.AccountTransfersGetTransferResponse$inboundSchema = exports.AccountTransfersGetTransferRequest$ = exports.AccountTransfersGetTransferRequest$outboundSchema = exports.AccountTransfersGetTransferRequest$inboundSchema = void 0;
+exports.accountTransfersGetTransferRequestToJSON = accountTransfersGetTransferRequestToJSON;
+exports.accountTransfersGetTransferRequestFromJSON = accountTransfersGetTransferRequestFromJSON;
+exports.accountTransfersGetTransferResponseToJSON = accountTransfersGetTransferResponseToJSON;
+exports.accountTransfersGetTransferResponseFromJSON = accountTransfersGetTransferResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountTransfersGetTransferRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var AccountTransfersGetTransferRequest$;
     /** @deprecated use `AccountTransfersGetTransferRequest$outboundSchema` instead. */
     AccountTransfersGetTransferRequest$.outboundSchema = exports.AccountTransfersGetTransferRequest$outboundSchema;
 })(AccountTransfersGetTransferRequest$ || (exports.AccountTransfersGetTransferRequest$ = AccountTransfersGetTransferRequest$ = {}));
+function accountTransfersGetTransferRequestToJSON(accountTransfersGetTransferRequest) {
+    return JSON.stringify(exports.AccountTransfersGetTransferRequest$outboundSchema.parse(accountTransfersGetTransferRequest));
+}
+function accountTransfersGetTransferRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountTransfersGetTransferRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountTransfersGetTransferRequest' from JSON`);
+}
 /** @internal */
 exports.AccountTransfersGetTransferResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var AccountTransfersGetTransferResponse$;
     /** @deprecated use `AccountTransfersGetTransferResponse$outboundSchema` instead. */
     AccountTransfersGetTransferResponse$.outboundSchema = exports.AccountTransfersGetTransferResponse$outboundSchema;
 })(AccountTransfersGetTransferResponse$ || (exports.AccountTransfersGetTransferResponse$ = AccountTransfersGetTransferResponse$ = {}));
+function accountTransfersGetTransferResponseToJSON(accountTransfersGetTransferResponse) {
+    return JSON.stringify(exports.AccountTransfersGetTransferResponse$outboundSchema.parse(accountTransfersGetTransferResponse));
+}
+function accountTransfersGetTransferResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountTransfersGetTransferResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountTransfersGetTransferResponse' from JSON`);
+}
 //# sourceMappingURL=accounttransfersgettransfer.js.map

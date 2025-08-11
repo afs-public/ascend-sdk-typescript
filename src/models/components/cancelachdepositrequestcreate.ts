@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing ACH deposit.
@@ -55,4 +58,24 @@ export namespace CancelAchDepositRequestCreate$ {
   export const outboundSchema = CancelAchDepositRequestCreate$outboundSchema;
   /** @deprecated use `CancelAchDepositRequestCreate$Outbound` instead. */
   export type Outbound = CancelAchDepositRequestCreate$Outbound;
+}
+
+export function cancelAchDepositRequestCreateToJSON(
+  cancelAchDepositRequestCreate: CancelAchDepositRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelAchDepositRequestCreate$outboundSchema.parse(
+      cancelAchDepositRequestCreate,
+    ),
+  );
+}
+
+export function cancelAchDepositRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelAchDepositRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelAchDepositRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelAchDepositRequestCreate' from JSON`,
+  );
 }

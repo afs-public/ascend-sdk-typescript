@@ -8,7 +8,7 @@ The nature of the U.S. Tax ID indicated in the related tax_id field; Examples in
 import { LegalNaturalPersonTaxIdType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: LegalNaturalPersonTaxIdType =
-  LegalNaturalPersonTaxIdType.TaxIdTypeSsn;
+  LegalNaturalPersonTaxIdType.TaxIdTypeEin;
 ```
 
 ## Values

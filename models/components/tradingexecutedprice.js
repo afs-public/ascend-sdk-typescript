@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TradingExecutedPrice$ = exports.TradingExecutedPrice$outboundSchema = exports.TradingExecutedPrice$inboundSchema = exports.TradingExecutedPriceType$ = exports.TradingExecutedPriceType$outboundSchema = exports.TradingExecutedPriceType$inboundSchema = exports.Price$ = exports.Price$outboundSchema = exports.Price$inboundSchema = exports.TradingExecutedPriceType = void 0;
+exports.priceToJSON = priceToJSON;
+exports.priceFromJSON = priceFromJSON;
+exports.tradingExecutedPriceToJSON = tradingExecutedPriceToJSON;
+exports.tradingExecutedPriceFromJSON = tradingExecutedPriceFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of this price, which must be PRICE_PER_UNIT for equity orders, or PERCENTAGE_OF_PAR for fixed income orders.
@@ -69,6 +74,12 @@ var Price$;
     /** @deprecated use `Price$outboundSchema` instead. */
     Price$.outboundSchema = exports.Price$outboundSchema;
 })(Price$ || (exports.Price$ = Price$ = {}));
+function priceToJSON(price) {
+    return JSON.stringify(exports.Price$outboundSchema.parse(price));
+}
+function priceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Price$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Price' from JSON`);
+}
 /** @internal */
 exports.TradingExecutedPriceType$inboundSchema = z
     .union([
@@ -112,4 +123,10 @@ var TradingExecutedPrice$;
     /** @deprecated use `TradingExecutedPrice$outboundSchema` instead. */
     TradingExecutedPrice$.outboundSchema = exports.TradingExecutedPrice$outboundSchema;
 })(TradingExecutedPrice$ || (exports.TradingExecutedPrice$ = TradingExecutedPrice$ = {}));
+function tradingExecutedPriceToJSON(tradingExecutedPrice) {
+    return JSON.stringify(exports.TradingExecutedPrice$outboundSchema.parse(tradingExecutedPrice));
+}
+function tradingExecutedPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradingExecutedPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradingExecutedPrice' from JSON`);
+}
 //# sourceMappingURL=tradingexecutedprice.js.map

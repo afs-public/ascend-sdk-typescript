@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DescriptionDetail,
   DescriptionDetail$inboundSchema,
@@ -139,4 +142,18 @@ export namespace RelatedProfile$ {
   export const outboundSchema = RelatedProfile$outboundSchema;
   /** @deprecated use `RelatedProfile$Outbound` instead. */
   export type Outbound = RelatedProfile$Outbound;
+}
+
+export function relatedProfileToJSON(relatedProfile: RelatedProfile): string {
+  return JSON.stringify(RelatedProfile$outboundSchema.parse(relatedProfile));
+}
+
+export function relatedProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<RelatedProfile, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RelatedProfile$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RelatedProfile' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchDepositsForceApproveAchDepositRequest = {
   /**
@@ -91,6 +94,33 @@ export namespace AchDepositsForceApproveAchDepositRequest$ {
   export type Outbound = AchDepositsForceApproveAchDepositRequest$Outbound;
 }
 
+export function achDepositsForceApproveAchDepositRequestToJSON(
+  achDepositsForceApproveAchDepositRequest:
+    AchDepositsForceApproveAchDepositRequest,
+): string {
+  return JSON.stringify(
+    AchDepositsForceApproveAchDepositRequest$outboundSchema.parse(
+      achDepositsForceApproveAchDepositRequest,
+    ),
+  );
+}
+
+export function achDepositsForceApproveAchDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchDepositsForceApproveAchDepositRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositsForceApproveAchDepositRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchDepositsForceApproveAchDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositsForceApproveAchDepositResponse$inboundSchema: z.ZodType<
   AchDepositsForceApproveAchDepositResponse,
@@ -146,4 +176,31 @@ export namespace AchDepositsForceApproveAchDepositResponse$ {
     AchDepositsForceApproveAchDepositResponse$outboundSchema;
   /** @deprecated use `AchDepositsForceApproveAchDepositResponse$Outbound` instead. */
   export type Outbound = AchDepositsForceApproveAchDepositResponse$Outbound;
+}
+
+export function achDepositsForceApproveAchDepositResponseToJSON(
+  achDepositsForceApproveAchDepositResponse:
+    AchDepositsForceApproveAchDepositResponse,
+): string {
+  return JSON.stringify(
+    AchDepositsForceApproveAchDepositResponse$outboundSchema.parse(
+      achDepositsForceApproveAchDepositResponse,
+    ),
+  );
+}
+
+export function achDepositsForceApproveAchDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchDepositsForceApproveAchDepositResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchDepositsForceApproveAchDepositResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchDepositsForceApproveAchDepositResponse' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TradeAllocationCreate$ = exports.TradeAllocationCreate$outboundSchema = exports.TradeAllocationCreate$inboundSchema = exports.TradeAllocationCreateWhenIssued$ = exports.TradeAllocationCreateWhenIssued$outboundSchema = exports.TradeAllocationCreateWhenIssued$inboundSchema = exports.ToSide$ = exports.ToSide$outboundSchema = exports.ToSide$inboundSchema = exports.TradeAllocationCreateSpecialInstructions$ = exports.TradeAllocationCreateSpecialInstructions$outboundSchema = exports.TradeAllocationCreateSpecialInstructions$inboundSchema = exports.TradeAllocationCreateSideModifier$ = exports.TradeAllocationCreateSideModifier$outboundSchema = exports.TradeAllocationCreateSideModifier$inboundSchema = exports.TradeAllocationCreateIdentifierType$ = exports.TradeAllocationCreateIdentifierType$outboundSchema = exports.TradeAllocationCreateIdentifierType$inboundSchema = exports.TradeAllocationCreateBrokerCapacity$ = exports.TradeAllocationCreateBrokerCapacity$outboundSchema = exports.TradeAllocationCreateBrokerCapacity$inboundSchema = exports.TradeAllocationCreateAssetType$ = exports.TradeAllocationCreateAssetType$outboundSchema = exports.TradeAllocationCreateAssetType$inboundSchema = exports.TradeAllocationCreateWhenIssued = exports.ToSide = exports.TradeAllocationCreateSpecialInstructions = exports.TradeAllocationCreateSideModifier = exports.TradeAllocationCreateIdentifierType = exports.TradeAllocationCreateBrokerCapacity = exports.TradeAllocationCreateAssetType = void 0;
+exports.tradeAllocationCreateToJSON = tradeAllocationCreateToJSON;
+exports.tradeAllocationCreateFromJSON = tradeAllocationCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bondyieldcreate_js_1 = require("./bondyieldcreate.js");
 const bookingfeecreate_js_1 = require("./bookingfeecreate.js");
@@ -431,4 +434,10 @@ var TradeAllocationCreate$;
     /** @deprecated use `TradeAllocationCreate$outboundSchema` instead. */
     TradeAllocationCreate$.outboundSchema = exports.TradeAllocationCreate$outboundSchema;
 })(TradeAllocationCreate$ || (exports.TradeAllocationCreate$ = TradeAllocationCreate$ = {}));
+function tradeAllocationCreateToJSON(tradeAllocationCreate) {
+    return JSON.stringify(exports.TradeAllocationCreate$outboundSchema.parse(tradeAllocationCreate));
+}
+function tradeAllocationCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeAllocationCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeAllocationCreate' from JSON`);
+}
 //# sourceMappingURL=tradeallocationcreate.js.map

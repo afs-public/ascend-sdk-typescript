@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListBasketOrdersResponse$ = exports.ListBasketOrdersResponse$outboundSchema = exports.ListBasketOrdersResponse$inboundSchema = void 0;
+exports.listBasketOrdersResponseToJSON = listBasketOrdersResponseToJSON;
+exports.listBasketOrdersResponseFromJSON = listBasketOrdersResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const basketorder_js_1 = require("./basketorder.js");
 /** @internal */
 exports.ListBasketOrdersResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListBasketOrdersResponse$;
     /** @deprecated use `ListBasketOrdersResponse$outboundSchema` instead. */
     ListBasketOrdersResponse$.outboundSchema = exports.ListBasketOrdersResponse$outboundSchema;
 })(ListBasketOrdersResponse$ || (exports.ListBasketOrdersResponse$ = ListBasketOrdersResponse$ = {}));
+function listBasketOrdersResponseToJSON(listBasketOrdersResponse) {
+    return JSON.stringify(exports.ListBasketOrdersResponse$outboundSchema.parse(listBasketOrdersResponse));
+}
+function listBasketOrdersResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListBasketOrdersResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListBasketOrdersResponse' from JSON`);
+}
 //# sourceMappingURL=listbasketordersresponse.js.map

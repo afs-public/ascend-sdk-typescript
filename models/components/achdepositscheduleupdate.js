@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositScheduleUpdate$ = exports.AchDepositScheduleUpdate$outboundSchema = exports.AchDepositScheduleUpdate$inboundSchema = void 0;
+exports.achDepositScheduleUpdateToJSON = achDepositScheduleUpdateToJSON;
+exports.achDepositScheduleUpdateFromJSON = achDepositScheduleUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const depositscheduledetailsupdate_js_1 = require("./depositscheduledetailsupdate.js");
 /** @internal */
 exports.AchDepositScheduleUpdate$inboundSchema = z.object({
@@ -67,4 +70,10 @@ var AchDepositScheduleUpdate$;
     /** @deprecated use `AchDepositScheduleUpdate$outboundSchema` instead. */
     AchDepositScheduleUpdate$.outboundSchema = exports.AchDepositScheduleUpdate$outboundSchema;
 })(AchDepositScheduleUpdate$ || (exports.AchDepositScheduleUpdate$ = AchDepositScheduleUpdate$ = {}));
+function achDepositScheduleUpdateToJSON(achDepositScheduleUpdate) {
+    return JSON.stringify(exports.AchDepositScheduleUpdate$outboundSchema.parse(achDepositScheduleUpdate));
+}
+function achDepositScheduleUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositScheduleUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleUpdate' from JSON`);
+}
 //# sourceMappingURL=achdepositscheduleupdate.js.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BankRelationshipsReissueMicroDepositsRequest = {
   /**
@@ -92,6 +95,33 @@ export namespace BankRelationshipsReissueMicroDepositsRequest$ {
   export type Outbound = BankRelationshipsReissueMicroDepositsRequest$Outbound;
 }
 
+export function bankRelationshipsReissueMicroDepositsRequestToJSON(
+  bankRelationshipsReissueMicroDepositsRequest:
+    BankRelationshipsReissueMicroDepositsRequest,
+): string {
+  return JSON.stringify(
+    BankRelationshipsReissueMicroDepositsRequest$outboundSchema.parse(
+      bankRelationshipsReissueMicroDepositsRequest,
+    ),
+  );
+}
+
+export function bankRelationshipsReissueMicroDepositsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsReissueMicroDepositsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsReissueMicroDepositsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsReissueMicroDepositsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BankRelationshipsReissueMicroDepositsResponse$inboundSchema:
   z.ZodType<
@@ -148,4 +178,31 @@ export namespace BankRelationshipsReissueMicroDepositsResponse$ {
     BankRelationshipsReissueMicroDepositsResponse$outboundSchema;
   /** @deprecated use `BankRelationshipsReissueMicroDepositsResponse$Outbound` instead. */
   export type Outbound = BankRelationshipsReissueMicroDepositsResponse$Outbound;
+}
+
+export function bankRelationshipsReissueMicroDepositsResponseToJSON(
+  bankRelationshipsReissueMicroDepositsResponse:
+    BankRelationshipsReissueMicroDepositsResponse,
+): string {
+  return JSON.stringify(
+    BankRelationshipsReissueMicroDepositsResponse$outboundSchema.parse(
+      bankRelationshipsReissueMicroDepositsResponse,
+    ),
+  );
+}
+
+export function bankRelationshipsReissueMicroDepositsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsReissueMicroDepositsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsReissueMicroDepositsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsReissueMicroDepositsResponse' from JSON`,
+  );
 }

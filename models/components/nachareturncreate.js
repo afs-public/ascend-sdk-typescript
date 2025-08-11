@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NachaReturnCreate$ = exports.NachaReturnCreate$outboundSchema = exports.NachaReturnCreate$inboundSchema = exports.NachaReturnCreateCode$ = exports.NachaReturnCreateCode$outboundSchema = exports.NachaReturnCreateCode$inboundSchema = exports.NachaReturnCreateCode = void 0;
+exports.nachaReturnCreateToJSON = nachaReturnCreateToJSON;
+exports.nachaReturnCreateFromJSON = nachaReturnCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The cause of the return.
@@ -155,4 +158,10 @@ var NachaReturnCreate$;
     /** @deprecated use `NachaReturnCreate$outboundSchema` instead. */
     NachaReturnCreate$.outboundSchema = exports.NachaReturnCreate$outboundSchema;
 })(NachaReturnCreate$ || (exports.NachaReturnCreate$ = NachaReturnCreate$ = {}));
+function nachaReturnCreateToJSON(nachaReturnCreate) {
+    return JSON.stringify(exports.NachaReturnCreate$outboundSchema.parse(nachaReturnCreate));
+}
+function nachaReturnCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NachaReturnCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NachaReturnCreate' from JSON`);
+}
 //# sourceMappingURL=nachareturncreate.js.map

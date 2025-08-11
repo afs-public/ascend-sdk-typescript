@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerProfileUpdate$ = exports.CustomerProfileUpdate$outboundSchema = exports.CustomerProfileUpdate$inboundSchema = exports.CustomerProfileUpdateTotalNetWorthRangeUsd$ = exports.CustomerProfileUpdateTotalNetWorthRangeUsd$outboundSchema = exports.CustomerProfileUpdateTotalNetWorthRangeUsd$inboundSchema = exports.CustomerProfileUpdateLiquidNetWorthRangeUsd$ = exports.CustomerProfileUpdateLiquidNetWorthRangeUsd$outboundSchema = exports.CustomerProfileUpdateLiquidNetWorthRangeUsd$inboundSchema = exports.CustomerProfileUpdateInvestmentExperience$ = exports.CustomerProfileUpdateInvestmentExperience$outboundSchema = exports.CustomerProfileUpdateInvestmentExperience$inboundSchema = exports.CustomerProfileUpdateAnnualIncomeRangeUsd$ = exports.CustomerProfileUpdateAnnualIncomeRangeUsd$outboundSchema = exports.CustomerProfileUpdateAnnualIncomeRangeUsd$inboundSchema = exports.CustomerProfileUpdateTotalNetWorthRangeUsd = exports.CustomerProfileUpdateLiquidNetWorthRangeUsd = exports.CustomerProfileUpdateInvestmentExperience = exports.CustomerProfileUpdateAnnualIncomeRangeUsd = void 0;
+exports.customerProfileUpdateToJSON = customerProfileUpdateToJSON;
+exports.customerProfileUpdateFromJSON = customerProfileUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Annual income range; the low number is exclusive, the high number is inclusive
@@ -233,4 +236,10 @@ var CustomerProfileUpdate$;
     /** @deprecated use `CustomerProfileUpdate$outboundSchema` instead. */
     CustomerProfileUpdate$.outboundSchema = exports.CustomerProfileUpdate$outboundSchema;
 })(CustomerProfileUpdate$ || (exports.CustomerProfileUpdate$ = CustomerProfileUpdate$ = {}));
+function customerProfileUpdateToJSON(customerProfileUpdate) {
+    return JSON.stringify(exports.CustomerProfileUpdate$outboundSchema.parse(customerProfileUpdate));
+}
+function customerProfileUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerProfileUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CustomerProfileUpdate' from JSON`);
+}
 //# sourceMappingURL=customerprofileupdate.js.map

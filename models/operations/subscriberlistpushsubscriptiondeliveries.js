@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubscriberListPushSubscriptionDeliveriesResponse$ = exports.SubscriberListPushSubscriptionDeliveriesResponse$outboundSchema = exports.SubscriberListPushSubscriptionDeliveriesResponse$inboundSchema = exports.SubscriberListPushSubscriptionDeliveriesRequest$ = exports.SubscriberListPushSubscriptionDeliveriesRequest$outboundSchema = exports.SubscriberListPushSubscriptionDeliveriesRequest$inboundSchema = void 0;
+exports.subscriberListPushSubscriptionDeliveriesRequestToJSON = subscriberListPushSubscriptionDeliveriesRequestToJSON;
+exports.subscriberListPushSubscriptionDeliveriesRequestFromJSON = subscriberListPushSubscriptionDeliveriesRequestFromJSON;
+exports.subscriberListPushSubscriptionDeliveriesResponseToJSON = subscriberListPushSubscriptionDeliveriesResponseToJSON;
+exports.subscriberListPushSubscriptionDeliveriesResponseFromJSON = subscriberListPushSubscriptionDeliveriesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.SubscriberListPushSubscriptionDeliveriesRequest$inboundSchema = z.object({
@@ -77,6 +82,12 @@ var SubscriberListPushSubscriptionDeliveriesRequest$;
     /** @deprecated use `SubscriberListPushSubscriptionDeliveriesRequest$outboundSchema` instead. */
     SubscriberListPushSubscriptionDeliveriesRequest$.outboundSchema = exports.SubscriberListPushSubscriptionDeliveriesRequest$outboundSchema;
 })(SubscriberListPushSubscriptionDeliveriesRequest$ || (exports.SubscriberListPushSubscriptionDeliveriesRequest$ = SubscriberListPushSubscriptionDeliveriesRequest$ = {}));
+function subscriberListPushSubscriptionDeliveriesRequestToJSON(subscriberListPushSubscriptionDeliveriesRequest) {
+    return JSON.stringify(exports.SubscriberListPushSubscriptionDeliveriesRequest$outboundSchema.parse(subscriberListPushSubscriptionDeliveriesRequest));
+}
+function subscriberListPushSubscriptionDeliveriesRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberListPushSubscriptionDeliveriesRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberListPushSubscriptionDeliveriesRequest' from JSON`);
+}
 /** @internal */
 exports.SubscriberListPushSubscriptionDeliveriesResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var SubscriberListPushSubscriptionDeliveriesResponse$;
     /** @deprecated use `SubscriberListPushSubscriptionDeliveriesResponse$outboundSchema` instead. */
     SubscriberListPushSubscriptionDeliveriesResponse$.outboundSchema = exports.SubscriberListPushSubscriptionDeliveriesResponse$outboundSchema;
 })(SubscriberListPushSubscriptionDeliveriesResponse$ || (exports.SubscriberListPushSubscriptionDeliveriesResponse$ = SubscriberListPushSubscriptionDeliveriesResponse$ = {}));
+function subscriberListPushSubscriptionDeliveriesResponseToJSON(subscriberListPushSubscriptionDeliveriesResponse) {
+    return JSON.stringify(exports.SubscriberListPushSubscriptionDeliveriesResponse$outboundSchema.parse(subscriberListPushSubscriptionDeliveriesResponse));
+}
+function subscriberListPushSubscriptionDeliveriesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberListPushSubscriptionDeliveriesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberListPushSubscriptionDeliveriesResponse' from JSON`);
+}
 //# sourceMappingURL=subscriberlistpushsubscriptiondeliveries.js.map

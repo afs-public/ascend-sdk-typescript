@@ -16,9 +16,7 @@ let value: ForeignIndividualAccountEnrollmentMetadataCreate = {
       initialDepositSource: "Product Revenue",
     },
     financialProfile: {
-      bankingRelationships: [
-        "<value>",
-      ],
+      bankingRelationships: [],
       otherAccounts: {
         ownerHasOtherAccountsAtApex: true,
       },

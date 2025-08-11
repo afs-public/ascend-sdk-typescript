@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelTradeRequestCreate$ = exports.CancelTradeRequestCreate$outboundSchema = exports.CancelTradeRequestCreate$inboundSchema = void 0;
+exports.cancelTradeRequestCreateToJSON = cancelTradeRequestCreateToJSON;
+exports.cancelTradeRequestCreateFromJSON = cancelTradeRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelTradeRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -57,4 +60,10 @@ var CancelTradeRequestCreate$;
     /** @deprecated use `CancelTradeRequestCreate$outboundSchema` instead. */
     CancelTradeRequestCreate$.outboundSchema = exports.CancelTradeRequestCreate$outboundSchema;
 })(CancelTradeRequestCreate$ || (exports.CancelTradeRequestCreate$ = CancelTradeRequestCreate$ = {}));
+function cancelTradeRequestCreateToJSON(cancelTradeRequestCreate) {
+    return JSON.stringify(exports.CancelTradeRequestCreate$outboundSchema.parse(cancelTradeRequestCreate));
+}
+function cancelTradeRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeRequestCreate' from JSON`);
+}
 //# sourceMappingURL=canceltraderequestcreate.js.map

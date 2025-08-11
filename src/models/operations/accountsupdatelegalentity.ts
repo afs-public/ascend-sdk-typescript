@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsUpdateLegalEntityRequest = {
   /**
@@ -84,6 +87,26 @@ export namespace AccountsUpdateLegalEntityRequest$ {
   export type Outbound = AccountsUpdateLegalEntityRequest$Outbound;
 }
 
+export function accountsUpdateLegalEntityRequestToJSON(
+  accountsUpdateLegalEntityRequest: AccountsUpdateLegalEntityRequest,
+): string {
+  return JSON.stringify(
+    AccountsUpdateLegalEntityRequest$outboundSchema.parse(
+      accountsUpdateLegalEntityRequest,
+    ),
+  );
+}
+
+export function accountsUpdateLegalEntityRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateLegalEntityRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsUpdateLegalEntityRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateLegalEntityRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsUpdateLegalEntityResponse$inboundSchema: z.ZodType<
   AccountsUpdateLegalEntityResponse,
@@ -137,4 +160,24 @@ export namespace AccountsUpdateLegalEntityResponse$ {
     AccountsUpdateLegalEntityResponse$outboundSchema;
   /** @deprecated use `AccountsUpdateLegalEntityResponse$Outbound` instead. */
   export type Outbound = AccountsUpdateLegalEntityResponse$Outbound;
+}
+
+export function accountsUpdateLegalEntityResponseToJSON(
+  accountsUpdateLegalEntityResponse: AccountsUpdateLegalEntityResponse,
+): string {
+  return JSON.stringify(
+    AccountsUpdateLegalEntityResponse$outboundSchema.parse(
+      accountsUpdateLegalEntityResponse,
+    ),
+  );
+}
+
+export function accountsUpdateLegalEntityResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsUpdateLegalEntityResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsUpdateLegalEntityResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsUpdateLegalEntityResponse' from JSON`,
+  );
 }

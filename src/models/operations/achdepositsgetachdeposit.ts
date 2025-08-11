@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AchDepositsGetAchDepositRequest = {
   /**
@@ -78,6 +81,26 @@ export namespace AchDepositsGetAchDepositRequest$ {
   export type Outbound = AchDepositsGetAchDepositRequest$Outbound;
 }
 
+export function achDepositsGetAchDepositRequestToJSON(
+  achDepositsGetAchDepositRequest: AchDepositsGetAchDepositRequest,
+): string {
+  return JSON.stringify(
+    AchDepositsGetAchDepositRequest$outboundSchema.parse(
+      achDepositsGetAchDepositRequest,
+    ),
+  );
+}
+
+export function achDepositsGetAchDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositsGetAchDepositRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositsGetAchDepositRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositsGetAchDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositsGetAchDepositResponse$inboundSchema: z.ZodType<
   AchDepositsGetAchDepositResponse,
@@ -130,4 +153,24 @@ export namespace AchDepositsGetAchDepositResponse$ {
   export const outboundSchema = AchDepositsGetAchDepositResponse$outboundSchema;
   /** @deprecated use `AchDepositsGetAchDepositResponse$Outbound` instead. */
   export type Outbound = AchDepositsGetAchDepositResponse$Outbound;
+}
+
+export function achDepositsGetAchDepositResponseToJSON(
+  achDepositsGetAchDepositResponse: AchDepositsGetAchDepositResponse,
+): string {
+  return JSON.stringify(
+    AchDepositsGetAchDepositResponse$outboundSchema.parse(
+      achDepositsGetAchDepositResponse,
+    ),
+  );
+}
+
+export function achDepositsGetAchDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositsGetAchDepositResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositsGetAchDepositResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositsGetAchDepositResponse' from JSON`,
+  );
 }

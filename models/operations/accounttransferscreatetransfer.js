@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountTransfersCreateTransferResponse$ = exports.AccountTransfersCreateTransferResponse$outboundSchema = exports.AccountTransfersCreateTransferResponse$inboundSchema = exports.AccountTransfersCreateTransferRequest$ = exports.AccountTransfersCreateTransferRequest$outboundSchema = exports.AccountTransfersCreateTransferRequest$inboundSchema = void 0;
+exports.accountTransfersCreateTransferRequestToJSON = accountTransfersCreateTransferRequestToJSON;
+exports.accountTransfersCreateTransferRequestFromJSON = accountTransfersCreateTransferRequestFromJSON;
+exports.accountTransfersCreateTransferResponseToJSON = accountTransfersCreateTransferResponseToJSON;
+exports.accountTransfersCreateTransferResponseFromJSON = accountTransfersCreateTransferResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountTransfersCreateTransferRequest$inboundSchema = z.object({
@@ -79,6 +84,12 @@ var AccountTransfersCreateTransferRequest$;
     /** @deprecated use `AccountTransfersCreateTransferRequest$outboundSchema` instead. */
     AccountTransfersCreateTransferRequest$.outboundSchema = exports.AccountTransfersCreateTransferRequest$outboundSchema;
 })(AccountTransfersCreateTransferRequest$ || (exports.AccountTransfersCreateTransferRequest$ = AccountTransfersCreateTransferRequest$ = {}));
+function accountTransfersCreateTransferRequestToJSON(accountTransfersCreateTransferRequest) {
+    return JSON.stringify(exports.AccountTransfersCreateTransferRequest$outboundSchema.parse(accountTransfersCreateTransferRequest));
+}
+function accountTransfersCreateTransferRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountTransfersCreateTransferRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountTransfersCreateTransferRequest' from JSON`);
+}
 /** @internal */
 exports.AccountTransfersCreateTransferResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var AccountTransfersCreateTransferResponse$;
     /** @deprecated use `AccountTransfersCreateTransferResponse$outboundSchema` instead. */
     AccountTransfersCreateTransferResponse$.outboundSchema = exports.AccountTransfersCreateTransferResponse$outboundSchema;
 })(AccountTransfersCreateTransferResponse$ || (exports.AccountTransfersCreateTransferResponse$ = AccountTransfersCreateTransferResponse$ = {}));
+function accountTransfersCreateTransferResponseToJSON(accountTransfersCreateTransferResponse) {
+    return JSON.stringify(exports.AccountTransfersCreateTransferResponse$outboundSchema.parse(accountTransfersCreateTransferResponse));
+}
+function accountTransfersCreateTransferResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountTransfersCreateTransferResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountTransfersCreateTransferResponse' from JSON`);
+}
 //# sourceMappingURL=accounttransferscreatetransfer.js.map

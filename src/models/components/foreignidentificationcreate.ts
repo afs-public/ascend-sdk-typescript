@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateCreate,
   DateCreate$inboundSchema,
@@ -160,4 +163,24 @@ export namespace ForeignIdentificationCreate$ {
   export const outboundSchema = ForeignIdentificationCreate$outboundSchema;
   /** @deprecated use `ForeignIdentificationCreate$Outbound` instead. */
   export type Outbound = ForeignIdentificationCreate$Outbound;
+}
+
+export function foreignIdentificationCreateToJSON(
+  foreignIdentificationCreate: ForeignIdentificationCreate,
+): string {
+  return JSON.stringify(
+    ForeignIdentificationCreate$outboundSchema.parse(
+      foreignIdentificationCreate,
+    ),
+  );
+}
+
+export function foreignIdentificationCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ForeignIdentificationCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ForeignIdentificationCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ForeignIdentificationCreate' from JSON`,
+  );
 }

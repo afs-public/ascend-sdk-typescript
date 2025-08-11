@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashJournalsGetCashJournalResponse$ = exports.CashJournalsGetCashJournalResponse$outboundSchema = exports.CashJournalsGetCashJournalResponse$inboundSchema = exports.CashJournalsGetCashJournalRequest$ = exports.CashJournalsGetCashJournalRequest$outboundSchema = exports.CashJournalsGetCashJournalRequest$inboundSchema = void 0;
+exports.cashJournalsGetCashJournalRequestToJSON = cashJournalsGetCashJournalRequestToJSON;
+exports.cashJournalsGetCashJournalRequestFromJSON = cashJournalsGetCashJournalRequestFromJSON;
+exports.cashJournalsGetCashJournalResponseToJSON = cashJournalsGetCashJournalResponseToJSON;
+exports.cashJournalsGetCashJournalResponseFromJSON = cashJournalsGetCashJournalResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.CashJournalsGetCashJournalRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var CashJournalsGetCashJournalRequest$;
     /** @deprecated use `CashJournalsGetCashJournalRequest$outboundSchema` instead. */
     CashJournalsGetCashJournalRequest$.outboundSchema = exports.CashJournalsGetCashJournalRequest$outboundSchema;
 })(CashJournalsGetCashJournalRequest$ || (exports.CashJournalsGetCashJournalRequest$ = CashJournalsGetCashJournalRequest$ = {}));
+function cashJournalsGetCashJournalRequestToJSON(cashJournalsGetCashJournalRequest) {
+    return JSON.stringify(exports.CashJournalsGetCashJournalRequest$outboundSchema.parse(cashJournalsGetCashJournalRequest));
+}
+function cashJournalsGetCashJournalRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalsGetCashJournalRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalsGetCashJournalRequest' from JSON`);
+}
 /** @internal */
 exports.CashJournalsGetCashJournalResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var CashJournalsGetCashJournalResponse$;
     /** @deprecated use `CashJournalsGetCashJournalResponse$outboundSchema` instead. */
     CashJournalsGetCashJournalResponse$.outboundSchema = exports.CashJournalsGetCashJournalResponse$outboundSchema;
 })(CashJournalsGetCashJournalResponse$ || (exports.CashJournalsGetCashJournalResponse$ = CashJournalsGetCashJournalResponse$ = {}));
+function cashJournalsGetCashJournalResponseToJSON(cashJournalsGetCashJournalResponse) {
+    return JSON.stringify(exports.CashJournalsGetCashJournalResponse$outboundSchema.parse(cashJournalsGetCashJournalResponse));
+}
+function cashJournalsGetCashJournalResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalsGetCashJournalResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalsGetCashJournalResponse' from JSON`);
+}
 //# sourceMappingURL=cashjournalsgetcashjournal.js.map

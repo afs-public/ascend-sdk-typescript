@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingCancelTradeAllocationResponse$ = exports.BookingCancelTradeAllocationResponse$outboundSchema = exports.BookingCancelTradeAllocationResponse$inboundSchema = exports.BookingCancelTradeAllocationRequest$ = exports.BookingCancelTradeAllocationRequest$outboundSchema = exports.BookingCancelTradeAllocationRequest$inboundSchema = void 0;
+exports.bookingCancelTradeAllocationRequestToJSON = bookingCancelTradeAllocationRequestToJSON;
+exports.bookingCancelTradeAllocationRequestFromJSON = bookingCancelTradeAllocationRequestFromJSON;
+exports.bookingCancelTradeAllocationResponseToJSON = bookingCancelTradeAllocationResponseToJSON;
+exports.bookingCancelTradeAllocationResponseFromJSON = bookingCancelTradeAllocationResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BookingCancelTradeAllocationRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var BookingCancelTradeAllocationRequest$;
     /** @deprecated use `BookingCancelTradeAllocationRequest$outboundSchema` instead. */
     BookingCancelTradeAllocationRequest$.outboundSchema = exports.BookingCancelTradeAllocationRequest$outboundSchema;
 })(BookingCancelTradeAllocationRequest$ || (exports.BookingCancelTradeAllocationRequest$ = BookingCancelTradeAllocationRequest$ = {}));
+function bookingCancelTradeAllocationRequestToJSON(bookingCancelTradeAllocationRequest) {
+    return JSON.stringify(exports.BookingCancelTradeAllocationRequest$outboundSchema.parse(bookingCancelTradeAllocationRequest));
+}
+function bookingCancelTradeAllocationRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingCancelTradeAllocationRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingCancelTradeAllocationRequest' from JSON`);
+}
 /** @internal */
 exports.BookingCancelTradeAllocationResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -112,4 +123,10 @@ var BookingCancelTradeAllocationResponse$;
     /** @deprecated use `BookingCancelTradeAllocationResponse$outboundSchema` instead. */
     BookingCancelTradeAllocationResponse$.outboundSchema = exports.BookingCancelTradeAllocationResponse$outboundSchema;
 })(BookingCancelTradeAllocationResponse$ || (exports.BookingCancelTradeAllocationResponse$ = BookingCancelTradeAllocationResponse$ = {}));
+function bookingCancelTradeAllocationResponseToJSON(bookingCancelTradeAllocationResponse) {
+    return JSON.stringify(exports.BookingCancelTradeAllocationResponse$outboundSchema.parse(bookingCancelTradeAllocationResponse));
+}
+function bookingCancelTradeAllocationResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingCancelTradeAllocationResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingCancelTradeAllocationResponse' from JSON`);
+}
 //# sourceMappingURL=bookingcanceltradeallocation.js.map

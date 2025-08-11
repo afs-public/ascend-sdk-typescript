@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AuthenticationGenerateServiceAccountTokenSecurity = {
   apiKeyAuth: string;
@@ -71,6 +74,33 @@ export namespace AuthenticationGenerateServiceAccountTokenSecurity$ {
     AuthenticationGenerateServiceAccountTokenSecurity$Outbound;
 }
 
+export function authenticationGenerateServiceAccountTokenSecurityToJSON(
+  authenticationGenerateServiceAccountTokenSecurity:
+    AuthenticationGenerateServiceAccountTokenSecurity,
+): string {
+  return JSON.stringify(
+    AuthenticationGenerateServiceAccountTokenSecurity$outboundSchema.parse(
+      authenticationGenerateServiceAccountTokenSecurity,
+    ),
+  );
+}
+
+export function authenticationGenerateServiceAccountTokenSecurityFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AuthenticationGenerateServiceAccountTokenSecurity,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AuthenticationGenerateServiceAccountTokenSecurity$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AuthenticationGenerateServiceAccountTokenSecurity' from JSON`,
+  );
+}
+
 /** @internal */
 export const AuthenticationGenerateServiceAccountTokenResponse$inboundSchema:
   z.ZodType<
@@ -128,4 +158,31 @@ export namespace AuthenticationGenerateServiceAccountTokenResponse$ {
   /** @deprecated use `AuthenticationGenerateServiceAccountTokenResponse$Outbound` instead. */
   export type Outbound =
     AuthenticationGenerateServiceAccountTokenResponse$Outbound;
+}
+
+export function authenticationGenerateServiceAccountTokenResponseToJSON(
+  authenticationGenerateServiceAccountTokenResponse:
+    AuthenticationGenerateServiceAccountTokenResponse,
+): string {
+  return JSON.stringify(
+    AuthenticationGenerateServiceAccountTokenResponse$outboundSchema.parse(
+      authenticationGenerateServiceAccountTokenResponse,
+    ),
+  );
+}
+
+export function authenticationGenerateServiceAccountTokenResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AuthenticationGenerateServiceAccountTokenResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AuthenticationGenerateServiceAccountTokenResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AuthenticationGenerateServiceAccountTokenResponse' from JSON`,
+  );
 }

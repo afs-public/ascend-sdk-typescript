@@ -37,8 +37,29 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RebookExecutionResponse$ = exports.RebookExecutionResponse$outboundSchema = exports.RebookExecutionResponse$inboundSchema = exports.RebookExecutionResponseExecution$ = exports.RebookExecutionResponseExecution$outboundSchema = exports.RebookExecutionResponseExecution$inboundSchema = exports.RebookExecutionResponseState$ = exports.RebookExecutionResponseState$outboundSchema = exports.RebookExecutionResponseState$inboundSchema = exports.RebookExecutionResponseQuantity$ = exports.RebookExecutionResponseQuantity$outboundSchema = exports.RebookExecutionResponseQuantity$inboundSchema = exports.RebookExecutionResponsePriceAdjustment$ = exports.RebookExecutionResponsePriceAdjustment$outboundSchema = exports.RebookExecutionResponsePriceAdjustment$inboundSchema = exports.RebookExecutionResponsePriceAdjustmentType$ = exports.RebookExecutionResponsePriceAdjustmentType$outboundSchema = exports.RebookExecutionResponsePriceAdjustmentType$inboundSchema = exports.RebookExecutionResponsePriceAdjustmentAmount$ = exports.RebookExecutionResponsePriceAdjustmentAmount$outboundSchema = exports.RebookExecutionResponsePriceAdjustmentAmount$inboundSchema = exports.RebookExecutionResponsePrice$ = exports.RebookExecutionResponsePrice$outboundSchema = exports.RebookExecutionResponsePrice$inboundSchema = exports.RebookExecutionResponsePrevailingMarketPrice$ = exports.RebookExecutionResponsePrevailingMarketPrice$outboundSchema = exports.RebookExecutionResponsePrevailingMarketPrice$inboundSchema = exports.RebookExecutionResponseGrossAmount$ = exports.RebookExecutionResponseGrossAmount$outboundSchema = exports.RebookExecutionResponseGrossAmount$inboundSchema = exports.RebookExecutionResponseCommissionAmount$ = exports.RebookExecutionResponseCommissionAmount$outboundSchema = exports.RebookExecutionResponseCommissionAmount$inboundSchema = exports.RebookExecutionResponseAccruedInterestAmount$ = exports.RebookExecutionResponseAccruedInterestAmount$outboundSchema = exports.RebookExecutionResponseAccruedInterestAmount$inboundSchema = exports.RebookExecutionResponseState = exports.RebookExecutionResponsePriceAdjustmentType = void 0;
+exports.rebookExecutionResponseAccruedInterestAmountToJSON = rebookExecutionResponseAccruedInterestAmountToJSON;
+exports.rebookExecutionResponseAccruedInterestAmountFromJSON = rebookExecutionResponseAccruedInterestAmountFromJSON;
+exports.rebookExecutionResponseCommissionAmountToJSON = rebookExecutionResponseCommissionAmountToJSON;
+exports.rebookExecutionResponseCommissionAmountFromJSON = rebookExecutionResponseCommissionAmountFromJSON;
+exports.rebookExecutionResponseGrossAmountToJSON = rebookExecutionResponseGrossAmountToJSON;
+exports.rebookExecutionResponseGrossAmountFromJSON = rebookExecutionResponseGrossAmountFromJSON;
+exports.rebookExecutionResponsePrevailingMarketPriceToJSON = rebookExecutionResponsePrevailingMarketPriceToJSON;
+exports.rebookExecutionResponsePrevailingMarketPriceFromJSON = rebookExecutionResponsePrevailingMarketPriceFromJSON;
+exports.rebookExecutionResponsePriceToJSON = rebookExecutionResponsePriceToJSON;
+exports.rebookExecutionResponsePriceFromJSON = rebookExecutionResponsePriceFromJSON;
+exports.rebookExecutionResponsePriceAdjustmentAmountToJSON = rebookExecutionResponsePriceAdjustmentAmountToJSON;
+exports.rebookExecutionResponsePriceAdjustmentAmountFromJSON = rebookExecutionResponsePriceAdjustmentAmountFromJSON;
+exports.rebookExecutionResponsePriceAdjustmentToJSON = rebookExecutionResponsePriceAdjustmentToJSON;
+exports.rebookExecutionResponsePriceAdjustmentFromJSON = rebookExecutionResponsePriceAdjustmentFromJSON;
+exports.rebookExecutionResponseQuantityToJSON = rebookExecutionResponseQuantityToJSON;
+exports.rebookExecutionResponseQuantityFromJSON = rebookExecutionResponseQuantityFromJSON;
+exports.rebookExecutionResponseExecutionToJSON = rebookExecutionResponseExecutionToJSON;
+exports.rebookExecutionResponseExecutionFromJSON = rebookExecutionResponseExecutionFromJSON;
+exports.rebookExecutionResponseToJSON = rebookExecutionResponseToJSON;
+exports.rebookExecutionResponseFromJSON = rebookExecutionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bondyield_js_1 = require("./bondyield.js");
 /**
@@ -84,6 +105,12 @@ var RebookExecutionResponseAccruedInterestAmount$;
     /** @deprecated use `RebookExecutionResponseAccruedInterestAmount$outboundSchema` instead. */
     RebookExecutionResponseAccruedInterestAmount$.outboundSchema = exports.RebookExecutionResponseAccruedInterestAmount$outboundSchema;
 })(RebookExecutionResponseAccruedInterestAmount$ || (exports.RebookExecutionResponseAccruedInterestAmount$ = RebookExecutionResponseAccruedInterestAmount$ = {}));
+function rebookExecutionResponseAccruedInterestAmountToJSON(rebookExecutionResponseAccruedInterestAmount) {
+    return JSON.stringify(exports.RebookExecutionResponseAccruedInterestAmount$outboundSchema.parse(rebookExecutionResponseAccruedInterestAmount));
+}
+function rebookExecutionResponseAccruedInterestAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponseAccruedInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponseAccruedInterestAmount' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponseCommissionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -103,6 +130,12 @@ var RebookExecutionResponseCommissionAmount$;
     /** @deprecated use `RebookExecutionResponseCommissionAmount$outboundSchema` instead. */
     RebookExecutionResponseCommissionAmount$.outboundSchema = exports.RebookExecutionResponseCommissionAmount$outboundSchema;
 })(RebookExecutionResponseCommissionAmount$ || (exports.RebookExecutionResponseCommissionAmount$ = RebookExecutionResponseCommissionAmount$ = {}));
+function rebookExecutionResponseCommissionAmountToJSON(rebookExecutionResponseCommissionAmount) {
+    return JSON.stringify(exports.RebookExecutionResponseCommissionAmount$outboundSchema.parse(rebookExecutionResponseCommissionAmount));
+}
+function rebookExecutionResponseCommissionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponseCommissionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponseCommissionAmount' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponseGrossAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -122,6 +155,12 @@ var RebookExecutionResponseGrossAmount$;
     /** @deprecated use `RebookExecutionResponseGrossAmount$outboundSchema` instead. */
     RebookExecutionResponseGrossAmount$.outboundSchema = exports.RebookExecutionResponseGrossAmount$outboundSchema;
 })(RebookExecutionResponseGrossAmount$ || (exports.RebookExecutionResponseGrossAmount$ = RebookExecutionResponseGrossAmount$ = {}));
+function rebookExecutionResponseGrossAmountToJSON(rebookExecutionResponseGrossAmount) {
+    return JSON.stringify(exports.RebookExecutionResponseGrossAmount$outboundSchema.parse(rebookExecutionResponseGrossAmount));
+}
+function rebookExecutionResponseGrossAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponseGrossAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponseGrossAmount' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponsePrevailingMarketPrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -141,6 +180,12 @@ var RebookExecutionResponsePrevailingMarketPrice$;
     /** @deprecated use `RebookExecutionResponsePrevailingMarketPrice$outboundSchema` instead. */
     RebookExecutionResponsePrevailingMarketPrice$.outboundSchema = exports.RebookExecutionResponsePrevailingMarketPrice$outboundSchema;
 })(RebookExecutionResponsePrevailingMarketPrice$ || (exports.RebookExecutionResponsePrevailingMarketPrice$ = RebookExecutionResponsePrevailingMarketPrice$ = {}));
+function rebookExecutionResponsePrevailingMarketPriceToJSON(rebookExecutionResponsePrevailingMarketPrice) {
+    return JSON.stringify(exports.RebookExecutionResponsePrevailingMarketPrice$outboundSchema.parse(rebookExecutionResponsePrevailingMarketPrice));
+}
+function rebookExecutionResponsePrevailingMarketPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponsePrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponsePrevailingMarketPrice' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponsePrice$inboundSchema = z.object({
     value: z.string().optional(),
@@ -160,6 +205,12 @@ var RebookExecutionResponsePrice$;
     /** @deprecated use `RebookExecutionResponsePrice$outboundSchema` instead. */
     RebookExecutionResponsePrice$.outboundSchema = exports.RebookExecutionResponsePrice$outboundSchema;
 })(RebookExecutionResponsePrice$ || (exports.RebookExecutionResponsePrice$ = RebookExecutionResponsePrice$ = {}));
+function rebookExecutionResponsePriceToJSON(rebookExecutionResponsePrice) {
+    return JSON.stringify(exports.RebookExecutionResponsePrice$outboundSchema.parse(rebookExecutionResponsePrice));
+}
+function rebookExecutionResponsePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponsePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponsePrice' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponsePriceAdjustmentAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -179,6 +230,12 @@ var RebookExecutionResponsePriceAdjustmentAmount$;
     /** @deprecated use `RebookExecutionResponsePriceAdjustmentAmount$outboundSchema` instead. */
     RebookExecutionResponsePriceAdjustmentAmount$.outboundSchema = exports.RebookExecutionResponsePriceAdjustmentAmount$outboundSchema;
 })(RebookExecutionResponsePriceAdjustmentAmount$ || (exports.RebookExecutionResponsePriceAdjustmentAmount$ = RebookExecutionResponsePriceAdjustmentAmount$ = {}));
+function rebookExecutionResponsePriceAdjustmentAmountToJSON(rebookExecutionResponsePriceAdjustmentAmount) {
+    return JSON.stringify(exports.RebookExecutionResponsePriceAdjustmentAmount$outboundSchema.parse(rebookExecutionResponsePriceAdjustmentAmount));
+}
+function rebookExecutionResponsePriceAdjustmentAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponsePriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponsePriceAdjustmentAmount' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponsePriceAdjustmentType$inboundSchema = z
     .union([
@@ -233,6 +290,12 @@ var RebookExecutionResponsePriceAdjustment$;
     /** @deprecated use `RebookExecutionResponsePriceAdjustment$outboundSchema` instead. */
     RebookExecutionResponsePriceAdjustment$.outboundSchema = exports.RebookExecutionResponsePriceAdjustment$outboundSchema;
 })(RebookExecutionResponsePriceAdjustment$ || (exports.RebookExecutionResponsePriceAdjustment$ = RebookExecutionResponsePriceAdjustment$ = {}));
+function rebookExecutionResponsePriceAdjustmentToJSON(rebookExecutionResponsePriceAdjustment) {
+    return JSON.stringify(exports.RebookExecutionResponsePriceAdjustment$outboundSchema.parse(rebookExecutionResponsePriceAdjustment));
+}
+function rebookExecutionResponsePriceAdjustmentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponsePriceAdjustment$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponsePriceAdjustment' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponseQuantity$inboundSchema = z.object({
     value: z.string().optional(),
@@ -252,6 +315,12 @@ var RebookExecutionResponseQuantity$;
     /** @deprecated use `RebookExecutionResponseQuantity$outboundSchema` instead. */
     RebookExecutionResponseQuantity$.outboundSchema = exports.RebookExecutionResponseQuantity$outboundSchema;
 })(RebookExecutionResponseQuantity$ || (exports.RebookExecutionResponseQuantity$ = RebookExecutionResponseQuantity$ = {}));
+function rebookExecutionResponseQuantityToJSON(rebookExecutionResponseQuantity) {
+    return JSON.stringify(exports.RebookExecutionResponseQuantity$outboundSchema.parse(rebookExecutionResponseQuantity));
+}
+function rebookExecutionResponseQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponseQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponseQuantity' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponseState$inboundSchema = z
     .union([
@@ -358,6 +427,12 @@ var RebookExecutionResponseExecution$;
     /** @deprecated use `RebookExecutionResponseExecution$outboundSchema` instead. */
     RebookExecutionResponseExecution$.outboundSchema = exports.RebookExecutionResponseExecution$outboundSchema;
 })(RebookExecutionResponseExecution$ || (exports.RebookExecutionResponseExecution$ = RebookExecutionResponseExecution$ = {}));
+function rebookExecutionResponseExecutionToJSON(rebookExecutionResponseExecution) {
+    return JSON.stringify(exports.RebookExecutionResponseExecution$outboundSchema.parse(rebookExecutionResponseExecution));
+}
+function rebookExecutionResponseExecutionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponseExecution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponseExecution' from JSON`);
+}
 /** @internal */
 exports.RebookExecutionResponse$inboundSchema = z.object({
     execution: z.nullable(z.lazy(() => exports.RebookExecutionResponseExecution$inboundSchema)).optional(),
@@ -377,4 +452,10 @@ var RebookExecutionResponse$;
     /** @deprecated use `RebookExecutionResponse$outboundSchema` instead. */
     RebookExecutionResponse$.outboundSchema = exports.RebookExecutionResponse$outboundSchema;
 })(RebookExecutionResponse$ || (exports.RebookExecutionResponse$ = RebookExecutionResponse$ = {}));
+function rebookExecutionResponseToJSON(rebookExecutionResponse) {
+    return JSON.stringify(exports.RebookExecutionResponse$outboundSchema.parse(rebookExecutionResponse));
+}
+function rebookExecutionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookExecutionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookExecutionResponse' from JSON`);
+}
 //# sourceMappingURL=rebookexecutionresponse.js.map

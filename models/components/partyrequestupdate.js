@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PartyRequestUpdate$ = exports.PartyRequestUpdate$outboundSchema = exports.PartyRequestUpdate$inboundSchema = exports.PartyRequestUpdateTradeConfirmationDeliveryPreference$ = exports.PartyRequestUpdateTradeConfirmationDeliveryPreference$outboundSchema = exports.PartyRequestUpdateTradeConfirmationDeliveryPreference$inboundSchema = exports.PartyRequestUpdateTaxDocumentDeliveryPreference$ = exports.PartyRequestUpdateTaxDocumentDeliveryPreference$outboundSchema = exports.PartyRequestUpdateTaxDocumentDeliveryPreference$inboundSchema = exports.PartyRequestUpdateStatementDeliveryPreference$ = exports.PartyRequestUpdateStatementDeliveryPreference$outboundSchema = exports.PartyRequestUpdateStatementDeliveryPreference$inboundSchema = exports.PartyRequestUpdateRelationType$ = exports.PartyRequestUpdateRelationType$outboundSchema = exports.PartyRequestUpdateRelationType$inboundSchema = exports.PartyRequestUpdateProxyDeliveryPreference$ = exports.PartyRequestUpdateProxyDeliveryPreference$outboundSchema = exports.PartyRequestUpdateProxyDeliveryPreference$inboundSchema = exports.PartyRequestUpdateProspectusDeliveryPreference$ = exports.PartyRequestUpdateProspectusDeliveryPreference$outboundSchema = exports.PartyRequestUpdateProspectusDeliveryPreference$inboundSchema = exports.PartyRequestUpdateTradeConfirmationDeliveryPreference = exports.PartyRequestUpdateTaxDocumentDeliveryPreference = exports.PartyRequestUpdateStatementDeliveryPreference = exports.PartyRequestUpdateRelationType = exports.PartyRequestUpdateProxyDeliveryPreference = exports.PartyRequestUpdateProspectusDeliveryPreference = void 0;
+exports.partyRequestUpdateToJSON = partyRequestUpdateToJSON;
+exports.partyRequestUpdateFromJSON = partyRequestUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const phonenumberupdate_js_1 = require("./phonenumberupdate.js");
 const postaladdressupdate_js_1 = require("./postaladdressupdate.js");
@@ -310,4 +313,10 @@ var PartyRequestUpdate$;
     /** @deprecated use `PartyRequestUpdate$outboundSchema` instead. */
     PartyRequestUpdate$.outboundSchema = exports.PartyRequestUpdate$outboundSchema;
 })(PartyRequestUpdate$ || (exports.PartyRequestUpdate$ = PartyRequestUpdate$ = {}));
+function partyRequestUpdateToJSON(partyRequestUpdate) {
+    return JSON.stringify(exports.PartyRequestUpdate$outboundSchema.parse(partyRequestUpdate));
+}
+function partyRequestUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PartyRequestUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PartyRequestUpdate' from JSON`);
+}
 //# sourceMappingURL=partyrequestupdate.js.map

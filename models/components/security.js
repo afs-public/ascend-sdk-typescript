@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Security$ = exports.Security$outboundSchema = exports.Security$inboundSchema = exports.ServiceAccountCreds$ = exports.ServiceAccountCreds$outboundSchema = exports.ServiceAccountCreds$inboundSchema = void 0;
+exports.serviceAccountCredsToJSON = serviceAccountCredsToJSON;
+exports.serviceAccountCredsFromJSON = serviceAccountCredsFromJSON;
+exports.securityToJSON = securityToJSON;
+exports.securityFromJSON = securityFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ServiceAccountCreds$inboundSchema = z.object({
     privateKey: z.string(),
@@ -63,6 +68,12 @@ var ServiceAccountCreds$;
     /** @deprecated use `ServiceAccountCreds$outboundSchema` instead. */
     ServiceAccountCreds$.outboundSchema = exports.ServiceAccountCreds$outboundSchema;
 })(ServiceAccountCreds$ || (exports.ServiceAccountCreds$ = ServiceAccountCreds$ = {}));
+function serviceAccountCredsToJSON(serviceAccountCreds) {
+    return JSON.stringify(exports.ServiceAccountCreds$outboundSchema.parse(serviceAccountCreds));
+}
+function serviceAccountCredsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ServiceAccountCreds$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ServiceAccountCreds' from JSON`);
+}
 /** @internal */
 exports.Security$inboundSchema = z.object({
     apiKey: z.string().optional(),
@@ -86,4 +97,10 @@ var Security$;
     /** @deprecated use `Security$outboundSchema` instead. */
     Security$.outboundSchema = exports.Security$outboundSchema;
 })(Security$ || (exports.Security$ = Security$ = {}));
+function securityToJSON(security) {
+    return JSON.stringify(exports.Security$outboundSchema.parse(security));
+}
+function securityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Security$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Security' from JSON`);
+}
 //# sourceMappingURL=security.js.map

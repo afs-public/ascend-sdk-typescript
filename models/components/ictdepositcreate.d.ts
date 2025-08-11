@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 import { IctDepositTravelRuleCreate, IctDepositTravelRuleCreate$Outbound } from "./ictdeposittravelrulecreate.js";
 import { RetirementContributionCreate, RetirementContributionCreate$Outbound } from "./retirementcontributioncreate.js";
@@ -87,4 +89,6 @@ export declare namespace IctDepositCreate$ {
     /** @deprecated use `IctDepositCreate$Outbound` instead. */
     type Outbound = IctDepositCreate$Outbound;
 }
+export declare function ictDepositCreateToJSON(ictDepositCreate: IctDepositCreate): string;
+export declare function ictDepositCreateFromJSON(jsonString: string): SafeParseResult<IctDepositCreate, SDKValidationError>;
 //# sourceMappingURL=ictdepositcreate.d.ts.map

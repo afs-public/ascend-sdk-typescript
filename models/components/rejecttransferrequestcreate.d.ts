@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to reject internal Ascend transfers.
  */
@@ -38,4 +40,6 @@ export declare namespace RejectTransferRequestCreate$ {
     /** @deprecated use `RejectTransferRequestCreate$Outbound` instead. */
     type Outbound = RejectTransferRequestCreate$Outbound;
 }
+export declare function rejectTransferRequestCreateToJSON(rejectTransferRequestCreate: RejectTransferRequestCreate): string;
+export declare function rejectTransferRequestCreateFromJSON(jsonString: string): SafeParseResult<RejectTransferRequestCreate, SDKValidationError>;
 //# sourceMappingURL=rejecttransferrequestcreate.d.ts.map

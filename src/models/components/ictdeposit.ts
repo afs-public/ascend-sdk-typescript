@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of the transfer being deposited into the customer's account in USD
@@ -718,6 +721,24 @@ export namespace IctDepositAmount$ {
   export type Outbound = IctDepositAmount$Outbound;
 }
 
+export function ictDepositAmountToJSON(
+  ictDepositAmount: IctDepositAmount,
+): string {
+  return JSON.stringify(
+    IctDepositAmount$outboundSchema.parse(ictDepositAmount),
+  );
+}
+
+export function ictDepositAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDepositProgram$inboundSchema: z.ZodType<
   IctDepositProgramOpen,
@@ -829,6 +850,26 @@ export namespace IctDepositRetirementContribution$ {
   export type Outbound = IctDepositRetirementContribution$Outbound;
 }
 
+export function ictDepositRetirementContributionToJSON(
+  ictDepositRetirementContribution: IctDepositRetirementContribution,
+): string {
+  return JSON.stringify(
+    IctDepositRetirementContribution$outboundSchema.parse(
+      ictDepositRetirementContribution,
+    ),
+  );
+}
+
+export function ictDepositRetirementContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositRetirementContribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositRetirementContribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositRetirementContribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDepositStateState$inboundSchema: z.ZodType<
   IctDepositStateStateOpen,
@@ -917,6 +958,22 @@ export namespace IctDepositState$ {
   export const outboundSchema = IctDepositState$outboundSchema;
   /** @deprecated use `IctDepositState$Outbound` instead. */
   export type Outbound = IctDepositState$Outbound;
+}
+
+export function ictDepositStateToJSON(
+  ictDepositState: IctDepositState,
+): string {
+  return JSON.stringify(IctDepositState$outboundSchema.parse(ictDepositState));
+}
+
+export function ictDepositStateFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositState' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1009,6 +1066,20 @@ export namespace TransferState$ {
   export type Outbound = TransferState$Outbound;
 }
 
+export function transferStateToJSON(transferState: TransferState): string {
+  return JSON.stringify(TransferState$outboundSchema.parse(transferState));
+}
+
+export function transferStateFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferState' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDepositTravelRuleEntityOriginatingPartyAddress$inboundSchema:
   z.ZodType<
@@ -1098,6 +1169,33 @@ export namespace IctDepositTravelRuleEntityOriginatingPartyAddress$ {
     IctDepositTravelRuleEntityOriginatingPartyAddress$Outbound;
 }
 
+export function ictDepositTravelRuleEntityOriginatingPartyAddressToJSON(
+  ictDepositTravelRuleEntityOriginatingPartyAddress:
+    IctDepositTravelRuleEntityOriginatingPartyAddress,
+): string {
+  return JSON.stringify(
+    IctDepositTravelRuleEntityOriginatingPartyAddress$outboundSchema.parse(
+      ictDepositTravelRuleEntityOriginatingPartyAddress,
+    ),
+  );
+}
+
+export function ictDepositTravelRuleEntityOriginatingPartyAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctDepositTravelRuleEntityOriginatingPartyAddress,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositTravelRuleEntityOriginatingPartyAddress$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctDepositTravelRuleEntityOriginatingPartyAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const EntityOriginatingParty$inboundSchema: z.ZodType<
   EntityOriginatingParty,
@@ -1157,6 +1255,24 @@ export namespace EntityOriginatingParty$ {
   export const outboundSchema = EntityOriginatingParty$outboundSchema;
   /** @deprecated use `EntityOriginatingParty$Outbound` instead. */
   export type Outbound = EntityOriginatingParty$Outbound;
+}
+
+export function entityOriginatingPartyToJSON(
+  entityOriginatingParty: EntityOriginatingParty,
+): string {
+  return JSON.stringify(
+    EntityOriginatingParty$outboundSchema.parse(entityOriginatingParty),
+  );
+}
+
+export function entityOriginatingPartyFromJSON(
+  jsonString: string,
+): SafeParseResult<EntityOriginatingParty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntityOriginatingParty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntityOriginatingParty' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1243,6 +1359,24 @@ export namespace IctDepositAddress$ {
   export type Outbound = IctDepositAddress$Outbound;
 }
 
+export function ictDepositAddressToJSON(
+  ictDepositAddress: IctDepositAddress,
+): string {
+  return JSON.stringify(
+    IctDepositAddress$outboundSchema.parse(ictDepositAddress),
+  );
+}
+
+export function ictDepositAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const EntityRecipientParty$inboundSchema: z.ZodType<
   EntityRecipientParty,
@@ -1292,6 +1426,24 @@ export namespace EntityRecipientParty$ {
   export const outboundSchema = EntityRecipientParty$outboundSchema;
   /** @deprecated use `EntityRecipientParty$Outbound` instead. */
   export type Outbound = EntityRecipientParty$Outbound;
+}
+
+export function entityRecipientPartyToJSON(
+  entityRecipientParty: EntityRecipientParty,
+): string {
+  return JSON.stringify(
+    EntityRecipientParty$outboundSchema.parse(entityRecipientParty),
+  );
+}
+
+export function entityRecipientPartyFromJSON(
+  jsonString: string,
+): SafeParseResult<EntityRecipientParty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntityRecipientParty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntityRecipientParty' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1378,6 +1530,26 @@ export namespace IctDepositTravelRuleAddress$ {
   export type Outbound = IctDepositTravelRuleAddress$Outbound;
 }
 
+export function ictDepositTravelRuleAddressToJSON(
+  ictDepositTravelRuleAddress: IctDepositTravelRuleAddress,
+): string {
+  return JSON.stringify(
+    IctDepositTravelRuleAddress$outboundSchema.parse(
+      ictDepositTravelRuleAddress,
+    ),
+  );
+}
+
+export function ictDepositTravelRuleAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositTravelRuleAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositTravelRuleAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositTravelRuleAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const IndividualOriginatingParty$inboundSchema: z.ZodType<
   IndividualOriginatingParty,
@@ -1430,6 +1602,24 @@ export namespace IndividualOriginatingParty$ {
   export const outboundSchema = IndividualOriginatingParty$outboundSchema;
   /** @deprecated use `IndividualOriginatingParty$Outbound` instead. */
   export type Outbound = IndividualOriginatingParty$Outbound;
+}
+
+export function individualOriginatingPartyToJSON(
+  individualOriginatingParty: IndividualOriginatingParty,
+): string {
+  return JSON.stringify(
+    IndividualOriginatingParty$outboundSchema.parse(individualOriginatingParty),
+  );
+}
+
+export function individualOriginatingPartyFromJSON(
+  jsonString: string,
+): SafeParseResult<IndividualOriginatingParty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IndividualOriginatingParty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IndividualOriginatingParty' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1521,6 +1711,33 @@ export namespace IctDepositTravelRuleIndividualRecipientPartyAddress$ {
     IctDepositTravelRuleIndividualRecipientPartyAddress$Outbound;
 }
 
+export function ictDepositTravelRuleIndividualRecipientPartyAddressToJSON(
+  ictDepositTravelRuleIndividualRecipientPartyAddress:
+    IctDepositTravelRuleIndividualRecipientPartyAddress,
+): string {
+  return JSON.stringify(
+    IctDepositTravelRuleIndividualRecipientPartyAddress$outboundSchema.parse(
+      ictDepositTravelRuleIndividualRecipientPartyAddress,
+    ),
+  );
+}
+
+export function ictDepositTravelRuleIndividualRecipientPartyAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctDepositTravelRuleIndividualRecipientPartyAddress,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositTravelRuleIndividualRecipientPartyAddress$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctDepositTravelRuleIndividualRecipientPartyAddress' from JSON`,
+  );
+}
+
 /** @internal */
 export const IndividualRecipientParty$inboundSchema: z.ZodType<
   IndividualRecipientParty,
@@ -1584,6 +1801,24 @@ export namespace IndividualRecipientParty$ {
   export type Outbound = IndividualRecipientParty$Outbound;
 }
 
+export function individualRecipientPartyToJSON(
+  individualRecipientParty: IndividualRecipientParty,
+): string {
+  return JSON.stringify(
+    IndividualRecipientParty$outboundSchema.parse(individualRecipientParty),
+  );
+}
+
+export function individualRecipientPartyFromJSON(
+  jsonString: string,
+): SafeParseResult<IndividualRecipientParty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IndividualRecipientParty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IndividualRecipientParty' from JSON`,
+  );
+}
+
 /** @internal */
 export const OriginatingInstitution$inboundSchema: z.ZodType<
   OriginatingInstitution,
@@ -1631,6 +1866,24 @@ export namespace OriginatingInstitution$ {
   export type Outbound = OriginatingInstitution$Outbound;
 }
 
+export function originatingInstitutionToJSON(
+  originatingInstitution: OriginatingInstitution,
+): string {
+  return JSON.stringify(
+    OriginatingInstitution$outboundSchema.parse(originatingInstitution),
+  );
+}
+
+export function originatingInstitutionFromJSON(
+  jsonString: string,
+): SafeParseResult<OriginatingInstitution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OriginatingInstitution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OriginatingInstitution' from JSON`,
+  );
+}
+
 /** @internal */
 export const RecipientInstitution$inboundSchema: z.ZodType<
   RecipientInstitution,
@@ -1676,6 +1929,24 @@ export namespace RecipientInstitution$ {
   export const outboundSchema = RecipientInstitution$outboundSchema;
   /** @deprecated use `RecipientInstitution$Outbound` instead. */
   export type Outbound = RecipientInstitution$Outbound;
+}
+
+export function recipientInstitutionToJSON(
+  recipientInstitution: RecipientInstitution,
+): string {
+  return JSON.stringify(
+    RecipientInstitution$outboundSchema.parse(recipientInstitution),
+  );
+}
+
+export function recipientInstitutionFromJSON(
+  jsonString: string,
+): SafeParseResult<RecipientInstitution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RecipientInstitution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RecipientInstitution' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1777,6 +2048,20 @@ export namespace TravelRule$ {
   export type Outbound = TravelRule$Outbound;
 }
 
+export function travelRuleToJSON(travelRule: TravelRule): string {
+  return JSON.stringify(TravelRule$outboundSchema.parse(travelRule));
+}
+
+export function travelRuleFromJSON(
+  jsonString: string,
+): SafeParseResult<TravelRule, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TravelRule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TravelRule' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDeposit$inboundSchema: z.ZodType<
   IctDeposit,
@@ -1855,4 +2140,18 @@ export namespace IctDeposit$ {
   export const outboundSchema = IctDeposit$outboundSchema;
   /** @deprecated use `IctDeposit$Outbound` instead. */
   export type Outbound = IctDeposit$Outbound;
+}
+
+export function ictDepositToJSON(ictDeposit: IctDeposit): string {
+  return JSON.stringify(IctDeposit$outboundSchema.parse(ictDeposit));
+}
+
+export function ictDepositFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDeposit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDeposit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDeposit' from JSON`,
+  );
 }

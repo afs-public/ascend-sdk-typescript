@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { WithdrawalScheduleDetailsUpdate, WithdrawalScheduleDetailsUpdate$Outbound } from "./withdrawalscheduledetailsupdate.js";
 /**
  * A withdrawal transfer schedule using the ACH mechanism
@@ -29,4 +31,6 @@ export declare namespace AchWithdrawalScheduleUpdate$ {
     /** @deprecated use `AchWithdrawalScheduleUpdate$Outbound` instead. */
     type Outbound = AchWithdrawalScheduleUpdate$Outbound;
 }
+export declare function achWithdrawalScheduleUpdateToJSON(achWithdrawalScheduleUpdate: AchWithdrawalScheduleUpdate): string;
+export declare function achWithdrawalScheduleUpdateFromJSON(jsonString: string): SafeParseResult<AchWithdrawalScheduleUpdate, SDKValidationError>;
 //# sourceMappingURL=achwithdrawalscheduleupdate.d.ts.map

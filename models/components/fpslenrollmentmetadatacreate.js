@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FPSLEnrollmentMetaDataCreate$ = exports.FPSLEnrollmentMetaDataCreate$outboundSchema = exports.FPSLEnrollmentMetaDataCreate$inboundSchema = void 0;
+exports.fpslEnrollmentMetaDataCreateToJSON = fpslEnrollmentMetaDataCreateToJSON;
+exports.fpslEnrollmentMetaDataCreateFromJSON = fpslEnrollmentMetaDataCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.FPSLEnrollmentMetaDataCreate$inboundSchema = z.object({});
 /** @internal */
@@ -53,4 +56,10 @@ var FPSLEnrollmentMetaDataCreate$;
     /** @deprecated use `FPSLEnrollmentMetaDataCreate$outboundSchema` instead. */
     FPSLEnrollmentMetaDataCreate$.outboundSchema = exports.FPSLEnrollmentMetaDataCreate$outboundSchema;
 })(FPSLEnrollmentMetaDataCreate$ || (exports.FPSLEnrollmentMetaDataCreate$ = FPSLEnrollmentMetaDataCreate$ = {}));
+function fpslEnrollmentMetaDataCreateToJSON(fpslEnrollmentMetaDataCreate) {
+    return JSON.stringify(exports.FPSLEnrollmentMetaDataCreate$outboundSchema.parse(fpslEnrollmentMetaDataCreate));
+}
+function fpslEnrollmentMetaDataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FPSLEnrollmentMetaDataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FPSLEnrollmentMetaDataCreate' from JSON`);
+}
 //# sourceMappingURL=fpslenrollmentmetadatacreate.js.map

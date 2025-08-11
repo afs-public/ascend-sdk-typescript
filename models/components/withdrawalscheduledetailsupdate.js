@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WithdrawalScheduleDetailsUpdate$ = exports.WithdrawalScheduleDetailsUpdate$outboundSchema = exports.WithdrawalScheduleDetailsUpdate$inboundSchema = void 0;
+exports.withdrawalScheduleDetailsUpdateToJSON = withdrawalScheduleDetailsUpdateToJSON;
+exports.withdrawalScheduleDetailsUpdateFromJSON = withdrawalScheduleDetailsUpdateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalupdate_js_1 = require("./decimalupdate.js");
 /** @internal */
 exports.WithdrawalScheduleDetailsUpdate$inboundSchema = z.object({
@@ -58,4 +61,10 @@ var WithdrawalScheduleDetailsUpdate$;
     /** @deprecated use `WithdrawalScheduleDetailsUpdate$outboundSchema` instead. */
     WithdrawalScheduleDetailsUpdate$.outboundSchema = exports.WithdrawalScheduleDetailsUpdate$outboundSchema;
 })(WithdrawalScheduleDetailsUpdate$ || (exports.WithdrawalScheduleDetailsUpdate$ = WithdrawalScheduleDetailsUpdate$ = {}));
+function withdrawalScheduleDetailsUpdateToJSON(withdrawalScheduleDetailsUpdate) {
+    return JSON.stringify(exports.WithdrawalScheduleDetailsUpdate$outboundSchema.parse(withdrawalScheduleDetailsUpdate));
+}
+function withdrawalScheduleDetailsUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WithdrawalScheduleDetailsUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WithdrawalScheduleDetailsUpdate' from JSON`);
+}
 //# sourceMappingURL=withdrawalscheduledetailsupdate.js.map

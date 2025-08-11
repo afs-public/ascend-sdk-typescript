@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Any, Any$Outbound } from "./any.js";
 /**
  * The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
@@ -39,4 +41,6 @@ export declare namespace Status$ {
     /** @deprecated use `Status$Outbound` instead. */
     type Outbound = Status$Outbound;
 }
+export declare function statusToJSON(status: Status): string;
+export declare function statusFromJSON(jsonString: string): SafeParseResult<Status, SDKValidationError>;
 //# sourceMappingURL=status.d.ts.map

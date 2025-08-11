@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount of the fee being charged from the investor's account
@@ -187,6 +190,24 @@ export namespace TransfersFeeAmount$ {
   export type Outbound = TransfersFeeAmount$Outbound;
 }
 
+export function transfersFeeAmountToJSON(
+  transfersFeeAmount: TransfersFeeAmount,
+): string {
+  return JSON.stringify(
+    TransfersFeeAmount$outboundSchema.parse(transfersFeeAmount),
+  );
+}
+
+export function transfersFeeAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<TransfersFeeAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransfersFeeAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransfersFeeAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const TransfersFeeStateState$inboundSchema: z.ZodType<
   TransfersFeeStateStateOpen,
@@ -275,6 +296,24 @@ export namespace TransfersFeeState$ {
   export const outboundSchema = TransfersFeeState$outboundSchema;
   /** @deprecated use `TransfersFeeState$Outbound` instead. */
   export type Outbound = TransfersFeeState$Outbound;
+}
+
+export function transfersFeeStateToJSON(
+  transfersFeeState: TransfersFeeState,
+): string {
+  return JSON.stringify(
+    TransfersFeeState$outboundSchema.parse(transfersFeeState),
+  );
+}
+
+export function transfersFeeStateFromJSON(
+  jsonString: string,
+): SafeParseResult<TransfersFeeState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransfersFeeState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransfersFeeState' from JSON`,
+  );
 }
 
 /** @internal */
@@ -372,4 +411,18 @@ export namespace TransfersFee$ {
   export const outboundSchema = TransfersFee$outboundSchema;
   /** @deprecated use `TransfersFee$Outbound` instead. */
   export type Outbound = TransfersFee$Outbound;
+}
+
+export function transfersFeeToJSON(transfersFee: TransfersFee): string {
+  return JSON.stringify(TransfersFee$outboundSchema.parse(transfersFee));
+}
+
+export function transfersFeeFromJSON(
+  jsonString: string,
+): SafeParseResult<TransfersFee, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransfersFee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransfersFee' from JSON`,
+  );
 }

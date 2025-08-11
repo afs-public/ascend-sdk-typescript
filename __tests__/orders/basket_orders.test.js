@@ -99,7 +99,11 @@ let basket_order_id;
     if (typeof basket_order_id !== "string") {
         throw new Error("basket_order_id is undefined.");
     }
-    const result = await sdk_1.sdk.basketOrders.listBasketOrders(process.env["CORRESPONDENT_ID"] || "", basket_order_id);
+    const request = {
+        correspondentId: process.env["CORRESPONDENT_ID"] || "",
+        basketId: basket_order_id,
+    };
+    const result = await sdk_1.sdk.basketOrders.listBasketOrders(request);
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Basket Orders Orders List Compressed Orders List Compressed Orders1", async () => {

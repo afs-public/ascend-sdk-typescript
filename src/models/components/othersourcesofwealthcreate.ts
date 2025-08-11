@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Applicant's other source of wealth
@@ -75,4 +78,22 @@ export namespace OtherSourcesOfWealthCreate$ {
   export const outboundSchema = OtherSourcesOfWealthCreate$outboundSchema;
   /** @deprecated use `OtherSourcesOfWealthCreate$Outbound` instead. */
   export type Outbound = OtherSourcesOfWealthCreate$Outbound;
+}
+
+export function otherSourcesOfWealthCreateToJSON(
+  otherSourcesOfWealthCreate: OtherSourcesOfWealthCreate,
+): string {
+  return JSON.stringify(
+    OtherSourcesOfWealthCreate$outboundSchema.parse(otherSourcesOfWealthCreate),
+  );
+}
+
+export function otherSourcesOfWealthCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<OtherSourcesOfWealthCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OtherSourcesOfWealthCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OtherSourcesOfWealthCreate' from JSON`,
+  );
 }

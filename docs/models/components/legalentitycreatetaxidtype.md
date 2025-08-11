@@ -7,8 +7,7 @@ The nature of the U.S. Tax ID indicated in the related tax_id field; Examples in
 ```typescript
 import { LegalEntityCreateTaxIdType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: LegalEntityCreateTaxIdType =
-  LegalEntityCreateTaxIdType.TaxIdTypeUnspecified;
+let value: LegalEntityCreateTaxIdType = LegalEntityCreateTaxIdType.TaxIdTypeSsn;
 ```
 
 ## Values

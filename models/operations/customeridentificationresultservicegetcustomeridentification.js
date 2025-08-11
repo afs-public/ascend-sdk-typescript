@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$ = exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$outboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationRequest$ = exports.CustomerIdentificationResultServiceGetCustomerIdentificationRequest$outboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationRequest$inboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationQueryParamView$ = exports.CustomerIdentificationResultServiceGetCustomerIdentificationQueryParamView$outboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationQueryParamView$inboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationQueryParamView = void 0;
+exports.customerIdentificationResultServiceGetCustomerIdentificationRequestToJSON = customerIdentificationResultServiceGetCustomerIdentificationRequestToJSON;
+exports.customerIdentificationResultServiceGetCustomerIdentificationRequestFromJSON = customerIdentificationResultServiceGetCustomerIdentificationRequestFromJSON;
+exports.customerIdentificationResultServiceGetCustomerIdentificationResponseToJSON = customerIdentificationResultServiceGetCustomerIdentificationResponseToJSON;
+exports.customerIdentificationResultServiceGetCustomerIdentificationResponseFromJSON = customerIdentificationResultServiceGetCustomerIdentificationResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /**
  * Optional. The view to return. Defaults to BASIC.
@@ -99,6 +104,14 @@ var CustomerIdentificationResultServiceGetCustomerIdentificationRequest$;
     /** @deprecated use `CustomerIdentificationResultServiceGetCustomerIdentificationRequest$outboundSchema` instead. */
     CustomerIdentificationResultServiceGetCustomerIdentificationRequest$.outboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationRequest$outboundSchema;
 })(CustomerIdentificationResultServiceGetCustomerIdentificationRequest$ || (exports.CustomerIdentificationResultServiceGetCustomerIdentificationRequest$ = CustomerIdentificationResultServiceGetCustomerIdentificationRequest$ = {}));
+function customerIdentificationResultServiceGetCustomerIdentificationRequestToJSON(customerIdentificationResultServiceGetCustomerIdentificationRequest) {
+    return JSON.stringify(exports.CustomerIdentificationResultServiceGetCustomerIdentificationRequest$outboundSchema
+        .parse(customerIdentificationResultServiceGetCustomerIdentificationRequest));
+}
+function customerIdentificationResultServiceGetCustomerIdentificationRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerIdentificationResultServiceGetCustomerIdentificationRequest$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'CustomerIdentificationResultServiceGetCustomerIdentificationRequest' from JSON`);
+}
 /** @internal */
 exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -136,4 +149,12 @@ var CustomerIdentificationResultServiceGetCustomerIdentificationResponse$;
     /** @deprecated use `CustomerIdentificationResultServiceGetCustomerIdentificationResponse$outboundSchema` instead. */
     CustomerIdentificationResultServiceGetCustomerIdentificationResponse$.outboundSchema = exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$outboundSchema;
 })(CustomerIdentificationResultServiceGetCustomerIdentificationResponse$ || (exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$ = CustomerIdentificationResultServiceGetCustomerIdentificationResponse$ = {}));
+function customerIdentificationResultServiceGetCustomerIdentificationResponseToJSON(customerIdentificationResultServiceGetCustomerIdentificationResponse) {
+    return JSON.stringify(exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$outboundSchema
+        .parse(customerIdentificationResultServiceGetCustomerIdentificationResponse));
+}
+function customerIdentificationResultServiceGetCustomerIdentificationResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'CustomerIdentificationResultServiceGetCustomerIdentificationResponse' from JSON`);
+}
 //# sourceMappingURL=customeridentificationresultservicegetcustomeridentification.js.map

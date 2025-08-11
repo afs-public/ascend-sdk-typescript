@@ -37,8 +37,19 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContributionSummary$ = exports.ContributionSummary$outboundSchema = exports.ContributionSummary$inboundSchema = exports.RolloverAmount$ = exports.RolloverAmount$outboundSchema = exports.RolloverAmount$inboundSchema = exports.RemainingContributionAllowed$ = exports.RemainingContributionAllowed$outboundSchema = exports.RemainingContributionAllowed$inboundSchema = exports.RegularAmount$ = exports.RegularAmount$outboundSchema = exports.RegularAmount$inboundSchema = exports.ContributionLimit$ = exports.ContributionLimit$outboundSchema = exports.ContributionLimit$inboundSchema = void 0;
+exports.contributionLimitToJSON = contributionLimitToJSON;
+exports.contributionLimitFromJSON = contributionLimitFromJSON;
+exports.regularAmountToJSON = regularAmountToJSON;
+exports.regularAmountFromJSON = regularAmountFromJSON;
+exports.remainingContributionAllowedToJSON = remainingContributionAllowedToJSON;
+exports.remainingContributionAllowedFromJSON = remainingContributionAllowedFromJSON;
+exports.rolloverAmountToJSON = rolloverAmountToJSON;
+exports.rolloverAmountFromJSON = rolloverAmountFromJSON;
+exports.contributionSummaryToJSON = contributionSummaryToJSON;
+exports.contributionSummaryFromJSON = contributionSummaryFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ContributionLimit$inboundSchema = z.object({
     value: z.string().optional(),
@@ -58,6 +69,12 @@ var ContributionLimit$;
     /** @deprecated use `ContributionLimit$outboundSchema` instead. */
     ContributionLimit$.outboundSchema = exports.ContributionLimit$outboundSchema;
 })(ContributionLimit$ || (exports.ContributionLimit$ = ContributionLimit$ = {}));
+function contributionLimitToJSON(contributionLimit) {
+    return JSON.stringify(exports.ContributionLimit$outboundSchema.parse(contributionLimit));
+}
+function contributionLimitFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ContributionLimit$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ContributionLimit' from JSON`);
+}
 /** @internal */
 exports.RegularAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -77,6 +94,12 @@ var RegularAmount$;
     /** @deprecated use `RegularAmount$outboundSchema` instead. */
     RegularAmount$.outboundSchema = exports.RegularAmount$outboundSchema;
 })(RegularAmount$ || (exports.RegularAmount$ = RegularAmount$ = {}));
+function regularAmountToJSON(regularAmount) {
+    return JSON.stringify(exports.RegularAmount$outboundSchema.parse(regularAmount));
+}
+function regularAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RegularAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RegularAmount' from JSON`);
+}
 /** @internal */
 exports.RemainingContributionAllowed$inboundSchema = z.object({
     value: z.string().optional(),
@@ -96,6 +119,12 @@ var RemainingContributionAllowed$;
     /** @deprecated use `RemainingContributionAllowed$outboundSchema` instead. */
     RemainingContributionAllowed$.outboundSchema = exports.RemainingContributionAllowed$outboundSchema;
 })(RemainingContributionAllowed$ || (exports.RemainingContributionAllowed$ = RemainingContributionAllowed$ = {}));
+function remainingContributionAllowedToJSON(remainingContributionAllowed) {
+    return JSON.stringify(exports.RemainingContributionAllowed$outboundSchema.parse(remainingContributionAllowed));
+}
+function remainingContributionAllowedFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RemainingContributionAllowed$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RemainingContributionAllowed' from JSON`);
+}
 /** @internal */
 exports.RolloverAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -115,6 +144,12 @@ var RolloverAmount$;
     /** @deprecated use `RolloverAmount$outboundSchema` instead. */
     RolloverAmount$.outboundSchema = exports.RolloverAmount$outboundSchema;
 })(RolloverAmount$ || (exports.RolloverAmount$ = RolloverAmount$ = {}));
+function rolloverAmountToJSON(rolloverAmount) {
+    return JSON.stringify(exports.RolloverAmount$outboundSchema.parse(rolloverAmount));
+}
+function rolloverAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RolloverAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RolloverAmount' from JSON`);
+}
 /** @internal */
 exports.ContributionSummary$inboundSchema = z.object({
     contribution_limit: z.nullable(z.lazy(() => exports.ContributionLimit$inboundSchema))
@@ -166,4 +201,10 @@ var ContributionSummary$;
     /** @deprecated use `ContributionSummary$outboundSchema` instead. */
     ContributionSummary$.outboundSchema = exports.ContributionSummary$outboundSchema;
 })(ContributionSummary$ || (exports.ContributionSummary$ = ContributionSummary$ = {}));
+function contributionSummaryToJSON(contributionSummary) {
+    return JSON.stringify(exports.ContributionSummary$outboundSchema.parse(contributionSummary));
+}
+function contributionSummaryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ContributionSummary$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ContributionSummary' from JSON`);
+}
 //# sourceMappingURL=contributionsummary.js.map

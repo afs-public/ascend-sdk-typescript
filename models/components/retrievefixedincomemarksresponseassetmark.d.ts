@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { MarkPrice, MarkPrice$Outbound } from "./markprice.js";
 /**
  * The amount of accrued interest estimated to be exchanged given the requested quantity. Measured in a USD value with 2-decimal places of precision.
@@ -87,6 +89,8 @@ export declare namespace RetrieveFixedIncomeMarksResponseAssetMarkAccruedInteres
     /** @deprecated use `RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$Outbound` instead. */
     type Outbound = RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount$Outbound;
 }
+export declare function retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountToJSON(retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount: RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount): string;
+export declare function retrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<RetrieveFixedIncomeMarksResponseAssetMarkAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const RetrieveFixedIncomeMarksResponseAssetMarkIdentifierType$inboundSchema: z.ZodType<RetrieveFixedIncomeMarksResponseAssetMarkIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -141,4 +145,6 @@ export declare namespace RetrieveFixedIncomeMarksResponseAssetMark$ {
     /** @deprecated use `RetrieveFixedIncomeMarksResponseAssetMark$Outbound` instead. */
     type Outbound = RetrieveFixedIncomeMarksResponseAssetMark$Outbound;
 }
+export declare function retrieveFixedIncomeMarksResponseAssetMarkToJSON(retrieveFixedIncomeMarksResponseAssetMark: RetrieveFixedIncomeMarksResponseAssetMark): string;
+export declare function retrieveFixedIncomeMarksResponseAssetMarkFromJSON(jsonString: string): SafeParseResult<RetrieveFixedIncomeMarksResponseAssetMark, SDKValidationError>;
 //# sourceMappingURL=retrievefixedincomemarksresponseassetmark.d.ts.map

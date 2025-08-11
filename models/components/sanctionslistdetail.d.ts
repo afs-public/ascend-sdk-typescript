@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Sanctions list detail used for Dow Jones Profile details
  */
@@ -58,4 +60,6 @@ export declare namespace SanctionsListDetail$ {
     /** @deprecated use `SanctionsListDetail$Outbound` instead. */
     type Outbound = SanctionsListDetail$Outbound;
 }
+export declare function sanctionsListDetailToJSON(sanctionsListDetail: SanctionsListDetail): string;
+export declare function sanctionsListDetailFromJSON(jsonString: string): SafeParseResult<SanctionsListDetail, SDKValidationError>;
 //# sourceMappingURL=sanctionslistdetail.d.ts.map

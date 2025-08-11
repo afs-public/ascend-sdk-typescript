@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegalEntityCreate$ = exports.LegalEntityCreate$outboundSchema = exports.LegalEntityCreate$inboundSchema = exports.LegalEntityCreateTaxIdType$ = exports.LegalEntityCreateTaxIdType$outboundSchema = exports.LegalEntityCreateTaxIdType$inboundSchema = exports.ExemptCustomerReason$ = exports.ExemptCustomerReason$outboundSchema = exports.ExemptCustomerReason$inboundSchema = exports.EntityType$ = exports.EntityType$outboundSchema = exports.EntityType$inboundSchema = exports.CorporateStructure$ = exports.CorporateStructure$outboundSchema = exports.CorporateStructure$inboundSchema = exports.BusinessIndustrialClassification$ = exports.BusinessIndustrialClassification$outboundSchema = exports.BusinessIndustrialClassification$inboundSchema = exports.LegalEntityCreateTaxIdType = exports.ExemptCustomerReason = exports.EntityType = exports.CorporateStructure = exports.BusinessIndustrialClassification = void 0;
+exports.legalEntityCreateToJSON = legalEntityCreateToJSON;
+exports.legalEntityCreateFromJSON = legalEntityCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const datecreate_js_1 = require("./datecreate.js");
 const entityduediligencecreate_js_1 = require("./entityduediligencecreate.js");
@@ -361,4 +364,10 @@ var LegalEntityCreate$;
     /** @deprecated use `LegalEntityCreate$outboundSchema` instead. */
     LegalEntityCreate$.outboundSchema = exports.LegalEntityCreate$outboundSchema;
 })(LegalEntityCreate$ || (exports.LegalEntityCreate$ = LegalEntityCreate$ = {}));
+function legalEntityCreateToJSON(legalEntityCreate) {
+    return JSON.stringify(exports.LegalEntityCreate$outboundSchema.parse(legalEntityCreate));
+}
+function legalEntityCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityCreate' from JSON`);
+}
 //# sourceMappingURL=legalentitycreate.js.map

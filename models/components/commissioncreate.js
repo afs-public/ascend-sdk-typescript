@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommissionCreate$ = exports.CommissionCreate$outboundSchema = exports.CommissionCreate$inboundSchema = exports.CommissionCreateType$ = exports.CommissionCreateType$outboundSchema = exports.CommissionCreateType$inboundSchema = exports.CommissionCreateType = void 0;
+exports.commissionCreateToJSON = commissionCreateToJSON;
+exports.commissionCreateFromJSON = commissionCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -91,4 +94,10 @@ var CommissionCreate$;
     /** @deprecated use `CommissionCreate$outboundSchema` instead. */
     CommissionCreate$.outboundSchema = exports.CommissionCreate$outboundSchema;
 })(CommissionCreate$ || (exports.CommissionCreate$ = CommissionCreate$ = {}));
+function commissionCreateToJSON(commissionCreate) {
+    return JSON.stringify(exports.CommissionCreate$outboundSchema.parse(commissionCreate));
+}
+function commissionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CommissionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CommissionCreate' from JSON`);
+}
 //# sourceMappingURL=commissioncreate.js.map

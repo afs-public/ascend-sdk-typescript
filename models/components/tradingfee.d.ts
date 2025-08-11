@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The amount of the fee. This is a monetary value in the same currency as the order.
  */
@@ -54,6 +56,8 @@ export declare namespace TradingFeeAmount$ {
     /** @deprecated use `TradingFeeAmount$Outbound` instead. */
     type Outbound = TradingFeeAmount$Outbound;
 }
+export declare function tradingFeeAmountToJSON(tradingFeeAmount: TradingFeeAmount): string;
+export declare function tradingFeeAmountFromJSON(jsonString: string): SafeParseResult<TradingFeeAmount, SDKValidationError>;
 /** @internal */
 export declare const TradingFeeType$inboundSchema: z.ZodType<TradingFeeTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -89,4 +93,6 @@ export declare namespace TradingFee$ {
     /** @deprecated use `TradingFee$Outbound` instead. */
     type Outbound = TradingFee$Outbound;
 }
+export declare function tradingFeeToJSON(tradingFee: TradingFee): string;
+export declare function tradingFeeFromJSON(jsonString: string): SafeParseResult<TradingFee, SDKValidationError>;
 //# sourceMappingURL=tradingfee.d.ts.map

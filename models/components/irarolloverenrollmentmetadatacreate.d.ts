@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
  */
@@ -86,4 +88,6 @@ export declare namespace IRARolloverEnrollmentMetadataCreate$ {
     /** @deprecated use `IRARolloverEnrollmentMetadataCreate$Outbound` instead. */
     type Outbound = IRARolloverEnrollmentMetadataCreate$Outbound;
 }
+export declare function iraRolloverEnrollmentMetadataCreateToJSON(iraRolloverEnrollmentMetadataCreate: IRARolloverEnrollmentMetadataCreate): string;
+export declare function iraRolloverEnrollmentMetadataCreateFromJSON(jsonString: string): SafeParseResult<IRARolloverEnrollmentMetadataCreate, SDKValidationError>;
 //# sourceMappingURL=irarolloverenrollmentmetadatacreate.d.ts.map

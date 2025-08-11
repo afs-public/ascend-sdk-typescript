@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$ = exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$outboundSchema = exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$inboundSchema = exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$ = exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$outboundSchema = exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$inboundSchema = void 0;
+exports.wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestToJSON = wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestToJSON;
+exports.wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestFromJSON = wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestFromJSON;
+exports.wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseToJSON = wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseToJSON;
+exports.wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseFromJSON = wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$inboundSchema = z.object({
@@ -77,6 +82,14 @@ var WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$;
     /** @deprecated use `WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$outboundSchema` instead. */
     WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$.outboundSchema = exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$outboundSchema;
 })(WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$ || (exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$ = WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$ = {}));
+function wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestToJSON(wireWithdrawalSchedulesListWireWithdrawalSchedulesRequest) {
+    return JSON.stringify(exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$outboundSchema
+        .parse(wireWithdrawalSchedulesListWireWithdrawalSchedulesRequest));
+}
+function wireWithdrawalSchedulesListWireWithdrawalSchedulesRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalSchedulesListWireWithdrawalSchedulesRequest' from JSON`);
+}
 /** @internal */
 exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +127,12 @@ var WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$;
     /** @deprecated use `WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$outboundSchema` instead. */
     WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$.outboundSchema = exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$outboundSchema;
 })(WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$ || (exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$ = WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$ = {}));
+function wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseToJSON(wireWithdrawalSchedulesListWireWithdrawalSchedulesResponse) {
+    return JSON.stringify(exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$outboundSchema
+        .parse(wireWithdrawalSchedulesListWireWithdrawalSchedulesResponse));
+}
+function wireWithdrawalSchedulesListWireWithdrawalSchedulesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalSchedulesListWireWithdrawalSchedulesResponse' from JSON`);
+}
 //# sourceMappingURL=wirewithdrawalscheduleslistwirewithdrawalschedules.js.map

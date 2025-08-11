@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Summed distribution amounts throughout the year
@@ -152,6 +155,26 @@ export namespace DistributionSummaryRegularAmount$ {
   export type Outbound = DistributionSummaryRegularAmount$Outbound;
 }
 
+export function distributionSummaryRegularAmountToJSON(
+  distributionSummaryRegularAmount: DistributionSummaryRegularAmount,
+): string {
+  return JSON.stringify(
+    DistributionSummaryRegularAmount$outboundSchema.parse(
+      distributionSummaryRegularAmount,
+    ),
+  );
+}
+
+export function distributionSummaryRegularAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<DistributionSummaryRegularAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DistributionSummaryRegularAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DistributionSummaryRegularAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const DistributionSummaryAmount$inboundSchema: z.ZodType<
   DistributionSummaryAmount,
@@ -186,6 +209,24 @@ export namespace DistributionSummaryAmount$ {
   export const outboundSchema = DistributionSummaryAmount$outboundSchema;
   /** @deprecated use `DistributionSummaryAmount$Outbound` instead. */
   export type Outbound = DistributionSummaryAmount$Outbound;
+}
+
+export function distributionSummaryAmountToJSON(
+  distributionSummaryAmount: DistributionSummaryAmount,
+): string {
+  return JSON.stringify(
+    DistributionSummaryAmount$outboundSchema.parse(distributionSummaryAmount),
+  );
+}
+
+export function distributionSummaryAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<DistributionSummaryAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DistributionSummaryAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DistributionSummaryAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -224,6 +265,24 @@ export namespace LifeExpectancyFactor$ {
   export type Outbound = LifeExpectancyFactor$Outbound;
 }
 
+export function lifeExpectancyFactorToJSON(
+  lifeExpectancyFactor: LifeExpectancyFactor,
+): string {
+  return JSON.stringify(
+    LifeExpectancyFactor$outboundSchema.parse(lifeExpectancyFactor),
+  );
+}
+
+export function lifeExpectancyFactorFromJSON(
+  jsonString: string,
+): SafeParseResult<LifeExpectancyFactor, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LifeExpectancyFactor$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LifeExpectancyFactor' from JSON`,
+  );
+}
+
 /** @internal */
 export const PriorYearEndAccountBalance$inboundSchema: z.ZodType<
   PriorYearEndAccountBalance,
@@ -260,6 +319,24 @@ export namespace PriorYearEndAccountBalance$ {
   export type Outbound = PriorYearEndAccountBalance$Outbound;
 }
 
+export function priorYearEndAccountBalanceToJSON(
+  priorYearEndAccountBalance: PriorYearEndAccountBalance,
+): string {
+  return JSON.stringify(
+    PriorYearEndAccountBalance$outboundSchema.parse(priorYearEndAccountBalance),
+  );
+}
+
+export function priorYearEndAccountBalanceFromJSON(
+  jsonString: string,
+): SafeParseResult<PriorYearEndAccountBalance, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PriorYearEndAccountBalance$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PriorYearEndAccountBalance' from JSON`,
+  );
+}
+
 /** @internal */
 export const RemainingDistributionRequired$inboundSchema: z.ZodType<
   RemainingDistributionRequired,
@@ -294,6 +371,26 @@ export namespace RemainingDistributionRequired$ {
   export const outboundSchema = RemainingDistributionRequired$outboundSchema;
   /** @deprecated use `RemainingDistributionRequired$Outbound` instead. */
   export type Outbound = RemainingDistributionRequired$Outbound;
+}
+
+export function remainingDistributionRequiredToJSON(
+  remainingDistributionRequired: RemainingDistributionRequired,
+): string {
+  return JSON.stringify(
+    RemainingDistributionRequired$outboundSchema.parse(
+      remainingDistributionRequired,
+    ),
+  );
+}
+
+export function remainingDistributionRequiredFromJSON(
+  jsonString: string,
+): SafeParseResult<RemainingDistributionRequired, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RemainingDistributionRequired$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RemainingDistributionRequired' from JSON`,
+  );
 }
 
 /** @internal */
@@ -373,6 +470,26 @@ export namespace RequiredMinimumDistribution$ {
   export type Outbound = RequiredMinimumDistribution$Outbound;
 }
 
+export function requiredMinimumDistributionToJSON(
+  requiredMinimumDistribution: RequiredMinimumDistribution,
+): string {
+  return JSON.stringify(
+    RequiredMinimumDistribution$outboundSchema.parse(
+      requiredMinimumDistribution,
+    ),
+  );
+}
+
+export function requiredMinimumDistributionFromJSON(
+  jsonString: string,
+): SafeParseResult<RequiredMinimumDistribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequiredMinimumDistribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequiredMinimumDistribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const DistributionSummaryRolloverAmount$inboundSchema: z.ZodType<
   DistributionSummaryRolloverAmount,
@@ -408,6 +525,26 @@ export namespace DistributionSummaryRolloverAmount$ {
     DistributionSummaryRolloverAmount$outboundSchema;
   /** @deprecated use `DistributionSummaryRolloverAmount$Outbound` instead. */
   export type Outbound = DistributionSummaryRolloverAmount$Outbound;
+}
+
+export function distributionSummaryRolloverAmountToJSON(
+  distributionSummaryRolloverAmount: DistributionSummaryRolloverAmount,
+): string {
+  return JSON.stringify(
+    DistributionSummaryRolloverAmount$outboundSchema.parse(
+      distributionSummaryRolloverAmount,
+    ),
+  );
+}
+
+export function distributionSummaryRolloverAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<DistributionSummaryRolloverAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DistributionSummaryRolloverAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DistributionSummaryRolloverAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -488,4 +625,22 @@ export namespace DistributionSummary$ {
   export const outboundSchema = DistributionSummary$outboundSchema;
   /** @deprecated use `DistributionSummary$Outbound` instead. */
   export type Outbound = DistributionSummary$Outbound;
+}
+
+export function distributionSummaryToJSON(
+  distributionSummary: DistributionSummary,
+): string {
+  return JSON.stringify(
+    DistributionSummary$outboundSchema.parse(distributionSummary),
+  );
+}
+
+export function distributionSummaryFromJSON(
+  jsonString: string,
+): SafeParseResult<DistributionSummary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DistributionSummary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DistributionSummary' from JSON`,
+  );
 }

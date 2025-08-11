@@ -25,10 +25,10 @@ let value: LegalEntityCreate = {
   ],
   registrationRegion: "US",
   taxId: "987-65-4321",
-  taxIdType: LegalEntityCreateTaxIdType.TaxIdTypeEin,
+  taxIdType: LegalEntityCreateTaxIdType.TaxIdTypeSsn,
   taxProfile: {
     federalTaxClassification: FederalTaxClassification.CCorporation,
-    irsFormType: IrsFormType.W8Ben,
+    irsFormType: IrsFormType.W9,
     legalTaxRegionCode: "US",
     usTinStatus: UsTinStatus.Passing,
   },

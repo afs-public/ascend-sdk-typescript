@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AssetsGetAssetRequest = {
     /**
      * The asset id.
@@ -37,6 +39,8 @@ export declare namespace AssetsGetAssetRequest$ {
     /** @deprecated use `AssetsGetAssetRequest$Outbound` instead. */
     type Outbound = AssetsGetAssetRequest$Outbound;
 }
+export declare function assetsGetAssetRequestToJSON(assetsGetAssetRequest: AssetsGetAssetRequest): string;
+export declare function assetsGetAssetRequestFromJSON(jsonString: string): SafeParseResult<AssetsGetAssetRequest, SDKValidationError>;
 /** @internal */
 export declare const AssetsGetAssetResponse$inboundSchema: z.ZodType<AssetsGetAssetResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace AssetsGetAssetResponse$ {
     /** @deprecated use `AssetsGetAssetResponse$Outbound` instead. */
     type Outbound = AssetsGetAssetResponse$Outbound;
 }
+export declare function assetsGetAssetResponseToJSON(assetsGetAssetResponse: AssetsGetAssetResponse): string;
+export declare function assetsGetAssetResponseFromJSON(jsonString: string): SafeParseResult<AssetsGetAssetResponse, SDKValidationError>;
 //# sourceMappingURL=assetsgetasset.d.ts.map

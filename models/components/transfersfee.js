@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransfersFee$ = exports.TransfersFee$outboundSchema = exports.TransfersFee$inboundSchema = exports.TransfersFeeType$ = exports.TransfersFeeType$outboundSchema = exports.TransfersFeeType$inboundSchema = exports.TransfersFeeState$ = exports.TransfersFeeState$outboundSchema = exports.TransfersFeeState$inboundSchema = exports.TransfersFeeStateState$ = exports.TransfersFeeStateState$outboundSchema = exports.TransfersFeeStateState$inboundSchema = exports.TransfersFeeAmount$ = exports.TransfersFeeAmount$outboundSchema = exports.TransfersFeeAmount$inboundSchema = exports.TransfersFeeType = exports.TransfersFeeStateState = void 0;
+exports.transfersFeeAmountToJSON = transfersFeeAmountToJSON;
+exports.transfersFeeAmountFromJSON = transfersFeeAmountFromJSON;
+exports.transfersFeeStateToJSON = transfersFeeStateToJSON;
+exports.transfersFeeStateFromJSON = transfersFeeStateFromJSON;
+exports.transfersFeeToJSON = transfersFeeToJSON;
+exports.transfersFeeFromJSON = transfersFeeFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The high level state of a transfer, one of:
@@ -96,6 +103,12 @@ var TransfersFeeAmount$;
     /** @deprecated use `TransfersFeeAmount$outboundSchema` instead. */
     TransfersFeeAmount$.outboundSchema = exports.TransfersFeeAmount$outboundSchema;
 })(TransfersFeeAmount$ || (exports.TransfersFeeAmount$ = TransfersFeeAmount$ = {}));
+function transfersFeeAmountToJSON(transfersFeeAmount) {
+    return JSON.stringify(exports.TransfersFeeAmount$outboundSchema.parse(transfersFeeAmount));
+}
+function transfersFeeAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransfersFeeAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransfersFeeAmount' from JSON`);
+}
 /** @internal */
 exports.TransfersFeeStateState$inboundSchema = z
     .union([
@@ -153,6 +166,12 @@ var TransfersFeeState$;
     /** @deprecated use `TransfersFeeState$outboundSchema` instead. */
     TransfersFeeState$.outboundSchema = exports.TransfersFeeState$outboundSchema;
 })(TransfersFeeState$ || (exports.TransfersFeeState$ = TransfersFeeState$ = {}));
+function transfersFeeStateToJSON(transfersFeeState) {
+    return JSON.stringify(exports.TransfersFeeState$outboundSchema.parse(transfersFeeState));
+}
+function transfersFeeStateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransfersFeeState$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransfersFeeState' from JSON`);
+}
 /** @internal */
 exports.TransfersFeeType$inboundSchema = z
     .union([
@@ -217,4 +236,10 @@ var TransfersFee$;
     /** @deprecated use `TransfersFee$outboundSchema` instead. */
     TransfersFee$.outboundSchema = exports.TransfersFee$outboundSchema;
 })(TransfersFee$ || (exports.TransfersFee$ = TransfersFee$ = {}));
+function transfersFeeToJSON(transfersFee) {
+    return JSON.stringify(exports.TransfersFee$outboundSchema.parse(transfersFee));
+}
+function transfersFeeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransfersFee$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransfersFee' from JSON`);
+}
 //# sourceMappingURL=transfersfee.js.map

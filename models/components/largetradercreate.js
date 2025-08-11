@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LargeTraderCreate$ = exports.LargeTraderCreate$outboundSchema = exports.LargeTraderCreate$inboundSchema = void 0;
+exports.largeTraderCreateToJSON = largeTraderCreateToJSON;
+exports.largeTraderCreateFromJSON = largeTraderCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const datecreate_js_1 = require("./datecreate.js");
 /** @internal */
 exports.LargeTraderCreate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var LargeTraderCreate$;
     /** @deprecated use `LargeTraderCreate$outboundSchema` instead. */
     LargeTraderCreate$.outboundSchema = exports.LargeTraderCreate$outboundSchema;
 })(LargeTraderCreate$ || (exports.LargeTraderCreate$ = LargeTraderCreate$ = {}));
+function largeTraderCreateToJSON(largeTraderCreate) {
+    return JSON.stringify(exports.LargeTraderCreate$outboundSchema.parse(largeTraderCreate));
+}
+function largeTraderCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LargeTraderCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LargeTraderCreate' from JSON`);
+}
 //# sourceMappingURL=largetradercreate.js.map

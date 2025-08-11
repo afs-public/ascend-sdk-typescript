@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BookingFeeCreate,
   BookingFeeCreate$inboundSchema,
@@ -779,4 +782,18 @@ export namespace TradeCreate$ {
   export const outboundSchema = TradeCreate$outboundSchema;
   /** @deprecated use `TradeCreate$Outbound` instead. */
   export type Outbound = TradeCreate$Outbound;
+}
+
+export function tradeCreateToJSON(tradeCreate: TradeCreate): string {
+  return JSON.stringify(TradeCreate$outboundSchema.parse(tradeCreate));
+}
+
+export function tradeCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeCreate' from JSON`,
+  );
 }

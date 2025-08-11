@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type LedgerGetEntryRequest = {
     /**
      * The account id.
@@ -42,6 +44,8 @@ export declare namespace LedgerGetEntryRequest$ {
     /** @deprecated use `LedgerGetEntryRequest$Outbound` instead. */
     type Outbound = LedgerGetEntryRequest$Outbound;
 }
+export declare function ledgerGetEntryRequestToJSON(ledgerGetEntryRequest: LedgerGetEntryRequest): string;
+export declare function ledgerGetEntryRequestFromJSON(jsonString: string): SafeParseResult<LedgerGetEntryRequest, SDKValidationError>;
 /** @internal */
 export declare const LedgerGetEntryResponse$inboundSchema: z.ZodType<LedgerGetEntryResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace LedgerGetEntryResponse$ {
     /** @deprecated use `LedgerGetEntryResponse$Outbound` instead. */
     type Outbound = LedgerGetEntryResponse$Outbound;
 }
+export declare function ledgerGetEntryResponseToJSON(ledgerGetEntryResponse: LedgerGetEntryResponse): string;
+export declare function ledgerGetEntryResponseFromJSON(jsonString: string): SafeParseResult<LedgerGetEntryResponse, SDKValidationError>;
 //# sourceMappingURL=ledgergetentry.d.ts.map

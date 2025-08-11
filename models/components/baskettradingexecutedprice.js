@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketTradingExecutedPrice$ = exports.BasketTradingExecutedPrice$outboundSchema = exports.BasketTradingExecutedPrice$inboundSchema = exports.BasketTradingExecutedPriceType$ = exports.BasketTradingExecutedPriceType$outboundSchema = exports.BasketTradingExecutedPriceType$inboundSchema = exports.BasketTradingExecutedPricePrice$ = exports.BasketTradingExecutedPricePrice$outboundSchema = exports.BasketTradingExecutedPricePrice$inboundSchema = exports.BasketTradingExecutedPriceType = void 0;
+exports.basketTradingExecutedPricePriceToJSON = basketTradingExecutedPricePriceToJSON;
+exports.basketTradingExecutedPricePriceFromJSON = basketTradingExecutedPricePriceFromJSON;
+exports.basketTradingExecutedPriceToJSON = basketTradingExecutedPriceToJSON;
+exports.basketTradingExecutedPriceFromJSON = basketTradingExecutedPriceFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of this price, which must be PRICE_PER_UNIT for equity orders
@@ -65,6 +70,12 @@ var BasketTradingExecutedPricePrice$;
     /** @deprecated use `BasketTradingExecutedPricePrice$outboundSchema` instead. */
     BasketTradingExecutedPricePrice$.outboundSchema = exports.BasketTradingExecutedPricePrice$outboundSchema;
 })(BasketTradingExecutedPricePrice$ || (exports.BasketTradingExecutedPricePrice$ = BasketTradingExecutedPricePrice$ = {}));
+function basketTradingExecutedPricePriceToJSON(basketTradingExecutedPricePrice) {
+    return JSON.stringify(exports.BasketTradingExecutedPricePrice$outboundSchema.parse(basketTradingExecutedPricePrice));
+}
+function basketTradingExecutedPricePriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketTradingExecutedPricePrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketTradingExecutedPricePrice' from JSON`);
+}
 /** @internal */
 exports.BasketTradingExecutedPriceType$inboundSchema = z
     .union([
@@ -109,4 +120,10 @@ var BasketTradingExecutedPrice$;
     /** @deprecated use `BasketTradingExecutedPrice$outboundSchema` instead. */
     BasketTradingExecutedPrice$.outboundSchema = exports.BasketTradingExecutedPrice$outboundSchema;
 })(BasketTradingExecutedPrice$ || (exports.BasketTradingExecutedPrice$ = BasketTradingExecutedPrice$ = {}));
+function basketTradingExecutedPriceToJSON(basketTradingExecutedPrice) {
+    return JSON.stringify(exports.BasketTradingExecutedPrice$outboundSchema.parse(basketTradingExecutedPrice));
+}
+function basketTradingExecutedPriceFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketTradingExecutedPrice$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketTradingExecutedPrice' from JSON`);
+}
 //# sourceMappingURL=baskettradingexecutedprice.js.map

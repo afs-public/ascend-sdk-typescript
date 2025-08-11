@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InvestorCommunicationServiceListDocumentsRequest = {
   /**
@@ -90,6 +93,33 @@ export namespace InvestorCommunicationServiceListDocumentsRequest$ {
     InvestorCommunicationServiceListDocumentsRequest$Outbound;
 }
 
+export function investorCommunicationServiceListDocumentsRequestToJSON(
+  investorCommunicationServiceListDocumentsRequest:
+    InvestorCommunicationServiceListDocumentsRequest,
+): string {
+  return JSON.stringify(
+    InvestorCommunicationServiceListDocumentsRequest$outboundSchema.parse(
+      investorCommunicationServiceListDocumentsRequest,
+    ),
+  );
+}
+
+export function investorCommunicationServiceListDocumentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  InvestorCommunicationServiceListDocumentsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      InvestorCommunicationServiceListDocumentsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'InvestorCommunicationServiceListDocumentsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const InvestorCommunicationServiceListDocumentsResponse$inboundSchema:
   z.ZodType<
@@ -149,4 +179,31 @@ export namespace InvestorCommunicationServiceListDocumentsResponse$ {
   /** @deprecated use `InvestorCommunicationServiceListDocumentsResponse$Outbound` instead. */
   export type Outbound =
     InvestorCommunicationServiceListDocumentsResponse$Outbound;
+}
+
+export function investorCommunicationServiceListDocumentsResponseToJSON(
+  investorCommunicationServiceListDocumentsResponse:
+    InvestorCommunicationServiceListDocumentsResponse,
+): string {
+  return JSON.stringify(
+    InvestorCommunicationServiceListDocumentsResponse$outboundSchema.parse(
+      investorCommunicationServiceListDocumentsResponse,
+    ),
+  );
+}
+
+export function investorCommunicationServiceListDocumentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  InvestorCommunicationServiceListDocumentsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      InvestorCommunicationServiceListDocumentsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'InvestorCommunicationServiceListDocumentsResponse' from JSON`,
+  );
 }

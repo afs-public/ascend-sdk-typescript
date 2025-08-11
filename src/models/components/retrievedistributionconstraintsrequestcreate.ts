@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Cash transfer mechanism to search constraints for
@@ -115,4 +118,31 @@ export namespace RetrieveDistributionConstraintsRequestCreate$ {
     RetrieveDistributionConstraintsRequestCreate$outboundSchema;
   /** @deprecated use `RetrieveDistributionConstraintsRequestCreate$Outbound` instead. */
   export type Outbound = RetrieveDistributionConstraintsRequestCreate$Outbound;
+}
+
+export function retrieveDistributionConstraintsRequestCreateToJSON(
+  retrieveDistributionConstraintsRequestCreate:
+    RetrieveDistributionConstraintsRequestCreate,
+): string {
+  return JSON.stringify(
+    RetrieveDistributionConstraintsRequestCreate$outboundSchema.parse(
+      retrieveDistributionConstraintsRequestCreate,
+    ),
+  );
+}
+
+export function retrieveDistributionConstraintsRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetrieveDistributionConstraintsRequestCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveDistributionConstraintsRequestCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetrieveDistributionConstraintsRequestCreate' from JSON`,
+  );
 }

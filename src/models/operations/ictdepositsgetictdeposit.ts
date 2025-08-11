@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IctDepositsGetIctDepositRequest = {
   /**
@@ -78,6 +81,26 @@ export namespace IctDepositsGetIctDepositRequest$ {
   export type Outbound = IctDepositsGetIctDepositRequest$Outbound;
 }
 
+export function ictDepositsGetIctDepositRequestToJSON(
+  ictDepositsGetIctDepositRequest: IctDepositsGetIctDepositRequest,
+): string {
+  return JSON.stringify(
+    IctDepositsGetIctDepositRequest$outboundSchema.parse(
+      ictDepositsGetIctDepositRequest,
+    ),
+  );
+}
+
+export function ictDepositsGetIctDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositsGetIctDepositRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositsGetIctDepositRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositsGetIctDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDepositsGetIctDepositResponse$inboundSchema: z.ZodType<
   IctDepositsGetIctDepositResponse,
@@ -130,4 +153,24 @@ export namespace IctDepositsGetIctDepositResponse$ {
   export const outboundSchema = IctDepositsGetIctDepositResponse$outboundSchema;
   /** @deprecated use `IctDepositsGetIctDepositResponse$Outbound` instead. */
   export type Outbound = IctDepositsGetIctDepositResponse$Outbound;
+}
+
+export function ictDepositsGetIctDepositResponseToJSON(
+  ictDepositsGetIctDepositResponse: IctDepositsGetIctDepositResponse,
+): string {
+  return JSON.stringify(
+    IctDepositsGetIctDepositResponse$outboundSchema.parse(
+      ictDepositsGetIctDepositResponse,
+    ),
+  );
+}
+
+export function ictDepositsGetIctDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositsGetIctDepositResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IctDepositsGetIctDepositResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositsGetIctDepositResponse' from JSON`,
+  );
 }

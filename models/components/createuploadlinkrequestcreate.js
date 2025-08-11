@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUploadLinkRequestCreate$ = exports.CreateUploadLinkRequestCreate$outboundSchema = exports.CreateUploadLinkRequestCreate$inboundSchema = void 0;
+exports.createUploadLinkRequestCreateToJSON = createUploadLinkRequestCreateToJSON;
+exports.createUploadLinkRequestCreateFromJSON = createUploadLinkRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const accountdocumentuploadrequestcreate_js_1 = require("./accountdocumentuploadrequestcreate.js");
 const iddocumentuploadrequestcreate_js_1 = require("./iddocumentuploadrequestcreate.js");
 /** @internal */
@@ -82,4 +85,10 @@ var CreateUploadLinkRequestCreate$;
     /** @deprecated use `CreateUploadLinkRequestCreate$outboundSchema` instead. */
     CreateUploadLinkRequestCreate$.outboundSchema = exports.CreateUploadLinkRequestCreate$outboundSchema;
 })(CreateUploadLinkRequestCreate$ || (exports.CreateUploadLinkRequestCreate$ = CreateUploadLinkRequestCreate$ = {}));
+function createUploadLinkRequestCreateToJSON(createUploadLinkRequestCreate) {
+    return JSON.stringify(exports.CreateUploadLinkRequestCreate$outboundSchema.parse(createUploadLinkRequestCreate));
+}
+function createUploadLinkRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CreateUploadLinkRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CreateUploadLinkRequestCreate' from JSON`);
+}
 //# sourceMappingURL=createuploadlinkrequestcreate.js.map

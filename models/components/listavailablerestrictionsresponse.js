@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListAvailableRestrictionsResponse$ = exports.ListAvailableRestrictionsResponse$outboundSchema = exports.ListAvailableRestrictionsResponse$inboundSchema = void 0;
+exports.listAvailableRestrictionsResponseToJSON = listAvailableRestrictionsResponseToJSON;
+exports.listAvailableRestrictionsResponseFromJSON = listAvailableRestrictionsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const availablerestriction_js_1 = require("./availablerestriction.js");
 /** @internal */
 exports.ListAvailableRestrictionsResponse$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ListAvailableRestrictionsResponse$;
     /** @deprecated use `ListAvailableRestrictionsResponse$outboundSchema` instead. */
     ListAvailableRestrictionsResponse$.outboundSchema = exports.ListAvailableRestrictionsResponse$outboundSchema;
 })(ListAvailableRestrictionsResponse$ || (exports.ListAvailableRestrictionsResponse$ = ListAvailableRestrictionsResponse$ = {}));
+function listAvailableRestrictionsResponseToJSON(listAvailableRestrictionsResponse) {
+    return JSON.stringify(exports.ListAvailableRestrictionsResponse$outboundSchema.parse(listAvailableRestrictionsResponse));
+}
+function listAvailableRestrictionsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListAvailableRestrictionsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListAvailableRestrictionsResponse' from JSON`);
+}
 //# sourceMappingURL=listavailablerestrictionsresponse.js.map

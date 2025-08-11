@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsRemovePartyRequest = {
   /**
@@ -80,6 +83,24 @@ export namespace AccountsRemovePartyRequest$ {
   export type Outbound = AccountsRemovePartyRequest$Outbound;
 }
 
+export function accountsRemovePartyRequestToJSON(
+  accountsRemovePartyRequest: AccountsRemovePartyRequest,
+): string {
+  return JSON.stringify(
+    AccountsRemovePartyRequest$outboundSchema.parse(accountsRemovePartyRequest),
+  );
+}
+
+export function accountsRemovePartyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsRemovePartyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsRemovePartyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsRemovePartyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsRemovePartyResponse$inboundSchema: z.ZodType<
   AccountsRemovePartyResponse,
@@ -127,4 +148,24 @@ export namespace AccountsRemovePartyResponse$ {
   export const outboundSchema = AccountsRemovePartyResponse$outboundSchema;
   /** @deprecated use `AccountsRemovePartyResponse$Outbound` instead. */
   export type Outbound = AccountsRemovePartyResponse$Outbound;
+}
+
+export function accountsRemovePartyResponseToJSON(
+  accountsRemovePartyResponse: AccountsRemovePartyResponse,
+): string {
+  return JSON.stringify(
+    AccountsRemovePartyResponse$outboundSchema.parse(
+      accountsRemovePartyResponse,
+    ),
+  );
+}
+
+export function accountsRemovePartyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsRemovePartyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsRemovePartyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsRemovePartyResponse' from JSON`,
+  );
 }

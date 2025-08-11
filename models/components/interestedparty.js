@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InterestedParty$ = exports.InterestedParty$outboundSchema = exports.InterestedParty$inboundSchema = exports.InterestedPartyTradeConfirmationDeliveryPreference$ = exports.InterestedPartyTradeConfirmationDeliveryPreference$outboundSchema = exports.InterestedPartyTradeConfirmationDeliveryPreference$inboundSchema = exports.InterestedPartyStatementDeliveryPreference$ = exports.InterestedPartyStatementDeliveryPreference$outboundSchema = exports.InterestedPartyStatementDeliveryPreference$inboundSchema = exports.InterestedPartyMailingAddress$ = exports.InterestedPartyMailingAddress$outboundSchema = exports.InterestedPartyMailingAddress$inboundSchema = exports.InterestedPartyTradeConfirmationDeliveryPreference = exports.InterestedPartyStatementDeliveryPreference = void 0;
+exports.interestedPartyMailingAddressToJSON = interestedPartyMailingAddressToJSON;
+exports.interestedPartyMailingAddressFromJSON = interestedPartyMailingAddressFromJSON;
+exports.interestedPartyToJSON = interestedPartyToJSON;
+exports.interestedPartyFromJSON = interestedPartyFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Delivery method instruction for account statements for a given Interested Party; Can be `PHYSICAL`, `SUPPRESS`; Defaults to `PHYSICAL` on party creation
@@ -113,6 +118,12 @@ var InterestedPartyMailingAddress$;
     /** @deprecated use `InterestedPartyMailingAddress$outboundSchema` instead. */
     InterestedPartyMailingAddress$.outboundSchema = exports.InterestedPartyMailingAddress$outboundSchema;
 })(InterestedPartyMailingAddress$ || (exports.InterestedPartyMailingAddress$ = InterestedPartyMailingAddress$ = {}));
+function interestedPartyMailingAddressToJSON(interestedPartyMailingAddress) {
+    return JSON.stringify(exports.InterestedPartyMailingAddress$outboundSchema.parse(interestedPartyMailingAddress));
+}
+function interestedPartyMailingAddressFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InterestedPartyMailingAddress$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InterestedPartyMailingAddress' from JSON`);
+}
 /** @internal */
 exports.InterestedPartyStatementDeliveryPreference$inboundSchema = z
     .union([
@@ -201,4 +212,10 @@ var InterestedParty$;
     /** @deprecated use `InterestedParty$outboundSchema` instead. */
     InterestedParty$.outboundSchema = exports.InterestedParty$outboundSchema;
 })(InterestedParty$ || (exports.InterestedParty$ = InterestedParty$ = {}));
+function interestedPartyToJSON(interestedParty) {
+    return JSON.stringify(exports.InterestedParty$outboundSchema.parse(interestedParty));
+}
+function interestedPartyFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InterestedParty$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InterestedParty' from JSON`);
+}
 //# sourceMappingURL=interestedparty.js.map

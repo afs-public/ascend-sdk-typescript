@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelExecutionRequestCreate$ = exports.CancelExecutionRequestCreate$outboundSchema = exports.CancelExecutionRequestCreate$inboundSchema = void 0;
+exports.cancelExecutionRequestCreateToJSON = cancelExecutionRequestCreateToJSON;
+exports.cancelExecutionRequestCreateFromJSON = cancelExecutionRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelExecutionRequestCreate$inboundSchema = z.object({
     name: z.string(),
@@ -57,4 +60,10 @@ var CancelExecutionRequestCreate$;
     /** @deprecated use `CancelExecutionRequestCreate$outboundSchema` instead. */
     CancelExecutionRequestCreate$.outboundSchema = exports.CancelExecutionRequestCreate$outboundSchema;
 })(CancelExecutionRequestCreate$ || (exports.CancelExecutionRequestCreate$ = CancelExecutionRequestCreate$ = {}));
+function cancelExecutionRequestCreateToJSON(cancelExecutionRequestCreate) {
+    return JSON.stringify(exports.CancelExecutionRequestCreate$outboundSchema.parse(cancelExecutionRequestCreate));
+}
+function cancelExecutionRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelExecutionRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelExecutionRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelexecutionrequestcreate.js.map

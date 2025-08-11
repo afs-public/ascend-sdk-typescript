@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Status$ = exports.Status$outboundSchema = exports.Status$inboundSchema = void 0;
+exports.statusToJSON = statusToJSON;
+exports.statusFromJSON = statusFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const any_js_1 = require("./any.js");
 /** @internal */
 exports.Status$inboundSchema = z
@@ -63,4 +66,10 @@ var Status$;
     /** @deprecated use `Status$outboundSchema` instead. */
     Status$.outboundSchema = exports.Status$outboundSchema;
 })(Status$ || (exports.Status$ = Status$ = {}));
+function statusToJSON(status) {
+    return JSON.stringify(exports.Status$outboundSchema.parse(status));
+}
+function statusFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Status$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Status' from JSON`);
+}
 //# sourceMappingURL=status.js.map

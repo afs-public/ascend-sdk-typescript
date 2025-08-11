@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The address of the person or entity taking receipt of the wired funds. This will be populated automatically in the case of a valid first-party wire
  */
@@ -438,6 +440,8 @@ export declare namespace Address$ {
     /** @deprecated use `Address$Outbound` instead. */
     type Outbound = Address$Outbound;
 }
+export declare function addressToJSON(address: Address): string;
+export declare function addressFromJSON(jsonString: string): SafeParseResult<Address, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleBeneficiary$inboundSchema: z.ZodType<WireWithdrawalScheduleBeneficiary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -461,6 +465,8 @@ export declare namespace WireWithdrawalScheduleBeneficiary$ {
     /** @deprecated use `WireWithdrawalScheduleBeneficiary$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleBeneficiary$Outbound;
 }
+export declare function wireWithdrawalScheduleBeneficiaryToJSON(wireWithdrawalScheduleBeneficiary: WireWithdrawalScheduleBeneficiary): string;
+export declare function wireWithdrawalScheduleBeneficiaryFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleBeneficiary, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleAddress$inboundSchema: z.ZodType<WireWithdrawalScheduleAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -485,6 +491,8 @@ export declare namespace WireWithdrawalScheduleAddress$ {
     /** @deprecated use `WireWithdrawalScheduleAddress$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleAddress$Outbound;
 }
+export declare function wireWithdrawalScheduleAddressToJSON(wireWithdrawalScheduleAddress: WireWithdrawalScheduleAddress): string;
+export declare function wireWithdrawalScheduleAddressFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleAddress, SDKValidationError>;
 /** @internal */
 export declare const Intermediary$inboundSchema: z.ZodType<Intermediary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -507,6 +515,8 @@ export declare namespace Intermediary$ {
     /** @deprecated use `Intermediary$Outbound` instead. */
     type Outbound = Intermediary$Outbound;
 }
+export declare function intermediaryToJSON(intermediary: Intermediary): string;
+export declare function intermediaryFromJSON(jsonString: string): SafeParseResult<Intermediary, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleRecipientBankType$inboundSchema: z.ZodType<WireWithdrawalScheduleRecipientBankTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -542,6 +552,8 @@ export declare namespace BankId$ {
     /** @deprecated use `BankId$Outbound` instead. */
     type Outbound = BankId$Outbound;
 }
+export declare function bankIdToJSON(bankId: BankId): string;
+export declare function bankIdFromJSON(jsonString: string): SafeParseResult<BankId, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleRecipientBankAddress$inboundSchema: z.ZodType<WireWithdrawalScheduleRecipientBankAddress, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -566,6 +578,8 @@ export declare namespace WireWithdrawalScheduleRecipientBankAddress$ {
     /** @deprecated use `WireWithdrawalScheduleRecipientBankAddress$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleRecipientBankAddress$Outbound;
 }
+export declare function wireWithdrawalScheduleRecipientBankAddressToJSON(wireWithdrawalScheduleRecipientBankAddress: WireWithdrawalScheduleRecipientBankAddress): string;
+export declare function wireWithdrawalScheduleRecipientBankAddressFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleRecipientBankAddress, SDKValidationError>;
 /** @internal */
 export declare const InternationalBankDetails$inboundSchema: z.ZodType<InternationalBankDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -588,6 +602,8 @@ export declare namespace InternationalBankDetails$ {
     /** @deprecated use `InternationalBankDetails$Outbound` instead. */
     type Outbound = InternationalBankDetails$Outbound;
 }
+export declare function internationalBankDetailsToJSON(internationalBankDetails: InternationalBankDetails): string;
+export declare function internationalBankDetailsFromJSON(jsonString: string): SafeParseResult<InternationalBankDetails, SDKValidationError>;
 /** @internal */
 export declare const RecipientBank$inboundSchema: z.ZodType<RecipientBank, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -609,6 +625,8 @@ export declare namespace RecipientBank$ {
     /** @deprecated use `RecipientBank$Outbound` instead. */
     type Outbound = RecipientBank$Outbound;
 }
+export declare function recipientBankToJSON(recipientBank: RecipientBank): string;
+export declare function recipientBankFromJSON(jsonString: string): SafeParseResult<RecipientBank, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmount$inboundSchema: z.ZodType<WireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -629,6 +647,8 @@ export declare namespace WireWithdrawalScheduleRetirementDistributionFederalTaxW
     /** @deprecated use `WireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmount$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmount$Outbound;
 }
+export declare function wireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmountToJSON(wireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmount: WireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmount): string;
+export declare function wireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmountFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleRetirementDistributionFederalTaxWithholdingAmount, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalSchedulePercentage$inboundSchema: z.ZodType<WireWithdrawalSchedulePercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -649,6 +669,8 @@ export declare namespace WireWithdrawalSchedulePercentage$ {
     /** @deprecated use `WireWithdrawalSchedulePercentage$Outbound` instead. */
     type Outbound = WireWithdrawalSchedulePercentage$Outbound;
 }
+export declare function wireWithdrawalSchedulePercentageToJSON(wireWithdrawalSchedulePercentage: WireWithdrawalSchedulePercentage): string;
+export declare function wireWithdrawalSchedulePercentageFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedulePercentage, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleFederalTaxWithholding$inboundSchema: z.ZodType<WireWithdrawalScheduleFederalTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -670,6 +692,8 @@ export declare namespace WireWithdrawalScheduleFederalTaxWithholding$ {
     /** @deprecated use `WireWithdrawalScheduleFederalTaxWithholding$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleFederalTaxWithholding$Outbound;
 }
+export declare function wireWithdrawalScheduleFederalTaxWithholdingToJSON(wireWithdrawalScheduleFederalTaxWithholding: WireWithdrawalScheduleFederalTaxWithholding): string;
+export declare function wireWithdrawalScheduleFederalTaxWithholdingFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleFederalTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleRetirementDistributionAmount$inboundSchema: z.ZodType<WireWithdrawalScheduleRetirementDistributionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -690,6 +714,8 @@ export declare namespace WireWithdrawalScheduleRetirementDistributionAmount$ {
     /** @deprecated use `WireWithdrawalScheduleRetirementDistributionAmount$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleRetirementDistributionAmount$Outbound;
 }
+export declare function wireWithdrawalScheduleRetirementDistributionAmountToJSON(wireWithdrawalScheduleRetirementDistributionAmount: WireWithdrawalScheduleRetirementDistributionAmount): string;
+export declare function wireWithdrawalScheduleRetirementDistributionAmountFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleRetirementDistributionAmount, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleRetirementDistributionPercentage$inboundSchema: z.ZodType<WireWithdrawalScheduleRetirementDistributionPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -710,6 +736,8 @@ export declare namespace WireWithdrawalScheduleRetirementDistributionPercentage$
     /** @deprecated use `WireWithdrawalScheduleRetirementDistributionPercentage$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleRetirementDistributionPercentage$Outbound;
 }
+export declare function wireWithdrawalScheduleRetirementDistributionPercentageToJSON(wireWithdrawalScheduleRetirementDistributionPercentage: WireWithdrawalScheduleRetirementDistributionPercentage): string;
+export declare function wireWithdrawalScheduleRetirementDistributionPercentageFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleRetirementDistributionPercentage, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleStateTaxWithholding$inboundSchema: z.ZodType<WireWithdrawalScheduleStateTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -731,6 +759,8 @@ export declare namespace WireWithdrawalScheduleStateTaxWithholding$ {
     /** @deprecated use `WireWithdrawalScheduleStateTaxWithholding$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleStateTaxWithholding$Outbound;
 }
+export declare function wireWithdrawalScheduleStateTaxWithholdingToJSON(wireWithdrawalScheduleStateTaxWithholding: WireWithdrawalScheduleStateTaxWithholding): string;
+export declare function wireWithdrawalScheduleStateTaxWithholdingFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleStateTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleType$inboundSchema: z.ZodType<WireWithdrawalScheduleTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -770,6 +800,8 @@ export declare namespace WireWithdrawalScheduleRetirementDistribution$ {
     /** @deprecated use `WireWithdrawalScheduleRetirementDistribution$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleRetirementDistribution$Outbound;
 }
+export declare function wireWithdrawalScheduleRetirementDistributionToJSON(wireWithdrawalScheduleRetirementDistribution: WireWithdrawalScheduleRetirementDistribution): string;
+export declare function wireWithdrawalScheduleRetirementDistributionFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleRetirementDistribution, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleAmount$inboundSchema: z.ZodType<WireWithdrawalScheduleAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -790,6 +822,8 @@ export declare namespace WireWithdrawalScheduleAmount$ {
     /** @deprecated use `WireWithdrawalScheduleAmount$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleAmount$Outbound;
 }
+export declare function wireWithdrawalScheduleAmountToJSON(wireWithdrawalScheduleAmount: WireWithdrawalScheduleAmount): string;
+export declare function wireWithdrawalScheduleAmountFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleAmount, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleStartDate$inboundSchema: z.ZodType<WireWithdrawalScheduleStartDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -812,6 +846,8 @@ export declare namespace WireWithdrawalScheduleStartDate$ {
     /** @deprecated use `WireWithdrawalScheduleStartDate$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleStartDate$Outbound;
 }
+export declare function wireWithdrawalScheduleStartDateToJSON(wireWithdrawalScheduleStartDate: WireWithdrawalScheduleStartDate): string;
+export declare function wireWithdrawalScheduleStartDateFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleStartDate, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleState$inboundSchema: z.ZodType<WireWithdrawalScheduleStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -864,6 +900,8 @@ export declare namespace WireWithdrawalScheduleScheduleProperties$ {
     /** @deprecated use `WireWithdrawalScheduleScheduleProperties$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleScheduleProperties$Outbound;
 }
+export declare function wireWithdrawalScheduleSchedulePropertiesToJSON(wireWithdrawalScheduleScheduleProperties: WireWithdrawalScheduleScheduleProperties): string;
+export declare function wireWithdrawalScheduleSchedulePropertiesFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleScheduleProperties, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalScheduleScheduleDetails$inboundSchema: z.ZodType<WireWithdrawalScheduleScheduleDetails, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -887,6 +925,8 @@ export declare namespace WireWithdrawalScheduleScheduleDetails$ {
     /** @deprecated use `WireWithdrawalScheduleScheduleDetails$Outbound` instead. */
     type Outbound = WireWithdrawalScheduleScheduleDetails$Outbound;
 }
+export declare function wireWithdrawalScheduleScheduleDetailsToJSON(wireWithdrawalScheduleScheduleDetails: WireWithdrawalScheduleScheduleDetails): string;
+export declare function wireWithdrawalScheduleScheduleDetailsFromJSON(jsonString: string): SafeParseResult<WireWithdrawalScheduleScheduleDetails, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalSchedule$inboundSchema: z.ZodType<WireWithdrawalSchedule, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -912,4 +952,6 @@ export declare namespace WireWithdrawalSchedule$ {
     /** @deprecated use `WireWithdrawalSchedule$Outbound` instead. */
     type Outbound = WireWithdrawalSchedule$Outbound;
 }
+export declare function wireWithdrawalScheduleToJSON(wireWithdrawalSchedule: WireWithdrawalSchedule): string;
+export declare function wireWithdrawalScheduleFromJSON(jsonString: string): SafeParseResult<WireWithdrawalSchedule, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalschedule.d.ts.map

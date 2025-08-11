@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -128,4 +131,20 @@ export namespace BondYieldCreate$ {
   export const outboundSchema = BondYieldCreate$outboundSchema;
   /** @deprecated use `BondYieldCreate$Outbound` instead. */
   export type Outbound = BondYieldCreate$Outbound;
+}
+
+export function bondYieldCreateToJSON(
+  bondYieldCreate: BondYieldCreate,
+): string {
+  return JSON.stringify(BondYieldCreate$outboundSchema.parse(bondYieldCreate));
+}
+
+export function bondYieldCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<BondYieldCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BondYieldCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BondYieldCreate' from JSON`,
+  );
 }

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsCreateInterestedPartyRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace AccountsCreateInterestedPartyRequest$ {
     /** @deprecated use `AccountsCreateInterestedPartyRequest$Outbound` instead. */
     type Outbound = AccountsCreateInterestedPartyRequest$Outbound;
 }
+export declare function accountsCreateInterestedPartyRequestToJSON(accountsCreateInterestedPartyRequest: AccountsCreateInterestedPartyRequest): string;
+export declare function accountsCreateInterestedPartyRequestFromJSON(jsonString: string): SafeParseResult<AccountsCreateInterestedPartyRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsCreateInterestedPartyResponse$inboundSchema: z.ZodType<AccountsCreateInterestedPartyResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsCreateInterestedPartyResponse$ {
     /** @deprecated use `AccountsCreateInterestedPartyResponse$Outbound` instead. */
     type Outbound = AccountsCreateInterestedPartyResponse$Outbound;
 }
+export declare function accountsCreateInterestedPartyResponseToJSON(accountsCreateInterestedPartyResponse: AccountsCreateInterestedPartyResponse): string;
+export declare function accountsCreateInterestedPartyResponseFromJSON(jsonString: string): SafeParseResult<AccountsCreateInterestedPartyResponse, SDKValidationError>;
 //# sourceMappingURL=accountscreateinterestedparty.d.ts.map

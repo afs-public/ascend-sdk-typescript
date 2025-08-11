@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type OrderServiceCancelOrderRequest = {
     /**
      * The account id.
@@ -47,6 +49,8 @@ export declare namespace OrderServiceCancelOrderRequest$ {
     /** @deprecated use `OrderServiceCancelOrderRequest$Outbound` instead. */
     type Outbound = OrderServiceCancelOrderRequest$Outbound;
 }
+export declare function orderServiceCancelOrderRequestToJSON(orderServiceCancelOrderRequest: OrderServiceCancelOrderRequest): string;
+export declare function orderServiceCancelOrderRequestFromJSON(jsonString: string): SafeParseResult<OrderServiceCancelOrderRequest, SDKValidationError>;
 /** @internal */
 export declare const OrderServiceCancelOrderResponse$inboundSchema: z.ZodType<OrderServiceCancelOrderResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -69,4 +73,6 @@ export declare namespace OrderServiceCancelOrderResponse$ {
     /** @deprecated use `OrderServiceCancelOrderResponse$Outbound` instead. */
     type Outbound = OrderServiceCancelOrderResponse$Outbound;
 }
+export declare function orderServiceCancelOrderResponseToJSON(orderServiceCancelOrderResponse: OrderServiceCancelOrderResponse): string;
+export declare function orderServiceCancelOrderResponseFromJSON(jsonString: string): SafeParseResult<OrderServiceCancelOrderResponse, SDKValidationError>;
 //# sourceMappingURL=orderservicecancelorder.d.ts.map

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderPriceServiceRetrieveQuoteResponse$ = exports.OrderPriceServiceRetrieveQuoteResponse$outboundSchema = exports.OrderPriceServiceRetrieveQuoteResponse$inboundSchema = exports.OrderPriceServiceRetrieveQuoteRequest$ = exports.OrderPriceServiceRetrieveQuoteRequest$outboundSchema = exports.OrderPriceServiceRetrieveQuoteRequest$inboundSchema = void 0;
+exports.orderPriceServiceRetrieveQuoteRequestToJSON = orderPriceServiceRetrieveQuoteRequestToJSON;
+exports.orderPriceServiceRetrieveQuoteRequestFromJSON = orderPriceServiceRetrieveQuoteRequestFromJSON;
+exports.orderPriceServiceRetrieveQuoteResponseToJSON = orderPriceServiceRetrieveQuoteResponseToJSON;
+exports.orderPriceServiceRetrieveQuoteResponseFromJSON = orderPriceServiceRetrieveQuoteResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.OrderPriceServiceRetrieveQuoteRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var OrderPriceServiceRetrieveQuoteRequest$;
     /** @deprecated use `OrderPriceServiceRetrieveQuoteRequest$outboundSchema` instead. */
     OrderPriceServiceRetrieveQuoteRequest$.outboundSchema = exports.OrderPriceServiceRetrieveQuoteRequest$outboundSchema;
 })(OrderPriceServiceRetrieveQuoteRequest$ || (exports.OrderPriceServiceRetrieveQuoteRequest$ = OrderPriceServiceRetrieveQuoteRequest$ = {}));
+function orderPriceServiceRetrieveQuoteRequestToJSON(orderPriceServiceRetrieveQuoteRequest) {
+    return JSON.stringify(exports.OrderPriceServiceRetrieveQuoteRequest$outboundSchema.parse(orderPriceServiceRetrieveQuoteRequest));
+}
+function orderPriceServiceRetrieveQuoteRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderPriceServiceRetrieveQuoteRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderPriceServiceRetrieveQuoteRequest' from JSON`);
+}
 /** @internal */
 exports.OrderPriceServiceRetrieveQuoteResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -108,4 +119,10 @@ var OrderPriceServiceRetrieveQuoteResponse$;
     /** @deprecated use `OrderPriceServiceRetrieveQuoteResponse$outboundSchema` instead. */
     OrderPriceServiceRetrieveQuoteResponse$.outboundSchema = exports.OrderPriceServiceRetrieveQuoteResponse$outboundSchema;
 })(OrderPriceServiceRetrieveQuoteResponse$ || (exports.OrderPriceServiceRetrieveQuoteResponse$ = OrderPriceServiceRetrieveQuoteResponse$ = {}));
+function orderPriceServiceRetrieveQuoteResponseToJSON(orderPriceServiceRetrieveQuoteResponse) {
+    return JSON.stringify(exports.OrderPriceServiceRetrieveQuoteResponse$outboundSchema.parse(orderPriceServiceRetrieveQuoteResponse));
+}
+function orderPriceServiceRetrieveQuoteResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderPriceServiceRetrieveQuoteResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderPriceServiceRetrieveQuoteResponse' from JSON`);
+}
 //# sourceMappingURL=orderpriceserviceretrievequote.js.map

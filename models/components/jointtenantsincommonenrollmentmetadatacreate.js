@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JointTenantsInCommonEnrollmentMetadataCreate$ = exports.JointTenantsInCommonEnrollmentMetadataCreate$outboundSchema = exports.JointTenantsInCommonEnrollmentMetadataCreate$inboundSchema = exports.JointTenantsInCommonEnrollmentMetadataCreateFdicCashSweep$ = exports.JointTenantsInCommonEnrollmentMetadataCreateFdicCashSweep$outboundSchema = exports.JointTenantsInCommonEnrollmentMetadataCreateFdicCashSweep$inboundSchema = exports.JointTenantsInCommonEnrollmentMetadataCreateDividendReinvestmentPlan$ = exports.JointTenantsInCommonEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema = exports.JointTenantsInCommonEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema = exports.JointTenantsInCommonEnrollmentMetadataCreateFdicCashSweep = exports.JointTenantsInCommonEnrollmentMetadataCreateDividendReinvestmentPlan = void 0;
+exports.jointTenantsInCommonEnrollmentMetadataCreateToJSON = jointTenantsInCommonEnrollmentMetadataCreateToJSON;
+exports.jointTenantsInCommonEnrollmentMetadataCreateFromJSON = jointTenantsInCommonEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -137,4 +140,10 @@ var JointTenantsInCommonEnrollmentMetadataCreate$;
     /** @deprecated use `JointTenantsInCommonEnrollmentMetadataCreate$outboundSchema` instead. */
     JointTenantsInCommonEnrollmentMetadataCreate$.outboundSchema = exports.JointTenantsInCommonEnrollmentMetadataCreate$outboundSchema;
 })(JointTenantsInCommonEnrollmentMetadataCreate$ || (exports.JointTenantsInCommonEnrollmentMetadataCreate$ = JointTenantsInCommonEnrollmentMetadataCreate$ = {}));
+function jointTenantsInCommonEnrollmentMetadataCreateToJSON(jointTenantsInCommonEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.JointTenantsInCommonEnrollmentMetadataCreate$outboundSchema.parse(jointTenantsInCommonEnrollmentMetadataCreate));
+}
+function jointTenantsInCommonEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.JointTenantsInCommonEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'JointTenantsInCommonEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=jointtenantsincommonenrollmentmetadatacreate.js.map

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount to withdraw in USD. The value should not be set if the withdrawal is `full_disbursement`.
@@ -305,6 +308,24 @@ export namespace AchWithdrawalAmount$ {
   export type Outbound = AchWithdrawalAmount$Outbound;
 }
 
+export function achWithdrawalAmountToJSON(
+  achWithdrawalAmount: AchWithdrawalAmount,
+): string {
+  return JSON.stringify(
+    AchWithdrawalAmount$outboundSchema.parse(achWithdrawalAmount),
+  );
+}
+
+export function achWithdrawalAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalRetirementDistributionAmount$inboundSchema: z.ZodType<
   AchWithdrawalRetirementDistributionAmount,
@@ -344,6 +365,33 @@ export namespace AchWithdrawalRetirementDistributionAmount$ {
   export type Outbound = AchWithdrawalRetirementDistributionAmount$Outbound;
 }
 
+export function achWithdrawalRetirementDistributionAmountToJSON(
+  achWithdrawalRetirementDistributionAmount:
+    AchWithdrawalRetirementDistributionAmount,
+): string {
+  return JSON.stringify(
+    AchWithdrawalRetirementDistributionAmount$outboundSchema.parse(
+      achWithdrawalRetirementDistributionAmount,
+    ),
+  );
+}
+
+export function achWithdrawalRetirementDistributionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalRetirementDistributionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalRetirementDistributionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalRetirementDistributionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalPercentage$inboundSchema: z.ZodType<
   AchWithdrawalPercentage,
@@ -378,6 +426,24 @@ export namespace AchWithdrawalPercentage$ {
   export const outboundSchema = AchWithdrawalPercentage$outboundSchema;
   /** @deprecated use `AchWithdrawalPercentage$Outbound` instead. */
   export type Outbound = AchWithdrawalPercentage$Outbound;
+}
+
+export function achWithdrawalPercentageToJSON(
+  achWithdrawalPercentage: AchWithdrawalPercentage,
+): string {
+  return JSON.stringify(
+    AchWithdrawalPercentage$outboundSchema.parse(achWithdrawalPercentage),
+  );
+}
+
+export function achWithdrawalPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalPercentage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalPercentage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -428,6 +494,24 @@ export namespace FederalTaxWithholding$ {
   export type Outbound = FederalTaxWithholding$Outbound;
 }
 
+export function federalTaxWithholdingToJSON(
+  federalTaxWithholding: FederalTaxWithholding,
+): string {
+  return JSON.stringify(
+    FederalTaxWithholding$outboundSchema.parse(federalTaxWithholding),
+  );
+}
+
+export function federalTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<FederalTaxWithholding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FederalTaxWithholding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FederalTaxWithholding' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema:
   z.ZodType<
@@ -470,6 +554,31 @@ export namespace AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$ {
     AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$Outbound;
 }
 
+export function achWithdrawalRetirementDistributionStateTaxWithholdingAmountToJSON(
+  achWithdrawalRetirementDistributionStateTaxWithholdingAmount:
+    AchWithdrawalRetirementDistributionStateTaxWithholdingAmount,
+): string {
+  return JSON.stringify(
+    AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$outboundSchema
+      .parse(achWithdrawalRetirementDistributionStateTaxWithholdingAmount),
+  );
+}
+
+export function achWithdrawalRetirementDistributionStateTaxWithholdingAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalRetirementDistributionStateTaxWithholdingAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalRetirementDistributionStateTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalRetirementDistributionStateTaxWithholdingAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalRetirementDistributionPercentage$inboundSchema:
   z.ZodType<
@@ -508,6 +617,33 @@ export namespace AchWithdrawalRetirementDistributionPercentage$ {
     AchWithdrawalRetirementDistributionPercentage$outboundSchema;
   /** @deprecated use `AchWithdrawalRetirementDistributionPercentage$Outbound` instead. */
   export type Outbound = AchWithdrawalRetirementDistributionPercentage$Outbound;
+}
+
+export function achWithdrawalRetirementDistributionPercentageToJSON(
+  achWithdrawalRetirementDistributionPercentage:
+    AchWithdrawalRetirementDistributionPercentage,
+): string {
+  return JSON.stringify(
+    AchWithdrawalRetirementDistributionPercentage$outboundSchema.parse(
+      achWithdrawalRetirementDistributionPercentage,
+    ),
+  );
+}
+
+export function achWithdrawalRetirementDistributionPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AchWithdrawalRetirementDistributionPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AchWithdrawalRetirementDistributionPercentage$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AchWithdrawalRetirementDistributionPercentage' from JSON`,
+  );
 }
 
 /** @internal */
@@ -565,6 +701,24 @@ export namespace StateTaxWithholding$ {
   export const outboundSchema = StateTaxWithholding$outboundSchema;
   /** @deprecated use `StateTaxWithholding$Outbound` instead. */
   export type Outbound = StateTaxWithholding$Outbound;
+}
+
+export function stateTaxWithholdingToJSON(
+  stateTaxWithholding: StateTaxWithholding,
+): string {
+  return JSON.stringify(
+    StateTaxWithholding$outboundSchema.parse(stateTaxWithholding),
+  );
+}
+
+export function stateTaxWithholdingFromJSON(
+  jsonString: string,
+): SafeParseResult<StateTaxWithholding, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StateTaxWithholding$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StateTaxWithholding' from JSON`,
+  );
 }
 
 /** @internal */
@@ -674,6 +828,24 @@ export namespace RetirementDistribution$ {
   export type Outbound = RetirementDistribution$Outbound;
 }
 
+export function retirementDistributionToJSON(
+  retirementDistribution: RetirementDistribution,
+): string {
+  return JSON.stringify(
+    RetirementDistribution$outboundSchema.parse(retirementDistribution),
+  );
+}
+
+export function retirementDistributionFromJSON(
+  jsonString: string,
+): SafeParseResult<RetirementDistribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetirementDistribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetirementDistribution' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawalStateState$inboundSchema: z.ZodType<
   AchWithdrawalStateStateOpen,
@@ -764,6 +936,24 @@ export namespace AchWithdrawalState$ {
   export type Outbound = AchWithdrawalState$Outbound;
 }
 
+export function achWithdrawalStateToJSON(
+  achWithdrawalState: AchWithdrawalState,
+): string {
+  return JSON.stringify(
+    AchWithdrawalState$outboundSchema.parse(achWithdrawalState),
+  );
+}
+
+export function achWithdrawalStateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalState' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchWithdrawal$inboundSchema: z.ZodType<
   AchWithdrawal,
@@ -834,4 +1024,18 @@ export namespace AchWithdrawal$ {
   export const outboundSchema = AchWithdrawal$outboundSchema;
   /** @deprecated use `AchWithdrawal$Outbound` instead. */
   export type Outbound = AchWithdrawal$Outbound;
+}
+
+export function achWithdrawalToJSON(achWithdrawal: AchWithdrawal): string {
+  return JSON.stringify(AchWithdrawal$outboundSchema.parse(achWithdrawal));
+}
+
+export function achWithdrawalFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawal' from JSON`,
+  );
 }

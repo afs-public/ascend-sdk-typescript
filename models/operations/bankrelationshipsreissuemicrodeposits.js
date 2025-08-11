@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankRelationshipsReissueMicroDepositsResponse$ = exports.BankRelationshipsReissueMicroDepositsResponse$outboundSchema = exports.BankRelationshipsReissueMicroDepositsResponse$inboundSchema = exports.BankRelationshipsReissueMicroDepositsRequest$ = exports.BankRelationshipsReissueMicroDepositsRequest$outboundSchema = exports.BankRelationshipsReissueMicroDepositsRequest$inboundSchema = void 0;
+exports.bankRelationshipsReissueMicroDepositsRequestToJSON = bankRelationshipsReissueMicroDepositsRequestToJSON;
+exports.bankRelationshipsReissueMicroDepositsRequestFromJSON = bankRelationshipsReissueMicroDepositsRequestFromJSON;
+exports.bankRelationshipsReissueMicroDepositsResponseToJSON = bankRelationshipsReissueMicroDepositsResponseToJSON;
+exports.bankRelationshipsReissueMicroDepositsResponseFromJSON = bankRelationshipsReissueMicroDepositsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BankRelationshipsReissueMicroDepositsRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var BankRelationshipsReissueMicroDepositsRequest$;
     /** @deprecated use `BankRelationshipsReissueMicroDepositsRequest$outboundSchema` instead. */
     BankRelationshipsReissueMicroDepositsRequest$.outboundSchema = exports.BankRelationshipsReissueMicroDepositsRequest$outboundSchema;
 })(BankRelationshipsReissueMicroDepositsRequest$ || (exports.BankRelationshipsReissueMicroDepositsRequest$ = BankRelationshipsReissueMicroDepositsRequest$ = {}));
+function bankRelationshipsReissueMicroDepositsRequestToJSON(bankRelationshipsReissueMicroDepositsRequest) {
+    return JSON.stringify(exports.BankRelationshipsReissueMicroDepositsRequest$outboundSchema.parse(bankRelationshipsReissueMicroDepositsRequest));
+}
+function bankRelationshipsReissueMicroDepositsRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipsReissueMicroDepositsRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipsReissueMicroDepositsRequest' from JSON`);
+}
 /** @internal */
 exports.BankRelationshipsReissueMicroDepositsResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var BankRelationshipsReissueMicroDepositsResponse$;
     /** @deprecated use `BankRelationshipsReissueMicroDepositsResponse$outboundSchema` instead. */
     BankRelationshipsReissueMicroDepositsResponse$.outboundSchema = exports.BankRelationshipsReissueMicroDepositsResponse$outboundSchema;
 })(BankRelationshipsReissueMicroDepositsResponse$ || (exports.BankRelationshipsReissueMicroDepositsResponse$ = BankRelationshipsReissueMicroDepositsResponse$ = {}));
+function bankRelationshipsReissueMicroDepositsResponseToJSON(bankRelationshipsReissueMicroDepositsResponse) {
+    return JSON.stringify(exports.BankRelationshipsReissueMicroDepositsResponse$outboundSchema.parse(bankRelationshipsReissueMicroDepositsResponse));
+}
+function bankRelationshipsReissueMicroDepositsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BankRelationshipsReissueMicroDepositsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BankRelationshipsReissueMicroDepositsResponse' from JSON`);
+}
 //# sourceMappingURL=bankrelationshipsreissuemicrodeposits.js.map

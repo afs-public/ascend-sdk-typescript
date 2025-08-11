@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Enrollment metadata for the VIRTUAL_ACCOUNT_NUMBER enrollment type
  */
@@ -21,4 +23,6 @@ export declare namespace VirtualAccountNumberEnrollmentMetadataCreate$ {
     /** @deprecated use `VirtualAccountNumberEnrollmentMetadataCreate$Outbound` instead. */
     type Outbound = VirtualAccountNumberEnrollmentMetadataCreate$Outbound;
 }
+export declare function virtualAccountNumberEnrollmentMetadataCreateToJSON(virtualAccountNumberEnrollmentMetadataCreate: VirtualAccountNumberEnrollmentMetadataCreate): string;
+export declare function virtualAccountNumberEnrollmentMetadataCreateFromJSON(jsonString: string): SafeParseResult<VirtualAccountNumberEnrollmentMetadataCreate, SDKValidationError>;
 //# sourceMappingURL=virtualaccountnumberenrollmentmetadatacreate.d.ts.map

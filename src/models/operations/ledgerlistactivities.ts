@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LedgerListActivitiesRequest = {
   /**
@@ -94,6 +97,26 @@ export namespace LedgerListActivitiesRequest$ {
   export type Outbound = LedgerListActivitiesRequest$Outbound;
 }
 
+export function ledgerListActivitiesRequestToJSON(
+  ledgerListActivitiesRequest: LedgerListActivitiesRequest,
+): string {
+  return JSON.stringify(
+    LedgerListActivitiesRequest$outboundSchema.parse(
+      ledgerListActivitiesRequest,
+    ),
+  );
+}
+
+export function ledgerListActivitiesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LedgerListActivitiesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LedgerListActivitiesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LedgerListActivitiesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LedgerListActivitiesResponse$inboundSchema: z.ZodType<
   LedgerListActivitiesResponse,
@@ -150,4 +173,24 @@ export namespace LedgerListActivitiesResponse$ {
   export const outboundSchema = LedgerListActivitiesResponse$outboundSchema;
   /** @deprecated use `LedgerListActivitiesResponse$Outbound` instead. */
   export type Outbound = LedgerListActivitiesResponse$Outbound;
+}
+
+export function ledgerListActivitiesResponseToJSON(
+  ledgerListActivitiesResponse: LedgerListActivitiesResponse,
+): string {
+  return JSON.stringify(
+    LedgerListActivitiesResponse$outboundSchema.parse(
+      ledgerListActivitiesResponse,
+    ),
+  );
+}
+
+export function ledgerListActivitiesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LedgerListActivitiesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LedgerListActivitiesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LedgerListActivitiesResponse' from JSON`,
+  );
 }

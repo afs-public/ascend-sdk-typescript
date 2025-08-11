@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Agreement,
   Agreement$inboundSchema,
@@ -54,4 +57,22 @@ export namespace AffirmAgreementsResponse$ {
   export const outboundSchema = AffirmAgreementsResponse$outboundSchema;
   /** @deprecated use `AffirmAgreementsResponse$Outbound` instead. */
   export type Outbound = AffirmAgreementsResponse$Outbound;
+}
+
+export function affirmAgreementsResponseToJSON(
+  affirmAgreementsResponse: AffirmAgreementsResponse,
+): string {
+  return JSON.stringify(
+    AffirmAgreementsResponse$outboundSchema.parse(affirmAgreementsResponse),
+  );
+}
+
+export function affirmAgreementsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AffirmAgreementsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AffirmAgreementsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AffirmAgreementsResponse' from JSON`,
+  );
 }

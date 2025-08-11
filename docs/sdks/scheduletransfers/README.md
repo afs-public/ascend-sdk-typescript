@@ -28,6 +28,7 @@ Lists transfer schedule summaries that match the filter in the request
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="TransferScheduleSummaries_ListScheduleSummaries" method="get" path="/transfers/v1/schedules" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -46,7 +47,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.listScheduleSummaries();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -77,15 +77,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersListScheduleSummaries(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersListScheduleSummaries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -119,6 +116,7 @@ Creates an ACH deposit transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDepositSchedules_CreateAchDepositSchedule" method="post" path="/transfers/v1/accounts/{account_id}/achDepositSchedules" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { TimeUnit } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -149,7 +147,6 @@ async function run() {
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -192,15 +189,12 @@ async function run() {
       },
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCreateAchDepositSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -233,6 +227,7 @@ Return a list of ACH deposit schedules for the specified account and filter para
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDepositSchedules_ListAchDepositSchedules" method="get" path="/transfers/v1/accounts/{account_id}/achDepositSchedules" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -251,7 +246,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.listAchDepositSchedules("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -282,15 +276,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersListAchDepositSchedules(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersListAchDepositSchedules failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -325,6 +316,7 @@ Gets an ACH deposit transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDepositSchedules_GetAchDepositSchedule" method="get" path="/transfers/v1/accounts/{account_id}/achDepositSchedules/{achDepositSchedule_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -343,7 +335,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.getAchDepositSchedule("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -374,15 +365,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersGetAchDepositSchedule(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersGetAchDepositSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -415,6 +403,7 @@ Updates the amount of an ACH deposit transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDepositSchedules_UpdateAchDepositSchedule" method="patch" path="/transfers/v1/accounts/{account_id}/achDepositSchedules/{achDepositSchedule_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -433,7 +422,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.updateAchDepositSchedule({}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -464,15 +452,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersUpdateAchDepositSchedule(apexascend, {}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersUpdateAchDepositSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -507,6 +492,7 @@ Cancels an ACH deposit transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchDepositSchedules_CancelAchDepositSchedule" method="post" path="/transfers/v1/accounts/{account_id}/achDepositSchedules/{achDepositSchedule_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -527,7 +513,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDepositSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -560,15 +545,12 @@ async function run() {
   const res = await scheduleTransfersCancelAchDepositSchedule(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDepositSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCancelAchDepositSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -602,6 +584,7 @@ Creates an ACH withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawalSchedules_CreateAchWithdrawalSchedule" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawalSchedules" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { TimeUnit } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -631,7 +614,6 @@ async function run() {
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -673,15 +655,12 @@ async function run() {
       },
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCreateAchWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -714,6 +693,7 @@ Return a list of ACH withdrawal schedules for the specified account and filter p
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawalSchedules_ListAchWithdrawalSchedules" method="get" path="/transfers/v1/accounts/{account_id}/achWithdrawalSchedules" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -732,7 +712,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.listAchWithdrawalSchedules("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -763,15 +742,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersListAchWithdrawalSchedules(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersListAchWithdrawalSchedules failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -806,6 +782,7 @@ Gets an ACH withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawalSchedules_GetAchWithdrawalSchedule" method="get" path="/transfers/v1/accounts/{account_id}/achWithdrawalSchedules/{achWithdrawalSchedule_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -824,7 +801,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.getAchWithdrawalSchedule("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -855,15 +831,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersGetAchWithdrawalSchedule(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersGetAchWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -896,6 +869,7 @@ Updates the amount of an ACH withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawalSchedules_UpdateAchWithdrawalSchedule" method="patch" path="/transfers/v1/accounts/{account_id}/achWithdrawalSchedules/{achWithdrawalSchedule_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -914,7 +888,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.updateAchWithdrawalSchedule({}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -945,15 +918,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersUpdateAchWithdrawalSchedule(apexascend, {}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersUpdateAchWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -988,6 +958,7 @@ Cancels an ACH withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="AchWithdrawalSchedules_CancelAchWithdrawalSchedule" method="post" path="/transfers/v1/accounts/{account_id}/achWithdrawalSchedules/{achWithdrawalSchedule_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1008,7 +979,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1041,15 +1011,12 @@ async function run() {
   const res = await scheduleTransfersCancelAchWithdrawalSchedule(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCancelAchWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1083,6 +1050,7 @@ Creates a Wire withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawalSchedules_CreateWireWithdrawalSchedule" method="post" path="/transfers/v1/accounts/{account_id}/wireWithdrawalSchedules" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { RecipientBankBankIdCreateType, TimeUnit } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -1120,7 +1088,6 @@ async function run() {
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1170,15 +1137,12 @@ async function run() {
       },
     },
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCreateWireWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1211,6 +1175,7 @@ Return a list of Wire withdrawal schedules for the specified account and filter 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawalSchedules_ListWireWithdrawalSchedules" method="get" path="/transfers/v1/accounts/{account_id}/wireWithdrawalSchedules" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1229,7 +1194,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.listWireWithdrawalSchedules("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1260,15 +1224,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersListWireWithdrawalSchedules(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersListWireWithdrawalSchedules failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1303,6 +1264,7 @@ Gets a Wire withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawalSchedules_GetWireWithdrawalSchedule" method="get" path="/transfers/v1/accounts/{account_id}/wireWithdrawalSchedules/{wireWithdrawalSchedule_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1321,7 +1283,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.getWireWithdrawalSchedule("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1352,15 +1313,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersGetWireWithdrawalSchedule(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersGetWireWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1393,6 +1351,7 @@ Updates the amount of a Wire withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawalSchedules_UpdateWireWithdrawalSchedule" method="patch" path="/transfers/v1/accounts/{account_id}/wireWithdrawalSchedules/{wireWithdrawalSchedule_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1411,7 +1370,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.updateWireWithdrawalSchedule({}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1442,15 +1400,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await scheduleTransfersUpdateWireWithdrawalSchedule(apexascend, {}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersUpdateWireWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1485,6 +1440,7 @@ Cancels a Wire withdrawal transfer schedule
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="WireWithdrawalSchedules_CancelWireWithdrawalSchedule" method="post" path="/transfers/v1/accounts/{account_id}/wireWithdrawalSchedules/{wireWithdrawalSchedule_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -1505,7 +1461,6 @@ async function run() {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1538,15 +1493,12 @@ async function run() {
   const res = await scheduleTransfersCancelWireWithdrawalSchedule(apexascend, {
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/wireWithdrawalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
   }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCancelWireWithdrawalSchedule failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

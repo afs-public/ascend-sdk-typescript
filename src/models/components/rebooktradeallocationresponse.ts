@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYield,
   BondYield$inboundSchema,
@@ -1005,6 +1008,33 @@ export namespace RebookTradeAllocationResponseAccruedInterestAmount$ {
     RebookTradeAllocationResponseAccruedInterestAmount$Outbound;
 }
 
+export function rebookTradeAllocationResponseAccruedInterestAmountToJSON(
+  rebookTradeAllocationResponseAccruedInterestAmount:
+    RebookTradeAllocationResponseAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseAccruedInterestAmount$outboundSchema.parse(
+      rebookTradeAllocationResponseAccruedInterestAmount,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponseAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseAccruedInterestAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseAccruedInterestAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeAllocationResponseAccruedInterestAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseAssetType$inboundSchema: z.ZodType<
   RebookTradeAllocationResponseAssetTypeOpen,
@@ -1115,6 +1145,33 @@ export namespace RebookTradeAllocationResponseCommissionAmount$ {
   export type Outbound = RebookTradeAllocationResponseCommissionAmount$Outbound;
 }
 
+export function rebookTradeAllocationResponseCommissionAmountToJSON(
+  rebookTradeAllocationResponseCommissionAmount:
+    RebookTradeAllocationResponseCommissionAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseCommissionAmount$outboundSchema.parse(
+      rebookTradeAllocationResponseCommissionAmount,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponseCommissionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseCommissionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseCommissionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeAllocationResponseCommissionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseGrossAmount$inboundSchema: z.ZodType<
   RebookTradeAllocationResponseGrossAmount,
@@ -1151,6 +1208,33 @@ export namespace RebookTradeAllocationResponseGrossAmount$ {
     RebookTradeAllocationResponseGrossAmount$outboundSchema;
   /** @deprecated use `RebookTradeAllocationResponseGrossAmount$Outbound` instead. */
   export type Outbound = RebookTradeAllocationResponseGrossAmount$Outbound;
+}
+
+export function rebookTradeAllocationResponseGrossAmountToJSON(
+  rebookTradeAllocationResponseGrossAmount:
+    RebookTradeAllocationResponseGrossAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseGrossAmount$outboundSchema.parse(
+      rebookTradeAllocationResponseGrossAmount,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponseGrossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseGrossAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseGrossAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeAllocationResponseGrossAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1230,6 +1314,33 @@ export namespace RebookTradeAllocationResponsePrevailingMarketPrice$ {
     RebookTradeAllocationResponsePrevailingMarketPrice$Outbound;
 }
 
+export function rebookTradeAllocationResponsePrevailingMarketPriceToJSON(
+  rebookTradeAllocationResponsePrevailingMarketPrice:
+    RebookTradeAllocationResponsePrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponsePrevailingMarketPrice$outboundSchema.parse(
+      rebookTradeAllocationResponsePrevailingMarketPrice,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponsePrevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponsePrevailingMarketPrice,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponsePrevailingMarketPrice$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeAllocationResponsePrevailingMarketPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponsePrice$inboundSchema: z.ZodType<
   RebookTradeAllocationResponsePrice,
@@ -1265,6 +1376,27 @@ export namespace RebookTradeAllocationResponsePrice$ {
     RebookTradeAllocationResponsePrice$outboundSchema;
   /** @deprecated use `RebookTradeAllocationResponsePrice$Outbound` instead. */
   export type Outbound = RebookTradeAllocationResponsePrice$Outbound;
+}
+
+export function rebookTradeAllocationResponsePriceToJSON(
+  rebookTradeAllocationResponsePrice: RebookTradeAllocationResponsePrice,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponsePrice$outboundSchema.parse(
+      rebookTradeAllocationResponsePrice,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponsePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookTradeAllocationResponsePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponsePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponsePrice' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1306,6 +1438,33 @@ export namespace RebookTradeAllocationResponsePriceAdjustmentAmount$ {
   /** @deprecated use `RebookTradeAllocationResponsePriceAdjustmentAmount$Outbound` instead. */
   export type Outbound =
     RebookTradeAllocationResponsePriceAdjustmentAmount$Outbound;
+}
+
+export function rebookTradeAllocationResponsePriceAdjustmentAmountToJSON(
+  rebookTradeAllocationResponsePriceAdjustmentAmount:
+    RebookTradeAllocationResponsePriceAdjustmentAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponsePriceAdjustmentAmount$outboundSchema.parse(
+      rebookTradeAllocationResponsePriceAdjustmentAmount,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponsePriceAdjustmentAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponsePriceAdjustmentAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponsePriceAdjustmentAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeAllocationResponsePriceAdjustmentAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1411,6 +1570,33 @@ export namespace RebookTradeAllocationResponsePriceAdjustment$ {
   export type Outbound = RebookTradeAllocationResponsePriceAdjustment$Outbound;
 }
 
+export function rebookTradeAllocationResponsePriceAdjustmentToJSON(
+  rebookTradeAllocationResponsePriceAdjustment:
+    RebookTradeAllocationResponsePriceAdjustment,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponsePriceAdjustment$outboundSchema.parse(
+      rebookTradeAllocationResponsePriceAdjustment,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponsePriceAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponsePriceAdjustment,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponsePriceAdjustment$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeAllocationResponsePriceAdjustment' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseQuantity$inboundSchema: z.ZodType<
   RebookTradeAllocationResponseQuantity,
@@ -1447,6 +1633,27 @@ export namespace RebookTradeAllocationResponseQuantity$ {
     RebookTradeAllocationResponseQuantity$outboundSchema;
   /** @deprecated use `RebookTradeAllocationResponseQuantity$Outbound` instead. */
   export type Outbound = RebookTradeAllocationResponseQuantity$Outbound;
+}
+
+export function rebookTradeAllocationResponseQuantityToJSON(
+  rebookTradeAllocationResponseQuantity: RebookTradeAllocationResponseQuantity,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseQuantity$outboundSchema.parse(
+      rebookTradeAllocationResponseQuantity,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponseQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookTradeAllocationResponseQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1493,6 +1700,33 @@ export namespace RebookTradeAllocationResponseSettlementDate$ {
     RebookTradeAllocationResponseSettlementDate$outboundSchema;
   /** @deprecated use `RebookTradeAllocationResponseSettlementDate$Outbound` instead. */
   export type Outbound = RebookTradeAllocationResponseSettlementDate$Outbound;
+}
+
+export function rebookTradeAllocationResponseSettlementDateToJSON(
+  rebookTradeAllocationResponseSettlementDate:
+    RebookTradeAllocationResponseSettlementDate,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseSettlementDate$outboundSchema.parse(
+      rebookTradeAllocationResponseSettlementDate,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponseSettlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseSettlementDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseSettlementDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeAllocationResponseSettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1923,6 +2157,24 @@ export namespace NewTradeAllocation$ {
   export type Outbound = NewTradeAllocation$Outbound;
 }
 
+export function newTradeAllocationToJSON(
+  newTradeAllocation: NewTradeAllocation,
+): string {
+  return JSON.stringify(
+    NewTradeAllocation$outboundSchema.parse(newTradeAllocation),
+  );
+}
+
+export function newTradeAllocationFromJSON(
+  jsonString: string,
+): SafeParseResult<NewTradeAllocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NewTradeAllocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NewTradeAllocation' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$inboundSchema:
   z.ZodType<
@@ -1963,6 +2215,33 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationAccruedInte
   /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$Outbound` instead. */
   export type Outbound =
     RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$Outbound;
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmountToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount:
+    RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$outboundSchema
+      .parse(
+        rebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount,
+      ),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2085,6 +2364,33 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationCommissionA
     RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$Outbound;
 }
 
+export function rebookTradeAllocationResponseOriginalTradeAllocationCommissionAmountToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount:
+    RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$outboundSchema
+      .parse(
+        rebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount,
+      ),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationCommissionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$inboundSchema:
   z.ZodType<
@@ -2125,6 +2431,31 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount
   /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$Outbound` instead. */
   export type Outbound =
     RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$Outbound;
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationGrossAmountToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationGrossAmount:
+    RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$outboundSchema
+      .parse(rebookTradeAllocationResponseOriginalTradeAllocationGrossAmount),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationGrossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2209,6 +2540,33 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationPrevailingM
     RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice$Outbound;
 }
 
+export function rebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPriceToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice:
+    RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice$outboundSchema
+      .parse(
+        rebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice,
+      ),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseOriginalTradeAllocationPrice$inboundSchema:
   z.ZodType<
@@ -2251,6 +2609,31 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationPrice$ {
     RebookTradeAllocationResponseOriginalTradeAllocationPrice$Outbound;
 }
 
+export function rebookTradeAllocationResponseOriginalTradeAllocationPriceToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationPrice:
+    RebookTradeAllocationResponseOriginalTradeAllocationPrice,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationPrice$outboundSchema
+      .parse(rebookTradeAllocationResponseOriginalTradeAllocationPrice),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationPrice,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationPrice$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$inboundSchema:
   z.ZodType<
@@ -2291,6 +2674,33 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjust
   /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$Outbound` instead. */
   export type Outbound =
     RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$Outbound;
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmountToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount:
+    RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$outboundSchema
+      .parse(
+        rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount,
+      ),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2403,6 +2813,33 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjust
     RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$Outbound;
 }
 
+export function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment:
+    RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$outboundSchema
+      .parse(
+        rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment,
+      ),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponseOriginalTradeAllocationQuantity$inboundSchema:
   z.ZodType<
@@ -2443,6 +2880,31 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationQuantity$ {
   /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationQuantity$Outbound` instead. */
   export type Outbound =
     RebookTradeAllocationResponseOriginalTradeAllocationQuantity$Outbound;
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationQuantityToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationQuantity:
+    RebookTradeAllocationResponseOriginalTradeAllocationQuantity,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationQuantity$outboundSchema
+      .parse(rebookTradeAllocationResponseOriginalTradeAllocationQuantity),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationQuantity,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationQuantity$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2491,6 +2953,33 @@ export namespace RebookTradeAllocationResponseOriginalTradeAllocationSettlementD
   /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate$Outbound` instead. */
   export type Outbound =
     RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate$Outbound;
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationSettlementDateToJSON(
+  rebookTradeAllocationResponseOriginalTradeAllocationSettlementDate:
+    RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate$outboundSchema
+      .parse(
+        rebookTradeAllocationResponseOriginalTradeAllocationSettlementDate,
+      ),
+  );
+}
+
+export function rebookTradeAllocationResponseOriginalTradeAllocationSettlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2992,6 +3481,24 @@ export namespace OriginalTradeAllocation$ {
   export type Outbound = OriginalTradeAllocation$Outbound;
 }
 
+export function originalTradeAllocationToJSON(
+  originalTradeAllocation: OriginalTradeAllocation,
+): string {
+  return JSON.stringify(
+    OriginalTradeAllocation$outboundSchema.parse(originalTradeAllocation),
+  );
+}
+
+export function originalTradeAllocationFromJSON(
+  jsonString: string,
+): SafeParseResult<OriginalTradeAllocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OriginalTradeAllocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OriginalTradeAllocation' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeAllocationResponse$inboundSchema: z.ZodType<
   RebookTradeAllocationResponse,
@@ -3050,4 +3557,24 @@ export namespace RebookTradeAllocationResponse$ {
   export const outboundSchema = RebookTradeAllocationResponse$outboundSchema;
   /** @deprecated use `RebookTradeAllocationResponse$Outbound` instead. */
   export type Outbound = RebookTradeAllocationResponse$Outbound;
+}
+
+export function rebookTradeAllocationResponseToJSON(
+  rebookTradeAllocationResponse: RebookTradeAllocationResponse,
+): string {
+  return JSON.stringify(
+    RebookTradeAllocationResponse$outboundSchema.parse(
+      rebookTradeAllocationResponse,
+    ),
+  );
+}
+
+export function rebookTradeAllocationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookTradeAllocationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookTradeAllocationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeAllocationResponse' from JSON`,
+  );
 }

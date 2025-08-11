@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsGetLegalEntityResponse$ = exports.AccountsGetLegalEntityResponse$outboundSchema = exports.AccountsGetLegalEntityResponse$inboundSchema = exports.AccountsGetLegalEntityRequest$ = exports.AccountsGetLegalEntityRequest$outboundSchema = exports.AccountsGetLegalEntityRequest$inboundSchema = void 0;
+exports.accountsGetLegalEntityRequestToJSON = accountsGetLegalEntityRequestToJSON;
+exports.accountsGetLegalEntityRequestFromJSON = accountsGetLegalEntityRequestFromJSON;
+exports.accountsGetLegalEntityResponseToJSON = accountsGetLegalEntityResponseToJSON;
+exports.accountsGetLegalEntityResponseFromJSON = accountsGetLegalEntityResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsGetLegalEntityRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var AccountsGetLegalEntityRequest$;
     /** @deprecated use `AccountsGetLegalEntityRequest$outboundSchema` instead. */
     AccountsGetLegalEntityRequest$.outboundSchema = exports.AccountsGetLegalEntityRequest$outboundSchema;
 })(AccountsGetLegalEntityRequest$ || (exports.AccountsGetLegalEntityRequest$ = AccountsGetLegalEntityRequest$ = {}));
+function accountsGetLegalEntityRequestToJSON(accountsGetLegalEntityRequest) {
+    return JSON.stringify(exports.AccountsGetLegalEntityRequest$outboundSchema.parse(accountsGetLegalEntityRequest));
+}
+function accountsGetLegalEntityRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsGetLegalEntityRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsGetLegalEntityRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsGetLegalEntityResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var AccountsGetLegalEntityResponse$;
     /** @deprecated use `AccountsGetLegalEntityResponse$outboundSchema` instead. */
     AccountsGetLegalEntityResponse$.outboundSchema = exports.AccountsGetLegalEntityResponse$outboundSchema;
 })(AccountsGetLegalEntityResponse$ || (exports.AccountsGetLegalEntityResponse$ = AccountsGetLegalEntityResponse$ = {}));
+function accountsGetLegalEntityResponseToJSON(accountsGetLegalEntityResponse) {
+    return JSON.stringify(exports.AccountsGetLegalEntityResponse$outboundSchema.parse(accountsGetLegalEntityResponse));
+}
+function accountsGetLegalEntityResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsGetLegalEntityResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsGetLegalEntityResponse' from JSON`);
+}
 //# sourceMappingURL=accountsgetlegalentity.js.map

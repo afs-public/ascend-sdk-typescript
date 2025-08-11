@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Custom date object to present related Dow Jones dates because any value can be null, Month is represented randomly like June, Jun, 6 etc. etc.
  */
@@ -38,4 +40,6 @@ export declare namespace DowJonesDate$ {
     /** @deprecated use `DowJonesDate$Outbound` instead. */
     type Outbound = DowJonesDate$Outbound;
 }
+export declare function dowJonesDateToJSON(dowJonesDate: DowJonesDate): string;
+export declare function dowJonesDateFromJSON(jsonString: string): SafeParseResult<DowJonesDate, SDKValidationError>;
 //# sourceMappingURL=dowjonesdate.d.ts.map

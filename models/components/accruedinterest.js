@@ -37,7 +37,12 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccruedInterest$ = exports.AccruedInterest$outboundSchema = exports.AccruedInterest$inboundSchema = exports.AccruedInterestAmount1$ = exports.AccruedInterestAmount1$outboundSchema = exports.AccruedInterestAmount1$inboundSchema = void 0;
+exports.accruedInterestAmount1ToJSON = accruedInterestAmount1ToJSON;
+exports.accruedInterestAmount1FromJSON = accruedInterestAmount1FromJSON;
+exports.accruedInterestToJSON = accruedInterestToJSON;
+exports.accruedInterestFromJSON = accruedInterestFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AccruedInterestAmount1$inboundSchema = z.object({
     value: z.string().optional(),
@@ -57,6 +62,12 @@ var AccruedInterestAmount1$;
     /** @deprecated use `AccruedInterestAmount1$outboundSchema` instead. */
     AccruedInterestAmount1$.outboundSchema = exports.AccruedInterestAmount1$outboundSchema;
 })(AccruedInterestAmount1$ || (exports.AccruedInterestAmount1$ = AccruedInterestAmount1$ = {}));
+function accruedInterestAmount1ToJSON(accruedInterestAmount1) {
+    return JSON.stringify(exports.AccruedInterestAmount1$outboundSchema.parse(accruedInterestAmount1));
+}
+function accruedInterestAmount1FromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccruedInterestAmount1$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccruedInterestAmount1' from JSON`);
+}
 /** @internal */
 exports.AccruedInterest$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AccruedInterestAmount1$inboundSchema))
@@ -78,4 +89,10 @@ var AccruedInterest$;
     /** @deprecated use `AccruedInterest$outboundSchema` instead. */
     AccruedInterest$.outboundSchema = exports.AccruedInterest$outboundSchema;
 })(AccruedInterest$ || (exports.AccruedInterest$ = AccruedInterest$ = {}));
+function accruedInterestToJSON(accruedInterest) {
+    return JSON.stringify(exports.AccruedInterest$outboundSchema.parse(accruedInterest));
+}
+function accruedInterestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccruedInterest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccruedInterest' from JSON`);
+}
 //# sourceMappingURL=accruedinterest.js.map

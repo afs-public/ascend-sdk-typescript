@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateUpdate, DateUpdate$Outbound } from "./dateupdate.js";
 /**
  * An identity verification result that clients may supply. This result represents data and confirmation attesting to identity verification.
@@ -75,4 +77,6 @@ export declare namespace IdentityVerificationResultUpdate$ {
     /** @deprecated use `IdentityVerificationResultUpdate$Outbound` instead. */
     type Outbound = IdentityVerificationResultUpdate$Outbound;
 }
+export declare function identityVerificationResultUpdateToJSON(identityVerificationResultUpdate: IdentityVerificationResultUpdate): string;
+export declare function identityVerificationResultUpdateFromJSON(jsonString: string): SafeParseResult<IdentityVerificationResultUpdate, SDKValidationError>;
 //# sourceMappingURL=identityverificationresultupdate.d.ts.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Role detail used for Dow Jones Profile details
@@ -129,4 +132,18 @@ export namespace RoleDetail$ {
   export const outboundSchema = RoleDetail$outboundSchema;
   /** @deprecated use `RoleDetail$Outbound` instead. */
   export type Outbound = RoleDetail$Outbound;
+}
+
+export function roleDetailToJSON(roleDetail: RoleDetail): string {
+  return JSON.stringify(RoleDetail$outboundSchema.parse(roleDetail));
+}
+
+export function roleDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<RoleDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RoleDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RoleDetail' from JSON`,
+  );
 }

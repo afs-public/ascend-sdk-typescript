@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MarginsRealTimeGetBuyingPowerResponse$ = exports.MarginsRealTimeGetBuyingPowerResponse$outboundSchema = exports.MarginsRealTimeGetBuyingPowerResponse$inboundSchema = exports.MarginsRealTimeGetBuyingPowerRequest$ = exports.MarginsRealTimeGetBuyingPowerRequest$outboundSchema = exports.MarginsRealTimeGetBuyingPowerRequest$inboundSchema = void 0;
+exports.marginsRealTimeGetBuyingPowerRequestToJSON = marginsRealTimeGetBuyingPowerRequestToJSON;
+exports.marginsRealTimeGetBuyingPowerRequestFromJSON = marginsRealTimeGetBuyingPowerRequestFromJSON;
+exports.marginsRealTimeGetBuyingPowerResponseToJSON = marginsRealTimeGetBuyingPowerResponseToJSON;
+exports.marginsRealTimeGetBuyingPowerResponseFromJSON = marginsRealTimeGetBuyingPowerResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.MarginsRealTimeGetBuyingPowerRequest$inboundSchema = z.object({
@@ -67,6 +72,12 @@ var MarginsRealTimeGetBuyingPowerRequest$;
     /** @deprecated use `MarginsRealTimeGetBuyingPowerRequest$outboundSchema` instead. */
     MarginsRealTimeGetBuyingPowerRequest$.outboundSchema = exports.MarginsRealTimeGetBuyingPowerRequest$outboundSchema;
 })(MarginsRealTimeGetBuyingPowerRequest$ || (exports.MarginsRealTimeGetBuyingPowerRequest$ = MarginsRealTimeGetBuyingPowerRequest$ = {}));
+function marginsRealTimeGetBuyingPowerRequestToJSON(marginsRealTimeGetBuyingPowerRequest) {
+    return JSON.stringify(exports.MarginsRealTimeGetBuyingPowerRequest$outboundSchema.parse(marginsRealTimeGetBuyingPowerRequest));
+}
+function marginsRealTimeGetBuyingPowerRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MarginsRealTimeGetBuyingPowerRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MarginsRealTimeGetBuyingPowerRequest' from JSON`);
+}
 /** @internal */
 exports.MarginsRealTimeGetBuyingPowerResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var MarginsRealTimeGetBuyingPowerResponse$;
     /** @deprecated use `MarginsRealTimeGetBuyingPowerResponse$outboundSchema` instead. */
     MarginsRealTimeGetBuyingPowerResponse$.outboundSchema = exports.MarginsRealTimeGetBuyingPowerResponse$outboundSchema;
 })(MarginsRealTimeGetBuyingPowerResponse$ || (exports.MarginsRealTimeGetBuyingPowerResponse$ = MarginsRealTimeGetBuyingPowerResponse$ = {}));
+function marginsRealTimeGetBuyingPowerResponseToJSON(marginsRealTimeGetBuyingPowerResponse) {
+    return JSON.stringify(exports.MarginsRealTimeGetBuyingPowerResponse$outboundSchema.parse(marginsRealTimeGetBuyingPowerResponse));
+}
+function marginsRealTimeGetBuyingPowerResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.MarginsRealTimeGetBuyingPowerResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'MarginsRealTimeGetBuyingPowerResponse' from JSON`);
+}
 //# sourceMappingURL=marginsrealtimegetbuyingpower.js.map

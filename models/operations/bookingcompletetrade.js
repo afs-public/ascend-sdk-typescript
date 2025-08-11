@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingCompleteTradeResponse$ = exports.BookingCompleteTradeResponse$outboundSchema = exports.BookingCompleteTradeResponse$inboundSchema = exports.BookingCompleteTradeRequest$ = exports.BookingCompleteTradeRequest$outboundSchema = exports.BookingCompleteTradeRequest$inboundSchema = void 0;
+exports.bookingCompleteTradeRequestToJSON = bookingCompleteTradeRequestToJSON;
+exports.bookingCompleteTradeRequestFromJSON = bookingCompleteTradeRequestFromJSON;
+exports.bookingCompleteTradeResponseToJSON = bookingCompleteTradeResponseToJSON;
+exports.bookingCompleteTradeResponseFromJSON = bookingCompleteTradeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BookingCompleteTradeRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var BookingCompleteTradeRequest$;
     /** @deprecated use `BookingCompleteTradeRequest$outboundSchema` instead. */
     BookingCompleteTradeRequest$.outboundSchema = exports.BookingCompleteTradeRequest$outboundSchema;
 })(BookingCompleteTradeRequest$ || (exports.BookingCompleteTradeRequest$ = BookingCompleteTradeRequest$ = {}));
+function bookingCompleteTradeRequestToJSON(bookingCompleteTradeRequest) {
+    return JSON.stringify(exports.BookingCompleteTradeRequest$outboundSchema.parse(bookingCompleteTradeRequest));
+}
+function bookingCompleteTradeRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingCompleteTradeRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingCompleteTradeRequest' from JSON`);
+}
 /** @internal */
 exports.BookingCompleteTradeResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -112,4 +123,10 @@ var BookingCompleteTradeResponse$;
     /** @deprecated use `BookingCompleteTradeResponse$outboundSchema` instead. */
     BookingCompleteTradeResponse$.outboundSchema = exports.BookingCompleteTradeResponse$outboundSchema;
 })(BookingCompleteTradeResponse$ || (exports.BookingCompleteTradeResponse$ = BookingCompleteTradeResponse$ = {}));
+function bookingCompleteTradeResponseToJSON(bookingCompleteTradeResponse) {
+    return JSON.stringify(exports.BookingCompleteTradeResponse$outboundSchema.parse(bookingCompleteTradeResponse));
+}
+function bookingCompleteTradeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingCompleteTradeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingCompleteTradeResponse' from JSON`);
+}
 //# sourceMappingURL=bookingcompletetrade.js.map

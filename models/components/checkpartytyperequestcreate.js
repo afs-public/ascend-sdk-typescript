@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CheckPartyTypeRequestCreate$ = exports.CheckPartyTypeRequestCreate$outboundSchema = exports.CheckPartyTypeRequestCreate$inboundSchema = void 0;
+exports.checkPartyTypeRequestCreateToJSON = checkPartyTypeRequestCreateToJSON;
+exports.checkPartyTypeRequestCreateFromJSON = checkPartyTypeRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CheckPartyTypeRequestCreate$inboundSchema = z.object({
     destination_account: z.string(),
@@ -70,4 +73,10 @@ var CheckPartyTypeRequestCreate$;
     /** @deprecated use `CheckPartyTypeRequestCreate$outboundSchema` instead. */
     CheckPartyTypeRequestCreate$.outboundSchema = exports.CheckPartyTypeRequestCreate$outboundSchema;
 })(CheckPartyTypeRequestCreate$ || (exports.CheckPartyTypeRequestCreate$ = CheckPartyTypeRequestCreate$ = {}));
+function checkPartyTypeRequestCreateToJSON(checkPartyTypeRequestCreate) {
+    return JSON.stringify(exports.CheckPartyTypeRequestCreate$outboundSchema.parse(checkPartyTypeRequestCreate));
+}
+function checkPartyTypeRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CheckPartyTypeRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CheckPartyTypeRequestCreate' from JSON`);
+}
 //# sourceMappingURL=checkpartytyperequestcreate.js.map

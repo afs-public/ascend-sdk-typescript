@@ -97,31 +97,19 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-All SDK methods return a response object or throw an error. By default, an API error will throw a `errors.SDKError`.
+[`ApexascendError`](./src/models/errors/apexascenderror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-If a HTTP request fails, an operation my also throw an error from the `models/errors/httpclienterrors.ts` module:
+| Property                  | Type       | Description                                                                             |
+| ------------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `error.message`           | `string`   | Error message                                                                           |
+| `error.httpMeta.response` | `Response` | HTTP response. Access to headers and more.                                              |
+| `error.httpMeta.request`  | `Request`  | HTTP request. Access to headers and more.                                               |
+| `error.data$`             |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
-
-In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `getAccount` method may throw the following errors:
-
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 403, 404, 500, 503 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
-
+### Example
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import {
-  SDKValidationError,
-  Status,
-} from "@apexfintechsolutions/ascend-sdk/models/errors";
+import * as errors from "@apexfintechsolutions/ascend-sdk/models/errors";
 
 const apexascend = new Apexascend({
   security: {
@@ -136,30 +124,25 @@ const apexascend = new Apexascend({
 });
 
 async function run() {
-  let result;
   try {
-    result = await apexascend.accountCreation.getAccount(
+    const result = await apexascend.accountCreation.getAccount(
       "01HC3MAQ4DR9QN1V8MJ4CN1HMK",
     );
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      case (err instanceof SDKValidationError): {
-        // Validation errors can be pretty-printed
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
-        return;
-      }
-      case (err instanceof Status): {
-        // Handle err.data$: StatusData
-        console.error(err);
-        return;
-      }
-      default: {
-        throw err;
+  } catch (error) {
+    // The base class for HTTP error responses
+    if (error instanceof errors.ApexascendError) {
+      console.log(error.message);
+      console.log(error.httpMeta.response.status);
+      console.log(error.httpMeta.response.headers);
+      console.log(error.httpMeta.request);
+
+      // Depending on the method different errors may be thrown
+      if (error instanceof errors.Status) {
+        console.log(error.data$.code); // number
+        console.log(error.data$.details); // Any[]
+        console.log(error.data$.message); // string
       }
     }
   }
@@ -169,7 +152,27 @@ run();
 
 ```
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+### Error Classes
+**Primary errors:**
+* [`ApexascendError`](./src/models/errors/apexascenderror.ts): The base class for HTTP error responses.
+  * [`Status`](./src/models/errors/status.ts): The status message serves as the general-purpose service error message. Each status message includes a gRPC error code, error message, and error details.
+
+<details><summary>Less common errors (6)</summary>
+
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`ApexascendError`](./src/models/errors/apexascenderror.ts)**:
+* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -177,13 +180,15 @@ Validation errors can also occur when either method arguments or data returned f
 
 ### Select Server by Name
 
-You can override the default server globally by passing a server name to the `server` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+You can override the default server globally by passing a server name to the `server: keyof typeof ServerList` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name | Server | Variables |
-| ----- | ------ | --------- |
-| `uat` | `https://uat.apexapis.com` | None |
-| `prod` | `https://api.apexapis.com` | None |
-| `sbx` | `https://sbx.apexapis.com` | None |
+| Name   | Server                     | Description                |
+| ------ | -------------------------- | -------------------------- |
+| `uat`  | `https://uat.apexapis.com` | our uat environment        |
+| `prod` | `https://api.apexapis.com` | our production environment |
+| `sbx`  | `https://sbx.apexapis.com` | our sandbox environment    |
+
+#### Example
 
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
@@ -206,7 +211,6 @@ async function run() {
     "01HC3MAQ4DR9QN1V8MJ4CN1HMK",
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -214,11 +218,9 @@ run();
 
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -240,7 +242,6 @@ async function run() {
     "01HC3MAQ4DR9QN1V8MJ4CN1HMK",
   );
 
-  // Handle the result
   console.log(result);
 }
 
@@ -603,7 +604,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -636,7 +636,6 @@ async function run() {
       "eyJhbGciOiAiUlMyNTYifQ.eyJuYW1lIjogImpkb3VnaCIsIm9yZ2FuaXphdGlvbiI6ICJjb3JyZXNwb25kZW50cy8xMjM0NTY3OC0xMjM0LTEyMzQtMTIzNC0xMjM0NTY3ODkxMDEiLCJkYXRldGltZSI6ICIyMDI0LTAyLTA1VDIxOjAyOjI3LjkwMTE4MFoifQ.IMy3KmYoG8Ppf+7hXN7tm7J4MrNpQLGL7WCWvhh4nZWAVKkluL3/u3KC6hZ6Mb/5p7Y54CgZ68aWT2BcP5y4VtzIZR1Chm5pxbLfgE4aJuk+FnF6K3Gc3bBjOWCL58pxY2aTb0iU/exDEA1cbMDvbCzmY5kRefDvorLOqgUS/tS2MJ2jv4RlZFPlmHv5PtOruJ8xUW19gEgGhsPXYYeSHFTE1ZlaDvyXrKtpOvlf+FVc2RTuEw529LZnzwH4/eJJR3BpSpHyJTjQqiaMT3wzpXXYKfCRqnDkSSKJDzCzTb0/uWK/Lf0uafxPXk5YLdis+dbo1zNQhVVKjwnMpk1vLw",
   });
 
-  // Handle the result
   console.log(result);
 }
 

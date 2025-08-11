@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OrderServiceCancelOrderRequest = {
   /**
@@ -87,6 +90,26 @@ export namespace OrderServiceCancelOrderRequest$ {
   export type Outbound = OrderServiceCancelOrderRequest$Outbound;
 }
 
+export function orderServiceCancelOrderRequestToJSON(
+  orderServiceCancelOrderRequest: OrderServiceCancelOrderRequest,
+): string {
+  return JSON.stringify(
+    OrderServiceCancelOrderRequest$outboundSchema.parse(
+      orderServiceCancelOrderRequest,
+    ),
+  );
+}
+
+export function orderServiceCancelOrderRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderServiceCancelOrderRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderServiceCancelOrderRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderServiceCancelOrderRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const OrderServiceCancelOrderResponse$inboundSchema: z.ZodType<
   OrderServiceCancelOrderResponse,
@@ -139,4 +162,24 @@ export namespace OrderServiceCancelOrderResponse$ {
   export const outboundSchema = OrderServiceCancelOrderResponse$outboundSchema;
   /** @deprecated use `OrderServiceCancelOrderResponse$Outbound` instead. */
   export type Outbound = OrderServiceCancelOrderResponse$Outbound;
+}
+
+export function orderServiceCancelOrderResponseToJSON(
+  orderServiceCancelOrderResponse: OrderServiceCancelOrderResponse,
+): string {
+  return JSON.stringify(
+    OrderServiceCancelOrderResponse$outboundSchema.parse(
+      orderServiceCancelOrderResponse,
+    ),
+  );
+}
+
+export function orderServiceCancelOrderResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderServiceCancelOrderResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderServiceCancelOrderResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderServiceCancelOrderResponse' from JSON`,
+  );
 }

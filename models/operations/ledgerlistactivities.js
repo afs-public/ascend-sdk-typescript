@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LedgerListActivitiesResponse$ = exports.LedgerListActivitiesResponse$outboundSchema = exports.LedgerListActivitiesResponse$inboundSchema = exports.LedgerListActivitiesRequest$ = exports.LedgerListActivitiesRequest$outboundSchema = exports.LedgerListActivitiesRequest$inboundSchema = void 0;
+exports.ledgerListActivitiesRequestToJSON = ledgerListActivitiesRequestToJSON;
+exports.ledgerListActivitiesRequestFromJSON = ledgerListActivitiesRequestFromJSON;
+exports.ledgerListActivitiesResponseToJSON = ledgerListActivitiesResponseToJSON;
+exports.ledgerListActivitiesResponseFromJSON = ledgerListActivitiesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.LedgerListActivitiesRequest$inboundSchema = z.object({
@@ -77,6 +82,12 @@ var LedgerListActivitiesRequest$;
     /** @deprecated use `LedgerListActivitiesRequest$outboundSchema` instead. */
     LedgerListActivitiesRequest$.outboundSchema = exports.LedgerListActivitiesRequest$outboundSchema;
 })(LedgerListActivitiesRequest$ || (exports.LedgerListActivitiesRequest$ = LedgerListActivitiesRequest$ = {}));
+function ledgerListActivitiesRequestToJSON(ledgerListActivitiesRequest) {
+    return JSON.stringify(exports.LedgerListActivitiesRequest$outboundSchema.parse(ledgerListActivitiesRequest));
+}
+function ledgerListActivitiesRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LedgerListActivitiesRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LedgerListActivitiesRequest' from JSON`);
+}
 /** @internal */
 exports.LedgerListActivitiesResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -114,4 +125,10 @@ var LedgerListActivitiesResponse$;
     /** @deprecated use `LedgerListActivitiesResponse$outboundSchema` instead. */
     LedgerListActivitiesResponse$.outboundSchema = exports.LedgerListActivitiesResponse$outboundSchema;
 })(LedgerListActivitiesResponse$ || (exports.LedgerListActivitiesResponse$ = LedgerListActivitiesResponse$ = {}));
+function ledgerListActivitiesResponseToJSON(ledgerListActivitiesResponse) {
+    return JSON.stringify(exports.LedgerListActivitiesResponse$outboundSchema.parse(ledgerListActivitiesResponse));
+}
+function ledgerListActivitiesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LedgerListActivitiesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LedgerListActivitiesResponse' from JSON`);
+}
 //# sourceMappingURL=ledgerlistactivities.js.map

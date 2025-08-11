@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AcatsTransfer,
   AcatsTransfer$inboundSchema,
@@ -70,4 +73,22 @@ export namespace ListTransfersResponse$ {
   export const outboundSchema = ListTransfersResponse$outboundSchema;
   /** @deprecated use `ListTransfersResponse$Outbound` instead. */
   export type Outbound = ListTransfersResponse$Outbound;
+}
+
+export function listTransfersResponseToJSON(
+  listTransfersResponse: ListTransfersResponse,
+): string {
+  return JSON.stringify(
+    ListTransfersResponse$outboundSchema.parse(listTransfersResponse),
+  );
+}
+
+export function listTransfersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListTransfersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListTransfersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListTransfersResponse' from JSON`,
+  );
 }

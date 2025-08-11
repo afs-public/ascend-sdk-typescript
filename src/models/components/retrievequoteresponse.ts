@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BidAskPrice,
   BidAskPrice$inboundSchema,
@@ -211,6 +214,24 @@ export namespace AskMinimumQuantity$ {
   export type Outbound = AskMinimumQuantity$Outbound;
 }
 
+export function askMinimumQuantityToJSON(
+  askMinimumQuantity: AskMinimumQuantity,
+): string {
+  return JSON.stringify(
+    AskMinimumQuantity$outboundSchema.parse(askMinimumQuantity),
+  );
+}
+
+export function askMinimumQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<AskMinimumQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AskMinimumQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AskMinimumQuantity' from JSON`,
+  );
+}
+
 /** @internal */
 export const AskQuantity$inboundSchema: z.ZodType<
   AskQuantity,
@@ -245,6 +266,20 @@ export namespace AskQuantity$ {
   export const outboundSchema = AskQuantity$outboundSchema;
   /** @deprecated use `AskQuantity$Outbound` instead. */
   export type Outbound = AskQuantity$Outbound;
+}
+
+export function askQuantityToJSON(askQuantity: AskQuantity): string {
+  return JSON.stringify(AskQuantity$outboundSchema.parse(askQuantity));
+}
+
+export function askQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<AskQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AskQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AskQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -315,6 +350,24 @@ export namespace BidMinimumQuantity$ {
   export type Outbound = BidMinimumQuantity$Outbound;
 }
 
+export function bidMinimumQuantityToJSON(
+  bidMinimumQuantity: BidMinimumQuantity,
+): string {
+  return JSON.stringify(
+    BidMinimumQuantity$outboundSchema.parse(bidMinimumQuantity),
+  );
+}
+
+export function bidMinimumQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<BidMinimumQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BidMinimumQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BidMinimumQuantity' from JSON`,
+  );
+}
+
 /** @internal */
 export const BidQuantity$inboundSchema: z.ZodType<
   BidQuantity,
@@ -349,6 +402,20 @@ export namespace BidQuantity$ {
   export const outboundSchema = BidQuantity$outboundSchema;
   /** @deprecated use `BidQuantity$Outbound` instead. */
   export type Outbound = BidQuantity$Outbound;
+}
+
+export function bidQuantityToJSON(bidQuantity: BidQuantity): string {
+  return JSON.stringify(BidQuantity$outboundSchema.parse(bidQuantity));
+}
+
+export function bidQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<BidQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BidQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BidQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -453,6 +520,22 @@ export namespace MinimumQuantity$ {
   export const outboundSchema = MinimumQuantity$outboundSchema;
   /** @deprecated use `MinimumQuantity$Outbound` instead. */
   export type Outbound = MinimumQuantity$Outbound;
+}
+
+export function minimumQuantityToJSON(
+  minimumQuantity: MinimumQuantity,
+): string {
+  return JSON.stringify(MinimumQuantity$outboundSchema.parse(minimumQuantity));
+}
+
+export function minimumQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<MinimumQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MinimumQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MinimumQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -573,4 +656,22 @@ export namespace RetrieveQuoteResponse$ {
   export const outboundSchema = RetrieveQuoteResponse$outboundSchema;
   /** @deprecated use `RetrieveQuoteResponse$Outbound` instead. */
   export type Outbound = RetrieveQuoteResponse$Outbound;
+}
+
+export function retrieveQuoteResponseToJSON(
+  retrieveQuoteResponse: RetrieveQuoteResponse,
+): string {
+  return JSON.stringify(
+    RetrieveQuoteResponse$outboundSchema.parse(retrieveQuoteResponse),
+  );
+}
+
+export function retrieveQuoteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveQuoteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetrieveQuoteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveQuoteResponse' from JSON`,
+  );
 }

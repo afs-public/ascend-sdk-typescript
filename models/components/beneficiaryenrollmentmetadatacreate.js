@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BeneficiaryEnrollmentMetadataCreate$ = exports.BeneficiaryEnrollmentMetadataCreate$outboundSchema = exports.BeneficiaryEnrollmentMetadataCreate$inboundSchema = void 0;
+exports.beneficiaryEnrollmentMetadataCreateToJSON = beneficiaryEnrollmentMetadataCreateToJSON;
+exports.beneficiaryEnrollmentMetadataCreateFromJSON = beneficiaryEnrollmentMetadataCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const beneficiarycreate_js_1 = require("./beneficiarycreate.js");
 /** @internal */
 exports.BeneficiaryEnrollmentMetadataCreate$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var BeneficiaryEnrollmentMetadataCreate$;
     /** @deprecated use `BeneficiaryEnrollmentMetadataCreate$outboundSchema` instead. */
     BeneficiaryEnrollmentMetadataCreate$.outboundSchema = exports.BeneficiaryEnrollmentMetadataCreate$outboundSchema;
 })(BeneficiaryEnrollmentMetadataCreate$ || (exports.BeneficiaryEnrollmentMetadataCreate$ = BeneficiaryEnrollmentMetadataCreate$ = {}));
+function beneficiaryEnrollmentMetadataCreateToJSON(beneficiaryEnrollmentMetadataCreate) {
+    return JSON.stringify(exports.BeneficiaryEnrollmentMetadataCreate$outboundSchema.parse(beneficiaryEnrollmentMetadataCreate));
+}
+function beneficiaryEnrollmentMetadataCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BeneficiaryEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BeneficiaryEnrollmentMetadataCreate' from JSON`);
+}
 //# sourceMappingURL=beneficiaryenrollmentmetadatacreate.js.map

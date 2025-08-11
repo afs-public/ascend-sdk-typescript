@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The message to submit a basket for execution in the market
@@ -48,4 +51,22 @@ export namespace SubmitBasketRequestCreate$ {
   export const outboundSchema = SubmitBasketRequestCreate$outboundSchema;
   /** @deprecated use `SubmitBasketRequestCreate$Outbound` instead. */
   export type Outbound = SubmitBasketRequestCreate$Outbound;
+}
+
+export function submitBasketRequestCreateToJSON(
+  submitBasketRequestCreate: SubmitBasketRequestCreate,
+): string {
+  return JSON.stringify(
+    SubmitBasketRequestCreate$outboundSchema.parse(submitBasketRequestCreate),
+  );
+}
+
+export function submitBasketRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<SubmitBasketRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SubmitBasketRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SubmitBasketRequestCreate' from JSON`,
+  );
 }

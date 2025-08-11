@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ImmediateFamilyMemberCreate, ImmediateFamilyMemberCreate$Outbound } from "./immediatefamilymembercreate.js";
 /**
  * Detail around the related politically exposed Person
@@ -44,4 +46,6 @@ export declare namespace RelatedPepCreate$ {
     /** @deprecated use `RelatedPepCreate$Outbound` instead. */
     type Outbound = RelatedPepCreate$Outbound;
 }
+export declare function relatedPepCreateToJSON(relatedPepCreate: RelatedPepCreate): string;
+export declare function relatedPepCreateFromJSON(jsonString: string): SafeParseResult<RelatedPepCreate, SDKValidationError>;
 //# sourceMappingURL=relatedpepcreate.d.ts.map

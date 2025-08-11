@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Request to cancel an existing wire withdrawal. The cancel will only succeed if the wire has not made it to the SendingToBank state
  */
@@ -33,4 +35,6 @@ export declare namespace CancelWireWithdrawalRequestCreate$ {
     /** @deprecated use `CancelWireWithdrawalRequestCreate$Outbound` instead. */
     type Outbound = CancelWireWithdrawalRequestCreate$Outbound;
 }
+export declare function cancelWireWithdrawalRequestCreateToJSON(cancelWireWithdrawalRequestCreate: CancelWireWithdrawalRequestCreate): string;
+export declare function cancelWireWithdrawalRequestCreateFromJSON(jsonString: string): SafeParseResult<CancelWireWithdrawalRequestCreate, SDKValidationError>;
 //# sourceMappingURL=cancelwirewithdrawalrequestcreate.d.ts.map

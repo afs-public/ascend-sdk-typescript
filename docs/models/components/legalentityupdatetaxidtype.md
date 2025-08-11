@@ -7,7 +7,7 @@ The nature of the U.S. Tax ID indicated in the related tax_id field; Examples in
 ```typescript
 import { LegalEntityUpdateTaxIdType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: LegalEntityUpdateTaxIdType = LegalEntityUpdateTaxIdType.TaxIdTypeEin;
+let value: LegalEntityUpdateTaxIdType = LegalEntityUpdateTaxIdType.TaxIdTypeSsn;
 ```
 
 ## Values

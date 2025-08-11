@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate,
   RetrieveFixedIncomeMarksRequestSecurityIdentifiersCreate$inboundSchema,
@@ -80,4 +83,25 @@ export namespace RetrieveFixedIncomeMarksRequestCreate$ {
     RetrieveFixedIncomeMarksRequestCreate$outboundSchema;
   /** @deprecated use `RetrieveFixedIncomeMarksRequestCreate$Outbound` instead. */
   export type Outbound = RetrieveFixedIncomeMarksRequestCreate$Outbound;
+}
+
+export function retrieveFixedIncomeMarksRequestCreateToJSON(
+  retrieveFixedIncomeMarksRequestCreate: RetrieveFixedIncomeMarksRequestCreate,
+): string {
+  return JSON.stringify(
+    RetrieveFixedIncomeMarksRequestCreate$outboundSchema.parse(
+      retrieveFixedIncomeMarksRequestCreate,
+    ),
+  );
+}
+
+export function retrieveFixedIncomeMarksRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RetrieveFixedIncomeMarksRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetrieveFixedIncomeMarksRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetrieveFixedIncomeMarksRequestCreate' from JSON`,
+  );
 }

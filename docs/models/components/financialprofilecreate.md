@@ -8,9 +8,7 @@ Disclosure of the entity account owner's financial relationships and source of b
 import { FinancialProfileCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: FinancialProfileCreate = {
-  bankingRelationships: [
-    "<value>",
-  ],
+  bankingRelationships: [],
   otherAccounts: {
     ownerHasOtherAccountsAtApex: true,
   },

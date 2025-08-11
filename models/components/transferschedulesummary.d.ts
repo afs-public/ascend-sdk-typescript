@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * A cash amount in the format of decimal value. An unset or empty value represents a full disbursement
  */
@@ -326,6 +328,8 @@ export declare namespace TransferScheduleSummaryAmount$ {
     /** @deprecated use `TransferScheduleSummaryAmount$Outbound` instead. */
     type Outbound = TransferScheduleSummaryAmount$Outbound;
 }
+export declare function transferScheduleSummaryAmountToJSON(transferScheduleSummaryAmount: TransferScheduleSummaryAmount): string;
+export declare function transferScheduleSummaryAmountFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryAmount, SDKValidationError>;
 /** @internal */
 export declare const Direction$inboundSchema: z.ZodType<DirectionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -404,6 +408,8 @@ export declare namespace TransferScheduleSummaryRetirementContribution$ {
     /** @deprecated use `TransferScheduleSummaryRetirementContribution$Outbound` instead. */
     type Outbound = TransferScheduleSummaryRetirementContribution$Outbound;
 }
+export declare function transferScheduleSummaryRetirementContributionToJSON(transferScheduleSummaryRetirementContribution: TransferScheduleSummaryRetirementContribution): string;
+export declare function transferScheduleSummaryRetirementContributionFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryRetirementContribution, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryRetirementDistributionAmount$inboundSchema: z.ZodType<TransferScheduleSummaryRetirementDistributionAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -424,6 +430,8 @@ export declare namespace TransferScheduleSummaryRetirementDistributionAmount$ {
     /** @deprecated use `TransferScheduleSummaryRetirementDistributionAmount$Outbound` instead. */
     type Outbound = TransferScheduleSummaryRetirementDistributionAmount$Outbound;
 }
+export declare function transferScheduleSummaryRetirementDistributionAmountToJSON(transferScheduleSummaryRetirementDistributionAmount: TransferScheduleSummaryRetirementDistributionAmount): string;
+export declare function transferScheduleSummaryRetirementDistributionAmountFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryRetirementDistributionAmount, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryPercentage$inboundSchema: z.ZodType<TransferScheduleSummaryPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -444,6 +452,8 @@ export declare namespace TransferScheduleSummaryPercentage$ {
     /** @deprecated use `TransferScheduleSummaryPercentage$Outbound` instead. */
     type Outbound = TransferScheduleSummaryPercentage$Outbound;
 }
+export declare function transferScheduleSummaryPercentageToJSON(transferScheduleSummaryPercentage: TransferScheduleSummaryPercentage): string;
+export declare function transferScheduleSummaryPercentageFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryPercentage, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryFederalTaxWithholding$inboundSchema: z.ZodType<TransferScheduleSummaryFederalTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -465,6 +475,8 @@ export declare namespace TransferScheduleSummaryFederalTaxWithholding$ {
     /** @deprecated use `TransferScheduleSummaryFederalTaxWithholding$Outbound` instead. */
     type Outbound = TransferScheduleSummaryFederalTaxWithholding$Outbound;
 }
+export declare function transferScheduleSummaryFederalTaxWithholdingToJSON(transferScheduleSummaryFederalTaxWithholding: TransferScheduleSummaryFederalTaxWithholding): string;
+export declare function transferScheduleSummaryFederalTaxWithholdingFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryFederalTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$inboundSchema: z.ZodType<TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -485,6 +497,8 @@ export declare namespace TransferScheduleSummaryRetirementDistributionStateTaxWi
     /** @deprecated use `TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$Outbound` instead. */
     type Outbound = TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount$Outbound;
 }
+export declare function transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountToJSON(transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount: TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount): string;
+export declare function transferScheduleSummaryRetirementDistributionStateTaxWithholdingAmountFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryRetirementDistributionStateTaxWithholdingAmount, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryRetirementDistributionPercentage$inboundSchema: z.ZodType<TransferScheduleSummaryRetirementDistributionPercentage, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -505,6 +519,8 @@ export declare namespace TransferScheduleSummaryRetirementDistributionPercentage
     /** @deprecated use `TransferScheduleSummaryRetirementDistributionPercentage$Outbound` instead. */
     type Outbound = TransferScheduleSummaryRetirementDistributionPercentage$Outbound;
 }
+export declare function transferScheduleSummaryRetirementDistributionPercentageToJSON(transferScheduleSummaryRetirementDistributionPercentage: TransferScheduleSummaryRetirementDistributionPercentage): string;
+export declare function transferScheduleSummaryRetirementDistributionPercentageFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryRetirementDistributionPercentage, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryStateTaxWithholding$inboundSchema: z.ZodType<TransferScheduleSummaryStateTaxWithholding, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -526,6 +542,8 @@ export declare namespace TransferScheduleSummaryStateTaxWithholding$ {
     /** @deprecated use `TransferScheduleSummaryStateTaxWithholding$Outbound` instead. */
     type Outbound = TransferScheduleSummaryStateTaxWithholding$Outbound;
 }
+export declare function transferScheduleSummaryStateTaxWithholdingToJSON(transferScheduleSummaryStateTaxWithholding: TransferScheduleSummaryStateTaxWithholding): string;
+export declare function transferScheduleSummaryStateTaxWithholdingFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryStateTaxWithholding, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryRetirementDistributionType$inboundSchema: z.ZodType<TransferScheduleSummaryRetirementDistributionTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -565,6 +583,8 @@ export declare namespace TransferScheduleSummaryRetirementDistribution$ {
     /** @deprecated use `TransferScheduleSummaryRetirementDistribution$Outbound` instead. */
     type Outbound = TransferScheduleSummaryRetirementDistribution$Outbound;
 }
+export declare function transferScheduleSummaryRetirementDistributionToJSON(transferScheduleSummaryRetirementDistribution: TransferScheduleSummaryRetirementDistribution): string;
+export declare function transferScheduleSummaryRetirementDistributionFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryRetirementDistribution, SDKValidationError>;
 /** @internal */
 export declare const StartDate$inboundSchema: z.ZodType<StartDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -587,6 +607,8 @@ export declare namespace StartDate$ {
     /** @deprecated use `StartDate$Outbound` instead. */
     type Outbound = StartDate$Outbound;
 }
+export declare function startDateToJSON(startDate: StartDate): string;
+export declare function startDateFromJSON(jsonString: string): SafeParseResult<StartDate, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummaryState$inboundSchema: z.ZodType<TransferScheduleSummaryStateOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -639,6 +661,8 @@ export declare namespace ScheduleProperties$ {
     /** @deprecated use `ScheduleProperties$Outbound` instead. */
     type Outbound = ScheduleProperties$Outbound;
 }
+export declare function schedulePropertiesToJSON(scheduleProperties: ScheduleProperties): string;
+export declare function schedulePropertiesFromJSON(jsonString: string): SafeParseResult<ScheduleProperties, SDKValidationError>;
 /** @internal */
 export declare const TransferScheduleSummary$inboundSchema: z.ZodType<TransferScheduleSummary, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -666,4 +690,6 @@ export declare namespace TransferScheduleSummary$ {
     /** @deprecated use `TransferScheduleSummary$Outbound` instead. */
     type Outbound = TransferScheduleSummary$Outbound;
 }
+export declare function transferScheduleSummaryToJSON(transferScheduleSummary: TransferScheduleSummary): string;
+export declare function transferScheduleSummaryFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummary, SDKValidationError>;
 //# sourceMappingURL=transferschedulesummary.d.ts.map

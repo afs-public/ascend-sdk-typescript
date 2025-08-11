@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TradeCreate,
   TradeCreate$inboundSchema,
@@ -61,4 +64,22 @@ export namespace RebookTradeRequestCreate$ {
   export const outboundSchema = RebookTradeRequestCreate$outboundSchema;
   /** @deprecated use `RebookTradeRequestCreate$Outbound` instead. */
   export type Outbound = RebookTradeRequestCreate$Outbound;
+}
+
+export function rebookTradeRequestCreateToJSON(
+  rebookTradeRequestCreate: RebookTradeRequestCreate,
+): string {
+  return JSON.stringify(
+    RebookTradeRequestCreate$outboundSchema.parse(rebookTradeRequestCreate),
+  );
+}
+
+export function rebookTradeRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookTradeRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookTradeRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeRequestCreate' from JSON`,
+  );
 }

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type WireWithdrawalsCreateWireWithdrawalRequest = {
     /**
      * The account id.
@@ -39,6 +41,8 @@ export declare namespace WireWithdrawalsCreateWireWithdrawalRequest$ {
     /** @deprecated use `WireWithdrawalsCreateWireWithdrawalRequest$Outbound` instead. */
     type Outbound = WireWithdrawalsCreateWireWithdrawalRequest$Outbound;
 }
+export declare function wireWithdrawalsCreateWireWithdrawalRequestToJSON(wireWithdrawalsCreateWireWithdrawalRequest: WireWithdrawalsCreateWireWithdrawalRequest): string;
+export declare function wireWithdrawalsCreateWireWithdrawalRequestFromJSON(jsonString: string): SafeParseResult<WireWithdrawalsCreateWireWithdrawalRequest, SDKValidationError>;
 /** @internal */
 export declare const WireWithdrawalsCreateWireWithdrawalResponse$inboundSchema: z.ZodType<WireWithdrawalsCreateWireWithdrawalResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace WireWithdrawalsCreateWireWithdrawalResponse$ {
     /** @deprecated use `WireWithdrawalsCreateWireWithdrawalResponse$Outbound` instead. */
     type Outbound = WireWithdrawalsCreateWireWithdrawalResponse$Outbound;
 }
+export declare function wireWithdrawalsCreateWireWithdrawalResponseToJSON(wireWithdrawalsCreateWireWithdrawalResponse: WireWithdrawalsCreateWireWithdrawalResponse): string;
+export declare function wireWithdrawalsCreateWireWithdrawalResponseFromJSON(jsonString: string): SafeParseResult<WireWithdrawalsCreateWireWithdrawalResponse, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalscreatewirewithdrawal.d.ts.map

@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The limit price which must be greater than zero if provided. For equity orders in the USD currency, up to 2 decimal places are allowed for prices above $1 and up to 4 decimal places for prices at or below $1. For fixed income orders this is expressed as a percentage of par, which allows up to 5 decimal places in the USD currency.
@@ -82,6 +85,20 @@ export namespace Price$ {
   export type Outbound = Price$Outbound;
 }
 
+export function priceToJSON(price: Price): string {
+  return JSON.stringify(Price$outboundSchema.parse(price));
+}
+
+export function priceFromJSON(
+  jsonString: string,
+): SafeParseResult<Price, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Price$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Price' from JSON`,
+  );
+}
+
 /** @internal */
 export const TradingExecutedPriceType$inboundSchema: z.ZodType<
   TradingExecutedPriceTypeOpen,
@@ -151,4 +168,22 @@ export namespace TradingExecutedPrice$ {
   export const outboundSchema = TradingExecutedPrice$outboundSchema;
   /** @deprecated use `TradingExecutedPrice$Outbound` instead. */
   export type Outbound = TradingExecutedPrice$Outbound;
+}
+
+export function tradingExecutedPriceToJSON(
+  tradingExecutedPrice: TradingExecutedPrice,
+): string {
+  return JSON.stringify(
+    TradingExecutedPrice$outboundSchema.parse(tradingExecutedPrice),
+  );
+}
+
+export function tradingExecutedPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<TradingExecutedPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradingExecutedPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradingExecutedPrice' from JSON`,
+  );
 }

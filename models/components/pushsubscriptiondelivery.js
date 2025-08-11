@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PushSubscriptionDelivery$ = exports.PushSubscriptionDelivery$outboundSchema = exports.PushSubscriptionDelivery$inboundSchema = exports.Result$ = exports.Result$outboundSchema = exports.Result$inboundSchema = exports.Result = void 0;
+exports.pushSubscriptionDeliveryToJSON = pushSubscriptionDeliveryToJSON;
+exports.pushSubscriptionDeliveryFromJSON = pushSubscriptionDeliveryFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The outcome of the delivery
@@ -119,4 +122,10 @@ var PushSubscriptionDelivery$;
     /** @deprecated use `PushSubscriptionDelivery$outboundSchema` instead. */
     PushSubscriptionDelivery$.outboundSchema = exports.PushSubscriptionDelivery$outboundSchema;
 })(PushSubscriptionDelivery$ || (exports.PushSubscriptionDelivery$ = PushSubscriptionDelivery$ = {}));
+function pushSubscriptionDeliveryToJSON(pushSubscriptionDelivery) {
+    return JSON.stringify(exports.PushSubscriptionDelivery$outboundSchema.parse(pushSubscriptionDelivery));
+}
+function pushSubscriptionDeliveryFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.PushSubscriptionDelivery$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PushSubscriptionDelivery' from JSON`);
+}
 //# sourceMappingURL=pushsubscriptiondelivery.js.map

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AddressCreate, AddressCreate$Outbound } from "./addresscreate.js";
 /**
  * Bank details
@@ -39,4 +41,6 @@ export declare namespace RecipientBankBankDetailsCreate$ {
     /** @deprecated use `RecipientBankBankDetailsCreate$Outbound` instead. */
     type Outbound = RecipientBankBankDetailsCreate$Outbound;
 }
+export declare function recipientBankBankDetailsCreateToJSON(recipientBankBankDetailsCreate: RecipientBankBankDetailsCreate): string;
+export declare function recipientBankBankDetailsCreateFromJSON(jsonString: string): SafeParseResult<RecipientBankBankDetailsCreate, SDKValidationError>;
 //# sourceMappingURL=recipientbankbankdetailscreate.d.ts.map

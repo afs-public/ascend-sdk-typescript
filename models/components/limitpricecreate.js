@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LimitPriceCreate$ = exports.LimitPriceCreate$outboundSchema = exports.LimitPriceCreate$inboundSchema = exports.LimitPriceCreateType$ = exports.LimitPriceCreateType$outboundSchema = exports.LimitPriceCreateType$inboundSchema = exports.LimitPriceCreateType = void 0;
+exports.limitPriceCreateToJSON = limitPriceCreateToJSON;
+exports.limitPriceCreateFromJSON = limitPriceCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -92,4 +95,10 @@ var LimitPriceCreate$;
     /** @deprecated use `LimitPriceCreate$outboundSchema` instead. */
     LimitPriceCreate$.outboundSchema = exports.LimitPriceCreate$outboundSchema;
 })(LimitPriceCreate$ || (exports.LimitPriceCreate$ = LimitPriceCreate$ = {}));
+function limitPriceCreateToJSON(limitPriceCreate) {
+    return JSON.stringify(exports.LimitPriceCreate$outboundSchema.parse(limitPriceCreate));
+}
+function limitPriceCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LimitPriceCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LimitPriceCreate' from JSON`);
+}
 //# sourceMappingURL=limitpricecreate.js.map

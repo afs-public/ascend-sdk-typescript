@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DescriptionDetail, DescriptionDetail$Outbound } from "./descriptiondetail.js";
 import { SanctionsListDetail, SanctionsListDetail$Outbound } from "./sanctionslistdetail.js";
 /**
@@ -70,4 +72,6 @@ export declare namespace RelatedProfile$ {
     /** @deprecated use `RelatedProfile$Outbound` instead. */
     type Outbound = RelatedProfile$Outbound;
 }
+export declare function relatedProfileToJSON(relatedProfile: RelatedProfile): string;
+export declare function relatedProfileFromJSON(jsonString: string): SafeParseResult<RelatedProfile, SDKValidationError>;
 //# sourceMappingURL=relatedprofile.d.ts.map

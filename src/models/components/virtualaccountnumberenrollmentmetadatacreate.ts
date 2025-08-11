@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Enrollment metadata for the VIRTUAL_ACCOUNT_NUMBER enrollment type
@@ -41,4 +44,31 @@ export namespace VirtualAccountNumberEnrollmentMetadataCreate$ {
     VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `VirtualAccountNumberEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = VirtualAccountNumberEnrollmentMetadataCreate$Outbound;
+}
+
+export function virtualAccountNumberEnrollmentMetadataCreateToJSON(
+  virtualAccountNumberEnrollmentMetadataCreate:
+    VirtualAccountNumberEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    VirtualAccountNumberEnrollmentMetadataCreate$outboundSchema.parse(
+      virtualAccountNumberEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function virtualAccountNumberEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  VirtualAccountNumberEnrollmentMetadataCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      VirtualAccountNumberEnrollmentMetadataCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'VirtualAccountNumberEnrollmentMetadataCreate' from JSON`,
+  );
 }

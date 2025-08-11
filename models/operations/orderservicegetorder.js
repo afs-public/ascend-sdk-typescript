@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderServiceGetOrderResponse$ = exports.OrderServiceGetOrderResponse$outboundSchema = exports.OrderServiceGetOrderResponse$inboundSchema = exports.OrderServiceGetOrderRequest$ = exports.OrderServiceGetOrderRequest$outboundSchema = exports.OrderServiceGetOrderRequest$inboundSchema = void 0;
+exports.orderServiceGetOrderRequestToJSON = orderServiceGetOrderRequestToJSON;
+exports.orderServiceGetOrderRequestFromJSON = orderServiceGetOrderRequestFromJSON;
+exports.orderServiceGetOrderResponseToJSON = orderServiceGetOrderResponseToJSON;
+exports.orderServiceGetOrderResponseFromJSON = orderServiceGetOrderResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.OrderServiceGetOrderRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var OrderServiceGetOrderRequest$;
     /** @deprecated use `OrderServiceGetOrderRequest$outboundSchema` instead. */
     OrderServiceGetOrderRequest$.outboundSchema = exports.OrderServiceGetOrderRequest$outboundSchema;
 })(OrderServiceGetOrderRequest$ || (exports.OrderServiceGetOrderRequest$ = OrderServiceGetOrderRequest$ = {}));
+function orderServiceGetOrderRequestToJSON(orderServiceGetOrderRequest) {
+    return JSON.stringify(exports.OrderServiceGetOrderRequest$outboundSchema.parse(orderServiceGetOrderRequest));
+}
+function orderServiceGetOrderRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderServiceGetOrderRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderServiceGetOrderRequest' from JSON`);
+}
 /** @internal */
 exports.OrderServiceGetOrderResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var OrderServiceGetOrderResponse$;
     /** @deprecated use `OrderServiceGetOrderResponse$outboundSchema` instead. */
     OrderServiceGetOrderResponse$.outboundSchema = exports.OrderServiceGetOrderResponse$outboundSchema;
 })(OrderServiceGetOrderResponse$ || (exports.OrderServiceGetOrderResponse$ = OrderServiceGetOrderResponse$ = {}));
+function orderServiceGetOrderResponseToJSON(orderServiceGetOrderResponse) {
+    return JSON.stringify(exports.OrderServiceGetOrderResponse$outboundSchema.parse(orderServiceGetOrderResponse));
+}
+function orderServiceGetOrderResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OrderServiceGetOrderResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OrderServiceGetOrderResponse' from JSON`);
+}
 //# sourceMappingURL=orderservicegetorder.js.map

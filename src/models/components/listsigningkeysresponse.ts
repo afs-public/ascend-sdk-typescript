@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A response to a list signing keys method
@@ -12,7 +15,7 @@ export type ListSigningKeysResponse = {
   /**
    * The returned collection of all currently valid signing keys
    */
-  keys?: Array<{ [k: string]: any }> | undefined;
+  keys?: Array<{ [k: string]: any } | null> | undefined;
   /**
    * Page token used for pagination; Supplying a page token returns the next page of results
    */
@@ -25,7 +28,7 @@ export const ListSigningKeysResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  keys: z.array(z.record(z.any())).optional(),
+  keys: z.array(z.nullable(z.record(z.any()))).optional(),
   next_page_token: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -35,7 +38,7 @@ export const ListSigningKeysResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ListSigningKeysResponse$Outbound = {
-  keys?: Array<{ [k: string]: any }> | undefined;
+  keys?: Array<{ [k: string]: any } | null> | undefined;
   next_page_token?: string | undefined;
 };
 
@@ -45,7 +48,7 @@ export const ListSigningKeysResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListSigningKeysResponse
 > = z.object({
-  keys: z.array(z.record(z.any())).optional(),
+  keys: z.array(z.nullable(z.record(z.any()))).optional(),
   nextPageToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -64,4 +67,22 @@ export namespace ListSigningKeysResponse$ {
   export const outboundSchema = ListSigningKeysResponse$outboundSchema;
   /** @deprecated use `ListSigningKeysResponse$Outbound` instead. */
   export type Outbound = ListSigningKeysResponse$Outbound;
+}
+
+export function listSigningKeysResponseToJSON(
+  listSigningKeysResponse: ListSigningKeysResponse,
+): string {
+  return JSON.stringify(
+    ListSigningKeysResponse$outboundSchema.parse(listSigningKeysResponse),
+  );
+}
+
+export function listSigningKeysResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSigningKeysResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSigningKeysResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSigningKeysResponse' from JSON`,
+  );
 }

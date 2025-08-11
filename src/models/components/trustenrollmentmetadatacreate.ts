@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -234,4 +237,24 @@ export namespace TrustEnrollmentMetadataCreate$ {
   export const outboundSchema = TrustEnrollmentMetadataCreate$outboundSchema;
   /** @deprecated use `TrustEnrollmentMetadataCreate$Outbound` instead. */
   export type Outbound = TrustEnrollmentMetadataCreate$Outbound;
+}
+
+export function trustEnrollmentMetadataCreateToJSON(
+  trustEnrollmentMetadataCreate: TrustEnrollmentMetadataCreate,
+): string {
+  return JSON.stringify(
+    TrustEnrollmentMetadataCreate$outboundSchema.parse(
+      trustEnrollmentMetadataCreate,
+    ),
+  );
+}
+
+export function trustEnrollmentMetadataCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<TrustEnrollmentMetadataCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustEnrollmentMetadataCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustEnrollmentMetadataCreate' from JSON`,
+  );
 }

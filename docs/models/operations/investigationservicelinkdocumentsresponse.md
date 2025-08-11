@@ -5,14 +5,7 @@
 ```typescript
 import { InvestigationServiceLinkDocumentsResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
-let value: InvestigationServiceLinkDocumentsResponse = {
-  httpMeta: {
-    response: new Response("{\"message\": \"hello world\"}", {
-      headers: { "Content-Type": "application/json" },
-    }),
-    request: new Request("https://example.com"),
-  },
-};
+let value: InvestigationServiceLinkDocumentsResponse = {};
 ```
 
 ## Fields

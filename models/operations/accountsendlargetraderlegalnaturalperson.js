@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountsEndLargeTraderLegalNaturalPersonResponse$ = exports.AccountsEndLargeTraderLegalNaturalPersonResponse$outboundSchema = exports.AccountsEndLargeTraderLegalNaturalPersonResponse$inboundSchema = exports.AccountsEndLargeTraderLegalNaturalPersonRequest$ = exports.AccountsEndLargeTraderLegalNaturalPersonRequest$outboundSchema = exports.AccountsEndLargeTraderLegalNaturalPersonRequest$inboundSchema = void 0;
+exports.accountsEndLargeTraderLegalNaturalPersonRequestToJSON = accountsEndLargeTraderLegalNaturalPersonRequestToJSON;
+exports.accountsEndLargeTraderLegalNaturalPersonRequestFromJSON = accountsEndLargeTraderLegalNaturalPersonRequestFromJSON;
+exports.accountsEndLargeTraderLegalNaturalPersonResponseToJSON = accountsEndLargeTraderLegalNaturalPersonResponseToJSON;
+exports.accountsEndLargeTraderLegalNaturalPersonResponseFromJSON = accountsEndLargeTraderLegalNaturalPersonResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AccountsEndLargeTraderLegalNaturalPersonRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AccountsEndLargeTraderLegalNaturalPersonRequest$;
     /** @deprecated use `AccountsEndLargeTraderLegalNaturalPersonRequest$outboundSchema` instead. */
     AccountsEndLargeTraderLegalNaturalPersonRequest$.outboundSchema = exports.AccountsEndLargeTraderLegalNaturalPersonRequest$outboundSchema;
 })(AccountsEndLargeTraderLegalNaturalPersonRequest$ || (exports.AccountsEndLargeTraderLegalNaturalPersonRequest$ = AccountsEndLargeTraderLegalNaturalPersonRequest$ = {}));
+function accountsEndLargeTraderLegalNaturalPersonRequestToJSON(accountsEndLargeTraderLegalNaturalPersonRequest) {
+    return JSON.stringify(exports.AccountsEndLargeTraderLegalNaturalPersonRequest$outboundSchema.parse(accountsEndLargeTraderLegalNaturalPersonRequest));
+}
+function accountsEndLargeTraderLegalNaturalPersonRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEndLargeTraderLegalNaturalPersonRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEndLargeTraderLegalNaturalPersonRequest' from JSON`);
+}
 /** @internal */
 exports.AccountsEndLargeTraderLegalNaturalPersonResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -102,4 +113,10 @@ var AccountsEndLargeTraderLegalNaturalPersonResponse$;
     /** @deprecated use `AccountsEndLargeTraderLegalNaturalPersonResponse$outboundSchema` instead. */
     AccountsEndLargeTraderLegalNaturalPersonResponse$.outboundSchema = exports.AccountsEndLargeTraderLegalNaturalPersonResponse$outboundSchema;
 })(AccountsEndLargeTraderLegalNaturalPersonResponse$ || (exports.AccountsEndLargeTraderLegalNaturalPersonResponse$ = AccountsEndLargeTraderLegalNaturalPersonResponse$ = {}));
+function accountsEndLargeTraderLegalNaturalPersonResponseToJSON(accountsEndLargeTraderLegalNaturalPersonResponse) {
+    return JSON.stringify(exports.AccountsEndLargeTraderLegalNaturalPersonResponse$outboundSchema.parse(accountsEndLargeTraderLegalNaturalPersonResponse));
+}
+function accountsEndLargeTraderLegalNaturalPersonResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountsEndLargeTraderLegalNaturalPersonResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountsEndLargeTraderLegalNaturalPersonResponse' from JSON`);
+}
 //# sourceMappingURL=accountsendlargetraderlegalnaturalperson.js.map

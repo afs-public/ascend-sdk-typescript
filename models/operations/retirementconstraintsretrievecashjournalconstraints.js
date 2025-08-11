@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$ = exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$outboundSchema = exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$inboundSchema = void 0;
+exports.retirementConstraintsRetrieveCashJournalConstraintsResponseToJSON = retirementConstraintsRetrieveCashJournalConstraintsResponseToJSON;
+exports.retirementConstraintsRetrieveCashJournalConstraintsResponseFromJSON = retirementConstraintsRetrieveCashJournalConstraintsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$inboundSchema = z.object({
@@ -77,4 +80,12 @@ var RetirementConstraintsRetrieveCashJournalConstraintsResponse$;
     /** @deprecated use `RetirementConstraintsRetrieveCashJournalConstraintsResponse$outboundSchema` instead. */
     RetirementConstraintsRetrieveCashJournalConstraintsResponse$.outboundSchema = exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$outboundSchema;
 })(RetirementConstraintsRetrieveCashJournalConstraintsResponse$ || (exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$ = RetirementConstraintsRetrieveCashJournalConstraintsResponse$ = {}));
+function retirementConstraintsRetrieveCashJournalConstraintsResponseToJSON(retirementConstraintsRetrieveCashJournalConstraintsResponse) {
+    return JSON.stringify(exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$outboundSchema
+        .parse(retirementConstraintsRetrieveCashJournalConstraintsResponse));
+}
+function retirementConstraintsRetrieveCashJournalConstraintsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementConstraintsRetrieveCashJournalConstraintsResponse$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'RetirementConstraintsRetrieveCashJournalConstraintsResponse' from JSON`);
+}
 //# sourceMappingURL=retirementconstraintsretrievecashjournalconstraints.js.map

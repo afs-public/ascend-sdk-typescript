@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WireWithdrawalsGetWireWithdrawalRequest = {
   /**
@@ -80,6 +83,33 @@ export namespace WireWithdrawalsGetWireWithdrawalRequest$ {
   export type Outbound = WireWithdrawalsGetWireWithdrawalRequest$Outbound;
 }
 
+export function wireWithdrawalsGetWireWithdrawalRequestToJSON(
+  wireWithdrawalsGetWireWithdrawalRequest:
+    WireWithdrawalsGetWireWithdrawalRequest,
+): string {
+  return JSON.stringify(
+    WireWithdrawalsGetWireWithdrawalRequest$outboundSchema.parse(
+      wireWithdrawalsGetWireWithdrawalRequest,
+    ),
+  );
+}
+
+export function wireWithdrawalsGetWireWithdrawalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalsGetWireWithdrawalRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalsGetWireWithdrawalRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WireWithdrawalsGetWireWithdrawalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const WireWithdrawalsGetWireWithdrawalResponse$inboundSchema: z.ZodType<
   WireWithdrawalsGetWireWithdrawalResponse,
@@ -134,4 +164,31 @@ export namespace WireWithdrawalsGetWireWithdrawalResponse$ {
     WireWithdrawalsGetWireWithdrawalResponse$outboundSchema;
   /** @deprecated use `WireWithdrawalsGetWireWithdrawalResponse$Outbound` instead. */
   export type Outbound = WireWithdrawalsGetWireWithdrawalResponse$Outbound;
+}
+
+export function wireWithdrawalsGetWireWithdrawalResponseToJSON(
+  wireWithdrawalsGetWireWithdrawalResponse:
+    WireWithdrawalsGetWireWithdrawalResponse,
+): string {
+  return JSON.stringify(
+    WireWithdrawalsGetWireWithdrawalResponse$outboundSchema.parse(
+      wireWithdrawalsGetWireWithdrawalResponse,
+    ),
+  );
+}
+
+export function wireWithdrawalsGetWireWithdrawalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalsGetWireWithdrawalResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalsGetWireWithdrawalResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WireWithdrawalsGetWireWithdrawalResponse' from JSON`,
+  );
 }

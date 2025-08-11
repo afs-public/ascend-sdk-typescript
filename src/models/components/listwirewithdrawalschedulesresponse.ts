@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   WireWithdrawalSchedule,
   WireWithdrawalSchedule$inboundSchema,
@@ -78,4 +81,25 @@ export namespace ListWireWithdrawalSchedulesResponse$ {
     ListWireWithdrawalSchedulesResponse$outboundSchema;
   /** @deprecated use `ListWireWithdrawalSchedulesResponse$Outbound` instead. */
   export type Outbound = ListWireWithdrawalSchedulesResponse$Outbound;
+}
+
+export function listWireWithdrawalSchedulesResponseToJSON(
+  listWireWithdrawalSchedulesResponse: ListWireWithdrawalSchedulesResponse,
+): string {
+  return JSON.stringify(
+    ListWireWithdrawalSchedulesResponse$outboundSchema.parse(
+      listWireWithdrawalSchedulesResponse,
+    ),
+  );
+}
+
+export function listWireWithdrawalSchedulesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListWireWithdrawalSchedulesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ListWireWithdrawalSchedulesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListWireWithdrawalSchedulesResponse' from JSON`,
+  );
 }

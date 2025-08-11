@@ -37,8 +37,17 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelTradeResponse$ = exports.CancelTradeResponse$outboundSchema = exports.CancelTradeResponse$inboundSchema = exports.CancelTradeResponseTrade$ = exports.CancelTradeResponseTrade$outboundSchema = exports.CancelTradeResponseTrade$inboundSchema = exports.CancelTradeResponseWhenIssued$ = exports.CancelTradeResponseWhenIssued$outboundSchema = exports.CancelTradeResponseWhenIssued$inboundSchema = exports.CancelTradeResponseVenue$ = exports.CancelTradeResponseVenue$outboundSchema = exports.CancelTradeResponseVenue$inboundSchema = exports.CancelTradeResponseSpecialInstructions$ = exports.CancelTradeResponseSpecialInstructions$outboundSchema = exports.CancelTradeResponseSpecialInstructions$inboundSchema = exports.CancelTradeResponseSideModifier$ = exports.CancelTradeResponseSideModifier$outboundSchema = exports.CancelTradeResponseSideModifier$inboundSchema = exports.CancelTradeResponseSide$ = exports.CancelTradeResponseSide$outboundSchema = exports.CancelTradeResponseSide$inboundSchema = exports.CancelTradeResponseSettlementDate$ = exports.CancelTradeResponseSettlementDate$outboundSchema = exports.CancelTradeResponseSettlementDate$inboundSchema = exports.CancelTradeResponseRouteType$ = exports.CancelTradeResponseRouteType$outboundSchema = exports.CancelTradeResponseRouteType$inboundSchema = exports.CancelTradeResponseLocalMarketTradeDate$ = exports.CancelTradeResponseLocalMarketTradeDate$outboundSchema = exports.CancelTradeResponseLocalMarketTradeDate$inboundSchema = exports.CancelTradeResponseIdentifierType$ = exports.CancelTradeResponseIdentifierType$outboundSchema = exports.CancelTradeResponseIdentifierType$inboundSchema = exports.CancelTradeResponseBrokerCapacity$ = exports.CancelTradeResponseBrokerCapacity$outboundSchema = exports.CancelTradeResponseBrokerCapacity$inboundSchema = exports.CancelTradeResponseAssetType$ = exports.CancelTradeResponseAssetType$outboundSchema = exports.CancelTradeResponseAssetType$inboundSchema = exports.CancelTradeResponseWhenIssued = exports.CancelTradeResponseVenue = exports.CancelTradeResponseSpecialInstructions = exports.CancelTradeResponseSideModifier = exports.CancelTradeResponseSide = exports.CancelTradeResponseRouteType = exports.CancelTradeResponseIdentifierType = exports.CancelTradeResponseBrokerCapacity = exports.CancelTradeResponseAssetType = void 0;
+exports.cancelTradeResponseLocalMarketTradeDateToJSON = cancelTradeResponseLocalMarketTradeDateToJSON;
+exports.cancelTradeResponseLocalMarketTradeDateFromJSON = cancelTradeResponseLocalMarketTradeDateFromJSON;
+exports.cancelTradeResponseSettlementDateToJSON = cancelTradeResponseSettlementDateToJSON;
+exports.cancelTradeResponseSettlementDateFromJSON = cancelTradeResponseSettlementDateFromJSON;
+exports.cancelTradeResponseTradeToJSON = cancelTradeResponseTradeToJSON;
+exports.cancelTradeResponseTradeFromJSON = cancelTradeResponseTradeFromJSON;
+exports.cancelTradeResponseToJSON = cancelTradeResponseToJSON;
+exports.cancelTradeResponseFromJSON = cancelTradeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bookingfee_js_1 = require("./bookingfee.js");
 const bookinglot_js_1 = require("./bookinglot.js");
@@ -287,6 +296,12 @@ var CancelTradeResponseLocalMarketTradeDate$;
     /** @deprecated use `CancelTradeResponseLocalMarketTradeDate$outboundSchema` instead. */
     CancelTradeResponseLocalMarketTradeDate$.outboundSchema = exports.CancelTradeResponseLocalMarketTradeDate$outboundSchema;
 })(CancelTradeResponseLocalMarketTradeDate$ || (exports.CancelTradeResponseLocalMarketTradeDate$ = CancelTradeResponseLocalMarketTradeDate$ = {}));
+function cancelTradeResponseLocalMarketTradeDateToJSON(cancelTradeResponseLocalMarketTradeDate) {
+    return JSON.stringify(exports.CancelTradeResponseLocalMarketTradeDate$outboundSchema.parse(cancelTradeResponseLocalMarketTradeDate));
+}
+function cancelTradeResponseLocalMarketTradeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeResponseLocalMarketTradeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeResponseLocalMarketTradeDate' from JSON`);
+}
 /** @internal */
 exports.CancelTradeResponseRouteType$inboundSchema = z
     .union([
@@ -332,6 +347,12 @@ var CancelTradeResponseSettlementDate$;
     /** @deprecated use `CancelTradeResponseSettlementDate$outboundSchema` instead. */
     CancelTradeResponseSettlementDate$.outboundSchema = exports.CancelTradeResponseSettlementDate$outboundSchema;
 })(CancelTradeResponseSettlementDate$ || (exports.CancelTradeResponseSettlementDate$ = CancelTradeResponseSettlementDate$ = {}));
+function cancelTradeResponseSettlementDateToJSON(cancelTradeResponseSettlementDate) {
+    return JSON.stringify(exports.CancelTradeResponseSettlementDate$outboundSchema.parse(cancelTradeResponseSettlementDate));
+}
+function cancelTradeResponseSettlementDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeResponseSettlementDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeResponseSettlementDate' from JSON`);
+}
 /** @internal */
 exports.CancelTradeResponseSide$inboundSchema = z
     .union([
@@ -563,6 +584,12 @@ var CancelTradeResponseTrade$;
     /** @deprecated use `CancelTradeResponseTrade$outboundSchema` instead. */
     CancelTradeResponseTrade$.outboundSchema = exports.CancelTradeResponseTrade$outboundSchema;
 })(CancelTradeResponseTrade$ || (exports.CancelTradeResponseTrade$ = CancelTradeResponseTrade$ = {}));
+function cancelTradeResponseTradeToJSON(cancelTradeResponseTrade) {
+    return JSON.stringify(exports.CancelTradeResponseTrade$outboundSchema.parse(cancelTradeResponseTrade));
+}
+function cancelTradeResponseTradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeResponseTrade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeResponseTrade' from JSON`);
+}
 /** @internal */
 exports.CancelTradeResponse$inboundSchema = z.object({
     trade: z.nullable(z.lazy(() => exports.CancelTradeResponseTrade$inboundSchema))
@@ -584,4 +611,10 @@ var CancelTradeResponse$;
     /** @deprecated use `CancelTradeResponse$outboundSchema` instead. */
     CancelTradeResponse$.outboundSchema = exports.CancelTradeResponse$outboundSchema;
 })(CancelTradeResponse$ || (exports.CancelTradeResponse$ = CancelTradeResponse$ = {}));
+function cancelTradeResponseToJSON(cancelTradeResponse) {
+    return JSON.stringify(exports.CancelTradeResponse$outboundSchema.parse(cancelTradeResponse));
+}
+function cancelTradeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelTradeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelTradeResponse' from JSON`);
+}
 //# sourceMappingURL=canceltraderesponse.js.map

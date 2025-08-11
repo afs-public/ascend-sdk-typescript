@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing cash journal
@@ -55,4 +58,24 @@ export namespace CancelCashJournalRequestCreate$ {
   export const outboundSchema = CancelCashJournalRequestCreate$outboundSchema;
   /** @deprecated use `CancelCashJournalRequestCreate$Outbound` instead. */
   export type Outbound = CancelCashJournalRequestCreate$Outbound;
+}
+
+export function cancelCashJournalRequestCreateToJSON(
+  cancelCashJournalRequestCreate: CancelCashJournalRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelCashJournalRequestCreate$outboundSchema.parse(
+      cancelCashJournalRequestCreate,
+    ),
+  );
+}
+
+export function cancelCashJournalRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelCashJournalRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelCashJournalRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelCashJournalRequestCreate' from JSON`,
+  );
 }

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForeignBondTradingDetailCreate$ = exports.ForeignBondTradingDetailCreate$outboundSchema = exports.ForeignBondTradingDetailCreate$inboundSchema = void 0;
+exports.foreignBondTradingDetailCreateToJSON = foreignBondTradingDetailCreateToJSON;
+exports.foreignBondTradingDetailCreateFromJSON = foreignBondTradingDetailCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /** @internal */
 exports.ForeignBondTradingDetailCreate$inboundSchema = z.object({
@@ -69,4 +72,10 @@ var ForeignBondTradingDetailCreate$;
     /** @deprecated use `ForeignBondTradingDetailCreate$outboundSchema` instead. */
     ForeignBondTradingDetailCreate$.outboundSchema = exports.ForeignBondTradingDetailCreate$outboundSchema;
 })(ForeignBondTradingDetailCreate$ || (exports.ForeignBondTradingDetailCreate$ = ForeignBondTradingDetailCreate$ = {}));
+function foreignBondTradingDetailCreateToJSON(foreignBondTradingDetailCreate) {
+    return JSON.stringify(exports.ForeignBondTradingDetailCreate$outboundSchema.parse(foreignBondTradingDetailCreate));
+}
+function foreignBondTradingDetailCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ForeignBondTradingDetailCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ForeignBondTradingDetailCreate' from JSON`);
+}
 //# sourceMappingURL=foreignbondtradingdetailcreate.js.map

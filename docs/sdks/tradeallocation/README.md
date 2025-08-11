@@ -18,6 +18,7 @@ Creates a new trade allocation. These are used to allocate or distribute positio
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_CreateTradeAllocation" method="post" path="/booking/v1/accounts/{account_id}/tradeAllocations" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { ToSide, TradeAllocationCreateBrokerCapacity, TradeAllocationCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -48,7 +49,6 @@ async function run() {
     toSide: ToSide.Buy,
   }, "01FAKEACCOUNT1TYKWEYRH8S2K");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -91,15 +91,12 @@ async function run() {
     toAccountId: "02HASWB2DTMRT3DAM45P56J2T2",
     toSide: ToSide.Buy,
   }, "01FAKEACCOUNT1TYKWEYRH8S2K");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeAllocationCreateTradeAllocation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -122,10 +119,11 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.Status                     | 400, 403, 404, 409, 500, 503, 504 | application/json                  |
-| errors.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 403, 404, 409 | application/json   |
+| errors.Status      | 500, 503, 504      | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
 
 ## getTradeAllocation
 
@@ -135,6 +133,7 @@ Retrieves a trade allocation and its details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_GetTradeAllocation" method="get" path="/booking/v1/accounts/{account_id}/tradeAllocations/{tradeAllocation_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -153,7 +152,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.tradeAllocation.getTradeAllocation("02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -184,15 +182,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await tradeAllocationGetTradeAllocation(apexascend, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeAllocationGetTradeAllocation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -214,10 +209,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## cancelTradeAllocation
 
@@ -227,6 +223,7 @@ Cancel a trade allocation using the original trade_allocation_id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_CancelTradeAllocation" method="post" path="/booking/v1/accounts/{account_id}/tradeAllocations/{tradeAllocation_id}:cancel" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -247,7 +244,6 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -280,15 +276,12 @@ async function run() {
   const res = await tradeAllocationCancelTradeAllocation(apexascend, {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM",
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeAllocationCancelTradeAllocation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -311,10 +304,11 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## rebookTradeAllocation
 
@@ -324,6 +318,7 @@ Rebook a trade allocation by the original trade_allocation_id. The allocation is
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Booking_RebookTradeAllocation" method="post" path="/booking/v1/accounts/{account_id}/tradeAllocations/{tradeAllocation_id}:rebook" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 import { ToSide, TradeAllocationCreateBrokerCapacity, TradeAllocationCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -358,7 +353,6 @@ async function run() {
     },
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -405,15 +399,12 @@ async function run() {
       toSide: ToSide.Buy,
     },
   }, "02HASWB2DTMRT3DAM45P56J2T2", "01J0XX2KDN3M9QKFKRE2HYSCQM");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tradeAllocationRebookTradeAllocation failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -436,7 +427,8 @@ run();
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.Status                | 400, 403, 404, 500, 503, 504 | application/json             |
-| errors.SDKError              | 4XX, 5XX                     | \*/\*                        |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503, 504    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |

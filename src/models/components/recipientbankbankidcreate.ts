@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of bank identifier specified
@@ -107,4 +110,22 @@ export namespace RecipientBankBankIdCreate$ {
   export const outboundSchema = RecipientBankBankIdCreate$outboundSchema;
   /** @deprecated use `RecipientBankBankIdCreate$Outbound` instead. */
   export type Outbound = RecipientBankBankIdCreate$Outbound;
+}
+
+export function recipientBankBankIdCreateToJSON(
+  recipientBankBankIdCreate: RecipientBankBankIdCreate,
+): string {
+  return JSON.stringify(
+    RecipientBankBankIdCreate$outboundSchema.parse(recipientBankBankIdCreate),
+  );
+}
+
+export function recipientBankBankIdCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RecipientBankBankIdCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RecipientBankBankIdCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RecipientBankBankIdCreate' from JSON`,
+  );
 }

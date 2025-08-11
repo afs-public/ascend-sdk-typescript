@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingCancelTradeResponse$ = exports.BookingCancelTradeResponse$outboundSchema = exports.BookingCancelTradeResponse$inboundSchema = exports.BookingCancelTradeRequest$ = exports.BookingCancelTradeRequest$outboundSchema = exports.BookingCancelTradeRequest$inboundSchema = void 0;
+exports.bookingCancelTradeRequestToJSON = bookingCancelTradeRequestToJSON;
+exports.bookingCancelTradeRequestFromJSON = bookingCancelTradeRequestFromJSON;
+exports.bookingCancelTradeResponseToJSON = bookingCancelTradeResponseToJSON;
+exports.bookingCancelTradeResponseFromJSON = bookingCancelTradeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.BookingCancelTradeRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var BookingCancelTradeRequest$;
     /** @deprecated use `BookingCancelTradeRequest$outboundSchema` instead. */
     BookingCancelTradeRequest$.outboundSchema = exports.BookingCancelTradeRequest$outboundSchema;
 })(BookingCancelTradeRequest$ || (exports.BookingCancelTradeRequest$ = BookingCancelTradeRequest$ = {}));
+function bookingCancelTradeRequestToJSON(bookingCancelTradeRequest) {
+    return JSON.stringify(exports.BookingCancelTradeRequest$outboundSchema.parse(bookingCancelTradeRequest));
+}
+function bookingCancelTradeRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingCancelTradeRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingCancelTradeRequest' from JSON`);
+}
 /** @internal */
 exports.BookingCancelTradeResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var BookingCancelTradeResponse$;
     /** @deprecated use `BookingCancelTradeResponse$outboundSchema` instead. */
     BookingCancelTradeResponse$.outboundSchema = exports.BookingCancelTradeResponse$outboundSchema;
 })(BookingCancelTradeResponse$ || (exports.BookingCancelTradeResponse$ = BookingCancelTradeResponse$ = {}));
+function bookingCancelTradeResponseToJSON(bookingCancelTradeResponse) {
+    return JSON.stringify(exports.BookingCancelTradeResponse$outboundSchema.parse(bookingCancelTradeResponse));
+}
+function bookingCancelTradeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingCancelTradeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingCancelTradeResponse' from JSON`);
+}
 //# sourceMappingURL=bookingcanceltrade.js.map

@@ -11,7 +11,7 @@ let value: AchDepositsForceReturnAchDepositRequest = {
   achDepositId: "20230817000319",
   forceReturnAchDepositRequestCreate: {
     nachaReturn: {
-      code: NachaReturnCreateCode.R41,
+      code: NachaReturnCreateCode.R69,
     },
     name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achDeposits/20230817000319",
   },

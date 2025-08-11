@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FeeCreate$ = exports.FeeCreate$outboundSchema = exports.FeeCreate$inboundSchema = exports.FeeCreateType$ = exports.FeeCreateType$outboundSchema = exports.FeeCreateType$inboundSchema = exports.FeeCreateType = void 0;
+exports.feeCreateToJSON = feeCreateToJSON;
+exports.feeCreateFromJSON = feeCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -92,4 +95,10 @@ var FeeCreate$;
     /** @deprecated use `FeeCreate$outboundSchema` instead. */
     FeeCreate$.outboundSchema = exports.FeeCreate$outboundSchema;
 })(FeeCreate$ || (exports.FeeCreate$ = FeeCreate$ = {}));
+function feeCreateToJSON(feeCreate) {
+    return JSON.stringify(exports.FeeCreate$outboundSchema.parse(feeCreate));
+}
+function feeCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FeeCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FeeCreate' from JSON`);
+}
 //# sourceMappingURL=feecreate.js.map

@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositsGetAchDepositResponse$ = exports.AchDepositsGetAchDepositResponse$outboundSchema = exports.AchDepositsGetAchDepositResponse$inboundSchema = exports.AchDepositsGetAchDepositRequest$ = exports.AchDepositsGetAchDepositRequest$outboundSchema = exports.AchDepositsGetAchDepositRequest$inboundSchema = void 0;
+exports.achDepositsGetAchDepositRequestToJSON = achDepositsGetAchDepositRequestToJSON;
+exports.achDepositsGetAchDepositRequestFromJSON = achDepositsGetAchDepositRequestFromJSON;
+exports.achDepositsGetAchDepositResponseToJSON = achDepositsGetAchDepositResponseToJSON;
+exports.achDepositsGetAchDepositResponseFromJSON = achDepositsGetAchDepositResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AchDepositsGetAchDepositRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AchDepositsGetAchDepositRequest$;
     /** @deprecated use `AchDepositsGetAchDepositRequest$outboundSchema` instead. */
     AchDepositsGetAchDepositRequest$.outboundSchema = exports.AchDepositsGetAchDepositRequest$outboundSchema;
 })(AchDepositsGetAchDepositRequest$ || (exports.AchDepositsGetAchDepositRequest$ = AchDepositsGetAchDepositRequest$ = {}));
+function achDepositsGetAchDepositRequestToJSON(achDepositsGetAchDepositRequest) {
+    return JSON.stringify(exports.AchDepositsGetAchDepositRequest$outboundSchema.parse(achDepositsGetAchDepositRequest));
+}
+function achDepositsGetAchDepositRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositsGetAchDepositRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositsGetAchDepositRequest' from JSON`);
+}
 /** @internal */
 exports.AchDepositsGetAchDepositResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AchDepositsGetAchDepositResponse$;
     /** @deprecated use `AchDepositsGetAchDepositResponse$outboundSchema` instead. */
     AchDepositsGetAchDepositResponse$.outboundSchema = exports.AchDepositsGetAchDepositResponse$outboundSchema;
 })(AchDepositsGetAchDepositResponse$ || (exports.AchDepositsGetAchDepositResponse$ = AchDepositsGetAchDepositResponse$ = {}));
+function achDepositsGetAchDepositResponseToJSON(achDepositsGetAchDepositResponse) {
+    return JSON.stringify(exports.AchDepositsGetAchDepositResponse$outboundSchema.parse(achDepositsGetAchDepositResponse));
+}
+function achDepositsGetAchDepositResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositsGetAchDepositResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositsGetAchDepositResponse' from JSON`);
+}
 //# sourceMappingURL=achdepositsgetachdeposit.js.map

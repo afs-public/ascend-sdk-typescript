@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountTransfersCreateTransferRequest = {
     /**
      * The correspondent id.
@@ -49,6 +51,8 @@ export declare namespace AccountTransfersCreateTransferRequest$ {
     /** @deprecated use `AccountTransfersCreateTransferRequest$Outbound` instead. */
     type Outbound = AccountTransfersCreateTransferRequest$Outbound;
 }
+export declare function accountTransfersCreateTransferRequestToJSON(accountTransfersCreateTransferRequest: AccountTransfersCreateTransferRequest): string;
+export declare function accountTransfersCreateTransferRequestFromJSON(jsonString: string): SafeParseResult<AccountTransfersCreateTransferRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountTransfersCreateTransferResponse$inboundSchema: z.ZodType<AccountTransfersCreateTransferResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -71,4 +75,6 @@ export declare namespace AccountTransfersCreateTransferResponse$ {
     /** @deprecated use `AccountTransfersCreateTransferResponse$Outbound` instead. */
     type Outbound = AccountTransfersCreateTransferResponse$Outbound;
 }
+export declare function accountTransfersCreateTransferResponseToJSON(accountTransfersCreateTransferResponse: AccountTransfersCreateTransferResponse): string;
+export declare function accountTransfersCreateTransferResponseFromJSON(jsonString: string): SafeParseResult<AccountTransfersCreateTransferResponse, SDKValidationError>;
 //# sourceMappingURL=accounttransferscreatetransfer.d.ts.map

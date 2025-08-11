@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PartyRequestCreate,
   PartyRequestCreate$inboundSchema,
@@ -77,4 +80,22 @@ export namespace AddPartyRequestCreate$ {
   export const outboundSchema = AddPartyRequestCreate$outboundSchema;
   /** @deprecated use `AddPartyRequestCreate$Outbound` instead. */
   export type Outbound = AddPartyRequestCreate$Outbound;
+}
+
+export function addPartyRequestCreateToJSON(
+  addPartyRequestCreate: AddPartyRequestCreate,
+): string {
+  return JSON.stringify(
+    AddPartyRequestCreate$outboundSchema.parse(addPartyRequestCreate),
+  );
+}
+
+export function addPartyRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AddPartyRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AddPartyRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AddPartyRequestCreate' from JSON`,
+  );
 }

@@ -160,7 +160,7 @@ function createMockRequest(body, headers) {
             }
             if (testCase.expectError) {
                 (0, vitest_1.expect)(error).not.toBeNull();
-                (0, vitest_1.expect)(error === null || error === void 0 ? void 0 : error.message).toContain(testCase.errorContains);
+                (0, vitest_1.expect)(error?.message).toContain(testCase.errorContains);
             }
             else {
                 (0, vitest_1.expect)(error).toBeNull();

@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IdentificationDetail$ = exports.IdentificationDetail$outboundSchema = exports.IdentificationDetail$inboundSchema = void 0;
+exports.identificationDetailToJSON = identificationDetailToJSON;
+exports.identificationDetailFromJSON = identificationDetailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.IdentificationDetail$inboundSchema = z.object({
     id_notes: z.string().optional(),
@@ -74,4 +77,10 @@ var IdentificationDetail$;
     /** @deprecated use `IdentificationDetail$outboundSchema` instead. */
     IdentificationDetail$.outboundSchema = exports.IdentificationDetail$outboundSchema;
 })(IdentificationDetail$ || (exports.IdentificationDetail$ = IdentificationDetail$ = {}));
+function identificationDetailToJSON(identificationDetail) {
+    return JSON.stringify(exports.IdentificationDetail$outboundSchema.parse(identificationDetail));
+}
+function identificationDetailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IdentificationDetail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IdentificationDetail' from JSON`);
+}
 //# sourceMappingURL=identificationdetail.js.map

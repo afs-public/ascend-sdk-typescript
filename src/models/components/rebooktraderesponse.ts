@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BookingFee,
   BookingFee$inboundSchema,
@@ -921,6 +924,33 @@ export namespace RebookTradeResponseLocalMarketTradeDate$ {
   export type Outbound = RebookTradeResponseLocalMarketTradeDate$Outbound;
 }
 
+export function rebookTradeResponseLocalMarketTradeDateToJSON(
+  rebookTradeResponseLocalMarketTradeDate:
+    RebookTradeResponseLocalMarketTradeDate,
+): string {
+  return JSON.stringify(
+    RebookTradeResponseLocalMarketTradeDate$outboundSchema.parse(
+      rebookTradeResponseLocalMarketTradeDate,
+    ),
+  );
+}
+
+export function rebookTradeResponseLocalMarketTradeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeResponseLocalMarketTradeDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeResponseLocalMarketTradeDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeResponseLocalMarketTradeDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeResponseRouteType$inboundSchema: z.ZodType<
   RebookTradeResponseRouteTypeOpen,
@@ -994,6 +1024,26 @@ export namespace RebookTradeResponseSettlementDate$ {
     RebookTradeResponseSettlementDate$outboundSchema;
   /** @deprecated use `RebookTradeResponseSettlementDate$Outbound` instead. */
   export type Outbound = RebookTradeResponseSettlementDate$Outbound;
+}
+
+export function rebookTradeResponseSettlementDateToJSON(
+  rebookTradeResponseSettlementDate: RebookTradeResponseSettlementDate,
+): string {
+  return JSON.stringify(
+    RebookTradeResponseSettlementDate$outboundSchema.parse(
+      rebookTradeResponseSettlementDate,
+    ),
+  );
+}
+
+export function rebookTradeResponseSettlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookTradeResponseSettlementDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookTradeResponseSettlementDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeResponseSettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1341,6 +1391,20 @@ export namespace NewTrade$ {
   export type Outbound = NewTrade$Outbound;
 }
 
+export function newTradeToJSON(newTrade: NewTrade): string {
+  return JSON.stringify(NewTrade$outboundSchema.parse(newTrade));
+}
+
+export function newTradeFromJSON(
+  jsonString: string,
+): SafeParseResult<NewTrade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NewTrade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NewTrade' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeResponseOriginalTradeAssetType$inboundSchema: z.ZodType<
   RebookTradeResponseOriginalTradeAssetTypeOpen,
@@ -1495,6 +1559,33 @@ export namespace RebookTradeResponseOriginalTradeLocalMarketTradeDate$ {
     RebookTradeResponseOriginalTradeLocalMarketTradeDate$Outbound;
 }
 
+export function rebookTradeResponseOriginalTradeLocalMarketTradeDateToJSON(
+  rebookTradeResponseOriginalTradeLocalMarketTradeDate:
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate,
+): string {
+  return JSON.stringify(
+    RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema.parse(
+      rebookTradeResponseOriginalTradeLocalMarketTradeDate,
+    ),
+  );
+}
+
+export function rebookTradeResponseOriginalTradeLocalMarketTradeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeResponseOriginalTradeLocalMarketTradeDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeResponseOriginalTradeLocalMarketTradeDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeResponseOriginalTradeLocalMarketTradeDate' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeResponseOriginalTradeRouteType$inboundSchema: z.ZodType<
   RebookTradeResponseOriginalTradeRouteTypeOpen,
@@ -1575,6 +1666,33 @@ export namespace RebookTradeResponseOriginalTradeSettlementDate$ {
   /** @deprecated use `RebookTradeResponseOriginalTradeSettlementDate$Outbound` instead. */
   export type Outbound =
     RebookTradeResponseOriginalTradeSettlementDate$Outbound;
+}
+
+export function rebookTradeResponseOriginalTradeSettlementDateToJSON(
+  rebookTradeResponseOriginalTradeSettlementDate:
+    RebookTradeResponseOriginalTradeSettlementDate,
+): string {
+  return JSON.stringify(
+    RebookTradeResponseOriginalTradeSettlementDate$outboundSchema.parse(
+      rebookTradeResponseOriginalTradeSettlementDate,
+    ),
+  );
+}
+
+export function rebookTradeResponseOriginalTradeSettlementDateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookTradeResponseOriginalTradeSettlementDate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookTradeResponseOriginalTradeSettlementDate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookTradeResponseOriginalTradeSettlementDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1952,6 +2070,20 @@ export namespace OriginalTrade$ {
   export type Outbound = OriginalTrade$Outbound;
 }
 
+export function originalTradeToJSON(originalTrade: OriginalTrade): string {
+  return JSON.stringify(OriginalTrade$outboundSchema.parse(originalTrade));
+}
+
+export function originalTradeFromJSON(
+  jsonString: string,
+): SafeParseResult<OriginalTrade, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OriginalTrade$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OriginalTrade' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookTradeResponse$inboundSchema: z.ZodType<
   RebookTradeResponse,
@@ -2001,4 +2133,22 @@ export namespace RebookTradeResponse$ {
   export const outboundSchema = RebookTradeResponse$outboundSchema;
   /** @deprecated use `RebookTradeResponse$Outbound` instead. */
   export type Outbound = RebookTradeResponse$Outbound;
+}
+
+export function rebookTradeResponseToJSON(
+  rebookTradeResponse: RebookTradeResponse,
+): string {
+  return JSON.stringify(
+    RebookTradeResponse$outboundSchema.parse(rebookTradeResponse),
+  );
+}
+
+export function rebookTradeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookTradeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookTradeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookTradeResponse' from JSON`,
+  );
 }

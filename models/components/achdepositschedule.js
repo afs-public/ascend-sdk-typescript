@@ -37,8 +37,23 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchDepositSchedule$ = exports.AchDepositSchedule$outboundSchema = exports.AchDepositSchedule$inboundSchema = exports.ScheduleDetails$ = exports.ScheduleDetails$outboundSchema = exports.ScheduleDetails$inboundSchema = exports.AchDepositScheduleScheduleProperties$ = exports.AchDepositScheduleScheduleProperties$outboundSchema = exports.AchDepositScheduleScheduleProperties$inboundSchema = exports.AchDepositScheduleTimeUnit$ = exports.AchDepositScheduleTimeUnit$outboundSchema = exports.AchDepositScheduleTimeUnit$inboundSchema = exports.AchDepositScheduleState$ = exports.AchDepositScheduleState$outboundSchema = exports.AchDepositScheduleState$inboundSchema = exports.AchDepositScheduleStartDate$ = exports.AchDepositScheduleStartDate$outboundSchema = exports.AchDepositScheduleStartDate$inboundSchema = exports.AchDepositScheduleAmount$ = exports.AchDepositScheduleAmount$outboundSchema = exports.AchDepositScheduleAmount$inboundSchema = exports.AchDepositScheduleRetirementContribution$ = exports.AchDepositScheduleRetirementContribution$outboundSchema = exports.AchDepositScheduleRetirementContribution$inboundSchema = exports.AchDepositScheduleRetirementContributionType$ = exports.AchDepositScheduleRetirementContributionType$outboundSchema = exports.AchDepositScheduleRetirementContributionType$inboundSchema = exports.AchDepositScheduleTemporalTaxYear$ = exports.AchDepositScheduleTemporalTaxYear$outboundSchema = exports.AchDepositScheduleTemporalTaxYear$inboundSchema = exports.AchDepositScheduleIraContribution$ = exports.AchDepositScheduleIraContribution$outboundSchema = exports.AchDepositScheduleIraContribution$inboundSchema = exports.AchDepositScheduleType$ = exports.AchDepositScheduleType$outboundSchema = exports.AchDepositScheduleType$inboundSchema = exports.AchDepositScheduleTimeUnit = exports.AchDepositScheduleState = exports.AchDepositScheduleRetirementContributionType = exports.AchDepositScheduleTemporalTaxYear = exports.AchDepositScheduleType = void 0;
+exports.achDepositScheduleIraContributionToJSON = achDepositScheduleIraContributionToJSON;
+exports.achDepositScheduleIraContributionFromJSON = achDepositScheduleIraContributionFromJSON;
+exports.achDepositScheduleRetirementContributionToJSON = achDepositScheduleRetirementContributionToJSON;
+exports.achDepositScheduleRetirementContributionFromJSON = achDepositScheduleRetirementContributionFromJSON;
+exports.achDepositScheduleAmountToJSON = achDepositScheduleAmountToJSON;
+exports.achDepositScheduleAmountFromJSON = achDepositScheduleAmountFromJSON;
+exports.achDepositScheduleStartDateToJSON = achDepositScheduleStartDateToJSON;
+exports.achDepositScheduleStartDateFromJSON = achDepositScheduleStartDateFromJSON;
+exports.achDepositScheduleSchedulePropertiesToJSON = achDepositScheduleSchedulePropertiesToJSON;
+exports.achDepositScheduleSchedulePropertiesFromJSON = achDepositScheduleSchedulePropertiesFromJSON;
+exports.scheduleDetailsToJSON = scheduleDetailsToJSON;
+exports.scheduleDetailsFromJSON = scheduleDetailsFromJSON;
+exports.achDepositScheduleToJSON = achDepositScheduleToJSON;
+exports.achDepositScheduleFromJSON = achDepositScheduleFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of retirement contribution.
@@ -154,6 +169,12 @@ var AchDepositScheduleIraContribution$;
     /** @deprecated use `AchDepositScheduleIraContribution$outboundSchema` instead. */
     AchDepositScheduleIraContribution$.outboundSchema = exports.AchDepositScheduleIraContribution$outboundSchema;
 })(AchDepositScheduleIraContribution$ || (exports.AchDepositScheduleIraContribution$ = AchDepositScheduleIraContribution$ = {}));
+function achDepositScheduleIraContributionToJSON(achDepositScheduleIraContribution) {
+    return JSON.stringify(exports.AchDepositScheduleIraContribution$outboundSchema.parse(achDepositScheduleIraContribution));
+}
+function achDepositScheduleIraContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositScheduleIraContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleIraContribution' from JSON`);
+}
 /** @internal */
 exports.AchDepositScheduleTemporalTaxYear$inboundSchema = z
     .union([
@@ -231,6 +252,12 @@ var AchDepositScheduleRetirementContribution$;
     /** @deprecated use `AchDepositScheduleRetirementContribution$outboundSchema` instead. */
     AchDepositScheduleRetirementContribution$.outboundSchema = exports.AchDepositScheduleRetirementContribution$outboundSchema;
 })(AchDepositScheduleRetirementContribution$ || (exports.AchDepositScheduleRetirementContribution$ = AchDepositScheduleRetirementContribution$ = {}));
+function achDepositScheduleRetirementContributionToJSON(achDepositScheduleRetirementContribution) {
+    return JSON.stringify(exports.AchDepositScheduleRetirementContribution$outboundSchema.parse(achDepositScheduleRetirementContribution));
+}
+function achDepositScheduleRetirementContributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositScheduleRetirementContribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleRetirementContribution' from JSON`);
+}
 /** @internal */
 exports.AchDepositScheduleAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -250,6 +277,12 @@ var AchDepositScheduleAmount$;
     /** @deprecated use `AchDepositScheduleAmount$outboundSchema` instead. */
     AchDepositScheduleAmount$.outboundSchema = exports.AchDepositScheduleAmount$outboundSchema;
 })(AchDepositScheduleAmount$ || (exports.AchDepositScheduleAmount$ = AchDepositScheduleAmount$ = {}));
+function achDepositScheduleAmountToJSON(achDepositScheduleAmount) {
+    return JSON.stringify(exports.AchDepositScheduleAmount$outboundSchema.parse(achDepositScheduleAmount));
+}
+function achDepositScheduleAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositScheduleAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleAmount' from JSON`);
+}
 /** @internal */
 exports.AchDepositScheduleStartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -273,6 +306,12 @@ var AchDepositScheduleStartDate$;
     /** @deprecated use `AchDepositScheduleStartDate$outboundSchema` instead. */
     AchDepositScheduleStartDate$.outboundSchema = exports.AchDepositScheduleStartDate$outboundSchema;
 })(AchDepositScheduleStartDate$ || (exports.AchDepositScheduleStartDate$ = AchDepositScheduleStartDate$ = {}));
+function achDepositScheduleStartDateToJSON(achDepositScheduleStartDate) {
+    return JSON.stringify(exports.AchDepositScheduleStartDate$outboundSchema.parse(achDepositScheduleStartDate));
+}
+function achDepositScheduleStartDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositScheduleStartDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleStartDate' from JSON`);
+}
 /** @internal */
 exports.AchDepositScheduleState$inboundSchema = z
     .union([
@@ -356,6 +395,12 @@ var AchDepositScheduleScheduleProperties$;
     /** @deprecated use `AchDepositScheduleScheduleProperties$outboundSchema` instead. */
     AchDepositScheduleScheduleProperties$.outboundSchema = exports.AchDepositScheduleScheduleProperties$outboundSchema;
 })(AchDepositScheduleScheduleProperties$ || (exports.AchDepositScheduleScheduleProperties$ = AchDepositScheduleScheduleProperties$ = {}));
+function achDepositScheduleSchedulePropertiesToJSON(achDepositScheduleScheduleProperties) {
+    return JSON.stringify(exports.AchDepositScheduleScheduleProperties$outboundSchema.parse(achDepositScheduleScheduleProperties));
+}
+function achDepositScheduleSchedulePropertiesFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositScheduleScheduleProperties$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleScheduleProperties' from JSON`);
+}
 /** @internal */
 exports.ScheduleDetails$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AchDepositScheduleAmount$inboundSchema))
@@ -391,6 +436,12 @@ var ScheduleDetails$;
     /** @deprecated use `ScheduleDetails$outboundSchema` instead. */
     ScheduleDetails$.outboundSchema = exports.ScheduleDetails$outboundSchema;
 })(ScheduleDetails$ || (exports.ScheduleDetails$ = ScheduleDetails$ = {}));
+function scheduleDetailsToJSON(scheduleDetails) {
+    return JSON.stringify(exports.ScheduleDetails$outboundSchema.parse(scheduleDetails));
+}
+function scheduleDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ScheduleDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ScheduleDetails' from JSON`);
+}
 /** @internal */
 exports.AchDepositSchedule$inboundSchema = z.object({
     bank_relationship: z.string().optional(),
@@ -434,4 +485,10 @@ var AchDepositSchedule$;
     /** @deprecated use `AchDepositSchedule$outboundSchema` instead. */
     AchDepositSchedule$.outboundSchema = exports.AchDepositSchedule$outboundSchema;
 })(AchDepositSchedule$ || (exports.AchDepositSchedule$ = AchDepositSchedule$ = {}));
+function achDepositScheduleToJSON(achDepositSchedule) {
+    return JSON.stringify(exports.AchDepositSchedule$outboundSchema.parse(achDepositSchedule));
+}
+function achDepositScheduleFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchDepositSchedule$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositSchedule' from JSON`);
+}
 //# sourceMappingURL=achdepositschedule.js.map

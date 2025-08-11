@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
 /**
  * A large trader.
@@ -40,4 +42,6 @@ export declare namespace LargeTraderCreate$ {
     /** @deprecated use `LargeTraderCreate$Outbound` instead. */
     type Outbound = LargeTraderCreate$Outbound;
 }
+export declare function largeTraderCreateToJSON(largeTraderCreate: LargeTraderCreate): string;
+export declare function largeTraderCreateFromJSON(jsonString: string): SafeParseResult<LargeTraderCreate, SDKValidationError>;
 //# sourceMappingURL=largetradercreate.d.ts.map

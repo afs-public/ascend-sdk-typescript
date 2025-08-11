@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListEventMessagesResponse$ = exports.ListEventMessagesResponse$outboundSchema = exports.ListEventMessagesResponse$inboundSchema = void 0;
+exports.listEventMessagesResponseToJSON = listEventMessagesResponseToJSON;
+exports.listEventMessagesResponseFromJSON = listEventMessagesResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const eventmessage_js_1 = require("./eventmessage.js");
 /** @internal */
 exports.ListEventMessagesResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListEventMessagesResponse$;
     /** @deprecated use `ListEventMessagesResponse$outboundSchema` instead. */
     ListEventMessagesResponse$.outboundSchema = exports.ListEventMessagesResponse$outboundSchema;
 })(ListEventMessagesResponse$ || (exports.ListEventMessagesResponse$ = ListEventMessagesResponse$ = {}));
+function listEventMessagesResponseToJSON(listEventMessagesResponse) {
+    return JSON.stringify(exports.ListEventMessagesResponse$outboundSchema.parse(listEventMessagesResponse));
+}
+function listEventMessagesResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListEventMessagesResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListEventMessagesResponse' from JSON`);
+}
 //# sourceMappingURL=listeventmessagesresponse.js.map

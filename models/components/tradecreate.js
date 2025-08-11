@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TradeCreate$ = exports.TradeCreate$outboundSchema = exports.TradeCreate$inboundSchema = exports.WhenIssued$ = exports.WhenIssued$outboundSchema = exports.WhenIssued$inboundSchema = exports.Venue$ = exports.Venue$outboundSchema = exports.Venue$inboundSchema = exports.SpecialInstructions$ = exports.SpecialInstructions$outboundSchema = exports.SpecialInstructions$inboundSchema = exports.SideModifier$ = exports.SideModifier$outboundSchema = exports.SideModifier$inboundSchema = exports.TradeCreateSide$ = exports.TradeCreateSide$outboundSchema = exports.TradeCreateSide$inboundSchema = exports.RouteType$ = exports.RouteType$outboundSchema = exports.RouteType$inboundSchema = exports.TradeCreateIdentifierType$ = exports.TradeCreateIdentifierType$outboundSchema = exports.TradeCreateIdentifierType$inboundSchema = exports.TradeCreateBrokerCapacity$ = exports.TradeCreateBrokerCapacity$outboundSchema = exports.TradeCreateBrokerCapacity$inboundSchema = exports.TradeCreateAssetType$ = exports.TradeCreateAssetType$outboundSchema = exports.TradeCreateAssetType$inboundSchema = exports.WhenIssued = exports.Venue = exports.SpecialInstructions = exports.SideModifier = exports.TradeCreateSide = exports.RouteType = exports.TradeCreateIdentifierType = exports.TradeCreateBrokerCapacity = exports.TradeCreateAssetType = void 0;
+exports.tradeCreateToJSON = tradeCreateToJSON;
+exports.tradeCreateFromJSON = tradeCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bookingfeecreate_js_1 = require("./bookingfeecreate.js");
 const datecreate_js_1 = require("./datecreate.js");
@@ -508,4 +511,10 @@ var TradeCreate$;
     /** @deprecated use `TradeCreate$outboundSchema` instead. */
     TradeCreate$.outboundSchema = exports.TradeCreate$outboundSchema;
 })(TradeCreate$ || (exports.TradeCreate$ = TradeCreate$ = {}));
+function tradeCreateToJSON(tradeCreate) {
+    return JSON.stringify(exports.TradeCreate$outboundSchema.parse(tradeCreate));
+}
+function tradeCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TradeCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeCreate' from JSON`);
+}
 //# sourceMappingURL=tradecreate.js.map

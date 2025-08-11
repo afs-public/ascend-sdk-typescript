@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DepositedFundsCreate, DepositedFundsCreate$Outbound } from "./depositedfundscreate.js";
 import { FinancialProfileCreate, FinancialProfileCreate$Outbound } from "./financialprofilecreate.js";
 import { PlannedActivityCreate, PlannedActivityCreate$Outbound } from "./plannedactivitycreate.js";
@@ -85,4 +87,6 @@ export declare namespace EddAccountEnrollmentMetadataCreate$ {
     /** @deprecated use `EddAccountEnrollmentMetadataCreate$Outbound` instead. */
     type Outbound = EddAccountEnrollmentMetadataCreate$Outbound;
 }
+export declare function eddAccountEnrollmentMetadataCreateToJSON(eddAccountEnrollmentMetadataCreate: EddAccountEnrollmentMetadataCreate): string;
+export declare function eddAccountEnrollmentMetadataCreateFromJSON(jsonString: string): SafeParseResult<EddAccountEnrollmentMetadataCreate, SDKValidationError>;
 //# sourceMappingURL=eddaccountenrollmentmetadatacreate.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DepositScheduleDetailsCreate, DepositScheduleDetailsCreate$Outbound } from "./depositscheduledetailscreate.js";
 import { ScheduledRetirementContributionCreate, ScheduledRetirementContributionCreate$Outbound } from "./scheduledretirementcontributioncreate.js";
 /**
@@ -96,6 +98,8 @@ export declare namespace IraContribution$ {
     /** @deprecated use `IraContribution$Outbound` instead. */
     type Outbound = IraContribution$Outbound;
 }
+export declare function iraContributionToJSON(iraContribution: IraContribution): string;
+export declare function iraContributionFromJSON(jsonString: string): SafeParseResult<IraContribution, SDKValidationError>;
 /** @internal */
 export declare const AchDepositScheduleCreate$inboundSchema: z.ZodType<AchDepositScheduleCreate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -119,4 +123,6 @@ export declare namespace AchDepositScheduleCreate$ {
     /** @deprecated use `AchDepositScheduleCreate$Outbound` instead. */
     type Outbound = AchDepositScheduleCreate$Outbound;
 }
+export declare function achDepositScheduleCreateToJSON(achDepositScheduleCreate: AchDepositScheduleCreate): string;
+export declare function achDepositScheduleCreateFromJSON(jsonString: string): SafeParseResult<AchDepositScheduleCreate, SDKValidationError>;
 //# sourceMappingURL=achdepositschedulecreate.d.ts.map

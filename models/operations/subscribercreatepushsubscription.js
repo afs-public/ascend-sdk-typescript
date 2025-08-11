@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubscriberCreatePushSubscriptionResponse$ = exports.SubscriberCreatePushSubscriptionResponse$outboundSchema = exports.SubscriberCreatePushSubscriptionResponse$inboundSchema = void 0;
+exports.subscriberCreatePushSubscriptionResponseToJSON = subscriberCreatePushSubscriptionResponseToJSON;
+exports.subscriberCreatePushSubscriptionResponseFromJSON = subscriberCreatePushSubscriptionResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.SubscriberCreatePushSubscriptionResponse$inboundSchema = z.object({
@@ -75,4 +78,10 @@ var SubscriberCreatePushSubscriptionResponse$;
     /** @deprecated use `SubscriberCreatePushSubscriptionResponse$outboundSchema` instead. */
     SubscriberCreatePushSubscriptionResponse$.outboundSchema = exports.SubscriberCreatePushSubscriptionResponse$outboundSchema;
 })(SubscriberCreatePushSubscriptionResponse$ || (exports.SubscriberCreatePushSubscriptionResponse$ = SubscriberCreatePushSubscriptionResponse$ = {}));
+function subscriberCreatePushSubscriptionResponseToJSON(subscriberCreatePushSubscriptionResponse) {
+    return JSON.stringify(exports.SubscriberCreatePushSubscriptionResponse$outboundSchema.parse(subscriberCreatePushSubscriptionResponse));
+}
+function subscriberCreatePushSubscriptionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SubscriberCreatePushSubscriptionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SubscriberCreatePushSubscriptionResponse' from JSON`);
+}
 //# sourceMappingURL=subscribercreatepushsubscription.js.map

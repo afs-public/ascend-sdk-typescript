@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsEndRestrictionRequest = {
   /**
@@ -82,6 +85,26 @@ export namespace AccountsEndRestrictionRequest$ {
   export type Outbound = AccountsEndRestrictionRequest$Outbound;
 }
 
+export function accountsEndRestrictionRequestToJSON(
+  accountsEndRestrictionRequest: AccountsEndRestrictionRequest,
+): string {
+  return JSON.stringify(
+    AccountsEndRestrictionRequest$outboundSchema.parse(
+      accountsEndRestrictionRequest,
+    ),
+  );
+}
+
+export function accountsEndRestrictionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsEndRestrictionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsEndRestrictionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsEndRestrictionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsEndRestrictionResponse$inboundSchema: z.ZodType<
   AccountsEndRestrictionResponse,
@@ -129,4 +152,24 @@ export namespace AccountsEndRestrictionResponse$ {
   export const outboundSchema = AccountsEndRestrictionResponse$outboundSchema;
   /** @deprecated use `AccountsEndRestrictionResponse$Outbound` instead. */
   export type Outbound = AccountsEndRestrictionResponse$Outbound;
+}
+
+export function accountsEndRestrictionResponseToJSON(
+  accountsEndRestrictionResponse: AccountsEndRestrictionResponse,
+): string {
+  return JSON.stringify(
+    AccountsEndRestrictionResponse$outboundSchema.parse(
+      accountsEndRestrictionResponse,
+    ),
+  );
+}
+
+export function accountsEndRestrictionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsEndRestrictionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsEndRestrictionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsEndRestrictionResponse' from JSON`,
+  );
 }

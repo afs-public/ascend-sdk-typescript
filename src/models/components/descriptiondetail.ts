@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Description detail used for Dow Jones Profile details
@@ -75,4 +78,22 @@ export namespace DescriptionDetail$ {
   export const outboundSchema = DescriptionDetail$outboundSchema;
   /** @deprecated use `DescriptionDetail$Outbound` instead. */
   export type Outbound = DescriptionDetail$Outbound;
+}
+
+export function descriptionDetailToJSON(
+  descriptionDetail: DescriptionDetail,
+): string {
+  return JSON.stringify(
+    DescriptionDetail$outboundSchema.parse(descriptionDetail),
+  );
+}
+
+export function descriptionDetailFromJSON(
+  jsonString: string,
+): SafeParseResult<DescriptionDetail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DescriptionDetail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DescriptionDetail' from JSON`,
+  );
 }

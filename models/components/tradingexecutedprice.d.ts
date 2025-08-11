@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The limit price which must be greater than zero if provided. For equity orders in the USD currency, up to 2 decimal places are allowed for prices above $1 and up to 4 decimal places for prices at or below $1. For fixed income orders this is expressed as a percentage of par, which allows up to 5 decimal places in the USD currency.
  */
@@ -55,6 +57,8 @@ export declare namespace Price$ {
     /** @deprecated use `Price$Outbound` instead. */
     type Outbound = Price$Outbound;
 }
+export declare function priceToJSON(price: Price): string;
+export declare function priceFromJSON(jsonString: string): SafeParseResult<Price, SDKValidationError>;
 /** @internal */
 export declare const TradingExecutedPriceType$inboundSchema: z.ZodType<TradingExecutedPriceTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -90,4 +94,6 @@ export declare namespace TradingExecutedPrice$ {
     /** @deprecated use `TradingExecutedPrice$Outbound` instead. */
     type Outbound = TradingExecutedPrice$Outbound;
 }
+export declare function tradingExecutedPriceToJSON(tradingExecutedPrice: TradingExecutedPrice): string;
+export declare function tradingExecutedPriceFromJSON(jsonString: string): SafeParseResult<TradingExecutedPrice, SDKValidationError>;
 //# sourceMappingURL=tradingexecutedprice.d.ts.map

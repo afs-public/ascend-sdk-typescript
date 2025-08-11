@@ -1,38 +1,36 @@
 {
   "name": "@apexfintechsolutions/ascend-sdk",
-  "version": "1.5.9",
+  "version": "1.6.0",
   "author": "Apex Fintech Solutions",
-  "license": "MIT",
   "description": "Apex Ascend SDK",
   "homepage": "https://apexfintechsolutions.com",
+  "license": "MIT",
   "main": "./index.js",
   "sideEffects": false,
   "scripts": {
     "test": "vitest run src --testTimeout 60000",
     "check": "npm run test && npm run lint",
-    "lint": "eslint --max-warnings=0 src",
+    "lint": "eslint --cache --max-warnings=0 src",
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "zod": ">= 3"
+    
   },
   "devDependencies": {
+    "@eslint/js": "^9.19.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/luxon": "^3.4.2",
     "@types/node": "^18.19.3",
-    "@typescript-eslint/eslint-plugin": "^7.7.1",
-    "@typescript-eslint/parser": "^7.7.1",
-    "@vitest/ui": "^1.5.0",
-    "eslint": "^8.57.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
     "luxon": "^3.4.4",
-    "typescript": "^5.4.5",
-    "vitest": "^1.5.0",
-    "zod": "^3.23.4"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.26.0",
+    "vitest": "^3.0.2"
   },
   "dependencies": {
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "zod": "^3.20.0"
   }
 }

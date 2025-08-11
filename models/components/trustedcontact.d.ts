@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The object containing data for the purpose of delivery physical mailings to a party; Typically used for statements, account updates, tax documents, and other postal mailings; May also be used as an alternative identity verification address to personalAddress. If input, the required fields within the `mailing_address` object include:
  *
@@ -202,6 +204,8 @@ export declare namespace TrustedContactMailingAddress$ {
     /** @deprecated use `TrustedContactMailingAddress$Outbound` instead. */
     type Outbound = TrustedContactMailingAddress$Outbound;
 }
+export declare function trustedContactMailingAddressToJSON(trustedContactMailingAddress: TrustedContactMailingAddress): string;
+export declare function trustedContactMailingAddressFromJSON(jsonString: string): SafeParseResult<TrustedContactMailingAddress, SDKValidationError>;
 /** @internal */
 export declare const TrustedContactShortCode$inboundSchema: z.ZodType<TrustedContactShortCode, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -223,6 +227,8 @@ export declare namespace TrustedContactShortCode$ {
     /** @deprecated use `TrustedContactShortCode$Outbound` instead. */
     type Outbound = TrustedContactShortCode$Outbound;
 }
+export declare function trustedContactShortCodeToJSON(trustedContactShortCode: TrustedContactShortCode): string;
+export declare function trustedContactShortCodeFromJSON(jsonString: string): SafeParseResult<TrustedContactShortCode, SDKValidationError>;
 /** @internal */
 export declare const TrustedContactPhoneNumber$inboundSchema: z.ZodType<TrustedContactPhoneNumber, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -245,6 +251,8 @@ export declare namespace TrustedContactPhoneNumber$ {
     /** @deprecated use `TrustedContactPhoneNumber$Outbound` instead. */
     type Outbound = TrustedContactPhoneNumber$Outbound;
 }
+export declare function trustedContactPhoneNumberToJSON(trustedContactPhoneNumber: TrustedContactPhoneNumber): string;
+export declare function trustedContactPhoneNumberFromJSON(jsonString: string): SafeParseResult<TrustedContactPhoneNumber, SDKValidationError>;
 /** @internal */
 export declare const TrustedContact$inboundSchema: z.ZodType<TrustedContact, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -272,4 +280,6 @@ export declare namespace TrustedContact$ {
     /** @deprecated use `TrustedContact$Outbound` instead. */
     type Outbound = TrustedContact$Outbound;
 }
+export declare function trustedContactToJSON(trustedContact: TrustedContact): string;
+export declare function trustedContactFromJSON(jsonString: string): SafeParseResult<TrustedContact, SDKValidationError>;
 //# sourceMappingURL=trustedcontact.d.ts.map

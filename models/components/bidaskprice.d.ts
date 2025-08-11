@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The price value
  */
@@ -54,6 +56,8 @@ export declare namespace BidAskPricePrice$ {
     /** @deprecated use `BidAskPricePrice$Outbound` instead. */
     type Outbound = BidAskPricePrice$Outbound;
 }
+export declare function bidAskPricePriceToJSON(bidAskPricePrice: BidAskPricePrice): string;
+export declare function bidAskPricePriceFromJSON(jsonString: string): SafeParseResult<BidAskPricePrice, SDKValidationError>;
 /** @internal */
 export declare const BidAskPriceType$inboundSchema: z.ZodType<BidAskPriceTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -89,4 +93,6 @@ export declare namespace BidAskPrice$ {
     /** @deprecated use `BidAskPrice$Outbound` instead. */
     type Outbound = BidAskPrice$Outbound;
 }
+export declare function bidAskPriceToJSON(bidAskPrice: BidAskPrice): string;
+export declare function bidAskPriceFromJSON(jsonString: string): SafeParseResult<BidAskPrice, SDKValidationError>;
 //# sourceMappingURL=bidaskprice.d.ts.map

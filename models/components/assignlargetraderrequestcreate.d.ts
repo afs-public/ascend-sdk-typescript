@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The request to assign a Large Trader ID to a Legal Natural Person/Legal Entity.
  */
@@ -25,4 +27,6 @@ export declare namespace AssignLargeTraderRequestCreate$ {
     /** @deprecated use `AssignLargeTraderRequestCreate$Outbound` instead. */
     type Outbound = AssignLargeTraderRequestCreate$Outbound;
 }
+export declare function assignLargeTraderRequestCreateToJSON(assignLargeTraderRequestCreate: AssignLargeTraderRequestCreate): string;
+export declare function assignLargeTraderRequestCreateFromJSON(jsonString: string): SafeParseResult<AssignLargeTraderRequestCreate, SDKValidationError>;
 //# sourceMappingURL=assignlargetraderrequestcreate.d.ts.map

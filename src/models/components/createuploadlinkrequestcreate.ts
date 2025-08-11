@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountDocumentUploadRequestCreate,
   AccountDocumentUploadRequestCreate$inboundSchema,
@@ -104,4 +107,24 @@ export namespace CreateUploadLinkRequestCreate$ {
   export const outboundSchema = CreateUploadLinkRequestCreate$outboundSchema;
   /** @deprecated use `CreateUploadLinkRequestCreate$Outbound` instead. */
   export type Outbound = CreateUploadLinkRequestCreate$Outbound;
+}
+
+export function createUploadLinkRequestCreateToJSON(
+  createUploadLinkRequestCreate: CreateUploadLinkRequestCreate,
+): string {
+  return JSON.stringify(
+    CreateUploadLinkRequestCreate$outboundSchema.parse(
+      createUploadLinkRequestCreate,
+    ),
+  );
+}
+
+export function createUploadLinkRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateUploadLinkRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateUploadLinkRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateUploadLinkRequestCreate' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A request to obtain a JSON Web Token for a service account
@@ -50,4 +53,31 @@ export namespace GenerateServiceAccountTokenRequestCreate$ {
     GenerateServiceAccountTokenRequestCreate$outboundSchema;
   /** @deprecated use `GenerateServiceAccountTokenRequestCreate$Outbound` instead. */
   export type Outbound = GenerateServiceAccountTokenRequestCreate$Outbound;
+}
+
+export function generateServiceAccountTokenRequestCreateToJSON(
+  generateServiceAccountTokenRequestCreate:
+    GenerateServiceAccountTokenRequestCreate,
+): string {
+  return JSON.stringify(
+    GenerateServiceAccountTokenRequestCreate$outboundSchema.parse(
+      generateServiceAccountTokenRequestCreate,
+    ),
+  );
+}
+
+export function generateServiceAccountTokenRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GenerateServiceAccountTokenRequestCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GenerateServiceAccountTokenRequestCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GenerateServiceAccountTokenRequestCreate' from JSON`,
+  );
 }

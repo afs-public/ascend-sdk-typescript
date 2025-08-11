@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
@@ -47,4 +49,6 @@ export declare namespace LetterOfIntentCreate$ {
     /** @deprecated use `LetterOfIntentCreate$Outbound` instead. */
     type Outbound = LetterOfIntentCreate$Outbound;
 }
+export declare function letterOfIntentCreateToJSON(letterOfIntentCreate: LetterOfIntentCreate): string;
+export declare function letterOfIntentCreateFromJSON(jsonString: string): SafeParseResult<LetterOfIntentCreate, SDKValidationError>;
 //# sourceMappingURL=letterofintentcreate.d.ts.map

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of asset referenced by the security identifier
@@ -307,6 +310,24 @@ export namespace EstimatedAccruedInterest$ {
   export type Outbound = EstimatedAccruedInterest$Outbound;
 }
 
+export function estimatedAccruedInterestToJSON(
+  estimatedAccruedInterest: EstimatedAccruedInterest,
+): string {
+  return JSON.stringify(
+    EstimatedAccruedInterest$outboundSchema.parse(estimatedAccruedInterest),
+  );
+}
+
+export function estimatedAccruedInterestFromJSON(
+  jsonString: string,
+): SafeParseResult<EstimatedAccruedInterest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EstimatedAccruedInterest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EstimatedAccruedInterest' from JSON`,
+  );
+}
+
 /** @internal */
 export const EstimatedGrossAmount$inboundSchema: z.ZodType<
   EstimatedGrossAmount,
@@ -341,6 +362,24 @@ export namespace EstimatedGrossAmount$ {
   export const outboundSchema = EstimatedGrossAmount$outboundSchema;
   /** @deprecated use `EstimatedGrossAmount$Outbound` instead. */
   export type Outbound = EstimatedGrossAmount$Outbound;
+}
+
+export function estimatedGrossAmountToJSON(
+  estimatedGrossAmount: EstimatedGrossAmount,
+): string {
+  return JSON.stringify(
+    EstimatedGrossAmount$outboundSchema.parse(estimatedGrossAmount),
+  );
+}
+
+export function estimatedGrossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<EstimatedGrossAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EstimatedGrossAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EstimatedGrossAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -379,6 +418,24 @@ export namespace EstimatedGrossCreditAmount$ {
   export type Outbound = EstimatedGrossCreditAmount$Outbound;
 }
 
+export function estimatedGrossCreditAmountToJSON(
+  estimatedGrossCreditAmount: EstimatedGrossCreditAmount,
+): string {
+  return JSON.stringify(
+    EstimatedGrossCreditAmount$outboundSchema.parse(estimatedGrossCreditAmount),
+  );
+}
+
+export function estimatedGrossCreditAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<EstimatedGrossCreditAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EstimatedGrossCreditAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EstimatedGrossCreditAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const EstimatedNetAmount$inboundSchema: z.ZodType<
   EstimatedNetAmount,
@@ -413,6 +470,24 @@ export namespace EstimatedNetAmount$ {
   export const outboundSchema = EstimatedNetAmount$outboundSchema;
   /** @deprecated use `EstimatedNetAmount$Outbound` instead. */
   export type Outbound = EstimatedNetAmount$Outbound;
+}
+
+export function estimatedNetAmountToJSON(
+  estimatedNetAmount: EstimatedNetAmount,
+): string {
+  return JSON.stringify(
+    EstimatedNetAmount$outboundSchema.parse(estimatedNetAmount),
+  );
+}
+
+export function estimatedNetAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<EstimatedNetAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EstimatedNetAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EstimatedNetAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -483,6 +558,26 @@ export namespace OrderCostPreviewResponsePrice$ {
   export const outboundSchema = OrderCostPreviewResponsePrice$outboundSchema;
   /** @deprecated use `OrderCostPreviewResponsePrice$Outbound` instead. */
   export type Outbound = OrderCostPreviewResponsePrice$Outbound;
+}
+
+export function orderCostPreviewResponsePriceToJSON(
+  orderCostPreviewResponsePrice: OrderCostPreviewResponsePrice,
+): string {
+  return JSON.stringify(
+    OrderCostPreviewResponsePrice$outboundSchema.parse(
+      orderCostPreviewResponsePrice,
+    ),
+  );
+}
+
+export function orderCostPreviewResponsePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderCostPreviewResponsePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderCostPreviewResponsePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderCostPreviewResponsePrice' from JSON`,
+  );
 }
 
 /** @internal */
@@ -559,6 +654,27 @@ export namespace OrderCostPreviewResponseLimitPrice$ {
   export type Outbound = OrderCostPreviewResponseLimitPrice$Outbound;
 }
 
+export function orderCostPreviewResponseLimitPriceToJSON(
+  orderCostPreviewResponseLimitPrice: OrderCostPreviewResponseLimitPrice,
+): string {
+  return JSON.stringify(
+    OrderCostPreviewResponseLimitPrice$outboundSchema.parse(
+      orderCostPreviewResponseLimitPrice,
+    ),
+  );
+}
+
+export function orderCostPreviewResponseLimitPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderCostPreviewResponseLimitPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrderCostPreviewResponseLimitPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderCostPreviewResponseLimitPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const OrderCostPreviewResponseQuantity$inboundSchema: z.ZodType<
   OrderCostPreviewResponseQuantity,
@@ -593,6 +709,26 @@ export namespace OrderCostPreviewResponseQuantity$ {
   export const outboundSchema = OrderCostPreviewResponseQuantity$outboundSchema;
   /** @deprecated use `OrderCostPreviewResponseQuantity$Outbound` instead. */
   export type Outbound = OrderCostPreviewResponseQuantity$Outbound;
+}
+
+export function orderCostPreviewResponseQuantityToJSON(
+  orderCostPreviewResponseQuantity: OrderCostPreviewResponseQuantity,
+): string {
+  return JSON.stringify(
+    OrderCostPreviewResponseQuantity$outboundSchema.parse(
+      orderCostPreviewResponseQuantity,
+    ),
+  );
+}
+
+export function orderCostPreviewResponseQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderCostPreviewResponseQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderCostPreviewResponseQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderCostPreviewResponseQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -730,4 +866,22 @@ export namespace OrderCostPreviewResponse$ {
   export const outboundSchema = OrderCostPreviewResponse$outboundSchema;
   /** @deprecated use `OrderCostPreviewResponse$Outbound` instead. */
   export type Outbound = OrderCostPreviewResponse$Outbound;
+}
+
+export function orderCostPreviewResponseToJSON(
+  orderCostPreviewResponse: OrderCostPreviewResponse,
+): string {
+  return JSON.stringify(
+    OrderCostPreviewResponse$outboundSchema.parse(orderCostPreviewResponse),
+  );
+}
+
+export function orderCostPreviewResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<OrderCostPreviewResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrderCostPreviewResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrderCostPreviewResponse' from JSON`,
+  );
 }

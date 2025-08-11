@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The amount to deposit in USD.
@@ -202,6 +205,20 @@ export namespace Amount$ {
   export type Outbound = Amount$Outbound;
 }
 
+export function amountToJSON(amount: Amount): string {
+  return JSON.stringify(Amount$outboundSchema.parse(amount));
+}
+
+export function amountFromJSON(
+  jsonString: string,
+): SafeParseResult<Amount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Amount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Amount' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDepositType$inboundSchema: z.ZodType<
   AchDepositTypeOpen,
@@ -279,6 +296,24 @@ export namespace RetirementContribution$ {
   export const outboundSchema = RetirementContribution$outboundSchema;
   /** @deprecated use `RetirementContribution$Outbound` instead. */
   export type Outbound = RetirementContribution$Outbound;
+}
+
+export function retirementContributionToJSON(
+  retirementContribution: RetirementContribution,
+): string {
+  return JSON.stringify(
+    RetirementContribution$outboundSchema.parse(retirementContribution),
+  );
+}
+
+export function retirementContributionFromJSON(
+  jsonString: string,
+): SafeParseResult<RetirementContribution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetirementContribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetirementContribution' from JSON`,
+  );
 }
 
 /** @internal */
@@ -371,6 +406,22 @@ export namespace AchDepositState$ {
   export type Outbound = AchDepositState$Outbound;
 }
 
+export function achDepositStateToJSON(
+  achDepositState: AchDepositState,
+): string {
+  return JSON.stringify(AchDepositState$outboundSchema.parse(achDepositState));
+}
+
+export function achDepositStateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositState' from JSON`,
+  );
+}
+
 /** @internal */
 export const AchDeposit$inboundSchema: z.ZodType<
   AchDeposit,
@@ -439,4 +490,18 @@ export namespace AchDeposit$ {
   export const outboundSchema = AchDeposit$outboundSchema;
   /** @deprecated use `AchDeposit$Outbound` instead. */
   export type Outbound = AchDeposit$Outbound;
+}
+
+export function achDepositToJSON(achDeposit: AchDeposit): string {
+  return JSON.stringify(AchDeposit$outboundSchema.parse(achDeposit));
+}
+
+export function achDepositFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDeposit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDeposit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDeposit' from JSON`,
+  );
 }

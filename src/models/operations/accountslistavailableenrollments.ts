@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsListAvailableEnrollmentsRequest = {
   /**
@@ -105,6 +108,33 @@ export namespace AccountsListAvailableEnrollmentsRequest$ {
   export type Outbound = AccountsListAvailableEnrollmentsRequest$Outbound;
 }
 
+export function accountsListAvailableEnrollmentsRequestToJSON(
+  accountsListAvailableEnrollmentsRequest:
+    AccountsListAvailableEnrollmentsRequest,
+): string {
+  return JSON.stringify(
+    AccountsListAvailableEnrollmentsRequest$outboundSchema.parse(
+      accountsListAvailableEnrollmentsRequest,
+    ),
+  );
+}
+
+export function accountsListAvailableEnrollmentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsListAvailableEnrollmentsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsListAvailableEnrollmentsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsListAvailableEnrollmentsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsListAvailableEnrollmentsResponse$inboundSchema: z.ZodType<
   AccountsListAvailableEnrollmentsResponse,
@@ -163,4 +193,31 @@ export namespace AccountsListAvailableEnrollmentsResponse$ {
     AccountsListAvailableEnrollmentsResponse$outboundSchema;
   /** @deprecated use `AccountsListAvailableEnrollmentsResponse$Outbound` instead. */
   export type Outbound = AccountsListAvailableEnrollmentsResponse$Outbound;
+}
+
+export function accountsListAvailableEnrollmentsResponseToJSON(
+  accountsListAvailableEnrollmentsResponse:
+    AccountsListAvailableEnrollmentsResponse,
+): string {
+  return JSON.stringify(
+    AccountsListAvailableEnrollmentsResponse$outboundSchema.parse(
+      accountsListAvailableEnrollmentsResponse,
+    ),
+  );
+}
+
+export function accountsListAvailableEnrollmentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsListAvailableEnrollmentsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsListAvailableEnrollmentsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsListAvailableEnrollmentsResponse' from JSON`,
+  );
 }

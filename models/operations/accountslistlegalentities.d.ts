@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsListLegalEntitiesRequest = {
     /**
      * The maximum number of legal entities to return. The service may return fewer than this value. If unspecified, at most 25 legal entities will be returned. The maximum value is 100; values above 100 will be coerced to 100.
@@ -62,6 +64,8 @@ export declare namespace AccountsListLegalEntitiesRequest$ {
     /** @deprecated use `AccountsListLegalEntitiesRequest$Outbound` instead. */
     type Outbound = AccountsListLegalEntitiesRequest$Outbound;
 }
+export declare function accountsListLegalEntitiesRequestToJSON(accountsListLegalEntitiesRequest: AccountsListLegalEntitiesRequest): string;
+export declare function accountsListLegalEntitiesRequestFromJSON(jsonString: string): SafeParseResult<AccountsListLegalEntitiesRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsListLegalEntitiesResponse$inboundSchema: z.ZodType<AccountsListLegalEntitiesResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -84,4 +88,6 @@ export declare namespace AccountsListLegalEntitiesResponse$ {
     /** @deprecated use `AccountsListLegalEntitiesResponse$Outbound` instead. */
     type Outbound = AccountsListLegalEntitiesResponse$Outbound;
 }
+export declare function accountsListLegalEntitiesResponseToJSON(accountsListLegalEntitiesResponse: AccountsListLegalEntitiesResponse): string;
+export declare function accountsListLegalEntitiesResponseFromJSON(jsonString: string): SafeParseResult<AccountsListLegalEntitiesResponse, SDKValidationError>;
 //# sourceMappingURL=accountslistlegalentities.d.ts.map

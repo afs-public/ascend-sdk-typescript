@@ -4,14 +4,26 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Tax id type (e.g. ssn)
+ * The identification type for a person, one of:
+ *
+ * @remarks
+ * - `ID_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `SSN` - SSN tax type.
+ * - `ITIN` - ITIN tax type.
+ * - `FTIN` - FTIN (foreign tax id) type.
+ * - `NATIONAL_ID` - National id type.
+ * - `PASSPORT` - Passport id type.
+ * - `DRIVING_LICENSE` - Drivers license id type.
  */
 export enum PersonIdentificationType {
   IdTypeUnspecified = "ID_TYPE_UNSPECIFIED",
@@ -23,7 +35,16 @@ export enum PersonIdentificationType {
   DrivingLicense = "DRIVING_LICENSE",
 }
 /**
- * Tax id type (e.g. ssn)
+ * The identification type for a person, one of:
+ *
+ * @remarks
+ * - `ID_TYPE_UNSPECIFIED` - Default/Null value.
+ * - `SSN` - SSN tax type.
+ * - `ITIN` - ITIN tax type.
+ * - `FTIN` - FTIN (foreign tax id) type.
+ * - `NATIONAL_ID` - National id type.
+ * - `PASSPORT` - Passport id type.
+ * - `DRIVING_LICENSE` - Drivers license id type.
  */
 export type PersonIdentificationTypeOpen = OpenEnum<
   typeof PersonIdentificationType
@@ -46,7 +67,16 @@ export type PersonIdentification = {
    */
   regionCode?: string | undefined;
   /**
-   * Tax id type (e.g. ssn)
+   * The identification type for a person, one of:
+   *
+   * @remarks
+   * - `ID_TYPE_UNSPECIFIED` - Default/Null value.
+   * - `SSN` - SSN tax type.
+   * - `ITIN` - ITIN tax type.
+   * - `FTIN` - FTIN (foreign tax id) type.
+   * - `NATIONAL_ID` - National id type.
+   * - `PASSPORT` - Passport id type.
+   * - `DRIVING_LICENSE` - Drivers license id type.
    */
   type?: PersonIdentificationTypeOpen | undefined;
   /**
@@ -145,4 +175,22 @@ export namespace PersonIdentification$ {
   export const outboundSchema = PersonIdentification$outboundSchema;
   /** @deprecated use `PersonIdentification$Outbound` instead. */
   export type Outbound = PersonIdentification$Outbound;
+}
+
+export function personIdentificationToJSON(
+  personIdentification: PersonIdentification,
+): string {
+  return JSON.stringify(
+    PersonIdentification$outboundSchema.parse(personIdentification),
+  );
+}
+
+export function personIdentificationFromJSON(
+  jsonString: string,
+): SafeParseResult<PersonIdentification, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PersonIdentification$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PersonIdentification' from JSON`,
+  );
 }

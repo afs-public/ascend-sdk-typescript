@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SanctionsListDetail$ = exports.SanctionsListDetail$outboundSchema = exports.SanctionsListDetail$inboundSchema = void 0;
+exports.sanctionsListDetailToJSON = sanctionsListDetailToJSON;
+exports.sanctionsListDetailFromJSON = sanctionsListDetailFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.SanctionsListDetail$inboundSchema = z.object({
     end_day: z.string().optional(),
@@ -90,4 +93,10 @@ var SanctionsListDetail$;
     /** @deprecated use `SanctionsListDetail$outboundSchema` instead. */
     SanctionsListDetail$.outboundSchema = exports.SanctionsListDetail$outboundSchema;
 })(SanctionsListDetail$ || (exports.SanctionsListDetail$ = SanctionsListDetail$ = {}));
+function sanctionsListDetailToJSON(sanctionsListDetail) {
+    return JSON.stringify(exports.SanctionsListDetail$outboundSchema.parse(sanctionsListDetail));
+}
+function sanctionsListDetailFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SanctionsListDetail$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SanctionsListDetail' from JSON`);
+}
 //# sourceMappingURL=sanctionslistdetail.js.map

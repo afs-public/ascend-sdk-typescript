@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AcatsAsset, AcatsAsset$Outbound } from "./acatsasset.js";
 /**
  * The external account information
@@ -257,6 +259,8 @@ export declare namespace RejectTransferResponseExternalAccount$ {
     /** @deprecated use `RejectTransferResponseExternalAccount$Outbound` instead. */
     type Outbound = RejectTransferResponseExternalAccount$Outbound;
 }
+export declare function rejectTransferResponseExternalAccountToJSON(rejectTransferResponseExternalAccount: RejectTransferResponseExternalAccount): string;
+export declare function rejectTransferResponseExternalAccountFromJSON(jsonString: string): SafeParseResult<RejectTransferResponseExternalAccount, SDKValidationError>;
 /** @internal */
 export declare const RejectTransferResponseDeliverer$inboundSchema: z.ZodType<RejectTransferResponseDeliverer, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -278,6 +282,8 @@ export declare namespace RejectTransferResponseDeliverer$ {
     /** @deprecated use `RejectTransferResponseDeliverer$Outbound` instead. */
     type Outbound = RejectTransferResponseDeliverer$Outbound;
 }
+export declare function rejectTransferResponseDelivererToJSON(rejectTransferResponseDeliverer: RejectTransferResponseDeliverer): string;
+export declare function rejectTransferResponseDelivererFromJSON(jsonString: string): SafeParseResult<RejectTransferResponseDeliverer, SDKValidationError>;
 /** @internal */
 export declare const RejectTransferResponseDirection$inboundSchema: z.ZodType<RejectTransferResponseDirectionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -328,6 +334,8 @@ export declare namespace RejectTransferResponseTransferExternalAccount$ {
     /** @deprecated use `RejectTransferResponseTransferExternalAccount$Outbound` instead. */
     type Outbound = RejectTransferResponseTransferExternalAccount$Outbound;
 }
+export declare function rejectTransferResponseTransferExternalAccountToJSON(rejectTransferResponseTransferExternalAccount: RejectTransferResponseTransferExternalAccount): string;
+export declare function rejectTransferResponseTransferExternalAccountFromJSON(jsonString: string): SafeParseResult<RejectTransferResponseTransferExternalAccount, SDKValidationError>;
 /** @internal */
 export declare const RejectTransferResponseReceiver$inboundSchema: z.ZodType<RejectTransferResponseReceiver, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -349,6 +357,8 @@ export declare namespace RejectTransferResponseReceiver$ {
     /** @deprecated use `RejectTransferResponseReceiver$Outbound` instead. */
     type Outbound = RejectTransferResponseReceiver$Outbound;
 }
+export declare function rejectTransferResponseReceiverToJSON(rejectTransferResponseReceiver: RejectTransferResponseReceiver): string;
+export declare function rejectTransferResponseReceiverFromJSON(jsonString: string): SafeParseResult<RejectTransferResponseReceiver, SDKValidationError>;
 /** @internal */
 export declare const RejectTransferResponseRejectCode$inboundSchema: z.ZodType<RejectTransferResponseRejectCodeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -424,6 +434,8 @@ export declare namespace RejectTransferResponseTransfer$ {
     /** @deprecated use `RejectTransferResponseTransfer$Outbound` instead. */
     type Outbound = RejectTransferResponseTransfer$Outbound;
 }
+export declare function rejectTransferResponseTransferToJSON(rejectTransferResponseTransfer: RejectTransferResponseTransfer): string;
+export declare function rejectTransferResponseTransferFromJSON(jsonString: string): SafeParseResult<RejectTransferResponseTransfer, SDKValidationError>;
 /** @internal */
 export declare const RejectTransferResponse$inboundSchema: z.ZodType<RejectTransferResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -444,4 +456,6 @@ export declare namespace RejectTransferResponse$ {
     /** @deprecated use `RejectTransferResponse$Outbound` instead. */
     type Outbound = RejectTransferResponse$Outbound;
 }
+export declare function rejectTransferResponseToJSON(rejectTransferResponse: RejectTransferResponse): string;
+export declare function rejectTransferResponseFromJSON(jsonString: string): SafeParseResult<RejectTransferResponse, SDKValidationError>;
 //# sourceMappingURL=rejecttransferresponse.d.ts.map

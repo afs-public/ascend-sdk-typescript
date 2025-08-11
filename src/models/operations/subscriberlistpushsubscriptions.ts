@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SubscriberListPushSubscriptionsRequest = {
   /**
@@ -100,6 +103,28 @@ export namespace SubscriberListPushSubscriptionsRequest$ {
   export type Outbound = SubscriberListPushSubscriptionsRequest$Outbound;
 }
 
+export function subscriberListPushSubscriptionsRequestToJSON(
+  subscriberListPushSubscriptionsRequest:
+    SubscriberListPushSubscriptionsRequest,
+): string {
+  return JSON.stringify(
+    SubscriberListPushSubscriptionsRequest$outboundSchema.parse(
+      subscriberListPushSubscriptionsRequest,
+    ),
+  );
+}
+
+export function subscriberListPushSubscriptionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<SubscriberListPushSubscriptionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SubscriberListPushSubscriptionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SubscriberListPushSubscriptionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const SubscriberListPushSubscriptionsResponse$inboundSchema: z.ZodType<
   SubscriberListPushSubscriptionsResponse,
@@ -158,4 +183,31 @@ export namespace SubscriberListPushSubscriptionsResponse$ {
     SubscriberListPushSubscriptionsResponse$outboundSchema;
   /** @deprecated use `SubscriberListPushSubscriptionsResponse$Outbound` instead. */
   export type Outbound = SubscriberListPushSubscriptionsResponse$Outbound;
+}
+
+export function subscriberListPushSubscriptionsResponseToJSON(
+  subscriberListPushSubscriptionsResponse:
+    SubscriberListPushSubscriptionsResponse,
+): string {
+  return JSON.stringify(
+    SubscriberListPushSubscriptionsResponse$outboundSchema.parse(
+      subscriberListPushSubscriptionsResponse,
+    ),
+  );
+}
+
+export function subscriberListPushSubscriptionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  SubscriberListPushSubscriptionsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      SubscriberListPushSubscriptionsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'SubscriberListPushSubscriptionsResponse' from JSON`,
+  );
 }

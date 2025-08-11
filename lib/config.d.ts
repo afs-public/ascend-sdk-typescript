@@ -26,16 +26,20 @@ export type SDKOptions = {
     /**
      * The security details required to authenticate the SDK
      */
-    security?: components.Security | (() => Promise<components.Security>);
+    security?: components.Security | (() => Promise<components.Security>) | undefined;
     httpClient?: HTTPClient;
     /**
      * Allows overriding the default server used by the SDK
      */
-    server?: keyof typeof ServerList;
+    server?: keyof typeof ServerList | undefined;
     /**
      * Allows overriding the default server URL used by the SDK
      */
-    serverURL?: string;
+    serverURL?: string | undefined;
+    /**
+     * Allows overriding the default user agent used by the SDK
+     */
+    userAgent?: string | undefined;
     /**
      * Allows overriding the default retry config used by the SDK
      */
@@ -46,9 +50,9 @@ export type SDKOptions = {
 export declare function serverURLFromOptions(options: SDKOptions): URL | null;
 export declare const SDK_METADATA: {
     readonly language: "typescript";
-    readonly openapiDocVersion: "v1:20250725:uat:b6acf9c342e5";
-    readonly sdkVersion: "1.5.9";
-    readonly genVersion: "2.437.1";
-    readonly userAgent: "speakeasy-sdk/typescript 1.5.9 2.437.1 v1:20250725:uat:b6acf9c342e5 @apexfintechsolutions/ascend-sdk";
+    readonly openapiDocVersion: "v1:20250811:uat:c8e4b50ba105";
+    readonly sdkVersion: "1.6.0";
+    readonly genVersion: "2.680.0";
+    readonly userAgent: "speakeasy-sdk/typescript 1.6.0 2.680.0 v1:20250811:uat:c8e4b50ba105 @apexfintechsolutions/ascend-sdk";
 };
 //# sourceMappingURL=config.d.ts.map

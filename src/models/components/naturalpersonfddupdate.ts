@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomerReferralSourceUpdate,
   CustomerReferralSourceUpdate$inboundSchema,
@@ -113,4 +116,22 @@ export namespace NaturalPersonFddUpdate$ {
   export const outboundSchema = NaturalPersonFddUpdate$outboundSchema;
   /** @deprecated use `NaturalPersonFddUpdate$Outbound` instead. */
   export type Outbound = NaturalPersonFddUpdate$Outbound;
+}
+
+export function naturalPersonFddUpdateToJSON(
+  naturalPersonFddUpdate: NaturalPersonFddUpdate,
+): string {
+  return JSON.stringify(
+    NaturalPersonFddUpdate$outboundSchema.parse(naturalPersonFddUpdate),
+  );
+}
+
+export function naturalPersonFddUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<NaturalPersonFddUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NaturalPersonFddUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NaturalPersonFddUpdate' from JSON`,
+  );
 }

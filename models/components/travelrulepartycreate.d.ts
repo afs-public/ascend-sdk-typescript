@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PostalAddressCreate, PostalAddressCreate$Outbound } from "./postaladdresscreate.js";
 /**
  * Travel rule party
@@ -47,4 +49,6 @@ export declare namespace TravelRulePartyCreate$ {
     /** @deprecated use `TravelRulePartyCreate$Outbound` instead. */
     type Outbound = TravelRulePartyCreate$Outbound;
 }
+export declare function travelRulePartyCreateToJSON(travelRulePartyCreate: TravelRulePartyCreate): string;
+export declare function travelRulePartyCreateFromJSON(jsonString: string): SafeParseResult<TravelRulePartyCreate, SDKValidationError>;
 //# sourceMappingURL=travelrulepartycreate.d.ts.map

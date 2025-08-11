@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashBalancesCalculateCashBalanceResponse$ = exports.CashBalancesCalculateCashBalanceResponse$outboundSchema = exports.CashBalancesCalculateCashBalanceResponse$inboundSchema = exports.CashBalancesCalculateCashBalanceRequest$ = exports.CashBalancesCalculateCashBalanceRequest$outboundSchema = exports.CashBalancesCalculateCashBalanceRequest$inboundSchema = exports.Mechanism$ = exports.Mechanism$outboundSchema = exports.Mechanism$inboundSchema = exports.Mechanism = void 0;
+exports.cashBalancesCalculateCashBalanceRequestToJSON = cashBalancesCalculateCashBalanceRequestToJSON;
+exports.cashBalancesCalculateCashBalanceRequestFromJSON = cashBalancesCalculateCashBalanceRequestFromJSON;
+exports.cashBalancesCalculateCashBalanceResponseToJSON = cashBalancesCalculateCashBalanceResponseToJSON;
+exports.cashBalancesCalculateCashBalanceResponseFromJSON = cashBalancesCalculateCashBalanceResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /**
  * The withdraw mechanism to calculate the balance for. The mechanism determines what account activity will affect the balance.
@@ -104,6 +109,12 @@ var CashBalancesCalculateCashBalanceRequest$;
     /** @deprecated use `CashBalancesCalculateCashBalanceRequest$outboundSchema` instead. */
     CashBalancesCalculateCashBalanceRequest$.outboundSchema = exports.CashBalancesCalculateCashBalanceRequest$outboundSchema;
 })(CashBalancesCalculateCashBalanceRequest$ || (exports.CashBalancesCalculateCashBalanceRequest$ = CashBalancesCalculateCashBalanceRequest$ = {}));
+function cashBalancesCalculateCashBalanceRequestToJSON(cashBalancesCalculateCashBalanceRequest) {
+    return JSON.stringify(exports.CashBalancesCalculateCashBalanceRequest$outboundSchema.parse(cashBalancesCalculateCashBalanceRequest));
+}
+function cashBalancesCalculateCashBalanceRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashBalancesCalculateCashBalanceRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashBalancesCalculateCashBalanceRequest' from JSON`);
+}
 /** @internal */
 exports.CashBalancesCalculateCashBalanceResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -141,4 +152,10 @@ var CashBalancesCalculateCashBalanceResponse$;
     /** @deprecated use `CashBalancesCalculateCashBalanceResponse$outboundSchema` instead. */
     CashBalancesCalculateCashBalanceResponse$.outboundSchema = exports.CashBalancesCalculateCashBalanceResponse$outboundSchema;
 })(CashBalancesCalculateCashBalanceResponse$ || (exports.CashBalancesCalculateCashBalanceResponse$ = CashBalancesCalculateCashBalanceResponse$ = {}));
+function cashBalancesCalculateCashBalanceResponseToJSON(cashBalancesCalculateCashBalanceResponse) {
+    return JSON.stringify(exports.CashBalancesCalculateCashBalanceResponse$outboundSchema.parse(cashBalancesCalculateCashBalanceResponse));
+}
+function cashBalancesCalculateCashBalanceResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashBalancesCalculateCashBalanceResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashBalancesCalculateCashBalanceResponse' from JSON`);
+}
 //# sourceMappingURL=cashbalancescalculatecashbalance.js.map

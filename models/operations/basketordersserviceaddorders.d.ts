@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BasketOrdersServiceAddOrdersRequest = {
     /**
      * The correspondent id.
@@ -47,6 +49,8 @@ export declare namespace BasketOrdersServiceAddOrdersRequest$ {
     /** @deprecated use `BasketOrdersServiceAddOrdersRequest$Outbound` instead. */
     type Outbound = BasketOrdersServiceAddOrdersRequest$Outbound;
 }
+export declare function basketOrdersServiceAddOrdersRequestToJSON(basketOrdersServiceAddOrdersRequest: BasketOrdersServiceAddOrdersRequest): string;
+export declare function basketOrdersServiceAddOrdersRequestFromJSON(jsonString: string): SafeParseResult<BasketOrdersServiceAddOrdersRequest, SDKValidationError>;
 /** @internal */
 export declare const BasketOrdersServiceAddOrdersResponse$inboundSchema: z.ZodType<BasketOrdersServiceAddOrdersResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -69,4 +73,6 @@ export declare namespace BasketOrdersServiceAddOrdersResponse$ {
     /** @deprecated use `BasketOrdersServiceAddOrdersResponse$Outbound` instead. */
     type Outbound = BasketOrdersServiceAddOrdersResponse$Outbound;
 }
+export declare function basketOrdersServiceAddOrdersResponseToJSON(basketOrdersServiceAddOrdersResponse: BasketOrdersServiceAddOrdersResponse): string;
+export declare function basketOrdersServiceAddOrdersResponseFromJSON(jsonString: string): SafeParseResult<BasketOrdersServiceAddOrdersResponse, SDKValidationError>;
 //# sourceMappingURL=basketordersserviceaddorders.d.ts.map

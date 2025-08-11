@@ -7,7 +7,7 @@ The bank account for the relationship. This field must be set on create requests
 ```typescript
 import { BankAccount } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: BankAccount = null;
+let value: BankAccount = {};
 ```
 
 ## Fields

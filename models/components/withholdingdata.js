@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WithholdingData$ = exports.WithholdingData$outboundSchema = exports.WithholdingData$inboundSchema = exports.WithholdingDataType$ = exports.WithholdingDataType$outboundSchema = exports.WithholdingDataType$inboundSchema = exports.WithholdingDataState$ = exports.WithholdingDataState$outboundSchema = exports.WithholdingDataState$inboundSchema = exports.Rate$ = exports.Rate$outboundSchema = exports.Rate$inboundSchema = exports.WithholdingDataType = exports.WithholdingDataState = void 0;
+exports.rateToJSON = rateToJSON;
+exports.rateFromJSON = rateFromJSON;
+exports.withholdingDataToJSON = withholdingDataToJSON;
+exports.withholdingDataFromJSON = withholdingDataFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 var WithholdingDataState;
 (function (WithholdingDataState) {
@@ -127,6 +132,12 @@ var Rate$;
     /** @deprecated use `Rate$outboundSchema` instead. */
     Rate$.outboundSchema = exports.Rate$outboundSchema;
 })(Rate$ || (exports.Rate$ = Rate$ = {}));
+function rateToJSON(rate) {
+    return JSON.stringify(exports.Rate$outboundSchema.parse(rate));
+}
+function rateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Rate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Rate' from JSON`);
+}
 /** @internal */
 exports.WithholdingDataState$inboundSchema = z
     .union([
@@ -208,4 +219,10 @@ var WithholdingData$;
     /** @deprecated use `WithholdingData$outboundSchema` instead. */
     WithholdingData$.outboundSchema = exports.WithholdingData$outboundSchema;
 })(WithholdingData$ || (exports.WithholdingData$ = WithholdingData$ = {}));
+function withholdingDataToJSON(withholdingData) {
+    return JSON.stringify(exports.WithholdingData$outboundSchema.parse(withholdingData));
+}
+function withholdingDataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.WithholdingData$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WithholdingData' from JSON`);
+}
 //# sourceMappingURL=withholdingdata.js.map

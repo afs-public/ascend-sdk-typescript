@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The limit price which must be greater than zero if provided. For equity orders in the USD currency, up to 2 decimal places are allowed for prices above $1 and up to 4 decimal places for prices at or below $1. For fixed income orders this is expressed as a percentage of par, which allows up to 5 decimal places in the USD currency.
@@ -82,6 +85,26 @@ export namespace BasketTradingExecutedPricePrice$ {
   export type Outbound = BasketTradingExecutedPricePrice$Outbound;
 }
 
+export function basketTradingExecutedPricePriceToJSON(
+  basketTradingExecutedPricePrice: BasketTradingExecutedPricePrice,
+): string {
+  return JSON.stringify(
+    BasketTradingExecutedPricePrice$outboundSchema.parse(
+      basketTradingExecutedPricePrice,
+    ),
+  );
+}
+
+export function basketTradingExecutedPricePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketTradingExecutedPricePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BasketTradingExecutedPricePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketTradingExecutedPricePrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const BasketTradingExecutedPriceType$inboundSchema: z.ZodType<
   BasketTradingExecutedPriceTypeOpen,
@@ -154,4 +177,22 @@ export namespace BasketTradingExecutedPrice$ {
   export const outboundSchema = BasketTradingExecutedPrice$outboundSchema;
   /** @deprecated use `BasketTradingExecutedPrice$Outbound` instead. */
   export type Outbound = BasketTradingExecutedPrice$Outbound;
+}
+
+export function basketTradingExecutedPriceToJSON(
+  basketTradingExecutedPrice: BasketTradingExecutedPrice,
+): string {
+  return JSON.stringify(
+    BasketTradingExecutedPrice$outboundSchema.parse(basketTradingExecutedPrice),
+  );
+}
+
+export function basketTradingExecutedPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketTradingExecutedPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BasketTradingExecutedPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketTradingExecutedPrice' from JSON`,
+  );
 }

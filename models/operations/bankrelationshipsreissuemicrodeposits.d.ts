@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type BankRelationshipsReissueMicroDepositsRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace BankRelationshipsReissueMicroDepositsRequest$ {
     /** @deprecated use `BankRelationshipsReissueMicroDepositsRequest$Outbound` instead. */
     type Outbound = BankRelationshipsReissueMicroDepositsRequest$Outbound;
 }
+export declare function bankRelationshipsReissueMicroDepositsRequestToJSON(bankRelationshipsReissueMicroDepositsRequest: BankRelationshipsReissueMicroDepositsRequest): string;
+export declare function bankRelationshipsReissueMicroDepositsRequestFromJSON(jsonString: string): SafeParseResult<BankRelationshipsReissueMicroDepositsRequest, SDKValidationError>;
 /** @internal */
 export declare const BankRelationshipsReissueMicroDepositsResponse$inboundSchema: z.ZodType<BankRelationshipsReissueMicroDepositsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace BankRelationshipsReissueMicroDepositsResponse$ {
     /** @deprecated use `BankRelationshipsReissueMicroDepositsResponse$Outbound` instead. */
     type Outbound = BankRelationshipsReissueMicroDepositsResponse$Outbound;
 }
+export declare function bankRelationshipsReissueMicroDepositsResponseToJSON(bankRelationshipsReissueMicroDepositsResponse: BankRelationshipsReissueMicroDepositsResponse): string;
+export declare function bankRelationshipsReissueMicroDepositsResponseFromJSON(jsonString: string): SafeParseResult<BankRelationshipsReissueMicroDepositsResponse, SDKValidationError>;
 //# sourceMappingURL=bankrelationshipsreissuemicrodeposits.d.ts.map

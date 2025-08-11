@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AffirmAgreementsRequestCreate$ = exports.AffirmAgreementsRequestCreate$outboundSchema = exports.AffirmAgreementsRequestCreate$inboundSchema = void 0;
+exports.affirmAgreementsRequestCreateToJSON = affirmAgreementsRequestCreateToJSON;
+exports.affirmAgreementsRequestCreateFromJSON = affirmAgreementsRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.AffirmAgreementsRequestCreate$inboundSchema = z.object({
     account_agreement_ids: z.array(z.string()),
@@ -66,4 +69,10 @@ var AffirmAgreementsRequestCreate$;
     /** @deprecated use `AffirmAgreementsRequestCreate$outboundSchema` instead. */
     AffirmAgreementsRequestCreate$.outboundSchema = exports.AffirmAgreementsRequestCreate$outboundSchema;
 })(AffirmAgreementsRequestCreate$ || (exports.AffirmAgreementsRequestCreate$ = AffirmAgreementsRequestCreate$ = {}));
+function affirmAgreementsRequestCreateToJSON(affirmAgreementsRequestCreate) {
+    return JSON.stringify(exports.AffirmAgreementsRequestCreate$outboundSchema.parse(affirmAgreementsRequestCreate));
+}
+function affirmAgreementsRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AffirmAgreementsRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AffirmAgreementsRequestCreate' from JSON`);
+}
 //# sourceMappingURL=affirmagreementsrequestcreate.js.map

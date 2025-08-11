@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AssetsGetAssetCorrespondentRequest = {
     /**
      * The correspondent id.
@@ -42,6 +44,8 @@ export declare namespace AssetsGetAssetCorrespondentRequest$ {
     /** @deprecated use `AssetsGetAssetCorrespondentRequest$Outbound` instead. */
     type Outbound = AssetsGetAssetCorrespondentRequest$Outbound;
 }
+export declare function assetsGetAssetCorrespondentRequestToJSON(assetsGetAssetCorrespondentRequest: AssetsGetAssetCorrespondentRequest): string;
+export declare function assetsGetAssetCorrespondentRequestFromJSON(jsonString: string): SafeParseResult<AssetsGetAssetCorrespondentRequest, SDKValidationError>;
 /** @internal */
 export declare const AssetsGetAssetCorrespondentResponse$inboundSchema: z.ZodType<AssetsGetAssetCorrespondentResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -64,4 +68,6 @@ export declare namespace AssetsGetAssetCorrespondentResponse$ {
     /** @deprecated use `AssetsGetAssetCorrespondentResponse$Outbound` instead. */
     type Outbound = AssetsGetAssetCorrespondentResponse$Outbound;
 }
+export declare function assetsGetAssetCorrespondentResponseToJSON(assetsGetAssetCorrespondentResponse: AssetsGetAssetCorrespondentResponse): string;
+export declare function assetsGetAssetCorrespondentResponseFromJSON(jsonString: string): SafeParseResult<AssetsGetAssetCorrespondentResponse, SDKValidationError>;
 //# sourceMappingURL=assetsgetassetcorrespondent.d.ts.map

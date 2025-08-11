@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Optional. The view to return. Defaults to BASIC.
  */
@@ -69,6 +71,8 @@ export declare namespace CustomerIdentificationResultServiceGetCustomerIdentific
     /** @deprecated use `CustomerIdentificationResultServiceGetCustomerIdentificationRequest$Outbound` instead. */
     type Outbound = CustomerIdentificationResultServiceGetCustomerIdentificationRequest$Outbound;
 }
+export declare function customerIdentificationResultServiceGetCustomerIdentificationRequestToJSON(customerIdentificationResultServiceGetCustomerIdentificationRequest: CustomerIdentificationResultServiceGetCustomerIdentificationRequest): string;
+export declare function customerIdentificationResultServiceGetCustomerIdentificationRequestFromJSON(jsonString: string): SafeParseResult<CustomerIdentificationResultServiceGetCustomerIdentificationRequest, SDKValidationError>;
 /** @internal */
 export declare const CustomerIdentificationResultServiceGetCustomerIdentificationResponse$inboundSchema: z.ZodType<CustomerIdentificationResultServiceGetCustomerIdentificationResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -91,4 +95,6 @@ export declare namespace CustomerIdentificationResultServiceGetCustomerIdentific
     /** @deprecated use `CustomerIdentificationResultServiceGetCustomerIdentificationResponse$Outbound` instead. */
     type Outbound = CustomerIdentificationResultServiceGetCustomerIdentificationResponse$Outbound;
 }
+export declare function customerIdentificationResultServiceGetCustomerIdentificationResponseToJSON(customerIdentificationResultServiceGetCustomerIdentificationResponse: CustomerIdentificationResultServiceGetCustomerIdentificationResponse): string;
+export declare function customerIdentificationResultServiceGetCustomerIdentificationResponseFromJSON(jsonString: string): SafeParseResult<CustomerIdentificationResultServiceGetCustomerIdentificationResponse, SDKValidationError>;
 //# sourceMappingURL=customeridentificationresultservicegetcustomeridentification.d.ts.map

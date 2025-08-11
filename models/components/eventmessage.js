@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventMessage$ = exports.EventMessage$outboundSchema = exports.EventMessage$inboundSchema = void 0;
+exports.eventMessageToJSON = eventMessageToJSON;
+exports.eventMessageFromJSON = eventMessageFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.EventMessage$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -94,4 +97,10 @@ var EventMessage$;
     /** @deprecated use `EventMessage$outboundSchema` instead. */
     EventMessage$.outboundSchema = exports.EventMessage$outboundSchema;
 })(EventMessage$ || (exports.EventMessage$ = EventMessage$ = {}));
+function eventMessageToJSON(eventMessage) {
+    return JSON.stringify(exports.EventMessage$outboundSchema.parse(eventMessage));
+}
+function eventMessageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.EventMessage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'EventMessage' from JSON`);
+}
 //# sourceMappingURL=eventmessage.js.map

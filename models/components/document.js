@@ -37,8 +37,23 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Document$ = exports.Document$outboundSchema = exports.Document$inboundSchema = exports.InvestorDocument$ = exports.InvestorDocument$outboundSchema = exports.InvestorDocument$inboundSchema = exports.DocumentProcessDate$ = exports.DocumentProcessDate$outboundSchema = exports.DocumentProcessDate$inboundSchema = exports.DocumentInvestorDocumentDocumentType$ = exports.DocumentInvestorDocumentDocumentType$outboundSchema = exports.DocumentInvestorDocumentDocumentType$inboundSchema = exports.IdDocument$ = exports.IdDocument$outboundSchema = exports.IdDocument$inboundSchema = exports.DocumentUploadedDate$ = exports.DocumentUploadedDate$outboundSchema = exports.DocumentUploadedDate$inboundSchema = exports.DocumentIdDocumentDocumentType$ = exports.DocumentIdDocumentDocumentType$outboundSchema = exports.DocumentIdDocumentDocumentType$inboundSchema = exports.AccountDocument$ = exports.AccountDocument$outboundSchema = exports.AccountDocument$inboundSchema = exports.UploadedDate$ = exports.UploadedDate$outboundSchema = exports.UploadedDate$inboundSchema = exports.DocumentDocumentType$ = exports.DocumentDocumentType$outboundSchema = exports.DocumentDocumentType$inboundSchema = exports.DocumentInvestorDocumentDocumentType = exports.DocumentIdDocumentDocumentType = exports.DocumentDocumentType = void 0;
+exports.uploadedDateToJSON = uploadedDateToJSON;
+exports.uploadedDateFromJSON = uploadedDateFromJSON;
+exports.accountDocumentToJSON = accountDocumentToJSON;
+exports.accountDocumentFromJSON = accountDocumentFromJSON;
+exports.documentUploadedDateToJSON = documentUploadedDateToJSON;
+exports.documentUploadedDateFromJSON = documentUploadedDateFromJSON;
+exports.idDocumentToJSON = idDocumentToJSON;
+exports.idDocumentFromJSON = idDocumentFromJSON;
+exports.documentProcessDateToJSON = documentProcessDateToJSON;
+exports.documentProcessDateFromJSON = documentProcessDateFromJSON;
+exports.investorDocumentToJSON = investorDocumentToJSON;
+exports.investorDocumentFromJSON = investorDocumentFromJSON;
+exports.documentToJSON = documentToJSON;
+exports.documentFromJSON = documentFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * Describes the contents of a document and how it is used
@@ -222,6 +237,8 @@ var DocumentInvestorDocumentDocumentType;
     DocumentInvestorDocumentDocumentType["Form1099C"] = "FORM_1099_C";
     DocumentInvestorDocumentDocumentType["Form4806D"] = "FORM_480_6D";
     DocumentInvestorDocumentDocumentType["Form5498Esa"] = "FORM_5498_ESA";
+    DocumentInvestorDocumentDocumentType["FpslNegativeConsentForm"] = "FPSL_NEGATIVE_CONSENT_FORM";
+    DocumentInvestorDocumentDocumentType["CrsForm"] = "CRS_FORM";
 })(DocumentInvestorDocumentDocumentType || (exports.DocumentInvestorDocumentDocumentType = DocumentInvestorDocumentDocumentType = {}));
 /** @internal */
 exports.DocumentDocumentType$inboundSchema = z
@@ -268,6 +285,12 @@ var UploadedDate$;
     /** @deprecated use `UploadedDate$outboundSchema` instead. */
     UploadedDate$.outboundSchema = exports.UploadedDate$outboundSchema;
 })(UploadedDate$ || (exports.UploadedDate$ = UploadedDate$ = {}));
+function uploadedDateToJSON(uploadedDate) {
+    return JSON.stringify(exports.UploadedDate$outboundSchema.parse(uploadedDate));
+}
+function uploadedDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.UploadedDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'UploadedDate' from JSON`);
+}
 /** @internal */
 exports.AccountDocument$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -305,6 +328,12 @@ var AccountDocument$;
     /** @deprecated use `AccountDocument$outboundSchema` instead. */
     AccountDocument$.outboundSchema = exports.AccountDocument$outboundSchema;
 })(AccountDocument$ || (exports.AccountDocument$ = AccountDocument$ = {}));
+function accountDocumentToJSON(accountDocument) {
+    return JSON.stringify(exports.AccountDocument$outboundSchema.parse(accountDocument));
+}
+function accountDocumentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AccountDocument$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AccountDocument' from JSON`);
+}
 /** @internal */
 exports.DocumentIdDocumentDocumentType$inboundSchema = z
     .union([
@@ -350,6 +379,12 @@ var DocumentUploadedDate$;
     /** @deprecated use `DocumentUploadedDate$outboundSchema` instead. */
     DocumentUploadedDate$.outboundSchema = exports.DocumentUploadedDate$outboundSchema;
 })(DocumentUploadedDate$ || (exports.DocumentUploadedDate$ = DocumentUploadedDate$ = {}));
+function documentUploadedDateToJSON(documentUploadedDate) {
+    return JSON.stringify(exports.DocumentUploadedDate$outboundSchema.parse(documentUploadedDate));
+}
+function documentUploadedDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DocumentUploadedDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DocumentUploadedDate' from JSON`);
+}
 /** @internal */
 exports.IdDocument$inboundSchema = z.object({
     document_type: exports.DocumentIdDocumentDocumentType$inboundSchema.optional(),
@@ -387,6 +422,12 @@ var IdDocument$;
     /** @deprecated use `IdDocument$outboundSchema` instead. */
     IdDocument$.outboundSchema = exports.IdDocument$outboundSchema;
 })(IdDocument$ || (exports.IdDocument$ = IdDocument$ = {}));
+function idDocumentToJSON(idDocument) {
+    return JSON.stringify(exports.IdDocument$outboundSchema.parse(idDocument));
+}
+function idDocumentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IdDocument$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IdDocument' from JSON`);
+}
 /** @internal */
 exports.DocumentInvestorDocumentDocumentType$inboundSchema = z
     .union([
@@ -432,6 +473,12 @@ var DocumentProcessDate$;
     /** @deprecated use `DocumentProcessDate$outboundSchema` instead. */
     DocumentProcessDate$.outboundSchema = exports.DocumentProcessDate$outboundSchema;
 })(DocumentProcessDate$ || (exports.DocumentProcessDate$ = DocumentProcessDate$ = {}));
+function documentProcessDateToJSON(documentProcessDate) {
+    return JSON.stringify(exports.DocumentProcessDate$outboundSchema.parse(documentProcessDate));
+}
+function documentProcessDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DocumentProcessDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DocumentProcessDate' from JSON`);
+}
 /** @internal */
 exports.InvestorDocument$inboundSchema = z.object({
     account_id: z.string().optional(),
@@ -469,6 +516,12 @@ var InvestorDocument$;
     /** @deprecated use `InvestorDocument$outboundSchema` instead. */
     InvestorDocument$.outboundSchema = exports.InvestorDocument$outboundSchema;
 })(InvestorDocument$ || (exports.InvestorDocument$ = InvestorDocument$ = {}));
+function investorDocumentToJSON(investorDocument) {
+    return JSON.stringify(exports.InvestorDocument$outboundSchema.parse(investorDocument));
+}
+function investorDocumentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InvestorDocument$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InvestorDocument' from JSON`);
+}
 /** @internal */
 exports.Document$inboundSchema = z.object({
     account_document: z.nullable(z.lazy(() => exports.AccountDocument$inboundSchema))
@@ -518,4 +571,10 @@ var Document$;
     /** @deprecated use `Document$outboundSchema` instead. */
     Document$.outboundSchema = exports.Document$outboundSchema;
 })(Document$ || (exports.Document$ = Document$ = {}));
+function documentToJSON(document) {
+    return JSON.stringify(exports.Document$outboundSchema.parse(document));
+}
+function documentFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Document$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Document' from JSON`);
+}
 //# sourceMappingURL=document.js.map

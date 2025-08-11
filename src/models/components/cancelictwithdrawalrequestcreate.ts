@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing ICT withdrawal
@@ -55,4 +58,24 @@ export namespace CancelIctWithdrawalRequestCreate$ {
   export const outboundSchema = CancelIctWithdrawalRequestCreate$outboundSchema;
   /** @deprecated use `CancelIctWithdrawalRequestCreate$Outbound` instead. */
   export type Outbound = CancelIctWithdrawalRequestCreate$Outbound;
+}
+
+export function cancelIctWithdrawalRequestCreateToJSON(
+  cancelIctWithdrawalRequestCreate: CancelIctWithdrawalRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelIctWithdrawalRequestCreate$outboundSchema.parse(
+      cancelIctWithdrawalRequestCreate,
+    ),
+  );
+}
+
+export function cancelIctWithdrawalRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelIctWithdrawalRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelIctWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelIctWithdrawalRequestCreate' from JSON`,
+  );
 }

@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingTrade$ = exports.BookingTrade$outboundSchema = exports.BookingTrade$inboundSchema = exports.BookingTradeWhenIssued$ = exports.BookingTradeWhenIssued$outboundSchema = exports.BookingTradeWhenIssued$inboundSchema = exports.BookingTradeVenue$ = exports.BookingTradeVenue$outboundSchema = exports.BookingTradeVenue$inboundSchema = exports.BookingTradeSpecialInstructions$ = exports.BookingTradeSpecialInstructions$outboundSchema = exports.BookingTradeSpecialInstructions$inboundSchema = exports.BookingTradeSideModifier$ = exports.BookingTradeSideModifier$outboundSchema = exports.BookingTradeSideModifier$inboundSchema = exports.BookingTradeSide$ = exports.BookingTradeSide$outboundSchema = exports.BookingTradeSide$inboundSchema = exports.SettlementDate$ = exports.SettlementDate$outboundSchema = exports.SettlementDate$inboundSchema = exports.BookingTradeRouteType$ = exports.BookingTradeRouteType$outboundSchema = exports.BookingTradeRouteType$inboundSchema = exports.LocalMarketTradeDate$ = exports.LocalMarketTradeDate$outboundSchema = exports.LocalMarketTradeDate$inboundSchema = exports.BookingTradeIdentifierType$ = exports.BookingTradeIdentifierType$outboundSchema = exports.BookingTradeIdentifierType$inboundSchema = exports.BookingTradeBrokerCapacity$ = exports.BookingTradeBrokerCapacity$outboundSchema = exports.BookingTradeBrokerCapacity$inboundSchema = exports.BookingTradeAssetType$ = exports.BookingTradeAssetType$outboundSchema = exports.BookingTradeAssetType$inboundSchema = exports.BookingTradeWhenIssued = exports.BookingTradeVenue = exports.BookingTradeSpecialInstructions = exports.BookingTradeSideModifier = exports.BookingTradeSide = exports.BookingTradeRouteType = exports.BookingTradeIdentifierType = exports.BookingTradeBrokerCapacity = exports.BookingTradeAssetType = void 0;
+exports.localMarketTradeDateToJSON = localMarketTradeDateToJSON;
+exports.localMarketTradeDateFromJSON = localMarketTradeDateFromJSON;
+exports.settlementDateToJSON = settlementDateToJSON;
+exports.settlementDateFromJSON = settlementDateFromJSON;
+exports.bookingTradeToJSON = bookingTradeToJSON;
+exports.bookingTradeFromJSON = bookingTradeFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bookingfee_js_1 = require("./bookingfee.js");
 const bookinglot_js_1 = require("./bookinglot.js");
@@ -287,6 +294,12 @@ var LocalMarketTradeDate$;
     /** @deprecated use `LocalMarketTradeDate$outboundSchema` instead. */
     LocalMarketTradeDate$.outboundSchema = exports.LocalMarketTradeDate$outboundSchema;
 })(LocalMarketTradeDate$ || (exports.LocalMarketTradeDate$ = LocalMarketTradeDate$ = {}));
+function localMarketTradeDateToJSON(localMarketTradeDate) {
+    return JSON.stringify(exports.LocalMarketTradeDate$outboundSchema.parse(localMarketTradeDate));
+}
+function localMarketTradeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LocalMarketTradeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LocalMarketTradeDate' from JSON`);
+}
 /** @internal */
 exports.BookingTradeRouteType$inboundSchema = z
     .union([
@@ -332,6 +345,12 @@ var SettlementDate$;
     /** @deprecated use `SettlementDate$outboundSchema` instead. */
     SettlementDate$.outboundSchema = exports.SettlementDate$outboundSchema;
 })(SettlementDate$ || (exports.SettlementDate$ = SettlementDate$ = {}));
+function settlementDateToJSON(settlementDate) {
+    return JSON.stringify(exports.SettlementDate$outboundSchema.parse(settlementDate));
+}
+function settlementDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.SettlementDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SettlementDate' from JSON`);
+}
 /** @internal */
 exports.BookingTradeSide$inboundSchema = z
     .union([
@@ -567,4 +586,10 @@ var BookingTrade$;
     /** @deprecated use `BookingTrade$outboundSchema` instead. */
     BookingTrade$.outboundSchema = exports.BookingTrade$outboundSchema;
 })(BookingTrade$ || (exports.BookingTrade$ = BookingTrade$ = {}));
+function bookingTradeToJSON(bookingTrade) {
+    return JSON.stringify(exports.BookingTrade$outboundSchema.parse(bookingTrade));
+}
+function bookingTradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingTrade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingTrade' from JSON`);
+}
 //# sourceMappingURL=bookingtrade.js.map

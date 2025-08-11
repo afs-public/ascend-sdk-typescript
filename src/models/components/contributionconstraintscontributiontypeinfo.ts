@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The deadline for a previous year contribution. Previous year contributions are allowed when requested on or before this deadline. This field will be unset when previous year contributions are not allowed.
@@ -112,6 +115,24 @@ export namespace PreviousYearDeadline$ {
   export type Outbound = PreviousYearDeadline$Outbound;
 }
 
+export function previousYearDeadlineToJSON(
+  previousYearDeadline: PreviousYearDeadline,
+): string {
+  return JSON.stringify(
+    PreviousYearDeadline$outboundSchema.parse(previousYearDeadline),
+  );
+}
+
+export function previousYearDeadlineFromJSON(
+  jsonString: string,
+): SafeParseResult<PreviousYearDeadline, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PreviousYearDeadline$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PreviousYearDeadline' from JSON`,
+  );
+}
+
 /** @internal */
 export const ContributionConstraintsContributionTypeInfoType$inboundSchema:
   z.ZodType<
@@ -208,4 +229,31 @@ export namespace ContributionConstraintsContributionTypeInfo$ {
     ContributionConstraintsContributionTypeInfo$outboundSchema;
   /** @deprecated use `ContributionConstraintsContributionTypeInfo$Outbound` instead. */
   export type Outbound = ContributionConstraintsContributionTypeInfo$Outbound;
+}
+
+export function contributionConstraintsContributionTypeInfoToJSON(
+  contributionConstraintsContributionTypeInfo:
+    ContributionConstraintsContributionTypeInfo,
+): string {
+  return JSON.stringify(
+    ContributionConstraintsContributionTypeInfo$outboundSchema.parse(
+      contributionConstraintsContributionTypeInfo,
+    ),
+  );
+}
+
+export function contributionConstraintsContributionTypeInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  ContributionConstraintsContributionTypeInfo,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ContributionConstraintsContributionTypeInfo$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'ContributionConstraintsContributionTypeInfo' from JSON`,
+  );
 }

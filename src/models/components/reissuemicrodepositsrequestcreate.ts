@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to reissue micro deposits for bank relationship verification.
@@ -49,4 +52,24 @@ export namespace ReissueMicroDepositsRequestCreate$ {
     ReissueMicroDepositsRequestCreate$outboundSchema;
   /** @deprecated use `ReissueMicroDepositsRequestCreate$Outbound` instead. */
   export type Outbound = ReissueMicroDepositsRequestCreate$Outbound;
+}
+
+export function reissueMicroDepositsRequestCreateToJSON(
+  reissueMicroDepositsRequestCreate: ReissueMicroDepositsRequestCreate,
+): string {
+  return JSON.stringify(
+    ReissueMicroDepositsRequestCreate$outboundSchema.parse(
+      reissueMicroDepositsRequestCreate,
+    ),
+  );
+}
+
+export function reissueMicroDepositsRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ReissueMicroDepositsRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReissueMicroDepositsRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReissueMicroDepositsRequestCreate' from JSON`,
+  );
 }

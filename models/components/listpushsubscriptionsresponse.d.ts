@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PushSubscription, PushSubscription$Outbound } from "./pushsubscription.js";
 /**
  * A response to a list push subscriptions method
@@ -34,4 +36,6 @@ export declare namespace ListPushSubscriptionsResponse$ {
     /** @deprecated use `ListPushSubscriptionsResponse$Outbound` instead. */
     type Outbound = ListPushSubscriptionsResponse$Outbound;
 }
+export declare function listPushSubscriptionsResponseToJSON(listPushSubscriptionsResponse: ListPushSubscriptionsResponse): string;
+export declare function listPushSubscriptionsResponseFromJSON(jsonString: string): SafeParseResult<ListPushSubscriptionsResponse, SDKValidationError>;
 //# sourceMappingURL=listpushsubscriptionsresponse.d.ts.map

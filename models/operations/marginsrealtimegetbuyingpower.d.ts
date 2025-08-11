@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type MarginsRealTimeGetBuyingPowerRequest = {
     /**
      * The account id.
@@ -37,6 +39,8 @@ export declare namespace MarginsRealTimeGetBuyingPowerRequest$ {
     /** @deprecated use `MarginsRealTimeGetBuyingPowerRequest$Outbound` instead. */
     type Outbound = MarginsRealTimeGetBuyingPowerRequest$Outbound;
 }
+export declare function marginsRealTimeGetBuyingPowerRequestToJSON(marginsRealTimeGetBuyingPowerRequest: MarginsRealTimeGetBuyingPowerRequest): string;
+export declare function marginsRealTimeGetBuyingPowerRequestFromJSON(jsonString: string): SafeParseResult<MarginsRealTimeGetBuyingPowerRequest, SDKValidationError>;
 /** @internal */
 export declare const MarginsRealTimeGetBuyingPowerResponse$inboundSchema: z.ZodType<MarginsRealTimeGetBuyingPowerResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace MarginsRealTimeGetBuyingPowerResponse$ {
     /** @deprecated use `MarginsRealTimeGetBuyingPowerResponse$Outbound` instead. */
     type Outbound = MarginsRealTimeGetBuyingPowerResponse$Outbound;
 }
+export declare function marginsRealTimeGetBuyingPowerResponseToJSON(marginsRealTimeGetBuyingPowerResponse: MarginsRealTimeGetBuyingPowerResponse): string;
+export declare function marginsRealTimeGetBuyingPowerResponseFromJSON(jsonString: string): SafeParseResult<MarginsRealTimeGetBuyingPowerResponse, SDKValidationError>;
 //# sourceMappingURL=marginsrealtimegetbuyingpower.d.ts.map

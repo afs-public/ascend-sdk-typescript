@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountGoalsUpdate,
   AccountGoalsUpdate$inboundSchema,
@@ -78,4 +81,22 @@ export namespace InvestmentProfileUpdate$ {
   export const outboundSchema = InvestmentProfileUpdate$outboundSchema;
   /** @deprecated use `InvestmentProfileUpdate$Outbound` instead. */
   export type Outbound = InvestmentProfileUpdate$Outbound;
+}
+
+export function investmentProfileUpdateToJSON(
+  investmentProfileUpdate: InvestmentProfileUpdate,
+): string {
+  return JSON.stringify(
+    InvestmentProfileUpdate$outboundSchema.parse(investmentProfileUpdate),
+  );
+}
+
+export function investmentProfileUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<InvestmentProfileUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InvestmentProfileUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InvestmentProfileUpdate' from JSON`,
+  );
 }

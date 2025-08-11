@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYield,
   BondYield$inboundSchema,
@@ -271,6 +274,33 @@ export namespace CancelExecutionResponseAccruedInterestAmount$ {
   export type Outbound = CancelExecutionResponseAccruedInterestAmount$Outbound;
 }
 
+export function cancelExecutionResponseAccruedInterestAmountToJSON(
+  cancelExecutionResponseAccruedInterestAmount:
+    CancelExecutionResponseAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponseAccruedInterestAmount$outboundSchema.parse(
+      cancelExecutionResponseAccruedInterestAmount,
+    ),
+  );
+}
+
+export function cancelExecutionResponseAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelExecutionResponseAccruedInterestAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelExecutionResponseAccruedInterestAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelExecutionResponseAccruedInterestAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelExecutionResponseCommissionAmount$inboundSchema: z.ZodType<
   CancelExecutionResponseCommissionAmount,
@@ -309,6 +339,33 @@ export namespace CancelExecutionResponseCommissionAmount$ {
   export type Outbound = CancelExecutionResponseCommissionAmount$Outbound;
 }
 
+export function cancelExecutionResponseCommissionAmountToJSON(
+  cancelExecutionResponseCommissionAmount:
+    CancelExecutionResponseCommissionAmount,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponseCommissionAmount$outboundSchema.parse(
+      cancelExecutionResponseCommissionAmount,
+    ),
+  );
+}
+
+export function cancelExecutionResponseCommissionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelExecutionResponseCommissionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelExecutionResponseCommissionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelExecutionResponseCommissionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelExecutionResponseGrossAmount$inboundSchema: z.ZodType<
   CancelExecutionResponseGrossAmount,
@@ -344,6 +401,27 @@ export namespace CancelExecutionResponseGrossAmount$ {
     CancelExecutionResponseGrossAmount$outboundSchema;
   /** @deprecated use `CancelExecutionResponseGrossAmount$Outbound` instead. */
   export type Outbound = CancelExecutionResponseGrossAmount$Outbound;
+}
+
+export function cancelExecutionResponseGrossAmountToJSON(
+  cancelExecutionResponseGrossAmount: CancelExecutionResponseGrossAmount,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponseGrossAmount$outboundSchema.parse(
+      cancelExecutionResponseGrossAmount,
+    ),
+  );
+}
+
+export function cancelExecutionResponseGrossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelExecutionResponseGrossAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelExecutionResponseGrossAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelExecutionResponseGrossAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -386,6 +464,33 @@ export namespace CancelExecutionResponsePrevailingMarketPrice$ {
   export type Outbound = CancelExecutionResponsePrevailingMarketPrice$Outbound;
 }
 
+export function cancelExecutionResponsePrevailingMarketPriceToJSON(
+  cancelExecutionResponsePrevailingMarketPrice:
+    CancelExecutionResponsePrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponsePrevailingMarketPrice$outboundSchema.parse(
+      cancelExecutionResponsePrevailingMarketPrice,
+    ),
+  );
+}
+
+export function cancelExecutionResponsePrevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelExecutionResponsePrevailingMarketPrice,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelExecutionResponsePrevailingMarketPrice$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelExecutionResponsePrevailingMarketPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelExecutionResponsePrice$inboundSchema: z.ZodType<
   CancelExecutionResponsePrice,
@@ -420,6 +525,26 @@ export namespace CancelExecutionResponsePrice$ {
   export const outboundSchema = CancelExecutionResponsePrice$outboundSchema;
   /** @deprecated use `CancelExecutionResponsePrice$Outbound` instead. */
   export type Outbound = CancelExecutionResponsePrice$Outbound;
+}
+
+export function cancelExecutionResponsePriceToJSON(
+  cancelExecutionResponsePrice: CancelExecutionResponsePrice,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponsePrice$outboundSchema.parse(
+      cancelExecutionResponsePrice,
+    ),
+  );
+}
+
+export function cancelExecutionResponsePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelExecutionResponsePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelExecutionResponsePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelExecutionResponsePrice' from JSON`,
+  );
 }
 
 /** @internal */
@@ -460,6 +585,33 @@ export namespace CancelExecutionResponsePriceAdjustmentAmount$ {
     CancelExecutionResponsePriceAdjustmentAmount$outboundSchema;
   /** @deprecated use `CancelExecutionResponsePriceAdjustmentAmount$Outbound` instead. */
   export type Outbound = CancelExecutionResponsePriceAdjustmentAmount$Outbound;
+}
+
+export function cancelExecutionResponsePriceAdjustmentAmountToJSON(
+  cancelExecutionResponsePriceAdjustmentAmount:
+    CancelExecutionResponsePriceAdjustmentAmount,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponsePriceAdjustmentAmount$outboundSchema.parse(
+      cancelExecutionResponsePriceAdjustmentAmount,
+    ),
+  );
+}
+
+export function cancelExecutionResponsePriceAdjustmentAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelExecutionResponsePriceAdjustmentAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelExecutionResponsePriceAdjustmentAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelExecutionResponsePriceAdjustmentAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -558,6 +710,28 @@ export namespace CancelExecutionResponsePriceAdjustment$ {
   export type Outbound = CancelExecutionResponsePriceAdjustment$Outbound;
 }
 
+export function cancelExecutionResponsePriceAdjustmentToJSON(
+  cancelExecutionResponsePriceAdjustment:
+    CancelExecutionResponsePriceAdjustment,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponsePriceAdjustment$outboundSchema.parse(
+      cancelExecutionResponsePriceAdjustment,
+    ),
+  );
+}
+
+export function cancelExecutionResponsePriceAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelExecutionResponsePriceAdjustment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelExecutionResponsePriceAdjustment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelExecutionResponsePriceAdjustment' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelExecutionResponseQuantity$inboundSchema: z.ZodType<
   CancelExecutionResponseQuantity,
@@ -592,6 +766,26 @@ export namespace CancelExecutionResponseQuantity$ {
   export const outboundSchema = CancelExecutionResponseQuantity$outboundSchema;
   /** @deprecated use `CancelExecutionResponseQuantity$Outbound` instead. */
   export type Outbound = CancelExecutionResponseQuantity$Outbound;
+}
+
+export function cancelExecutionResponseQuantityToJSON(
+  cancelExecutionResponseQuantity: CancelExecutionResponseQuantity,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponseQuantity$outboundSchema.parse(
+      cancelExecutionResponseQuantity,
+    ),
+  );
+}
+
+export function cancelExecutionResponseQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelExecutionResponseQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelExecutionResponseQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelExecutionResponseQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -781,6 +975,26 @@ export namespace CancelExecutionResponseExecution$ {
   export type Outbound = CancelExecutionResponseExecution$Outbound;
 }
 
+export function cancelExecutionResponseExecutionToJSON(
+  cancelExecutionResponseExecution: CancelExecutionResponseExecution,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponseExecution$outboundSchema.parse(
+      cancelExecutionResponseExecution,
+    ),
+  );
+}
+
+export function cancelExecutionResponseExecutionFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelExecutionResponseExecution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelExecutionResponseExecution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelExecutionResponseExecution' from JSON`,
+  );
+}
+
 /** @internal */
 export const CancelExecutionResponse$inboundSchema: z.ZodType<
   CancelExecutionResponse,
@@ -819,4 +1033,22 @@ export namespace CancelExecutionResponse$ {
   export const outboundSchema = CancelExecutionResponse$outboundSchema;
   /** @deprecated use `CancelExecutionResponse$Outbound` instead. */
   export type Outbound = CancelExecutionResponse$Outbound;
+}
+
+export function cancelExecutionResponseToJSON(
+  cancelExecutionResponse: CancelExecutionResponse,
+): string {
+  return JSON.stringify(
+    CancelExecutionResponse$outboundSchema.parse(cancelExecutionResponse),
+  );
+}
+
+export function cancelExecutionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelExecutionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelExecutionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelExecutionResponse' from JSON`,
+  );
 }

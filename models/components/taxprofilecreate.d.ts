@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Federal tax classification.
  */
@@ -129,4 +131,6 @@ export declare namespace TaxProfileCreate$ {
     /** @deprecated use `TaxProfileCreate$Outbound` instead. */
     type Outbound = TaxProfileCreate$Outbound;
 }
+export declare function taxProfileCreateToJSON(taxProfileCreate: TaxProfileCreate): string;
+export declare function taxProfileCreateFromJSON(jsonString: string): SafeParseResult<TaxProfileCreate, SDKValidationError>;
 //# sourceMappingURL=taxprofilecreate.d.ts.map

@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateCreate, DateCreate$Outbound } from "./datecreate.js";
 import { EntityDueDiligenceCreate, EntityDueDiligenceCreate$Outbound } from "./entityduediligencecreate.js";
 import { LargeTraderCreate, LargeTraderCreate$Outbound } from "./largetradercreate.js";
@@ -351,4 +353,6 @@ export declare namespace LegalEntityCreate$ {
     /** @deprecated use `LegalEntityCreate$Outbound` instead. */
     type Outbound = LegalEntityCreate$Outbound;
 }
+export declare function legalEntityCreateToJSON(legalEntityCreate: LegalEntityCreate): string;
+export declare function legalEntityCreateFromJSON(jsonString: string): SafeParseResult<LegalEntityCreate, SDKValidationError>;
 //# sourceMappingURL=legalentitycreate.d.ts.map

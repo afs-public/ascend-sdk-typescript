@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
@@ -133,6 +136,24 @@ export namespace BookingLotMoneyPrice$ {
   export type Outbound = BookingLotMoneyPrice$Outbound;
 }
 
+export function bookingLotMoneyPriceToJSON(
+  bookingLotMoneyPrice: BookingLotMoneyPrice,
+): string {
+  return JSON.stringify(
+    BookingLotMoneyPrice$outboundSchema.parse(bookingLotMoneyPrice),
+  );
+}
+
+export function bookingLotMoneyPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingLotMoneyPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingLotMoneyPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingLotMoneyPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingLotMoney$inboundSchema: z.ZodType<
   BookingLotMoney,
@@ -182,6 +203,22 @@ export namespace BookingLotMoney$ {
   export type Outbound = BookingLotMoney$Outbound;
 }
 
+export function bookingLotMoneyToJSON(
+  bookingLotMoney: BookingLotMoney,
+): string {
+  return JSON.stringify(BookingLotMoney$outboundSchema.parse(bookingLotMoney));
+}
+
+export function bookingLotMoneyFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingLotMoney, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingLotMoney$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingLotMoney' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingLotPrice$inboundSchema: z.ZodType<
   BookingLotPrice,
@@ -218,6 +255,22 @@ export namespace BookingLotPrice$ {
   export type Outbound = BookingLotPrice$Outbound;
 }
 
+export function bookingLotPriceToJSON(
+  bookingLotPrice: BookingLotPrice,
+): string {
+  return JSON.stringify(BookingLotPrice$outboundSchema.parse(bookingLotPrice));
+}
+
+export function bookingLotPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingLotPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingLotPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingLotPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const BookingLotQuantity$inboundSchema: z.ZodType<
   BookingLotQuantity,
@@ -252,6 +305,24 @@ export namespace BookingLotQuantity$ {
   export const outboundSchema = BookingLotQuantity$outboundSchema;
   /** @deprecated use `BookingLotQuantity$Outbound` instead. */
   export type Outbound = BookingLotQuantity$Outbound;
+}
+
+export function bookingLotQuantityToJSON(
+  bookingLotQuantity: BookingLotQuantity,
+): string {
+  return JSON.stringify(
+    BookingLotQuantity$outboundSchema.parse(bookingLotQuantity),
+  );
+}
+
+export function bookingLotQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingLotQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingLotQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingLotQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -294,6 +365,20 @@ export namespace TradeDate$ {
   export const outboundSchema = TradeDate$outboundSchema;
   /** @deprecated use `TradeDate$Outbound` instead. */
   export type Outbound = TradeDate$Outbound;
+}
+
+export function tradeDateToJSON(tradeDate: TradeDate): string {
+  return JSON.stringify(TradeDate$outboundSchema.parse(tradeDate));
+}
+
+export function tradeDateFromJSON(
+  jsonString: string,
+): SafeParseResult<TradeDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TradeDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradeDate' from JSON`,
+  );
 }
 
 /** @internal */
@@ -352,4 +437,18 @@ export namespace BookingLot$ {
   export const outboundSchema = BookingLot$outboundSchema;
   /** @deprecated use `BookingLot$Outbound` instead. */
   export type Outbound = BookingLot$Outbound;
+}
+
+export function bookingLotToJSON(bookingLot: BookingLot): string {
+  return JSON.stringify(BookingLot$outboundSchema.parse(bookingLot));
+}
+
+export function bookingLotFromJSON(
+  jsonString: string,
+): SafeParseResult<BookingLot, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BookingLot$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingLot' from JSON`,
+  );
 }

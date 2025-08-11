@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RetirementContributionCreate$ = exports.RetirementContributionCreate$outboundSchema = exports.RetirementContributionCreate$inboundSchema = exports.RetirementContributionCreateType$ = exports.RetirementContributionCreateType$outboundSchema = exports.RetirementContributionCreateType$inboundSchema = exports.RetirementContributionCreateType = void 0;
+exports.retirementContributionCreateToJSON = retirementContributionCreateToJSON;
+exports.retirementContributionCreateFromJSON = retirementContributionCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of retirement contribution.
@@ -109,4 +112,10 @@ var RetirementContributionCreate$;
     /** @deprecated use `RetirementContributionCreate$outboundSchema` instead. */
     RetirementContributionCreate$.outboundSchema = exports.RetirementContributionCreate$outboundSchema;
 })(RetirementContributionCreate$ || (exports.RetirementContributionCreate$ = RetirementContributionCreate$ = {}));
+function retirementContributionCreateToJSON(retirementContributionCreate) {
+    return JSON.stringify(exports.RetirementContributionCreate$outboundSchema.parse(retirementContributionCreate));
+}
+function retirementContributionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RetirementContributionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RetirementContributionCreate' from JSON`);
+}
 //# sourceMappingURL=retirementcontributioncreate.js.map

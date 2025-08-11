@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 import { LimitPriceCreate, LimitPriceCreate$Outbound } from "./limitpricecreate.js";
 /**
@@ -143,4 +145,6 @@ export declare namespace OrderCostPreviewRequestCreate$ {
     /** @deprecated use `OrderCostPreviewRequestCreate$Outbound` instead. */
     type Outbound = OrderCostPreviewRequestCreate$Outbound;
 }
+export declare function orderCostPreviewRequestCreateToJSON(orderCostPreviewRequestCreate: OrderCostPreviewRequestCreate): string;
+export declare function orderCostPreviewRequestCreateFromJSON(jsonString: string): SafeParseResult<OrderCostPreviewRequestCreate, SDKValidationError>;
 //# sourceMappingURL=ordercostpreviewrequestcreate.d.ts.map

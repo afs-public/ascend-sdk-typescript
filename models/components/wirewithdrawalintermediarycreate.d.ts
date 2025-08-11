@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AddressCreate, AddressCreate$Outbound } from "./addresscreate.js";
 /**
  * An intermediary party
@@ -39,4 +41,6 @@ export declare namespace WireWithdrawalIntermediaryCreate$ {
     /** @deprecated use `WireWithdrawalIntermediaryCreate$Outbound` instead. */
     type Outbound = WireWithdrawalIntermediaryCreate$Outbound;
 }
+export declare function wireWithdrawalIntermediaryCreateToJSON(wireWithdrawalIntermediaryCreate: WireWithdrawalIntermediaryCreate): string;
+export declare function wireWithdrawalIntermediaryCreateFromJSON(jsonString: string): SafeParseResult<WireWithdrawalIntermediaryCreate, SDKValidationError>;
 //# sourceMappingURL=wirewithdrawalintermediarycreate.d.ts.map

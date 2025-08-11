@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The outcome of the delivery
@@ -168,4 +171,22 @@ export namespace PushSubscriptionDelivery$ {
   export const outboundSchema = PushSubscriptionDelivery$outboundSchema;
   /** @deprecated use `PushSubscriptionDelivery$Outbound` instead. */
   export type Outbound = PushSubscriptionDelivery$Outbound;
+}
+
+export function pushSubscriptionDeliveryToJSON(
+  pushSubscriptionDelivery: PushSubscriptionDelivery,
+): string {
+  return JSON.stringify(
+    PushSubscriptionDelivery$outboundSchema.parse(pushSubscriptionDelivery),
+  );
+}
+
+export function pushSubscriptionDeliveryFromJSON(
+  jsonString: string,
+): SafeParseResult<PushSubscriptionDelivery, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushSubscriptionDelivery$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushSubscriptionDelivery' from JSON`,
+  );
 }

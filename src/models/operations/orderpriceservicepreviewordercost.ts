@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OrderPriceServicePreviewOrderCostRequest = {
   /**
@@ -80,6 +83,33 @@ export namespace OrderPriceServicePreviewOrderCostRequest$ {
   export type Outbound = OrderPriceServicePreviewOrderCostRequest$Outbound;
 }
 
+export function orderPriceServicePreviewOrderCostRequestToJSON(
+  orderPriceServicePreviewOrderCostRequest:
+    OrderPriceServicePreviewOrderCostRequest,
+): string {
+  return JSON.stringify(
+    OrderPriceServicePreviewOrderCostRequest$outboundSchema.parse(
+      orderPriceServicePreviewOrderCostRequest,
+    ),
+  );
+}
+
+export function orderPriceServicePreviewOrderCostRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  OrderPriceServicePreviewOrderCostRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrderPriceServicePreviewOrderCostRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'OrderPriceServicePreviewOrderCostRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const OrderPriceServicePreviewOrderCostResponse$inboundSchema: z.ZodType<
   OrderPriceServicePreviewOrderCostResponse,
@@ -139,4 +169,31 @@ export namespace OrderPriceServicePreviewOrderCostResponse$ {
     OrderPriceServicePreviewOrderCostResponse$outboundSchema;
   /** @deprecated use `OrderPriceServicePreviewOrderCostResponse$Outbound` instead. */
   export type Outbound = OrderPriceServicePreviewOrderCostResponse$Outbound;
+}
+
+export function orderPriceServicePreviewOrderCostResponseToJSON(
+  orderPriceServicePreviewOrderCostResponse:
+    OrderPriceServicePreviewOrderCostResponse,
+): string {
+  return JSON.stringify(
+    OrderPriceServicePreviewOrderCostResponse$outboundSchema.parse(
+      orderPriceServicePreviewOrderCostResponse,
+    ),
+  );
+}
+
+export function orderPriceServicePreviewOrderCostResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  OrderPriceServicePreviewOrderCostResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      OrderPriceServicePreviewOrderCostResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'OrderPriceServicePreviewOrderCostResponse' from JSON`,
+  );
 }

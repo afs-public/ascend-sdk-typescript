@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Applicant's other source of wealth
  */
@@ -38,4 +40,6 @@ export declare namespace OtherSourcesOfWealthCreate$ {
     /** @deprecated use `OtherSourcesOfWealthCreate$Outbound` instead. */
     type Outbound = OtherSourcesOfWealthCreate$Outbound;
 }
+export declare function otherSourcesOfWealthCreateToJSON(otherSourcesOfWealthCreate: OtherSourcesOfWealthCreate): string;
+export declare function otherSourcesOfWealthCreateFromJSON(jsonString: string): SafeParseResult<OtherSourcesOfWealthCreate, SDKValidationError>;
 //# sourceMappingURL=othersourcesofwealthcreate.d.ts.map

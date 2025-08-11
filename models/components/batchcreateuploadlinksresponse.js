@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BatchCreateUploadLinksResponse$ = exports.BatchCreateUploadLinksResponse$outboundSchema = exports.BatchCreateUploadLinksResponse$inboundSchema = void 0;
+exports.batchCreateUploadLinksResponseToJSON = batchCreateUploadLinksResponseToJSON;
+exports.batchCreateUploadLinksResponseFromJSON = batchCreateUploadLinksResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const uploadlink_js_1 = require("./uploadlink.js");
 /** @internal */
 exports.BatchCreateUploadLinksResponse$inboundSchema = z.object({
@@ -67,4 +70,10 @@ var BatchCreateUploadLinksResponse$;
     /** @deprecated use `BatchCreateUploadLinksResponse$outboundSchema` instead. */
     BatchCreateUploadLinksResponse$.outboundSchema = exports.BatchCreateUploadLinksResponse$outboundSchema;
 })(BatchCreateUploadLinksResponse$ || (exports.BatchCreateUploadLinksResponse$ = BatchCreateUploadLinksResponse$ = {}));
+function batchCreateUploadLinksResponseToJSON(batchCreateUploadLinksResponse) {
+    return JSON.stringify(exports.BatchCreateUploadLinksResponse$outboundSchema.parse(batchCreateUploadLinksResponse));
+}
+function batchCreateUploadLinksResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BatchCreateUploadLinksResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BatchCreateUploadLinksResponse' from JSON`);
+}
 //# sourceMappingURL=batchcreateuploadlinksresponse.js.map

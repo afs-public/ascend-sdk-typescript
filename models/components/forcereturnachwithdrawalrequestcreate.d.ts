@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { NachaReturnCreate, NachaReturnCreate$Outbound } from "./nachareturncreate.js";
 /**
  * Request to force a Nacha return on a completed ACH withdrawal. FOR TESTING ONLY!
@@ -34,4 +36,6 @@ export declare namespace ForceReturnAchWithdrawalRequestCreate$ {
     /** @deprecated use `ForceReturnAchWithdrawalRequestCreate$Outbound` instead. */
     type Outbound = ForceReturnAchWithdrawalRequestCreate$Outbound;
 }
+export declare function forceReturnAchWithdrawalRequestCreateToJSON(forceReturnAchWithdrawalRequestCreate: ForceReturnAchWithdrawalRequestCreate): string;
+export declare function forceReturnAchWithdrawalRequestCreateFromJSON(jsonString: string): SafeParseResult<ForceReturnAchWithdrawalRequestCreate, SDKValidationError>;
 //# sourceMappingURL=forcereturnachwithdrawalrequestcreate.d.ts.map

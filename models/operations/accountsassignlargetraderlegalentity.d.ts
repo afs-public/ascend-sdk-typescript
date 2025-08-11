@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsAssignLargeTraderLegalEntityRequest = {
     /**
      * The legalEntity id.
@@ -39,6 +41,8 @@ export declare namespace AccountsAssignLargeTraderLegalEntityRequest$ {
     /** @deprecated use `AccountsAssignLargeTraderLegalEntityRequest$Outbound` instead. */
     type Outbound = AccountsAssignLargeTraderLegalEntityRequest$Outbound;
 }
+export declare function accountsAssignLargeTraderLegalEntityRequestToJSON(accountsAssignLargeTraderLegalEntityRequest: AccountsAssignLargeTraderLegalEntityRequest): string;
+export declare function accountsAssignLargeTraderLegalEntityRequestFromJSON(jsonString: string): SafeParseResult<AccountsAssignLargeTraderLegalEntityRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsAssignLargeTraderLegalEntityResponse$inboundSchema: z.ZodType<AccountsAssignLargeTraderLegalEntityResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -61,4 +65,6 @@ export declare namespace AccountsAssignLargeTraderLegalEntityResponse$ {
     /** @deprecated use `AccountsAssignLargeTraderLegalEntityResponse$Outbound` instead. */
     type Outbound = AccountsAssignLargeTraderLegalEntityResponse$Outbound;
 }
+export declare function accountsAssignLargeTraderLegalEntityResponseToJSON(accountsAssignLargeTraderLegalEntityResponse: AccountsAssignLargeTraderLegalEntityResponse): string;
+export declare function accountsAssignLargeTraderLegalEntityResponseFromJSON(jsonString: string): SafeParseResult<AccountsAssignLargeTraderLegalEntityResponse, SDKValidationError>;
 //# sourceMappingURL=accountsassignlargetraderlegalentity.d.ts.map

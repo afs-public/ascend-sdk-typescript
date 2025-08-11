@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BankRelationshipsVerifyMicroDepositsRequest = {
   /**
@@ -91,6 +94,33 @@ export namespace BankRelationshipsVerifyMicroDepositsRequest$ {
   export type Outbound = BankRelationshipsVerifyMicroDepositsRequest$Outbound;
 }
 
+export function bankRelationshipsVerifyMicroDepositsRequestToJSON(
+  bankRelationshipsVerifyMicroDepositsRequest:
+    BankRelationshipsVerifyMicroDepositsRequest,
+): string {
+  return JSON.stringify(
+    BankRelationshipsVerifyMicroDepositsRequest$outboundSchema.parse(
+      bankRelationshipsVerifyMicroDepositsRequest,
+    ),
+  );
+}
+
+export function bankRelationshipsVerifyMicroDepositsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsVerifyMicroDepositsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsVerifyMicroDepositsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsVerifyMicroDepositsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const BankRelationshipsVerifyMicroDepositsResponse$inboundSchema:
   z.ZodType<
@@ -147,4 +177,31 @@ export namespace BankRelationshipsVerifyMicroDepositsResponse$ {
     BankRelationshipsVerifyMicroDepositsResponse$outboundSchema;
   /** @deprecated use `BankRelationshipsVerifyMicroDepositsResponse$Outbound` instead. */
   export type Outbound = BankRelationshipsVerifyMicroDepositsResponse$Outbound;
+}
+
+export function bankRelationshipsVerifyMicroDepositsResponseToJSON(
+  bankRelationshipsVerifyMicroDepositsResponse:
+    BankRelationshipsVerifyMicroDepositsResponse,
+): string {
+  return JSON.stringify(
+    BankRelationshipsVerifyMicroDepositsResponse$outboundSchema.parse(
+      bankRelationshipsVerifyMicroDepositsResponse,
+    ),
+  );
+}
+
+export function bankRelationshipsVerifyMicroDepositsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BankRelationshipsVerifyMicroDepositsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BankRelationshipsVerifyMicroDepositsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'BankRelationshipsVerifyMicroDepositsResponse' from JSON`,
+  );
 }

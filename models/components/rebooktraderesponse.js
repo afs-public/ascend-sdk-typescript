@@ -38,8 +38,23 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RebookTradeResponseWhenIssued$outboundSchema = exports.RebookTradeResponseWhenIssued$inboundSchema = exports.RebookTradeResponseVenue$ = exports.RebookTradeResponseVenue$outboundSchema = exports.RebookTradeResponseVenue$inboundSchema = exports.RebookTradeResponseSpecialInstructions$ = exports.RebookTradeResponseSpecialInstructions$outboundSchema = exports.RebookTradeResponseSpecialInstructions$inboundSchema = exports.RebookTradeResponseSideModifier$ = exports.RebookTradeResponseSideModifier$outboundSchema = exports.RebookTradeResponseSideModifier$inboundSchema = exports.RebookTradeResponseSide$ = exports.RebookTradeResponseSide$outboundSchema = exports.RebookTradeResponseSide$inboundSchema = exports.RebookTradeResponseSettlementDate$ = exports.RebookTradeResponseSettlementDate$outboundSchema = exports.RebookTradeResponseSettlementDate$inboundSchema = exports.RebookTradeResponseRouteType$ = exports.RebookTradeResponseRouteType$outboundSchema = exports.RebookTradeResponseRouteType$inboundSchema = exports.RebookTradeResponseLocalMarketTradeDate$ = exports.RebookTradeResponseLocalMarketTradeDate$outboundSchema = exports.RebookTradeResponseLocalMarketTradeDate$inboundSchema = exports.RebookTradeResponseIdentifierType$ = exports.RebookTradeResponseIdentifierType$outboundSchema = exports.RebookTradeResponseIdentifierType$inboundSchema = exports.RebookTradeResponseBrokerCapacity$ = exports.RebookTradeResponseBrokerCapacity$outboundSchema = exports.RebookTradeResponseBrokerCapacity$inboundSchema = exports.RebookTradeResponseAssetType$ = exports.RebookTradeResponseAssetType$outboundSchema = exports.RebookTradeResponseAssetType$inboundSchema = exports.RebookTradeResponseOriginalTradeWhenIssued = exports.RebookTradeResponseOriginalTradeVenue = exports.RebookTradeResponseOriginalTradeSpecialInstructions = exports.RebookTradeResponseOriginalTradeSideModifier = exports.RebookTradeResponseOriginalTradeSide = exports.RebookTradeResponseOriginalTradeRouteType = exports.RebookTradeResponseOriginalTradeIdentifierType = exports.RebookTradeResponseOriginalTradeBrokerCapacity = exports.RebookTradeResponseOriginalTradeAssetType = exports.RebookTradeResponseWhenIssued = exports.RebookTradeResponseVenue = exports.RebookTradeResponseSpecialInstructions = exports.RebookTradeResponseSideModifier = exports.RebookTradeResponseSide = exports.RebookTradeResponseRouteType = exports.RebookTradeResponseIdentifierType = exports.RebookTradeResponseBrokerCapacity = exports.RebookTradeResponseAssetType = void 0;
 exports.RebookTradeResponse$ = exports.RebookTradeResponse$outboundSchema = exports.RebookTradeResponse$inboundSchema = exports.OriginalTrade$ = exports.OriginalTrade$outboundSchema = exports.OriginalTrade$inboundSchema = exports.RebookTradeResponseOriginalTradeWhenIssued$ = exports.RebookTradeResponseOriginalTradeWhenIssued$outboundSchema = exports.RebookTradeResponseOriginalTradeWhenIssued$inboundSchema = exports.RebookTradeResponseOriginalTradeVenue$ = exports.RebookTradeResponseOriginalTradeVenue$outboundSchema = exports.RebookTradeResponseOriginalTradeVenue$inboundSchema = exports.RebookTradeResponseOriginalTradeSpecialInstructions$ = exports.RebookTradeResponseOriginalTradeSpecialInstructions$outboundSchema = exports.RebookTradeResponseOriginalTradeSpecialInstructions$inboundSchema = exports.RebookTradeResponseOriginalTradeSideModifier$ = exports.RebookTradeResponseOriginalTradeSideModifier$outboundSchema = exports.RebookTradeResponseOriginalTradeSideModifier$inboundSchema = exports.RebookTradeResponseOriginalTradeSide$ = exports.RebookTradeResponseOriginalTradeSide$outboundSchema = exports.RebookTradeResponseOriginalTradeSide$inboundSchema = exports.RebookTradeResponseOriginalTradeSettlementDate$ = exports.RebookTradeResponseOriginalTradeSettlementDate$outboundSchema = exports.RebookTradeResponseOriginalTradeSettlementDate$inboundSchema = exports.RebookTradeResponseOriginalTradeRouteType$ = exports.RebookTradeResponseOriginalTradeRouteType$outboundSchema = exports.RebookTradeResponseOriginalTradeRouteType$inboundSchema = exports.RebookTradeResponseOriginalTradeLocalMarketTradeDate$ = exports.RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema = exports.RebookTradeResponseOriginalTradeLocalMarketTradeDate$inboundSchema = exports.RebookTradeResponseOriginalTradeIdentifierType$ = exports.RebookTradeResponseOriginalTradeIdentifierType$outboundSchema = exports.RebookTradeResponseOriginalTradeIdentifierType$inboundSchema = exports.RebookTradeResponseOriginalTradeBrokerCapacity$ = exports.RebookTradeResponseOriginalTradeBrokerCapacity$outboundSchema = exports.RebookTradeResponseOriginalTradeBrokerCapacity$inboundSchema = exports.RebookTradeResponseOriginalTradeAssetType$ = exports.RebookTradeResponseOriginalTradeAssetType$outboundSchema = exports.RebookTradeResponseOriginalTradeAssetType$inboundSchema = exports.NewTrade$ = exports.NewTrade$outboundSchema = exports.NewTrade$inboundSchema = exports.RebookTradeResponseWhenIssued$ = void 0;
+exports.rebookTradeResponseLocalMarketTradeDateToJSON = rebookTradeResponseLocalMarketTradeDateToJSON;
+exports.rebookTradeResponseLocalMarketTradeDateFromJSON = rebookTradeResponseLocalMarketTradeDateFromJSON;
+exports.rebookTradeResponseSettlementDateToJSON = rebookTradeResponseSettlementDateToJSON;
+exports.rebookTradeResponseSettlementDateFromJSON = rebookTradeResponseSettlementDateFromJSON;
+exports.newTradeToJSON = newTradeToJSON;
+exports.newTradeFromJSON = newTradeFromJSON;
+exports.rebookTradeResponseOriginalTradeLocalMarketTradeDateToJSON = rebookTradeResponseOriginalTradeLocalMarketTradeDateToJSON;
+exports.rebookTradeResponseOriginalTradeLocalMarketTradeDateFromJSON = rebookTradeResponseOriginalTradeLocalMarketTradeDateFromJSON;
+exports.rebookTradeResponseOriginalTradeSettlementDateToJSON = rebookTradeResponseOriginalTradeSettlementDateToJSON;
+exports.rebookTradeResponseOriginalTradeSettlementDateFromJSON = rebookTradeResponseOriginalTradeSettlementDateFromJSON;
+exports.originalTradeToJSON = originalTradeToJSON;
+exports.originalTradeFromJSON = originalTradeFromJSON;
+exports.rebookTradeResponseToJSON = rebookTradeResponseToJSON;
+exports.rebookTradeResponseFromJSON = rebookTradeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bookingfee_js_1 = require("./bookingfee.js");
 const bookinglot_js_1 = require("./bookinglot.js");
@@ -443,6 +458,12 @@ var RebookTradeResponseLocalMarketTradeDate$;
     /** @deprecated use `RebookTradeResponseLocalMarketTradeDate$outboundSchema` instead. */
     RebookTradeResponseLocalMarketTradeDate$.outboundSchema = exports.RebookTradeResponseLocalMarketTradeDate$outboundSchema;
 })(RebookTradeResponseLocalMarketTradeDate$ || (exports.RebookTradeResponseLocalMarketTradeDate$ = RebookTradeResponseLocalMarketTradeDate$ = {}));
+function rebookTradeResponseLocalMarketTradeDateToJSON(rebookTradeResponseLocalMarketTradeDate) {
+    return JSON.stringify(exports.RebookTradeResponseLocalMarketTradeDate$outboundSchema.parse(rebookTradeResponseLocalMarketTradeDate));
+}
+function rebookTradeResponseLocalMarketTradeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookTradeResponseLocalMarketTradeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookTradeResponseLocalMarketTradeDate' from JSON`);
+}
 /** @internal */
 exports.RebookTradeResponseRouteType$inboundSchema = z
     .union([
@@ -488,6 +509,12 @@ var RebookTradeResponseSettlementDate$;
     /** @deprecated use `RebookTradeResponseSettlementDate$outboundSchema` instead. */
     RebookTradeResponseSettlementDate$.outboundSchema = exports.RebookTradeResponseSettlementDate$outboundSchema;
 })(RebookTradeResponseSettlementDate$ || (exports.RebookTradeResponseSettlementDate$ = RebookTradeResponseSettlementDate$ = {}));
+function rebookTradeResponseSettlementDateToJSON(rebookTradeResponseSettlementDate) {
+    return JSON.stringify(exports.RebookTradeResponseSettlementDate$outboundSchema.parse(rebookTradeResponseSettlementDate));
+}
+function rebookTradeResponseSettlementDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookTradeResponseSettlementDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookTradeResponseSettlementDate' from JSON`);
+}
 /** @internal */
 exports.RebookTradeResponseSide$inboundSchema = z
     .union([
@@ -719,6 +746,12 @@ var NewTrade$;
     /** @deprecated use `NewTrade$outboundSchema` instead. */
     NewTrade$.outboundSchema = exports.NewTrade$outboundSchema;
 })(NewTrade$ || (exports.NewTrade$ = NewTrade$ = {}));
+function newTradeToJSON(newTrade) {
+    return JSON.stringify(exports.NewTrade$outboundSchema.parse(newTrade));
+}
+function newTradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.NewTrade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'NewTrade' from JSON`);
+}
 /** @internal */
 exports.RebookTradeResponseOriginalTradeAssetType$inboundSchema = z
     .union([
@@ -808,6 +841,12 @@ var RebookTradeResponseOriginalTradeLocalMarketTradeDate$;
     /** @deprecated use `RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema` instead. */
     RebookTradeResponseOriginalTradeLocalMarketTradeDate$.outboundSchema = exports.RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema;
 })(RebookTradeResponseOriginalTradeLocalMarketTradeDate$ || (exports.RebookTradeResponseOriginalTradeLocalMarketTradeDate$ = RebookTradeResponseOriginalTradeLocalMarketTradeDate$ = {}));
+function rebookTradeResponseOriginalTradeLocalMarketTradeDateToJSON(rebookTradeResponseOriginalTradeLocalMarketTradeDate) {
+    return JSON.stringify(exports.RebookTradeResponseOriginalTradeLocalMarketTradeDate$outboundSchema.parse(rebookTradeResponseOriginalTradeLocalMarketTradeDate));
+}
+function rebookTradeResponseOriginalTradeLocalMarketTradeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookTradeResponseOriginalTradeLocalMarketTradeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookTradeResponseOriginalTradeLocalMarketTradeDate' from JSON`);
+}
 /** @internal */
 exports.RebookTradeResponseOriginalTradeRouteType$inboundSchema = z
     .union([
@@ -853,6 +892,12 @@ var RebookTradeResponseOriginalTradeSettlementDate$;
     /** @deprecated use `RebookTradeResponseOriginalTradeSettlementDate$outboundSchema` instead. */
     RebookTradeResponseOriginalTradeSettlementDate$.outboundSchema = exports.RebookTradeResponseOriginalTradeSettlementDate$outboundSchema;
 })(RebookTradeResponseOriginalTradeSettlementDate$ || (exports.RebookTradeResponseOriginalTradeSettlementDate$ = RebookTradeResponseOriginalTradeSettlementDate$ = {}));
+function rebookTradeResponseOriginalTradeSettlementDateToJSON(rebookTradeResponseOriginalTradeSettlementDate) {
+    return JSON.stringify(exports.RebookTradeResponseOriginalTradeSettlementDate$outboundSchema.parse(rebookTradeResponseOriginalTradeSettlementDate));
+}
+function rebookTradeResponseOriginalTradeSettlementDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookTradeResponseOriginalTradeSettlementDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookTradeResponseOriginalTradeSettlementDate' from JSON`);
+}
 /** @internal */
 exports.RebookTradeResponseOriginalTradeSide$inboundSchema = z
     .union([
@@ -1096,6 +1141,12 @@ var OriginalTrade$;
     /** @deprecated use `OriginalTrade$outboundSchema` instead. */
     OriginalTrade$.outboundSchema = exports.OriginalTrade$outboundSchema;
 })(OriginalTrade$ || (exports.OriginalTrade$ = OriginalTrade$ = {}));
+function originalTradeToJSON(originalTrade) {
+    return JSON.stringify(exports.OriginalTrade$outboundSchema.parse(originalTrade));
+}
+function originalTradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.OriginalTrade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'OriginalTrade' from JSON`);
+}
 /** @internal */
 exports.RebookTradeResponse$inboundSchema = z.object({
     new_trade: z.nullable(z.lazy(() => exports.NewTrade$inboundSchema)).optional(),
@@ -1129,4 +1180,10 @@ var RebookTradeResponse$;
     /** @deprecated use `RebookTradeResponse$outboundSchema` instead. */
     RebookTradeResponse$.outboundSchema = exports.RebookTradeResponse$outboundSchema;
 })(RebookTradeResponse$ || (exports.RebookTradeResponse$ = RebookTradeResponse$ = {}));
+function rebookTradeResponseToJSON(rebookTradeResponse) {
+    return JSON.stringify(exports.RebookTradeResponse$outboundSchema.parse(rebookTradeResponse));
+}
+function rebookTradeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RebookTradeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RebookTradeResponse' from JSON`);
+}
 //# sourceMappingURL=rebooktraderesponse.js.map

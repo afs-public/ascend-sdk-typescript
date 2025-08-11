@@ -39,8 +39,10 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.files = void 0;
+exports.HTTPClient = exports.files = void 0;
 __exportStar(require("./lib/config.js"), exports);
 exports.files = __importStar(require("./lib/files.js"));
+var http_js_1 = require("./lib/http.js");
+Object.defineProperty(exports, "HTTPClient", { enumerable: true, get: function () { return http_js_1.HTTPClient; } });
 __exportStar(require("./sdk/sdk.js"), exports);
 //# sourceMappingURL=index.js.map

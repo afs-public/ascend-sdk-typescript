@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BondYield, BondYield$Outbound } from "./bondyield.js";
 import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
@@ -804,6 +806,8 @@ export declare namespace RebookTradeAllocationResponseAccruedInterestAmount$ {
     /** @deprecated use `RebookTradeAllocationResponseAccruedInterestAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseAccruedInterestAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponseAccruedInterestAmountToJSON(rebookTradeAllocationResponseAccruedInterestAmount: RebookTradeAllocationResponseAccruedInterestAmount): string;
+export declare function rebookTradeAllocationResponseAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseAssetType$inboundSchema: z.ZodType<RebookTradeAllocationResponseAssetTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -852,6 +856,8 @@ export declare namespace RebookTradeAllocationResponseCommissionAmount$ {
     /** @deprecated use `RebookTradeAllocationResponseCommissionAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseCommissionAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponseCommissionAmountToJSON(rebookTradeAllocationResponseCommissionAmount: RebookTradeAllocationResponseCommissionAmount): string;
+export declare function rebookTradeAllocationResponseCommissionAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseCommissionAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseGrossAmount$inboundSchema: z.ZodType<RebookTradeAllocationResponseGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -872,6 +878,8 @@ export declare namespace RebookTradeAllocationResponseGrossAmount$ {
     /** @deprecated use `RebookTradeAllocationResponseGrossAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseGrossAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponseGrossAmountToJSON(rebookTradeAllocationResponseGrossAmount: RebookTradeAllocationResponseGrossAmount): string;
+export declare function rebookTradeAllocationResponseGrossAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseIdentifierType$inboundSchema: z.ZodType<RebookTradeAllocationResponseIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -906,6 +914,8 @@ export declare namespace RebookTradeAllocationResponsePrevailingMarketPrice$ {
     /** @deprecated use `RebookTradeAllocationResponsePrevailingMarketPrice$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponsePrevailingMarketPrice$Outbound;
 }
+export declare function rebookTradeAllocationResponsePrevailingMarketPriceToJSON(rebookTradeAllocationResponsePrevailingMarketPrice: RebookTradeAllocationResponsePrevailingMarketPrice): string;
+export declare function rebookTradeAllocationResponsePrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponsePrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponsePrice$inboundSchema: z.ZodType<RebookTradeAllocationResponsePrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -926,6 +936,8 @@ export declare namespace RebookTradeAllocationResponsePrice$ {
     /** @deprecated use `RebookTradeAllocationResponsePrice$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponsePrice$Outbound;
 }
+export declare function rebookTradeAllocationResponsePriceToJSON(rebookTradeAllocationResponsePrice: RebookTradeAllocationResponsePrice): string;
+export declare function rebookTradeAllocationResponsePriceFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponsePrice, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponsePriceAdjustmentAmount$inboundSchema: z.ZodType<RebookTradeAllocationResponsePriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -946,6 +958,8 @@ export declare namespace RebookTradeAllocationResponsePriceAdjustmentAmount$ {
     /** @deprecated use `RebookTradeAllocationResponsePriceAdjustmentAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponsePriceAdjustmentAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponsePriceAdjustmentAmountToJSON(rebookTradeAllocationResponsePriceAdjustmentAmount: RebookTradeAllocationResponsePriceAdjustmentAmount): string;
+export declare function rebookTradeAllocationResponsePriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponsePriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponsePriceAdjustmentType$inboundSchema: z.ZodType<RebookTradeAllocationResponsePriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -981,6 +995,8 @@ export declare namespace RebookTradeAllocationResponsePriceAdjustment$ {
     /** @deprecated use `RebookTradeAllocationResponsePriceAdjustment$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponsePriceAdjustment$Outbound;
 }
+export declare function rebookTradeAllocationResponsePriceAdjustmentToJSON(rebookTradeAllocationResponsePriceAdjustment: RebookTradeAllocationResponsePriceAdjustment): string;
+export declare function rebookTradeAllocationResponsePriceAdjustmentFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponsePriceAdjustment, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseQuantity$inboundSchema: z.ZodType<RebookTradeAllocationResponseQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1001,6 +1017,8 @@ export declare namespace RebookTradeAllocationResponseQuantity$ {
     /** @deprecated use `RebookTradeAllocationResponseQuantity$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseQuantity$Outbound;
 }
+export declare function rebookTradeAllocationResponseQuantityToJSON(rebookTradeAllocationResponseQuantity: RebookTradeAllocationResponseQuantity): string;
+export declare function rebookTradeAllocationResponseQuantityFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseQuantity, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseSettlementDate$inboundSchema: z.ZodType<RebookTradeAllocationResponseSettlementDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1023,6 +1041,8 @@ export declare namespace RebookTradeAllocationResponseSettlementDate$ {
     /** @deprecated use `RebookTradeAllocationResponseSettlementDate$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseSettlementDate$Outbound;
 }
+export declare function rebookTradeAllocationResponseSettlementDateToJSON(rebookTradeAllocationResponseSettlementDate: RebookTradeAllocationResponseSettlementDate): string;
+export declare function rebookTradeAllocationResponseSettlementDateFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseSettlementDate, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseSideModifier$inboundSchema: z.ZodType<RebookTradeAllocationResponseSideModifierOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1144,6 +1164,8 @@ export declare namespace NewTradeAllocation$ {
     /** @deprecated use `NewTradeAllocation$Outbound` instead. */
     type Outbound = NewTradeAllocation$Outbound;
 }
+export declare function newTradeAllocationToJSON(newTradeAllocation: NewTradeAllocation): string;
+export declare function newTradeAllocationFromJSON(jsonString: string): SafeParseResult<NewTradeAllocation, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1164,6 +1186,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationAcc
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmountToJSON(rebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount: RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationAssetType$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationAssetTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1212,6 +1236,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationCom
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationCommissionAmountToJSON(rebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount: RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationCommissionAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1232,6 +1258,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationGro
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationGrossAmountToJSON(rebookTradeAllocationResponseOriginalTradeAllocationGrossAmount: RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationGrossAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationIdentifierType$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationIdentifierTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1266,6 +1294,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationPre
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPriceToJSON(rebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice: RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPriceFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationPrevailingMarketPrice, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationPrice$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationPrice, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1286,6 +1316,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationPri
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationPrice$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationPrice$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPriceToJSON(rebookTradeAllocationResponseOriginalTradeAllocationPrice: RebookTradeAllocationResponseOriginalTradeAllocationPrice): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPriceFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationPrice, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1306,6 +1338,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationPri
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmountToJSON(rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount: RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmountFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentAmount, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentType$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentTypeOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1341,6 +1375,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationPri
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentToJSON(rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment: RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustmentFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationQuantity$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1361,6 +1397,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationQua
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationQuantity$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationQuantity$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationQuantityToJSON(rebookTradeAllocationResponseOriginalTradeAllocationQuantity: RebookTradeAllocationResponseOriginalTradeAllocationQuantity): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationQuantityFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationQuantity, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1383,6 +1421,8 @@ export declare namespace RebookTradeAllocationResponseOriginalTradeAllocationSet
     /** @deprecated use `RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate$Outbound;
 }
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationSettlementDateToJSON(rebookTradeAllocationResponseOriginalTradeAllocationSettlementDate: RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate): string;
+export declare function rebookTradeAllocationResponseOriginalTradeAllocationSettlementDateFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponseOriginalTradeAllocationSettlementDate, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponseOriginalTradeAllocationSideModifier$inboundSchema: z.ZodType<RebookTradeAllocationResponseOriginalTradeAllocationSideModifierOpen, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1504,6 +1544,8 @@ export declare namespace OriginalTradeAllocation$ {
     /** @deprecated use `OriginalTradeAllocation$Outbound` instead. */
     type Outbound = OriginalTradeAllocation$Outbound;
 }
+export declare function originalTradeAllocationToJSON(originalTradeAllocation: OriginalTradeAllocation): string;
+export declare function originalTradeAllocationFromJSON(jsonString: string): SafeParseResult<OriginalTradeAllocation, SDKValidationError>;
 /** @internal */
 export declare const RebookTradeAllocationResponse$inboundSchema: z.ZodType<RebookTradeAllocationResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1525,4 +1567,6 @@ export declare namespace RebookTradeAllocationResponse$ {
     /** @deprecated use `RebookTradeAllocationResponse$Outbound` instead. */
     type Outbound = RebookTradeAllocationResponse$Outbound;
 }
+export declare function rebookTradeAllocationResponseToJSON(rebookTradeAllocationResponse: RebookTradeAllocationResponse): string;
+export declare function rebookTradeAllocationResponseFromJSON(jsonString: string): SafeParseResult<RebookTradeAllocationResponse, SDKValidationError>;
 //# sourceMappingURL=rebooktradeallocationresponse.d.ts.map

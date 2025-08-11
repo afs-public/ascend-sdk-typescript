@@ -36,15 +36,68 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CancelOrderRequestCreate$ = exports.CancelOrderRequestCreate$outboundSchema = exports.CancelOrderRequestCreate$inboundSchema = void 0;
+exports.CancelOrderRequestCreate$ = exports.CancelOrderRequestCreate$outboundSchema = exports.CancelOrderRequestCreate$inboundSchema = exports.CancelOrderRequestCreateCancelInitiator$ = exports.CancelOrderRequestCreateCancelInitiator$outboundSchema = exports.CancelOrderRequestCreateCancelInitiator$inboundSchema = exports.CancelOrderRequestCreateCancelInitiator = void 0;
+exports.cancelOrderRequestCreateToJSON = cancelOrderRequestCreateToJSON;
+exports.cancelOrderRequestCreateFromJSON = cancelOrderRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
+const enums_js_1 = require("../../types/enums.js");
+/**
+ * Only relevant for CAT reporting when clients have Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but the value will have no impact on how they are processed. Cancel requests without this field set will default to CLIENT
+ */
+var CancelOrderRequestCreateCancelInitiator;
+(function (CancelOrderRequestCreateCancelInitiator) {
+    CancelOrderRequestCreateCancelInitiator["InitiatorUnspecified"] = "INITIATOR_UNSPECIFIED";
+    CancelOrderRequestCreateCancelInitiator["Firm"] = "FIRM";
+    CancelOrderRequestCreateCancelInitiator["Client"] = "CLIENT";
+})(CancelOrderRequestCreateCancelInitiator || (exports.CancelOrderRequestCreateCancelInitiator = CancelOrderRequestCreateCancelInitiator = {}));
+/** @internal */
+exports.CancelOrderRequestCreateCancelInitiator$inboundSchema = z
+    .union([
+    z.nativeEnum(CancelOrderRequestCreateCancelInitiator),
+    z.string().transform(enums_js_1.catchUnrecognizedEnum),
+]);
+/** @internal */
+exports.CancelOrderRequestCreateCancelInitiator$outboundSchema = z.union([
+    z.nativeEnum(CancelOrderRequestCreateCancelInitiator),
+    z.string().and(z.custom()),
+]);
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+var CancelOrderRequestCreateCancelInitiator$;
+(function (CancelOrderRequestCreateCancelInitiator$) {
+    /** @deprecated use `CancelOrderRequestCreateCancelInitiator$inboundSchema` instead. */
+    CancelOrderRequestCreateCancelInitiator$.inboundSchema = exports.CancelOrderRequestCreateCancelInitiator$inboundSchema;
+    /** @deprecated use `CancelOrderRequestCreateCancelInitiator$outboundSchema` instead. */
+    CancelOrderRequestCreateCancelInitiator$.outboundSchema = exports.CancelOrderRequestCreateCancelInitiator$outboundSchema;
+})(CancelOrderRequestCreateCancelInitiator$ || (exports.CancelOrderRequestCreateCancelInitiator$ = CancelOrderRequestCreateCancelInitiator$ = {}));
 /** @internal */
 exports.CancelOrderRequestCreate$inboundSchema = z.object({
+    cancel_initiator: exports.CancelOrderRequestCreateCancelInitiator$inboundSchema
+        .optional(),
+    client_cancel_received_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
     name: z.string(),
+}).transform((v) => {
+    return (0, primitives_js_1.remap)(v, {
+        "cancel_initiator": "cancelInitiator",
+        "client_cancel_received_time": "clientCancelReceivedTime",
+    });
 });
 /** @internal */
 exports.CancelOrderRequestCreate$outboundSchema = z.object({
+    cancelInitiator: exports.CancelOrderRequestCreateCancelInitiator$outboundSchema
+        .optional(),
+    clientCancelReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+        .optional(),
     name: z.string(),
+}).transform((v) => {
+    return (0, primitives_js_1.remap)(v, {
+        cancelInitiator: "cancel_initiator",
+        clientCancelReceivedTime: "client_cancel_received_time",
+    });
 });
 /**
  * @internal
@@ -57,4 +110,10 @@ var CancelOrderRequestCreate$;
     /** @deprecated use `CancelOrderRequestCreate$outboundSchema` instead. */
     CancelOrderRequestCreate$.outboundSchema = exports.CancelOrderRequestCreate$outboundSchema;
 })(CancelOrderRequestCreate$ || (exports.CancelOrderRequestCreate$ = CancelOrderRequestCreate$ = {}));
+function cancelOrderRequestCreateToJSON(cancelOrderRequestCreate) {
+    return JSON.stringify(exports.CancelOrderRequestCreate$outboundSchema.parse(cancelOrderRequestCreate));
+}
+function cancelOrderRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelOrderRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelOrderRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelorderrequestcreate.js.map

@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompleteTradeRequestCreate$ = exports.CompleteTradeRequestCreate$outboundSchema = exports.CompleteTradeRequestCreate$inboundSchema = void 0;
+exports.completeTradeRequestCreateToJSON = completeTradeRequestCreateToJSON;
+exports.completeTradeRequestCreateFromJSON = completeTradeRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const bookingfeecreate_js_1 = require("./bookingfeecreate.js");
 /** @internal */
 exports.CompleteTradeRequestCreate$inboundSchema = z.object({
@@ -60,4 +63,10 @@ var CompleteTradeRequestCreate$;
     /** @deprecated use `CompleteTradeRequestCreate$outboundSchema` instead. */
     CompleteTradeRequestCreate$.outboundSchema = exports.CompleteTradeRequestCreate$outboundSchema;
 })(CompleteTradeRequestCreate$ || (exports.CompleteTradeRequestCreate$ = CompleteTradeRequestCreate$ = {}));
+function completeTradeRequestCreateToJSON(completeTradeRequestCreate) {
+    return JSON.stringify(exports.CompleteTradeRequestCreate$outboundSchema.parse(completeTradeRequestCreate));
+}
+function completeTradeRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompleteTradeRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompleteTradeRequestCreate' from JSON`);
+}
 //# sourceMappingURL=completetraderequestcreate.js.map

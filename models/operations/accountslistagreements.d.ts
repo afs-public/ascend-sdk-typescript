@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type AccountsListAgreementsRequest = {
     /**
      * The account id.
@@ -51,6 +53,8 @@ export declare namespace AccountsListAgreementsRequest$ {
     /** @deprecated use `AccountsListAgreementsRequest$Outbound` instead. */
     type Outbound = AccountsListAgreementsRequest$Outbound;
 }
+export declare function accountsListAgreementsRequestToJSON(accountsListAgreementsRequest: AccountsListAgreementsRequest): string;
+export declare function accountsListAgreementsRequestFromJSON(jsonString: string): SafeParseResult<AccountsListAgreementsRequest, SDKValidationError>;
 /** @internal */
 export declare const AccountsListAgreementsResponse$inboundSchema: z.ZodType<AccountsListAgreementsResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -73,4 +77,6 @@ export declare namespace AccountsListAgreementsResponse$ {
     /** @deprecated use `AccountsListAgreementsResponse$Outbound` instead. */
     type Outbound = AccountsListAgreementsResponse$Outbound;
 }
+export declare function accountsListAgreementsResponseToJSON(accountsListAgreementsResponse: AccountsListAgreementsResponse): string;
+export declare function accountsListAgreementsResponseFromJSON(jsonString: string): SafeParseResult<AccountsListAgreementsResponse, SDKValidationError>;
 //# sourceMappingURL=accountslistagreements.d.ts.map

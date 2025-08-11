@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { BookingFeeCreate, BookingFeeCreate$Outbound } from "./bookingfeecreate.js";
 /**
  * A request for completing a trade.
@@ -34,4 +36,6 @@ export declare namespace CompleteTradeRequestCreate$ {
     /** @deprecated use `CompleteTradeRequestCreate$Outbound` instead. */
     type Outbound = CompleteTradeRequestCreate$Outbound;
 }
+export declare function completeTradeRequestCreateToJSON(completeTradeRequestCreate: CompleteTradeRequestCreate): string;
+export declare function completeTradeRequestCreateFromJSON(jsonString: string): SafeParseResult<CompleteTradeRequestCreate, SDKValidationError>;
 //# sourceMappingURL=completetraderequestcreate.d.ts.map

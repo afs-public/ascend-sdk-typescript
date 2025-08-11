@@ -13,6 +13,7 @@ Calculates the cash balance for an account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="CashBalances_CalculateCashBalance" method="get" path="/transfers/v1/accounts/{account_id}:calculateCashBalance" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -31,7 +32,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.cashBalances.calculateCashBalance("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -62,15 +62,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await cashBalancesCalculateCashBalance(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("cashBalancesCalculateCashBalance failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -37,8 +37,33 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawalSchedule$ = exports.AchWithdrawalSchedule$outboundSchema = exports.AchWithdrawalSchedule$inboundSchema = exports.AchWithdrawalScheduleScheduleDetails$ = exports.AchWithdrawalScheduleScheduleDetails$outboundSchema = exports.AchWithdrawalScheduleScheduleDetails$inboundSchema = exports.AchWithdrawalScheduleScheduleProperties$ = exports.AchWithdrawalScheduleScheduleProperties$outboundSchema = exports.AchWithdrawalScheduleScheduleProperties$inboundSchema = exports.AchWithdrawalScheduleTimeUnit$ = exports.AchWithdrawalScheduleTimeUnit$outboundSchema = exports.AchWithdrawalScheduleTimeUnit$inboundSchema = exports.AchWithdrawalScheduleState$ = exports.AchWithdrawalScheduleState$outboundSchema = exports.AchWithdrawalScheduleState$inboundSchema = exports.AchWithdrawalScheduleStartDate$ = exports.AchWithdrawalScheduleStartDate$outboundSchema = exports.AchWithdrawalScheduleStartDate$inboundSchema = exports.AchWithdrawalScheduleAmount$ = exports.AchWithdrawalScheduleAmount$outboundSchema = exports.AchWithdrawalScheduleAmount$inboundSchema = exports.IraDistribution$ = exports.IraDistribution$outboundSchema = exports.IraDistribution$inboundSchema = exports.AchWithdrawalScheduleType$ = exports.AchWithdrawalScheduleType$outboundSchema = exports.AchWithdrawalScheduleType$inboundSchema = exports.AchWithdrawalScheduleStateTaxWithholding$ = exports.AchWithdrawalScheduleStateTaxWithholding$outboundSchema = exports.AchWithdrawalScheduleStateTaxWithholding$inboundSchema = exports.AchWithdrawalScheduleIraDistributionPercentage$ = exports.AchWithdrawalScheduleIraDistributionPercentage$outboundSchema = exports.AchWithdrawalScheduleIraDistributionPercentage$inboundSchema = exports.AchWithdrawalScheduleIraDistributionAmount$ = exports.AchWithdrawalScheduleIraDistributionAmount$outboundSchema = exports.AchWithdrawalScheduleIraDistributionAmount$inboundSchema = exports.AchWithdrawalScheduleFederalTaxWithholding$ = exports.AchWithdrawalScheduleFederalTaxWithholding$outboundSchema = exports.AchWithdrawalScheduleFederalTaxWithholding$inboundSchema = exports.AchWithdrawalSchedulePercentage$ = exports.AchWithdrawalSchedulePercentage$outboundSchema = exports.AchWithdrawalSchedulePercentage$inboundSchema = exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$ = exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$outboundSchema = exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$inboundSchema = exports.AchWithdrawalScheduleTimeUnit = exports.AchWithdrawalScheduleState = exports.AchWithdrawalScheduleType = void 0;
+exports.achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountToJSON = achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountToJSON;
+exports.achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountFromJSON = achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountFromJSON;
+exports.achWithdrawalSchedulePercentageToJSON = achWithdrawalSchedulePercentageToJSON;
+exports.achWithdrawalSchedulePercentageFromJSON = achWithdrawalSchedulePercentageFromJSON;
+exports.achWithdrawalScheduleFederalTaxWithholdingToJSON = achWithdrawalScheduleFederalTaxWithholdingToJSON;
+exports.achWithdrawalScheduleFederalTaxWithholdingFromJSON = achWithdrawalScheduleFederalTaxWithholdingFromJSON;
+exports.achWithdrawalScheduleIraDistributionAmountToJSON = achWithdrawalScheduleIraDistributionAmountToJSON;
+exports.achWithdrawalScheduleIraDistributionAmountFromJSON = achWithdrawalScheduleIraDistributionAmountFromJSON;
+exports.achWithdrawalScheduleIraDistributionPercentageToJSON = achWithdrawalScheduleIraDistributionPercentageToJSON;
+exports.achWithdrawalScheduleIraDistributionPercentageFromJSON = achWithdrawalScheduleIraDistributionPercentageFromJSON;
+exports.achWithdrawalScheduleStateTaxWithholdingToJSON = achWithdrawalScheduleStateTaxWithholdingToJSON;
+exports.achWithdrawalScheduleStateTaxWithholdingFromJSON = achWithdrawalScheduleStateTaxWithholdingFromJSON;
+exports.iraDistributionToJSON = iraDistributionToJSON;
+exports.iraDistributionFromJSON = iraDistributionFromJSON;
+exports.achWithdrawalScheduleAmountToJSON = achWithdrawalScheduleAmountToJSON;
+exports.achWithdrawalScheduleAmountFromJSON = achWithdrawalScheduleAmountFromJSON;
+exports.achWithdrawalScheduleStartDateToJSON = achWithdrawalScheduleStartDateToJSON;
+exports.achWithdrawalScheduleStartDateFromJSON = achWithdrawalScheduleStartDateFromJSON;
+exports.achWithdrawalScheduleSchedulePropertiesToJSON = achWithdrawalScheduleSchedulePropertiesToJSON;
+exports.achWithdrawalScheduleSchedulePropertiesFromJSON = achWithdrawalScheduleSchedulePropertiesFromJSON;
+exports.achWithdrawalScheduleScheduleDetailsToJSON = achWithdrawalScheduleScheduleDetailsToJSON;
+exports.achWithdrawalScheduleScheduleDetailsFromJSON = achWithdrawalScheduleScheduleDetailsFromJSON;
+exports.achWithdrawalScheduleToJSON = achWithdrawalScheduleToJSON;
+exports.achWithdrawalScheduleFromJSON = achWithdrawalScheduleFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of retirement distribution.
@@ -104,6 +129,14 @@ var AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$;
     /** @deprecated use `AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$outboundSchema` instead. */
     AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$.outboundSchema = exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$outboundSchema;
 })(AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$ || (exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$ = AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$ = {}));
+function achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountToJSON(achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount) {
+    return JSON.stringify(exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$outboundSchema
+        .parse(achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount));
+}
+function achWithdrawalScheduleIraDistributionFederalTaxWithholdingAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$inboundSchema
+        .parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalSchedulePercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -123,6 +156,12 @@ var AchWithdrawalSchedulePercentage$;
     /** @deprecated use `AchWithdrawalSchedulePercentage$outboundSchema` instead. */
     AchWithdrawalSchedulePercentage$.outboundSchema = exports.AchWithdrawalSchedulePercentage$outboundSchema;
 })(AchWithdrawalSchedulePercentage$ || (exports.AchWithdrawalSchedulePercentage$ = AchWithdrawalSchedulePercentage$ = {}));
+function achWithdrawalSchedulePercentageToJSON(achWithdrawalSchedulePercentage) {
+    return JSON.stringify(exports.AchWithdrawalSchedulePercentage$outboundSchema.parse(achWithdrawalSchedulePercentage));
+}
+function achWithdrawalSchedulePercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalSchedulePercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalSchedulePercentage' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleFederalTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AchWithdrawalScheduleIraDistributionFederalTaxWithholdingAmount$inboundSchema)).optional(),
@@ -144,6 +183,12 @@ var AchWithdrawalScheduleFederalTaxWithholding$;
     /** @deprecated use `AchWithdrawalScheduleFederalTaxWithholding$outboundSchema` instead. */
     AchWithdrawalScheduleFederalTaxWithholding$.outboundSchema = exports.AchWithdrawalScheduleFederalTaxWithholding$outboundSchema;
 })(AchWithdrawalScheduleFederalTaxWithholding$ || (exports.AchWithdrawalScheduleFederalTaxWithholding$ = AchWithdrawalScheduleFederalTaxWithholding$ = {}));
+function achWithdrawalScheduleFederalTaxWithholdingToJSON(achWithdrawalScheduleFederalTaxWithholding) {
+    return JSON.stringify(exports.AchWithdrawalScheduleFederalTaxWithholding$outboundSchema.parse(achWithdrawalScheduleFederalTaxWithholding));
+}
+function achWithdrawalScheduleFederalTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleFederalTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleFederalTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleIraDistributionAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -163,6 +208,12 @@ var AchWithdrawalScheduleIraDistributionAmount$;
     /** @deprecated use `AchWithdrawalScheduleIraDistributionAmount$outboundSchema` instead. */
     AchWithdrawalScheduleIraDistributionAmount$.outboundSchema = exports.AchWithdrawalScheduleIraDistributionAmount$outboundSchema;
 })(AchWithdrawalScheduleIraDistributionAmount$ || (exports.AchWithdrawalScheduleIraDistributionAmount$ = AchWithdrawalScheduleIraDistributionAmount$ = {}));
+function achWithdrawalScheduleIraDistributionAmountToJSON(achWithdrawalScheduleIraDistributionAmount) {
+    return JSON.stringify(exports.AchWithdrawalScheduleIraDistributionAmount$outboundSchema.parse(achWithdrawalScheduleIraDistributionAmount));
+}
+function achWithdrawalScheduleIraDistributionAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleIraDistributionAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleIraDistributionAmount' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleIraDistributionPercentage$inboundSchema = z.object({
     value: z.string().optional(),
@@ -182,6 +233,12 @@ var AchWithdrawalScheduleIraDistributionPercentage$;
     /** @deprecated use `AchWithdrawalScheduleIraDistributionPercentage$outboundSchema` instead. */
     AchWithdrawalScheduleIraDistributionPercentage$.outboundSchema = exports.AchWithdrawalScheduleIraDistributionPercentage$outboundSchema;
 })(AchWithdrawalScheduleIraDistributionPercentage$ || (exports.AchWithdrawalScheduleIraDistributionPercentage$ = AchWithdrawalScheduleIraDistributionPercentage$ = {}));
+function achWithdrawalScheduleIraDistributionPercentageToJSON(achWithdrawalScheduleIraDistributionPercentage) {
+    return JSON.stringify(exports.AchWithdrawalScheduleIraDistributionPercentage$outboundSchema.parse(achWithdrawalScheduleIraDistributionPercentage));
+}
+function achWithdrawalScheduleIraDistributionPercentageFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleIraDistributionPercentage$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleIraDistributionPercentage' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleStateTaxWithholding$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AchWithdrawalScheduleIraDistributionAmount$inboundSchema)).optional(),
@@ -203,6 +260,12 @@ var AchWithdrawalScheduleStateTaxWithholding$;
     /** @deprecated use `AchWithdrawalScheduleStateTaxWithholding$outboundSchema` instead. */
     AchWithdrawalScheduleStateTaxWithholding$.outboundSchema = exports.AchWithdrawalScheduleStateTaxWithholding$outboundSchema;
 })(AchWithdrawalScheduleStateTaxWithholding$ || (exports.AchWithdrawalScheduleStateTaxWithholding$ = AchWithdrawalScheduleStateTaxWithholding$ = {}));
+function achWithdrawalScheduleStateTaxWithholdingToJSON(achWithdrawalScheduleStateTaxWithholding) {
+    return JSON.stringify(exports.AchWithdrawalScheduleStateTaxWithholding$outboundSchema.parse(achWithdrawalScheduleStateTaxWithholding));
+}
+function achWithdrawalScheduleStateTaxWithholdingFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleStateTaxWithholding$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleStateTaxWithholding' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleType$inboundSchema = z
     .union([
@@ -270,6 +333,12 @@ var IraDistribution$;
     /** @deprecated use `IraDistribution$outboundSchema` instead. */
     IraDistribution$.outboundSchema = exports.IraDistribution$outboundSchema;
 })(IraDistribution$ || (exports.IraDistribution$ = IraDistribution$ = {}));
+function iraDistributionToJSON(iraDistribution) {
+    return JSON.stringify(exports.IraDistribution$outboundSchema.parse(iraDistribution));
+}
+function iraDistributionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IraDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IraDistribution' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleAmount$inboundSchema = z.object({
     value: z.string().optional(),
@@ -289,6 +358,12 @@ var AchWithdrawalScheduleAmount$;
     /** @deprecated use `AchWithdrawalScheduleAmount$outboundSchema` instead. */
     AchWithdrawalScheduleAmount$.outboundSchema = exports.AchWithdrawalScheduleAmount$outboundSchema;
 })(AchWithdrawalScheduleAmount$ || (exports.AchWithdrawalScheduleAmount$ = AchWithdrawalScheduleAmount$ = {}));
+function achWithdrawalScheduleAmountToJSON(achWithdrawalScheduleAmount) {
+    return JSON.stringify(exports.AchWithdrawalScheduleAmount$outboundSchema.parse(achWithdrawalScheduleAmount));
+}
+function achWithdrawalScheduleAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleAmount' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleStartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -312,6 +387,12 @@ var AchWithdrawalScheduleStartDate$;
     /** @deprecated use `AchWithdrawalScheduleStartDate$outboundSchema` instead. */
     AchWithdrawalScheduleStartDate$.outboundSchema = exports.AchWithdrawalScheduleStartDate$outboundSchema;
 })(AchWithdrawalScheduleStartDate$ || (exports.AchWithdrawalScheduleStartDate$ = AchWithdrawalScheduleStartDate$ = {}));
+function achWithdrawalScheduleStartDateToJSON(achWithdrawalScheduleStartDate) {
+    return JSON.stringify(exports.AchWithdrawalScheduleStartDate$outboundSchema.parse(achWithdrawalScheduleStartDate));
+}
+function achWithdrawalScheduleStartDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleStartDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleStartDate' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleState$inboundSchema = z
     .union([
@@ -395,6 +476,12 @@ var AchWithdrawalScheduleScheduleProperties$;
     /** @deprecated use `AchWithdrawalScheduleScheduleProperties$outboundSchema` instead. */
     AchWithdrawalScheduleScheduleProperties$.outboundSchema = exports.AchWithdrawalScheduleScheduleProperties$outboundSchema;
 })(AchWithdrawalScheduleScheduleProperties$ || (exports.AchWithdrawalScheduleScheduleProperties$ = AchWithdrawalScheduleScheduleProperties$ = {}));
+function achWithdrawalScheduleSchedulePropertiesToJSON(achWithdrawalScheduleScheduleProperties) {
+    return JSON.stringify(exports.AchWithdrawalScheduleScheduleProperties$outboundSchema.parse(achWithdrawalScheduleScheduleProperties));
+}
+function achWithdrawalScheduleSchedulePropertiesFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleScheduleProperties$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleScheduleProperties' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalScheduleScheduleDetails$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.AchWithdrawalScheduleAmount$inboundSchema))
@@ -434,6 +521,12 @@ var AchWithdrawalScheduleScheduleDetails$;
     /** @deprecated use `AchWithdrawalScheduleScheduleDetails$outboundSchema` instead. */
     AchWithdrawalScheduleScheduleDetails$.outboundSchema = exports.AchWithdrawalScheduleScheduleDetails$outboundSchema;
 })(AchWithdrawalScheduleScheduleDetails$ || (exports.AchWithdrawalScheduleScheduleDetails$ = AchWithdrawalScheduleScheduleDetails$ = {}));
+function achWithdrawalScheduleScheduleDetailsToJSON(achWithdrawalScheduleScheduleDetails) {
+    return JSON.stringify(exports.AchWithdrawalScheduleScheduleDetails$outboundSchema.parse(achWithdrawalScheduleScheduleDetails));
+}
+function achWithdrawalScheduleScheduleDetailsFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalScheduleScheduleDetails$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalScheduleScheduleDetails' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalSchedule$inboundSchema = z.object({
     bank_relationship: z.string().optional(),
@@ -473,4 +566,10 @@ var AchWithdrawalSchedule$;
     /** @deprecated use `AchWithdrawalSchedule$outboundSchema` instead. */
     AchWithdrawalSchedule$.outboundSchema = exports.AchWithdrawalSchedule$outboundSchema;
 })(AchWithdrawalSchedule$ || (exports.AchWithdrawalSchedule$ = AchWithdrawalSchedule$ = {}));
+function achWithdrawalScheduleToJSON(achWithdrawalSchedule) {
+    return JSON.stringify(exports.AchWithdrawalSchedule$outboundSchema.parse(achWithdrawalSchedule));
+}
+function achWithdrawalScheduleFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalSchedule$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalSchedule' from JSON`);
+}
 //# sourceMappingURL=achwithdrawalschedule.js.map

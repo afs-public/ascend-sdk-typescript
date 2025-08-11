@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListPushSubscriptionsResponse$ = exports.ListPushSubscriptionsResponse$outboundSchema = exports.ListPushSubscriptionsResponse$inboundSchema = void 0;
+exports.listPushSubscriptionsResponseToJSON = listPushSubscriptionsResponseToJSON;
+exports.listPushSubscriptionsResponseFromJSON = listPushSubscriptionsResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const pushsubscription_js_1 = require("./pushsubscription.js");
 /** @internal */
 exports.ListPushSubscriptionsResponse$inboundSchema = z.object({
@@ -71,4 +74,10 @@ var ListPushSubscriptionsResponse$;
     /** @deprecated use `ListPushSubscriptionsResponse$outboundSchema` instead. */
     ListPushSubscriptionsResponse$.outboundSchema = exports.ListPushSubscriptionsResponse$outboundSchema;
 })(ListPushSubscriptionsResponse$ || (exports.ListPushSubscriptionsResponse$ = ListPushSubscriptionsResponse$ = {}));
+function listPushSubscriptionsResponseToJSON(listPushSubscriptionsResponse) {
+    return JSON.stringify(exports.ListPushSubscriptionsResponse$outboundSchema.parse(listPushSubscriptionsResponse));
+}
+function listPushSubscriptionsResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ListPushSubscriptionsResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ListPushSubscriptionsResponse' from JSON`);
+}
 //# sourceMappingURL=listpushsubscriptionsresponse.js.map

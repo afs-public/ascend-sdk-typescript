@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of retirement contribution.
@@ -125,4 +128,24 @@ export namespace RetirementContributionCreate$ {
   export const outboundSchema = RetirementContributionCreate$outboundSchema;
   /** @deprecated use `RetirementContributionCreate$Outbound` instead. */
   export type Outbound = RetirementContributionCreate$Outbound;
+}
+
+export function retirementContributionCreateToJSON(
+  retirementContributionCreate: RetirementContributionCreate,
+): string {
+  return JSON.stringify(
+    RetirementContributionCreate$outboundSchema.parse(
+      retirementContributionCreate,
+    ),
+  );
+}
+
+export function retirementContributionCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<RetirementContributionCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetirementContributionCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetirementContributionCreate' from JSON`,
+  );
 }

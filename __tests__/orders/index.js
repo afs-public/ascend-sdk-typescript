@@ -45,7 +45,6 @@ const crypto_1 = __importDefault(require("crypto"));
 exports.identifier_cusp = "912810SX7";
 exports.withdrawal_account_id = "01JHGTEPC6ZTAHCFRH2MD3VJJT";
 async function createOrder(account_id) {
-    var _a;
     // Fund account
     const fundingRequest = {
         amount: {
@@ -83,19 +82,18 @@ async function createOrder(account_id) {
         timeInForce: components.TimeInForce.Day,
     };
     const result = await sdk_1.sdk.createOrder.createOrder(request, account_id);
-    if ((_a = result === null || result === void 0 ? void 0 : result.order) === null || _a === void 0 ? void 0 : _a.orderId) {
+    if (result?.order?.orderId) {
         return result.order.orderId;
     }
     return undefined;
 }
 async function createBasketId() {
-    var _a, _b, _c;
     const request = {
         clientBasketId: crypto_1.default.randomUUID(),
-        correspondentId: (_a = process.env["CORRESPONDENT_ID"]) !== null && _a !== void 0 ? _a : "",
+        correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
     };
-    const result = await sdk_1.sdk.basketOrders.createBasket(request, (_b = process.env["CORRESPONDENT_ID"]) !== null && _b !== void 0 ? _b : "");
-    if ((_c = result === null || result === void 0 ? void 0 : result.basket) === null || _c === void 0 ? void 0 : _c.basketId) {
+    const result = await sdk_1.sdk.basketOrders.createBasket(request, process.env["CORRESPONDENT_ID"] ?? "");
+    if (result?.basket?.basketId) {
         return result.basket.basketId;
     }
     return undefined;

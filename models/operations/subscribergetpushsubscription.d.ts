@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type SubscriberGetPushSubscriptionRequest = {
     /**
      * The subscription id.
@@ -37,6 +39,8 @@ export declare namespace SubscriberGetPushSubscriptionRequest$ {
     /** @deprecated use `SubscriberGetPushSubscriptionRequest$Outbound` instead. */
     type Outbound = SubscriberGetPushSubscriptionRequest$Outbound;
 }
+export declare function subscriberGetPushSubscriptionRequestToJSON(subscriberGetPushSubscriptionRequest: SubscriberGetPushSubscriptionRequest): string;
+export declare function subscriberGetPushSubscriptionRequestFromJSON(jsonString: string): SafeParseResult<SubscriberGetPushSubscriptionRequest, SDKValidationError>;
 /** @internal */
 export declare const SubscriberGetPushSubscriptionResponse$inboundSchema: z.ZodType<SubscriberGetPushSubscriptionResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -59,4 +63,6 @@ export declare namespace SubscriberGetPushSubscriptionResponse$ {
     /** @deprecated use `SubscriberGetPushSubscriptionResponse$Outbound` instead. */
     type Outbound = SubscriberGetPushSubscriptionResponse$Outbound;
 }
+export declare function subscriberGetPushSubscriptionResponseToJSON(subscriberGetPushSubscriptionResponse: SubscriberGetPushSubscriptionResponse): string;
+export declare function subscriberGetPushSubscriptionResponseFromJSON(jsonString: string): SafeParseResult<SubscriberGetPushSubscriptionResponse, SDKValidationError>;
 //# sourceMappingURL=subscribergetpushsubscription.d.ts.map

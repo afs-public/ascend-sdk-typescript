@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransfersCreditCreate$ = exports.TransfersCreditCreate$outboundSchema = exports.TransfersCreditCreate$inboundSchema = exports.TransfersCreditCreateType$ = exports.TransfersCreditCreateType$outboundSchema = exports.TransfersCreditCreateType$inboundSchema = exports.TransfersCreditCreateType = void 0;
+exports.transfersCreditCreateToJSON = transfersCreditCreateToJSON;
+exports.transfersCreditCreateFromJSON = transfersCreditCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const decimalcreate_js_1 = require("./decimalcreate.js");
 /**
@@ -110,4 +113,10 @@ var TransfersCreditCreate$;
     /** @deprecated use `TransfersCreditCreate$outboundSchema` instead. */
     TransfersCreditCreate$.outboundSchema = exports.TransfersCreditCreate$outboundSchema;
 })(TransfersCreditCreate$ || (exports.TransfersCreditCreate$ = TransfersCreditCreate$ = {}));
+function transfersCreditCreateToJSON(transfersCreditCreate) {
+    return JSON.stringify(exports.TransfersCreditCreate$outboundSchema.parse(transfersCreditCreate));
+}
+function transfersCreditCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.TransfersCreditCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransfersCreditCreate' from JSON`);
+}
 //# sourceMappingURL=transferscreditcreate.js.map

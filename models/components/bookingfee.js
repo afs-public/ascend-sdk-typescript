@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookingFee$ = exports.BookingFee$outboundSchema = exports.BookingFee$inboundSchema = exports.BookingFeeType$ = exports.BookingFeeType$outboundSchema = exports.BookingFeeType$inboundSchema = exports.BookingFeeAmount$ = exports.BookingFeeAmount$outboundSchema = exports.BookingFeeAmount$inboundSchema = exports.BookingFeeType = void 0;
+exports.bookingFeeAmountToJSON = bookingFeeAmountToJSON;
+exports.bookingFeeAmountFromJSON = bookingFeeAmountFromJSON;
+exports.bookingFeeToJSON = bookingFeeToJSON;
+exports.bookingFeeFromJSON = bookingFeeFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The type of fee
@@ -77,6 +82,12 @@ var BookingFeeAmount$;
     /** @deprecated use `BookingFeeAmount$outboundSchema` instead. */
     BookingFeeAmount$.outboundSchema = exports.BookingFeeAmount$outboundSchema;
 })(BookingFeeAmount$ || (exports.BookingFeeAmount$ = BookingFeeAmount$ = {}));
+function bookingFeeAmountToJSON(bookingFeeAmount) {
+    return JSON.stringify(exports.BookingFeeAmount$outboundSchema.parse(bookingFeeAmount));
+}
+function bookingFeeAmountFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingFeeAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingFeeAmount' from JSON`);
+}
 /** @internal */
 exports.BookingFeeType$inboundSchema = z
     .union([
@@ -130,4 +141,10 @@ var BookingFee$;
     /** @deprecated use `BookingFee$outboundSchema` instead. */
     BookingFee$.outboundSchema = exports.BookingFee$outboundSchema;
 })(BookingFee$ || (exports.BookingFee$ = BookingFee$ = {}));
+function bookingFeeToJSON(bookingFee) {
+    return JSON.stringify(exports.BookingFee$outboundSchema.parse(bookingFee));
+}
+function bookingFeeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BookingFee$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BookingFee' from JSON`);
+}
 //# sourceMappingURL=bookingfee.js.map

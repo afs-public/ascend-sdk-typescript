@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Entry,
   Entry$inboundSchema,
@@ -70,4 +73,22 @@ export namespace ListEntriesResponse$ {
   export const outboundSchema = ListEntriesResponse$outboundSchema;
   /** @deprecated use `ListEntriesResponse$Outbound` instead. */
   export type Outbound = ListEntriesResponse$Outbound;
+}
+
+export function listEntriesResponseToJSON(
+  listEntriesResponse: ListEntriesResponse,
+): string {
+  return JSON.stringify(
+    ListEntriesResponse$outboundSchema.parse(listEntriesResponse),
+  );
+}
+
+export function listEntriesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<ListEntriesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListEntriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListEntriesResponse' from JSON`,
+  );
 }

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PartyRequestCreate, PartyRequestCreate$Outbound } from "./partyrequestcreate.js";
 /**
  * A request to add a party to an account
@@ -39,4 +41,6 @@ export declare namespace AddPartyRequestCreate$ {
     /** @deprecated use `AddPartyRequestCreate$Outbound` instead. */
     type Outbound = AddPartyRequestCreate$Outbound;
 }
+export declare function addPartyRequestCreateToJSON(addPartyRequestCreate: AddPartyRequestCreate): string;
+export declare function addPartyRequestCreateFromJSON(jsonString: string): SafeParseResult<AddPartyRequestCreate, SDKValidationError>;
 //# sourceMappingURL=addpartyrequestcreate.d.ts.map

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContributionConstraintsContributionTypeInfo,
   ContributionConstraintsContributionTypeInfo$inboundSchema,
@@ -80,4 +83,22 @@ export namespace ContributionConstraints$ {
   export const outboundSchema = ContributionConstraints$outboundSchema;
   /** @deprecated use `ContributionConstraints$Outbound` instead. */
   export type Outbound = ContributionConstraints$Outbound;
+}
+
+export function contributionConstraintsToJSON(
+  contributionConstraints: ContributionConstraints,
+): string {
+  return JSON.stringify(
+    ContributionConstraints$outboundSchema.parse(contributionConstraints),
+  );
+}
+
+export function contributionConstraintsFromJSON(
+  jsonString: string,
+): SafeParseResult<ContributionConstraints, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContributionConstraints$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContributionConstraints' from JSON`,
+  );
 }

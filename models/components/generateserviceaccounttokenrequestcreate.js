@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GenerateServiceAccountTokenRequestCreate$ = exports.GenerateServiceAccountTokenRequestCreate$outboundSchema = exports.GenerateServiceAccountTokenRequestCreate$inboundSchema = void 0;
+exports.generateServiceAccountTokenRequestCreateToJSON = generateServiceAccountTokenRequestCreateToJSON;
+exports.generateServiceAccountTokenRequestCreateFromJSON = generateServiceAccountTokenRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.GenerateServiceAccountTokenRequestCreate$inboundSchema = z.object({
     jws: z.string(),
@@ -57,4 +60,10 @@ var GenerateServiceAccountTokenRequestCreate$;
     /** @deprecated use `GenerateServiceAccountTokenRequestCreate$outboundSchema` instead. */
     GenerateServiceAccountTokenRequestCreate$.outboundSchema = exports.GenerateServiceAccountTokenRequestCreate$outboundSchema;
 })(GenerateServiceAccountTokenRequestCreate$ || (exports.GenerateServiceAccountTokenRequestCreate$ = GenerateServiceAccountTokenRequestCreate$ = {}));
+function generateServiceAccountTokenRequestCreateToJSON(generateServiceAccountTokenRequestCreate) {
+    return JSON.stringify(exports.GenerateServiceAccountTokenRequestCreate$outboundSchema.parse(generateServiceAccountTokenRequestCreate));
+}
+function generateServiceAccountTokenRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.GenerateServiceAccountTokenRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'GenerateServiceAccountTokenRequestCreate' from JSON`);
+}
 //# sourceMappingURL=generateserviceaccounttokenrequestcreate.js.map

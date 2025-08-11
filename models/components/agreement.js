@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Agreement$ = exports.Agreement$outboundSchema = exports.Agreement$inboundSchema = exports.AgreementState$ = exports.AgreementState$outboundSchema = exports.AgreementState$inboundSchema = exports.AgreementSource$ = exports.AgreementSource$outboundSchema = exports.AgreementSource$inboundSchema = exports.AgreementState = exports.AgreementSource = void 0;
+exports.agreementToJSON = agreementToJSON;
+exports.agreementFromJSON = agreementFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * An internal indicator from where the agreement was generated; Typically `ACCOUNTS_SERVICE` if accessing our public APIs
@@ -170,4 +173,10 @@ var Agreement$;
     /** @deprecated use `Agreement$outboundSchema` instead. */
     Agreement$.outboundSchema = exports.Agreement$outboundSchema;
 })(Agreement$ || (exports.Agreement$ = Agreement$ = {}));
+function agreementToJSON(agreement) {
+    return JSON.stringify(exports.Agreement$outboundSchema.parse(agreement));
+}
+function agreementFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Agreement$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Agreement' from JSON`);
+}
 //# sourceMappingURL=agreement.js.map

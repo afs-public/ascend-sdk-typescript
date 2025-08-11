@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYield,
   BondYield$inboundSchema,
@@ -271,6 +274,33 @@ export namespace RebookExecutionResponseAccruedInterestAmount$ {
   export type Outbound = RebookExecutionResponseAccruedInterestAmount$Outbound;
 }
 
+export function rebookExecutionResponseAccruedInterestAmountToJSON(
+  rebookExecutionResponseAccruedInterestAmount:
+    RebookExecutionResponseAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponseAccruedInterestAmount$outboundSchema.parse(
+      rebookExecutionResponseAccruedInterestAmount,
+    ),
+  );
+}
+
+export function rebookExecutionResponseAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookExecutionResponseAccruedInterestAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookExecutionResponseAccruedInterestAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookExecutionResponseAccruedInterestAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookExecutionResponseCommissionAmount$inboundSchema: z.ZodType<
   RebookExecutionResponseCommissionAmount,
@@ -309,6 +339,33 @@ export namespace RebookExecutionResponseCommissionAmount$ {
   export type Outbound = RebookExecutionResponseCommissionAmount$Outbound;
 }
 
+export function rebookExecutionResponseCommissionAmountToJSON(
+  rebookExecutionResponseCommissionAmount:
+    RebookExecutionResponseCommissionAmount,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponseCommissionAmount$outboundSchema.parse(
+      rebookExecutionResponseCommissionAmount,
+    ),
+  );
+}
+
+export function rebookExecutionResponseCommissionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookExecutionResponseCommissionAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookExecutionResponseCommissionAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookExecutionResponseCommissionAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookExecutionResponseGrossAmount$inboundSchema: z.ZodType<
   RebookExecutionResponseGrossAmount,
@@ -344,6 +401,27 @@ export namespace RebookExecutionResponseGrossAmount$ {
     RebookExecutionResponseGrossAmount$outboundSchema;
   /** @deprecated use `RebookExecutionResponseGrossAmount$Outbound` instead. */
   export type Outbound = RebookExecutionResponseGrossAmount$Outbound;
+}
+
+export function rebookExecutionResponseGrossAmountToJSON(
+  rebookExecutionResponseGrossAmount: RebookExecutionResponseGrossAmount,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponseGrossAmount$outboundSchema.parse(
+      rebookExecutionResponseGrossAmount,
+    ),
+  );
+}
+
+export function rebookExecutionResponseGrossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookExecutionResponseGrossAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookExecutionResponseGrossAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookExecutionResponseGrossAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -386,6 +464,33 @@ export namespace RebookExecutionResponsePrevailingMarketPrice$ {
   export type Outbound = RebookExecutionResponsePrevailingMarketPrice$Outbound;
 }
 
+export function rebookExecutionResponsePrevailingMarketPriceToJSON(
+  rebookExecutionResponsePrevailingMarketPrice:
+    RebookExecutionResponsePrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponsePrevailingMarketPrice$outboundSchema.parse(
+      rebookExecutionResponsePrevailingMarketPrice,
+    ),
+  );
+}
+
+export function rebookExecutionResponsePrevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookExecutionResponsePrevailingMarketPrice,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookExecutionResponsePrevailingMarketPrice$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookExecutionResponsePrevailingMarketPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookExecutionResponsePrice$inboundSchema: z.ZodType<
   RebookExecutionResponsePrice,
@@ -420,6 +525,26 @@ export namespace RebookExecutionResponsePrice$ {
   export const outboundSchema = RebookExecutionResponsePrice$outboundSchema;
   /** @deprecated use `RebookExecutionResponsePrice$Outbound` instead. */
   export type Outbound = RebookExecutionResponsePrice$Outbound;
+}
+
+export function rebookExecutionResponsePriceToJSON(
+  rebookExecutionResponsePrice: RebookExecutionResponsePrice,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponsePrice$outboundSchema.parse(
+      rebookExecutionResponsePrice,
+    ),
+  );
+}
+
+export function rebookExecutionResponsePriceFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookExecutionResponsePrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookExecutionResponsePrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookExecutionResponsePrice' from JSON`,
+  );
 }
 
 /** @internal */
@@ -460,6 +585,33 @@ export namespace RebookExecutionResponsePriceAdjustmentAmount$ {
     RebookExecutionResponsePriceAdjustmentAmount$outboundSchema;
   /** @deprecated use `RebookExecutionResponsePriceAdjustmentAmount$Outbound` instead. */
   export type Outbound = RebookExecutionResponsePriceAdjustmentAmount$Outbound;
+}
+
+export function rebookExecutionResponsePriceAdjustmentAmountToJSON(
+  rebookExecutionResponsePriceAdjustmentAmount:
+    RebookExecutionResponsePriceAdjustmentAmount,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponsePriceAdjustmentAmount$outboundSchema.parse(
+      rebookExecutionResponsePriceAdjustmentAmount,
+    ),
+  );
+}
+
+export function rebookExecutionResponsePriceAdjustmentAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RebookExecutionResponsePriceAdjustmentAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookExecutionResponsePriceAdjustmentAmount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RebookExecutionResponsePriceAdjustmentAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -558,6 +710,28 @@ export namespace RebookExecutionResponsePriceAdjustment$ {
   export type Outbound = RebookExecutionResponsePriceAdjustment$Outbound;
 }
 
+export function rebookExecutionResponsePriceAdjustmentToJSON(
+  rebookExecutionResponsePriceAdjustment:
+    RebookExecutionResponsePriceAdjustment,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponsePriceAdjustment$outboundSchema.parse(
+      rebookExecutionResponsePriceAdjustment,
+    ),
+  );
+}
+
+export function rebookExecutionResponsePriceAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookExecutionResponsePriceAdjustment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RebookExecutionResponsePriceAdjustment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookExecutionResponsePriceAdjustment' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookExecutionResponseQuantity$inboundSchema: z.ZodType<
   RebookExecutionResponseQuantity,
@@ -592,6 +766,26 @@ export namespace RebookExecutionResponseQuantity$ {
   export const outboundSchema = RebookExecutionResponseQuantity$outboundSchema;
   /** @deprecated use `RebookExecutionResponseQuantity$Outbound` instead. */
   export type Outbound = RebookExecutionResponseQuantity$Outbound;
+}
+
+export function rebookExecutionResponseQuantityToJSON(
+  rebookExecutionResponseQuantity: RebookExecutionResponseQuantity,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponseQuantity$outboundSchema.parse(
+      rebookExecutionResponseQuantity,
+    ),
+  );
+}
+
+export function rebookExecutionResponseQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookExecutionResponseQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookExecutionResponseQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookExecutionResponseQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -781,6 +975,26 @@ export namespace RebookExecutionResponseExecution$ {
   export type Outbound = RebookExecutionResponseExecution$Outbound;
 }
 
+export function rebookExecutionResponseExecutionToJSON(
+  rebookExecutionResponseExecution: RebookExecutionResponseExecution,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponseExecution$outboundSchema.parse(
+      rebookExecutionResponseExecution,
+    ),
+  );
+}
+
+export function rebookExecutionResponseExecutionFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookExecutionResponseExecution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookExecutionResponseExecution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookExecutionResponseExecution' from JSON`,
+  );
+}
+
 /** @internal */
 export const RebookExecutionResponse$inboundSchema: z.ZodType<
   RebookExecutionResponse,
@@ -819,4 +1033,22 @@ export namespace RebookExecutionResponse$ {
   export const outboundSchema = RebookExecutionResponse$outboundSchema;
   /** @deprecated use `RebookExecutionResponse$Outbound` instead. */
   export type Outbound = RebookExecutionResponse$Outbound;
+}
+
+export function rebookExecutionResponseToJSON(
+  rebookExecutionResponse: RebookExecutionResponse,
+): string {
+  return JSON.stringify(
+    RebookExecutionResponse$outboundSchema.parse(rebookExecutionResponse),
+  );
+}
+
+export function rebookExecutionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RebookExecutionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RebookExecutionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RebookExecutionResponse' from JSON`,
+  );
 }

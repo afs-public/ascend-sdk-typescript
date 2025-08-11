@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IctWithdrawalsCancelIctWithdrawalResponse$ = exports.IctWithdrawalsCancelIctWithdrawalResponse$outboundSchema = exports.IctWithdrawalsCancelIctWithdrawalResponse$inboundSchema = exports.IctWithdrawalsCancelIctWithdrawalRequest$ = exports.IctWithdrawalsCancelIctWithdrawalRequest$outboundSchema = exports.IctWithdrawalsCancelIctWithdrawalRequest$inboundSchema = void 0;
+exports.ictWithdrawalsCancelIctWithdrawalRequestToJSON = ictWithdrawalsCancelIctWithdrawalRequestToJSON;
+exports.ictWithdrawalsCancelIctWithdrawalRequestFromJSON = ictWithdrawalsCancelIctWithdrawalRequestFromJSON;
+exports.ictWithdrawalsCancelIctWithdrawalResponseToJSON = ictWithdrawalsCancelIctWithdrawalResponseToJSON;
+exports.ictWithdrawalsCancelIctWithdrawalResponseFromJSON = ictWithdrawalsCancelIctWithdrawalResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.IctWithdrawalsCancelIctWithdrawalRequest$inboundSchema = z.object({
@@ -75,6 +80,12 @@ var IctWithdrawalsCancelIctWithdrawalRequest$;
     /** @deprecated use `IctWithdrawalsCancelIctWithdrawalRequest$outboundSchema` instead. */
     IctWithdrawalsCancelIctWithdrawalRequest$.outboundSchema = exports.IctWithdrawalsCancelIctWithdrawalRequest$outboundSchema;
 })(IctWithdrawalsCancelIctWithdrawalRequest$ || (exports.IctWithdrawalsCancelIctWithdrawalRequest$ = IctWithdrawalsCancelIctWithdrawalRequest$ = {}));
+function ictWithdrawalsCancelIctWithdrawalRequestToJSON(ictWithdrawalsCancelIctWithdrawalRequest) {
+    return JSON.stringify(exports.IctWithdrawalsCancelIctWithdrawalRequest$outboundSchema.parse(ictWithdrawalsCancelIctWithdrawalRequest));
+}
+function ictWithdrawalsCancelIctWithdrawalRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalsCancelIctWithdrawalRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalsCancelIctWithdrawalRequest' from JSON`);
+}
 /** @internal */
 exports.IctWithdrawalsCancelIctWithdrawalResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -110,4 +121,10 @@ var IctWithdrawalsCancelIctWithdrawalResponse$;
     /** @deprecated use `IctWithdrawalsCancelIctWithdrawalResponse$outboundSchema` instead. */
     IctWithdrawalsCancelIctWithdrawalResponse$.outboundSchema = exports.IctWithdrawalsCancelIctWithdrawalResponse$outboundSchema;
 })(IctWithdrawalsCancelIctWithdrawalResponse$ || (exports.IctWithdrawalsCancelIctWithdrawalResponse$ = IctWithdrawalsCancelIctWithdrawalResponse$ = {}));
+function ictWithdrawalsCancelIctWithdrawalResponseToJSON(ictWithdrawalsCancelIctWithdrawalResponse) {
+    return JSON.stringify(exports.IctWithdrawalsCancelIctWithdrawalResponse$outboundSchema.parse(ictWithdrawalsCancelIctWithdrawalResponse));
+}
+function ictWithdrawalsCancelIctWithdrawalResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.IctWithdrawalsCancelIctWithdrawalResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'IctWithdrawalsCancelIctWithdrawalResponse' from JSON`);
+}
 //# sourceMappingURL=ictwithdrawalscancelictwithdrawal.js.map

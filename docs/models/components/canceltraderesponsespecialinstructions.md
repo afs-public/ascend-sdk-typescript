@@ -6,7 +6,7 @@
 import { CancelTradeResponseSpecialInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: CancelTradeResponseSpecialInstructions =
-  CancelTradeResponseSpecialInstructions.MakeMarketInSecurity;
+  CancelTradeResponseSpecialInstructions.WithRights;
 ```
 
 ## Values

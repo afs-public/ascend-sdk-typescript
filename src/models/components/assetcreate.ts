@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PositionCreate,
   PositionCreate$inboundSchema,
@@ -121,4 +124,18 @@ export namespace AssetCreate$ {
   export const outboundSchema = AssetCreate$outboundSchema;
   /** @deprecated use `AssetCreate$Outbound` instead. */
   export type Outbound = AssetCreate$Outbound;
+}
+
+export function assetCreateToJSON(assetCreate: AssetCreate): string {
+  return JSON.stringify(AssetCreate$outboundSchema.parse(assetCreate));
+}
+
+export function assetCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<AssetCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssetCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssetCreate' from JSON`,
+  );
 }

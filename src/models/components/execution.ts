@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BondYield,
   BondYield$inboundSchema,
@@ -244,6 +247,26 @@ export namespace ExecutionAccruedInterestAmount$ {
   export type Outbound = ExecutionAccruedInterestAmount$Outbound;
 }
 
+export function executionAccruedInterestAmountToJSON(
+  executionAccruedInterestAmount: ExecutionAccruedInterestAmount,
+): string {
+  return JSON.stringify(
+    ExecutionAccruedInterestAmount$outboundSchema.parse(
+      executionAccruedInterestAmount,
+    ),
+  );
+}
+
+export function executionAccruedInterestAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<ExecutionAccruedInterestAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExecutionAccruedInterestAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExecutionAccruedInterestAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const CommissionAmount$inboundSchema: z.ZodType<
   CommissionAmount,
@@ -278,6 +301,24 @@ export namespace CommissionAmount$ {
   export const outboundSchema = CommissionAmount$outboundSchema;
   /** @deprecated use `CommissionAmount$Outbound` instead. */
   export type Outbound = CommissionAmount$Outbound;
+}
+
+export function commissionAmountToJSON(
+  commissionAmount: CommissionAmount,
+): string {
+  return JSON.stringify(
+    CommissionAmount$outboundSchema.parse(commissionAmount),
+  );
+}
+
+export function commissionAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<CommissionAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CommissionAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CommissionAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -316,6 +357,20 @@ export namespace GrossAmount$ {
   export type Outbound = GrossAmount$Outbound;
 }
 
+export function grossAmountToJSON(grossAmount: GrossAmount): string {
+  return JSON.stringify(GrossAmount$outboundSchema.parse(grossAmount));
+}
+
+export function grossAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<GrossAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GrossAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GrossAmount' from JSON`,
+  );
+}
+
 /** @internal */
 export const ExecutionPrevailingMarketPrice$inboundSchema: z.ZodType<
   ExecutionPrevailingMarketPrice,
@@ -350,6 +405,26 @@ export namespace ExecutionPrevailingMarketPrice$ {
   export const outboundSchema = ExecutionPrevailingMarketPrice$outboundSchema;
   /** @deprecated use `ExecutionPrevailingMarketPrice$Outbound` instead. */
   export type Outbound = ExecutionPrevailingMarketPrice$Outbound;
+}
+
+export function executionPrevailingMarketPriceToJSON(
+  executionPrevailingMarketPrice: ExecutionPrevailingMarketPrice,
+): string {
+  return JSON.stringify(
+    ExecutionPrevailingMarketPrice$outboundSchema.parse(
+      executionPrevailingMarketPrice,
+    ),
+  );
+}
+
+export function executionPrevailingMarketPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<ExecutionPrevailingMarketPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExecutionPrevailingMarketPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExecutionPrevailingMarketPrice' from JSON`,
+  );
 }
 
 /** @internal */
@@ -388,6 +463,20 @@ export namespace ExecutionPrice$ {
   export type Outbound = ExecutionPrice$Outbound;
 }
 
+export function executionPriceToJSON(executionPrice: ExecutionPrice): string {
+  return JSON.stringify(ExecutionPrice$outboundSchema.parse(executionPrice));
+}
+
+export function executionPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<ExecutionPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExecutionPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExecutionPrice' from JSON`,
+  );
+}
+
 /** @internal */
 export const PriceAdjustmentAmount$inboundSchema: z.ZodType<
   PriceAdjustmentAmount,
@@ -422,6 +511,24 @@ export namespace PriceAdjustmentAmount$ {
   export const outboundSchema = PriceAdjustmentAmount$outboundSchema;
   /** @deprecated use `PriceAdjustmentAmount$Outbound` instead. */
   export type Outbound = PriceAdjustmentAmount$Outbound;
+}
+
+export function priceAdjustmentAmountToJSON(
+  priceAdjustmentAmount: PriceAdjustmentAmount,
+): string {
+  return JSON.stringify(
+    PriceAdjustmentAmount$outboundSchema.parse(priceAdjustmentAmount),
+  );
+}
+
+export function priceAdjustmentAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<PriceAdjustmentAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PriceAdjustmentAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PriceAdjustmentAmount' from JSON`,
+  );
 }
 
 /** @internal */
@@ -509,6 +616,22 @@ export namespace PriceAdjustment$ {
   export type Outbound = PriceAdjustment$Outbound;
 }
 
+export function priceAdjustmentToJSON(
+  priceAdjustment: PriceAdjustment,
+): string {
+  return JSON.stringify(PriceAdjustment$outboundSchema.parse(priceAdjustment));
+}
+
+export function priceAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<PriceAdjustment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PriceAdjustment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PriceAdjustment' from JSON`,
+  );
+}
+
 /** @internal */
 export const ExecutionQuantity$inboundSchema: z.ZodType<
   ExecutionQuantity,
@@ -543,6 +666,24 @@ export namespace ExecutionQuantity$ {
   export const outboundSchema = ExecutionQuantity$outboundSchema;
   /** @deprecated use `ExecutionQuantity$Outbound` instead. */
   export type Outbound = ExecutionQuantity$Outbound;
+}
+
+export function executionQuantityToJSON(
+  executionQuantity: ExecutionQuantity,
+): string {
+  return JSON.stringify(
+    ExecutionQuantity$outboundSchema.parse(executionQuantity),
+  );
+}
+
+export function executionQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<ExecutionQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExecutionQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExecutionQuantity' from JSON`,
+  );
 }
 
 /** @internal */
@@ -712,4 +853,18 @@ export namespace Execution$ {
   export const outboundSchema = Execution$outboundSchema;
   /** @deprecated use `Execution$Outbound` instead. */
   export type Outbound = Execution$Outbound;
+}
+
+export function executionToJSON(execution: Execution): string {
+  return JSON.stringify(Execution$outboundSchema.parse(execution));
+}
+
+export function executionFromJSON(
+  jsonString: string,
+): SafeParseResult<Execution, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Execution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Execution' from JSON`,
+  );
 }

@@ -37,8 +37,17 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompleteTradeResponse$ = exports.CompleteTradeResponse$outboundSchema = exports.CompleteTradeResponse$inboundSchema = exports.Trade$ = exports.Trade$outboundSchema = exports.Trade$inboundSchema = exports.CompleteTradeResponseWhenIssued$ = exports.CompleteTradeResponseWhenIssued$outboundSchema = exports.CompleteTradeResponseWhenIssued$inboundSchema = exports.CompleteTradeResponseVenue$ = exports.CompleteTradeResponseVenue$outboundSchema = exports.CompleteTradeResponseVenue$inboundSchema = exports.CompleteTradeResponseSpecialInstructions$ = exports.CompleteTradeResponseSpecialInstructions$outboundSchema = exports.CompleteTradeResponseSpecialInstructions$inboundSchema = exports.CompleteTradeResponseSideModifier$ = exports.CompleteTradeResponseSideModifier$outboundSchema = exports.CompleteTradeResponseSideModifier$inboundSchema = exports.CompleteTradeResponseSide$ = exports.CompleteTradeResponseSide$outboundSchema = exports.CompleteTradeResponseSide$inboundSchema = exports.CompleteTradeResponseSettlementDate$ = exports.CompleteTradeResponseSettlementDate$outboundSchema = exports.CompleteTradeResponseSettlementDate$inboundSchema = exports.CompleteTradeResponseRouteType$ = exports.CompleteTradeResponseRouteType$outboundSchema = exports.CompleteTradeResponseRouteType$inboundSchema = exports.CompleteTradeResponseLocalMarketTradeDate$ = exports.CompleteTradeResponseLocalMarketTradeDate$outboundSchema = exports.CompleteTradeResponseLocalMarketTradeDate$inboundSchema = exports.CompleteTradeResponseIdentifierType$ = exports.CompleteTradeResponseIdentifierType$outboundSchema = exports.CompleteTradeResponseIdentifierType$inboundSchema = exports.CompleteTradeResponseBrokerCapacity$ = exports.CompleteTradeResponseBrokerCapacity$outboundSchema = exports.CompleteTradeResponseBrokerCapacity$inboundSchema = exports.CompleteTradeResponseAssetType$ = exports.CompleteTradeResponseAssetType$outboundSchema = exports.CompleteTradeResponseAssetType$inboundSchema = exports.CompleteTradeResponseWhenIssued = exports.CompleteTradeResponseVenue = exports.CompleteTradeResponseSpecialInstructions = exports.CompleteTradeResponseSideModifier = exports.CompleteTradeResponseSide = exports.CompleteTradeResponseRouteType = exports.CompleteTradeResponseIdentifierType = exports.CompleteTradeResponseBrokerCapacity = exports.CompleteTradeResponseAssetType = void 0;
+exports.completeTradeResponseLocalMarketTradeDateToJSON = completeTradeResponseLocalMarketTradeDateToJSON;
+exports.completeTradeResponseLocalMarketTradeDateFromJSON = completeTradeResponseLocalMarketTradeDateFromJSON;
+exports.completeTradeResponseSettlementDateToJSON = completeTradeResponseSettlementDateToJSON;
+exports.completeTradeResponseSettlementDateFromJSON = completeTradeResponseSettlementDateFromJSON;
+exports.tradeToJSON = tradeToJSON;
+exports.tradeFromJSON = tradeFromJSON;
+exports.completeTradeResponseToJSON = completeTradeResponseToJSON;
+exports.completeTradeResponseFromJSON = completeTradeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const bookingfee_js_1 = require("./bookingfee.js");
 const bookinglot_js_1 = require("./bookinglot.js");
@@ -287,6 +296,12 @@ var CompleteTradeResponseLocalMarketTradeDate$;
     /** @deprecated use `CompleteTradeResponseLocalMarketTradeDate$outboundSchema` instead. */
     CompleteTradeResponseLocalMarketTradeDate$.outboundSchema = exports.CompleteTradeResponseLocalMarketTradeDate$outboundSchema;
 })(CompleteTradeResponseLocalMarketTradeDate$ || (exports.CompleteTradeResponseLocalMarketTradeDate$ = CompleteTradeResponseLocalMarketTradeDate$ = {}));
+function completeTradeResponseLocalMarketTradeDateToJSON(completeTradeResponseLocalMarketTradeDate) {
+    return JSON.stringify(exports.CompleteTradeResponseLocalMarketTradeDate$outboundSchema.parse(completeTradeResponseLocalMarketTradeDate));
+}
+function completeTradeResponseLocalMarketTradeDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompleteTradeResponseLocalMarketTradeDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompleteTradeResponseLocalMarketTradeDate' from JSON`);
+}
 /** @internal */
 exports.CompleteTradeResponseRouteType$inboundSchema = z
     .union([
@@ -332,6 +347,12 @@ var CompleteTradeResponseSettlementDate$;
     /** @deprecated use `CompleteTradeResponseSettlementDate$outboundSchema` instead. */
     CompleteTradeResponseSettlementDate$.outboundSchema = exports.CompleteTradeResponseSettlementDate$outboundSchema;
 })(CompleteTradeResponseSettlementDate$ || (exports.CompleteTradeResponseSettlementDate$ = CompleteTradeResponseSettlementDate$ = {}));
+function completeTradeResponseSettlementDateToJSON(completeTradeResponseSettlementDate) {
+    return JSON.stringify(exports.CompleteTradeResponseSettlementDate$outboundSchema.parse(completeTradeResponseSettlementDate));
+}
+function completeTradeResponseSettlementDateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompleteTradeResponseSettlementDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompleteTradeResponseSettlementDate' from JSON`);
+}
 /** @internal */
 exports.CompleteTradeResponseSide$inboundSchema = z
     .union([
@@ -566,6 +587,12 @@ var Trade$;
     /** @deprecated use `Trade$outboundSchema` instead. */
     Trade$.outboundSchema = exports.Trade$outboundSchema;
 })(Trade$ || (exports.Trade$ = Trade$ = {}));
+function tradeToJSON(trade) {
+    return JSON.stringify(exports.Trade$outboundSchema.parse(trade));
+}
+function tradeFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.Trade$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'Trade' from JSON`);
+}
 /** @internal */
 exports.CompleteTradeResponse$inboundSchema = z.object({
     trade: z.nullable(z.lazy(() => exports.Trade$inboundSchema)).optional(),
@@ -585,4 +612,10 @@ var CompleteTradeResponse$;
     /** @deprecated use `CompleteTradeResponse$outboundSchema` instead. */
     CompleteTradeResponse$.outboundSchema = exports.CompleteTradeResponse$outboundSchema;
 })(CompleteTradeResponse$ || (exports.CompleteTradeResponse$ = CompleteTradeResponse$ = {}));
+function completeTradeResponseToJSON(completeTradeResponse) {
+    return JSON.stringify(exports.CompleteTradeResponse$outboundSchema.parse(completeTradeResponse));
+}
+function completeTradeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CompleteTradeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CompleteTradeResponse' from JSON`);
+}
 //# sourceMappingURL=completetraderesponse.js.map

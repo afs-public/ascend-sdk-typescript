@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AcatsAsset,
   AcatsAsset$inboundSchema,
@@ -336,6 +339,27 @@ export namespace RejectTransferResponseExternalAccount$ {
   export type Outbound = RejectTransferResponseExternalAccount$Outbound;
 }
 
+export function rejectTransferResponseExternalAccountToJSON(
+  rejectTransferResponseExternalAccount: RejectTransferResponseExternalAccount,
+): string {
+  return JSON.stringify(
+    RejectTransferResponseExternalAccount$outboundSchema.parse(
+      rejectTransferResponseExternalAccount,
+    ),
+  );
+}
+
+export function rejectTransferResponseExternalAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectTransferResponseExternalAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RejectTransferResponseExternalAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectTransferResponseExternalAccount' from JSON`,
+  );
+}
+
 /** @internal */
 export const RejectTransferResponseDeliverer$inboundSchema: z.ZodType<
   RejectTransferResponseDeliverer,
@@ -390,6 +414,26 @@ export namespace RejectTransferResponseDeliverer$ {
   export const outboundSchema = RejectTransferResponseDeliverer$outboundSchema;
   /** @deprecated use `RejectTransferResponseDeliverer$Outbound` instead. */
   export type Outbound = RejectTransferResponseDeliverer$Outbound;
+}
+
+export function rejectTransferResponseDelivererToJSON(
+  rejectTransferResponseDeliverer: RejectTransferResponseDeliverer,
+): string {
+  return JSON.stringify(
+    RejectTransferResponseDeliverer$outboundSchema.parse(
+      rejectTransferResponseDeliverer,
+    ),
+  );
+}
+
+export function rejectTransferResponseDelivererFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectTransferResponseDeliverer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectTransferResponseDeliverer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectTransferResponseDeliverer' from JSON`,
+  );
 }
 
 /** @internal */
@@ -514,6 +558,33 @@ export namespace RejectTransferResponseTransferExternalAccount$ {
   export type Outbound = RejectTransferResponseTransferExternalAccount$Outbound;
 }
 
+export function rejectTransferResponseTransferExternalAccountToJSON(
+  rejectTransferResponseTransferExternalAccount:
+    RejectTransferResponseTransferExternalAccount,
+): string {
+  return JSON.stringify(
+    RejectTransferResponseTransferExternalAccount$outboundSchema.parse(
+      rejectTransferResponseTransferExternalAccount,
+    ),
+  );
+}
+
+export function rejectTransferResponseTransferExternalAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RejectTransferResponseTransferExternalAccount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RejectTransferResponseTransferExternalAccount$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RejectTransferResponseTransferExternalAccount' from JSON`,
+  );
+}
+
 /** @internal */
 export const RejectTransferResponseReceiver$inboundSchema: z.ZodType<
   RejectTransferResponseReceiver,
@@ -568,6 +639,26 @@ export namespace RejectTransferResponseReceiver$ {
   export const outboundSchema = RejectTransferResponseReceiver$outboundSchema;
   /** @deprecated use `RejectTransferResponseReceiver$Outbound` instead. */
   export type Outbound = RejectTransferResponseReceiver$Outbound;
+}
+
+export function rejectTransferResponseReceiverToJSON(
+  rejectTransferResponseReceiver: RejectTransferResponseReceiver,
+): string {
+  return JSON.stringify(
+    RejectTransferResponseReceiver$outboundSchema.parse(
+      rejectTransferResponseReceiver,
+    ),
+  );
+}
+
+export function rejectTransferResponseReceiverFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectTransferResponseReceiver, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectTransferResponseReceiver$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectTransferResponseReceiver' from JSON`,
+  );
 }
 
 /** @internal */
@@ -772,6 +863,26 @@ export namespace RejectTransferResponseTransfer$ {
   export type Outbound = RejectTransferResponseTransfer$Outbound;
 }
 
+export function rejectTransferResponseTransferToJSON(
+  rejectTransferResponseTransfer: RejectTransferResponseTransfer,
+): string {
+  return JSON.stringify(
+    RejectTransferResponseTransfer$outboundSchema.parse(
+      rejectTransferResponseTransfer,
+    ),
+  );
+}
+
+export function rejectTransferResponseTransferFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectTransferResponseTransfer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectTransferResponseTransfer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectTransferResponseTransfer' from JSON`,
+  );
+}
+
 /** @internal */
 export const RejectTransferResponse$inboundSchema: z.ZodType<
   RejectTransferResponse,
@@ -810,4 +921,22 @@ export namespace RejectTransferResponse$ {
   export const outboundSchema = RejectTransferResponse$outboundSchema;
   /** @deprecated use `RejectTransferResponse$Outbound` instead. */
   export type Outbound = RejectTransferResponse$Outbound;
+}
+
+export function rejectTransferResponseToJSON(
+  rejectTransferResponse: RejectTransferResponse,
+): string {
+  return JSON.stringify(
+    RejectTransferResponse$outboundSchema.parse(rejectTransferResponse),
+  );
+}
+
+export function rejectTransferResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectTransferResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectTransferResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectTransferResponse' from JSON`,
+  );
 }

@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type IctDepositsCancelIctDepositRequest = {
     /**
      * The account id.
@@ -44,6 +46,8 @@ export declare namespace IctDepositsCancelIctDepositRequest$ {
     /** @deprecated use `IctDepositsCancelIctDepositRequest$Outbound` instead. */
     type Outbound = IctDepositsCancelIctDepositRequest$Outbound;
 }
+export declare function ictDepositsCancelIctDepositRequestToJSON(ictDepositsCancelIctDepositRequest: IctDepositsCancelIctDepositRequest): string;
+export declare function ictDepositsCancelIctDepositRequestFromJSON(jsonString: string): SafeParseResult<IctDepositsCancelIctDepositRequest, SDKValidationError>;
 /** @internal */
 export declare const IctDepositsCancelIctDepositResponse$inboundSchema: z.ZodType<IctDepositsCancelIctDepositResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -66,4 +70,6 @@ export declare namespace IctDepositsCancelIctDepositResponse$ {
     /** @deprecated use `IctDepositsCancelIctDepositResponse$Outbound` instead. */
     type Outbound = IctDepositsCancelIctDepositResponse$Outbound;
 }
+export declare function ictDepositsCancelIctDepositResponseToJSON(ictDepositsCancelIctDepositResponse: IctDepositsCancelIctDepositResponse): string;
+export declare function ictDepositsCancelIctDepositResponseFromJSON(jsonString: string): SafeParseResult<IctDepositsCancelIctDepositResponse, SDKValidationError>;
 //# sourceMappingURL=ictdepositscancelictdeposit.d.ts.map

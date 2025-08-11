@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasketCreate$ = exports.BasketCreate$outboundSchema = exports.BasketCreate$inboundSchema = void 0;
+exports.basketCreateToJSON = basketCreateToJSON;
+exports.basketCreateFromJSON = basketCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.BasketCreate$inboundSchema = z.object({
     client_basket_id: z.string(),
@@ -70,4 +73,10 @@ var BasketCreate$;
     /** @deprecated use `BasketCreate$outboundSchema` instead. */
     BasketCreate$.outboundSchema = exports.BasketCreate$outboundSchema;
 })(BasketCreate$ || (exports.BasketCreate$ = BasketCreate$ = {}));
+function basketCreateToJSON(basketCreate) {
+    return JSON.stringify(exports.BasketCreate$outboundSchema.parse(basketCreate));
+}
+function basketCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketCreate' from JSON`);
+}
 //# sourceMappingURL=basketcreate.js.map

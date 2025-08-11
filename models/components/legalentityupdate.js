@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LegalEntityUpdate$ = exports.LegalEntityUpdate$outboundSchema = exports.LegalEntityUpdate$inboundSchema = exports.LegalEntityUpdateTaxIdType$ = exports.LegalEntityUpdateTaxIdType$outboundSchema = exports.LegalEntityUpdateTaxIdType$inboundSchema = exports.LegalEntityUpdateExemptCustomerReason$ = exports.LegalEntityUpdateExemptCustomerReason$outboundSchema = exports.LegalEntityUpdateExemptCustomerReason$inboundSchema = exports.LegalEntityUpdateEntityType$ = exports.LegalEntityUpdateEntityType$outboundSchema = exports.LegalEntityUpdateEntityType$inboundSchema = exports.LegalEntityUpdateCorporateStructure$ = exports.LegalEntityUpdateCorporateStructure$outboundSchema = exports.LegalEntityUpdateCorporateStructure$inboundSchema = exports.LegalEntityUpdateBusinessIndustrialClassification$ = exports.LegalEntityUpdateBusinessIndustrialClassification$outboundSchema = exports.LegalEntityUpdateBusinessIndustrialClassification$inboundSchema = exports.LegalEntityUpdateTaxIdType = exports.LegalEntityUpdateExemptCustomerReason = exports.LegalEntityUpdateEntityType = exports.LegalEntityUpdateCorporateStructure = exports.LegalEntityUpdateBusinessIndustrialClassification = void 0;
+exports.legalEntityUpdateToJSON = legalEntityUpdateToJSON;
+exports.legalEntityUpdateFromJSON = legalEntityUpdateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const dateupdate_js_1 = require("./dateupdate.js");
 const entityduediligenceupdate_js_1 = require("./entityduediligenceupdate.js");
@@ -365,4 +368,10 @@ var LegalEntityUpdate$;
     /** @deprecated use `LegalEntityUpdate$outboundSchema` instead. */
     LegalEntityUpdate$.outboundSchema = exports.LegalEntityUpdate$outboundSchema;
 })(LegalEntityUpdate$ || (exports.LegalEntityUpdate$ = LegalEntityUpdate$ = {}));
+function legalEntityUpdateToJSON(legalEntityUpdate) {
+    return JSON.stringify(exports.LegalEntityUpdate$outboundSchema.parse(legalEntityUpdate));
+}
+function legalEntityUpdateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.LegalEntityUpdate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'LegalEntityUpdate' from JSON`);
+}
 //# sourceMappingURL=legalentityupdate.js.map

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IctWithdrawalsCreateIctWithdrawalRequest = {
   /**
@@ -77,6 +80,33 @@ export namespace IctWithdrawalsCreateIctWithdrawalRequest$ {
   export type Outbound = IctWithdrawalsCreateIctWithdrawalRequest$Outbound;
 }
 
+export function ictWithdrawalsCreateIctWithdrawalRequestToJSON(
+  ictWithdrawalsCreateIctWithdrawalRequest:
+    IctWithdrawalsCreateIctWithdrawalRequest,
+): string {
+  return JSON.stringify(
+    IctWithdrawalsCreateIctWithdrawalRequest$outboundSchema.parse(
+      ictWithdrawalsCreateIctWithdrawalRequest,
+    ),
+  );
+}
+
+export function ictWithdrawalsCreateIctWithdrawalRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctWithdrawalsCreateIctWithdrawalRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctWithdrawalsCreateIctWithdrawalRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctWithdrawalsCreateIctWithdrawalRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctWithdrawalsCreateIctWithdrawalResponse$inboundSchema: z.ZodType<
   IctWithdrawalsCreateIctWithdrawalResponse,
@@ -132,4 +162,31 @@ export namespace IctWithdrawalsCreateIctWithdrawalResponse$ {
     IctWithdrawalsCreateIctWithdrawalResponse$outboundSchema;
   /** @deprecated use `IctWithdrawalsCreateIctWithdrawalResponse$Outbound` instead. */
   export type Outbound = IctWithdrawalsCreateIctWithdrawalResponse$Outbound;
+}
+
+export function ictWithdrawalsCreateIctWithdrawalResponseToJSON(
+  ictWithdrawalsCreateIctWithdrawalResponse:
+    IctWithdrawalsCreateIctWithdrawalResponse,
+): string {
+  return JSON.stringify(
+    IctWithdrawalsCreateIctWithdrawalResponse$outboundSchema.parse(
+      ictWithdrawalsCreateIctWithdrawalResponse,
+    ),
+  );
+}
+
+export function ictWithdrawalsCreateIctWithdrawalResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  IctWithdrawalsCreateIctWithdrawalResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctWithdrawalsCreateIctWithdrawalResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'IctWithdrawalsCreateIctWithdrawalResponse' from JSON`,
+  );
 }

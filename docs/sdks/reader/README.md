@@ -14,6 +14,7 @@ Gets a list of events.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Reader_ListEventMessages" method="get" path="/events/v1/messages" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -32,7 +33,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.reader.listEventMessages();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -63,15 +63,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await readerListEventMessages(apexascend);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("readerListEventMessages failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -94,10 +91,11 @@ run();
 
 ### Errors
 
-| Error Type         | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| errors.Status      | 400, 401, 403, 500 | application/json   |
-| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 401, 403    | application/json |
+| errors.Status    | 500              | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## getEventMessage
 
@@ -105,6 +103,7 @@ Gets the details of a specific event.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="Reader_GetEventMessage" method="get" path="/events/v1/messages/{message_id}" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
@@ -123,7 +122,6 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.reader.getEventMessage("01H8MCDXH3ZXXMAA3918GRCFVE");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -154,15 +152,12 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await readerGetEventMessage(apexascend, "01H8MCDXH3ZXXMAA3918GRCFVE");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("readerGetEventMessage failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -183,7 +178,8 @@ run();
 
 ### Errors
 
-| Error Type              | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| errors.Status           | 400, 401, 403, 404, 500 | application/json        |
-| errors.SDKError         | 4XX, 5XX                | \*/\*                   |
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500                | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |

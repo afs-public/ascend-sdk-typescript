@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Agreement, Agreement$Outbound } from "./agreement.js";
 /**
  * The response for enrolling an account.
@@ -29,4 +31,6 @@ export declare namespace EnrollAccountResponse$ {
     /** @deprecated use `EnrollAccountResponse$Outbound` instead. */
     type Outbound = EnrollAccountResponse$Outbound;
 }
+export declare function enrollAccountResponseToJSON(enrollAccountResponse: EnrollAccountResponse): string;
+export declare function enrollAccountResponseFromJSON(jsonString: string): SafeParseResult<EnrollAccountResponse, SDKValidationError>;
 //# sourceMappingURL=enrollaccountresponse.d.ts.map

@@ -37,8 +37,15 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AcatsAsset$ = exports.AcatsAsset$outboundSchema = exports.AcatsAsset$inboundSchema = exports.AcatsAssetType$ = exports.AcatsAssetType$outboundSchema = exports.AcatsAssetType$inboundSchema = exports.AcatsAssetPosition$ = exports.AcatsAssetPosition$outboundSchema = exports.AcatsAssetPosition$inboundSchema = exports.AcatsAssetQuantity$ = exports.AcatsAssetQuantity$outboundSchema = exports.AcatsAssetQuantity$inboundSchema = exports.AssetCategory$ = exports.AssetCategory$outboundSchema = exports.AssetCategory$inboundSchema = exports.AcatsAssetType = exports.AssetCategory = void 0;
+exports.acatsAssetQuantityToJSON = acatsAssetQuantityToJSON;
+exports.acatsAssetQuantityFromJSON = acatsAssetQuantityFromJSON;
+exports.acatsAssetPositionToJSON = acatsAssetPositionToJSON;
+exports.acatsAssetPositionFromJSON = acatsAssetPositionFromJSON;
+exports.acatsAssetToJSON = acatsAssetToJSON;
+exports.acatsAssetFromJSON = acatsAssetFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 /**
  * The NSCC asset category
@@ -124,6 +131,12 @@ var AcatsAssetQuantity$;
     /** @deprecated use `AcatsAssetQuantity$outboundSchema` instead. */
     AcatsAssetQuantity$.outboundSchema = exports.AcatsAssetQuantity$outboundSchema;
 })(AcatsAssetQuantity$ || (exports.AcatsAssetQuantity$ = AcatsAssetQuantity$ = {}));
+function acatsAssetQuantityToJSON(acatsAssetQuantity) {
+    return JSON.stringify(exports.AcatsAssetQuantity$outboundSchema.parse(acatsAssetQuantity));
+}
+function acatsAssetQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcatsAssetQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcatsAssetQuantity' from JSON`);
+}
 /** @internal */
 exports.AcatsAssetPosition$inboundSchema = z.object({
     quantity: z.nullable(z.lazy(() => exports.AcatsAssetQuantity$inboundSchema))
@@ -145,6 +158,12 @@ var AcatsAssetPosition$;
     /** @deprecated use `AcatsAssetPosition$outboundSchema` instead. */
     AcatsAssetPosition$.outboundSchema = exports.AcatsAssetPosition$outboundSchema;
 })(AcatsAssetPosition$ || (exports.AcatsAssetPosition$ = AcatsAssetPosition$ = {}));
+function acatsAssetPositionToJSON(acatsAssetPosition) {
+    return JSON.stringify(exports.AcatsAssetPosition$outboundSchema.parse(acatsAssetPosition));
+}
+function acatsAssetPositionFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcatsAssetPosition$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcatsAssetPosition' from JSON`);
+}
 /** @internal */
 exports.AcatsAssetType$inboundSchema = z
     .union([
@@ -206,4 +225,10 @@ var AcatsAsset$;
     /** @deprecated use `AcatsAsset$outboundSchema` instead. */
     AcatsAsset$.outboundSchema = exports.AcatsAsset$outboundSchema;
 })(AcatsAsset$ || (exports.AcatsAsset$ = AcatsAsset$ = {}));
+function acatsAssetToJSON(acatsAsset) {
+    return JSON.stringify(exports.AcatsAsset$outboundSchema.parse(acatsAsset));
+}
+function acatsAssetFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AcatsAsset$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AcatsAsset' from JSON`);
+}
 //# sourceMappingURL=acatsasset.js.map

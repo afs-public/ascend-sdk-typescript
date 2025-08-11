@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InterestedPartyCreate$ = exports.InterestedPartyCreate$outboundSchema = exports.InterestedPartyCreate$inboundSchema = exports.TradeConfirmationDeliveryPreference$ = exports.TradeConfirmationDeliveryPreference$outboundSchema = exports.TradeConfirmationDeliveryPreference$inboundSchema = exports.StatementDeliveryPreference$ = exports.StatementDeliveryPreference$outboundSchema = exports.StatementDeliveryPreference$inboundSchema = exports.TradeConfirmationDeliveryPreference = exports.StatementDeliveryPreference = void 0;
+exports.interestedPartyCreateToJSON = interestedPartyCreateToJSON;
+exports.interestedPartyCreateFromJSON = interestedPartyCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const enums_js_1 = require("../../types/enums.js");
 const postaladdresscreate_js_1 = require("./postaladdresscreate.js");
 /**
@@ -140,4 +143,10 @@ var InterestedPartyCreate$;
     /** @deprecated use `InterestedPartyCreate$outboundSchema` instead. */
     InterestedPartyCreate$.outboundSchema = exports.InterestedPartyCreate$outboundSchema;
 })(InterestedPartyCreate$ || (exports.InterestedPartyCreate$ = InterestedPartyCreate$ = {}));
+function interestedPartyCreateToJSON(interestedPartyCreate) {
+    return JSON.stringify(exports.InterestedPartyCreate$outboundSchema.parse(interestedPartyCreate));
+}
+function interestedPartyCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.InterestedPartyCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'InterestedPartyCreate' from JSON`);
+}
 //# sourceMappingURL=interestedpartycreate.js.map

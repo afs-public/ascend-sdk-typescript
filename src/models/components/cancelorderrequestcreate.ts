@@ -3,11 +3,43 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+/**
+ * Only relevant for CAT reporting when clients have Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but the value will have no impact on how they are processed. Cancel requests without this field set will default to CLIENT
+ */
+export enum CancelOrderRequestCreateCancelInitiator {
+  InitiatorUnspecified = "INITIATOR_UNSPECIFIED",
+  Firm = "FIRM",
+  Client = "CLIENT",
+}
+/**
+ * Only relevant for CAT reporting when clients have Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but the value will have no impact on how they are processed. Cancel requests without this field set will default to CLIENT
+ */
+export type CancelOrderRequestCreateCancelInitiatorOpen = OpenEnum<
+  typeof CancelOrderRequestCreateCancelInitiator
+>;
 
 /**
  * The message to request cancellation of an existing order
  */
 export type CancelOrderRequestCreate = {
+  /**
+   * Only relevant for CAT reporting when clients have Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but the value will have no impact on how they are processed. Cancel requests without this field set will default to CLIENT
+   */
+  cancelInitiator?: CancelOrderRequestCreateCancelInitiatorOpen | undefined;
+  /**
+   * Related to CAT reporting when Apex reports for the client. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+   */
+  clientCancelReceivedTime?: Date | null | undefined;
   /**
    * Format: accounts/{account_id}/orders/{order_id}
    */
@@ -15,16 +47,62 @@ export type CancelOrderRequestCreate = {
 };
 
 /** @internal */
+export const CancelOrderRequestCreateCancelInitiator$inboundSchema: z.ZodType<
+  CancelOrderRequestCreateCancelInitiatorOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CancelOrderRequestCreateCancelInitiator),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CancelOrderRequestCreateCancelInitiator$outboundSchema: z.ZodType<
+  CancelOrderRequestCreateCancelInitiatorOpen,
+  z.ZodTypeDef,
+  CancelOrderRequestCreateCancelInitiatorOpen
+> = z.union([
+  z.nativeEnum(CancelOrderRequestCreateCancelInitiator),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelOrderRequestCreateCancelInitiator$ {
+  /** @deprecated use `CancelOrderRequestCreateCancelInitiator$inboundSchema` instead. */
+  export const inboundSchema =
+    CancelOrderRequestCreateCancelInitiator$inboundSchema;
+  /** @deprecated use `CancelOrderRequestCreateCancelInitiator$outboundSchema` instead. */
+  export const outboundSchema =
+    CancelOrderRequestCreateCancelInitiator$outboundSchema;
+}
+
+/** @internal */
 export const CancelOrderRequestCreate$inboundSchema: z.ZodType<
   CancelOrderRequestCreate,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  cancel_initiator: CancelOrderRequestCreateCancelInitiator$inboundSchema
+    .optional(),
+  client_cancel_received_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   name: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "cancel_initiator": "cancelInitiator",
+    "client_cancel_received_time": "clientCancelReceivedTime",
+  });
 });
 
 /** @internal */
 export type CancelOrderRequestCreate$Outbound = {
+  cancel_initiator?: string | undefined;
+  client_cancel_received_time?: string | null | undefined;
   name: string;
 };
 
@@ -34,7 +112,16 @@ export const CancelOrderRequestCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelOrderRequestCreate
 > = z.object({
+  cancelInitiator: CancelOrderRequestCreateCancelInitiator$outboundSchema
+    .optional(),
+  clientCancelReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   name: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    cancelInitiator: "cancel_initiator",
+    clientCancelReceivedTime: "client_cancel_received_time",
+  });
 });
 
 /**
@@ -48,4 +135,22 @@ export namespace CancelOrderRequestCreate$ {
   export const outboundSchema = CancelOrderRequestCreate$outboundSchema;
   /** @deprecated use `CancelOrderRequestCreate$Outbound` instead. */
   export type Outbound = CancelOrderRequestCreate$Outbound;
+}
+
+export function cancelOrderRequestCreateToJSON(
+  cancelOrderRequestCreate: CancelOrderRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelOrderRequestCreate$outboundSchema.parse(cancelOrderRequestCreate),
+  );
+}
+
+export function cancelOrderRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelOrderRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelOrderRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelOrderRequestCreate' from JSON`,
+  );
 }

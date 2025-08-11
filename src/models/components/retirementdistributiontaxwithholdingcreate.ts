@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -74,4 +77,31 @@ export namespace RetirementDistributionTaxWithholdingCreate$ {
     RetirementDistributionTaxWithholdingCreate$outboundSchema;
   /** @deprecated use `RetirementDistributionTaxWithholdingCreate$Outbound` instead. */
   export type Outbound = RetirementDistributionTaxWithholdingCreate$Outbound;
+}
+
+export function retirementDistributionTaxWithholdingCreateToJSON(
+  retirementDistributionTaxWithholdingCreate:
+    RetirementDistributionTaxWithholdingCreate,
+): string {
+  return JSON.stringify(
+    RetirementDistributionTaxWithholdingCreate$outboundSchema.parse(
+      retirementDistributionTaxWithholdingCreate,
+    ),
+  );
+}
+
+export function retirementDistributionTaxWithholdingCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  RetirementDistributionTaxWithholdingCreate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      RetirementDistributionTaxWithholdingCreate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'RetirementDistributionTaxWithholdingCreate' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type FeesGetFeeRequest = {
   /**
@@ -78,6 +81,24 @@ export namespace FeesGetFeeRequest$ {
   export type Outbound = FeesGetFeeRequest$Outbound;
 }
 
+export function feesGetFeeRequestToJSON(
+  feesGetFeeRequest: FeesGetFeeRequest,
+): string {
+  return JSON.stringify(
+    FeesGetFeeRequest$outboundSchema.parse(feesGetFeeRequest),
+  );
+}
+
+export function feesGetFeeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<FeesGetFeeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FeesGetFeeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FeesGetFeeRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const FeesGetFeeResponse$inboundSchema: z.ZodType<
   FeesGetFeeResponse,
@@ -130,4 +151,22 @@ export namespace FeesGetFeeResponse$ {
   export const outboundSchema = FeesGetFeeResponse$outboundSchema;
   /** @deprecated use `FeesGetFeeResponse$Outbound` instead. */
   export type Outbound = FeesGetFeeResponse$Outbound;
+}
+
+export function feesGetFeeResponseToJSON(
+  feesGetFeeResponse: FeesGetFeeResponse,
+): string {
+  return JSON.stringify(
+    FeesGetFeeResponse$outboundSchema.parse(feesGetFeeResponse),
+  );
+}
+
+export function feesGetFeeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<FeesGetFeeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FeesGetFeeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FeesGetFeeResponse' from JSON`,
+  );
 }

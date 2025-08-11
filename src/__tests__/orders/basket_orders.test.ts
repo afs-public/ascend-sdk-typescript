@@ -1,6 +1,7 @@
 import { expect, test } from "vitest";
 import { sdk } from "../utils/sdk";
 import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
+import * as operations from "@apexfintechsolutions/ascend-sdk/models/operations";
 import { beforeAll } from "vitest";
 import { createBasketId, withdrawal_account_id } from "./index";
 import crypto from "crypto";
@@ -84,10 +85,12 @@ test("Basket Orders List Basket Orders List Basket Orders1", async () => {
   if (typeof basket_order_id !== "string") {
     throw new Error("basket_order_id is undefined.");
   }
-  const result = await sdk.basketOrders.listBasketOrders(
-    process.env["CORRESPONDENT_ID"] || "",
-    basket_order_id,
-  );
+  const request: operations.BasketOrdersServiceListBasketOrdersRequest = {
+    correspondentId: process.env["CORRESPONDENT_ID"] || "",
+    basketId: basket_order_id,
+  }
+
+  const result = await sdk.basketOrders.listBasketOrders(request);
   expect(result.httpMeta.response.status).toBe(200);
 });
 

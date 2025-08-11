@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to cancel an existing ACH withdrawal.
@@ -55,4 +58,24 @@ export namespace CancelAchWithdrawalRequestCreate$ {
   export const outboundSchema = CancelAchWithdrawalRequestCreate$outboundSchema;
   /** @deprecated use `CancelAchWithdrawalRequestCreate$Outbound` instead. */
   export type Outbound = CancelAchWithdrawalRequestCreate$Outbound;
+}
+
+export function cancelAchWithdrawalRequestCreateToJSON(
+  cancelAchWithdrawalRequestCreate: CancelAchWithdrawalRequestCreate,
+): string {
+  return JSON.stringify(
+    CancelAchWithdrawalRequestCreate$outboundSchema.parse(
+      cancelAchWithdrawalRequestCreate,
+    ),
+  );
+}
+
+export function cancelAchWithdrawalRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelAchWithdrawalRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelAchWithdrawalRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelAchWithdrawalRequestCreate' from JSON`,
+  );
 }

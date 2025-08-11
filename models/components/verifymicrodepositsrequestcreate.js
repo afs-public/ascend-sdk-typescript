@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerifyMicroDepositsRequestCreate$ = exports.VerifyMicroDepositsRequestCreate$outboundSchema = exports.VerifyMicroDepositsRequestCreate$inboundSchema = void 0;
+exports.verifyMicroDepositsRequestCreateToJSON = verifyMicroDepositsRequestCreateToJSON;
+exports.verifyMicroDepositsRequestCreateFromJSON = verifyMicroDepositsRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 const microdepositamountscreate_js_1 = require("./microdepositamountscreate.js");
 /** @internal */
 exports.VerifyMicroDepositsRequestCreate$inboundSchema = z.object({
@@ -60,4 +63,10 @@ var VerifyMicroDepositsRequestCreate$;
     /** @deprecated use `VerifyMicroDepositsRequestCreate$outboundSchema` instead. */
     VerifyMicroDepositsRequestCreate$.outboundSchema = exports.VerifyMicroDepositsRequestCreate$outboundSchema;
 })(VerifyMicroDepositsRequestCreate$ || (exports.VerifyMicroDepositsRequestCreate$ = VerifyMicroDepositsRequestCreate$ = {}));
+function verifyMicroDepositsRequestCreateToJSON(verifyMicroDepositsRequestCreate) {
+    return JSON.stringify(exports.VerifyMicroDepositsRequestCreate$outboundSchema.parse(verifyMicroDepositsRequestCreate));
+}
+function verifyMicroDepositsRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.VerifyMicroDepositsRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'VerifyMicroDepositsRequestCreate' from JSON`);
+}
 //# sourceMappingURL=verifymicrodepositsrequestcreate.js.map

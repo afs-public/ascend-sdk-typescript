@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DecimalCreate,
   DecimalCreate$inboundSchema,
@@ -469,4 +472,22 @@ export namespace BasketOrderCreate$ {
   export const outboundSchema = BasketOrderCreate$outboundSchema;
   /** @deprecated use `BasketOrderCreate$Outbound` instead. */
   export type Outbound = BasketOrderCreate$Outbound;
+}
+
+export function basketOrderCreateToJSON(
+  basketOrderCreate: BasketOrderCreate,
+): string {
+  return JSON.stringify(
+    BasketOrderCreate$outboundSchema.parse(basketOrderCreate),
+  );
+}
+
+export function basketOrderCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketOrderCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BasketOrderCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketOrderCreate' from JSON`,
+  );
 }

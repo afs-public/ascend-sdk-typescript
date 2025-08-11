@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type CashJournalsCheckPartyTypeResponse = {
     httpMeta: components.HTTPMetadata;
     /**
@@ -33,4 +35,6 @@ export declare namespace CashJournalsCheckPartyTypeResponse$ {
     /** @deprecated use `CashJournalsCheckPartyTypeResponse$Outbound` instead. */
     type Outbound = CashJournalsCheckPartyTypeResponse$Outbound;
 }
+export declare function cashJournalsCheckPartyTypeResponseToJSON(cashJournalsCheckPartyTypeResponse: CashJournalsCheckPartyTypeResponse): string;
+export declare function cashJournalsCheckPartyTypeResponseFromJSON(jsonString: string): SafeParseResult<CashJournalsCheckPartyTypeResponse, SDKValidationError>;
 //# sourceMappingURL=cashjournalscheckpartytype.d.ts.map

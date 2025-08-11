@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * An internal indicator from where the agreement was generated; Typically `ACCOUNTS_SERVICE` if accessing our public APIs
  */
@@ -133,4 +135,6 @@ export declare namespace Agreement$ {
     /** @deprecated use `Agreement$Outbound` instead. */
     type Outbound = Agreement$Outbound;
 }
+export declare function agreementToJSON(agreement: Agreement): string;
+export declare function agreementFromJSON(jsonString: string): SafeParseResult<Agreement, SDKValidationError>;
 //# sourceMappingURL=agreement.d.ts.map

@@ -48,10 +48,10 @@ class ApexAccessTokenHook {
             throw new Error(errMsg);
         }
         const data = await resp.json();
-        if (!(data === null || data === void 0 ? void 0 : data.access_token)) {
+        if (!data?.access_token) {
             throw new Error("No access_token returned");
         }
-        if (!(data === null || data === void 0 ? void 0 : data.expires_in)) {
+        if (!data?.expires_in) {
             throw new Error("No expires_in returned");
         }
         this.accessToken = data.access_token;

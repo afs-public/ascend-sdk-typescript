@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReuseBankRelationshipRequestCreate$ = exports.ReuseBankRelationshipRequestCreate$outboundSchema = exports.ReuseBankRelationshipRequestCreate$inboundSchema = void 0;
+exports.reuseBankRelationshipRequestCreateToJSON = reuseBankRelationshipRequestCreateToJSON;
+exports.reuseBankRelationshipRequestCreateFromJSON = reuseBankRelationshipRequestCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.ReuseBankRelationshipRequestCreate$inboundSchema = z.object({
     parent: z.string(),
@@ -68,4 +71,10 @@ var ReuseBankRelationshipRequestCreate$;
     /** @deprecated use `ReuseBankRelationshipRequestCreate$outboundSchema` instead. */
     ReuseBankRelationshipRequestCreate$.outboundSchema = exports.ReuseBankRelationshipRequestCreate$outboundSchema;
 })(ReuseBankRelationshipRequestCreate$ || (exports.ReuseBankRelationshipRequestCreate$ = ReuseBankRelationshipRequestCreate$ = {}));
+function reuseBankRelationshipRequestCreateToJSON(reuseBankRelationshipRequestCreate) {
+    return JSON.stringify(exports.ReuseBankRelationshipRequestCreate$outboundSchema.parse(reuseBankRelationshipRequestCreate));
+}
+function reuseBankRelationshipRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ReuseBankRelationshipRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ReuseBankRelationshipRequestCreate' from JSON`);
+}
 //# sourceMappingURL=reusebankrelationshiprequestcreate.js.map

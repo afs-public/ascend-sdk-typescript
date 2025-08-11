@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AvailableRestriction, AvailableRestriction$Outbound } from "./availablerestriction.js";
 /**
  * The response to list available Restrictions for an Account.
@@ -29,4 +31,6 @@ export declare namespace ListAvailableRestrictionsResponse$ {
     /** @deprecated use `ListAvailableRestrictionsResponse$Outbound` instead. */
     type Outbound = ListAvailableRestrictionsResponse$Outbound;
 }
+export declare function listAvailableRestrictionsResponseToJSON(listAvailableRestrictionsResponse: ListAvailableRestrictionsResponse): string;
+export declare function listAvailableRestrictionsResponseFromJSON(jsonString: string): SafeParseResult<ListAvailableRestrictionsResponse, SDKValidationError>;
 //# sourceMappingURL=listavailablerestrictionsresponse.d.ts.map

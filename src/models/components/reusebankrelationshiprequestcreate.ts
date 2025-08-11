@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Request to reuse a bank relationship.
@@ -65,4 +68,25 @@ export namespace ReuseBankRelationshipRequestCreate$ {
     ReuseBankRelationshipRequestCreate$outboundSchema;
   /** @deprecated use `ReuseBankRelationshipRequestCreate$Outbound` instead. */
   export type Outbound = ReuseBankRelationshipRequestCreate$Outbound;
+}
+
+export function reuseBankRelationshipRequestCreateToJSON(
+  reuseBankRelationshipRequestCreate: ReuseBankRelationshipRequestCreate,
+): string {
+  return JSON.stringify(
+    ReuseBankRelationshipRequestCreate$outboundSchema.parse(
+      reuseBankRelationshipRequestCreate,
+    ),
+  );
+}
+
+export function reuseBankRelationshipRequestCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ReuseBankRelationshipRequestCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ReuseBankRelationshipRequestCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReuseBankRelationshipRequestCreate' from JSON`,
+  );
 }

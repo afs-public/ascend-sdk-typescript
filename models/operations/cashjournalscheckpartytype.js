@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CashJournalsCheckPartyTypeResponse$ = exports.CashJournalsCheckPartyTypeResponse$outboundSchema = exports.CashJournalsCheckPartyTypeResponse$inboundSchema = void 0;
+exports.cashJournalsCheckPartyTypeResponseToJSON = cashJournalsCheckPartyTypeResponseToJSON;
+exports.cashJournalsCheckPartyTypeResponseFromJSON = cashJournalsCheckPartyTypeResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.CashJournalsCheckPartyTypeResponse$inboundSchema = z.object({
@@ -77,4 +80,10 @@ var CashJournalsCheckPartyTypeResponse$;
     /** @deprecated use `CashJournalsCheckPartyTypeResponse$outboundSchema` instead. */
     CashJournalsCheckPartyTypeResponse$.outboundSchema = exports.CashJournalsCheckPartyTypeResponse$outboundSchema;
 })(CashJournalsCheckPartyTypeResponse$ || (exports.CashJournalsCheckPartyTypeResponse$ = CashJournalsCheckPartyTypeResponse$ = {}));
+function cashJournalsCheckPartyTypeResponseToJSON(cashJournalsCheckPartyTypeResponse) {
+    return JSON.stringify(exports.CashJournalsCheckPartyTypeResponse$outboundSchema.parse(cashJournalsCheckPartyTypeResponse));
+}
+function cashJournalsCheckPartyTypeResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CashJournalsCheckPartyTypeResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CashJournalsCheckPartyTypeResponse' from JSON`);
+}
 //# sourceMappingURL=cashjournalscheckpartytype.js.map

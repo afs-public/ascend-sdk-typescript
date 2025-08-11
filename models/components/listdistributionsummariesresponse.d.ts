@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DistributionSummary, DistributionSummary$Outbound } from "./distributionsummary.js";
 /**
  * Response object for aggregated distribution retirement summaries
@@ -34,4 +36,6 @@ export declare namespace ListDistributionSummariesResponse$ {
     /** @deprecated use `ListDistributionSummariesResponse$Outbound` instead. */
     type Outbound = ListDistributionSummariesResponse$Outbound;
 }
+export declare function listDistributionSummariesResponseToJSON(listDistributionSummariesResponse: ListDistributionSummariesResponse): string;
+export declare function listDistributionSummariesResponseFromJSON(jsonString: string): SafeParseResult<ListDistributionSummariesResponse, SDKValidationError>;
 //# sourceMappingURL=listdistributionsummariesresponse.d.ts.map

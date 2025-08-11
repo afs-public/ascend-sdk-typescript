@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DateUpdate,
   DateUpdate$inboundSchema,
@@ -78,4 +81,22 @@ export namespace LargeTraderUpdate$ {
   export const outboundSchema = LargeTraderUpdate$outboundSchema;
   /** @deprecated use `LargeTraderUpdate$Outbound` instead. */
   export type Outbound = LargeTraderUpdate$Outbound;
+}
+
+export function largeTraderUpdateToJSON(
+  largeTraderUpdate: LargeTraderUpdate,
+): string {
+  return JSON.stringify(
+    LargeTraderUpdate$outboundSchema.parse(largeTraderUpdate),
+  );
+}
+
+export function largeTraderUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<LargeTraderUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LargeTraderUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LargeTraderUpdate' from JSON`,
+  );
 }

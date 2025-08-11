@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsEndLargeTraderLegalNaturalPersonRequest = {
   /**
@@ -78,6 +81,33 @@ export namespace AccountsEndLargeTraderLegalNaturalPersonRequest$ {
     AccountsEndLargeTraderLegalNaturalPersonRequest$Outbound;
 }
 
+export function accountsEndLargeTraderLegalNaturalPersonRequestToJSON(
+  accountsEndLargeTraderLegalNaturalPersonRequest:
+    AccountsEndLargeTraderLegalNaturalPersonRequest,
+): string {
+  return JSON.stringify(
+    AccountsEndLargeTraderLegalNaturalPersonRequest$outboundSchema.parse(
+      accountsEndLargeTraderLegalNaturalPersonRequest,
+    ),
+  );
+}
+
+export function accountsEndLargeTraderLegalNaturalPersonRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsEndLargeTraderLegalNaturalPersonRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsEndLargeTraderLegalNaturalPersonRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsEndLargeTraderLegalNaturalPersonRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsEndLargeTraderLegalNaturalPersonResponse$inboundSchema:
   z.ZodType<
@@ -130,4 +160,31 @@ export namespace AccountsEndLargeTraderLegalNaturalPersonResponse$ {
   /** @deprecated use `AccountsEndLargeTraderLegalNaturalPersonResponse$Outbound` instead. */
   export type Outbound =
     AccountsEndLargeTraderLegalNaturalPersonResponse$Outbound;
+}
+
+export function accountsEndLargeTraderLegalNaturalPersonResponseToJSON(
+  accountsEndLargeTraderLegalNaturalPersonResponse:
+    AccountsEndLargeTraderLegalNaturalPersonResponse,
+): string {
+  return JSON.stringify(
+    AccountsEndLargeTraderLegalNaturalPersonResponse$outboundSchema.parse(
+      accountsEndLargeTraderLegalNaturalPersonResponse,
+    ),
+  );
+}
+
+export function accountsEndLargeTraderLegalNaturalPersonResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AccountsEndLargeTraderLegalNaturalPersonResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AccountsEndLargeTraderLegalNaturalPersonResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AccountsEndLargeTraderLegalNaturalPersonResponse' from JSON`,
+  );
 }

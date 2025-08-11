@@ -9,7 +9,7 @@ import { ForceReturnAchWithdrawalRequestCreate, NachaReturnCreateCode } from "@a
 
 let value: ForceReturnAchWithdrawalRequestCreate = {
   nachaReturn: {
-    code: NachaReturnCreateCode.R42,
+    code: NachaReturnCreateCode.R69,
   },
   name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/achWithdrawals/20230620500726",
 };

@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Institution representing originator or recipient of funds from an Instant Cash Transfer
  */
@@ -33,4 +35,6 @@ export declare namespace InstitutionCreate$ {
     /** @deprecated use `InstitutionCreate$Outbound` instead. */
     type Outbound = InstitutionCreate$Outbound;
 }
+export declare function institutionCreateToJSON(institutionCreate: InstitutionCreate): string;
+export declare function institutionCreateFromJSON(jsonString: string): SafeParseResult<InstitutionCreate, SDKValidationError>;
 //# sourceMappingURL=institutioncreate.d.ts.map

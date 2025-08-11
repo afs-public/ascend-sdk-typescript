@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 /**
  * The type of this price, which must PRICE_PER_UNIT for equity orders. (Fixed income and mutual fund assets do not support stop orders.)
@@ -66,4 +68,6 @@ export declare namespace StopPriceCreate$ {
     /** @deprecated use `StopPriceCreate$Outbound` instead. */
     type Outbound = StopPriceCreate$Outbound;
 }
+export declare function stopPriceCreateToJSON(stopPriceCreate: StopPriceCreate): string;
+export declare function stopPriceCreateFromJSON(jsonString: string): SafeParseResult<StopPriceCreate, SDKValidationError>;
 //# sourceMappingURL=stoppricecreate.d.ts.map

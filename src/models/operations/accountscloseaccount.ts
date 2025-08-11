@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountsCloseAccountRequest = {
   /**
@@ -76,6 +79,26 @@ export namespace AccountsCloseAccountRequest$ {
   export type Outbound = AccountsCloseAccountRequest$Outbound;
 }
 
+export function accountsCloseAccountRequestToJSON(
+  accountsCloseAccountRequest: AccountsCloseAccountRequest,
+): string {
+  return JSON.stringify(
+    AccountsCloseAccountRequest$outboundSchema.parse(
+      accountsCloseAccountRequest,
+    ),
+  );
+}
+
+export function accountsCloseAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsCloseAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsCloseAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsCloseAccountRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountsCloseAccountResponse$inboundSchema: z.ZodType<
   AccountsCloseAccountResponse,
@@ -128,4 +151,24 @@ export namespace AccountsCloseAccountResponse$ {
   export const outboundSchema = AccountsCloseAccountResponse$outboundSchema;
   /** @deprecated use `AccountsCloseAccountResponse$Outbound` instead. */
   export type Outbound = AccountsCloseAccountResponse$Outbound;
+}
+
+export function accountsCloseAccountResponseToJSON(
+  accountsCloseAccountResponse: AccountsCloseAccountResponse,
+): string {
+  return JSON.stringify(
+    AccountsCloseAccountResponse$outboundSchema.parse(
+      accountsCloseAccountResponse,
+    ),
+  );
+}
+
+export function accountsCloseAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountsCloseAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountsCloseAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountsCloseAccountResponse' from JSON`,
+  );
 }

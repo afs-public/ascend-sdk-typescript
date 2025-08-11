@@ -37,8 +37,13 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AchWithdrawalsGetAchWithdrawalResponse$ = exports.AchWithdrawalsGetAchWithdrawalResponse$outboundSchema = exports.AchWithdrawalsGetAchWithdrawalResponse$inboundSchema = exports.AchWithdrawalsGetAchWithdrawalRequest$ = exports.AchWithdrawalsGetAchWithdrawalRequest$outboundSchema = exports.AchWithdrawalsGetAchWithdrawalRequest$inboundSchema = void 0;
+exports.achWithdrawalsGetAchWithdrawalRequestToJSON = achWithdrawalsGetAchWithdrawalRequestToJSON;
+exports.achWithdrawalsGetAchWithdrawalRequestFromJSON = achWithdrawalsGetAchWithdrawalRequestFromJSON;
+exports.achWithdrawalsGetAchWithdrawalResponseToJSON = achWithdrawalsGetAchWithdrawalResponseToJSON;
+exports.achWithdrawalsGetAchWithdrawalResponseFromJSON = achWithdrawalsGetAchWithdrawalResponseFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.AchWithdrawalsGetAchWithdrawalRequest$inboundSchema = z.object({
@@ -71,6 +76,12 @@ var AchWithdrawalsGetAchWithdrawalRequest$;
     /** @deprecated use `AchWithdrawalsGetAchWithdrawalRequest$outboundSchema` instead. */
     AchWithdrawalsGetAchWithdrawalRequest$.outboundSchema = exports.AchWithdrawalsGetAchWithdrawalRequest$outboundSchema;
 })(AchWithdrawalsGetAchWithdrawalRequest$ || (exports.AchWithdrawalsGetAchWithdrawalRequest$ = AchWithdrawalsGetAchWithdrawalRequest$ = {}));
+function achWithdrawalsGetAchWithdrawalRequestToJSON(achWithdrawalsGetAchWithdrawalRequest) {
+    return JSON.stringify(exports.AchWithdrawalsGetAchWithdrawalRequest$outboundSchema.parse(achWithdrawalsGetAchWithdrawalRequest));
+}
+function achWithdrawalsGetAchWithdrawalRequestFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalsGetAchWithdrawalRequest$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalsGetAchWithdrawalRequest' from JSON`);
+}
 /** @internal */
 exports.AchWithdrawalsGetAchWithdrawalResponse$inboundSchema = z.object({
     HttpMeta: components.HTTPMetadata$inboundSchema,
@@ -106,4 +117,10 @@ var AchWithdrawalsGetAchWithdrawalResponse$;
     /** @deprecated use `AchWithdrawalsGetAchWithdrawalResponse$outboundSchema` instead. */
     AchWithdrawalsGetAchWithdrawalResponse$.outboundSchema = exports.AchWithdrawalsGetAchWithdrawalResponse$outboundSchema;
 })(AchWithdrawalsGetAchWithdrawalResponse$ || (exports.AchWithdrawalsGetAchWithdrawalResponse$ = AchWithdrawalsGetAchWithdrawalResponse$ = {}));
+function achWithdrawalsGetAchWithdrawalResponseToJSON(achWithdrawalsGetAchWithdrawalResponse) {
+    return JSON.stringify(exports.AchWithdrawalsGetAchWithdrawalResponse$outboundSchema.parse(achWithdrawalsGetAchWithdrawalResponse));
+}
+function achWithdrawalsGetAchWithdrawalResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.AchWithdrawalsGetAchWithdrawalResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchWithdrawalsGetAchWithdrawalResponse' from JSON`);
+}
 //# sourceMappingURL=achwithdrawalsgetachwithdrawal.js.map

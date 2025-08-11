@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RestrictionCreate$ = exports.RestrictionCreate$outboundSchema = exports.RestrictionCreate$inboundSchema = void 0;
+exports.restrictionCreateToJSON = restrictionCreateToJSON;
+exports.restrictionCreateFromJSON = restrictionCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.RestrictionCreate$inboundSchema = z.object({
     create_reason: z.string(),
@@ -74,4 +77,10 @@ var RestrictionCreate$;
     /** @deprecated use `RestrictionCreate$outboundSchema` instead. */
     RestrictionCreate$.outboundSchema = exports.RestrictionCreate$outboundSchema;
 })(RestrictionCreate$ || (exports.RestrictionCreate$ = RestrictionCreate$ = {}));
+function restrictionCreateToJSON(restrictionCreate) {
+    return JSON.stringify(exports.RestrictionCreate$outboundSchema.parse(restrictionCreate));
+}
+function restrictionCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.RestrictionCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'RestrictionCreate' from JSON`);
+}
 //# sourceMappingURL=restrictioncreate.js.map

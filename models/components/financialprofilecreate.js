@@ -37,8 +37,11 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FinancialProfileCreate$ = exports.FinancialProfileCreate$outboundSchema = exports.FinancialProfileCreate$inboundSchema = void 0;
+exports.financialProfileCreateToJSON = financialProfileCreateToJSON;
+exports.financialProfileCreateFromJSON = financialProfileCreateFromJSON;
 const z = __importStar(require("zod"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 const otheraccountscreate_js_1 = require("./otheraccountscreate.js");
 /** @internal */
 exports.FinancialProfileCreate$inboundSchema = z.object({
@@ -75,4 +78,10 @@ var FinancialProfileCreate$;
     /** @deprecated use `FinancialProfileCreate$outboundSchema` instead. */
     FinancialProfileCreate$.outboundSchema = exports.FinancialProfileCreate$outboundSchema;
 })(FinancialProfileCreate$ || (exports.FinancialProfileCreate$ = FinancialProfileCreate$ = {}));
+function financialProfileCreateToJSON(financialProfileCreate) {
+    return JSON.stringify(exports.FinancialProfileCreate$outboundSchema.parse(financialProfileCreate));
+}
+function financialProfileCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.FinancialProfileCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'FinancialProfileCreate' from JSON`);
+}
 //# sourceMappingURL=financialprofilecreate.js.map

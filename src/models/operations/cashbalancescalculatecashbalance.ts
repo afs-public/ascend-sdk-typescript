@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The withdraw mechanism to calculate the balance for. The mechanism determines what account activity will affect the balance.
@@ -118,6 +121,33 @@ export namespace CashBalancesCalculateCashBalanceRequest$ {
   export type Outbound = CashBalancesCalculateCashBalanceRequest$Outbound;
 }
 
+export function cashBalancesCalculateCashBalanceRequestToJSON(
+  cashBalancesCalculateCashBalanceRequest:
+    CashBalancesCalculateCashBalanceRequest,
+): string {
+  return JSON.stringify(
+    CashBalancesCalculateCashBalanceRequest$outboundSchema.parse(
+      cashBalancesCalculateCashBalanceRequest,
+    ),
+  );
+}
+
+export function cashBalancesCalculateCashBalanceRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashBalancesCalculateCashBalanceRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashBalancesCalculateCashBalanceRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashBalancesCalculateCashBalanceRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CashBalancesCalculateCashBalanceResponse$inboundSchema: z.ZodType<
   CashBalancesCalculateCashBalanceResponse,
@@ -176,4 +206,31 @@ export namespace CashBalancesCalculateCashBalanceResponse$ {
     CashBalancesCalculateCashBalanceResponse$outboundSchema;
   /** @deprecated use `CashBalancesCalculateCashBalanceResponse$Outbound` instead. */
   export type Outbound = CashBalancesCalculateCashBalanceResponse$Outbound;
+}
+
+export function cashBalancesCalculateCashBalanceResponseToJSON(
+  cashBalancesCalculateCashBalanceResponse:
+    CashBalancesCalculateCashBalanceResponse,
+): string {
+  return JSON.stringify(
+    CashBalancesCalculateCashBalanceResponse$outboundSchema.parse(
+      cashBalancesCalculateCashBalanceResponse,
+    ),
+  );
+}
+
+export function cashBalancesCalculateCashBalanceResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CashBalancesCalculateCashBalanceResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CashBalancesCalculateCashBalanceResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CashBalancesCalculateCashBalanceResponse' from JSON`,
+  );
 }

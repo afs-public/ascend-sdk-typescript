@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The yield percentage at which the transaction was effected
@@ -83,6 +86,20 @@ export namespace YieldPercent$ {
   export const outboundSchema = YieldPercent$outboundSchema;
   /** @deprecated use `YieldPercent$Outbound` instead. */
   export type Outbound = YieldPercent$Outbound;
+}
+
+export function yieldPercentToJSON(yieldPercent: YieldPercent): string {
+  return JSON.stringify(YieldPercent$outboundSchema.parse(yieldPercent));
+}
+
+export function yieldPercentFromJSON(
+  jsonString: string,
+): SafeParseResult<YieldPercent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => YieldPercent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'YieldPercent' from JSON`,
+  );
 }
 
 /** @internal */
@@ -166,4 +183,18 @@ export namespace YieldRecord$ {
   export const outboundSchema = YieldRecord$outboundSchema;
   /** @deprecated use `YieldRecord$Outbound` instead. */
   export type Outbound = YieldRecord$Outbound;
+}
+
+export function yieldRecordToJSON(yieldRecord: YieldRecord): string {
+  return JSON.stringify(YieldRecord$outboundSchema.parse(yieldRecord));
+}
+
+export function yieldRecordFromJSON(
+  jsonString: string,
+): SafeParseResult<YieldRecord, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => YieldRecord$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'YieldRecord' from JSON`,
+  );
 }

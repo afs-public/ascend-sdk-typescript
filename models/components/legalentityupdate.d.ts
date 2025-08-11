@@ -1,5 +1,7 @@
 import * as z from "zod";
 import { OpenEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DateUpdate, DateUpdate$Outbound } from "./dateupdate.js";
 import { EntityDueDiligenceUpdate, EntityDueDiligenceUpdate$Outbound } from "./entityduediligenceupdate.js";
 import { LargeTraderUpdate, LargeTraderUpdate$Outbound } from "./largetraderupdate.js";
@@ -351,4 +353,6 @@ export declare namespace LegalEntityUpdate$ {
     /** @deprecated use `LegalEntityUpdate$Outbound` instead. */
     type Outbound = LegalEntityUpdate$Outbound;
 }
+export declare function legalEntityUpdateToJSON(legalEntityUpdate: LegalEntityUpdate): string;
+export declare function legalEntityUpdateFromJSON(jsonString: string): SafeParseResult<LegalEntityUpdate, SDKValidationError>;
 //# sourceMappingURL=legalentityupdate.d.ts.map

@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DateCreate$ = exports.DateCreate$outboundSchema = exports.DateCreate$inboundSchema = void 0;
+exports.dateCreateToJSON = dateCreateToJSON;
+exports.dateCreateFromJSON = dateCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.DateCreate$inboundSchema = z.object({
     day: z.number().int().optional(),
@@ -61,4 +64,10 @@ var DateCreate$;
     /** @deprecated use `DateCreate$outboundSchema` instead. */
     DateCreate$.outboundSchema = exports.DateCreate$outboundSchema;
 })(DateCreate$ || (exports.DateCreate$ = DateCreate$ = {}));
+function dateCreateToJSON(dateCreate) {
+    return JSON.stringify(exports.DateCreate$outboundSchema.parse(dateCreate));
+}
+function dateCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DateCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DateCreate' from JSON`);
+}
 //# sourceMappingURL=datecreate.js.map

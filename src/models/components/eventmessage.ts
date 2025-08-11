@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Represents an envelope and the data of an event
@@ -127,4 +130,18 @@ export namespace EventMessage$ {
   export const outboundSchema = EventMessage$outboundSchema;
   /** @deprecated use `EventMessage$Outbound` instead. */
   export type Outbound = EventMessage$Outbound;
+}
+
+export function eventMessageToJSON(eventMessage: EventMessage): string {
+  return JSON.stringify(EventMessage$outboundSchema.parse(eventMessage));
+}
+
+export function eventMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<EventMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EventMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EventMessage' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IctDepositsCreateIctDepositRequest = {
   /**
@@ -76,6 +79,27 @@ export namespace IctDepositsCreateIctDepositRequest$ {
   export type Outbound = IctDepositsCreateIctDepositRequest$Outbound;
 }
 
+export function ictDepositsCreateIctDepositRequestToJSON(
+  ictDepositsCreateIctDepositRequest: IctDepositsCreateIctDepositRequest,
+): string {
+  return JSON.stringify(
+    IctDepositsCreateIctDepositRequest$outboundSchema.parse(
+      ictDepositsCreateIctDepositRequest,
+    ),
+  );
+}
+
+export function ictDepositsCreateIctDepositRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositsCreateIctDepositRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositsCreateIctDepositRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositsCreateIctDepositRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IctDepositsCreateIctDepositResponse$inboundSchema: z.ZodType<
   IctDepositsCreateIctDepositResponse,
@@ -130,4 +154,25 @@ export namespace IctDepositsCreateIctDepositResponse$ {
     IctDepositsCreateIctDepositResponse$outboundSchema;
   /** @deprecated use `IctDepositsCreateIctDepositResponse$Outbound` instead. */
   export type Outbound = IctDepositsCreateIctDepositResponse$Outbound;
+}
+
+export function ictDepositsCreateIctDepositResponseToJSON(
+  ictDepositsCreateIctDepositResponse: IctDepositsCreateIctDepositResponse,
+): string {
+  return JSON.stringify(
+    IctDepositsCreateIctDepositResponse$outboundSchema.parse(
+      ictDepositsCreateIctDepositResponse,
+    ),
+  );
+}
+
+export function ictDepositsCreateIctDepositResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IctDepositsCreateIctDepositResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      IctDepositsCreateIctDepositResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IctDepositsCreateIctDepositResponse' from JSON`,
+  );
 }

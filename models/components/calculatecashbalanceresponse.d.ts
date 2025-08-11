@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CalculateCashBalanceResponseOpenOrderSummary, CalculateCashBalanceResponseOpenOrderSummary$Outbound } from "./calculatecashbalanceresponseopenordersummary.js";
 import { CalculateCashBalanceResponseTradeSummary, CalculateCashBalanceResponseTradeSummary$Outbound } from "./calculatecashbalanceresponsetradesummary.js";
 import { CalculateCashBalanceResponseTransferSummary, CalculateCashBalanceResponseTransferSummary$Outbound } from "./calculatecashbalanceresponsetransfersummary.js";
@@ -180,6 +182,8 @@ export declare namespace AvailableCashToWithdrawAmount$ {
     /** @deprecated use `AvailableCashToWithdrawAmount$Outbound` instead. */
     type Outbound = AvailableCashToWithdrawAmount$Outbound;
 }
+export declare function availableCashToWithdrawAmountToJSON(availableCashToWithdrawAmount: AvailableCashToWithdrawAmount): string;
+export declare function availableCashToWithdrawAmountFromJSON(jsonString: string): SafeParseResult<AvailableCashToWithdrawAmount, SDKValidationError>;
 /** @internal */
 export declare const AvailableLiquidityAmount$inboundSchema: z.ZodType<AvailableLiquidityAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -200,6 +204,8 @@ export declare namespace AvailableLiquidityAmount$ {
     /** @deprecated use `AvailableLiquidityAmount$Outbound` instead. */
     type Outbound = AvailableLiquidityAmount$Outbound;
 }
+export declare function availableLiquidityAmountToJSON(availableLiquidityAmount: AvailableLiquidityAmount): string;
+export declare function availableLiquidityAmountFromJSON(jsonString: string): SafeParseResult<AvailableLiquidityAmount, SDKValidationError>;
 /** @internal */
 export declare const FullyPaidUnsettledFundsAmount$inboundSchema: z.ZodType<FullyPaidUnsettledFundsAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -220,6 +226,8 @@ export declare namespace FullyPaidUnsettledFundsAmount$ {
     /** @deprecated use `FullyPaidUnsettledFundsAmount$Outbound` instead. */
     type Outbound = FullyPaidUnsettledFundsAmount$Outbound;
 }
+export declare function fullyPaidUnsettledFundsAmountToJSON(fullyPaidUnsettledFundsAmount: FullyPaidUnsettledFundsAmount): string;
+export declare function fullyPaidUnsettledFundsAmountFromJSON(jsonString: string): SafeParseResult<FullyPaidUnsettledFundsAmount, SDKValidationError>;
 /** @internal */
 export declare const OpenBalanceAmount$inboundSchema: z.ZodType<OpenBalanceAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -240,6 +248,8 @@ export declare namespace OpenBalanceAmount$ {
     /** @deprecated use `OpenBalanceAmount$Outbound` instead. */
     type Outbound = OpenBalanceAmount$Outbound;
 }
+export declare function openBalanceAmountToJSON(openBalanceAmount: OpenBalanceAmount): string;
+export declare function openBalanceAmountFromJSON(jsonString: string): SafeParseResult<OpenBalanceAmount, SDKValidationError>;
 /** @internal */
 export declare const OpenLiquidityAmount$inboundSchema: z.ZodType<OpenLiquidityAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -260,6 +270,8 @@ export declare namespace OpenLiquidityAmount$ {
     /** @deprecated use `OpenLiquidityAmount$Outbound` instead. */
     type Outbound = OpenLiquidityAmount$Outbound;
 }
+export declare function openLiquidityAmountToJSON(openLiquidityAmount: OpenLiquidityAmount): string;
+export declare function openLiquidityAmountFromJSON(jsonString: string): SafeParseResult<OpenLiquidityAmount, SDKValidationError>;
 /** @internal */
 export declare const PendingDebitDividendsAmount$inboundSchema: z.ZodType<PendingDebitDividendsAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -280,6 +292,8 @@ export declare namespace PendingDebitDividendsAmount$ {
     /** @deprecated use `PendingDebitDividendsAmount$Outbound` instead. */
     type Outbound = PendingDebitDividendsAmount$Outbound;
 }
+export declare function pendingDebitDividendsAmountToJSON(pendingDebitDividendsAmount: PendingDebitDividendsAmount): string;
+export declare function pendingDebitDividendsAmountFromJSON(jsonString: string): SafeParseResult<PendingDebitDividendsAmount, SDKValidationError>;
 /** @internal */
 export declare const PendingDebitInterestAmount$inboundSchema: z.ZodType<PendingDebitInterestAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -300,6 +314,8 @@ export declare namespace PendingDebitInterestAmount$ {
     /** @deprecated use `PendingDebitInterestAmount$Outbound` instead. */
     type Outbound = PendingDebitInterestAmount$Outbound;
 }
+export declare function pendingDebitInterestAmountToJSON(pendingDebitInterestAmount: PendingDebitInterestAmount): string;
+export declare function pendingDebitInterestAmountFromJSON(jsonString: string): SafeParseResult<PendingDebitInterestAmount, SDKValidationError>;
 /** @internal */
 export declare const UnadjustedAvailableCashToWithdrawAmount$inboundSchema: z.ZodType<UnadjustedAvailableCashToWithdrawAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -320,6 +336,8 @@ export declare namespace UnadjustedAvailableCashToWithdrawAmount$ {
     /** @deprecated use `UnadjustedAvailableCashToWithdrawAmount$Outbound` instead. */
     type Outbound = UnadjustedAvailableCashToWithdrawAmount$Outbound;
 }
+export declare function unadjustedAvailableCashToWithdrawAmountToJSON(unadjustedAvailableCashToWithdrawAmount: UnadjustedAvailableCashToWithdrawAmount): string;
+export declare function unadjustedAvailableCashToWithdrawAmountFromJSON(jsonString: string): SafeParseResult<UnadjustedAvailableCashToWithdrawAmount, SDKValidationError>;
 /** @internal */
 export declare const WithheldDepositThresholdAmount$inboundSchema: z.ZodType<WithheldDepositThresholdAmount, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -340,6 +358,8 @@ export declare namespace WithheldDepositThresholdAmount$ {
     /** @deprecated use `WithheldDepositThresholdAmount$Outbound` instead. */
     type Outbound = WithheldDepositThresholdAmount$Outbound;
 }
+export declare function withheldDepositThresholdAmountToJSON(withheldDepositThresholdAmount: WithheldDepositThresholdAmount): string;
+export declare function withheldDepositThresholdAmountFromJSON(jsonString: string): SafeParseResult<WithheldDepositThresholdAmount, SDKValidationError>;
 /** @internal */
 export declare const CalculateCashBalanceResponse$inboundSchema: z.ZodType<CalculateCashBalanceResponse, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -377,4 +397,6 @@ export declare namespace CalculateCashBalanceResponse$ {
     /** @deprecated use `CalculateCashBalanceResponse$Outbound` instead. */
     type Outbound = CalculateCashBalanceResponse$Outbound;
 }
+export declare function calculateCashBalanceResponseToJSON(calculateCashBalanceResponse: CalculateCashBalanceResponse): string;
+export declare function calculateCashBalanceResponseFromJSON(jsonString: string): SafeParseResult<CalculateCashBalanceResponse, SDKValidationError>;
 //# sourceMappingURL=calculatecashbalanceresponse.d.ts.map

@@ -37,7 +37,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CancelWireWithdrawalScheduleRequestCreate$ = exports.CancelWireWithdrawalScheduleRequestCreate$outboundSchema = exports.CancelWireWithdrawalScheduleRequestCreate$inboundSchema = void 0;
+exports.cancelWireWithdrawalScheduleRequestCreateToJSON = cancelWireWithdrawalScheduleRequestCreateToJSON;
+exports.cancelWireWithdrawalScheduleRequestCreateFromJSON = cancelWireWithdrawalScheduleRequestCreateFromJSON;
 const z = __importStar(require("zod"));
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
 exports.CancelWireWithdrawalScheduleRequestCreate$inboundSchema = z.object({
     comment: z.string().optional(),
@@ -59,4 +62,10 @@ var CancelWireWithdrawalScheduleRequestCreate$;
     /** @deprecated use `CancelWireWithdrawalScheduleRequestCreate$outboundSchema` instead. */
     CancelWireWithdrawalScheduleRequestCreate$.outboundSchema = exports.CancelWireWithdrawalScheduleRequestCreate$outboundSchema;
 })(CancelWireWithdrawalScheduleRequestCreate$ || (exports.CancelWireWithdrawalScheduleRequestCreate$ = CancelWireWithdrawalScheduleRequestCreate$ = {}));
+function cancelWireWithdrawalScheduleRequestCreateToJSON(cancelWireWithdrawalScheduleRequestCreate) {
+    return JSON.stringify(exports.CancelWireWithdrawalScheduleRequestCreate$outboundSchema.parse(cancelWireWithdrawalScheduleRequestCreate));
+}
+function cancelWireWithdrawalScheduleRequestCreateFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CancelWireWithdrawalScheduleRequestCreate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CancelWireWithdrawalScheduleRequestCreate' from JSON`);
+}
 //# sourceMappingURL=cancelwirewithdrawalschedulerequestcreate.js.map

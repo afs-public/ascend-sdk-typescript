@@ -1,4 +1,6 @@
 import * as z from "zod";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The details of file containing the snapshot data. This contains the download uri and uri expiry time.
  */
@@ -83,6 +85,8 @@ export declare namespace FileT$ {
     /** @deprecated use `FileT$Outbound` instead. */
     type Outbound = FileT$Outbound;
 }
+export declare function fileToJSON(fileT: FileT): string;
+export declare function fileFromJSON(jsonString: string): SafeParseResult<FileT, SDKValidationError>;
 /** @internal */
 export declare const SnapshotProcessDate$inboundSchema: z.ZodType<SnapshotProcessDate, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -105,6 +109,8 @@ export declare namespace SnapshotProcessDate$ {
     /** @deprecated use `SnapshotProcessDate$Outbound` instead. */
     type Outbound = SnapshotProcessDate$Outbound;
 }
+export declare function snapshotProcessDateToJSON(snapshotProcessDate: SnapshotProcessDate): string;
+export declare function snapshotProcessDateFromJSON(jsonString: string): SafeParseResult<SnapshotProcessDate, SDKValidationError>;
 /** @internal */
 export declare const Snapshot$inboundSchema: z.ZodType<Snapshot, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -131,4 +137,6 @@ export declare namespace Snapshot$ {
     /** @deprecated use `Snapshot$Outbound` instead. */
     type Outbound = Snapshot$Outbound;
 }
+export declare function snapshotToJSON(snapshot: Snapshot): string;
+export declare function snapshotFromJSON(jsonString: string): SafeParseResult<Snapshot, SDKValidationError>;
 //# sourceMappingURL=snapshot.d.ts.map
