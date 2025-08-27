@@ -32,7 +32,7 @@ import {
 } from "./execution.js";
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum BookingTradeAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -40,7 +40,7 @@ export enum BookingTradeAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type BookingTradeAssetTypeOpen = OpenEnum<typeof BookingTradeAssetType>;
 
@@ -286,7 +286,7 @@ export type BookingTrade = {
    */
   alternateOrderId?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
   assetType?: BookingTradeAssetTypeOpen | undefined;
   /**

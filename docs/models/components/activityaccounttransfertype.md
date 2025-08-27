@@ -26,4 +26,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `FailReversal`                    | FAIL_REVERSAL                     |
 | `Reclaim`                         | RECLAIM                           |
 | `PositionTransferFund`            | POSITION_TRANSFER_FUND            |
+| `SponsoredTransfer`               | SPONSORED_TRANSFER                |
 | -                                 | `Unrecognized<string>`            |

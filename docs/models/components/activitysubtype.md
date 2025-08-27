@@ -49,4 +49,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Maturity`                              | MATURITY                                |
 | `Termination`                           | TERMINATION                             |
 | `RedemptionOfWarrants`                  | REDEMPTION_OF_WARRANTS                  |
+| `InterimPayment`                        | INTERIM_PAYMENT                         |
+| `FinalPayment`                          | FINAL_PAYMENT                           |
 | -                                       | `Unrecognized<string>`                  |

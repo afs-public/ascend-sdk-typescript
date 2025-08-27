@@ -32,7 +32,7 @@ import {
 } from "./execution.js";
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum CompleteTradeResponseAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -40,7 +40,7 @@ export enum CompleteTradeResponseAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type CompleteTradeResponseAssetTypeOpen = OpenEnum<
   typeof CompleteTradeResponseAssetType
@@ -294,7 +294,7 @@ export type Trade = {
    */
   alternateOrderId?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
   assetType?: CompleteTradeResponseAssetTypeOpen | undefined;
   /**

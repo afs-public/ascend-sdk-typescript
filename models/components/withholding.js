@@ -100,6 +100,7 @@ var WithholdingState;
     WithholdingState["Wv"] = "WV";
     WithholdingState["Wi"] = "WI";
     WithholdingState["Wy"] = "WY";
+    WithholdingState["Dc"] = "DC";
 })(WithholdingState || (exports.WithholdingState = WithholdingState = {}));
 /**
  * Describes the type of the withholding (Federal, State, etc.)

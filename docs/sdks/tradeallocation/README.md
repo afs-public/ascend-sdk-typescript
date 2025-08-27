@@ -21,7 +21,12 @@ Creates a new trade allocation. These are used to allocate or distribute positio
 <!-- UsageSnippet language="typescript" operationID="Booking_CreateTradeAllocation" method="post" path="/booking/v1/accounts/{account_id}/tradeAllocations" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import { ToSide, TradeAllocationCreateBrokerCapacity, TradeAllocationCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  ToSide,
+  TradeAllocationCreateAssetType,
+  TradeAllocationCreateBrokerCapacity,
+  TradeAllocationCreateIdentifierType,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 const apexascend = new Apexascend({
   security: {
@@ -37,6 +42,7 @@ const apexascend = new Apexascend({
 
 async function run() {
   const result = await apexascend.tradeAllocation.createTradeAllocation({
+    assetType: TradeAllocationCreateAssetType.Equity,
     brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
     executionTime: new Date("2024-07-17T12:00:00Z"),
     fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
@@ -62,7 +68,12 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { tradeAllocationCreateTradeAllocation } from "@apexfintechsolutions/ascend-sdk/funcs/tradeAllocationCreateTradeAllocation.js";
-import { ToSide, TradeAllocationCreateBrokerCapacity, TradeAllocationCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  ToSide,
+  TradeAllocationCreateAssetType,
+  TradeAllocationCreateBrokerCapacity,
+  TradeAllocationCreateIdentifierType,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -80,6 +91,7 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await tradeAllocationCreateTradeAllocation(apexascend, {
+    assetType: TradeAllocationCreateAssetType.Equity,
     brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
     executionTime: new Date("2024-07-17T12:00:00Z"),
     fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
@@ -321,7 +333,12 @@ Rebook a trade allocation by the original trade_allocation_id. The allocation is
 <!-- UsageSnippet language="typescript" operationID="Booking_RebookTradeAllocation" method="post" path="/booking/v1/accounts/{account_id}/tradeAllocations/{tradeAllocation_id}:rebook" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import { ToSide, TradeAllocationCreateBrokerCapacity, TradeAllocationCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  ToSide,
+  TradeAllocationCreateAssetType,
+  TradeAllocationCreateBrokerCapacity,
+  TradeAllocationCreateIdentifierType,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 const apexascend = new Apexascend({
   security: {
@@ -340,6 +357,7 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM",
     requestId: "8a0d35c0-428c-439e-9b03-b611530fe06f",
     tradeAllocation: {
+      assetType: TradeAllocationCreateAssetType.Equity,
       brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
       executionTime: new Date("2024-07-17T12:00:00Z"),
       fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
@@ -366,7 +384,12 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { tradeAllocationRebookTradeAllocation } from "@apexfintechsolutions/ascend-sdk/funcs/tradeAllocationRebookTradeAllocation.js";
-import { ToSide, TradeAllocationCreateBrokerCapacity, TradeAllocationCreateIdentifierType } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  ToSide,
+  TradeAllocationCreateAssetType,
+  TradeAllocationCreateBrokerCapacity,
+  TradeAllocationCreateIdentifierType,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -387,6 +410,7 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM",
     requestId: "8a0d35c0-428c-439e-9b03-b611530fe06f",
     tradeAllocation: {
+      assetType: TradeAllocationCreateAssetType.Equity,
       brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
       executionTime: new Date("2024-07-17T12:00:00Z"),
       fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",

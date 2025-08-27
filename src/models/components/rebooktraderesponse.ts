@@ -32,7 +32,7 @@ import {
 } from "./execution.js";
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum RebookTradeResponseAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -40,7 +40,7 @@ export enum RebookTradeResponseAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeResponseAssetTypeOpen = OpenEnum<
   typeof RebookTradeResponseAssetType
@@ -294,7 +294,7 @@ export type NewTrade = {
    */
   alternateOrderId?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
   assetType?: RebookTradeResponseAssetTypeOpen | undefined;
   /**
@@ -397,7 +397,7 @@ export type NewTrade = {
 };
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum RebookTradeResponseOriginalTradeAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -405,7 +405,7 @@ export enum RebookTradeResponseOriginalTradeAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeResponseOriginalTradeAssetTypeOpen = OpenEnum<
   typeof RebookTradeResponseOriginalTradeAssetType
@@ -659,7 +659,7 @@ export type OriginalTrade = {
    */
   alternateOrderId?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
   assetType?: RebookTradeResponseOriginalTradeAssetTypeOpen | undefined;
   /**

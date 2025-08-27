@@ -38,7 +38,7 @@ import {
 } from "./lotcreate.js";
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum TradeCreateAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -46,7 +46,7 @@ export enum TradeCreateAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type TradeCreateAssetTypeOpen = OpenEnum<typeof TradeCreateAssetType>;
 
@@ -246,9 +246,9 @@ export type TradeCreate = {
    */
   alternateOrderId?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
-  assetType?: TradeCreateAssetTypeOpen | undefined;
+  assetType: TradeCreateAssetTypeOpen;
   /**
    * Broker capacity for the trade.
    */
@@ -641,7 +641,7 @@ export const TradeCreate$inboundSchema: z.ZodType<
   account_id: z.string(),
   additional_instructions: z.string().optional(),
   alternate_order_id: z.string().optional(),
-  asset_type: TradeCreateAssetType$inboundSchema.optional(),
+  asset_type: TradeCreateAssetType$inboundSchema,
   broker_capacity: TradeCreateBrokerCapacity$inboundSchema,
   client_order_id: z.string(),
   executing_broker: z.string().optional(),
@@ -692,7 +692,7 @@ export type TradeCreate$Outbound = {
   account_id: string;
   additional_instructions?: string | undefined;
   alternate_order_id?: string | undefined;
-  asset_type?: string | undefined;
+  asset_type: string;
   broker_capacity: string;
   client_order_id: string;
   executing_broker?: string | undefined;
@@ -725,7 +725,7 @@ export const TradeCreate$outboundSchema: z.ZodType<
   accountId: z.string(),
   additionalInstructions: z.string().optional(),
   alternateOrderId: z.string().optional(),
-  assetType: TradeCreateAssetType$outboundSchema.optional(),
+  assetType: TradeCreateAssetType$outboundSchema,
   brokerCapacity: TradeCreateBrokerCapacity$outboundSchema,
   clientOrderId: z.string(),
   executingBroker: z.string().optional(),

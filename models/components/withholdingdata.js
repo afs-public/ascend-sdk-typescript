@@ -98,6 +98,7 @@ var WithholdingDataState;
     WithholdingDataState["Wv"] = "WV";
     WithholdingDataState["Wi"] = "WI";
     WithholdingDataState["Wy"] = "WY";
+    WithholdingDataState["Dc"] = "DC";
 })(WithholdingDataState || (exports.WithholdingDataState = WithholdingDataState = {}));
 /**
  * Provides more detail on the type of the withholding (Federal, State, etc.)

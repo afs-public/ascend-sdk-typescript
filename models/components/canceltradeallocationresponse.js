@@ -68,7 +68,7 @@ const bondyield_js_1 = require("./bondyield.js");
 const bookingfee_js_1 = require("./bookingfee.js");
 const bookinglot_js_1 = require("./bookinglot.js");
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 var CancelTradeAllocationResponseAssetType;
 (function (CancelTradeAllocationResponseAssetType) {

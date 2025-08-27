@@ -50,7 +50,7 @@ const decimalcreate_js_1 = require("./decimalcreate.js");
 const lotcreate_js_1 = require("./lotcreate.js");
 const priceadjustmentcreate_js_1 = require("./priceadjustmentcreate.js");
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 var TradeAllocationCreateAssetType;
 (function (TradeAllocationCreateAssetType) {
@@ -317,7 +317,7 @@ var TradeAllocationCreateWhenIssued$;
 exports.TradeAllocationCreate$inboundSchema = z.object({
     accrued_interest_amount: decimalcreate_js_1.DecimalCreate$inboundSchema.optional(),
     additional_instructions: z.string().optional(),
-    asset_type: exports.TradeAllocationCreateAssetType$inboundSchema.optional(),
+    asset_type: exports.TradeAllocationCreateAssetType$inboundSchema,
     bond_yield: z.array(bondyieldcreate_js_1.BondYieldCreate$inboundSchema).optional(),
     broker_capacity: exports.TradeAllocationCreateBrokerCapacity$inboundSchema,
     client_order_id: z.string().optional(),
@@ -372,7 +372,7 @@ exports.TradeAllocationCreate$inboundSchema = z.object({
 exports.TradeAllocationCreate$outboundSchema = z.object({
     accruedInterestAmount: decimalcreate_js_1.DecimalCreate$outboundSchema.optional(),
     additionalInstructions: z.string().optional(),
-    assetType: exports.TradeAllocationCreateAssetType$outboundSchema.optional(),
+    assetType: exports.TradeAllocationCreateAssetType$outboundSchema,
     bondYield: z.array(bondyieldcreate_js_1.BondYieldCreate$outboundSchema).optional(),
     brokerCapacity: exports.TradeAllocationCreateBrokerCapacity$outboundSchema,
     clientOrderId: z.string().optional(),

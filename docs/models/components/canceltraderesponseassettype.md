@@ -1,6 +1,6 @@
 # CancelTradeResponseAssetType
 
-Type of the asset being traded. Required for SYMBOL and CUSIP.
+Type of the asset being traded.
 
 ## Example Usage
 

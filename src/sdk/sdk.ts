@@ -12,6 +12,7 @@ import { Authentication } from "./authentication.js";
 import { BankRelationships } from "./bankrelationships.js";
 import { BasketOrders } from "./basketorders.js";
 import { CashBalances } from "./cashbalances.js";
+import { Checks } from "./checks.js";
 import { CreateOrder } from "./createorder.js";
 import { DataRetrieval } from "./dataretrieval.js";
 import { EnrollmentsAndAgreements } from "./enrollmentsandagreements.js";
@@ -108,6 +109,16 @@ export class Apexascend extends ClientSDK {
     return (this._scheduleTransfers ??= new ScheduleTransfers(this._options));
   }
 
+  private _checks?: Checks;
+  get checks(): Checks {
+    return (this._checks ??= new Checks(this._options));
+  }
+
+  private _testSimulation?: TestSimulation;
+  get testSimulation(): TestSimulation {
+    return (this._testSimulation ??= new TestSimulation(this._options));
+  }
+
   private _wires?: Wires;
   get wires(): Wires {
     return (this._wires ??= new Wires(this._options));
@@ -121,11 +132,6 @@ export class Apexascend extends ClientSDK {
   private _feesAndCredits?: FeesAndCredits;
   get feesAndCredits(): FeesAndCredits {
     return (this._feesAndCredits ??= new FeesAndCredits(this._options));
-  }
-
-  private _testSimulation?: TestSimulation;
-  get testSimulation(): TestSimulation {
-    return (this._testSimulation ??= new TestSimulation(this._options));
   }
 
   private _accountTransfers?: AccountTransfers;

@@ -425,7 +425,7 @@ async function createCashJournal(account_id) {
         clientTransferId: crypto_1.default.randomUUID(),
         destinationAccount: "accounts/" + account_id,
         amount: {
-            value: "250001.00",
+            value: "500001.00",
         },
         sourceAccount: "accounts/" + exports.withdrawal_account_id,
     };

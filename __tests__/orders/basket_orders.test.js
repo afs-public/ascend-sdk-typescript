@@ -43,6 +43,7 @@ const vitest_2 = require("vitest");
 const index_1 = require("./index");
 const crypto_1 = __importDefault(require("crypto"));
 let basket_order_id;
+let basket_order_to_remove_id = crypto_1.default.randomUUID();
 (0, vitest_2.beforeAll)(async () => {
     basket_order_id = await (0, index_1.createBasketId)();
 }, 60000);
@@ -70,6 +71,17 @@ let basket_order_id;
                 side: components.BasketOrderCreateSide.Buy,
                 timeInForce: components.BasketOrderCreateTimeInForce.Day,
             },
+            {
+                accountId: index_1.withdrawal_account_id,
+                assetType: components.BasketOrderCreateAssetType.Equity,
+                clientOrderId: basket_order_to_remove_id,
+                identifier: "SBUX",
+                identifierType: components.BasketOrderCreateIdentifierType.Symbol,
+                orderType: components.BasketOrderCreateOrderType.Market,
+                quantity: { value: "1" },
+                side: components.BasketOrderCreateSide.Buy,
+                timeInForce: components.BasketOrderCreateTimeInForce.Day,
+            },
         ],
     };
     const result = await sdk_1.sdk.basketOrders.addOrders(request, process.env["CORRESPONDENT_ID"] || "", basket_order_id);
@@ -80,6 +92,20 @@ let basket_order_id;
         throw new Error("basket_order_id is undefined.");
     }
     const result = await sdk_1.sdk.basketOrders.getBasket(process.env["CORRESPONDENT_ID"] || "", basket_order_id);
+    (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
+});
+(0, vitest_1.test)("Basket Orders Orders Remove Basket Remove Basket1", async () => {
+    if (typeof basket_order_id !== "string") {
+        throw new Error("basket_order_id is undefined.");
+    }
+    const request = {
+        name: "correspondents/" +
+            process.env["CORRESPONDENT_ID"] +
+            "/baskets/" +
+            basket_order_id,
+        clientOrderIds: [basket_order_to_remove_id],
+    };
+    const result = await sdk_1.sdk.basketOrders.removeOrders(request, process.env["CORRESPONDENT_ID"] || "", basket_order_id);
     (0, vitest_1.expect)(result.httpMeta.response.status).toBe(200);
 });
 (0, vitest_1.test)("Basket Orders Orders Submit Basket Submit Basket1", async () => {

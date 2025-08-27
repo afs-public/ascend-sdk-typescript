@@ -5,6 +5,7 @@
 
 ### Available Operations
 
+* [simulateCreateCheckDeposit](#simulatecreatecheckdeposit) - Simulate Check Deposit Creation
 * [forceApproveAchDeposit](#forceapproveachdeposit) - ACH Deposit Approval
 * [forceNocAchDeposit](#forcenocachdeposit) - NOC for a Deposit
 * [forceRejectAchDeposit](#forcerejectachdeposit) - ACH Deposit Rejection
@@ -22,6 +23,99 @@
 * [forceRejectWireWithdrawal](#forcerejectwirewithdrawal) - Force Reject Wire Withdrawal
 * [forceApproveCashJournal](#forceapprovecashjournal) - Force Approve Cash Journal
 * [forceRejectCashJournal](#forcerejectcashjournal) - Force Reject Cash Journal
+
+## simulateCreateCheckDeposit
+
+Creates a check deposit for a specific account FOR TESTING ONLY!
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CheckDeposits_SimulateCreateCheckDeposit" method="post" path="/transfers/v1/accounts/{account_id}/checkDeposits:simulate" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.testSimulation.simulateCreateCheckDeposit({
+    amount: {},
+    parent: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { testSimulationSimulateCreateCheckDeposit } from "@apexfintechsolutions/ascend-sdk/funcs/testSimulationSimulateCreateCheckDeposit.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await testSimulationSimulateCreateCheckDeposit(apexascend, {
+    amount: {},
+    parent: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationSimulateCreateCheckDeposit failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `simulateCreateCheckDepositRequestCreate`                                                                                                                                      | [components.SimulateCreateCheckDepositRequestCreate](../../models/components/simulatecreatecheckdepositrequestcreate.md)                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CheckDepositsSimulateCreateCheckDepositResponse](../../models/operations/checkdepositssimulatecreatecheckdepositresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## forceApproveAchDeposit
 

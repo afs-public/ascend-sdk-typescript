@@ -89,7 +89,7 @@ const bondyield_js_1 = require("./bondyield.js");
 const bookingfee_js_1 = require("./bookingfee.js");
 const bookinglot_js_1 = require("./bookinglot.js");
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 var RebookTradeAllocationResponseAssetType;
 (function (RebookTradeAllocationResponseAssetType) {
@@ -223,7 +223,7 @@ var RebookTradeAllocationResponseWhenIssued;
     RebookTradeAllocationResponseWhenIssued["WhenDistributed"] = "WHEN_DISTRIBUTED";
 })(RebookTradeAllocationResponseWhenIssued || (exports.RebookTradeAllocationResponseWhenIssued = RebookTradeAllocationResponseWhenIssued = {}));
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 var RebookTradeAllocationResponseOriginalTradeAllocationAssetType;
 (function (RebookTradeAllocationResponseOriginalTradeAllocationAssetType) {

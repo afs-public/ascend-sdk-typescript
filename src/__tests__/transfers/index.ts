@@ -506,7 +506,7 @@ export async function createCashJournal(account_id: string): Promise<string> {
     clientTransferId: crypto.randomUUID(),
     destinationAccount: "accounts/" + account_id,
     amount: {
-      value: "250001.00",
+      value: "500001.00",
     },
     sourceAccount: "accounts/" + withdrawal_account_id,
   };

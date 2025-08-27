@@ -48,7 +48,7 @@ const datecreate_js_1 = require("./datecreate.js");
 const executioncreate_js_1 = require("./executioncreate.js");
 const lotcreate_js_1 = require("./lotcreate.js");
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 var TradeCreateAssetType;
 (function (TradeCreateAssetType) {
@@ -405,7 +405,7 @@ exports.TradeCreate$inboundSchema = z.object({
     account_id: z.string(),
     additional_instructions: z.string().optional(),
     alternate_order_id: z.string().optional(),
-    asset_type: exports.TradeCreateAssetType$inboundSchema.optional(),
+    asset_type: exports.TradeCreateAssetType$inboundSchema,
     broker_capacity: exports.TradeCreateBrokerCapacity$inboundSchema,
     client_order_id: z.string(),
     executing_broker: z.string().optional(),
@@ -455,7 +455,7 @@ exports.TradeCreate$outboundSchema = z.object({
     accountId: z.string(),
     additionalInstructions: z.string().optional(),
     alternateOrderId: z.string().optional(),
-    assetType: exports.TradeCreateAssetType$outboundSchema.optional(),
+    assetType: exports.TradeCreateAssetType$outboundSchema,
     brokerCapacity: exports.TradeCreateBrokerCapacity$outboundSchema,
     clientOrderId: z.string(),
     executingBroker: z.string().optional(),

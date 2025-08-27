@@ -8,6 +8,7 @@ Used to correct an entire fill of trades using the activity_id that is common to
 import {
   RebookTradeRequestCreate,
   RouteType,
+  TradeCreateAssetType,
   TradeCreateBrokerCapacity,
   TradeCreateIdentifierType,
   TradeCreateSide,
@@ -17,6 +18,7 @@ let value: RebookTradeRequestCreate = {
   name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM",
   trade: {
     accountId: "02HASWB2DTMRT3DAM45P56J2T2",
+    assetType: TradeCreateAssetType.Equity,
     brokerCapacity: TradeCreateBrokerCapacity.Agency,
     clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
     executions: [

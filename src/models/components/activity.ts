@@ -98,6 +98,7 @@ export enum ActivityAccountTransferType {
   FailReversal = "FAIL_REVERSAL",
   Reclaim = "RECLAIM",
   PositionTransferFund = "POSITION_TRANSFER_FUND",
+  SponsoredTransfer = "SPONSORED_TRANSFER",
 }
 /**
  * The type of asset movement being performed within the lifecycle of an account transfer process
@@ -119,6 +120,34 @@ export enum ActivityAction {
  * Denotes whether the shares are incoming or outgoing
  */
 export type ActivityActionOpen = OpenEnum<typeof ActivityAction>;
+
+/**
+ * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
+ */
+export type ActivityFairMarketValue = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * Date from which the asset was valued and used in the fair market value calculation
+ */
+export type ActivityFairMarketValueDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
 
 /**
  * The method used for the account transfer
@@ -166,6 +195,14 @@ export type ActivityAccountTransfer = {
    * Contra party identifier
    */
   contraPartyId?: string | undefined;
+  /**
+   * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
+   */
+  fairMarketValue?: ActivityFairMarketValue | null | undefined;
+  /**
+   * Date from which the asset was valued and used in the fair market value calculation
+   */
+  fairMarketValueDate?: ActivityFairMarketValueDate | null | undefined;
   /**
    * Contra party institution for the account transfer
    */
@@ -706,6 +743,8 @@ export enum ActivitySubtype {
   Maturity = "MATURITY",
   Termination = "TERMINATION",
   RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS",
+  InterimPayment = "INTERIM_PAYMENT",
+  FinalPayment = "FINAL_PAYMENT",
 }
 /**
  * The subtype for the corporate action event
@@ -1554,6 +1593,8 @@ export enum ActivityLiquidationSubtype {
   Maturity = "MATURITY",
   Termination = "TERMINATION",
   RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS",
+  InterimPayment = "INTERIM_PAYMENT",
+  FinalPayment = "FINAL_PAYMENT",
 }
 /**
  * The subtype for the corporate action event
@@ -2289,6 +2330,8 @@ export enum ActivityRedemptionFullSubtype {
   Maturity = "MATURITY",
   Termination = "TERMINATION",
   RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS",
+  InterimPayment = "INTERIM_PAYMENT",
+  FinalPayment = "FINAL_PAYMENT",
 }
 /**
  * The subtype for the corporate action event
@@ -4545,6 +4588,122 @@ export namespace ActivityAction$ {
 }
 
 /** @internal */
+export const ActivityFairMarketValue$inboundSchema: z.ZodType<
+  ActivityFairMarketValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type ActivityFairMarketValue$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const ActivityFairMarketValue$outboundSchema: z.ZodType<
+  ActivityFairMarketValue$Outbound,
+  z.ZodTypeDef,
+  ActivityFairMarketValue
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityFairMarketValue$ {
+  /** @deprecated use `ActivityFairMarketValue$inboundSchema` instead. */
+  export const inboundSchema = ActivityFairMarketValue$inboundSchema;
+  /** @deprecated use `ActivityFairMarketValue$outboundSchema` instead. */
+  export const outboundSchema = ActivityFairMarketValue$outboundSchema;
+  /** @deprecated use `ActivityFairMarketValue$Outbound` instead. */
+  export type Outbound = ActivityFairMarketValue$Outbound;
+}
+
+export function activityFairMarketValueToJSON(
+  activityFairMarketValue: ActivityFairMarketValue,
+): string {
+  return JSON.stringify(
+    ActivityFairMarketValue$outboundSchema.parse(activityFairMarketValue),
+  );
+}
+
+export function activityFairMarketValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityFairMarketValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActivityFairMarketValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityFairMarketValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const ActivityFairMarketValueDate$inboundSchema: z.ZodType<
+  ActivityFairMarketValueDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type ActivityFairMarketValueDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const ActivityFairMarketValueDate$outboundSchema: z.ZodType<
+  ActivityFairMarketValueDate$Outbound,
+  z.ZodTypeDef,
+  ActivityFairMarketValueDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityFairMarketValueDate$ {
+  /** @deprecated use `ActivityFairMarketValueDate$inboundSchema` instead. */
+  export const inboundSchema = ActivityFairMarketValueDate$inboundSchema;
+  /** @deprecated use `ActivityFairMarketValueDate$outboundSchema` instead. */
+  export const outboundSchema = ActivityFairMarketValueDate$outboundSchema;
+  /** @deprecated use `ActivityFairMarketValueDate$Outbound` instead. */
+  export type Outbound = ActivityFairMarketValueDate$Outbound;
+}
+
+export function activityFairMarketValueDateToJSON(
+  activityFairMarketValueDate: ActivityFairMarketValueDate,
+): string {
+  return JSON.stringify(
+    ActivityFairMarketValueDate$outboundSchema.parse(
+      activityFairMarketValueDate,
+    ),
+  );
+}
+
+export function activityFairMarketValueDateFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityFairMarketValueDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActivityFairMarketValueDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityFairMarketValueDate' from JSON`,
+  );
+}
+
+/** @internal */
 export const ActivityMethod$inboundSchema: z.ZodType<
   ActivityMethodOpen,
   z.ZodTypeDef,
@@ -4589,6 +4748,12 @@ export const ActivityAccountTransfer$inboundSchema: z.ZodType<
   additional_instructions: z.string().optional(),
   contra_party_account_number: z.string().optional(),
   contra_party_id: z.string().optional(),
+  fair_market_value: z.nullable(
+    z.lazy(() => ActivityFairMarketValue$inboundSchema),
+  ).optional(),
+  fair_market_value_date: z.nullable(
+    z.lazy(() => ActivityFairMarketValueDate$inboundSchema),
+  ).optional(),
   institution: z.string().optional(),
   method: ActivityMethod$inboundSchema.optional(),
 }).transform((v) => {
@@ -4599,6 +4764,8 @@ export const ActivityAccountTransfer$inboundSchema: z.ZodType<
     "additional_instructions": "additionalInstructions",
     "contra_party_account_number": "contraPartyAccountNumber",
     "contra_party_id": "contraPartyId",
+    "fair_market_value": "fairMarketValue",
+    "fair_market_value_date": "fairMarketValueDate",
   });
 });
 
@@ -4611,6 +4778,11 @@ export type ActivityAccountTransfer$Outbound = {
   additional_instructions?: string | undefined;
   contra_party_account_number?: string | undefined;
   contra_party_id?: string | undefined;
+  fair_market_value?: ActivityFairMarketValue$Outbound | null | undefined;
+  fair_market_value_date?:
+    | ActivityFairMarketValueDate$Outbound
+    | null
+    | undefined;
   institution?: string | undefined;
   method?: string | undefined;
 };
@@ -4628,6 +4800,12 @@ export const ActivityAccountTransfer$outboundSchema: z.ZodType<
   additionalInstructions: z.string().optional(),
   contraPartyAccountNumber: z.string().optional(),
   contraPartyId: z.string().optional(),
+  fairMarketValue: z.nullable(
+    z.lazy(() => ActivityFairMarketValue$outboundSchema),
+  ).optional(),
+  fairMarketValueDate: z.nullable(
+    z.lazy(() => ActivityFairMarketValueDate$outboundSchema),
+  ).optional(),
   institution: z.string().optional(),
   method: ActivityMethod$outboundSchema.optional(),
 }).transform((v) => {
@@ -4638,6 +4816,8 @@ export const ActivityAccountTransfer$outboundSchema: z.ZodType<
     additionalInstructions: "additional_instructions",
     contraPartyAccountNumber: "contra_party_account_number",
     contraPartyId: "contra_party_id",
+    fairMarketValue: "fair_market_value",
+    fairMarketValueDate: "fair_market_value_date",
   });
 });
 

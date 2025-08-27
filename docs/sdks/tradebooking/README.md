@@ -26,7 +26,13 @@ Creates a trade with one or more executions. Combination of (account_id, client_
 <!-- UsageSnippet language="typescript" operationID="Booking_CreateTrade" method="post" path="/booking/v1/accounts/{account_id}/trades" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import { RouteType, TradeCreateBrokerCapacity, TradeCreateIdentifierType, TradeCreateSide } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  RouteType,
+  TradeCreateAssetType,
+  TradeCreateBrokerCapacity,
+  TradeCreateIdentifierType,
+  TradeCreateSide,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 const apexascend = new Apexascend({
   security: {
@@ -43,6 +49,7 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.tradeBooking.createTrade({
     accountId: "02HASWB2DTMRT3DAM45P56J2T2",
+    assetType: TradeCreateAssetType.Equity,
     brokerCapacity: TradeCreateBrokerCapacity.Agency,
     clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
     executions: [
@@ -73,7 +80,13 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { tradeBookingCreateTrade } from "@apexfintechsolutions/ascend-sdk/funcs/tradeBookingCreateTrade.js";
-import { RouteType, TradeCreateBrokerCapacity, TradeCreateIdentifierType, TradeCreateSide } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  RouteType,
+  TradeCreateAssetType,
+  TradeCreateBrokerCapacity,
+  TradeCreateIdentifierType,
+  TradeCreateSide,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -92,6 +105,7 @@ const apexascend = new ApexascendCore({
 async function run() {
   const res = await tradeBookingCreateTrade(apexascend, {
     accountId: "02HASWB2DTMRT3DAM45P56J2T2",
+    assetType: TradeCreateAssetType.Equity,
     brokerCapacity: TradeCreateBrokerCapacity.Agency,
     clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
     executions: [
@@ -432,7 +446,13 @@ Rebook a trade by the original trade_id. The entire original trade's executions 
 <!-- UsageSnippet language="typescript" operationID="Booking_RebookTrade" method="post" path="/booking/v1/accounts/{account_id}/trades/{trade_id}:rebook" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import { RouteType, TradeCreateBrokerCapacity, TradeCreateIdentifierType, TradeCreateSide } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  RouteType,
+  TradeCreateAssetType,
+  TradeCreateBrokerCapacity,
+  TradeCreateIdentifierType,
+  TradeCreateSide,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 const apexascend = new Apexascend({
   security: {
@@ -451,6 +471,7 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM",
     trade: {
       accountId: "02HASWB2DTMRT3DAM45P56J2T2",
+      assetType: TradeCreateAssetType.Equity,
       brokerCapacity: TradeCreateBrokerCapacity.Agency,
       clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
       executions: [],
@@ -475,7 +496,13 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { tradeBookingRebookTrade } from "@apexfintechsolutions/ascend-sdk/funcs/tradeBookingRebookTrade.js";
-import { RouteType, TradeCreateBrokerCapacity, TradeCreateIdentifierType, TradeCreateSide } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  RouteType,
+  TradeCreateAssetType,
+  TradeCreateBrokerCapacity,
+  TradeCreateIdentifierType,
+  TradeCreateSide,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -496,6 +523,7 @@ async function run() {
     name: "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM",
     trade: {
       accountId: "02HASWB2DTMRT3DAM45P56J2T2",
+      assetType: TradeCreateAssetType.Equity,
       brokerCapacity: TradeCreateBrokerCapacity.Agency,
       clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
       executions: [],

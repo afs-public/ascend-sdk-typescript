@@ -7,6 +7,7 @@ import { basketOrdersCreateBasket } from "../funcs/basketOrdersCreateBasket.js";
 import { basketOrdersGetBasket } from "../funcs/basketOrdersGetBasket.js";
 import { basketOrdersListBasketOrders } from "../funcs/basketOrdersListBasketOrders.js";
 import { basketOrdersListCompressedOrders } from "../funcs/basketOrdersListCompressedOrders.js";
+import { basketOrdersRemoveOrders } from "../funcs/basketOrdersRemoveOrders.js";
 import { basketOrdersSubmitBasket } from "../funcs/basketOrdersSubmitBasket.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -142,6 +143,29 @@ export class BasketOrders extends ClientSDK {
       basketId,
       pageSize,
       pageToken,
+      options,
+    ));
+  }
+
+  /**
+   * Remove Basket Orders
+   *
+   * @remarks
+   * Removes a list of basket orders by client order ID.
+   *
+   *  Upon successful submission, returns the details of the removed basket orders.
+   */
+  async removeOrders(
+    removeOrdersRequestCreate: components.RemoveOrdersRequestCreate,
+    correspondentId: string,
+    basketId: string,
+    options?: RequestOptions,
+  ): Promise<operations.BasketOrdersServiceRemoveOrdersResponse> {
+    return unwrapAsync(basketOrdersRemoveOrders(
+      this,
+      removeOrdersRequestCreate,
+      correspondentId,
+      basketId,
       options,
     ));
   }

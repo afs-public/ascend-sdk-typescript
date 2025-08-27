@@ -47,6 +47,19 @@ export declare enum BasketOrderIdentifierType {
  */
 export type BasketOrderIdentifierTypeOpen = OpenEnum<typeof BasketOrderIdentifierType>;
 /**
+ * The maximum number of shares to be sold if this is a notional SELL order of an Equity asset type. (Prohibited for other side or asset_type inputs.)
+ *
+ * @remarks
+ *
+ *  This will only be recognized for clients configured to bypass the short sale risk check. When specified, must be greater than 0 and can't exceed 5 decimal places.
+ */
+export type BasketOrderMaxSellQuantity = {
+    /**
+     * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+     */
+    value?: string | undefined;
+};
+/**
  * Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. Either a quantity or notional_value MUST be specified (but not both). For Equities: currently not supported yet For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified.
  */
 export type BasketOrderNotionalValue = {
@@ -86,7 +99,8 @@ export declare enum BasketOrderOrderRejectedReason {
     AnotherBasketOrderForAccountHasFailedRiskChecks = "ANOTHER_BASKET_ORDER_FOR_ACCOUNT_HAS_FAILED_RISK_CHECKS",
     InsufficientPosition = "INSUFFICIENT_POSITION",
     FailedBuyingPower = "FAILED_BUYING_POWER",
-    RoundUpAmountTooSmall = "ROUND_UP_AMOUNT_TOO_SMALL"
+    RoundUpAmountTooSmall = "ROUND_UP_AMOUNT_TOO_SMALL",
+    AssetNotSetUpForRoundUps = "ASSET_NOT_SET_UP_FOR_ROUND_UPS"
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -191,7 +205,7 @@ export type BasketOrder = {
      */
     clientOrderId?: string | undefined;
     /**
-     * Time the order request was received by the client. Must be in the past, and must be less than 24 hours old.
+     * Time the order request was received by the client. Must be in the past.
      */
     clientOrderReceivedTime?: Date | null | undefined;
     /**
@@ -226,6 +240,14 @@ export type BasketOrder = {
      * Time of the last order update
      */
     lastUpdateTime?: Date | null | undefined;
+    /**
+     * The maximum number of shares to be sold if this is a notional SELL order of an Equity asset type. (Prohibited for other side or asset_type inputs.)
+     *
+     * @remarks
+     *
+     *  This will only be recognized for clients configured to bypass the short sale risk check. When specified, must be greater than 0 and can't exceed 5 decimal places.
+     */
+    maxSellQuantity?: BasketOrderMaxSellQuantity | null | undefined;
     /**
      * System generated name of the basket order.
      */
@@ -335,6 +357,28 @@ export declare namespace BasketOrderIdentifierType$ {
     /** @deprecated use `BasketOrderIdentifierType$outboundSchema` instead. */
     const outboundSchema: z.ZodType<BasketOrderIdentifierTypeOpen, z.ZodTypeDef, BasketOrderIdentifierTypeOpen>;
 }
+/** @internal */
+export declare const BasketOrderMaxSellQuantity$inboundSchema: z.ZodType<BasketOrderMaxSellQuantity, z.ZodTypeDef, unknown>;
+/** @internal */
+export type BasketOrderMaxSellQuantity$Outbound = {
+    value?: string | undefined;
+};
+/** @internal */
+export declare const BasketOrderMaxSellQuantity$outboundSchema: z.ZodType<BasketOrderMaxSellQuantity$Outbound, z.ZodTypeDef, BasketOrderMaxSellQuantity>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace BasketOrderMaxSellQuantity$ {
+    /** @deprecated use `BasketOrderMaxSellQuantity$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<BasketOrderMaxSellQuantity, z.ZodTypeDef, unknown>;
+    /** @deprecated use `BasketOrderMaxSellQuantity$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<BasketOrderMaxSellQuantity$Outbound, z.ZodTypeDef, BasketOrderMaxSellQuantity>;
+    /** @deprecated use `BasketOrderMaxSellQuantity$Outbound` instead. */
+    type Outbound = BasketOrderMaxSellQuantity$Outbound;
+}
+export declare function basketOrderMaxSellQuantityToJSON(basketOrderMaxSellQuantity: BasketOrderMaxSellQuantity): string;
+export declare function basketOrderMaxSellQuantityFromJSON(jsonString: string): SafeParseResult<BasketOrderMaxSellQuantity, SDKValidationError>;
 /** @internal */
 export declare const BasketOrderNotionalValue$inboundSchema: z.ZodType<BasketOrderNotionalValue, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -482,6 +526,7 @@ export type BasketOrder$Outbound = {
     identifier?: string | undefined;
     identifier_type?: string | undefined;
     last_update_time?: string | null | undefined;
+    max_sell_quantity?: BasketOrderMaxSellQuantity$Outbound | null | undefined;
     name?: string | undefined;
     notional_value?: BasketOrderNotionalValue$Outbound | null | undefined;
     order_rejected_reason?: string | undefined;

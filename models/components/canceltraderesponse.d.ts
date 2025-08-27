@@ -6,7 +6,7 @@ import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
 import { Execution, Execution$Outbound } from "./execution.js";
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export declare enum CancelTradeResponseAssetType {
     AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -14,7 +14,7 @@ export declare enum CancelTradeResponseAssetType {
     FixedIncome = "FIXED_INCOME"
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type CancelTradeResponseAssetTypeOpen = OpenEnum<typeof CancelTradeResponseAssetType>;
 /**
@@ -239,7 +239,7 @@ export type CancelTradeResponseTrade = {
      */
     alternateOrderId?: string | undefined;
     /**
-     * Type of the asset being traded. Required for SYMBOL and CUSIP.
+     * Type of the asset being traded.
      */
     assetType?: CancelTradeResponseAssetTypeOpen | undefined;
     /**

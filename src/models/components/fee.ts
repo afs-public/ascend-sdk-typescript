@@ -60,6 +60,16 @@ export enum FeeType {
   ContractFee = "CONTRACT_FEE",
   OptionsRegulatory = "OPTIONS_REGULATORY",
   FinancialTransactionTax = "FINANCIAL_TRANSACTION_TAX",
+  RegularCheckDelivery = "REGULAR_CHECK_DELIVERY",
+  OvernightCheckDelivery = "OVERNIGHT_CHECK_DELIVERY",
+  SaturdayCheckDelivery = "SATURDAY_CHECK_DELIVERY",
+  OvernightCheckToBroker = "OVERNIGHT_CHECK_TO_BROKER",
+  InternationalCheckOvernightDelivery =
+    "INTERNATIONAL_CHECK_OVERNIGHT_DELIVERY",
+  InternationalCheckRegularDelivery = "INTERNATIONAL_CHECK_REGULAR_DELIVERY",
+  PrintCheckAtFirm = "PRINT_CHECK_AT_FIRM",
+  VoidedCheck = "VOIDED_CHECK",
+  StopPaymentAfter180Days = "STOP_PAYMENT_AFTER_180_DAYS",
 }
 /**
  * The type of fee being assessed

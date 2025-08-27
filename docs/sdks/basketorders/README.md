@@ -11,6 +11,7 @@
 * [submitBasket](#submitbasket) - Submit Basket
 * [listBasketOrders](#listbasketorders) - List Basket Orders
 * [listCompressedOrders](#listcompressedorders) - List Compressed Orders
+* [removeOrders](#removeorders) - Remove Basket Orders
 
 ## createBasket
 
@@ -574,6 +575,109 @@ run();
 ### Response
 
 **Promise\<[operations.BasketOrdersServiceListCompressedOrdersResponse](../../models/operations/basketordersservicelistcompressedordersresponse.md)\>**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+
+## removeOrders
+
+Removes a list of basket orders by client order ID.
+
+ Upon successful submission, returns the details of the removed basket orders.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="BasketOrdersService_RemoveOrders" method="post" path="/baskettrading/v1/correspondents/{correspondent_id}/baskets/{basket_id}:removeOrders" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.basketOrders.removeOrders({
+    clientOrderIds: [
+      "77e4c4b9-38e7-469f-9a8d-cd8baf7c1952",
+      "4cff908e-aaed-401d-8ec9-929e3eb18cbc",
+    ],
+    name: "correspondents/01HPMZZM6RKMVZA1JQ63RQKJRP/baskets/fffd326-72fa-4d2b-bd1f-45384fe5d521",
+  }, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { basketOrdersRemoveOrders } from "@apexfintechsolutions/ascend-sdk/funcs/basketOrdersRemoveOrders.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await basketOrdersRemoveOrders(apexascend, {
+    clientOrderIds: [
+      "77e4c4b9-38e7-469f-9a8d-cd8baf7c1952",
+      "4cff908e-aaed-401d-8ec9-929e3eb18cbc",
+    ],
+    name: "correspondents/01HPMZZM6RKMVZA1JQ63RQKJRP/baskets/fffd326-72fa-4d2b-bd1f-45384fe5d521",
+  }, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("basketOrdersRemoveOrders failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `correspondentId`                                                                                                                                                              | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The correspondent id.                                                                                                                                                          | [object Object]                                                                                                                                                                |
+| `basketId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The basket id.                                                                                                                                                                 | [object Object]                                                                                                                                                                |
+| `removeOrdersRequestCreate`                                                                                                                                                    | [components.RemoveOrdersRequestCreate](../../models/components/removeordersrequestcreate.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.BasketOrdersServiceRemoveOrdersResponse](../../models/operations/basketordersserviceremoveordersresponse.md)\>**
 
 ### Errors
 

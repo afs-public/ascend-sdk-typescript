@@ -83,6 +83,15 @@ var FeeType;
     FeeType["ContractFee"] = "CONTRACT_FEE";
     FeeType["OptionsRegulatory"] = "OPTIONS_REGULATORY";
     FeeType["FinancialTransactionTax"] = "FINANCIAL_TRANSACTION_TAX";
+    FeeType["RegularCheckDelivery"] = "REGULAR_CHECK_DELIVERY";
+    FeeType["OvernightCheckDelivery"] = "OVERNIGHT_CHECK_DELIVERY";
+    FeeType["SaturdayCheckDelivery"] = "SATURDAY_CHECK_DELIVERY";
+    FeeType["OvernightCheckToBroker"] = "OVERNIGHT_CHECK_TO_BROKER";
+    FeeType["InternationalCheckOvernightDelivery"] = "INTERNATIONAL_CHECK_OVERNIGHT_DELIVERY";
+    FeeType["InternationalCheckRegularDelivery"] = "INTERNATIONAL_CHECK_REGULAR_DELIVERY";
+    FeeType["PrintCheckAtFirm"] = "PRINT_CHECK_AT_FIRM";
+    FeeType["VoidedCheck"] = "VOIDED_CHECK";
+    FeeType["StopPaymentAfter180Days"] = "STOP_PAYMENT_AFTER_180_DAYS";
 })(FeeType || (exports.FeeType = FeeType = {}));
 /** @internal */
 exports.FeeAmount$inboundSchema = z.object({

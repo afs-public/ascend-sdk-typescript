@@ -56,5 +56,14 @@ export declare class BasketOrders extends ClientSDK {
      *  Upon successful submission, returns a list of compressed orders for the basket. If the basket has not been submitted yet, this list will be empty. If the list of compressed orders becomes too large, a token is returned to retrieve the next page of compressed orders.
      */
     listCompressedOrders(correspondentId: string, basketId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.BasketOrdersServiceListCompressedOrdersResponse>;
+    /**
+     * Remove Basket Orders
+     *
+     * @remarks
+     * Removes a list of basket orders by client order ID.
+     *
+     *  Upon successful submission, returns the details of the removed basket orders.
+     */
+    removeOrders(removeOrdersRequestCreate: components.RemoveOrdersRequestCreate, correspondentId: string, basketId: string, options?: RequestOptions): Promise<operations.BasketOrdersServiceRemoveOrdersResponse>;
 }
 //# sourceMappingURL=basketorders.d.ts.map

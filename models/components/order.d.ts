@@ -108,6 +108,12 @@ export type CumulativeNotionalValue = {
     value?: string | undefined;
 };
 /**
+ * Any reporting data provided by the SetExtraReportingData endpoint.
+ */
+export type ExtraReportingData = {
+    cancelConfirmedTime?: Date | null | undefined;
+};
+/**
  * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
  */
 export type FilledQuantity = {
@@ -277,7 +283,8 @@ export declare enum OrderRejectedReason {
     AssetNotSetUpToTrade = "ASSET_NOT_SET_UP_TO_TRADE",
     InvalidOrderQuantity = "INVALID_ORDER_QUANTITY",
     ClientReceivedTimeRequired = "CLIENT_RECEIVED_TIME_REQUIRED",
-    ClientNotPermittedToUseTradingSession = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION"
+    ClientNotPermittedToUseTradingSession = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION",
+    StopPriceBelowMarketPrice = "STOP_PRICE_BELOW_MARKET_PRICE"
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -525,6 +532,10 @@ export type Order = {
      */
     executions?: Array<TradingExecutions> | undefined;
     /**
+     * Any reporting data provided by the SetExtraReportingData endpoint.
+     */
+    extraReportingData?: ExtraReportingData | null | undefined;
+    /**
      * Fees that will be applied to this order. Only the BROKER_FEE type is supported.
      */
     fees?: Array<TradingFee> | undefined;
@@ -762,6 +773,28 @@ export declare namespace CumulativeNotionalValue$ {
 }
 export declare function cumulativeNotionalValueToJSON(cumulativeNotionalValue: CumulativeNotionalValue): string;
 export declare function cumulativeNotionalValueFromJSON(jsonString: string): SafeParseResult<CumulativeNotionalValue, SDKValidationError>;
+/** @internal */
+export declare const ExtraReportingData$inboundSchema: z.ZodType<ExtraReportingData, z.ZodTypeDef, unknown>;
+/** @internal */
+export type ExtraReportingData$Outbound = {
+    cancel_confirmed_time?: string | null | undefined;
+};
+/** @internal */
+export declare const ExtraReportingData$outboundSchema: z.ZodType<ExtraReportingData$Outbound, z.ZodTypeDef, ExtraReportingData>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace ExtraReportingData$ {
+    /** @deprecated use `ExtraReportingData$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<ExtraReportingData, z.ZodTypeDef, unknown>;
+    /** @deprecated use `ExtraReportingData$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<ExtraReportingData$Outbound, z.ZodTypeDef, ExtraReportingData>;
+    /** @deprecated use `ExtraReportingData$Outbound` instead. */
+    type Outbound = ExtraReportingData$Outbound;
+}
+export declare function extraReportingDataToJSON(extraReportingData: ExtraReportingData): string;
+export declare function extraReportingDataFromJSON(jsonString: string): SafeParseResult<ExtraReportingData, SDKValidationError>;
 /** @internal */
 export declare const FilledQuantity$inboundSchema: z.ZodType<FilledQuantity, z.ZodTypeDef, unknown>;
 /** @internal */
@@ -1259,6 +1292,7 @@ export type Order$Outbound = {
     cumulative_notional_value?: CumulativeNotionalValue$Outbound | null | undefined;
     currency_code?: string | undefined;
     executions?: Array<TradingExecutions$Outbound> | undefined;
+    extra_reporting_data?: ExtraReportingData$Outbound | null | undefined;
     fees?: Array<TradingFee$Outbound> | undefined;
     filled_quantity?: FilledQuantity$Outbound | null | undefined;
     identifier?: string | undefined;

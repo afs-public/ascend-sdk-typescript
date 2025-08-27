@@ -9,6 +9,7 @@ const basketOrdersCreateBasket_js_1 = require("../funcs/basketOrdersCreateBasket
 const basketOrdersGetBasket_js_1 = require("../funcs/basketOrdersGetBasket.js");
 const basketOrdersListBasketOrders_js_1 = require("../funcs/basketOrdersListBasketOrders.js");
 const basketOrdersListCompressedOrders_js_1 = require("../funcs/basketOrdersListCompressedOrders.js");
+const basketOrdersRemoveOrders_js_1 = require("../funcs/basketOrdersRemoveOrders.js");
 const basketOrdersSubmitBasket_js_1 = require("../funcs/basketOrdersSubmitBasket.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
@@ -78,6 +79,17 @@ class BasketOrders extends sdks_js_1.ClientSDK {
      */
     async listCompressedOrders(correspondentId, basketId, pageSize, pageToken, options) {
         return (0, fp_js_1.unwrapAsync)((0, basketOrdersListCompressedOrders_js_1.basketOrdersListCompressedOrders)(this, correspondentId, basketId, pageSize, pageToken, options));
+    }
+    /**
+     * Remove Basket Orders
+     *
+     * @remarks
+     * Removes a list of basket orders by client order ID.
+     *
+     *  Upon successful submission, returns the details of the removed basket orders.
+     */
+    async removeOrders(removeOrdersRequestCreate, correspondentId, basketId, options) {
+        return (0, fp_js_1.unwrapAsync)((0, basketOrdersRemoveOrders_js_1.basketOrdersRemoveOrders)(this, removeOrdersRequestCreate, correspondentId, basketId, options));
     }
 }
 exports.BasketOrders = BasketOrders;
