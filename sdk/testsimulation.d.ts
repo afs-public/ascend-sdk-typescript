@@ -3,6 +3,13 @@ import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 export declare class TestSimulation extends ClientSDK {
     /**
+     * Simulate Check Deposit Creation
+     *
+     * @remarks
+     * Creates a check deposit for a specific account FOR TESTING ONLY!
+     */
+    simulateCreateCheckDeposit(simulateCreateCheckDepositRequestCreate: components.SimulateCreateCheckDepositRequestCreate, accountId: string, options?: RequestOptions): Promise<operations.CheckDepositsSimulateCreateCheckDepositResponse>;
+    /**
      * ACH Deposit Approval
      *
      * @remarks

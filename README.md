@@ -384,10 +384,15 @@ const sdk = new Apexascend({ httpClient });
 * [submitBasket](docs/sdks/basketorders/README.md#submitbasket) - Submit Basket
 * [listBasketOrders](docs/sdks/basketorders/README.md#listbasketorders) - List Basket Orders
 * [listCompressedOrders](docs/sdks/basketorders/README.md#listcompressedorders) - List Compressed Orders
+* [removeOrders](docs/sdks/basketorders/README.md#removeorders) - Remove Basket Orders
 
 ### [cashBalances](docs/sdks/cashbalances/README.md)
 
 * [calculateCashBalance](docs/sdks/cashbalances/README.md#calculatecashbalance) - Get Cash Balance
+
+### [checks](docs/sdks/checks/README.md)
+
+* [getCheckDeposit](docs/sdks/checks/README.md#getcheckdeposit) - Get Check Deposit
 
 ### [createOrder](docs/sdks/createorder/README.md)
 
@@ -527,6 +532,7 @@ const sdk = new Apexascend({ httpClient });
 
 ### [testSimulation](docs/sdks/testsimulation/README.md)
 
+* [simulateCreateCheckDeposit](docs/sdks/testsimulation/README.md#simulatecreatecheckdeposit) - Simulate Check Deposit Creation
 * [forceApproveAchDeposit](docs/sdks/testsimulation/README.md#forceapproveachdeposit) - ACH Deposit Approval
 * [forceNocAchDeposit](docs/sdks/testsimulation/README.md#forcenocachdeposit) - NOC for a Deposit
 * [forceRejectAchDeposit](docs/sdks/testsimulation/README.md#forcerejectachdeposit) - ACH Deposit Rejection

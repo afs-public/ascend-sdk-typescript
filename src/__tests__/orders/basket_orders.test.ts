@@ -7,6 +7,7 @@ import { createBasketId, withdrawal_account_id } from "./index";
 import crypto from "crypto";
 
 let basket_order_id: string | undefined;
+let basket_order_to_remove_id = crypto.randomUUID();
 
 beforeAll(async () => {
   basket_order_id = await createBasketId();
@@ -39,6 +40,17 @@ test("Basket Orders Orders Add Orders Add Orders1", async () => {
         side: components.BasketOrderCreateSide.Buy,
         timeInForce: components.BasketOrderCreateTimeInForce.Day,
       },
+      {
+        accountId: withdrawal_account_id,
+        assetType: components.BasketOrderCreateAssetType.Equity,
+        clientOrderId: basket_order_to_remove_id,
+        identifier: "SBUX",
+        identifierType: components.BasketOrderCreateIdentifierType.Symbol,
+        orderType: components.BasketOrderCreateOrderType.Market,
+        quantity: { value: "1" },
+        side: components.BasketOrderCreateSide.Buy,
+        timeInForce: components.BasketOrderCreateTimeInForce.Day,
+      },
     ],
   };
 
@@ -57,6 +69,28 @@ test("Basket Orders Orders Get Basket Get Basket1", async () => {
   const result = await sdk.basketOrders.getBasket(
     process.env["CORRESPONDENT_ID"] || "",
     basket_order_id,
+  );
+  expect(result.httpMeta.response.status).toBe(200);
+});
+
+test("Basket Orders Orders Remove Basket Remove Basket1", async () => {
+  if (typeof basket_order_id !== "string") {
+    throw new Error("basket_order_id is undefined.");
+  }
+
+  const request: components.RemoveOrdersRequestCreate = {
+    name:
+      "correspondents/" +
+      process.env["CORRESPONDENT_ID"] +
+      "/baskets/" +
+      basket_order_id,
+    clientOrderIds: [basket_order_to_remove_id],
+  };
+
+  const result = await sdk.basketOrders.removeOrders(
+    request,
+    process.env["CORRESPONDENT_ID"] || "",
+    basket_order_id
   );
   expect(result.httpMeta.response.status).toBe(200);
 });

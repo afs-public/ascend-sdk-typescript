@@ -36,15 +36,17 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PeriodStartDate$outboundSchema = exports.PeriodStartDate$inboundSchema = exports.OrderAmount$ = exports.OrderAmount$outboundSchema = exports.OrderAmount$inboundSchema = exports.OrderIdentifierType$ = exports.OrderIdentifierType$outboundSchema = exports.OrderIdentifierType$inboundSchema = exports.FilledQuantity$ = exports.FilledQuantity$outboundSchema = exports.FilledQuantity$inboundSchema = exports.CumulativeNotionalValue$ = exports.CumulativeNotionalValue$outboundSchema = exports.CumulativeNotionalValue$inboundSchema = exports.OrderCommission$ = exports.OrderCommission$outboundSchema = exports.OrderCommission$inboundSchema = exports.Value$ = exports.Value$outboundSchema = exports.Value$inboundSchema = exports.OrderCommissionType$ = exports.OrderCommissionType$outboundSchema = exports.OrderCommissionType$inboundSchema = exports.CancelRejectedReason$ = exports.CancelRejectedReason$outboundSchema = exports.CancelRejectedReason$inboundSchema = exports.CancelInitiator$ = exports.CancelInitiator$outboundSchema = exports.CancelInitiator$inboundSchema = exports.OrderBrokerCapacity$ = exports.OrderBrokerCapacity$outboundSchema = exports.OrderBrokerCapacity$inboundSchema = exports.OrderAssetType$ = exports.OrderAssetType$outboundSchema = exports.OrderAssetType$inboundSchema = exports.OrderTradingSession = exports.OrderTimeInForce = exports.OrderStopPriceType = exports.OrderSpecialReportingInstructions = exports.OrderSide = exports.OrderOrderType = exports.OrderStatus = exports.OrderRejectedReason = exports.OrderLimitPriceType = exports.OrderIdentifierType = exports.OrderCommissionType = exports.CancelRejectedReason = exports.CancelInitiator = exports.OrderBrokerCapacity = exports.OrderAssetType = void 0;
-exports.OrderStopPricePrice$inboundSchema = exports.OrderSpecialReportingInstructions$ = exports.OrderSpecialReportingInstructions$outboundSchema = exports.OrderSpecialReportingInstructions$inboundSchema = exports.OrderSide$ = exports.OrderSide$outboundSchema = exports.OrderSide$inboundSchema = exports.RightsOfAccumulation$ = exports.RightsOfAccumulation$outboundSchema = exports.RightsOfAccumulation$inboundSchema = exports.OrderRightsOfAccumulationAmount$ = exports.OrderRightsOfAccumulationAmount$outboundSchema = exports.OrderRightsOfAccumulationAmount$inboundSchema = exports.OrderQuantity$ = exports.OrderQuantity$outboundSchema = exports.OrderQuantity$inboundSchema = exports.OrderPrevailingMarketPrice$ = exports.OrderPrevailingMarketPrice$outboundSchema = exports.OrderPrevailingMarketPrice$inboundSchema = exports.OrderOrderType$ = exports.OrderOrderType$outboundSchema = exports.OrderOrderType$inboundSchema = exports.OrderStatus$ = exports.OrderStatus$outboundSchema = exports.OrderStatus$inboundSchema = exports.OrderRejectedReason$ = exports.OrderRejectedReason$outboundSchema = exports.OrderRejectedReason$inboundSchema = exports.OrderDate$ = exports.OrderDate$outboundSchema = exports.OrderDate$inboundSchema = exports.NotionalValue$ = exports.NotionalValue$outboundSchema = exports.NotionalValue$inboundSchema = exports.MaxSellQuantity$ = exports.MaxSellQuantity$outboundSchema = exports.MaxSellQuantity$inboundSchema = exports.LimitPrice$ = exports.LimitPrice$outboundSchema = exports.LimitPrice$inboundSchema = exports.OrderLimitPriceType$ = exports.OrderLimitPriceType$outboundSchema = exports.OrderLimitPriceType$inboundSchema = exports.OrderPrice$ = exports.OrderPrice$outboundSchema = exports.OrderPrice$inboundSchema = exports.LetterOfIntent$ = exports.LetterOfIntent$outboundSchema = exports.LetterOfIntent$inboundSchema = exports.PeriodStartDate$ = void 0;
-exports.Order$ = exports.Order$outboundSchema = exports.Order$inboundSchema = exports.OrderTradingSession$ = exports.OrderTradingSession$outboundSchema = exports.OrderTradingSession$inboundSchema = exports.OrderTimeInForce$ = exports.OrderTimeInForce$outboundSchema = exports.OrderTimeInForce$inboundSchema = exports.StopPrice$ = exports.StopPrice$outboundSchema = exports.StopPrice$inboundSchema = exports.OrderStopPriceType$ = exports.OrderStopPriceType$outboundSchema = exports.OrderStopPriceType$inboundSchema = exports.OrderStopPricePrice$ = exports.OrderStopPricePrice$outboundSchema = void 0;
+exports.OrderAmount$outboundSchema = exports.OrderAmount$inboundSchema = exports.OrderIdentifierType$ = exports.OrderIdentifierType$outboundSchema = exports.OrderIdentifierType$inboundSchema = exports.FilledQuantity$ = exports.FilledQuantity$outboundSchema = exports.FilledQuantity$inboundSchema = exports.ExtraReportingData$ = exports.ExtraReportingData$outboundSchema = exports.ExtraReportingData$inboundSchema = exports.CumulativeNotionalValue$ = exports.CumulativeNotionalValue$outboundSchema = exports.CumulativeNotionalValue$inboundSchema = exports.OrderCommission$ = exports.OrderCommission$outboundSchema = exports.OrderCommission$inboundSchema = exports.Value$ = exports.Value$outboundSchema = exports.Value$inboundSchema = exports.OrderCommissionType$ = exports.OrderCommissionType$outboundSchema = exports.OrderCommissionType$inboundSchema = exports.CancelRejectedReason$ = exports.CancelRejectedReason$outboundSchema = exports.CancelRejectedReason$inboundSchema = exports.CancelInitiator$ = exports.CancelInitiator$outboundSchema = exports.CancelInitiator$inboundSchema = exports.OrderBrokerCapacity$ = exports.OrderBrokerCapacity$outboundSchema = exports.OrderBrokerCapacity$inboundSchema = exports.OrderAssetType$ = exports.OrderAssetType$outboundSchema = exports.OrderAssetType$inboundSchema = exports.OrderTradingSession = exports.OrderTimeInForce = exports.OrderStopPriceType = exports.OrderSpecialReportingInstructions = exports.OrderSide = exports.OrderOrderType = exports.OrderStatus = exports.OrderRejectedReason = exports.OrderLimitPriceType = exports.OrderIdentifierType = exports.OrderCommissionType = exports.CancelRejectedReason = exports.CancelInitiator = exports.OrderBrokerCapacity = exports.OrderAssetType = void 0;
+exports.OrderSpecialReportingInstructions$inboundSchema = exports.OrderSide$ = exports.OrderSide$outboundSchema = exports.OrderSide$inboundSchema = exports.RightsOfAccumulation$ = exports.RightsOfAccumulation$outboundSchema = exports.RightsOfAccumulation$inboundSchema = exports.OrderRightsOfAccumulationAmount$ = exports.OrderRightsOfAccumulationAmount$outboundSchema = exports.OrderRightsOfAccumulationAmount$inboundSchema = exports.OrderQuantity$ = exports.OrderQuantity$outboundSchema = exports.OrderQuantity$inboundSchema = exports.OrderPrevailingMarketPrice$ = exports.OrderPrevailingMarketPrice$outboundSchema = exports.OrderPrevailingMarketPrice$inboundSchema = exports.OrderOrderType$ = exports.OrderOrderType$outboundSchema = exports.OrderOrderType$inboundSchema = exports.OrderStatus$ = exports.OrderStatus$outboundSchema = exports.OrderStatus$inboundSchema = exports.OrderRejectedReason$ = exports.OrderRejectedReason$outboundSchema = exports.OrderRejectedReason$inboundSchema = exports.OrderDate$ = exports.OrderDate$outboundSchema = exports.OrderDate$inboundSchema = exports.NotionalValue$ = exports.NotionalValue$outboundSchema = exports.NotionalValue$inboundSchema = exports.MaxSellQuantity$ = exports.MaxSellQuantity$outboundSchema = exports.MaxSellQuantity$inboundSchema = exports.LimitPrice$ = exports.LimitPrice$outboundSchema = exports.LimitPrice$inboundSchema = exports.OrderLimitPriceType$ = exports.OrderLimitPriceType$outboundSchema = exports.OrderLimitPriceType$inboundSchema = exports.OrderPrice$ = exports.OrderPrice$outboundSchema = exports.OrderPrice$inboundSchema = exports.LetterOfIntent$ = exports.LetterOfIntent$outboundSchema = exports.LetterOfIntent$inboundSchema = exports.PeriodStartDate$ = exports.PeriodStartDate$outboundSchema = exports.PeriodStartDate$inboundSchema = exports.OrderAmount$ = void 0;
+exports.Order$ = exports.Order$outboundSchema = exports.Order$inboundSchema = exports.OrderTradingSession$ = exports.OrderTradingSession$outboundSchema = exports.OrderTradingSession$inboundSchema = exports.OrderTimeInForce$ = exports.OrderTimeInForce$outboundSchema = exports.OrderTimeInForce$inboundSchema = exports.StopPrice$ = exports.StopPrice$outboundSchema = exports.StopPrice$inboundSchema = exports.OrderStopPriceType$ = exports.OrderStopPriceType$outboundSchema = exports.OrderStopPriceType$inboundSchema = exports.OrderStopPricePrice$ = exports.OrderStopPricePrice$outboundSchema = exports.OrderStopPricePrice$inboundSchema = exports.OrderSpecialReportingInstructions$ = exports.OrderSpecialReportingInstructions$outboundSchema = void 0;
 exports.valueToJSON = valueToJSON;
 exports.valueFromJSON = valueFromJSON;
 exports.orderCommissionToJSON = orderCommissionToJSON;
 exports.orderCommissionFromJSON = orderCommissionFromJSON;
 exports.cumulativeNotionalValueToJSON = cumulativeNotionalValueToJSON;
 exports.cumulativeNotionalValueFromJSON = cumulativeNotionalValueFromJSON;
+exports.extraReportingDataToJSON = extraReportingDataToJSON;
+exports.extraReportingDataFromJSON = extraReportingDataFromJSON;
 exports.filledQuantityToJSON = filledQuantityToJSON;
 exports.filledQuantityFromJSON = filledQuantityFromJSON;
 exports.orderAmountToJSON = orderAmountToJSON;
@@ -194,6 +196,7 @@ var OrderRejectedReason;
     OrderRejectedReason["InvalidOrderQuantity"] = "INVALID_ORDER_QUANTITY";
     OrderRejectedReason["ClientReceivedTimeRequired"] = "CLIENT_RECEIVED_TIME_REQUIRED";
     OrderRejectedReason["ClientNotPermittedToUseTradingSession"] = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION";
+    OrderRejectedReason["StopPriceBelowMarketPrice"] = "STOP_PRICE_BELOW_MARKET_PRICE";
 })(OrderRejectedReason || (exports.OrderRejectedReason = OrderRejectedReason = {}));
 /**
  * The processing status of the order
@@ -470,6 +473,40 @@ function cumulativeNotionalValueToJSON(cumulativeNotionalValue) {
 }
 function cumulativeNotionalValueFromJSON(jsonString) {
     return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.CumulativeNotionalValue$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'CumulativeNotionalValue' from JSON`);
+}
+/** @internal */
+exports.ExtraReportingData$inboundSchema = z.object({
+    cancel_confirmed_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
+}).transform((v) => {
+    return (0, primitives_js_1.remap)(v, {
+        "cancel_confirmed_time": "cancelConfirmedTime",
+    });
+});
+/** @internal */
+exports.ExtraReportingData$outboundSchema = z.object({
+    cancelConfirmedTime: z.nullable(z.date().transform(v => v.toISOString()))
+        .optional(),
+}).transform((v) => {
+    return (0, primitives_js_1.remap)(v, {
+        cancelConfirmedTime: "cancel_confirmed_time",
+    });
+});
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+var ExtraReportingData$;
+(function (ExtraReportingData$) {
+    /** @deprecated use `ExtraReportingData$inboundSchema` instead. */
+    ExtraReportingData$.inboundSchema = exports.ExtraReportingData$inboundSchema;
+    /** @deprecated use `ExtraReportingData$outboundSchema` instead. */
+    ExtraReportingData$.outboundSchema = exports.ExtraReportingData$outboundSchema;
+})(ExtraReportingData$ || (exports.ExtraReportingData$ = ExtraReportingData$ = {}));
+function extraReportingDataToJSON(extraReportingData) {
+    return JSON.stringify(exports.ExtraReportingData$outboundSchema.parse(extraReportingData));
+}
+function extraReportingDataFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.ExtraReportingData$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'ExtraReportingData' from JSON`);
 }
 /** @internal */
 exports.FilledQuantity$inboundSchema = z.object({
@@ -1111,6 +1148,7 @@ exports.Order$inboundSchema = z
     cumulative_notional_value: z.nullable(z.lazy(() => exports.CumulativeNotionalValue$inboundSchema)).optional(),
     currency_code: z.string().optional(),
     executions: z.array(tradingexecutions_js_1.TradingExecutions$inboundSchema).optional(),
+    extra_reporting_data: z.nullable(z.lazy(() => exports.ExtraReportingData$inboundSchema)).optional(),
     fees: z.array(tradingfee_js_1.TradingFee$inboundSchema).optional(),
     filled_quantity: z.nullable(z.lazy(() => exports.FilledQuantity$inboundSchema))
         .optional(),
@@ -1155,6 +1193,7 @@ exports.Order$inboundSchema = z
         "create_time": "createTime",
         "cumulative_notional_value": "cumulativeNotionalValue",
         "currency_code": "currencyCode",
+        "extra_reporting_data": "extraReportingData",
         "filled_quantity": "filledQuantity",
         "identifier_issuing_region_code": "identifierIssuingRegionCode",
         "identifier_type": "identifierType",
@@ -1197,6 +1236,7 @@ exports.Order$outboundSchema = z.object({
     cumulativeNotionalValue: z.nullable(z.lazy(() => exports.CumulativeNotionalValue$outboundSchema)).optional(),
     currencyCode: z.string().optional(),
     executions: z.array(tradingexecutions_js_1.TradingExecutions$outboundSchema).optional(),
+    extraReportingData: z.nullable(z.lazy(() => exports.ExtraReportingData$outboundSchema)).optional(),
     fees: z.array(tradingfee_js_1.TradingFee$outboundSchema).optional(),
     filledQuantity: z.nullable(z.lazy(() => exports.FilledQuantity$outboundSchema))
         .optional(),
@@ -1242,6 +1282,7 @@ exports.Order$outboundSchema = z.object({
         createTime: "create_time",
         cumulativeNotionalValue: "cumulative_notional_value",
         currencyCode: "currency_code",
+        extraReportingData: "extra_reporting_data",
         filledQuantity: "filled_quantity",
         identifierIssuingRegionCode: "identifier_issuing_region_code",
         identifierType: "identifier_type",

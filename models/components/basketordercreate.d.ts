@@ -85,7 +85,7 @@ export type BasketOrderCreate = {
      */
     clientOrderId: string;
     /**
-     * Time the order request was received by the client. Must be in the past, and must be less than 24 hours old.
+     * Time the order request was received by the client. Must be in the past.
      */
     clientOrderReceivedTime?: Date | null | undefined;
     /**
@@ -100,6 +100,16 @@ export type BasketOrderCreate = {
      * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported
      */
     identifierType: BasketOrderCreateIdentifierTypeOpen;
+    /**
+     * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
+     *
+     * @remarks
+     *
+     *  [BigDecimal]:
+     *  https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html
+     *  [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
+     */
+    maxSellQuantity?: DecimalCreate | undefined;
     /**
      * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
      *
@@ -232,6 +242,7 @@ export type BasketOrderCreate$Outbound = {
     currency_code?: string | undefined;
     identifier: string;
     identifier_type: string;
+    max_sell_quantity?: DecimalCreate$Outbound | undefined;
     notional_value?: DecimalCreate$Outbound | undefined;
     order_type: string;
     quantity?: DecimalCreate$Outbound | undefined;

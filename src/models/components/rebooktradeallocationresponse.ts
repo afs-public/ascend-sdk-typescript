@@ -42,7 +42,7 @@ export type RebookTradeAllocationResponseAccruedInterestAmount = {
 };
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum RebookTradeAllocationResponseAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -50,7 +50,7 @@ export enum RebookTradeAllocationResponseAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeAllocationResponseAssetTypeOpen = OpenEnum<
   typeof RebookTradeAllocationResponseAssetType
@@ -339,7 +339,7 @@ export type NewTradeAllocation = {
    */
   additionalInstructions?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
   assetType?: RebookTradeAllocationResponseAssetTypeOpen | undefined;
   /**
@@ -486,7 +486,7 @@ export type RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestA
   };
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum RebookTradeAllocationResponseOriginalTradeAllocationAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -494,7 +494,7 @@ export enum RebookTradeAllocationResponseOriginalTradeAllocationAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeAllocationResponseOriginalTradeAllocationAssetTypeOpen =
   OpenEnum<
@@ -793,7 +793,7 @@ export type OriginalTradeAllocation = {
    */
   additionalInstructions?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
   assetType?:
     | RebookTradeAllocationResponseOriginalTradeAllocationAssetTypeOpen

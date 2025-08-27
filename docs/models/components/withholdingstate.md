@@ -65,4 +65,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Wv`                          | WV                            |
 | `Wi`                          | WI                            |
 | `Wy`                          | WY                            |
+| `Dc`                          | DC                            |
 | -                             | `Unrecognized<string>`        |

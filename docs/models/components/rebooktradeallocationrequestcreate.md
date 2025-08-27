@@ -8,6 +8,7 @@ Used to correct a trade allocation.
 import {
   RebookTradeAllocationRequestCreate,
   ToSide,
+  TradeAllocationCreateAssetType,
   TradeAllocationCreateBrokerCapacity,
   TradeAllocationCreateIdentifierType,
 } from "@apexfintechsolutions/ascend-sdk/models/components";
@@ -17,6 +18,7 @@ let value: RebookTradeAllocationRequestCreate = {
     "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM",
   requestId: "8a0d35c0-428c-439e-9b03-b611530fe06f",
   tradeAllocation: {
+    assetType: TradeAllocationCreateAssetType.Equity,
     brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
     executionTime: new Date("2024-07-17T12:00:00Z"),
     fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",

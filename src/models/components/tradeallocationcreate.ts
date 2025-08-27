@@ -50,7 +50,7 @@ import {
 } from "./priceadjustmentcreate.js";
 
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export enum TradeAllocationCreateAssetType {
   AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -58,7 +58,7 @@ export enum TradeAllocationCreateAssetType {
   FixedIncome = "FIXED_INCOME",
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type TradeAllocationCreateAssetTypeOpen = OpenEnum<
   typeof TradeAllocationCreateAssetType
@@ -215,9 +215,9 @@ export type TradeAllocationCreate = {
    */
   additionalInstructions?: string | undefined;
   /**
-   * Type of the asset being traded. Required for SYMBOL and CUSIP.
+   * Type of the asset being traded.
    */
-  assetType?: TradeAllocationCreateAssetTypeOpen | undefined;
+  assetType: TradeAllocationCreateAssetTypeOpen;
   /**
    * The yield associated with an individual fill of a fixed income trade. Required for FIXED_INCOME trades. Not allowed for trades of other instrument types.
    */
@@ -593,7 +593,7 @@ export const TradeAllocationCreate$inboundSchema: z.ZodType<
 > = z.object({
   accrued_interest_amount: DecimalCreate$inboundSchema.optional(),
   additional_instructions: z.string().optional(),
-  asset_type: TradeAllocationCreateAssetType$inboundSchema.optional(),
+  asset_type: TradeAllocationCreateAssetType$inboundSchema,
   bond_yield: z.array(BondYieldCreate$inboundSchema).optional(),
   broker_capacity: TradeAllocationCreateBrokerCapacity$inboundSchema,
   client_order_id: z.string().optional(),
@@ -653,7 +653,7 @@ export const TradeAllocationCreate$inboundSchema: z.ZodType<
 export type TradeAllocationCreate$Outbound = {
   accrued_interest_amount?: DecimalCreate$Outbound | undefined;
   additional_instructions?: string | undefined;
-  asset_type?: string | undefined;
+  asset_type: string;
   bond_yield?: Array<BondYieldCreate$Outbound> | undefined;
   broker_capacity: string;
   client_order_id?: string | undefined;
@@ -688,7 +688,7 @@ export const TradeAllocationCreate$outboundSchema: z.ZodType<
 > = z.object({
   accruedInterestAmount: DecimalCreate$outboundSchema.optional(),
   additionalInstructions: z.string().optional(),
-  assetType: TradeAllocationCreateAssetType$outboundSchema.optional(),
+  assetType: TradeAllocationCreateAssetType$outboundSchema,
   bondYield: z.array(BondYieldCreate$outboundSchema).optional(),
   brokerCapacity: TradeAllocationCreateBrokerCapacity$outboundSchema,
   clientOrderId: z.string().optional(),

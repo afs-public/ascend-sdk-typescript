@@ -60,7 +60,7 @@ const bookingfee_js_1 = require("./bookingfee.js");
 const bookinglot_js_1 = require("./bookinglot.js");
 const execution_js_1 = require("./execution.js");
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 var RebookTradeResponseAssetType;
 (function (RebookTradeResponseAssetType) {
@@ -215,7 +215,7 @@ var RebookTradeResponseWhenIssued;
     RebookTradeResponseWhenIssued["WhenDistributed"] = "WHEN_DISTRIBUTED";
 })(RebookTradeResponseWhenIssued || (exports.RebookTradeResponseWhenIssued = RebookTradeResponseWhenIssued = {}));
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 var RebookTradeResponseOriginalTradeAssetType;
 (function (RebookTradeResponseOriginalTradeAssetType) {

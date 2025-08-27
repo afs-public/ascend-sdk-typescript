@@ -6,7 +6,7 @@ import { BookingFee, BookingFee$Outbound } from "./bookingfee.js";
 import { BookingLot, BookingLot$Outbound } from "./bookinglot.js";
 import { Execution, Execution$Outbound } from "./execution.js";
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export declare enum RebookTradeResponseAssetType {
     AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -14,7 +14,7 @@ export declare enum RebookTradeResponseAssetType {
     FixedIncome = "FIXED_INCOME"
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeResponseAssetTypeOpen = OpenEnum<typeof RebookTradeResponseAssetType>;
 /**
@@ -239,7 +239,7 @@ export type NewTrade = {
      */
     alternateOrderId?: string | undefined;
     /**
-     * Type of the asset being traded. Required for SYMBOL and CUSIP.
+     * Type of the asset being traded.
      */
     assetType?: RebookTradeResponseAssetTypeOpen | undefined;
     /**
@@ -336,7 +336,7 @@ export type NewTrade = {
     whenIssued?: RebookTradeResponseWhenIssuedOpen | undefined;
 };
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export declare enum RebookTradeResponseOriginalTradeAssetType {
     AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -344,7 +344,7 @@ export declare enum RebookTradeResponseOriginalTradeAssetType {
     FixedIncome = "FIXED_INCOME"
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeResponseOriginalTradeAssetTypeOpen = OpenEnum<typeof RebookTradeResponseOriginalTradeAssetType>;
 /**
@@ -569,7 +569,7 @@ export type OriginalTrade = {
      */
     alternateOrderId?: string | undefined;
     /**
-     * Type of the asset being traded. Required for SYMBOL and CUSIP.
+     * Type of the asset being traded.
      */
     assetType?: RebookTradeResponseOriginalTradeAssetTypeOpen | undefined;
     /**

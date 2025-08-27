@@ -9,7 +9,7 @@ import { DecimalCreate, DecimalCreate$Outbound } from "./decimalcreate.js";
 import { LotCreate, LotCreate$Outbound } from "./lotcreate.js";
 import { PriceAdjustmentCreate, PriceAdjustmentCreate$Outbound } from "./priceadjustmentcreate.js";
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export declare enum TradeAllocationCreateAssetType {
     AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -17,7 +17,7 @@ export declare enum TradeAllocationCreateAssetType {
     FixedIncome = "FIXED_INCOME"
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type TradeAllocationCreateAssetTypeOpen = OpenEnum<typeof TradeAllocationCreateAssetType>;
 /**
@@ -155,9 +155,9 @@ export type TradeAllocationCreate = {
      */
     additionalInstructions?: string | undefined;
     /**
-     * Type of the asset being traded. Required for SYMBOL and CUSIP.
+     * Type of the asset being traded.
      */
-    assetType?: TradeAllocationCreateAssetTypeOpen | undefined;
+    assetType: TradeAllocationCreateAssetTypeOpen;
     /**
      * The yield associated with an individual fill of a fixed income trade. Required for FIXED_INCOME trades. Not allowed for trades of other instrument types.
      */
@@ -395,7 +395,7 @@ export declare const TradeAllocationCreate$inboundSchema: z.ZodType<TradeAllocat
 export type TradeAllocationCreate$Outbound = {
     accrued_interest_amount?: DecimalCreate$Outbound | undefined;
     additional_instructions?: string | undefined;
-    asset_type?: string | undefined;
+    asset_type: string;
     bond_yield?: Array<BondYieldCreate$Outbound> | undefined;
     broker_capacity: string;
     client_order_id?: string | undefined;

@@ -49,7 +49,8 @@ export declare enum ActivityAccountTransferType {
     MutualFundCleanup = "MUTUAL_FUND_CLEANUP",
     FailReversal = "FAIL_REVERSAL",
     Reclaim = "RECLAIM",
-    PositionTransferFund = "POSITION_TRANSFER_FUND"
+    PositionTransferFund = "POSITION_TRANSFER_FUND",
+    SponsoredTransfer = "SPONSORED_TRANSFER"
 }
 /**
  * The type of asset movement being performed within the lifecycle of an account transfer process
@@ -68,6 +69,32 @@ export declare enum ActivityAction {
  * Denotes whether the shares are incoming or outgoing
  */
 export type ActivityActionOpen = OpenEnum<typeof ActivityAction>;
+/**
+ * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
+ */
+export type ActivityFairMarketValue = {
+    /**
+     * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+     */
+    value?: string | undefined;
+};
+/**
+ * Date from which the asset was valued and used in the fair market value calculation
+ */
+export type ActivityFairMarketValueDate = {
+    /**
+     * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     */
+    day?: number | undefined;
+    /**
+     * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     */
+    month?: number | undefined;
+    /**
+     * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     */
+    year?: number | undefined;
+};
 /**
  * The method used for the account transfer
  */
@@ -113,6 +140,14 @@ export type ActivityAccountTransfer = {
      * Contra party identifier
      */
     contraPartyId?: string | undefined;
+    /**
+     * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
+     */
+    fairMarketValue?: ActivityFairMarketValue | null | undefined;
+    /**
+     * Date from which the asset was valued and used in the fair market value calculation
+     */
+    fairMarketValueDate?: ActivityFairMarketValueDate | null | undefined;
     /**
      * Contra party institution for the account transfer
      */
@@ -612,7 +647,9 @@ export declare enum ActivitySubtype {
     Full = "FULL",
     Maturity = "MATURITY",
     Termination = "TERMINATION",
-    RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS"
+    RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS",
+    InterimPayment = "INTERIM_PAYMENT",
+    FinalPayment = "FINAL_PAYMENT"
 }
 /**
  * The subtype for the corporate action event
@@ -1389,7 +1426,9 @@ export declare enum ActivityLiquidationSubtype {
     Full = "FULL",
     Maturity = "MATURITY",
     Termination = "TERMINATION",
-    RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS"
+    RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS",
+    InterimPayment = "INTERIM_PAYMENT",
+    FinalPayment = "FINAL_PAYMENT"
 }
 /**
  * The subtype for the corporate action event
@@ -2063,7 +2102,9 @@ export declare enum ActivityRedemptionFullSubtype {
     Full = "FULL",
     Maturity = "MATURITY",
     Termination = "TERMINATION",
-    RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS"
+    RedemptionOfWarrants = "REDEMPTION_OF_WARRANTS",
+    InterimPayment = "INTERIM_PAYMENT",
+    FinalPayment = "FINAL_PAYMENT"
 }
 /**
  * The subtype for the corporate action event
@@ -4070,6 +4111,52 @@ export declare namespace ActivityAction$ {
     const outboundSchema: z.ZodType<ActivityActionOpen, z.ZodTypeDef, ActivityActionOpen>;
 }
 /** @internal */
+export declare const ActivityFairMarketValue$inboundSchema: z.ZodType<ActivityFairMarketValue, z.ZodTypeDef, unknown>;
+/** @internal */
+export type ActivityFairMarketValue$Outbound = {
+    value?: string | undefined;
+};
+/** @internal */
+export declare const ActivityFairMarketValue$outboundSchema: z.ZodType<ActivityFairMarketValue$Outbound, z.ZodTypeDef, ActivityFairMarketValue>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace ActivityFairMarketValue$ {
+    /** @deprecated use `ActivityFairMarketValue$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<ActivityFairMarketValue, z.ZodTypeDef, unknown>;
+    /** @deprecated use `ActivityFairMarketValue$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<ActivityFairMarketValue$Outbound, z.ZodTypeDef, ActivityFairMarketValue>;
+    /** @deprecated use `ActivityFairMarketValue$Outbound` instead. */
+    type Outbound = ActivityFairMarketValue$Outbound;
+}
+export declare function activityFairMarketValueToJSON(activityFairMarketValue: ActivityFairMarketValue): string;
+export declare function activityFairMarketValueFromJSON(jsonString: string): SafeParseResult<ActivityFairMarketValue, SDKValidationError>;
+/** @internal */
+export declare const ActivityFairMarketValueDate$inboundSchema: z.ZodType<ActivityFairMarketValueDate, z.ZodTypeDef, unknown>;
+/** @internal */
+export type ActivityFairMarketValueDate$Outbound = {
+    day?: number | undefined;
+    month?: number | undefined;
+    year?: number | undefined;
+};
+/** @internal */
+export declare const ActivityFairMarketValueDate$outboundSchema: z.ZodType<ActivityFairMarketValueDate$Outbound, z.ZodTypeDef, ActivityFairMarketValueDate>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace ActivityFairMarketValueDate$ {
+    /** @deprecated use `ActivityFairMarketValueDate$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<ActivityFairMarketValueDate, z.ZodTypeDef, unknown>;
+    /** @deprecated use `ActivityFairMarketValueDate$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<ActivityFairMarketValueDate$Outbound, z.ZodTypeDef, ActivityFairMarketValueDate>;
+    /** @deprecated use `ActivityFairMarketValueDate$Outbound` instead. */
+    type Outbound = ActivityFairMarketValueDate$Outbound;
+}
+export declare function activityFairMarketValueDateToJSON(activityFairMarketValueDate: ActivityFairMarketValueDate): string;
+export declare function activityFairMarketValueDateFromJSON(jsonString: string): SafeParseResult<ActivityFairMarketValueDate, SDKValidationError>;
+/** @internal */
 export declare const ActivityMethod$inboundSchema: z.ZodType<ActivityMethodOpen, z.ZodTypeDef, unknown>;
 /** @internal */
 export declare const ActivityMethod$outboundSchema: z.ZodType<ActivityMethodOpen, z.ZodTypeDef, ActivityMethodOpen>;
@@ -4094,6 +4181,8 @@ export type ActivityAccountTransfer$Outbound = {
     additional_instructions?: string | undefined;
     contra_party_account_number?: string | undefined;
     contra_party_id?: string | undefined;
+    fair_market_value?: ActivityFairMarketValue$Outbound | null | undefined;
+    fair_market_value_date?: ActivityFairMarketValueDate$Outbound | null | undefined;
     institution?: string | undefined;
     method?: string | undefined;
 };

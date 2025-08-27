@@ -75,6 +75,7 @@ export enum WithholdingDataState {
   Wv = "WV",
   Wi = "WI",
   Wy = "WY",
+  Dc = "DC",
 }
 export type WithholdingDataStateOpen = OpenEnum<typeof WithholdingDataState>;
 

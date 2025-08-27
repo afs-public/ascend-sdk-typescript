@@ -15,7 +15,7 @@ export type CancelTradeAllocationResponseAccruedInterestAmount = {
     value?: string | undefined;
 };
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export declare enum CancelTradeAllocationResponseAssetType {
     AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -23,7 +23,7 @@ export declare enum CancelTradeAllocationResponseAssetType {
     FixedIncome = "FIXED_INCOME"
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type CancelTradeAllocationResponseAssetTypeOpen = OpenEnum<typeof CancelTradeAllocationResponseAssetType>;
 /**
@@ -269,7 +269,7 @@ export type CancelTradeAllocationResponseTradeAllocation = {
      */
     additionalInstructions?: string | undefined;
     /**
-     * Type of the asset being traded. Required for SYMBOL and CUSIP.
+     * Type of the asset being traded.
      */
     assetType?: CancelTradeAllocationResponseAssetTypeOpen | undefined;
     /**

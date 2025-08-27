@@ -19,12 +19,33 @@ import { testSimulationForceRejectWireWithdrawal } from "../funcs/testSimulation
 import { testSimulationForceReturnAchDeposit } from "../funcs/testSimulationForceReturnAchDeposit.js";
 import { testSimulationForceReturnAchWithdrawal } from "../funcs/testSimulationForceReturnAchWithdrawal.js";
 import { testSimulationGetMicroDepositAmounts } from "../funcs/testSimulationGetMicroDepositAmounts.js";
+import { testSimulationSimulateCreateCheckDeposit } from "../funcs/testSimulationSimulateCreateCheckDeposit.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class TestSimulation extends ClientSDK {
+  /**
+   * Simulate Check Deposit Creation
+   *
+   * @remarks
+   * Creates a check deposit for a specific account FOR TESTING ONLY!
+   */
+  async simulateCreateCheckDeposit(
+    simulateCreateCheckDepositRequestCreate:
+      components.SimulateCreateCheckDepositRequestCreate,
+    accountId: string,
+    options?: RequestOptions,
+  ): Promise<operations.CheckDepositsSimulateCreateCheckDepositResponse> {
+    return unwrapAsync(testSimulationSimulateCreateCheckDeposit(
+      this,
+      simulateCreateCheckDepositRequestCreate,
+      accountId,
+      options,
+    ));
+  }
+
   /**
    * ACH Deposit Approval
    *

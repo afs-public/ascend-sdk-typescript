@@ -14,6 +14,7 @@ const authentication_js_1 = require("./authentication.js");
 const bankrelationships_js_1 = require("./bankrelationships.js");
 const basketorders_js_1 = require("./basketorders.js");
 const cashbalances_js_1 = require("./cashbalances.js");
+const checks_js_1 = require("./checks.js");
 const createorder_js_1 = require("./createorder.js");
 const dataretrieval_js_1 = require("./dataretrieval.js");
 const enrollmentsandagreements_js_1 = require("./enrollmentsandagreements.js");
@@ -77,6 +78,12 @@ class Apexascend extends sdks_js_1.ClientSDK {
     get scheduleTransfers() {
         return (this._scheduleTransfers ?? (this._scheduleTransfers = new scheduletransfers_js_1.ScheduleTransfers(this._options)));
     }
+    get checks() {
+        return (this._checks ?? (this._checks = new checks_js_1.Checks(this._options)));
+    }
+    get testSimulation() {
+        return (this._testSimulation ?? (this._testSimulation = new testsimulation_js_1.TestSimulation(this._options)));
+    }
     get wires() {
         return (this._wires ?? (this._wires = new wires_js_1.Wires(this._options)));
     }
@@ -85,9 +92,6 @@ class Apexascend extends sdks_js_1.ClientSDK {
     }
     get feesAndCredits() {
         return (this._feesAndCredits ?? (this._feesAndCredits = new feesandcredits_js_1.FeesAndCredits(this._options)));
-    }
-    get testSimulation() {
-        return (this._testSimulation ?? (this._testSimulation = new testsimulation_js_1.TestSimulation(this._options)));
     }
     get accountTransfers() {
         return (this._accountTransfers ?? (this._accountTransfers = new accounttransfers_js_1.AccountTransfers(this._options)));

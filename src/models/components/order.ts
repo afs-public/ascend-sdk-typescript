@@ -143,6 +143,13 @@ export type CumulativeNotionalValue = {
 };
 
 /**
+ * Any reporting data provided by the SetExtraReportingData endpoint.
+ */
+export type ExtraReportingData = {
+  cancelConfirmedTime?: Date | null | undefined;
+};
+
+/**
  * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
  */
 export type FilledQuantity = {
@@ -329,6 +336,7 @@ export enum OrderRejectedReason {
   ClientReceivedTimeRequired = "CLIENT_RECEIVED_TIME_REQUIRED",
   ClientNotPermittedToUseTradingSession =
     "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION",
+  StopPriceBelowMarketPrice = "STOP_PRICE_BELOW_MARKET_PRICE",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -592,6 +600,10 @@ export type Order = {
    * The execution-level details that compose this order
    */
   executions?: Array<TradingExecutions> | undefined;
+  /**
+   * Any reporting data provided by the SetExtraReportingData endpoint.
+   */
+  extraReportingData?: ExtraReportingData | null | undefined;
   /**
    * Fees that will be applied to this order. Only the BROKER_FEE type is supported.
    */
@@ -1009,6 +1021,71 @@ export function cumulativeNotionalValueFromJSON(
     jsonString,
     (x) => CumulativeNotionalValue$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CumulativeNotionalValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const ExtraReportingData$inboundSchema: z.ZodType<
+  ExtraReportingData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cancel_confirmed_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "cancel_confirmed_time": "cancelConfirmedTime",
+  });
+});
+
+/** @internal */
+export type ExtraReportingData$Outbound = {
+  cancel_confirmed_time?: string | null | undefined;
+};
+
+/** @internal */
+export const ExtraReportingData$outboundSchema: z.ZodType<
+  ExtraReportingData$Outbound,
+  z.ZodTypeDef,
+  ExtraReportingData
+> = z.object({
+  cancelConfirmedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    cancelConfirmedTime: "cancel_confirmed_time",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ExtraReportingData$ {
+  /** @deprecated use `ExtraReportingData$inboundSchema` instead. */
+  export const inboundSchema = ExtraReportingData$inboundSchema;
+  /** @deprecated use `ExtraReportingData$outboundSchema` instead. */
+  export const outboundSchema = ExtraReportingData$outboundSchema;
+  /** @deprecated use `ExtraReportingData$Outbound` instead. */
+  export type Outbound = ExtraReportingData$Outbound;
+}
+
+export function extraReportingDataToJSON(
+  extraReportingData: ExtraReportingData,
+): string {
+  return JSON.stringify(
+    ExtraReportingData$outboundSchema.parse(extraReportingData),
+  );
+}
+
+export function extraReportingDataFromJSON(
+  jsonString: string,
+): SafeParseResult<ExtraReportingData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ExtraReportingData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ExtraReportingData' from JSON`,
   );
 }
 
@@ -2169,6 +2246,9 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
     ).optional(),
     currency_code: z.string().optional(),
     executions: z.array(TradingExecutions$inboundSchema).optional(),
+    extra_reporting_data: z.nullable(
+      z.lazy(() => ExtraReportingData$inboundSchema),
+    ).optional(),
     fees: z.array(TradingFee$inboundSchema).optional(),
     filled_quantity: z.nullable(z.lazy(() => FilledQuantity$inboundSchema))
       .optional(),
@@ -2221,6 +2301,7 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
       "create_time": "createTime",
       "cumulative_notional_value": "cumulativeNotionalValue",
       "currency_code": "currencyCode",
+      "extra_reporting_data": "extraReportingData",
       "filled_quantity": "filledQuantity",
       "identifier_issuing_region_code": "identifierIssuingRegionCode",
       "identifier_type": "identifierType",
@@ -2264,6 +2345,7 @@ export type Order$Outbound = {
     | undefined;
   currency_code?: string | undefined;
   executions?: Array<TradingExecutions$Outbound> | undefined;
+  extra_reporting_data?: ExtraReportingData$Outbound | null | undefined;
   fees?: Array<TradingFee$Outbound> | undefined;
   filled_quantity?: FilledQuantity$Outbound | null | undefined;
   identifier?: string | undefined;
@@ -2320,6 +2402,9 @@ export const Order$outboundSchema: z.ZodType<
   ).optional(),
   currencyCode: z.string().optional(),
   executions: z.array(TradingExecutions$outboundSchema).optional(),
+  extraReportingData: z.nullable(
+    z.lazy(() => ExtraReportingData$outboundSchema),
+  ).optional(),
   fees: z.array(TradingFee$outboundSchema).optional(),
   filledQuantity: z.nullable(z.lazy(() => FilledQuantity$outboundSchema))
     .optional(),
@@ -2371,6 +2456,7 @@ export const Order$outboundSchema: z.ZodType<
     createTime: "create_time",
     cumulativeNotionalValue: "cumulative_notional_value",
     currencyCode: "currency_code",
+    extraReportingData: "extra_reporting_data",
     filledQuantity: "filled_quantity",
     identifierIssuingRegionCode: "identifier_issuing_region_code",
     identifierType: "identifier_type",

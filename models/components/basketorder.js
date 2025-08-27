@@ -36,11 +36,13 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BasketOrder$ = exports.BasketOrder$outboundSchema = exports.BasketOrder$inboundSchema = exports.BasketOrderTimeInForce$ = exports.BasketOrderTimeInForce$outboundSchema = exports.BasketOrderTimeInForce$inboundSchema = exports.BasketOrderSpecialReportingInstructions$ = exports.BasketOrderSpecialReportingInstructions$outboundSchema = exports.BasketOrderSpecialReportingInstructions$inboundSchema = exports.BasketOrderSide$ = exports.BasketOrderSide$outboundSchema = exports.BasketOrderSide$inboundSchema = exports.BasketOrderQuantity$ = exports.BasketOrderQuantity$outboundSchema = exports.BasketOrderQuantity$inboundSchema = exports.BasketOrderOrderType$ = exports.BasketOrderOrderType$outboundSchema = exports.BasketOrderOrderType$inboundSchema = exports.BasketOrderOrderStatus$ = exports.BasketOrderOrderStatus$outboundSchema = exports.BasketOrderOrderStatus$inboundSchema = exports.BasketOrderOrderRejectedReason$ = exports.BasketOrderOrderRejectedReason$outboundSchema = exports.BasketOrderOrderRejectedReason$inboundSchema = exports.BasketOrderNotionalValue$ = exports.BasketOrderNotionalValue$outboundSchema = exports.BasketOrderNotionalValue$inboundSchema = exports.BasketOrderIdentifierType$ = exports.BasketOrderIdentifierType$outboundSchema = exports.BasketOrderIdentifierType$inboundSchema = exports.BasketOrderFilledQuantity$ = exports.BasketOrderFilledQuantity$outboundSchema = exports.BasketOrderFilledQuantity$inboundSchema = exports.BasketOrderCumulativeNotionalValue$ = exports.BasketOrderCumulativeNotionalValue$outboundSchema = exports.BasketOrderCumulativeNotionalValue$inboundSchema = exports.BasketOrderAssetType$ = exports.BasketOrderAssetType$outboundSchema = exports.BasketOrderAssetType$inboundSchema = exports.BasketOrderTimeInForce = exports.BasketOrderSpecialReportingInstructions = exports.BasketOrderSide = exports.BasketOrderOrderType = exports.BasketOrderOrderStatus = exports.BasketOrderOrderRejectedReason = exports.BasketOrderIdentifierType = exports.BasketOrderAssetType = void 0;
+exports.BasketOrder$ = exports.BasketOrder$outboundSchema = exports.BasketOrder$inboundSchema = exports.BasketOrderTimeInForce$ = exports.BasketOrderTimeInForce$outboundSchema = exports.BasketOrderTimeInForce$inboundSchema = exports.BasketOrderSpecialReportingInstructions$ = exports.BasketOrderSpecialReportingInstructions$outboundSchema = exports.BasketOrderSpecialReportingInstructions$inboundSchema = exports.BasketOrderSide$ = exports.BasketOrderSide$outboundSchema = exports.BasketOrderSide$inboundSchema = exports.BasketOrderQuantity$ = exports.BasketOrderQuantity$outboundSchema = exports.BasketOrderQuantity$inboundSchema = exports.BasketOrderOrderType$ = exports.BasketOrderOrderType$outboundSchema = exports.BasketOrderOrderType$inboundSchema = exports.BasketOrderOrderStatus$ = exports.BasketOrderOrderStatus$outboundSchema = exports.BasketOrderOrderStatus$inboundSchema = exports.BasketOrderOrderRejectedReason$ = exports.BasketOrderOrderRejectedReason$outboundSchema = exports.BasketOrderOrderRejectedReason$inboundSchema = exports.BasketOrderNotionalValue$ = exports.BasketOrderNotionalValue$outboundSchema = exports.BasketOrderNotionalValue$inboundSchema = exports.BasketOrderMaxSellQuantity$ = exports.BasketOrderMaxSellQuantity$outboundSchema = exports.BasketOrderMaxSellQuantity$inboundSchema = exports.BasketOrderIdentifierType$ = exports.BasketOrderIdentifierType$outboundSchema = exports.BasketOrderIdentifierType$inboundSchema = exports.BasketOrderFilledQuantity$ = exports.BasketOrderFilledQuantity$outboundSchema = exports.BasketOrderFilledQuantity$inboundSchema = exports.BasketOrderCumulativeNotionalValue$ = exports.BasketOrderCumulativeNotionalValue$outboundSchema = exports.BasketOrderCumulativeNotionalValue$inboundSchema = exports.BasketOrderAssetType$ = exports.BasketOrderAssetType$outboundSchema = exports.BasketOrderAssetType$inboundSchema = exports.BasketOrderTimeInForce = exports.BasketOrderSpecialReportingInstructions = exports.BasketOrderSide = exports.BasketOrderOrderType = exports.BasketOrderOrderStatus = exports.BasketOrderOrderRejectedReason = exports.BasketOrderIdentifierType = exports.BasketOrderAssetType = void 0;
 exports.basketOrderCumulativeNotionalValueToJSON = basketOrderCumulativeNotionalValueToJSON;
 exports.basketOrderCumulativeNotionalValueFromJSON = basketOrderCumulativeNotionalValueFromJSON;
 exports.basketOrderFilledQuantityToJSON = basketOrderFilledQuantityToJSON;
 exports.basketOrderFilledQuantityFromJSON = basketOrderFilledQuantityFromJSON;
+exports.basketOrderMaxSellQuantityToJSON = basketOrderMaxSellQuantityToJSON;
+exports.basketOrderMaxSellQuantityFromJSON = basketOrderMaxSellQuantityFromJSON;
 exports.basketOrderNotionalValueToJSON = basketOrderNotionalValueToJSON;
 exports.basketOrderNotionalValueFromJSON = basketOrderNotionalValueFromJSON;
 exports.basketOrderQuantityToJSON = basketOrderQuantityToJSON;
@@ -104,6 +106,7 @@ var BasketOrderOrderRejectedReason;
     BasketOrderOrderRejectedReason["InsufficientPosition"] = "INSUFFICIENT_POSITION";
     BasketOrderOrderRejectedReason["FailedBuyingPower"] = "FAILED_BUYING_POWER";
     BasketOrderOrderRejectedReason["RoundUpAmountTooSmall"] = "ROUND_UP_AMOUNT_TOO_SMALL";
+    BasketOrderOrderRejectedReason["AssetNotSetUpForRoundUps"] = "ASSET_NOT_SET_UP_FOR_ROUND_UPS";
 })(BasketOrderOrderRejectedReason || (exports.BasketOrderOrderRejectedReason = BasketOrderOrderRejectedReason = {}));
 /**
  * The processing status of the order
@@ -244,6 +247,31 @@ var BasketOrderIdentifierType$;
     /** @deprecated use `BasketOrderIdentifierType$outboundSchema` instead. */
     BasketOrderIdentifierType$.outboundSchema = exports.BasketOrderIdentifierType$outboundSchema;
 })(BasketOrderIdentifierType$ || (exports.BasketOrderIdentifierType$ = BasketOrderIdentifierType$ = {}));
+/** @internal */
+exports.BasketOrderMaxSellQuantity$inboundSchema = z.object({
+    value: z.string().optional(),
+});
+/** @internal */
+exports.BasketOrderMaxSellQuantity$outboundSchema = z.object({
+    value: z.string().optional(),
+});
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+var BasketOrderMaxSellQuantity$;
+(function (BasketOrderMaxSellQuantity$) {
+    /** @deprecated use `BasketOrderMaxSellQuantity$inboundSchema` instead. */
+    BasketOrderMaxSellQuantity$.inboundSchema = exports.BasketOrderMaxSellQuantity$inboundSchema;
+    /** @deprecated use `BasketOrderMaxSellQuantity$outboundSchema` instead. */
+    BasketOrderMaxSellQuantity$.outboundSchema = exports.BasketOrderMaxSellQuantity$outboundSchema;
+})(BasketOrderMaxSellQuantity$ || (exports.BasketOrderMaxSellQuantity$ = BasketOrderMaxSellQuantity$ = {}));
+function basketOrderMaxSellQuantityToJSON(basketOrderMaxSellQuantity) {
+    return JSON.stringify(exports.BasketOrderMaxSellQuantity$outboundSchema.parse(basketOrderMaxSellQuantity));
+}
+function basketOrderMaxSellQuantityFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.BasketOrderMaxSellQuantity$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'BasketOrderMaxSellQuantity' from JSON`);
+}
 /** @internal */
 exports.BasketOrderNotionalValue$inboundSchema = z.object({
     value: z.string().optional(),
@@ -443,6 +471,7 @@ exports.BasketOrder$inboundSchema = z.object({
     identifier: z.string().optional(),
     identifier_type: exports.BasketOrderIdentifierType$inboundSchema.optional(),
     last_update_time: z.nullable(z.string().datetime({ offset: true }).transform(v => new Date(v))).optional(),
+    max_sell_quantity: z.nullable(z.lazy(() => exports.BasketOrderMaxSellQuantity$inboundSchema)).optional(),
     name: z.string().optional(),
     notional_value: z.nullable(z.lazy(() => exports.BasketOrderNotionalValue$inboundSchema)).optional(),
     order_rejected_reason: exports.BasketOrderOrderRejectedReason$inboundSchema
@@ -469,6 +498,7 @@ exports.BasketOrder$inboundSchema = z.object({
         "filled_quantity": "filledQuantity",
         "identifier_type": "identifierType",
         "last_update_time": "lastUpdateTime",
+        "max_sell_quantity": "maxSellQuantity",
         "notional_value": "notionalValue",
         "order_rejected_reason": "orderRejectedReason",
         "order_status": "orderStatus",
@@ -496,6 +526,7 @@ exports.BasketOrder$outboundSchema = z.object({
     identifierType: exports.BasketOrderIdentifierType$outboundSchema.optional(),
     lastUpdateTime: z.nullable(z.date().transform(v => v.toISOString()))
         .optional(),
+    maxSellQuantity: z.nullable(z.lazy(() => exports.BasketOrderMaxSellQuantity$outboundSchema)).optional(),
     name: z.string().optional(),
     notionalValue: z.nullable(z.lazy(() => exports.BasketOrderNotionalValue$outboundSchema)).optional(),
     orderRejectedReason: exports.BasketOrderOrderRejectedReason$outboundSchema.optional(),
@@ -521,6 +552,7 @@ exports.BasketOrder$outboundSchema = z.object({
         filledQuantity: "filled_quantity",
         identifierType: "identifier_type",
         lastUpdateTime: "last_update_time",
+        maxSellQuantity: "max_sell_quantity",
         notionalValue: "notional_value",
         orderRejectedReason: "order_rejected_reason",
         orderStatus: "order_status",

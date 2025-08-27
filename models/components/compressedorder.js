@@ -104,6 +104,7 @@ var CompressedOrderOrderRejectedReason;
     CompressedOrderOrderRejectedReason["InsufficientPosition"] = "INSUFFICIENT_POSITION";
     CompressedOrderOrderRejectedReason["FailedBuyingPower"] = "FAILED_BUYING_POWER";
     CompressedOrderOrderRejectedReason["RoundUpAmountTooSmall"] = "ROUND_UP_AMOUNT_TOO_SMALL";
+    CompressedOrderOrderRejectedReason["AssetNotSetUpForRoundUps"] = "ASSET_NOT_SET_UP_FOR_ROUND_UPS";
 })(CompressedOrderOrderRejectedReason || (exports.CompressedOrderOrderRejectedReason = CompressedOrderOrderRejectedReason = {}));
 /**
  * The processing status of the order

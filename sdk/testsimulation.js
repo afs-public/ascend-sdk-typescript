@@ -21,9 +21,19 @@ const testSimulationForceRejectWireWithdrawal_js_1 = require("../funcs/testSimul
 const testSimulationForceReturnAchDeposit_js_1 = require("../funcs/testSimulationForceReturnAchDeposit.js");
 const testSimulationForceReturnAchWithdrawal_js_1 = require("../funcs/testSimulationForceReturnAchWithdrawal.js");
 const testSimulationGetMicroDepositAmounts_js_1 = require("../funcs/testSimulationGetMicroDepositAmounts.js");
+const testSimulationSimulateCreateCheckDeposit_js_1 = require("../funcs/testSimulationSimulateCreateCheckDeposit.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class TestSimulation extends sdks_js_1.ClientSDK {
+    /**
+     * Simulate Check Deposit Creation
+     *
+     * @remarks
+     * Creates a check deposit for a specific account FOR TESTING ONLY!
+     */
+    async simulateCreateCheckDeposit(simulateCreateCheckDepositRequestCreate, accountId, options) {
+        return (0, fp_js_1.unwrapAsync)((0, testSimulationSimulateCreateCheckDeposit_js_1.testSimulationSimulateCreateCheckDeposit)(this, simulateCreateCheckDepositRequestCreate, accountId, options));
+    }
     /**
      * ACH Deposit Approval
      *

@@ -121,6 +121,7 @@ export enum CompressedOrderOrderRejectedReason {
   InsufficientPosition = "INSUFFICIENT_POSITION",
   FailedBuyingPower = "FAILED_BUYING_POWER",
   RoundUpAmountTooSmall = "ROUND_UP_AMOUNT_TOO_SMALL",
+  AssetNotSetUpForRoundUps = "ASSET_NOT_SET_UP_FOR_ROUND_UPS",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.

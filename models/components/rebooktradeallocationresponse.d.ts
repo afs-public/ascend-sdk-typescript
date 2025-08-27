@@ -15,7 +15,7 @@ export type RebookTradeAllocationResponseAccruedInterestAmount = {
     value?: string | undefined;
 };
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export declare enum RebookTradeAllocationResponseAssetType {
     AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -23,7 +23,7 @@ export declare enum RebookTradeAllocationResponseAssetType {
     FixedIncome = "FIXED_INCOME"
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeAllocationResponseAssetTypeOpen = OpenEnum<typeof RebookTradeAllocationResponseAssetType>;
 /**
@@ -269,7 +269,7 @@ export type NewTradeAllocation = {
      */
     additionalInstructions?: string | undefined;
     /**
-     * Type of the asset being traded. Required for SYMBOL and CUSIP.
+     * Type of the asset being traded.
      */
     assetType?: RebookTradeAllocationResponseAssetTypeOpen | undefined;
     /**
@@ -399,7 +399,7 @@ export type RebookTradeAllocationResponseOriginalTradeAllocationAccruedInterestA
     value?: string | undefined;
 };
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export declare enum RebookTradeAllocationResponseOriginalTradeAllocationAssetType {
     AssetTypeUnspecified = "ASSET_TYPE_UNSPECIFIED",
@@ -407,7 +407,7 @@ export declare enum RebookTradeAllocationResponseOriginalTradeAllocationAssetTyp
     FixedIncome = "FIXED_INCOME"
 }
 /**
- * Type of the asset being traded. Required for SYMBOL and CUSIP.
+ * Type of the asset being traded.
  */
 export type RebookTradeAllocationResponseOriginalTradeAllocationAssetTypeOpen = OpenEnum<typeof RebookTradeAllocationResponseOriginalTradeAllocationAssetType>;
 /**
@@ -653,7 +653,7 @@ export type OriginalTradeAllocation = {
      */
     additionalInstructions?: string | undefined;
     /**
-     * Type of the asset being traded. Required for SYMBOL and CUSIP.
+     * Type of the asset being traded.
      */
     assetType?: RebookTradeAllocationResponseOriginalTradeAllocationAssetTypeOpen | undefined;
     /**

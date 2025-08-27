@@ -3,13 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { RouteType, TradeCreateBrokerCapacity, TradeCreateIdentifierType, TradeCreateSide } from "@apexfintechsolutions/ascend-sdk/models/components";
+import {
+  RouteType,
+  TradeCreateAssetType,
+  TradeCreateBrokerCapacity,
+  TradeCreateIdentifierType,
+  TradeCreateSide,
+} from "@apexfintechsolutions/ascend-sdk/models/components";
 import { BookingCreateTradeRequest } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
 let value: BookingCreateTradeRequest = {
   accountId: "01FAKEACCOUNT1TYKWEYRH8S2K",
   tradeCreate: {
     accountId: "02HASWB2DTMRT3DAM45P56J2T2",
+    assetType: TradeCreateAssetType.Equity,
     brokerCapacity: TradeCreateBrokerCapacity.Agency,
     clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
     executions: [],
