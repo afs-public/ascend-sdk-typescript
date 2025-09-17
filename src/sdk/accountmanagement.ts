@@ -22,6 +22,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class AccountManagement extends ClientSDK {
   /**
@@ -33,8 +34,10 @@ export class AccountManagement extends ClientSDK {
   async listAccounts(
     request: operations.AccountsListAccountsRequest,
     options?: RequestOptions,
-  ): Promise<operations.AccountsListAccountsResponse> {
-    return unwrapAsync(accountManagementListAccounts(
+  ): Promise<
+    PageIterator<operations.AccountsListAccountsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(accountManagementListAccounts(
       this,
       request,
       options,

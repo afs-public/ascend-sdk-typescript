@@ -11,6 +11,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class AccountTransfers extends ClientSDK {
   /**
@@ -45,8 +46,13 @@ export class AccountTransfers extends ClientSDK {
   async listTransfers(
     request: operations.AccountTransfersListTransfersRequest,
     options?: RequestOptions,
-  ): Promise<operations.AccountTransfersListTransfersResponse> {
-    return unwrapAsync(accountTransfersListTransfers(
+  ): Promise<
+    PageIterator<
+      operations.AccountTransfersListTransfersResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(accountTransfersListTransfers(
       this,
       request,
       options,

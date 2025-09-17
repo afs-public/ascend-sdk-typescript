@@ -8,6 +8,7 @@ const readerGetEventMessage_js_1 = require("../funcs/readerGetEventMessage.js");
 const readerListEventMessages_js_1 = require("../funcs/readerListEventMessages.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class Reader extends sdks_js_1.ClientSDK {
     /**
      * List Event Messages
@@ -16,7 +17,7 @@ class Reader extends sdks_js_1.ClientSDK {
      * Gets a list of events.
      */
     async listEventMessages(filter, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, readerListEventMessages_js_1.readerListEventMessages)(this, filter, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, readerListEventMessages_js_1.readerListEventMessages)(this, filter, pageSize, pageToken, options));
     }
     /**
      * Get Event Message

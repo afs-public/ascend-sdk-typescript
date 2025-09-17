@@ -7,6 +7,7 @@ import { readerListEventMessages } from "../funcs/readerListEventMessages.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Reader extends ClientSDK {
   /**
@@ -20,8 +21,10 @@ export class Reader extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.ReaderListEventMessagesResponse> {
-    return unwrapAsync(readerListEventMessages(
+  ): Promise<
+    PageIterator<operations.ReaderListEventMessagesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(readerListEventMessages(
       this,
       filter,
       pageSize,

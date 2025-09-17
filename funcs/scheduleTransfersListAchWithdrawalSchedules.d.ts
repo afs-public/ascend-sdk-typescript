@@ -8,11 +8,14 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import { PageIterator } from "../types/operations.js";
 /**
  * List ACH Withdrawal Schedules
  *
  * @remarks
  * Return a list of ACH withdrawal schedules for the specified account and filter params
  */
-export declare function scheduleTransfersListAchWithdrawalSchedules(client: ApexascendCore, accountId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): APIPromise<Result<operations.AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
+export declare function scheduleTransfersListAchWithdrawalSchedules(client: ApexascendCore, accountId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): APIPromise<PageIterator<Result<operations.AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>, {
+    cursor: string;
+}>>;
 //# sourceMappingURL=scheduleTransfersListAchWithdrawalSchedules.d.ts.map

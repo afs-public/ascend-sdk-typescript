@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class AccountTransfers extends ClientSDK {
     /**
      * Create Transfer
@@ -15,7 +16,9 @@ export declare class AccountTransfers extends ClientSDK {
      * @remarks
      * Lists existing transfers using a CEL filter.
      */
-    listTransfers(request: operations.AccountTransfersListTransfersRequest, options?: RequestOptions): Promise<operations.AccountTransfersListTransfersResponse>;
+    listTransfers(request: operations.AccountTransfersListTransfersRequest, options?: RequestOptions): Promise<PageIterator<operations.AccountTransfersListTransfersResponse, {
+        cursor: string;
+    }>>;
     /**
      * Accept Transfer
      *

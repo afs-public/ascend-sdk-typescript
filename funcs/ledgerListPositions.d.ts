@@ -8,11 +8,14 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import { PageIterator } from "../types/operations.js";
 /**
  * List Positions
  *
  * @remarks
  * List positions based on a filter
  */
-export declare function ledgerListPositions(client: ApexascendCore, accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): APIPromise<Result<operations.LedgerListPositionsResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
+export declare function ledgerListPositions(client: ApexascendCore, accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): APIPromise<PageIterator<Result<operations.LedgerListPositionsResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>, {
+    cursor: string;
+}>>;
 //# sourceMappingURL=ledgerListPositions.d.ts.map

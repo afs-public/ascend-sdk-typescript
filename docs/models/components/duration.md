@@ -1,6 +1,8 @@
-# Duration
+# ~~Duration~~
 
 Weighted average time until a bond’s cash flows are received in years
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ## Example Usage
 

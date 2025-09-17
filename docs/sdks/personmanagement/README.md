@@ -170,7 +170,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.listLegalNaturalPersons();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -202,7 +204,9 @@ async function run() {
   const res = await personManagementListLegalNaturalPersons(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("personManagementListLegalNaturalPersons failed:", res.error);
   }
@@ -759,7 +763,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.personManagement.listLegalEntities();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -791,7 +797,9 @@ async function run() {
   const res = await personManagementListLegalEntities(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("personManagementListLegalEntities failed:", res.error);
   }

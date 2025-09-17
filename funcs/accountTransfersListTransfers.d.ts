@@ -8,11 +8,14 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import { PageIterator } from "../types/operations.js";
 /**
  * List Transfers
  *
  * @remarks
  * Lists existing transfers using a CEL filter.
  */
-export declare function accountTransfersListTransfers(client: ApexascendCore, request: operations.AccountTransfersListTransfersRequest, options?: RequestOptions): APIPromise<Result<operations.AccountTransfersListTransfersResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
+export declare function accountTransfersListTransfers(client: ApexascendCore, request: operations.AccountTransfersListTransfersRequest, options?: RequestOptions): APIPromise<PageIterator<Result<operations.AccountTransfersListTransfersResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>, {
+    cursor: string;
+}>>;
 //# sourceMappingURL=accountTransfersListTransfers.d.ts.map

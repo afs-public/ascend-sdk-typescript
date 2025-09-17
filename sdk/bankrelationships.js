@@ -14,6 +14,7 @@ const bankRelationshipsUpdateBankRelationship_js_1 = require("../funcs/bankRelat
 const bankRelationshipsVerifyMicroDeposits_js_1 = require("../funcs/bankRelationshipsVerifyMicroDeposits.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class BankRelationships extends sdks_js_1.ClientSDK {
     /**
      * Create Bank Relationship
@@ -31,7 +32,7 @@ class BankRelationships extends sdks_js_1.ClientSDK {
      * Lists bank relationships for an account.
      */
     async listBankRelationships(accountId, pageSize, pageToken, state, options) {
-        return (0, fp_js_1.unwrapAsync)((0, bankRelationshipsListBankRelationships_js_1.bankRelationshipsListBankRelationships)(this, accountId, pageSize, pageToken, state, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, bankRelationshipsListBankRelationships_js_1.bankRelationshipsListBankRelationships)(this, accountId, pageSize, pageToken, state, options));
     }
     /**
      * Get Bank Relationship

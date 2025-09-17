@@ -8,6 +8,7 @@ const investorDocsBatchCreateUploadLinks_js_1 = require("../funcs/investorDocsBa
 const investorDocsListDocuments_js_1 = require("../funcs/investorDocsListDocuments.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class InvestorDocs extends sdks_js_1.ClientSDK {
     /**
      * Batch Create Upload Links
@@ -25,7 +26,7 @@ class InvestorDocs extends sdks_js_1.ClientSDK {
      * List documents that match search parameters.
      */
     async listDocuments(pageSize, pageToken, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, investorDocsListDocuments_js_1.investorDocsListDocuments)(this, pageSize, pageToken, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, investorDocsListDocuments_js_1.investorDocsListDocuments)(this, pageSize, pageToken, filter, options));
     }
 }
 exports.InvestorDocs = InvestorDocs;

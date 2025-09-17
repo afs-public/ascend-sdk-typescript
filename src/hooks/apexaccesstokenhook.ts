@@ -60,7 +60,6 @@ export class ApexAccessTokenHook implements BeforeRequestHook {
       return this.accessToken;
     }
 
-    this.accessTokenExpiration = new Date();
     const resp = await this.generateServiceAccountToken(
       serverUrl,
       apiKey,
@@ -81,9 +80,8 @@ export class ApexAccessTokenHook implements BeforeRequestHook {
     }
 
     this.accessToken = data.access_token;
-    this.accessTokenExpiration.setMinutes(
-      this.accessTokenExpiration.getMinutes() + data.expires_in / 60
-    );
+    // Add 1 hour safety buffer to refresh tokens before they actually expire
+    this.accessTokenExpiration = new Date(Date.now() + Math.max(data.expires_in - 3600, 60) * 1000);
 
     return this.accessToken;
   }

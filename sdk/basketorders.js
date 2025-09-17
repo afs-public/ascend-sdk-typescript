@@ -13,6 +13,7 @@ const basketOrdersRemoveOrders_js_1 = require("../funcs/basketOrdersRemoveOrders
 const basketOrdersSubmitBasket_js_1 = require("../funcs/basketOrdersSubmitBasket.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class BasketOrders extends sdks_js_1.ClientSDK {
     /**
      * Create Basket
@@ -67,7 +68,7 @@ class BasketOrders extends sdks_js_1.ClientSDK {
      *  Upon successful submission, returns a list of basket orders for the basket. If the list of basket orders becomes too large, a token is returned to retrieve the next page of basket orders.
      */
     async listBasketOrders(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, basketOrdersListBasketOrders_js_1.basketOrdersListBasketOrders)(this, request, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, basketOrdersListBasketOrders_js_1.basketOrdersListBasketOrders)(this, request, options));
     }
     /**
      * List Compressed Orders
@@ -78,7 +79,7 @@ class BasketOrders extends sdks_js_1.ClientSDK {
      *  Upon successful submission, returns a list of compressed orders for the basket. If the basket has not been submitted yet, this list will be empty. If the list of compressed orders becomes too large, a token is returned to retrieve the next page of compressed orders.
      */
     async listCompressedOrders(correspondentId, basketId, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, basketOrdersListCompressedOrders_js_1.basketOrdersListCompressedOrders)(this, correspondentId, basketId, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, basketOrdersListCompressedOrders_js_1.basketOrdersListCompressedOrders)(this, correspondentId, basketId, pageSize, pageToken, options));
     }
     /**
      * Remove Basket Orders

@@ -1,6 +1,6 @@
 {
   "name": "@apexfintechsolutions/ascend-sdk",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "author": "Apex Fintech Solutions",
   "description": "Apex Ascend SDK",
   "homepage": "https://apexfintechsolutions.com",
@@ -15,7 +15,7 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    
+
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

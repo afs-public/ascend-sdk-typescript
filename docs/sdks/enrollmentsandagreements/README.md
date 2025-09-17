@@ -407,7 +407,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.listEnrollments("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -439,7 +441,9 @@ async function run() {
   const res = await enrollmentsAndAgreementsListEnrollments(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("enrollmentsAndAgreementsListEnrollments failed:", res.error);
   }
@@ -592,7 +596,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.listAgreements("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -624,7 +630,9 @@ async function run() {
   const res = await enrollmentsAndAgreementsListAgreements(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("enrollmentsAndAgreementsListAgreements failed:", res.error);
   }
@@ -681,7 +689,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.enrollmentsAndAgreements.listEntitlements("01HC3MAQ4DR9QN1V8MJ4CN1HMK");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -713,7 +723,9 @@ async function run() {
   const res = await enrollmentsAndAgreementsListEntitlements(apexascend, "01HC3MAQ4DR9QN1V8MJ4CN1HMK");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("enrollmentsAndAgreementsListEntitlements failed:", res.error);
   }

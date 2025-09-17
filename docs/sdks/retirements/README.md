@@ -35,7 +35,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.retirements.listContributionSummaries("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -67,7 +69,9 @@ async function run() {
   const res = await retirementsListContributionSummaries(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("retirementsListContributionSummaries failed:", res.error);
   }
@@ -218,7 +222,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.retirements.listDistributionSummaries("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -250,7 +256,9 @@ async function run() {
   const res = await retirementsListDistributionSummaries(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("retirementsListDistributionSummaries failed:", res.error);
   }

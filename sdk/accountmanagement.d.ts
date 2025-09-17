@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class AccountManagement extends ClientSDK {
     /**
      * List Accounts
@@ -8,7 +9,9 @@ export declare class AccountManagement extends ClientSDK {
      * @remarks
      * Gets a list of Accounts based on search criteria.
      */
-    listAccounts(request: operations.AccountsListAccountsRequest, options?: RequestOptions): Promise<operations.AccountsListAccountsResponse>;
+    listAccounts(request: operations.AccountsListAccountsRequest, options?: RequestOptions): Promise<PageIterator<operations.AccountsListAccountsResponse, {
+        cursor: string;
+    }>>;
     /**
      * Update Account
      *

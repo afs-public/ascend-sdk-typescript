@@ -10,6 +10,7 @@ const assetsListAssets_js_1 = require("../funcs/assetsListAssets.js");
 const assetsListAssetsCorrespondent_js_1 = require("../funcs/assetsListAssetsCorrespondent.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class Assets extends sdks_js_1.ClientSDK {
     /**
      * List Assets
@@ -18,7 +19,7 @@ class Assets extends sdks_js_1.ClientSDK {
      * Lists assets
      */
     async listAssets(parent, pageSize, pageToken, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, assetsListAssets_js_1.assetsListAssets)(this, parent, pageSize, pageToken, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, assetsListAssets_js_1.assetsListAssets)(this, parent, pageSize, pageToken, filter, options));
     }
     /**
      * Get Asset
@@ -36,7 +37,7 @@ class Assets extends sdks_js_1.ClientSDK {
      * Lists assets
      */
     async listAssetsCorrespondent(correspondentId, pageSize, pageToken, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, assetsListAssetsCorrespondent_js_1.assetsListAssetsCorrespondent)(this, correspondentId, pageSize, pageToken, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, assetsListAssetsCorrespondent_js_1.assetsListAssetsCorrespondent)(this, correspondentId, pageSize, pageToken, filter, options));
     }
     /**
      * Get Asset (By Correspondent)

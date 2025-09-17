@@ -9,6 +9,7 @@ import { assetsListAssetsCorrespondent } from "../funcs/assetsListAssetsCorrespo
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Assets extends ClientSDK {
   /**
@@ -23,8 +24,10 @@ export class Assets extends ClientSDK {
     pageToken?: string | undefined,
     filter?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.AssetsListAssets1Response> {
-    return unwrapAsync(assetsListAssets(
+  ): Promise<
+    PageIterator<operations.AssetsListAssets1Response, { cursor: string }>
+  > {
+    return unwrapResultIterator(assetsListAssets(
       this,
       parent,
       pageSize,
@@ -63,8 +66,13 @@ export class Assets extends ClientSDK {
     pageToken?: string | undefined,
     filter?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.AssetsListAssetsCorrespondentResponse> {
-    return unwrapAsync(assetsListAssetsCorrespondent(
+  ): Promise<
+    PageIterator<
+      operations.AssetsListAssetsCorrespondentResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(assetsListAssetsCorrespondent(
       this,
       correspondentId,
       pageSize,

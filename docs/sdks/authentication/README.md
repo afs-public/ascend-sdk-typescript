@@ -101,7 +101,9 @@ async function run() {
     apiKeyAuth: "<YOUR_API_KEY_HERE>",
   });
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -125,7 +127,9 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("authenticationListSigningKeys failed:", res.error);
   }

@@ -11,6 +11,7 @@ const accountTransfersListTransfers_js_1 = require("../funcs/accountTransfersLis
 const accountTransfersRejectTransfer_js_1 = require("../funcs/accountTransfersRejectTransfer.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class AccountTransfers extends sdks_js_1.ClientSDK {
     /**
      * Create Transfer
@@ -28,7 +29,7 @@ class AccountTransfers extends sdks_js_1.ClientSDK {
      * Lists existing transfers using a CEL filter.
      */
     async listTransfers(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, accountTransfersListTransfers_js_1.accountTransfersListTransfers)(this, request, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, accountTransfersListTransfers_js_1.accountTransfersListTransfers)(this, request, options));
     }
     /**
      * Accept Transfer

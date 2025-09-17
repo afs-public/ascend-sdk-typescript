@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class PersonManagement extends ClientSDK {
     /**
      * Create Legal Natural Person
@@ -15,7 +16,9 @@ export declare class PersonManagement extends ClientSDK {
      * @remarks
      * Gets a list of Legal Natural Person records based on search criteria.
      */
-    listLegalNaturalPersons(pageSize?: number | undefined, pageToken?: string | undefined, orderBy?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.AccountsListLegalNaturalPersonsResponse>;
+    listLegalNaturalPersons(pageSize?: number | undefined, pageToken?: string | undefined, orderBy?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AccountsListLegalNaturalPersonsResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get Legal Natural Persons
      *
@@ -57,7 +60,9 @@ export declare class PersonManagement extends ClientSDK {
      * @remarks
      * Gets a list of Legal Entity records based on search criteria.
      */
-    listLegalEntities(pageSize?: number | undefined, pageToken?: string | undefined, orderBy?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.AccountsListLegalEntitiesResponse>;
+    listLegalEntities(pageSize?: number | undefined, pageToken?: string | undefined, orderBy?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AccountsListLegalEntitiesResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get Legal Entity
      *

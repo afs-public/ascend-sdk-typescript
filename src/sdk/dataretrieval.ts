@@ -5,7 +5,7 @@
 import { dataRetrievalListSnapshots } from "../funcs/dataRetrievalListSnapshots.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
-import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class DataRetrieval extends ClientSDK {
   /**
@@ -19,8 +19,10 @@ export class DataRetrieval extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.SnapshotsListSnapshotsResponse> {
-    return unwrapAsync(dataRetrievalListSnapshots(
+  ): Promise<
+    PageIterator<operations.SnapshotsListSnapshotsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(dataRetrievalListSnapshots(
       this,
       filter,
       pageSize,

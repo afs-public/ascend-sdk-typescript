@@ -196,6 +196,7 @@ var TransfersCreditType$;
 exports.TransfersCredit$inboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.TransfersCreditAmount$inboundSchema))
         .optional(),
+    bulk_upload_id: z.string().optional(),
     client_transfer_id: z.string().optional(),
     description: z.string().optional(),
     fee_operating_account: z.string().optional(),
@@ -205,6 +206,7 @@ exports.TransfersCredit$inboundSchema = z.object({
     type: exports.TransfersCreditType$inboundSchema.optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        "bulk_upload_id": "bulkUploadId",
         "client_transfer_id": "clientTransferId",
         "fee_operating_account": "feeOperatingAccount",
     });
@@ -213,6 +215,7 @@ exports.TransfersCredit$inboundSchema = z.object({
 exports.TransfersCredit$outboundSchema = z.object({
     amount: z.nullable(z.lazy(() => exports.TransfersCreditAmount$outboundSchema))
         .optional(),
+    bulkUploadId: z.string().optional(),
     clientTransferId: z.string().optional(),
     description: z.string().optional(),
     feeOperatingAccount: z.string().optional(),
@@ -222,6 +225,7 @@ exports.TransfersCredit$outboundSchema = z.object({
     type: exports.TransfersCreditType$outboundSchema.optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        bulkUploadId: "bulk_upload_id",
         clientTransferId: "client_transfer_id",
         feeOperatingAccount: "fee_operating_account",
     });

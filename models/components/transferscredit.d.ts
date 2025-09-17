@@ -112,6 +112,10 @@ export type TransfersCredit = {
      */
     amount?: TransfersCreditAmount | null | undefined;
     /**
+     * Bulk upload identifier to group related credit transfers
+     */
+    bulkUploadId?: string | undefined;
+    /**
      * External identifier supplied by the API caller. Each request must have a unique pairing of client_transfer_id and account
      */
     clientTransferId?: string | undefined;
@@ -219,6 +223,7 @@ export declare const TransfersCredit$inboundSchema: z.ZodType<TransfersCredit, z
 /** @internal */
 export type TransfersCredit$Outbound = {
     amount?: TransfersCreditAmount$Outbound | null | undefined;
+    bulk_upload_id?: string | undefined;
     client_transfer_id?: string | undefined;
     description?: string | undefined;
     fee_operating_account?: string | undefined;

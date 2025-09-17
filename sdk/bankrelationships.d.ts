@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class BankRelationships extends ClientSDK {
     /**
      * Create Bank Relationship
@@ -15,7 +16,9 @@ export declare class BankRelationships extends ClientSDK {
      * @remarks
      * Lists bank relationships for an account.
      */
-    listBankRelationships(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, state?: operations.State | undefined, options?: RequestOptions): Promise<operations.BankRelationshipsListBankRelationshipsResponse>;
+    listBankRelationships(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, state?: operations.State | undefined, options?: RequestOptions): Promise<PageIterator<operations.BankRelationshipsListBankRelationshipsResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get Bank Relationship
      *

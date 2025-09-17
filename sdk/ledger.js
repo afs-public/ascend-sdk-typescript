@@ -11,6 +11,7 @@ const ledgerListEntries_js_1 = require("../funcs/ledgerListEntries.js");
 const ledgerListPositions_js_1 = require("../funcs/ledgerListPositions.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class Ledger extends sdks_js_1.ClientSDK {
     /**
      * List Entries
@@ -19,7 +20,7 @@ class Ledger extends sdks_js_1.ClientSDK {
      * List all Entries based on a filter
      */
     async listEntries(accountId, pageSize, pageToken, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, ledgerListEntries_js_1.ledgerListEntries)(this, accountId, pageSize, pageToken, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, ledgerListEntries_js_1.ledgerListEntries)(this, accountId, pageSize, pageToken, filter, options));
     }
     /**
      * List Activities
@@ -28,7 +29,7 @@ class Ledger extends sdks_js_1.ClientSDK {
      * List all Completed Activities based on a filter
      */
     async listActivities(accountId, pageSize, pageToken, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, ledgerListActivities_js_1.ledgerListActivities)(this, accountId, pageSize, pageToken, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, ledgerListActivities_js_1.ledgerListActivities)(this, accountId, pageSize, pageToken, filter, options));
     }
     /**
      * List Positions
@@ -37,7 +38,7 @@ class Ledger extends sdks_js_1.ClientSDK {
      * List positions based on a filter
      */
     async listPositions(accountId, pageSize, pageToken, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, ledgerListPositions_js_1.ledgerListPositions)(this, accountId, pageSize, pageToken, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, ledgerListPositions_js_1.ledgerListPositions)(this, accountId, pageSize, pageToken, filter, options));
     }
     /**
      * Get Activity

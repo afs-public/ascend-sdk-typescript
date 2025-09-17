@@ -8,6 +8,7 @@
 
     "module": "Node16",
     "moduleResolution": "Node16",
+    "moduleDetection": "force",
 
     "allowJs": true,
 
@@ -41,5 +42,5 @@
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/__tests__", "src/scripts"]
 }

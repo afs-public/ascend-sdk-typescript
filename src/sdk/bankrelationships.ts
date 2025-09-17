@@ -14,6 +14,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class BankRelationships extends ClientSDK {
   /**
@@ -47,8 +48,13 @@ export class BankRelationships extends ClientSDK {
     pageToken?: string | undefined,
     state?: operations.State | undefined,
     options?: RequestOptions,
-  ): Promise<operations.BankRelationshipsListBankRelationshipsResponse> {
-    return unwrapAsync(bankRelationshipsListBankRelationships(
+  ): Promise<
+    PageIterator<
+      operations.BankRelationshipsListBankRelationshipsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(bankRelationshipsListBankRelationships(
       this,
       accountId,
       pageSize,

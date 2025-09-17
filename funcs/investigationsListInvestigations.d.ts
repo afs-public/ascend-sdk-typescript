@@ -8,11 +8,14 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import { PageIterator } from "../types/operations.js";
 /**
  * List Investigations
  *
  * @remarks
  * Use this endpoint to retrieve a list of investigation summaries based on optional search parameters
  */
-export declare function investigationsListInvestigations(client: ApexascendCore, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, orderBy?: string | undefined, options?: RequestOptions): APIPromise<Result<operations.InvestigationServiceListInvestigationsResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
+export declare function investigationsListInvestigations(client: ApexascendCore, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, orderBy?: string | undefined, options?: RequestOptions): APIPromise<PageIterator<Result<operations.InvestigationServiceListInvestigationsResponse, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>, {
+    cursor: string;
+}>>;
 //# sourceMappingURL=investigationsListInvestigations.d.ts.map

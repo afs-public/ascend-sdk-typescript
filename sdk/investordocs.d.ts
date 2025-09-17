@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class InvestorDocs extends ClientSDK {
     /**
      * Batch Create Upload Links
@@ -15,6 +16,8 @@ export declare class InvestorDocs extends ClientSDK {
      * @remarks
      * List documents that match search parameters.
      */
-    listDocuments(pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.InvestorCommunicationServiceListDocumentsResponse>;
+    listDocuments(pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.InvestorCommunicationServiceListDocumentsResponse, {
+        cursor: string;
+    }>>;
 }
 //# sourceMappingURL=investordocs.d.ts.map

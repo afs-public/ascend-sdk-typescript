@@ -37,6 +37,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.subscriberListPushSubscriptionDeliveries = subscriberListPushSubscriptionDeliveries;
+const dlv_js_1 = require("../lib/dlv.js");
 const encodings_js_1 = require("../lib/encodings.js");
 const M = __importStar(require("../lib/matchers.js"));
 const primitives_js_1 = require("../lib/primitives.js");
@@ -46,6 +47,7 @@ const url_js_1 = require("../lib/url.js");
 const errors = __importStar(require("../models/errors/index.js"));
 const operations = __importStar(require("../models/operations/index.js"));
 const async_js_1 = require("../types/async.js");
+const operations_js_1 = require("../types/operations.js");
 /**
  * List Push Subscription Event Deliveries
  *
@@ -65,7 +67,7 @@ async function $do(client, subscriptionId, filter, pageSize, pageToken, options)
     const parsed = (0, schemas_js_1.safeParse)(input, (value) => operations.SubscriberListPushSubscriptionDeliveriesRequest$outboundSchema
         .parse(value), "Input validation failed");
     if (!parsed.ok) {
-        return [parsed, { status: "invalid" }];
+        return [(0, operations_js_1.haltIterator)(parsed), { status: "invalid" }];
     }
     const payload = parsed.value;
     const body = null;
@@ -110,7 +112,7 @@ async function $do(client, subscriptionId, filter, pageSize, pageToken, options)
         timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
     }, options);
     if (!requestRes.ok) {
-        return [requestRes, { status: "invalid" }];
+        return [(0, operations_js_1.haltIterator)(requestRes), { status: "invalid" }];
     }
     const req = requestRes.value;
     const doResult = await client._do(req, {
@@ -120,16 +122,36 @@ async function $do(client, subscriptionId, filter, pageSize, pageToken, options)
         retryCodes: context.retryCodes,
     });
     if (!doResult.ok) {
-        return [doResult, { status: "request-error", request: req }];
+        return [(0, operations_js_1.haltIterator)(doResult), { status: "request-error", request: req }];
     }
     const response = doResult.value;
     const responseFields = {
         HttpMeta: { Response: response, Request: req },
     };
-    const [result] = await M.match(M.json(200, operations.SubscriberListPushSubscriptionDeliveriesResponse$inboundSchema, { key: "ListPushSubscriptionDeliveriesResponse" }), M.jsonErr([400, 401, 403, 404], errors.Status$inboundSchema), M.jsonErr(500, errors.Status$inboundSchema), M.fail("4XX"), M.fail("5XX"), M.json("default", operations.SubscriberListPushSubscriptionDeliveriesResponse$inboundSchema, { key: "Status" }))(response, req, { extraFields: responseFields });
+    const [result, raw] = await M.match(M.json(200, operations.SubscriberListPushSubscriptionDeliveriesResponse$inboundSchema, { key: "ListPushSubscriptionDeliveriesResponse" }), M.jsonErr([400, 401, 403, 404], errors.Status$inboundSchema), M.jsonErr(500, errors.Status$inboundSchema), M.fail("4XX"), M.fail("5XX"), M.json("default", operations.SubscriberListPushSubscriptionDeliveriesResponse$inboundSchema, { key: "Status" }))(response, req, { extraFields: responseFields });
     if (!result.ok) {
-        return [result, { status: "complete", request: req, response }];
+        return [(0, operations_js_1.haltIterator)(result), {
+                status: "complete",
+                request: req,
+                response,
+            }];
     }
-    return [result, { status: "complete", request: req, response }];
+    const nextFunc = (responseData) => {
+        const nextCursor = (0, dlv_js_1.dlv)(responseData, "next_page_token");
+        if (typeof nextCursor !== "string") {
+            return { next: () => null };
+        }
+        if (nextCursor.trim() === "") {
+            return { next: () => null };
+        }
+        const nextVal = () => subscriberListPushSubscriptionDeliveries(client, subscriptionId, filter, pageSize, nextCursor, options);
+        return { next: nextVal, "~next": { cursor: nextCursor } };
+    };
+    const page = { ...result, ...nextFunc(raw) };
+    return [{ ...page, ...(0, operations_js_1.createPageIterator)(page, (v) => !v.ok) }, {
+            status: "complete",
+            request: req,
+            response,
+        }];
 }
 //# sourceMappingURL=subscriberListPushSubscriptionDeliveries.js.map
