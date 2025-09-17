@@ -127,6 +127,10 @@ export type TransfersCredit = {
    */
   amount?: TransfersCreditAmount | null | undefined;
   /**
+   * Bulk upload identifier to group related credit transfers
+   */
+  bulkUploadId?: string | undefined;
+  /**
    * External identifier supplied by the API caller. Each request must have a unique pairing of client_transfer_id and account
    */
   clientTransferId?: string | undefined;
@@ -354,6 +358,7 @@ export const TransfersCredit$inboundSchema: z.ZodType<
 > = z.object({
   amount: z.nullable(z.lazy(() => TransfersCreditAmount$inboundSchema))
     .optional(),
+  bulk_upload_id: z.string().optional(),
   client_transfer_id: z.string().optional(),
   description: z.string().optional(),
   fee_operating_account: z.string().optional(),
@@ -363,6 +368,7 @@ export const TransfersCredit$inboundSchema: z.ZodType<
   type: TransfersCreditType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    "bulk_upload_id": "bulkUploadId",
     "client_transfer_id": "clientTransferId",
     "fee_operating_account": "feeOperatingAccount",
   });
@@ -371,6 +377,7 @@ export const TransfersCredit$inboundSchema: z.ZodType<
 /** @internal */
 export type TransfersCredit$Outbound = {
   amount?: TransfersCreditAmount$Outbound | null | undefined;
+  bulk_upload_id?: string | undefined;
   client_transfer_id?: string | undefined;
   description?: string | undefined;
   fee_operating_account?: string | undefined;
@@ -387,6 +394,7 @@ export const TransfersCredit$outboundSchema: z.ZodType<
 > = z.object({
   amount: z.nullable(z.lazy(() => TransfersCreditAmount$outboundSchema))
     .optional(),
+  bulkUploadId: z.string().optional(),
   clientTransferId: z.string().optional(),
   description: z.string().optional(),
   feeOperatingAccount: z.string().optional(),
@@ -396,6 +404,7 @@ export const TransfersCredit$outboundSchema: z.ZodType<
   type: TransfersCreditType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    bulkUploadId: "bulk_upload_id",
     clientTransferId: "client_transfer_id",
     feeOperatingAccount: "fee_operating_account",
   });

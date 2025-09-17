@@ -41,7 +41,6 @@ class ApexAccessTokenHook {
         if (this.accessTokenStillValid()) {
             return this.accessToken;
         }
-        this.accessTokenExpiration = new Date();
         const resp = await this.generateServiceAccountToken(serverUrl, apiKey, this.getJws(serviceAccountCreds));
         if (resp.status != 200) {
             const errMsg = `Error generating service account token [url: ${resp.url}, status: ${resp.status}, statusText: ${resp.statusText}]`;
@@ -55,7 +54,8 @@ class ApexAccessTokenHook {
             throw new Error("No expires_in returned");
         }
         this.accessToken = data.access_token;
-        this.accessTokenExpiration.setMinutes(this.accessTokenExpiration.getMinutes() + data.expires_in / 60);
+        // Add 1 hour safety buffer to refresh tokens before they actually expire
+        this.accessTokenExpiration = new Date(Date.now() + Math.max(data.expires_in - 3600, 60) * 1000);
         return this.accessToken;
     }
     async generateServiceAccountToken(serverURL, apiKey, jws) {

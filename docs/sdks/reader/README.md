@@ -33,7 +33,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.reader.listEventMessages();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -65,7 +67,9 @@ async function run() {
   const res = await readerListEventMessages(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("readerListEventMessages failed:", res.error);
   }

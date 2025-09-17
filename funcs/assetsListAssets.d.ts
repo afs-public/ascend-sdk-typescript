@@ -8,11 +8,14 @@ import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import { PageIterator } from "../types/operations.js";
 /**
  * List Assets
  *
  * @remarks
  * Lists assets
  */
-export declare function assetsListAssets(client: ApexascendCore, parent?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): APIPromise<Result<operations.AssetsListAssets1Response, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
+export declare function assetsListAssets(client: ApexascendCore, parent?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): APIPromise<PageIterator<Result<operations.AssetsListAssets1Response, errors.Status | ApexascendError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>, {
+    cursor: string;
+}>>;
 //# sourceMappingURL=assetsListAssets.d.ts.map

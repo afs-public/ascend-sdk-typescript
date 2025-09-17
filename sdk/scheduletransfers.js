@@ -22,6 +22,7 @@ const scheduleTransfersUpdateAchWithdrawalSchedule_js_1 = require("../funcs/sche
 const scheduleTransfersUpdateWireWithdrawalSchedule_js_1 = require("../funcs/scheduleTransfersUpdateWireWithdrawalSchedule.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class ScheduleTransfers extends sdks_js_1.ClientSDK {
     /**
      * List Schedule Summaries
@@ -30,7 +31,7 @@ class ScheduleTransfers extends sdks_js_1.ClientSDK {
      * Lists transfer schedule summaries that match the filter in the request
      */
     async listScheduleSummaries(filter, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, scheduleTransfersListScheduleSummaries_js_1.scheduleTransfersListScheduleSummaries)(this, filter, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, scheduleTransfersListScheduleSummaries_js_1.scheduleTransfersListScheduleSummaries)(this, filter, pageSize, pageToken, options));
     }
     /**
      * Create ACH Deposit Schedule
@@ -48,7 +49,7 @@ class ScheduleTransfers extends sdks_js_1.ClientSDK {
      * Return a list of ACH deposit schedules for the specified account and filter params
      */
     async listAchDepositSchedules(accountId, filter, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, scheduleTransfersListAchDepositSchedules_js_1.scheduleTransfersListAchDepositSchedules)(this, accountId, filter, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, scheduleTransfersListAchDepositSchedules_js_1.scheduleTransfersListAchDepositSchedules)(this, accountId, filter, pageSize, pageToken, options));
     }
     /**
      * Get ACH Deposit Schedule
@@ -93,7 +94,7 @@ class ScheduleTransfers extends sdks_js_1.ClientSDK {
      * Return a list of ACH withdrawal schedules for the specified account and filter params
      */
     async listAchWithdrawalSchedules(accountId, filter, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, scheduleTransfersListAchWithdrawalSchedules_js_1.scheduleTransfersListAchWithdrawalSchedules)(this, accountId, filter, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, scheduleTransfersListAchWithdrawalSchedules_js_1.scheduleTransfersListAchWithdrawalSchedules)(this, accountId, filter, pageSize, pageToken, options));
     }
     /**
      * Get ACH Withdrawal Schedule

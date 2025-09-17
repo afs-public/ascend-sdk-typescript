@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class ScheduleTransfers extends ClientSDK {
     /**
      * List Schedule Summaries
@@ -8,7 +9,9 @@ export declare class ScheduleTransfers extends ClientSDK {
      * @remarks
      * Lists transfer schedule summaries that match the filter in the request
      */
-    listScheduleSummaries(filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.TransferScheduleSummariesListScheduleSummariesResponse>;
+    listScheduleSummaries(filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.TransferScheduleSummariesListScheduleSummariesResponse, {
+        cursor: string;
+    }>>;
     /**
      * Create ACH Deposit Schedule
      *
@@ -22,7 +25,9 @@ export declare class ScheduleTransfers extends ClientSDK {
      * @remarks
      * Return a list of ACH deposit schedules for the specified account and filter params
      */
-    listAchDepositSchedules(accountId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.AchDepositSchedulesListAchDepositSchedulesResponse>;
+    listAchDepositSchedules(accountId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AchDepositSchedulesListAchDepositSchedulesResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get ACH Deposit Schedule
      *
@@ -57,7 +62,9 @@ export declare class ScheduleTransfers extends ClientSDK {
      * @remarks
      * Return a list of ACH withdrawal schedules for the specified account and filter params
      */
-    listAchWithdrawalSchedules(accountId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse>;
+    listAchWithdrawalSchedules(accountId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get ACH Withdrawal Schedule
      *

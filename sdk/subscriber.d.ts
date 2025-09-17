@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class Subscriber extends ClientSDK {
     /**
      * Create Push Subscription
@@ -15,7 +16,9 @@ export declare class Subscriber extends ClientSDK {
      * @remarks
      * Gets a list of push subscriptions.
      */
-    listPushSubscriptions(filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.SubscriberListPushSubscriptionsResponse>;
+    listPushSubscriptions(filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.SubscriberListPushSubscriptionsResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get Push Subscription
      *
@@ -50,6 +53,8 @@ export declare class Subscriber extends ClientSDK {
      * @remarks
      * Gets a list of a push subscription's event deliveries.
      */
-    listPushSubscriptionDeliveries(subscriptionId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.SubscriberListPushSubscriptionDeliveriesResponse>;
+    listPushSubscriptionDeliveries(subscriptionId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.SubscriberListPushSubscriptionDeliveriesResponse, {
+        cursor: string;
+    }>>;
 }
 //# sourceMappingURL=subscriber.d.ts.map

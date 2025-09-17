@@ -14,6 +14,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class EnrollmentsAndAgreements extends ClientSDK {
   /**
@@ -114,8 +115,10 @@ export class EnrollmentsAndAgreements extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.AccountsListEnrollmentsResponse> {
-    return unwrapAsync(enrollmentsAndAgreementsListEnrollments(
+  ): Promise<
+    PageIterator<operations.AccountsListEnrollmentsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(enrollmentsAndAgreementsListEnrollments(
       this,
       accountId,
       pageSize,
@@ -154,8 +157,10 @@ export class EnrollmentsAndAgreements extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.AccountsListAgreementsResponse> {
-    return unwrapAsync(enrollmentsAndAgreementsListAgreements(
+  ): Promise<
+    PageIterator<operations.AccountsListAgreementsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(enrollmentsAndAgreementsListAgreements(
       this,
       accountId,
       pageSize,
@@ -175,8 +180,13 @@ export class EnrollmentsAndAgreements extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.AccountsListEntitlementsResponse> {
-    return unwrapAsync(enrollmentsAndAgreementsListEntitlements(
+  ): Promise<
+    PageIterator<
+      operations.AccountsListEntitlementsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(enrollmentsAndAgreementsListEntitlements(
       this,
       accountId,
       pageSize,

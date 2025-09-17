@@ -22,6 +22,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class ScheduleTransfers extends ClientSDK {
   /**
@@ -36,9 +37,12 @@ export class ScheduleTransfers extends ClientSDK {
     pageToken?: string | undefined,
     options?: RequestOptions,
   ): Promise<
-    operations.TransferScheduleSummariesListScheduleSummariesResponse
+    PageIterator<
+      operations.TransferScheduleSummariesListScheduleSummariesResponse,
+      { cursor: string }
+    >
   > {
-    return unwrapAsync(scheduleTransfersListScheduleSummaries(
+    return unwrapResultIterator(scheduleTransfersListScheduleSummaries(
       this,
       filter,
       pageSize,
@@ -78,8 +82,13 @@ export class ScheduleTransfers extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.AchDepositSchedulesListAchDepositSchedulesResponse> {
-    return unwrapAsync(scheduleTransfersListAchDepositSchedules(
+  ): Promise<
+    PageIterator<
+      operations.AchDepositSchedulesListAchDepositSchedulesResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(scheduleTransfersListAchDepositSchedules(
       this,
       accountId,
       filter,
@@ -187,9 +196,12 @@ export class ScheduleTransfers extends ClientSDK {
     pageToken?: string | undefined,
     options?: RequestOptions,
   ): Promise<
-    operations.AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse
+    PageIterator<
+      operations.AchWithdrawalSchedulesListAchWithdrawalSchedulesResponse,
+      { cursor: string }
+    >
   > {
-    return unwrapAsync(scheduleTransfersListAchWithdrawalSchedules(
+    return unwrapResultIterator(scheduleTransfersListAchWithdrawalSchedules(
       this,
       accountId,
       filter,

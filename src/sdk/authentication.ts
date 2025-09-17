@@ -8,6 +8,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Authentication extends ClientSDK {
   /**
@@ -40,8 +41,13 @@ export class Authentication extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.AuthenticationListSigningKeysResponse> {
-    return unwrapAsync(authenticationListSigningKeys(
+  ): Promise<
+    PageIterator<
+      operations.AuthenticationListSigningKeysResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(authenticationListSigningKeys(
       this,
       security,
       pageSize,

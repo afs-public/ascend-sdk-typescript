@@ -135,7 +135,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.listPushSubscriptions();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -167,7 +169,9 @@ async function run() {
   const res = await subscriberListPushSubscriptions(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("subscriberListPushSubscriptions failed:", res.error);
   }
@@ -575,7 +579,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.subscriber.listPushSubscriptionDeliveries("01H8MCDXH4JVH7KVNB2YY42907");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -607,7 +613,9 @@ async function run() {
   const res = await subscriberListPushSubscriptionDeliveries(apexascend, "01H8MCDXH4JVH7KVNB2YY42907");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("subscriberListPushSubscriptionDeliveries failed:", res.error);
   }

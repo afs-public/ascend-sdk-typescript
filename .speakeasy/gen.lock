@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: d1bde040cb67d385e81d1c372294d048
-  docVersion: v1:20250822:uat:240983991338
-  speakeasyVersion: 1.601.3
-  generationVersion: 2.680.0
-  releaseVersion: 1.6.1
-  configChecksum: 9cae96cc220a5cc4765c3eb1eaa4cdbe
+  docChecksum: 717145375c4d2f7707da160500525042
+  docVersion: v1:20250916:uat:415b21f7a6e1
+  speakeasyVersion: 1.608.0
+  generationVersion: 2.691.6
+  releaseVersion: 1.7.0
+  configChecksum: d2e6a7d0d8eeaeca79b94f536d8b5b60
 features:
   typescript:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.1
-    core: 3.21.20
+    core: 3.21.22
     customSecuritySchemes: 0.1.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    examples: 2.82.2
+    examples: 2.82.3
     flattening: 2.82.1
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
@@ -26,6 +26,7 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.1
     openEnums: 0.1.1
+    pagination: 2.83.0
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0

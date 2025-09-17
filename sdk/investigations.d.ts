@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class Investigations extends ClientSDK {
     /**
      * Get Investigations
@@ -22,7 +23,9 @@ export declare class Investigations extends ClientSDK {
      * @remarks
      * Use this endpoint to retrieve a list of investigation summaries based on optional search parameters
      */
-    listInvestigations(pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, orderBy?: string | undefined, options?: RequestOptions): Promise<operations.InvestigationServiceListInvestigationsResponse>;
+    listInvestigations(pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, orderBy?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.InvestigationServiceListInvestigationsResponse, {
+        cursor: string;
+    }>>;
     /**
      * Link Documents
      *

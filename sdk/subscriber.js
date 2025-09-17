@@ -13,6 +13,7 @@ const subscriberListPushSubscriptions_js_1 = require("../funcs/subscriberListPus
 const subscriberUpdatePushSubscription_js_1 = require("../funcs/subscriberUpdatePushSubscription.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class Subscriber extends sdks_js_1.ClientSDK {
     /**
      * Create Push Subscription
@@ -30,7 +31,7 @@ class Subscriber extends sdks_js_1.ClientSDK {
      * Gets a list of push subscriptions.
      */
     async listPushSubscriptions(filter, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriberListPushSubscriptions_js_1.subscriberListPushSubscriptions)(this, filter, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, subscriberListPushSubscriptions_js_1.subscriberListPushSubscriptions)(this, filter, pageSize, pageToken, options));
     }
     /**
      * Get Push Subscription
@@ -75,7 +76,7 @@ class Subscriber extends sdks_js_1.ClientSDK {
      * Gets a list of a push subscription's event deliveries.
      */
     async listPushSubscriptionDeliveries(subscriptionId, filter, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriberListPushSubscriptionDeliveries_js_1.subscriberListPushSubscriptionDeliveries)(this, subscriptionId, filter, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, subscriberListPushSubscriptionDeliveries_js_1.subscriberListPushSubscriptionDeliveries)(this, subscriptionId, filter, pageSize, pageToken, options));
     }
 }
 exports.Subscriber = Subscriber;

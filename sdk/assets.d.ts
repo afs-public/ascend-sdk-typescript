@@ -1,5 +1,6 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class Assets extends ClientSDK {
     /**
      * List Assets
@@ -7,7 +8,9 @@ export declare class Assets extends ClientSDK {
      * @remarks
      * Lists assets
      */
-    listAssets(parent?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.AssetsListAssets1Response>;
+    listAssets(parent?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AssetsListAssets1Response, {
+        cursor: string;
+    }>>;
     /**
      * Get Asset
      *
@@ -21,7 +24,9 @@ export declare class Assets extends ClientSDK {
      * @remarks
      * Lists assets
      */
-    listAssetsCorrespondent(correspondentId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.AssetsListAssetsCorrespondentResponse>;
+    listAssetsCorrespondent(correspondentId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AssetsListAssetsCorrespondentResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get Asset (By Correspondent)
      *

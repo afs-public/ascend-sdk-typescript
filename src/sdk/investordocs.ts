@@ -8,6 +8,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class InvestorDocs extends ClientSDK {
   /**
@@ -40,8 +41,13 @@ export class InvestorDocs extends ClientSDK {
     pageToken?: string | undefined,
     filter?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.InvestorCommunicationServiceListDocumentsResponse> {
-    return unwrapAsync(investorDocsListDocuments(
+  ): Promise<
+    PageIterator<
+      operations.InvestorCommunicationServiceListDocumentsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(investorDocsListDocuments(
       this,
       pageSize,
       pageToken,

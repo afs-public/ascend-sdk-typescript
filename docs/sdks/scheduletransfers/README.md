@@ -47,7 +47,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.listScheduleSummaries();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -79,7 +81,9 @@ async function run() {
   const res = await scheduleTransfersListScheduleSummaries(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("scheduleTransfersListScheduleSummaries failed:", res.error);
   }
@@ -246,7 +250,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.listAchDepositSchedules("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -278,7 +284,9 @@ async function run() {
   const res = await scheduleTransfersListAchDepositSchedules(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("scheduleTransfersListAchDepositSchedules failed:", res.error);
   }
@@ -712,7 +720,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.scheduleTransfers.listAchWithdrawalSchedules("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -744,7 +754,9 @@ async function run() {
   const res = await scheduleTransfersListAchWithdrawalSchedules(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("scheduleTransfersListAchWithdrawalSchedules failed:", res.error);
   }

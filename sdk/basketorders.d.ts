@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class BasketOrders extends ClientSDK {
     /**
      * Create Basket
@@ -46,7 +47,9 @@ export declare class BasketOrders extends ClientSDK {
      *
      *  Upon successful submission, returns a list of basket orders for the basket. If the list of basket orders becomes too large, a token is returned to retrieve the next page of basket orders.
      */
-    listBasketOrders(request: operations.BasketOrdersServiceListBasketOrdersRequest, options?: RequestOptions): Promise<operations.BasketOrdersServiceListBasketOrdersResponse>;
+    listBasketOrders(request: operations.BasketOrdersServiceListBasketOrdersRequest, options?: RequestOptions): Promise<PageIterator<operations.BasketOrdersServiceListBasketOrdersResponse, {
+        cursor: string;
+    }>>;
     /**
      * List Compressed Orders
      *
@@ -55,7 +58,9 @@ export declare class BasketOrders extends ClientSDK {
      *
      *  Upon successful submission, returns a list of compressed orders for the basket. If the basket has not been submitted yet, this list will be empty. If the list of compressed orders becomes too large, a token is returned to retrieve the next page of compressed orders.
      */
-    listCompressedOrders(correspondentId: string, basketId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.BasketOrdersServiceListCompressedOrdersResponse>;
+    listCompressedOrders(correspondentId: string, basketId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.BasketOrdersServiceListCompressedOrdersResponse, {
+        cursor: string;
+    }>>;
     /**
      * Remove Basket Orders
      *

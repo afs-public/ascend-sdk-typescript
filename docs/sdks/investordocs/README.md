@@ -120,7 +120,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investorDocs.listDocuments();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -152,7 +154,9 @@ async function run() {
   const res = await investorDocsListDocuments(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("investorDocsListDocuments failed:", res.error);
   }

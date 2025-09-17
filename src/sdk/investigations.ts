@@ -12,6 +12,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Investigations extends ClientSDK {
   /**
@@ -64,8 +65,13 @@ export class Investigations extends ClientSDK {
     filter?: string | undefined,
     orderBy?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.InvestigationServiceListInvestigationsResponse> {
-    return unwrapAsync(investigationsListInvestigations(
+  ): Promise<
+    PageIterator<
+      operations.InvestigationServiceListInvestigationsResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(investigationsListInvestigations(
       this,
       pageSize,
       pageToken,

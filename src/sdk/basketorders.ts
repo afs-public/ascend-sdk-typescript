@@ -13,6 +13,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class BasketOrders extends ClientSDK {
   /**
@@ -114,8 +115,13 @@ export class BasketOrders extends ClientSDK {
   async listBasketOrders(
     request: operations.BasketOrdersServiceListBasketOrdersRequest,
     options?: RequestOptions,
-  ): Promise<operations.BasketOrdersServiceListBasketOrdersResponse> {
-    return unwrapAsync(basketOrdersListBasketOrders(
+  ): Promise<
+    PageIterator<
+      operations.BasketOrdersServiceListBasketOrdersResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(basketOrdersListBasketOrders(
       this,
       request,
       options,
@@ -136,8 +142,13 @@ export class BasketOrders extends ClientSDK {
     pageSize?: number | undefined,
     pageToken?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.BasketOrdersServiceListCompressedOrdersResponse> {
-    return unwrapAsync(basketOrdersListCompressedOrders(
+  ): Promise<
+    PageIterator<
+      operations.BasketOrdersServiceListCompressedOrdersResponse,
+      { cursor: string }
+    >
+  > {
+    return unwrapResultIterator(basketOrdersListCompressedOrders(
       this,
       correspondentId,
       basketId,

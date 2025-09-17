@@ -1,1 +1,1 @@
-{"version":3,"file":"registration.d.ts","sourceRoot":"","sources":["../src/hooks/registration.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,KAAK,EAAE,MAAM,YAAY,CAAC;AAQnC,wBAAgB,SAAS,CAAC,KAAK,EAAE,KAAK,QAGrC"}
+{"version":3,"file":"registration.d.ts","sourceRoot":"","sources":["../src/hooks/registration.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,KAAK,EAAE,MAAM,SAAS,CAAC;AAQhC,wBAAgB,SAAS,CAAC,KAAK,EAAE,KAAK,QAGrC"}

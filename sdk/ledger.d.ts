@@ -1,5 +1,6 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class Ledger extends ClientSDK {
     /**
      * List Entries
@@ -7,21 +8,27 @@ export declare class Ledger extends ClientSDK {
      * @remarks
      * List all Entries based on a filter
      */
-    listEntries(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.LedgerListEntriesResponse>;
+    listEntries(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.LedgerListEntriesResponse, {
+        cursor: string;
+    }>>;
     /**
      * List Activities
      *
      * @remarks
      * List all Completed Activities based on a filter
      */
-    listActivities(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.LedgerListActivitiesResponse>;
+    listActivities(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.LedgerListActivitiesResponse, {
+        cursor: string;
+    }>>;
     /**
      * List Positions
      *
      * @remarks
      * List positions based on a filter
      */
-    listPositions(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<operations.LedgerListPositionsResponse>;
+    listPositions(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, filter?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.LedgerListPositionsResponse, {
+        cursor: string;
+    }>>;
     /**
      * Get Activity
      *

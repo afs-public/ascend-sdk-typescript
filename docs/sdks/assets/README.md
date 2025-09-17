@@ -35,7 +35,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.assets.listAssets();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -67,7 +69,9 @@ async function run() {
   const res = await assetsListAssets(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("assetsListAssets failed:", res.error);
   }
@@ -212,7 +216,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.assets.listAssetsCorrespondent("1234");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -244,7 +250,9 @@ async function run() {
   const res = await assetsListAssetsCorrespondent(apexascend, "1234");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("assetsListAssetsCorrespondent failed:", res.error);
   }

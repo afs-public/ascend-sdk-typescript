@@ -12,6 +12,7 @@ const investigationsListInvestigations_js_1 = require("../funcs/investigationsLi
 const investigationsUpdateInvestigation_js_1 = require("../funcs/investigationsUpdateInvestigation.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class Investigations extends sdks_js_1.ClientSDK {
     /**
      * Get Investigations
@@ -38,7 +39,7 @@ class Investigations extends sdks_js_1.ClientSDK {
      * Use this endpoint to retrieve a list of investigation summaries based on optional search parameters
      */
     async listInvestigations(pageSize, pageToken, filter, orderBy, options) {
-        return (0, fp_js_1.unwrapAsync)((0, investigationsListInvestigations_js_1.investigationsListInvestigations)(this, pageSize, pageToken, filter, orderBy, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, investigationsListInvestigations_js_1.investigationsListInvestigations)(this, pageSize, pageToken, filter, orderBy, options));
     }
     /**
      * Link Documents

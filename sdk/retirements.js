@@ -10,6 +10,7 @@ const retirementsRetrieveContributionConstraints_js_1 = require("../funcs/retire
 const retirementsRetrieveDistributionConstraints_js_1 = require("../funcs/retirementsRetrieveDistributionConstraints.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class Retirements extends sdks_js_1.ClientSDK {
     /**
      * List Contribution Summaries
@@ -18,7 +19,7 @@ class Retirements extends sdks_js_1.ClientSDK {
      * Lists the aggregated retirement contribution summaries by tax year
      */
     async listContributionSummaries(accountId, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, retirementsListContributionSummaries_js_1.retirementsListContributionSummaries)(this, accountId, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, retirementsListContributionSummaries_js_1.retirementsListContributionSummaries)(this, accountId, pageSize, pageToken, options));
     }
     /**
      * Retrieve Contribution Constraints
@@ -36,7 +37,7 @@ class Retirements extends sdks_js_1.ClientSDK {
      * Lists the aggregated retirement distribution summaries by tax year
      */
     async listDistributionSummaries(accountId, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, retirementsListDistributionSummaries_js_1.retirementsListDistributionSummaries)(this, accountId, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, retirementsListDistributionSummaries_js_1.retirementsListDistributionSummaries)(this, accountId, pageSize, pageToken, options));
     }
     /**
      * Retrieve Distribution Constraints

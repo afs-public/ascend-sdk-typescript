@@ -36,7 +36,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.ledger.listEntries("01FAKEACCOUNT1TYKWEYRH8S2K");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -68,7 +70,9 @@ async function run() {
   const res = await ledgerListEntries(apexascend, "01FAKEACCOUNT1TYKWEYRH8S2K");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("ledgerListEntries failed:", res.error);
   }
@@ -126,7 +130,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.ledger.listActivities("01FAKEACCOUNT1TYKWEYRH8S2K");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -158,7 +164,9 @@ async function run() {
   const res = await ledgerListActivities(apexascend, "01FAKEACCOUNT1TYKWEYRH8S2K");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("ledgerListActivities failed:", res.error);
   }
@@ -216,7 +224,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.ledger.listPositions("01HBRQ5BW6ZAY4BNWP4GWRD80X");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -248,7 +258,9 @@ async function run() {
   const res = await ledgerListPositions(apexascend, "01HBRQ5BW6ZAY4BNWP4GWRD80X");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("ledgerListPositions failed:", res.error);
   }

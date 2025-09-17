@@ -22,6 +22,7 @@ const accountManagementUpdateParty_js_1 = require("../funcs/accountManagementUpd
 const accountManagementUpdateTrustedContact_js_1 = require("../funcs/accountManagementUpdateTrustedContact.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class AccountManagement extends sdks_js_1.ClientSDK {
     /**
      * List Accounts
@@ -30,7 +31,7 @@ class AccountManagement extends sdks_js_1.ClientSDK {
      * Gets a list of Accounts based on search criteria.
      */
     async listAccounts(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, accountManagementListAccounts_js_1.accountManagementListAccounts)(this, request, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, accountManagementListAccounts_js_1.accountManagementListAccounts)(this, request, options));
     }
     /**
      * Update Account

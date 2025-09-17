@@ -18,6 +18,7 @@ const personManagementUpdateLegalEntity_js_1 = require("../funcs/personManagemen
 const personManagementUpdateLegalNaturalPerson_js_1 = require("../funcs/personManagementUpdateLegalNaturalPerson.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class PersonManagement extends sdks_js_1.ClientSDK {
     /**
      * Create Legal Natural Person
@@ -35,7 +36,7 @@ class PersonManagement extends sdks_js_1.ClientSDK {
      * Gets a list of Legal Natural Person records based on search criteria.
      */
     async listLegalNaturalPersons(pageSize, pageToken, orderBy, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, personManagementListLegalNaturalPersons_js_1.personManagementListLegalNaturalPersons)(this, pageSize, pageToken, orderBy, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, personManagementListLegalNaturalPersons_js_1.personManagementListLegalNaturalPersons)(this, pageSize, pageToken, orderBy, filter, options));
     }
     /**
      * Get Legal Natural Persons
@@ -89,7 +90,7 @@ class PersonManagement extends sdks_js_1.ClientSDK {
      * Gets a list of Legal Entity records based on search criteria.
      */
     async listLegalEntities(pageSize, pageToken, orderBy, filter, options) {
-        return (0, fp_js_1.unwrapAsync)((0, personManagementListLegalEntities_js_1.personManagementListLegalEntities)(this, pageSize, pageToken, orderBy, filter, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, personManagementListLegalEntities_js_1.personManagementListLegalEntities)(this, pageSize, pageToken, orderBy, filter, options));
     }
     /**
      * Get Legal Entity

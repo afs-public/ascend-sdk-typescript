@@ -1,5 +1,5 @@
 workflowVersion: 1.0.0
-speakeasyVersion: 1.601.3
+speakeasyVersion: 1.608.0
 sources:
     Ascend OpenAPI:
         inputs:

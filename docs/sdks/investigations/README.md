@@ -213,7 +213,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.investigations.listInvestigations();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -245,7 +247,9 @@ async function run() {
   const res = await investigationsListInvestigations(apexascend);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("investigationsListInvestigations failed:", res.error);
   }

@@ -1,6 +1,7 @@
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
+import { PageIterator } from "../types/operations.js";
 export declare class EnrollmentsAndAgreements extends ClientSDK {
     /**
      * Enroll Account
@@ -36,7 +37,9 @@ export declare class EnrollmentsAndAgreements extends ClientSDK {
      * @remarks
      * Gets a list of Enrollments for an Account.
      */
-    listEnrollments(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.AccountsListEnrollmentsResponse>;
+    listEnrollments(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AccountsListEnrollmentsResponse, {
+        cursor: string;
+    }>>;
     /**
      * Affirm Agreements
      *
@@ -50,13 +53,17 @@ export declare class EnrollmentsAndAgreements extends ClientSDK {
      * @remarks
      * Gets a list of Agreements on an Account.
      */
-    listAgreements(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.AccountsListAgreementsResponse>;
+    listAgreements(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AccountsListAgreementsResponse, {
+        cursor: string;
+    }>>;
     /**
      * List Account Entitlements
      *
      * @remarks
      * Gets a list of Entitlements for an Account.
      */
-    listEntitlements(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.AccountsListEntitlementsResponse>;
+    listEntitlements(accountId: string, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<PageIterator<operations.AccountsListEntitlementsResponse, {
+        cursor: string;
+    }>>;
 }
 //# sourceMappingURL=enrollmentsandagreements.d.ts.map

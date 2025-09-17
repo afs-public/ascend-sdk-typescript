@@ -10,6 +10,7 @@ import { ledgerListPositions } from "../funcs/ledgerListPositions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Ledger extends ClientSDK {
   /**
@@ -24,8 +25,10 @@ export class Ledger extends ClientSDK {
     pageToken?: string | undefined,
     filter?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.LedgerListEntriesResponse> {
-    return unwrapAsync(ledgerListEntries(
+  ): Promise<
+    PageIterator<operations.LedgerListEntriesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(ledgerListEntries(
       this,
       accountId,
       pageSize,
@@ -47,8 +50,10 @@ export class Ledger extends ClientSDK {
     pageToken?: string | undefined,
     filter?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.LedgerListActivitiesResponse> {
-    return unwrapAsync(ledgerListActivities(
+  ): Promise<
+    PageIterator<operations.LedgerListActivitiesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(ledgerListActivities(
       this,
       accountId,
       pageSize,
@@ -70,8 +75,10 @@ export class Ledger extends ClientSDK {
     pageToken?: string | undefined,
     filter?: string | undefined,
     options?: RequestOptions,
-  ): Promise<operations.LedgerListPositionsResponse> {
-    return unwrapAsync(ledgerListPositions(
+  ): Promise<
+    PageIterator<operations.LedgerListPositionsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(ledgerListPositions(
       this,
       accountId,
       pageSize,

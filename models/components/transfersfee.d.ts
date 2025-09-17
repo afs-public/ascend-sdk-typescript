@@ -114,6 +114,10 @@ export type TransfersFee = {
      */
     amount?: TransfersFeeAmount | null | undefined;
     /**
+     * Bulk upload identifier to group related fee transfers
+     */
+    bulkUploadId?: string | undefined;
+    /**
      * External identifier supplied by the API caller. Each request must have a unique pairing of client_transfer_id and account
      */
     clientTransferId?: string | undefined;
@@ -221,6 +225,7 @@ export declare const TransfersFee$inboundSchema: z.ZodType<TransfersFee, z.ZodTy
 /** @internal */
 export type TransfersFee$Outbound = {
     amount?: TransfersFeeAmount$Outbound | null | undefined;
+    bulk_upload_id?: string | undefined;
     client_transfer_id?: string | undefined;
     description?: string | undefined;
     fee_operating_account?: string | undefined;

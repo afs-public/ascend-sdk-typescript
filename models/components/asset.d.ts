@@ -122,6 +122,8 @@ export declare enum CouponType {
 export type CouponTypeOpen = OpenEnum<typeof CouponType>;
 /**
  * Weighted average time until a bond’s cash flows are received in years
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type Duration = {
     /**
@@ -400,6 +402,8 @@ export type FixedIncome = {
     couponType?: CouponTypeOpen | undefined;
     /**
      * Weighted average time until a bond’s cash flows are received in years
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     duration?: Duration | null | undefined;
     /**

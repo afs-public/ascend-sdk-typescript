@@ -10,6 +10,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { PageIterator, unwrapResultIterator } from "../types/operations.js";
 
 export class Retirements extends ClientSDK {
   /**
@@ -24,9 +25,12 @@ export class Retirements extends ClientSDK {
     pageToken?: string | undefined,
     options?: RequestOptions,
   ): Promise<
-    operations.RetirementConstraintsListContributionSummariesResponse
+    PageIterator<
+      operations.RetirementConstraintsListContributionSummariesResponse,
+      { cursor: string }
+    >
   > {
-    return unwrapAsync(retirementsListContributionSummaries(
+    return unwrapResultIterator(retirementsListContributionSummaries(
       this,
       accountId,
       pageSize,
@@ -69,9 +73,12 @@ export class Retirements extends ClientSDK {
     pageToken?: string | undefined,
     options?: RequestOptions,
   ): Promise<
-    operations.RetirementConstraintsListDistributionSummariesResponse
+    PageIterator<
+      operations.RetirementConstraintsListDistributionSummariesResponse,
+      { cursor: string }
+    >
   > {
-    return unwrapAsync(retirementsListDistributionSummaries(
+    return unwrapResultIterator(retirementsListDistributionSummaries(
       this,
       accountId,
       pageSize,

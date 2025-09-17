@@ -424,7 +424,9 @@ async function run() {
     showRemoved: true,
   });
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -462,7 +464,9 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("basketOrdersListBasketOrders failed:", res.error);
   }
@@ -519,7 +523,9 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.basketOrders.listCompressedOrders("01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -551,7 +557,9 @@ async function run() {
   const res = await basketOrdersListCompressedOrders(apexascend, "01HPMZZM6RKMVZA1JQ63RQKJRP", "fffd326-72fa-4d2b-bd1f-45384fe5d521");
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("basketOrdersListCompressedOrders failed:", res.error);
   }

@@ -14,6 +14,7 @@ const enrollmentsAndAgreementsListEnrollments_js_1 = require("../funcs/enrollmen
 const enrollmentsAndAgreementsListEntitlements_js_1 = require("../funcs/enrollmentsAndAgreementsListEntitlements.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
+const operations_js_1 = require("../types/operations.js");
 class EnrollmentsAndAgreements extends sdks_js_1.ClientSDK {
     /**
      * Enroll Account
@@ -58,7 +59,7 @@ class EnrollmentsAndAgreements extends sdks_js_1.ClientSDK {
      * Gets a list of Enrollments for an Account.
      */
     async listEnrollments(accountId, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, enrollmentsAndAgreementsListEnrollments_js_1.enrollmentsAndAgreementsListEnrollments)(this, accountId, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, enrollmentsAndAgreementsListEnrollments_js_1.enrollmentsAndAgreementsListEnrollments)(this, accountId, pageSize, pageToken, options));
     }
     /**
      * Affirm Agreements
@@ -76,7 +77,7 @@ class EnrollmentsAndAgreements extends sdks_js_1.ClientSDK {
      * Gets a list of Agreements on an Account.
      */
     async listAgreements(accountId, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, enrollmentsAndAgreementsListAgreements_js_1.enrollmentsAndAgreementsListAgreements)(this, accountId, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, enrollmentsAndAgreementsListAgreements_js_1.enrollmentsAndAgreementsListAgreements)(this, accountId, pageSize, pageToken, options));
     }
     /**
      * List Account Entitlements
@@ -85,7 +86,7 @@ class EnrollmentsAndAgreements extends sdks_js_1.ClientSDK {
      * Gets a list of Entitlements for an Account.
      */
     async listEntitlements(accountId, pageSize, pageToken, options) {
-        return (0, fp_js_1.unwrapAsync)((0, enrollmentsAndAgreementsListEntitlements_js_1.enrollmentsAndAgreementsListEntitlements)(this, accountId, pageSize, pageToken, options));
+        return (0, operations_js_1.unwrapResultIterator)((0, enrollmentsAndAgreementsListEntitlements_js_1.enrollmentsAndAgreementsListEntitlements)(this, accountId, pageSize, pageToken, options));
     }
 }
 exports.EnrollmentsAndAgreements = EnrollmentsAndAgreements;

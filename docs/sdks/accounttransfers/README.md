@@ -135,7 +135,9 @@ async function run() {
     filter: "deliverer.account_number == \"R9AHY8P\"",
   });
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -173,7 +175,9 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("accountTransfersListTransfers failed:", res.error);
   }

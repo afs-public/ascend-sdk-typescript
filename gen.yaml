@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.6.1
+  version: 1.7.0
   additionalDependencies:
     dependencies:
       jsonwebtoken: ^9.0.0
@@ -63,4 +63,5 @@ typescript:
   packageName: '@apexfintechsolutions/ascend-sdk'
   responseFormat: envelope-http
   templateVersion: v2
+  usageSDKInitImports: []
   useIndexModules: true
