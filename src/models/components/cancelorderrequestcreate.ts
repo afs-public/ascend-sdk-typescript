@@ -41,6 +41,10 @@ export type CancelOrderRequestCreate = {
    */
   clientCancelReceivedTime?: Date | null | undefined;
   /**
+   * Related to CAT reporting when Apex reports for the client. Denotes the time the client sent the cancel request to Apex. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+   */
+  clientCancelSentTime?: Date | null | undefined;
+  /**
    * Format: accounts/{account_id}/orders/{order_id}
    */
   name: string;
@@ -91,11 +95,15 @@ export const CancelOrderRequestCreate$inboundSchema: z.ZodType<
   client_cancel_received_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  client_cancel_sent_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   name: z.string(),
 }).transform((v) => {
   return remap$(v, {
     "cancel_initiator": "cancelInitiator",
     "client_cancel_received_time": "clientCancelReceivedTime",
+    "client_cancel_sent_time": "clientCancelSentTime",
   });
 });
 
@@ -103,6 +111,7 @@ export const CancelOrderRequestCreate$inboundSchema: z.ZodType<
 export type CancelOrderRequestCreate$Outbound = {
   cancel_initiator?: string | undefined;
   client_cancel_received_time?: string | null | undefined;
+  client_cancel_sent_time?: string | null | undefined;
   name: string;
 };
 
@@ -116,11 +125,14 @@ export const CancelOrderRequestCreate$outboundSchema: z.ZodType<
     .optional(),
   clientCancelReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
+  clientCancelSentTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   name: z.string(),
 }).transform((v) => {
   return remap$(v, {
     cancelInitiator: "cancel_initiator",
     clientCancelReceivedTime: "client_cancel_received_time",
+    clientCancelSentTime: "client_cancel_sent_time",
   });
 });
 

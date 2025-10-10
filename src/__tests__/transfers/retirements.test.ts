@@ -15,12 +15,10 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 
 test("Retirements Transfers List Contribution Summaries List Contribution Summaries1", async () => {

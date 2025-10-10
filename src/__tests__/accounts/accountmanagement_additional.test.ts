@@ -27,42 +27,34 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
   legal_entity_id = await createLegalEntity();
   if (typeof legal_entity_id !== "string") {
     throw new Error("legal_entity_id is undefined.");
   }
-  await timeout(5000);
   party_id = await addParty(account_id, legal_entity_id);
   if (typeof party_id !== "string") {
     throw new Error("party_id is undefined.");
   }
-  await timeout(5000);
   replace_party_id = await replaceParty(account_id, lnp_id, party_id);
   if (typeof replace_party_id !== "string") {
     throw new Error("replace_party_id is undefined.");
   }
-  await timeout(5000);
   trusted_contact_id = await createTrustedContact(account_id);
   if (typeof trusted_contact_id !== "string") {
     throw new Error("trusted_contact_id is undefined.");
   }
-  await timeout(5000);
   interested_party_id = await createInterestedParty(account_id);
   if (typeof interested_party_id !== "string") {
     throw new Error("interested_party_id is undefined.");
   }
-  await timeout(5000);
   restriction_code_id = await createRestrictionCode(account_id);
   if (typeof restriction_code_id !== "string") {
     throw new Error("restriction_code_id is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 
 test("Account Management Accounts Update Account Update Account1", async () => {

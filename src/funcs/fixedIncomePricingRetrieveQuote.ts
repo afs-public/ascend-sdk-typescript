@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  * Retrieve Quote
  *
  * @remarks
- * Returns quote information containing the best bid/ask for the given Fixed Income asset.
+ * Returns quote information containing the best bid/ask for the given Fixed Income asset. For Fixed Income assets in the UAT environment, CUSIPS are subject to expiration. Therefore please refer to the [list available in the Market Simulator](https://developer.apexclearing.com/apex-fintech-solutions/docs/market-simulator#fixed-income-simulator-scenarios) for the most recent CUSIP list prior to testing.
  */
 export function fixedIncomePricingRetrieveQuote(
   client: ApexascendCore,
@@ -132,8 +132,18 @@ async function $do(
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 5000,
+          exponent: 1.5,
+          maxElapsedTime: 15000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["4XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {

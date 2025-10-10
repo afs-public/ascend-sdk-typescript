@@ -1,10 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApexAccessTokenHook = void 0;
-const crypto_1 = require("crypto");
-const jsonwebtoken_1 = require("jsonwebtoken");
-const components_1 = require("../models/components");
-class ApexAccessTokenHook {
+import { createPrivateKey } from "crypto";
+import jwt from "jsonwebtoken";
+import { Security$outboundSchema, } from "../models/components/index.js";
+const { sign } = jwt;
+export class ApexAccessTokenHook {
     constructor() {
         this.accessToken = "";
     }
@@ -19,7 +17,7 @@ class ApexAccessTokenHook {
             throw new Error("security source is not defined");
         }
         // Use the zod schema to parse the security object
-        const customSec = components_1.Security$outboundSchema.parse(sec);
+        const customSec = Security$outboundSchema.parse(sec);
         // Access the values from the parsed object and add them to the request headers
         if (customSec.apiKey) {
             request.headers.set("x-api-key", customSec.apiKey);
@@ -89,7 +87,7 @@ class ApexAccessTokenHook {
                 .replace(/-----BEGIN PRIVATE KEY-----/g, "")
                 .replace(/-----END PRIVATE KEY-----/g, "");
             const privateKeyBuffer = Buffer.from(privateKeyContent, "base64");
-            const privateKey = (0, crypto_1.createPrivateKey)({
+            const privateKey = createPrivateKey({
                 key: privateKeyBuffer,
                 format: "der",
                 type: "pkcs8",
@@ -105,7 +103,7 @@ class ApexAccessTokenHook {
             const signOptions = {
                 algorithm: "RS256",
             };
-            return (0, jsonwebtoken_1.sign)(payload, privateKey.export({
+            return sign(payload, privateKey.export({
                 format: "pem",
                 type: "pkcs1",
             }), signOptions);
@@ -124,5 +122,4 @@ class ApexAccessTokenHook {
             this.accessTokenExpiration > new Date());
     }
 }
-exports.ApexAccessTokenHook = ApexAccessTokenHook;
 //# sourceMappingURL=apexaccesstokenhook.js.map

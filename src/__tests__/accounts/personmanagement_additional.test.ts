@@ -17,17 +17,14 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   assign_large_trader_id = await assignLargeTrader(lnp_id);
   if (typeof assign_large_trader_id !== "string") {
     throw new Error("assign_large_trader_id is undefined.");
   }
-  await timeout(5000);
   legal_entity_id = await createLegalEntity();
   if (typeof legal_entity_id !== "string") {
     throw new Error("legal_entity_id is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 
 test("Person Management Accounts Create Legal Natural Person Create Legal Natural Person1", async () => {

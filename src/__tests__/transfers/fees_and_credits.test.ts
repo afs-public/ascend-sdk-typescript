@@ -21,29 +21,23 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
   if (typeof enrollment_ids !== "object") {
     throw new Error("enrollment_ids is undefined.");
   }
-  await timeout(5000);
   affirmAgreement(account_id, enrollment_ids);
-  await timeout(5000);
   fee_id = await createFee(account_id);
   if (typeof fee_id !== "string") {
     throw new Error("fee_id is undefined.");
   }
-  await timeout(5000);
   credit_id = await createCredit(account_id);
   if (typeof credit_id !== "string") {
     throw new Error("credit_id is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 
 test("Fees and Credits Transfers Create Fee Create Fee1", async () => {

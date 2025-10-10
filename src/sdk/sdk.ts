@@ -8,6 +8,7 @@ import { AccountManagement } from "./accountmanagement.js";
 import { AccountTransfers } from "./accounttransfers.js";
 import { ACHTransfers } from "./achtransfers.js";
 import { Assets } from "./assets.js";
+import { AssetTradingConfig } from "./assettradingconfig.js";
 import { Authentication } from "./authentication.js";
 import { BankRelationships } from "./bankrelationships.js";
 import { BasketOrders } from "./basketorders.js";
@@ -152,6 +153,11 @@ export class Apexascend extends ClientSDK {
   private _basketOrders?: BasketOrders;
   get basketOrders(): BasketOrders {
     return (this._basketOrders ??= new BasketOrders(this._options));
+  }
+
+  private _assetTradingConfig?: AssetTradingConfig;
+  get assetTradingConfig(): AssetTradingConfig {
+    return (this._assetTradingConfig ??= new AssetTradingConfig(this._options));
   }
 
   private _tradeBooking?: TradeBooking;

@@ -1,1 +1,1 @@
-{"version":3,"file":"registration.js","sourceRoot":"","sources":["../src/hooks/registration.ts"],"names":[],"mappings":";;AASA,8BAGC;AAZD,+DAA4D;AAG5D;;;;GAIG;AAEH,SAAgB,SAAS,CAAC,KAAY;IACpC,gEAAgE;IAChE,KAAK,CAAC,yBAAyB,CAAC,IAAI,yCAAmB,EAAE,CAAC,CAAC;AAC7D,CAAC"}
+{"version":3,"file":"registration.js","sourceRoot":"","sources":["../src/hooks/registration.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,mBAAmB,EAAE,MAAM,0BAA0B,CAAC;AAG/D;;;;GAIG;AAEH,MAAM,UAAU,SAAS,CAAC,KAAY;IACpC,gEAAgE;IAChE,KAAK,CAAC,yBAAyB,CAAC,IAAI,mBAAmB,EAAE,CAAC,CAAC;AAC7D,CAAC"}

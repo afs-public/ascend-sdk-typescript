@@ -20,7 +20,6 @@ beforeAll(async () => {
   if (typeof client_order_id !== "string") {
       throw new Error("client_order_id is undefined.");
   }
-  await timeout(5000);
   execution_id = await createExecution(
       withdrawal_account_id,
       trade_id,
@@ -28,7 +27,6 @@ beforeAll(async () => {
   if (typeof execution_id !== "string") {
       throw new Error("execution_id is undefined.");
   }
-  await timeout(5000);
   rebook_execution_id = await createExecution(
         withdrawal_account_id,
         trade_id,
@@ -36,7 +34,6 @@ beforeAll(async () => {
   if (typeof rebook_execution_id !== "string") {
       throw new Error("rebook_execution_id is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 test("Trade Booking Trade Processing Create Trade Create Trade1", async () => {
   expect(trade_id).not.toBe(undefined);

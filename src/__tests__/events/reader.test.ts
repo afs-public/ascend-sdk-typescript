@@ -10,7 +10,6 @@ beforeAll(async () => {
   if (typeof message_id !== "string") {
     throw new Error('message_id is undefined.');
   }
-  await timeout(5000);
 }, 60000);
 
 test("Reader Events List Event Messages List Event Messages1", async () => {

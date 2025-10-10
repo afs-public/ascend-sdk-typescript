@@ -1,10 +1,12 @@
 import { createPrivateKey } from "crypto";
-import { sign, SignOptions } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import {
   Security$outboundSchema,
   ServiceAccountCreds,
-} from "../models/components";
-import { BeforeRequestContext, BeforeRequestHook } from "./types";
+} from "../models/components/index.js";
+import { BeforeRequestContext, BeforeRequestHook } from "./types.js";
+
+const { sign } = jwt;
 
 export class ApexAccessTokenHook implements BeforeRequestHook {
   private accessToken: string;
@@ -139,7 +141,7 @@ export class ApexAccessTokenHook implements BeforeRequestHook {
         datetime: nowIsoDateTime,
       };
 
-      const signOptions: SignOptions = {
+      const signOptions: jwt.SignOptions = {
         algorithm: "RS256",
       };
 

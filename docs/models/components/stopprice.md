@@ -1,6 +1,6 @@
 # StopPrice
 
-The stop price for this order. Only allowed for equities, when the side is SELL.
+The stop price for this order. Only allowed for equities.
 
 ## Example Usage
 

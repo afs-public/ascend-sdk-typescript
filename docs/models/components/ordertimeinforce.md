@@ -17,4 +17,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
 | `Day`                  | DAY                    |
+| `GoodTillDate`         | GOOD_TILL_DATE         |
 | -                      | `Unrecognized<string>` |

@@ -107,14 +107,16 @@ export enum IdentifierType {
 export type IdentifierTypeOpen = OpenEnum<typeof IdentifierType>;
 
 /**
- * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export enum OrderType {
   Limit = "LIMIT",
   Market = "MARKET",
+  Stop = "STOP",
+  MarketIfTouched = "MARKET_IF_TOUCHED",
 }
 /**
- * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export type OrderTypeOpen = OpenEnum<typeof OrderType>;
 
@@ -167,6 +169,7 @@ export type SpecialReportingInstructionsOpen = OpenEnum<
  */
 export enum TimeInForce {
   Day = "DAY",
+  GoodTillDate = "GOOD_TILL_DATE",
 }
 /**
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
@@ -213,6 +216,10 @@ export type OrderCreate = {
    * Required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
    */
   clientReceivedTime?: Date | null | undefined;
+  /**
+   * Only relevant for CAT reporting when clients have Apex do CAT reporting on their behalf. Denotes the time the client sent the order to Apex. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+   */
+  clientSentTime?: Date | null | undefined;
   /**
    * A custom commission applied to an order
    */
@@ -276,7 +283,7 @@ export type OrderCreate = {
    */
   orderDate: DateCreate;
   /**
-   * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+   * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
    */
   orderType: OrderTypeOpen;
   /**
@@ -311,6 +318,16 @@ export type OrderCreate = {
    * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
   timeInForce: TimeInForceOpen;
+  /**
+   * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
+   *
+   * @remarks
+   *
+   *  * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date
+   *
+   *  Related types are [google.type.TimeOfDay][google.type.TimeOfDay] and `google.protobuf.Timestamp`.
+   */
+  timeInForceExpirationDate?: DateCreate | undefined;
   /**
    * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
    */
@@ -578,6 +595,9 @@ export const OrderCreate$inboundSchema: z.ZodType<
   client_received_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  client_sent_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   commission: CommissionCreate$inboundSchema.optional(),
   currency_code: z.string().optional(),
   fees: z.array(FeeCreate$inboundSchema).optional(),
@@ -598,6 +618,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
   ).optional(),
   stop_price: StopPriceCreate$inboundSchema.optional(),
   time_in_force: TimeInForce$inboundSchema,
+  time_in_force_expiration_date: DateCreate$inboundSchema.optional(),
   trading_session: TradingSession$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -605,6 +626,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
     "broker_capacity": "brokerCapacity",
     "client_order_id": "clientOrderId",
     "client_received_time": "clientReceivedTime",
+    "client_sent_time": "clientSentTime",
     "currency_code": "currencyCode",
     "identifier_issuing_region_code": "identifierIssuingRegionCode",
     "identifier_type": "identifierType",
@@ -618,6 +640,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
     "special_reporting_instructions": "specialReportingInstructions",
     "stop_price": "stopPrice",
     "time_in_force": "timeInForce",
+    "time_in_force_expiration_date": "timeInForceExpirationDate",
     "trading_session": "tradingSession",
   });
 });
@@ -628,6 +651,7 @@ export type OrderCreate$Outbound = {
   broker_capacity?: string | undefined;
   client_order_id: string;
   client_received_time?: string | null | undefined;
+  client_sent_time?: string | null | undefined;
   commission?: CommissionCreate$Outbound | undefined;
   currency_code?: string | undefined;
   fees?: Array<FeeCreate$Outbound> | undefined;
@@ -646,6 +670,7 @@ export type OrderCreate$Outbound = {
   special_reporting_instructions?: Array<string> | undefined;
   stop_price?: StopPriceCreate$Outbound | undefined;
   time_in_force: string;
+  time_in_force_expiration_date?: DateCreate$Outbound | undefined;
   trading_session?: string | undefined;
 };
 
@@ -659,6 +684,8 @@ export const OrderCreate$outboundSchema: z.ZodType<
   brokerCapacity: BrokerCapacity$outboundSchema.optional(),
   clientOrderId: z.string(),
   clientReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  clientSentTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   commission: CommissionCreate$outboundSchema.optional(),
   currencyCode: z.string().optional(),
@@ -680,6 +707,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
   ).optional(),
   stopPrice: StopPriceCreate$outboundSchema.optional(),
   timeInForce: TimeInForce$outboundSchema,
+  timeInForceExpirationDate: DateCreate$outboundSchema.optional(),
   tradingSession: TradingSession$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -687,6 +715,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
     brokerCapacity: "broker_capacity",
     clientOrderId: "client_order_id",
     clientReceivedTime: "client_received_time",
+    clientSentTime: "client_sent_time",
     currencyCode: "currency_code",
     identifierIssuingRegionCode: "identifier_issuing_region_code",
     identifierType: "identifier_type",
@@ -700,6 +729,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
     specialReportingInstructions: "special_reporting_instructions",
     stopPrice: "stop_price",
     timeInForce: "time_in_force",
+    timeInForceExpirationDate: "time_in_force_expiration_date",
     tradingSession: "trading_session",
   });
 });

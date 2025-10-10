@@ -1,5 +1,5 @@
-import { ServiceAccountCreds } from "../models/components";
-import { BeforeRequestContext, BeforeRequestHook } from "./types";
+import { ServiceAccountCreds } from "../models/components/index.js";
+import { BeforeRequestContext, BeforeRequestHook } from "./types.js";
 export declare class ApexAccessTokenHook implements BeforeRequestHook {
     private accessToken;
     private accessTokenExpiration;

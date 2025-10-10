@@ -1,5 +1,5 @@
-import { ApexAccessTokenHook } from "./apexaccesstokenhook";
-import { Hooks } from "./types";
+import { ApexAccessTokenHook } from "./apexaccesstokenhook.js";
+import { Hooks } from "./types.js";
 
 /*
  * This file is only ever generated once on the first generation and then is free to be modified.

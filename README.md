@@ -360,6 +360,11 @@ const sdk = new Apexascend({ httpClient });
 * [listAssetsCorrespondent](docs/sdks/assets/README.md#listassetscorrespondent) - List Assets (By Correspondent)
 * [getAssetCorrespondent](docs/sdks/assets/README.md#getassetcorrespondent) - Get Asset (By Correspondent)
 
+### [assetTradingConfig](docs/sdks/assettradingconfig/README.md)
+
+* [getAssetTradingConfig](docs/sdks/assettradingconfig/README.md#getassettradingconfig) - Get Asset Trading Config
+* [listAssetTradingConfigs](docs/sdks/assettradingconfig/README.md#listassettradingconfigs) - List Asset Trading Configs
+
 ### [authentication](docs/sdks/authentication/README.md)
 
 * [generateServiceAccountToken](docs/sdks/authentication/README.md#generateserviceaccounttoken) - Generate Service Account Token
@@ -399,6 +404,8 @@ const sdk = new Apexascend({ httpClient });
 * [createOrder](docs/sdks/createorder/README.md#createorder) - Create Order
 * [getOrder](docs/sdks/createorder/README.md#getorder) - Get Order
 * [cancelOrder](docs/sdks/createorder/README.md#cancelorder) - Cancel Order
+* [setExtraReportingData](docs/sdks/createorder/README.md#setextrareportingdata) - Set Extra Reporting Data
+* [listCorrespondentOrders](docs/sdks/createorder/README.md#listcorrespondentorders) - List Correspondent Orders
 
 ### [dataRetrieval](docs/sdks/dataretrieval/README.md)
 

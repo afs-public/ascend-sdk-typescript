@@ -16,24 +16,19 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error('lnp_id is undefined.');
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error('account_id is undefined.');
   }
-  await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
   if (typeof enrollment_ids !== "object") {
     throw new Error('enrollment_ids is undefined.');
   }
-  await timeout(5000);
   affirmAgreement(account_id, enrollment_ids);
-  await timeout(5000);
   transfer_id = await create_account_transfer_id(account_id);
   if (typeof transfer_id !== "string") {
     throw new Error('accept_transfer_id is undefined.');
   }
-  await timeout(5000);
 }, 60000);
 
 test("Account Transfers Account Transfers Create Transfer Create Transfer1", async () => {
@@ -92,7 +87,6 @@ test ("Account Transfers Account Transfers Accept Transfer Accept Transfer1", as
   if (typeof accept_transfer_id !== "string") {
     throw new Error('accept_transfer_id is undefined.');
   }
-  await timeout(5000);
 
   const request: components.AcceptTransferRequestCreate = {
     name: `correspondents/${correspondentId}/accounts/${account_id}/transfers/${accept_transfer_id}`,
