@@ -29,36 +29,28 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
   if (typeof enrollment_ids !== "object") {
     throw new Error("enrollment_ids is undefined.");
   }
-  await timeout(5000);
   affirmAgreement(account_id, enrollment_ids);
-  await timeout(5000);
   bank_relationship_id = await createBankRelationship(account_id);
   if (typeof bank_relationship_id !== "string") {
     throw new Error("bank_relationship_id is undefined.");
   }
-  await timeout(5000);
   microDeposits = await correctMicroDeposits(account_id, bank_relationship_id);
   if (typeof microDeposits !== "object") {
     throw new Error("microDeposits is undefined.");
   }
-  await timeout(5000);
   await verifyMicroDeposits(account_id, bank_relationship_id, microDeposits);
-  await timeout(5000);
   ach_deposit_id = await createACHDeposit(account_id, bank_relationship_id);
   if (typeof ach_deposit_id !== "string") {
     throw new Error("ach_deposit_id is undefined.");
   }
-  await timeout(5000);
   ach_withdrawal_id = await createACHWithdrawal(
     account_id,
     bank_relationship_id,
@@ -66,7 +58,6 @@ beforeAll(async () => {
   if (typeof ach_withdrawal_id !== "string") {
     throw new Error("ach_withdrawal_id is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 
 test("ACH Transfers Transfers Create ACH Deposit Create ACH Deposit1", async () => {

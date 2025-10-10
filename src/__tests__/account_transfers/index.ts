@@ -27,7 +27,6 @@ export async function create_account_transfer_id(
 
   await sdk.feesAndCredits.createCredit(fundingRequest, account_id);
 
-  await timeout(5000);
 
   const request: components.TransferCreate = {
     assets: [

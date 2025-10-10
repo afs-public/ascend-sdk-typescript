@@ -27,6 +27,10 @@ export type CancelOrderRequestCreate = {
      */
     clientCancelReceivedTime?: Date | null | undefined;
     /**
+     * Related to CAT reporting when Apex reports for the client. Denotes the time the client sent the cancel request to Apex. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+     */
+    clientCancelSentTime?: Date | null | undefined;
+    /**
      * Format: accounts/{account_id}/orders/{order_id}
      */
     name: string;
@@ -51,6 +55,7 @@ export declare const CancelOrderRequestCreate$inboundSchema: z.ZodType<CancelOrd
 export type CancelOrderRequestCreate$Outbound = {
     cancel_initiator?: string | undefined;
     client_cancel_received_time?: string | null | undefined;
+    client_cancel_sent_time?: string | null | undefined;
     name: string;
 };
 /** @internal */

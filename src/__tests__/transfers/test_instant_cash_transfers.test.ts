@@ -21,19 +21,15 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
   if (typeof enrollment_ids !== "object") {
     throw new Error("enrollment_ids is undefined.");
   }
-  await timeout(5000);
   affirmAgreement(account_id, enrollment_ids);
-  await timeout(5000);
 }, 60000);
 
 test("Test Instant Cash Transfer Transfers Create Ict Deposit Create Ict Deposit1", async () => {
@@ -85,7 +81,6 @@ test("Test Instant Cash Transfer Transfers Get Ict Withdrawal Get Ict Withdrawal
 
 test("Test Instant Cash Transfer Transfers Cancel Ict Withdrawal Cancel Ict Withdrawal1", async () => {
   const withdrawal = await createIctWithdrawal(account_id || "");
-  await timeout(5000);
 
   const request = {
     name:

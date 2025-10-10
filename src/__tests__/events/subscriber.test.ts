@@ -20,7 +20,6 @@ beforeAll(async () => {
   if (typeof subscriber_id !== "string") {
     throw new Error("subscriber_id is undefined");
   }
-  await timeout(5000);
   delivery_id = await get_delivery_id();
   if (typeof delivery_id !== "string") {
     throw new Error("delivery_id is undefined");
@@ -40,7 +39,6 @@ test("Subscriber Events Get Push Subscription Get Push Subscription1", async () 
 });
 
 test("Subscriber Events Update Push Subscription Update Push Subscription1", async () => {
-  await timeout(25000);
   if (typeof subscriber_id !== "string") {
     throw new Error("message_id is undefined.");
   }
@@ -73,7 +71,6 @@ test("Subscriber Events Get Push Subscription Event Delivery Get Push Subscripti
 });
 
 test("Subscriber Events Delete Push Subscription Delete Push Subscription1", async () => {
-  await timeout(5000);
   if (typeof subscriber_id !== "string") {
     throw new Error("message_id is undefined.");
   }

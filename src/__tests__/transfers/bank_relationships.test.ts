@@ -26,29 +26,23 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
   reuse_account_id = await createAccount(lnp_id);
   if (typeof reuse_account_id !== "string") {
     throw new Error("reissue_account_id is undefined.");
   }
-  await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
   if (typeof enrollment_ids !== "object") {
     throw new Error("enrollment_ids is undefined.");
   }
-  await timeout(5000);
   affirmAgreement(account_id, enrollment_ids);
-  await timeout(5000);
   bank_relationship_id = await createBankRelationship(account_id);
   if (typeof bank_relationship_id !== "string") {
     throw new Error("bank_relationship_id is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 
 test("Bank Relationships Transfers Create Bank Relationships Create Bank Relationships1", async () => {

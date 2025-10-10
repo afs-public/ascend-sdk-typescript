@@ -18,17 +18,14 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
   if (typeof enrollment_ids !== "object") {
     throw new Error("enrollment_ids is undefined.");
   }
-  await timeout(5000);
 }, 60000);
 
 test("Enrollments & Agreements Accounts Enroll Account Enroll Account1", async () => {

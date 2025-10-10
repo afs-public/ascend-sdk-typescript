@@ -137,8 +137,18 @@ async function $do(
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 5000,
+          exponent: 1.5,
+          maxElapsedTime: 15000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["4XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {

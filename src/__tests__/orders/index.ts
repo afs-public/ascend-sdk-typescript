@@ -19,7 +19,6 @@ export async function createOrder(
   };
   await sdk.feesAndCredits.createCredit(fundingRequest, account_id);
 
-  await timeout(5000);
 
   // Create order
   let currentDate = new Date();

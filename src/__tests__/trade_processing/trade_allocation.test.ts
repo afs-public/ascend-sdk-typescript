@@ -18,14 +18,12 @@ beforeAll(async () => {
     if (typeof trade_allocation_id !== "string") {
         throw new Error("trade_allocation_id is undefined.");
     }
-    await timeout(5000);
     rebook_trade_allocation_id = await createTradeAllocation(
         withdrawal_account_id,
     );
     if (typeof rebook_trade_allocation_id !== "string") {
         throw new Error("rebook_trade_allocation_id is undefined.");
     }
-    await timeout(5000);
 }, 60000);
 test("Trade Allocation Trade Processing Create Trade Allocation Create Trade Allocation1", async () => {
     expect(trade_allocation_id).not.toBe(undefined);

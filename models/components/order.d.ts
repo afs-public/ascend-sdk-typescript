@@ -310,14 +310,16 @@ export declare enum OrderStatus {
  */
 export type OrderStatusOpen = OpenEnum<typeof OrderStatus>;
 /**
- * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export declare enum OrderOrderType {
     Limit = "LIMIT",
-    Market = "MARKET"
+    Market = "MARKET",
+    Stop = "STOP",
+    MarketIfTouched = "MARKET_IF_TOUCHED"
 }
 /**
- * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export type OrderOrderTypeOpen = OpenEnum<typeof OrderOrderType>;
 /**
@@ -416,7 +418,7 @@ export declare enum OrderStopPriceType {
  */
 export type OrderStopPriceTypeOpen = OpenEnum<typeof OrderStopPriceType>;
 /**
- * The stop price for this order. Only allowed for equities, when the side is SELL.
+ * The stop price for this order. Only allowed for equities.
  */
 export type StopPrice = {
     /**
@@ -432,12 +434,30 @@ export type StopPrice = {
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export declare enum OrderTimeInForce {
-    Day = "DAY"
+    Day = "DAY",
+    GoodTillDate = "GOOD_TILL_DATE"
 }
 /**
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export type OrderTimeInForceOpen = OpenEnum<typeof OrderTimeInForce>;
+/**
+ * The date till which a GOOD_TILL_DATE order will remain valid. If the order is a STOP/MIT order with TimeInForce as GOOD_TILL_DATE, then this must be populated.
+ */
+export type TimeInForceExpirationDate = {
+    /**
+     * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     */
+    day?: number | undefined;
+    /**
+     * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     */
+    month?: number | undefined;
+    /**
+     * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     */
+    year?: number | undefined;
+};
 /**
  * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
  */
@@ -504,6 +524,10 @@ export type Order = {
      */
     clientCancelReceivedTime?: Date | null | undefined;
     /**
+     * Output only field for Equity Orders related to CAT reporting on behalf of clients. This field will be present when provided on the CancelOrderRequest
+     */
+    clientCancelSentTime?: Date | null | undefined;
+    /**
      * User-supplied unique order ID. Cannot be more than 40 characters long.
      */
     clientOrderId?: string | undefined;
@@ -511,6 +535,10 @@ export type Order = {
      * Required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
      */
     clientReceivedTime?: Date | null | undefined;
+    /**
+     * Only relevant for CAT reporting when clients have Apex do CAT reporting on their behalf. Denotes the time the client sent the order to Apex. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+     */
+    clientSentTime?: Date | null | undefined;
     /**
      * A custom commission to be applied to this order. When specifying an AMOUNT type, the value represents a notional amount measured in the currency of the order.
      */
@@ -584,6 +612,10 @@ export type Order = {
      */
     notionalValue?: NotionalValue | null | undefined;
     /**
+     * A value derived from the order_status, indicating whether the order is still open. The statuses that indicate an order is open are: PENDING_NEW, NEW, PENDING_QUEUED, QUEUED, PARTIALLY_FILLED, and PENDING_CANCEL. An order with any other status is not considered open.
+     */
+    open?: boolean | undefined;
+    /**
      * The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is within 5 minutes prior to market close, the next valid market day may be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
      */
     orderDate?: OrderDate | null | undefined;
@@ -600,7 +632,7 @@ export type Order = {
      */
     orderStatus?: OrderStatusOpen | undefined;
     /**
-     * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+     * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
      */
     orderType?: OrderOrderTypeOpen | undefined;
     /**
@@ -624,13 +656,17 @@ export type Order = {
      */
     specialReportingInstructions?: Array<OrderSpecialReportingInstructionsOpen> | undefined;
     /**
-     * The stop price for this order. Only allowed for equities, when the side is SELL.
+     * The stop price for this order. Only allowed for equities.
      */
     stopPrice?: StopPrice | null | undefined;
     /**
      * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
      */
     timeInForce?: OrderTimeInForceOpen | undefined;
+    /**
+     * The date till which a GOOD_TILL_DATE order will remain valid. If the order is a STOP/MIT order with TimeInForce as GOOD_TILL_DATE, then this must be populated.
+     */
+    timeInForceExpirationDate?: TimeInForceExpirationDate | null | undefined;
     /**
      * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
      */
@@ -1259,6 +1295,30 @@ export declare namespace OrderTimeInForce$ {
     const outboundSchema: z.ZodType<OrderTimeInForceOpen, z.ZodTypeDef, OrderTimeInForceOpen>;
 }
 /** @internal */
+export declare const TimeInForceExpirationDate$inboundSchema: z.ZodType<TimeInForceExpirationDate, z.ZodTypeDef, unknown>;
+/** @internal */
+export type TimeInForceExpirationDate$Outbound = {
+    day?: number | undefined;
+    month?: number | undefined;
+    year?: number | undefined;
+};
+/** @internal */
+export declare const TimeInForceExpirationDate$outboundSchema: z.ZodType<TimeInForceExpirationDate$Outbound, z.ZodTypeDef, TimeInForceExpirationDate>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace TimeInForceExpirationDate$ {
+    /** @deprecated use `TimeInForceExpirationDate$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<TimeInForceExpirationDate, z.ZodTypeDef, unknown>;
+    /** @deprecated use `TimeInForceExpirationDate$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<TimeInForceExpirationDate$Outbound, z.ZodTypeDef, TimeInForceExpirationDate>;
+    /** @deprecated use `TimeInForceExpirationDate$Outbound` instead. */
+    type Outbound = TimeInForceExpirationDate$Outbound;
+}
+export declare function timeInForceExpirationDateToJSON(timeInForceExpirationDate: TimeInForceExpirationDate): string;
+export declare function timeInForceExpirationDateFromJSON(jsonString: string): SafeParseResult<TimeInForceExpirationDate, SDKValidationError>;
+/** @internal */
 export declare const OrderTradingSession$inboundSchema: z.ZodType<OrderTradingSessionOpen, z.ZodTypeDef, unknown>;
 /** @internal */
 export declare const OrderTradingSession$outboundSchema: z.ZodType<OrderTradingSessionOpen, z.ZodTypeDef, OrderTradingSessionOpen>;
@@ -1285,8 +1345,10 @@ export type Order$Outbound = {
     cancel_reason?: string | undefined;
     cancel_rejected_reason?: string | undefined;
     client_cancel_received_time?: string | null | undefined;
+    client_cancel_sent_time?: string | null | undefined;
     client_order_id?: string | undefined;
     client_received_time?: string | null | undefined;
+    client_sent_time?: string | null | undefined;
     commission?: OrderCommission$Outbound | null | undefined;
     create_time?: string | null | undefined;
     cumulative_notional_value?: CumulativeNotionalValue$Outbound | null | undefined;
@@ -1304,6 +1366,7 @@ export type Order$Outbound = {
     max_sell_quantity?: MaxSellQuantity$Outbound | null | undefined;
     name?: string | undefined;
     notional_value?: NotionalValue$Outbound | null | undefined;
+    open?: boolean | undefined;
     order_date?: OrderDate$Outbound | null | undefined;
     order_id?: string | undefined;
     order_rejected_reason?: string | undefined;
@@ -1316,6 +1379,7 @@ export type Order$Outbound = {
     special_reporting_instructions?: Array<string> | undefined;
     stop_price?: StopPrice$Outbound | null | undefined;
     time_in_force?: string | undefined;
+    time_in_force_expiration_date?: TimeInForceExpirationDate$Outbound | null | undefined;
     trading_session?: string | undefined;
 };
 /** @internal */

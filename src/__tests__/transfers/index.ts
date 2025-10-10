@@ -225,19 +225,16 @@ export async function createCompletedWithdrawal(
   );
   const bank_relationship_id =
     res2?.bankRelationship?.name?.split("/")?.at(-1) || "";
-  await timeout(15000);
 
   const microdeposit_amts: string[] =
     (await correctMicroDeposits(withdrawal_account_id, bank_relationship_id)) ||
     [];
-  await timeout(10000);
 
   await verifyMicroDeposits(
     withdrawal_account_id,
     bank_relationship_id,
     microdeposit_amts,
   );
-  await timeout(5000);
 
   const withdrawal_id = await createACHWithdrawal(
     withdrawal_account_id,
@@ -389,7 +386,6 @@ export async function createIctDeposit(
 export async function createIctWithdrawal(
   enrolled_account_id: string,
 ): Promise<string> {
-  await timeout(5000);
   const request: components.IctWithdrawalCreate = {
     amount: { value: "0.01" },
     clientTransferId: crypto.randomUUID(),

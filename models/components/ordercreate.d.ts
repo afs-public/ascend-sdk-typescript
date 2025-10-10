@@ -53,14 +53,16 @@ export declare enum IdentifierType {
  */
 export type IdentifierTypeOpen = OpenEnum<typeof IdentifierType>;
 /**
- * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export declare enum OrderType {
     Limit = "LIMIT",
-    Market = "MARKET"
+    Market = "MARKET",
+    Stop = "STOP",
+    MarketIfTouched = "MARKET_IF_TOUCHED"
 }
 /**
- * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
  */
 export type OrderTypeOpen = OpenEnum<typeof OrderType>;
 /**
@@ -106,7 +108,8 @@ export type SpecialReportingInstructionsOpen = OpenEnum<typeof SpecialReportingI
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export declare enum TimeInForce {
-    Day = "DAY"
+    Day = "DAY",
+    GoodTillDate = "GOOD_TILL_DATE"
 }
 /**
  * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
@@ -151,6 +154,10 @@ export type OrderCreate = {
      * Required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
      */
     clientReceivedTime?: Date | null | undefined;
+    /**
+     * Only relevant for CAT reporting when clients have Apex do CAT reporting on their behalf. Denotes the time the client sent the order to Apex. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+     */
+    clientSentTime?: Date | null | undefined;
     /**
      * A custom commission applied to an order
      */
@@ -214,7 +221,7 @@ export type OrderCreate = {
      */
     orderDate: DateCreate;
     /**
-     * The execution type of this order. For Equities: MARKET, and LIMIT are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+     * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
      */
     orderType: OrderTypeOpen;
     /**
@@ -247,6 +254,16 @@ export type OrderCreate = {
      * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
      */
     timeInForce: TimeInForceOpen;
+    /**
+     * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
+     *
+     * @remarks
+     *
+     *  * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date
+     *
+     *  Related types are [google.type.TimeOfDay][google.type.TimeOfDay] and `google.protobuf.Timestamp`.
+     */
+    timeInForceExpirationDate?: DateCreate | undefined;
     /**
      * Which TradingSession to trade in, defaults to 'CORE'. Only available for Equity orders.
      */
@@ -372,6 +389,7 @@ export type OrderCreate$Outbound = {
     broker_capacity?: string | undefined;
     client_order_id: string;
     client_received_time?: string | null | undefined;
+    client_sent_time?: string | null | undefined;
     commission?: CommissionCreate$Outbound | undefined;
     currency_code?: string | undefined;
     fees?: Array<FeeCreate$Outbound> | undefined;
@@ -390,6 +408,7 @@ export type OrderCreate$Outbound = {
     special_reporting_instructions?: Array<string> | undefined;
     stop_price?: StopPriceCreate$Outbound | undefined;
     time_in_force: string;
+    time_in_force_expiration_date?: DateCreate$Outbound | undefined;
     trading_session?: string | undefined;
 };
 /** @internal */

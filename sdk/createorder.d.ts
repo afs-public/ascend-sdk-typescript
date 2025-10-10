@@ -31,5 +31,19 @@ export declare class CreateOrder extends ClientSDK {
      *  Upon successful submission, returns the details of the order pending cancellation.
      */
     cancelOrder(cancelOrderRequestCreate: components.CancelOrderRequestCreate, accountId: string, orderId: string, options?: RequestOptions): Promise<operations.OrderServiceCancelOrderResponse>;
+    /**
+     * Set Extra Reporting Data
+     *
+     * @remarks
+     * Sets extra reporting data to an existing order. Any SetExtraReportingDataRequest must include the name of the order and the cancel_confirmed_time
+     */
+    setExtraReportingData(setExtraReportingDataRequestCreate: components.SetExtraReportingDataRequestCreate, accountId: string, orderId: string, options?: RequestOptions): Promise<operations.OrderServiceSetExtraReportingDataResponse>;
+    /**
+     * List Correspondent Orders
+     *
+     * @remarks
+     * Lists orders matching the specified filter criteria. Results are paginated and sorted in the reverse order of their creation.
+     */
+    listCorrespondentOrders(correspondentId: string, filter?: string | undefined, pageSize?: number | undefined, pageToken?: string | undefined, options?: RequestOptions): Promise<operations.OrderServiceListCorrespondentOrdersResponse>;
 }
 //# sourceMappingURL=createorder.d.ts.map

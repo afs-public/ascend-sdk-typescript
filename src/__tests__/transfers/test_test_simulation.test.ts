@@ -43,29 +43,23 @@ beforeAll(async () => {
   if (typeof lnp_id !== "string") {
     throw new Error("lnp_id is undefined.");
   }
-  await timeout(5000);
   account_id = await createAccount(lnp_id);
   if (typeof account_id !== "string") {
     throw new Error("account_id is undefined.");
   }
-  await timeout(5000);
   enrollment_ids = await enrollAccount(account_id);
   if (typeof enrollment_ids !== "object") {
     throw new Error("enrollment_ids is undefined.");
   }
-  await timeout(5000);
   affirmAgreement(account_id, enrollment_ids);
-  await timeout(5000);
   bank_relationship_id = await createBankRelationship(account_id);
   if (typeof bank_relationship_id !== "string") {
     throw new Error("bank_relationship_id is undefined.");
   }
-  await timeout(5000);
   microDeposits = await correctMicroDeposits(account_id, bank_relationship_id);
   if (typeof microDeposits !== "object") {
     throw new Error("microDeposits is undefined.");
   }
-  await timeout(5000);
   await verifyMicroDeposits(account_id, bank_relationship_id, microDeposits);
 }, 60000);
 
@@ -97,7 +91,6 @@ if (currentTime >= morning && currentTime <= afternoon) {
 
     expect(pending_deposit_id).toBeDefined();
 
-    await timeout(5000);
 
     try{
       const result = await sdk.testSimulation.forceApproveAchDeposit({
@@ -123,7 +116,6 @@ if (currentTime >= morning && currentTime <= afternoon) {
 
     expect(pending_deposit_id).toBeDefined();
 
-    await timeout(5000);
 
     const request: ForceNocAchDepositRequestCreate = {
       nachaNoc: {
@@ -147,7 +139,6 @@ if (currentTime >= morning && currentTime <= afternoon) {
       deceased_account_id,
       deceased_bank_relationship_id,
     );
-    await timeout(5000);
 
     try {
       const result = await sdk.testSimulation.forceRejectAchDeposit(
@@ -174,7 +165,6 @@ if (currentTime >= morning && currentTime <= afternoon) {
       account_id || "",
       bank_relationship_id || "",
     );
-    await timeout(5000);
 
     const request: ForceReturnAchDepositRequestCreate = {
       nachaReturn: {
@@ -203,7 +193,6 @@ if (currentTime >= morning && currentTime <= afternoon) {
 
   test("Test Test Simulation Transfers Force Approve Ach Withdrawal Force Approve Ach Withdrawal1", async () => {
     const pending_withdrawal_id = await createACHWithdrawal(deceased_account_id, deceased_bank_relationship_id);
-    await timeout(10000);
 
     try {
       const result = await sdk.testSimulation.forceApproveAchWithdrawal({
@@ -250,7 +239,6 @@ if (currentTime >= morning && currentTime <= afternoon) {
       deceased_account_id,
       deceased_bank_relationship_id,
     );
-    await timeout(5000);
 
     try {
       const result = await sdk.testSimulation.forceRejectAchWithdrawal(
@@ -313,7 +301,6 @@ afternoon = currentTime.set({ hour: 15, minute: 0, second: 0, millisecond: 0 });
 if (morning <= currentTime && currentTime <= afternoon) {
   test("Test Test Simulation Transfers Force Ict Deposit Approve Force Ict Deposit Approve1", async () => {
     const ictDeposit = await createIctDepositPending(deceased_account_id);
-    await timeout(10000);
 
     try {
       const result = await sdk.testSimulation.forceApproveIctDeposit({
@@ -336,7 +323,6 @@ if (morning <= currentTime && currentTime <= afternoon) {
   test("Test Test Simulation Transfers Force Ict Deposit Reject Force Ict Deposit Reject1", async () => {
     const pending_deposit_id =
       await createIctDepositPending(deceased_account_id);
-    await timeout(10000);
 
     try {
       const result = await sdk.testSimulation.forceRejectIctDeposit(
@@ -360,7 +346,6 @@ if (morning <= currentTime && currentTime <= afternoon) {
 
   test("Test Test Simulation Transfers Force Ict Withdrawal Approve Force Ict Withdrawal Approve1", async () => {
     const pending_withdrawal_id = await createIctWithdrawal(deceased_account_id);
-    await timeout(10000);
 
     try {
       const result = await sdk.testSimulation.forceApproveIctWithdrawal({
@@ -383,7 +368,6 @@ if (morning <= currentTime && currentTime <= afternoon) {
   test("Test Test Simulation Transfers Force Ict Withdrawal Reject Force Ict Withdrawal Reject1", async () => {
     const pending_withdrawal_id =
       await createIctWithdrawal(deceased_account_id);
-    await timeout(10000);
 
     try {
       const result = await sdk.testSimulation.forceRejectIctWithdrawal(
@@ -422,7 +406,6 @@ if (morning <= currentTime && currentTime <= afternoon) {
   test("Test Test Simulation Transfers Force Approve Wire Withdrawal Force Approve Wire Withdrawal1", async () => {
     const wire_withdrawal_id = await createWireWithdrawal(withdrawal_account_id || '');
 
-    await timeout(5000);
 
     const request : components.ForceApproveWireWithdrawalRequestCreate = {
       name: `accounts/${withdrawal_account_id}/wireWithdrawals/${wire_withdrawal_id}`
@@ -435,7 +418,6 @@ if (morning <= currentTime && currentTime <= afternoon) {
   test("Test Test Simulation Transfers Force Reject Wire Withdrawal Force Reject Wire Withdrawal1", async () => {
     const wire_withdrawal_id = await createWireWithdrawal(withdrawal_account_id || "");
 
-    await timeout(5000);
 
     const request: components.ForceRejectWireWithdrawalRequestCreate = {
       name: `accounts/${withdrawal_account_id}/wireWithdrawals/${wire_withdrawal_id}`,
@@ -473,7 +455,6 @@ if (morning <= currentTime && currentTime <= afternoon) {
 
     const cash_journal_id = await createCashJournal(deceased_account_id || '');
 
-    await timeout(5000);
 
     const request : components.ForceApproveCashJournalRequestCreate = {
       name: `accounts/${withdrawal_account_id}/cashJournals/${cash_journal_id}`
@@ -486,7 +467,6 @@ if (morning <= currentTime && currentTime <= afternoon) {
   test("Test Test Simulation Transfers Force Reject Cash Journal Force Reject Cash Journal1", async () => {
     const cash_journal_id = await createCashJournal(deceased_account_id || "");
 
-    await timeout(5000);
 
     const request: components.ForceRejectCashJournalRequestCreate = {
       name: `accounts/${withdrawal_account_id}/cashJournals/${cash_journal_id}`,

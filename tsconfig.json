@@ -8,7 +8,6 @@
 
     "module": "Node16",
     "moduleResolution": "Node16",
-    "moduleDetection": "force",
 
     "allowJs": true,
 
@@ -35,11 +34,11 @@
     "checkJs": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
       "@apexfintechsolutions/ascend-sdk/*": ["src/*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "src/__tests__", "src/scripts"]

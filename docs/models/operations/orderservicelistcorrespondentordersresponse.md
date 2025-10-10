@@ -1,0 +1,17 @@
+# OrderServiceListCorrespondentOrdersResponse
+
+## Example Usage
+
+```typescript
+import { OrderServiceListCorrespondentOrdersResponse } from "@apexfintechsolutions/ascend-sdk/models/operations";
+
+let value: OrderServiceListCorrespondentOrdersResponse = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                            | Type                                                                                                                                                             | Required                                                                                                                                                         | Description                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `httpMeta`                                                                                                                                                       | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                                                               | :heavy_check_mark:                                                                                                                                               | N/A                                                                                                                                                              |
+| `listCorrespondentOrdersResponse`                                                                                                                                | [components.ListCorrespondentOrdersResponse](../../models/components/listcorrespondentordersresponse.md)                                                         | :heavy_minus_sign:                                                                                                                                               | OK                                                                                                                                                               |
+| `status`                                                                                                                                                         | [components.Status](../../models/components/status.md)                                                                                                           | :heavy_minus_sign:                                                                                                                                               | INVALID_ARGUMENT: There was an issue with one or more fields in the request. The message field will contain details about which field failed validation and why. |

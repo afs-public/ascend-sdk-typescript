@@ -5,6 +5,8 @@
 import { createOrderCancelOrder } from "../funcs/createOrderCancelOrder.js";
 import { createOrderCreateOrder } from "../funcs/createOrderCreateOrder.js";
 import { createOrderGetOrder } from "../funcs/createOrderGetOrder.js";
+import { createOrderListCorrespondentOrders } from "../funcs/createOrderListCorrespondentOrders.js";
+import { createOrderSetExtraReportingData } from "../funcs/createOrderSetExtraReportingData.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -74,6 +76,51 @@ export class CreateOrder extends ClientSDK {
       cancelOrderRequestCreate,
       accountId,
       orderId,
+      options,
+    ));
+  }
+
+  /**
+   * Set Extra Reporting Data
+   *
+   * @remarks
+   * Sets extra reporting data to an existing order. Any SetExtraReportingDataRequest must include the name of the order and the cancel_confirmed_time
+   */
+  async setExtraReportingData(
+    setExtraReportingDataRequestCreate:
+      components.SetExtraReportingDataRequestCreate,
+    accountId: string,
+    orderId: string,
+    options?: RequestOptions,
+  ): Promise<operations.OrderServiceSetExtraReportingDataResponse> {
+    return unwrapAsync(createOrderSetExtraReportingData(
+      this,
+      setExtraReportingDataRequestCreate,
+      accountId,
+      orderId,
+      options,
+    ));
+  }
+
+  /**
+   * List Correspondent Orders
+   *
+   * @remarks
+   * Lists orders matching the specified filter criteria. Results are paginated and sorted in the reverse order of their creation.
+   */
+  async listCorrespondentOrders(
+    correspondentId: string,
+    filter?: string | undefined,
+    pageSize?: number | undefined,
+    pageToken?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.OrderServiceListCorrespondentOrdersResponse> {
+    return unwrapAsync(createOrderListCorrespondentOrders(
+      this,
+      correspondentId,
+      filter,
+      pageSize,
+      pageToken,
       options,
     ));
   }

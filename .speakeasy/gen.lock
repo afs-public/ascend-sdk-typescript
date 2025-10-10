@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: 717145375c4d2f7707da160500525042
-  docVersion: v1:20250916:uat:415b21f7a6e1
+  docChecksum: b78fe33a2e48f1cf16bb3f4d7cc3e5e8
+  docVersion: v1:20251009:uat:ac355eac4466
   speakeasyVersion: 1.608.0
   generationVersion: 2.691.6
-  releaseVersion: 1.7.0
-  configChecksum: d2e6a7d0d8eeaeca79b94f536d8b5b60
+  releaseVersion: 1.7.2
+  configChecksum: e67428e1bc2bd775c1d5b3a7a7633308
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -371,6 +371,9 @@ generatedFiles:
   - docs/models/components/assetequitytype.md
   - docs/models/components/assetexpirationdate.md
   - docs/models/components/assetissuedate.md
+  - docs/models/components/assettradability.md
+  - docs/models/components/assettradingconfig.md
+  - docs/models/components/assettradingconfigassettype.md
   - docs/models/components/assettype.md
   - docs/models/components/assettype1.md
   - docs/models/components/assignlargetraderrequestcreate.md
@@ -1291,12 +1294,14 @@ generatedFiles:
   - docs/models/components/listactivitiesresponse.md
   - docs/models/components/listagreementsresponse.md
   - docs/models/components/listassetsresponse.md
+  - docs/models/components/listassettradingconfigsresponse.md
   - docs/models/components/listavailableenrollmentsresponse.md
   - docs/models/components/listavailablerestrictionsresponse.md
   - docs/models/components/listbankrelationshipsresponse.md
   - docs/models/components/listbasketordersresponse.md
   - docs/models/components/listcompressedordersresponse.md
   - docs/models/components/listcontributionsummariesresponse.md
+  - docs/models/components/listcorrespondentordersresponse.md
   - docs/models/components/listdistributionsummariesresponse.md
   - docs/models/components/listdocumentsresponse.md
   - docs/models/components/listenrollmentsresponse.md
@@ -1387,6 +1392,7 @@ generatedFiles:
   - docs/models/components/optiondeliverable.md
   - docs/models/components/optiondeliverablequantity.md
   - docs/models/components/optionroot.md
+  - docs/models/components/optionroottradability.md
   - docs/models/components/optionslevel.md
   - docs/models/components/optiontype.md
   - docs/models/components/order.md
@@ -1744,6 +1750,7 @@ generatedFiles:
   - docs/models/components/selfieverified.md
   - docs/models/components/seriesdate.md
   - docs/models/components/serviceaccountcreds.md
+  - docs/models/components/setextrareportingdatarequestcreate.md
   - docs/models/components/settled.md
   - docs/models/components/settledate.md
   - docs/models/components/settlementconvention.md
@@ -1799,6 +1806,7 @@ generatedFiles:
   - docs/models/components/tenderoffertype.md
   - docs/models/components/timehorizon.md
   - docs/models/components/timeinforce.md
+  - docs/models/components/timeinforceexpirationdate.md
   - docs/models/components/timeunit.md
   - docs/models/components/token.md
   - docs/models/components/toside.md
@@ -2128,6 +2136,10 @@ generatedFiles:
   - docs/models/operations/assetslistassets1response.md
   - docs/models/operations/assetslistassetscorrespondentrequest.md
   - docs/models/operations/assetslistassetscorrespondentresponse.md
+  - docs/models/operations/assettradingconfigservicegetassettradingconfigrequest.md
+  - docs/models/operations/assettradingconfigservicegetassettradingconfigresponse.md
+  - docs/models/operations/assettradingconfigservicelistassettradingconfigsrequest.md
+  - docs/models/operations/assettradingconfigservicelistassettradingconfigsresponse.md
   - docs/models/operations/authenticationgenerateserviceaccounttokenresponse.md
   - docs/models/operations/authenticationgenerateserviceaccounttokensecurity.md
   - docs/models/operations/authenticationlistsigningkeysrequest.md
@@ -2280,6 +2292,10 @@ generatedFiles:
   - docs/models/operations/orderservicecreateorderresponse.md
   - docs/models/operations/orderservicegetorderrequest.md
   - docs/models/operations/orderservicegetorderresponse.md
+  - docs/models/operations/orderservicelistcorrespondentordersrequest.md
+  - docs/models/operations/orderservicelistcorrespondentordersresponse.md
+  - docs/models/operations/orderservicesetextrareportingdatarequest.md
+  - docs/models/operations/orderservicesetextrareportingdataresponse.md
   - docs/models/operations/programdatefilterprogram.md
   - docs/models/operations/queryparamview.md
   - docs/models/operations/readergeteventmessagerequest.md
@@ -2344,6 +2360,7 @@ generatedFiles:
   - docs/sdks/achtransfers/README.md
   - docs/sdks/apexascend/README.md
   - docs/sdks/assets/README.md
+  - docs/sdks/assettradingconfig/README.md
   - docs/sdks/authentication/README.md
   - docs/sdks/bankrelationships/README.md
   - docs/sdks/basketorders/README.md
@@ -2378,7 +2395,9 @@ generatedFiles:
   - package.json
   - src/__tests__/assertions.ts
   - src/__tests__/assets.test.ts
+  - src/__tests__/assettradingconfig.test.ts
   - src/__tests__/checks.test.ts
+  - src/__tests__/createorder.test.ts
   - src/__tests__/dataretrieval.test.ts
   - src/__tests__/files.ts
   - src/__tests__/investigations.test.ts
@@ -2417,6 +2436,8 @@ generatedFiles:
   - src/funcs/achTransfersCreateACHWithdrawal.ts
   - src/funcs/achTransfersGetACHDeposit.ts
   - src/funcs/achTransfersGetACHWithdrawal.ts
+  - src/funcs/assetTradingConfigGetAssetTradingConfig.ts
+  - src/funcs/assetTradingConfigListAssetTradingConfigs.ts
   - src/funcs/assetsGetAsset.ts
   - src/funcs/assetsGetAssetCorrespondent.ts
   - src/funcs/assetsListAssets.ts
@@ -2443,6 +2464,8 @@ generatedFiles:
   - src/funcs/createOrderCancelOrder.ts
   - src/funcs/createOrderCreateOrder.ts
   - src/funcs/createOrderGetOrder.ts
+  - src/funcs/createOrderListCorrespondentOrders.ts
+  - src/funcs/createOrderSetExtraReportingData.ts
   - src/funcs/dataRetrievalListSnapshots.ts
   - src/funcs/enrollmentsAndAgreementsAccountsListAvailableEnrollmentsByAccountGroup.ts
   - src/funcs/enrollmentsAndAgreementsAffirmAgreements.ts
@@ -2616,6 +2639,7 @@ generatedFiles:
   - src/models/components/any.ts
   - src/models/components/asset.ts
   - src/models/components/assetcreate.ts
+  - src/models/components/assettradingconfig.ts
   - src/models/components/assignlargetraderrequestcreate.ts
   - src/models/components/audittrail.ts
   - src/models/components/availableenrollment.ts
@@ -2815,12 +2839,14 @@ generatedFiles:
   - src/models/components/listactivitiesresponse.ts
   - src/models/components/listagreementsresponse.ts
   - src/models/components/listassetsresponse.ts
+  - src/models/components/listassettradingconfigsresponse.ts
   - src/models/components/listavailableenrollmentsresponse.ts
   - src/models/components/listavailablerestrictionsresponse.ts
   - src/models/components/listbankrelationshipsresponse.ts
   - src/models/components/listbasketordersresponse.ts
   - src/models/components/listcompressedordersresponse.ts
   - src/models/components/listcontributionsummariesresponse.ts
+  - src/models/components/listcorrespondentordersresponse.ts
   - src/models/components/listdistributionsummariesresponse.ts
   - src/models/components/listdocumentsresponse.ts
   - src/models/components/listenrollmentsresponse.ts
@@ -2924,6 +2950,7 @@ generatedFiles:
   - src/models/components/scheduledretirementcontributioncreate.ts
   - src/models/components/schedulepropertiescreate.ts
   - src/models/components/security.ts
+  - src/models/components/setextrareportingdatarequestcreate.ts
   - src/models/components/simulatecreatecheckdepositrequestcreate.ts
   - src/models/components/snapshot.ts
   - src/models/components/status.ts
@@ -3050,6 +3077,8 @@ generatedFiles:
   - src/models/operations/assetsgetassetcorrespondent.ts
   - src/models/operations/assetslistassets1.ts
   - src/models/operations/assetslistassetscorrespondent.ts
+  - src/models/operations/assettradingconfigservicegetassettradingconfig.ts
+  - src/models/operations/assettradingconfigservicelistassettradingconfigs.ts
   - src/models/operations/authenticationgenerateserviceaccounttoken.ts
   - src/models/operations/authenticationlistsigningkeys.ts
   - src/models/operations/bankrelationshipscancelbankrelationship.ts
@@ -3127,6 +3156,8 @@ generatedFiles:
   - src/models/operations/orderservicecancelorder.ts
   - src/models/operations/orderservicecreateorder.ts
   - src/models/operations/orderservicegetorder.ts
+  - src/models/operations/orderservicelistcorrespondentorders.ts
+  - src/models/operations/orderservicesetextrareportingdata.ts
   - src/models/operations/readergeteventmessage.ts
   - src/models/operations/readerlisteventmessages.ts
   - src/models/operations/retirementconstraintslistcontributionsummaries.ts
@@ -3160,6 +3191,7 @@ generatedFiles:
   - src/sdk/accounttransfers.ts
   - src/sdk/achtransfers.ts
   - src/sdk/assets.ts
+  - src/sdk/assettradingconfig.ts
   - src/sdk/authentication.ts
   - src/sdk/bankrelationships.ts
   - src/sdk/basketorders.ts
@@ -5713,6 +5745,67 @@ examples:
           application/json: {}
         default:
           application/json: {}
+  OrderService_SetExtraReportingData:
+    speakeasy-default-order-service-set-extra-reporting-data:
+      parameters:
+        path:
+          account_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
+          order_id: "ebb0c9b5-2c74-45c9-a4ab-40596b778706"
+      requestBody:
+        application/json: {"cancel_confirmed_time": "2025-12-13T15:28:17.262732Z", "name": "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X/orders/ebb0c9b5-2c74-45c9-a4ab-40596b778706"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  AssetTradingConfigService_GetAssetTradingConfig:
+    speakeasy-default-asset-trading-config-service-get-asset-trading-config:
+      parameters:
+        path:
+          correspondent_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
+          asset_id: "612"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  AssetTradingConfigService_ListAssetTradingConfigs:
+    speakeasy-default-asset-trading-config-service-list-asset-trading-configs:
+      parameters:
+        path:
+          correspondent_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
+          asset_id: "[null]"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  OrderService_ListCorrespondentOrders:
+    speakeasy-default-order-service-list-correspondent-orders:
+      parameters:
+        path:
+          correspondent_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests:
   Accounts_ListLegalNaturalPersons: "2025-08-11T18:04:23Z"
@@ -5728,3 +5821,7 @@ generatedTests:
   Subscriber_ListPushSubscriptions: "2025-08-11T18:04:23Z"
   CheckDeposits_GetCheckDeposit: "2025-08-22T19:32:45Z"
   CheckDeposits_SimulateCreateCheckDeposit: "2025-08-22T19:32:45Z"
+  OrderService_SetExtraReportingData: "2025-10-06T21:33:30Z"
+  AssetTradingConfigService_GetAssetTradingConfig: "2025-10-06T21:33:30Z"
+  AssetTradingConfigService_ListAssetTradingConfigs: "2025-10-06T21:33:30Z"
+  OrderService_ListCorrespondentOrders: "2025-10-09T21:29:12Z"
