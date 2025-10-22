@@ -1,5 +1,7 @@
 import { sdk } from "../utils/sdk";
 import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
+import * as fs from "fs";
+import * as path from "path";
 
 const large_trader_id = "123456789100";
 export async function createLegalNaturalPerson(): Promise<string | undefined> {
@@ -58,7 +60,76 @@ export async function createLegalNaturalPerson(): Promise<string | undefined> {
   };
   const result = await sdk.personManagement.createLegalNaturalPerson(request);
   if (result?.legalNaturalPerson?.legalNaturalPersonId) {
-    return result.legalNaturalPerson.legalNaturalPersonId;
+    const lnpId = result.legalNaturalPerson.legalNaturalPersonId;
+
+    // Upload CIP Results
+    try {
+      const uploadLinkRequest: components.BatchCreateUploadLinksRequestCreate = {
+        createDocumentUploadLinkRequest: [
+          {
+            idDocumentUploadRequest: {
+              correspondentId: process.env["CORRESPONDENT_ID"] ?? "",
+              documentType: components.IDDocumentUploadRequestCreateDocumentType.ThirdPartyCipResults,
+              legalNaturalPersonId: lnpId,
+            },
+            clientBatchSourceId: crypto.randomUUID(),
+            mimeType: "application/json",
+          },
+        ],
+      };
+
+      const uploadLinksResult = await sdk.investorDocs.batchCreateUploadLinks(uploadLinkRequest);
+
+      // Check if upload links were created successfully
+      if (!uploadLinksResult?.batchCreateUploadLinksResponse?.uploadLink) {
+        console.log("Failed to create upload links");
+        return lnpId;
+      }
+
+      const links = uploadLinksResult.batchCreateUploadLinksResponse.uploadLink;
+      if (links.length === 0) {
+        console.log("No upload links returned");
+        return lnpId;
+      }
+
+      const uploadUrl = links[0].uploadLink;
+
+      // Upload the test.json file
+      const testFilePath = path.join(__dirname, "..", "..", "..", "..", "examples", "test.json");
+
+      // Check if file exists
+      if (!fs.existsSync(testFilePath)) {
+        console.log(`Test file not found at: ${testFilePath}`);
+        return lnpId;
+      }
+
+      // Read and validate file content
+      const jsonContent = fs.readFileSync(testFilePath, "utf-8");
+
+      if (!jsonContent || jsonContent.trim().length === 0) {
+        console.log("Test file is empty");
+        return lnpId;
+      }
+
+      // Upload to signed URL
+      const uploadResponse = await fetch(uploadUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: jsonContent,
+      });
+
+      if (![200, 201, 204].includes(uploadResponse.status)) {
+        console.log(`Upload failed with status code: ${uploadResponse.status}`);
+        const responseText = await uploadResponse.text();
+        console.log(`Response body: ${responseText}`);
+      }
+    } catch (error) {
+      console.log(`Error during document upload: ${error}`);
+    }
+
+    return lnpId;
   }
   return undefined;
 }

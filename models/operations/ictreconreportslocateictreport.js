@@ -14,6 +14,7 @@ export var ProgramDateFilterProgram;
     ProgramDateFilterProgram["BrokerPartner"] = "BROKER_PARTNER";
     ProgramDateFilterProgram["DepositOnly"] = "DEPOSIT_ONLY";
     ProgramDateFilterProgram["BankingPartner"] = "BANKING_PARTNER";
+    ProgramDateFilterProgram["MoneyTransmitter"] = "MONEY_TRANSMITTER";
     ProgramDateFilterProgram["WithdrawalOnly"] = "WITHDRAWAL_ONLY";
     ProgramDateFilterProgram["DigitalPartner"] = "DIGITAL_PARTNER";
 })(ProgramDateFilterProgram || (ProgramDateFilterProgram = {}));

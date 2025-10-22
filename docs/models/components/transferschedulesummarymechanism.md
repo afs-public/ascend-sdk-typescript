@@ -18,5 +18,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
 | `Ach`                  | ACH                    |
+| `CashJournal`          | CASH_JOURNAL           |
+| `Check`                | CHECK                  |
 | `Wire`                 | WIRE                   |
 | -                      | `Unrecognized<string>` |

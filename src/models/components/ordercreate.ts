@@ -159,20 +159,21 @@ export enum SpecialReportingInstructions {
   ThirdMarket = "THIRD_MARKET",
   SuppressTraceReporting = "SUPPRESS_TRACE_REPORTING",
   WhenDistributed = "WHEN_DISTRIBUTED",
+  RoundUp = "ROUND_UP",
 }
 export type SpecialReportingInstructionsOpen = OpenEnum<
   typeof SpecialReportingInstructions
 >;
 
 /**
- * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export enum TimeInForce {
   Day = "DAY",
   GoodTillDate = "GOOD_TILL_DATE",
 }
 /**
- * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export type TimeInForceOpen = OpenEnum<typeof TimeInForce>;
 
@@ -315,7 +316,7 @@ export type OrderCreate = {
    */
   stopPrice?: StopPriceCreate | undefined;
   /**
-   * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+   * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
   timeInForce: TimeInForceOpen;
   /**

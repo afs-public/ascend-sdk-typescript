@@ -21,6 +21,9 @@ export type WireWithdrawalSchedulesCancelWireWithdrawalScheduleResponse = {
     wireWithdrawalSchedule?: components.WireWithdrawalSchedule | undefined;
     /**
      * INVALID_ARGUMENT: The request has an invalid argument.
+     *
+     * @remarks
+     * FAILED_PRECONDITION: The schedule is in a state that doesn't allow cancellation.
      */
     status?: components.Status | undefined;
 };

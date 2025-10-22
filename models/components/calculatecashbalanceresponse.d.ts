@@ -68,6 +68,24 @@ export type PendingDebitInterestAmount = {
     value?: string | undefined;
 };
 /**
+ * The account's total settled balance in USD. Net balance of settled cash and settled cash equivalents This value can be positive or negative.
+ */
+export type SettledCashAvailableToWithdraw = {
+    /**
+     * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+     */
+    value?: string | undefined;
+};
+/**
+ * The account's total trade balance in USD. Real Time net balance of cash and cash equivalents in the investor account, inclusive of current day activity. This value can be positive or negative.
+ */
+export type TradeCashAvailableToWithdraw = {
+    /**
+     * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+     */
+    value?: string | undefined;
+};
+/**
  * The account's unadjusted available cash to withdraw in USD. It is calculated based on the `open_balance_amount` and account activity. This value can be negative.
  */
 export type UnadjustedAvailableCashToWithdrawAmount = {
@@ -149,6 +167,14 @@ export type CalculateCashBalanceResponse = {
      * The account's pending withdrawals. Pending withdrawals may need review and have yet to post to the ledger. The amounts are **added** to `open_balance_amount` and `open_liquidity_amount` to calculate `available_cash_to_withdraw_amount` and `available_liquidity_amount`. Since withdrawals have negative amounts, the calculated values will **decrease**.
      */
     pendingWithdrawals?: Array<CalculateCashBalanceResponseTransferSummary> | undefined;
+    /**
+     * The account's total settled balance in USD. Net balance of settled cash and settled cash equivalents This value can be positive or negative.
+     */
+    settledCashAvailableToWithdraw?: SettledCashAvailableToWithdraw | null | undefined;
+    /**
+     * The account's total trade balance in USD. Real Time net balance of cash and cash equivalents in the investor account, inclusive of current day activity. This value can be positive or negative.
+     */
+    tradeCashAvailableToWithdraw?: TradeCashAvailableToWithdraw | null | undefined;
     /**
      * The account's unadjusted available cash to withdraw in USD. It is calculated based on the `open_balance_amount` and account activity. This value can be negative.
      */
@@ -317,6 +343,50 @@ export declare namespace PendingDebitInterestAmount$ {
 export declare function pendingDebitInterestAmountToJSON(pendingDebitInterestAmount: PendingDebitInterestAmount): string;
 export declare function pendingDebitInterestAmountFromJSON(jsonString: string): SafeParseResult<PendingDebitInterestAmount, SDKValidationError>;
 /** @internal */
+export declare const SettledCashAvailableToWithdraw$inboundSchema: z.ZodType<SettledCashAvailableToWithdraw, z.ZodTypeDef, unknown>;
+/** @internal */
+export type SettledCashAvailableToWithdraw$Outbound = {
+    value?: string | undefined;
+};
+/** @internal */
+export declare const SettledCashAvailableToWithdraw$outboundSchema: z.ZodType<SettledCashAvailableToWithdraw$Outbound, z.ZodTypeDef, SettledCashAvailableToWithdraw>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace SettledCashAvailableToWithdraw$ {
+    /** @deprecated use `SettledCashAvailableToWithdraw$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<SettledCashAvailableToWithdraw, z.ZodTypeDef, unknown>;
+    /** @deprecated use `SettledCashAvailableToWithdraw$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<SettledCashAvailableToWithdraw$Outbound, z.ZodTypeDef, SettledCashAvailableToWithdraw>;
+    /** @deprecated use `SettledCashAvailableToWithdraw$Outbound` instead. */
+    type Outbound = SettledCashAvailableToWithdraw$Outbound;
+}
+export declare function settledCashAvailableToWithdrawToJSON(settledCashAvailableToWithdraw: SettledCashAvailableToWithdraw): string;
+export declare function settledCashAvailableToWithdrawFromJSON(jsonString: string): SafeParseResult<SettledCashAvailableToWithdraw, SDKValidationError>;
+/** @internal */
+export declare const TradeCashAvailableToWithdraw$inboundSchema: z.ZodType<TradeCashAvailableToWithdraw, z.ZodTypeDef, unknown>;
+/** @internal */
+export type TradeCashAvailableToWithdraw$Outbound = {
+    value?: string | undefined;
+};
+/** @internal */
+export declare const TradeCashAvailableToWithdraw$outboundSchema: z.ZodType<TradeCashAvailableToWithdraw$Outbound, z.ZodTypeDef, TradeCashAvailableToWithdraw>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace TradeCashAvailableToWithdraw$ {
+    /** @deprecated use `TradeCashAvailableToWithdraw$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<TradeCashAvailableToWithdraw, z.ZodTypeDef, unknown>;
+    /** @deprecated use `TradeCashAvailableToWithdraw$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<TradeCashAvailableToWithdraw$Outbound, z.ZodTypeDef, TradeCashAvailableToWithdraw>;
+    /** @deprecated use `TradeCashAvailableToWithdraw$Outbound` instead. */
+    type Outbound = TradeCashAvailableToWithdraw$Outbound;
+}
+export declare function tradeCashAvailableToWithdrawToJSON(tradeCashAvailableToWithdraw: TradeCashAvailableToWithdraw): string;
+export declare function tradeCashAvailableToWithdrawFromJSON(jsonString: string): SafeParseResult<TradeCashAvailableToWithdraw, SDKValidationError>;
+/** @internal */
 export declare const UnadjustedAvailableCashToWithdrawAmount$inboundSchema: z.ZodType<UnadjustedAvailableCashToWithdrawAmount, z.ZodTypeDef, unknown>;
 /** @internal */
 export type UnadjustedAvailableCashToWithdrawAmount$Outbound = {
@@ -379,6 +449,8 @@ export type CalculateCashBalanceResponse$Outbound = {
     pending_debit_dividends_amount?: PendingDebitDividendsAmount$Outbound | null | undefined;
     pending_debit_interest_amount?: PendingDebitInterestAmount$Outbound | null | undefined;
     pending_withdrawals?: Array<CalculateCashBalanceResponseTransferSummary$Outbound> | undefined;
+    settled_cash_available_to_withdraw?: SettledCashAvailableToWithdraw$Outbound | null | undefined;
+    trade_cash_available_to_withdraw?: TradeCashAvailableToWithdraw$Outbound | null | undefined;
     unadjusted_available_cash_to_withdraw_amount?: UnadjustedAvailableCashToWithdrawAmount$Outbound | null | undefined;
     withheld_deposit_threshold_amount?: WithheldDepositThresholdAmount$Outbound | null | undefined;
     withheld_deposits?: Array<CalculateCashBalanceResponseTransferSummary$Outbound> | undefined;

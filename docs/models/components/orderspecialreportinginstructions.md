@@ -6,7 +6,7 @@
 import { OrderSpecialReportingInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: OrderSpecialReportingInstructions =
-  OrderSpecialReportingInstructions.XDividend;
+  OrderSpecialReportingInstructions.ActingAsPrincipal;
 ```
 
 ## Values
@@ -39,4 +39,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `ThirdMarket`                              | THIRD_MARKET                               |
 | `SuppressTraceReporting`                   | SUPPRESS_TRACE_REPORTING                   |
 | `WhenDistributed`                          | WHEN_DISTRIBUTED                           |
+| `RoundUp`                                  | ROUND_UP                                   |
 | -                                          | `Unrecognized<string>`                     |

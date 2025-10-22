@@ -1,6 +1,6 @@
 # PositionTrade
 
-original trade position
+This field represents the total amount of an asset owned by the account including transactions that have been executed but not yet settled, commonly known as the trade date position. It includes all transactions recorded in the Ledger with process_date and activity_date on or before the date in the response, even those with future settle_dates. Unlike the settled position, which only includes completed settlements, the trade position provides a forward-looking view of ownership that accounts for pending settlements
 
 ## Example Usage
 

@@ -50,5 +50,8 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `InvalidOrderQuantity`                                    | INVALID_ORDER_QUANTITY                                    |
 | `ClientReceivedTimeRequired`                              | CLIENT_RECEIVED_TIME_REQUIRED                             |
 | `ClientNotPermittedToUseTradingSession`                   | CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION               |
+| `RoundUpAmountTooSmall`                                   | ROUND_UP_AMOUNT_TOO_SMALL                                 |
+| `AssetNotSetUpForRoundUps`                                | ASSET_NOT_SET_UP_FOR_ROUND_UPS                            |
+| `BelowRoundUpMinimum`                                     | BELOW_ROUND_UP_MINIMUM                                    |
 | `StopPriceBelowMarketPrice`                               | STOP_PRICE_BELOW_MARKET_PRICE                             |
 | -                                                         | `Unrecognized<string>`                                    |

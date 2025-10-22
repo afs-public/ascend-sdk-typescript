@@ -1,6 +1,6 @@
 # LastAdjustedDate
 
-The most recent date an adjustment occurred
+The most recent date a position changed in any way
 
 ## Example Usage
 

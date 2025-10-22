@@ -1,6 +1,6 @@
 # AdjustedSettled
 
-`settled` + any as of settled amounts for the date
+This field shows settled positions that have been adjusted to account for as-of transactions (transactions recorded after their actual occurrence). Unlike the settled field, which remains unchanged for historical dates when as-of transactions are recorded, the adjusted_settled field updates to reflect what the position would have been if all transactions had been recorded on their actual dates of occurrence.
 
 ## Example Usage
 

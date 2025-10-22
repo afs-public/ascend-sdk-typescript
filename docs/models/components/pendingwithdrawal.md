@@ -1,6 +1,6 @@
 # PendingWithdrawal
 
-Quantity of currency being reserved for withdrawal. should not be used by non-currency assets
+Represents the amount of cash that has been requested for withdrawal but has not posted to the Ledger
 
 ## Example Usage
 

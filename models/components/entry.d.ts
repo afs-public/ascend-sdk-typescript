@@ -144,6 +144,10 @@ export type AccountTransfer = {
      */
     fairMarketValueDate?: FairMarketValueDate | null | undefined;
     /**
+     * Indicates whether the account transfer constitutes a gift for tax reporting purposes. Used by cost basis and tax systems to ensure proper tax treatment and reporting compliance.
+     */
+    giftTransfer?: boolean | undefined;
+    /**
      * Contra party institution for the account transfer
      */
     institution?: string | undefined;
@@ -3807,7 +3811,8 @@ export declare enum DistributionType {
     PlanLoan401K = "PLAN_LOAN_401K",
     NetIncomeAttributable = "NET_INCOME_ATTRIBUTABLE",
     Revocation = "REVOCATION",
-    NonReportable = "NON_REPORTABLE"
+    NonReportable = "NON_REPORTABLE",
+    QualifiedCharitableDistribution = "QUALIFIED_CHARITABLE_DISTRIBUTION"
 }
 /**
  * Provides information on the reason for the distribution from a retirement account
@@ -4532,6 +4537,7 @@ export type AccountTransfer$Outbound = {
     contra_party_id?: string | undefined;
     fair_market_value?: FairMarketValue$Outbound | null | undefined;
     fair_market_value_date?: FairMarketValueDate$Outbound | null | undefined;
+    gift_transfer?: boolean | undefined;
     institution?: string | undefined;
     method?: string | undefined;
 };

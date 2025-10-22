@@ -88,9 +88,10 @@ export var SpecialReportingInstructions;
     SpecialReportingInstructions["ThirdMarket"] = "THIRD_MARKET";
     SpecialReportingInstructions["SuppressTraceReporting"] = "SUPPRESS_TRACE_REPORTING";
     SpecialReportingInstructions["WhenDistributed"] = "WHEN_DISTRIBUTED";
+    SpecialReportingInstructions["RoundUp"] = "ROUND_UP";
 })(SpecialReportingInstructions || (SpecialReportingInstructions = {}));
 /**
- * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export var TimeInForce;
 (function (TimeInForce) {

@@ -183,6 +183,56 @@ export function pendingDebitInterestAmountFromJSON(jsonString) {
     return safeParse(jsonString, (x) => PendingDebitInterestAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'PendingDebitInterestAmount' from JSON`);
 }
 /** @internal */
+export const SettledCashAvailableToWithdraw$inboundSchema = z.object({
+    value: z.string().optional(),
+});
+/** @internal */
+export const SettledCashAvailableToWithdraw$outboundSchema = z.object({
+    value: z.string().optional(),
+});
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export var SettledCashAvailableToWithdraw$;
+(function (SettledCashAvailableToWithdraw$) {
+    /** @deprecated use `SettledCashAvailableToWithdraw$inboundSchema` instead. */
+    SettledCashAvailableToWithdraw$.inboundSchema = SettledCashAvailableToWithdraw$inboundSchema;
+    /** @deprecated use `SettledCashAvailableToWithdraw$outboundSchema` instead. */
+    SettledCashAvailableToWithdraw$.outboundSchema = SettledCashAvailableToWithdraw$outboundSchema;
+})(SettledCashAvailableToWithdraw$ || (SettledCashAvailableToWithdraw$ = {}));
+export function settledCashAvailableToWithdrawToJSON(settledCashAvailableToWithdraw) {
+    return JSON.stringify(SettledCashAvailableToWithdraw$outboundSchema.parse(settledCashAvailableToWithdraw));
+}
+export function settledCashAvailableToWithdrawFromJSON(jsonString) {
+    return safeParse(jsonString, (x) => SettledCashAvailableToWithdraw$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'SettledCashAvailableToWithdraw' from JSON`);
+}
+/** @internal */
+export const TradeCashAvailableToWithdraw$inboundSchema = z.object({
+    value: z.string().optional(),
+});
+/** @internal */
+export const TradeCashAvailableToWithdraw$outboundSchema = z.object({
+    value: z.string().optional(),
+});
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export var TradeCashAvailableToWithdraw$;
+(function (TradeCashAvailableToWithdraw$) {
+    /** @deprecated use `TradeCashAvailableToWithdraw$inboundSchema` instead. */
+    TradeCashAvailableToWithdraw$.inboundSchema = TradeCashAvailableToWithdraw$inboundSchema;
+    /** @deprecated use `TradeCashAvailableToWithdraw$outboundSchema` instead. */
+    TradeCashAvailableToWithdraw$.outboundSchema = TradeCashAvailableToWithdraw$outboundSchema;
+})(TradeCashAvailableToWithdraw$ || (TradeCashAvailableToWithdraw$ = {}));
+export function tradeCashAvailableToWithdrawToJSON(tradeCashAvailableToWithdraw) {
+    return JSON.stringify(TradeCashAvailableToWithdraw$outboundSchema.parse(tradeCashAvailableToWithdraw));
+}
+export function tradeCashAvailableToWithdrawFromJSON(jsonString) {
+    return safeParse(jsonString, (x) => TradeCashAvailableToWithdraw$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TradeCashAvailableToWithdraw' from JSON`);
+}
+/** @internal */
 export const UnadjustedAvailableCashToWithdrawAmount$inboundSchema = z.object({
     value: z.string().optional(),
 });
@@ -250,6 +300,8 @@ export const CalculateCashBalanceResponse$inboundSchema = z.object({
     pending_debit_dividends_amount: z.nullable(z.lazy(() => PendingDebitDividendsAmount$inboundSchema)).optional(),
     pending_debit_interest_amount: z.nullable(z.lazy(() => PendingDebitInterestAmount$inboundSchema)).optional(),
     pending_withdrawals: z.array(CalculateCashBalanceResponseTransferSummary$inboundSchema).optional(),
+    settled_cash_available_to_withdraw: z.nullable(z.lazy(() => SettledCashAvailableToWithdraw$inboundSchema)).optional(),
+    trade_cash_available_to_withdraw: z.nullable(z.lazy(() => TradeCashAvailableToWithdraw$inboundSchema)).optional(),
     unadjusted_available_cash_to_withdraw_amount: z.nullable(z.lazy(() => UnadjustedAvailableCashToWithdrawAmount$inboundSchema)).optional(),
     withheld_deposit_threshold_amount: z.nullable(z.lazy(() => WithheldDepositThresholdAmount$inboundSchema)).optional(),
     withheld_deposits: z.array(CalculateCashBalanceResponseTransferSummary$inboundSchema).optional(),
@@ -269,6 +321,8 @@ export const CalculateCashBalanceResponse$inboundSchema = z.object({
         "pending_debit_dividends_amount": "pendingDebitDividendsAmount",
         "pending_debit_interest_amount": "pendingDebitInterestAmount",
         "pending_withdrawals": "pendingWithdrawals",
+        "settled_cash_available_to_withdraw": "settledCashAvailableToWithdraw",
+        "trade_cash_available_to_withdraw": "tradeCashAvailableToWithdraw",
         "unadjusted_available_cash_to_withdraw_amount": "unadjustedAvailableCashToWithdrawAmount",
         "withheld_deposit_threshold_amount": "withheldDepositThresholdAmount",
         "withheld_deposits": "withheldDeposits",
@@ -292,6 +346,8 @@ export const CalculateCashBalanceResponse$outboundSchema = z.object({
     pendingDebitDividendsAmount: z.nullable(z.lazy(() => PendingDebitDividendsAmount$outboundSchema)).optional(),
     pendingDebitInterestAmount: z.nullable(z.lazy(() => PendingDebitInterestAmount$outboundSchema)).optional(),
     pendingWithdrawals: z.array(CalculateCashBalanceResponseTransferSummary$outboundSchema).optional(),
+    settledCashAvailableToWithdraw: z.nullable(z.lazy(() => SettledCashAvailableToWithdraw$outboundSchema)).optional(),
+    tradeCashAvailableToWithdraw: z.nullable(z.lazy(() => TradeCashAvailableToWithdraw$outboundSchema)).optional(),
     unadjustedAvailableCashToWithdrawAmount: z.nullable(z.lazy(() => UnadjustedAvailableCashToWithdrawAmount$outboundSchema)).optional(),
     withheldDepositThresholdAmount: z.nullable(z.lazy(() => WithheldDepositThresholdAmount$outboundSchema)).optional(),
     withheldDeposits: z.array(CalculateCashBalanceResponseTransferSummary$outboundSchema).optional(),
@@ -311,6 +367,8 @@ export const CalculateCashBalanceResponse$outboundSchema = z.object({
         pendingDebitDividendsAmount: "pending_debit_dividends_amount",
         pendingDebitInterestAmount: "pending_debit_interest_amount",
         pendingWithdrawals: "pending_withdrawals",
+        settledCashAvailableToWithdraw: "settled_cash_available_to_withdraw",
+        tradeCashAvailableToWithdraw: "trade_cash_available_to_withdraw",
         unadjustedAvailableCashToWithdrawAmount: "unadjusted_available_cash_to_withdraw_amount",
         withheldDepositThresholdAmount: "withheld_deposit_threshold_amount",
         withheldDeposits: "withheld_deposits",

@@ -13,6 +13,7 @@ export var Direction;
     Direction["DirectionUnspecified"] = "DIRECTION_UNSPECIFIED";
     Direction["Deposit"] = "DEPOSIT";
     Direction["Withdrawal"] = "WITHDRAWAL";
+    Direction["Journal"] = "JOURNAL";
 })(Direction || (Direction = {}));
 /**
  * The mechanism used for this transfer schedule
@@ -20,6 +21,8 @@ export var Direction;
 export var TransferScheduleSummaryMechanism;
 (function (TransferScheduleSummaryMechanism) {
     TransferScheduleSummaryMechanism["Ach"] = "ACH";
+    TransferScheduleSummaryMechanism["CashJournal"] = "CASH_JOURNAL";
+    TransferScheduleSummaryMechanism["Check"] = "CHECK";
     TransferScheduleSummaryMechanism["Wire"] = "WIRE";
 })(TransferScheduleSummaryMechanism || (TransferScheduleSummaryMechanism = {}));
 /**
@@ -482,6 +485,35 @@ export function transferScheduleSummaryRetirementDistributionFromJSON(jsonString
     return safeParse(jsonString, (x) => TransferScheduleSummaryRetirementDistribution$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryRetirementDistribution' from JSON`);
 }
 /** @internal */
+export const TransferScheduleSummaryEndDate$inboundSchema = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+});
+/** @internal */
+export const TransferScheduleSummaryEndDate$outboundSchema = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+});
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export var TransferScheduleSummaryEndDate$;
+(function (TransferScheduleSummaryEndDate$) {
+    /** @deprecated use `TransferScheduleSummaryEndDate$inboundSchema` instead. */
+    TransferScheduleSummaryEndDate$.inboundSchema = TransferScheduleSummaryEndDate$inboundSchema;
+    /** @deprecated use `TransferScheduleSummaryEndDate$outboundSchema` instead. */
+    TransferScheduleSummaryEndDate$.outboundSchema = TransferScheduleSummaryEndDate$outboundSchema;
+})(TransferScheduleSummaryEndDate$ || (TransferScheduleSummaryEndDate$ = {}));
+export function transferScheduleSummaryEndDateToJSON(transferScheduleSummaryEndDate) {
+    return JSON.stringify(TransferScheduleSummaryEndDate$outboundSchema.parse(transferScheduleSummaryEndDate));
+}
+export function transferScheduleSummaryEndDateFromJSON(jsonString) {
+    return safeParse(jsonString, (x) => TransferScheduleSummaryEndDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'TransferScheduleSummaryEndDate' from JSON`);
+}
+/** @internal */
 export const StartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
     month: z.number().int().optional(),
@@ -556,6 +588,7 @@ export var TransferScheduleSummaryTimeUnit$;
 })(TransferScheduleSummaryTimeUnit$ || (TransferScheduleSummaryTimeUnit$ = {}));
 /** @internal */
 export const ScheduleProperties$inboundSchema = z.object({
+    end_date: z.nullable(z.lazy(() => TransferScheduleSummaryEndDate$inboundSchema)).optional(),
     occurrences: z.number().int().optional(),
     start_date: z.nullable(z.lazy(() => StartDate$inboundSchema)).optional(),
     state: TransferScheduleSummaryState$inboundSchema.optional(),
@@ -563,6 +596,7 @@ export const ScheduleProperties$inboundSchema = z.object({
     unit_multiplier: z.number().int().optional(),
 }).transform((v) => {
     return remap$(v, {
+        "end_date": "endDate",
         "start_date": "startDate",
         "time_unit": "timeUnit",
         "unit_multiplier": "unitMultiplier",
@@ -570,6 +604,7 @@ export const ScheduleProperties$inboundSchema = z.object({
 });
 /** @internal */
 export const ScheduleProperties$outboundSchema = z.object({
+    endDate: z.nullable(z.lazy(() => TransferScheduleSummaryEndDate$outboundSchema)).optional(),
     occurrences: z.number().int().optional(),
     startDate: z.nullable(z.lazy(() => StartDate$outboundSchema)).optional(),
     state: TransferScheduleSummaryState$outboundSchema.optional(),
@@ -577,6 +612,7 @@ export const ScheduleProperties$outboundSchema = z.object({
     unitMultiplier: z.number().int().optional(),
 }).transform((v) => {
     return remap$(v, {
+        endDate: "end_date",
         startDate: "start_date",
         timeUnit: "time_unit",
         unitMultiplier: "unit_multiplier",

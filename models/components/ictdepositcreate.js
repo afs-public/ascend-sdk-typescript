@@ -17,6 +17,7 @@ export var Program;
     Program["BrokerPartner"] = "BROKER_PARTNER";
     Program["DepositOnly"] = "DEPOSIT_ONLY";
     Program["BankingPartner"] = "BANKING_PARTNER";
+    Program["MoneyTransmitter"] = "MONEY_TRANSMITTER";
     Program["WithdrawalOnly"] = "WITHDRAWAL_ONLY";
     Program["DigitalPartner"] = "DIGITAL_PARTNER";
 })(Program || (Program = {}));

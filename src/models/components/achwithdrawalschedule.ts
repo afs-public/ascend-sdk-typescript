@@ -169,6 +169,24 @@ export type AchWithdrawalScheduleAmount = {
 };
 
 /**
+ * The schedule end date if there is a finite number of occurrences
+ */
+export type AchWithdrawalScheduleEndDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
  * The schedule start date
  */
 export type AchWithdrawalScheduleStartDate = {
@@ -220,6 +238,10 @@ export type AchWithdrawalScheduleTimeUnitOpen = OpenEnum<
  * Common schedule properties
  */
 export type AchWithdrawalScheduleScheduleProperties = {
+  /**
+   * The schedule end date if there is a finite number of occurrences
+   */
+  endDate?: AchWithdrawalScheduleEndDate | null | undefined;
   /**
    * The number of occurrences (empty or 0 indicates unlimited occurrences)
    */
@@ -894,6 +916,68 @@ export function achWithdrawalScheduleAmountFromJSON(
 }
 
 /** @internal */
+export const AchWithdrawalScheduleEndDate$inboundSchema: z.ZodType<
+  AchWithdrawalScheduleEndDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type AchWithdrawalScheduleEndDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const AchWithdrawalScheduleEndDate$outboundSchema: z.ZodType<
+  AchWithdrawalScheduleEndDate$Outbound,
+  z.ZodTypeDef,
+  AchWithdrawalScheduleEndDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AchWithdrawalScheduleEndDate$ {
+  /** @deprecated use `AchWithdrawalScheduleEndDate$inboundSchema` instead. */
+  export const inboundSchema = AchWithdrawalScheduleEndDate$inboundSchema;
+  /** @deprecated use `AchWithdrawalScheduleEndDate$outboundSchema` instead. */
+  export const outboundSchema = AchWithdrawalScheduleEndDate$outboundSchema;
+  /** @deprecated use `AchWithdrawalScheduleEndDate$Outbound` instead. */
+  export type Outbound = AchWithdrawalScheduleEndDate$Outbound;
+}
+
+export function achWithdrawalScheduleEndDateToJSON(
+  achWithdrawalScheduleEndDate: AchWithdrawalScheduleEndDate,
+): string {
+  return JSON.stringify(
+    AchWithdrawalScheduleEndDate$outboundSchema.parse(
+      achWithdrawalScheduleEndDate,
+    ),
+  );
+}
+
+export function achWithdrawalScheduleEndDateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchWithdrawalScheduleEndDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchWithdrawalScheduleEndDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchWithdrawalScheduleEndDate' from JSON`,
+  );
+}
+
+/** @internal */
 export const AchWithdrawalScheduleStartDate$inboundSchema: z.ZodType<
   AchWithdrawalScheduleStartDate,
   z.ZodTypeDef,
@@ -1025,6 +1109,8 @@ export const AchWithdrawalScheduleScheduleProperties$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  end_date: z.nullable(z.lazy(() => AchWithdrawalScheduleEndDate$inboundSchema))
+    .optional(),
   occurrences: z.number().int().optional(),
   start_date: z.nullable(
     z.lazy(() => AchWithdrawalScheduleStartDate$inboundSchema),
@@ -1034,6 +1120,7 @@ export const AchWithdrawalScheduleScheduleProperties$inboundSchema: z.ZodType<
   unit_multiplier: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "end_date": "endDate",
     "start_date": "startDate",
     "time_unit": "timeUnit",
     "unit_multiplier": "unitMultiplier",
@@ -1042,6 +1129,7 @@ export const AchWithdrawalScheduleScheduleProperties$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AchWithdrawalScheduleScheduleProperties$Outbound = {
+  end_date?: AchWithdrawalScheduleEndDate$Outbound | null | undefined;
   occurrences?: number | undefined;
   start_date?: AchWithdrawalScheduleStartDate$Outbound | null | undefined;
   state?: string | undefined;
@@ -1055,6 +1143,8 @@ export const AchWithdrawalScheduleScheduleProperties$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AchWithdrawalScheduleScheduleProperties
 > = z.object({
+  endDate: z.nullable(z.lazy(() => AchWithdrawalScheduleEndDate$outboundSchema))
+    .optional(),
   occurrences: z.number().int().optional(),
   startDate: z.nullable(
     z.lazy(() => AchWithdrawalScheduleStartDate$outboundSchema),
@@ -1064,6 +1154,7 @@ export const AchWithdrawalScheduleScheduleProperties$outboundSchema: z.ZodType<
   unitMultiplier: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    endDate: "end_date",
     startDate: "start_date",
     timeUnit: "time_unit",
     unitMultiplier: "unit_multiplier",

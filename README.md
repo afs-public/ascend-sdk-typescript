@@ -399,14 +399,6 @@ const sdk = new Apexascend({ httpClient });
 
 * [getCheckDeposit](docs/sdks/checks/README.md#getcheckdeposit) - Get Check Deposit
 
-### [createOrder](docs/sdks/createorder/README.md)
-
-* [createOrder](docs/sdks/createorder/README.md#createorder) - Create Order
-* [getOrder](docs/sdks/createorder/README.md#getorder) - Get Order
-* [cancelOrder](docs/sdks/createorder/README.md#cancelorder) - Cancel Order
-* [setExtraReportingData](docs/sdks/createorder/README.md#setextrareportingdata) - Set Extra Reporting Data
-* [listCorrespondentOrders](docs/sdks/createorder/README.md#listcorrespondentorders) - List Correspondent Orders
-
 ### [dataRetrieval](docs/sdks/dataretrieval/README.md)
 
 * [listSnapshots](docs/sdks/dataretrieval/README.md#listsnapshots) - List Snapshots
@@ -480,6 +472,14 @@ const sdk = new Apexascend({ httpClient });
 ### [margins](docs/sdks/margins/README.md)
 
 * [getBuyingPower](docs/sdks/margins/README.md#getbuyingpower) - Get Buying Power
+
+### [orders](docs/sdks/orders/README.md)
+
+* [createOrder](docs/sdks/orders/README.md#createorder) - Create Order
+* [getOrder](docs/sdks/orders/README.md#getorder) - Get Order
+* [cancelOrder](docs/sdks/orders/README.md#cancelorder) - Cancel Order
+* [setExtraReportingData](docs/sdks/orders/README.md#setextrareportingdata) - Set Extra Reporting Data
+* [listCorrespondentOrders](docs/sdks/orders/README.md#listcorrespondentorders) - List Correspondent Orders
 
 ### [personManagement](docs/sdks/personmanagement/README.md)
 

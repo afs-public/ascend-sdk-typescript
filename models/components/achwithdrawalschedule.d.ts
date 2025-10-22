@@ -133,6 +133,23 @@ export type AchWithdrawalScheduleAmount = {
     value?: string | undefined;
 };
 /**
+ * The schedule end date if there is a finite number of occurrences
+ */
+export type AchWithdrawalScheduleEndDate = {
+    /**
+     * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     */
+    day?: number | undefined;
+    /**
+     * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     */
+    month?: number | undefined;
+    /**
+     * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     */
+    year?: number | undefined;
+};
+/**
  * The schedule start date
  */
 export type AchWithdrawalScheduleStartDate = {
@@ -177,6 +194,10 @@ export type AchWithdrawalScheduleTimeUnitOpen = OpenEnum<typeof AchWithdrawalSch
  * Common schedule properties
  */
 export type AchWithdrawalScheduleScheduleProperties = {
+    /**
+     * The schedule end date if there is a finite number of occurrences
+     */
+    endDate?: AchWithdrawalScheduleEndDate | null | undefined;
     /**
      * The number of occurrences (empty or 0 indicates unlimited occurrences)
      */
@@ -438,6 +459,30 @@ export declare namespace AchWithdrawalScheduleAmount$ {
 export declare function achWithdrawalScheduleAmountToJSON(achWithdrawalScheduleAmount: AchWithdrawalScheduleAmount): string;
 export declare function achWithdrawalScheduleAmountFromJSON(jsonString: string): SafeParseResult<AchWithdrawalScheduleAmount, SDKValidationError>;
 /** @internal */
+export declare const AchWithdrawalScheduleEndDate$inboundSchema: z.ZodType<AchWithdrawalScheduleEndDate, z.ZodTypeDef, unknown>;
+/** @internal */
+export type AchWithdrawalScheduleEndDate$Outbound = {
+    day?: number | undefined;
+    month?: number | undefined;
+    year?: number | undefined;
+};
+/** @internal */
+export declare const AchWithdrawalScheduleEndDate$outboundSchema: z.ZodType<AchWithdrawalScheduleEndDate$Outbound, z.ZodTypeDef, AchWithdrawalScheduleEndDate>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace AchWithdrawalScheduleEndDate$ {
+    /** @deprecated use `AchWithdrawalScheduleEndDate$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<AchWithdrawalScheduleEndDate, z.ZodTypeDef, unknown>;
+    /** @deprecated use `AchWithdrawalScheduleEndDate$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<AchWithdrawalScheduleEndDate$Outbound, z.ZodTypeDef, AchWithdrawalScheduleEndDate>;
+    /** @deprecated use `AchWithdrawalScheduleEndDate$Outbound` instead. */
+    type Outbound = AchWithdrawalScheduleEndDate$Outbound;
+}
+export declare function achWithdrawalScheduleEndDateToJSON(achWithdrawalScheduleEndDate: AchWithdrawalScheduleEndDate): string;
+export declare function achWithdrawalScheduleEndDateFromJSON(jsonString: string): SafeParseResult<AchWithdrawalScheduleEndDate, SDKValidationError>;
+/** @internal */
 export declare const AchWithdrawalScheduleStartDate$inboundSchema: z.ZodType<AchWithdrawalScheduleStartDate, z.ZodTypeDef, unknown>;
 /** @internal */
 export type AchWithdrawalScheduleStartDate$Outbound = {
@@ -493,6 +538,7 @@ export declare namespace AchWithdrawalScheduleTimeUnit$ {
 export declare const AchWithdrawalScheduleScheduleProperties$inboundSchema: z.ZodType<AchWithdrawalScheduleScheduleProperties, z.ZodTypeDef, unknown>;
 /** @internal */
 export type AchWithdrawalScheduleScheduleProperties$Outbound = {
+    end_date?: AchWithdrawalScheduleEndDate$Outbound | null | undefined;
     occurrences?: number | undefined;
     start_date?: AchWithdrawalScheduleStartDate$Outbound | null | undefined;
     state?: string | undefined;

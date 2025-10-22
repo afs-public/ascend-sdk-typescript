@@ -149,6 +149,10 @@ export type ActivityAccountTransfer = {
      */
     fairMarketValueDate?: ActivityFairMarketValueDate | null | undefined;
     /**
+     * Indicates whether the account transfer constitutes a gift for tax reporting purposes. Used by cost basis and tax systems to ensure proper tax treatment and reporting compliance.
+     */
+    giftTransfer?: boolean | undefined;
+    /**
      * Contra party institution for the account transfer
      */
     institution?: string | undefined;
@@ -3488,7 +3492,8 @@ export declare enum ActivityDistributionType {
     PlanLoan401K = "PLAN_LOAN_401K",
     NetIncomeAttributable = "NET_INCOME_ATTRIBUTABLE",
     Revocation = "REVOCATION",
-    NonReportable = "NON_REPORTABLE"
+    NonReportable = "NON_REPORTABLE",
+    QualifiedCharitableDistribution = "QUALIFIED_CHARITABLE_DISTRIBUTION"
 }
 /**
  * Categorizes the withdrawal to indicate whether special handling of the transaction is needed elsewhere
@@ -4183,6 +4188,7 @@ export type ActivityAccountTransfer$Outbound = {
     contra_party_id?: string | undefined;
     fair_market_value?: ActivityFairMarketValue$Outbound | null | undefined;
     fair_market_value_date?: ActivityFairMarketValueDate$Outbound | null | undefined;
+    gift_transfer?: boolean | undefined;
     institution?: string | undefined;
     method?: string | undefined;
 };

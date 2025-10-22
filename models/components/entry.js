@@ -554,6 +554,7 @@ export var DistributionType;
     DistributionType["NetIncomeAttributable"] = "NET_INCOME_ATTRIBUTABLE";
     DistributionType["Revocation"] = "REVOCATION";
     DistributionType["NonReportable"] = "NON_REPORTABLE";
+    DistributionType["QualifiedCharitableDistribution"] = "QUALIFIED_CHARITABLE_DISTRIBUTION";
 })(DistributionType || (DistributionType = {}));
 /**
  * Used for descriptive purposes only. Indicates the type of retirement account
@@ -852,6 +853,7 @@ export const AccountTransfer$inboundSchema = z.object({
     fair_market_value: z.nullable(z.lazy(() => FairMarketValue$inboundSchema))
         .optional(),
     fair_market_value_date: z.nullable(z.lazy(() => FairMarketValueDate$inboundSchema)).optional(),
+    gift_transfer: z.boolean().optional(),
     institution: z.string().optional(),
     method: Method$inboundSchema.optional(),
 }).transform((v) => {
@@ -864,6 +866,7 @@ export const AccountTransfer$inboundSchema = z.object({
         "contra_party_id": "contraPartyId",
         "fair_market_value": "fairMarketValue",
         "fair_market_value_date": "fairMarketValueDate",
+        "gift_transfer": "giftTransfer",
     });
 });
 /** @internal */
@@ -878,6 +881,7 @@ export const AccountTransfer$outboundSchema = z.object({
     fairMarketValue: z.nullable(z.lazy(() => FairMarketValue$outboundSchema))
         .optional(),
     fairMarketValueDate: z.nullable(z.lazy(() => FairMarketValueDate$outboundSchema)).optional(),
+    giftTransfer: z.boolean().optional(),
     institution: z.string().optional(),
     method: Method$outboundSchema.optional(),
 }).transform((v) => {
@@ -890,6 +894,7 @@ export const AccountTransfer$outboundSchema = z.object({
         contraPartyId: "contra_party_id",
         fairMarketValue: "fair_market_value",
         fairMarketValueDate: "fair_market_value_date",
+        giftTransfer: "gift_transfer",
     });
 });
 /**
