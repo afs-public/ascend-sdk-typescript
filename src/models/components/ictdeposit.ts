@@ -31,6 +31,7 @@ export enum IctDepositProgram {
   BrokerPartner = "BROKER_PARTNER",
   DepositOnly = "DEPOSIT_ONLY",
   BankingPartner = "BANKING_PARTNER",
+  MoneyTransmitter = "MONEY_TRANSMITTER",
   WithdrawalOnly = "WITHDRAWAL_ONLY",
   DigitalPartner = "DIGITAL_PARTNER",
 }

@@ -643,6 +643,35 @@ export function wireWithdrawalScheduleAmountFromJSON(jsonString) {
     return safeParse(jsonString, (x) => WireWithdrawalScheduleAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalScheduleAmount' from JSON`);
 }
 /** @internal */
+export const WireWithdrawalScheduleEndDate$inboundSchema = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+});
+/** @internal */
+export const WireWithdrawalScheduleEndDate$outboundSchema = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+});
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export var WireWithdrawalScheduleEndDate$;
+(function (WireWithdrawalScheduleEndDate$) {
+    /** @deprecated use `WireWithdrawalScheduleEndDate$inboundSchema` instead. */
+    WireWithdrawalScheduleEndDate$.inboundSchema = WireWithdrawalScheduleEndDate$inboundSchema;
+    /** @deprecated use `WireWithdrawalScheduleEndDate$outboundSchema` instead. */
+    WireWithdrawalScheduleEndDate$.outboundSchema = WireWithdrawalScheduleEndDate$outboundSchema;
+})(WireWithdrawalScheduleEndDate$ || (WireWithdrawalScheduleEndDate$ = {}));
+export function wireWithdrawalScheduleEndDateToJSON(wireWithdrawalScheduleEndDate) {
+    return JSON.stringify(WireWithdrawalScheduleEndDate$outboundSchema.parse(wireWithdrawalScheduleEndDate));
+}
+export function wireWithdrawalScheduleEndDateFromJSON(jsonString) {
+    return safeParse(jsonString, (x) => WireWithdrawalScheduleEndDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'WireWithdrawalScheduleEndDate' from JSON`);
+}
+/** @internal */
 export const WireWithdrawalScheduleStartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
     month: z.number().int().optional(),
@@ -717,6 +746,7 @@ export var WireWithdrawalScheduleTimeUnit$;
 })(WireWithdrawalScheduleTimeUnit$ || (WireWithdrawalScheduleTimeUnit$ = {}));
 /** @internal */
 export const WireWithdrawalScheduleScheduleProperties$inboundSchema = z.object({
+    end_date: z.nullable(z.lazy(() => WireWithdrawalScheduleEndDate$inboundSchema)).optional(),
     occurrences: z.number().int().optional(),
     start_date: z.nullable(z.lazy(() => WireWithdrawalScheduleStartDate$inboundSchema)).optional(),
     state: WireWithdrawalScheduleState$inboundSchema.optional(),
@@ -724,6 +754,7 @@ export const WireWithdrawalScheduleScheduleProperties$inboundSchema = z.object({
     unit_multiplier: z.number().int().optional(),
 }).transform((v) => {
     return remap$(v, {
+        "end_date": "endDate",
         "start_date": "startDate",
         "time_unit": "timeUnit",
         "unit_multiplier": "unitMultiplier",
@@ -731,6 +762,7 @@ export const WireWithdrawalScheduleScheduleProperties$inboundSchema = z.object({
 });
 /** @internal */
 export const WireWithdrawalScheduleScheduleProperties$outboundSchema = z.object({
+    endDate: z.nullable(z.lazy(() => WireWithdrawalScheduleEndDate$outboundSchema)).optional(),
     occurrences: z.number().int().optional(),
     startDate: z.nullable(z.lazy(() => WireWithdrawalScheduleStartDate$outboundSchema)).optional(),
     state: WireWithdrawalScheduleState$outboundSchema.optional(),
@@ -738,6 +770,7 @@ export const WireWithdrawalScheduleScheduleProperties$outboundSchema = z.object(
     unitMultiplier: z.number().int().optional(),
 }).transform((v) => {
     return remap$(v, {
+        endDate: "end_date",
         startDate: "start_date",
         timeUnit: "time_unit",
         unitMultiplier: "unit_multiplier",

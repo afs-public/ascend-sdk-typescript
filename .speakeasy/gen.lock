@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: b78fe33a2e48f1cf16bb3f4d7cc3e5e8
-  docVersion: v1:20251009:uat:ac355eac4466
+  docChecksum: 834b7bdbca5fb3e122e1664978f5f38e
+  docVersion: v1:20251022:uat:75a9118ab2c9
   speakeasyVersion: 1.608.0
   generationVersion: 2.691.6
-  releaseVersion: 1.7.2
-  configChecksum: e67428e1bc2bd775c1d5b3a7a7633308
+  releaseVersion: 1.8.0
+  configChecksum: 8ba5c4f324dffcf1bd25ab431d48e841
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -101,6 +101,7 @@ generatedFiles:
   - docs/models/components/achdepositscheduleamount.md
   - docs/models/components/achdepositschedulecreate.md
   - docs/models/components/achdepositschedulecreatetype.md
+  - docs/models/components/achdepositscheduleenddate.md
   - docs/models/components/achdepositscheduleiracontribution.md
   - docs/models/components/achdepositscheduleretirementcontribution.md
   - docs/models/components/achdepositscheduleretirementcontributiontype.md
@@ -124,6 +125,7 @@ generatedFiles:
   - docs/models/components/achwithdrawalschedule.md
   - docs/models/components/achwithdrawalscheduleamount.md
   - docs/models/components/achwithdrawalschedulecreate.md
+  - docs/models/components/achwithdrawalscheduleenddate.md
   - docs/models/components/achwithdrawalschedulefederaltaxwithholding.md
   - docs/models/components/achwithdrawalscheduleiradistributionamount.md
   - docs/models/components/achwithdrawalscheduleiradistributionfederaltaxwithholdingamount.md
@@ -1753,6 +1755,7 @@ generatedFiles:
   - docs/models/components/setextrareportingdatarequestcreate.md
   - docs/models/components/settled.md
   - docs/models/components/settledate.md
+  - docs/models/components/settledcashavailabletowithdraw.md
   - docs/models/components/settlementconvention.md
   - docs/models/components/settlementdate.md
   - docs/models/components/settlementmethod.md
@@ -1840,6 +1843,7 @@ generatedFiles:
   - docs/models/components/tradeallocationstate.md
   - docs/models/components/tradeallocationtoside.md
   - docs/models/components/tradeallocationwhenissued.md
+  - docs/models/components/tradecashavailabletowithdraw.md
   - docs/models/components/tradeconfirmationdeliverypreference.md
   - docs/models/components/tradecreate.md
   - docs/models/components/tradecreateassettype.md
@@ -1860,6 +1864,7 @@ generatedFiles:
   - docs/models/components/transfercreate.md
   - docs/models/components/transferschedulesummary.md
   - docs/models/components/transferschedulesummaryamount.md
+  - docs/models/components/transferschedulesummaryenddate.md
   - docs/models/components/transferschedulesummaryfederaltaxwithholding.md
   - docs/models/components/transferschedulesummarymechanism.md
   - docs/models/components/transferschedulesummarypercentage.md
@@ -1956,6 +1961,7 @@ generatedFiles:
   - docs/models/components/wirewithdrawalscheduleamount.md
   - docs/models/components/wirewithdrawalschedulebeneficiary.md
   - docs/models/components/wirewithdrawalschedulecreate.md
+  - docs/models/components/wirewithdrawalscheduleenddate.md
   - docs/models/components/wirewithdrawalschedulefederaltaxwithholding.md
   - docs/models/components/wirewithdrawalschedulepercentage.md
   - docs/models/components/wirewithdrawalschedulerecipientbankaddress.md
@@ -2366,7 +2372,6 @@ generatedFiles:
   - docs/sdks/basketorders/README.md
   - docs/sdks/cashbalances/README.md
   - docs/sdks/checks/README.md
-  - docs/sdks/createorder/README.md
   - docs/sdks/dataretrieval/README.md
   - docs/sdks/enrollmentsandagreements/README.md
   - docs/sdks/feesandcredits/README.md
@@ -2377,6 +2382,7 @@ generatedFiles:
   - docs/sdks/journals/README.md
   - docs/sdks/ledger/README.md
   - docs/sdks/margins/README.md
+  - docs/sdks/orders/README.md
   - docs/sdks/personmanagement/README.md
   - docs/sdks/reader/README.md
   - docs/sdks/retirements/README.md
@@ -2397,7 +2403,7 @@ generatedFiles:
   - src/__tests__/assets.test.ts
   - src/__tests__/assettradingconfig.test.ts
   - src/__tests__/checks.test.ts
-  - src/__tests__/createorder.test.ts
+  - src/__tests__/orders.test.ts
   - src/__tests__/dataretrieval.test.ts
   - src/__tests__/files.ts
   - src/__tests__/investigations.test.ts
@@ -2461,11 +2467,6 @@ generatedFiles:
   - src/funcs/basketOrdersSubmitBasket.ts
   - src/funcs/cashBalancesCalculateCashBalance.ts
   - src/funcs/checksGetCheckDeposit.ts
-  - src/funcs/createOrderCancelOrder.ts
-  - src/funcs/createOrderCreateOrder.ts
-  - src/funcs/createOrderGetOrder.ts
-  - src/funcs/createOrderListCorrespondentOrders.ts
-  - src/funcs/createOrderSetExtraReportingData.ts
   - src/funcs/dataRetrievalListSnapshots.ts
   - src/funcs/enrollmentsAndAgreementsAccountsListAvailableEnrollmentsByAccountGroup.ts
   - src/funcs/enrollmentsAndAgreementsAffirmAgreements.ts
@@ -2510,6 +2511,11 @@ generatedFiles:
   - src/funcs/ledgerListEntries.ts
   - src/funcs/ledgerListPositions.ts
   - src/funcs/marginsGetBuyingPower.ts
+  - src/funcs/ordersCancelOrder.ts
+  - src/funcs/ordersCreateOrder.ts
+  - src/funcs/ordersGetOrder.ts
+  - src/funcs/ordersListCorrespondentOrders.ts
+  - src/funcs/ordersSetExtraReportingData.ts
   - src/funcs/personManagementAssignLargeTrader.ts
   - src/funcs/personManagementAssignLargeTraderLegalEntity.ts
   - src/funcs/personManagementCreateLegalEntity.ts
@@ -3197,7 +3203,6 @@ generatedFiles:
   - src/sdk/basketorders.ts
   - src/sdk/cashbalances.ts
   - src/sdk/checks.ts
-  - src/sdk/createorder.ts
   - src/sdk/dataretrieval.ts
   - src/sdk/enrollmentsandagreements.ts
   - src/sdk/feesandcredits.ts
@@ -3209,6 +3214,7 @@ generatedFiles:
   - src/sdk/journals.ts
   - src/sdk/ledger.ts
   - src/sdk/margins.ts
+  - src/sdk/orders.ts
   - src/sdk/personmanagement.ts
   - src/sdk/reader.ts
   - src/sdk/retirements.ts

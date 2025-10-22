@@ -6,6 +6,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type SubmitBasketRequestCreate = {
     /**
+     * Time the basket submission request was sent by the client. This is a required field for clients that we report on behalf of, and it will be validated accordingly.
+     */
+    clientBasketSubmitTime?: Date | null | undefined;
+    /**
      * Format: correspondents/{correspondent}/baskets/{basket}
      */
     name: string;
@@ -14,6 +18,7 @@ export type SubmitBasketRequestCreate = {
 export declare const SubmitBasketRequestCreate$inboundSchema: z.ZodType<SubmitBasketRequestCreate, z.ZodTypeDef, unknown>;
 /** @internal */
 export type SubmitBasketRequestCreate$Outbound = {
+    client_basket_submit_time?: string | null | undefined;
     name: string;
 };
 /** @internal */

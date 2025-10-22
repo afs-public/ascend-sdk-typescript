@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.7.2
+  version: 1.8.0
   additionalDependencies:
     dependencies:
       jsonwebtoken: ^9.0.0

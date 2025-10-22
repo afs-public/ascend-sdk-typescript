@@ -172,6 +172,10 @@ export type AccountTransfer = {
    */
   fairMarketValueDate?: FairMarketValueDate | null | undefined;
   /**
+   * Indicates whether the account transfer constitutes a gift for tax reporting purposes. Used by cost basis and tax systems to ensure proper tax treatment and reporting compliance.
+   */
+  giftTransfer?: boolean | undefined;
+  /**
    * Contra party institution for the account transfer
    */
   institution?: string | undefined;
@@ -4141,6 +4145,7 @@ export enum DistributionType {
   NetIncomeAttributable = "NET_INCOME_ATTRIBUTABLE",
   Revocation = "REVOCATION",
   NonReportable = "NON_REPORTABLE",
+  QualifiedCharitableDistribution = "QUALIFIED_CHARITABLE_DISTRIBUTION",
 }
 /**
  * Provides information on the reason for the distribution from a retirement account
@@ -5071,6 +5076,7 @@ export const AccountTransfer$inboundSchema: z.ZodType<
   fair_market_value_date: z.nullable(
     z.lazy(() => FairMarketValueDate$inboundSchema),
   ).optional(),
+  gift_transfer: z.boolean().optional(),
   institution: z.string().optional(),
   method: Method$inboundSchema.optional(),
 }).transform((v) => {
@@ -5083,6 +5089,7 @@ export const AccountTransfer$inboundSchema: z.ZodType<
     "contra_party_id": "contraPartyId",
     "fair_market_value": "fairMarketValue",
     "fair_market_value_date": "fairMarketValueDate",
+    "gift_transfer": "giftTransfer",
   });
 });
 
@@ -5097,6 +5104,7 @@ export type AccountTransfer$Outbound = {
   contra_party_id?: string | undefined;
   fair_market_value?: FairMarketValue$Outbound | null | undefined;
   fair_market_value_date?: FairMarketValueDate$Outbound | null | undefined;
+  gift_transfer?: boolean | undefined;
   institution?: string | undefined;
   method?: string | undefined;
 };
@@ -5119,6 +5127,7 @@ export const AccountTransfer$outboundSchema: z.ZodType<
   fairMarketValueDate: z.nullable(
     z.lazy(() => FairMarketValueDate$outboundSchema),
   ).optional(),
+  giftTransfer: z.boolean().optional(),
   institution: z.string().optional(),
   method: Method$outboundSchema.optional(),
 }).transform((v) => {
@@ -5131,6 +5140,7 @@ export const AccountTransfer$outboundSchema: z.ZodType<
     contraPartyId: "contra_party_id",
     fairMarketValue: "fair_market_value",
     fairMarketValueDate: "fair_market_value_date",
+    giftTransfer: "gift_transfer",
   });
 });
 

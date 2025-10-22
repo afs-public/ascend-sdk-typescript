@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `DirectionUnspecified` | DIRECTION_UNSPECIFIED  |
 | `Deposit`              | DEPOSIT                |
 | `Withdrawal`           | WITHDRAWAL             |
+| `Journal`              | JOURNAL                |
 | -                      | `Unrecognized<string>` |

@@ -336,6 +336,9 @@ export enum OrderRejectedReason {
   ClientReceivedTimeRequired = "CLIENT_RECEIVED_TIME_REQUIRED",
   ClientNotPermittedToUseTradingSession =
     "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION",
+  RoundUpAmountTooSmall = "ROUND_UP_AMOUNT_TOO_SMALL",
+  AssetNotSetUpForRoundUps = "ASSET_NOT_SET_UP_FOR_ROUND_UPS",
+  BelowRoundUpMinimum = "BELOW_ROUND_UP_MINIMUM",
   StopPriceBelowMarketPrice = "STOP_PRICE_BELOW_MARKET_PRICE",
 }
 /**
@@ -456,6 +459,7 @@ export enum OrderSpecialReportingInstructions {
   ThirdMarket = "THIRD_MARKET",
   SuppressTraceReporting = "SUPPRESS_TRACE_REPORTING",
   WhenDistributed = "WHEN_DISTRIBUTED",
+  RoundUp = "ROUND_UP",
 }
 export type OrderSpecialReportingInstructionsOpen = OpenEnum<
   typeof OrderSpecialReportingInstructions
@@ -498,14 +502,14 @@ export type StopPrice = {
 };
 
 /**
- * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export enum OrderTimeInForce {
   Day = "DAY",
   GoodTillDate = "GOOD_TILL_DATE",
 }
 /**
- * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export type OrderTimeInForceOpen = OpenEnum<typeof OrderTimeInForce>;
 
@@ -732,7 +736,7 @@ export type Order = {
    */
   stopPrice?: StopPrice | null | undefined;
   /**
-   * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+   * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
    */
   timeInForce?: OrderTimeInForceOpen | undefined;
   /**

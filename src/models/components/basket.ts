@@ -52,6 +52,10 @@ export type Basket = {
    */
   clientBasketId?: string | undefined;
   /**
+   * Time the basket submission request was sent by the client. This is a situationally optional field that reflects the value provided by the user in the SubmitBasketRequest.
+   */
+  clientBasketSubmitTime?: Date | null | undefined;
+  /**
    * Time the basket was completed
    */
   completeTime?: Date | null | undefined;
@@ -128,6 +132,9 @@ export const Basket$inboundSchema: z.ZodType<Basket, z.ZodTypeDef, unknown> = z
     basket_order_count: z.string().optional(),
     basket_state: BasketState$inboundSchema.optional(),
     client_basket_id: z.string().optional(),
+    client_basket_submit_time: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ).optional(),
     complete_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -151,6 +158,7 @@ export const Basket$inboundSchema: z.ZodType<Basket, z.ZodTypeDef, unknown> = z
       "basket_order_count": "basketOrderCount",
       "basket_state": "basketState",
       "client_basket_id": "clientBasketId",
+      "client_basket_submit_time": "clientBasketSubmitTime",
       "complete_time": "completeTime",
       "compressed_order_count": "compressedOrderCount",
       "correspondent_id": "correspondentId",
@@ -168,6 +176,7 @@ export type Basket$Outbound = {
   basket_order_count?: string | undefined;
   basket_state?: string | undefined;
   client_basket_id?: string | undefined;
+  client_basket_submit_time?: string | null | undefined;
   complete_time?: string | null | undefined;
   compressed_order_count?: string | undefined;
   correspondent_id?: string | undefined;
@@ -189,6 +198,8 @@ export const Basket$outboundSchema: z.ZodType<
   basketOrderCount: z.string().optional(),
   basketState: BasketState$outboundSchema.optional(),
   clientBasketId: z.string().optional(),
+  clientBasketSubmitTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   completeTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   compressedOrderCount: z.string().optional(),
   correspondentId: z.string().optional(),
@@ -205,6 +216,7 @@ export const Basket$outboundSchema: z.ZodType<
     basketOrderCount: "basket_order_count",
     basketState: "basket_state",
     clientBasketId: "client_basket_id",
+    clientBasketSubmitTime: "client_basket_submit_time",
     completeTime: "complete_time",
     compressedOrderCount: "compressed_order_count",
     correspondentId: "correspondent_id",

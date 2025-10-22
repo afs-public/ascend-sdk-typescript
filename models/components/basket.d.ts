@@ -40,6 +40,10 @@ export type Basket = {
      */
     clientBasketId?: string | undefined;
     /**
+     * Time the basket submission request was sent by the client. This is a situationally optional field that reflects the value provided by the user in the SubmitBasketRequest.
+     */
+    clientBasketSubmitTime?: Date | null | undefined;
+    /**
      * Time the basket was completed
      */
     completeTime?: Date | null | undefined;
@@ -98,6 +102,7 @@ export type Basket$Outbound = {
     basket_order_count?: string | undefined;
     basket_state?: string | undefined;
     client_basket_id?: string | undefined;
+    client_basket_submit_time?: string | null | undefined;
     complete_time?: string | null | undefined;
     compressed_order_count?: string | undefined;
     correspondent_id?: string | undefined;

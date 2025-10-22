@@ -1,6 +1,6 @@
 # PositionFpsl
 
-Quantity of asset in use by the FPSL program. Should not be used by currency assets
+Represents the amount of an asset that has been loaned out via the fully paid securities lending program
 
 ## Example Usage
 

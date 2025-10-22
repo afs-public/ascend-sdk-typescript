@@ -1,6 +1,6 @@
 # AdjustedTrade
 
-`trade` + any as of trade amounts for the date
+This value reflects trade positions that have been adjusted due to the recording of transactions after their actual occurrence (as-of transactions). The key difference between this field and the trade field is that when an as-of transaction is recorded to the Ledger, the trade field will not change for historical dates, but the adjusted_trade field will update to reflect what the position would have been if the as-of transaction had been recorded on the date of its occurrence
 
 ## Example Usage
 

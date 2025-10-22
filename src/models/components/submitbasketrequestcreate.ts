@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -11,6 +12,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * The message to submit a basket for execution in the market
  */
 export type SubmitBasketRequestCreate = {
+  /**
+   * Time the basket submission request was sent by the client. This is a required field for clients that we report on behalf of, and it will be validated accordingly.
+   */
+  clientBasketSubmitTime?: Date | null | undefined;
   /**
    * Format: correspondents/{correspondent}/baskets/{basket}
    */
@@ -23,11 +28,19 @@ export const SubmitBasketRequestCreate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  client_basket_submit_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   name: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "client_basket_submit_time": "clientBasketSubmitTime",
+  });
 });
 
 /** @internal */
 export type SubmitBasketRequestCreate$Outbound = {
+  client_basket_submit_time?: string | null | undefined;
   name: string;
 };
 
@@ -37,7 +50,13 @@ export const SubmitBasketRequestCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SubmitBasketRequestCreate
 > = z.object({
+  clientBasketSubmitTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   name: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    clientBasketSubmitTime: "client_basket_submit_time",
+  });
 });
 
 /**

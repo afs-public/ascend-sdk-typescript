@@ -493,6 +493,7 @@ export var ActivityDistributionType;
     ActivityDistributionType["NetIncomeAttributable"] = "NET_INCOME_ATTRIBUTABLE";
     ActivityDistributionType["Revocation"] = "REVOCATION";
     ActivityDistributionType["NonReportable"] = "NON_REPORTABLE";
+    ActivityDistributionType["QualifiedCharitableDistribution"] = "QUALIFIED_CHARITABLE_DISTRIBUTION";
 })(ActivityDistributionType || (ActivityDistributionType = {}));
 /**
  * The type of retirement account the withdrawal is being made from
@@ -722,6 +723,7 @@ export const ActivityAccountTransfer$inboundSchema = z.object({
     contra_party_id: z.string().optional(),
     fair_market_value: z.nullable(z.lazy(() => ActivityFairMarketValue$inboundSchema)).optional(),
     fair_market_value_date: z.nullable(z.lazy(() => ActivityFairMarketValueDate$inboundSchema)).optional(),
+    gift_transfer: z.boolean().optional(),
     institution: z.string().optional(),
     method: ActivityMethod$inboundSchema.optional(),
 }).transform((v) => {
@@ -734,6 +736,7 @@ export const ActivityAccountTransfer$inboundSchema = z.object({
         "contra_party_id": "contraPartyId",
         "fair_market_value": "fairMarketValue",
         "fair_market_value_date": "fairMarketValueDate",
+        "gift_transfer": "giftTransfer",
     });
 });
 /** @internal */
@@ -747,6 +750,7 @@ export const ActivityAccountTransfer$outboundSchema = z.object({
     contraPartyId: z.string().optional(),
     fairMarketValue: z.nullable(z.lazy(() => ActivityFairMarketValue$outboundSchema)).optional(),
     fairMarketValueDate: z.nullable(z.lazy(() => ActivityFairMarketValueDate$outboundSchema)).optional(),
+    giftTransfer: z.boolean().optional(),
     institution: z.string().optional(),
     method: ActivityMethod$outboundSchema.optional(),
 }).transform((v) => {
@@ -759,6 +763,7 @@ export const ActivityAccountTransfer$outboundSchema = z.object({
         contraPartyId: "contra_party_id",
         fairMarketValue: "fair_market_value",
         fairMarketValueDate: "fair_market_value_date",
+        giftTransfer: "gift_transfer",
     });
 });
 /**

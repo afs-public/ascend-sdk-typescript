@@ -234,6 +234,35 @@ export function achDepositScheduleAmountFromJSON(jsonString) {
     return safeParse(jsonString, (x) => AchDepositScheduleAmount$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleAmount' from JSON`);
 }
 /** @internal */
+export const AchDepositScheduleEndDate$inboundSchema = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+});
+/** @internal */
+export const AchDepositScheduleEndDate$outboundSchema = z.object({
+    day: z.number().int().optional(),
+    month: z.number().int().optional(),
+    year: z.number().int().optional(),
+});
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export var AchDepositScheduleEndDate$;
+(function (AchDepositScheduleEndDate$) {
+    /** @deprecated use `AchDepositScheduleEndDate$inboundSchema` instead. */
+    AchDepositScheduleEndDate$.inboundSchema = AchDepositScheduleEndDate$inboundSchema;
+    /** @deprecated use `AchDepositScheduleEndDate$outboundSchema` instead. */
+    AchDepositScheduleEndDate$.outboundSchema = AchDepositScheduleEndDate$outboundSchema;
+})(AchDepositScheduleEndDate$ || (AchDepositScheduleEndDate$ = {}));
+export function achDepositScheduleEndDateToJSON(achDepositScheduleEndDate) {
+    return JSON.stringify(AchDepositScheduleEndDate$outboundSchema.parse(achDepositScheduleEndDate));
+}
+export function achDepositScheduleEndDateFromJSON(jsonString) {
+    return safeParse(jsonString, (x) => AchDepositScheduleEndDate$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'AchDepositScheduleEndDate' from JSON`);
+}
+/** @internal */
 export const AchDepositScheduleStartDate$inboundSchema = z.object({
     day: z.number().int().optional(),
     month: z.number().int().optional(),
@@ -308,6 +337,8 @@ export var AchDepositScheduleTimeUnit$;
 })(AchDepositScheduleTimeUnit$ || (AchDepositScheduleTimeUnit$ = {}));
 /** @internal */
 export const AchDepositScheduleScheduleProperties$inboundSchema = z.object({
+    end_date: z.nullable(z.lazy(() => AchDepositScheduleEndDate$inboundSchema))
+        .optional(),
     occurrences: z.number().int().optional(),
     start_date: z.nullable(z.lazy(() => AchDepositScheduleStartDate$inboundSchema)).optional(),
     state: AchDepositScheduleState$inboundSchema.optional(),
@@ -315,6 +346,7 @@ export const AchDepositScheduleScheduleProperties$inboundSchema = z.object({
     unit_multiplier: z.number().int().optional(),
 }).transform((v) => {
     return remap$(v, {
+        "end_date": "endDate",
         "start_date": "startDate",
         "time_unit": "timeUnit",
         "unit_multiplier": "unitMultiplier",
@@ -322,6 +354,8 @@ export const AchDepositScheduleScheduleProperties$inboundSchema = z.object({
 });
 /** @internal */
 export const AchDepositScheduleScheduleProperties$outboundSchema = z.object({
+    endDate: z.nullable(z.lazy(() => AchDepositScheduleEndDate$outboundSchema))
+        .optional(),
     occurrences: z.number().int().optional(),
     startDate: z.nullable(z.lazy(() => AchDepositScheduleStartDate$outboundSchema)).optional(),
     state: AchDepositScheduleState$outboundSchema.optional(),
@@ -329,6 +363,7 @@ export const AchDepositScheduleScheduleProperties$outboundSchema = z.object({
     unitMultiplier: z.number().int().optional(),
 }).transform((v) => {
     return remap$(v, {
+        endDate: "end_date",
         startDate: "start_date",
         timeUnit: "time_unit",
         unitMultiplier: "unit_multiplier",

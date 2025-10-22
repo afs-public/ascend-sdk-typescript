@@ -1,6 +1,6 @@
 # Free
 
-Quantity of asset available for allocation for use by the FPSL program. Raw bucket values. These denote that a position is allocated to this purpose. Values may be negative
+Represents the amount of an asset that is available to loan by the fully paid securities lending program.
 
 ## Example Usage
 

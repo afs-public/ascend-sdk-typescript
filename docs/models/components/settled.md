@@ -1,6 +1,6 @@
 # Settled
 
-Computed fieldsOriginal Settled Position before and as-of changesComputed based on the bucket values to represet the total settled position in an account  Currently defined as `free` + `fpsl` + `pending_outgoing_acat` + `drip` + `pending_withdrawal`, but if/when new buckets are added this value will need to change to reflect them
+This field refers to the quantity of assets that have completed the entire clearing and settlement cycle, where ownership of the securities has been officially transferred and payment has been fully processed. The settled position includes all transactions that have been recorded in the Ledger with process_date, activity_date, and settle_date on or before the date specified in the response.
 
 ## Example Usage
 

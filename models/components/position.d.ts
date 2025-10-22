@@ -2,7 +2,7 @@ import * as z from "zod";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
- * `settled` + any as of settled amounts for the date
+ * This field shows settled positions that have been adjusted to account for as-of transactions (transactions recorded after their actual occurrence). Unlike the settled field, which remains unchanged for historical dates when as-of transactions are recorded, the adjusted_settled field updates to reflect what the position would have been if all transactions had been recorded on their actual dates of occurrence.
  */
 export type AdjustedSettled = {
     /**
@@ -11,7 +11,7 @@ export type AdjustedSettled = {
     value?: string | undefined;
 };
 /**
- * `trade` + any as of trade amounts for the date
+ * This value reflects trade positions that have been adjusted due to the recording of transactions after their actual occurrence (as-of transactions). The key difference between this field and the trade field is that when an as-of transaction is recorded to the Ledger, the trade field will not change for historical dates, but the adjusted_trade field will update to reflect what the position would have been if the as-of transaction had been recorded on the date of its occurrence
  */
 export type AdjustedTrade = {
     /**
@@ -20,7 +20,7 @@ export type AdjustedTrade = {
     value?: string | undefined;
 };
 /**
- * The date for which the positions were calculated
+ * The date for which positions were calculated
  */
 export type DateT = {
     /**
@@ -37,7 +37,7 @@ export type DateT = {
     year?: number | undefined;
 };
 /**
- * Quantity of asset in use by the FPSL program. Should not be used by currency assets
+ * Represents the amount of an asset that has been loaned out via the fully paid securities lending program
  */
 export type PositionFpsl = {
     /**
@@ -46,7 +46,7 @@ export type PositionFpsl = {
     value?: string | undefined;
 };
 /**
- * Quantity of asset available for allocation for use by the FPSL program. Raw bucket values. These denote that a position is allocated to this purpose. Values may be negative
+ * Represents the amount of an asset that is available to loan by the fully paid securities lending program.
  */
 export type Free = {
     /**
@@ -55,7 +55,7 @@ export type Free = {
     value?: string | undefined;
 };
 /**
- * The most recent date an adjustment occurred
+ * The most recent date a position changed in any way
  */
 export type LastAdjustedDate = {
     /**
@@ -72,7 +72,7 @@ export type LastAdjustedDate = {
     year?: number | undefined;
 };
 /**
- * Quantity of currency from a dividend being reserved for reinvestment. should not be used by non-currency assets
+ * Represents the amount of cash that has been paid to an account due to a dividend or capital gain but is due to be reinvested in the security that paid the account holder
  */
 export type PendingDrip = {
     /**
@@ -81,7 +81,7 @@ export type PendingDrip = {
     value?: string | undefined;
 };
 /**
- * Quantity/ amount of asset restricted due to an outgoing acat request
+ * Represents the amount of an asset that is subject to a pending outgoing account transfer, but has not completed the bookkeeping phase of that account transfer
  */
 export type PendingOutgoingAcat = {
     /**
@@ -90,7 +90,7 @@ export type PendingOutgoingAcat = {
     value?: string | undefined;
 };
 /**
- * Quantity of currency being reserved for withdrawal. should not be used by non-currency assets
+ * Represents the amount of cash that has been requested for withdrawal but has not posted to the Ledger
  */
 export type PendingWithdrawal = {
     /**
@@ -99,7 +99,7 @@ export type PendingWithdrawal = {
     value?: string | undefined;
 };
 /**
- * Computed fieldsOriginal Settled Position before and as-of changesComputed based on the bucket values to represet the total settled position in an account  Currently defined as `free` + `fpsl` + `pending_outgoing_acat` + `drip` + `pending_withdrawal`, but if/when new buckets are added this value will need to change to reflect them
+ * This field refers to the quantity of assets that have completed the entire clearing and settlement cycle, where ownership of the securities has been officially transferred and payment has been fully processed. The settled position includes all transactions that have been recorded in the Ledger with process_date, activity_date, and settle_date on or before the date specified in the response.
  */
 export type Settled = {
     /**
@@ -108,7 +108,7 @@ export type Settled = {
     value?: string | undefined;
 };
 /**
- * original trade position
+ * This field represents the total amount of an asset owned by the account including transactions that have been executed but not yet settled, commonly known as the trade date position. It includes all transactions recorded in the Ledger with process_date and activity_date on or before the date in the response, even those with future settle_dates. Unlike the settled position, which only includes completed settlements, the trade position provides a forward-looking view of ownership that accounts for pending settlements
  */
 export type PositionTrade = {
     /**
@@ -117,7 +117,7 @@ export type PositionTrade = {
     value?: string | undefined;
 };
 /**
- * Computed based on the bucket values to represent the total unrestricted position in an account. Will always be less than or equal to `settled`  settled - (pending_outgoing_acat + pending_drip + pending_withdrawal) ; however, if/when the API adds new buckets, Apex may adjust this to either incorporate the new value or not
+ * This field represents the portion of a settled position that is available for trading or withdrawal without restrictions. It is calculated by subtracting positions with pending restrictions from the total settled amount (currently: settled - (pending_outgoing_acat + pending_drip + pending_withdrawal)). As new memo location categories are added to the API, Apex may update this calculation to incorporate these values. Note that the Cash and Margin systems may place additional restrictions on cash/ assets according to their business logic.
  */
 export type Unrestricted = {
     /**
@@ -134,11 +134,11 @@ export type Position = {
      */
     accountId?: string | undefined;
     /**
-     * `settled` + any as of settled amounts for the date
+     * This field shows settled positions that have been adjusted to account for as-of transactions (transactions recorded after their actual occurrence). Unlike the settled field, which remains unchanged for historical dates when as-of transactions are recorded, the adjusted_settled field updates to reflect what the position would have been if all transactions had been recorded on their actual dates of occurrence.
      */
     adjustedSettled?: AdjustedSettled | null | undefined;
     /**
-     * `trade` + any as of trade amounts for the date
+     * This value reflects trade positions that have been adjusted due to the recording of transactions after their actual occurrence (as-of transactions). The key difference between this field and the trade field is that when an as-of transaction is recorded to the Ledger, the trade field will not change for historical dates, but the adjusted_trade field will update to reflect what the position would have been if the as-of transaction had been recorded on the date of its occurrence
      */
     adjustedTrade?: AdjustedTrade | null | undefined;
     /**
@@ -150,19 +150,19 @@ export type Position = {
      */
     correspondentId?: string | undefined;
     /**
-     * The date for which the positions were calculated
+     * The date for which positions were calculated
      */
     date?: DateT | null | undefined;
     /**
-     * Quantity of asset in use by the FPSL program. Should not be used by currency assets
+     * Represents the amount of an asset that has been loaned out via the fully paid securities lending program
      */
     fpsl?: PositionFpsl | null | undefined;
     /**
-     * Quantity of asset available for allocation for use by the FPSL program. Raw bucket values. These denote that a position is allocated to this purpose. Values may be negative
+     * Represents the amount of an asset that is available to loan by the fully paid securities lending program.
      */
     free?: Free | null | undefined;
     /**
-     * The most recent date an adjustment occurred
+     * The most recent date a position changed in any way
      */
     lastAdjustedDate?: LastAdjustedDate | null | undefined;
     /**
@@ -170,31 +170,31 @@ export type Position = {
      */
     name?: string | undefined;
     /**
-     * Quantity of currency from a dividend being reserved for reinvestment. should not be used by non-currency assets
+     * Represents the amount of cash that has been paid to an account due to a dividend or capital gain but is due to be reinvested in the security that paid the account holder
      */
     pendingDrip?: PendingDrip | null | undefined;
     /**
-     * Quantity/ amount of asset restricted due to an outgoing acat request
+     * Represents the amount of an asset that is subject to a pending outgoing account transfer, but has not completed the bookkeeping phase of that account transfer
      */
     pendingOutgoingAcat?: PendingOutgoingAcat | null | undefined;
     /**
-     * Quantity of currency being reserved for withdrawal. should not be used by non-currency assets
+     * Represents the amount of cash that has been requested for withdrawal but has not posted to the Ledger
      */
     pendingWithdrawal?: PendingWithdrawal | null | undefined;
     /**
-     * The position version for an asset/account combo. This number only increases, such that larger `position_version`s are newer than lower ones.
+     * Represents a chronologically-ordered version identifier that enables efficient position state tracking and event ordering. The system guarantees that positions from earlier dates have smaller version numbers than those from later dates
      */
     positionVersion?: string | undefined;
     /**
-     * Computed fieldsOriginal Settled Position before and as-of changesComputed based on the bucket values to represet the total settled position in an account  Currently defined as `free` + `fpsl` + `pending_outgoing_acat` + `drip` + `pending_withdrawal`, but if/when new buckets are added this value will need to change to reflect them
+     * This field refers to the quantity of assets that have completed the entire clearing and settlement cycle, where ownership of the securities has been officially transferred and payment has been fully processed. The settled position includes all transactions that have been recorded in the Ledger with process_date, activity_date, and settle_date on or before the date specified in the response.
      */
     settled?: Settled | null | undefined;
     /**
-     * original trade position
+     * This field represents the total amount of an asset owned by the account including transactions that have been executed but not yet settled, commonly known as the trade date position. It includes all transactions recorded in the Ledger with process_date and activity_date on or before the date in the response, even those with future settle_dates. Unlike the settled position, which only includes completed settlements, the trade position provides a forward-looking view of ownership that accounts for pending settlements
      */
     trade?: PositionTrade | null | undefined;
     /**
-     * Computed based on the bucket values to represent the total unrestricted position in an account. Will always be less than or equal to `settled`  settled - (pending_outgoing_acat + pending_drip + pending_withdrawal) ; however, if/when the API adds new buckets, Apex may adjust this to either incorporate the new value or not
+     * This field represents the portion of a settled position that is available for trading or withdrawal without restrictions. It is calculated by subtracting positions with pending restrictions from the total settled amount (currently: settled - (pending_outgoing_acat + pending_drip + pending_withdrawal)). As new memo location categories are added to the API, Apex may update this calculation to incorporate these values. Note that the Cash and Margin systems may place additional restrictions on cash/ assets according to their business logic.
      */
     unrestricted?: Unrestricted | null | undefined;
 };

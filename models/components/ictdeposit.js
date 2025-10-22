@@ -14,6 +14,7 @@ export var IctDepositProgram;
     IctDepositProgram["BrokerPartner"] = "BROKER_PARTNER";
     IctDepositProgram["DepositOnly"] = "DEPOSIT_ONLY";
     IctDepositProgram["BankingPartner"] = "BANKING_PARTNER";
+    IctDepositProgram["MoneyTransmitter"] = "MONEY_TRANSMITTER";
     IctDepositProgram["WithdrawalOnly"] = "WITHDRAWAL_ONLY";
     IctDepositProgram["DigitalPartner"] = "DIGITAL_PARTNER";
 })(IctDepositProgram || (IctDepositProgram = {}));

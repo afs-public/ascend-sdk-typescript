@@ -30,6 +30,7 @@ export enum Direction {
   DirectionUnspecified = "DIRECTION_UNSPECIFIED",
   Deposit = "DEPOSIT",
   Withdrawal = "WITHDRAWAL",
+  Journal = "JOURNAL",
 }
 /**
  * Flag indicating whether this is a deposit or withdrawal transfer
@@ -41,6 +42,8 @@ export type DirectionOpen = OpenEnum<typeof Direction>;
  */
 export enum TransferScheduleSummaryMechanism {
   Ach = "ACH",
+  CashJournal = "CASH_JOURNAL",
+  Check = "CHECK",
   Wire = "WIRE",
 }
 /**
@@ -257,6 +260,24 @@ export type TransferScheduleSummaryRetirementDistribution = {
 };
 
 /**
+ * The schedule end date if there is a finite number of occurrences
+ */
+export type TransferScheduleSummaryEndDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
  * The schedule start date
  */
 export type StartDate = {
@@ -308,6 +329,10 @@ export type TransferScheduleSummaryTimeUnitOpen = OpenEnum<
  * Common schedule properties
  */
 export type ScheduleProperties = {
+  /**
+   * The schedule end date if there is a finite number of occurrences
+   */
+  endDate?: TransferScheduleSummaryEndDate | null | undefined;
   /**
    * The number of occurrences (empty or 0 indicates unlimited occurrences)
    */
@@ -1230,6 +1255,68 @@ export function transferScheduleSummaryRetirementDistributionFromJSON(
 }
 
 /** @internal */
+export const TransferScheduleSummaryEndDate$inboundSchema: z.ZodType<
+  TransferScheduleSummaryEndDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type TransferScheduleSummaryEndDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const TransferScheduleSummaryEndDate$outboundSchema: z.ZodType<
+  TransferScheduleSummaryEndDate$Outbound,
+  z.ZodTypeDef,
+  TransferScheduleSummaryEndDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TransferScheduleSummaryEndDate$ {
+  /** @deprecated use `TransferScheduleSummaryEndDate$inboundSchema` instead. */
+  export const inboundSchema = TransferScheduleSummaryEndDate$inboundSchema;
+  /** @deprecated use `TransferScheduleSummaryEndDate$outboundSchema` instead. */
+  export const outboundSchema = TransferScheduleSummaryEndDate$outboundSchema;
+  /** @deprecated use `TransferScheduleSummaryEndDate$Outbound` instead. */
+  export type Outbound = TransferScheduleSummaryEndDate$Outbound;
+}
+
+export function transferScheduleSummaryEndDateToJSON(
+  transferScheduleSummaryEndDate: TransferScheduleSummaryEndDate,
+): string {
+  return JSON.stringify(
+    TransferScheduleSummaryEndDate$outboundSchema.parse(
+      transferScheduleSummaryEndDate,
+    ),
+  );
+}
+
+export function transferScheduleSummaryEndDateFromJSON(
+  jsonString: string,
+): SafeParseResult<TransferScheduleSummaryEndDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TransferScheduleSummaryEndDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TransferScheduleSummaryEndDate' from JSON`,
+  );
+}
+
+/** @internal */
 export const StartDate$inboundSchema: z.ZodType<
   StartDate,
   z.ZodTypeDef,
@@ -1355,6 +1442,9 @@ export const ScheduleProperties$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  end_date: z.nullable(
+    z.lazy(() => TransferScheduleSummaryEndDate$inboundSchema),
+  ).optional(),
   occurrences: z.number().int().optional(),
   start_date: z.nullable(z.lazy(() => StartDate$inboundSchema)).optional(),
   state: TransferScheduleSummaryState$inboundSchema.optional(),
@@ -1362,6 +1452,7 @@ export const ScheduleProperties$inboundSchema: z.ZodType<
   unit_multiplier: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "end_date": "endDate",
     "start_date": "startDate",
     "time_unit": "timeUnit",
     "unit_multiplier": "unitMultiplier",
@@ -1370,6 +1461,7 @@ export const ScheduleProperties$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ScheduleProperties$Outbound = {
+  end_date?: TransferScheduleSummaryEndDate$Outbound | null | undefined;
   occurrences?: number | undefined;
   start_date?: StartDate$Outbound | null | undefined;
   state?: string | undefined;
@@ -1383,6 +1475,9 @@ export const ScheduleProperties$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ScheduleProperties
 > = z.object({
+  endDate: z.nullable(
+    z.lazy(() => TransferScheduleSummaryEndDate$outboundSchema),
+  ).optional(),
   occurrences: z.number().int().optional(),
   startDate: z.nullable(z.lazy(() => StartDate$outboundSchema)).optional(),
   state: TransferScheduleSummaryState$outboundSchema.optional(),
@@ -1390,6 +1485,7 @@ export const ScheduleProperties$outboundSchema: z.ZodType<
   unitMultiplier: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    endDate: "end_date",
     startDate: "start_date",
     timeUnit: "time_unit",
     unitMultiplier: "unit_multiplier",

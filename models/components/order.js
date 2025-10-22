@@ -118,6 +118,9 @@ export var OrderRejectedReason;
     OrderRejectedReason["InvalidOrderQuantity"] = "INVALID_ORDER_QUANTITY";
     OrderRejectedReason["ClientReceivedTimeRequired"] = "CLIENT_RECEIVED_TIME_REQUIRED";
     OrderRejectedReason["ClientNotPermittedToUseTradingSession"] = "CLIENT_NOT_PERMITTED_TO_USE_TRADING_SESSION";
+    OrderRejectedReason["RoundUpAmountTooSmall"] = "ROUND_UP_AMOUNT_TOO_SMALL";
+    OrderRejectedReason["AssetNotSetUpForRoundUps"] = "ASSET_NOT_SET_UP_FOR_ROUND_UPS";
+    OrderRejectedReason["BelowRoundUpMinimum"] = "BELOW_ROUND_UP_MINIMUM";
     OrderRejectedReason["StopPriceBelowMarketPrice"] = "STOP_PRICE_BELOW_MARKET_PRICE";
 })(OrderRejectedReason || (OrderRejectedReason = {}));
 /**
@@ -181,6 +184,7 @@ export var OrderSpecialReportingInstructions;
     OrderSpecialReportingInstructions["ThirdMarket"] = "THIRD_MARKET";
     OrderSpecialReportingInstructions["SuppressTraceReporting"] = "SUPPRESS_TRACE_REPORTING";
     OrderSpecialReportingInstructions["WhenDistributed"] = "WHEN_DISTRIBUTED";
+    OrderSpecialReportingInstructions["RoundUp"] = "ROUND_UP";
 })(OrderSpecialReportingInstructions || (OrderSpecialReportingInstructions = {}));
 /**
  * The type of this price, which must PRICE_PER_UNIT for equity orders. (Fixed income and mutual fund assets do not support stop orders.)
@@ -191,7 +195,7 @@ export var OrderStopPriceType;
     OrderStopPriceType["PricePerUnit"] = "PRICE_PER_UNIT";
 })(OrderStopPriceType || (OrderStopPriceType = {}));
 /**
- * Must be the value "DAY". Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
  */
 export var OrderTimeInForce;
 (function (OrderTimeInForce) {

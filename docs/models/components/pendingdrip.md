@@ -1,6 +1,6 @@
 # PendingDrip
 
-Quantity of currency from a dividend being reserved for reinvestment. should not be used by non-currency assets
+Represents the amount of cash that has been paid to an account due to a dividend or capital gain but is due to be reinvested in the security that paid the account holder
 
 ## Example Usage
 

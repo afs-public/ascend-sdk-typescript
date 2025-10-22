@@ -121,6 +121,24 @@ export type AchDepositScheduleAmount = {
 };
 
 /**
+ * The schedule end date if there is a finite number of occurrences
+ */
+export type AchDepositScheduleEndDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
  * The schedule start date
  */
 export type AchDepositScheduleStartDate = {
@@ -172,6 +190,10 @@ export type AchDepositScheduleTimeUnitOpen = OpenEnum<
  * Common schedule properties
  */
 export type AchDepositScheduleScheduleProperties = {
+  /**
+   * The schedule end date if there is a finite number of occurrences
+   */
+  endDate?: AchDepositScheduleEndDate | null | undefined;
   /**
    * The number of occurrences (empty or 0 indicates unlimited occurrences)
    */
@@ -548,6 +570,66 @@ export function achDepositScheduleAmountFromJSON(
 }
 
 /** @internal */
+export const AchDepositScheduleEndDate$inboundSchema: z.ZodType<
+  AchDepositScheduleEndDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type AchDepositScheduleEndDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const AchDepositScheduleEndDate$outboundSchema: z.ZodType<
+  AchDepositScheduleEndDate$Outbound,
+  z.ZodTypeDef,
+  AchDepositScheduleEndDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AchDepositScheduleEndDate$ {
+  /** @deprecated use `AchDepositScheduleEndDate$inboundSchema` instead. */
+  export const inboundSchema = AchDepositScheduleEndDate$inboundSchema;
+  /** @deprecated use `AchDepositScheduleEndDate$outboundSchema` instead. */
+  export const outboundSchema = AchDepositScheduleEndDate$outboundSchema;
+  /** @deprecated use `AchDepositScheduleEndDate$Outbound` instead. */
+  export type Outbound = AchDepositScheduleEndDate$Outbound;
+}
+
+export function achDepositScheduleEndDateToJSON(
+  achDepositScheduleEndDate: AchDepositScheduleEndDate,
+): string {
+  return JSON.stringify(
+    AchDepositScheduleEndDate$outboundSchema.parse(achDepositScheduleEndDate),
+  );
+}
+
+export function achDepositScheduleEndDateFromJSON(
+  jsonString: string,
+): SafeParseResult<AchDepositScheduleEndDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AchDepositScheduleEndDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AchDepositScheduleEndDate' from JSON`,
+  );
+}
+
+/** @internal */
 export const AchDepositScheduleStartDate$inboundSchema: z.ZodType<
   AchDepositScheduleStartDate,
   z.ZodTypeDef,
@@ -679,6 +761,8 @@ export const AchDepositScheduleScheduleProperties$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  end_date: z.nullable(z.lazy(() => AchDepositScheduleEndDate$inboundSchema))
+    .optional(),
   occurrences: z.number().int().optional(),
   start_date: z.nullable(
     z.lazy(() => AchDepositScheduleStartDate$inboundSchema),
@@ -688,6 +772,7 @@ export const AchDepositScheduleScheduleProperties$inboundSchema: z.ZodType<
   unit_multiplier: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "end_date": "endDate",
     "start_date": "startDate",
     "time_unit": "timeUnit",
     "unit_multiplier": "unitMultiplier",
@@ -696,6 +781,7 @@ export const AchDepositScheduleScheduleProperties$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AchDepositScheduleScheduleProperties$Outbound = {
+  end_date?: AchDepositScheduleEndDate$Outbound | null | undefined;
   occurrences?: number | undefined;
   start_date?: AchDepositScheduleStartDate$Outbound | null | undefined;
   state?: string | undefined;
@@ -709,6 +795,8 @@ export const AchDepositScheduleScheduleProperties$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AchDepositScheduleScheduleProperties
 > = z.object({
+  endDate: z.nullable(z.lazy(() => AchDepositScheduleEndDate$outboundSchema))
+    .optional(),
   occurrences: z.number().int().optional(),
   startDate: z.nullable(
     z.lazy(() => AchDepositScheduleStartDate$outboundSchema),
@@ -718,6 +806,7 @@ export const AchDepositScheduleScheduleProperties$outboundSchema: z.ZodType<
   unitMultiplier: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    endDate: "end_date",
     startDate: "start_date",
     timeUnit: "time_unit",
     unitMultiplier: "unit_multiplier",

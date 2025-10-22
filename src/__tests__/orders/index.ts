@@ -45,7 +45,7 @@ export async function createOrder(
     side: components.Side.Buy,
     timeInForce: components.TimeInForce.Day,
   };
-  const result = await sdk.createOrder.createOrder(request, account_id);
+  const result = await sdk.orders.createOrder(request, account_id);
   if (result?.order?.orderId) {
     return result.order.orderId;
   }

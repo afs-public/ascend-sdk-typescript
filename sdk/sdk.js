@@ -13,7 +13,6 @@ import { BankRelationships } from "./bankrelationships.js";
 import { BasketOrders } from "./basketorders.js";
 import { CashBalances } from "./cashbalances.js";
 import { Checks } from "./checks.js";
-import { CreateOrder } from "./createorder.js";
 import { DataRetrieval } from "./dataretrieval.js";
 import { EnrollmentsAndAgreements } from "./enrollmentsandagreements.js";
 import { FeesAndCredits } from "./feesandcredits.js";
@@ -24,6 +23,7 @@ import { InvestorDocs } from "./investordocs.js";
 import { Journals } from "./journals.js";
 import { Ledger } from "./ledger.js";
 import { Margins } from "./margins.js";
+import { Orders } from "./orders.js";
 import { PersonManagement } from "./personmanagement.js";
 import { Reader } from "./reader.js";
 import { Retirements } from "./retirements.js";
@@ -94,8 +94,8 @@ export class Apexascend extends ClientSDK {
     get accountTransfers() {
         return (this._accountTransfers ?? (this._accountTransfers = new AccountTransfers(this._options)));
     }
-    get createOrder() {
-        return (this._createOrder ?? (this._createOrder = new CreateOrder(this._options)));
+    get orders() {
+        return (this._orders ?? (this._orders = new Orders(this._options)));
     }
     get fixedIncomePricing() {
         return (this._fixedIncomePricing ?? (this._fixedIncomePricing = new FixedIncomePricing(this._options)));

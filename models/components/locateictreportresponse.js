@@ -14,6 +14,7 @@ export var LocateIctReportResponseProgram;
     LocateIctReportResponseProgram["BrokerPartner"] = "BROKER_PARTNER";
     LocateIctReportResponseProgram["DepositOnly"] = "DEPOSIT_ONLY";
     LocateIctReportResponseProgram["BankingPartner"] = "BANKING_PARTNER";
+    LocateIctReportResponseProgram["MoneyTransmitter"] = "MONEY_TRANSMITTER";
     LocateIctReportResponseProgram["WithdrawalOnly"] = "WITHDRAWAL_ONLY";
     LocateIctReportResponseProgram["DigitalPartner"] = "DIGITAL_PARTNER";
 })(LocateIctReportResponseProgram || (LocateIctReportResponseProgram = {}));

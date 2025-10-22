@@ -17,7 +17,8 @@ export type TransferScheduleSummaryAmount = {
 export declare enum Direction {
     DirectionUnspecified = "DIRECTION_UNSPECIFIED",
     Deposit = "DEPOSIT",
-    Withdrawal = "WITHDRAWAL"
+    Withdrawal = "WITHDRAWAL",
+    Journal = "JOURNAL"
 }
 /**
  * Flag indicating whether this is a deposit or withdrawal transfer
@@ -28,6 +29,8 @@ export type DirectionOpen = OpenEnum<typeof Direction>;
  */
 export declare enum TransferScheduleSummaryMechanism {
     Ach = "ACH",
+    CashJournal = "CASH_JOURNAL",
+    Check = "CHECK",
     Wire = "WIRE"
 }
 /**
@@ -206,6 +209,23 @@ export type TransferScheduleSummaryRetirementDistribution = {
     type?: TransferScheduleSummaryRetirementDistributionTypeOpen | undefined;
 };
 /**
+ * The schedule end date if there is a finite number of occurrences
+ */
+export type TransferScheduleSummaryEndDate = {
+    /**
+     * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     */
+    day?: number | undefined;
+    /**
+     * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     */
+    month?: number | undefined;
+    /**
+     * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     */
+    year?: number | undefined;
+};
+/**
  * The schedule start date
  */
 export type StartDate = {
@@ -250,6 +270,10 @@ export type TransferScheduleSummaryTimeUnitOpen = OpenEnum<typeof TransferSchedu
  * Common schedule properties
  */
 export type ScheduleProperties = {
+    /**
+     * The schedule end date if there is a finite number of occurrences
+     */
+    endDate?: TransferScheduleSummaryEndDate | null | undefined;
     /**
      * The number of occurrences (empty or 0 indicates unlimited occurrences)
      */
@@ -586,6 +610,30 @@ export declare namespace TransferScheduleSummaryRetirementDistribution$ {
 export declare function transferScheduleSummaryRetirementDistributionToJSON(transferScheduleSummaryRetirementDistribution: TransferScheduleSummaryRetirementDistribution): string;
 export declare function transferScheduleSummaryRetirementDistributionFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryRetirementDistribution, SDKValidationError>;
 /** @internal */
+export declare const TransferScheduleSummaryEndDate$inboundSchema: z.ZodType<TransferScheduleSummaryEndDate, z.ZodTypeDef, unknown>;
+/** @internal */
+export type TransferScheduleSummaryEndDate$Outbound = {
+    day?: number | undefined;
+    month?: number | undefined;
+    year?: number | undefined;
+};
+/** @internal */
+export declare const TransferScheduleSummaryEndDate$outboundSchema: z.ZodType<TransferScheduleSummaryEndDate$Outbound, z.ZodTypeDef, TransferScheduleSummaryEndDate>;
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export declare namespace TransferScheduleSummaryEndDate$ {
+    /** @deprecated use `TransferScheduleSummaryEndDate$inboundSchema` instead. */
+    const inboundSchema: z.ZodType<TransferScheduleSummaryEndDate, z.ZodTypeDef, unknown>;
+    /** @deprecated use `TransferScheduleSummaryEndDate$outboundSchema` instead. */
+    const outboundSchema: z.ZodType<TransferScheduleSummaryEndDate$Outbound, z.ZodTypeDef, TransferScheduleSummaryEndDate>;
+    /** @deprecated use `TransferScheduleSummaryEndDate$Outbound` instead. */
+    type Outbound = TransferScheduleSummaryEndDate$Outbound;
+}
+export declare function transferScheduleSummaryEndDateToJSON(transferScheduleSummaryEndDate: TransferScheduleSummaryEndDate): string;
+export declare function transferScheduleSummaryEndDateFromJSON(jsonString: string): SafeParseResult<TransferScheduleSummaryEndDate, SDKValidationError>;
+/** @internal */
 export declare const StartDate$inboundSchema: z.ZodType<StartDate, z.ZodTypeDef, unknown>;
 /** @internal */
 export type StartDate$Outbound = {
@@ -641,6 +689,7 @@ export declare namespace TransferScheduleSummaryTimeUnit$ {
 export declare const ScheduleProperties$inboundSchema: z.ZodType<ScheduleProperties, z.ZodTypeDef, unknown>;
 /** @internal */
 export type ScheduleProperties$Outbound = {
+    end_date?: TransferScheduleSummaryEndDate$Outbound | null | undefined;
     occurrences?: number | undefined;
     start_date?: StartDate$Outbound | null | undefined;
     state?: string | undefined;
