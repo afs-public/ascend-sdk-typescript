@@ -13,7 +13,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type SubmitBasketRequestCreate = {
   /**
-   * Time the basket submission request was sent by the client. This is a required field for clients that we report on behalf of, and it will be validated accordingly.
+   * Time the basket submission request was sent by the client. This is a required field for clients that we report on behalf of, and it will be validated accordingly. Timezone information will default to UTC if not provided.
    */
   clientBasketSubmitTime?: Date | null | undefined;
   /**

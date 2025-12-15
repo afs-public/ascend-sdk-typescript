@@ -20,7 +20,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `IndividualRegistration`                       | INDIVIDUAL_REGISTRATION                        |
 | `EstateRegistration`                           | ESTATE_REGISTRATION                            |
 | `TraditionalIraRegistration`                   | TRADITIONAL_IRA_REGISTRATION                   |
-| `SimpleIraRegistration`                        | SIMPLE_IRA_REGISTRATION                        |
 | `SepIraRegistration`                           | SEP_IRA_REGISTRATION                           |
 | `RothIraRegistration`                          | ROTH_IRA_REGISTRATION                          |
 | `RolloverIraRegistration`                      | ROLLOVER_IRA_REGISTRATION                      |

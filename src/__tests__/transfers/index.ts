@@ -13,6 +13,7 @@ export const wire_deposit_id = "20250218014356";
 export async function createBankRelationship(
   account_id: string,
 ): Promise<string | undefined> {
+  await timeout(5000);
   const randomNumber =
     Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000;
   const request: components.BankRelationshipCreate = {

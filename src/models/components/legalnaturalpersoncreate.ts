@@ -117,11 +117,11 @@ export type TaxIdTypeOpen = OpenEnum<typeof TaxIdType>;
  */
 export type LegalNaturalPersonCreate = {
   /**
-   * Indicates whether the person is an accredited investor
+   * Indicates whether the person is an accredited investor. By default, this is set to `false`.
    */
   accreditedInvestor?: boolean | undefined;
   /**
-   * Indicates whether the person is an adviser
+   * Indicates whether the person is an adviser. By default, this is set to `false`.
    */
   adviser?: boolean | undefined;
   /**
@@ -143,7 +143,7 @@ export type LegalNaturalPersonCreate = {
    */
   controlPersonCompanySymbols?: string | undefined;
   /**
-   * Indicates the related owner record is an employee of the clearing broker's correspondent customer.
+   * Indicates the related owner record is an employee of the clearing broker's correspondent customer. By default, this is set to `false`.
    */
   correspondentEmployee?: boolean | undefined;
   /**
@@ -193,7 +193,7 @@ export type LegalNaturalPersonCreate = {
    */
   identityVerificationResult?: IdentityVerificationResultCreate | undefined;
   /**
-   * Indicates whether the person is an institutional customer
+   * Indicates whether the person is an institutional customer. By default, this is set to `false`.
    */
   institutionalCustomer?: boolean | undefined;
   /**
@@ -241,7 +241,7 @@ export type LegalNaturalPersonCreate = {
    */
   politicallyExposedOrganization?: string | undefined;
   /**
-   * Boolean indicator whether the LNP is subject to backup withholding
+   * Boolean indicator whether the LNP is subject to backup withholding. By default, this is set to `false`.
    */
   subjectToBackupWithholding?: boolean | undefined;
   /**

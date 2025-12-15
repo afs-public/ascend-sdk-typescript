@@ -45,6 +45,22 @@ export type TrustEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
 >;
 
 /**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum TrustEnrollmentMetadataCreateMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type TrustEnrollmentMetadataCreateMoneyMarketFundSweepOpen = OpenEnum<
+  typeof TrustEnrollmentMetadataCreateMoneyMarketFundSweep
+>;
+
+/**
  * Trust account is opened on behalf of
  */
 export enum OpenedOnBehalfOf {
@@ -69,6 +85,12 @@ export type TrustEnrollmentMetadataCreate = {
    * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: TrustEnrollmentMetadataCreateFdicCashSweepOpen | undefined;
+  /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?:
+    | TrustEnrollmentMetadataCreateMoneyMarketFundSweepOpen
+    | undefined;
   /**
    * Trust account is opened on behalf of
    */
@@ -148,6 +170,42 @@ export namespace TrustEnrollmentMetadataCreateFdicCashSweep$ {
 }
 
 /** @internal */
+export const TrustEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema:
+  z.ZodType<
+    TrustEnrollmentMetadataCreateMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(TrustEnrollmentMetadataCreateMoneyMarketFundSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const TrustEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema:
+  z.ZodType<
+    TrustEnrollmentMetadataCreateMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    TrustEnrollmentMetadataCreateMoneyMarketFundSweepOpen
+  > = z.union([
+    z.nativeEnum(TrustEnrollmentMetadataCreateMoneyMarketFundSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace TrustEnrollmentMetadataCreateMoneyMarketFundSweep$ {
+  /** @deprecated use `TrustEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    TrustEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `TrustEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    TrustEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
 export const OpenedOnBehalfOf$inboundSchema: z.ZodType<
   OpenedOnBehalfOfOpen,
   z.ZodTypeDef,
@@ -190,11 +248,14 @@ export const TrustEnrollmentMetadataCreate$inboundSchema: z.ZodType<
       .optional(),
   fdic_cash_sweep: TrustEnrollmentMetadataCreateFdicCashSweep$inboundSchema
     .optional(),
+  money_market_fund_sweep:
+    TrustEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema.optional(),
   opened_on_behalf_of: OpenedOnBehalfOf$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
     "fdic_cash_sweep": "fdicCashSweep",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
     "opened_on_behalf_of": "openedOnBehalfOf",
   });
 });
@@ -203,6 +264,7 @@ export const TrustEnrollmentMetadataCreate$inboundSchema: z.ZodType<
 export type TrustEnrollmentMetadataCreate$Outbound = {
   dividend_reinvestment_plan?: string | undefined;
   fdic_cash_sweep?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
   opened_on_behalf_of: string;
 };
 
@@ -217,11 +279,14 @@ export const TrustEnrollmentMetadataCreate$outboundSchema: z.ZodType<
       .optional(),
   fdicCashSweep: TrustEnrollmentMetadataCreateFdicCashSweep$outboundSchema
     .optional(),
+  moneyMarketFundSweep:
+    TrustEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema.optional(),
   openedOnBehalfOf: OpenedOnBehalfOf$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
     fdicCashSweep: "fdic_cash_sweep",
+    moneyMarketFundSweep: "money_market_fund_sweep",
     openedOnBehalfOf: "opened_on_behalf_of",
   });
 });

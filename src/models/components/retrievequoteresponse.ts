@@ -48,6 +48,7 @@ export enum RetrieveQuoteResponseAssetType {
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
   Option = "OPTION",
+  EventContract = "EVENT_CONTRACT",
 }
 /**
  * The type of asset referenced by the security identifier

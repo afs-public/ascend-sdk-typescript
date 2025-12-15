@@ -40,6 +40,7 @@ export enum DistributionConstraintsDistributionTypeInfoType {
   NetIncomeAttributable = "NET_INCOME_ATTRIBUTABLE",
   Revocation = "REVOCATION",
   NonReportable = "NON_REPORTABLE",
+  QualifiedCharitableDistribution = "QUALIFIED_CHARITABLE_DISTRIBUTION",
 }
 /**
  * Retirement distribution type

@@ -38,4 +38,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `NetIncomeAttributable`                         | NET_INCOME_ATTRIBUTABLE                         |
 | `Revocation`                                    | REVOCATION                                      |
 | `NonReportable`                                 | NON_REPORTABLE                                  |
+| `QualifiedCharitableDistribution`               | QUALIFIED_CHARITABLE_DISTRIBUTION               |
 | -                                               | `Unrecognized<string>`                          |

@@ -6,7 +6,7 @@ import {withdrawal_account_id} from "../transfers";
 export async function create_account_transfer_id(
   account_id: string,
 ): Promise<string | undefined> {
-
+  await timeout(2000);
   const account = await sdk.accountCreation.getAccount(account_id);
   if (!account || !account.account) {
     throw new Error("Account not found or invalid response.");

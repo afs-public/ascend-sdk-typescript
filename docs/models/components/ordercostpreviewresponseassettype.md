@@ -22,4 +22,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `FixedIncome`          | FIXED_INCOME           |
 | `MutualFund`           | MUTUAL_FUND            |
 | `Option`               | OPTION                 |
+| `EventContract`        | EVENT_CONTRACT         |
 | -                      | `Unrecognized<string>` |

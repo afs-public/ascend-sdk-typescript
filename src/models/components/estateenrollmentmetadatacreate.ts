@@ -29,6 +29,22 @@ export type EstateEnrollmentMetadataCreateDividendReinvestmentPlanOpen =
   OpenEnum<typeof EstateEnrollmentMetadataCreateDividendReinvestmentPlan>;
 
 /**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum EstateEnrollmentMetadataCreateMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type EstateEnrollmentMetadataCreateMoneyMarketFundSweepOpen = OpenEnum<
+  typeof EstateEnrollmentMetadataCreateMoneyMarketFundSweep
+>;
+
+/**
  * Enrollment metadata for estate enrollments
  */
 export type EstateEnrollmentMetadataCreate = {
@@ -41,6 +57,12 @@ export type EstateEnrollmentMetadataCreate = {
    */
   dividendReinvestmentPlan?:
     | EstateEnrollmentMetadataCreateDividendReinvestmentPlanOpen
+    | undefined;
+  /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?:
+    | EstateEnrollmentMetadataCreateMoneyMarketFundSweepOpen
     | undefined;
 };
 
@@ -81,6 +103,42 @@ export namespace EstateEnrollmentMetadataCreateDividendReinvestmentPlan$ {
 }
 
 /** @internal */
+export const EstateEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema:
+  z.ZodType<
+    EstateEnrollmentMetadataCreateMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EstateEnrollmentMetadataCreateMoneyMarketFundSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EstateEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema:
+  z.ZodType<
+    EstateEnrollmentMetadataCreateMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    EstateEnrollmentMetadataCreateMoneyMarketFundSweepOpen
+  > = z.union([
+    z.nativeEnum(EstateEnrollmentMetadataCreateMoneyMarketFundSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EstateEnrollmentMetadataCreateMoneyMarketFundSweep$ {
+  /** @deprecated use `EstateEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    EstateEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `EstateEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    EstateEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
 export const EstateEnrollmentMetadataCreate$inboundSchema: z.ZodType<
   EstateEnrollmentMetadataCreate,
   z.ZodTypeDef,
@@ -90,11 +148,14 @@ export const EstateEnrollmentMetadataCreate$inboundSchema: z.ZodType<
   dividend_reinvestment_plan:
     EstateEnrollmentMetadataCreateDividendReinvestmentPlan$inboundSchema
       .optional(),
+  money_market_fund_sweep:
+    EstateEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "certificate_of_appointment_document_id":
       "certificateOfAppointmentDocumentId",
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
   });
 });
 
@@ -102,6 +163,7 @@ export const EstateEnrollmentMetadataCreate$inboundSchema: z.ZodType<
 export type EstateEnrollmentMetadataCreate$Outbound = {
   certificate_of_appointment_document_id?: string | undefined;
   dividend_reinvestment_plan?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
 };
 
 /** @internal */
@@ -114,11 +176,15 @@ export const EstateEnrollmentMetadataCreate$outboundSchema: z.ZodType<
   dividendReinvestmentPlan:
     EstateEnrollmentMetadataCreateDividendReinvestmentPlan$outboundSchema
       .optional(),
+  moneyMarketFundSweep:
+    EstateEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema
+      .optional(),
 }).transform((v) => {
   return remap$(v, {
     certificateOfAppointmentDocumentId:
       "certificate_of_appointment_document_id",
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
+    moneyMarketFundSweep: "money_market_fund_sweep",
   });
 });
 

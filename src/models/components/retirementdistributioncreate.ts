@@ -46,6 +46,7 @@ export enum RetirementDistributionCreateType {
   NetIncomeAttributable = "NET_INCOME_ATTRIBUTABLE",
   Revocation = "REVOCATION",
   NonReportable = "NON_REPORTABLE",
+  QualifiedCharitableDistribution = "QUALIFIED_CHARITABLE_DISTRIBUTION",
 }
 /**
  * The type of retirement distribution.

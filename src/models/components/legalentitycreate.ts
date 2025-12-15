@@ -232,7 +232,7 @@ export type LegalEntityCreate = {
    */
   formationDate?: DateCreate | undefined;
   /**
-   * Indicates whether the entity is an institutional customer
+   * Indicates whether the entity is an institutional customer. By default, this is set to `false`.
    */
   institutionalCustomer?: boolean | undefined;
   /**
@@ -276,7 +276,7 @@ export type LegalEntityCreate = {
    */
   revocableTrust?: boolean | undefined;
   /**
-   * Boolean indicator whether the LE is subject to backup withholding
+   * Boolean indicator whether the LE is subject to backup withholding. By default, this is set to `false`.
    */
   subjectToBackupWithholding?: boolean | undefined;
   /**

@@ -8,6 +8,7 @@ import { basketOrdersGetBasket } from "../funcs/basketOrdersGetBasket.js";
 import { basketOrdersListBasketOrders } from "../funcs/basketOrdersListBasketOrders.js";
 import { basketOrdersListCompressedOrders } from "../funcs/basketOrdersListCompressedOrders.js";
 import { basketOrdersRemoveOrders } from "../funcs/basketOrdersRemoveOrders.js";
+import { basketOrdersSetExtraReportingData } from "../funcs/basketOrdersSetExtraReportingData.js";
 import { basketOrdersSubmitBasket } from "../funcs/basketOrdersSubmitBasket.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -175,6 +176,28 @@ export class BasketOrders extends ClientSDK {
     return unwrapAsync(basketOrdersRemoveOrders(
       this,
       removeOrdersRequestCreate,
+      correspondentId,
+      basketId,
+      options,
+    ));
+  }
+
+  /**
+   * Set Extra Reporting Data
+   *
+   * @remarks
+   * Sets extra reporting data to an existing basket order. Any SetExtraReportingDataRequest must include the name of the order and the cancel_confirmed_time
+   */
+  async setExtraReportingData(
+    setExtraReportingDataRequestCreate:
+      components.SetExtraReportingDataRequestCreate,
+    correspondentId: string,
+    basketId: string,
+    options?: RequestOptions,
+  ): Promise<operations.BasketOrdersServiceSetExtraReportingDataResponse> {
+    return unwrapAsync(basketOrdersSetExtraReportingData(
+      this,
+      setExtraReportingDataRequestCreate,
       correspondentId,
       basketId,
       options,

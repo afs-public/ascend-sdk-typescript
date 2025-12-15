@@ -19,4 +19,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `TaxpayerCertificationStateUnspecified`  | TAXPAYER_CERTIFICATION_STATE_UNSPECIFIED |
 | `Certified`                              | CERTIFIED                                |
 | `Uncertified`                            | UNCERTIFIED                              |
+| `PendingCertification`                   | PENDING_CERTIFICATION                    |
 | -                                        | `Unrecognized<string>`                   |

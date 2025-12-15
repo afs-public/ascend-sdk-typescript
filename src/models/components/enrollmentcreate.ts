@@ -55,6 +55,12 @@ import {
   FPSLEnrollmentMetaDataCreate$outboundSchema,
 } from "./fpslenrollmentmetadatacreate.js";
 import {
+  FuturesEnrollmentMetadataCreate,
+  FuturesEnrollmentMetadataCreate$inboundSchema,
+  FuturesEnrollmentMetadataCreate$Outbound,
+  FuturesEnrollmentMetadataCreate$outboundSchema,
+} from "./futuresenrollmentmetadatacreate.js";
+import {
   IndividualEnrollmentMetadataCreate,
   IndividualEnrollmentMetadataCreate$inboundSchema,
   IndividualEnrollmentMetadataCreate$Outbound,
@@ -182,7 +188,6 @@ export enum EnrollmentCreateType {
   RegistrationJointCp = "REGISTRATION_JOINT_CP",
   RegistrationEstate = "REGISTRATION_ESTATE",
   RegistrationIraTraditional = "REGISTRATION_IRA_TRADITIONAL",
-  RegistrationIraSimple = "REGISTRATION_IRA_SIMPLE",
   RegistrationIraSep = "REGISTRATION_IRA_SEP",
   RegistrationIraRoth = "REGISTRATION_IRA_ROTH",
   RegistrationIraRollover = "REGISTRATION_IRA_ROLLOVER",
@@ -242,6 +247,10 @@ export type EnrollmentCreate = {
    * Percentages for FPSL Enrollment, must equal 100
    */
   fpslEnrollmentMetadata?: FPSLEnrollmentMetaDataCreate | undefined;
+  /**
+   * Enrollment metadata for the FUTURES enrollment type
+   */
+  futuresEnrollmentMetadata?: FuturesEnrollmentMetadataCreate | undefined;
   /**
    * Enrollment metadata for Individual accounts enrollment type
    */
@@ -413,6 +422,8 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     ForeignJointAccountEnrollmentMetadataCreate$inboundSchema.optional(),
   fpsl_enrollment_metadata: FPSLEnrollmentMetaDataCreate$inboundSchema
     .optional(),
+  futures_enrollment_metadata: FuturesEnrollmentMetadataCreate$inboundSchema
+    .optional(),
   individual_enrollment_metadata:
     IndividualEnrollmentMetadataCreate$inboundSchema.optional(),
   ira_beneficiary_enrollment_metadata:
@@ -459,6 +470,7 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     "foreign_joint_account_enrollment_metadata":
       "foreignJointAccountEnrollmentMetadata",
     "fpsl_enrollment_metadata": "fpslEnrollmentMetadata",
+    "futures_enrollment_metadata": "futuresEnrollmentMetadata",
     "individual_enrollment_metadata": "individualEnrollmentMetadata",
     "ira_beneficiary_enrollment_metadata": "iraBeneficiaryEnrollmentMetadata",
     "ira_rollover_enrollment_metadata": "iraRolloverEnrollmentMetadata",
@@ -507,6 +519,9 @@ export type EnrollmentCreate$Outbound = {
     | ForeignJointAccountEnrollmentMetadataCreate$Outbound
     | undefined;
   fpsl_enrollment_metadata?: FPSLEnrollmentMetaDataCreate$Outbound | undefined;
+  futures_enrollment_metadata?:
+    | FuturesEnrollmentMetadataCreate$Outbound
+    | undefined;
   individual_enrollment_metadata?:
     | IndividualEnrollmentMetadataCreate$Outbound
     | undefined;
@@ -578,6 +593,8 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     ForeignJointAccountEnrollmentMetadataCreate$outboundSchema.optional(),
   fpslEnrollmentMetadata: FPSLEnrollmentMetaDataCreate$outboundSchema
     .optional(),
+  futuresEnrollmentMetadata: FuturesEnrollmentMetadataCreate$outboundSchema
+    .optional(),
   individualEnrollmentMetadata:
     IndividualEnrollmentMetadataCreate$outboundSchema.optional(),
   iraBeneficiaryEnrollmentMetadata:
@@ -624,6 +641,7 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     foreignJointAccountEnrollmentMetadata:
       "foreign_joint_account_enrollment_metadata",
     fpslEnrollmentMetadata: "fpsl_enrollment_metadata",
+    futuresEnrollmentMetadata: "futures_enrollment_metadata",
     individualEnrollmentMetadata: "individual_enrollment_metadata",
     iraBeneficiaryEnrollmentMetadata: "ira_beneficiary_enrollment_metadata",
     iraRolloverEnrollmentMetadata: "ira_rollover_enrollment_metadata",
