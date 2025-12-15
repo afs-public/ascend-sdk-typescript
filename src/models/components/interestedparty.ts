@@ -14,6 +14,22 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
+ * Delivery method instruction for CFTC documents for a given Interested Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+ */
+export enum CftcDocumentDeliveryPreference {
+  DeliveryPreferenceUnspecified = "DELIVERY_PREFERENCE_UNSPECIFIED",
+  Digital = "DIGITAL",
+  Physical = "PHYSICAL",
+  Suppress = "SUPPRESS",
+}
+/**
+ * Delivery method instruction for CFTC documents for a given Interested Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+ */
+export type CftcDocumentDeliveryPreferenceOpen = OpenEnum<
+  typeof CftcDocumentDeliveryPreference
+>;
+
+/**
  * The object containing data for the purpose of delivery physical mailings to a party; Typically used for statements, account updates, tax documents, and other postal mailings; May also be used as an alternative identity verification address to personalAddress. Required fields within the `mailing_address` object include:
  *
  * @remarks
@@ -121,6 +137,12 @@ export type InterestedPartyTradeConfirmationDeliveryPreferenceOpen = OpenEnum<
  */
 export type InterestedParty = {
   /**
+   * Delivery method instruction for CFTC documents for a given Interested Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+   */
+  cftcDocumentDeliveryPreference?:
+    | CftcDocumentDeliveryPreferenceOpen
+    | undefined;
+  /**
    * A system-generated unique identifier for an Interested Party on an account; Used to access the record after creation
    */
   interestedPartyId?: string | undefined;
@@ -156,6 +178,38 @@ export type InterestedParty = {
     | InterestedPartyTradeConfirmationDeliveryPreferenceOpen
     | undefined;
 };
+
+/** @internal */
+export const CftcDocumentDeliveryPreference$inboundSchema: z.ZodType<
+  CftcDocumentDeliveryPreferenceOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CftcDocumentDeliveryPreference),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CftcDocumentDeliveryPreference$outboundSchema: z.ZodType<
+  CftcDocumentDeliveryPreferenceOpen,
+  z.ZodTypeDef,
+  CftcDocumentDeliveryPreferenceOpen
+> = z.union([
+  z.nativeEnum(CftcDocumentDeliveryPreference),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CftcDocumentDeliveryPreference$ {
+  /** @deprecated use `CftcDocumentDeliveryPreference$inboundSchema` instead. */
+  export const inboundSchema = CftcDocumentDeliveryPreference$inboundSchema;
+  /** @deprecated use `CftcDocumentDeliveryPreference$outboundSchema` instead. */
+  export const outboundSchema = CftcDocumentDeliveryPreference$outboundSchema;
+}
 
 /** @internal */
 export const InterestedPartyMailingAddress$inboundSchema: z.ZodType<
@@ -339,6 +393,8 @@ export const InterestedParty$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  cftc_document_delivery_preference:
+    CftcDocumentDeliveryPreference$inboundSchema.optional(),
   interested_party_id: z.string().optional(),
   mailing_address: z.nullable(
     z.lazy(() => InterestedPartyMailingAddress$inboundSchema),
@@ -351,6 +407,7 @@ export const InterestedParty$inboundSchema: z.ZodType<
     InterestedPartyTradeConfirmationDeliveryPreference$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    "cftc_document_delivery_preference": "cftcDocumentDeliveryPreference",
     "interested_party_id": "interestedPartyId",
     "mailing_address": "mailingAddress",
     "statement_delivery_preference": "statementDeliveryPreference",
@@ -361,6 +418,7 @@ export const InterestedParty$inboundSchema: z.ZodType<
 
 /** @internal */
 export type InterestedParty$Outbound = {
+  cftc_document_delivery_preference?: string | undefined;
   interested_party_id?: string | undefined;
   mailing_address?: InterestedPartyMailingAddress$Outbound | null | undefined;
   name?: string | undefined;
@@ -375,6 +433,8 @@ export const InterestedParty$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   InterestedParty
 > = z.object({
+  cftcDocumentDeliveryPreference: CftcDocumentDeliveryPreference$outboundSchema
+    .optional(),
   interestedPartyId: z.string().optional(),
   mailingAddress: z.nullable(
     z.lazy(() => InterestedPartyMailingAddress$outboundSchema),
@@ -388,6 +448,7 @@ export const InterestedParty$outboundSchema: z.ZodType<
       .optional(),
 }).transform((v) => {
   return remap$(v, {
+    cftcDocumentDeliveryPreference: "cftc_document_delivery_preference",
     interestedPartyId: "interested_party_id",
     mailingAddress: "mailing_address",
     statementDeliveryPreference: "statement_delivery_preference",

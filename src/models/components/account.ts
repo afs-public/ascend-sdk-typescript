@@ -71,6 +71,19 @@ export type AccountCatAccountHolderTypeOpen = OpenEnum<
 >;
 
 /**
+ * Indicates the CFTC (Commodity Futures Trading Commission) owner type of the account. This enum only applies to accounts regulated by the CFTC
+ */
+export enum CftcOwnerType {
+  CftcOwnerTypeUnspecified = "CFTC_OWNER_TYPE_UNSPECIFIED",
+  Customer = "CUSTOMER",
+  Proprietary = "PROPRIETARY",
+}
+/**
+ * Indicates the CFTC (Commodity Futures Trading Commission) owner type of the account. This enum only applies to accounts regulated by the CFTC
+ */
+export type CftcOwnerTypeOpen = OpenEnum<typeof CftcOwnerType>;
+
+/**
  * Indicates if the account is `DOMESTIC` or `FOREIGN`
  */
 export enum Domicile {
@@ -417,7 +430,6 @@ export enum RegistrationType {
   IndividualRegistration = "INDIVIDUAL_REGISTRATION",
   EstateRegistration = "ESTATE_REGISTRATION",
   TraditionalIraRegistration = "TRADITIONAL_IRA_REGISTRATION",
-  SimpleIraRegistration = "SIMPLE_IRA_REGISTRATION",
   SepIraRegistration = "SEP_IRA_REGISTRATION",
   RothIraRegistration = "ROTH_IRA_REGISTRATION",
   RolloverIraRegistration = "ROLLOVER_IRA_REGISTRATION",
@@ -510,7 +522,7 @@ export type AccountTaxProfile = {
     | AccountCostBasisLotDisposalMethodOpen
     | undefined;
   /**
-   * Indicates if the account is eligible to mark-to-market their securities and commodities holdings; Named after the related section of the IRS tax code
+   * Indicates if the account is eligible to mark-to-market their securities and commodities holdings; Named after the related section of the IRS tax code. By default, this is set to `false`.
    */
   section475Election?: boolean | undefined;
 };
@@ -520,7 +532,7 @@ export type AccountTaxProfile = {
  */
 export type Account = {
   /**
-   * Indicates if the issuer of a security held by the account is permitted to communicate directly with the shareholder versus through the brokerage firm; This can include sending proxy statements, annual reports, and other important information directly to the shareholder's address on file with the brokerage firm
+   * Indicates if the issuer of a security held by the account is permitted to communicate directly with the shareholder versus through the brokerage firm; This can include sending proxy statements, annual reports, and other important information directly to the shareholder's address on file with the brokerage firm. By default, this is set to `false`.
    */
   acceptsIssuerDirectCommunication?: boolean | undefined;
   /**
@@ -540,7 +552,7 @@ export type Account = {
    */
   activeRestrictions?: Array<string> | undefined;
   /**
-   * A boolean to indicate if an account is advised
+   * A boolean to indicate if an account is advised. By default, this is set to `false`.
    */
   advised?: boolean | undefined;
   /**
@@ -551,6 +563,10 @@ export type Account = {
    * The FINRA CAT classification for the Account Holder; Is set automatically based on attributes of the owners and account type
    */
   catAccountHolderType?: AccountCatAccountHolderTypeOpen | undefined;
+  /**
+   * Indicates the CFTC (Commodity Futures Trading Commission) owner type of the account. This enum only applies to accounts regulated by the CFTC
+   */
+  cftcOwnerType?: CftcOwnerTypeOpen | undefined;
   /**
    * The time the account was closed; If the account is not closed, this is null
    */
@@ -596,7 +612,7 @@ export type Account = {
    */
   investmentProfile?: InvestmentProfile | null | undefined;
   /**
-   * A boolean to indicate if an account is managed
+   * A boolean to indicate if an account is managed. By default, this is set to `false`.
    */
   managed?: boolean | undefined;
   /**
@@ -620,7 +636,7 @@ export type Account = {
    */
   parties?: Array<Party> | undefined;
   /**
-   * Indicates if the customer is a PDT; This is set if the account executes four or more day trades (buy and sell the same security intraday) within a period of five business days
+   * Indicates if the customer is a PDT; This is set if the account executes four or more day trades (buy and sell the same security intraday) within a period of five business days. By default, this is set to `false`.
    */
   patternDayTrader?: boolean | undefined;
   /**
@@ -652,7 +668,7 @@ export type Account = {
    */
   trustedContacts?: Array<TrustedContact> | undefined;
   /**
-   * A boolean to indicate if an account is a wrap brokerage account
+   * A boolean to indicate if an account is a wrap brokerage account. By default, this is set to `false`.
    */
   wrapFeeBilled?: boolean | undefined;
 };
@@ -687,6 +703,38 @@ export namespace AccountCatAccountHolderType$ {
   export const inboundSchema = AccountCatAccountHolderType$inboundSchema;
   /** @deprecated use `AccountCatAccountHolderType$outboundSchema` instead. */
   export const outboundSchema = AccountCatAccountHolderType$outboundSchema;
+}
+
+/** @internal */
+export const CftcOwnerType$inboundSchema: z.ZodType<
+  CftcOwnerTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CftcOwnerType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CftcOwnerType$outboundSchema: z.ZodType<
+  CftcOwnerTypeOpen,
+  z.ZodTypeDef,
+  CftcOwnerTypeOpen
+> = z.union([
+  z.nativeEnum(CftcOwnerType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CftcOwnerType$ {
+  /** @deprecated use `CftcOwnerType$inboundSchema` instead. */
+  export const inboundSchema = CftcOwnerType$inboundSchema;
+  /** @deprecated use `CftcOwnerType$outboundSchema` instead. */
+  export const outboundSchema = CftcOwnerType$outboundSchema;
 }
 
 /** @internal */
@@ -1515,6 +1563,7 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
     agreements: z.array(Agreement$inboundSchema).optional(),
     cat_account_holder_type: AccountCatAccountHolderType$inboundSchema
       .optional(),
+    cftc_owner_type: CftcOwnerType$inboundSchema.optional(),
     close_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -1558,6 +1607,7 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
       "account_number": "accountNumber",
       "active_restrictions": "activeRestrictions",
       "cat_account_holder_type": "catAccountHolderType",
+      "cftc_owner_type": "cftcOwnerType",
       "close_time": "closeTime",
       "correspondent_id": "correspondentId",
       "create_time": "createTime",
@@ -1588,6 +1638,7 @@ export type Account$Outbound = {
   advised?: boolean | undefined;
   agreements?: Array<Agreement$Outbound> | undefined;
   cat_account_holder_type?: string | undefined;
+  cftc_owner_type?: string | undefined;
   close_time?: string | null | undefined;
   correspondent_id?: string | undefined;
   create_time?: string | null | undefined;
@@ -1630,6 +1681,7 @@ export const Account$outboundSchema: z.ZodType<
   advised: z.boolean().optional(),
   agreements: z.array(Agreement$outboundSchema).optional(),
   catAccountHolderType: AccountCatAccountHolderType$outboundSchema.optional(),
+  cftcOwnerType: CftcOwnerType$outboundSchema.optional(),
   closeTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   correspondentId: z.string().optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
@@ -1666,6 +1718,7 @@ export const Account$outboundSchema: z.ZodType<
     accountNumber: "account_number",
     activeRestrictions: "active_restrictions",
     catAccountHolderType: "cat_account_holder_type",
+    cftcOwnerType: "cftc_owner_type",
     closeTime: "close_time",
     correspondentId: "correspondent_id",
     createTime: "create_time",

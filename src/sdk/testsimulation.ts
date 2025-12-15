@@ -7,6 +7,7 @@ import { testSimulationForceApproveAchWithdrawal } from "../funcs/testSimulation
 import { testSimulationForceApproveCashJournal } from "../funcs/testSimulationForceApproveCashJournal.js";
 import { testSimulationForceApproveIctDeposit } from "../funcs/testSimulationForceApproveIctDeposit.js";
 import { testSimulationForceApproveIctWithdrawal } from "../funcs/testSimulationForceApproveIctWithdrawal.js";
+import { testSimulationForceApproveWireDeposit } from "../funcs/testSimulationForceApproveWireDeposit.js";
 import { testSimulationForceApproveWireWithdrawal } from "../funcs/testSimulationForceApproveWireWithdrawal.js";
 import { testSimulationForceNocAchDeposit } from "../funcs/testSimulationForceNocAchDeposit.js";
 import { testSimulationForceNocAchWithdrawal } from "../funcs/testSimulationForceNocAchWithdrawal.js";
@@ -15,11 +16,13 @@ import { testSimulationForceRejectAchWithdrawal } from "../funcs/testSimulationF
 import { testSimulationForceRejectCashJournal } from "../funcs/testSimulationForceRejectCashJournal.js";
 import { testSimulationForceRejectIctDeposit } from "../funcs/testSimulationForceRejectIctDeposit.js";
 import { testSimulationForceRejectIctWithdrawal } from "../funcs/testSimulationForceRejectIctWithdrawal.js";
+import { testSimulationForceRejectWireDeposit } from "../funcs/testSimulationForceRejectWireDeposit.js";
 import { testSimulationForceRejectWireWithdrawal } from "../funcs/testSimulationForceRejectWireWithdrawal.js";
 import { testSimulationForceReturnAchDeposit } from "../funcs/testSimulationForceReturnAchDeposit.js";
 import { testSimulationForceReturnAchWithdrawal } from "../funcs/testSimulationForceReturnAchWithdrawal.js";
 import { testSimulationGetMicroDepositAmounts } from "../funcs/testSimulationGetMicroDepositAmounts.js";
 import { testSimulationSimulateCreateCheckDeposit } from "../funcs/testSimulationSimulateCreateCheckDeposit.js";
+import { testSimulationSimulateWireDeposit } from "../funcs/testSimulationSimulateWireDeposit.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -368,6 +371,70 @@ export class TestSimulation extends ClientSDK {
       forceRejectWireWithdrawalRequestCreate,
       accountId,
       wireWithdrawalId,
+      options,
+    ));
+  }
+
+  /**
+   * Simulate Wire Deposit
+   *
+   * @remarks
+   * Simulates the process of creating a wire deposit - FOR TESTING
+   */
+  async simulateWireDeposit(
+    simulateWireDepositRequestCreate:
+      components.SimulateWireDepositRequestCreate,
+    accountId: string,
+    options?: RequestOptions,
+  ): Promise<operations.WireDepositsSimulateWireDepositResponse> {
+    return unwrapAsync(testSimulationSimulateWireDeposit(
+      this,
+      simulateWireDepositRequestCreate,
+      accountId,
+      options,
+    ));
+  }
+
+  /**
+   * Force Approve Wire Deposit
+   *
+   * @remarks
+   * Simulates the process of approving a wire deposit - FOR TESTING
+   */
+  async forceApproveWireDeposit(
+    forceApproveWireDepositRequestCreate:
+      components.ForceApproveWireDepositRequestCreate,
+    accountId: string,
+    wireDepositId: string,
+    options?: RequestOptions,
+  ): Promise<operations.WireDepositsForceApproveWireDepositResponse> {
+    return unwrapAsync(testSimulationForceApproveWireDeposit(
+      this,
+      forceApproveWireDepositRequestCreate,
+      accountId,
+      wireDepositId,
+      options,
+    ));
+  }
+
+  /**
+   * Force Reject Wire Deposit
+   *
+   * @remarks
+   * Forces a rejection on an existing wire deposit pending review - FOR TESTING
+   */
+  async forceRejectWireDeposit(
+    forceRejectWireDepositRequestCreate:
+      components.ForceRejectWireDepositRequestCreate,
+    accountId: string,
+    wireDepositId: string,
+    options?: RequestOptions,
+  ): Promise<operations.WireDepositsForceRejectWireDepositResponse> {
+    return unwrapAsync(testSimulationForceRejectWireDeposit(
+      this,
+      forceRejectWireDepositRequestCreate,
+      accountId,
+      wireDepositId,
       options,
     ));
   }

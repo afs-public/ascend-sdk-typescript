@@ -73,7 +73,7 @@ export type CatAccountHolderTypeOpen = OpenEnum<typeof CatAccountHolderType>;
  */
 export type AccountRequestCreate = {
   /**
-   * Indicates if the issuer of a security held by the account is permitted to communicate directly with the shareholder versus through the brokerage firm; This can include sending proxy statements, annual reports, and other important information directly to the shareholder's address on file with the brokerage firm
+   * Indicates if the issuer of a security held by the account is permitted to communicate directly with the shareholder versus through the brokerage firm; This can include sending proxy statements, annual reports, and other important information directly to the shareholder's address on file with the brokerage firm By default, this is set to `false`.
    */
   acceptsIssuerDirectCommunication?: boolean | undefined;
   /**

@@ -40,6 +40,7 @@ export type AccountsListAccountsRequest = {
    *  `title`
    *  `state`
    *  `account_group_id`
+   *  `create_time`
    */
   orderBy?: string | undefined;
   /**
@@ -71,6 +72,7 @@ export type AccountsListAccountsRequest = {
    *  `enrollments.state`
    *  `identifiers.type`
    *  `identifiers.value`
+   *  `create_time` with format of timestamp("2025-08-13T18:31:40Z")
    */
   filter?: string | undefined;
   /**

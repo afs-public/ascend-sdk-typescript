@@ -26,7 +26,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `RegistrationJointCp`                    | REGISTRATION_JOINT_CP                    |
 | `RegistrationEstate`                     | REGISTRATION_ESTATE                      |
 | `RegistrationIraTraditional`             | REGISTRATION_IRA_TRADITIONAL             |
-| `RegistrationIraSimple`                  | REGISTRATION_IRA_SIMPLE                  |
 | `RegistrationIraSep`                     | REGISTRATION_IRA_SEP                     |
 | `RegistrationIraRoth`                    | REGISTRATION_IRA_ROTH                    |
 | `RegistrationIraRollover`                | REGISTRATION_IRA_ROLLOVER                |

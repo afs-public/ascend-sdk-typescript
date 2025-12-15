@@ -394,6 +394,7 @@ export enum LegalEntityTaxpayerCertificationState {
     "TAXPAYER_CERTIFICATION_STATE_UNSPECIFIED",
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
+  PendingCertification = "PENDING_CERTIFICATION",
 }
 /**
  * Taxpayer certification status.
@@ -564,7 +565,7 @@ export type LegalEntity = {
    */
   globalPersonId?: string | undefined;
   /**
-   * Indicates whether the entity is an institutional customer
+   * Indicates whether the entity is an institutional customer. By default, this is set to `false`.
    */
   institutionalCustomer?: boolean | undefined;
   /**

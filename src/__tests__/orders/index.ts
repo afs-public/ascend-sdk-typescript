@@ -9,6 +9,7 @@ export async function createOrder(
   account_id: string,
 ): Promise<string | undefined> {
   // Fund account
+  await timeout(2000);
   const fundingRequest: components.TransfersCreditCreate = {
     amount: {
       value: "10000.00",

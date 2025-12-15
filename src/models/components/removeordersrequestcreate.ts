@@ -7,19 +7,35 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  RemoveOrderRequestCreate,
+  RemoveOrderRequestCreate$inboundSchema,
+  RemoveOrderRequestCreate$Outbound,
+  RemoveOrderRequestCreate$outboundSchema,
+} from "./removeorderrequestcreate.js";
 
 /**
  * The message to remove a list of basket orders by client order ID.
  */
 export type RemoveOrdersRequestCreate = {
   /**
-   * The client order IDs of the basket orders to remove. A maximum of 500 orders can be removed from a basket at a time.
+   * Deprecated: Use `requests` instead.
+   *
+   * @remarks
+   *
+   *  The client order IDs of the basket orders to remove. A maximum of 500 orders can be removed from a basket at a time.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  clientOrderIds: Array<string>;
+  clientOrderIds?: Array<string> | undefined;
   /**
    * Format: correspondents/{correspondent}/baskets/{basket}
    */
   name: string;
+  /**
+   * Per-order removal requests with optional CAT reporting data. A maximum of 500 orders can be removed from a basket at a time.
+   */
+  requests?: Array<RemoveOrderRequestCreate> | undefined;
 };
 
 /** @internal */
@@ -28,8 +44,9 @@ export const RemoveOrdersRequestCreate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  client_order_ids: z.array(z.string()),
+  client_order_ids: z.array(z.string()).optional(),
   name: z.string(),
+  requests: z.array(RemoveOrderRequestCreate$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "client_order_ids": "clientOrderIds",
@@ -38,8 +55,9 @@ export const RemoveOrdersRequestCreate$inboundSchema: z.ZodType<
 
 /** @internal */
 export type RemoveOrdersRequestCreate$Outbound = {
-  client_order_ids: Array<string>;
+  client_order_ids?: Array<string> | undefined;
   name: string;
+  requests?: Array<RemoveOrderRequestCreate$Outbound> | undefined;
 };
 
 /** @internal */
@@ -48,8 +66,9 @@ export const RemoveOrdersRequestCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RemoveOrdersRequestCreate
 > = z.object({
-  clientOrderIds: z.array(z.string()),
+  clientOrderIds: z.array(z.string()).optional(),
   name: z.string(),
+  requests: z.array(RemoveOrderRequestCreate$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     clientOrderIds: "client_order_ids",

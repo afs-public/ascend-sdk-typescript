@@ -6,7 +6,7 @@
 import { SpecialReportingInstructions } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: SpecialReportingInstructions =
-  SpecialReportingInstructions.ActingAsPrincipal;
+  SpecialReportingInstructions.AveragePrice;
 ```
 
 ## Values
@@ -40,4 +40,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `SuppressTraceReporting`                   | SUPPRESS_TRACE_REPORTING                   |
 | `WhenDistributed`                          | WHEN_DISTRIBUTED                           |
 | `RoundUp`                                  | ROUND_UP                                   |
+| `CatParentAlgo`                            | CAT_PARENT_ALGO                            |
+| `CatParentGtc`                             | CAT_PARENT_GTC                             |
 | -                                          | `Unrecognized<string>`                     |

@@ -37,6 +37,7 @@ export type AccountsListLegalNaturalPersonsRequest = {
    *  `tax_id`
    *  `tax_id_type`
    *  `investigation_id`
+   *  `foreign_identification.identification_number`
    */
   filter?: string | undefined;
 };

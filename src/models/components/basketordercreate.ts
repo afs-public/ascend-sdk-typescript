@@ -18,6 +18,12 @@ import {
   DecimalCreate$Outbound,
   DecimalCreate$outboundSchema,
 } from "./decimalcreate.js";
+import {
+  ExtraReportingDataCreate,
+  ExtraReportingDataCreate$inboundSchema,
+  ExtraReportingDataCreate$Outbound,
+  ExtraReportingDataCreate$outboundSchema,
+} from "./extrareportingdatacreate.js";
 
 /**
  * The type of the asset in this order
@@ -118,13 +124,17 @@ export type BasketOrderCreate = {
    */
   clientOrderId: string;
   /**
-   * Time the order request was received by the client. Must be in the past.
+   * Time the order request was received by the client. Must be in the past. Timezone will default to UTC if not provided.
    */
   clientOrderReceivedTime?: Date | null | undefined;
   /**
    * Defaults to "USD". Only "USD" is supported. Full list of currency codes is defined at: https://en.wikipedia.org/wiki/ISO_4217
    */
   currencyCode?: string | undefined;
+  /**
+   * Any extra reporting data provided by the client for an order
+   */
+  extraReportingData?: ExtraReportingDataCreate | undefined;
   /**
    * Identifier of the asset (of the type specified in `identifier_type`).
    */
@@ -392,6 +402,7 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   currency_code: z.string().optional(),
+  extra_reporting_data: ExtraReportingDataCreate$inboundSchema.optional(),
   identifier: z.string(),
   identifier_type: BasketOrderCreateIdentifierType$inboundSchema,
   max_sell_quantity: DecimalCreate$inboundSchema.optional(),
@@ -410,6 +421,7 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
     "client_order_id": "clientOrderId",
     "client_order_received_time": "clientOrderReceivedTime",
     "currency_code": "currencyCode",
+    "extra_reporting_data": "extraReportingData",
     "identifier_type": "identifierType",
     "max_sell_quantity": "maxSellQuantity",
     "notional_value": "notionalValue",
@@ -426,6 +438,7 @@ export type BasketOrderCreate$Outbound = {
   client_order_id: string;
   client_order_received_time?: string | null | undefined;
   currency_code?: string | undefined;
+  extra_reporting_data?: ExtraReportingDataCreate$Outbound | undefined;
   identifier: string;
   identifier_type: string;
   max_sell_quantity?: DecimalCreate$Outbound | undefined;
@@ -449,6 +462,7 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
   clientOrderReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   currencyCode: z.string().optional(),
+  extraReportingData: ExtraReportingDataCreate$outboundSchema.optional(),
   identifier: z.string(),
   identifierType: BasketOrderCreateIdentifierType$outboundSchema,
   maxSellQuantity: DecimalCreate$outboundSchema.optional(),
@@ -467,6 +481,7 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
     clientOrderId: "client_order_id",
     clientOrderReceivedTime: "client_order_received_time",
     currencyCode: "currency_code",
+    extraReportingData: "extra_reporting_data",
     identifierType: "identifier_type",
     maxSellQuantity: "max_sell_quantity",
     notionalValue: "notional_value",

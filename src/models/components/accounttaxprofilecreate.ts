@@ -49,7 +49,7 @@ export type AccountTaxProfileCreate = {
    */
   costBasisLotDisposalMethod?: CostBasisLotDisposalMethodOpen | undefined;
   /**
-   * Indicates if the account is eligible to mark-to-market their securities and commodities holdings; Named after the related section of the IRS tax code
+   * Indicates if the account is eligible to mark-to-market their securities and commodities holdings; Named after the related section of the IRS tax code. By default, this is set to `false`.
    */
   section475Election?: boolean | undefined;
 };

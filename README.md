@@ -390,6 +390,7 @@ const sdk = new Apexascend({ httpClient });
 * [listBasketOrders](docs/sdks/basketorders/README.md#listbasketorders) - List Basket Orders
 * [listCompressedOrders](docs/sdks/basketorders/README.md#listcompressedorders) - List Compressed Orders
 * [removeOrders](docs/sdks/basketorders/README.md#removeorders) - Remove Basket Orders
+* [setExtraReportingData](docs/sdks/basketorders/README.md#setextrareportingdata) - Set Extra Reporting Data
 
 ### [cashBalances](docs/sdks/cashbalances/README.md)
 
@@ -447,6 +448,8 @@ const sdk = new Apexascend({ httpClient });
 * [linkDocuments](docs/sdks/investigations/README.md#linkdocuments) - Link Documents
 * [getWatchlistItem](docs/sdks/investigations/README.md#getwatchlistitem) - Get Watchlist Item
 * [getCustomerIdentification](docs/sdks/investigations/README.md#getcustomeridentification) - Get Identity Verification
+* [createIdentityLookup](docs/sdks/investigations/README.md#createidentitylookup) - Create Identity Lookup
+* [verifyIdentityLookup](docs/sdks/investigations/README.md#verifyidentitylookup) - Verify Identity Lookup
 
 ### [investorDocs](docs/sdks/investordocs/README.md)
 
@@ -555,6 +558,9 @@ const sdk = new Apexascend({ httpClient });
 * [forceRejectIctWithdrawal](docs/sdks/testsimulation/README.md#forcerejectictwithdrawal) - Force Reject ICT Withdrawal
 * [forceApproveWireWithdrawal](docs/sdks/testsimulation/README.md#forceapprovewirewithdrawal) - Force Approve Wire Withdrawal
 * [forceRejectWireWithdrawal](docs/sdks/testsimulation/README.md#forcerejectwirewithdrawal) - Force Reject Wire Withdrawal
+* [simulateWireDeposit](docs/sdks/testsimulation/README.md#simulatewiredeposit) - Simulate Wire Deposit
+* [forceApproveWireDeposit](docs/sdks/testsimulation/README.md#forceapprovewiredeposit) - Force Approve Wire Deposit
+* [forceRejectWireDeposit](docs/sdks/testsimulation/README.md#forcerejectwiredeposit) - Force Reject Wire Deposit
 * [forceApproveCashJournal](docs/sdks/testsimulation/README.md#forceapprovecashjournal) - Force Approve Cash Journal
 * [forceRejectCashJournal](docs/sdks/testsimulation/README.md#forcerejectcashjournal) - Force Reject Cash Journal
 

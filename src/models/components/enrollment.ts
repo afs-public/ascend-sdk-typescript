@@ -318,6 +318,21 @@ export type EnrollmentCorporationEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
 >;
 
 /**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweepOpen =
+  OpenEnum<typeof EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep>;
+
+/**
  * Metadata for the REGISTRATION_CORPORATION type
  */
 export type CorporationEnrollmentMetadata = {
@@ -339,6 +354,12 @@ export type CorporationEnrollmentMetadata = {
    */
   fdicCashSweep?:
     | EnrollmentCorporationEnrollmentMetadataFdicCashSweepOpen
+    | undefined;
+  /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?:
+    | EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweepOpen
     | undefined;
 };
 
@@ -404,6 +425,22 @@ export type EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlanOpen =
   OpenEnum<typeof EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan>;
 
 /**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum EnrollmentMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type EnrollmentMoneyMarketFundSweepOpen = OpenEnum<
+  typeof EnrollmentMoneyMarketFundSweep
+>;
+
+/**
  * Metadata for the REGISTRATION_ESTATE enrollment type
  */
 export type EstateEnrollmentMetadata = {
@@ -417,6 +454,10 @@ export type EstateEnrollmentMetadata = {
   dividendReinvestmentPlan?:
     | EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlanOpen
     | undefined;
+  /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?: EnrollmentMoneyMarketFundSweepOpen | undefined;
 };
 
 /**
@@ -978,6 +1019,70 @@ export type FpslEnrollmentMetadata = {
    * Introducing Broker Percentage for FPSL Enrollment.
    */
   introducingBrokerPercentage?: number | undefined;
+};
+
+/**
+ * The primary investment objective for the futures account
+ */
+export enum EnrollmentFuturesInvestmentObjective {
+  FuturesInvestmentObjectiveUnspecified =
+    "FUTURES_INVESTMENT_OBJECTIVE_UNSPECIFIED",
+  Speculation = "SPECULATION",
+  Hedging = "HEDGING",
+}
+/**
+ * The primary investment objective for the futures account
+ */
+export type EnrollmentFuturesInvestmentObjectiveOpen = OpenEnum<
+  typeof EnrollmentFuturesInvestmentObjective
+>;
+
+/**
+ * Metadata for the REGISTRATION_FUTURES enrollment type
+ */
+export type FuturesEnrollmentMetadata = {
+  /**
+   * Indicates whether the account is registered with the CFTC NFA
+   */
+  ctfcNfaRegistered?: boolean | undefined;
+  /**
+   * Indicates whether the account owner is a member of any exchanges
+   */
+  exchangeMember?: boolean | undefined;
+  /**
+   * Indicates whether the futures account is owned or controlled by a FCM
+   */
+  fcmOwnedOrControlled?: boolean | undefined;
+  /**
+   * Indicates whether the funds in the futures account are owned by the account owner
+   */
+  fundsOwnedByAccountOwner?: boolean | undefined;
+  /**
+   * Indicates whether the account owner has prior experience trading futures
+   */
+  futuresExperience?: boolean | undefined;
+  /**
+   * The primary investment objective for the futures account
+   */
+  futuresInvestmentObjective?:
+    | EnrollmentFuturesInvestmentObjectiveOpen
+    | undefined;
+  /**
+   * Indicates whether the account will trade investment retired funds
+   */
+  investmentRetiredFunds?: boolean | undefined;
+  /**
+   * Indicates whether the account owner has experience with various trading options and strategies
+   */
+  optionsExperience?: boolean | undefined;
+  /**
+   * Indicates whether the account owner understands the risks associated with trading futures
+   */
+  understandFuturesRisks?: boolean | undefined;
+  /**
+   * Indicates whether the account owner understands that losses can exceed deposited funds
+   */
+  understandLossBeyondFunds?: boolean | undefined;
 };
 
 /**
@@ -1978,6 +2083,22 @@ export type EnrollmentLlcEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
 >;
 
 /**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweepOpen = OpenEnum<
+  typeof EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep
+>;
+
+/**
  * Metadata for the REGISTRATION_LLC type
  */
 export type LlcEnrollmentMetadata = {
@@ -1998,6 +2119,12 @@ export type LlcEnrollmentMetadata = {
    * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: EnrollmentLlcEnrollmentMetadataFdicCashSweepOpen | undefined;
+  /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?:
+    | EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweepOpen
+    | undefined;
 };
 
 /**
@@ -2269,6 +2396,21 @@ export type EnrollmentTrustEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
 >;
 
 /**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweepOpen =
+  OpenEnum<typeof EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep>;
+
+/**
  * Trust account is opened on behalf of
  */
 export enum EnrollmentOpenedOnBehalfOf {
@@ -2301,6 +2443,12 @@ export type TrustEnrollmentMetadata = {
     | EnrollmentTrustEnrollmentMetadataFdicCashSweepOpen
     | undefined;
   /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?:
+    | EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweepOpen
+    | undefined;
+  /**
    * Trust account is opened on behalf of
    */
   openedOnBehalfOf?: EnrollmentOpenedOnBehalfOfOpen | undefined;
@@ -2320,7 +2468,6 @@ export enum EnrollmentType1 {
   RegistrationJointCp = "REGISTRATION_JOINT_CP",
   RegistrationEstate = "REGISTRATION_ESTATE",
   RegistrationIraTraditional = "REGISTRATION_IRA_TRADITIONAL",
-  RegistrationIraSimple = "REGISTRATION_IRA_SIMPLE",
   RegistrationIraSep = "REGISTRATION_IRA_SEP",
   RegistrationIraRoth = "REGISTRATION_IRA_ROTH",
   RegistrationIraRollover = "REGISTRATION_IRA_ROLLOVER",
@@ -2412,6 +2559,10 @@ export type Enrollment = {
    * Metadata for the FULLY_PAID_STOCK_LENDING enrollment type
    */
   fpslEnrollmentMetadata?: FpslEnrollmentMetadata | null | undefined;
+  /**
+   * Metadata for the REGISTRATION_FUTURES enrollment type
+   */
+  futuresEnrollmentMetadata?: FuturesEnrollmentMetadata | null | undefined;
   /**
    * Metadata for the INDIVIDUAL enrollment type
    */
@@ -3548,6 +3699,42 @@ export namespace EnrollmentCorporationEnrollmentMetadataFdicCashSweep$ {
 }
 
 /** @internal */
+export const EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$inboundSchema:
+  z.ZodType<
+    EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$outboundSchema:
+  z.ZodType<
+    EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweepOpen
+  > = z.union([
+    z.nativeEnum(EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$ {
+  /** @deprecated use `EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
 export const CorporationEnrollmentMetadata$inboundSchema: z.ZodType<
   CorporationEnrollmentMetadata,
   z.ZodTypeDef,
@@ -3562,11 +3749,15 @@ export const CorporationEnrollmentMetadata$inboundSchema: z.ZodType<
   fdic_cash_sweep:
     EnrollmentCorporationEnrollmentMetadataFdicCashSweep$inboundSchema
       .optional(),
+  money_market_fund_sweep:
+    EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$inboundSchema
+      .optional(),
 }).transform((v) => {
   return remap$(v, {
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
     "edd_account_enrollment_metadata": "eddAccountEnrollmentMetadata",
     "fdic_cash_sweep": "fdicCashSweep",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
   });
 });
 
@@ -3578,6 +3769,7 @@ export type CorporationEnrollmentMetadata$Outbound = {
     | null
     | undefined;
   fdic_cash_sweep?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
 };
 
 /** @internal */
@@ -3595,11 +3787,15 @@ export const CorporationEnrollmentMetadata$outboundSchema: z.ZodType<
   fdicCashSweep:
     EnrollmentCorporationEnrollmentMetadataFdicCashSweep$outboundSchema
       .optional(),
+  moneyMarketFundSweep:
+    EnrollmentCorporationEnrollmentMetadataMoneyMarketFundSweep$outboundSchema
+      .optional(),
 }).transform((v) => {
   return remap$(v, {
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
     eddAccountEnrollmentMetadata: "edd_account_enrollment_metadata",
     fdicCashSweep: "fdic_cash_sweep",
+    moneyMarketFundSweep: "money_market_fund_sweep",
   });
 });
 
@@ -3809,6 +4005,38 @@ export namespace EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan$ {
 }
 
 /** @internal */
+export const EnrollmentMoneyMarketFundSweep$inboundSchema: z.ZodType<
+  EnrollmentMoneyMarketFundSweepOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(EnrollmentMoneyMarketFundSweep),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const EnrollmentMoneyMarketFundSweep$outboundSchema: z.ZodType<
+  EnrollmentMoneyMarketFundSweepOpen,
+  z.ZodTypeDef,
+  EnrollmentMoneyMarketFundSweepOpen
+> = z.union([
+  z.nativeEnum(EnrollmentMoneyMarketFundSweep),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentMoneyMarketFundSweep$ {
+  /** @deprecated use `EnrollmentMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema = EnrollmentMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `EnrollmentMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema = EnrollmentMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
 export const EstateEnrollmentMetadata$inboundSchema: z.ZodType<
   EstateEnrollmentMetadata,
   z.ZodTypeDef,
@@ -3818,11 +4046,14 @@ export const EstateEnrollmentMetadata$inboundSchema: z.ZodType<
   dividend_reinvestment_plan:
     EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan$inboundSchema
       .optional(),
+  money_market_fund_sweep: EnrollmentMoneyMarketFundSweep$inboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "certificate_of_appointment_document_id":
       "certificateOfAppointmentDocumentId",
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
   });
 });
 
@@ -3830,6 +4061,7 @@ export const EstateEnrollmentMetadata$inboundSchema: z.ZodType<
 export type EstateEnrollmentMetadata$Outbound = {
   certificate_of_appointment_document_id?: string | undefined;
   dividend_reinvestment_plan?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
 };
 
 /** @internal */
@@ -3842,11 +4074,14 @@ export const EstateEnrollmentMetadata$outboundSchema: z.ZodType<
   dividendReinvestmentPlan:
     EnrollmentEstateEnrollmentMetadataDividendReinvestmentPlan$outboundSchema
       .optional(),
+  moneyMarketFundSweep: EnrollmentMoneyMarketFundSweep$outboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     certificateOfAppointmentDocumentId:
       "certificate_of_appointment_document_id",
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
+    moneyMarketFundSweep: "money_market_fund_sweep",
   });
 });
 
@@ -6145,6 +6380,149 @@ export function fpslEnrollmentMetadataFromJSON(
     jsonString,
     (x) => FpslEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'FpslEnrollmentMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentFuturesInvestmentObjective$inboundSchema: z.ZodType<
+  EnrollmentFuturesInvestmentObjectiveOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(EnrollmentFuturesInvestmentObjective),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const EnrollmentFuturesInvestmentObjective$outboundSchema: z.ZodType<
+  EnrollmentFuturesInvestmentObjectiveOpen,
+  z.ZodTypeDef,
+  EnrollmentFuturesInvestmentObjectiveOpen
+> = z.union([
+  z.nativeEnum(EnrollmentFuturesInvestmentObjective),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentFuturesInvestmentObjective$ {
+  /** @deprecated use `EnrollmentFuturesInvestmentObjective$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentFuturesInvestmentObjective$inboundSchema;
+  /** @deprecated use `EnrollmentFuturesInvestmentObjective$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentFuturesInvestmentObjective$outboundSchema;
+}
+
+/** @internal */
+export const FuturesEnrollmentMetadata$inboundSchema: z.ZodType<
+  FuturesEnrollmentMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ctfc_nfa_registered: z.boolean().optional(),
+  exchange_member: z.boolean().optional(),
+  fcm_owned_or_controlled: z.boolean().optional(),
+  funds_owned_by_account_owner: z.boolean().optional(),
+  futures_experience: z.boolean().optional(),
+  futures_investment_objective:
+    EnrollmentFuturesInvestmentObjective$inboundSchema.optional(),
+  investment_retired_funds: z.boolean().optional(),
+  options_experience: z.boolean().optional(),
+  understand_futures_risks: z.boolean().optional(),
+  understand_loss_beyond_funds: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "ctfc_nfa_registered": "ctfcNfaRegistered",
+    "exchange_member": "exchangeMember",
+    "fcm_owned_or_controlled": "fcmOwnedOrControlled",
+    "funds_owned_by_account_owner": "fundsOwnedByAccountOwner",
+    "futures_experience": "futuresExperience",
+    "futures_investment_objective": "futuresInvestmentObjective",
+    "investment_retired_funds": "investmentRetiredFunds",
+    "options_experience": "optionsExperience",
+    "understand_futures_risks": "understandFuturesRisks",
+    "understand_loss_beyond_funds": "understandLossBeyondFunds",
+  });
+});
+
+/** @internal */
+export type FuturesEnrollmentMetadata$Outbound = {
+  ctfc_nfa_registered?: boolean | undefined;
+  exchange_member?: boolean | undefined;
+  fcm_owned_or_controlled?: boolean | undefined;
+  funds_owned_by_account_owner?: boolean | undefined;
+  futures_experience?: boolean | undefined;
+  futures_investment_objective?: string | undefined;
+  investment_retired_funds?: boolean | undefined;
+  options_experience?: boolean | undefined;
+  understand_futures_risks?: boolean | undefined;
+  understand_loss_beyond_funds?: boolean | undefined;
+};
+
+/** @internal */
+export const FuturesEnrollmentMetadata$outboundSchema: z.ZodType<
+  FuturesEnrollmentMetadata$Outbound,
+  z.ZodTypeDef,
+  FuturesEnrollmentMetadata
+> = z.object({
+  ctfcNfaRegistered: z.boolean().optional(),
+  exchangeMember: z.boolean().optional(),
+  fcmOwnedOrControlled: z.boolean().optional(),
+  fundsOwnedByAccountOwner: z.boolean().optional(),
+  futuresExperience: z.boolean().optional(),
+  futuresInvestmentObjective:
+    EnrollmentFuturesInvestmentObjective$outboundSchema.optional(),
+  investmentRetiredFunds: z.boolean().optional(),
+  optionsExperience: z.boolean().optional(),
+  understandFuturesRisks: z.boolean().optional(),
+  understandLossBeyondFunds: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    ctfcNfaRegistered: "ctfc_nfa_registered",
+    exchangeMember: "exchange_member",
+    fcmOwnedOrControlled: "fcm_owned_or_controlled",
+    fundsOwnedByAccountOwner: "funds_owned_by_account_owner",
+    futuresExperience: "futures_experience",
+    futuresInvestmentObjective: "futures_investment_objective",
+    investmentRetiredFunds: "investment_retired_funds",
+    optionsExperience: "options_experience",
+    understandFuturesRisks: "understand_futures_risks",
+    understandLossBeyondFunds: "understand_loss_beyond_funds",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace FuturesEnrollmentMetadata$ {
+  /** @deprecated use `FuturesEnrollmentMetadata$inboundSchema` instead. */
+  export const inboundSchema = FuturesEnrollmentMetadata$inboundSchema;
+  /** @deprecated use `FuturesEnrollmentMetadata$outboundSchema` instead. */
+  export const outboundSchema = FuturesEnrollmentMetadata$outboundSchema;
+  /** @deprecated use `FuturesEnrollmentMetadata$Outbound` instead. */
+  export type Outbound = FuturesEnrollmentMetadata$Outbound;
+}
+
+export function futuresEnrollmentMetadataToJSON(
+  futuresEnrollmentMetadata: FuturesEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    FuturesEnrollmentMetadata$outboundSchema.parse(futuresEnrollmentMetadata),
+  );
+}
+
+export function futuresEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<FuturesEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FuturesEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FuturesEnrollmentMetadata' from JSON`,
   );
 }
 
@@ -9204,6 +9582,42 @@ export namespace EnrollmentLlcEnrollmentMetadataFdicCashSweep$ {
 }
 
 /** @internal */
+export const EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$inboundSchema:
+  z.ZodType<
+    EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$outboundSchema:
+  z.ZodType<
+    EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweepOpen
+  > = z.union([
+    z.nativeEnum(EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$ {
+  /** @deprecated use `EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
 export const LlcEnrollmentMetadata$inboundSchema: z.ZodType<
   LlcEnrollmentMetadata,
   z.ZodTypeDef,
@@ -9217,11 +9631,15 @@ export const LlcEnrollmentMetadata$inboundSchema: z.ZodType<
   ).optional(),
   fdic_cash_sweep: EnrollmentLlcEnrollmentMetadataFdicCashSweep$inboundSchema
     .optional(),
+  money_market_fund_sweep:
+    EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$inboundSchema
+      .optional(),
 }).transform((v) => {
   return remap$(v, {
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
     "edd_account_enrollment_metadata": "eddAccountEnrollmentMetadata",
     "fdic_cash_sweep": "fdicCashSweep",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
   });
 });
 
@@ -9233,6 +9651,7 @@ export type LlcEnrollmentMetadata$Outbound = {
     | null
     | undefined;
   fdic_cash_sweep?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
 };
 
 /** @internal */
@@ -9249,11 +9668,15 @@ export const LlcEnrollmentMetadata$outboundSchema: z.ZodType<
   ).optional(),
   fdicCashSweep: EnrollmentLlcEnrollmentMetadataFdicCashSweep$outboundSchema
     .optional(),
+  moneyMarketFundSweep:
+    EnrollmentLlcEnrollmentMetadataMoneyMarketFundSweep$outboundSchema
+      .optional(),
 }).transform((v) => {
   return remap$(v, {
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
     eddAccountEnrollmentMetadata: "edd_account_enrollment_metadata",
     fdicCashSweep: "fdic_cash_sweep",
+    moneyMarketFundSweep: "money_market_fund_sweep",
   });
 });
 
@@ -9865,6 +10288,42 @@ export namespace EnrollmentTrustEnrollmentMetadataFdicCashSweep$ {
 }
 
 /** @internal */
+export const EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$inboundSchema:
+  z.ZodType<
+    EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$outboundSchema:
+  z.ZodType<
+    EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweepOpen
+  > = z.union([
+    z.nativeEnum(EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$ {
+  /** @deprecated use `EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
 export const EnrollmentOpenedOnBehalfOf$inboundSchema: z.ZodType<
   EnrollmentOpenedOnBehalfOfOpen,
   z.ZodTypeDef,
@@ -9907,11 +10366,15 @@ export const TrustEnrollmentMetadata$inboundSchema: z.ZodType<
       .optional(),
   fdic_cash_sweep: EnrollmentTrustEnrollmentMetadataFdicCashSweep$inboundSchema
     .optional(),
+  money_market_fund_sweep:
+    EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$inboundSchema
+      .optional(),
   opened_on_behalf_of: EnrollmentOpenedOnBehalfOf$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
     "fdic_cash_sweep": "fdicCashSweep",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
     "opened_on_behalf_of": "openedOnBehalfOf",
   });
 });
@@ -9920,6 +10383,7 @@ export const TrustEnrollmentMetadata$inboundSchema: z.ZodType<
 export type TrustEnrollmentMetadata$Outbound = {
   dividend_reinvestment_plan?: string | undefined;
   fdic_cash_sweep?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
   opened_on_behalf_of?: string | undefined;
 };
 
@@ -9934,11 +10398,15 @@ export const TrustEnrollmentMetadata$outboundSchema: z.ZodType<
       .optional(),
   fdicCashSweep: EnrollmentTrustEnrollmentMetadataFdicCashSweep$outboundSchema
     .optional(),
+  moneyMarketFundSweep:
+    EnrollmentTrustEnrollmentMetadataMoneyMarketFundSweep$outboundSchema
+      .optional(),
   openedOnBehalfOf: EnrollmentOpenedOnBehalfOf$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
     fdicCashSweep: "fdic_cash_sweep",
+    moneyMarketFundSweep: "money_market_fund_sweep",
     openedOnBehalfOf: "opened_on_behalf_of",
   });
 });
@@ -10111,6 +10579,9 @@ export const Enrollment$inboundSchema: z.ZodType<
   fpsl_enrollment_metadata: z.nullable(
     z.lazy(() => FpslEnrollmentMetadata$inboundSchema),
   ).optional(),
+  futures_enrollment_metadata: z.nullable(
+    z.lazy(() => FuturesEnrollmentMetadata$inboundSchema),
+  ).optional(),
   individual_enrollment_metadata: z.nullable(
     z.lazy(() => IndividualEnrollmentMetadata$inboundSchema),
   ).optional(),
@@ -10180,6 +10651,7 @@ export const Enrollment$inboundSchema: z.ZodType<
     "foreign_joint_account_enrollment_metadata":
       "foreignJointAccountEnrollmentMetadata",
     "fpsl_enrollment_metadata": "fpslEnrollmentMetadata",
+    "futures_enrollment_metadata": "futuresEnrollmentMetadata",
     "individual_enrollment_metadata": "individualEnrollmentMetadata",
     "ira_beneficiary_enrollment_metadata": "iraBeneficiaryEnrollmentMetadata",
     "ira_rollover_enrollment_metadata": "iraRolloverEnrollmentMetadata",
@@ -10237,6 +10709,10 @@ export type Enrollment$Outbound = {
     | null
     | undefined;
   fpsl_enrollment_metadata?: FpslEnrollmentMetadata$Outbound | null | undefined;
+  futures_enrollment_metadata?:
+    | FuturesEnrollmentMetadata$Outbound
+    | null
+    | undefined;
   individual_enrollment_metadata?:
     | IndividualEnrollmentMetadata$Outbound
     | null
@@ -10336,6 +10812,9 @@ export const Enrollment$outboundSchema: z.ZodType<
   fpslEnrollmentMetadata: z.nullable(
     z.lazy(() => FpslEnrollmentMetadata$outboundSchema),
   ).optional(),
+  futuresEnrollmentMetadata: z.nullable(
+    z.lazy(() => FuturesEnrollmentMetadata$outboundSchema),
+  ).optional(),
   individualEnrollmentMetadata: z.nullable(
     z.lazy(() => IndividualEnrollmentMetadata$outboundSchema),
   ).optional(),
@@ -10406,6 +10885,7 @@ export const Enrollment$outboundSchema: z.ZodType<
     foreignJointAccountEnrollmentMetadata:
       "foreign_joint_account_enrollment_metadata",
     fpslEnrollmentMetadata: "fpsl_enrollment_metadata",
+    futuresEnrollmentMetadata: "futures_enrollment_metadata",
     individualEnrollmentMetadata: "individual_enrollment_metadata",
     iraBeneficiaryEnrollmentMetadata: "ira_beneficiary_enrollment_metadata",
     iraRolloverEnrollmentMetadata: "ira_rollover_enrollment_metadata",

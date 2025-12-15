@@ -51,6 +51,22 @@ export type LLCEnrollmentMetadataCreateFdicCashSweepOpen = OpenEnum<
   typeof LLCEnrollmentMetadataCreateFdicCashSweep
 >;
 
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum LLCEnrollmentMetadataCreateMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type LLCEnrollmentMetadataCreateMoneyMarketFundSweepOpen = OpenEnum<
+  typeof LLCEnrollmentMetadataCreateMoneyMarketFundSweep
+>;
+
 export type LLCEnrollmentMetadataCreate = {
   /**
    * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
@@ -66,6 +82,12 @@ export type LLCEnrollmentMetadataCreate = {
    * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
    */
   fdicCashSweep?: LLCEnrollmentMetadataCreateFdicCashSweepOpen | undefined;
+  /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?:
+    | LLCEnrollmentMetadataCreateMoneyMarketFundSweepOpen
+    | undefined;
 };
 
 /** @internal */
@@ -139,6 +161,42 @@ export namespace LLCEnrollmentMetadataCreateFdicCashSweep$ {
 }
 
 /** @internal */
+export const LLCEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema:
+  z.ZodType<
+    LLCEnrollmentMetadataCreateMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(LLCEnrollmentMetadataCreateMoneyMarketFundSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const LLCEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema:
+  z.ZodType<
+    LLCEnrollmentMetadataCreateMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    LLCEnrollmentMetadataCreateMoneyMarketFundSweepOpen
+  > = z.union([
+    z.nativeEnum(LLCEnrollmentMetadataCreateMoneyMarketFundSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LLCEnrollmentMetadataCreateMoneyMarketFundSweep$ {
+  /** @deprecated use `LLCEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    LLCEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `LLCEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    LLCEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
 export const LLCEnrollmentMetadataCreate$inboundSchema: z.ZodType<
   LLCEnrollmentMetadataCreate,
   z.ZodTypeDef,
@@ -151,11 +209,14 @@ export const LLCEnrollmentMetadataCreate$inboundSchema: z.ZodType<
     EddAccountEnrollmentMetadataCreate$inboundSchema.optional(),
   fdic_cash_sweep: LLCEnrollmentMetadataCreateFdicCashSweep$inboundSchema
     .optional(),
+  money_market_fund_sweep:
+    LLCEnrollmentMetadataCreateMoneyMarketFundSweep$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
     "edd_account_enrollment_metadata": "eddAccountEnrollmentMetadata",
     "fdic_cash_sweep": "fdicCashSweep",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
   });
 });
 
@@ -166,6 +227,7 @@ export type LLCEnrollmentMetadataCreate$Outbound = {
     | EddAccountEnrollmentMetadataCreate$Outbound
     | undefined;
   fdic_cash_sweep?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
 };
 
 /** @internal */
@@ -181,11 +243,14 @@ export const LLCEnrollmentMetadataCreate$outboundSchema: z.ZodType<
     EddAccountEnrollmentMetadataCreate$outboundSchema.optional(),
   fdicCashSweep: LLCEnrollmentMetadataCreateFdicCashSweep$outboundSchema
     .optional(),
+  moneyMarketFundSweep:
+    LLCEnrollmentMetadataCreateMoneyMarketFundSweep$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
     eddAccountEnrollmentMetadata: "edd_account_enrollment_metadata",
     fdicCashSweep: "fdic_cash_sweep",
+    moneyMarketFundSweep: "money_market_fund_sweep",
   });
 });
 

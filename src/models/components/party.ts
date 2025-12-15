@@ -13,6 +13,22 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * Delivery method instruction for CFTC documents for a given Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+ */
+export enum PartyCftcDocumentDeliveryPreference {
+  DeliveryPreferenceUnspecified = "DELIVERY_PREFERENCE_UNSPECIFIED",
+  Digital = "DIGITAL",
+  Physical = "PHYSICAL",
+  Suppress = "SUPPRESS",
+}
+/**
+ * Delivery method instruction for CFTC documents for a given Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+ */
+export type PartyCftcDocumentDeliveryPreferenceOpen = OpenEnum<
+  typeof PartyCftcDocumentDeliveryPreference
+>;
+
 export enum PartyBusinessIndustrialClassification {
   BusinessIndustrialClassificationUnspecified =
     "BUSINESS_INDUSTRIAL_CLASSIFICATION_UNSPECIFIED",
@@ -392,6 +408,7 @@ export enum PartyTaxpayerCertificationState {
     "TAXPAYER_CERTIFICATION_STATE_UNSPECIFIED",
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
+  PendingCertification = "PENDING_CERTIFICATION",
 }
 /**
  * Taxpayer certification status.
@@ -554,7 +571,7 @@ export type PartyLegalEntity = {
    */
   globalPersonId?: string | undefined;
   /**
-   * Indicates whether the entity is an institutional customer
+   * Indicates whether the entity is an institutional customer. By default, this is set to `false`.
    */
   institutionalCustomer?: boolean | undefined;
   /**
@@ -1320,6 +1337,7 @@ export enum PartyLegalNaturalPersonTaxpayerCertificationState {
     "TAXPAYER_CERTIFICATION_STATE_UNSPECIFIED",
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
+  PendingCertification = "PENDING_CERTIFICATION",
 }
 /**
  * Taxpayer certification status.
@@ -1420,11 +1438,11 @@ export type PartyLegalNaturalPersonTaxProfile = {
  */
 export type PartyLegalNaturalPerson = {
   /**
-   * Indicates whether the person is an accredited investor
+   * Indicates whether the person is an accredited investor. By default, this is set to `false`.
    */
   accreditedInvestor?: boolean | undefined;
   /**
-   * Indicates whether the person is an adviser
+   * Indicates whether the person is an adviser. By default, this is set to `false`.
    */
   adviser?: boolean | undefined;
   /**
@@ -1440,7 +1458,7 @@ export type PartyLegalNaturalPerson = {
    */
   controlPersonCompanySymbols?: string | undefined;
   /**
-   * Indicates the related owner record is an employee of the clearing broker's correspondent customer.
+   * Indicates the related owner record is an employee of the clearing broker's correspondent customer. By default, this is set to `false`.
    */
   correspondentEmployee?: boolean | undefined;
   /**
@@ -1448,7 +1466,7 @@ export type PartyLegalNaturalPerson = {
    */
   correspondentId?: string | undefined;
   /**
-   * A flag to indicate whether this person is an employee of the correspondent.
+   * A flag to indicate whether this person is an employee of the correspondent. By default, this is set to `false`.
    */
   custodianEmployee?: boolean | undefined;
   /**
@@ -1501,7 +1519,7 @@ export type PartyLegalNaturalPerson = {
     | null
     | undefined;
   /**
-   * Indicates whether the person is an institutional customer
+   * Indicates whether the person is an institutional customer. By default, this is set to `false`.
    */
   institutionalCustomer?: boolean | undefined;
   /**
@@ -1815,6 +1833,12 @@ export type PartyTradeConfirmationDeliveryPreferenceOpen = OpenEnum<
  */
 export type Party = {
   /**
+   * Delivery method instruction for CFTC documents for a given Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+   */
+  cftcDocumentDeliveryPreference?:
+    | PartyCftcDocumentDeliveryPreferenceOpen
+    | undefined;
+  /**
    * An email address indicated for account communications.
    */
   emailAddress?: string | undefined;
@@ -1882,6 +1906,40 @@ export type Party = {
     | PartyTradeConfirmationDeliveryPreferenceOpen
     | undefined;
 };
+
+/** @internal */
+export const PartyCftcDocumentDeliveryPreference$inboundSchema: z.ZodType<
+  PartyCftcDocumentDeliveryPreferenceOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(PartyCftcDocumentDeliveryPreference),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const PartyCftcDocumentDeliveryPreference$outboundSchema: z.ZodType<
+  PartyCftcDocumentDeliveryPreferenceOpen,
+  z.ZodTypeDef,
+  PartyCftcDocumentDeliveryPreferenceOpen
+> = z.union([
+  z.nativeEnum(PartyCftcDocumentDeliveryPreference),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PartyCftcDocumentDeliveryPreference$ {
+  /** @deprecated use `PartyCftcDocumentDeliveryPreference$inboundSchema` instead. */
+  export const inboundSchema =
+    PartyCftcDocumentDeliveryPreference$inboundSchema;
+  /** @deprecated use `PartyCftcDocumentDeliveryPreference$outboundSchema` instead. */
+  export const outboundSchema =
+    PartyCftcDocumentDeliveryPreference$outboundSchema;
+}
 
 /** @internal */
 export const PartyBusinessIndustrialClassification$inboundSchema: z.ZodType<
@@ -5943,6 +6001,8 @@ export namespace PartyTradeConfirmationDeliveryPreference$ {
 /** @internal */
 export const Party$inboundSchema: z.ZodType<Party, z.ZodTypeDef, unknown> = z
   .object({
+    cftc_document_delivery_preference:
+      PartyCftcDocumentDeliveryPreference$inboundSchema.optional(),
     email_address: z.string().optional(),
     legal_entity: z.nullable(z.lazy(() => PartyLegalEntity$inboundSchema))
       .optional(),
@@ -5968,6 +6028,7 @@ export const Party$inboundSchema: z.ZodType<Party, z.ZodTypeDef, unknown> = z
       PartyTradeConfirmationDeliveryPreference$inboundSchema.optional(),
   }).transform((v) => {
     return remap$(v, {
+      "cftc_document_delivery_preference": "cftcDocumentDeliveryPreference",
       "email_address": "emailAddress",
       "legal_entity": "legalEntity",
       "legal_natural_person": "legalNaturalPerson",
@@ -5986,6 +6047,7 @@ export const Party$inboundSchema: z.ZodType<Party, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Party$Outbound = {
+  cftc_document_delivery_preference?: string | undefined;
   email_address?: string | undefined;
   legal_entity?: PartyLegalEntity$Outbound | null | undefined;
   legal_natural_person?: PartyLegalNaturalPerson$Outbound | null | undefined;
@@ -6007,6 +6069,8 @@ export const Party$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Party
 > = z.object({
+  cftcDocumentDeliveryPreference:
+    PartyCftcDocumentDeliveryPreference$outboundSchema.optional(),
   emailAddress: z.string().optional(),
   legalEntity: z.nullable(z.lazy(() => PartyLegalEntity$outboundSchema))
     .optional(),
@@ -6032,6 +6096,7 @@ export const Party$outboundSchema: z.ZodType<
     PartyTradeConfirmationDeliveryPreference$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    cftcDocumentDeliveryPreference: "cftc_document_delivery_preference",
     emailAddress: "email_address",
     legalEntity: "legal_entity",
     legalNaturalPerson: "legal_natural_person",

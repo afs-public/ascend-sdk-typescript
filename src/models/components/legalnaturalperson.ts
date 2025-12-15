@@ -713,6 +713,7 @@ export enum TaxpayerCertificationState {
     "TAXPAYER_CERTIFICATION_STATE_UNSPECIFIED",
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
+  PendingCertification = "PENDING_CERTIFICATION",
 }
 /**
  * Taxpayer certification status.
@@ -806,11 +807,11 @@ export type TaxProfile = {
  */
 export type LegalNaturalPerson = {
   /**
-   * Indicates whether the person is an accredited investor
+   * Indicates whether the person is an accredited investor. By default, this is set to `false`.
    */
   accreditedInvestor?: boolean | undefined;
   /**
-   * Indicates whether the person is an adviser
+   * Indicates whether the person is an adviser. By default, this is set to `false`.
    */
   adviser?: boolean | undefined;
   /**
@@ -826,7 +827,7 @@ export type LegalNaturalPerson = {
    */
   controlPersonCompanySymbols?: string | undefined;
   /**
-   * Indicates the related owner record is an employee of the clearing broker's correspondent customer.
+   * Indicates the related owner record is an employee of the clearing broker's correspondent customer. By default, this is set to `false`.
    */
   correspondentEmployee?: boolean | undefined;
   /**
@@ -834,7 +835,7 @@ export type LegalNaturalPerson = {
    */
   correspondentId?: string | undefined;
   /**
-   * A flag to indicate whether this person is an employee of the correspondent.
+   * A flag to indicate whether this person is an employee of the correspondent. By default, this is set to `false`.
    */
   custodianEmployee?: boolean | undefined;
   /**
@@ -887,7 +888,7 @@ export type LegalNaturalPerson = {
     | null
     | undefined;
   /**
-   * Indicates whether the person is an institutional customer
+   * Indicates whether the person is an institutional customer. By default, this is set to `false`.
    */
   institutionalCustomer?: boolean | undefined;
   /**

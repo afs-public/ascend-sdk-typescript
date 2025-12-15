@@ -160,6 +160,8 @@ export enum SpecialReportingInstructions {
   SuppressTraceReporting = "SUPPRESS_TRACE_REPORTING",
   WhenDistributed = "WHEN_DISTRIBUTED",
   RoundUp = "ROUND_UP",
+  CatParentAlgo = "CAT_PARENT_ALGO",
+  CatParentGtc = "CAT_PARENT_GTC",
 }
 export type SpecialReportingInstructionsOpen = OpenEnum<
   typeof SpecialReportingInstructions
@@ -238,7 +240,7 @@ export type OrderCreate = {
    */
   identifier: string;
   /**
-   * A string attribute denoting the country of issuance or where the asset is trading. Only available for Mutual Fund orders. Defaults to US, when trading non US mutual funds this field must be provided Complies with ISO-3166 Alpha-2 Codes
+   * A string attribute denoting the country of issuance or where the asset is trading. * Only available for Mutual Fund and Fixed Income orders. * Only available when the identifier_type is SYMBOL or CUSIP. * Defaults to US when the identifier_type is SYMBOL or CUSIP. * Complies with ISO-3166 Alpha-2 Codes
    */
   identifierIssuingRegionCode?: string | undefined;
   /**

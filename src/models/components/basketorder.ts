@@ -39,6 +39,21 @@ export enum BasketOrderAssetType {
 export type BasketOrderAssetTypeOpen = OpenEnum<typeof BasketOrderAssetType>;
 
 /**
+ * Output only field that is required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. This field denotes the initiator of the cancel request. This field will be present when provided on the RemoveOrderRequest
+ */
+export enum BasketOrderCancelInitiator {
+  InitiatorUnspecified = "INITIATOR_UNSPECIFIED",
+  Firm = "FIRM",
+  Client = "CLIENT",
+}
+/**
+ * Output only field that is required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. This field denotes the initiator of the cancel request. This field will be present when provided on the RemoveOrderRequest
+ */
+export type BasketOrderCancelInitiatorOpen = OpenEnum<
+  typeof BasketOrderCancelInitiator
+>;
+
+/**
  * The product of order quantity & price, summed across all fills, reported in the currency specified in the order. (This will be rounded to 2 decimal places for USD currencies). Will be absent if an order has no fill information.
  */
 export type BasketOrderCumulativeNotionalValue = {
@@ -46,6 +61,13 @@ export type BasketOrderCumulativeNotionalValue = {
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
   value?: string | undefined;
+};
+
+/**
+ * Any reporting data provided by the SetExtraReportingData endpoint.
+ */
+export type BasketOrderExtraReportingData = {
+  cancelConfirmedTime?: Date | null | undefined;
 };
 
 /**
@@ -250,11 +272,23 @@ export type BasketOrder = {
    */
   basketOrderId?: string | undefined;
   /**
+   * Output only field that is required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. This field denotes the initiator of the cancel request. This field will be present when provided on the RemoveOrderRequest
+   */
+  cancelInitiator?: BasketOrderCancelInitiatorOpen | undefined;
+  /**
+   * Output only field for Equity Orders related to CAT reporting on behalf of clients. This field will be present when provided on the RemoveOrderRequest
+   */
+  clientCancelReceivedTime?: Date | null | undefined;
+  /**
+   * Output only field for Equity Orders related to CAT reporting on behalf of clients. This field will be present when provided on the RemoveOrderRequest
+   */
+  clientCancelSentTime?: Date | null | undefined;
+  /**
    * User-supplied unique order ID. Cannot be more than 40 characters long.
    */
   clientOrderId?: string | undefined;
   /**
-   * Time the order request was received by the client. Must be in the past.
+   * Time the order request was received by the client. Must be in the past. Timezone will default to UTC if not provided.
    */
   clientOrderReceivedTime?: Date | null | undefined;
   /**
@@ -276,6 +310,10 @@ export type BasketOrder = {
    * The execution-level details that compose this order
    */
   executions?: Array<BasketTradingExecutions> | undefined;
+  /**
+   * Any reporting data provided by the SetExtraReportingData endpoint.
+   */
+  extraReportingData?: BasketOrderExtraReportingData | null | undefined;
   /**
    * The summed quantity value across all fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no fill information.
    */
@@ -373,6 +411,38 @@ export namespace BasketOrderAssetType$ {
 }
 
 /** @internal */
+export const BasketOrderCancelInitiator$inboundSchema: z.ZodType<
+  BasketOrderCancelInitiatorOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(BasketOrderCancelInitiator),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const BasketOrderCancelInitiator$outboundSchema: z.ZodType<
+  BasketOrderCancelInitiatorOpen,
+  z.ZodTypeDef,
+  BasketOrderCancelInitiatorOpen
+> = z.union([
+  z.nativeEnum(BasketOrderCancelInitiator),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BasketOrderCancelInitiator$ {
+  /** @deprecated use `BasketOrderCancelInitiator$inboundSchema` instead. */
+  export const inboundSchema = BasketOrderCancelInitiator$inboundSchema;
+  /** @deprecated use `BasketOrderCancelInitiator$outboundSchema` instead. */
+  export const outboundSchema = BasketOrderCancelInitiator$outboundSchema;
+}
+
+/** @internal */
 export const BasketOrderCumulativeNotionalValue$inboundSchema: z.ZodType<
   BasketOrderCumulativeNotionalValue,
   z.ZodTypeDef,
@@ -427,6 +497,73 @@ export function basketOrderCumulativeNotionalValueFromJSON(
     (x) =>
       BasketOrderCumulativeNotionalValue$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'BasketOrderCumulativeNotionalValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const BasketOrderExtraReportingData$inboundSchema: z.ZodType<
+  BasketOrderExtraReportingData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cancel_confirmed_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "cancel_confirmed_time": "cancelConfirmedTime",
+  });
+});
+
+/** @internal */
+export type BasketOrderExtraReportingData$Outbound = {
+  cancel_confirmed_time?: string | null | undefined;
+};
+
+/** @internal */
+export const BasketOrderExtraReportingData$outboundSchema: z.ZodType<
+  BasketOrderExtraReportingData$Outbound,
+  z.ZodTypeDef,
+  BasketOrderExtraReportingData
+> = z.object({
+  cancelConfirmedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    cancelConfirmedTime: "cancel_confirmed_time",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BasketOrderExtraReportingData$ {
+  /** @deprecated use `BasketOrderExtraReportingData$inboundSchema` instead. */
+  export const inboundSchema = BasketOrderExtraReportingData$inboundSchema;
+  /** @deprecated use `BasketOrderExtraReportingData$outboundSchema` instead. */
+  export const outboundSchema = BasketOrderExtraReportingData$outboundSchema;
+  /** @deprecated use `BasketOrderExtraReportingData$Outbound` instead. */
+  export type Outbound = BasketOrderExtraReportingData$Outbound;
+}
+
+export function basketOrderExtraReportingDataToJSON(
+  basketOrderExtraReportingData: BasketOrderExtraReportingData,
+): string {
+  return JSON.stringify(
+    BasketOrderExtraReportingData$outboundSchema.parse(
+      basketOrderExtraReportingData,
+    ),
+  );
+}
+
+export function basketOrderExtraReportingDataFromJSON(
+  jsonString: string,
+): SafeParseResult<BasketOrderExtraReportingData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BasketOrderExtraReportingData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BasketOrderExtraReportingData' from JSON`,
   );
 }
 
@@ -883,6 +1020,13 @@ export const BasketOrder$inboundSchema: z.ZodType<
   asset_type: BasketOrderAssetType$inboundSchema.optional(),
   average_prices: z.array(BasketTradingExecutedPrice$inboundSchema).optional(),
   basket_order_id: z.string().optional(),
+  cancel_initiator: BasketOrderCancelInitiator$inboundSchema.optional(),
+  client_cancel_received_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  client_cancel_sent_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   client_order_id: z.string().optional(),
   client_order_received_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -895,6 +1039,9 @@ export const BasketOrder$inboundSchema: z.ZodType<
   ).optional(),
   currency_code: z.string().optional(),
   executions: z.array(BasketTradingExecutions$inboundSchema).optional(),
+  extra_reporting_data: z.nullable(
+    z.lazy(() => BasketOrderExtraReportingData$inboundSchema),
+  ).optional(),
   filled_quantity: z.nullable(
     z.lazy(() => BasketOrderFilledQuantity$inboundSchema),
   ).optional(),
@@ -928,11 +1075,15 @@ export const BasketOrder$inboundSchema: z.ZodType<
     "asset_type": "assetType",
     "average_prices": "averagePrices",
     "basket_order_id": "basketOrderId",
+    "cancel_initiator": "cancelInitiator",
+    "client_cancel_received_time": "clientCancelReceivedTime",
+    "client_cancel_sent_time": "clientCancelSentTime",
     "client_order_id": "clientOrderId",
     "client_order_received_time": "clientOrderReceivedTime",
     "create_time": "createTime",
     "cumulative_notional_value": "cumulativeNotionalValue",
     "currency_code": "currencyCode",
+    "extra_reporting_data": "extraReportingData",
     "filled_quantity": "filledQuantity",
     "identifier_type": "identifierType",
     "last_update_time": "lastUpdateTime",
@@ -953,6 +1104,9 @@ export type BasketOrder$Outbound = {
   asset_type?: string | undefined;
   average_prices?: Array<BasketTradingExecutedPrice$Outbound> | undefined;
   basket_order_id?: string | undefined;
+  cancel_initiator?: string | undefined;
+  client_cancel_received_time?: string | null | undefined;
+  client_cancel_sent_time?: string | null | undefined;
   client_order_id?: string | undefined;
   client_order_received_time?: string | null | undefined;
   create_time?: string | null | undefined;
@@ -962,6 +1116,10 @@ export type BasketOrder$Outbound = {
     | undefined;
   currency_code?: string | undefined;
   executions?: Array<BasketTradingExecutions$Outbound> | undefined;
+  extra_reporting_data?:
+    | BasketOrderExtraReportingData$Outbound
+    | null
+    | undefined;
   filled_quantity?: BasketOrderFilledQuantity$Outbound | null | undefined;
   identifier?: string | undefined;
   identifier_type?: string | undefined;
@@ -989,6 +1147,11 @@ export const BasketOrder$outboundSchema: z.ZodType<
   assetType: BasketOrderAssetType$outboundSchema.optional(),
   averagePrices: z.array(BasketTradingExecutedPrice$outboundSchema).optional(),
   basketOrderId: z.string().optional(),
+  cancelInitiator: BasketOrderCancelInitiator$outboundSchema.optional(),
+  clientCancelReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  clientCancelSentTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   clientOrderId: z.string().optional(),
   clientOrderReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
@@ -998,6 +1161,9 @@ export const BasketOrder$outboundSchema: z.ZodType<
   ).optional(),
   currencyCode: z.string().optional(),
   executions: z.array(BasketTradingExecutions$outboundSchema).optional(),
+  extraReportingData: z.nullable(
+    z.lazy(() => BasketOrderExtraReportingData$outboundSchema),
+  ).optional(),
   filledQuantity: z.nullable(
     z.lazy(() => BasketOrderFilledQuantity$outboundSchema),
   ).optional(),
@@ -1029,11 +1195,15 @@ export const BasketOrder$outboundSchema: z.ZodType<
     assetType: "asset_type",
     averagePrices: "average_prices",
     basketOrderId: "basket_order_id",
+    cancelInitiator: "cancel_initiator",
+    clientCancelReceivedTime: "client_cancel_received_time",
+    clientCancelSentTime: "client_cancel_sent_time",
     clientOrderId: "client_order_id",
     clientOrderReceivedTime: "client_order_received_time",
     createTime: "create_time",
     cumulativeNotionalValue: "cumulative_notional_value",
     currencyCode: "currency_code",
+    extraReportingData: "extra_reporting_data",
     filledQuantity: "filled_quantity",
     identifierType: "identifier_type",
     lastUpdateTime: "last_update_time",
