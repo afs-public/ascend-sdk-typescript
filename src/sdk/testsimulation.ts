@@ -5,8 +5,10 @@
 import { testSimulationForceApproveAchDeposit } from "../funcs/testSimulationForceApproveAchDeposit.js";
 import { testSimulationForceApproveAchWithdrawal } from "../funcs/testSimulationForceApproveAchWithdrawal.js";
 import { testSimulationForceApproveCashJournal } from "../funcs/testSimulationForceApproveCashJournal.js";
+import { testSimulationForceApproveCheckDeposit } from "../funcs/testSimulationForceApproveCheckDeposit.js";
 import { testSimulationForceApproveIctDeposit } from "../funcs/testSimulationForceApproveIctDeposit.js";
 import { testSimulationForceApproveIctWithdrawal } from "../funcs/testSimulationForceApproveIctWithdrawal.js";
+import { testSimulationForceApprovePositionJournal } from "../funcs/testSimulationForceApprovePositionJournal.js";
 import { testSimulationForceApproveWireDeposit } from "../funcs/testSimulationForceApproveWireDeposit.js";
 import { testSimulationForceApproveWireWithdrawal } from "../funcs/testSimulationForceApproveWireWithdrawal.js";
 import { testSimulationForceNocAchDeposit } from "../funcs/testSimulationForceNocAchDeposit.js";
@@ -16,6 +18,7 @@ import { testSimulationForceRejectAchWithdrawal } from "../funcs/testSimulationF
 import { testSimulationForceRejectCashJournal } from "../funcs/testSimulationForceRejectCashJournal.js";
 import { testSimulationForceRejectIctDeposit } from "../funcs/testSimulationForceRejectIctDeposit.js";
 import { testSimulationForceRejectIctWithdrawal } from "../funcs/testSimulationForceRejectIctWithdrawal.js";
+import { testSimulationForceRejectPositionJournal } from "../funcs/testSimulationForceRejectPositionJournal.js";
 import { testSimulationForceRejectWireDeposit } from "../funcs/testSimulationForceRejectWireDeposit.js";
 import { testSimulationForceRejectWireWithdrawal } from "../funcs/testSimulationForceRejectWireWithdrawal.js";
 import { testSimulationForceReturnAchDeposit } from "../funcs/testSimulationForceReturnAchDeposit.js";
@@ -45,6 +48,28 @@ export class TestSimulation extends ClientSDK {
       this,
       simulateCreateCheckDepositRequestCreate,
       accountId,
+      options,
+    ));
+  }
+
+  /**
+   * Check Deposit Approval
+   *
+   * @remarks
+   * Force approval of an existing check deposit that is pending review FOR TESTING ONLY!
+   */
+  async forceApproveCheckDeposit(
+    forceApproveCheckDepositRequestCreate:
+      components.ForceApproveCheckDepositRequestCreate,
+    accountId: string,
+    checkDepositId: string,
+    options?: RequestOptions,
+  ): Promise<operations.CheckDepositsForceApproveCheckDepositResponse> {
+    return unwrapAsync(testSimulationForceApproveCheckDeposit(
+      this,
+      forceApproveCheckDepositRequestCreate,
+      accountId,
+      checkDepositId,
       options,
     ));
   }
@@ -475,6 +500,46 @@ export class TestSimulation extends ClientSDK {
       this,
       forceRejectCashJournalRequestCreate,
       cashJournalId,
+      options,
+    ));
+  }
+
+  /**
+   * Force Approve Position Journal
+   *
+   * @remarks
+   * Forces approval of an existing position journal that is pending review FOR TESTING ONLY!
+   */
+  async forceApprovePositionJournal(
+    forceApprovePositionJournalRequestCreate:
+      components.ForceApprovePositionJournalRequestCreate,
+    positionJournalId: string,
+    options?: RequestOptions,
+  ): Promise<operations.PositionJournalsForceApprovePositionJournalResponse> {
+    return unwrapAsync(testSimulationForceApprovePositionJournal(
+      this,
+      forceApprovePositionJournalRequestCreate,
+      positionJournalId,
+      options,
+    ));
+  }
+
+  /**
+   * Force Reject Position Journal
+   *
+   * @remarks
+   * Forces rejection of an existing position journal that is pending review FOR TESTING ONLY!
+   */
+  async forceRejectPositionJournal(
+    forceRejectPositionJournalRequestCreate:
+      components.ForceRejectPositionJournalRequestCreate,
+    positionJournalId: string,
+    options?: RequestOptions,
+  ): Promise<operations.PositionJournalsForceRejectPositionJournalResponse> {
+    return unwrapAsync(testSimulationForceRejectPositionJournal(
+      this,
+      forceRejectPositionJournalRequestCreate,
+      positionJournalId,
       options,
     ));
   }

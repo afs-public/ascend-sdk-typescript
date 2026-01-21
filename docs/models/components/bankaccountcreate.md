@@ -10,7 +10,7 @@ import { BankAccountCreate, BankAccountCreateType } from "@apexfintechsolutions/
 let value: BankAccountCreate = {
   accountNumber: "100100123",
   owner: "John Doe",
-  routingNumber: "12345678",
+  routingNumber: "012345678",
   type: BankAccountCreateType.Checking,
 };
 ```
@@ -21,5 +21,5 @@ let value: BankAccountCreate = {
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `accountNumber`                                                                      | *string*                                                                             | :heavy_check_mark:                                                                   | The bank account number. This value will be masked in responses.                     | 100100123                                                                            |
 | `owner`                                                                              | *string*                                                                             | :heavy_check_mark:                                                                   | The name of the bank account owner.                                                  | John Doe                                                                             |
-| `routingNumber`                                                                      | *string*                                                                             | :heavy_check_mark:                                                                   | The bank routing number (either ABA or BIC).                                         | 1.2345678e+07                                                                        |
+| `routingNumber`                                                                      | *string*                                                                             | :heavy_check_mark:                                                                   | The bank routing number (either ABA or BIC).                                         | 012345678                                                                            |
 | `type`                                                                               | [components.BankAccountCreateType](../../models/components/bankaccountcreatetype.md) | :heavy_check_mark:                                                                   | The bank account type.                                                               | CHECKING                                                                             |

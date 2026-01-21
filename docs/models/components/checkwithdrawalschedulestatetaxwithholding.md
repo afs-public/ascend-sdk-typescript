@@ -1,0 +1,18 @@
+# CheckWithdrawalScheduleStateTaxWithholding
+
+The state tax withholding.
+
+## Example Usage
+
+```typescript
+import { CheckWithdrawalScheduleStateTaxWithholding } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: CheckWithdrawalScheduleStateTaxWithholding = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                    | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              | Example                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `amount`                                                                                                                                                 | [components.CheckWithdrawalScheduleRetirementDistributionAmount](../../models/components/checkwithdrawalscheduleretirementdistributionamount.md)         | :heavy_minus_sign:                                                                                                                                       | Fixed USD amount to withhold for taxes.                                                                                                                  | {<br/>"value": "1.23"<br/>}                                                                                                                              |
+| `percentage`                                                                                                                                             | [components.CheckWithdrawalScheduleRetirementDistributionPercentage](../../models/components/checkwithdrawalscheduleretirementdistributionpercentage.md) | :heavy_minus_sign:                                                                                                                                       | Percentage of total disbursement amount to withhold for taxes.                                                                                           | {<br/>"value": "11.25"<br/>}                                                                                                                             |

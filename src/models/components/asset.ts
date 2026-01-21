@@ -227,6 +227,7 @@ export enum FixedIncomeType {
   Treasury = "TREASURY",
   Government = "GOVERNMENT",
   ForeignGovernment = "FOREIGN_GOVERNMENT",
+  EuroBond = "EURO_BOND",
 }
 /**
  * Type of fixed income security

@@ -96,7 +96,7 @@ export type BrokerCapacityOpen = OpenEnum<typeof BrokerCapacity>;
 /**
  * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
  */
-export enum IdentifierType {
+export enum OrderCreateIdentifierType {
   Symbol = "SYMBOL",
   Cusip = "CUSIP",
   Isin = "ISIN",
@@ -104,7 +104,9 @@ export enum IdentifierType {
 /**
  * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
  */
-export type IdentifierTypeOpen = OpenEnum<typeof IdentifierType>;
+export type OrderCreateIdentifierTypeOpen = OpenEnum<
+  typeof OrderCreateIdentifierType
+>;
 
 /**
  * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
@@ -246,7 +248,7 @@ export type OrderCreate = {
   /**
    * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
    */
-  identifierType: IdentifierTypeOpen;
+  identifierType: OrderCreateIdentifierTypeOpen;
   /**
    * Letter of Intent (LOI). An LOI allows investors to receive sales charge discounts based on a commitment to buy a specified monetary amount of shares over a period of time, usually 13 months.
    */
@@ -402,23 +404,23 @@ export namespace BrokerCapacity$ {
 }
 
 /** @internal */
-export const IdentifierType$inboundSchema: z.ZodType<
-  IdentifierTypeOpen,
+export const OrderCreateIdentifierType$inboundSchema: z.ZodType<
+  OrderCreateIdentifierTypeOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(IdentifierType),
+    z.nativeEnum(OrderCreateIdentifierType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const IdentifierType$outboundSchema: z.ZodType<
-  IdentifierTypeOpen,
+export const OrderCreateIdentifierType$outboundSchema: z.ZodType<
+  OrderCreateIdentifierTypeOpen,
   z.ZodTypeDef,
-  IdentifierTypeOpen
+  OrderCreateIdentifierTypeOpen
 > = z.union([
-  z.nativeEnum(IdentifierType),
+  z.nativeEnum(OrderCreateIdentifierType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -426,11 +428,11 @@ export const IdentifierType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace IdentifierType$ {
-  /** @deprecated use `IdentifierType$inboundSchema` instead. */
-  export const inboundSchema = IdentifierType$inboundSchema;
-  /** @deprecated use `IdentifierType$outboundSchema` instead. */
-  export const outboundSchema = IdentifierType$outboundSchema;
+export namespace OrderCreateIdentifierType$ {
+  /** @deprecated use `OrderCreateIdentifierType$inboundSchema` instead. */
+  export const inboundSchema = OrderCreateIdentifierType$inboundSchema;
+  /** @deprecated use `OrderCreateIdentifierType$outboundSchema` instead. */
+  export const outboundSchema = OrderCreateIdentifierType$outboundSchema;
 }
 
 /** @internal */
@@ -606,7 +608,7 @@ export const OrderCreate$inboundSchema: z.ZodType<
   fees: z.array(FeeCreate$inboundSchema).optional(),
   identifier: z.string(),
   identifier_issuing_region_code: z.string().optional(),
-  identifier_type: IdentifierType$inboundSchema,
+  identifier_type: OrderCreateIdentifierType$inboundSchema,
   letter_of_intent: LetterOfIntentCreate$inboundSchema.optional(),
   limit_price: LimitPriceCreate$inboundSchema.optional(),
   max_sell_quantity: DecimalCreate$inboundSchema.optional(),
@@ -695,7 +697,7 @@ export const OrderCreate$outboundSchema: z.ZodType<
   fees: z.array(FeeCreate$outboundSchema).optional(),
   identifier: z.string(),
   identifierIssuingRegionCode: z.string().optional(),
-  identifierType: IdentifierType$outboundSchema,
+  identifierType: OrderCreateIdentifierType$outboundSchema,
   letterOfIntent: LetterOfIntentCreate$outboundSchema.optional(),
   limitPrice: LimitPriceCreate$outboundSchema.optional(),
   maxSellQuantity: DecimalCreate$outboundSchema.optional(),

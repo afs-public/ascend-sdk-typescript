@@ -24,7 +24,7 @@ Creates a new order for equity or fixed income securities.
 <!-- UsageSnippet language="typescript" operationID="OrderService_CreateOrder" method="post" path="/trading/v1/accounts/{account_id}/orders" -->
 ```typescript
 import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
-import { AssetType, IdentifierType, OrderType, Side, TimeInForce } from "@apexfintechsolutions/ascend-sdk/models/components";
+import { AssetType, OrderCreateIdentifierType, OrderType, Side, TimeInForce } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 const apexascend = new Apexascend({
   security: {
@@ -43,7 +43,7 @@ async function run() {
     assetType: AssetType.Equity,
     clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
     identifier: "SBUX",
-    identifierType: IdentifierType.Symbol,
+    identifierType: OrderCreateIdentifierType.Symbol,
     orderDate: {},
     orderType: OrderType.Market,
     side: Side.Buy,
@@ -63,7 +63,7 @@ The standalone function version of this method:
 ```typescript
 import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
 import { ordersCreateOrder } from "@apexfintechsolutions/ascend-sdk/funcs/ordersCreateOrder.js";
-import { AssetType, IdentifierType, OrderType, Side, TimeInForce } from "@apexfintechsolutions/ascend-sdk/models/components";
+import { AssetType, OrderCreateIdentifierType, OrderType, Side, TimeInForce } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 // Use `ApexascendCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -84,7 +84,7 @@ async function run() {
     assetType: AssetType.Equity,
     clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
     identifier: "SBUX",
-    identifierType: IdentifierType.Symbol,
+    identifierType: OrderCreateIdentifierType.Symbol,
     orderDate: {},
     orderType: OrderType.Market,
     side: Side.Buy,

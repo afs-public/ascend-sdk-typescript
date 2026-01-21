@@ -37,7 +37,7 @@ export type CreateUploadLinkRequestCreate = {
    */
   idDocumentUploadRequest?: IDDocumentUploadRequestCreate | undefined;
   /**
-   * Media type for the document to be uploaded; Required for all documents; Must be one of: application/json, application/pdf, image/jpeg, image/png, text/csv, or text/plain
+   * Media type for the document to be uploaded; Required for all documents; Must be one of: application/json, application/pdf, image/jpeg, image/png, image/tiff, text/csv, or text/plain
    */
   mimeType: string;
 };

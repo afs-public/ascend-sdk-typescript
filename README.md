@@ -499,6 +499,12 @@ const sdk = new Apexascend({ httpClient });
 * [assignLargeTraderLegalEntity](docs/sdks/personmanagement/README.md#assignlargetraderlegalentity) - Assign Entity Large Trader
 * [endLargeTrader](docs/sdks/personmanagement/README.md#endlargetrader) - End Entity Large Trader
 
+### [positionJournals](docs/sdks/positionjournals/README.md)
+
+* [createPositionJournal](docs/sdks/positionjournals/README.md#createpositionjournal) - Create Position Journal
+* [getPositionJournal](docs/sdks/positionjournals/README.md#getpositionjournal) - Get Position Journal
+* [cancelPositionJournal](docs/sdks/positionjournals/README.md#cancelpositionjournal) - Cancel Position Journal
+
 ### [reader](docs/sdks/reader/README.md)
 
 * [listEventMessages](docs/sdks/reader/README.md#listeventmessages) - List Event Messages
@@ -524,6 +530,11 @@ const sdk = new Apexascend({ httpClient });
 * [getAchWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#getachwithdrawalschedule) - Get ACH Withdrawal Schedule
 * [updateAchWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#updateachwithdrawalschedule) - Update ACH Withdrawal Schedule
 * [cancelAchWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#cancelachwithdrawalschedule) - Cancel ACH Withdrawal Schedule
+* [createCheckWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#createcheckwithdrawalschedule) - Create Check Withdrawal Schedule
+* [listCheckWithdrawalSchedules](docs/sdks/scheduletransfers/README.md#listcheckwithdrawalschedules) - List Check Withdrawal Schedules
+* [getCheckWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#getcheckwithdrawalschedule) - Get Check Withdrawal Schedule
+* [updateCheckWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#updatecheckwithdrawalschedule) - Update Check Withdrawal Schedule
+* [cancelCheckWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#cancelcheckwithdrawalschedule) - Cancel Check Withdrawal Schedule
 * [createWireWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#createwirewithdrawalschedule) - Create Wire Withdrawal Schedule
 * [listWireWithdrawalSchedules](docs/sdks/scheduletransfers/README.md#listwirewithdrawalschedules) - List Wire Withdrawal Schedules
 * [getWireWithdrawalSchedule](docs/sdks/scheduletransfers/README.md#getwirewithdrawalschedule) - Get Wire Withdrawal Schedule
@@ -543,6 +554,7 @@ const sdk = new Apexascend({ httpClient });
 ### [testSimulation](docs/sdks/testsimulation/README.md)
 
 * [simulateCreateCheckDeposit](docs/sdks/testsimulation/README.md#simulatecreatecheckdeposit) - Simulate Check Deposit Creation
+* [forceApproveCheckDeposit](docs/sdks/testsimulation/README.md#forceapprovecheckdeposit) - Check Deposit Approval
 * [forceApproveAchDeposit](docs/sdks/testsimulation/README.md#forceapproveachdeposit) - ACH Deposit Approval
 * [forceNocAchDeposit](docs/sdks/testsimulation/README.md#forcenocachdeposit) - NOC for a Deposit
 * [forceRejectAchDeposit](docs/sdks/testsimulation/README.md#forcerejectachdeposit) - ACH Deposit Rejection
@@ -563,6 +575,8 @@ const sdk = new Apexascend({ httpClient });
 * [forceRejectWireDeposit](docs/sdks/testsimulation/README.md#forcerejectwiredeposit) - Force Reject Wire Deposit
 * [forceApproveCashJournal](docs/sdks/testsimulation/README.md#forceapprovecashjournal) - Force Approve Cash Journal
 * [forceRejectCashJournal](docs/sdks/testsimulation/README.md#forcerejectcashjournal) - Force Reject Cash Journal
+* [forceApprovePositionJournal](docs/sdks/testsimulation/README.md#forceapprovepositionjournal) - Force Approve Position Journal
+* [forceRejectPositionJournal](docs/sdks/testsimulation/README.md#forcerejectpositionjournal) - Force Reject Position Journal
 
 ### [tradeAllocation](docs/sdks/tradeallocation/README.md)
 

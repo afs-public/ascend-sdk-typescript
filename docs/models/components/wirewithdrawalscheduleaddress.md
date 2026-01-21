@@ -1,6 +1,6 @@
 # WireWithdrawalScheduleAddress
 
-The address of the intermediary party
+The address of the person or entity taking receipt of the wired funds. This will be populated automatically in the case of a valid first-party wire
 
 ## Example Usage
 

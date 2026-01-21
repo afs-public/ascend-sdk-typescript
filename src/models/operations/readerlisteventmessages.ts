@@ -21,6 +21,7 @@ export type ReaderListEventMessagesRequest = {
    *  `partition_key`
    *  `client_id`
    *  `correspondent_id`
+   *  `account_group_id`
    *  `account_id`
    */
   filter?: string | undefined;

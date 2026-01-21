@@ -1,6 +1,6 @@
 # IdentifierType
 
-The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+Identifier type for the asset being moved
 
 ## Example Usage
 
@@ -14,9 +14,10 @@ let value: IdentifierType = IdentifierType.Symbol;
 
 This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
-| Name                   | Value                  |
-| ---------------------- | ---------------------- |
-| `Symbol`               | SYMBOL                 |
-| `Cusip`                | CUSIP                  |
-| `Isin`                 | ISIN                   |
-| -                      | `Unrecognized<string>` |
+| Name                        | Value                       |
+| --------------------------- | --------------------------- |
+| `IdentifierTypeUnspecified` | IDENTIFIER_TYPE_UNSPECIFIED |
+| `Cusip`                     | CUSIP                       |
+| `Symbol`                    | SYMBOL                      |
+| `AssetId`                   | ASSET_ID                    |
+| -                           | `Unrecognized<string>`      |

@@ -134,6 +134,7 @@ export enum DocumentType {
   ChangeOfAddressRequest = "CHANGE_OF_ADDRESS_REQUEST",
   OptionsAgreement = "OPTIONS_AGREEMENT",
   StateWaiverForm = "STATE_WAIVER_FORM",
+  AltsSubscriptionAgreement = "ALTS_SUBSCRIPTION_AGREEMENT",
 }
 /**
  * Describes the contents of a document and how it is used; Required for all account documents

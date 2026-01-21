@@ -47,7 +47,7 @@ export type PrevailingMarketPrice = {
 /**
  * The quantity of the order. For Equities: measured in shares. For Fixed Income assets: measured in the face value of the currency of the order.
  */
-export type Quantity = {
+export type TradingExecutionsQuantity = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -81,7 +81,7 @@ export type TradingExecutions = {
   /**
    * The quantity of the order. For Equities: measured in shares. For Fixed Income assets: measured in the face value of the currency of the order.
    */
-  quantity?: Quantity | null | undefined;
+  quantity?: TradingExecutionsQuantity | null | undefined;
 };
 
 /** @internal */
@@ -247,8 +247,8 @@ export function prevailingMarketPriceFromJSON(
 }
 
 /** @internal */
-export const Quantity$inboundSchema: z.ZodType<
-  Quantity,
+export const TradingExecutionsQuantity$inboundSchema: z.ZodType<
+  TradingExecutionsQuantity,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -256,15 +256,15 @@ export const Quantity$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Quantity$Outbound = {
+export type TradingExecutionsQuantity$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const Quantity$outboundSchema: z.ZodType<
-  Quantity$Outbound,
+export const TradingExecutionsQuantity$outboundSchema: z.ZodType<
+  TradingExecutionsQuantity$Outbound,
   z.ZodTypeDef,
-  Quantity
+  TradingExecutionsQuantity
 > = z.object({
   value: z.string().optional(),
 });
@@ -273,26 +273,30 @@ export const Quantity$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Quantity$ {
-  /** @deprecated use `Quantity$inboundSchema` instead. */
-  export const inboundSchema = Quantity$inboundSchema;
-  /** @deprecated use `Quantity$outboundSchema` instead. */
-  export const outboundSchema = Quantity$outboundSchema;
-  /** @deprecated use `Quantity$Outbound` instead. */
-  export type Outbound = Quantity$Outbound;
+export namespace TradingExecutionsQuantity$ {
+  /** @deprecated use `TradingExecutionsQuantity$inboundSchema` instead. */
+  export const inboundSchema = TradingExecutionsQuantity$inboundSchema;
+  /** @deprecated use `TradingExecutionsQuantity$outboundSchema` instead. */
+  export const outboundSchema = TradingExecutionsQuantity$outboundSchema;
+  /** @deprecated use `TradingExecutionsQuantity$Outbound` instead. */
+  export type Outbound = TradingExecutionsQuantity$Outbound;
 }
 
-export function quantityToJSON(quantity: Quantity): string {
-  return JSON.stringify(Quantity$outboundSchema.parse(quantity));
+export function tradingExecutionsQuantityToJSON(
+  tradingExecutionsQuantity: TradingExecutionsQuantity,
+): string {
+  return JSON.stringify(
+    TradingExecutionsQuantity$outboundSchema.parse(tradingExecutionsQuantity),
+  );
 }
 
-export function quantityFromJSON(
+export function tradingExecutionsQuantityFromJSON(
   jsonString: string,
-): SafeParseResult<Quantity, SDKValidationError> {
+): SafeParseResult<TradingExecutionsQuantity, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Quantity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Quantity' from JSON`,
+    (x) => TradingExecutionsQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TradingExecutionsQuantity' from JSON`,
   );
 }
 
@@ -314,7 +318,8 @@ export const TradingExecutions$inboundSchema: z.ZodType<
   prevailing_market_price: z.nullable(
     z.lazy(() => PrevailingMarketPrice$inboundSchema),
   ).optional(),
-  quantity: z.nullable(z.lazy(() => Quantity$inboundSchema)).optional(),
+  quantity: z.nullable(z.lazy(() => TradingExecutionsQuantity$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "accrued_interest_amount": "accruedInterestAmount",
@@ -332,7 +337,7 @@ export type TradingExecutions$Outbound = {
   executed_time?: string | null | undefined;
   gross_credit_amount?: GrossCreditAmount$Outbound | null | undefined;
   prevailing_market_price?: PrevailingMarketPrice$Outbound | null | undefined;
-  quantity?: Quantity$Outbound | null | undefined;
+  quantity?: TradingExecutionsQuantity$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -351,7 +356,8 @@ export const TradingExecutions$outboundSchema: z.ZodType<
   prevailingMarketPrice: z.nullable(
     z.lazy(() => PrevailingMarketPrice$outboundSchema),
   ).optional(),
-  quantity: z.nullable(z.lazy(() => Quantity$outboundSchema)).optional(),
+  quantity: z.nullable(z.lazy(() => TradingExecutionsQuantity$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     accruedInterestAmount: "accrued_interest_amount",
