@@ -134,6 +134,7 @@ export enum DocumentDocumentType {
   ChangeOfAddressRequest = "CHANGE_OF_ADDRESS_REQUEST",
   OptionsAgreement = "OPTIONS_AGREEMENT",
   StateWaiverForm = "STATE_WAIVER_FORM",
+  AltsSubscriptionAgreement = "ALTS_SUBSCRIPTION_AGREEMENT",
 }
 /**
  * Describes the contents of a document and how it is used
@@ -283,6 +284,7 @@ export enum DocumentInvestorDocumentDocumentType {
   Form5498Esa = "FORM_5498_ESA",
   FpslNegativeConsentForm = "FPSL_NEGATIVE_CONSENT_FORM",
   CrsForm = "CRS_FORM",
+  FpslConfirmation = "FPSL_CONFIRMATION",
 }
 /**
  * Describes the contents of a document and how it is used

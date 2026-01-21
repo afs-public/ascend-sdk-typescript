@@ -42,6 +42,7 @@ test("Subscriber Events Update Push Subscription Update Push Subscription1", asy
   if (typeof subscriber_id !== "string") {
     throw new Error("message_id is undefined.");
   }
+  await timeout(5000);
   const request: components.PushSubscriptionUpdate = {
     eventTypes: ["position.v2.updated"],
   };

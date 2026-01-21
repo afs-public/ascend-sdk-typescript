@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [simulateCreateCheckDeposit](#simulatecreatecheckdeposit) - Simulate Check Deposit Creation
+* [forceApproveCheckDeposit](#forceapprovecheckdeposit) - Check Deposit Approval
 * [forceApproveAchDeposit](#forceapproveachdeposit) - ACH Deposit Approval
 * [forceNocAchDeposit](#forcenocachdeposit) - NOC for a Deposit
 * [forceRejectAchDeposit](#forcerejectachdeposit) - ACH Deposit Rejection
@@ -26,6 +27,8 @@
 * [forceRejectWireDeposit](#forcerejectwiredeposit) - Force Reject Wire Deposit
 * [forceApproveCashJournal](#forceapprovecashjournal) - Force Approve Cash Journal
 * [forceRejectCashJournal](#forcerejectcashjournal) - Force Reject Cash Journal
+* [forceApprovePositionJournal](#forceapprovepositionjournal) - Force Approve Position Journal
+* [forceRejectPositionJournal](#forcerejectpositionjournal) - Force Reject Position Journal
 
 ## simulateCreateCheckDeposit
 
@@ -118,6 +121,98 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.Status    | 400, 403         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## forceApproveCheckDeposit
+
+Force approval of an existing check deposit that is pending review FOR TESTING ONLY!
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CheckDeposits_ForceApproveCheckDeposit" method="post" path="/transfers/v1/accounts/{account_id}/checkDeposits/{checkDeposit_id}:forceApprove" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.testSimulation.forceApproveCheckDeposit({
+    name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/checkDeposits/20230817000319",
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { testSimulationForceApproveCheckDeposit } from "@apexfintechsolutions/ascend-sdk/funcs/testSimulationForceApproveCheckDeposit.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await testSimulationForceApproveCheckDeposit(apexascend, {
+    name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/checkDeposits/20230817000319",
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "20230817000319");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApproveCheckDeposit failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `checkDepositId`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The checkDeposit id.                                                                                                                                                           | [object Object]                                                                                                                                                                |
+| `forceApproveCheckDepositRequestCreate`                                                                                                                                        | [components.ForceApproveCheckDepositRequestCreate](../../models/components/forceapprovecheckdepositrequestcreate.md)                                                           | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CheckDepositsForceApproveCheckDepositResponse](../../models/operations/checkdepositsforceapprovecheckdepositresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## forceApproveAchDeposit
@@ -1984,4 +2079,186 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.Status    | 400, 403         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## forceApprovePositionJournal
+
+Forces approval of an existing position journal that is pending review FOR TESTING ONLY!
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="PositionJournals_ForceApprovePositionJournal" method="post" path="/transfers/v1/positionJournals/{positionJournal_id}:forceApprove" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.testSimulation.forceApprovePositionJournal({
+    name: "positionJournals/20230817000319",
+  }, "20230817000319");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { testSimulationForceApprovePositionJournal } from "@apexfintechsolutions/ascend-sdk/funcs/testSimulationForceApprovePositionJournal.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await testSimulationForceApprovePositionJournal(apexascend, {
+    name: "positionJournals/20230817000319",
+  }, "20230817000319");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceApprovePositionJournal failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `positionJournalId`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The positionJournal id.                                                                                                                                                        | [object Object]                                                                                                                                                                |
+| `forceApprovePositionJournalRequestCreate`                                                                                                                                     | [components.ForceApprovePositionJournalRequestCreate](../../models/components/forceapprovepositionjournalrequestcreate.md)                                                     | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.PositionJournalsForceApprovePositionJournalResponse](../../models/operations/positionjournalsforceapprovepositionjournalresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## forceRejectPositionJournal
+
+Forces rejection of an existing position journal that is pending review FOR TESTING ONLY!
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="PositionJournals_ForceRejectPositionJournal" method="post" path="/transfers/v1/positionJournals/{positionJournal_id}:forceReject" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.testSimulation.forceRejectPositionJournal({
+    name: "positionJournals/20230817000319",
+  }, "20230817000319");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { testSimulationForceRejectPositionJournal } from "@apexfintechsolutions/ascend-sdk/funcs/testSimulationForceRejectPositionJournal.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await testSimulationForceRejectPositionJournal(apexascend, {
+    name: "positionJournals/20230817000319",
+  }, "20230817000319");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("testSimulationForceRejectPositionJournal failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `positionJournalId`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The positionJournal id.                                                                                                                                                        | [object Object]                                                                                                                                                                |
+| `forceRejectPositionJournalRequestCreate`                                                                                                                                      | [components.ForceRejectPositionJournalRequestCreate](../../models/components/forcerejectpositionjournalrequestcreate.md)                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.PositionJournalsForceRejectPositionJournalResponse](../../models/operations/positionjournalsforcerejectpositionjournalresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |

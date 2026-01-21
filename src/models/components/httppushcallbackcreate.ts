@@ -17,7 +17,7 @@ export type HttpPushCallbackCreate = {
    */
   clientSecret: string;
   /**
-   * The maximum amount of time, in seconds, the service will wait for an acknowledgement of a delivery. If a value of 0 or no value is specified, the timeout will default to 10 seconds.
+   * The maximum amount of time, in seconds, the service will wait for an acknowledgement of a delivery; If a value of 0 or no value is specified, the timeout will default to 10 seconds
    */
   timeoutSeconds?: number | undefined;
   /**

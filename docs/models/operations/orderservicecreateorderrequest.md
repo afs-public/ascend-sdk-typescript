@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AssetType, IdentifierType, OrderType, Side, TimeInForce } from "@apexfintechsolutions/ascend-sdk/models/components";
+import { AssetType, OrderCreateIdentifierType, OrderType, Side, TimeInForce } from "@apexfintechsolutions/ascend-sdk/models/components";
 import { OrderServiceCreateOrderRequest } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
 let value: OrderServiceCreateOrderRequest = {
@@ -12,7 +12,7 @@ let value: OrderServiceCreateOrderRequest = {
     assetType: AssetType.Equity,
     clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
     identifier: "SBUX",
-    identifierType: IdentifierType.Symbol,
+    identifierType: OrderCreateIdentifierType.Symbol,
     orderDate: {},
     orderType: OrderType.Market,
     side: Side.Buy,

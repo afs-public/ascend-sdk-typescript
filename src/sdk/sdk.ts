@@ -26,6 +26,7 @@ import { Ledger } from "./ledger.js";
 import { Margins } from "./margins.js";
 import { Orders } from "./orders.js";
 import { PersonManagement } from "./personmanagement.js";
+import { PositionJournals } from "./positionjournals.js";
 import { Reader } from "./reader.js";
 import { Retirements } from "./retirements.js";
 import { ScheduleTransfers } from "./scheduletransfers.js";
@@ -123,6 +124,11 @@ export class Apexascend extends ClientSDK {
   private _wires?: Wires;
   get wires(): Wires {
     return (this._wires ??= new Wires(this._options));
+  }
+
+  private _positionJournals?: PositionJournals;
+  get positionJournals(): PositionJournals {
+    return (this._positionJournals ??= new PositionJournals(this._options));
   }
 
   private _cashBalances?: CashBalances;

@@ -18,7 +18,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type HttpCallback = {
   /**
-   * The maximum amount of time, in seconds, the service will wait for an acknowledgement of a delivery. If a value of 0 or no value is specified, the timeout will default to 10 seconds.
+   * The maximum amount of time, in seconds, the service will wait for an acknowledgement of a delivery; If a value of 0 or no value is specified, the timeout will default to 10 seconds
    */
   timeoutSeconds?: number | undefined;
   /**
@@ -47,11 +47,15 @@ export type StateOpen = OpenEnum<typeof State>;
  */
 export type PushSubscription = {
   /**
-   * The client that owns the subscription. A client subscription will receive events for it and all of its correspondents. This can only be set at creation time and is mutually exclusive with correspondent_id.
+   * The id of the account group to receive events for; The subscription will receive events related to any of the accounts in the specified account group; This can only be set at creation time and is mutually exclusive with client_id and correspondent_id
+   */
+  accountGroupId?: string | undefined;
+  /**
+   * The id of the client to receive events for; The subscription will receive events related to the specified client, and any of its correspondents and accounts; This can only be set at creation time and is mutually exclusive with correspondent_id and account_group_id
    */
   clientId?: string | undefined;
   /**
-   * The correspondent that owns the subscription. A correspondent subscription will receive events only for itself. This can only be set at creation time and is mutually exclusive with client_id.
+   * The id of the correspondent to receive events for; The subscription will receive events related to the specified correspondent and any of its accounts; This can only be set at creation time and is mutually exclusive with client_id and account_group_id
    */
   correspondentId?: string | undefined;
   /**
@@ -70,6 +74,10 @@ export type PushSubscription = {
    * The resource name of the subscription; Format: subscriptions/{subscription}
    */
   name?: string | undefined;
+  /**
+   * The organization that owns the subscription; Format: {org_type}/{org_id} This field can only be set at creation time and if it is not specified, then it will default to the target organization, unless the target is an account group, in which case this field is required
+   */
+  owner?: string | undefined;
   /**
    * The current status of the subscription
    */
@@ -176,6 +184,7 @@ export const PushSubscription$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  account_group_id: z.string().optional(),
   client_id: z.string().optional(),
   correspondent_id: z.string().optional(),
   display_name: z.string().optional(),
@@ -183,10 +192,12 @@ export const PushSubscription$inboundSchema: z.ZodType<
   http_callback: z.nullable(z.lazy(() => HttpCallback$inboundSchema))
     .optional(),
   name: z.string().optional(),
+  owner: z.string().optional(),
   state: State$inboundSchema.optional(),
   subscription_id: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "account_group_id": "accountGroupId",
     "client_id": "clientId",
     "correspondent_id": "correspondentId",
     "display_name": "displayName",
@@ -198,12 +209,14 @@ export const PushSubscription$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PushSubscription$Outbound = {
+  account_group_id?: string | undefined;
   client_id?: string | undefined;
   correspondent_id?: string | undefined;
   display_name?: string | undefined;
   event_types?: Array<string> | undefined;
   http_callback?: HttpCallback$Outbound | null | undefined;
   name?: string | undefined;
+  owner?: string | undefined;
   state?: string | undefined;
   subscription_id?: string | undefined;
 };
@@ -214,6 +227,7 @@ export const PushSubscription$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PushSubscription
 > = z.object({
+  accountGroupId: z.string().optional(),
   clientId: z.string().optional(),
   correspondentId: z.string().optional(),
   displayName: z.string().optional(),
@@ -221,10 +235,12 @@ export const PushSubscription$outboundSchema: z.ZodType<
   httpCallback: z.nullable(z.lazy(() => HttpCallback$outboundSchema))
     .optional(),
   name: z.string().optional(),
+  owner: z.string().optional(),
   state: State$outboundSchema.optional(),
   subscriptionId: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    accountGroupId: "account_group_id",
     clientId: "client_id",
     correspondentId: "correspondent_id",
     displayName: "display_name",

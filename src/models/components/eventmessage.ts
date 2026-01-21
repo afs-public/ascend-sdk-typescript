@@ -13,6 +13,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type EventMessage = {
   /**
+   * The account group ID related to the event (if applicable)
+   */
+  accountGroupId?: string | undefined;
+  /**
    * The account ID related to the event (if applicable)
    */
   accountId?: string | undefined;
@@ -41,7 +45,7 @@ export type EventMessage = {
    */
   name?: string | undefined;
   /**
-   * A value, if present, is used to group related events together. Events with the same partition key are guaranteed to be sent to the consumer in the same order they were published.
+   * A value, if present, is used to group related events together; Events with the same partition key are guaranteed to be sent to the consumer in the same order they were published
    */
   partitionKey?: string | undefined;
   /**
@@ -56,6 +60,7 @@ export const EventMessage$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  account_group_id: z.string().optional(),
   account_id: z.string().optional(),
   client_id: z.string().optional(),
   correspondent_id: z.string().optional(),
@@ -69,6 +74,7 @@ export const EventMessage$inboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "account_group_id": "accountGroupId",
     "account_id": "accountId",
     "client_id": "clientId",
     "correspondent_id": "correspondentId",
@@ -81,6 +87,7 @@ export const EventMessage$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EventMessage$Outbound = {
+  account_group_id?: string | undefined;
   account_id?: string | undefined;
   client_id?: string | undefined;
   correspondent_id?: string | undefined;
@@ -98,6 +105,7 @@ export const EventMessage$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EventMessage
 > = z.object({
+  accountGroupId: z.string().optional(),
   accountId: z.string().optional(),
   clientId: z.string().optional(),
   correspondentId: z.string().optional(),
@@ -109,6 +117,7 @@ export const EventMessage$outboundSchema: z.ZodType<
   publishTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    accountGroupId: "account_group_id",
     accountId: "account_id",
     clientId: "client_id",
     correspondentId: "correspondent_id",

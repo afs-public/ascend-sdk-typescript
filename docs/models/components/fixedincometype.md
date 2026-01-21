@@ -24,4 +24,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Treasury`                    | TREASURY                      |
 | `Government`                  | GOVERNMENT                    |
 | `ForeignGovernment`           | FOREIGN_GOVERNMENT            |
+| `EuroBond`                    | EURO_BOND                     |
 | -                             | `Unrecognized<string>`        |

@@ -16,7 +16,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The address of the person or entity taking receipt of the wired funds. This will be populated automatically in the case of a valid first-party wire
  */
-export type Address = {
+export type WireWithdrawalScheduleAddress = {
   /**
    * Required: Describes the city in which the entity is located.
    */
@@ -54,7 +54,7 @@ export type WireWithdrawalScheduleBeneficiary = {
   /**
    * The address of the person or entity taking receipt of the wired funds. This will be populated automatically in the case of a valid first-party wire
    */
-  address?: Address | null | undefined;
+  address?: WireWithdrawalScheduleAddress | null | undefined;
   /**
    * Indicates if this beneficiary is a third party beneficiary. A wire transfer is considered third party if the beneficiary is not the exact same person and/or entity that the funds originated from. This includes wire transfers where the originator account is an individual account and the beneficiary account is a joint account
    */
@@ -64,7 +64,7 @@ export type WireWithdrawalScheduleBeneficiary = {
 /**
  * The address of the intermediary party
  */
-export type WireWithdrawalScheduleAddress = {
+export type WireWithdrawalScheduleIntermediaryAddress = {
   /**
    * Required: Describes the city in which the entity is located.
    */
@@ -102,7 +102,7 @@ export type Intermediary = {
   /**
    * The address of the intermediary party
    */
-  address?: WireWithdrawalScheduleAddress | null | undefined;
+  address?: WireWithdrawalScheduleIntermediaryAddress | null | undefined;
 };
 
 /**
@@ -507,149 +507,6 @@ export type WireWithdrawalSchedule = {
 };
 
 /** @internal */
-export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> =
-  z.object({
-    city: z.string().optional(),
-    country: z.string().optional(),
-    postal_code: z.string().optional(),
-    state: z.string().optional(),
-    streetAddress: z.array(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "postal_code": "postalCode",
-    });
-  });
-
-/** @internal */
-export type Address$Outbound = {
-  city?: string | undefined;
-  country?: string | undefined;
-  postal_code?: string | undefined;
-  state?: string | undefined;
-  streetAddress?: Array<string> | undefined;
-};
-
-/** @internal */
-export const Address$outboundSchema: z.ZodType<
-  Address$Outbound,
-  z.ZodTypeDef,
-  Address
-> = z.object({
-  city: z.string().optional(),
-  country: z.string().optional(),
-  postalCode: z.string().optional(),
-  state: z.string().optional(),
-  streetAddress: z.array(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    postalCode: "postal_code",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Address$ {
-  /** @deprecated use `Address$inboundSchema` instead. */
-  export const inboundSchema = Address$inboundSchema;
-  /** @deprecated use `Address$outboundSchema` instead. */
-  export const outboundSchema = Address$outboundSchema;
-  /** @deprecated use `Address$Outbound` instead. */
-  export type Outbound = Address$Outbound;
-}
-
-export function addressToJSON(address: Address): string {
-  return JSON.stringify(Address$outboundSchema.parse(address));
-}
-
-export function addressFromJSON(
-  jsonString: string,
-): SafeParseResult<Address, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Address$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Address' from JSON`,
-  );
-}
-
-/** @internal */
-export const WireWithdrawalScheduleBeneficiary$inboundSchema: z.ZodType<
-  WireWithdrawalScheduleBeneficiary,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  account: z.string().optional(),
-  account_title: z.string().optional(),
-  address: z.nullable(z.lazy(() => Address$inboundSchema)).optional(),
-  third_party: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "account_title": "accountTitle",
-    "third_party": "thirdParty",
-  });
-});
-
-/** @internal */
-export type WireWithdrawalScheduleBeneficiary$Outbound = {
-  account?: string | undefined;
-  account_title?: string | undefined;
-  address?: Address$Outbound | null | undefined;
-  third_party?: boolean | undefined;
-};
-
-/** @internal */
-export const WireWithdrawalScheduleBeneficiary$outboundSchema: z.ZodType<
-  WireWithdrawalScheduleBeneficiary$Outbound,
-  z.ZodTypeDef,
-  WireWithdrawalScheduleBeneficiary
-> = z.object({
-  account: z.string().optional(),
-  accountTitle: z.string().optional(),
-  address: z.nullable(z.lazy(() => Address$outboundSchema)).optional(),
-  thirdParty: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    accountTitle: "account_title",
-    thirdParty: "third_party",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WireWithdrawalScheduleBeneficiary$ {
-  /** @deprecated use `WireWithdrawalScheduleBeneficiary$inboundSchema` instead. */
-  export const inboundSchema = WireWithdrawalScheduleBeneficiary$inboundSchema;
-  /** @deprecated use `WireWithdrawalScheduleBeneficiary$outboundSchema` instead. */
-  export const outboundSchema =
-    WireWithdrawalScheduleBeneficiary$outboundSchema;
-  /** @deprecated use `WireWithdrawalScheduleBeneficiary$Outbound` instead. */
-  export type Outbound = WireWithdrawalScheduleBeneficiary$Outbound;
-}
-
-export function wireWithdrawalScheduleBeneficiaryToJSON(
-  wireWithdrawalScheduleBeneficiary: WireWithdrawalScheduleBeneficiary,
-): string {
-  return JSON.stringify(
-    WireWithdrawalScheduleBeneficiary$outboundSchema.parse(
-      wireWithdrawalScheduleBeneficiary,
-    ),
-  );
-}
-
-export function wireWithdrawalScheduleBeneficiaryFromJSON(
-  jsonString: string,
-): SafeParseResult<WireWithdrawalScheduleBeneficiary, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => WireWithdrawalScheduleBeneficiary$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WireWithdrawalScheduleBeneficiary' from JSON`,
-  );
-}
-
-/** @internal */
 export const WireWithdrawalScheduleAddress$inboundSchema: z.ZodType<
   WireWithdrawalScheduleAddress,
   z.ZodTypeDef,
@@ -726,8 +583,8 @@ export function wireWithdrawalScheduleAddressFromJSON(
 }
 
 /** @internal */
-export const Intermediary$inboundSchema: z.ZodType<
-  Intermediary,
+export const WireWithdrawalScheduleBeneficiary$inboundSchema: z.ZodType<
+  WireWithdrawalScheduleBeneficiary,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -735,6 +592,172 @@ export const Intermediary$inboundSchema: z.ZodType<
   account_title: z.string().optional(),
   address: z.nullable(z.lazy(() => WireWithdrawalScheduleAddress$inboundSchema))
     .optional(),
+  third_party: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "account_title": "accountTitle",
+    "third_party": "thirdParty",
+  });
+});
+
+/** @internal */
+export type WireWithdrawalScheduleBeneficiary$Outbound = {
+  account?: string | undefined;
+  account_title?: string | undefined;
+  address?: WireWithdrawalScheduleAddress$Outbound | null | undefined;
+  third_party?: boolean | undefined;
+};
+
+/** @internal */
+export const WireWithdrawalScheduleBeneficiary$outboundSchema: z.ZodType<
+  WireWithdrawalScheduleBeneficiary$Outbound,
+  z.ZodTypeDef,
+  WireWithdrawalScheduleBeneficiary
+> = z.object({
+  account: z.string().optional(),
+  accountTitle: z.string().optional(),
+  address: z.nullable(
+    z.lazy(() => WireWithdrawalScheduleAddress$outboundSchema),
+  ).optional(),
+  thirdParty: z.boolean().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    accountTitle: "account_title",
+    thirdParty: "third_party",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WireWithdrawalScheduleBeneficiary$ {
+  /** @deprecated use `WireWithdrawalScheduleBeneficiary$inboundSchema` instead. */
+  export const inboundSchema = WireWithdrawalScheduleBeneficiary$inboundSchema;
+  /** @deprecated use `WireWithdrawalScheduleBeneficiary$outboundSchema` instead. */
+  export const outboundSchema =
+    WireWithdrawalScheduleBeneficiary$outboundSchema;
+  /** @deprecated use `WireWithdrawalScheduleBeneficiary$Outbound` instead. */
+  export type Outbound = WireWithdrawalScheduleBeneficiary$Outbound;
+}
+
+export function wireWithdrawalScheduleBeneficiaryToJSON(
+  wireWithdrawalScheduleBeneficiary: WireWithdrawalScheduleBeneficiary,
+): string {
+  return JSON.stringify(
+    WireWithdrawalScheduleBeneficiary$outboundSchema.parse(
+      wireWithdrawalScheduleBeneficiary,
+    ),
+  );
+}
+
+export function wireWithdrawalScheduleBeneficiaryFromJSON(
+  jsonString: string,
+): SafeParseResult<WireWithdrawalScheduleBeneficiary, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WireWithdrawalScheduleBeneficiary$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WireWithdrawalScheduleBeneficiary' from JSON`,
+  );
+}
+
+/** @internal */
+export const WireWithdrawalScheduleIntermediaryAddress$inboundSchema: z.ZodType<
+  WireWithdrawalScheduleIntermediaryAddress,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  city: z.string().optional(),
+  country: z.string().optional(),
+  postal_code: z.string().optional(),
+  state: z.string().optional(),
+  streetAddress: z.array(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "postal_code": "postalCode",
+  });
+});
+
+/** @internal */
+export type WireWithdrawalScheduleIntermediaryAddress$Outbound = {
+  city?: string | undefined;
+  country?: string | undefined;
+  postal_code?: string | undefined;
+  state?: string | undefined;
+  streetAddress?: Array<string> | undefined;
+};
+
+/** @internal */
+export const WireWithdrawalScheduleIntermediaryAddress$outboundSchema:
+  z.ZodType<
+    WireWithdrawalScheduleIntermediaryAddress$Outbound,
+    z.ZodTypeDef,
+    WireWithdrawalScheduleIntermediaryAddress
+  > = z.object({
+    city: z.string().optional(),
+    country: z.string().optional(),
+    postalCode: z.string().optional(),
+    state: z.string().optional(),
+    streetAddress: z.array(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      postalCode: "postal_code",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WireWithdrawalScheduleIntermediaryAddress$ {
+  /** @deprecated use `WireWithdrawalScheduleIntermediaryAddress$inboundSchema` instead. */
+  export const inboundSchema =
+    WireWithdrawalScheduleIntermediaryAddress$inboundSchema;
+  /** @deprecated use `WireWithdrawalScheduleIntermediaryAddress$outboundSchema` instead. */
+  export const outboundSchema =
+    WireWithdrawalScheduleIntermediaryAddress$outboundSchema;
+  /** @deprecated use `WireWithdrawalScheduleIntermediaryAddress$Outbound` instead. */
+  export type Outbound = WireWithdrawalScheduleIntermediaryAddress$Outbound;
+}
+
+export function wireWithdrawalScheduleIntermediaryAddressToJSON(
+  wireWithdrawalScheduleIntermediaryAddress:
+    WireWithdrawalScheduleIntermediaryAddress,
+): string {
+  return JSON.stringify(
+    WireWithdrawalScheduleIntermediaryAddress$outboundSchema.parse(
+      wireWithdrawalScheduleIntermediaryAddress,
+    ),
+  );
+}
+
+export function wireWithdrawalScheduleIntermediaryAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WireWithdrawalScheduleIntermediaryAddress,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WireWithdrawalScheduleIntermediaryAddress$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WireWithdrawalScheduleIntermediaryAddress' from JSON`,
+  );
+}
+
+/** @internal */
+export const Intermediary$inboundSchema: z.ZodType<
+  Intermediary,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  account: z.string().optional(),
+  account_title: z.string().optional(),
+  address: z.nullable(
+    z.lazy(() => WireWithdrawalScheduleIntermediaryAddress$inboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_title": "accountTitle",
@@ -745,7 +768,10 @@ export const Intermediary$inboundSchema: z.ZodType<
 export type Intermediary$Outbound = {
   account?: string | undefined;
   account_title?: string | undefined;
-  address?: WireWithdrawalScheduleAddress$Outbound | null | undefined;
+  address?:
+    | WireWithdrawalScheduleIntermediaryAddress$Outbound
+    | null
+    | undefined;
 };
 
 /** @internal */
@@ -757,7 +783,7 @@ export const Intermediary$outboundSchema: z.ZodType<
   account: z.string().optional(),
   accountTitle: z.string().optional(),
   address: z.nullable(
-    z.lazy(() => WireWithdrawalScheduleAddress$outboundSchema),
+    z.lazy(() => WireWithdrawalScheduleIntermediaryAddress$outboundSchema),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {

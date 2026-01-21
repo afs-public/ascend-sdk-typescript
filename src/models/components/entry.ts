@@ -92,7 +92,7 @@ export type ActionOpen = OpenEnum<typeof Action>;
 /**
  * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
  */
-export type FairMarketValue = {
+export type EntryFairMarketValue = {
   /**
    * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
    */
@@ -166,7 +166,7 @@ export type AccountTransfer = {
   /**
    * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
    */
-  fairMarketValue?: FairMarketValue | null | undefined;
+  fairMarketValue?: EntryFairMarketValue | null | undefined;
   /**
    * Date from which the asset was valued and used in the fair market value calculation
    */
@@ -4915,8 +4915,8 @@ export namespace Action$ {
 }
 
 /** @internal */
-export const FairMarketValue$inboundSchema: z.ZodType<
-  FairMarketValue,
+export const EntryFairMarketValue$inboundSchema: z.ZodType<
+  EntryFairMarketValue,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4924,15 +4924,15 @@ export const FairMarketValue$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type FairMarketValue$Outbound = {
+export type EntryFairMarketValue$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const FairMarketValue$outboundSchema: z.ZodType<
-  FairMarketValue$Outbound,
+export const EntryFairMarketValue$outboundSchema: z.ZodType<
+  EntryFairMarketValue$Outbound,
   z.ZodTypeDef,
-  FairMarketValue
+  EntryFairMarketValue
 > = z.object({
   value: z.string().optional(),
 });
@@ -4941,28 +4941,30 @@ export const FairMarketValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FairMarketValue$ {
-  /** @deprecated use `FairMarketValue$inboundSchema` instead. */
-  export const inboundSchema = FairMarketValue$inboundSchema;
-  /** @deprecated use `FairMarketValue$outboundSchema` instead. */
-  export const outboundSchema = FairMarketValue$outboundSchema;
-  /** @deprecated use `FairMarketValue$Outbound` instead. */
-  export type Outbound = FairMarketValue$Outbound;
+export namespace EntryFairMarketValue$ {
+  /** @deprecated use `EntryFairMarketValue$inboundSchema` instead. */
+  export const inboundSchema = EntryFairMarketValue$inboundSchema;
+  /** @deprecated use `EntryFairMarketValue$outboundSchema` instead. */
+  export const outboundSchema = EntryFairMarketValue$outboundSchema;
+  /** @deprecated use `EntryFairMarketValue$Outbound` instead. */
+  export type Outbound = EntryFairMarketValue$Outbound;
 }
 
-export function fairMarketValueToJSON(
-  fairMarketValue: FairMarketValue,
+export function entryFairMarketValueToJSON(
+  entryFairMarketValue: EntryFairMarketValue,
 ): string {
-  return JSON.stringify(FairMarketValue$outboundSchema.parse(fairMarketValue));
+  return JSON.stringify(
+    EntryFairMarketValue$outboundSchema.parse(entryFairMarketValue),
+  );
 }
 
-export function fairMarketValueFromJSON(
+export function entryFairMarketValueFromJSON(
   jsonString: string,
-): SafeParseResult<FairMarketValue, SDKValidationError> {
+): SafeParseResult<EntryFairMarketValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FairMarketValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FairMarketValue' from JSON`,
+    (x) => EntryFairMarketValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntryFairMarketValue' from JSON`,
   );
 }
 
@@ -5071,8 +5073,9 @@ export const AccountTransfer$inboundSchema: z.ZodType<
   additional_instructions: z.string().optional(),
   contra_party_account_number: z.string().optional(),
   contra_party_id: z.string().optional(),
-  fair_market_value: z.nullable(z.lazy(() => FairMarketValue$inboundSchema))
-    .optional(),
+  fair_market_value: z.nullable(
+    z.lazy(() => EntryFairMarketValue$inboundSchema),
+  ).optional(),
   fair_market_value_date: z.nullable(
     z.lazy(() => FairMarketValueDate$inboundSchema),
   ).optional(),
@@ -5102,7 +5105,7 @@ export type AccountTransfer$Outbound = {
   additional_instructions?: string | undefined;
   contra_party_account_number?: string | undefined;
   contra_party_id?: string | undefined;
-  fair_market_value?: FairMarketValue$Outbound | null | undefined;
+  fair_market_value?: EntryFairMarketValue$Outbound | null | undefined;
   fair_market_value_date?: FairMarketValueDate$Outbound | null | undefined;
   gift_transfer?: boolean | undefined;
   institution?: string | undefined;
@@ -5122,7 +5125,7 @@ export const AccountTransfer$outboundSchema: z.ZodType<
   additionalInstructions: z.string().optional(),
   contraPartyAccountNumber: z.string().optional(),
   contraPartyId: z.string().optional(),
-  fairMarketValue: z.nullable(z.lazy(() => FairMarketValue$outboundSchema))
+  fairMarketValue: z.nullable(z.lazy(() => EntryFairMarketValue$outboundSchema))
     .optional(),
   fairMarketValueDate: z.nullable(
     z.lazy(() => FairMarketValueDate$outboundSchema),

@@ -4,19 +4,24 @@
 
 import { scheduleTransfersCancelAchDepositSchedule } from "../funcs/scheduleTransfersCancelAchDepositSchedule.js";
 import { scheduleTransfersCancelAchWithdrawalSchedule } from "../funcs/scheduleTransfersCancelAchWithdrawalSchedule.js";
+import { scheduleTransfersCancelCheckWithdrawalSchedule } from "../funcs/scheduleTransfersCancelCheckWithdrawalSchedule.js";
 import { scheduleTransfersCancelWireWithdrawalSchedule } from "../funcs/scheduleTransfersCancelWireWithdrawalSchedule.js";
 import { scheduleTransfersCreateAchDepositSchedule } from "../funcs/scheduleTransfersCreateAchDepositSchedule.js";
 import { scheduleTransfersCreateAchWithdrawalSchedule } from "../funcs/scheduleTransfersCreateAchWithdrawalSchedule.js";
+import { scheduleTransfersCreateCheckWithdrawalSchedule } from "../funcs/scheduleTransfersCreateCheckWithdrawalSchedule.js";
 import { scheduleTransfersCreateWireWithdrawalSchedule } from "../funcs/scheduleTransfersCreateWireWithdrawalSchedule.js";
 import { scheduleTransfersGetAchDepositSchedule } from "../funcs/scheduleTransfersGetAchDepositSchedule.js";
 import { scheduleTransfersGetAchWithdrawalSchedule } from "../funcs/scheduleTransfersGetAchWithdrawalSchedule.js";
+import { scheduleTransfersGetCheckWithdrawalSchedule } from "../funcs/scheduleTransfersGetCheckWithdrawalSchedule.js";
 import { scheduleTransfersGetWireWithdrawalSchedule } from "../funcs/scheduleTransfersGetWireWithdrawalSchedule.js";
 import { scheduleTransfersListAchDepositSchedules } from "../funcs/scheduleTransfersListAchDepositSchedules.js";
 import { scheduleTransfersListAchWithdrawalSchedules } from "../funcs/scheduleTransfersListAchWithdrawalSchedules.js";
+import { scheduleTransfersListCheckWithdrawalSchedules } from "../funcs/scheduleTransfersListCheckWithdrawalSchedules.js";
 import { scheduleTransfersListScheduleSummaries } from "../funcs/scheduleTransfersListScheduleSummaries.js";
 import { scheduleTransfersListWireWithdrawalSchedules } from "../funcs/scheduleTransfersListWireWithdrawalSchedules.js";
 import { scheduleTransfersUpdateAchDepositSchedule } from "../funcs/scheduleTransfersUpdateAchDepositSchedule.js";
 import { scheduleTransfersUpdateAchWithdrawalSchedule } from "../funcs/scheduleTransfersUpdateAchWithdrawalSchedule.js";
+import { scheduleTransfersUpdateCheckWithdrawalSchedule } from "../funcs/scheduleTransfersUpdateCheckWithdrawalSchedule.js";
 import { scheduleTransfersUpdateWireWithdrawalSchedule } from "../funcs/scheduleTransfersUpdateWireWithdrawalSchedule.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -277,6 +282,122 @@ export class ScheduleTransfers extends ClientSDK {
       cancelAchWithdrawalScheduleRequestCreate,
       accountId,
       achWithdrawalScheduleId,
+      options,
+    ));
+  }
+
+  /**
+   * Create Check Withdrawal Schedule
+   *
+   * @remarks
+   * Creates a Check withdrawal transfer schedule
+   */
+  async createCheckWithdrawalSchedule(
+    checkWithdrawalScheduleCreate: components.CheckWithdrawalScheduleCreate,
+    accountId: string,
+    options?: RequestOptions,
+  ): Promise<
+    operations.CheckWithdrawalSchedulesCreateCheckWithdrawalScheduleResponse
+  > {
+    return unwrapAsync(scheduleTransfersCreateCheckWithdrawalSchedule(
+      this,
+      checkWithdrawalScheduleCreate,
+      accountId,
+      options,
+    ));
+  }
+
+  /**
+   * List Check Withdrawal Schedules
+   *
+   * @remarks
+   * Return a list of Check withdrawal schedules for the specified account and filter params
+   */
+  async listCheckWithdrawalSchedules(
+    accountId: string,
+    filter?: string | undefined,
+    pageSize?: number | undefined,
+    pageToken?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    operations.CheckWithdrawalSchedulesListCheckWithdrawalSchedulesResponse
+  > {
+    return unwrapAsync(scheduleTransfersListCheckWithdrawalSchedules(
+      this,
+      accountId,
+      filter,
+      pageSize,
+      pageToken,
+      options,
+    ));
+  }
+
+  /**
+   * Get Check Withdrawal Schedule
+   *
+   * @remarks
+   * Gets a Check withdrawal transfer schedule
+   */
+  async getCheckWithdrawalSchedule(
+    accountId: string,
+    checkWithdrawalScheduleId: string,
+    options?: RequestOptions,
+  ): Promise<
+    operations.CheckWithdrawalSchedulesGetCheckWithdrawalScheduleResponse
+  > {
+    return unwrapAsync(scheduleTransfersGetCheckWithdrawalSchedule(
+      this,
+      accountId,
+      checkWithdrawalScheduleId,
+      options,
+    ));
+  }
+
+  /**
+   * Update Check Withdrawal Schedule
+   *
+   * @remarks
+   * Updates the amount of a Check withdrawal transfer schedule
+   */
+  async updateCheckWithdrawalSchedule(
+    checkWithdrawalScheduleUpdate: components.CheckWithdrawalScheduleUpdate,
+    accountId: string,
+    checkWithdrawalScheduleId: string,
+    updateMask?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    operations.CheckWithdrawalSchedulesUpdateCheckWithdrawalScheduleResponse
+  > {
+    return unwrapAsync(scheduleTransfersUpdateCheckWithdrawalSchedule(
+      this,
+      checkWithdrawalScheduleUpdate,
+      accountId,
+      checkWithdrawalScheduleId,
+      updateMask,
+      options,
+    ));
+  }
+
+  /**
+   * Cancel Check Withdrawal Schedule
+   *
+   * @remarks
+   * Cancels a Check withdrawal transfer schedule
+   */
+  async cancelCheckWithdrawalSchedule(
+    cancelCheckWithdrawalScheduleRequestCreate:
+      components.CancelCheckWithdrawalScheduleRequestCreate,
+    accountId: string,
+    checkWithdrawalScheduleId: string,
+    options?: RequestOptions,
+  ): Promise<
+    operations.CheckWithdrawalSchedulesCancelCheckWithdrawalScheduleResponse
+  > {
+    return unwrapAsync(scheduleTransfersCancelCheckWithdrawalSchedule(
+      this,
+      cancelCheckWithdrawalScheduleRequestCreate,
+      accountId,
+      checkWithdrawalScheduleId,
       options,
     ));
   }

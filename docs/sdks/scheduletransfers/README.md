@@ -16,6 +16,11 @@
 * [getAchWithdrawalSchedule](#getachwithdrawalschedule) - Get ACH Withdrawal Schedule
 * [updateAchWithdrawalSchedule](#updateachwithdrawalschedule) - Update ACH Withdrawal Schedule
 * [cancelAchWithdrawalSchedule](#cancelachwithdrawalschedule) - Cancel ACH Withdrawal Schedule
+* [createCheckWithdrawalSchedule](#createcheckwithdrawalschedule) - Create Check Withdrawal Schedule
+* [listCheckWithdrawalSchedules](#listcheckwithdrawalschedules) - List Check Withdrawal Schedules
+* [getCheckWithdrawalSchedule](#getcheckwithdrawalschedule) - Get Check Withdrawal Schedule
+* [updateCheckWithdrawalSchedule](#updatecheckwithdrawalschedule) - Update Check Withdrawal Schedule
+* [cancelCheckWithdrawalSchedule](#cancelcheckwithdrawalschedule) - Cancel Check Withdrawal Schedule
 * [createWireWithdrawalSchedule](#createwirewithdrawalschedule) - Create Wire Withdrawal Schedule
 * [listWireWithdrawalSchedules](#listwirewithdrawalschedules) - List Wire Withdrawal Schedules
 * [getWireWithdrawalSchedule](#getwirewithdrawalschedule) - Get Wire Withdrawal Schedule
@@ -1056,6 +1061,472 @@ run();
 | errors.Status    | 400, 403, 404    | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
+## createCheckWithdrawalSchedule
+
+Creates a Check withdrawal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CheckWithdrawalSchedules_CreateCheckWithdrawalSchedule" method="post" path="/transfers/v1/accounts/{account_id}/checkWithdrawalSchedules" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+import { DeliveryMethod, TimeUnit } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.createCheckWithdrawalSchedule({
+    deliveryMethod: DeliveryMethod.Standard,
+    scheduleDetails: {
+      clientScheduleId: "ABC-123",
+      scheduleProperties: {
+        startDate: {},
+        timeUnit: TimeUnit.Month,
+        unitMultiplier: 1,
+      },
+    },
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersCreateCheckWithdrawalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersCreateCheckWithdrawalSchedule.js";
+import { DeliveryMethod, TimeUnit } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersCreateCheckWithdrawalSchedule(apexascend, {
+    deliveryMethod: DeliveryMethod.Standard,
+    scheduleDetails: {
+      clientScheduleId: "ABC-123",
+      scheduleProperties: {
+        startDate: {},
+        timeUnit: TimeUnit.Month,
+        unitMultiplier: 1,
+      },
+    },
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCreateCheckWithdrawalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `checkWithdrawalScheduleCreate`                                                                                                                                                | [components.CheckWithdrawalScheduleCreate](../../models/components/checkwithdrawalschedulecreate.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CheckWithdrawalSchedulesCreateCheckWithdrawalScheduleResponse](../../models/operations/checkwithdrawalschedulescreatecheckwithdrawalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 409    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## listCheckWithdrawalSchedules
+
+Return a list of Check withdrawal schedules for the specified account and filter params
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CheckWithdrawalSchedules_ListCheckWithdrawalSchedules" method="get" path="/transfers/v1/accounts/{account_id}/checkWithdrawalSchedules" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.listCheckWithdrawalSchedules("01H8FB90ZRRFWXB4XC2JPJ1D4Y");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersListCheckWithdrawalSchedules } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersListCheckWithdrawalSchedules.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersListCheckWithdrawalSchedules(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersListCheckWithdrawalSchedules failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                       | Type                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                     | Example                                                                                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accountId`                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                              | The account id.                                                                                                                                                                                                                 | [object Object]                                                                                                                                                                                                                 |
+| `filter`                                                                                                                                                                                                                        | *string*                                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                              | A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; Filter options include:<br/> `state`<br/> `start_date`<br/> `end_date` | [object Object]                                                                                                                                                                                                                 |
+| `pageSize`                                                                                                                                                                                                                      | *number*                                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                              | The maximum number of schedules to return. The service may return fewer than this value. If unspecified, at most 25 schedules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.           | [object Object]                                                                                                                                                                                                                 |
+| `pageToken`                                                                                                                                                                                                                     | *string*                                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                              | The page token to request                                                                                                                                                                                                       | [object Object]                                                                                                                                                                                                                 |
+| `options`                                                                                                                                                                                                                       | RequestOptions                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                              | Used to set various options for making HTTP requests.                                                                                                                                                                           |                                                                                                                                                                                                                                 |
+| `options.fetchOptions`                                                                                                                                                                                                          | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                              | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                  |                                                                                                                                                                                                                                 |
+| `options.retries`                                                                                                                                                                                                               | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                              | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                |                                                                                                                                                                                                                                 |
+
+### Response
+
+**Promise\<[operations.CheckWithdrawalSchedulesListCheckWithdrawalSchedulesResponse](../../models/operations/checkwithdrawalscheduleslistcheckwithdrawalschedulesresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## getCheckWithdrawalSchedule
+
+Gets a Check withdrawal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CheckWithdrawalSchedules_GetCheckWithdrawalSchedule" method="get" path="/transfers/v1/accounts/{account_id}/checkWithdrawalSchedules/{checkWithdrawalSchedule_id}" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.getCheckWithdrawalSchedule("01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersGetCheckWithdrawalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersGetCheckWithdrawalSchedule.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersGetCheckWithdrawalSchedule(apexascend, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersGetCheckWithdrawalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `checkWithdrawalScheduleId`                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The checkWithdrawalSchedule id.                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CheckWithdrawalSchedulesGetCheckWithdrawalScheduleResponse](../../models/operations/checkwithdrawalschedulesgetcheckwithdrawalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## updateCheckWithdrawalSchedule
+
+Updates the amount of a Check withdrawal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CheckWithdrawalSchedules_UpdateCheckWithdrawalSchedule" method="patch" path="/transfers/v1/accounts/{account_id}/checkWithdrawalSchedules/{checkWithdrawalSchedule_id}" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.updateCheckWithdrawalSchedule({}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersUpdateCheckWithdrawalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersUpdateCheckWithdrawalSchedule.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersUpdateCheckWithdrawalSchedule(apexascend, {}, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersUpdateCheckWithdrawalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `checkWithdrawalScheduleId`                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The checkWithdrawalSchedule id.                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `checkWithdrawalScheduleUpdate`                                                                                                                                                | [components.CheckWithdrawalScheduleUpdate](../../models/components/checkwithdrawalscheduleupdate.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `updateMask`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | A field mask representing the update. Note: only the 'schedule_details.amount' field of a schedule is currently updatable                                                      |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CheckWithdrawalSchedulesUpdateCheckWithdrawalScheduleResponse](../../models/operations/checkwithdrawalschedulesupdatecheckwithdrawalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## cancelCheckWithdrawalSchedule
+
+Cancels a Check withdrawal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CheckWithdrawalSchedules_CancelCheckWithdrawalSchedule" method="post" path="/transfers/v1/accounts/{account_id}/checkWithdrawalSchedules/{checkWithdrawalSchedule_id}:cancel" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.cancelCheckWithdrawalSchedule({
+    name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/checkWithdrawalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersCancelCheckWithdrawalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersCancelCheckWithdrawalSchedule.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersCancelCheckWithdrawalSchedule(apexascend, {
+    name: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y/checkWithdrawalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
+  }, "01H8FB90ZRRFWXB4XC2JPJ1D4Y", "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCancelCheckWithdrawalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `checkWithdrawalScheduleId`                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The checkWithdrawalSchedule id.                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `cancelCheckWithdrawalScheduleRequestCreate`                                                                                                                                   | [components.CancelCheckWithdrawalScheduleRequestCreate](../../models/components/cancelcheckwithdrawalschedulerequestcreate.md)                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CheckWithdrawalSchedulesCancelCheckWithdrawalScheduleResponse](../../models/operations/checkwithdrawalschedulescancelcheckwithdrawalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
 ## createWireWithdrawalSchedule
 
 Creates a Wire withdrawal transfer schedule
@@ -1430,7 +1901,7 @@ run();
 | `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
 | `wireWithdrawalScheduleId`                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The wireWithdrawalSchedule id.                                                                                                                                                 | [object Object]                                                                                                                                                                |
 | `wireWithdrawalScheduleUpdate`                                                                                                                                                 | [components.WireWithdrawalScheduleUpdate](../../models/components/wirewithdrawalscheduleupdate.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
-| `updateMask`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | A field mask representing the update. Note: only the 'schedule_details.amount' field of a schedule is currently updatable                                                      |                                                                                                                                                                                |
+| `updateMask`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | A field mask representing the update. Note: only the 'schedule_details.amount' field of a schedule is currently updatable                                                      | [object Object]                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |

@@ -1,6 +1,8 @@
 # FairMarketValue
 
-Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
+**Field Dependencies:**
+
+Required if `type` is `REWARD`.
 
 ## Example Usage
 
