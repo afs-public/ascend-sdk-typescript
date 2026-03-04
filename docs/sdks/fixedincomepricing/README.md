@@ -39,7 +39,7 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.fixedIncomePricing.previewOrderCost({
     assetType: OrderCostPreviewRequestCreateAssetType.FixedIncome,
-    identifier: "37833100",
+    identifier: "037833100",
     identifierType: OrderCostPreviewRequestCreateIdentifierType.Cusip,
     limitPrice: {
       price: {},
@@ -85,7 +85,7 @@ const apexascend = new ApexascendCore({
 async function run() {
   const res = await fixedIncomePricingPreviewOrderCost(apexascend, {
     assetType: OrderCostPreviewRequestCreateAssetType.FixedIncome,
-    identifier: "37833100",
+    identifier: "037833100",
     identifierType: OrderCostPreviewRequestCreateIdentifierType.Cusip,
     limitPrice: {
       price: {},
@@ -153,7 +153,7 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.fixedIncomePricing.retrieveQuote({
     assetType: RetrieveQuoteRequestCreateAssetType.FixedIncome,
-    identifier: "37833100",
+    identifier: "037833100",
     identifierType: RetrieveQuoteRequestCreateIdentifierType.Cusip,
     parent: "<value>",
   }, "<id>");
@@ -190,7 +190,7 @@ const apexascend = new ApexascendCore({
 async function run() {
   const res = await fixedIncomePricingRetrieveQuote(apexascend, {
     assetType: RetrieveQuoteRequestCreateAssetType.FixedIncome,
-    identifier: "37833100",
+    identifier: "037833100",
     identifierType: RetrieveQuoteRequestCreateIdentifierType.Cusip,
     parent: "<value>",
   }, "<id>");

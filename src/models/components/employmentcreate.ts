@@ -74,11 +74,9 @@ export type EmploymentCreate = {
    *
    * @remarks
    *
-   * Required if `employment_status` is one of:
+   * Must be empty if `employment_status` is ___not___ one of:
    *   - `EMPLOYED`
    *   - `SELF_EMPLOYED`
-   *
-   * Otherwise, must be empty.
    */
   startYear?: number | undefined;
 };

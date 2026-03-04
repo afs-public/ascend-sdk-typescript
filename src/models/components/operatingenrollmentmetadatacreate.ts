@@ -45,6 +45,9 @@ export enum OperatingPurpose {
   PrincipalTrading = "PRINCIPAL_TRADING",
   SafekeepingBookEntityDomestic = "SAFEKEEPING_BOOK_ENTITY_DOMESTIC",
   Fail = "FAIL",
+  Wash = "WASH",
+  Settlement = "SETTLEMENT",
+  TransferLocation = "TRANSFER_LOCATION",
 }
 /**
  * The purpose of the operating account.

@@ -117,7 +117,7 @@ export type TradeCreateSideOpen = OpenEnum<typeof TradeCreateSide>;
 /**
  * Side modifier for the trade.
  */
-export enum SideModifier {
+export enum TradeCreateSideModifier {
   SideModifierUnspecified = "SIDE_MODIFIER_UNSPECIFIED",
   Short = "SHORT",
   ShortExempt = "SHORT_EXEMPT",
@@ -128,7 +128,9 @@ export enum SideModifier {
 /**
  * Side modifier for the trade.
  */
-export type SideModifierOpen = OpenEnum<typeof SideModifier>;
+export type TradeCreateSideModifierOpen = OpenEnum<
+  typeof TradeCreateSideModifier
+>;
 
 export enum SpecialInstructions {
   SpecialInstructionsUnspecified = "SPECIAL_INSTRUCTIONS_UNSPECIFIED",
@@ -328,7 +330,7 @@ export type TradeCreate = {
   /**
    * Side modifier for the trade.
    */
-  sideModifier?: SideModifierOpen | undefined;
+  sideModifier?: TradeCreateSideModifierOpen | undefined;
   /**
    * The source of the submission.
    */
@@ -508,23 +510,23 @@ export namespace TradeCreateSide$ {
 }
 
 /** @internal */
-export const SideModifier$inboundSchema: z.ZodType<
-  SideModifierOpen,
+export const TradeCreateSideModifier$inboundSchema: z.ZodType<
+  TradeCreateSideModifierOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(SideModifier),
+    z.nativeEnum(TradeCreateSideModifier),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const SideModifier$outboundSchema: z.ZodType<
-  SideModifierOpen,
+export const TradeCreateSideModifier$outboundSchema: z.ZodType<
+  TradeCreateSideModifierOpen,
   z.ZodTypeDef,
-  SideModifierOpen
+  TradeCreateSideModifierOpen
 > = z.union([
-  z.nativeEnum(SideModifier),
+  z.nativeEnum(TradeCreateSideModifier),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -532,11 +534,11 @@ export const SideModifier$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SideModifier$ {
-  /** @deprecated use `SideModifier$inboundSchema` instead. */
-  export const inboundSchema = SideModifier$inboundSchema;
-  /** @deprecated use `SideModifier$outboundSchema` instead. */
-  export const outboundSchema = SideModifier$outboundSchema;
+export namespace TradeCreateSideModifier$ {
+  /** @deprecated use `TradeCreateSideModifier$inboundSchema` instead. */
+  export const inboundSchema = TradeCreateSideModifier$inboundSchema;
+  /** @deprecated use `TradeCreateSideModifier$outboundSchema` instead. */
+  export const outboundSchema = TradeCreateSideModifier$outboundSchema;
 }
 
 /** @internal */
@@ -658,7 +660,7 @@ export const TradeCreate$inboundSchema: z.ZodType<
   route_type: RouteType$inboundSchema,
   settlement_date: DateCreate$inboundSchema.optional(),
   side: TradeCreateSide$inboundSchema,
-  side_modifier: SideModifier$inboundSchema.optional(),
+  side_modifier: TradeCreateSideModifier$inboundSchema.optional(),
   source_application: z.string(),
   special_instructions: z.array(SpecialInstructions$inboundSchema).optional(),
   venue: Venue$inboundSchema.optional(),
@@ -742,7 +744,7 @@ export const TradeCreate$outboundSchema: z.ZodType<
   routeType: RouteType$outboundSchema,
   settlementDate: DateCreate$outboundSchema.optional(),
   side: TradeCreateSide$outboundSchema,
-  sideModifier: SideModifier$outboundSchema.optional(),
+  sideModifier: TradeCreateSideModifier$outboundSchema.optional(),
   sourceApplication: z.string(),
   specialInstructions: z.array(SpecialInstructions$outboundSchema).optional(),
   venue: Venue$outboundSchema.optional(),

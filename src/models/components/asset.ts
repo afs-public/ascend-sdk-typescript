@@ -20,6 +20,226 @@ import {
 } from "./optiondeliverable.js";
 
 /**
+ * Indicates whether the valuation represents estimate of investors' interest in the net assets of the program or estimate of the value of the security.
+ */
+export enum EstimatedValueDescriptor {
+  EstimatedValueDescriptorUnspecified =
+    "ESTIMATED_VALUE_DESCRIPTOR_UNSPECIFIED",
+  Ia = "IA",
+  Sv = "SV",
+}
+/**
+ * Indicates whether the valuation represents estimate of investors' interest in the net assets of the program or estimate of the value of the security.
+ */
+export type EstimatedValueDescriptorOpen = OpenEnum<
+  typeof EstimatedValueDescriptor
+>;
+
+/**
+ * Describes the legal entity structure of the alternative investment. Critical for tax treatment, regulatory compliance, and operational procedures.
+ */
+export enum OwnershipStructure {
+  OwnershipStructureUnspecified = "OWNERSHIP_STRUCTURE_UNSPECIFIED",
+  LimitedPartnership = "LIMITED_PARTNERSHIP",
+  UsLlc = "US_LLC",
+  UsSCorp = "US_S_CORP",
+  UsCCorp = "US_C_CORP",
+  CaymanOrdinaryResident = "CAYMAN_ORDINARY_RESIDENT",
+  CaymanExempted = "CAYMAN_EXEMPTED",
+  CaymanOrdinaryNonresident = "CAYMAN_ORDINARY_NONRESIDENT",
+  CaymanLimitedDurationExempted = "CAYMAN_LIMITED_DURATION_EXEMPTED",
+  CaymanForeign = "CAYMAN_FOREIGN",
+  CaymanTrust = "CAYMAN_TRUST",
+  BviGuaranteeNoShares = "BVI_GUARANTEE_NO_SHARES",
+  BviGuaranteeMayIssueShares = "BVI_GUARANTEE_MAY_ISSUE_SHARES",
+  BviUnlimitedNoShares = "BVI_UNLIMITED_NO_SHARES",
+  BviUnlimitedMayIssueShares = "BVI_UNLIMITED_MAY_ISSUE_SHARES",
+  BermudaLimitedByShares = "BERMUDA_LIMITED_BY_SHARES",
+  BermudaLimitedByGuarantee = "BERMUDA_LIMITED_BY_GUARANTEE",
+  BermudaUnlimitedLiability = "BERMUDA_UNLIMITED_LIABILITY",
+  LuxembourgSa = "LUXEMBOURG_SA",
+  LuxembourgSarl = "LUXEMBOURG_SARL",
+  LuxembourgSnc = "LUXEMBOURG_SNC",
+  LuxembourgLimitedPartnership = "LUXEMBOURG_LIMITED_PARTNERSHIP",
+  LuxembourgSc = "LUXEMBOURG_SC",
+  IrishPrivateLimited = "IRISH_PRIVATE_LIMITED",
+  IrishPublicLimited = "IRISH_PUBLIC_LIMITED",
+  IrishLimitedByGuarantee = "IRISH_LIMITED_BY_GUARANTEE",
+  JerseyLlp = "JERSEY_LLP",
+  JerseyPublic = "JERSEY_PUBLIC",
+  JerseyPrivate = "JERSEY_PRIVATE",
+  IsleOfManLlc = "ISLE_OF_MAN_LLC",
+  IsleOfManTrust = "ISLE_OF_MAN_TRUST",
+  MauritiusDomestic = "MAURITIUS_DOMESTIC",
+  MauritiusCategoryIGbl = "MAURITIUS_CATEGORY_I_GBL",
+  MauritiusCategoryIiGbl = "MAURITIUS_CATEGORY_II_GBL",
+  MauritiusSocieteCommerciale = "MAURITIUS_SOCIETE_COMMERCIALE",
+  MauritiusSocieteEnNom = "MAURITIUS_SOCIETE_EN_NOM",
+  MauritiusSocieteCivile = "MAURITIUS_SOCIETE_CIVILE",
+  OtherOwnership = "OTHER_OWNERSHIP",
+  DelawareBusinessTrust = "DELAWARE_BUSINESS_TRUST",
+  MassachusettsBusinessTrust = "MASSACHUSETTS_BUSINESS_TRUST",
+  MarylandReit = "MARYLAND_REIT",
+  CaymanExemptLimitedPartnership = "CAYMAN_EXEMPT_LIMITED_PARTNERSHIP",
+  BviLimitedByShares = "BVI_LIMITED_BY_SHARES",
+  DelawareStatutoryTrust = "DELAWARE_STATUTORY_TRUST",
+}
+/**
+ * Describes the legal entity structure of the alternative investment. Critical for tax treatment, regulatory compliance, and operational procedures.
+ */
+export type OwnershipStructureOpen = OpenEnum<typeof OwnershipStructure>;
+
+/**
+ * Indicates whether the investment generates IRS Form 1099 or Schedule K-1 for tax reporting. Critical for year-end tax processing.
+ */
+export enum AssetTaxReportingStructure {
+  TaxReportingStructureUnspecified = "TAX_REPORTING_STRUCTURE_UNSPECIFIED",
+  Form1099 = "FORM_1099",
+  FormK1 = "FORM_K1",
+}
+/**
+ * Indicates whether the investment generates IRS Form 1099 or Schedule K-1 for tax reporting. Critical for year-end tax processing.
+ */
+export type AssetTaxReportingStructureOpen = OpenEnum<
+  typeof AssetTaxReportingStructure
+>;
+
+/**
+ * Universal footnote combining valuation descriptor, source, and method information.
+ */
+export enum UniversalFootnote {
+  UniversalFootnoteUnspecified = "UNIVERSAL_FOOTNOTE_UNSPECIFIED",
+  A = "A",
+  B = "B",
+  C = "C",
+  D = "D",
+  E = "E",
+  F = "F",
+  G = "G",
+  H = "H",
+  I = "I",
+  J = "J",
+  K = "K",
+  L = "L",
+  M = "M",
+  N = "N",
+  O = "O",
+  P = "P",
+  Q = "Q",
+  R = "R",
+  S = "S",
+  T = "T",
+  U = "U",
+}
+/**
+ * Universal footnote combining valuation descriptor, source, and method information.
+ */
+export type UniversalFootnoteOpen = OpenEnum<typeof UniversalFootnote>;
+
+/**
+ * Indicates how often the asset is valued. Critical for pricing workflows, client expectations, and operational scheduling.
+ */
+export enum ValuationFrequency {
+  ValuationFrequencyUnspecified = "VALUATION_FREQUENCY_UNSPECIFIED",
+  Daily = "DAILY",
+  Weekly = "WEEKLY",
+  Biweekly = "BIWEEKLY",
+  Monthly = "MONTHLY",
+  Semimonthly = "SEMIMONTHLY",
+  Quarterly = "QUARTERLY",
+  Annually = "ANNUALLY",
+  Other = "OTHER",
+}
+/**
+ * Indicates how often the asset is valued. Critical for pricing workflows, client expectations, and operational scheduling.
+ */
+export type ValuationFrequencyOpen = OpenEnum<typeof ValuationFrequency>;
+
+/**
+ * Indicates the methodology used to determine the asset's value. Different valuation methods require different data sources and calculation workflows.
+ */
+export enum ValuationMethod {
+  ValuationMethodUnspecified = "VALUATION_METHOD_UNSPECIFIED",
+  Ind = "IND",
+  Gpc = "GPC",
+  Gpu = "GPU",
+  Bkv = "BKV",
+  Rep = "REP",
+  Sec = "SEC",
+  Par = "PAR",
+  Mkt = "MKT",
+  Av = "AV",
+  Gps = "GPS",
+  Tc = "TC",
+  Ato = "ATO",
+  Ito = "ITO",
+  Ni = "NI",
+  Nid = "NID",
+  Lbr = "LBR",
+  NA = "N_A",
+}
+/**
+ * Indicates the methodology used to determine the asset's value. Different valuation methods require different data sources and calculation workflows.
+ */
+export type ValuationMethodOpen = OpenEnum<typeof ValuationMethod>;
+
+/**
+ * Indicates whether the valuation was provided by management of program, third part firm conducting independent valuation or by broker/dealer.
+ */
+export enum ValuationSource {
+  ValuationSourceUnspecified = "VALUATION_SOURCE_UNSPECIFIED",
+  Mgt = "MGT",
+  Iv = "IV",
+  Bd = "BD",
+}
+/**
+ * Indicates whether the valuation was provided by management of program, third part firm conducting independent valuation or by broker/dealer.
+ */
+export type ValuationSourceOpen = OpenEnum<typeof ValuationSource>;
+
+/**
+ * AltInvestment specific asset details
+ */
+export type AltInvestment = {
+  /**
+   * DTCC-assigned 16-character unique identifier for alternative investment products. Enables industry-wide standardization and DTCC AIP network integration.
+   */
+  aipSin?: string | undefined;
+  /**
+   * Indicates whether the valuation represents estimate of investors' interest in the net assets of the program or estimate of the value of the security.
+   */
+  estimatedValueDescriptor?: EstimatedValueDescriptorOpen | undefined;
+  /**
+   * Describes the legal entity structure of the alternative investment. Critical for tax treatment, regulatory compliance, and operational procedures.
+   */
+  ownershipStructure?: OwnershipStructureOpen | undefined;
+  /**
+   * Indicates whether the investment generates IRS Form 1099 or Schedule K-1 for tax reporting. Critical for year-end tax processing.
+   */
+  taxReportingStructure?: AssetTaxReportingStructureOpen | undefined;
+  /**
+   * Indicates whether the investment uses unitized accounting (shares/units with NAV), or capital account accounting (member capital accounts). Critical for transaction processing and position reporting. A value of true means Unitized. A value of false means Capital Account.
+   */
+  unitizedCapitalIndicator?: boolean | undefined;
+  /**
+   * Universal footnote combining valuation descriptor, source, and method information.
+   */
+  universalFootnote?: UniversalFootnoteOpen | undefined;
+  /**
+   * Indicates how often the asset is valued. Critical for pricing workflows, client expectations, and operational scheduling.
+   */
+  valuationFrequency?: ValuationFrequencyOpen | undefined;
+  /**
+   * Indicates the methodology used to determine the asset's value. Different valuation methods require different data sources and calculation workflows.
+   */
+  valuationMethod?: ValuationMethodOpen | undefined;
+  /**
+   * Indicates whether the valuation was provided by management of program, third part firm conducting independent valuation or by broker/dealer.
+   */
+  valuationSource?: ValuationSourceOpen | undefined;
+};
+
+/**
  * Indicates the type of currency
  */
 export enum CurrencyType {
@@ -145,7 +365,7 @@ export enum CouponType {
 export type CouponTypeOpen = OpenEnum<typeof CouponType>;
 
 /**
- * Weighted average time until a bond’s cash flows are received in years
+ * Weighted average time until a bond's cash flows are received in years
  *
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
@@ -441,7 +661,7 @@ export type FixedIncome = {
    */
   couponType?: CouponTypeOpen | undefined;
   /**
-   * Weighted average time until a bond’s cash flows are received in years
+   * Weighted average time until a bond's cash flows are received in years
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -900,6 +1120,7 @@ export enum AssetType1 {
   FdicSynthetic = "FDIC_SYNTHETIC",
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
+  AltInvestment = "ALT_INVESTMENT",
   Index = "INDEX",
 }
 /**
@@ -911,6 +1132,10 @@ export type AssetType1Open = OpenEnum<typeof AssetType1>;
  * Asset is the Apex representation of a security
  */
 export type Asset = {
+  /**
+   * AltInvestment specific asset details
+   */
+  altInvestment?: AltInvestment | null | undefined;
   /**
    * Apex internal identifier assigned upon entry to every security.
    */
@@ -976,6 +1201,328 @@ export type Asset = {
    */
   usable?: boolean | undefined;
 };
+
+/** @internal */
+export const EstimatedValueDescriptor$inboundSchema: z.ZodType<
+  EstimatedValueDescriptorOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(EstimatedValueDescriptor),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const EstimatedValueDescriptor$outboundSchema: z.ZodType<
+  EstimatedValueDescriptorOpen,
+  z.ZodTypeDef,
+  EstimatedValueDescriptorOpen
+> = z.union([
+  z.nativeEnum(EstimatedValueDescriptor),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EstimatedValueDescriptor$ {
+  /** @deprecated use `EstimatedValueDescriptor$inboundSchema` instead. */
+  export const inboundSchema = EstimatedValueDescriptor$inboundSchema;
+  /** @deprecated use `EstimatedValueDescriptor$outboundSchema` instead. */
+  export const outboundSchema = EstimatedValueDescriptor$outboundSchema;
+}
+
+/** @internal */
+export const OwnershipStructure$inboundSchema: z.ZodType<
+  OwnershipStructureOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(OwnershipStructure),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const OwnershipStructure$outboundSchema: z.ZodType<
+  OwnershipStructureOpen,
+  z.ZodTypeDef,
+  OwnershipStructureOpen
+> = z.union([
+  z.nativeEnum(OwnershipStructure),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OwnershipStructure$ {
+  /** @deprecated use `OwnershipStructure$inboundSchema` instead. */
+  export const inboundSchema = OwnershipStructure$inboundSchema;
+  /** @deprecated use `OwnershipStructure$outboundSchema` instead. */
+  export const outboundSchema = OwnershipStructure$outboundSchema;
+}
+
+/** @internal */
+export const AssetTaxReportingStructure$inboundSchema: z.ZodType<
+  AssetTaxReportingStructureOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(AssetTaxReportingStructure),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const AssetTaxReportingStructure$outboundSchema: z.ZodType<
+  AssetTaxReportingStructureOpen,
+  z.ZodTypeDef,
+  AssetTaxReportingStructureOpen
+> = z.union([
+  z.nativeEnum(AssetTaxReportingStructure),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AssetTaxReportingStructure$ {
+  /** @deprecated use `AssetTaxReportingStructure$inboundSchema` instead. */
+  export const inboundSchema = AssetTaxReportingStructure$inboundSchema;
+  /** @deprecated use `AssetTaxReportingStructure$outboundSchema` instead. */
+  export const outboundSchema = AssetTaxReportingStructure$outboundSchema;
+}
+
+/** @internal */
+export const UniversalFootnote$inboundSchema: z.ZodType<
+  UniversalFootnoteOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(UniversalFootnote),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const UniversalFootnote$outboundSchema: z.ZodType<
+  UniversalFootnoteOpen,
+  z.ZodTypeDef,
+  UniversalFootnoteOpen
+> = z.union([
+  z.nativeEnum(UniversalFootnote),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace UniversalFootnote$ {
+  /** @deprecated use `UniversalFootnote$inboundSchema` instead. */
+  export const inboundSchema = UniversalFootnote$inboundSchema;
+  /** @deprecated use `UniversalFootnote$outboundSchema` instead. */
+  export const outboundSchema = UniversalFootnote$outboundSchema;
+}
+
+/** @internal */
+export const ValuationFrequency$inboundSchema: z.ZodType<
+  ValuationFrequencyOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ValuationFrequency),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ValuationFrequency$outboundSchema: z.ZodType<
+  ValuationFrequencyOpen,
+  z.ZodTypeDef,
+  ValuationFrequencyOpen
+> = z.union([
+  z.nativeEnum(ValuationFrequency),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ValuationFrequency$ {
+  /** @deprecated use `ValuationFrequency$inboundSchema` instead. */
+  export const inboundSchema = ValuationFrequency$inboundSchema;
+  /** @deprecated use `ValuationFrequency$outboundSchema` instead. */
+  export const outboundSchema = ValuationFrequency$outboundSchema;
+}
+
+/** @internal */
+export const ValuationMethod$inboundSchema: z.ZodType<
+  ValuationMethodOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ValuationMethod),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ValuationMethod$outboundSchema: z.ZodType<
+  ValuationMethodOpen,
+  z.ZodTypeDef,
+  ValuationMethodOpen
+> = z.union([
+  z.nativeEnum(ValuationMethod),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ValuationMethod$ {
+  /** @deprecated use `ValuationMethod$inboundSchema` instead. */
+  export const inboundSchema = ValuationMethod$inboundSchema;
+  /** @deprecated use `ValuationMethod$outboundSchema` instead. */
+  export const outboundSchema = ValuationMethod$outboundSchema;
+}
+
+/** @internal */
+export const ValuationSource$inboundSchema: z.ZodType<
+  ValuationSourceOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ValuationSource),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ValuationSource$outboundSchema: z.ZodType<
+  ValuationSourceOpen,
+  z.ZodTypeDef,
+  ValuationSourceOpen
+> = z.union([
+  z.nativeEnum(ValuationSource),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ValuationSource$ {
+  /** @deprecated use `ValuationSource$inboundSchema` instead. */
+  export const inboundSchema = ValuationSource$inboundSchema;
+  /** @deprecated use `ValuationSource$outboundSchema` instead. */
+  export const outboundSchema = ValuationSource$outboundSchema;
+}
+
+/** @internal */
+export const AltInvestment$inboundSchema: z.ZodType<
+  AltInvestment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  aip_sin: z.string().optional(),
+  estimated_value_descriptor: EstimatedValueDescriptor$inboundSchema.optional(),
+  ownership_structure: OwnershipStructure$inboundSchema.optional(),
+  tax_reporting_structure: AssetTaxReportingStructure$inboundSchema.optional(),
+  unitized_capital_indicator: z.boolean().optional(),
+  universal_footnote: UniversalFootnote$inboundSchema.optional(),
+  valuation_frequency: ValuationFrequency$inboundSchema.optional(),
+  valuation_method: ValuationMethod$inboundSchema.optional(),
+  valuation_source: ValuationSource$inboundSchema.optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "aip_sin": "aipSin",
+    "estimated_value_descriptor": "estimatedValueDescriptor",
+    "ownership_structure": "ownershipStructure",
+    "tax_reporting_structure": "taxReportingStructure",
+    "unitized_capital_indicator": "unitizedCapitalIndicator",
+    "universal_footnote": "universalFootnote",
+    "valuation_frequency": "valuationFrequency",
+    "valuation_method": "valuationMethod",
+    "valuation_source": "valuationSource",
+  });
+});
+
+/** @internal */
+export type AltInvestment$Outbound = {
+  aip_sin?: string | undefined;
+  estimated_value_descriptor?: string | undefined;
+  ownership_structure?: string | undefined;
+  tax_reporting_structure?: string | undefined;
+  unitized_capital_indicator?: boolean | undefined;
+  universal_footnote?: string | undefined;
+  valuation_frequency?: string | undefined;
+  valuation_method?: string | undefined;
+  valuation_source?: string | undefined;
+};
+
+/** @internal */
+export const AltInvestment$outboundSchema: z.ZodType<
+  AltInvestment$Outbound,
+  z.ZodTypeDef,
+  AltInvestment
+> = z.object({
+  aipSin: z.string().optional(),
+  estimatedValueDescriptor: EstimatedValueDescriptor$outboundSchema.optional(),
+  ownershipStructure: OwnershipStructure$outboundSchema.optional(),
+  taxReportingStructure: AssetTaxReportingStructure$outboundSchema.optional(),
+  unitizedCapitalIndicator: z.boolean().optional(),
+  universalFootnote: UniversalFootnote$outboundSchema.optional(),
+  valuationFrequency: ValuationFrequency$outboundSchema.optional(),
+  valuationMethod: ValuationMethod$outboundSchema.optional(),
+  valuationSource: ValuationSource$outboundSchema.optional(),
+}).transform((v) => {
+  return remap$(v, {
+    aipSin: "aip_sin",
+    estimatedValueDescriptor: "estimated_value_descriptor",
+    ownershipStructure: "ownership_structure",
+    taxReportingStructure: "tax_reporting_structure",
+    unitizedCapitalIndicator: "unitized_capital_indicator",
+    universalFootnote: "universal_footnote",
+    valuationFrequency: "valuation_frequency",
+    valuationMethod: "valuation_method",
+    valuationSource: "valuation_source",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AltInvestment$ {
+  /** @deprecated use `AltInvestment$inboundSchema` instead. */
+  export const inboundSchema = AltInvestment$inboundSchema;
+  /** @deprecated use `AltInvestment$outboundSchema` instead. */
+  export const outboundSchema = AltInvestment$outboundSchema;
+  /** @deprecated use `AltInvestment$Outbound` instead. */
+  export type Outbound = AltInvestment$Outbound;
+}
+
+export function altInvestmentToJSON(altInvestment: AltInvestment): string {
+  return JSON.stringify(AltInvestment$outboundSchema.parse(altInvestment));
+}
+
+export function altInvestmentFromJSON(
+  jsonString: string,
+): SafeParseResult<AltInvestment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AltInvestment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AltInvestment' from JSON`,
+  );
+}
 
 /** @internal */
 export const CurrencyType$inboundSchema: z.ZodType<
@@ -3294,6 +3841,8 @@ export namespace AssetType1$ {
 /** @internal */
 export const Asset$inboundSchema: z.ZodType<Asset, z.ZodTypeDef, unknown> = z
   .object({
+    alt_investment: z.nullable(z.lazy(() => AltInvestment$inboundSchema))
+      .optional(),
     asset_id: z.string().optional(),
     currency: z.nullable(z.lazy(() => Currency$inboundSchema)).optional(),
     cusip: z.string().optional(),
@@ -3313,6 +3862,7 @@ export const Asset$inboundSchema: z.ZodType<Asset, z.ZodTypeDef, unknown> = z
     usable: z.boolean().optional(),
   }).transform((v) => {
     return remap$(v, {
+      "alt_investment": "altInvestment",
       "asset_id": "assetId",
       "fixed_income": "fixedIncome",
       "issuing_region_code": "issuingRegionCode",
@@ -3323,6 +3873,7 @@ export const Asset$inboundSchema: z.ZodType<Asset, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Asset$Outbound = {
+  alt_investment?: AltInvestment$Outbound | null | undefined;
   asset_id?: string | undefined;
   currency?: Currency$Outbound | null | undefined;
   cusip?: string | undefined;
@@ -3347,6 +3898,8 @@ export const Asset$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Asset
 > = z.object({
+  altInvestment: z.nullable(z.lazy(() => AltInvestment$outboundSchema))
+    .optional(),
   assetId: z.string().optional(),
   currency: z.nullable(z.lazy(() => Currency$outboundSchema)).optional(),
   cusip: z.string().optional(),
@@ -3365,6 +3918,7 @@ export const Asset$outboundSchema: z.ZodType<
   usable: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
+    altInvestment: "alt_investment",
     assetId: "asset_id",
     fixedIncome: "fixed_income",
     issuingRegionCode: "issuing_region_code",

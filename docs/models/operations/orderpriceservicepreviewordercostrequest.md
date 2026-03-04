@@ -14,7 +14,7 @@ let value: OrderPriceServicePreviewOrderCostRequest = {
   accountId: "<id>",
   orderCostPreviewRequestCreate: {
     assetType: OrderCostPreviewRequestCreateAssetType.FixedIncome,
-    identifier: "37833100",
+    identifier: "037833100",
     identifierType: OrderCostPreviewRequestCreateIdentifierType.Cusip,
     limitPrice: {
       price: {},

@@ -85,7 +85,6 @@ export enum EntityType {
   EntityTypeUnspecified = "ENTITY_TYPE_UNSPECIFIED",
   Corporation = "CORPORATION",
   LimitedLiabilityCompany = "LIMITED_LIABILITY_COMPANY",
-  Partnership = "PARTNERSHIP",
   Trust = "TRUST",
   Estate = "ESTATE",
 }
@@ -173,6 +172,10 @@ export type LegalEntityCreate = {
   businessIndustrialClassification?:
     | BusinessIndustrialClassificationOpen
     | undefined;
+  /**
+   * An external identifier for the legal entity. This identifier does not have internal uniqueness constraints.
+   */
+  clientEntityId?: string | undefined;
   /**
    * Corporate structure of the entity.
    */
@@ -464,6 +467,7 @@ export const LegalEntityCreate$inboundSchema: z.ZodType<
   broker_dealer: z.boolean().optional(),
   business_industrial_classification:
     BusinessIndustrialClassification$inboundSchema.optional(),
+  client_entity_id: z.string().optional(),
   corporate_structure: CorporateStructure$inboundSchema.optional(),
   correspondent_id: z.string(),
   doing_business_as: z.array(z.string()).optional(),
@@ -493,6 +497,7 @@ export const LegalEntityCreate$inboundSchema: z.ZodType<
     "accredited_investor": "accreditedInvestor",
     "broker_dealer": "brokerDealer",
     "business_industrial_classification": "businessIndustrialClassification",
+    "client_entity_id": "clientEntityId",
     "corporate_structure": "corporateStructure",
     "correspondent_id": "correspondentId",
     "doing_business_as": "doingBusinessAs",
@@ -526,6 +531,7 @@ export type LegalEntityCreate$Outbound = {
   adviser?: boolean | undefined;
   broker_dealer?: boolean | undefined;
   business_industrial_classification?: string | undefined;
+  client_entity_id?: string | undefined;
   corporate_structure?: string | undefined;
   correspondent_id: string;
   doing_business_as?: Array<string> | undefined;
@@ -563,6 +569,7 @@ export const LegalEntityCreate$outboundSchema: z.ZodType<
   brokerDealer: z.boolean().optional(),
   businessIndustrialClassification:
     BusinessIndustrialClassification$outboundSchema.optional(),
+  clientEntityId: z.string().optional(),
   corporateStructure: CorporateStructure$outboundSchema.optional(),
   correspondentId: z.string(),
   doingBusinessAs: z.array(z.string()).optional(),
@@ -592,6 +599,7 @@ export const LegalEntityCreate$outboundSchema: z.ZodType<
     accreditedInvestor: "accredited_investor",
     brokerDealer: "broker_dealer",
     businessIndustrialClassification: "business_industrial_classification",
+    clientEntityId: "client_entity_id",
     corporateStructure: "corporate_structure",
     correspondentId: "correspondent_id",
     doingBusinessAs: "doing_business_as",

@@ -197,7 +197,7 @@ export type IctDepositTransferStateStateOpen = OpenEnum<
 >;
 
 /**
- * Deprecated, use state instead
+ * Deprecated: use state instead
  *
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
@@ -675,7 +675,7 @@ export type IctDeposit = {
    */
   state?: IctDepositState | null | undefined;
   /**
-   * Deprecated, use state instead
+   * Deprecated: use state instead
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */

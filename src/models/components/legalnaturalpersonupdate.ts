@@ -145,6 +145,10 @@ export type LegalNaturalPersonUpdate = {
    */
   citizenshipCountries?: Array<string> | undefined;
   /**
+   * An external identifier for the legal natural person. This identifier does not have internal uniqueness constraints.
+   */
+  clientPersonId?: string | undefined;
+  /**
    * A list of ticker symbols in which the underlying person is a control person; control persons are defined as having significant influence over a company’s management and operations, typically through ownership of a large percentage of the company’s voting stock or through positions on the company’s board of directors or executive team
    */
   controlPersonCompanySymbols?: string | undefined;
@@ -374,6 +378,7 @@ export const LegalNaturalPersonUpdate$inboundSchema: z.ZodType<
   adviser: z.boolean().optional(),
   birth_date: DateUpdate$inboundSchema.optional(),
   citizenship_countries: z.array(z.string()).optional(),
+  client_person_id: z.string().optional(),
   control_person_company_symbols: z.string().optional(),
   correspondent_employee: z.boolean().optional(),
   correspondent_id: z.string().optional(),
@@ -407,6 +412,7 @@ export const LegalNaturalPersonUpdate$inboundSchema: z.ZodType<
     "accredited_investor": "accreditedInvestor",
     "birth_date": "birthDate",
     "citizenship_countries": "citizenshipCountries",
+    "client_person_id": "clientPersonId",
     "control_person_company_symbols": "controlPersonCompanySymbols",
     "correspondent_employee": "correspondentEmployee",
     "correspondent_id": "correspondentId",
@@ -442,6 +448,7 @@ export type LegalNaturalPersonUpdate$Outbound = {
   adviser?: boolean | undefined;
   birth_date?: DateUpdate$Outbound | undefined;
   citizenship_countries?: Array<string> | undefined;
+  client_person_id?: string | undefined;
   control_person_company_symbols?: string | undefined;
   correspondent_employee?: boolean | undefined;
   correspondent_id?: string | undefined;
@@ -482,6 +489,7 @@ export const LegalNaturalPersonUpdate$outboundSchema: z.ZodType<
   adviser: z.boolean().optional(),
   birthDate: DateUpdate$outboundSchema.optional(),
   citizenshipCountries: z.array(z.string()).optional(),
+  clientPersonId: z.string().optional(),
   controlPersonCompanySymbols: z.string().optional(),
   correspondentEmployee: z.boolean().optional(),
   correspondentId: z.string().optional(),
@@ -515,6 +523,7 @@ export const LegalNaturalPersonUpdate$outboundSchema: z.ZodType<
     accreditedInvestor: "accredited_investor",
     birthDate: "birth_date",
     citizenshipCountries: "citizenship_countries",
+    clientPersonId: "client_person_id",
     controlPersonCompanySymbols: "control_person_company_symbols",
     correspondentEmployee: "correspondent_employee",
     correspondentId: "correspondent_id",

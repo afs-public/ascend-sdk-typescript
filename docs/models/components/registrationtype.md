@@ -30,7 +30,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `TrustRegistration`                            | TRUST_REGISTRATION                             |
 | `CorporationRegistration`                      | CORPORATION_REGISTRATION                       |
 | `LlcRegistration`                              | LLC_REGISTRATION                               |
-| `PartnershipRegistration`                      | PARTNERSHIP_REGISTRATION                       |
 | `OperatingRegistration`                        | OPERATING_REGISTRATION                         |
 | `IraBeneficiaryTraditionalRegistration`        | IRA_BENEFICIARY_TRADITIONAL_REGISTRATION       |
 | `IraBeneficiaryRothRegistration`               | IRA_BENEFICIARY_ROTH_REGISTRATION              |

@@ -116,7 +116,7 @@ export type BookingTradeRouteTypeOpen = OpenEnum<typeof BookingTradeRouteType>;
 /**
  * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
  */
-export type SettlementDate = {
+export type BookingTradeSettlementDate = {
   /**
    * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
    */
@@ -352,7 +352,7 @@ export type BookingTrade = {
   /**
    * Defaults to T+1 for equities if this is not provided. Calculated by the execution's execution_time field in Eastern Time.
    */
-  settlementDate?: SettlementDate | null | undefined;
+  settlementDate?: BookingTradeSettlementDate | null | undefined;
   /**
    * Denotes if the trade is a SELL or a BUY.
    */
@@ -572,8 +572,8 @@ export namespace BookingTradeRouteType$ {
 }
 
 /** @internal */
-export const SettlementDate$inboundSchema: z.ZodType<
-  SettlementDate,
+export const BookingTradeSettlementDate$inboundSchema: z.ZodType<
+  BookingTradeSettlementDate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -583,17 +583,17 @@ export const SettlementDate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SettlementDate$Outbound = {
+export type BookingTradeSettlementDate$Outbound = {
   day?: number | undefined;
   month?: number | undefined;
   year?: number | undefined;
 };
 
 /** @internal */
-export const SettlementDate$outboundSchema: z.ZodType<
-  SettlementDate$Outbound,
+export const BookingTradeSettlementDate$outboundSchema: z.ZodType<
+  BookingTradeSettlementDate$Outbound,
   z.ZodTypeDef,
-  SettlementDate
+  BookingTradeSettlementDate
 > = z.object({
   day: z.number().int().optional(),
   month: z.number().int().optional(),
@@ -604,26 +604,30 @@ export const SettlementDate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SettlementDate$ {
-  /** @deprecated use `SettlementDate$inboundSchema` instead. */
-  export const inboundSchema = SettlementDate$inboundSchema;
-  /** @deprecated use `SettlementDate$outboundSchema` instead. */
-  export const outboundSchema = SettlementDate$outboundSchema;
-  /** @deprecated use `SettlementDate$Outbound` instead. */
-  export type Outbound = SettlementDate$Outbound;
+export namespace BookingTradeSettlementDate$ {
+  /** @deprecated use `BookingTradeSettlementDate$inboundSchema` instead. */
+  export const inboundSchema = BookingTradeSettlementDate$inboundSchema;
+  /** @deprecated use `BookingTradeSettlementDate$outboundSchema` instead. */
+  export const outboundSchema = BookingTradeSettlementDate$outboundSchema;
+  /** @deprecated use `BookingTradeSettlementDate$Outbound` instead. */
+  export type Outbound = BookingTradeSettlementDate$Outbound;
 }
 
-export function settlementDateToJSON(settlementDate: SettlementDate): string {
-  return JSON.stringify(SettlementDate$outboundSchema.parse(settlementDate));
+export function bookingTradeSettlementDateToJSON(
+  bookingTradeSettlementDate: BookingTradeSettlementDate,
+): string {
+  return JSON.stringify(
+    BookingTradeSettlementDate$outboundSchema.parse(bookingTradeSettlementDate),
+  );
 }
 
-export function settlementDateFromJSON(
+export function bookingTradeSettlementDateFromJSON(
   jsonString: string,
-): SafeParseResult<SettlementDate, SDKValidationError> {
+): SafeParseResult<BookingTradeSettlementDate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SettlementDate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SettlementDate' from JSON`,
+    (x) => BookingTradeSettlementDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BookingTradeSettlementDate' from JSON`,
   );
 }
 
@@ -815,8 +819,9 @@ export const BookingTrade$inboundSchema: z.ZodType<
   open: z.boolean().optional(),
   order_id: z.string().optional(),
   route_type: BookingTradeRouteType$inboundSchema.optional(),
-  settlement_date: z.nullable(z.lazy(() => SettlementDate$inboundSchema))
-    .optional(),
+  settlement_date: z.nullable(
+    z.lazy(() => BookingTradeSettlementDate$inboundSchema),
+  ).optional(),
   side: BookingTradeSide$inboundSchema.optional(),
   side_modifier: BookingTradeSideModifier$inboundSchema.optional(),
   source_application: z.string().optional(),
@@ -873,7 +878,7 @@ export type BookingTrade$Outbound = {
   open?: boolean | undefined;
   order_id?: string | undefined;
   route_type?: string | undefined;
-  settlement_date?: SettlementDate$Outbound | null | undefined;
+  settlement_date?: BookingTradeSettlementDate$Outbound | null | undefined;
   side?: string | undefined;
   side_modifier?: string | undefined;
   source_application?: string | undefined;
@@ -911,8 +916,9 @@ export const BookingTrade$outboundSchema: z.ZodType<
   open: z.boolean().optional(),
   orderId: z.string().optional(),
   routeType: BookingTradeRouteType$outboundSchema.optional(),
-  settlementDate: z.nullable(z.lazy(() => SettlementDate$outboundSchema))
-    .optional(),
+  settlementDate: z.nullable(
+    z.lazy(() => BookingTradeSettlementDate$outboundSchema),
+  ).optional(),
   side: BookingTradeSide$outboundSchema.optional(),
   sideModifier: BookingTradeSideModifier$outboundSchema.optional(),
   sourceApplication: z.string().optional(),

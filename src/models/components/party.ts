@@ -101,7 +101,6 @@ export enum PartyEntityType {
   EntityTypeUnspecified = "ENTITY_TYPE_UNSPECIFIED",
   Corporation = "CORPORATION",
   LimitedLiabilityCompany = "LIMITED_LIABILITY_COMPANY",
-  Partnership = "PARTNERSHIP",
   Trust = "TRUST",
   Estate = "ESTATE",
 }
@@ -320,7 +319,6 @@ export enum PartyFederalTaxClassification {
   FederalTaxClassificationUnspecified =
     "FEDERAL_TAX_CLASSIFICATION_UNSPECIFIED",
   IndivSolepropOrSinglememberllc = "INDIV_SOLEPROP_OR_SINGLEMEMBERLLC",
-  Partnership = "PARTNERSHIP",
   CCorporation = "C_CORPORATION",
   SCorporation = "S_CORPORATION",
   TrustEstate = "TRUST_ESTATE",
@@ -510,6 +508,10 @@ export type PartyLegalEntity = {
   businessIndustrialClassification?:
     | PartyBusinessIndustrialClassificationOpen
     | undefined;
+  /**
+   * An external identifier for the legal entity. This identifier does not have internal uniqueness constraints.
+   */
+  clientEntityId?: string | undefined;
   /**
    * Corporate structure of the entity.
    */
@@ -812,11 +814,9 @@ export type PartyEmployment = {
    *
    * @remarks
    *
-   * Required if `employment_status` is one of:
+   * Must be empty if `employment_status` is ___not___ one of:
    *   - `EMPLOYED`
    *   - `SELF_EMPLOYED`
-   *
-   * Otherwise, must be empty.
    */
   startYear?: number | undefined;
 };
@@ -1247,7 +1247,6 @@ export enum PartyLegalNaturalPersonFederalTaxClassification {
   FederalTaxClassificationUnspecified =
     "FEDERAL_TAX_CLASSIFICATION_UNSPECIFIED",
   IndivSolepropOrSinglememberllc = "INDIV_SOLEPROP_OR_SINGLEMEMBERLLC",
-  Partnership = "PARTNERSHIP",
   CCorporation = "C_CORPORATION",
   SCorporation = "S_CORPORATION",
   TrustEstate = "TRUST_ESTATE",
@@ -1453,6 +1452,10 @@ export type PartyLegalNaturalPerson = {
    * This is used for tax (treaty) and country block list considerations Maximum list of two 2-char CLDR Code citizenship countries, e.g. US, CA
    */
   citizenshipCountries?: Array<string> | undefined;
+  /**
+   * An external identifier for the legal natural person. This identifier does not have internal uniqueness constraints.
+   */
+  clientPersonId?: string | undefined;
   /**
    * A list of ticker symbols in which the underlying person is a control person; control persons are defined as having significant influence over a company’s management and operations, typically through ownership of a large percentage of the company’s voting stock or through positions on the company’s board of directors or executive team
    */
@@ -3038,6 +3041,7 @@ export const PartyLegalEntity$inboundSchema: z.ZodType<
   broker_dealer: z.boolean().optional(),
   business_industrial_classification:
     PartyBusinessIndustrialClassification$inboundSchema.optional(),
+  client_entity_id: z.string().optional(),
   corporate_structure: PartyCorporateStructure$inboundSchema.optional(),
   correspondent_id: z.string().optional(),
   doing_business_as: z.array(z.string()).optional(),
@@ -3078,6 +3082,7 @@ export const PartyLegalEntity$inboundSchema: z.ZodType<
     "accredited_investor": "accreditedInvestor",
     "broker_dealer": "brokerDealer",
     "business_industrial_classification": "businessIndustrialClassification",
+    "client_entity_id": "clientEntityId",
     "corporate_structure": "corporateStructure",
     "correspondent_id": "correspondentId",
     "doing_business_as": "doingBusinessAs",
@@ -3115,6 +3120,7 @@ export type PartyLegalEntity$Outbound = {
   adviser?: boolean | undefined;
   broker_dealer?: boolean | undefined;
   business_industrial_classification?: string | undefined;
+  client_entity_id?: string | undefined;
   corporate_structure?: string | undefined;
   correspondent_id?: string | undefined;
   doing_business_as?: Array<string> | undefined;
@@ -3157,6 +3163,7 @@ export const PartyLegalEntity$outboundSchema: z.ZodType<
   brokerDealer: z.boolean().optional(),
   businessIndustrialClassification:
     PartyBusinessIndustrialClassification$outboundSchema.optional(),
+  clientEntityId: z.string().optional(),
   corporateStructure: PartyCorporateStructure$outboundSchema.optional(),
   correspondentId: z.string().optional(),
   doingBusinessAs: z.array(z.string()).optional(),
@@ -3197,6 +3204,7 @@ export const PartyLegalEntity$outboundSchema: z.ZodType<
     accreditedInvestor: "accredited_investor",
     brokerDealer: "broker_dealer",
     businessIndustrialClassification: "business_industrial_classification",
+    clientEntityId: "client_entity_id",
     corporateStructure: "corporate_structure",
     correspondentId: "correspondent_id",
     doingBusinessAs: "doing_business_as",
@@ -5317,6 +5325,7 @@ export const PartyLegalNaturalPerson$inboundSchema: z.ZodType<
   adviser: z.boolean().optional(),
   birth_date: z.nullable(z.lazy(() => PartyBirthDate$inboundSchema)).optional(),
   citizenship_countries: z.array(z.string()).optional(),
+  client_person_id: z.string().optional(),
   control_person_company_symbols: z.string().optional(),
   correspondent_employee: z.boolean().optional(),
   correspondent_id: z.string().optional(),
@@ -5367,6 +5376,7 @@ export const PartyLegalNaturalPerson$inboundSchema: z.ZodType<
     "accredited_investor": "accreditedInvestor",
     "birth_date": "birthDate",
     "citizenship_countries": "citizenshipCountries",
+    "client_person_id": "clientPersonId",
     "control_person_company_symbols": "controlPersonCompanySymbols",
     "correspondent_employee": "correspondentEmployee",
     "correspondent_id": "correspondentId",
@@ -5406,6 +5416,7 @@ export type PartyLegalNaturalPerson$Outbound = {
   adviser?: boolean | undefined;
   birth_date?: PartyBirthDate$Outbound | null | undefined;
   citizenship_countries?: Array<string> | undefined;
+  client_person_id?: string | undefined;
   control_person_company_symbols?: string | undefined;
   correspondent_employee?: boolean | undefined;
   correspondent_id?: string | undefined;
@@ -5455,6 +5466,7 @@ export const PartyLegalNaturalPerson$outboundSchema: z.ZodType<
   adviser: z.boolean().optional(),
   birthDate: z.nullable(z.lazy(() => PartyBirthDate$outboundSchema)).optional(),
   citizenshipCountries: z.array(z.string()).optional(),
+  clientPersonId: z.string().optional(),
   controlPersonCompanySymbols: z.string().optional(),
   correspondentEmployee: z.boolean().optional(),
   correspondentId: z.string().optional(),
@@ -5505,6 +5517,7 @@ export const PartyLegalNaturalPerson$outboundSchema: z.ZodType<
     accreditedInvestor: "accredited_investor",
     birthDate: "birth_date",
     citizenshipCountries: "citizenship_countries",
+    clientPersonId: "client_person_id",
     controlPersonCompanySymbols: "control_person_company_symbols",
     correspondentEmployee: "correspondent_employee",
     correspondentId: "correspondent_id",

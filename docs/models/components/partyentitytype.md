@@ -19,7 +19,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `EntityTypeUnspecified`   | ENTITY_TYPE_UNSPECIFIED   |
 | `Corporation`             | CORPORATION               |
 | `LimitedLiabilityCompany` | LIMITED_LIABILITY_COMPANY |
-| `Partnership`             | PARTNERSHIP               |
 | `Trust`                   | TRUST                     |
 | `Estate`                  | ESTATE                    |
 | -                         | `Unrecognized<string>`    |

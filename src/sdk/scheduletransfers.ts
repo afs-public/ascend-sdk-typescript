@@ -4,14 +4,17 @@
 
 import { scheduleTransfersCancelAchDepositSchedule } from "../funcs/scheduleTransfersCancelAchDepositSchedule.js";
 import { scheduleTransfersCancelAchWithdrawalSchedule } from "../funcs/scheduleTransfersCancelAchWithdrawalSchedule.js";
+import { scheduleTransfersCancelCashJournalSchedule } from "../funcs/scheduleTransfersCancelCashJournalSchedule.js";
 import { scheduleTransfersCancelCheckWithdrawalSchedule } from "../funcs/scheduleTransfersCancelCheckWithdrawalSchedule.js";
 import { scheduleTransfersCancelWireWithdrawalSchedule } from "../funcs/scheduleTransfersCancelWireWithdrawalSchedule.js";
 import { scheduleTransfersCreateAchDepositSchedule } from "../funcs/scheduleTransfersCreateAchDepositSchedule.js";
 import { scheduleTransfersCreateAchWithdrawalSchedule } from "../funcs/scheduleTransfersCreateAchWithdrawalSchedule.js";
+import { scheduleTransfersCreateCashJournalSchedule } from "../funcs/scheduleTransfersCreateCashJournalSchedule.js";
 import { scheduleTransfersCreateCheckWithdrawalSchedule } from "../funcs/scheduleTransfersCreateCheckWithdrawalSchedule.js";
 import { scheduleTransfersCreateWireWithdrawalSchedule } from "../funcs/scheduleTransfersCreateWireWithdrawalSchedule.js";
 import { scheduleTransfersGetAchDepositSchedule } from "../funcs/scheduleTransfersGetAchDepositSchedule.js";
 import { scheduleTransfersGetAchWithdrawalSchedule } from "../funcs/scheduleTransfersGetAchWithdrawalSchedule.js";
+import { scheduleTransfersGetCashJournalSchedule } from "../funcs/scheduleTransfersGetCashJournalSchedule.js";
 import { scheduleTransfersGetCheckWithdrawalSchedule } from "../funcs/scheduleTransfersGetCheckWithdrawalSchedule.js";
 import { scheduleTransfersGetWireWithdrawalSchedule } from "../funcs/scheduleTransfersGetWireWithdrawalSchedule.js";
 import { scheduleTransfersListAchDepositSchedules } from "../funcs/scheduleTransfersListAchDepositSchedules.js";
@@ -19,8 +22,10 @@ import { scheduleTransfersListAchWithdrawalSchedules } from "../funcs/scheduleTr
 import { scheduleTransfersListCheckWithdrawalSchedules } from "../funcs/scheduleTransfersListCheckWithdrawalSchedules.js";
 import { scheduleTransfersListScheduleSummaries } from "../funcs/scheduleTransfersListScheduleSummaries.js";
 import { scheduleTransfersListWireWithdrawalSchedules } from "../funcs/scheduleTransfersListWireWithdrawalSchedules.js";
+import { scheduleTransfersSearchCashJournalSchedules } from "../funcs/scheduleTransfersSearchCashJournalSchedules.js";
 import { scheduleTransfersUpdateAchDepositSchedule } from "../funcs/scheduleTransfersUpdateAchDepositSchedule.js";
 import { scheduleTransfersUpdateAchWithdrawalSchedule } from "../funcs/scheduleTransfersUpdateAchWithdrawalSchedule.js";
+import { scheduleTransfersUpdateCashJournalSchedule } from "../funcs/scheduleTransfersUpdateCashJournalSchedule.js";
 import { scheduleTransfersUpdateCheckWithdrawalSchedule } from "../funcs/scheduleTransfersUpdateCheckWithdrawalSchedule.js";
 import { scheduleTransfersUpdateWireWithdrawalSchedule } from "../funcs/scheduleTransfersUpdateWireWithdrawalSchedule.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -282,6 +287,100 @@ export class ScheduleTransfers extends ClientSDK {
       cancelAchWithdrawalScheduleRequestCreate,
       accountId,
       achWithdrawalScheduleId,
+      options,
+    ));
+  }
+
+  /**
+   * Create Cash Journal Schedule
+   *
+   * @remarks
+   * Creates a Cash Journal transfer schedule
+   */
+  async createCashJournalSchedule(
+    request: components.CashJournalScheduleCreate,
+    options?: RequestOptions,
+  ): Promise<operations.CashJournalSchedulesCreateCashJournalScheduleResponse> {
+    return unwrapAsync(scheduleTransfersCreateCashJournalSchedule(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Cash Journal Schedule
+   *
+   * @remarks
+   * Gets a Cash Journal transfer schedule
+   */
+  async getCashJournalSchedule(
+    cashJournalScheduleId: string,
+    options?: RequestOptions,
+  ): Promise<operations.CashJournalSchedulesGetCashJournalScheduleResponse> {
+    return unwrapAsync(scheduleTransfersGetCashJournalSchedule(
+      this,
+      cashJournalScheduleId,
+      options,
+    ));
+  }
+
+  /**
+   * Update Cash Journal Schedule
+   *
+   * @remarks
+   * Updates the amount of a Cash Journal transfer schedule
+   */
+  async updateCashJournalSchedule(
+    cashJournalScheduleUpdate: components.CashJournalScheduleUpdate,
+    cashJournalScheduleId: string,
+    updateMask?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.CashJournalSchedulesUpdateCashJournalScheduleResponse> {
+    return unwrapAsync(scheduleTransfersUpdateCashJournalSchedule(
+      this,
+      cashJournalScheduleUpdate,
+      cashJournalScheduleId,
+      updateMask,
+      options,
+    ));
+  }
+
+  /**
+   * Cancel Cash Journal Schedule
+   *
+   * @remarks
+   * Cancels a Cash Journal transfer schedule
+   */
+  async cancelCashJournalSchedule(
+    cancelCashJournalScheduleRequestCreate:
+      components.CancelCashJournalScheduleRequestCreate,
+    cashJournalScheduleId: string,
+    options?: RequestOptions,
+  ): Promise<operations.CashJournalSchedulesCancelCashJournalScheduleResponse> {
+    return unwrapAsync(scheduleTransfersCancelCashJournalSchedule(
+      this,
+      cancelCashJournalScheduleRequestCreate,
+      cashJournalScheduleId,
+      options,
+    ));
+  }
+
+  /**
+   * Search Cash Journal Schedules
+   *
+   * @remarks
+   * Search Cash Journal Schedules visible to the calling service account using the specified search parameters
+   */
+  async searchCashJournalSchedules(
+    request: operations.CashJournalSchedulesSearchCashJournalSchedulesRequest,
+    options?: RequestOptions,
+  ): Promise<
+    operations.CashJournalSchedulesSearchCashJournalSchedulesResponse
+  > {
+    return unwrapAsync(scheduleTransfersSearchCashJournalSchedules(
+      this,
+      request,
       options,
     ));
   }

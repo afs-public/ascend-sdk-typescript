@@ -24,8 +24,35 @@ test("Margins Margins Real Time Get Buying Power", async () => {
     httpClient: testHttpClient,
   });
 
-  const result = await apexascend.margins.getBuyingPower(
+  const result = await apexascend.buyingPower.getBuyingPower(
     "01JHGTEPC6ZTAHCFRH2MD3VJJT",
+  );
+  expect(result.httpMeta.response.status).toBe(200);
+});
+
+test("Margins Margins Real Time Get Asset Buying Power", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "MarginsRealTime_GetAssetBuyingPower",
+  );
+
+  const apexascend = new Apexascend({
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
+    security: {
+      apiKey: process.env["API_KEY"] ?? "value",
+      serviceAccountCreds: {
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
+      },
+    },
+    httpClient: testHttpClient,
+  });
+
+  const result = await apexascend.buyingPower.getAssetBuyingPower(
+    "01JHGTEPC6ZTAHCFRH2MD3VJJT",
+    "67587",
   );
   expect(result.httpMeta.response.status).toBe(200);
 });

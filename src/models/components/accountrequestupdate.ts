@@ -19,6 +19,12 @@ import {
   AccountTaxProfileUpdate$outboundSchema,
 } from "./accounttaxprofileupdate.js";
 import {
+  CatReporterInformationUpdate,
+  CatReporterInformationUpdate$inboundSchema,
+  CatReporterInformationUpdate$Outbound,
+  CatReporterInformationUpdate$outboundSchema,
+} from "./catreporterinformationupdate.js";
+import {
   IdentifierUpdate,
   IdentifierUpdate$inboundSchema,
   IdentifierUpdate$Outbound,
@@ -89,7 +95,17 @@ export type AccountRequestUpdate = {
     | AccountRequestUpdateCatAccountHolderTypeOpen
     | undefined;
   /**
+   * A single record representing the originating_fdid and originating_cat_reporter_crd
+   */
+  catReporterInformation?: CatReporterInformationUpdate | undefined;
+  /**
+   * An external identifier for the account. This identifier does not have internal uniqueness constraints.
+   */
+  clientAccountId?: string | undefined;
+  /**
    * A list of identifiers associated with the account
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   identifiers?: Array<IdentifierUpdate> | undefined;
   /**
@@ -104,6 +120,10 @@ export type AccountRequestUpdate = {
    * A boolean to indicate if an account is managed
    */
   managed?: boolean | undefined;
+  /**
+   * The previous account ID associated with the account; Must be unique
+   */
+  originatingAccountId?: string | undefined;
   /**
    * Parties associated with the account (e.g. custodian).
    */
@@ -170,10 +190,14 @@ export const AccountRequestUpdate$inboundSchema: z.ZodType<
   advised: z.boolean().optional(),
   cat_account_holder_type:
     AccountRequestUpdateCatAccountHolderType$inboundSchema.optional(),
+  cat_reporter_information: CatReporterInformationUpdate$inboundSchema
+    .optional(),
+  client_account_id: z.string().optional(),
   identifiers: z.array(IdentifierUpdate$inboundSchema).optional(),
   interested_parties: z.array(InterestedPartyUpdate$inboundSchema).optional(),
   investment_profile: InvestmentProfileUpdate$inboundSchema.optional(),
   managed: z.boolean().optional(),
+  originating_account_id: z.string().optional(),
   parties: z.array(PartyRequestUpdate$inboundSchema).optional(),
   primary_registered_rep_id: z.string().optional(),
   tax_profile: AccountTaxProfileUpdate$inboundSchema.optional(),
@@ -183,8 +207,11 @@ export const AccountRequestUpdate$inboundSchema: z.ZodType<
   return remap$(v, {
     "accepts_issuer_direct_communication": "acceptsIssuerDirectCommunication",
     "cat_account_holder_type": "catAccountHolderType",
+    "cat_reporter_information": "catReporterInformation",
+    "client_account_id": "clientAccountId",
     "interested_parties": "interestedParties",
     "investment_profile": "investmentProfile",
+    "originating_account_id": "originatingAccountId",
     "primary_registered_rep_id": "primaryRegisteredRepId",
     "tax_profile": "taxProfile",
     "trusted_contacts": "trustedContacts",
@@ -197,10 +224,13 @@ export type AccountRequestUpdate$Outbound = {
   accepts_issuer_direct_communication?: boolean | undefined;
   advised?: boolean | undefined;
   cat_account_holder_type?: string | undefined;
+  cat_reporter_information?: CatReporterInformationUpdate$Outbound | undefined;
+  client_account_id?: string | undefined;
   identifiers?: Array<IdentifierUpdate$Outbound> | undefined;
   interested_parties?: Array<InterestedPartyUpdate$Outbound> | undefined;
   investment_profile?: InvestmentProfileUpdate$Outbound | undefined;
   managed?: boolean | undefined;
+  originating_account_id?: string | undefined;
   parties?: Array<PartyRequestUpdate$Outbound> | undefined;
   primary_registered_rep_id?: string | undefined;
   tax_profile?: AccountTaxProfileUpdate$Outbound | undefined;
@@ -218,10 +248,14 @@ export const AccountRequestUpdate$outboundSchema: z.ZodType<
   advised: z.boolean().optional(),
   catAccountHolderType: AccountRequestUpdateCatAccountHolderType$outboundSchema
     .optional(),
+  catReporterInformation: CatReporterInformationUpdate$outboundSchema
+    .optional(),
+  clientAccountId: z.string().optional(),
   identifiers: z.array(IdentifierUpdate$outboundSchema).optional(),
   interestedParties: z.array(InterestedPartyUpdate$outboundSchema).optional(),
   investmentProfile: InvestmentProfileUpdate$outboundSchema.optional(),
   managed: z.boolean().optional(),
+  originatingAccountId: z.string().optional(),
   parties: z.array(PartyRequestUpdate$outboundSchema).optional(),
   primaryRegisteredRepId: z.string().optional(),
   taxProfile: AccountTaxProfileUpdate$outboundSchema.optional(),
@@ -231,8 +265,11 @@ export const AccountRequestUpdate$outboundSchema: z.ZodType<
   return remap$(v, {
     acceptsIssuerDirectCommunication: "accepts_issuer_direct_communication",
     catAccountHolderType: "cat_account_holder_type",
+    catReporterInformation: "cat_reporter_information",
+    clientAccountId: "client_account_id",
     interestedParties: "interested_parties",
     investmentProfile: "investment_profile",
+    originatingAccountId: "originating_account_id",
     primaryRegisteredRepId: "primary_registered_rep_id",
     taxProfile: "tax_profile",
     trustedContacts: "trusted_contacts",

@@ -7,11 +7,16 @@ import { AccountCreation } from "./accountcreation.js";
 import { AccountManagement } from "./accountmanagement.js";
 import { AccountTransfers } from "./accounttransfers.js";
 import { ACHTransfers } from "./achtransfers.js";
+import { AlternativeAccountAccreditation } from "./alternativeaccountaccreditation.js";
+import { AlternativeInvestmentDocuments } from "./alternativeinvestmentdocuments.js";
+import { AlternativeInvestments } from "./alternativeinvestments.js";
+import { AlternativeOrders } from "./alternativeorders.js";
 import { Assets } from "./assets.js";
 import { AssetTradingConfig } from "./assettradingconfig.js";
 import { Authentication } from "./authentication.js";
 import { BankRelationships } from "./bankrelationships.js";
 import { BasketOrders } from "./basketorders.js";
+import { BuyingPower } from "./buyingpower.js";
 import { CashBalances } from "./cashbalances.js";
 import { Checks } from "./checks.js";
 import { DataRetrieval } from "./dataretrieval.js";
@@ -23,10 +28,15 @@ import { Investigations } from "./investigations.js";
 import { InvestorDocs } from "./investordocs.js";
 import { Journals } from "./journals.js";
 import { Ledger } from "./ledger.js";
-import { Margins } from "./margins.js";
+import { OptionInstructions } from "./optioninstructions.js";
+import { OptionOrders } from "./optionorders.js";
 import { Orders } from "./orders.js";
 import { PersonManagement } from "./personmanagement.js";
 import { PositionJournals } from "./positionjournals.js";
+import { PreIPOCompanies } from "./preipocompanies.js";
+import { PreIPOFundingRounds } from "./preipofundingrounds.js";
+import { PreIPONewsEvents } from "./preiponewsevents.js";
+import { PreIPOResearchDocuments } from "./preiporesearchdocuments.js";
 import { Reader } from "./reader.js";
 import { Retirements } from "./retirements.js";
 import { ScheduleTransfers } from "./scheduletransfers.js";
@@ -151,6 +161,11 @@ export class Apexascend extends ClientSDK {
     return (this._orders ??= new Orders(this._options));
   }
 
+  private _optionOrders?: OptionOrders;
+  get optionOrders(): OptionOrders {
+    return (this._optionOrders ??= new OptionOrders(this._options));
+  }
+
   private _fixedIncomePricing?: FixedIncomePricing;
   get fixedIncomePricing(): FixedIncomePricing {
     return (this._fixedIncomePricing ??= new FixedIncomePricing(this._options));
@@ -164,6 +179,54 @@ export class Apexascend extends ClientSDK {
   private _assetTradingConfig?: AssetTradingConfig;
   get assetTradingConfig(): AssetTradingConfig {
     return (this._assetTradingConfig ??= new AssetTradingConfig(this._options));
+  }
+
+  private _alternativeAccountAccreditation?: AlternativeAccountAccreditation;
+  get alternativeAccountAccreditation(): AlternativeAccountAccreditation {
+    return (this._alternativeAccountAccreditation ??=
+      new AlternativeAccountAccreditation(this._options));
+  }
+
+  private _alternativeOrders?: AlternativeOrders;
+  get alternativeOrders(): AlternativeOrders {
+    return (this._alternativeOrders ??= new AlternativeOrders(this._options));
+  }
+
+  private _alternativeInvestments?: AlternativeInvestments;
+  get alternativeInvestments(): AlternativeInvestments {
+    return (this._alternativeInvestments ??= new AlternativeInvestments(
+      this._options,
+    ));
+  }
+
+  private _alternativeInvestmentDocuments?: AlternativeInvestmentDocuments;
+  get alternativeInvestmentDocuments(): AlternativeInvestmentDocuments {
+    return (this._alternativeInvestmentDocuments ??=
+      new AlternativeInvestmentDocuments(this._options));
+  }
+
+  private _preIPOCompanies?: PreIPOCompanies;
+  get preIPOCompanies(): PreIPOCompanies {
+    return (this._preIPOCompanies ??= new PreIPOCompanies(this._options));
+  }
+
+  private _preIPONewsEvents?: PreIPONewsEvents;
+  get preIPONewsEvents(): PreIPONewsEvents {
+    return (this._preIPONewsEvents ??= new PreIPONewsEvents(this._options));
+  }
+
+  private _preIPOResearchDocuments?: PreIPOResearchDocuments;
+  get preIPOResearchDocuments(): PreIPOResearchDocuments {
+    return (this._preIPOResearchDocuments ??= new PreIPOResearchDocuments(
+      this._options,
+    ));
+  }
+
+  private _preIPOFundingRounds?: PreIPOFundingRounds;
+  get preIPOFundingRounds(): PreIPOFundingRounds {
+    return (this._preIPOFundingRounds ??= new PreIPOFundingRounds(
+      this._options,
+    ));
   }
 
   private _tradeBooking?: TradeBooking;
@@ -186,9 +249,9 @@ export class Apexascend extends ClientSDK {
     return (this._ledger ??= new Ledger(this._options));
   }
 
-  private _margins?: Margins;
-  get margins(): Margins {
-    return (this._margins ??= new Margins(this._options));
+  private _buyingPower?: BuyingPower;
+  get buyingPower(): BuyingPower {
+    return (this._buyingPower ??= new BuyingPower(this._options));
   }
 
   private _investorDocs?: InvestorDocs;
@@ -199,5 +262,10 @@ export class Apexascend extends ClientSDK {
   private _dataRetrieval?: DataRetrieval;
   get dataRetrieval(): DataRetrieval {
     return (this._dataRetrieval ??= new DataRetrieval(this._options));
+  }
+
+  private _optionInstructions?: OptionInstructions;
+  get optionInstructions(): OptionInstructions {
+    return (this._optionInstructions ??= new OptionInstructions(this._options));
   }
 }
