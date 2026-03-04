@@ -25,4 +25,6 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Install and publish to npm
-        run: npm install && npm publish --access public
+        run: |
+          export NODE_OPTIONS="--max-old-space-size=8192" # 8GB memory limit
+          npm install && npm publish --access public
