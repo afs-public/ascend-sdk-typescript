@@ -19,6 +19,12 @@ import {
   AccountTaxProfileCreate$outboundSchema,
 } from "./accounttaxprofilecreate.js";
 import {
+  CatReporterInformationCreate,
+  CatReporterInformationCreate$inboundSchema,
+  CatReporterInformationCreate$Outbound,
+  CatReporterInformationCreate$outboundSchema,
+} from "./catreporterinformationcreate.js";
+import {
   IdentifierCreate,
   IdentifierCreate$inboundSchema,
   IdentifierCreate$Outbound,
@@ -89,11 +95,21 @@ export type AccountRequestCreate = {
    */
   catAccountHolderType?: CatAccountHolderTypeOpen | undefined;
   /**
+   * A single record representing the originating_fdid and originating_cat_reporter_crd
+   */
+  catReporterInformation?: CatReporterInformationCreate | undefined;
+  /**
+   * An external identifier for the account. This identifier does not have internal uniqueness constraints.
+   */
+  clientAccountId?: string | undefined;
+  /**
    * A unique identifier referencing a Correspondent; A Client may have several operating Correspondents within its purview.
    */
   correspondentId: string;
   /**
    * A list of identifiers associated with the account
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   identifiers?: Array<IdentifierCreate> | undefined;
   /**
@@ -108,6 +124,10 @@ export type AccountRequestCreate = {
    * A boolean to indicate if an account is managed
    */
   managed?: boolean | undefined;
+  /**
+   * The previous account ID associated with the account; Must be unique
+   */
+  originatingAccountId?: string | undefined;
   /**
    * Parties associated with the account (e.g. custodian).
    */
@@ -172,11 +192,15 @@ export const AccountRequestCreate$inboundSchema: z.ZodType<
   account_group_id: z.string(),
   advised: z.boolean().optional(),
   cat_account_holder_type: CatAccountHolderType$inboundSchema.optional(),
+  cat_reporter_information: CatReporterInformationCreate$inboundSchema
+    .optional(),
+  client_account_id: z.string().optional(),
   correspondent_id: z.string(),
   identifiers: z.array(IdentifierCreate$inboundSchema).optional(),
   interested_parties: z.array(InterestedPartyCreate$inboundSchema).optional(),
   investment_profile: InvestmentProfileCreate$inboundSchema.optional(),
   managed: z.boolean().optional(),
+  originating_account_id: z.string().optional(),
   parties: z.array(PartyRequestCreate$inboundSchema),
   primary_registered_rep_id: z.string().optional(),
   tax_profile: AccountTaxProfileCreate$inboundSchema.optional(),
@@ -187,9 +211,12 @@ export const AccountRequestCreate$inboundSchema: z.ZodType<
     "accepts_issuer_direct_communication": "acceptsIssuerDirectCommunication",
     "account_group_id": "accountGroupId",
     "cat_account_holder_type": "catAccountHolderType",
+    "cat_reporter_information": "catReporterInformation",
+    "client_account_id": "clientAccountId",
     "correspondent_id": "correspondentId",
     "interested_parties": "interestedParties",
     "investment_profile": "investmentProfile",
+    "originating_account_id": "originatingAccountId",
     "primary_registered_rep_id": "primaryRegisteredRepId",
     "tax_profile": "taxProfile",
     "trusted_contacts": "trustedContacts",
@@ -203,11 +230,14 @@ export type AccountRequestCreate$Outbound = {
   account_group_id: string;
   advised?: boolean | undefined;
   cat_account_holder_type?: string | undefined;
+  cat_reporter_information?: CatReporterInformationCreate$Outbound | undefined;
+  client_account_id?: string | undefined;
   correspondent_id: string;
   identifiers?: Array<IdentifierCreate$Outbound> | undefined;
   interested_parties?: Array<InterestedPartyCreate$Outbound> | undefined;
   investment_profile?: InvestmentProfileCreate$Outbound | undefined;
   managed?: boolean | undefined;
+  originating_account_id?: string | undefined;
   parties: Array<PartyRequestCreate$Outbound>;
   primary_registered_rep_id?: string | undefined;
   tax_profile?: AccountTaxProfileCreate$Outbound | undefined;
@@ -225,11 +255,15 @@ export const AccountRequestCreate$outboundSchema: z.ZodType<
   accountGroupId: z.string(),
   advised: z.boolean().optional(),
   catAccountHolderType: CatAccountHolderType$outboundSchema.optional(),
+  catReporterInformation: CatReporterInformationCreate$outboundSchema
+    .optional(),
+  clientAccountId: z.string().optional(),
   correspondentId: z.string(),
   identifiers: z.array(IdentifierCreate$outboundSchema).optional(),
   interestedParties: z.array(InterestedPartyCreate$outboundSchema).optional(),
   investmentProfile: InvestmentProfileCreate$outboundSchema.optional(),
   managed: z.boolean().optional(),
+  originatingAccountId: z.string().optional(),
   parties: z.array(PartyRequestCreate$outboundSchema),
   primaryRegisteredRepId: z.string().optional(),
   taxProfile: AccountTaxProfileCreate$outboundSchema.optional(),
@@ -240,9 +274,12 @@ export const AccountRequestCreate$outboundSchema: z.ZodType<
     acceptsIssuerDirectCommunication: "accepts_issuer_direct_communication",
     accountGroupId: "account_group_id",
     catAccountHolderType: "cat_account_holder_type",
+    catReporterInformation: "cat_reporter_information",
+    clientAccountId: "client_account_id",
     correspondentId: "correspondent_id",
     interestedParties: "interested_parties",
     investmentProfile: "investment_profile",
+    originatingAccountId: "originating_account_id",
     primaryRegisteredRepId: "primary_registered_rep_id",
     taxProfile: "tax_profile",
     trustedContacts: "trusted_contacts",

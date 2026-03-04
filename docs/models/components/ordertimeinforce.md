@@ -1,6 +1,6 @@
 # OrderTimeInForce
 
-Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
 
 ## Example Usage
 

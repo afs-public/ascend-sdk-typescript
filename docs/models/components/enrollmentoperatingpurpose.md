@@ -38,4 +38,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `PrincipalTrading`               | PRINCIPAL_TRADING                |
 | `SafekeepingBookEntityDomestic`  | SAFEKEEPING_BOOK_ENTITY_DOMESTIC |
 | `Fail`                           | FAIL                             |
+| `Wash`                           | WASH                             |
+| `Settlement`                     | SETTLEMENT                       |
+| `TransferLocation`               | TRANSFER_LOCATION                |
 | -                                | `Unrecognized<string>`           |

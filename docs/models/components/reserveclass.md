@@ -22,4 +22,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Firm`                    | FIRM                      |
 | `Street`                  | STREET                    |
 | `GL`                      | G_L                       |
+| `FuturesCustomer`         | FUTURES_CUSTOMER          |
 | -                         | `Unrecognized<string>`    |

@@ -1,0 +1,19 @@
+# NonDayTrade
+
+Non Day Trade Asset Buying Power figures returned from the request.
+
+## Example Usage
+
+```typescript
+import { NonDayTrade } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: NonDayTrade = {};
+```
+
+## Fields
+
+| Field                                                                                                                                 | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           | Example                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `assetBuyingPowerMaxAmount`                                                                                                           | [components.AssetBuyingPowerAssetBuyingPowerMaxAmount](../../models/components/assetbuyingpowerassetbuyingpowermaxamount.md)          | :heavy_minus_sign:                                                                                                                    | The asset_buying_power_max_amount is the max buying power in USD for an account to purchase a given asset, returned from the request. | {<br/>"value": "100.00"<br/>}                                                                                                         |
+| `maxPurchaseQuantity`                                                                                                                 | [components.AssetBuyingPowerMaxPurchaseQuantity](../../models/components/assetbuyingpowermaxpurchasequantity.md)                      | :heavy_minus_sign:                                                                                                                    | The max_purchase_quantity is the maximum quantity of a given asset an account can buy, returned from the request.                     | {<br/>"value": "100.00"<br/>}                                                                                                         |
+| `percentageRequirements`                                                                                                              | [components.AssetBuyingPowerPercentageRequirements](../../models/components/assetbuyingpowerpercentagerequirements.md)                | :heavy_minus_sign:                                                                                                                    | The percentage_requirements, which is the higher of initial and maintenance percentage requirements, returned from the request.       | {<br/>"value": "100.00"<br/>}                                                                                                         |

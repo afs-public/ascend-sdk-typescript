@@ -4121,7 +4121,7 @@ export type WarrantExercise = {
 /**
  * Provides information on the reason for the distribution from a retirement account
  */
-export enum DistributionType {
+export enum EntryDistributionType {
   DistributionTypeUnspecified = "DISTRIBUTION_TYPE_UNSPECIFIED",
   Premature = "PREMATURE",
   Disability = "DISABILITY",
@@ -4150,7 +4150,7 @@ export enum DistributionType {
 /**
  * Provides information on the reason for the distribution from a retirement account
  */
-export type DistributionTypeOpen = OpenEnum<typeof DistributionType>;
+export type EntryDistributionTypeOpen = OpenEnum<typeof EntryDistributionType>;
 
 /**
  * Used for descriptive purposes only. Indicates the type of retirement account
@@ -4212,7 +4212,7 @@ export type Withdrawal = {
   /**
    * Provides information on the reason for the distribution from a retirement account
    */
-  distributionType?: DistributionTypeOpen | undefined;
+  distributionType?: EntryDistributionTypeOpen | undefined;
   /**
    * tax year associated with the distribution
    */
@@ -18043,23 +18043,23 @@ export function warrantExerciseFromJSON(
 }
 
 /** @internal */
-export const DistributionType$inboundSchema: z.ZodType<
-  DistributionTypeOpen,
+export const EntryDistributionType$inboundSchema: z.ZodType<
+  EntryDistributionTypeOpen,
   z.ZodTypeDef,
   unknown
 > = z
   .union([
-    z.nativeEnum(DistributionType),
+    z.nativeEnum(EntryDistributionType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
 
 /** @internal */
-export const DistributionType$outboundSchema: z.ZodType<
-  DistributionTypeOpen,
+export const EntryDistributionType$outboundSchema: z.ZodType<
+  EntryDistributionTypeOpen,
   z.ZodTypeDef,
-  DistributionTypeOpen
+  EntryDistributionTypeOpen
 > = z.union([
-  z.nativeEnum(DistributionType),
+  z.nativeEnum(EntryDistributionType),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -18067,11 +18067,11 @@ export const DistributionType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DistributionType$ {
-  /** @deprecated use `DistributionType$inboundSchema` instead. */
-  export const inboundSchema = DistributionType$inboundSchema;
-  /** @deprecated use `DistributionType$outboundSchema` instead. */
-  export const outboundSchema = DistributionType$outboundSchema;
+export namespace EntryDistributionType$ {
+  /** @deprecated use `EntryDistributionType$inboundSchema` instead. */
+  export const inboundSchema = EntryDistributionType$inboundSchema;
+  /** @deprecated use `EntryDistributionType$outboundSchema` instead. */
+  export const outboundSchema = EntryDistributionType$outboundSchema;
 }
 
 /** @internal */
@@ -18148,7 +18148,7 @@ export const Withdrawal$inboundSchema: z.ZodType<
   closing_account: z.boolean().optional(),
   destination_account_number: z.string().optional(),
   destination_institution: z.string().optional(),
-  distribution_type: DistributionType$inboundSchema.optional(),
+  distribution_type: EntryDistributionType$inboundSchema.optional(),
   distribution_year: z.number().int().optional(),
   fed_reference_number: z.string().optional(),
   originating_institution: z.string().optional(),
@@ -18197,7 +18197,7 @@ export const Withdrawal$outboundSchema: z.ZodType<
   closingAccount: z.boolean().optional(),
   destinationAccountNumber: z.string().optional(),
   destinationInstitution: z.string().optional(),
-  distributionType: DistributionType$outboundSchema.optional(),
+  distributionType: EntryDistributionType$outboundSchema.optional(),
   distributionYear: z.number().int().optional(),
   fedReferenceNumber: z.string().optional(),
   originatingInstitution: z.string().optional(),

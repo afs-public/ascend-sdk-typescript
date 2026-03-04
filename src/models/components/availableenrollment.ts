@@ -47,6 +47,7 @@ export enum EnrollmentType {
   RegistrationIraBeneficiaryRoth = "REGISTRATION_IRA_BENEFICIARY_ROTH",
   RegistrationIndividualForeign = "REGISTRATION_INDIVIDUAL_FOREIGN",
   RegistrationCustodial = "REGISTRATION_CUSTODIAL",
+  RegTMargin = "REG_T_MARGIN",
   VirtualAccountNumber = "VIRTUAL_ACCOUNT_NUMBER",
 }
 /**

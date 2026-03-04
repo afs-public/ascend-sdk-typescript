@@ -10,7 +10,7 @@ let value: OrderPriceServiceRetrieveQuoteRequest = {
   accountId: "<id>",
   retrieveQuoteRequestCreate: {
     assetType: RetrieveQuoteRequestCreateAssetType.FixedIncome,
-    identifier: "37833100",
+    identifier: "037833100",
     identifierType: RetrieveQuoteRequestCreateIdentifierType.Cusip,
     parent: "<value>",
   },

@@ -38,7 +38,7 @@ export type AchDepositScheduleTypeOpen = OpenEnum<
 >;
 
 /**
- * The ira contribution info for an IRA account. Deprecated, see retirement_contribution_details
+ * Deprecated: see retirement_contribution_details The ira contribution info for an IRA account.
  *
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
@@ -243,7 +243,7 @@ export type AchDepositSchedule = {
    */
   bankRelationship?: string | undefined;
   /**
-   * The ira contribution info for an IRA account. Deprecated, see retirement_contribution_details
+   * Deprecated: see retirement_contribution_details The ira contribution info for an IRA account.
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */

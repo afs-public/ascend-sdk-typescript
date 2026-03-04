@@ -16,6 +16,11 @@
 * [getAchWithdrawalSchedule](#getachwithdrawalschedule) - Get ACH Withdrawal Schedule
 * [updateAchWithdrawalSchedule](#updateachwithdrawalschedule) - Update ACH Withdrawal Schedule
 * [cancelAchWithdrawalSchedule](#cancelachwithdrawalschedule) - Cancel ACH Withdrawal Schedule
+* [createCashJournalSchedule](#createcashjournalschedule) - Create Cash Journal Schedule
+* [getCashJournalSchedule](#getcashjournalschedule) - Get Cash Journal Schedule
+* [updateCashJournalSchedule](#updatecashjournalschedule) - Update Cash Journal Schedule
+* [cancelCashJournalSchedule](#cancelcashjournalschedule) - Cancel Cash Journal Schedule
+* [searchCashJournalSchedules](#searchcashjournalschedules) - Search Cash Journal Schedules
 * [createCheckWithdrawalSchedule](#createcheckwithdrawalschedule) - Create Check Withdrawal Schedule
 * [listCheckWithdrawalSchedules](#listcheckwithdrawalschedules) - List Check Withdrawal Schedules
 * [getCheckWithdrawalSchedule](#getcheckwithdrawalschedule) - Get Check Withdrawal Schedule
@@ -1059,6 +1064,479 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## createCashJournalSchedule
+
+Creates a Cash Journal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CashJournalSchedules_CreateCashJournalSchedule" method="post" path="/transfers/v1/cashJournalSchedules" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+import { TimeUnit } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.createCashJournalSchedule({
+    destinationAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D5Z",
+    scheduleDetails: {
+      clientScheduleId: "ABC-123",
+      scheduleProperties: {
+        startDate: {},
+        timeUnit: TimeUnit.Month,
+        unitMultiplier: 1,
+      },
+    },
+    sourceAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersCreateCashJournalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersCreateCashJournalSchedule.js";
+import { TimeUnit } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersCreateCashJournalSchedule(apexascend, {
+    destinationAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D5Z",
+    scheduleDetails: {
+      clientScheduleId: "ABC-123",
+      scheduleProperties: {
+        startDate: {},
+        timeUnit: TimeUnit.Month,
+        unitMultiplier: 1,
+      },
+    },
+    sourceAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCreateCashJournalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.CashJournalScheduleCreate](../../models/components/cashjournalschedulecreate.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.CashJournalSchedulesCreateCashJournalScheduleResponse](../../models/operations/cashjournalschedulescreatecashjournalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 409    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## getCashJournalSchedule
+
+Gets a Cash Journal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CashJournalSchedules_GetCashJournalSchedule" method="get" path="/transfers/v1/cashJournalSchedules/{cashJournalSchedule_id}" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.getCashJournalSchedule("40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersGetCashJournalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersGetCashJournalSchedule.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersGetCashJournalSchedule(apexascend, "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersGetCashJournalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cashJournalScheduleId`                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The cashJournalSchedule id.                                                                                                                                                    | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CashJournalSchedulesGetCashJournalScheduleResponse](../../models/operations/cashjournalschedulesgetcashjournalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## updateCashJournalSchedule
+
+Updates the amount of a Cash Journal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CashJournalSchedules_UpdateCashJournalSchedule" method="patch" path="/transfers/v1/cashJournalSchedules/{cashJournalSchedule_id}" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.updateCashJournalSchedule({}, "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersUpdateCashJournalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersUpdateCashJournalSchedule.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersUpdateCashJournalSchedule(apexascend, {}, "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersUpdateCashJournalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cashJournalScheduleId`                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The cashJournalSchedule id.                                                                                                                                                    | [object Object]                                                                                                                                                                |
+| `cashJournalScheduleUpdate`                                                                                                                                                    | [components.CashJournalScheduleUpdate](../../models/components/cashjournalscheduleupdate.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `updateMask`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | A field mask representing the update. Note: only the 'schedule_details.amount' field of a schedule is currently updatable                                                      | [object Object]                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CashJournalSchedulesUpdateCashJournalScheduleResponse](../../models/operations/cashjournalschedulesupdatecashjournalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## cancelCashJournalSchedule
+
+Cancels a Cash Journal transfer schedule
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CashJournalSchedules_CancelCashJournalSchedule" method="post" path="/transfers/v1/cashJournalSchedules/{cashJournalSchedule_id}:cancel" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.cancelCashJournalSchedule({
+    name: "cashJournalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
+  }, "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersCancelCashJournalSchedule } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersCancelCashJournalSchedule.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersCancelCashJournalSchedule(apexascend, {
+    name: "cashJournalSchedules/40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1",
+  }, "40eb6b6f-76ff-4dc9-b8a0-b65a7658f8b1");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersCancelCashJournalSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cashJournalScheduleId`                                                                                                                                                        | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The cashJournalSchedule id.                                                                                                                                                    | [object Object]                                                                                                                                                                |
+| `cancelCashJournalScheduleRequestCreate`                                                                                                                                       | [components.CancelCashJournalScheduleRequestCreate](../../models/components/cancelcashjournalschedulerequestcreate.md)                                                         | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CashJournalSchedulesCancelCashJournalScheduleResponse](../../models/operations/cashjournalschedulescancelcashjournalscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## searchCashJournalSchedules
+
+Search Cash Journal Schedules visible to the calling service account using the specified search parameters
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CashJournalSchedules_SearchCashJournalSchedules" method="get" path="/transfers/v1/cashJournalSchedules:search" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.scheduleTransfers.searchCashJournalSchedules({
+    sourceAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
+    destinationAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D5Z",
+    filter: "state == 'ACTIVE' && start_date > '2024-04-05' && end_date < '2024-08-10'",
+    pageSize: 100,
+    pageToken: "4ZHd3wAaMD1IQ0ZKS2BKV0FSRVdLW4VLWkY1R1B3MU4",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { scheduleTransfersSearchCashJournalSchedules } from "@apexfintechsolutions/ascend-sdk/funcs/scheduleTransfersSearchCashJournalSchedules.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await scheduleTransfersSearchCashJournalSchedules(apexascend, {
+    sourceAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D4Y",
+    destinationAccount: "accounts/01H8FB90ZRRFWXB4XC2JPJ1D5Z",
+    filter: "state == 'ACTIVE' && start_date > '2024-04-05' && end_date < '2024-08-10'",
+    pageSize: 100,
+    pageToken: "4ZHd3wAaMD1IQ0ZKS2BKV0FSRVdLW4VLWkY1R1B3MU4",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduleTransfersSearchCashJournalSchedules failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CashJournalSchedulesSearchCashJournalSchedulesRequest](../../models/operations/cashjournalschedulessearchcashjournalschedulesrequest.md)                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.CashJournalSchedulesSearchCashJournalSchedulesResponse](../../models/operations/cashjournalschedulessearchcashjournalschedulesresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
 ## createCheckWithdrawalSchedule

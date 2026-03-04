@@ -1,0 +1,18 @@
+# CashJournalScheduleRetirementContribution
+
+The retirement contribution info for a retirement account. This must be provided when the destination account is a retirement account
+
+## Example Usage
+
+```typescript
+import { CashJournalScheduleRetirementContribution } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: CashJournalScheduleRetirementContribution = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                 | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           | Example                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `taxYear`                                                                                                                                             | *number*                                                                                                                                              | :heavy_minus_sign:                                                                                                                                    | Tax year for which the contribution is applied. Current year is always valid; prior year is only valid before tax deadline. Must be in "YYYY" format. | 2024                                                                                                                                                  |
+| `type`                                                                                                                                                | [components.CashJournalScheduleType](../../models/components/cashjournalscheduletype.md)                                                              | :heavy_minus_sign:                                                                                                                                    | The type of retirement contribution.                                                                                                                  | REGULAR                                                                                                                                               |

@@ -498,14 +498,84 @@ export async function createScheduledWireWithdrawal(
   }
 }
 
+export async function createCashJournalSchedule(
+  destination_account_id: string,
+): Promise<string> {
+  const today = new Date();
+  const request: components.CashJournalScheduleCreate = {
+    sourceAccount: withdrawal_account_id,
+    destinationAccount: destination_account_id,
+    scheduleDetails: {
+      amount: {
+        value: "10.00",
+      },
+      clientScheduleId: crypto.randomUUID(),
+      scheduleProperties: {
+        occurrences: 10,
+        startDate: {
+          year: today.getFullYear(),
+          month: today.getMonth() + 1,
+          day: today.getDate(),
+        },
+        timeUnit: components.TimeUnit.Month,
+        unitMultiplier: 1,
+      },
+    },
+  };
+
+  const res = await sdk.scheduleTransfers.createCashJournalSchedule(request);
+
+  if (res.httpMeta.response.status == 200) {
+    return res?.cashJournalSchedule?.name?.split("/").at(-1) || "";
+  } else {
+    return "";
+  }
+}
+
+export async function createCheckWithdrawalSchedule(
+  enrolled_account_id: string,
+): Promise<string> {
+  const today = new Date();
+  const request: components.CheckWithdrawalScheduleCreate = {
+    deliveryMethod: components.DeliveryMethod.Standard,
+    scheduleDetails: {
+      amount: {
+        value: "10.00",
+      },
+      clientScheduleId: crypto.randomUUID(),
+      scheduleProperties: {
+        occurrences: 10,
+        startDate: {
+          year: today.getFullYear(),
+          month: today.getMonth() + 1,
+          day: today.getDate(),
+        },
+        timeUnit: components.TimeUnit.Month,
+        unitMultiplier: 1,
+      },
+    },
+  };
+
+  const res = await sdk.scheduleTransfers.createCheckWithdrawalSchedule(
+    request,
+    enrolled_account_id,
+  );
+
+  if (res.httpMeta.response.status == 200) {
+    return res?.checkWithdrawalSchedule?.name?.split("/").at(-1) || "";
+  } else {
+    return "";
+  }
+}
+
 export async function createCashJournal(account_id: string): Promise<string> {
   const cash_journal_request: components.CashJournalCreate = {
     clientTransferId: crypto.randomUUID(),
-    destinationAccount: "accounts/" + account_id,
+    destinationAccount: account_id,
     amount: {
       value: "500001.00",
     },
-    sourceAccount: "accounts/" + withdrawal_account_id,
+    sourceAccount: withdrawal_account_id,
   };
 
   const response = await sdk.journals.createCashJournal(cash_journal_request);

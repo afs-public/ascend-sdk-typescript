@@ -1,6 +1,21 @@
 # PhoneNumber
 
-The phone number for a party; Lives on the party record in the context of the account and does not commute to other accounts held by/for the person
+An object representing a phone number, suitable as an API wire format.
+
+ This representation:
+
+ - should not be used for locale-specific formatting of a phone number, such  as "+1 (650) 253-0000 ext. 123"
+
+ - is not designed for efficient storage - may not be suitable for dialing - specialized libraries (see references)  should be used to parse the number for that purpose
+
+ To do something meaningful with this number, such as format it for various use-cases, convert it to an `i18n.phonenumbers.PhoneNumber` object first.
+
+ For instance, in Java this would be:
+
+  com.google.type.PhoneNumber wireProto =    com.google.type.PhoneNumber.newBuilder().build();  com.google.i18n.phonenumbers.Phonenumber.PhoneNumber phoneNumber =    PhoneNumberUtil.getInstance().parse(wireProto.getE164Number(), "ZZ");  if (!wireProto.getExtension().isEmpty()) {   phoneNumber.setExtension(wireProto.getExtension());  }
+
+ Reference(s):
+  - https://github.com/google/libphonenumber
 
 ## Example Usage
 

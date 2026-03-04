@@ -184,11 +184,9 @@ export type Employment = {
    *
    * @remarks
    *
-   * Required if `employment_status` is one of:
+   * Must be empty if `employment_status` is ___not___ one of:
    *   - `EMPLOYED`
    *   - `SELF_EMPLOYED`
-   *
-   * Otherwise, must be empty.
    */
   startYear?: number | undefined;
 };
@@ -625,7 +623,6 @@ export enum LegalNaturalPersonFederalTaxClassification {
   FederalTaxClassificationUnspecified =
     "FEDERAL_TAX_CLASSIFICATION_UNSPECIFIED",
   IndivSolepropOrSinglememberllc = "INDIV_SOLEPROP_OR_SINGLEMEMBERLLC",
-  Partnership = "PARTNERSHIP",
   CCorporation = "C_CORPORATION",
   SCorporation = "S_CORPORATION",
   TrustEstate = "TRUST_ESTATE",
@@ -822,6 +819,10 @@ export type LegalNaturalPerson = {
    * This is used for tax (treaty) and country block list considerations Maximum list of two 2-char CLDR Code citizenship countries, e.g. US, CA
    */
   citizenshipCountries?: Array<string> | undefined;
+  /**
+   * An external identifier for the legal natural person. This identifier does not have internal uniqueness constraints.
+   */
+  clientPersonId?: string | undefined;
   /**
    * A list of ticker symbols in which the underlying person is a control person; control persons are defined as having significant influence over a company’s management and operations, typically through ownership of a large percentage of the company’s voting stock or through positions on the company’s board of directors or executive team
    */
@@ -2926,6 +2927,7 @@ export const LegalNaturalPerson$inboundSchema: z.ZodType<
   adviser: z.boolean().optional(),
   birth_date: z.nullable(z.lazy(() => BirthDate$inboundSchema)).optional(),
   citizenship_countries: z.array(z.string()).optional(),
+  client_person_id: z.string().optional(),
   control_person_company_symbols: z.string().optional(),
   correspondent_employee: z.boolean().optional(),
   correspondent_id: z.string().optional(),
@@ -2972,6 +2974,7 @@ export const LegalNaturalPerson$inboundSchema: z.ZodType<
     "accredited_investor": "accreditedInvestor",
     "birth_date": "birthDate",
     "citizenship_countries": "citizenshipCountries",
+    "client_person_id": "clientPersonId",
     "control_person_company_symbols": "controlPersonCompanySymbols",
     "correspondent_employee": "correspondentEmployee",
     "correspondent_id": "correspondentId",
@@ -3011,6 +3014,7 @@ export type LegalNaturalPerson$Outbound = {
   adviser?: boolean | undefined;
   birth_date?: BirthDate$Outbound | null | undefined;
   citizenship_countries?: Array<string> | undefined;
+  client_person_id?: string | undefined;
   control_person_company_symbols?: string | undefined;
   correspondent_employee?: boolean | undefined;
   correspondent_id?: string | undefined;
@@ -3057,6 +3061,7 @@ export const LegalNaturalPerson$outboundSchema: z.ZodType<
   adviser: z.boolean().optional(),
   birthDate: z.nullable(z.lazy(() => BirthDate$outboundSchema)).optional(),
   citizenshipCountries: z.array(z.string()).optional(),
+  clientPersonId: z.string().optional(),
   controlPersonCompanySymbols: z.string().optional(),
   correspondentEmployee: z.boolean().optional(),
   correspondentId: z.string().optional(),
@@ -3103,6 +3108,7 @@ export const LegalNaturalPerson$outboundSchema: z.ZodType<
     accreditedInvestor: "accredited_investor",
     birthDate: "birth_date",
     citizenshipCountries: "citizenship_countries",
+    clientPersonId: "client_person_id",
     controlPersonCompanySymbols: "control_person_company_symbols",
     correspondentEmployee: "correspondent_employee",
     correspondentId: "correspondent_id",

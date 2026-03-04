@@ -119,7 +119,7 @@ export type Value = {
 };
 
 /**
- * A custom commission to be applied to this order. When specifying an AMOUNT type, the value represents a notional amount measured in the currency of the order.
+ * A custom commission to be applied to this order. When specifying an AMOUNT type, the value represents a notional amount measured in the currency of the order. Only available for Equity, Mutual Fund, and Fixed Income orders.
  */
 export type OrderCommission = {
   /**
@@ -252,11 +252,7 @@ export type LimitPrice = {
 };
 
 /**
- * The maximum number of shares to be sold if this is a notional SELL order of an Equity asset type. (Prohibited for other side or asset_type inputs.)
- *
- * @remarks
- *
- *  This will only be recognized for clients configured not to use OMS checks. When specified, must be greater than 0 and can't exceed 5 decimal places.
+ * The maximum number of shares to be sold for a notional SELL order of an Equity asset type. This field restricts the quantity to sell, even if the notional amount requires more shares to fulfill. REQUIRED if your account is not subject to Apex position checks, and PROHIBITED if your account is subject to Apex position checks. Refer to Position Check for details. When specified, must be greater than 0 and can't exceed 5 decimal places.
  */
 export type MaxSellQuantity = {
   /**
@@ -276,7 +272,7 @@ export type NotionalValue = {
 };
 
 /**
- * The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is within 5 minutes prior to market close, the next valid market day may be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
+ * The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
  */
 export type OrderDate = {
   /**
@@ -504,14 +500,14 @@ export type StopPrice = {
 };
 
 /**
- * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
  */
 export enum OrderTimeInForce {
   Day = "DAY",
   GoodTillDate = "GOOD_TILL_DATE",
 }
 /**
- * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+ * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
  */
 export type OrderTimeInForceOpen = OpenEnum<typeof OrderTimeInForce>;
 
@@ -559,7 +555,7 @@ export type Order = {
    */
   accountId?: string | undefined;
   /**
-   * Apex Asset ID for this asset. This will not be returned in the initial CreateOrder response and will be available after an order completes validation. If the provided identifier does not match any Apex asset available for trading, an OrderRejectReason of "UNKNOWN_SECURITY" will be returned and the asset_id will not be set.
+   * Apex Asset ID for this asset. When the identifier_type is not ASSET_ID, this field will not be returned in the initial CreateOrder response and will be available after an order completes validation. If the provided identifier does not match any Apex asset available for trading, an OrderRejectReason of "UNKNOWN_SECURITY" will be returned and the asset_id will not be set.
    */
   assetId?: string | undefined;
   /**
@@ -616,7 +612,7 @@ export type Order = {
    */
   clientSentTime?: Date | null | undefined;
   /**
-   * A custom commission to be applied to this order. When specifying an AMOUNT type, the value represents a notional amount measured in the currency of the order.
+   * A custom commission to be applied to this order. When specifying an AMOUNT type, the value represents a notional amount measured in the currency of the order. Only available for Equity, Mutual Fund, and Fixed Income orders.
    */
   commission?: OrderCommission | null | undefined;
   /**
@@ -672,11 +668,7 @@ export type Order = {
    */
   limitPrice?: LimitPrice | null | undefined;
   /**
-   * The maximum number of shares to be sold if this is a notional SELL order of an Equity asset type. (Prohibited for other side or asset_type inputs.)
-   *
-   * @remarks
-   *
-   *  This will only be recognized for clients configured not to use OMS checks. When specified, must be greater than 0 and can't exceed 5 decimal places.
+   * The maximum number of shares to be sold for a notional SELL order of an Equity asset type. This field restricts the quantity to sell, even if the notional amount requires more shares to fulfill. REQUIRED if your account is not subject to Apex position checks, and PROHIBITED if your account is subject to Apex position checks. Refer to Position Check for details. When specified, must be greater than 0 and can't exceed 5 decimal places.
    */
   maxSellQuantity?: MaxSellQuantity | null | undefined;
   /**
@@ -692,7 +684,7 @@ export type Order = {
    */
   open?: boolean | undefined;
   /**
-   * The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is within 5 minutes prior to market close, the next valid market day may be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
+   * The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
    */
   orderDate?: OrderDate | null | undefined;
   /**
@@ -728,7 +720,7 @@ export type Order = {
    */
   side?: OrderSideOpen | undefined;
   /**
-   * Special Reporting Instructions to be applied to this order. Can include multiple Instructions.
+   * Special Reporting Instructions to be applied to this order. Can include multiple Instructions. Only available for Equity, Mutual Fund, and Fixed Income orders.
    */
   specialReportingInstructions?:
     | Array<OrderSpecialReportingInstructionsOpen>
@@ -738,7 +730,7 @@ export type Order = {
    */
   stopPrice?: StopPrice | null | undefined;
   /**
-   * Regulatory requirements dictate that the system capture the intended time_in_force, which is why this a mandatory field.
+   * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
    */
   timeInForce?: OrderTimeInForceOpen | undefined;
   /**

@@ -38,7 +38,6 @@ export enum BeneficiaryEntityType {
   EntityTypeUnspecified = "ENTITY_TYPE_UNSPECIFIED",
   Corporation = "CORPORATION",
   LimitedLiabilityCompany = "LIMITED_LIABILITY_COMPANY",
-  Partnership = "PARTNERSHIP",
   Trust = "TRUST",
   Estate = "ESTATE",
 }
@@ -130,7 +129,7 @@ export type MailingAddress = {
  *  Reference(s):
  *  - https://en.wikipedia.org/wiki/Short_code
  */
-export type ShortCode = {
+export type BeneficiaryShortCode = {
   /**
    * Required. The short code digits, without a leading plus ('+') or country calling code, e.g. "611".
    */
@@ -149,7 +148,7 @@ export type ShortCode = {
 /**
  * The phone number for a party; Lives on the party record in the context of the account and does not commute to other accounts held by/for the person
  */
-export type PhoneNumber = {
+export type BeneficiaryPhoneNumber = {
   /**
    * The phone number, represented as a leading plus sign ('+'), followed by a phone number that uses a relaxed ITU E.164 format consisting of the country calling code (1 to 3 digits) and the subscriber number, with no additional spaces or formatting, e.g.: - correct: "+15552220123" - incorrect: "+1 (555) 222-01234 x123".
    *
@@ -176,7 +175,7 @@ export type PhoneNumber = {
    *  Reference(s):
    *  - https://en.wikipedia.org/wiki/Short_code
    */
-  shortCode?: ShortCode | null | undefined;
+  shortCode?: BeneficiaryShortCode | null | undefined;
 };
 
 /**
@@ -259,7 +258,7 @@ export type Beneficiary = {
   /**
    * The phone number for a party; Lives on the party record in the context of the account and does not commute to other accounts held by/for the person
    */
-  phoneNumber?: PhoneNumber | null | undefined;
+  phoneNumber?: BeneficiaryPhoneNumber | null | undefined;
   /**
    * The relationship of the beneficiary to the account owner
    */
@@ -465,8 +464,8 @@ export function mailingAddressFromJSON(
 }
 
 /** @internal */
-export const ShortCode$inboundSchema: z.ZodType<
-  ShortCode,
+export const BeneficiaryShortCode$inboundSchema: z.ZodType<
+  BeneficiaryShortCode,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -479,16 +478,16 @@ export const ShortCode$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ShortCode$Outbound = {
+export type BeneficiaryShortCode$Outbound = {
   number?: string | undefined;
   region_code?: string | undefined;
 };
 
 /** @internal */
-export const ShortCode$outboundSchema: z.ZodType<
-  ShortCode$Outbound,
+export const BeneficiaryShortCode$outboundSchema: z.ZodType<
+  BeneficiaryShortCode$Outbound,
   z.ZodTypeDef,
-  ShortCode
+  BeneficiaryShortCode
 > = z.object({
   number: z.string().optional(),
   regionCode: z.string().optional(),
@@ -502,38 +501,43 @@ export const ShortCode$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ShortCode$ {
-  /** @deprecated use `ShortCode$inboundSchema` instead. */
-  export const inboundSchema = ShortCode$inboundSchema;
-  /** @deprecated use `ShortCode$outboundSchema` instead. */
-  export const outboundSchema = ShortCode$outboundSchema;
-  /** @deprecated use `ShortCode$Outbound` instead. */
-  export type Outbound = ShortCode$Outbound;
+export namespace BeneficiaryShortCode$ {
+  /** @deprecated use `BeneficiaryShortCode$inboundSchema` instead. */
+  export const inboundSchema = BeneficiaryShortCode$inboundSchema;
+  /** @deprecated use `BeneficiaryShortCode$outboundSchema` instead. */
+  export const outboundSchema = BeneficiaryShortCode$outboundSchema;
+  /** @deprecated use `BeneficiaryShortCode$Outbound` instead. */
+  export type Outbound = BeneficiaryShortCode$Outbound;
 }
 
-export function shortCodeToJSON(shortCode: ShortCode): string {
-  return JSON.stringify(ShortCode$outboundSchema.parse(shortCode));
+export function beneficiaryShortCodeToJSON(
+  beneficiaryShortCode: BeneficiaryShortCode,
+): string {
+  return JSON.stringify(
+    BeneficiaryShortCode$outboundSchema.parse(beneficiaryShortCode),
+  );
 }
 
-export function shortCodeFromJSON(
+export function beneficiaryShortCodeFromJSON(
   jsonString: string,
-): SafeParseResult<ShortCode, SDKValidationError> {
+): SafeParseResult<BeneficiaryShortCode, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ShortCode$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ShortCode' from JSON`,
+    (x) => BeneficiaryShortCode$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BeneficiaryShortCode' from JSON`,
   );
 }
 
 /** @internal */
-export const PhoneNumber$inboundSchema: z.ZodType<
-  PhoneNumber,
+export const BeneficiaryPhoneNumber$inboundSchema: z.ZodType<
+  BeneficiaryPhoneNumber,
   z.ZodTypeDef,
   unknown
 > = z.object({
   e164_number: z.string().optional(),
   extension: z.string().optional(),
-  short_code: z.nullable(z.lazy(() => ShortCode$inboundSchema)).optional(),
+  short_code: z.nullable(z.lazy(() => BeneficiaryShortCode$inboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "e164_number": "e164Number",
@@ -542,21 +546,22 @@ export const PhoneNumber$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PhoneNumber$Outbound = {
+export type BeneficiaryPhoneNumber$Outbound = {
   e164_number?: string | undefined;
   extension?: string | undefined;
-  short_code?: ShortCode$Outbound | null | undefined;
+  short_code?: BeneficiaryShortCode$Outbound | null | undefined;
 };
 
 /** @internal */
-export const PhoneNumber$outboundSchema: z.ZodType<
-  PhoneNumber$Outbound,
+export const BeneficiaryPhoneNumber$outboundSchema: z.ZodType<
+  BeneficiaryPhoneNumber$Outbound,
   z.ZodTypeDef,
-  PhoneNumber
+  BeneficiaryPhoneNumber
 > = z.object({
   e164Number: z.string().optional(),
   extension: z.string().optional(),
-  shortCode: z.nullable(z.lazy(() => ShortCode$outboundSchema)).optional(),
+  shortCode: z.nullable(z.lazy(() => BeneficiaryShortCode$outboundSchema))
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     e164Number: "e164_number",
@@ -568,26 +573,30 @@ export const PhoneNumber$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PhoneNumber$ {
-  /** @deprecated use `PhoneNumber$inboundSchema` instead. */
-  export const inboundSchema = PhoneNumber$inboundSchema;
-  /** @deprecated use `PhoneNumber$outboundSchema` instead. */
-  export const outboundSchema = PhoneNumber$outboundSchema;
-  /** @deprecated use `PhoneNumber$Outbound` instead. */
-  export type Outbound = PhoneNumber$Outbound;
+export namespace BeneficiaryPhoneNumber$ {
+  /** @deprecated use `BeneficiaryPhoneNumber$inboundSchema` instead. */
+  export const inboundSchema = BeneficiaryPhoneNumber$inboundSchema;
+  /** @deprecated use `BeneficiaryPhoneNumber$outboundSchema` instead. */
+  export const outboundSchema = BeneficiaryPhoneNumber$outboundSchema;
+  /** @deprecated use `BeneficiaryPhoneNumber$Outbound` instead. */
+  export type Outbound = BeneficiaryPhoneNumber$Outbound;
 }
 
-export function phoneNumberToJSON(phoneNumber: PhoneNumber): string {
-  return JSON.stringify(PhoneNumber$outboundSchema.parse(phoneNumber));
+export function beneficiaryPhoneNumberToJSON(
+  beneficiaryPhoneNumber: BeneficiaryPhoneNumber,
+): string {
+  return JSON.stringify(
+    BeneficiaryPhoneNumber$outboundSchema.parse(beneficiaryPhoneNumber),
+  );
 }
 
-export function phoneNumberFromJSON(
+export function beneficiaryPhoneNumberFromJSON(
   jsonString: string,
-): SafeParseResult<PhoneNumber, SDKValidationError> {
+): SafeParseResult<BeneficiaryPhoneNumber, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PhoneNumber$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PhoneNumber' from JSON`,
+    (x) => BeneficiaryPhoneNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BeneficiaryPhoneNumber' from JSON`,
   );
 }
 
@@ -672,7 +681,8 @@ export const Beneficiary$inboundSchema: z.ZodType<
   mailing_address: z.nullable(z.lazy(() => MailingAddress$inboundSchema))
     .optional(),
   middle_names: z.string().optional(),
-  phone_number: z.nullable(z.lazy(() => PhoneNumber$inboundSchema)).optional(),
+  phone_number: z.nullable(z.lazy(() => BeneficiaryPhoneNumber$inboundSchema))
+    .optional(),
   relation_type: BeneficiaryRelationType$inboundSchema.optional(),
   tax_id: z.string().optional(),
   tax_id_type: BeneficiaryTaxIdType$inboundSchema.optional(),
@@ -704,7 +714,7 @@ export type Beneficiary$Outbound = {
   given_name?: string | undefined;
   mailing_address?: MailingAddress$Outbound | null | undefined;
   middle_names?: string | undefined;
-  phone_number?: PhoneNumber$Outbound | null | undefined;
+  phone_number?: BeneficiaryPhoneNumber$Outbound | null | undefined;
   relation_type?: string | undefined;
   tax_id?: string | undefined;
   tax_id_type?: string | undefined;
@@ -727,7 +737,8 @@ export const Beneficiary$outboundSchema: z.ZodType<
   mailingAddress: z.nullable(z.lazy(() => MailingAddress$outboundSchema))
     .optional(),
   middleNames: z.string().optional(),
-  phoneNumber: z.nullable(z.lazy(() => PhoneNumber$outboundSchema)).optional(),
+  phoneNumber: z.nullable(z.lazy(() => BeneficiaryPhoneNumber$outboundSchema))
+    .optional(),
   relationType: BeneficiaryRelationType$outboundSchema.optional(),
   taxId: z.string().optional(),
   taxIdType: BeneficiaryTaxIdType$outboundSchema.optional(),

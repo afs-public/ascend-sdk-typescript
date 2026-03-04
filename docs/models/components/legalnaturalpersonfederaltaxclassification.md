@@ -19,7 +19,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | -------------------------------------- | -------------------------------------- |
 | `FederalTaxClassificationUnspecified`  | FEDERAL_TAX_CLASSIFICATION_UNSPECIFIED |
 | `IndivSolepropOrSinglememberllc`       | INDIV_SOLEPROP_OR_SINGLEMEMBERLLC      |
-| `Partnership`                          | PARTNERSHIP                            |
 | `CCorporation`                         | C_CORPORATION                          |
 | `SCorporation`                         | S_CORPORATION                          |
 | `TrustEstate`                          | TRUST_ESTATE                           |

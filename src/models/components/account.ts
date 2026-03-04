@@ -71,6 +71,20 @@ export type AccountCatAccountHolderTypeOpen = OpenEnum<
 >;
 
 /**
+ * The CAT reporter information for the account
+ */
+export type CatReporterInformation = {
+  /**
+   * The prior CAT reporter's 7 digit CRD number; Must be provided with an `ORIGINATING_FDID`
+   */
+  originatingCatReporterCrd?: string | undefined;
+  /**
+   * The previous FDID associated with the account; Must be unique and provided with an `ORIGINATING_CAT_REPORTER_CRD`
+   */
+  originatingFdid?: string | undefined;
+};
+
+/**
  * Indicates the CFTC (Commodity Futures Trading Commission) owner type of the account. This enum only applies to accounts regulated by the CFTC
  */
 export enum CftcOwnerType {
@@ -441,7 +455,6 @@ export enum RegistrationType {
   TrustRegistration = "TRUST_REGISTRATION",
   CorporationRegistration = "CORPORATION_REGISTRATION",
   LlcRegistration = "LLC_REGISTRATION",
-  PartnershipRegistration = "PARTNERSHIP_REGISTRATION",
   OperatingRegistration = "OPERATING_REGISTRATION",
   IraBeneficiaryTraditionalRegistration =
     "IRA_BENEFICIARY_TRADITIONAL_REGISTRATION",
@@ -464,6 +477,7 @@ export enum ReserveClass {
   Firm = "FIRM",
   Street = "STREET",
   GL = "G_L",
+  FuturesCustomer = "FUTURES_CUSTOMER",
 }
 /**
  * The Reserve Class associated with the account
@@ -564,9 +578,17 @@ export type Account = {
    */
   catAccountHolderType?: AccountCatAccountHolderTypeOpen | undefined;
   /**
+   * The CAT reporter information for the account
+   */
+  catReporterInformation?: CatReporterInformation | null | undefined;
+  /**
    * Indicates the CFTC (Commodity Futures Trading Commission) owner type of the account. This enum only applies to accounts regulated by the CFTC
    */
   cftcOwnerType?: CftcOwnerTypeOpen | undefined;
+  /**
+   * An external identifier for the account. This identifier does not have internal uniqueness constraints.
+   */
+  clientAccountId?: string | undefined;
   /**
    * The time the account was closed; If the account is not closed, this is null
    */
@@ -601,6 +623,8 @@ export type Account = {
   fundingType?: FundingTypeOpen | undefined;
   /**
    * A list of identifiers associated with the account
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   identifiers?: Array<Identifier> | undefined;
   /**
@@ -627,6 +651,10 @@ export type Account = {
    * The time the account was activated; Differs from `create_time` which is when the initial account record was created
    */
   openTime?: Date | null | undefined;
+  /**
+   * The previous account ID associated with the account; Must be unique
+   */
+  originatingAccountId?: string | undefined;
   /**
    * A roll-up account classification based on the `registration_type`; Indicates what owns the account and/or if it is a special type (e.g., Joint, Estate, Retirement, etc.); Used primarily for reporting and high-level type identification
    */
@@ -703,6 +731,73 @@ export namespace AccountCatAccountHolderType$ {
   export const inboundSchema = AccountCatAccountHolderType$inboundSchema;
   /** @deprecated use `AccountCatAccountHolderType$outboundSchema` instead. */
   export const outboundSchema = AccountCatAccountHolderType$outboundSchema;
+}
+
+/** @internal */
+export const CatReporterInformation$inboundSchema: z.ZodType<
+  CatReporterInformation,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  originating_cat_reporter_crd: z.string().optional(),
+  originating_fdid: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "originating_cat_reporter_crd": "originatingCatReporterCrd",
+    "originating_fdid": "originatingFdid",
+  });
+});
+
+/** @internal */
+export type CatReporterInformation$Outbound = {
+  originating_cat_reporter_crd?: string | undefined;
+  originating_fdid?: string | undefined;
+};
+
+/** @internal */
+export const CatReporterInformation$outboundSchema: z.ZodType<
+  CatReporterInformation$Outbound,
+  z.ZodTypeDef,
+  CatReporterInformation
+> = z.object({
+  originatingCatReporterCrd: z.string().optional(),
+  originatingFdid: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    originatingCatReporterCrd: "originating_cat_reporter_crd",
+    originatingFdid: "originating_fdid",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CatReporterInformation$ {
+  /** @deprecated use `CatReporterInformation$inboundSchema` instead. */
+  export const inboundSchema = CatReporterInformation$inboundSchema;
+  /** @deprecated use `CatReporterInformation$outboundSchema` instead. */
+  export const outboundSchema = CatReporterInformation$outboundSchema;
+  /** @deprecated use `CatReporterInformation$Outbound` instead. */
+  export type Outbound = CatReporterInformation$Outbound;
+}
+
+export function catReporterInformationToJSON(
+  catReporterInformation: CatReporterInformation,
+): string {
+  return JSON.stringify(
+    CatReporterInformation$outboundSchema.parse(catReporterInformation),
+  );
+}
+
+export function catReporterInformationFromJSON(
+  jsonString: string,
+): SafeParseResult<CatReporterInformation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CatReporterInformation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CatReporterInformation' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1563,7 +1658,11 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
     agreements: z.array(Agreement$inboundSchema).optional(),
     cat_account_holder_type: AccountCatAccountHolderType$inboundSchema
       .optional(),
+    cat_reporter_information: z.nullable(
+      z.lazy(() => CatReporterInformation$inboundSchema),
+    ).optional(),
     cftc_owner_type: CftcOwnerType$inboundSchema.optional(),
+    client_account_id: z.string().optional(),
     close_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -1587,6 +1686,7 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
     open_time: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
+    originating_account_id: z.string().optional(),
     ownership_type: OwnershipType$inboundSchema.optional(),
     parties: z.array(Party$inboundSchema).optional(),
     pattern_day_trader: z.boolean().optional(),
@@ -1607,7 +1707,9 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
       "account_number": "accountNumber",
       "active_restrictions": "activeRestrictions",
       "cat_account_holder_type": "catAccountHolderType",
+      "cat_reporter_information": "catReporterInformation",
       "cftc_owner_type": "cftcOwnerType",
+      "client_account_id": "clientAccountId",
       "close_time": "closeTime",
       "correspondent_id": "correspondentId",
       "create_time": "createTime",
@@ -1617,6 +1719,7 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> =
       "investment_profile": "investmentProfile",
       "margin_group_id": "marginGroupId",
       "open_time": "openTime",
+      "originating_account_id": "originatingAccountId",
       "ownership_type": "ownershipType",
       "pattern_day_trader": "patternDayTrader",
       "primary_registered_rep_id": "primaryRegisteredRepId",
@@ -1638,7 +1741,9 @@ export type Account$Outbound = {
   advised?: boolean | undefined;
   agreements?: Array<Agreement$Outbound> | undefined;
   cat_account_holder_type?: string | undefined;
+  cat_reporter_information?: CatReporterInformation$Outbound | null | undefined;
   cftc_owner_type?: string | undefined;
+  client_account_id?: string | undefined;
   close_time?: string | null | undefined;
   correspondent_id?: string | undefined;
   create_time?: string | null | undefined;
@@ -1654,6 +1759,7 @@ export type Account$Outbound = {
   margin_group_id?: string | undefined;
   name?: string | undefined;
   open_time?: string | null | undefined;
+  originating_account_id?: string | undefined;
   ownership_type?: string | undefined;
   parties?: Array<Party$Outbound> | undefined;
   pattern_day_trader?: boolean | undefined;
@@ -1681,7 +1787,11 @@ export const Account$outboundSchema: z.ZodType<
   advised: z.boolean().optional(),
   agreements: z.array(Agreement$outboundSchema).optional(),
   catAccountHolderType: AccountCatAccountHolderType$outboundSchema.optional(),
+  catReporterInformation: z.nullable(
+    z.lazy(() => CatReporterInformation$outboundSchema),
+  ).optional(),
   cftcOwnerType: CftcOwnerType$outboundSchema.optional(),
+  clientAccountId: z.string().optional(),
   closeTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   correspondentId: z.string().optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
@@ -1698,6 +1808,7 @@ export const Account$outboundSchema: z.ZodType<
   marginGroupId: z.string().optional(),
   name: z.string().optional(),
   openTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  originatingAccountId: z.string().optional(),
   ownershipType: OwnershipType$outboundSchema.optional(),
   parties: z.array(Party$outboundSchema).optional(),
   patternDayTrader: z.boolean().optional(),
@@ -1718,7 +1829,9 @@ export const Account$outboundSchema: z.ZodType<
     accountNumber: "account_number",
     activeRestrictions: "active_restrictions",
     catAccountHolderType: "cat_account_holder_type",
+    catReporterInformation: "cat_reporter_information",
     cftcOwnerType: "cftc_owner_type",
+    clientAccountId: "client_account_id",
     closeTime: "close_time",
     correspondentId: "correspondent_id",
     createTime: "create_time",
@@ -1728,6 +1841,7 @@ export const Account$outboundSchema: z.ZodType<
     investmentProfile: "investment_profile",
     marginGroupId: "margin_group_id",
     openTime: "open_time",
+    originatingAccountId: "originating_account_id",
     ownershipType: "ownership_type",
     patternDayTrader: "pattern_day_trader",
     primaryRegisteredRepId: "primary_registered_rep_id",
