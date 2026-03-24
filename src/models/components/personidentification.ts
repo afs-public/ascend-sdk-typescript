@@ -24,6 +24,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * - `NATIONAL_ID` - National id type.
  * - `PASSPORT` - Passport id type.
  * - `DRIVING_LICENSE` - Drivers license id type.
+ * - `STATE_ID_CARD` - State ID card.
+ * - `NATIONAL_ID_CARD` - National ID card.
+ * - `PERMANENT_RESIDENT_VISA` - Permanent resident visa.
+ * - `MILITARY_ID_CARD` - Military ID card.
  */
 export enum PersonIdentificationType {
   IdTypeUnspecified = "ID_TYPE_UNSPECIFIED",
@@ -33,6 +37,10 @@ export enum PersonIdentificationType {
   NationalId = "NATIONAL_ID",
   Passport = "PASSPORT",
   DrivingLicense = "DRIVING_LICENSE",
+  StateIdCard = "STATE_ID_CARD",
+  NationalIdCard = "NATIONAL_ID_CARD",
+  PermanentResidentVisa = "PERMANENT_RESIDENT_VISA",
+  MilitaryIdCard = "MILITARY_ID_CARD",
 }
 /**
  * The identification type for a person, one of:
@@ -45,6 +53,10 @@ export enum PersonIdentificationType {
  * - `NATIONAL_ID` - National id type.
  * - `PASSPORT` - Passport id type.
  * - `DRIVING_LICENSE` - Drivers license id type.
+ * - `STATE_ID_CARD` - State ID card.
+ * - `NATIONAL_ID_CARD` - National ID card.
+ * - `PERMANENT_RESIDENT_VISA` - Permanent resident visa.
+ * - `MILITARY_ID_CARD` - Military ID card.
  */
 export type PersonIdentificationTypeOpen = OpenEnum<
   typeof PersonIdentificationType
@@ -77,6 +89,10 @@ export type PersonIdentification = {
    * - `NATIONAL_ID` - National id type.
    * - `PASSPORT` - Passport id type.
    * - `DRIVING_LICENSE` - Drivers license id type.
+   * - `STATE_ID_CARD` - State ID card.
+   * - `NATIONAL_ID_CARD` - National ID card.
+   * - `PERMANENT_RESIDENT_VISA` - Permanent resident visa.
+   * - `MILITARY_ID_CARD` - Military ID card.
    */
   type?: PersonIdentificationTypeOpen | undefined;
   /**

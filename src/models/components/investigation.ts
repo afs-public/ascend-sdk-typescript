@@ -367,7 +367,7 @@ export type InvestigationNameSuffixOpen = OpenEnum<
 >;
 
 /**
- * The date identity verification was performed. Must be formatted as an ISO-8601 YYYY-MM-DD
+ * The date identity verification was performed.
  */
 export type InvestigationExecutionDate = {
   /**
@@ -397,7 +397,11 @@ export type ProvidedIdentityVerification = {
    */
   birthDateVerified?: boolean | undefined;
   /**
-   * The date identity verification was performed. Must be formatted as an ISO-8601 YYYY-MM-DD
+   * Indicates that the client directly verified the ID documents rather than using a third-party vendor (self-inspected)
+   */
+  clientDirectlyVerifiedIdDocs?: boolean | undefined;
+  /**
+   * The date identity verification was performed.
    */
   executionDate?: InvestigationExecutionDate | null | undefined;
   /**
@@ -1187,6 +1191,7 @@ export const ProvidedIdentityVerification$inboundSchema: z.ZodType<
 > = z.object({
   address_verified: z.boolean().optional(),
   birth_date_verified: z.boolean().optional(),
+  client_directly_verified_id_docs: z.boolean().optional(),
   execution_date: z.nullable(
     z.lazy(() => InvestigationExecutionDate$inboundSchema),
   ).optional(),
@@ -1201,6 +1206,7 @@ export const ProvidedIdentityVerification$inboundSchema: z.ZodType<
   return remap$(v, {
     "address_verified": "addressVerified",
     "birth_date_verified": "birthDateVerified",
+    "client_directly_verified_id_docs": "clientDirectlyVerifiedIdDocs",
     "execution_date": "executionDate",
     "external_case_id": "externalCaseId",
     "identity_verification_document_ids": "identityVerificationDocumentIds",
@@ -1215,6 +1221,7 @@ export const ProvidedIdentityVerification$inboundSchema: z.ZodType<
 export type ProvidedIdentityVerification$Outbound = {
   address_verified?: boolean | undefined;
   birth_date_verified?: boolean | undefined;
+  client_directly_verified_id_docs?: boolean | undefined;
   execution_date?: InvestigationExecutionDate$Outbound | null | undefined;
   external_case_id?: string | undefined;
   identity_verification_document_ids?: Array<string> | undefined;
@@ -1233,6 +1240,7 @@ export const ProvidedIdentityVerification$outboundSchema: z.ZodType<
 > = z.object({
   addressVerified: z.boolean().optional(),
   birthDateVerified: z.boolean().optional(),
+  clientDirectlyVerifiedIdDocs: z.boolean().optional(),
   executionDate: z.nullable(
     z.lazy(() => InvestigationExecutionDate$outboundSchema),
   ).optional(),
@@ -1247,6 +1255,7 @@ export const ProvidedIdentityVerification$outboundSchema: z.ZodType<
   return remap$(v, {
     addressVerified: "address_verified",
     birthDateVerified: "birth_date_verified",
+    clientDirectlyVerifiedIdDocs: "client_directly_verified_id_docs",
     executionDate: "execution_date",
     externalCaseId: "external_case_id",
     identityVerificationDocumentIds: "identity_verification_document_ids",

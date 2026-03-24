@@ -1,6 +1,6 @@
 # NotionalValue
 
-Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. For Equities: This represents the maximum amount to be spent. The final order may may have a smaller notional amount. For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified. For Fixed Income: Not supported, you must specify a `quantity` value.
+Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. For Equities: This represents the maximum amount to be spent. The final order may may have a smaller notional amount. For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified. For Fixed Income: Not supported, you must specify a `quantity` value. For Event Contracts: Not supported, you must specify a `quantity` value.
 
 ## Example Usage
 

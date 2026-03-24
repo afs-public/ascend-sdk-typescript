@@ -185,6 +185,7 @@ export * from "./orderpriceserviceretrievequote.js";
 export * from "./orderservicecancelorder.js";
 export * from "./orderservicecreateorder.js";
 export * from "./orderservicegetorder.js";
+export * from "./orderservicelistaccountorders.js";
 export * from "./orderservicelistcorrespondentorders.js";
 export * from "./orderservicesetextrareportingdata.js";
 export * from "./positionjournalscancelpositionjournal.js";

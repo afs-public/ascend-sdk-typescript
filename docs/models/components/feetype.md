@@ -59,4 +59,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `PrintCheckAtFirm`                     | PRINT_CHECK_AT_FIRM                    |
 | `VoidedCheck`                          | VOIDED_CHECK                           |
 | `StopPaymentAfter180Days`              | STOP_PAYMENT_AFTER_180_DAYS            |
+| `Confirm`                              | CONFIRM                                |
+| `Clearing`                             | CLEARING                               |
+| `PromotionalCreditClawback`            | PROMOTIONAL_CREDIT_CLAWBACK            |
 | -                                      | `Unrecognized<string>`                 |

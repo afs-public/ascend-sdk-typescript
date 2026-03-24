@@ -404,7 +404,7 @@ const apexascend = new Apexascend({
 });
 
 async function run() {
-  const result = await apexascend.ledger.getEntry("[object Object]", "[object Object]");
+  const result = await apexascend.ledger.getEntry("{account_id}", "{entry_id}");
 
   console.log(result);
 }
@@ -435,7 +435,7 @@ const apexascend = new ApexascendCore({
 });
 
 async function run() {
-  const res = await ledgerGetEntry(apexascend, "[object Object]", "[object Object]");
+  const res = await ledgerGetEntry(apexascend, "{account_id}", "{entry_id}");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

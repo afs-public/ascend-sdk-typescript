@@ -27,4 +27,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Passport`             | PASSPORT               |
 | `DriversLicense`       | DRIVERS_LICENSE        |
 | `Itin`                 | ITIN                   |
+| `IdCard`               | ID_CARD                |
 | -                      | `Unrecognized<string>` |

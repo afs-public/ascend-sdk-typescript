@@ -106,6 +106,7 @@ export type DeviceMetadata = {
 export enum IdentityLookupType {
   TypeUnspecified = "TYPE_UNSPECIFIED",
   Ssn = "SSN",
+  Cpf = "CPF",
 }
 /**
  * The type of identification document

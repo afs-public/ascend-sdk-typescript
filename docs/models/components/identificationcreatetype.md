@@ -18,4 +18,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------- | ---------------------- |
 | `TypeUnspecified`      | TYPE_UNSPECIFIED       |
 | `Ssn`                  | SSN                    |
+| `Cpf`                  | CPF                    |
 | -                      | `Unrecognized<string>` |

@@ -71,6 +71,7 @@ export enum AssetType {
   Equity = "EQUITY",
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
+  EventContract = "EVENT_CONTRACT",
 }
 /**
  * The type of the asset in this order, which must be one of the following:
@@ -81,7 +82,7 @@ export enum AssetType {
 export type AssetTypeOpen = OpenEnum<typeof AssetType>;
 
 /**
- * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
+ * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
  */
 export enum BrokerCapacity {
   BrokerCapacityUnspecified = "BROKER_CAPACITY_UNSPECIFIED",
@@ -89,27 +90,28 @@ export enum BrokerCapacity {
   Principal = "PRINCIPAL",
 }
 /**
- * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
+ * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
  */
 export type BrokerCapacityOpen = OpenEnum<typeof BrokerCapacity>;
 
 /**
- * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+ * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported For Event Contracts: only SYMBOL and ASSET_ID are supported
  */
 export enum OrderCreateIdentifierType {
+  AssetId = "ASSET_ID",
   Symbol = "SYMBOL",
   Cusip = "CUSIP",
   Isin = "ISIN",
 }
 /**
- * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+ * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported For Event Contracts: only SYMBOL and ASSET_ID are supported
  */
 export type OrderCreateIdentifierTypeOpen = OpenEnum<
   typeof OrderCreateIdentifierType
 >;
 
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported. For Event Contracts: only MARKET and LIMIT are supported.
  */
 export enum OrderType {
   Limit = "LIMIT",
@@ -118,7 +120,7 @@ export enum OrderType {
   MarketIfTouched = "MARKET_IF_TOUCHED",
 }
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported. For Event Contracts: only MARKET and LIMIT are supported.
  */
 export type OrderTypeOpen = OpenEnum<typeof OrderType>;
 
@@ -170,14 +172,17 @@ export type SpecialReportingInstructionsOpen = OpenEnum<
 >;
 
 /**
- * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
+ * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed. For Event Contracts: Either "DAY", "GOOD_TILL_DATE", "GOOD_TILL_CANCELED", "IMMEDIATE_OR_CANCEL", or "FILL_OR_KILL" are allowed.
  */
 export enum TimeInForce {
   Day = "DAY",
   GoodTillDate = "GOOD_TILL_DATE",
+  GoodTillCanceled = "GOOD_TILL_CANCELED",
+  ImmediateOrCancel = "IMMEDIATE_OR_CANCEL",
+  FillOrKill = "FILL_OR_KILL",
 }
 /**
- * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
+ * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed. For Event Contracts: Either "DAY", "GOOD_TILL_DATE", "GOOD_TILL_CANCELED", "IMMEDIATE_OR_CANCEL", or "FILL_OR_KILL" are allowed.
  */
 export type TimeInForceOpen = OpenEnum<typeof TimeInForce>;
 
@@ -210,7 +215,7 @@ export type OrderCreate = {
    */
   assetType: AssetTypeOpen;
   /**
-   * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
+   * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
    */
   brokerCapacity?: BrokerCapacityOpen | undefined;
   /**
@@ -246,7 +251,7 @@ export type OrderCreate = {
    */
   identifierIssuingRegionCode?: string | undefined;
   /**
-   * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+   * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported For Event Contracts: only SYMBOL and ASSET_ID are supported
    */
   identifierType: OrderCreateIdentifierTypeOpen;
   /**
@@ -288,7 +293,7 @@ export type OrderCreate = {
    */
   orderDate: DateCreate;
   /**
-   * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+   * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported. For Event Contracts: only MARKET and LIMIT are supported.
    */
   orderType: OrderTypeOpen;
   /**
@@ -320,7 +325,7 @@ export type OrderCreate = {
    */
   stopPrice?: StopPriceCreate | undefined;
   /**
-   * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
+   * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed. For Event Contracts: Either "DAY", "GOOD_TILL_DATE", "GOOD_TILL_CANCELED", "IMMEDIATE_OR_CANCEL", or "FILL_OR_KILL" are allowed.
    */
   timeInForce: TimeInForceOpen;
   /**

@@ -5,6 +5,7 @@
 import { ordersCancelOrder } from "../funcs/ordersCancelOrder.js";
 import { ordersCreateOrder } from "../funcs/ordersCreateOrder.js";
 import { ordersGetOrder } from "../funcs/ordersGetOrder.js";
+import { ordersListAccountOrders } from "../funcs/ordersListAccountOrders.js";
 import { ordersListCorrespondentOrders } from "../funcs/ordersListCorrespondentOrders.js";
 import { ordersSetExtraReportingData } from "../funcs/ordersSetExtraReportingData.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -32,6 +33,29 @@ export class Orders extends ClientSDK {
       this,
       orderCreate,
       accountId,
+      options,
+    ));
+  }
+
+  /**
+   * List Account Orders
+   *
+   * @remarks
+   * Lists orders for a specific account matching the specified filter criteria. Results are paginated and sorted in the reverse order of their creation.
+   */
+  async listAccountOrders(
+    accountId: string,
+    filter?: string | undefined,
+    pageSize?: number | undefined,
+    pageToken?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.OrderServiceListAccountOrdersResponse> {
+    return unwrapAsync(ordersListAccountOrders(
+      this,
+      accountId,
+      filter,
+      pageSize,
+      pageToken,
       options,
     ));
   }

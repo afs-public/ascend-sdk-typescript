@@ -91,6 +91,22 @@ export type IdentificationNumberVerifiedOpen = OpenEnum<
   typeof IdentificationNumberVerified
 >;
 
+/**
+ * Whether or not the identity has been reported as deceased This is determined by parsing the vendor response for deceased indicators from the SSA Death Master File Equifax-specific indicators: reason codes "90" (SSN Death Indicator) or "SQ" (SSN reported as deceased) null/unset = not checked or unable to determine, false = checked and not deceased, true = deceased
+ */
+export enum IdentityReportedDeceased {
+  DeceasedUnspecified = "DECEASED_UNSPECIFIED",
+  Deceased = "DECEASED",
+  NotDeceased = "NOT_DECEASED",
+  Unknown = "UNKNOWN",
+}
+/**
+ * Whether or not the identity has been reported as deceased This is determined by parsing the vendor response for deceased indicators from the SSA Death Master File Equifax-specific indicators: reason codes "90" (SSN Death Indicator) or "SQ" (SSN reported as deceased) null/unset = not checked or unable to determine, false = checked and not deceased, true = deceased
+ */
+export type IdentityReportedDeceasedOpen = OpenEnum<
+  typeof IdentityReportedDeceased
+>;
+
 export enum IdentityVerificationTypes {
   IdentityVerificationTypeUnspecified =
     "IDENTITY_VERIFICATION_TYPE_UNSPECIFIED",
@@ -210,6 +226,10 @@ export type CustomerIdentificationResult = {
    * Whether or not the customer identification number was verified
    */
   identificationNumberVerified?: IdentificationNumberVerifiedOpen | undefined;
+  /**
+   * Whether or not the identity has been reported as deceased This is determined by parsing the vendor response for deceased indicators from the SSA Death Master File Equifax-specific indicators: reason codes "90" (SSN Death Indicator) or "SQ" (SSN reported as deceased) null/unset = not checked or unable to determine, false = checked and not deceased, true = deceased
+   */
+  identityReportedDeceased?: IdentityReportedDeceasedOpen | undefined;
   /**
    * Describes the type(s) of Identity Verification that was performed
    */
@@ -397,6 +417,38 @@ export namespace IdentificationNumberVerified$ {
 }
 
 /** @internal */
+export const IdentityReportedDeceased$inboundSchema: z.ZodType<
+  IdentityReportedDeceasedOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(IdentityReportedDeceased),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const IdentityReportedDeceased$outboundSchema: z.ZodType<
+  IdentityReportedDeceasedOpen,
+  z.ZodTypeDef,
+  IdentityReportedDeceasedOpen
+> = z.union([
+  z.nativeEnum(IdentityReportedDeceased),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IdentityReportedDeceased$ {
+  /** @deprecated use `IdentityReportedDeceased$inboundSchema` instead. */
+  export const inboundSchema = IdentityReportedDeceased$inboundSchema;
+  /** @deprecated use `IdentityReportedDeceased$outboundSchema` instead. */
+  export const outboundSchema = IdentityReportedDeceased$outboundSchema;
+}
+
+/** @internal */
 export const IdentityVerificationTypes$inboundSchema: z.ZodType<
   IdentityVerificationTypesOpen,
   z.ZodTypeDef,
@@ -575,6 +627,7 @@ export const CustomerIdentificationResult$inboundSchema: z.ZodType<
   external_vendor_id: z.string().optional(),
   identification_number_verified: IdentificationNumberVerified$inboundSchema
     .optional(),
+  identity_reported_deceased: IdentityReportedDeceased$inboundSchema.optional(),
   identity_verification_types: z.array(IdentityVerificationTypes$inboundSchema)
     .optional(),
   legal_address_verified: LegalAddressVerified$inboundSchema.optional(),
@@ -593,6 +646,7 @@ export const CustomerIdentificationResult$inboundSchema: z.ZodType<
     "external_vendor": "externalVendor",
     "external_vendor_id": "externalVendorId",
     "identification_number_verified": "identificationNumberVerified",
+    "identity_reported_deceased": "identityReportedDeceased",
     "identity_verification_types": "identityVerificationTypes",
     "legal_address_verified": "legalAddressVerified",
     "name_verified": "nameVerified",
@@ -615,6 +669,7 @@ export type CustomerIdentificationResult$Outbound = {
   external_vendor?: string | undefined;
   external_vendor_id?: string | undefined;
   identification_number_verified?: string | undefined;
+  identity_reported_deceased?: string | undefined;
   identity_verification_types?: Array<string> | undefined;
   legal_address_verified?: string | undefined;
   name_verified?: string | undefined;
@@ -642,6 +697,7 @@ export const CustomerIdentificationResult$outboundSchema: z.ZodType<
   externalVendorId: z.string().optional(),
   identificationNumberVerified: IdentificationNumberVerified$outboundSchema
     .optional(),
+  identityReportedDeceased: IdentityReportedDeceased$outboundSchema.optional(),
   identityVerificationTypes: z.array(IdentityVerificationTypes$outboundSchema)
     .optional(),
   legalAddressVerified: LegalAddressVerified$outboundSchema.optional(),
@@ -660,6 +716,7 @@ export const CustomerIdentificationResult$outboundSchema: z.ZodType<
     externalVendor: "external_vendor",
     externalVendorId: "external_vendor_id",
     identificationNumberVerified: "identification_number_verified",
+    identityReportedDeceased: "identity_reported_deceased",
     identityVerificationTypes: "identity_verification_types",
     legalAddressVerified: "legal_address_verified",
     nameVerified: "name_verified",

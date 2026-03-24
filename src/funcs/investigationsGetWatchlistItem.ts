@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  * Get Watchlist Item
  *
  * @remarks
- * Gets the details of an investigation by watchlist type and valid watchlist id
+ * Gets the details of the watchlist profile by the watchlist_id and watchlist_item_id, returned as part of an investigation's watchlist screening process. The response returns the details of the specific watchlist profile that matched the screened identity. Clients can refer to these properties when adjudicating potential watchlist matches. Watchlist_id must equal DOWJONES or DNDB
  */
 export function investigationsGetWatchlistItem(
   client: ApexascendCore,
