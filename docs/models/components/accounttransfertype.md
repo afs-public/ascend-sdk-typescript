@@ -26,4 +26,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Reclaim`                         | RECLAIM                           |
 | `PositionTransferFund`            | POSITION_TRANSFER_FUND            |
 | `SponsoredTransfer`               | SPONSORED_TRANSFER                |
+| `DrsTransfer`                     | DRS_TRANSFER                      |
+| `DwacTransfer`                    | DWAC_TRANSFER                     |
 | -                                 | `Unrecognized<string>`            |

@@ -1,6 +1,6 @@
 # OrderPrevailingMarketPrice
 
-The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no executions.
+The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Can be up to 8 decimal places when asset_type = FIXED_INCOME. Will be absent if an order has no executions.
 
 ## Example Usage
 

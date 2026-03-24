@@ -34,3 +34,51 @@ test("Test Simulation Check Deposits Simulate Create Check Deposit", async () =>
   }, "01JHGTEPC6ZTAHCFRH2MD3VJJT");
   expect(result.httpMeta.response.status).toBe(200);
 });
+
+test("Test Simulation Check Deposits Force Approve Check Deposit", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "CheckDeposits_ForceApproveCheckDeposit",
+  );
+
+  const apexascend = new Apexascend({
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
+    security: {
+      apiKey: process.env["API_KEY"] ?? "value",
+      serviceAccountCreds: {
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
+      },
+    },
+    httpClient: testHttpClient,
+  });
+
+  const accountId = "01JHGTEPC6ZTAHCFRH2MD3VJJT";
+
+  // Create a check deposit to get a real resource
+  const createResult = await apexascend.testSimulation.simulateCreateCheckDeposit({
+    amount: {
+      value: "100",
+    },
+    parent: accountId,
+  }, accountId);
+  expect(createResult.httpMeta.response.status).toBe(200);
+
+  const checkDepositName = createResult.checkDeposit?.name;
+  expect(checkDepositName).toBeDefined();
+
+  // Extract the checkDeposit ID from the name (format: accounts/{account}/checkDeposits/{checkDeposit})
+  const checkDepositId = checkDepositName!.split("/").pop()!;
+
+  // Simulated deposits go straight to PROCESSING (not PENDING_REVIEW),
+  // so forceApprove returns 400. Verify the SDK correctly handles the error response.
+  await expect(
+    apexascend.testSimulation.forceApproveCheckDeposit({
+      name: checkDepositName!,
+    }, accountId, checkDepositId, {
+      retries: { strategy: "none" },
+    }),
+  ).rejects.toThrow("does not need review");
+});

@@ -1,6 +1,6 @@
 # InvestigationExecutionDate
 
-The date identity verification was performed. Must be formatted as an ISO-8601 YYYY-MM-DD
+The date identity verification was performed.
 
 ## Example Usage
 

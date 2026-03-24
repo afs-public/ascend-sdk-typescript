@@ -30,6 +30,7 @@ export enum IdentityIdentificationType {
   Passport = "PASSPORT",
   DriversLicense = "DRIVERS_LICENSE",
   Itin = "ITIN",
+  IdCard = "ID_CARD",
 }
 /**
  * **Field Dependencies:**

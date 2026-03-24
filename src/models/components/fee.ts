@@ -70,6 +70,9 @@ export enum FeeType {
   PrintCheckAtFirm = "PRINT_CHECK_AT_FIRM",
   VoidedCheck = "VOIDED_CHECK",
   StopPaymentAfter180Days = "STOP_PAYMENT_AFTER_180_DAYS",
+  Confirm = "CONFIRM",
+  Clearing = "CLEARING",
+  PromotionalCreditClawback = "PROMOTIONAL_CREDIT_CLAWBACK",
 }
 /**
  * The type of fee being assessed

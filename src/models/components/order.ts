@@ -41,6 +41,7 @@ export enum OrderAssetType {
   Equity = "EQUITY",
   FixedIncome = "FIXED_INCOME",
   MutualFund = "MUTUAL_FUND",
+  EventContract = "EVENT_CONTRACT",
 }
 /**
  * The type of the asset in this order, which must be one of the following:
@@ -51,7 +52,7 @@ export enum OrderAssetType {
 export type OrderAssetTypeOpen = OpenEnum<typeof OrderAssetType>;
 
 /**
- * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
+ * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
  */
 export enum OrderBrokerCapacity {
   BrokerCapacityUnspecified = "BROKER_CAPACITY_UNSPECIFIED",
@@ -59,7 +60,7 @@ export enum OrderBrokerCapacity {
   Principal = "PRINCIPAL",
 }
 /**
- * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
+ * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
  */
 export type OrderBrokerCapacityOpen = OpenEnum<typeof OrderBrokerCapacity>;
 
@@ -160,15 +161,16 @@ export type FilledQuantity = {
 };
 
 /**
- * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+ * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported For Event Contracts: only SYMBOL and ASSET_ID are supported
  */
 export enum OrderIdentifierType {
+  AssetId = "ASSET_ID",
   Symbol = "SYMBOL",
   Cusip = "CUSIP",
   Isin = "ISIN",
 }
 /**
- * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+ * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported For Event Contracts: only SYMBOL and ASSET_ID are supported
  */
 export type OrderIdentifierTypeOpen = OpenEnum<typeof OrderIdentifierType>;
 
@@ -262,7 +264,7 @@ export type MaxSellQuantity = {
 };
 
 /**
- * Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. For Equities: This represents the maximum amount to be spent. The final order may may have a smaller notional amount. For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified. For Fixed Income: Not supported, you must specify a `quantity` value.
+ * Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. For Equities: This represents the maximum amount to be spent. The final order may may have a smaller notional amount. For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified. For Fixed Income: Not supported, you must specify a `quantity` value. For Event Contracts: Not supported, you must specify a `quantity` value.
  */
 export type NotionalValue = {
   /**
@@ -363,7 +365,7 @@ export enum OrderStatus {
 export type OrderStatusOpen = OpenEnum<typeof OrderStatus>;
 
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported. For Event Contracts: only MARKET and LIMIT are supported.
  */
 export enum OrderOrderType {
   Limit = "LIMIT",
@@ -372,12 +374,12 @@ export enum OrderOrderType {
   MarketIfTouched = "MARKET_IF_TOUCHED",
 }
 /**
- * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+ * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported. For Event Contracts: only MARKET and LIMIT are supported.
  */
 export type OrderOrderTypeOpen = OpenEnum<typeof OrderOrderType>;
 
 /**
- * The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no executions.
+ * The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Can be up to 8 decimal places when asset_type = FIXED_INCOME. Will be absent if an order has no executions.
  */
 export type OrderPrevailingMarketPrice = {
   /**
@@ -387,7 +389,7 @@ export type OrderPrevailingMarketPrice = {
 };
 
 /**
- * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. Either a quantity or notional_value MUST be specified (but not both).
+ * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. For Event Contracts: Represents the number of contracts being ordered, and must be whole numbers for BUY orders or up to a maximum of 2 decimal places for SELL orders. Either a quantity or notional_value MUST be specified (but not both).
  */
 export type OrderQuantity = {
   /**
@@ -500,14 +502,17 @@ export type StopPrice = {
 };
 
 /**
- * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
+ * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed. For Event Contracts: Either "DAY", "GOOD_TILL_DATE", "GOOD_TILL_CANCELED", "IMMEDIATE_OR_CANCEL", or "FILL_OR_KILL" are allowed.
  */
 export enum OrderTimeInForce {
   Day = "DAY",
   GoodTillDate = "GOOD_TILL_DATE",
+  GoodTillCanceled = "GOOD_TILL_CANCELED",
+  ImmediateOrCancel = "IMMEDIATE_OR_CANCEL",
+  FillOrKill = "FILL_OR_KILL",
 }
 /**
- * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
+ * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed. For Event Contracts: Either "DAY", "GOOD_TILL_DATE", "GOOD_TILL_CANCELED", "IMMEDIATE_OR_CANCEL", or "FILL_OR_KILL" are allowed.
  */
 export type OrderTimeInForceOpen = OpenEnum<typeof OrderTimeInForce>;
 
@@ -572,11 +577,11 @@ export type Order = {
    *
    *  When asset_type = EQUITY or MUTUAL_FUND, there will be at most one value present, with a type of PRICE_PER_UNIT. This will have up to 4 decimal places for USD amounts less than $1, and a maximum of two for larger USD amounts.
    *
-   *  When asset_type = FIXED_INCOME, there may be more than one value present which would have a type other than PRICE_PER_UNIT. Price values in PERCENTAGE_OF_PAR will have up to 4 decimal places of precision, and price values measured in yields will support up to 5 decimal places.
+   *  When asset_type = FIXED_INCOME, there may be more than one value present which would have a type other than PRICE_PER_UNIT. Price values in PERCENTAGE_OF_PAR will have up to 8 decimal places of precision, and price values measured in yields will support up to 7 decimal places.
    */
   averagePrices?: Array<TradingExecutedPrice> | undefined;
   /**
-   * Defaults to "AGENCY" if not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.
+   * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
    */
   brokerCapacity?: OrderBrokerCapacityOpen | undefined;
   /**
@@ -652,7 +657,7 @@ export type Order = {
    */
   identifierIssuingRegionCode?: string | undefined;
   /**
-   * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+   * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported For Event Contracts: only SYMBOL and ASSET_ID are supported
    */
   identifierType?: OrderIdentifierTypeOpen | undefined;
   /**
@@ -676,7 +681,7 @@ export type Order = {
    */
   name?: string | undefined;
   /**
-   * Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. For Equities: This represents the maximum amount to be spent. The final order may may have a smaller notional amount. For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified. For Fixed Income: Not supported, you must specify a `quantity` value.
+   * Notional quantity of the order, measured in USD. Maximum 2 decimal place precision. For Equities: This represents the maximum amount to be spent. The final order may may have a smaller notional amount. For Mutual Funds: Only supported for BUY orders. The order will be transacted at the full notional amount specified. For Fixed Income: Not supported, you must specify a `quantity` value. For Event Contracts: Not supported, you must specify a `quantity` value.
    */
   notionalValue?: NotionalValue | null | undefined;
   /**
@@ -700,15 +705,15 @@ export type Order = {
    */
   orderStatus?: OrderStatusOpen | undefined;
   /**
-   * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported.
+   * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported. For Event Contracts: only MARKET and LIMIT are supported.
    */
   orderType?: OrderOrderTypeOpen | undefined;
   /**
-   * The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Will be absent if an order has no executions.
+   * The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Can be up to 8 decimal places when asset_type = FIXED_INCOME. Will be absent if an order has no executions.
    */
   prevailingMarketPrice?: OrderPrevailingMarketPrice | null | undefined;
   /**
-   * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. Either a quantity or notional_value MUST be specified (but not both).
+   * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. For Event Contracts: Represents the number of contracts being ordered, and must be whole numbers for BUY orders or up to a maximum of 2 decimal places for SELL orders. Either a quantity or notional_value MUST be specified (but not both).
    */
   quantity?: OrderQuantity | null | undefined;
   /**
@@ -730,7 +735,7 @@ export type Order = {
    */
   stopPrice?: StopPrice | null | undefined;
   /**
-   * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed.
+   * For Equities: Either "DAY" or "GOOD_TILL_DATE" are allowed. For Mutual Funds: Only "DAY" is allowed. For Fixed Income: Only "DAY" is allowed. For Event Contracts: Either "DAY", "GOOD_TILL_DATE", "GOOD_TILL_CANCELED", "IMMEDIATE_OR_CANCEL", or "FILL_OR_KILL" are allowed.
    */
   timeInForce?: OrderTimeInForceOpen | undefined;
   /**

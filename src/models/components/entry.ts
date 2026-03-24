@@ -69,6 +69,8 @@ export enum AccountTransferType {
   Reclaim = "RECLAIM",
   PositionTransferFund = "POSITION_TRANSFER_FUND",
   SponsoredTransfer = "SPONSORED_TRANSFER",
+  DrsTransfer = "DRS_TRANSFER",
+  DwacTransfer = "DWAC_TRANSFER",
 }
 /**
  * The type of asset movement being performed within the lifecycle of an account transfer process
@@ -1183,6 +1185,35 @@ export type Drip = {
 };
 
 /**
+ * The determined outcome of the event
+ */
+export enum Outcome {
+  EventContractOutcomeUnspecified = "EVENT_CONTRACT_OUTCOME_UNSPECIFIED",
+  Favorable = "FAVORABLE",
+  Unfavorable = "UNFAVORABLE",
+  Void = "VOID",
+  Tie = "TIE",
+}
+/**
+ * The determined outcome of the event
+ */
+export type OutcomeOpen = OpenEnum<typeof Outcome>;
+
+/**
+ * Used to record the settlement/payout of event contracts based on real-world event outcomes
+ */
+export type EventContractSettlement = {
+  /**
+   * The exchange that issued the event contract
+   */
+  exchange?: string | undefined;
+  /**
+   * The determined outcome of the event
+   */
+  outcome?: OutcomeOpen | undefined;
+};
+
+/**
  * The rate (raw value, not a percentage, example: 50% will be .5 in this field) at which cash will be disbursed to the shareholder
  */
 export type EntryExchangeCashRate = {
@@ -1323,6 +1354,9 @@ export enum EntryFeeType {
   PrintCheckAtFirm = "PRINT_CHECK_AT_FIRM",
   VoidedCheck = "VOIDED_CHECK",
   StopPaymentAfter180Days = "STOP_PAYMENT_AFTER_180_DAYS",
+  Confirm = "CONFIRM",
+  Clearing = "CLEARING",
+  PromotionalCreditClawback = "PROMOTIONAL_CREDIT_CLAWBACK",
 }
 /**
  * Enum providing additional information about the type of fee being charged
@@ -3962,6 +3996,34 @@ export type EntryTrade = {
 };
 
 /**
+ * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
+ */
+export type EntryTransferFairMarketValue = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * Date from which the asset was valued and used in the fair market value calculation
+ */
+export type EntryFairMarketValueDate = {
+  /**
+   * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+   */
+  day?: number | undefined;
+  /**
+   * Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+   */
+  month?: number | undefined;
+  /**
+   * Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+   */
+  year?: number | undefined;
+};
+
+/**
  * Provides more detail on the type of transfer
  */
 export enum EntryTransferType {
@@ -3971,6 +4033,11 @@ export enum EntryTransferType {
   Migration = "MIGRATION",
   ManualAdjustment = "MANUAL_ADJUSTMENT",
   InternalConversion = "INTERNAL_CONVERSION",
+  FreeReceive = "FREE_RECEIVE",
+  FreeDeliver = "FREE_DELIVER",
+  StockReward = "STOCK_REWARD",
+  TokenizationTransfer = "TOKENIZATION_TRANSFER",
+  Escheatment = "ESCHEATMENT",
 }
 /**
  * Provides more detail on the type of transfer
@@ -3989,6 +4056,14 @@ export type EntryTransfer = {
    * String field that can be populated with the broker dealer undergoing a clearing platform conversion. Used for activity description purposes
    */
   clientBrokerage?: string | undefined;
+  /**
+   * Total value of the securities being transferred. Used for sponsored transfers activity to ensure cost basis is accurately moved with the assets to the new account
+   */
+  fairMarketValue?: EntryTransferFairMarketValue | null | undefined;
+  /**
+   * Date from which the asset was valued and used in the fair market value calculation
+   */
+  fairMarketValueDate?: EntryFairMarketValueDate | null | undefined;
   /**
    * Provides more detail on the type of transfer
    */
@@ -4568,6 +4643,10 @@ export type Entry = {
    */
   entryId?: string | undefined;
   /**
+   * Used to record the settlement/payout of event contracts based on real-world event outcomes
+   */
+  eventContractSettlement?: EventContractSettlement | null | undefined;
+  /**
    * Used to record the exchange of certificates for a new security or cash and details related to the exchange
    */
   exchange?: Exchange | null | undefined;
@@ -4623,6 +4702,10 @@ export type Entry = {
    * The original entry process date; stable across reversals and corrections; use for maintaining lineage of entries through multiple corrections/reversals
    */
   originalProcessDate?: OriginalProcessDate | null | undefined;
+  /**
+   * The resource name of the API resource that originated this ledger entry or activity. This field enables clients to link ledger activities back to their source transactions for reconciliation purposes. This field will only be populated when the client has direct access to the referenced resource via the Ascend API's.
+   */
+  originatingResourceName?: string | undefined;
   /**
    * Used to record payments on interest-bearing securities where the payment is made in additional securities rather than cash and details related to the payment
    */
@@ -8386,6 +8469,95 @@ export function dripFromJSON(
     jsonString,
     (x) => Drip$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Drip' from JSON`,
+  );
+}
+
+/** @internal */
+export const Outcome$inboundSchema: z.ZodType<
+  OutcomeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(Outcome),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const Outcome$outboundSchema: z.ZodType<
+  OutcomeOpen,
+  z.ZodTypeDef,
+  OutcomeOpen
+> = z.union([
+  z.nativeEnum(Outcome),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Outcome$ {
+  /** @deprecated use `Outcome$inboundSchema` instead. */
+  export const inboundSchema = Outcome$inboundSchema;
+  /** @deprecated use `Outcome$outboundSchema` instead. */
+  export const outboundSchema = Outcome$outboundSchema;
+}
+
+/** @internal */
+export const EventContractSettlement$inboundSchema: z.ZodType<
+  EventContractSettlement,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  exchange: z.string().optional(),
+  outcome: Outcome$inboundSchema.optional(),
+});
+
+/** @internal */
+export type EventContractSettlement$Outbound = {
+  exchange?: string | undefined;
+  outcome?: string | undefined;
+};
+
+/** @internal */
+export const EventContractSettlement$outboundSchema: z.ZodType<
+  EventContractSettlement$Outbound,
+  z.ZodTypeDef,
+  EventContractSettlement
+> = z.object({
+  exchange: z.string().optional(),
+  outcome: Outcome$outboundSchema.optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EventContractSettlement$ {
+  /** @deprecated use `EventContractSettlement$inboundSchema` instead. */
+  export const inboundSchema = EventContractSettlement$inboundSchema;
+  /** @deprecated use `EventContractSettlement$outboundSchema` instead. */
+  export const outboundSchema = EventContractSettlement$outboundSchema;
+  /** @deprecated use `EventContractSettlement$Outbound` instead. */
+  export type Outbound = EventContractSettlement$Outbound;
+}
+
+export function eventContractSettlementToJSON(
+  eventContractSettlement: EventContractSettlement,
+): string {
+  return JSON.stringify(
+    EventContractSettlement$outboundSchema.parse(eventContractSettlement),
+  );
+}
+
+export function eventContractSettlementFromJSON(
+  jsonString: string,
+): SafeParseResult<EventContractSettlement, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EventContractSettlement$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EventContractSettlement' from JSON`,
   );
 }
 
@@ -17500,6 +17672,122 @@ export function entryTradeFromJSON(
 }
 
 /** @internal */
+export const EntryTransferFairMarketValue$inboundSchema: z.ZodType<
+  EntryTransferFairMarketValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type EntryTransferFairMarketValue$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const EntryTransferFairMarketValue$outboundSchema: z.ZodType<
+  EntryTransferFairMarketValue$Outbound,
+  z.ZodTypeDef,
+  EntryTransferFairMarketValue
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EntryTransferFairMarketValue$ {
+  /** @deprecated use `EntryTransferFairMarketValue$inboundSchema` instead. */
+  export const inboundSchema = EntryTransferFairMarketValue$inboundSchema;
+  /** @deprecated use `EntryTransferFairMarketValue$outboundSchema` instead. */
+  export const outboundSchema = EntryTransferFairMarketValue$outboundSchema;
+  /** @deprecated use `EntryTransferFairMarketValue$Outbound` instead. */
+  export type Outbound = EntryTransferFairMarketValue$Outbound;
+}
+
+export function entryTransferFairMarketValueToJSON(
+  entryTransferFairMarketValue: EntryTransferFairMarketValue,
+): string {
+  return JSON.stringify(
+    EntryTransferFairMarketValue$outboundSchema.parse(
+      entryTransferFairMarketValue,
+    ),
+  );
+}
+
+export function entryTransferFairMarketValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EntryTransferFairMarketValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntryTransferFairMarketValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntryTransferFairMarketValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const EntryFairMarketValueDate$inboundSchema: z.ZodType<
+  EntryFairMarketValueDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/** @internal */
+export type EntryFairMarketValueDate$Outbound = {
+  day?: number | undefined;
+  month?: number | undefined;
+  year?: number | undefined;
+};
+
+/** @internal */
+export const EntryFairMarketValueDate$outboundSchema: z.ZodType<
+  EntryFairMarketValueDate$Outbound,
+  z.ZodTypeDef,
+  EntryFairMarketValueDate
+> = z.object({
+  day: z.number().int().optional(),
+  month: z.number().int().optional(),
+  year: z.number().int().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EntryFairMarketValueDate$ {
+  /** @deprecated use `EntryFairMarketValueDate$inboundSchema` instead. */
+  export const inboundSchema = EntryFairMarketValueDate$inboundSchema;
+  /** @deprecated use `EntryFairMarketValueDate$outboundSchema` instead. */
+  export const outboundSchema = EntryFairMarketValueDate$outboundSchema;
+  /** @deprecated use `EntryFairMarketValueDate$Outbound` instead. */
+  export type Outbound = EntryFairMarketValueDate$Outbound;
+}
+
+export function entryFairMarketValueDateToJSON(
+  entryFairMarketValueDate: EntryFairMarketValueDate,
+): string {
+  return JSON.stringify(
+    EntryFairMarketValueDate$outboundSchema.parse(entryFairMarketValueDate),
+  );
+}
+
+export function entryFairMarketValueDateFromJSON(
+  jsonString: string,
+): SafeParseResult<EntryFairMarketValueDate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EntryFairMarketValueDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntryFairMarketValueDate' from JSON`,
+  );
+}
+
+/** @internal */
 export const EntryTransferType$inboundSchema: z.ZodType<
   EntryTransferTypeOpen,
   z.ZodTypeDef,
@@ -17539,11 +17827,19 @@ export const EntryTransfer$inboundSchema: z.ZodType<
 > = z.object({
   additional_instructions: z.string().optional(),
   client_brokerage: z.string().optional(),
+  fair_market_value: z.nullable(
+    z.lazy(() => EntryTransferFairMarketValue$inboundSchema),
+  ).optional(),
+  fair_market_value_date: z.nullable(
+    z.lazy(() => EntryFairMarketValueDate$inboundSchema),
+  ).optional(),
   transfer_type: EntryTransferType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "additional_instructions": "additionalInstructions",
     "client_brokerage": "clientBrokerage",
+    "fair_market_value": "fairMarketValue",
+    "fair_market_value_date": "fairMarketValueDate",
     "transfer_type": "transferType",
   });
 });
@@ -17552,6 +17848,8 @@ export const EntryTransfer$inboundSchema: z.ZodType<
 export type EntryTransfer$Outbound = {
   additional_instructions?: string | undefined;
   client_brokerage?: string | undefined;
+  fair_market_value?: EntryTransferFairMarketValue$Outbound | null | undefined;
+  fair_market_value_date?: EntryFairMarketValueDate$Outbound | null | undefined;
   transfer_type?: string | undefined;
 };
 
@@ -17563,11 +17861,19 @@ export const EntryTransfer$outboundSchema: z.ZodType<
 > = z.object({
   additionalInstructions: z.string().optional(),
   clientBrokerage: z.string().optional(),
+  fairMarketValue: z.nullable(
+    z.lazy(() => EntryTransferFairMarketValue$outboundSchema),
+  ).optional(),
+  fairMarketValueDate: z.nullable(
+    z.lazy(() => EntryFairMarketValueDate$outboundSchema),
+  ).optional(),
   transferType: EntryTransferType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     additionalInstructions: "additional_instructions",
     clientBrokerage: "client_brokerage",
+    fairMarketValue: "fair_market_value",
+    fairMarketValueDate: "fair_market_value_date",
     transferType: "transfer_type",
   });
 });
@@ -18882,6 +19188,9 @@ export const Entry$inboundSchema: z.ZodType<Entry, z.ZodTypeDef, unknown> = z
     description: z.string().optional(),
     drip: z.nullable(z.lazy(() => Drip$inboundSchema)).optional(),
     entry_id: z.string().optional(),
+    event_contract_settlement: z.nullable(
+      z.lazy(() => EventContractSettlement$inboundSchema),
+    ).optional(),
     exchange: z.nullable(z.lazy(() => Exchange$inboundSchema)).optional(),
     fee: z.nullable(z.lazy(() => EntryFee$inboundSchema)).optional(),
     flip: z.nullable(z.lazy(() => Flip$inboundSchema)).optional(),
@@ -18900,6 +19209,7 @@ export const Entry$inboundSchema: z.ZodType<Entry, z.ZodTypeDef, unknown> = z
     original_process_date: z.nullable(
       z.lazy(() => OriginalProcessDate$inboundSchema),
     ).optional(),
+    originating_resource_name: z.string().optional(),
     payment_in_kind: z.nullable(z.lazy(() => PaymentInKind$inboundSchema))
       .optional(),
     price: z.nullable(z.lazy(() => EntryPrice$inboundSchema)).optional(),
@@ -18970,11 +19280,13 @@ export const Entry$inboundSchema: z.ZodType<Entry, z.ZodTypeDef, unknown> = z
       "corporate_action_memo_adjustment": "corporateActionMemoAdjustment",
       "currency_asset_id": "currencyAssetId",
       "entry_id": "entryId",
+      "event_contract_settlement": "eventContractSettlement",
       "gross_amount": "grossAmount",
       "interest_payment": "interestPayment",
       "name_change": "nameChange",
       "original_id": "originalId",
       "original_process_date": "originalProcessDate",
+      "originating_resource_name": "originatingResourceName",
       "payment_in_kind": "paymentInKind",
       "process_date": "processDate",
       "redemption_full": "redemptionFull",
@@ -19028,6 +19340,10 @@ export type Entry$Outbound = {
   description?: string | undefined;
   drip?: Drip$Outbound | null | undefined;
   entry_id?: string | undefined;
+  event_contract_settlement?:
+    | EventContractSettlement$Outbound
+    | null
+    | undefined;
   exchange?: Exchange$Outbound | null | undefined;
   fee?: EntryFee$Outbound | null | undefined;
   flip?: Flip$Outbound | null | undefined;
@@ -19042,6 +19358,7 @@ export type Entry$Outbound = {
   name_change?: NameChange$Outbound | null | undefined;
   original_id?: string | undefined;
   original_process_date?: OriginalProcessDate$Outbound | null | undefined;
+  originating_resource_name?: string | undefined;
   payment_in_kind?: PaymentInKind$Outbound | null | undefined;
   price?: EntryPrice$Outbound | null | undefined;
   process_date?: EntryProcessDate$Outbound | null | undefined;
@@ -19119,6 +19436,9 @@ export const Entry$outboundSchema: z.ZodType<
   description: z.string().optional(),
   drip: z.nullable(z.lazy(() => Drip$outboundSchema)).optional(),
   entryId: z.string().optional(),
+  eventContractSettlement: z.nullable(
+    z.lazy(() => EventContractSettlement$outboundSchema),
+  ).optional(),
   exchange: z.nullable(z.lazy(() => Exchange$outboundSchema)).optional(),
   fee: z.nullable(z.lazy(() => EntryFee$outboundSchema)).optional(),
   flip: z.nullable(z.lazy(() => Flip$outboundSchema)).optional(),
@@ -19137,6 +19457,7 @@ export const Entry$outboundSchema: z.ZodType<
   originalProcessDate: z.nullable(
     z.lazy(() => OriginalProcessDate$outboundSchema),
   ).optional(),
+  originatingResourceName: z.string().optional(),
   paymentInKind: z.nullable(z.lazy(() => PaymentInKind$outboundSchema))
     .optional(),
   price: z.nullable(z.lazy(() => EntryPrice$outboundSchema)).optional(),
@@ -19204,11 +19525,13 @@ export const Entry$outboundSchema: z.ZodType<
     corporateActionMemoAdjustment: "corporate_action_memo_adjustment",
     currencyAssetId: "currency_asset_id",
     entryId: "entry_id",
+    eventContractSettlement: "event_contract_settlement",
     grossAmount: "gross_amount",
     interestPayment: "interest_payment",
     nameChange: "name_change",
     originalId: "original_id",
     originalProcessDate: "original_process_date",
+    originatingResourceName: "originating_resource_name",
     paymentInKind: "payment_in_kind",
     processDate: "process_date",
     redemptionFull: "redemption_full",

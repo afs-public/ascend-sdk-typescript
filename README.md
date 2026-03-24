@@ -519,6 +519,7 @@ const sdk = new Apexascend({ httpClient });
 ### [orders](docs/sdks/orders/README.md)
 
 * [createOrder](docs/sdks/orders/README.md#createorder) - Create Order
+* [listAccountOrders](docs/sdks/orders/README.md#listaccountorders) - List Account Orders
 * [getOrder](docs/sdks/orders/README.md#getorder) - Get Order
 * [cancelOrder](docs/sdks/orders/README.md#cancelorder) - Cancel Order
 * [setExtraReportingData](docs/sdks/orders/README.md#setextrareportingdata) - Set Extra Reporting Data
@@ -790,5 +791,29 @@ import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 const sdk = new Apexascend({ debugLogger: console });
 ```
 <!-- End Debugging [debug] -->
+
+## Qase TestOps Integration
+
+Test results can be automatically reported to [Qase TestOps](https://app.qase.io/project/CDX) for centralized visibility.
+
+### Environment Variables
+
+| Variable | Description |
+| --- | --- |
+| `QASE_MODE` | Set to `testops` to enable reporting (default: off) |
+| `QASE_API_TOKEN` | Qase API token for authentication |
+| `QASE_PROJECT` | Qase project code (default: `CDX`) |
+
+### Running Tests with Qase Reporting
+
+```bash
+# Without Qase (default)
+npm test
+
+# With Qase reporting enabled
+QASE_MODE=testops QASE_API_TOKEN=<token> npm test
+```
+
+The vitest-qase-reporter is conditionally loaded only when `QASE_MODE=testops` is set.
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

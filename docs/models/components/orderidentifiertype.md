@@ -1,6 +1,6 @@
 # OrderIdentifierType
 
-The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported
+The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported For Fixed Income: only CUSIP and ISIN are supported For Event Contracts: only SYMBOL and ASSET_ID are supported
 
 ## Example Usage
 
@@ -16,6 +16,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
+| `AssetId`              | ASSET_ID               |
 | `Symbol`               | SYMBOL                 |
 | `Cusip`                | CUSIP                  |
 | `Isin`                 | ISIN                   |

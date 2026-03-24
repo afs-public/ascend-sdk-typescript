@@ -19,6 +19,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export enum IdentificationType {
   TypeUnspecified = "TYPE_UNSPECIFIED",
   Ssn = "SSN",
+  Cpf = "CPF",
 }
 /**
  * The type of identification document
