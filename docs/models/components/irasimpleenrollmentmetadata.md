@@ -1,6 +1,6 @@
 # IraSimpleEnrollmentMetadata
 
-Metadata for the SIMPLE_IRA_REGISTRATION enrollment type
+Metadata for the REGISTRATION_IRA_SIMPLE enrollment type
 
 ## Example Usage
 

@@ -1,6 +1,6 @@
 # JointTenantsByEntiretyEnrollmentMetadata
 
-Metadata for the JOINT_TENANTS_BY_ENTIRETY_REGISTRATION enrollment type
+Metadata for the REGISTRATION_JOINT_TBE enrollment type
 
 ## Example Usage
 

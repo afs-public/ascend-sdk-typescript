@@ -1,6 +1,6 @@
 # IraSepEnrollmentMetadata
 
-Metadata for the SEP_IRA_REGISTRATION enrollment type
+Metadata for the REGISTRATION_IRA_SEP enrollment type
 
 ## Example Usage
 

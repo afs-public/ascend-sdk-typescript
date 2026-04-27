@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: f79ffaf404005bb4e882718017d914d6
-  docVersion: v1:20260323:uat:35c1f0c6e7e6
+  docChecksum: e8a6f4314ced25bda45f2bbedee2716d
+  docVersion: v1:20260427:uat:27fe65c26858
   speakeasyVersion: 1.608.0
   generationVersion: 2.691.6
-  releaseVersion: 1.8.4
-  configChecksum: cde3dca42c059f3efc558503b3fd52fb
+  releaseVersion: 1.8.5
+  configChecksum: 8ea37177a7b0e318c3308126ae97a080
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -909,9 +909,28 @@ generatedFiles:
   - docs/models/components/enrollmentoperatingpurpose.md
   - docs/models/components/enrollmentoptionslevel.md
   - docs/models/components/enrollmentotheraccounts.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatadepositedfunds.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatadeterminedaccountriskrating.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatadividendreinvestmentplan.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadataeddaccountenrollmentmetadata.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatafdiccashsweep.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatafinancialprofile.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadataforeignbondtradingdetails.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatainitialdepositamount.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatalowpricedsecurities.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatalowpricedsecuritiespercentage.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatamoneymarketfundsweep.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadataotheraccounts.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadataplannedactivity.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadataprimaryaccountactivitytype.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatarelatedpepdetails.md
+  - docs/models/components/enrollmentpartnershipenrollmentmetadatawithdrawalfrequency.md
   - docs/models/components/enrollmentplannedactivity.md
   - docs/models/components/enrollmentprimaryaccountactivitytype.md
   - docs/models/components/enrollmentrelatedpepdetails.md
+  - docs/models/components/enrollmentsoleproprietorshipenrollmentmetadatadividendreinvestmentplan.md
+  - docs/models/components/enrollmentsoleproprietorshipenrollmentmetadatafdiccashsweep.md
+  - docs/models/components/enrollmentsoleproprietorshipenrollmentmetadatamoneymarketfundsweep.md
   - docs/models/components/enrollmentstate.md
   - docs/models/components/enrollmenttaxauthority.md
   - docs/models/components/enrollmenttrustenrollmentmetadatadividendreinvestmentplan.md
@@ -1468,6 +1487,7 @@ generatedFiles:
   - docs/models/components/listinvestigationsresponse.md
   - docs/models/components/listlegalentitiesresponse.md
   - docs/models/components/listlegalnaturalpersonsresponse.md
+  - docs/models/components/listnotesresponse.md
   - docs/models/components/listoptioninstructionsresponse.md
   - docs/models/components/listpositionsresponse.md
   - docs/models/components/listpreipocompaniesresponse.md
@@ -1549,6 +1569,8 @@ generatedFiles:
   - docs/models/components/noncitizenresidencyupdateresidencystatus.md
   - docs/models/components/nondaytrade.md
   - docs/models/components/none.md
+  - docs/models/components/note.md
+  - docs/models/components/notecreate.md
   - docs/models/components/notionalvalue.md
   - docs/models/components/nsccstatus.md
   - docs/models/components/openbalanceamount.md
@@ -1655,6 +1677,11 @@ generatedFiles:
   - docs/models/components/outcome.md
   - docs/models/components/ownershipstructure.md
   - docs/models/components/ownershiptype.md
+  - docs/models/components/partnershipenrollmentmetadata.md
+  - docs/models/components/partnershipenrollmentmetadatacreate.md
+  - docs/models/components/partnershipenrollmentmetadatacreatedividendreinvestmentplan.md
+  - docs/models/components/partnershipenrollmentmetadatacreatefdiccashsweep.md
+  - docs/models/components/partnershipenrollmentmetadatacreatemoneymarketfundsweep.md
   - docs/models/components/party.md
   - docs/models/components/partybirthdate.md
   - docs/models/components/partybusinessindustrialclassification.md
@@ -2030,6 +2057,11 @@ generatedFiles:
   - docs/models/components/smaamount.md
   - docs/models/components/snapshot.md
   - docs/models/components/snapshotprocessdate.md
+  - docs/models/components/soleproprietorshipenrollmentmetadata.md
+  - docs/models/components/soleproprietorshipenrollmentmetadatacreate.md
+  - docs/models/components/soleproprietorshipenrollmentmetadatacreatedividendreinvestmentplan.md
+  - docs/models/components/soleproprietorshipenrollmentmetadatacreatefdiccashsweep.md
+  - docs/models/components/soleproprietorshipenrollmentmetadatacreatemoneymarketfundsweep.md
   - docs/models/components/specialinstructions.md
   - docs/models/components/specialreportinginstructions.md
   - docs/models/components/spinoff.md
@@ -2299,6 +2331,8 @@ generatedFiles:
   - docs/models/operations/accountscreateinterestedpartyresponse.md
   - docs/models/operations/accountscreatelegalentityresponse.md
   - docs/models/operations/accountscreatelegalnaturalpersonresponse.md
+  - docs/models/operations/accountscreatenoterequest.md
+  - docs/models/operations/accountscreatenoteresponse.md
   - docs/models/operations/accountscreaterestrictionrequest.md
   - docs/models/operations/accountscreaterestrictionresponse.md
   - docs/models/operations/accountscreatetrustedcontactrequest.md
@@ -2323,6 +2357,8 @@ generatedFiles:
   - docs/models/operations/accountsgetlegalentityresponse.md
   - docs/models/operations/accountsgetlegalnaturalpersonrequest.md
   - docs/models/operations/accountsgetlegalnaturalpersonresponse.md
+  - docs/models/operations/accountsgetnoterequest.md
+  - docs/models/operations/accountsgetnoteresponse.md
   - docs/models/operations/accountslistaccountsrequest.md
   - docs/models/operations/accountslistaccountsresponse.md
   - docs/models/operations/accountslistagreementsrequest.md
@@ -2341,6 +2377,8 @@ generatedFiles:
   - docs/models/operations/accountslistlegalentitiesresponse.md
   - docs/models/operations/accountslistlegalnaturalpersonsrequest.md
   - docs/models/operations/accountslistlegalnaturalpersonsresponse.md
+  - docs/models/operations/accountslistnotesrequest.md
+  - docs/models/operations/accountslistnotesresponse.md
   - docs/models/operations/accountsremovepartyrequest.md
   - docs/models/operations/accountsremovepartyresponse.md
   - docs/models/operations/accountsreplacepartyrequest.md
@@ -2806,13 +2844,16 @@ generatedFiles:
   - src/funcs/accountManagementAddParty.ts
   - src/funcs/accountManagementCloseAccount.ts
   - src/funcs/accountManagementCreateInterestedParty.ts
+  - src/funcs/accountManagementCreateNote.ts
   - src/funcs/accountManagementCreateRestriction.ts
   - src/funcs/accountManagementCreateTrustedContact.ts
   - src/funcs/accountManagementDeleteInterestedParty.ts
   - src/funcs/accountManagementDeleteTrustedContact.ts
   - src/funcs/accountManagementEndRestriction.ts
+  - src/funcs/accountManagementGetNote.ts
   - src/funcs/accountManagementListAccounts.ts
   - src/funcs/accountManagementListAvailableRestrictions.ts
+  - src/funcs/accountManagementListNotes.ts
   - src/funcs/accountManagementRemoveParty.ts
   - src/funcs/accountManagementReplaceParty.ts
   - src/funcs/accountManagementUpdateAccount.ts
@@ -3337,6 +3378,7 @@ generatedFiles:
   - src/models/components/listinvestigationsresponse.ts
   - src/models/components/listlegalentitiesresponse.ts
   - src/models/components/listlegalnaturalpersonsresponse.ts
+  - src/models/components/listnotesresponse.ts
   - src/models/components/listoptioninstructionsresponse.ts
   - src/models/components/listpositionsresponse.ts
   - src/models/components/listpreipocompaniesresponse.ts
@@ -3367,6 +3409,8 @@ generatedFiles:
   - src/models/components/negativenewsupdate.ts
   - src/models/components/noncitizenresidencycreate.ts
   - src/models/components/noncitizenresidencyupdate.ts
+  - src/models/components/note.ts
+  - src/models/components/notecreate.ts
   - src/models/components/operatingenrollmentmetadatacreate.ts
   - src/models/components/optiondeliverable.ts
   - src/models/components/optioninstruction.ts
@@ -3384,6 +3428,7 @@ generatedFiles:
   - src/models/components/otheraccountscreate.ts
   - src/models/components/othersourcesofwealthcreate.ts
   - src/models/components/othersourcesofwealthupdate.ts
+  - src/models/components/partnershipenrollmentmetadatacreate.ts
   - src/models/components/party.ts
   - src/models/components/partyrequestcreate.ts
   - src/models/components/partyrequestupdate.ts
@@ -3463,6 +3508,7 @@ generatedFiles:
   - src/models/components/simulatecreatecheckdepositrequestcreate.ts
   - src/models/components/simulatewiredepositrequestcreate.ts
   - src/models/components/snapshot.ts
+  - src/models/components/soleproprietorshipenrollmentmetadatacreate.ts
   - src/models/components/status.ts
   - src/models/components/stoppricecreate.ts
   - src/models/components/submitbasketrequestcreate.ts
@@ -3529,6 +3575,7 @@ generatedFiles:
   - src/models/operations/accountscreateinterestedparty.ts
   - src/models/operations/accountscreatelegalentity.ts
   - src/models/operations/accountscreatelegalnaturalperson.ts
+  - src/models/operations/accountscreatenote.ts
   - src/models/operations/accountscreaterestriction.ts
   - src/models/operations/accountscreatetrustedcontact.ts
   - src/models/operations/accountsdeactivateenrollment.ts
@@ -3541,6 +3588,7 @@ generatedFiles:
   - src/models/operations/accountsgetaccount.ts
   - src/models/operations/accountsgetlegalentity.ts
   - src/models/operations/accountsgetlegalnaturalperson.ts
+  - src/models/operations/accountsgetnote.ts
   - src/models/operations/accountslistaccounts.ts
   - src/models/operations/accountslistagreements.ts
   - src/models/operations/accountslistavailableenrollments.ts
@@ -3550,6 +3598,7 @@ generatedFiles:
   - src/models/operations/accountslistentitlements.ts
   - src/models/operations/accountslistlegalentities.ts
   - src/models/operations/accountslistlegalnaturalpersons.ts
+  - src/models/operations/accountslistnotes.ts
   - src/models/operations/accountsremoveparty.ts
   - src/models/operations/accountsreplaceparty.ts
   - src/models/operations/accountsupdateaccount.ts
@@ -7068,6 +7117,51 @@ examples:
           application/json: {}
         default:
           application/json: {}
+  Accounts_CreateNote:
+    speakeasy-default-accounts-create-note:
+      parameters:
+        path:
+          account_id: "01HC3MAQ4DR9QN1V8MJ4CN1HMK"
+      requestBody:
+        application/json: {"content": "Customer requested account review"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  Accounts_ListNotes:
+    speakeasy-default-accounts-list-notes:
+      parameters:
+        path:
+          account_id: "01HC3MAQ4DR9QN1V8MJ4CN1HMK"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  Accounts_GetNote:
+    speakeasy-default-accounts-get-note:
+      parameters:
+        path:
+          account_id: "01HC3MAQ4DR9QN1V8MJ4CN1HMK"
+          note_id: "8096110d-fb55-4f9d-b883-b84f0b70d3ea"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests:
   Accounts_ListLegalNaturalPersons: "2025-08-11T18:04:23Z"
@@ -7105,3 +7199,6 @@ generatedTests:
   PreIpoCompanyResearchDocuments_ListPreIpoCompanyResearchDocuments: "2026-02-27T12:13:24Z"
   PreIpoCompanyFundingRounds_ListPreIpoCompanyFundingRounds: "2026-02-27T12:13:24Z"
   PreIpoCompanyFundingRounds_GetPreIpoCompanyFundingRound: "2026-02-27T12:13:24Z"
+  MarginsRealTime_GetAssetBuyingPower: "2026-04-27T12:22:30Z"
+  CheckDeposits_ForceApproveCheckDeposit: "2026-04-27T12:22:30Z"
+  OrderService_ListAccountOrders: "2026-04-27T12:22:30Z"

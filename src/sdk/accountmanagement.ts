@@ -5,13 +5,16 @@
 import { accountManagementAddParty } from "../funcs/accountManagementAddParty.js";
 import { accountManagementCloseAccount } from "../funcs/accountManagementCloseAccount.js";
 import { accountManagementCreateInterestedParty } from "../funcs/accountManagementCreateInterestedParty.js";
+import { accountManagementCreateNote } from "../funcs/accountManagementCreateNote.js";
 import { accountManagementCreateRestriction } from "../funcs/accountManagementCreateRestriction.js";
 import { accountManagementCreateTrustedContact } from "../funcs/accountManagementCreateTrustedContact.js";
 import { accountManagementDeleteInterestedParty } from "../funcs/accountManagementDeleteInterestedParty.js";
 import { accountManagementDeleteTrustedContact } from "../funcs/accountManagementDeleteTrustedContact.js";
 import { accountManagementEndRestriction } from "../funcs/accountManagementEndRestriction.js";
+import { accountManagementGetNote } from "../funcs/accountManagementGetNote.js";
 import { accountManagementListAccounts } from "../funcs/accountManagementListAccounts.js";
 import { accountManagementListAvailableRestrictions } from "../funcs/accountManagementListAvailableRestrictions.js";
+import { accountManagementListNotes } from "../funcs/accountManagementListNotes.js";
 import { accountManagementRemoveParty } from "../funcs/accountManagementRemoveParty.js";
 import { accountManagementReplaceParty } from "../funcs/accountManagementReplaceParty.js";
 import { accountManagementUpdateAccount } from "../funcs/accountManagementUpdateAccount.js";
@@ -343,6 +346,67 @@ export class AccountManagement extends ClientSDK {
       endRestrictionRequestCreate,
       accountId,
       restrictionId,
+      options,
+    ));
+  }
+
+  /**
+   * Create Note (Account)
+   *
+   * @remarks
+   * Creates a Note on an account.
+   */
+  async createNote(
+    noteCreate: components.NoteCreate,
+    accountId: string,
+    options?: RequestOptions,
+  ): Promise<operations.AccountsCreateNoteResponse> {
+    return unwrapAsync(accountManagementCreateNote(
+      this,
+      noteCreate,
+      accountId,
+      options,
+    ));
+  }
+
+  /**
+   * List Notes (Account)
+   *
+   * @remarks
+   * Lists Notes for an account.
+   */
+  async listNotes(
+    accountId: string,
+    pageSize?: number | undefined,
+    pageToken?: string | undefined,
+    orderBy?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.AccountsListNotesResponse> {
+    return unwrapAsync(accountManagementListNotes(
+      this,
+      accountId,
+      pageSize,
+      pageToken,
+      orderBy,
+      options,
+    ));
+  }
+
+  /**
+   * Get Note (Account)
+   *
+   * @remarks
+   * Gets a Note by its resource name.
+   */
+  async getNote(
+    accountId: string,
+    noteId: string,
+    options?: RequestOptions,
+  ): Promise<operations.AccountsGetNoteResponse> {
+    return unwrapAsync(accountManagementGetNote(
+      this,
+      accountId,
+      noteId,
       options,
     ));
   }

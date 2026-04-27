@@ -1,6 +1,6 @@
 # IndividualEnrollmentMetadata
 
-Metadata for the INDIVIDUAL enrollment type
+Metadata for the REGISTRATION_INDIVIDUAL enrollment type
 
 ## Example Usage
 

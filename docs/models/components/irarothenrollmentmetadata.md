@@ -1,6 +1,6 @@
 # IraRothEnrollmentMetadata
 
-Metadata for the ROTH_IRA_REGISTRATION enrollment type
+Metadata for the REGISTRATION_IRA_ROTH enrollment type
 
 ## Example Usage
 

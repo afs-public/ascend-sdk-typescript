@@ -349,6 +349,19 @@ export async function createRestrictionCode(
   return undefined;
 }
 
+export async function createNote(
+  account_id: string,
+): Promise<string | undefined> {
+  const request: components.NoteCreate = {
+    content: "Test note content for account management",
+  };
+  const result = await sdk.accountManagement.createNote(request, account_id);
+  if (result?.note?.noteId) {
+    return result.note.noteId;
+  }
+  return undefined;
+}
+
 export async function enrollAccount(
   account_id: string,
 ): Promise<string[] | undefined> {

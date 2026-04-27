@@ -1,6 +1,6 @@
 # JointTenantsInCommonEnrollmentMetadata
 
-Metadata for the JOINT_TENANTS_IN_COMMON_REGISTRATION enrollment type
+Metadata for the REGISTRATION_JOINT_TIC enrollment type
 
 ## Example Usage
 

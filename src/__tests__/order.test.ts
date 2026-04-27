@@ -36,6 +36,33 @@ test("Order Order Set Extra Reporting Data", async () => {
   expect(result.httpMeta.response.status).toBe(200);
 });
 
+test("Order Order List Account Orders", async () => {
+  const testHttpClient = createTestHTTPClient("Order_ListAccountOrders");
+
+  const apexascend = new Apexascend({
+    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
+    security: {
+      apiKey: process.env["API_KEY"] ?? "value",
+      serviceAccountCreds: {
+        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
+        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
+        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
+          ?? "value",
+        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
+      },
+    },
+    httpClient: testHttpClient,
+  });
+
+  const result = await apexascend.orders.listAccountOrders(
+    "01JHGTEPC6ZTAHCFRH2MD3VJJT",
+    "",
+    25,
+    "",
+  );
+  expect(result.httpMeta.response.status).toBe(200);
+});
+
 test("Order Order List Correspondent Orders", async () => {
   const testHttpClient = createTestHTTPClient("Order_ListCorrespondentOrders");
 
@@ -56,35 +83,6 @@ test("Order Order List Correspondent Orders", async () => {
 
   const result = await apexascend.orders.listCorrespondentOrders(
     process.env["CORRESPONDENT_ID"] ?? "",
-    "",
-    25,
-    "",
-  );
-  expect(result.httpMeta.response.status).toBe(200);
-});
-
-test("Order Order List Account Orders", async () => {
-  const testHttpClient = createTestHTTPClient(
-    "OrderService_ListAccountOrders",
-  );
-
-  const apexascend = new Apexascend({
-    serverURL: process.env["SERVICE_ACCOUNT_CREDS_URL"] ?? "",
-    security: {
-      apiKey: process.env["API_KEY"] ?? "value",
-      serviceAccountCreds: {
-        privateKey: process.env["SERVICE_ACCOUNT_CREDS_PRIVATE_KEY"] ?? "value",
-        name: process.env["SERVICE_ACCOUNT_CREDS_NAME"] ?? "value",
-        organization: process.env["SERVICE_ACCOUNT_CREDS_ORGANIZATION"]
-          ?? "value",
-        type: process.env["SERVICE_ACCOUNT_CREDS_TYPE"] ?? "value",
-      },
-    },
-    httpClient: testHttpClient,
-  });
-
-  const result = await apexascend.orders.listAccountOrders(
-    "01JHGTEPC6ZTAHCFRH2MD3VJJT",
     "",
     25,
     "",

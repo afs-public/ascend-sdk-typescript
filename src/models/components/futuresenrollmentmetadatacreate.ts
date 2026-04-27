@@ -51,28 +51,36 @@ export type FuturesEnrollmentMetadataCreate = {
   fundsOwnedByAccountOwner: boolean;
   /**
    * Indicates whether the account owner has prior experience trading futures
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  futuresExperience: boolean;
+  futuresExperience?: boolean | undefined;
   /**
    * The primary investment objective for the futures account
    */
   futuresInvestmentObjective: FuturesInvestmentObjectiveOpen;
   /**
    * Indicates whether the account will trade investment retired funds
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  investmentRetiredFunds: boolean;
+  investmentRetiredFunds?: boolean | undefined;
   /**
    * Indicates whether the account owner has experience with various trading options and strategies
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  optionsExperience: boolean;
+  optionsExperience?: boolean | undefined;
   /**
    * Indicates whether the account owner understands the risks associated with trading futures
    */
   understandFuturesRisks: boolean;
   /**
    * Indicates whether the account owner understands that losses can exceed deposited funds
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  understandLossBeyondFunds: boolean;
+  understandLossBeyondFunds?: boolean | undefined;
 };
 
 /** @internal */
@@ -117,12 +125,12 @@ export const FuturesEnrollmentMetadataCreate$inboundSchema: z.ZodType<
   exchange_member: z.boolean(),
   fcm_owned_or_controlled: z.boolean(),
   funds_owned_by_account_owner: z.boolean(),
-  futures_experience: z.boolean(),
+  futures_experience: z.boolean().optional(),
   futures_investment_objective: FuturesInvestmentObjective$inboundSchema,
-  investment_retired_funds: z.boolean(),
-  options_experience: z.boolean(),
+  investment_retired_funds: z.boolean().optional(),
+  options_experience: z.boolean().optional(),
   understand_futures_risks: z.boolean(),
-  understand_loss_beyond_funds: z.boolean(),
+  understand_loss_beyond_funds: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     "ctfc_nfa_registered": "ctfcNfaRegistered",
@@ -144,12 +152,12 @@ export type FuturesEnrollmentMetadataCreate$Outbound = {
   exchange_member: boolean;
   fcm_owned_or_controlled: boolean;
   funds_owned_by_account_owner: boolean;
-  futures_experience: boolean;
+  futures_experience?: boolean | undefined;
   futures_investment_objective: string;
-  investment_retired_funds: boolean;
-  options_experience: boolean;
+  investment_retired_funds?: boolean | undefined;
+  options_experience?: boolean | undefined;
   understand_futures_risks: boolean;
-  understand_loss_beyond_funds: boolean;
+  understand_loss_beyond_funds?: boolean | undefined;
 };
 
 /** @internal */
@@ -162,12 +170,12 @@ export const FuturesEnrollmentMetadataCreate$outboundSchema: z.ZodType<
   exchangeMember: z.boolean(),
   fcmOwnedOrControlled: z.boolean(),
   fundsOwnedByAccountOwner: z.boolean(),
-  futuresExperience: z.boolean(),
+  futuresExperience: z.boolean().optional(),
   futuresInvestmentObjective: FuturesInvestmentObjective$outboundSchema,
-  investmentRetiredFunds: z.boolean(),
-  optionsExperience: z.boolean(),
+  investmentRetiredFunds: z.boolean().optional(),
+  optionsExperience: z.boolean().optional(),
   understandFuturesRisks: z.boolean(),
-  understandLossBeyondFunds: z.boolean(),
+  understandLossBeyondFunds: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     ctfcNfaRegistered: "ctfc_nfa_registered",
