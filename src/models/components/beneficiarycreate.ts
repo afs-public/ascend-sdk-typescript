@@ -38,6 +38,7 @@ export enum BeneficiaryCreateEntityType {
   EntityTypeUnspecified = "ENTITY_TYPE_UNSPECIFIED",
   Corporation = "CORPORATION",
   LimitedLiabilityCompany = "LIMITED_LIABILITY_COMPANY",
+  Partnership = "PARTNERSHIP",
   Trust = "TRUST",
   Estate = "ESTATE",
 }

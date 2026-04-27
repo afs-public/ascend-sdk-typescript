@@ -1,6 +1,6 @@
 # IraTraditionalEnrollmentMetadata
 
-Metadata for the TRADITIONAL_IRA_REGISTRATION enrollment type
+Metadata for the REGISTRATION_IRA_TRADITIONAL enrollment type
 
 ## Example Usage
 

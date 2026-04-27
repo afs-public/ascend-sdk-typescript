@@ -1,6 +1,6 @@
 # IraRolloverEnrollmentMetadata
 
-Metadata for the ROLLOVER_IRA_REGISTRATION enrollment type
+Metadata for the REGISTRATION_IRA_ROLLOVER enrollment type
 
 ## Example Usage
 

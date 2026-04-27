@@ -39,6 +39,7 @@ export enum EnrollmentType {
   RegistrationTrust = "REGISTRATION_TRUST",
   RegistrationCorporation = "REGISTRATION_CORPORATION",
   RegistrationLlc = "REGISTRATION_LLC",
+  RegistrationPartnership = "REGISTRATION_PARTNERSHIP",
   CashFdicCashSweep = "CASH_FDIC_CASH_SWEEP",
   RetirementBeneficiaryDesignation = "RETIREMENT_BENEFICIARY_DESIGNATION",
   DividendReinvestmentPlan = "DIVIDEND_REINVESTMENT_PLAN",
@@ -49,6 +50,8 @@ export enum EnrollmentType {
   RegistrationCustodial = "REGISTRATION_CUSTODIAL",
   RegTMargin = "REG_T_MARGIN",
   VirtualAccountNumber = "VIRTUAL_ACCOUNT_NUMBER",
+  RegistrationFutures = "REGISTRATION_FUTURES",
+  EventContractsKalshi = "EVENT_CONTRACTS_KALSHI",
 }
 /**
  * The enrollment type.

@@ -1,6 +1,6 @@
 # JointCommunityPropertyEnrollmentMetadata
 
-Metadata for the JOINT_COMMUNITY_PROPERTY_REGISTRATION enrollment type
+Metadata for the REGISTRATION_JOINT_CP enrollment type
 
 ## Example Usage
 

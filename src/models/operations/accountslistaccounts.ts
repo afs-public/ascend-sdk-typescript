@@ -73,6 +73,8 @@ export type AccountsListAccountsRequest = {
    *  `identifiers.type`
    *  `identifiers.value`
    *  `create_time` with format of timestamp("2025-08-13T18:31:40Z")
+   *  `parties.legal_natural_person.investigation_id`
+   *  `parties.legal_entity.investigation_id`
    */
   filter?: string | undefined;
   /**

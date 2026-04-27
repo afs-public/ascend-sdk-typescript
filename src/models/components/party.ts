@@ -101,6 +101,7 @@ export enum PartyEntityType {
   EntityTypeUnspecified = "ENTITY_TYPE_UNSPECIFIED",
   Corporation = "CORPORATION",
   LimitedLiabilityCompany = "LIMITED_LIABILITY_COMPANY",
+  Partnership = "PARTNERSHIP",
   Trust = "TRUST",
   Estate = "ESTATE",
 }
@@ -319,6 +320,7 @@ export enum PartyFederalTaxClassification {
   FederalTaxClassificationUnspecified =
     "FEDERAL_TAX_CLASSIFICATION_UNSPECIFIED",
   IndivSolepropOrSinglememberllc = "INDIV_SOLEPROP_OR_SINGLEMEMBERLLC",
+  Partnership = "PARTNERSHIP",
   CCorporation = "C_CORPORATION",
   SCorporation = "S_CORPORATION",
   TrustEstate = "TRUST_ESTATE",
@@ -1247,6 +1249,7 @@ export enum PartyLegalNaturalPersonFederalTaxClassification {
   FederalTaxClassificationUnspecified =
     "FEDERAL_TAX_CLASSIFICATION_UNSPECIFIED",
   IndivSolepropOrSinglememberllc = "INDIV_SOLEPROP_OR_SINGLEMEMBERLLC",
+  Partnership = "PARTNERSHIP",
   CCorporation = "C_CORPORATION",
   SCorporation = "S_CORPORATION",
   TrustEstate = "TRUST_ESTATE",

@@ -1,6 +1,6 @@
 # JointWithRightsOfSurvivorshipEnrollmentMetadata
 
-Metadata for the JOINT_WITH_RIGHTS_OF_SURVIVORSHIP_REGISTRATION enrollment type
+Metadata for the REGISTRATION_JOINT_WROS enrollment type
 
 ## Example Usage
 

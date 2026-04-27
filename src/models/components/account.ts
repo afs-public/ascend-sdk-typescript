@@ -455,12 +455,14 @@ export enum RegistrationType {
   TrustRegistration = "TRUST_REGISTRATION",
   CorporationRegistration = "CORPORATION_REGISTRATION",
   LlcRegistration = "LLC_REGISTRATION",
+  PartnershipRegistration = "PARTNERSHIP_REGISTRATION",
   OperatingRegistration = "OPERATING_REGISTRATION",
   IraBeneficiaryTraditionalRegistration =
     "IRA_BENEFICIARY_TRADITIONAL_REGISTRATION",
   IraBeneficiaryRothRegistration = "IRA_BENEFICIARY_ROTH_REGISTRATION",
   ForeignIndividualRegistration = "FOREIGN_INDIVIDUAL_REGISTRATION",
   CustodialRegistration = "CUSTODIAL_REGISTRATION",
+  FuturesRegistration = "FUTURES_REGISTRATION",
 }
 /**
  * The registration of the account (e.g. Individual, Joint, IRA, etc.)

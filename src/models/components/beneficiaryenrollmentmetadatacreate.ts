@@ -19,11 +19,11 @@ import {
  */
 export type BeneficiaryEnrollmentMetadataCreate = {
   /**
-   * Contingent Beneficiary list is optional, with a maximum of five contingent beneficiaries.
+   * Contingent Beneficiary list is optional, with a maximum of ten contingent beneficiaries.
    */
   contingentBeneficiaries?: Array<BeneficiaryCreate> | undefined;
   /**
-   * At least one primary beneficiary must be provided, with a maximum of five primary beneficiaries.
+   * At least one primary beneficiary must be provided, with a maximum of ten primary beneficiaries.
    */
   primaryBeneficiaries: Array<BeneficiaryCreate>;
 };

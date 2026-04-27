@@ -75,9 +75,9 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 
 export const SDK_METADATA = {
   language: "typescript",
-  openapiDocVersion: "v1:20260323:uat:35c1f0c6e7e6",
-  sdkVersion: "1.8.4",
+  openapiDocVersion: "v1:20260427:uat:27fe65c26858",
+  sdkVersion: "1.8.5",
   genVersion: "2.691.6",
   userAgent:
-    "speakeasy-sdk/typescript 1.8.4 2.691.6 v1:20260323:uat:35c1f0c6e7e6 @apexfintechsolutions/ascend-sdk",
+    "speakeasy-sdk/typescript 1.8.5 2.691.6 v1:20260427:uat:27fe65c26858 @apexfintechsolutions/ascend-sdk",
 } as const;

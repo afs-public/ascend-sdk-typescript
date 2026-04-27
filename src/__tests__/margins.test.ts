@@ -52,7 +52,7 @@ test("Margins Margins Real Time Get Asset Buying Power", async () => {
 
   const result = await apexascend.buyingPower.getAssetBuyingPower(
     "01JHGTEPC6ZTAHCFRH2MD3VJJT",
-    "67587",
+    "8395",
   );
   expect(result.httpMeta.response.status).toBe(200);
 });

@@ -10,6 +10,7 @@ import {
   createTrustedContact,
   createInterestedParty,
   createRestrictionCode,
+  createNote,
 } from "./index";
 import { beforeAll } from "vitest";
 
@@ -21,6 +22,7 @@ let replace_party_id: string | undefined;
 let trusted_contact_id: string | undefined;
 let interested_party_id: string | undefined;
 let restriction_code_id: string | undefined;
+let note_id: string | undefined;
 
 beforeAll(async () => {
   lnp_id = await createLegalNaturalPerson();
@@ -54,6 +56,10 @@ beforeAll(async () => {
   restriction_code_id = await createRestrictionCode(account_id);
   if (typeof restriction_code_id !== "string") {
     throw new Error("restriction_code_id is undefined.");
+  }
+  note_id = await createNote(account_id);
+  if (typeof note_id !== "string") {
+    throw new Error("note_id is undefined.");
   }
 }, 60000);
 
@@ -218,6 +224,33 @@ test("Account Management Accounts End Restriction Code End Restriction Code1", a
     restriction_code_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
+});
+
+test("Account Management Accounts Create Note Create Note1", async () => {
+  expect(note_id).not.toBe(undefined);
+});
+
+test("Account Management Accounts Get Note Get Note1", async () => {
+  if (typeof account_id !== "string") {
+    throw new Error("account_id is undefined.");
+  }
+  if (typeof note_id !== "string") {
+    throw new Error("note_id is undefined.");
+  }
+  const result = await sdk.accountManagement.getNote(account_id, note_id);
+  expect(result.httpMeta.response.status).toBe(200);
+  expect(result.note).not.toBe(undefined);
+  expect(result.note?.noteId).toBe(note_id);
+});
+
+test("Account Management Accounts List Notes List Notes1", async () => {
+  if (typeof account_id !== "string") {
+    throw new Error("account_id is undefined.");
+  }
+  const result = await sdk.accountManagement.listNotes(account_id);
+  expect(result.httpMeta.response.status).toBe(200);
+  expect(result.listNotesResponse).not.toBe(undefined);
+  expect(result.listNotesResponse?.notes?.length).toBeGreaterThan(0);
 });
 
 test("Account Management Accounts Close Account Close Account1", async () => {

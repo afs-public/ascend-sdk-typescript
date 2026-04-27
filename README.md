@@ -336,6 +336,9 @@ const sdk = new Apexascend({ httpClient });
 * [listAvailableRestrictions](docs/sdks/accountmanagement/README.md#listavailablerestrictions) - List Available Restrictions
 * [createRestriction](docs/sdks/accountmanagement/README.md#createrestriction) - Create Restriction
 * [endRestriction](docs/sdks/accountmanagement/README.md#endrestriction) - End Restriction
+* [createNote](docs/sdks/accountmanagement/README.md#createnote) - Create Note (Account)
+* [listNotes](docs/sdks/accountmanagement/README.md#listnotes) - List Notes (Account)
+* [getNote](docs/sdks/accountmanagement/README.md#getnote) - Get Note (Account)
 
 ### [accountTransfers](docs/sdks/accounttransfers/README.md)
 
