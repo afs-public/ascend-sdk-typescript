@@ -1122,6 +1122,7 @@ export enum AssetType1 {
   MutualFund = "MUTUAL_FUND",
   AltInvestment = "ALT_INVESTMENT",
   Index = "INDEX",
+  EventContract = "EVENT_CONTRACT",
 }
 /**
  * The type or category of the asset
