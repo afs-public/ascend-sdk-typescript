@@ -148,12 +148,12 @@ async function $do(
           initialInterval: 500,
           maxInterval: 5000,
           exponent: 1.5,
-          maxElapsedTime: 15000,
+          maxElapsedTime: 60000,
         },
         retryConnectionErrors: true,
       }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["4XX", "5XX"],
+    retryCodes: options?.retryCodes || ["504", "429"],
   };
 
   const requestRes = client._createRequest(context, {

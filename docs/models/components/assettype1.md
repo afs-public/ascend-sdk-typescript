@@ -26,4 +26,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `MutualFund`           | MUTUAL_FUND            |
 | `AltInvestment`        | ALT_INVESTMENT         |
 | `Index`                | INDEX                  |
+| `EventContract`        | EVENT_CONTRACT         |
 | -                      | `Unrecognized<string>` |
