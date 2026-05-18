@@ -14,6 +14,6 @@ let value: OtherAccounts = {};
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `accountNames`                       | *string*[]                           | :heavy_minus_sign:                   | Other account names held at Apex     |                                      |
-| `accountNumbers`                     | *string*[]                           | :heavy_minus_sign:                   | Other account numbers held at Apex   |                                      |
+| `accountNames`                       | *string*[]                           | :heavy_minus_sign:                   | Other account names held at Apex     | [<br/>"John Doe Trading"<br/>]       |
+| `accountNumbers`                     | *string*[]                           | :heavy_minus_sign:                   | Other account numbers held at Apex   | [<br/>"N6D8ZJP"<br/>]                |
 | `ownerHasOtherAccountsAtApex`        | *boolean*                            | :heavy_minus_sign:                   | The owner has other accounts at Apex | true                                 |

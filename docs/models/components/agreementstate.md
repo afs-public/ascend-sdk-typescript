@@ -1,6 +1,6 @@
 # AgreementState
 
-The status of an agreement which blocks an enrollment; `REQUIRED` if not yet received, or `AFFIRMED` if acknowledgement has been received by AFS
+The lifecycle state of an agreement associated with an enrollment.
 
 ## Example Usage
 
@@ -20,4 +20,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Required`                  | REQUIRED                    |
 | `Affirmed`                  | AFFIRMED                    |
 | `Voided`                    | VOIDED                      |
+| `AffirmationOptional`       | AFFIRMATION_OPTIONAL        |
 | -                           | `Unrecognized<string>`      |

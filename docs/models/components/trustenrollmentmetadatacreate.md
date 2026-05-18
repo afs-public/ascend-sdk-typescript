@@ -1,5 +1,7 @@
 # TrustEnrollmentMetadataCreate
 
+Enrollment metadata for trust accounts.
+
 ## Example Usage
 
 ```typescript

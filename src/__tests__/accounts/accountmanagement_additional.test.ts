@@ -75,6 +75,21 @@ test("Account Management Accounts Update Account Update Account1", async () => {
   expect(result.httpMeta.response.status).toBe(200);
 });
 
+test("Account Management Accounts Update Account Group Update Account Group1", async () => {
+  if (typeof account_id !== "string") {
+    throw new Error("account_id is undefined.");
+  }
+  const request: components.UpdateAccountGroupRequestUpdate = {
+    accountGroupId: process.env["ACCOUNT_GROUP_ID"] ?? "",
+  };
+  const result = await sdk.accountManagement.updateAccountGroup(
+    request,
+    account_id,
+  );
+  expect(result.httpMeta.response.status).toBe(200);
+  expect(result.account).not.toBe(undefined);
+});
+
 test("Account Management Accounts Add Party Add Party1", async () => {
   expect(party_id).not.toBe(undefined);
 });

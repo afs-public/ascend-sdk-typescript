@@ -490,12 +490,18 @@ export type NaturalPersonFdd = {
   otherSourcesOfWealth?: OtherSourcesOfWealth | null | undefined;
 };
 
+/**
+ * The residency status of the non-citizen resident.
+ */
 export enum LegalNaturalPersonResidencyStatus {
   ResidencyStatusUnspecified = "RESIDENCY_STATUS_UNSPECIFIED",
   UsPermanentResident = "US_PERMANENT_RESIDENT",
   UsTemporaryResident = "US_TEMPORARY_RESIDENT",
   UsNonResident = "US_NON_RESIDENT",
 }
+/**
+ * The residency status of the non-citizen resident.
+ */
 export type LegalNaturalPersonResidencyStatusOpen = OpenEnum<
   typeof LegalNaturalPersonResidencyStatus
 >;
@@ -504,6 +510,9 @@ export type LegalNaturalPersonResidencyStatusOpen = OpenEnum<
  * Facilitates non-citizen lawful US residents to open domestic accounts
  */
 export type NonCitizenResidency = {
+  /**
+   * The residency status of the non-citizen resident.
+   */
   residencyStatus?: LegalNaturalPersonResidencyStatusOpen | undefined;
 };
 
@@ -948,6 +957,10 @@ export type LegalNaturalPerson = {
    * A Party's self-disclosed list of named politically exposed organizations they are personally associated with.
    */
   politicallyExposedOrganization?: string | undefined;
+  /**
+   * Unique identifier for the tax form associated with this legal natural person. This identifier is assigned after successful consent to tax certification
+   */
+  taxFormId?: string | undefined;
   /**
    * The full U.S. tax ID for a related person; Must be provided with `ITIN` or `SSN` tax ID type
    */
@@ -2966,6 +2979,7 @@ export const LegalNaturalPerson$inboundSchema: z.ZodType<
     .optional(),
   politically_exposed_immediate_family_names: z.array(z.string()).optional(),
   politically_exposed_organization: z.string().optional(),
+  tax_form_id: z.string().optional(),
   tax_id: z.string().optional(),
   tax_id_last_four: z.string().optional(),
   tax_id_type: LegalNaturalPersonTaxIdType$inboundSchema.optional(),
@@ -3002,6 +3016,7 @@ export const LegalNaturalPerson$inboundSchema: z.ZodType<
     "politically_exposed_immediate_family_names":
       "politicallyExposedImmediateFamilyNames",
     "politically_exposed_organization": "politicallyExposedOrganization",
+    "tax_form_id": "taxFormId",
     "tax_id": "taxId",
     "tax_id_last_four": "taxIdLastFour",
     "tax_id_type": "taxIdType",
@@ -3046,6 +3061,7 @@ export type LegalNaturalPerson$Outbound = {
   personal_address?: PersonalAddress$Outbound | null | undefined;
   politically_exposed_immediate_family_names?: Array<string> | undefined;
   politically_exposed_organization?: string | undefined;
+  tax_form_id?: string | undefined;
   tax_id?: string | undefined;
   tax_id_last_four?: string | undefined;
   tax_id_type?: string | undefined;
@@ -3100,6 +3116,7 @@ export const LegalNaturalPerson$outboundSchema: z.ZodType<
     .optional(),
   politicallyExposedImmediateFamilyNames: z.array(z.string()).optional(),
   politicallyExposedOrganization: z.string().optional(),
+  taxFormId: z.string().optional(),
   taxId: z.string().optional(),
   taxIdLastFour: z.string().optional(),
   taxIdType: LegalNaturalPersonTaxIdType$outboundSchema.optional(),
@@ -3136,6 +3153,7 @@ export const LegalNaturalPerson$outboundSchema: z.ZodType<
     politicallyExposedImmediateFamilyNames:
       "politically_exposed_immediate_family_names",
     politicallyExposedOrganization: "politically_exposed_organization",
+    taxFormId: "tax_form_id",
     taxId: "tax_id",
     taxIdLastFour: "tax_id_last_four",
     taxIdType: "tax_id_type",

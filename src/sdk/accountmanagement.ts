@@ -18,6 +18,7 @@ import { accountManagementListNotes } from "../funcs/accountManagementListNotes.
 import { accountManagementRemoveParty } from "../funcs/accountManagementRemoveParty.js";
 import { accountManagementReplaceParty } from "../funcs/accountManagementReplaceParty.js";
 import { accountManagementUpdateAccount } from "../funcs/accountManagementUpdateAccount.js";
+import { accountManagementUpdateAccountGroup } from "../funcs/accountManagementUpdateAccountGroup.js";
 import { accountManagementUpdateInterestedParty } from "../funcs/accountManagementUpdateInterestedParty.js";
 import { accountManagementUpdateParty } from "../funcs/accountManagementUpdateParty.js";
 import { accountManagementUpdateTrustedContact } from "../funcs/accountManagementUpdateTrustedContact.js";
@@ -64,6 +65,25 @@ export class AccountManagement extends ClientSDK {
       accountRequestUpdate,
       accountId,
       updateMask,
+      options,
+    ));
+  }
+
+  /**
+   * Update Account Group
+   *
+   * @remarks
+   * Updates an Account Group for an Account
+   */
+  async updateAccountGroup(
+    updateAccountGroupRequestUpdate: components.UpdateAccountGroupRequestUpdate,
+    accountId: string,
+    options?: RequestOptions,
+  ): Promise<operations.AccountsUpdateAccountGroupResponse> {
+    return unwrapAsync(accountManagementUpdateAccountGroup(
+      this,
+      updateAccountGroupRequestUpdate,
+      accountId,
       options,
     ));
   }

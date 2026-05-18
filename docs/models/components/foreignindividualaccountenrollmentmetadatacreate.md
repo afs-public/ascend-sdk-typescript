@@ -1,5 +1,7 @@
 # ForeignIndividualAccountEnrollmentMetadataCreate
 
+Enrollment metadata for foreign individual accounts.
+
 ## Example Usage
 
 ```typescript
@@ -16,7 +18,10 @@ let value: ForeignIndividualAccountEnrollmentMetadataCreate = {
       initialDepositSource: "Product Revenue",
     },
     financialProfile: {
-      bankingRelationships: [],
+      bankingRelationships: [
+        "Chase",
+        "Wells Fargo",
+      ],
       otherAccounts: {
         ownerHasOtherAccountsAtApex: true,
       },

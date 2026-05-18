@@ -444,6 +444,7 @@ export enum RegistrationType {
   IndividualRegistration = "INDIVIDUAL_REGISTRATION",
   EstateRegistration = "ESTATE_REGISTRATION",
   TraditionalIraRegistration = "TRADITIONAL_IRA_REGISTRATION",
+  SimpleIraRegistration = "SIMPLE_IRA_REGISTRATION",
   SepIraRegistration = "SEP_IRA_REGISTRATION",
   RothIraRegistration = "ROTH_IRA_REGISTRATION",
   RolloverIraRegistration = "ROLLOVER_IRA_REGISTRATION",
@@ -463,6 +464,7 @@ export enum RegistrationType {
   ForeignIndividualRegistration = "FOREIGN_INDIVIDUAL_REGISTRATION",
   CustodialRegistration = "CUSTODIAL_REGISTRATION",
   FuturesRegistration = "FUTURES_REGISTRATION",
+  CustodialRothIraRegistration = "CUSTODIAL_ROTH_IRA_REGISTRATION",
 }
 /**
  * The registration of the account (e.g. Individual, Joint, IRA, etc.)

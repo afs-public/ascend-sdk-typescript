@@ -30,6 +30,7 @@ test("Person Management Accounts List Legal Natural Persons", async () => {
   const result = await apexascend.personManagement.listLegalNaturalPersons(
     25,
     "",
+    "given_name desc",
     "",
   );
   expect(result.httpMeta.response.status).toBe(200);

@@ -322,6 +322,7 @@ const sdk = new Apexascend({ httpClient });
 
 * [listAccounts](docs/sdks/accountmanagement/README.md#listaccounts) - List Accounts
 * [updateAccount](docs/sdks/accountmanagement/README.md#updateaccount) - Update Account
+* [updateAccountGroup](docs/sdks/accountmanagement/README.md#updateaccountgroup) - Update Account Group
 * [addParty](docs/sdks/accountmanagement/README.md#addparty) - Add Party
 * [updateParty](docs/sdks/accountmanagement/README.md#updateparty) - Update Party
 * [replaceParty](docs/sdks/accountmanagement/README.md#replaceparty) - Replace Party

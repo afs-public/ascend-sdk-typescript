@@ -1,14 +1,14 @@
-# EnrollmentPartnershipEnrollmentMetadataFdicCashSweep
+# CustodialIRARothEnrollmentMetadataCreateFdicCashSweep
 
 Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
 
 ## Example Usage
 
 ```typescript
-import { EnrollmentPartnershipEnrollmentMetadataFdicCashSweep } from "@apexfintechsolutions/ascend-sdk/models/components";
+import { CustodialIRARothEnrollmentMetadataCreateFdicCashSweep } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: EnrollmentPartnershipEnrollmentMetadataFdicCashSweep =
-  EnrollmentPartnershipEnrollmentMetadataFdicCashSweep.FdicCashSweepEnroll;
+let value: CustodialIRARothEnrollmentMetadataCreateFdicCashSweep =
+  CustodialIRARothEnrollmentMetadataCreateFdicCashSweep.FdicCashSweepEnroll;
 ```
 
 ## Values

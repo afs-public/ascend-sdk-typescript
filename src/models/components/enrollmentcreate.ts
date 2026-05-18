@@ -31,6 +31,12 @@ import {
   CustodialEnrollmentMetadataCreate$outboundSchema,
 } from "./custodialenrollmentmetadatacreate.js";
 import {
+  CustodialIRARothEnrollmentMetadataCreate,
+  CustodialIRARothEnrollmentMetadataCreate$inboundSchema,
+  CustodialIRARothEnrollmentMetadataCreate$Outbound,
+  CustodialIRARothEnrollmentMetadataCreate$outboundSchema,
+} from "./custodialirarothenrollmentmetadatacreate.js";
+import {
   EstateEnrollmentMetadataCreate,
   EstateEnrollmentMetadataCreate$inboundSchema,
   EstateEnrollmentMetadataCreate$Outbound,
@@ -145,12 +151,6 @@ import {
   OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema,
 } from "./ordersoptionstradingenrollmentmetadatacreate.js";
 import {
-  PartnershipEnrollmentMetadataCreate,
-  PartnershipEnrollmentMetadataCreate$inboundSchema,
-  PartnershipEnrollmentMetadataCreate$Outbound,
-  PartnershipEnrollmentMetadataCreate$outboundSchema,
-} from "./partnershipenrollmentmetadatacreate.js";
-import {
   SoleProprietorshipEnrollmentMetadataCreate,
   SoleProprietorshipEnrollmentMetadataCreate$inboundSchema,
   SoleProprietorshipEnrollmentMetadataCreate$Outbound,
@@ -200,6 +200,7 @@ export enum EnrollmentCreateType {
   RegistrationJointCp = "REGISTRATION_JOINT_CP",
   RegistrationEstate = "REGISTRATION_ESTATE",
   RegistrationIraTraditional = "REGISTRATION_IRA_TRADITIONAL",
+  RegistrationIraSimple = "REGISTRATION_IRA_SIMPLE",
   RegistrationIraSep = "REGISTRATION_IRA_SEP",
   RegistrationIraRoth = "REGISTRATION_IRA_ROTH",
   RegistrationIraRollover = "REGISTRATION_IRA_ROLLOVER",
@@ -219,6 +220,7 @@ export enum EnrollmentCreateType {
   VirtualAccountNumber = "VIRTUAL_ACCOUNT_NUMBER",
   RegistrationFutures = "REGISTRATION_FUTURES",
   EventContractsKalshi = "EVENT_CONTRACTS_KALSHI",
+  RegistrationCustodialIraRoth = "REGISTRATION_CUSTODIAL_IRA_ROTH",
 }
 /**
  * Describes the name of the enrollment; Expressed as an enum
@@ -239,6 +241,9 @@ export type EnrollmentCreate = {
    * The consent method for the enrollment. Defaults to ESIGNATURE.
    */
   consentMethod?: EnrollmentCreateConsentMethodOpen | undefined;
+  /**
+   * Enrollment metadata for corporation accounts.
+   */
   corporationEnrollmentMetadata?:
     | CorporationEnrollmentMetadataCreate
     | undefined;
@@ -247,9 +252,18 @@ export type EnrollmentCreate = {
    */
   custodialEnrollmentMetadata?: CustodialEnrollmentMetadataCreate | undefined;
   /**
+   * Enrollment metadata for the REGISTRATION_CUSTODIAL_IRA_ROTH enrollment type
+   */
+  custodialIraRothEnrollmentMetadata?:
+    | CustodialIRARothEnrollmentMetadataCreate
+    | undefined;
+  /**
    * Enrollment metadata for estate enrollments
    */
   estateEnrollmentMetadata?: EstateEnrollmentMetadataCreate | undefined;
+  /**
+   * Enrollment metadata for foreign individual accounts.
+   */
   foreignIndividualAccountEnrollmentMetadata?:
     | ForeignIndividualAccountEnrollmentMetadataCreate
     | undefined;
@@ -325,6 +339,9 @@ export type EnrollmentCreate = {
   jointWithRightsOfSurvivorshipEnrollmentMetadata?:
     | JointWithRightsOfSurvivorshipEnrollmentMetadataCreate
     | undefined;
+  /**
+   * Enrollment metadata for LLC accounts.
+   */
   llcEnrollmentMetadata?: LLCEnrollmentMetadataCreate | undefined;
   /**
    * Enrollment metadata for the REGISTRATION_OPERATING enrollment type.
@@ -337,12 +354,6 @@ export type EnrollmentCreate = {
     | OrdersOptionsTradingEnrollmentMetadataCreate
     | undefined;
   /**
-   * Enrollment metadata for the PARTNERSHIP enrollment type
-   */
-  partnershipEnrollmentMetadata?:
-    | PartnershipEnrollmentMetadataCreate
-    | undefined;
-  /**
    * The ULID is associated with the approver of a given enrollment. The approver you create will contain the CRD Number issued to the person by FINRA. As an RIA, you should use the ULID associated with Apex's approver.
    */
   principalApproverId: string;
@@ -352,6 +363,9 @@ export type EnrollmentCreate = {
   soleProprietorshipEnrollmentMetadata?:
     | SoleProprietorshipEnrollmentMetadataCreate
     | undefined;
+  /**
+   * Enrollment metadata for trust accounts.
+   */
   trustEnrollmentMetadata?: TrustEnrollmentMetadataCreate | undefined;
   /**
    * Describes the name of the enrollment; Expressed as an enum
@@ -442,6 +456,8 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     CorporationEnrollmentMetadataCreate$inboundSchema.optional(),
   custodial_enrollment_metadata: CustodialEnrollmentMetadataCreate$inboundSchema
     .optional(),
+  custodial_ira_roth_enrollment_metadata:
+    CustodialIRARothEnrollmentMetadataCreate$inboundSchema.optional(),
   estate_enrollment_metadata: EstateEnrollmentMetadataCreate$inboundSchema
     .optional(),
   foreign_individual_account_enrollment_metadata:
@@ -480,8 +496,6 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     .optional(),
   orders_options_trading_enrollment_metadata:
     OrdersOptionsTradingEnrollmentMetadataCreate$inboundSchema.optional(),
-  partnership_enrollment_metadata:
-    PartnershipEnrollmentMetadataCreate$inboundSchema.optional(),
   principal_approver_id: z.string(),
   sole_proprietorship_enrollment_metadata:
     SoleProprietorshipEnrollmentMetadataCreate$inboundSchema.optional(),
@@ -496,6 +510,8 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     "consent_method": "consentMethod",
     "corporation_enrollment_metadata": "corporationEnrollmentMetadata",
     "custodial_enrollment_metadata": "custodialEnrollmentMetadata",
+    "custodial_ira_roth_enrollment_metadata":
+      "custodialIraRothEnrollmentMetadata",
     "estate_enrollment_metadata": "estateEnrollmentMetadata",
     "foreign_individual_account_enrollment_metadata":
       "foreignIndividualAccountEnrollmentMetadata",
@@ -522,7 +538,6 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     "operating_enrollment_metadata": "operatingEnrollmentMetadata",
     "orders_options_trading_enrollment_metadata":
       "ordersOptionsTradingEnrollmentMetadata",
-    "partnership_enrollment_metadata": "partnershipEnrollmentMetadata",
     "principal_approver_id": "principalApproverId",
     "sole_proprietorship_enrollment_metadata":
       "soleProprietorshipEnrollmentMetadata",
@@ -543,6 +558,9 @@ export type EnrollmentCreate$Outbound = {
     | undefined;
   custodial_enrollment_metadata?:
     | CustodialEnrollmentMetadataCreate$Outbound
+    | undefined;
+  custodial_ira_roth_enrollment_metadata?:
+    | CustodialIRARothEnrollmentMetadataCreate$Outbound
     | undefined;
   estate_enrollment_metadata?:
     | EstateEnrollmentMetadataCreate$Outbound
@@ -597,9 +615,6 @@ export type EnrollmentCreate$Outbound = {
   orders_options_trading_enrollment_metadata?:
     | OrdersOptionsTradingEnrollmentMetadataCreate$Outbound
     | undefined;
-  partnership_enrollment_metadata?:
-    | PartnershipEnrollmentMetadataCreate$Outbound
-    | undefined;
   principal_approver_id: string;
   sole_proprietorship_enrollment_metadata?:
     | SoleProprietorshipEnrollmentMetadataCreate$Outbound
@@ -626,6 +641,8 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     CorporationEnrollmentMetadataCreate$outboundSchema.optional(),
   custodialEnrollmentMetadata: CustodialEnrollmentMetadataCreate$outboundSchema
     .optional(),
+  custodialIraRothEnrollmentMetadata:
+    CustodialIRARothEnrollmentMetadataCreate$outboundSchema.optional(),
   estateEnrollmentMetadata: EstateEnrollmentMetadataCreate$outboundSchema
     .optional(),
   foreignIndividualAccountEnrollmentMetadata:
@@ -664,8 +681,6 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     .optional(),
   ordersOptionsTradingEnrollmentMetadata:
     OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema.optional(),
-  partnershipEnrollmentMetadata:
-    PartnershipEnrollmentMetadataCreate$outboundSchema.optional(),
   principalApproverId: z.string(),
   soleProprietorshipEnrollmentMetadata:
     SoleProprietorshipEnrollmentMetadataCreate$outboundSchema.optional(),
@@ -680,6 +695,8 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     consentMethod: "consent_method",
     corporationEnrollmentMetadata: "corporation_enrollment_metadata",
     custodialEnrollmentMetadata: "custodial_enrollment_metadata",
+    custodialIraRothEnrollmentMetadata:
+      "custodial_ira_roth_enrollment_metadata",
     estateEnrollmentMetadata: "estate_enrollment_metadata",
     foreignIndividualAccountEnrollmentMetadata:
       "foreign_individual_account_enrollment_metadata",
@@ -706,7 +723,6 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     operatingEnrollmentMetadata: "operating_enrollment_metadata",
     ordersOptionsTradingEnrollmentMetadata:
       "orders_options_trading_enrollment_metadata",
-    partnershipEnrollmentMetadata: "partnership_enrollment_metadata",
     principalApproverId: "principal_approver_id",
     soleProprietorshipEnrollmentMetadata:
       "sole_proprietorship_enrollment_metadata",

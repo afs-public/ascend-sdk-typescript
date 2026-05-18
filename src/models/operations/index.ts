@@ -40,6 +40,7 @@ export * from "./accountslistnotes.js";
 export * from "./accountsremoveparty.js";
 export * from "./accountsreplaceparty.js";
 export * from "./accountsupdateaccount.js";
+export * from "./accountsupdateaccountgroup.js";
 export * from "./accountsupdateinterestedparty.js";
 export * from "./accountsupdatelegalentity.js";
 export * from "./accountsupdatelegalnaturalperson.js";

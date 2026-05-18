@@ -1,14 +1,14 @@
-# PartnershipEnrollmentMetadataCreateDividendReinvestmentPlan
+# CustodialIRARothEnrollmentMetadataCreateDividendReinvestmentPlan
 
 Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
 
 ## Example Usage
 
 ```typescript
-import { PartnershipEnrollmentMetadataCreateDividendReinvestmentPlan } from "@apexfintechsolutions/ascend-sdk/models/components";
+import { CustodialIRARothEnrollmentMetadataCreateDividendReinvestmentPlan } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: PartnershipEnrollmentMetadataCreateDividendReinvestmentPlan =
-  PartnershipEnrollmentMetadataCreateDividendReinvestmentPlan
+let value: CustodialIRARothEnrollmentMetadataCreateDividendReinvestmentPlan =
+  CustodialIRARothEnrollmentMetadataCreateDividendReinvestmentPlan
     .DividendReinvestmentEnroll;
 ```
 

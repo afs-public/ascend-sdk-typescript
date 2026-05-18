@@ -13,6 +13,9 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export enum LegalEntityBusinessIndustrialClassification {
   BusinessIndustrialClassificationUnspecified =
     "BUSINESS_INDUSTRIAL_CLASSIFICATION_UNSPECIFIED",
@@ -28,6 +31,9 @@ export enum LegalEntityBusinessIndustrialClassification {
   Services = "SERVICES",
   PublicAdministration = "PUBLIC_ADMINISTRATION",
 }
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export type LegalEntityBusinessIndustrialClassificationOpen = OpenEnum<
   typeof LegalEntityBusinessIndustrialClassification
 >;
@@ -501,6 +507,9 @@ export type LegalEntity = {
    * Indicates whether the entity is a broker dealer. By default, this is set to `false`.
    */
   brokerDealer?: boolean | undefined;
+  /**
+   * The Standard Industrial Classification (SIC) of the entity.
+   */
   businessIndustrialClassification?:
     | LegalEntityBusinessIndustrialClassificationOpen
     | undefined;
@@ -623,6 +632,10 @@ export type LegalEntity = {
    * Indicates whether the trust is a revocable trust. By default, this is set to `false`.
    */
   revocableTrust?: boolean | undefined;
+  /**
+   * Unique identifier for the tax form associated with this legal entity. This identifier is assigned after successful consent to tax certification
+   */
+  taxFormId?: string | undefined;
   /**
    * The full U.S. tax ID for a related entity; Must be provided with `EIN` tax ID type
    */
@@ -1778,6 +1791,7 @@ export const LegalEntity$inboundSchema: z.ZodType<
   regulated_investment_company: z.boolean().optional(),
   related_document_ids: z.array(z.string()).optional(),
   revocable_trust: z.boolean().optional(),
+  tax_form_id: z.string().optional(),
   tax_id: z.string().optional(),
   tax_id_last_four: z.string().optional(),
   tax_id_type: LegalEntityTaxIdType$inboundSchema.optional(),
@@ -1813,6 +1827,7 @@ export const LegalEntity$inboundSchema: z.ZodType<
     "regulated_investment_company": "regulatedInvestmentCompany",
     "related_document_ids": "relatedDocumentIds",
     "revocable_trust": "revocableTrust",
+    "tax_form_id": "taxFormId",
     "tax_id": "taxId",
     "tax_id_last_four": "taxIdLastFour",
     "tax_id_type": "taxIdType",
@@ -1852,6 +1867,7 @@ export type LegalEntity$Outbound = {
   regulated_investment_company?: boolean | undefined;
   related_document_ids?: Array<string> | undefined;
   revocable_trust?: boolean | undefined;
+  tax_form_id?: string | undefined;
   tax_id?: string | undefined;
   tax_id_last_four?: string | undefined;
   tax_id_type?: string | undefined;
@@ -1901,6 +1917,7 @@ export const LegalEntity$outboundSchema: z.ZodType<
   regulatedInvestmentCompany: z.boolean().optional(),
   relatedDocumentIds: z.array(z.string()).optional(),
   revocableTrust: z.boolean().optional(),
+  taxFormId: z.string().optional(),
   taxId: z.string().optional(),
   taxIdLastFour: z.string().optional(),
   taxIdType: LegalEntityTaxIdType$outboundSchema.optional(),
@@ -1936,6 +1953,7 @@ export const LegalEntity$outboundSchema: z.ZodType<
     regulatedInvestmentCompany: "regulated_investment_company",
     relatedDocumentIds: "related_document_ids",
     revocableTrust: "revocable_trust",
+    taxFormId: "tax_form_id",
     taxId: "tax_id",
     taxIdLastFour: "tax_id_last_four",
     taxIdType: "tax_id_type",
