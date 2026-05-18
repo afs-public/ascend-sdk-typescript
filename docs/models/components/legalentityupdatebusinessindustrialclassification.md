@@ -1,5 +1,7 @@
 # LegalEntityUpdateBusinessIndustrialClassification
 
+The Standard Industrial Classification (SIC) of the entity.
+
 ## Example Usage
 
 ```typescript

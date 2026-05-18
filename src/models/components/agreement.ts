@@ -28,16 +28,17 @@ export enum AgreementSource {
 export type AgreementSourceOpen = OpenEnum<typeof AgreementSource>;
 
 /**
- * The status of an agreement which blocks an enrollment; `REQUIRED` if not yet received, or `AFFIRMED` if acknowledgement has been received by AFS
+ * The lifecycle state of an agreement associated with an enrollment.
  */
 export enum AgreementState {
   AgreementStateUnspecified = "AGREEMENT_STATE_UNSPECIFIED",
   Required = "REQUIRED",
   Affirmed = "AFFIRMED",
   Voided = "VOIDED",
+  AffirmationOptional = "AFFIRMATION_OPTIONAL",
 }
 /**
- * The status of an agreement which blocks an enrollment; `REQUIRED` if not yet received, or `AFFIRMED` if acknowledgement has been received by AFS
+ * The lifecycle state of an agreement associated with an enrollment.
  */
 export type AgreementStateOpen = OpenEnum<typeof AgreementState>;
 
@@ -62,7 +63,7 @@ export type Agreement = {
    */
   agreementSource?: AgreementSourceOpen | undefined;
   /**
-   * The status of an agreement which blocks an enrollment; `REQUIRED` if not yet received, or `AFFIRMED` if acknowledgement has been received by AFS
+   * The lifecycle state of an agreement associated with an enrollment.
    */
   agreementState?: AgreementStateOpen | undefined;
   /**

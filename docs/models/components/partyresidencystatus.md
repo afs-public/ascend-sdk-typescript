@@ -1,5 +1,7 @@
 # PartyResidencyStatus
 
+The residency status of the non-citizen resident.
+
 ## Example Usage
 
 ```typescript

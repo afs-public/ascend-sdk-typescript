@@ -74,6 +74,9 @@ export enum OpenedOnBehalfOf {
  */
 export type OpenedOnBehalfOfOpen = OpenEnum<typeof OpenedOnBehalfOf>;
 
+/**
+ * Enrollment metadata for trust accounts.
+ */
 export type TrustEnrollmentMetadataCreate = {
   /**
    * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL

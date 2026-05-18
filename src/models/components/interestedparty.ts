@@ -14,7 +14,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Delivery method instruction for CFTC documents for a given Interested Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+ * Delivery method instruction for CFTC documents for a given Interested Party record; Not set for interested parties (no email collected); only applies to CFTC regulated accounts
  */
 export enum CftcDocumentDeliveryPreference {
   DeliveryPreferenceUnspecified = "DELIVERY_PREFERENCE_UNSPECIFIED",
@@ -23,7 +23,7 @@ export enum CftcDocumentDeliveryPreference {
   Suppress = "SUPPRESS",
 }
 /**
- * Delivery method instruction for CFTC documents for a given Interested Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+ * Delivery method instruction for CFTC documents for a given Interested Party record; Not set for interested parties (no email collected); only applies to CFTC regulated accounts
  */
 export type CftcDocumentDeliveryPreferenceOpen = OpenEnum<
   typeof CftcDocumentDeliveryPreference
@@ -137,7 +137,7 @@ export type InterestedPartyTradeConfirmationDeliveryPreferenceOpen = OpenEnum<
  */
 export type InterestedParty = {
   /**
-   * Delivery method instruction for CFTC documents for a given Interested Party record; Defaults to `DIGITAL` on futures account creation Only applies to CFTC regulated accounts
+   * Delivery method instruction for CFTC documents for a given Interested Party record; Not set for interested parties (no email collected); only applies to CFTC regulated accounts
    */
   cftcDocumentDeliveryPreference?:
     | CftcDocumentDeliveryPreferenceOpen

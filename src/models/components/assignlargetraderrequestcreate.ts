@@ -12,6 +12,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  * The request to assign a Large Trader ID to a Legal Natural Person/Legal Entity.
  */
 export type AssignLargeTraderRequestCreate = {
+  /**
+   * The Large Trader ID to assign
+   */
   largeTraderId: string;
 };
 

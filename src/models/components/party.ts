@@ -29,6 +29,9 @@ export type PartyCftcDocumentDeliveryPreferenceOpen = OpenEnum<
   typeof PartyCftcDocumentDeliveryPreference
 >;
 
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export enum PartyBusinessIndustrialClassification {
   BusinessIndustrialClassificationUnspecified =
     "BUSINESS_INDUSTRIAL_CLASSIFICATION_UNSPECIFIED",
@@ -44,6 +47,9 @@ export enum PartyBusinessIndustrialClassification {
   Services = "SERVICES",
   PublicAdministration = "PUBLIC_ADMINISTRATION",
 }
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export type PartyBusinessIndustrialClassificationOpen = OpenEnum<
   typeof PartyBusinessIndustrialClassification
 >;
@@ -507,6 +513,9 @@ export type PartyLegalEntity = {
    * Indicates whether the entity is a broker dealer. By default, this is set to `false`.
    */
   brokerDealer?: boolean | undefined;
+  /**
+   * The Standard Industrial Classification (SIC) of the entity.
+   */
   businessIndustrialClassification?:
     | PartyBusinessIndustrialClassificationOpen
     | undefined;
@@ -629,6 +638,10 @@ export type PartyLegalEntity = {
    * Indicates whether the trust is a revocable trust. By default, this is set to `false`.
    */
   revocableTrust?: boolean | undefined;
+  /**
+   * Unique identifier for the tax form associated with this legal entity. This identifier is assigned after successful consent to tax certification
+   */
+  taxFormId?: string | undefined;
   /**
    * The full U.S. tax ID for a related entity; Must be provided with `EIN` tax ID type
    */
@@ -1118,18 +1131,27 @@ export type PartyNaturalPersonFdd = {
   otherSourcesOfWealth?: PartyOtherSourcesOfWealth | null | undefined;
 };
 
+/**
+ * The residency status of the non-citizen resident.
+ */
 export enum PartyResidencyStatus {
   ResidencyStatusUnspecified = "RESIDENCY_STATUS_UNSPECIFIED",
   UsPermanentResident = "US_PERMANENT_RESIDENT",
   UsTemporaryResident = "US_TEMPORARY_RESIDENT",
   UsNonResident = "US_NON_RESIDENT",
 }
+/**
+ * The residency status of the non-citizen resident.
+ */
 export type PartyResidencyStatusOpen = OpenEnum<typeof PartyResidencyStatus>;
 
 /**
  * Facilitates non-citizen lawful US residents to open domestic accounts
  */
 export type PartyNonCitizenResidency = {
+  /**
+   * The residency status of the non-citizen resident.
+   */
   residencyStatus?: PartyResidencyStatusOpen | undefined;
 };
 
@@ -1583,6 +1605,10 @@ export type PartyLegalNaturalPerson = {
    * A Party's self-disclosed list of named politically exposed organizations they are personally associated with.
    */
   politicallyExposedOrganization?: string | undefined;
+  /**
+   * Unique identifier for the tax form associated with this legal natural person. This identifier is assigned after successful consent to tax certification
+   */
+  taxFormId?: string | undefined;
   /**
    * The full U.S. tax ID for a related person; Must be provided with `ITIN` or `SSN` tax ID type
    */
@@ -3075,6 +3101,7 @@ export const PartyLegalEntity$inboundSchema: z.ZodType<
   regulated_investment_company: z.boolean().optional(),
   related_document_ids: z.array(z.string()).optional(),
   revocable_trust: z.boolean().optional(),
+  tax_form_id: z.string().optional(),
   tax_id: z.string().optional(),
   tax_id_last_four: z.string().optional(),
   tax_id_type: PartyTaxIdType$inboundSchema.optional(),
@@ -3110,6 +3137,7 @@ export const PartyLegalEntity$inboundSchema: z.ZodType<
     "regulated_investment_company": "regulatedInvestmentCompany",
     "related_document_ids": "relatedDocumentIds",
     "revocable_trust": "revocableTrust",
+    "tax_form_id": "taxFormId",
     "tax_id": "taxId",
     "tax_id_last_four": "taxIdLastFour",
     "tax_id_type": "taxIdType",
@@ -3149,6 +3177,7 @@ export type PartyLegalEntity$Outbound = {
   regulated_investment_company?: boolean | undefined;
   related_document_ids?: Array<string> | undefined;
   revocable_trust?: boolean | undefined;
+  tax_form_id?: string | undefined;
   tax_id?: string | undefined;
   tax_id_last_four?: string | undefined;
   tax_id_type?: string | undefined;
@@ -3197,6 +3226,7 @@ export const PartyLegalEntity$outboundSchema: z.ZodType<
   regulatedInvestmentCompany: z.boolean().optional(),
   relatedDocumentIds: z.array(z.string()).optional(),
   revocableTrust: z.boolean().optional(),
+  taxFormId: z.string().optional(),
   taxId: z.string().optional(),
   taxIdLastFour: z.string().optional(),
   taxIdType: PartyTaxIdType$outboundSchema.optional(),
@@ -3232,6 +3262,7 @@ export const PartyLegalEntity$outboundSchema: z.ZodType<
     regulatedInvestmentCompany: "regulated_investment_company",
     relatedDocumentIds: "related_document_ids",
     revocableTrust: "revocable_trust",
+    taxFormId: "tax_form_id",
     taxId: "tax_id",
     taxIdLastFour: "tax_id_last_four",
     taxIdType: "tax_id_type",
@@ -5368,6 +5399,7 @@ export const PartyLegalNaturalPerson$inboundSchema: z.ZodType<
     .optional(),
   politically_exposed_immediate_family_names: z.array(z.string()).optional(),
   politically_exposed_organization: z.string().optional(),
+  tax_form_id: z.string().optional(),
   tax_id: z.string().optional(),
   tax_id_last_four: z.string().optional(),
   tax_id_type: PartyLegalNaturalPersonTaxIdType$inboundSchema.optional(),
@@ -5406,6 +5438,7 @@ export const PartyLegalNaturalPerson$inboundSchema: z.ZodType<
     "politically_exposed_immediate_family_names":
       "politicallyExposedImmediateFamilyNames",
     "politically_exposed_organization": "politicallyExposedOrganization",
+    "tax_form_id": "taxFormId",
     "tax_id": "taxId",
     "tax_id_last_four": "taxIdLastFour",
     "tax_id_type": "taxIdType",
@@ -5453,6 +5486,7 @@ export type PartyLegalNaturalPerson$Outbound = {
   personal_address?: PartyPersonalAddress$Outbound | null | undefined;
   politically_exposed_immediate_family_names?: Array<string> | undefined;
   politically_exposed_organization?: string | undefined;
+  tax_form_id?: string | undefined;
   tax_id?: string | undefined;
   tax_id_last_four?: string | undefined;
   tax_id_type?: string | undefined;
@@ -5509,6 +5543,7 @@ export const PartyLegalNaturalPerson$outboundSchema: z.ZodType<
     .optional(),
   politicallyExposedImmediateFamilyNames: z.array(z.string()).optional(),
   politicallyExposedOrganization: z.string().optional(),
+  taxFormId: z.string().optional(),
   taxId: z.string().optional(),
   taxIdLastFour: z.string().optional(),
   taxIdType: PartyLegalNaturalPersonTaxIdType$outboundSchema.optional(),
@@ -5547,6 +5582,7 @@ export const PartyLegalNaturalPerson$outboundSchema: z.ZodType<
     politicallyExposedImmediateFamilyNames:
       "politically_exposed_immediate_family_names",
     politicallyExposedOrganization: "politically_exposed_organization",
+    taxFormId: "tax_form_id",
     taxId: "tax_id",
     taxIdLastFour: "tax_id_last_four",
     taxIdType: "tax_id_type",

@@ -67,6 +67,9 @@ export type LLCEnrollmentMetadataCreateMoneyMarketFundSweepOpen = OpenEnum<
   typeof LLCEnrollmentMetadataCreateMoneyMarketFundSweep
 >;
 
+/**
+ * Enrollment metadata for LLC accounts.
+ */
 export type LLCEnrollmentMetadataCreate = {
   /**
    * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL

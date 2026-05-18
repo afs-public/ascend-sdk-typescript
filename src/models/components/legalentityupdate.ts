@@ -43,6 +43,9 @@ import {
   TaxProfileUpdate$outboundSchema,
 } from "./taxprofileupdate.js";
 
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export enum LegalEntityUpdateBusinessIndustrialClassification {
   BusinessIndustrialClassificationUnspecified =
     "BUSINESS_INDUSTRIAL_CLASSIFICATION_UNSPECIFIED",
@@ -58,6 +61,9 @@ export enum LegalEntityUpdateBusinessIndustrialClassification {
   Services = "SERVICES",
   PublicAdministration = "PUBLIC_ADMINISTRATION",
 }
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export type LegalEntityUpdateBusinessIndustrialClassificationOpen = OpenEnum<
   typeof LegalEntityUpdateBusinessIndustrialClassification
 >;
@@ -176,6 +182,9 @@ export type LegalEntityUpdate = {
    * Indicates whether the entity is a broker dealer. By default, this is set to `false`.
    */
   brokerDealer?: boolean | undefined;
+  /**
+   * The Standard Industrial Classification (SIC) of the entity.
+   */
   businessIndustrialClassification?:
     | LegalEntityUpdateBusinessIndustrialClassificationOpen
     | undefined;

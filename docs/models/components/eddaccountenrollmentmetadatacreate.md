@@ -19,7 +19,10 @@ let value: EddAccountEnrollmentMetadataCreate = {
   },
   determinedAccountRiskRating: DeterminedAccountRiskRating.High,
   financialProfile: {
-    bankingRelationships: [],
+    bankingRelationships: [
+      "Chase",
+      "Wells Fargo",
+    ],
     otherAccounts: {
       ownerHasOtherAccountsAtApex: true,
     },

@@ -1,5 +1,7 @@
 # CorporationEnrollmentMetadataCreate
 
+Enrollment metadata for corporation accounts.
+
 ## Example Usage
 
 ```typescript

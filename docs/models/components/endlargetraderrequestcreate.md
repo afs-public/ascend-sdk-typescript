@@ -8,7 +8,7 @@ The request to end a Large Trader on a Legal Natural Person/Legal Entity.
 import { EndLargeTraderRequestCreate, EndReason } from "@apexfintechsolutions/ascend-sdk/models/components";
 
 let value: EndLargeTraderRequestCreate = {
-  endReason: EndReason.EventReasonOther,
+  endReason: EndReason.EventReasonEnded,
 };
 ```
 
@@ -16,4 +16,4 @@ let value: EndLargeTraderRequestCreate = {
 
 | Field                                                        | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `endReason`                                                  | [components.EndReason](../../models/components/endreason.md) | :heavy_check_mark:                                           | The end reason of the LTID.                                  | Reason for ending the LTID                                   |
+| `endReason`                                                  | [components.EndReason](../../models/components/endreason.md) | :heavy_check_mark:                                           | The end reason of the LTID.                                  | EVENT_REASON_ENDED                                           |

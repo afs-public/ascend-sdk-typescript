@@ -13,18 +13,27 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The residency status of the non-citizen resident.
+ */
 export enum ResidencyStatus {
   ResidencyStatusUnspecified = "RESIDENCY_STATUS_UNSPECIFIED",
   UsPermanentResident = "US_PERMANENT_RESIDENT",
   UsTemporaryResident = "US_TEMPORARY_RESIDENT",
   UsNonResident = "US_NON_RESIDENT",
 }
+/**
+ * The residency status of the non-citizen resident.
+ */
 export type ResidencyStatusOpen = OpenEnum<typeof ResidencyStatus>;
 
 /**
  * Non Citizenship Residency to facilitate non-Citizen lawful US residents to open domestic accounts.
  */
 export type NonCitizenResidencyCreate = {
+  /**
+   * The residency status of the non-citizen resident.
+   */
   residencyStatus: ResidencyStatusOpen;
 };
 

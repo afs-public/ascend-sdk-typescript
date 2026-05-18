@@ -1,5 +1,7 @@
 # LLCEnrollmentMetadataCreate
 
+Enrollment metadata for LLC accounts.
+
 ## Example Usage
 
 ```typescript

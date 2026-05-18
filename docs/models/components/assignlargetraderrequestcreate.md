@@ -14,6 +14,6 @@ let value: AssignLargeTraderRequestCreate = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `largeTraderId`    | *string*           | :heavy_check_mark: | N/A                | 1234567890         |
+| Field                         | Type                          | Required                      | Description                   | Example                       |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `largeTraderId`               | *string*                      | :heavy_check_mark:            | The Large Trader ID to assign | 1234567890                    |

@@ -7,7 +7,7 @@ The enrollment type.
 ```typescript
 import { EnrollmentType } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let value: EnrollmentType = EnrollmentType.RegistrationJointWros;
+let value: EnrollmentType = EnrollmentType.RegistrationIndividual;
 ```
 
 ## Values
@@ -26,6 +26,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `RegistrationJointCp`                    | REGISTRATION_JOINT_CP                    |
 | `RegistrationEstate`                     | REGISTRATION_ESTATE                      |
 | `RegistrationIraTraditional`             | REGISTRATION_IRA_TRADITIONAL             |
+| `RegistrationIraSimple`                  | REGISTRATION_IRA_SIMPLE                  |
 | `RegistrationIraSep`                     | REGISTRATION_IRA_SEP                     |
 | `RegistrationIraRoth`                    | REGISTRATION_IRA_ROTH                    |
 | `RegistrationIraRollover`                | REGISTRATION_IRA_ROLLOVER                |
@@ -44,4 +45,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `VirtualAccountNumber`                   | VIRTUAL_ACCOUNT_NUMBER                   |
 | `RegistrationFutures`                    | REGISTRATION_FUTURES                     |
 | `EventContractsKalshi`                   | EVENT_CONTRACTS_KALSHI                   |
+| `RegistrationCustodialIraRoth`           | REGISTRATION_CUSTODIAL_IRA_ROTH          |
 | -                                        | `Unrecognized<string>`                   |

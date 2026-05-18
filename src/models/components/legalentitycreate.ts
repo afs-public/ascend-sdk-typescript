@@ -43,6 +43,9 @@ import {
   TaxProfileCreate$outboundSchema,
 } from "./taxprofilecreate.js";
 
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export enum BusinessIndustrialClassification {
   BusinessIndustrialClassificationUnspecified =
     "BUSINESS_INDUSTRIAL_CLASSIFICATION_UNSPECIFIED",
@@ -58,6 +61,9 @@ export enum BusinessIndustrialClassification {
   Services = "SERVICES",
   PublicAdministration = "PUBLIC_ADMINISTRATION",
 }
+/**
+ * The Standard Industrial Classification (SIC) of the entity.
+ */
 export type BusinessIndustrialClassificationOpen = OpenEnum<
   typeof BusinessIndustrialClassification
 >;
@@ -170,6 +176,9 @@ export type LegalEntityCreate = {
    * Indicates whether the entity is a broker dealer. By default, this is set to `false`.
    */
   brokerDealer?: boolean | undefined;
+  /**
+   * The Standard Industrial Classification (SIC) of the entity.
+   */
   businessIndustrialClassification?:
     | BusinessIndustrialClassificationOpen
     | undefined;
