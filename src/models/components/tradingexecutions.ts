@@ -71,6 +71,10 @@ export type TradingExecutions = {
    */
   executedTime?: Date | null | undefined;
   /**
+   * This id field represents the unique id of the execution
+   */
+  executionId?: string | undefined;
+  /**
    * The net currency amount exchanged in this transaction, in the order currency. Will only be present for orders of Fixed Income assets.
    */
   grossCreditAmount?: GrossCreditAmount | null | undefined;
@@ -313,6 +317,7 @@ export const TradingExecutions$inboundSchema: z.ZodType<
   executed_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  execution_id: z.string().optional(),
   gross_credit_amount: z.nullable(z.lazy(() => GrossCreditAmount$inboundSchema))
     .optional(),
   prevailing_market_price: z.nullable(
@@ -325,6 +330,7 @@ export const TradingExecutions$inboundSchema: z.ZodType<
     "accrued_interest_amount": "accruedInterestAmount",
     "executed_prices": "executedPrices",
     "executed_time": "executedTime",
+    "execution_id": "executionId",
     "gross_credit_amount": "grossCreditAmount",
     "prevailing_market_price": "prevailingMarketPrice",
   });
@@ -335,6 +341,7 @@ export type TradingExecutions$Outbound = {
   accrued_interest_amount?: AccruedInterestAmount$Outbound | null | undefined;
   executed_prices?: Array<TradingExecutedPrice$Outbound> | undefined;
   executed_time?: string | null | undefined;
+  execution_id?: string | undefined;
   gross_credit_amount?: GrossCreditAmount$Outbound | null | undefined;
   prevailing_market_price?: PrevailingMarketPrice$Outbound | null | undefined;
   quantity?: TradingExecutionsQuantity$Outbound | null | undefined;
@@ -351,6 +358,7 @@ export const TradingExecutions$outboundSchema: z.ZodType<
   ).optional(),
   executedPrices: z.array(TradingExecutedPrice$outboundSchema).optional(),
   executedTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  executionId: z.string().optional(),
   grossCreditAmount: z.nullable(z.lazy(() => GrossCreditAmount$outboundSchema))
     .optional(),
   prevailingMarketPrice: z.nullable(
@@ -363,6 +371,7 @@ export const TradingExecutions$outboundSchema: z.ZodType<
     accruedInterestAmount: "accrued_interest_amount",
     executedPrices: "executed_prices",
     executedTime: "executed_time",
+    executionId: "execution_id",
     grossCreditAmount: "gross_credit_amount",
     prevailingMarketPrice: "prevailing_market_price",
   });

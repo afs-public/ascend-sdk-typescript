@@ -54,4 +54,12 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `AssetNotSetUpForRoundUps`                                | ASSET_NOT_SET_UP_FOR_ROUND_UPS                            |
 | `BelowRoundUpMinimum`                                     | BELOW_ROUND_UP_MINIMUM                                    |
 | `StopPriceBelowMarketPrice`                               | STOP_PRICE_BELOW_MARKET_PRICE                             |
+| `PositionThresholdViolation`                              | POSITION_THRESHOLD_VIOLATION                              |
+| `UnsupportedPriceValue`                                   | UNSUPPORTED_PRICE_VALUE                                   |
+| `AssetNotShortable`                                       | ASSET_NOT_SHORTABLE                                       |
+| `BoxTradesProhibited`                                     | BOX_TRADES_PROHIBITED                                     |
+| `DeskOrderNotAllowed`                                     | DESK_ORDER_NOT_ALLOWED                                    |
+| `UnsupportedTradingSessionForAsset`                       | UNSUPPORTED_TRADING_SESSION_FOR_ASSET                     |
+| `UnsupportedOrderTypeForAsset`                            | UNSUPPORTED_ORDER_TYPE_FOR_ASSET                          |
+| `UnsupportedTimeInForceForAsset`                          | UNSUPPORTED_TIME_IN_FORCE_FOR_ASSET                       |
 | -                                                         | `Unrecognized<string>`                                    |

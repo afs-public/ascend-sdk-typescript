@@ -144,6 +144,10 @@ export type OptionOrderCreate = {
    */
   clientReceivedTime?: Date | null | undefined;
   /**
+   * The time the correspondent sent the original order to Apex. Set at order creation and cannot be modified. Required for correspondents using Apex CAT reporting services.
+   */
+  clientSentTime?: Date | null | undefined;
+  /**
    * Only "USD" is supported. Full list of currency codes is defined at: https://en.wikipedia.org/wiki/ISO_4217
    */
   currencyCode: string;
@@ -380,6 +384,9 @@ export const OptionOrderCreate$inboundSchema: z.ZodType<
   client_received_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  client_sent_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   currency_code: z.string(),
   fees: z.array(FeeCreate$inboundSchema).optional(),
   legs: z.array(OptionOrderLegCreate$inboundSchema),
@@ -397,6 +404,7 @@ export const OptionOrderCreate$inboundSchema: z.ZodType<
     "broker_capacity": "brokerCapacity",
     "client_order_id": "clientOrderId",
     "client_received_time": "clientReceivedTime",
+    "client_sent_time": "clientSentTime",
     "currency_code": "currencyCode",
     "limit_price": "limitPrice",
     "order_date": "orderDate",
@@ -412,6 +420,7 @@ export type OptionOrderCreate$Outbound = {
   broker_capacity: string;
   client_order_id: string;
   client_received_time?: string | null | undefined;
+  client_sent_time?: string | null | undefined;
   currency_code: string;
   fees?: Array<FeeCreate$Outbound> | undefined;
   legs: Array<OptionOrderLegCreate$Outbound>;
@@ -434,6 +443,8 @@ export const OptionOrderCreate$outboundSchema: z.ZodType<
   clientOrderId: z.string(),
   clientReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
+  clientSentTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   currencyCode: z.string(),
   fees: z.array(FeeCreate$outboundSchema).optional(),
   legs: z.array(OptionOrderLegCreate$outboundSchema),
@@ -451,6 +462,7 @@ export const OptionOrderCreate$outboundSchema: z.ZodType<
     brokerCapacity: "broker_capacity",
     clientOrderId: "client_order_id",
     clientReceivedTime: "client_received_time",
+    clientSentTime: "client_sent_time",
     currencyCode: "currency_code",
     limitPrice: "limit_price",
     orderDate: "order_date",

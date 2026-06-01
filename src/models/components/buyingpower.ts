@@ -39,6 +39,16 @@ export type DayTradeBuyingPowerAmount = {
 };
 
 /**
+ * The intraday_buying_power_amount is the intraday trade buying power of the account in USD, returned from the request.
+ */
+export type IntradayBuyingPowerAmount = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
  * The position_market_value in USD returned from the request.
  */
 export type PositionMarketValueAmount = {
@@ -113,7 +123,11 @@ export type BuyingPower = {
    */
   dayTradeBuyingPowerAmount?: DayTradeBuyingPowerAmount | null | undefined;
   /**
-   * The is_day_trade_buying_power_allowed boolean will be true if the account is a Margin account, PDT is true and SOD Account equity >= $25,000, otherwise it will be false.
+   * The intraday_buying_power_amount is the intraday trade buying power of the account in USD, returned from the request.
+   */
+  intradayBuyingPowerAmount?: IntradayBuyingPowerAmount | null | undefined;
+  /**
+   * is_day_trade_buying_power_allowed indicates whether day trade buying power is available for the account.
    */
   isDayTradeBuyingPowerAllowed?: boolean | undefined;
   /**
@@ -293,6 +307,60 @@ export function dayTradeBuyingPowerAmountFromJSON(
     jsonString,
     (x) => DayTradeBuyingPowerAmount$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'DayTradeBuyingPowerAmount' from JSON`,
+  );
+}
+
+/** @internal */
+export const IntradayBuyingPowerAmount$inboundSchema: z.ZodType<
+  IntradayBuyingPowerAmount,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type IntradayBuyingPowerAmount$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const IntradayBuyingPowerAmount$outboundSchema: z.ZodType<
+  IntradayBuyingPowerAmount$Outbound,
+  z.ZodTypeDef,
+  IntradayBuyingPowerAmount
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IntradayBuyingPowerAmount$ {
+  /** @deprecated use `IntradayBuyingPowerAmount$inboundSchema` instead. */
+  export const inboundSchema = IntradayBuyingPowerAmount$inboundSchema;
+  /** @deprecated use `IntradayBuyingPowerAmount$outboundSchema` instead. */
+  export const outboundSchema = IntradayBuyingPowerAmount$outboundSchema;
+  /** @deprecated use `IntradayBuyingPowerAmount$Outbound` instead. */
+  export type Outbound = IntradayBuyingPowerAmount$Outbound;
+}
+
+export function intradayBuyingPowerAmountToJSON(
+  intradayBuyingPowerAmount: IntradayBuyingPowerAmount,
+): string {
+  return JSON.stringify(
+    IntradayBuyingPowerAmount$outboundSchema.parse(intradayBuyingPowerAmount),
+  );
+}
+
+export function intradayBuyingPowerAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<IntradayBuyingPowerAmount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IntradayBuyingPowerAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IntradayBuyingPowerAmount' from JSON`,
   );
 }
 
@@ -595,6 +663,9 @@ export const BuyingPower$inboundSchema: z.ZodType<
   day_trade_buying_power_amount: z.nullable(
     z.lazy(() => DayTradeBuyingPowerAmount$inboundSchema),
   ).optional(),
+  intraday_buying_power_amount: z.nullable(
+    z.lazy(() => IntradayBuyingPowerAmount$inboundSchema),
+  ).optional(),
   is_day_trade_buying_power_allowed: z.boolean().optional(),
   name: z.string().optional(),
   position_market_value_amount: z.nullable(
@@ -608,6 +679,7 @@ export const BuyingPower$inboundSchema: z.ZodType<
     "account_id": "accountId",
     "buying_power_amount": "buyingPowerAmount",
     "day_trade_buying_power_amount": "dayTradeBuyingPowerAmount",
+    "intraday_buying_power_amount": "intradayBuyingPowerAmount",
     "is_day_trade_buying_power_allowed": "isDayTradeBuyingPowerAllowed",
     "position_market_value_amount": "positionMarketValueAmount",
     "sma_amount": "smaAmount",
@@ -621,6 +693,10 @@ export type BuyingPower$Outbound = {
   buying_power_amount?: BuyingPowerAmount$Outbound | null | undefined;
   day_trade_buying_power_amount?:
     | DayTradeBuyingPowerAmount$Outbound
+    | null
+    | undefined;
+  intraday_buying_power_amount?:
+    | IntradayBuyingPowerAmount$Outbound
     | null
     | undefined;
   is_day_trade_buying_power_allowed?: boolean | undefined;
@@ -648,6 +724,9 @@ export const BuyingPower$outboundSchema: z.ZodType<
   dayTradeBuyingPowerAmount: z.nullable(
     z.lazy(() => DayTradeBuyingPowerAmount$outboundSchema),
   ).optional(),
+  intradayBuyingPowerAmount: z.nullable(
+    z.lazy(() => IntradayBuyingPowerAmount$outboundSchema),
+  ).optional(),
   isDayTradeBuyingPowerAllowed: z.boolean().optional(),
   name: z.string().optional(),
   positionMarketValueAmount: z.nullable(
@@ -662,6 +741,7 @@ export const BuyingPower$outboundSchema: z.ZodType<
     accountId: "account_id",
     buyingPowerAmount: "buying_power_amount",
     dayTradeBuyingPowerAmount: "day_trade_buying_power_amount",
+    intradayBuyingPowerAmount: "intraday_buying_power_amount",
     isDayTradeBuyingPowerAllowed: "is_day_trade_buying_power_allowed",
     positionMarketValueAmount: "position_market_value_amount",
     smaAmount: "sma_amount",

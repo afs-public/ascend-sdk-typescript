@@ -150,14 +150,14 @@ export type CompressedOrderOrderStatusOpen = OpenEnum<
 >;
 
 /**
- * The execution type of this order. Only MARKET is supported.
+ * The execution type of this order.
  */
 export enum CompressedOrderOrderType {
   OrderTypeUnspecified = "ORDER_TYPE_UNSPECIFIED",
   Market = "MARKET",
 }
 /**
- * The execution type of this order. Only MARKET is supported.
+ * The execution type of this order.
  */
 export type CompressedOrderOrderTypeOpen = OpenEnum<
   typeof CompressedOrderOrderType
@@ -291,7 +291,7 @@ export type CompressedOrder = {
    */
   orderStatus?: CompressedOrderOrderStatusOpen | undefined;
   /**
-   * The execution type of this order. Only MARKET is supported.
+   * The execution type of this order.
    */
   orderType?: CompressedOrderOrderTypeOpen | undefined;
   /**

@@ -135,8 +135,8 @@ const apexascend = new Apexascend({
 
 async function run() {
   const result = await apexascend.optionInstructions.listOptionInstructions({
-    accountId: "ACC123456",
-    assetId: "12345",
+    accountId: "-",
+    assetId: "-",
     pageSize: 50,
     pageToken: "eyJvZmZzZXQiOjUwfQ==",
     filter: "type == 'DO_NOT_EXERCISE' && account_id == '12345'",
@@ -172,8 +172,8 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await optionInstructionsListOptionInstructions(apexascend, {
-    accountId: "ACC123456",
-    assetId: "12345",
+    accountId: "-",
+    assetId: "-",
     pageSize: 50,
     pageToken: "eyJvZmZzZXQiOjUwfQ==",
     filter: "type == 'DO_NOT_EXERCISE' && account_id == '12345'",

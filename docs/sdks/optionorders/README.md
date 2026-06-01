@@ -8,6 +8,7 @@
 * [createOptionOrder](#createoptionorder) - Create Option Order
 * [getOptionOrder](#getoptionorder) - Get Option Order
 * [cancelOptionOrder](#canceloptionorder) - Cancel Option Order
+* [setOptionExtraReportingData](#setoptionextrareportingdata) - Set Option Extra Reporting Data
 
 ## createOptionOrder
 
@@ -311,6 +312,103 @@ run();
 ### Response
 
 **Promise\<[operations.OptionOrderServiceCancelOptionOrderResponse](../../models/operations/optionorderservicecanceloptionorderresponse.md)\>**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| errors.Status      | 400, 401, 403, 404 | application/json   |
+| errors.Status      | 500, 503           | application/json   |
+| errors.SDKError    | 4XX, 5XX           | \*/\*              |
+
+## setOptionExtraReportingData
+
+Sets post-cancel reporting data for an option order.
+
+ The option order must be in a canceled or pending_cancel state. Requires the option order resource name and the cancel_confirmed_time. If cancel_confirmed_time has already been set by a prior call, the existing value is preserved and the response reflects the original value.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="OptionOrderService_SetOptionExtraReportingData" method="post" path="/trading/v1/accounts/{account_id}/optionOrders/{optionOrder_id}:setExtraReportingData" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.optionOrders.setOptionExtraReportingData({
+    cancelConfirmedTime: new Date("2025-12-13T15:28:17.262732Z"),
+    name: "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X/optionOrders/ebb0c9b5-2c74-45c9-a4ab-40596b778706",
+  }, "01HBRQ5BW6ZAY4BNWP4GWRD80X", "ebb0c9b5-2c74-45c9-a4ab-40596b778706");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { optionOrdersSetOptionExtraReportingData } from "@apexfintechsolutions/ascend-sdk/funcs/optionOrdersSetOptionExtraReportingData.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await optionOrdersSetOptionExtraReportingData(apexascend, {
+    cancelConfirmedTime: new Date("2025-12-13T15:28:17.262732Z"),
+    name: "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X/optionOrders/ebb0c9b5-2c74-45c9-a4ab-40596b778706",
+  }, "01HBRQ5BW6ZAY4BNWP4GWRD80X", "ebb0c9b5-2c74-45c9-a4ab-40596b778706");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("optionOrdersSetOptionExtraReportingData failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `accountId`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The account id.                                                                                                                                                                | [object Object]                                                                                                                                                                |
+| `optionOrderId`                                                                                                                                                                | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The optionOrder id.                                                                                                                                                            | [object Object]                                                                                                                                                                |
+| `setOptionExtraReportingDataRequestCreate`                                                                                                                                     | [components.SetOptionExtraReportingDataRequestCreate](../../models/components/setoptionextrareportingdatarequestcreate.md)                                                     | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.OptionOrderServiceSetOptionExtraReportingDataResponse](../../models/operations/optionorderservicesetoptionextrareportingdataresponse.md)\>**
 
 ### Errors
 

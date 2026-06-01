@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: a4d6cb82123eaa1be499950ba1fe9f44
-  docVersion: v1:20260518:uat:21f073ab387d
+  docChecksum: 0bd3b57a3616d11a162738af9fb265fa
+  docVersion: v1:20260529:uat:bc2fbef672de
   speakeasyVersion: 1.608.0
   generationVersion: 2.691.6
-  releaseVersion: 1.8.7
-  configChecksum: dba9152617c56641c6a8c7d2b27d6ca9
+  releaseVersion: 1.8.8
+  configChecksum: ccfcbb482027b2755be6fa9632a57bcf
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -401,6 +401,7 @@ generatedFiles:
   - docs/models/components/assetbuyingpowerassetbuyingpowermaxamount.md
   - docs/models/components/assetbuyingpowerbuyingpoweramount.md
   - docs/models/components/assetbuyingpowerdaytradebuyingpoweramount.md
+  - docs/models/components/assetbuyingpowerintradaybuyingpoweramount.md
   - docs/models/components/assetbuyingpowermaxamount.md
   - docs/models/components/assetbuyingpowermaxpurchasequantity.md
   - docs/models/components/assetbuyingpowerpercentagerequirements.md
@@ -561,6 +562,7 @@ generatedFiles:
   - docs/models/components/cancelinitiator.md
   - docs/models/components/canceloptioninstructionrequestcreate.md
   - docs/models/components/canceloptionorderrequestcreate.md
+  - docs/models/components/canceloptionorderrequestcreatecancelinitiator.md
   - docs/models/components/cancelorderrequestcreate.md
   - docs/models/components/cancelorderrequestcreatecancelinitiator.md
   - docs/models/components/cancelpositionjournalrequestcreate.md
@@ -1313,6 +1315,7 @@ generatedFiles:
   - docs/models/components/interesttype.md
   - docs/models/components/intermediary.md
   - docs/models/components/internationalbankdetails.md
+  - docs/models/components/intradaybuyingpoweramount.md
   - docs/models/components/investigation.md
   - docs/models/components/investigationbirthdate.md
   - docs/models/components/investigationexecutiondate.md
@@ -1582,6 +1585,7 @@ generatedFiles:
   - docs/models/components/optioninstructiontype.md
   - docs/models/components/optionorder.md
   - docs/models/components/optionorderbrokercapacity.md
+  - docs/models/components/optionordercancelinitiator.md
   - docs/models/components/optionordercancelrejectedreason.md
   - docs/models/components/optionordercreate.md
   - docs/models/components/optionordercreatebrokercapacity.md
@@ -1589,6 +1593,7 @@ generatedFiles:
   - docs/models/components/optionordercreatespecialreportinginstructions.md
   - docs/models/components/optionordercreatetimeinforce.md
   - docs/models/components/optionordercumulativenotionalvalue.md
+  - docs/models/components/optionorderextrareportingdata.md
   - docs/models/components/optionorderleg.md
   - docs/models/components/optionorderlegassettype.md
   - docs/models/components/optionorderlegcreate.md
@@ -2024,6 +2029,7 @@ generatedFiles:
   - docs/models/components/setextrareportingdataresponseside.md
   - docs/models/components/setextrareportingdataresponsespecialreportinginstructions.md
   - docs/models/components/setextrareportingdataresponsetimeinforce.md
+  - docs/models/components/setoptionextrareportingdatarequestcreate.md
   - docs/models/components/settlealternativeorderrequestcreate.md
   - docs/models/components/settled.md
   - docs/models/components/settledate.md
@@ -2656,6 +2662,8 @@ generatedFiles:
   - docs/models/operations/optionorderservicecreateoptionorderresponse.md
   - docs/models/operations/optionorderservicegetoptionorderrequest.md
   - docs/models/operations/optionorderservicegetoptionorderresponse.md
+  - docs/models/operations/optionorderservicesetoptionextrareportingdatarequest.md
+  - docs/models/operations/optionorderservicesetoptionextrareportingdataresponse.md
   - docs/models/operations/orderpriceservicepreviewordercostrequest.md
   - docs/models/operations/orderpriceservicepreviewordercostresponse.md
   - docs/models/operations/orderpriceserviceretrievefixedincomemarksrequest.md
@@ -2952,6 +2960,7 @@ generatedFiles:
   - src/funcs/optionOrdersCancelOptionOrder.ts
   - src/funcs/optionOrdersCreateOptionOrder.ts
   - src/funcs/optionOrdersGetOptionOrder.ts
+  - src/funcs/optionOrdersSetOptionExtraReportingData.ts
   - src/funcs/ordersCancelOrder.ts
   - src/funcs/ordersCreateOrder.ts
   - src/funcs/ordersGetOrder.ts
@@ -3493,6 +3502,7 @@ generatedFiles:
   - src/models/components/setaccountaccreditationtyperequestcreate.ts
   - src/models/components/setextrareportingdatarequestcreate.ts
   - src/models/components/setextrareportingdataresponse.ts
+  - src/models/components/setoptionextrareportingdatarequestcreate.ts
   - src/models/components/settlealternativeorderrequestcreate.ts
   - src/models/components/simulatecreatecheckdepositrequestcreate.ts
   - src/models/components/simulatewiredepositrequestcreate.ts
@@ -3736,6 +3746,7 @@ generatedFiles:
   - src/models/operations/optionorderservicecanceloptionorder.ts
   - src/models/operations/optionorderservicecreateoptionorder.ts
   - src/models/operations/optionorderservicegetoptionorder.ts
+  - src/models/operations/optionorderservicesetoptionextrareportingdata.ts
   - src/models/operations/orderpriceservicepreviewordercost.ts
   - src/models/operations/orderpriceserviceretrievefixedincomemarks.ts
   - src/models/operations/orderpriceserviceretrievequote.ts
@@ -7061,8 +7072,8 @@ examples:
     speakeasy-default-exercise-service-list-option-instructions:
       parameters:
         path:
-          account_id: "ACC123456"
-          asset_id: "12345"
+          account_id: "-"
+          asset_id: "-"
       responses:
         "200":
           application/json: {}
@@ -7160,6 +7171,23 @@ examples:
           account_id: "01HC3MAQ4DR9QN1V8MJ4CN1HMK"
       requestBody:
         application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  OptionOrderService_SetOptionExtraReportingData:
+    speakeasy-default-option-order-service-set-option-extra-reporting-data:
+      parameters:
+        path:
+          account_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
+          optionOrder_id: "ebb0c9b5-2c74-45c9-a4ab-40596b778706"
+      requestBody:
+        application/json: {"cancel_confirmed_time": "2025-12-13T15:28:17.262732Z", "name": "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X/optionOrders/ebb0c9b5-2c74-45c9-a4ab-40596b778706"}
       responses:
         "200":
           application/json: {}

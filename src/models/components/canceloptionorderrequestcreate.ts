@@ -3,14 +3,49 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+/**
+ * Identifies whether the cancel was initiated by the correspondent firm (FIRM) or the customer (CLIENT). Defaults to CLIENT if not provided. Required for correspondents using Apex CAT reporting services.
+ */
+export enum CancelOptionOrderRequestCreateCancelInitiator {
+  InitiatorUnspecified = "INITIATOR_UNSPECIFIED",
+  Firm = "FIRM",
+  Client = "CLIENT",
+}
+/**
+ * Identifies whether the cancel was initiated by the correspondent firm (FIRM) or the customer (CLIENT). Defaults to CLIENT if not provided. Required for correspondents using Apex CAT reporting services.
+ */
+export type CancelOptionOrderRequestCreateCancelInitiatorOpen = OpenEnum<
+  typeof CancelOptionOrderRequestCreateCancelInitiator
+>;
 
 /**
  * The message to request cancellation of an existing option order
  */
 export type CancelOptionOrderRequestCreate = {
+  /**
+   * Identifies whether the cancel was initiated by the correspondent firm (FIRM) or the customer (CLIENT). Defaults to CLIENT if not provided. Required for correspondents using Apex CAT reporting services.
+   */
+  cancelInitiator?:
+    | CancelOptionOrderRequestCreateCancelInitiatorOpen
+    | undefined;
+  /**
+   * The time the correspondent received the cancel instruction from the customer. Required for correspondents using Apex CAT reporting services.
+   */
+  clientCancelReceivedTime?: Date | null | undefined;
+  /**
+   * The time the correspondent sent this cancel request, before Apex received it. Required for correspondents using Apex CAT reporting services.
+   */
+  clientCancelSentTime?: Date | null | undefined;
   /**
    * Format: accounts/{account_id}/optionOrders/{option_order_id}
    */
@@ -18,16 +53,69 @@ export type CancelOptionOrderRequestCreate = {
 };
 
 /** @internal */
+export const CancelOptionOrderRequestCreateCancelInitiator$inboundSchema:
+  z.ZodType<
+    CancelOptionOrderRequestCreateCancelInitiatorOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(CancelOptionOrderRequestCreateCancelInitiator),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const CancelOptionOrderRequestCreateCancelInitiator$outboundSchema:
+  z.ZodType<
+    CancelOptionOrderRequestCreateCancelInitiatorOpen,
+    z.ZodTypeDef,
+    CancelOptionOrderRequestCreateCancelInitiatorOpen
+  > = z.union([
+    z.nativeEnum(CancelOptionOrderRequestCreateCancelInitiator),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CancelOptionOrderRequestCreateCancelInitiator$ {
+  /** @deprecated use `CancelOptionOrderRequestCreateCancelInitiator$inboundSchema` instead. */
+  export const inboundSchema =
+    CancelOptionOrderRequestCreateCancelInitiator$inboundSchema;
+  /** @deprecated use `CancelOptionOrderRequestCreateCancelInitiator$outboundSchema` instead. */
+  export const outboundSchema =
+    CancelOptionOrderRequestCreateCancelInitiator$outboundSchema;
+}
+
+/** @internal */
 export const CancelOptionOrderRequestCreate$inboundSchema: z.ZodType<
   CancelOptionOrderRequestCreate,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  cancel_initiator: CancelOptionOrderRequestCreateCancelInitiator$inboundSchema
+    .optional(),
+  client_cancel_received_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  client_cancel_sent_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   name: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "cancel_initiator": "cancelInitiator",
+    "client_cancel_received_time": "clientCancelReceivedTime",
+    "client_cancel_sent_time": "clientCancelSentTime",
+  });
 });
 
 /** @internal */
 export type CancelOptionOrderRequestCreate$Outbound = {
+  cancel_initiator?: string | undefined;
+  client_cancel_received_time?: string | null | undefined;
+  client_cancel_sent_time?: string | null | undefined;
   name: string;
 };
 
@@ -37,7 +125,19 @@ export const CancelOptionOrderRequestCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CancelOptionOrderRequestCreate
 > = z.object({
+  cancelInitiator: CancelOptionOrderRequestCreateCancelInitiator$outboundSchema
+    .optional(),
+  clientCancelReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  clientCancelSentTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   name: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    cancelInitiator: "cancel_initiator",
+    clientCancelReceivedTime: "client_cancel_received_time",
+    clientCancelSentTime: "client_cancel_sent_time",
+  });
 });
 
 /**

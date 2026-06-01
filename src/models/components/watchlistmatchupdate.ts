@@ -14,14 +14,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The match state for a profile, one of:
- *
- * @remarks
- * - `MATCH_UNSPECIFIED` - Default/Null value.
- * - `CONFIRMED_MATCH` - Match is confirmed.
- * - `POTENTIAL_MATCH` - Match is a potential.
- * - `NO_MATCH` - Match is confirmed not to be a match.
- * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
+ * The match state for a profile
  */
 export enum WatchlistMatchUpdateMatchState {
   MatchUnspecified = "MATCH_UNSPECIFIED",
@@ -31,14 +24,7 @@ export enum WatchlistMatchUpdateMatchState {
   Inconclusive = "INCONCLUSIVE",
 }
 /**
- * The match state for a profile, one of:
- *
- * @remarks
- * - `MATCH_UNSPECIFIED` - Default/Null value.
- * - `CONFIRMED_MATCH` - Match is confirmed.
- * - `POTENTIAL_MATCH` - Match is a potential.
- * - `NO_MATCH` - Match is confirmed not to be a match.
- * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
+ * The match state for a profile
  */
 export type WatchlistMatchUpdateMatchStateOpen = OpenEnum<
   typeof WatchlistMatchUpdateMatchState
@@ -53,14 +39,7 @@ export type WatchlistMatchUpdate = {
    */
   excludeFromScreening?: boolean | undefined;
   /**
-   * The match state for a profile, one of:
-   *
-   * @remarks
-   * - `MATCH_UNSPECIFIED` - Default/Null value.
-   * - `CONFIRMED_MATCH` - Match is confirmed.
-   * - `POTENTIAL_MATCH` - Match is a potential.
-   * - `NO_MATCH` - Match is confirmed not to be a match.
-   * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
+   * The match state for a profile
    */
   matchState?: WatchlistMatchUpdateMatchStateOpen | undefined;
   /**

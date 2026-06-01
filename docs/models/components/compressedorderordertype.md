@@ -1,6 +1,6 @@
 # CompressedOrderOrderType
 
-The execution type of this order. Only MARKET is supported.
+The execution type of this order.
 
 ## Example Usage
 

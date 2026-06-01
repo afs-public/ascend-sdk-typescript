@@ -25,14 +25,7 @@ export enum MatchAttributes {
 export type MatchAttributesOpen = OpenEnum<typeof MatchAttributes>;
 
 /**
- * The match state for a profile, one of:
- *
- * @remarks
- * - `MATCH_UNSPECIFIED` - Default/Null value.
- * - `CONFIRMED_MATCH` - Match is confirmed.
- * - `POTENTIAL_MATCH` - Match is a potential.
- * - `NO_MATCH` - Match is confirmed not to be a match.
- * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
+ * The match state for a profile
  */
 export enum MatchState {
   MatchUnspecified = "MATCH_UNSPECIFIED",
@@ -42,14 +35,7 @@ export enum MatchState {
   Inconclusive = "INCONCLUSIVE",
 }
 /**
- * The match state for a profile, one of:
- *
- * @remarks
- * - `MATCH_UNSPECIFIED` - Default/Null value.
- * - `CONFIRMED_MATCH` - Match is confirmed.
- * - `POTENTIAL_MATCH` - Match is a potential.
- * - `NO_MATCH` - Match is confirmed not to be a match.
- * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
+ * The match state for a profile
  */
 export type MatchStateOpen = OpenEnum<typeof MatchState>;
 
@@ -81,40 +67,15 @@ export type WatchlistMatch = {
    */
   excludeFromScreening?: boolean | undefined;
   /**
-   * The attributes used in watchlist screening, one of:
-   *
-   * @remarks
-   * - `MATCH_ATTRIBUTE_UNSPECIFIED` - Default/Null value.
-   * - `NAME` - Matched on name.
-   * - `PHONE_NUMBER` - Matched on phone number.
-   * - `BIRTH_DATE` - Matched on birth date.
-   * - `IDENTIFICATION` - Matched on identification.
-   * - `EMAIL` - Matched on email.
-   * - `ADDRESS` - Matched on address.
+   * The attributes used in watchlist screening
    */
   matchAttributes?: Array<MatchAttributesOpen> | undefined;
   /**
-   * The match state for a profile, one of:
-   *
-   * @remarks
-   * - `MATCH_UNSPECIFIED` - Default/Null value.
-   * - `CONFIRMED_MATCH` - Match is confirmed.
-   * - `POTENTIAL_MATCH` - Match is a potential.
-   * - `NO_MATCH` - Match is confirmed not to be a match.
-   * - `INCONCLUSIVE` - Match is deemed to be inconclusive.
+   * The match state for a profile
    */
   matchState?: MatchStateOpen | undefined;
   /**
-   * The type of watchlist match, one of:
-   *
-   * @remarks
-   * - `MATCH_TYPE_UNSPECIFIED` - Default/Null value.
-   * - `NON_OFAC_SANCTIONS` - Matched on a non OFAC sanctions list.
-   * - `RELATIVE_OR_CLOSE_ASSOCIATE` - Matched on a relative or close associate.
-   * - `OFAC_SANCTIONS` - Matched on a OFAC sanctions list.
-   * - `POLITICALLY_EXPOSED_PERSON` - Matched on a politically exposed person list.
-   * - `DNDB` - Matched on a do not do business list.
-   * - `NEGATIVE_NEWS` - Matched on a negative news list.
+   * The type of watchlist match
    */
   matchTypes?: Array<MatchTypesOpen> | undefined;
   /**

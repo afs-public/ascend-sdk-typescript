@@ -416,6 +416,7 @@ export * from "./security.js";
 export * from "./setaccountaccreditationtyperequestcreate.js";
 export * from "./setextrareportingdatarequestcreate.js";
 export * from "./setextrareportingdataresponse.js";
+export * from "./setoptionextrareportingdatarequestcreate.js";
 export * from "./settlealternativeorderrequestcreate.js";
 export * from "./simulatecreatecheckdepositrequestcreate.js";
 export * from "./simulatewiredepositrequestcreate.js";

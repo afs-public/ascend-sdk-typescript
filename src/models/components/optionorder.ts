@@ -41,6 +41,21 @@ export type OptionOrderBrokerCapacityOpen = OpenEnum<
 >;
 
 /**
+ * Whether the cancel was initiated by the correspondent firm (FIRM) or the customer (CLIENT). Populated from the CancelOptionOrderRequest.
+ */
+export enum OptionOrderCancelInitiator {
+  InitiatorUnspecified = "INITIATOR_UNSPECIFIED",
+  Firm = "FIRM",
+  Client = "CLIENT",
+}
+/**
+ * Whether the cancel was initiated by the correspondent firm (FIRM) or the customer (CLIENT). Populated from the CancelOptionOrderRequest.
+ */
+export type OptionOrderCancelInitiatorOpen = OpenEnum<
+  typeof OptionOrderCancelInitiator
+>;
+
+/**
  * Used to denote when a cancel request has been rejected.
  */
 export enum OptionOrderCancelRejectedReason {
@@ -86,6 +101,13 @@ export enum CumulativeNotionalValueDirection {
 export type CumulativeNotionalValueDirectionOpen = OpenEnum<
   typeof CumulativeNotionalValueDirection
 >;
+
+/**
+ * Post-cancel reporting data provided via the SetOptionExtraReportingData endpoint.
+ */
+export type OptionOrderExtraReportingData = {
+  cancelConfirmedTime?: Date | null | undefined;
+};
 
 /**
  * The limit price for this option order. For single-leg option orders, this is the price per contract which the filled order must match or beat. For multi-leg orders, this represents the amortized "price per unit" that must be matched or beat. (E.g. with a limit price of a $4 DEBIT, and an order with 2 legs that includes one leg buy 100 shares of SBX and another leg to sell 1 contract of SBX, then the fills will be guaranteed to result in no more than a $400--4 USD X 100 shares/contract--total debit against the ordering account.)
@@ -153,6 +175,7 @@ export enum OptionOrderOrderRejectedReason {
   InvalidOrderQuantity = "INVALID_ORDER_QUANTITY",
   ClientReceivedTimeRequired = "CLIENT_RECEIVED_TIME_REQUIRED",
   UnsupportedPriceValue = "UNSUPPORTED_PRICE_VALUE",
+  BoxTradesProhibited = "BOX_TRADES_PROHIBITED",
 }
 /**
  * When an option order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -281,6 +304,10 @@ export type OptionOrder = {
    */
   brokerCapacity?: OptionOrderBrokerCapacityOpen | undefined;
   /**
+   * Whether the cancel was initiated by the correspondent firm (FIRM) or the customer (CLIENT). Populated from the CancelOptionOrderRequest.
+   */
+  cancelInitiator?: OptionOrderCancelInitiatorOpen | undefined;
+  /**
    * Used to explain why an option order is canceled
    */
   cancelReason?: string | undefined;
@@ -289,6 +316,14 @@ export type OptionOrder = {
    */
   cancelRejectedReason?: OptionOrderCancelRejectedReasonOpen | undefined;
   /**
+   * The time the correspondent received the cancel instruction from the customer. Populated from the CancelOptionOrderRequest.
+   */
+  clientCancelReceivedTime?: Date | null | undefined;
+  /**
+   * The time the correspondent sent the cancel request. Populated from the CancelOptionOrderRequest.
+   */
+  clientCancelSentTime?: Date | null | undefined;
+  /**
    * User-supplied unique option order ID. Cannot be more than 40 characters long.
    */
   clientOrderId?: string | undefined;
@@ -296,6 +331,10 @@ export type OptionOrder = {
    * Required for any client who is having Apex do CAT reporting on their behalf.
    */
   clientReceivedTime?: Date | null | undefined;
+  /**
+   * The time the correspondent sent the original order to Apex. Set at order creation and cannot be modified. Required for correspondents using Apex CAT reporting services.
+   */
+  clientSentTime?: Date | null | undefined;
   /**
    * Time of the option order creation
    */
@@ -317,6 +356,10 @@ export type OptionOrder = {
    * Only "USD" is supported. Full list of currency codes is defined at: https://en.wikipedia.org/wiki/ISO_4217
    */
   currencyCode?: string | undefined;
+  /**
+   * Post-cancel reporting data provided via the SetOptionExtraReportingData endpoint.
+   */
+  extraReportingData?: OptionOrderExtraReportingData | null | undefined;
   /**
    * Fees that will be applied to this option order.
    */
@@ -407,6 +450,38 @@ export namespace OptionOrderBrokerCapacity$ {
   export const inboundSchema = OptionOrderBrokerCapacity$inboundSchema;
   /** @deprecated use `OptionOrderBrokerCapacity$outboundSchema` instead. */
   export const outboundSchema = OptionOrderBrokerCapacity$outboundSchema;
+}
+
+/** @internal */
+export const OptionOrderCancelInitiator$inboundSchema: z.ZodType<
+  OptionOrderCancelInitiatorOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(OptionOrderCancelInitiator),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const OptionOrderCancelInitiator$outboundSchema: z.ZodType<
+  OptionOrderCancelInitiatorOpen,
+  z.ZodTypeDef,
+  OptionOrderCancelInitiatorOpen
+> = z.union([
+  z.nativeEnum(OptionOrderCancelInitiator),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OptionOrderCancelInitiator$ {
+  /** @deprecated use `OptionOrderCancelInitiator$inboundSchema` instead. */
+  export const inboundSchema = OptionOrderCancelInitiator$inboundSchema;
+  /** @deprecated use `OptionOrderCancelInitiator$outboundSchema` instead. */
+  export const outboundSchema = OptionOrderCancelInitiator$outboundSchema;
 }
 
 /** @internal */
@@ -529,6 +604,73 @@ export namespace CumulativeNotionalValueDirection$ {
   export const inboundSchema = CumulativeNotionalValueDirection$inboundSchema;
   /** @deprecated use `CumulativeNotionalValueDirection$outboundSchema` instead. */
   export const outboundSchema = CumulativeNotionalValueDirection$outboundSchema;
+}
+
+/** @internal */
+export const OptionOrderExtraReportingData$inboundSchema: z.ZodType<
+  OptionOrderExtraReportingData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cancel_confirmed_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "cancel_confirmed_time": "cancelConfirmedTime",
+  });
+});
+
+/** @internal */
+export type OptionOrderExtraReportingData$Outbound = {
+  cancel_confirmed_time?: string | null | undefined;
+};
+
+/** @internal */
+export const OptionOrderExtraReportingData$outboundSchema: z.ZodType<
+  OptionOrderExtraReportingData$Outbound,
+  z.ZodTypeDef,
+  OptionOrderExtraReportingData
+> = z.object({
+  cancelConfirmedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    cancelConfirmedTime: "cancel_confirmed_time",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace OptionOrderExtraReportingData$ {
+  /** @deprecated use `OptionOrderExtraReportingData$inboundSchema` instead. */
+  export const inboundSchema = OptionOrderExtraReportingData$inboundSchema;
+  /** @deprecated use `OptionOrderExtraReportingData$outboundSchema` instead. */
+  export const outboundSchema = OptionOrderExtraReportingData$outboundSchema;
+  /** @deprecated use `OptionOrderExtraReportingData$Outbound` instead. */
+  export type Outbound = OptionOrderExtraReportingData$Outbound;
+}
+
+export function optionOrderExtraReportingDataToJSON(
+  optionOrderExtraReportingData: OptionOrderExtraReportingData,
+): string {
+  return JSON.stringify(
+    OptionOrderExtraReportingData$outboundSchema.parse(
+      optionOrderExtraReportingData,
+    ),
+  );
+}
+
+export function optionOrderExtraReportingDataFromJSON(
+  jsonString: string,
+): SafeParseResult<OptionOrderExtraReportingData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OptionOrderExtraReportingData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionOrderExtraReportingData' from JSON`,
+  );
 }
 
 /** @internal */
@@ -901,11 +1043,21 @@ export const OptionOrder$inboundSchema: z.ZodType<
 > = z.object({
   account_id: z.string().optional(),
   broker_capacity: OptionOrderBrokerCapacity$inboundSchema.optional(),
+  cancel_initiator: OptionOrderCancelInitiator$inboundSchema.optional(),
   cancel_reason: z.string().optional(),
   cancel_rejected_reason: OptionOrderCancelRejectedReason$inboundSchema
     .optional(),
+  client_cancel_received_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  client_cancel_sent_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   client_order_id: z.string().optional(),
   client_received_time: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  client_sent_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   create_time: z.nullable(
@@ -917,6 +1069,9 @@ export const OptionOrder$inboundSchema: z.ZodType<
   cumulative_notional_value_direction:
     CumulativeNotionalValueDirection$inboundSchema.optional(),
   currency_code: z.string().optional(),
+  extra_reporting_data: z.nullable(
+    z.lazy(() => OptionOrderExtraReportingData$inboundSchema),
+  ).optional(),
   fees: z.array(TradingFee$inboundSchema).optional(),
   last_update_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -943,14 +1098,19 @@ export const OptionOrder$inboundSchema: z.ZodType<
   return remap$(v, {
     "account_id": "accountId",
     "broker_capacity": "brokerCapacity",
+    "cancel_initiator": "cancelInitiator",
     "cancel_reason": "cancelReason",
     "cancel_rejected_reason": "cancelRejectedReason",
+    "client_cancel_received_time": "clientCancelReceivedTime",
+    "client_cancel_sent_time": "clientCancelSentTime",
     "client_order_id": "clientOrderId",
     "client_received_time": "clientReceivedTime",
+    "client_sent_time": "clientSentTime",
     "create_time": "createTime",
     "cumulative_notional_value": "cumulativeNotionalValue",
     "cumulative_notional_value_direction": "cumulativeNotionalValueDirection",
     "currency_code": "currencyCode",
+    "extra_reporting_data": "extraReportingData",
     "last_update_time": "lastUpdateTime",
     "limit_price": "limitPrice",
     "option_order_id": "optionOrderId",
@@ -968,10 +1128,14 @@ export const OptionOrder$inboundSchema: z.ZodType<
 export type OptionOrder$Outbound = {
   account_id?: string | undefined;
   broker_capacity?: string | undefined;
+  cancel_initiator?: string | undefined;
   cancel_reason?: string | undefined;
   cancel_rejected_reason?: string | undefined;
+  client_cancel_received_time?: string | null | undefined;
+  client_cancel_sent_time?: string | null | undefined;
   client_order_id?: string | undefined;
   client_received_time?: string | null | undefined;
+  client_sent_time?: string | null | undefined;
   create_time?: string | null | undefined;
   cumulative_notional_value?:
     | OptionOrderCumulativeNotionalValue$Outbound
@@ -979,6 +1143,10 @@ export type OptionOrder$Outbound = {
     | undefined;
   cumulative_notional_value_direction?: string | undefined;
   currency_code?: string | undefined;
+  extra_reporting_data?:
+    | OptionOrderExtraReportingData$Outbound
+    | null
+    | undefined;
   fees?: Array<TradingFee$Outbound> | undefined;
   last_update_time?: string | null | undefined;
   legs?: Array<OptionOrderLeg$Outbound> | undefined;
@@ -1003,11 +1171,18 @@ export const OptionOrder$outboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string().optional(),
   brokerCapacity: OptionOrderBrokerCapacity$outboundSchema.optional(),
+  cancelInitiator: OptionOrderCancelInitiator$outboundSchema.optional(),
   cancelReason: z.string().optional(),
   cancelRejectedReason: OptionOrderCancelRejectedReason$outboundSchema
     .optional(),
+  clientCancelReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  clientCancelSentTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   clientOrderId: z.string().optional(),
   clientReceivedTime: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
+  clientSentTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   cumulativeNotionalValue: z.nullable(
@@ -1016,6 +1191,9 @@ export const OptionOrder$outboundSchema: z.ZodType<
   cumulativeNotionalValueDirection:
     CumulativeNotionalValueDirection$outboundSchema.optional(),
   currencyCode: z.string().optional(),
+  extraReportingData: z.nullable(
+    z.lazy(() => OptionOrderExtraReportingData$outboundSchema),
+  ).optional(),
   fees: z.array(TradingFee$outboundSchema).optional(),
   lastUpdateTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
@@ -1040,14 +1218,19 @@ export const OptionOrder$outboundSchema: z.ZodType<
   return remap$(v, {
     accountId: "account_id",
     brokerCapacity: "broker_capacity",
+    cancelInitiator: "cancel_initiator",
     cancelReason: "cancel_reason",
     cancelRejectedReason: "cancel_rejected_reason",
+    clientCancelReceivedTime: "client_cancel_received_time",
+    clientCancelSentTime: "client_cancel_sent_time",
     clientOrderId: "client_order_id",
     clientReceivedTime: "client_received_time",
+    clientSentTime: "client_sent_time",
     createTime: "create_time",
     cumulativeNotionalValue: "cumulative_notional_value",
     cumulativeNotionalValueDirection: "cumulative_notional_value_direction",
     currencyCode: "currency_code",
+    extraReportingData: "extra_reporting_data",
     lastUpdateTime: "last_update_time",
     limitPrice: "limit_price",
     optionOrderId: "option_order_id",

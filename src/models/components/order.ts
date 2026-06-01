@@ -338,6 +338,14 @@ export enum OrderRejectedReason {
   AssetNotSetUpForRoundUps = "ASSET_NOT_SET_UP_FOR_ROUND_UPS",
   BelowRoundUpMinimum = "BELOW_ROUND_UP_MINIMUM",
   StopPriceBelowMarketPrice = "STOP_PRICE_BELOW_MARKET_PRICE",
+  PositionThresholdViolation = "POSITION_THRESHOLD_VIOLATION",
+  UnsupportedPriceValue = "UNSUPPORTED_PRICE_VALUE",
+  AssetNotShortable = "ASSET_NOT_SHORTABLE",
+  BoxTradesProhibited = "BOX_TRADES_PROHIBITED",
+  DeskOrderNotAllowed = "DESK_ORDER_NOT_ALLOWED",
+  UnsupportedTradingSessionForAsset = "UNSUPPORTED_TRADING_SESSION_FOR_ASSET",
+  UnsupportedOrderTypeForAsset = "UNSUPPORTED_ORDER_TYPE_FOR_ASSET",
+  UnsupportedTimeInForceForAsset = "UNSUPPORTED_TIME_IN_FORCE_FOR_ASSET",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -653,7 +661,7 @@ export type Order = {
    */
   identifier?: string | undefined;
   /**
-   * A string attribute denoting the country of issuance or where the asset is trading. * Only available for Mutual Fund and Fixed Income orders. * Only available when the identifier_type is SYMBOL or CUSIP. * Defaults to US when the identifier_type is SYMBOL or CUSIP. * Complies with ISO-3166 Alpha-2 Codes
+   * A string attribute denoting the country of issuance or where the asset is trading. * Only available for Mutual Fund and Fixed Income orders. * Only available when the identifier_type is SYMBOL or CUSIP. * Defaults to US when the identifier_type is SYMBOL or CUSIP. * Complies with ISO-3166 Alpha-2 Codes * identifier_issuing_region_code should match the issuing_region_code from the Assets API or the order will be REJECTED
    */
   identifierIssuingRegionCode?: string | undefined;
   /**
