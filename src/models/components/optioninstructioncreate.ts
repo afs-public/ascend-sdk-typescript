@@ -59,6 +59,10 @@ export type OptionInstructionCreate = {
    */
   accountId: string;
   /**
+   * Client-provided reference for tracking and duplicate detection on the client side
+   */
+  clientReference?: string | undefined;
+  /**
    * The asset identifier
    */
   identifier: string;
@@ -155,6 +159,7 @@ export const OptionInstructionCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   account_id: z.string(),
+  client_reference: z.string().optional(),
   identifier: z.string(),
   identifier_type: OptionInstructionCreateIdentifierType$inboundSchema,
   quantity: DecimalCreate$inboundSchema,
@@ -162,6 +167,7 @@ export const OptionInstructionCreate$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
+    "client_reference": "clientReference",
     "identifier_type": "identifierType",
   });
 });
@@ -169,6 +175,7 @@ export const OptionInstructionCreate$inboundSchema: z.ZodType<
 /** @internal */
 export type OptionInstructionCreate$Outbound = {
   account_id: string;
+  client_reference?: string | undefined;
   identifier: string;
   identifier_type: string;
   quantity: DecimalCreate$Outbound;
@@ -182,6 +189,7 @@ export const OptionInstructionCreate$outboundSchema: z.ZodType<
   OptionInstructionCreate
 > = z.object({
   accountId: z.string(),
+  clientReference: z.string().optional(),
   identifier: z.string(),
   identifierType: OptionInstructionCreateIdentifierType$outboundSchema,
   quantity: DecimalCreate$outboundSchema,
@@ -189,6 +197,7 @@ export const OptionInstructionCreate$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",
+    clientReference: "client_reference",
     identifierType: "identifier_type",
   });
 });

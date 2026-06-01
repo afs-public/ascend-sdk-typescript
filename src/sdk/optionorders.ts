@@ -5,6 +5,7 @@
 import { optionOrdersCancelOptionOrder } from "../funcs/optionOrdersCancelOptionOrder.js";
 import { optionOrdersCreateOptionOrder } from "../funcs/optionOrdersCreateOptionOrder.js";
 import { optionOrdersGetOptionOrder } from "../funcs/optionOrdersGetOptionOrder.js";
+import { optionOrdersSetOptionExtraReportingData } from "../funcs/optionOrdersSetOptionExtraReportingData.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -72,6 +73,30 @@ export class OptionOrders extends ClientSDK {
     return unwrapAsync(optionOrdersCancelOptionOrder(
       this,
       cancelOptionOrderRequestCreate,
+      accountId,
+      optionOrderId,
+      options,
+    ));
+  }
+
+  /**
+   * Set Option Extra Reporting Data
+   *
+   * @remarks
+   * Sets post-cancel reporting data for an option order.
+   *
+   *  The option order must be in a canceled or pending_cancel state. Requires the option order resource name and the cancel_confirmed_time. If cancel_confirmed_time has already been set by a prior call, the existing value is preserved and the response reflects the original value.
+   */
+  async setOptionExtraReportingData(
+    setOptionExtraReportingDataRequestCreate:
+      components.SetOptionExtraReportingDataRequestCreate,
+    accountId: string,
+    optionOrderId: string,
+    options?: RequestOptions,
+  ): Promise<operations.OptionOrderServiceSetOptionExtraReportingDataResponse> {
+    return unwrapAsync(optionOrdersSetOptionExtraReportingData(
+      this,
+      setOptionExtraReportingDataRequestCreate,
       accountId,
       optionOrderId,
       options,

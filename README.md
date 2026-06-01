@@ -519,6 +519,7 @@ const sdk = new Apexascend({ httpClient });
 * [createOptionOrder](docs/sdks/optionorders/README.md#createoptionorder) - Create Option Order
 * [getOptionOrder](docs/sdks/optionorders/README.md#getoptionorder) - Get Option Order
 * [cancelOptionOrder](docs/sdks/optionorders/README.md#canceloptionorder) - Cancel Option Order
+* [setOptionExtraReportingData](docs/sdks/optionorders/README.md#setoptionextrareportingdata) - Set Option Extra Reporting Data
 
 ### [orders](docs/sdks/orders/README.md)
 

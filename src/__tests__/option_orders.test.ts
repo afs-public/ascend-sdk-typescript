@@ -131,3 +131,30 @@ test("Test Option Order Service Cancel Option Order", async () => {
     }
   }
 });
+
+test("Test Option Order Service Set Option Extra Reporting Data", async () => {
+  expect(option_order_id).toBeDefined();
+
+  const request: components.SetOptionExtraReportingDataRequestCreate = {
+    cancelConfirmedTime: new Date(),
+    name: `accounts/${account_id}/optionOrders/${option_order_id}`,
+  };
+
+  try {
+    const result = await sdk.optionOrders.setOptionExtraReportingData(
+      request,
+      account_id || "",
+      option_order_id || "",
+    );
+
+    expect(result).toBeDefined();
+    expect(result.httpMeta.response.status).toBe(200);
+  } catch (err) {
+    if (err instanceof errors.Status) {
+      // FAILED_PRECONDITION - order not in canceled/pending_cancel state
+      expect([9, 5]).toContain(err.code);
+    } else {
+      throw err;
+    }
+  }
+});

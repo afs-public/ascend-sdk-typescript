@@ -183,6 +183,7 @@ export * from "./marginsrealtimegetbuyingpower.js";
 export * from "./optionorderservicecanceloptionorder.js";
 export * from "./optionorderservicecreateoptionorder.js";
 export * from "./optionorderservicegetoptionorder.js";
+export * from "./optionorderservicesetoptionextrareportingdata.js";
 export * from "./orderpriceservicepreviewordercost.js";
 export * from "./orderpriceserviceretrievefixedincomemarks.js";
 export * from "./orderpriceserviceretrievequote.js";

@@ -79,6 +79,10 @@ export type OptionInstruction = {
    */
   accountId?: string | undefined;
   /**
+   * Client-provided reference for tracking and duplicate detection on the client side
+   */
+  clientReference?: string | undefined;
+  /**
    * The time the instruction was created
    */
   createTime?: Date | null | undefined;
@@ -277,6 +281,7 @@ export const OptionInstruction$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   account_id: z.string().optional(),
+  client_reference: z.string().optional(),
   create_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -295,6 +300,7 @@ export const OptionInstruction$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
+    "client_reference": "clientReference",
     "create_time": "createTime",
     "identifier_type": "identifierType",
     "instruction_id": "instructionId",
@@ -306,6 +312,7 @@ export const OptionInstruction$inboundSchema: z.ZodType<
 /** @internal */
 export type OptionInstruction$Outbound = {
   account_id?: string | undefined;
+  client_reference?: string | undefined;
   create_time?: string | null | undefined;
   identifier?: string | undefined;
   identifier_type?: string | undefined;
@@ -325,6 +332,7 @@ export const OptionInstruction$outboundSchema: z.ZodType<
   OptionInstruction
 > = z.object({
   accountId: z.string().optional(),
+  clientReference: z.string().optional(),
   createTime: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   identifier: z.string().optional(),
   identifierType: OptionInstructionIdentifierType$outboundSchema.optional(),
@@ -339,6 +347,7 @@ export const OptionInstruction$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",
+    clientReference: "client_reference",
     createTime: "create_time",
     identifierType: "identifier_type",
     instructionId: "instruction_id",

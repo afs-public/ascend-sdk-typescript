@@ -47,4 +47,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `InvalidOrderQuantity`                                    | INVALID_ORDER_QUANTITY                                    |
 | `ClientReceivedTimeRequired`                              | CLIENT_RECEIVED_TIME_REQUIRED                             |
 | `UnsupportedPriceValue`                                   | UNSUPPORTED_PRICE_VALUE                                   |
+| `BoxTradesProhibited`                                     | BOX_TRADES_PROHIBITED                                     |
 | -                                                         | `Unrecognized<string>`                                    |

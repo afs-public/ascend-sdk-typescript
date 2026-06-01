@@ -247,7 +247,7 @@ export type OrderCreate = {
    */
   identifier: string;
   /**
-   * A string attribute denoting the country of issuance or where the asset is trading. * Only available for Mutual Fund and Fixed Income orders. * Only available when the identifier_type is SYMBOL or CUSIP. * Defaults to US when the identifier_type is SYMBOL or CUSIP. * Complies with ISO-3166 Alpha-2 Codes
+   * A string attribute denoting the country of issuance or where the asset is trading. * Only available for Mutual Fund and Fixed Income orders. * Only available when the identifier_type is SYMBOL or CUSIP. * Defaults to US when the identifier_type is SYMBOL or CUSIP. * Complies with ISO-3166 Alpha-2 Codes * identifier_issuing_region_code should match the issuing_region_code from the Assets API or the order will be REJECTED
    */
   identifierIssuingRegionCode?: string | undefined;
   /**

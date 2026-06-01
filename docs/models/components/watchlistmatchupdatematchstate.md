@@ -1,11 +1,6 @@
 # WatchlistMatchUpdateMatchState
 
-The match state for a profile, one of:
-- `MATCH_UNSPECIFIED` - Default/Null value.
-- `CONFIRMED_MATCH` - Match is confirmed.
-- `POTENTIAL_MATCH` - Match is a potential.
-- `NO_MATCH` - Match is confirmed not to be a match.
-- `INCONCLUSIVE` - Match is deemed to be inconclusive.
+The match state for a profile
 
 ## Example Usage
 
