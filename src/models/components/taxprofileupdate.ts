@@ -85,6 +85,10 @@ export type TaxProfileUpdate = {
    */
   legalTaxRegionCode?: string | undefined;
   /**
+   * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
+   */
+  treatyBenefitsRequested?: boolean | undefined;
+  /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
   usTinStatus?: TaxProfileUpdateUsTinStatusOpen | undefined;
@@ -198,12 +202,14 @@ export const TaxProfileUpdate$inboundSchema: z.ZodType<
     TaxProfileUpdateFederalTaxClassification$inboundSchema.optional(),
   irs_form_type: TaxProfileUpdateIrsFormType$inboundSchema.optional(),
   legal_tax_region_code: z.string().optional(),
+  treaty_benefits_requested: z.boolean().optional(),
   us_tin_status: TaxProfileUpdateUsTinStatus$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "federal_tax_classification": "federalTaxClassification",
     "irs_form_type": "irsFormType",
     "legal_tax_region_code": "legalTaxRegionCode",
+    "treaty_benefits_requested": "treatyBenefitsRequested",
     "us_tin_status": "usTinStatus",
   });
 });
@@ -213,6 +219,7 @@ export type TaxProfileUpdate$Outbound = {
   federal_tax_classification?: string | undefined;
   irs_form_type?: string | undefined;
   legal_tax_region_code?: string | undefined;
+  treaty_benefits_requested?: boolean | undefined;
   us_tin_status?: string | undefined;
 };
 
@@ -226,12 +233,14 @@ export const TaxProfileUpdate$outboundSchema: z.ZodType<
     TaxProfileUpdateFederalTaxClassification$outboundSchema.optional(),
   irsFormType: TaxProfileUpdateIrsFormType$outboundSchema.optional(),
   legalTaxRegionCode: z.string().optional(),
+  treatyBenefitsRequested: z.boolean().optional(),
   usTinStatus: TaxProfileUpdateUsTinStatus$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     federalTaxClassification: "federal_tax_classification",
     irsFormType: "irs_form_type",
     legalTaxRegionCode: "legal_tax_region_code",
+    treatyBenefitsRequested: "treaty_benefits_requested",
     usTinStatus: "us_tin_status",
   });
 });

@@ -401,6 +401,8 @@ export enum LegalEntityTaxpayerCertificationState {
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
   PendingCertification = "PENDING_CERTIFICATION",
+  CertifiedWithBenefits = "CERTIFIED_WITH_BENEFITS",
+  PendingConsent = "PENDING_CONSENT",
 }
 /**
  * Taxpayer certification status.
@@ -481,6 +483,10 @@ export type LegalEntityTaxProfile = {
   taxpayerCertificationState?:
     | LegalEntityTaxpayerCertificationStateOpen
     | undefined;
+  /**
+   * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
+   */
+  treatyBenefitsRequested?: boolean | undefined;
   /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
@@ -1644,6 +1650,7 @@ export const LegalEntityTaxProfile$inboundSchema: z.ZodType<
   ).optional(),
   taxpayer_certification_state:
     LegalEntityTaxpayerCertificationState$inboundSchema.optional(),
+  treaty_benefits_requested: z.boolean().optional(),
   us_tin_status: LegalEntityUsTinStatus$inboundSchema.optional(),
   withholding_state: LegalEntityWithholdingState$inboundSchema.optional(),
 }).transform((v) => {
@@ -1656,6 +1663,7 @@ export const LegalEntityTaxProfile$inboundSchema: z.ZodType<
     "reporting_eligibility": "reportingEligibility",
     "tax_certification_date": "taxCertificationDate",
     "taxpayer_certification_state": "taxpayerCertificationState",
+    "treaty_benefits_requested": "treatyBenefitsRequested",
     "us_tin_status": "usTinStatus",
     "withholding_state": "withholdingState",
   });
@@ -1674,6 +1682,7 @@ export type LegalEntityTaxProfile$Outbound = {
     | null
     | undefined;
   taxpayer_certification_state?: string | undefined;
+  treaty_benefits_requested?: boolean | undefined;
   us_tin_status?: string | undefined;
   withholding_state?: string | undefined;
 };
@@ -1700,6 +1709,7 @@ export const LegalEntityTaxProfile$outboundSchema: z.ZodType<
   ).optional(),
   taxpayerCertificationState:
     LegalEntityTaxpayerCertificationState$outboundSchema.optional(),
+  treatyBenefitsRequested: z.boolean().optional(),
   usTinStatus: LegalEntityUsTinStatus$outboundSchema.optional(),
   withholdingState: LegalEntityWithholdingState$outboundSchema.optional(),
 }).transform((v) => {
@@ -1712,6 +1722,7 @@ export const LegalEntityTaxProfile$outboundSchema: z.ZodType<
     reportingEligibility: "reporting_eligibility",
     taxCertificationDate: "tax_certification_date",
     taxpayerCertificationState: "taxpayer_certification_state",
+    treatyBenefitsRequested: "treaty_benefits_requested",
     usTinStatus: "us_tin_status",
     withholdingState: "withholding_state",
   });

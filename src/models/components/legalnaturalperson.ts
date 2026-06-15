@@ -310,6 +310,14 @@ export type LegalNaturalPersonIdentityVerificationResult = {
    */
   birthDateVerified?: boolean | undefined;
   /**
+   * Document IDs for identity documents that were directly verified by the client.
+   */
+  clientDirectlyVerifiedDocumentIds?: Array<string> | undefined;
+  /**
+   * Indicates whether the client has directly verified the identity documents (defaults to false).
+   */
+  clientDirectlyVerifiedIdDocs?: boolean | undefined;
+  /**
    * The datetime external identity verification results were run on a natural person
    */
   executionDate?: ExecutionDate | null | undefined;
@@ -721,6 +729,8 @@ export enum TaxpayerCertificationState {
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
   PendingCertification = "PENDING_CERTIFICATION",
+  CertifiedWithBenefits = "CERTIFIED_WITH_BENEFITS",
+  PendingConsent = "PENDING_CONSENT",
 }
 /**
  * Taxpayer certification status.
@@ -799,6 +809,10 @@ export type TaxProfile = {
    * Taxpayer certification status.
    */
   taxpayerCertificationState?: TaxpayerCertificationStateOpen | undefined;
+  /**
+   * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
+   */
+  treatyBenefitsRequested?: boolean | undefined;
   /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
@@ -1601,6 +1615,8 @@ export const LegalNaturalPersonIdentityVerificationResult$inboundSchema:
   > = z.object({
     address_verified: z.boolean().optional(),
     birth_date_verified: z.boolean().optional(),
+    client_directly_verified_document_ids: z.array(z.string()).optional(),
+    client_directly_verified_id_docs: z.boolean().optional(),
     execution_date: z.nullable(z.lazy(() => ExecutionDate$inboundSchema))
       .optional(),
     external_case_id: z.string().optional(),
@@ -1614,6 +1630,9 @@ export const LegalNaturalPersonIdentityVerificationResult$inboundSchema:
     return remap$(v, {
       "address_verified": "addressVerified",
       "birth_date_verified": "birthDateVerified",
+      "client_directly_verified_document_ids":
+        "clientDirectlyVerifiedDocumentIds",
+      "client_directly_verified_id_docs": "clientDirectlyVerifiedIdDocs",
       "execution_date": "executionDate",
       "external_case_id": "externalCaseId",
       "identity_verification_document_ids": "identityVerificationDocumentIds",
@@ -1628,6 +1647,8 @@ export const LegalNaturalPersonIdentityVerificationResult$inboundSchema:
 export type LegalNaturalPersonIdentityVerificationResult$Outbound = {
   address_verified?: boolean | undefined;
   birth_date_verified?: boolean | undefined;
+  client_directly_verified_document_ids?: Array<string> | undefined;
+  client_directly_verified_id_docs?: boolean | undefined;
   execution_date?: ExecutionDate$Outbound | null | undefined;
   external_case_id?: string | undefined;
   identity_verification_document_ids?: Array<string> | undefined;
@@ -1647,6 +1668,8 @@ export const LegalNaturalPersonIdentityVerificationResult$outboundSchema:
   > = z.object({
     addressVerified: z.boolean().optional(),
     birthDateVerified: z.boolean().optional(),
+    clientDirectlyVerifiedDocumentIds: z.array(z.string()).optional(),
+    clientDirectlyVerifiedIdDocs: z.boolean().optional(),
     executionDate: z.nullable(z.lazy(() => ExecutionDate$outboundSchema))
       .optional(),
     externalCaseId: z.string().optional(),
@@ -1660,6 +1683,9 @@ export const LegalNaturalPersonIdentityVerificationResult$outboundSchema:
     return remap$(v, {
       addressVerified: "address_verified",
       birthDateVerified: "birth_date_verified",
+      clientDirectlyVerifiedDocumentIds:
+        "client_directly_verified_document_ids",
+      clientDirectlyVerifiedIdDocs: "client_directly_verified_id_docs",
       executionDate: "execution_date",
       externalCaseId: "external_case_id",
       identityVerificationDocumentIds: "identity_verification_document_ids",
@@ -2835,6 +2861,7 @@ export const TaxProfile$inboundSchema: z.ZodType<
   ).optional(),
   taxpayer_certification_state: TaxpayerCertificationState$inboundSchema
     .optional(),
+  treaty_benefits_requested: z.boolean().optional(),
   us_tin_status: LegalNaturalPersonUsTinStatus$inboundSchema.optional(),
   withholding_state: LegalNaturalPersonWithholdingState$inboundSchema
     .optional(),
@@ -2848,6 +2875,7 @@ export const TaxProfile$inboundSchema: z.ZodType<
     "reporting_eligibility": "reportingEligibility",
     "tax_certification_date": "taxCertificationDate",
     "taxpayer_certification_state": "taxpayerCertificationState",
+    "treaty_benefits_requested": "treatyBenefitsRequested",
     "us_tin_status": "usTinStatus",
     "withholding_state": "withholdingState",
   });
@@ -2863,6 +2891,7 @@ export type TaxProfile$Outbound = {
   reporting_eligibility?: string | undefined;
   tax_certification_date?: TaxCertificationDate$Outbound | null | undefined;
   taxpayer_certification_state?: string | undefined;
+  treaty_benefits_requested?: boolean | undefined;
   us_tin_status?: string | undefined;
   withholding_state?: string | undefined;
 };
@@ -2886,6 +2915,7 @@ export const TaxProfile$outboundSchema: z.ZodType<
   ).optional(),
   taxpayerCertificationState: TaxpayerCertificationState$outboundSchema
     .optional(),
+  treatyBenefitsRequested: z.boolean().optional(),
   usTinStatus: LegalNaturalPersonUsTinStatus$outboundSchema.optional(),
   withholdingState: LegalNaturalPersonWithholdingState$outboundSchema
     .optional(),
@@ -2899,6 +2929,7 @@ export const TaxProfile$outboundSchema: z.ZodType<
     reportingEligibility: "reporting_eligibility",
     taxCertificationDate: "tax_certification_date",
     taxpayerCertificationState: "taxpayer_certification_state",
+    treatyBenefitsRequested: "treaty_benefits_requested",
     usTinStatus: "us_tin_status",
     withholdingState: "withholding_state",
   });

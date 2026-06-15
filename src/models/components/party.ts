@@ -415,6 +415,8 @@ export enum PartyTaxpayerCertificationState {
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
   PendingCertification = "PENDING_CERTIFICATION",
+  CertifiedWithBenefits = "CERTIFIED_WITH_BENEFITS",
+  PendingConsent = "PENDING_CONSENT",
 }
 /**
  * Taxpayer certification status.
@@ -487,6 +489,10 @@ export type PartyTaxProfile = {
    * Taxpayer certification status.
    */
   taxpayerCertificationState?: PartyTaxpayerCertificationStateOpen | undefined;
+  /**
+   * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
+   */
+  treatyBenefitsRequested?: boolean | undefined;
   /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
@@ -955,6 +961,14 @@ export type PartyIdentityVerificationResult = {
    */
   birthDateVerified?: boolean | undefined;
   /**
+   * Document IDs for identity documents that were directly verified by the client.
+   */
+  clientDirectlyVerifiedDocumentIds?: Array<string> | undefined;
+  /**
+   * Indicates whether the client has directly verified the identity documents (defaults to false).
+   */
+  clientDirectlyVerifiedIdDocs?: boolean | undefined;
+  /**
    * The datetime external identity verification results were run on a natural person
    */
   executionDate?: PartyExecutionDate | null | undefined;
@@ -1362,6 +1376,8 @@ export enum PartyLegalNaturalPersonTaxpayerCertificationState {
   Certified = "CERTIFIED",
   Uncertified = "UNCERTIFIED",
   PendingCertification = "PENDING_CERTIFICATION",
+  CertifiedWithBenefits = "CERTIFIED_WITH_BENEFITS",
+  PendingConsent = "PENDING_CONSENT",
 }
 /**
  * Taxpayer certification status.
@@ -1447,6 +1463,10 @@ export type PartyLegalNaturalPersonTaxProfile = {
   taxpayerCertificationState?:
     | PartyLegalNaturalPersonTaxpayerCertificationStateOpen
     | undefined;
+  /**
+   * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
+   */
+  treatyBenefitsRequested?: boolean | undefined;
   /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
@@ -2958,6 +2978,7 @@ export const PartyTaxProfile$inboundSchema: z.ZodType<
   ).optional(),
   taxpayer_certification_state: PartyTaxpayerCertificationState$inboundSchema
     .optional(),
+  treaty_benefits_requested: z.boolean().optional(),
   us_tin_status: PartyUsTinStatus$inboundSchema.optional(),
   withholding_state: PartyWithholdingState$inboundSchema.optional(),
 }).transform((v) => {
@@ -2970,6 +2991,7 @@ export const PartyTaxProfile$inboundSchema: z.ZodType<
     "reporting_eligibility": "reportingEligibility",
     "tax_certification_date": "taxCertificationDate",
     "taxpayer_certification_state": "taxpayerCertificationState",
+    "treaty_benefits_requested": "treatyBenefitsRequested",
     "us_tin_status": "usTinStatus",
     "withholding_state": "withholdingState",
   });
@@ -2988,6 +3010,7 @@ export type PartyTaxProfile$Outbound = {
     | null
     | undefined;
   taxpayer_certification_state?: string | undefined;
+  treaty_benefits_requested?: boolean | undefined;
   us_tin_status?: string | undefined;
   withholding_state?: string | undefined;
 };
@@ -3013,6 +3036,7 @@ export const PartyTaxProfile$outboundSchema: z.ZodType<
   ).optional(),
   taxpayerCertificationState: PartyTaxpayerCertificationState$outboundSchema
     .optional(),
+  treatyBenefitsRequested: z.boolean().optional(),
   usTinStatus: PartyUsTinStatus$outboundSchema.optional(),
   withholdingState: PartyWithholdingState$outboundSchema.optional(),
 }).transform((v) => {
@@ -3025,6 +3049,7 @@ export const PartyTaxProfile$outboundSchema: z.ZodType<
     reportingEligibility: "reporting_eligibility",
     taxCertificationDate: "tax_certification_date",
     taxpayerCertificationState: "taxpayer_certification_state",
+    treatyBenefitsRequested: "treaty_benefits_requested",
     usTinStatus: "us_tin_status",
     withholdingState: "withholding_state",
   });
@@ -3931,6 +3956,8 @@ export const PartyIdentityVerificationResult$inboundSchema: z.ZodType<
 > = z.object({
   address_verified: z.boolean().optional(),
   birth_date_verified: z.boolean().optional(),
+  client_directly_verified_document_ids: z.array(z.string()).optional(),
+  client_directly_verified_id_docs: z.boolean().optional(),
   execution_date: z.nullable(z.lazy(() => PartyExecutionDate$inboundSchema))
     .optional(),
   external_case_id: z.string().optional(),
@@ -3944,6 +3971,9 @@ export const PartyIdentityVerificationResult$inboundSchema: z.ZodType<
   return remap$(v, {
     "address_verified": "addressVerified",
     "birth_date_verified": "birthDateVerified",
+    "client_directly_verified_document_ids":
+      "clientDirectlyVerifiedDocumentIds",
+    "client_directly_verified_id_docs": "clientDirectlyVerifiedIdDocs",
     "execution_date": "executionDate",
     "external_case_id": "externalCaseId",
     "identity_verification_document_ids": "identityVerificationDocumentIds",
@@ -3958,6 +3988,8 @@ export const PartyIdentityVerificationResult$inboundSchema: z.ZodType<
 export type PartyIdentityVerificationResult$Outbound = {
   address_verified?: boolean | undefined;
   birth_date_verified?: boolean | undefined;
+  client_directly_verified_document_ids?: Array<string> | undefined;
+  client_directly_verified_id_docs?: boolean | undefined;
   execution_date?: PartyExecutionDate$Outbound | null | undefined;
   external_case_id?: string | undefined;
   identity_verification_document_ids?: Array<string> | undefined;
@@ -3976,6 +4008,8 @@ export const PartyIdentityVerificationResult$outboundSchema: z.ZodType<
 > = z.object({
   addressVerified: z.boolean().optional(),
   birthDateVerified: z.boolean().optional(),
+  clientDirectlyVerifiedDocumentIds: z.array(z.string()).optional(),
+  clientDirectlyVerifiedIdDocs: z.boolean().optional(),
   executionDate: z.nullable(z.lazy(() => PartyExecutionDate$outboundSchema))
     .optional(),
   externalCaseId: z.string().optional(),
@@ -3989,6 +4023,8 @@ export const PartyIdentityVerificationResult$outboundSchema: z.ZodType<
   return remap$(v, {
     addressVerified: "address_verified",
     birthDateVerified: "birth_date_verified",
+    clientDirectlyVerifiedDocumentIds: "client_directly_verified_document_ids",
+    clientDirectlyVerifiedIdDocs: "client_directly_verified_id_docs",
     executionDate: "execution_date",
     externalCaseId: "external_case_id",
     identityVerificationDocumentIds: "identity_verification_document_ids",
@@ -5233,6 +5269,7 @@ export const PartyLegalNaturalPersonTaxProfile$inboundSchema: z.ZodType<
   ).optional(),
   taxpayer_certification_state:
     PartyLegalNaturalPersonTaxpayerCertificationState$inboundSchema.optional(),
+  treaty_benefits_requested: z.boolean().optional(),
   us_tin_status: PartyLegalNaturalPersonUsTinStatus$inboundSchema.optional(),
   withholding_state: PartyLegalNaturalPersonWithholdingState$inboundSchema
     .optional(),
@@ -5246,6 +5283,7 @@ export const PartyLegalNaturalPersonTaxProfile$inboundSchema: z.ZodType<
     "reporting_eligibility": "reportingEligibility",
     "tax_certification_date": "taxCertificationDate",
     "taxpayer_certification_state": "taxpayerCertificationState",
+    "treaty_benefits_requested": "treatyBenefitsRequested",
     "us_tin_status": "usTinStatus",
     "withholding_state": "withholdingState",
   });
@@ -5270,6 +5308,7 @@ export type PartyLegalNaturalPersonTaxProfile$Outbound = {
     | null
     | undefined;
   taxpayer_certification_state?: string | undefined;
+  treaty_benefits_requested?: boolean | undefined;
   us_tin_status?: string | undefined;
   withholding_state?: string | undefined;
 };
@@ -5297,6 +5336,7 @@ export const PartyLegalNaturalPersonTaxProfile$outboundSchema: z.ZodType<
   ).optional(),
   taxpayerCertificationState:
     PartyLegalNaturalPersonTaxpayerCertificationState$outboundSchema.optional(),
+  treatyBenefitsRequested: z.boolean().optional(),
   usTinStatus: PartyLegalNaturalPersonUsTinStatus$outboundSchema.optional(),
   withholdingState: PartyLegalNaturalPersonWithholdingState$outboundSchema
     .optional(),
@@ -5310,6 +5350,7 @@ export const PartyLegalNaturalPersonTaxProfile$outboundSchema: z.ZodType<
     reportingEligibility: "reporting_eligibility",
     taxCertificationDate: "tax_certification_date",
     taxpayerCertificationState: "taxpayer_certification_state",
+    treatyBenefitsRequested: "treaty_benefits_requested",
     usTinStatus: "us_tin_status",
     withholdingState: "withholding_state",
   });

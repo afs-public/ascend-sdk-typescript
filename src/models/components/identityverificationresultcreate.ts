@@ -27,6 +27,10 @@ export type IdentityVerificationResultCreate = {
    */
   birthDateVerified: boolean;
   /**
+   * Indicates whether the client has directly verified the identity documents (defaults to false).
+   */
+  clientDirectlyVerifiedIdDocs?: boolean | undefined;
+  /**
    * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
    *
    * @remarks
@@ -70,6 +74,7 @@ export const IdentityVerificationResultCreate$inboundSchema: z.ZodType<
 > = z.object({
   address_verified: z.boolean(),
   birth_date_verified: z.boolean(),
+  client_directly_verified_id_docs: z.boolean().optional(),
   execution_date: DateCreate$inboundSchema,
   external_case_id: z.string(),
   identity_verification_document_ids: z.array(z.string()).optional(),
@@ -81,6 +86,7 @@ export const IdentityVerificationResultCreate$inboundSchema: z.ZodType<
   return remap$(v, {
     "address_verified": "addressVerified",
     "birth_date_verified": "birthDateVerified",
+    "client_directly_verified_id_docs": "clientDirectlyVerifiedIdDocs",
     "execution_date": "executionDate",
     "external_case_id": "externalCaseId",
     "identity_verification_document_ids": "identityVerificationDocumentIds",
@@ -94,6 +100,7 @@ export const IdentityVerificationResultCreate$inboundSchema: z.ZodType<
 export type IdentityVerificationResultCreate$Outbound = {
   address_verified: boolean;
   birth_date_verified: boolean;
+  client_directly_verified_id_docs?: boolean | undefined;
   execution_date: DateCreate$Outbound;
   external_case_id: string;
   identity_verification_document_ids?: Array<string> | undefined;
@@ -111,6 +118,7 @@ export const IdentityVerificationResultCreate$outboundSchema: z.ZodType<
 > = z.object({
   addressVerified: z.boolean(),
   birthDateVerified: z.boolean(),
+  clientDirectlyVerifiedIdDocs: z.boolean().optional(),
   executionDate: DateCreate$outboundSchema,
   externalCaseId: z.string(),
   identityVerificationDocumentIds: z.array(z.string()).optional(),
@@ -122,6 +130,7 @@ export const IdentityVerificationResultCreate$outboundSchema: z.ZodType<
   return remap$(v, {
     addressVerified: "address_verified",
     birthDateVerified: "birth_date_verified",
+    clientDirectlyVerifiedIdDocs: "client_directly_verified_id_docs",
     executionDate: "execution_date",
     externalCaseId: "external_case_id",
     identityVerificationDocumentIds: "identity_verification_document_ids",
