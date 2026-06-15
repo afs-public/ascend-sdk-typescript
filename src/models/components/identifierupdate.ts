@@ -35,6 +35,10 @@ export type IdentifierUpdate = {
    * The type of identifier
    */
   type?: IdentifierUpdateTypeOpen | undefined;
+  /**
+   * The value of the identifier. Immutable for ORIGINATING_FDID and ORIGINATING_CAT_REPORTER_CRD; may be updated for ORIGINATING_ACCOUNT_ID and CLIENT_ACCOUNT_ID.
+   */
+  value?: string | undefined;
 };
 
 /** @internal */
@@ -76,11 +80,13 @@ export const IdentifierUpdate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   type: IdentifierUpdateType$inboundSchema.optional(),
+  value: z.string().optional(),
 });
 
 /** @internal */
 export type IdentifierUpdate$Outbound = {
   type?: string | undefined;
+  value?: string | undefined;
 };
 
 /** @internal */
@@ -90,6 +96,7 @@ export const IdentifierUpdate$outboundSchema: z.ZodType<
   IdentifierUpdate
 > = z.object({
   type: IdentifierUpdateType$outboundSchema.optional(),
+  value: z.string().optional(),
 });
 
 /**

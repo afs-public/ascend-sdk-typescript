@@ -79,6 +79,10 @@ export type TaxProfileCreate = {
    */
   legalTaxRegionCode: string;
   /**
+   * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
+   */
+  treatyBenefitsRequested?: boolean | undefined;
+  /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
   usTinStatus: UsTinStatusOpen;
@@ -189,12 +193,14 @@ export const TaxProfileCreate$inboundSchema: z.ZodType<
   federal_tax_classification: FederalTaxClassification$inboundSchema,
   irs_form_type: IrsFormType$inboundSchema,
   legal_tax_region_code: z.string(),
+  treaty_benefits_requested: z.boolean().optional(),
   us_tin_status: UsTinStatus$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "federal_tax_classification": "federalTaxClassification",
     "irs_form_type": "irsFormType",
     "legal_tax_region_code": "legalTaxRegionCode",
+    "treaty_benefits_requested": "treatyBenefitsRequested",
     "us_tin_status": "usTinStatus",
   });
 });
@@ -204,6 +210,7 @@ export type TaxProfileCreate$Outbound = {
   federal_tax_classification: string;
   irs_form_type: string;
   legal_tax_region_code: string;
+  treaty_benefits_requested?: boolean | undefined;
   us_tin_status: string;
 };
 
@@ -216,12 +223,14 @@ export const TaxProfileCreate$outboundSchema: z.ZodType<
   federalTaxClassification: FederalTaxClassification$outboundSchema,
   irsFormType: IrsFormType$outboundSchema,
   legalTaxRegionCode: z.string(),
+  treatyBenefitsRequested: z.boolean().optional(),
   usTinStatus: UsTinStatus$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     federalTaxClassification: "federal_tax_classification",
     irsFormType: "irs_form_type",
     legalTaxRegionCode: "legal_tax_region_code",
+    treatyBenefitsRequested: "treaty_benefits_requested",
     usTinStatus: "us_tin_status",
   });
 });

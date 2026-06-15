@@ -21,4 +21,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Certified`                              | CERTIFIED                                |
 | `Uncertified`                            | UNCERTIFIED                              |
 | `PendingCertification`                   | PENDING_CERTIFICATION                    |
+| `CertifiedWithBenefits`                  | CERTIFIED_WITH_BENEFITS                  |
+| `PendingConsent`                         | PENDING_CONSENT                          |
 | -                                        | `Unrecognized<string>`                   |
