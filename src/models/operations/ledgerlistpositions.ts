@@ -15,11 +15,11 @@ export type LedgerListPositionsRequest = {
    */
   accountId: string;
   /**
-   * The maximum number of positions to return. The service may return fewer than this value Default is 100 (subject to change) The maximum is 1000, values exceeding this will be set to 1000 (subject to change)
+   * The maximum number of positions to return. The service may return fewer than this valueDefault is 100 (subject to change)The maximum is 1000, values exceeding this will be set to 1000 (subject to change)
    */
   pageSize?: number | undefined;
   /**
-   * This page token comes from a previous `ListPositions` call; provide this token to retrieve the subsequent page When paginating, all other parameters you include in `ListPositions` must match the call that includes the page token to maintain a stable result set
+   * This page token comes from a previous `ListPositions` call; provide this token to retrieve the subsequent pageWhen paginating, all other parameters you include in `ListPositions` must match the call that includes the page token to maintain a stable result set
    */
   pageToken?: string | undefined;
   /**

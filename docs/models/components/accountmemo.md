@@ -22,4 +22,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `PendingOutgoingAcat`  | PENDING_OUTGOING_ACAT  |
 | `PendingDrip`          | PENDING_DRIP           |
 | `PendingWithdrawal`    | PENDING_WITHDRAWAL     |
+| `Short`                | SHORT                  |
 | -                      | `Unrecognized<string>` |

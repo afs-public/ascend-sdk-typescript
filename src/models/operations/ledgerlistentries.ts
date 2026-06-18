@@ -23,7 +23,12 @@ export type LedgerListEntriesRequest = {
    */
   pageToken?: string | undefined;
   /**
-   * A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information;
+   * For optimal performance, include process_date or activity_date in the CEL expression. Adding asset_id, type, and/or subtype_category further improves query efficiency when applicable. Queries without date fields will have slower response times.
+   *
+   * @remarks
+   *
+   *  See the CEL Search guide for more information:
+   *  https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search
    */
   filter?: string | undefined;
 };

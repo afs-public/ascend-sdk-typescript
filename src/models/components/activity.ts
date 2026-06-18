@@ -79,6 +79,7 @@ export enum ActivityAccountMemo {
   PendingOutgoingAcat = "PENDING_OUTGOING_ACAT",
   PendingDrip = "PENDING_DRIP",
   PendingWithdrawal = "PENDING_WITHDRAWAL",
+  Short = "SHORT",
 }
 /**
  * Indicates the memo location impacted by an entry
@@ -378,6 +379,52 @@ export type ActivityAllocation = {
    * The yields associated with a fixed income trade
    */
   yieldRecords?: Array<YieldRecord> | undefined;
+};
+
+/**
+ * Trade capacity type
+ */
+export enum ActivityCapacity {
+  CapacityUnspecified = "CAPACITY_UNSPECIFIED",
+  Agency = "AGENCY",
+  Principal = "PRINCIPAL",
+  Mixed = "MIXED",
+}
+/**
+ * Trade capacity type
+ */
+export type ActivityCapacityOpen = OpenEnum<typeof ActivityCapacity>;
+
+/**
+ * Records the number of contracts exercised or assigned
+ */
+export type ActivityOptionContractQuantity = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * When booked with a type of MOVEMENT, this subtype will remove an options position due to assignment. When booked with a type of TRADE, this subtype records the purchase/ sale of the underlying asset from the assignment of an options position
+ */
+export type ActivityAssignment = {
+  /**
+   * Trade capacity type
+   */
+  capacity?: ActivityCapacityOpen | undefined;
+  /**
+   * Records the asset_id of the option that was exercised or assigned
+   */
+  optionAssetId?: string | undefined;
+  /**
+   * Records the number of contracts exercised or assigned
+   */
+  optionContractQuantity?: ActivityOptionContractQuantity | null | undefined;
+  /**
+   * Records the description of the option the account exercised or assigned
+   */
+  optionDescription?: string | undefined;
 };
 
 /**
@@ -1233,6 +1280,102 @@ export type ActivityExchange = {
 };
 
 /**
+ * Trade capacity type
+ */
+export enum ActivityExerciseCapacity {
+  CapacityUnspecified = "CAPACITY_UNSPECIFIED",
+  Agency = "AGENCY",
+  Principal = "PRINCIPAL",
+  Mixed = "MIXED",
+}
+/**
+ * Trade capacity type
+ */
+export type ActivityExerciseCapacityOpen = OpenEnum<
+  typeof ActivityExerciseCapacity
+>;
+
+/**
+ * Exercise type classification
+ */
+export enum ActivityExerciseType {
+  ExerciseTypeUnspecified = "EXERCISE_TYPE_UNSPECIFIED",
+  AutoExercise = "AUTO_EXERCISE",
+  EarlyExercise = "EARLY_EXERCISE",
+  ExerciseByException = "EXERCISE_BY_EXCEPTION",
+}
+/**
+ * Exercise type classification
+ */
+export type ActivityExerciseTypeOpen = OpenEnum<typeof ActivityExerciseType>;
+
+/**
+ * Records the number of contracts exercised or assigned
+ */
+export type ActivityExerciseOptionContractQuantity = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * When booked with a type of MOVEMENT, this subtype will remove an options position due to exercise. When booked with a type of TRADE, this subtype records the purchase/ sale of the underlying asset from exercising an options position
+ */
+export type ActivityExercise = {
+  /**
+   * Trade capacity type
+   */
+  capacity?: ActivityExerciseCapacityOpen | undefined;
+  /**
+   * Exercise type classification
+   */
+  exerciseType?: ActivityExerciseTypeOpen | undefined;
+  /**
+   * Records the asset_id of the option that was exercised or assigned
+   */
+  optionAssetId?: string | undefined;
+  /**
+   * Records the number of contracts exercised or assigned
+   */
+  optionContractQuantity?:
+    | ActivityExerciseOptionContractQuantity
+    | null
+    | undefined;
+  /**
+   * Records the description of the option the account exercised or assigned
+   */
+  optionDescription?: string | undefined;
+};
+
+/**
+ * Indicates whether the price of the underlying was above or below the strike price of the option
+ */
+export enum ActivityMoneyness {
+  MoneynessUnspecified = "MONEYNESS_UNSPECIFIED",
+  InTheMoney = "IN_THE_MONEY",
+  OutOfTheMoney = "OUT_OF_THE_MONEY",
+}
+/**
+ * Indicates whether the price of the underlying was above or below the strike price of the option
+ */
+export type ActivityMoneynessOpen = OpenEnum<typeof ActivityMoneyness>;
+
+/**
+ * Used to record the removal of positions in options assets that have reached or passed their expiration date and expired worthless
+ */
+export type ActivityExpiration = {
+  /**
+   * Indicates that instructions were received by Apex to not exercise an option contract that expired in the money
+   */
+  doNotExercise?: boolean | undefined;
+  /**
+   * Indicates whether the price of the underlying was above or below the strike price of the option
+   */
+  moneyness?: ActivityMoneynessOpen | undefined;
+};
+
+/**
  * Used to record Fees that have been assessed to account and capture details related to the fee
  */
 export type ActivityFee = {
@@ -2062,6 +2205,28 @@ export type NextActivityProcessDate = {
  * None
  */
 export type None = {};
+
+/**
+ * Used to record the adjustment of an options position. Usually these adjustments are due to a corporate action event in the underlying asset, though in rare cases, the OCC may make adjustments for other reasons
+ */
+export type ActivityOptionAdjustment = {
+  /**
+   * Asset Id of the new security after the option adjustment was processed
+   */
+  disbursedAssetId?: string | undefined;
+  /**
+   * Symbol of the new security after the option adjustment was processed
+   */
+  disbursedSymbol?: string | undefined;
+  /**
+   * Asset Id of the existing security before the option adjustment was processed
+   */
+  targetAssetId?: string | undefined;
+  /**
+   * Symbol of the existing security before the option adjustment was processed
+   */
+  targetSymbol?: string | undefined;
+};
 
 /**
  * Common fields for corporate actions
@@ -3002,6 +3167,7 @@ export enum ActivitySideModifier {
   ShortCover = "SHORT_COVER",
   Open = "OPEN",
   Close = "CLOSE",
+  Cover = "COVER",
 }
 /**
  * Indicates whether the trade is opening a new position or closing an existing position
@@ -3658,6 +3824,10 @@ export type ActivityTrade = {
    */
   isWriteoff?: boolean | undefined;
   /**
+   * Identifier of the stock locate that authorizes a short sale. For easy-to-borrow (ETB) securities the value is "ETB". Required when side_modifier is SHORT; omitted for non-short-sale trades.
+   */
+  locateId?: string | undefined;
+  /**
    * Repeated record containing information about the tax lots, if specified
    */
   lots?: Array<Lot> | undefined;
@@ -4225,6 +4395,10 @@ export type Activity = {
    */
   assetId?: string | undefined;
   /**
+   * When booked with a type of MOVEMENT, this subtype will remove an options position due to assignment. When booked with a type of TRADE, this subtype records the purchase/ sale of the underlying asset from the assignment of an options position
+   */
+  assignment?: ActivityAssignment | null | undefined;
+  /**
    * Object containing metadata for bond defaults
    */
   bondDefault?: ActivityBondDefault | null | undefined;
@@ -4296,6 +4470,14 @@ export type Activity = {
    */
   exchange?: ActivityExchange | null | undefined;
   /**
+   * When booked with a type of MOVEMENT, this subtype will remove an options position due to exercise. When booked with a type of TRADE, this subtype records the purchase/ sale of the underlying asset from exercising an options position
+   */
+  exercise?: ActivityExercise | null | undefined;
+  /**
+   * Used to record the removal of positions in options assets that have reached or passed their expiration date and expired worthless
+   */
+  expiration?: ActivityExpiration | null | undefined;
+  /**
    * Used to record Fees that have been assessed to account and capture details related to the fee
    */
   fee?: ActivityFee | null | undefined;
@@ -4359,6 +4541,10 @@ export type Activity = {
    * None
    */
   none?: None | null | undefined;
+  /**
+   * Used to record the adjustment of an options position. Usually these adjustments are due to a corporate action event in the underlying asset, though in rare cases, the OCC may make adjustments for other reasons
+   */
+  optionAdjustment?: ActivityOptionAdjustment | null | undefined;
   /**
    * The resource name of the API resource that originated this ledger entry or activity. This field enables clients to link ledger activities back to their source transactions for reconciliation purposes. This field will only be populated when the client has direct access to the referenced resource via the Ascend API's.
    */
@@ -5501,6 +5687,176 @@ export function activityAllocationFromJSON(
     jsonString,
     (x) => ActivityAllocation$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ActivityAllocation' from JSON`,
+  );
+}
+
+/** @internal */
+export const ActivityCapacity$inboundSchema: z.ZodType<
+  ActivityCapacityOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ActivityCapacity),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ActivityCapacity$outboundSchema: z.ZodType<
+  ActivityCapacityOpen,
+  z.ZodTypeDef,
+  ActivityCapacityOpen
+> = z.union([
+  z.nativeEnum(ActivityCapacity),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityCapacity$ {
+  /** @deprecated use `ActivityCapacity$inboundSchema` instead. */
+  export const inboundSchema = ActivityCapacity$inboundSchema;
+  /** @deprecated use `ActivityCapacity$outboundSchema` instead. */
+  export const outboundSchema = ActivityCapacity$outboundSchema;
+}
+
+/** @internal */
+export const ActivityOptionContractQuantity$inboundSchema: z.ZodType<
+  ActivityOptionContractQuantity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type ActivityOptionContractQuantity$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const ActivityOptionContractQuantity$outboundSchema: z.ZodType<
+  ActivityOptionContractQuantity$Outbound,
+  z.ZodTypeDef,
+  ActivityOptionContractQuantity
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityOptionContractQuantity$ {
+  /** @deprecated use `ActivityOptionContractQuantity$inboundSchema` instead. */
+  export const inboundSchema = ActivityOptionContractQuantity$inboundSchema;
+  /** @deprecated use `ActivityOptionContractQuantity$outboundSchema` instead. */
+  export const outboundSchema = ActivityOptionContractQuantity$outboundSchema;
+  /** @deprecated use `ActivityOptionContractQuantity$Outbound` instead. */
+  export type Outbound = ActivityOptionContractQuantity$Outbound;
+}
+
+export function activityOptionContractQuantityToJSON(
+  activityOptionContractQuantity: ActivityOptionContractQuantity,
+): string {
+  return JSON.stringify(
+    ActivityOptionContractQuantity$outboundSchema.parse(
+      activityOptionContractQuantity,
+    ),
+  );
+}
+
+export function activityOptionContractQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityOptionContractQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActivityOptionContractQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityOptionContractQuantity' from JSON`,
+  );
+}
+
+/** @internal */
+export const ActivityAssignment$inboundSchema: z.ZodType<
+  ActivityAssignment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  capacity: ActivityCapacity$inboundSchema.optional(),
+  option_asset_id: z.string().optional(),
+  option_contract_quantity: z.nullable(
+    z.lazy(() => ActivityOptionContractQuantity$inboundSchema),
+  ).optional(),
+  option_description: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "option_asset_id": "optionAssetId",
+    "option_contract_quantity": "optionContractQuantity",
+    "option_description": "optionDescription",
+  });
+});
+
+/** @internal */
+export type ActivityAssignment$Outbound = {
+  capacity?: string | undefined;
+  option_asset_id?: string | undefined;
+  option_contract_quantity?:
+    | ActivityOptionContractQuantity$Outbound
+    | null
+    | undefined;
+  option_description?: string | undefined;
+};
+
+/** @internal */
+export const ActivityAssignment$outboundSchema: z.ZodType<
+  ActivityAssignment$Outbound,
+  z.ZodTypeDef,
+  ActivityAssignment
+> = z.object({
+  capacity: ActivityCapacity$outboundSchema.optional(),
+  optionAssetId: z.string().optional(),
+  optionContractQuantity: z.nullable(
+    z.lazy(() => ActivityOptionContractQuantity$outboundSchema),
+  ).optional(),
+  optionDescription: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    optionAssetId: "option_asset_id",
+    optionContractQuantity: "option_contract_quantity",
+    optionDescription: "option_description",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityAssignment$ {
+  /** @deprecated use `ActivityAssignment$inboundSchema` instead. */
+  export const inboundSchema = ActivityAssignment$inboundSchema;
+  /** @deprecated use `ActivityAssignment$outboundSchema` instead. */
+  export const outboundSchema = ActivityAssignment$outboundSchema;
+  /** @deprecated use `ActivityAssignment$Outbound` instead. */
+  export type Outbound = ActivityAssignment$Outbound;
+}
+
+export function activityAssignmentToJSON(
+  activityAssignment: ActivityAssignment,
+): string {
+  return JSON.stringify(
+    ActivityAssignment$outboundSchema.parse(activityAssignment),
+  );
+}
+
+export function activityAssignmentFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityAssignment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActivityAssignment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityAssignment' from JSON`,
   );
 }
 
@@ -8305,6 +8661,314 @@ export function activityExchangeFromJSON(
     jsonString,
     (x) => ActivityExchange$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ActivityExchange' from JSON`,
+  );
+}
+
+/** @internal */
+export const ActivityExerciseCapacity$inboundSchema: z.ZodType<
+  ActivityExerciseCapacityOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ActivityExerciseCapacity),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ActivityExerciseCapacity$outboundSchema: z.ZodType<
+  ActivityExerciseCapacityOpen,
+  z.ZodTypeDef,
+  ActivityExerciseCapacityOpen
+> = z.union([
+  z.nativeEnum(ActivityExerciseCapacity),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityExerciseCapacity$ {
+  /** @deprecated use `ActivityExerciseCapacity$inboundSchema` instead. */
+  export const inboundSchema = ActivityExerciseCapacity$inboundSchema;
+  /** @deprecated use `ActivityExerciseCapacity$outboundSchema` instead. */
+  export const outboundSchema = ActivityExerciseCapacity$outboundSchema;
+}
+
+/** @internal */
+export const ActivityExerciseType$inboundSchema: z.ZodType<
+  ActivityExerciseTypeOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ActivityExerciseType),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ActivityExerciseType$outboundSchema: z.ZodType<
+  ActivityExerciseTypeOpen,
+  z.ZodTypeDef,
+  ActivityExerciseTypeOpen
+> = z.union([
+  z.nativeEnum(ActivityExerciseType),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityExerciseType$ {
+  /** @deprecated use `ActivityExerciseType$inboundSchema` instead. */
+  export const inboundSchema = ActivityExerciseType$inboundSchema;
+  /** @deprecated use `ActivityExerciseType$outboundSchema` instead. */
+  export const outboundSchema = ActivityExerciseType$outboundSchema;
+}
+
+/** @internal */
+export const ActivityExerciseOptionContractQuantity$inboundSchema: z.ZodType<
+  ActivityExerciseOptionContractQuantity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
+
+/** @internal */
+export type ActivityExerciseOptionContractQuantity$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const ActivityExerciseOptionContractQuantity$outboundSchema: z.ZodType<
+  ActivityExerciseOptionContractQuantity$Outbound,
+  z.ZodTypeDef,
+  ActivityExerciseOptionContractQuantity
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityExerciseOptionContractQuantity$ {
+  /** @deprecated use `ActivityExerciseOptionContractQuantity$inboundSchema` instead. */
+  export const inboundSchema =
+    ActivityExerciseOptionContractQuantity$inboundSchema;
+  /** @deprecated use `ActivityExerciseOptionContractQuantity$outboundSchema` instead. */
+  export const outboundSchema =
+    ActivityExerciseOptionContractQuantity$outboundSchema;
+  /** @deprecated use `ActivityExerciseOptionContractQuantity$Outbound` instead. */
+  export type Outbound = ActivityExerciseOptionContractQuantity$Outbound;
+}
+
+export function activityExerciseOptionContractQuantityToJSON(
+  activityExerciseOptionContractQuantity:
+    ActivityExerciseOptionContractQuantity,
+): string {
+  return JSON.stringify(
+    ActivityExerciseOptionContractQuantity$outboundSchema.parse(
+      activityExerciseOptionContractQuantity,
+    ),
+  );
+}
+
+export function activityExerciseOptionContractQuantityFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityExerciseOptionContractQuantity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      ActivityExerciseOptionContractQuantity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityExerciseOptionContractQuantity' from JSON`,
+  );
+}
+
+/** @internal */
+export const ActivityExercise$inboundSchema: z.ZodType<
+  ActivityExercise,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  capacity: ActivityExerciseCapacity$inboundSchema.optional(),
+  exercise_type: ActivityExerciseType$inboundSchema.optional(),
+  option_asset_id: z.string().optional(),
+  option_contract_quantity: z.nullable(
+    z.lazy(() => ActivityExerciseOptionContractQuantity$inboundSchema),
+  ).optional(),
+  option_description: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "exercise_type": "exerciseType",
+    "option_asset_id": "optionAssetId",
+    "option_contract_quantity": "optionContractQuantity",
+    "option_description": "optionDescription",
+  });
+});
+
+/** @internal */
+export type ActivityExercise$Outbound = {
+  capacity?: string | undefined;
+  exercise_type?: string | undefined;
+  option_asset_id?: string | undefined;
+  option_contract_quantity?:
+    | ActivityExerciseOptionContractQuantity$Outbound
+    | null
+    | undefined;
+  option_description?: string | undefined;
+};
+
+/** @internal */
+export const ActivityExercise$outboundSchema: z.ZodType<
+  ActivityExercise$Outbound,
+  z.ZodTypeDef,
+  ActivityExercise
+> = z.object({
+  capacity: ActivityExerciseCapacity$outboundSchema.optional(),
+  exerciseType: ActivityExerciseType$outboundSchema.optional(),
+  optionAssetId: z.string().optional(),
+  optionContractQuantity: z.nullable(
+    z.lazy(() => ActivityExerciseOptionContractQuantity$outboundSchema),
+  ).optional(),
+  optionDescription: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    exerciseType: "exercise_type",
+    optionAssetId: "option_asset_id",
+    optionContractQuantity: "option_contract_quantity",
+    optionDescription: "option_description",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityExercise$ {
+  /** @deprecated use `ActivityExercise$inboundSchema` instead. */
+  export const inboundSchema = ActivityExercise$inboundSchema;
+  /** @deprecated use `ActivityExercise$outboundSchema` instead. */
+  export const outboundSchema = ActivityExercise$outboundSchema;
+  /** @deprecated use `ActivityExercise$Outbound` instead. */
+  export type Outbound = ActivityExercise$Outbound;
+}
+
+export function activityExerciseToJSON(
+  activityExercise: ActivityExercise,
+): string {
+  return JSON.stringify(
+    ActivityExercise$outboundSchema.parse(activityExercise),
+  );
+}
+
+export function activityExerciseFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityExercise, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActivityExercise$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityExercise' from JSON`,
+  );
+}
+
+/** @internal */
+export const ActivityMoneyness$inboundSchema: z.ZodType<
+  ActivityMoneynessOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ActivityMoneyness),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ActivityMoneyness$outboundSchema: z.ZodType<
+  ActivityMoneynessOpen,
+  z.ZodTypeDef,
+  ActivityMoneynessOpen
+> = z.union([
+  z.nativeEnum(ActivityMoneyness),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityMoneyness$ {
+  /** @deprecated use `ActivityMoneyness$inboundSchema` instead. */
+  export const inboundSchema = ActivityMoneyness$inboundSchema;
+  /** @deprecated use `ActivityMoneyness$outboundSchema` instead. */
+  export const outboundSchema = ActivityMoneyness$outboundSchema;
+}
+
+/** @internal */
+export const ActivityExpiration$inboundSchema: z.ZodType<
+  ActivityExpiration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  do_not_exercise: z.boolean().optional(),
+  moneyness: ActivityMoneyness$inboundSchema.optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "do_not_exercise": "doNotExercise",
+  });
+});
+
+/** @internal */
+export type ActivityExpiration$Outbound = {
+  do_not_exercise?: boolean | undefined;
+  moneyness?: string | undefined;
+};
+
+/** @internal */
+export const ActivityExpiration$outboundSchema: z.ZodType<
+  ActivityExpiration$Outbound,
+  z.ZodTypeDef,
+  ActivityExpiration
+> = z.object({
+  doNotExercise: z.boolean().optional(),
+  moneyness: ActivityMoneyness$outboundSchema.optional(),
+}).transform((v) => {
+  return remap$(v, {
+    doNotExercise: "do_not_exercise",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityExpiration$ {
+  /** @deprecated use `ActivityExpiration$inboundSchema` instead. */
+  export const inboundSchema = ActivityExpiration$inboundSchema;
+  /** @deprecated use `ActivityExpiration$outboundSchema` instead. */
+  export const outboundSchema = ActivityExpiration$outboundSchema;
+  /** @deprecated use `ActivityExpiration$Outbound` instead. */
+  export type Outbound = ActivityExpiration$Outbound;
+}
+
+export function activityExpirationToJSON(
+  activityExpiration: ActivityExpiration,
+): string {
+  return JSON.stringify(
+    ActivityExpiration$outboundSchema.parse(activityExpiration),
+  );
+}
+
+export function activityExpirationFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityExpiration, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActivityExpiration$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityExpiration' from JSON`,
   );
 }
 
@@ -11194,6 +11858,83 @@ export function noneFromJSON(
     jsonString,
     (x) => None$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'None' from JSON`,
+  );
+}
+
+/** @internal */
+export const ActivityOptionAdjustment$inboundSchema: z.ZodType<
+  ActivityOptionAdjustment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  disbursed_asset_id: z.string().optional(),
+  disbursed_symbol: z.string().optional(),
+  target_asset_id: z.string().optional(),
+  target_symbol: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "disbursed_asset_id": "disbursedAssetId",
+    "disbursed_symbol": "disbursedSymbol",
+    "target_asset_id": "targetAssetId",
+    "target_symbol": "targetSymbol",
+  });
+});
+
+/** @internal */
+export type ActivityOptionAdjustment$Outbound = {
+  disbursed_asset_id?: string | undefined;
+  disbursed_symbol?: string | undefined;
+  target_asset_id?: string | undefined;
+  target_symbol?: string | undefined;
+};
+
+/** @internal */
+export const ActivityOptionAdjustment$outboundSchema: z.ZodType<
+  ActivityOptionAdjustment$Outbound,
+  z.ZodTypeDef,
+  ActivityOptionAdjustment
+> = z.object({
+  disbursedAssetId: z.string().optional(),
+  disbursedSymbol: z.string().optional(),
+  targetAssetId: z.string().optional(),
+  targetSymbol: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    disbursedAssetId: "disbursed_asset_id",
+    disbursedSymbol: "disbursed_symbol",
+    targetAssetId: "target_asset_id",
+    targetSymbol: "target_symbol",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ActivityOptionAdjustment$ {
+  /** @deprecated use `ActivityOptionAdjustment$inboundSchema` instead. */
+  export const inboundSchema = ActivityOptionAdjustment$inboundSchema;
+  /** @deprecated use `ActivityOptionAdjustment$outboundSchema` instead. */
+  export const outboundSchema = ActivityOptionAdjustment$outboundSchema;
+  /** @deprecated use `ActivityOptionAdjustment$Outbound` instead. */
+  export type Outbound = ActivityOptionAdjustment$Outbound;
+}
+
+export function activityOptionAdjustmentToJSON(
+  activityOptionAdjustment: ActivityOptionAdjustment,
+): string {
+  return JSON.stringify(
+    ActivityOptionAdjustment$outboundSchema.parse(activityOptionAdjustment),
+  );
+}
+
+export function activityOptionAdjustmentFromJSON(
+  jsonString: string,
+): SafeParseResult<ActivityOptionAdjustment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ActivityOptionAdjustment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ActivityOptionAdjustment' from JSON`,
   );
 }
 
@@ -16646,6 +17387,7 @@ export const ActivityTrade$inboundSchema: z.ZodType<
   gateway_client_order_id: z.string().optional(),
   internal_error: z.boolean().optional(),
   is_writeoff: z.boolean().optional(),
+  locate_id: z.string().optional(),
   lots: z.array(Lot$inboundSchema).optional(),
   order_id: z.string().optional(),
   prevailing_market_price: z.nullable(
@@ -16675,6 +17417,7 @@ export const ActivityTrade$inboundSchema: z.ZodType<
     "gateway_client_order_id": "gatewayClientOrderId",
     "internal_error": "internalError",
     "is_writeoff": "isWriteoff",
+    "locate_id": "locateId",
     "order_id": "orderId",
     "prevailing_market_price": "prevailingMarketPrice",
     "price_adjustment_record": "priceAdjustmentRecord",
@@ -16703,6 +17446,7 @@ export type ActivityTrade$Outbound = {
   gateway_client_order_id?: string | undefined;
   internal_error?: boolean | undefined;
   is_writeoff?: boolean | undefined;
+  locate_id?: string | undefined;
   lots?: Array<Lot$Outbound> | undefined;
   order_id?: string | undefined;
   prevailing_market_price?:
@@ -16742,6 +17486,7 @@ export const ActivityTrade$outboundSchema: z.ZodType<
   gatewayClientOrderId: z.string().optional(),
   internalError: z.boolean().optional(),
   isWriteoff: z.boolean().optional(),
+  locateId: z.string().optional(),
   lots: z.array(Lot$outboundSchema).optional(),
   orderId: z.string().optional(),
   prevailingMarketPrice: z.nullable(
@@ -16771,6 +17516,7 @@ export const ActivityTrade$outboundSchema: z.ZodType<
     gatewayClientOrderId: "gateway_client_order_id",
     internalError: "internal_error",
     isWriteoff: "is_writeoff",
+    locateId: "locate_id",
     orderId: "order_id",
     prevailingMarketPrice: "prevailing_market_price",
     priceAdjustmentRecord: "price_adjustment_record",
@@ -18225,6 +18971,8 @@ export const Activity$inboundSchema: z.ZodType<
     .optional(),
   asset_description: z.string().optional(),
   asset_id: z.string().optional(),
+  assignment: z.nullable(z.lazy(() => ActivityAssignment$inboundSchema))
+    .optional(),
   bond_default: z.nullable(z.lazy(() => ActivityBondDefault$inboundSchema))
     .optional(),
   capital_gains: z.nullable(z.lazy(() => ActivityCapitalGains$inboundSchema))
@@ -18254,6 +19002,9 @@ export const Activity$inboundSchema: z.ZodType<
     z.lazy(() => ActivityEventContractSettlement$inboundSchema),
   ).optional(),
   exchange: z.nullable(z.lazy(() => ActivityExchange$inboundSchema)).optional(),
+  exercise: z.nullable(z.lazy(() => ActivityExercise$inboundSchema)).optional(),
+  expiration: z.nullable(z.lazy(() => ActivityExpiration$inboundSchema))
+    .optional(),
   fee: z.nullable(z.lazy(() => ActivityFee$inboundSchema)).optional(),
   fees: z.array(Fee$inboundSchema).optional(),
   fpsl: z.nullable(z.lazy(() => ActivityFpsl$inboundSchema)).optional(),
@@ -18278,6 +19029,9 @@ export const Activity$inboundSchema: z.ZodType<
     z.lazy(() => NextActivityProcessDate$inboundSchema),
   ).optional(),
   none: z.nullable(z.lazy(() => None$inboundSchema)).optional(),
+  option_adjustment: z.nullable(
+    z.lazy(() => ActivityOptionAdjustment$inboundSchema),
+  ).optional(),
   originating_resource_name: z.string().optional(),
   payment_in_kind: z.nullable(z.lazy(() => ActivityPaymentInKind$inboundSchema))
     .optional(),
@@ -18375,6 +19129,7 @@ export const Activity$inboundSchema: z.ZodType<
     "net_amount": "netAmount",
     "next_activity_id": "nextActivityId",
     "next_activity_process_date": "nextActivityProcessDate",
+    "option_adjustment": "optionAdjustment",
     "originating_resource_name": "originatingResourceName",
     "payment_in_kind": "paymentInKind",
     "previous_activity_id": "previousActivityId",
@@ -18417,6 +19172,7 @@ export type Activity$Outbound = {
   allocation?: ActivityAllocation$Outbound | null | undefined;
   asset_description?: string | undefined;
   asset_id?: string | undefined;
+  assignment?: ActivityAssignment$Outbound | null | undefined;
   bond_default?: ActivityBondDefault$Outbound | null | undefined;
   capital_gains?: ActivityCapitalGains$Outbound | null | undefined;
   cash_dividend?: ActivityCashDividend$Outbound | null | undefined;
@@ -18440,6 +19196,8 @@ export type Activity$Outbound = {
     | null
     | undefined;
   exchange?: ActivityExchange$Outbound | null | undefined;
+  exercise?: ActivityExercise$Outbound | null | undefined;
+  expiration?: ActivityExpiration$Outbound | null | undefined;
   fee?: ActivityFee$Outbound | null | undefined;
   fees?: Array<Fee$Outbound> | undefined;
   fpsl?: ActivityFpsl$Outbound | null | undefined;
@@ -18459,6 +19217,7 @@ export type Activity$Outbound = {
     | null
     | undefined;
   none?: None$Outbound | null | undefined;
+  option_adjustment?: ActivityOptionAdjustment$Outbound | null | undefined;
   originating_resource_name?: string | undefined;
   payment_in_kind?: ActivityPaymentInKind$Outbound | null | undefined;
   previous_activity_id?: string | undefined;
@@ -18528,6 +19287,8 @@ export const Activity$outboundSchema: z.ZodType<
     .optional(),
   assetDescription: z.string().optional(),
   assetId: z.string().optional(),
+  assignment: z.nullable(z.lazy(() => ActivityAssignment$outboundSchema))
+    .optional(),
   bondDefault: z.nullable(z.lazy(() => ActivityBondDefault$outboundSchema))
     .optional(),
   capitalGains: z.nullable(z.lazy(() => ActivityCapitalGains$outboundSchema))
@@ -18556,6 +19317,10 @@ export const Activity$outboundSchema: z.ZodType<
   ).optional(),
   exchange: z.nullable(z.lazy(() => ActivityExchange$outboundSchema))
     .optional(),
+  exercise: z.nullable(z.lazy(() => ActivityExercise$outboundSchema))
+    .optional(),
+  expiration: z.nullable(z.lazy(() => ActivityExpiration$outboundSchema))
+    .optional(),
   fee: z.nullable(z.lazy(() => ActivityFee$outboundSchema)).optional(),
   fees: z.array(Fee$outboundSchema).optional(),
   fpsl: z.nullable(z.lazy(() => ActivityFpsl$outboundSchema)).optional(),
@@ -18582,6 +19347,9 @@ export const Activity$outboundSchema: z.ZodType<
     z.lazy(() => NextActivityProcessDate$outboundSchema),
   ).optional(),
   none: z.nullable(z.lazy(() => None$outboundSchema)).optional(),
+  optionAdjustment: z.nullable(
+    z.lazy(() => ActivityOptionAdjustment$outboundSchema),
+  ).optional(),
   originatingResourceName: z.string().optional(),
   paymentInKind: z.nullable(z.lazy(() => ActivityPaymentInKind$outboundSchema))
     .optional(),
@@ -18681,6 +19449,7 @@ export const Activity$outboundSchema: z.ZodType<
     netAmount: "net_amount",
     nextActivityId: "next_activity_id",
     nextActivityProcessDate: "next_activity_process_date",
+    optionAdjustment: "option_adjustment",
     originatingResourceName: "originating_resource_name",
     paymentInKind: "payment_in_kind",
     previousActivityId: "previous_activity_id",

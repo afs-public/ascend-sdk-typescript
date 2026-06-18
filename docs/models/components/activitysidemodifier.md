@@ -22,4 +22,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `ShortCover`              | SHORT_COVER               |
 | `Open`                    | OPEN                      |
 | `Close`                   | CLOSE                     |
+| `Cover`                   | COVER                     |
 | -                         | `Unrecognized<string>`    |

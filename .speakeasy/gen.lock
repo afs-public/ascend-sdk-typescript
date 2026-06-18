@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: 8691c736d74a741604fe2fbfa5636267
-  docVersion: v1:20260615:uat:00c3ac1be539
+  docChecksum: bf2ac44ce30ef03c0d91cc453e77345a
+  docVersion: v1:20260618:uat:efef5adf4719
   speakeasyVersion: 1.608.0
   generationVersion: 2.691.6
-  releaseVersion: 1.8.9
-  configChecksum: fbf7e649dbd1a81804f68e62c0278f3a
+  releaseVersion: 1.8.10
+  configChecksum: cfd7ab6d6609673297e9cedcf73600b9
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -156,9 +156,11 @@ generatedFiles:
   - docs/models/components/activityaction.md
   - docs/models/components/activityactivitydate.md
   - docs/models/components/activityallocation.md
+  - docs/models/components/activityassignment.md
   - docs/models/components/activitybonddefault.md
   - docs/models/components/activitybonddefaultquantity.md
   - docs/models/components/activitybrokercapacity.md
+  - docs/models/components/activitycapacity.md
   - docs/models/components/activitycapitalgains.md
   - docs/models/components/activitycapitalgainscorporateactiongeneralinformation.md
   - docs/models/components/activitycapitalgainspaymentdate.md
@@ -196,6 +198,11 @@ generatedFiles:
   - docs/models/components/activityexchangecorporateactiongeneralinformation.md
   - docs/models/components/activityexchangestockrate.md
   - docs/models/components/activityexchangetype.md
+  - docs/models/components/activityexercise.md
+  - docs/models/components/activityexercisecapacity.md
+  - docs/models/components/activityexerciseoptioncontractquantity.md
+  - docs/models/components/activityexercisetype.md
+  - docs/models/components/activityexpiration.md
   - docs/models/components/activityfactordenominator.md
   - docs/models/components/activityfactornumerator.md
   - docs/models/components/activityfairmarketvalue.md
@@ -238,12 +245,15 @@ generatedFiles:
   - docs/models/components/activitymergerstockrate.md
   - docs/models/components/activitymergertype.md
   - docs/models/components/activitymethod.md
+  - docs/models/components/activitymoneyness.md
   - docs/models/components/activitynamechange.md
   - docs/models/components/activitynamechangeaction.md
   - docs/models/components/activitynamechangecorporateactiongeneralinformation.md
   - docs/models/components/activitynamechangeeffectivedate.md
   - docs/models/components/activitynamechangequantity.md
   - docs/models/components/activitynetamount.md
+  - docs/models/components/activityoptionadjustment.md
+  - docs/models/components/activityoptioncontractquantity.md
   - docs/models/components/activityoutcome.md
   - docs/models/components/activitypaydate.md
   - docs/models/components/activitypaymentdate.md
@@ -424,6 +434,7 @@ generatedFiles:
   - docs/models/components/assettype.md
   - docs/models/components/assettype1.md
   - docs/models/components/assignlargetraderrequestcreate.md
+  - docs/models/components/assignment.md
   - docs/models/components/audittrail.md
   - docs/models/components/audittype.md
   - docs/models/components/availablecashtowithdrawamount.md
@@ -604,6 +615,7 @@ generatedFiles:
   - docs/models/components/canceltraderesponsewhenissued.md
   - docs/models/components/cancelwirewithdrawalrequestcreate.md
   - docs/models/components/cancelwirewithdrawalschedulerequestcreate.md
+  - docs/models/components/capacity.md
   - docs/models/components/capitalgains.md
   - docs/models/components/cashamount.md
   - docs/models/components/cashdividend.md
@@ -948,6 +960,7 @@ generatedFiles:
   - docs/models/components/entryaction.md
   - docs/models/components/entrybonddefaultquantity.md
   - docs/models/components/entrybrokercapacity.md
+  - docs/models/components/entrycapacity.md
   - docs/models/components/entrycapitalgainscorporateactiongeneralinformation.md
   - docs/models/components/entrycapitalgainsquantity.md
   - docs/models/components/entrycashdividendcashrate.md
@@ -1011,6 +1024,7 @@ generatedFiles:
   - docs/models/components/entrynamechangecorporateactiongeneralinformation.md
   - docs/models/components/entrynamechangeeffectivedate.md
   - docs/models/components/entrynamechangequantity.md
+  - docs/models/components/entryoptioncontractquantity.md
   - docs/models/components/entrypaydate.md
   - docs/models/components/entrypaymentdate.md
   - docs/models/components/entrypaymentinkindcorporateactiongeneralinformation.md
@@ -1117,8 +1131,11 @@ generatedFiles:
   - docs/models/components/executionquantity.md
   - docs/models/components/executionstate.md
   - docs/models/components/exemptcustomerreason.md
+  - docs/models/components/exercise.md
   - docs/models/components/exercisestyle.md
+  - docs/models/components/exercisetype.md
   - docs/models/components/expectednotionalceilingamount.md
+  - docs/models/components/expiration.md
   - docs/models/components/expirationdate.md
   - docs/models/components/externalaccount.md
   - docs/models/components/externalaccountcreate.md
@@ -1535,6 +1552,7 @@ generatedFiles:
   - docs/models/components/minimumsubsequentsubscriptionamount.md
   - docs/models/components/money.md
   - docs/models/components/moneymarketfundsweep.md
+  - docs/models/components/moneyness.md
   - docs/models/components/mutualfund.md
   - docs/models/components/mutualfundtype.md
   - docs/models/components/nachanoccreate.md
@@ -1573,6 +1591,8 @@ generatedFiles:
   - docs/models/components/operatingenrollmentmetadatacreate.md
   - docs/models/components/operatingpurpose.md
   - docs/models/components/option.md
+  - docs/models/components/optionadjustment.md
+  - docs/models/components/optioncontractquantity.md
   - docs/models/components/optiondeliverable.md
   - docs/models/components/optiondeliverablequantity.md
   - docs/models/components/optioninstruction.md
@@ -2040,6 +2060,7 @@ generatedFiles:
   - docs/models/components/settlementstatus.md
   - docs/models/components/settlementstyle.md
   - docs/models/components/settlementtype.md
+  - docs/models/components/short.md
   - docs/models/components/shortcode.md
   - docs/models/components/side.md
   - docs/models/components/sidemodifier.md
