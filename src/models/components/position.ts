@@ -125,6 +125,16 @@ export type Settled = {
 };
 
 /**
+ * Represents the amount of an asset that has been sold short, where shares were borrowed and sold with an obligation to repurchase and return them. This memo distinguishes intentional short sales from other negative position states
+ */
+export type Short = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
  * This field represents the total amount of an asset owned by the account including transactions that have been executed but not yet settled, commonly known as the trade date position. It includes all transactions recorded in the Ledger with process_date and activity_date on or before the date in the response, even those with future settle_dates. Unlike the settled position, which only includes completed settlements, the trade position provides a forward-looking view of ownership that accounts for pending settlements
  */
 export type PositionTrade = {
@@ -208,6 +218,10 @@ export type Position = {
    * This field refers to the quantity of assets that have completed the entire clearing and settlement cycle, where ownership of the securities has been officially transferred and payment has been fully processed. The settled position includes all transactions that have been recorded in the Ledger with process_date, activity_date, and settle_date on or before the date specified in the response.
    */
   settled?: Settled | null | undefined;
+  /**
+   * Represents the amount of an asset that has been sold short, where shares were borrowed and sold with an obligation to repurchase and return them. This memo distinguishes intentional short sales from other negative position states
+   */
+  short?: Short | null | undefined;
   /**
    * This field represents the total amount of an asset owned by the account including transactions that have been executed but not yet settled, commonly known as the trade date position. It includes all transactions recorded in the Ledger with process_date and activity_date on or before the date in the response, even those with future settle_dates. Unlike the settled position, which only includes completed settlements, the trade position provides a forward-looking view of ownership that accounts for pending settlements
    */
@@ -733,6 +747,53 @@ export function settledFromJSON(
 }
 
 /** @internal */
+export const Short$inboundSchema: z.ZodType<Short, z.ZodTypeDef, unknown> = z
+  .object({
+    value: z.string().optional(),
+  });
+
+/** @internal */
+export type Short$Outbound = {
+  value?: string | undefined;
+};
+
+/** @internal */
+export const Short$outboundSchema: z.ZodType<
+  Short$Outbound,
+  z.ZodTypeDef,
+  Short
+> = z.object({
+  value: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Short$ {
+  /** @deprecated use `Short$inboundSchema` instead. */
+  export const inboundSchema = Short$inboundSchema;
+  /** @deprecated use `Short$outboundSchema` instead. */
+  export const outboundSchema = Short$outboundSchema;
+  /** @deprecated use `Short$Outbound` instead. */
+  export type Outbound = Short$Outbound;
+}
+
+export function shortToJSON(short: Short): string {
+  return JSON.stringify(Short$outboundSchema.parse(short));
+}
+
+export function shortFromJSON(
+  jsonString: string,
+): SafeParseResult<Short, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Short$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Short' from JSON`,
+  );
+}
+
+/** @internal */
 export const PositionTrade$inboundSchema: z.ZodType<
   PositionTrade,
   z.ZodTypeDef,
@@ -859,6 +920,7 @@ export const Position$inboundSchema: z.ZodType<
     .optional(),
   position_version: z.string().optional(),
   settled: z.nullable(z.lazy(() => Settled$inboundSchema)).optional(),
+  short: z.nullable(z.lazy(() => Short$inboundSchema)).optional(),
   trade: z.nullable(z.lazy(() => PositionTrade$inboundSchema)).optional(),
   unrestricted: z.nullable(z.lazy(() => Unrestricted$inboundSchema)).optional(),
 }).transform((v) => {
@@ -893,6 +955,7 @@ export type Position$Outbound = {
   pending_withdrawal?: PendingWithdrawal$Outbound | null | undefined;
   position_version?: string | undefined;
   settled?: Settled$Outbound | null | undefined;
+  short?: Short$Outbound | null | undefined;
   trade?: PositionTrade$Outbound | null | undefined;
   unrestricted?: Unrestricted$Outbound | null | undefined;
 };
@@ -924,6 +987,7 @@ export const Position$outboundSchema: z.ZodType<
     .optional(),
   positionVersion: z.string().optional(),
   settled: z.nullable(z.lazy(() => Settled$outboundSchema)).optional(),
+  short: z.nullable(z.lazy(() => Short$outboundSchema)).optional(),
   trade: z.nullable(z.lazy(() => PositionTrade$outboundSchema)).optional(),
   unrestricted: z.nullable(z.lazy(() => Unrestricted$outboundSchema))
     .optional(),
