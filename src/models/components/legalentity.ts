@@ -63,7 +63,7 @@ export type LegalEntityNegativeNews = {
   /**
    * Indicates whether there is negative news against related parties
    */
-  negativeNewsAgainstRelatedParties?: boolean | undefined;
+  negativeNewsAgainstRelatedParties?: boolean | null | undefined;
   /**
    * Description of the negative news against related parties
    */
@@ -77,7 +77,7 @@ export type EntityDueDiligence = {
   /**
    * Indicates whether the entity issues bearer shares
    */
-  entityIssuesBearerShares?: boolean | undefined;
+  entityIssuesBearerShares?: boolean | null | undefined;
   /**
    * Information about any negative news against related parties and entities
    */
@@ -486,7 +486,7 @@ export type LegalEntityTaxProfile = {
   /**
    * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
    */
-  treatyBenefitsRequested?: boolean | undefined;
+  treatyBenefitsRequested?: boolean | null | undefined;
   /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
@@ -734,7 +734,7 @@ export const LegalEntityNegativeNews$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  negative_news_against_related_parties: z.boolean().optional(),
+  negative_news_against_related_parties: z.nullable(z.boolean()).optional(),
   negative_news_against_related_parties_description: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -747,7 +747,7 @@ export const LegalEntityNegativeNews$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LegalEntityNegativeNews$Outbound = {
-  negative_news_against_related_parties?: boolean | undefined;
+  negative_news_against_related_parties?: boolean | null | undefined;
   negative_news_against_related_parties_description?: string | undefined;
 };
 
@@ -757,7 +757,7 @@ export const LegalEntityNegativeNews$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LegalEntityNegativeNews
 > = z.object({
-  negativeNewsAgainstRelatedParties: z.boolean().optional(),
+  negativeNewsAgainstRelatedParties: z.nullable(z.boolean()).optional(),
   negativeNewsAgainstRelatedPartiesDescription: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -804,7 +804,7 @@ export const EntityDueDiligence$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entity_issues_bearer_shares: z.boolean().optional(),
+  entity_issues_bearer_shares: z.nullable(z.boolean()).optional(),
   negative_news: z.nullable(z.lazy(() => LegalEntityNegativeNews$inboundSchema))
     .optional(),
 }).transform((v) => {
@@ -816,7 +816,7 @@ export const EntityDueDiligence$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EntityDueDiligence$Outbound = {
-  entity_issues_bearer_shares?: boolean | undefined;
+  entity_issues_bearer_shares?: boolean | null | undefined;
   negative_news?: LegalEntityNegativeNews$Outbound | null | undefined;
 };
 
@@ -826,7 +826,7 @@ export const EntityDueDiligence$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EntityDueDiligence
 > = z.object({
-  entityIssuesBearerShares: z.boolean().optional(),
+  entityIssuesBearerShares: z.nullable(z.boolean()).optional(),
   negativeNews: z.nullable(z.lazy(() => LegalEntityNegativeNews$outboundSchema))
     .optional(),
 }).transform((v) => {
@@ -1650,7 +1650,7 @@ export const LegalEntityTaxProfile$inboundSchema: z.ZodType<
   ).optional(),
   taxpayer_certification_state:
     LegalEntityTaxpayerCertificationState$inboundSchema.optional(),
-  treaty_benefits_requested: z.boolean().optional(),
+  treaty_benefits_requested: z.nullable(z.boolean()).optional(),
   us_tin_status: LegalEntityUsTinStatus$inboundSchema.optional(),
   withholding_state: LegalEntityWithholdingState$inboundSchema.optional(),
 }).transform((v) => {
@@ -1682,7 +1682,7 @@ export type LegalEntityTaxProfile$Outbound = {
     | null
     | undefined;
   taxpayer_certification_state?: string | undefined;
-  treaty_benefits_requested?: boolean | undefined;
+  treaty_benefits_requested?: boolean | null | undefined;
   us_tin_status?: string | undefined;
   withholding_state?: string | undefined;
 };
@@ -1709,7 +1709,7 @@ export const LegalEntityTaxProfile$outboundSchema: z.ZodType<
   ).optional(),
   taxpayerCertificationState:
     LegalEntityTaxpayerCertificationState$outboundSchema.optional(),
-  treatyBenefitsRequested: z.boolean().optional(),
+  treatyBenefitsRequested: z.nullable(z.boolean()).optional(),
   usTinStatus: LegalEntityUsTinStatus$outboundSchema.optional(),
   withholdingState: LegalEntityWithholdingState$outboundSchema.optional(),
 }).transform((v) => {

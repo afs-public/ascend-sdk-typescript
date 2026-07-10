@@ -65,6 +65,8 @@ export type AccountsListAccountsRequest = {
    *  `parties.legal_entity.entity_name`
    *  `parties.legal_entity.tax_id_type`
    *  `parties.legal_entity.tax_id`
+   *  `parties.legal_natural_person.client_person_id`
+   *  `parties.legal_entity.client_entity_id`
    *  `parties.legal_natural_person.foreign_identification.identification_number`
    *  `parties.legal_natural_person.foreign_identification.type`
    *  `enrollments.enrollment_id`

@@ -99,7 +99,7 @@ export type AchDepositScheduleRetirementContribution = {
   /**
    * An explicit tax year value. The current year is always valid; and the prior year is valid only before the tax deadline. Must be in "YYYY" format.
    */
-  taxYear?: number | undefined;
+  taxYear?: number | null | undefined;
   /**
    * A temporal tax year value. This will always evaluate to a year based on the date the transfer was initiated.
    */
@@ -440,7 +440,7 @@ export const AchDepositScheduleRetirementContribution$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tax_year: z.number().int().optional(),
+  tax_year: z.nullable(z.number().int()).optional(),
   temporal_tax_year: AchDepositScheduleTemporalTaxYear$inboundSchema.optional(),
   type: AchDepositScheduleRetirementContributionType$inboundSchema.optional(),
 }).transform((v) => {
@@ -452,7 +452,7 @@ export const AchDepositScheduleRetirementContribution$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AchDepositScheduleRetirementContribution$Outbound = {
-  tax_year?: number | undefined;
+  tax_year?: number | null | undefined;
   temporal_tax_year?: string | undefined;
   type?: string | undefined;
 };
@@ -463,7 +463,7 @@ export const AchDepositScheduleRetirementContribution$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AchDepositScheduleRetirementContribution
 > = z.object({
-  taxYear: z.number().int().optional(),
+  taxYear: z.nullable(z.number().int()).optional(),
   temporalTaxYear: AchDepositScheduleTemporalTaxYear$outboundSchema.optional(),
   type: AchDepositScheduleRetirementContributionType$outboundSchema.optional(),
 }).transform((v) => {

@@ -41,4 +41,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Wash`                           | WASH                             |
 | `Settlement`                     | SETTLEMENT                       |
 | `TransferLocation`               | TRANSFER_LOCATION                |
+| `ControlDepository`              | CONTROL_DEPOSITORY               |
 | -                                | `Unrecognized<string>`           |
