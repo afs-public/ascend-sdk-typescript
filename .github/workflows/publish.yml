@@ -1,8 +1,9 @@
 name: Publish TS SDK
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - fix/publish-workflow
 
 permissions:
   contents: read
@@ -20,9 +21,6 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Update npm
-        run: npm install -g npm@latest
 
       - name: Install and publish to npm
         run: |
