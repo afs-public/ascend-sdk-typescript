@@ -25,4 +25,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `PositionTransferFundFirmToMutualFundCompanyOnly`       | POSITION_TRANSFER_FUND_FIRM_TO_MUTUAL_FUND_COMPANY_ONLY |
 | `Reclaim`                                               | RECLAIM                                                 |
 | `ResidualCredit`                                        | RESIDUAL_CREDIT                                         |
+| `SponsoredTransfer`                                     | SPONSORED_TRANSFER                                      |
+| `FreeReceive`                                           | FREE_RECEIVE                                            |
 | -                                                       | `Unrecognized<string>`                                  |

@@ -18,6 +18,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------------------------- | ---------------------------------------- |
 | `EnrollmentTypeUnspecified`              | ENROLLMENT_TYPE_UNSPECIFIED              |
 | `RegistrationIndividual`                 | REGISTRATION_INDIVIDUAL                  |
+| `LendingLimitedPurposeMargin`            | LENDING_LIMITED_PURPOSE_MARGIN           |
 | `LendingFullyPaidStockLoan`              | LENDING_FULLY_PAID_STOCK_LOAN            |
 | `BeneficiaryDesignation`                 | BENEFICIARY_DESIGNATION                  |
 | `RegistrationJointWros`                  | REGISTRATION_JOINT_WROS                  |

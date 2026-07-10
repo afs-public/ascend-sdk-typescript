@@ -341,6 +341,7 @@ export * from "./ordersoptionstradingenrollmentmetadatacreate.js";
 export * from "./otheraccountscreate.js";
 export * from "./othersourcesofwealthcreate.js";
 export * from "./othersourcesofwealthupdate.js";
+export * from "./partnershipenrollmentmetadatacreate.js";
 export * from "./party.js";
 export * from "./partyrequestcreate.js";
 export * from "./partyrequestupdate.js";

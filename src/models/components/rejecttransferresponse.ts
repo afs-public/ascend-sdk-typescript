@@ -181,6 +181,8 @@ export enum RejectTransferResponseState {
   PendingBookkeeping = "PENDING_BOOKKEEPING",
   Completed = "COMPLETED",
   Purged = "PURGED",
+  PendingReviewMargins = "PENDING_REVIEW_MARGINS",
+  PendingSubmission = "PENDING_SUBMISSION",
 }
 /**
  * The transfer state
@@ -203,6 +205,8 @@ export enum RejectTransferResponseTransferType {
     "POSITION_TRANSFER_FUND_FIRM_TO_MUTUAL_FUND_COMPANY_ONLY",
   Reclaim = "RECLAIM",
   ResidualCredit = "RESIDUAL_CREDIT",
+  SponsoredTransfer = "SPONSORED_TRANSFER",
+  FreeReceive = "FREE_RECEIVE",
 }
 /**
  * The type of transfer

@@ -48,6 +48,7 @@ export enum OperatingPurpose {
   Wash = "WASH",
   Settlement = "SETTLEMENT",
   TransferLocation = "TRANSFER_LOCATION",
+  ControlDepository = "CONTROL_DEPOSITORY",
 }
 /**
  * The purpose of the operating account.
@@ -62,6 +63,10 @@ export type OperatingEnrollmentMetadataCreate = {
    * The purpose of the operating account.
    */
   operatingPurpose: OperatingPurposeOpen;
+  /**
+   * Indicates whether the depository is foreign (true) or domestic (false). Used for CONTROL_DEPOSITORY operating purpose to determine FINRA COA code.
+   */
+  representsForeignEntity?: boolean | undefined;
   /**
    * Optional subtitle for the operating purpose
    */
@@ -111,12 +116,14 @@ export const OperatingEnrollmentMetadataCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   operating_purpose: OperatingPurpose$inboundSchema,
+  represents_foreign_entity: z.boolean().optional(),
   subtitle: z.string().optional(),
   tax_withholding_metadata: TaxWithholdingMetadataCreate$inboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {
     "operating_purpose": "operatingPurpose",
+    "represents_foreign_entity": "representsForeignEntity",
     "tax_withholding_metadata": "taxWithholdingMetadata",
   });
 });
@@ -124,6 +131,7 @@ export const OperatingEnrollmentMetadataCreate$inboundSchema: z.ZodType<
 /** @internal */
 export type OperatingEnrollmentMetadataCreate$Outbound = {
   operating_purpose: string;
+  represents_foreign_entity?: boolean | undefined;
   subtitle?: string | undefined;
   tax_withholding_metadata?: TaxWithholdingMetadataCreate$Outbound | undefined;
 };
@@ -135,12 +143,14 @@ export const OperatingEnrollmentMetadataCreate$outboundSchema: z.ZodType<
   OperatingEnrollmentMetadataCreate
 > = z.object({
   operatingPurpose: OperatingPurpose$outboundSchema,
+  representsForeignEntity: z.boolean().optional(),
   subtitle: z.string().optional(),
   taxWithholdingMetadata: TaxWithholdingMetadataCreate$outboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {
     operatingPurpose: "operating_purpose",
+    representsForeignEntity: "represents_foreign_entity",
     taxWithholdingMetadata: "tax_withholding_metadata",
   });
 });

@@ -38,7 +38,7 @@ export type PushSubscriptionDelivery = {
   /**
    * The total time spent delivering
    */
-  duration?: string | undefined;
+  duration?: string | null | undefined;
   /**
    * The resource name of the event; Format: messages/{message}
    */
@@ -104,7 +104,7 @@ export const PushSubscriptionDelivery$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   delivery_id: z.string().optional(),
-  duration: z.string().optional(),
+  duration: z.nullable(z.string()).optional(),
   event: z.string().optional(),
   event_publish_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -127,7 +127,7 @@ export const PushSubscriptionDelivery$inboundSchema: z.ZodType<
 /** @internal */
 export type PushSubscriptionDelivery$Outbound = {
   delivery_id?: string | undefined;
-  duration?: string | undefined;
+  duration?: string | null | undefined;
   event?: string | undefined;
   event_publish_time?: string | null | undefined;
   last_response?: string | undefined;
@@ -143,7 +143,7 @@ export const PushSubscriptionDelivery$outboundSchema: z.ZodType<
   PushSubscriptionDelivery
 > = z.object({
   deliveryId: z.string().optional(),
-  duration: z.string().optional(),
+  duration: z.nullable(z.string()).optional(),
   event: z.string().optional(),
   eventPublishTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),

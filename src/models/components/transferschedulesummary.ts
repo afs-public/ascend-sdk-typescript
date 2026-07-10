@@ -99,7 +99,7 @@ export type TransferScheduleSummaryRetirementContribution = {
   /**
    * An explicit tax year value. The current year is always valid; and the prior year is valid only before the tax deadline. Must be in "YYYY" format.
    */
-  taxYear?: number | undefined;
+  taxYear?: number | null | undefined;
   /**
    * A temporal tax year value. This will always evaluate to a year based on the date the transfer was initiated.
    */
@@ -593,7 +593,7 @@ export const TransferScheduleSummaryRetirementContribution$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    tax_year: z.number().int().optional(),
+    tax_year: z.nullable(z.number().int()).optional(),
     temporal_tax_year: TransferScheduleSummaryTemporalTaxYear$inboundSchema
       .optional(),
     type: TransferScheduleSummaryType$inboundSchema.optional(),
@@ -606,7 +606,7 @@ export const TransferScheduleSummaryRetirementContribution$inboundSchema:
 
 /** @internal */
 export type TransferScheduleSummaryRetirementContribution$Outbound = {
-  tax_year?: number | undefined;
+  tax_year?: number | null | undefined;
   temporal_tax_year?: string | undefined;
   type?: string | undefined;
 };
@@ -618,7 +618,7 @@ export const TransferScheduleSummaryRetirementContribution$outboundSchema:
     z.ZodTypeDef,
     TransferScheduleSummaryRetirementContribution
   > = z.object({
-    taxYear: z.number().int().optional(),
+    taxYear: z.nullable(z.number().int()).optional(),
     temporalTaxYear: TransferScheduleSummaryTemporalTaxYear$outboundSchema
       .optional(),
     type: TransferScheduleSummaryType$outboundSchema.optional(),

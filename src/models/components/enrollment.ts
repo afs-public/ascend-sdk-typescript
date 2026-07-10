@@ -134,7 +134,7 @@ export type OtherAccounts = {
   /**
    * The owner has other accounts at Apex
    */
-  ownerHasOtherAccountsAtApex?: boolean | undefined;
+  ownerHasOtherAccountsAtApex?: boolean | null | undefined;
 };
 
 /**
@@ -162,7 +162,7 @@ export type ForeignBondTradingDetails = {
   /**
    * Does the account anticipate trading in foreign bonds
    */
-  foreignBondTrading?: boolean | undefined;
+  foreignBondTrading?: boolean | null | undefined;
   /**
    * The foreign bond trading countries details. If yes, than please provide details
    */
@@ -186,7 +186,7 @@ export type LowPricedSecurities = {
   /**
    * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
    */
-  lowPricedSecurities?: boolean | undefined;
+  lowPricedSecurities?: boolean | null | undefined;
   /**
    * The percentage, by volume, of the account's trades which will involve low priced securities
    */
@@ -262,7 +262,7 @@ export type RelatedPepDetails = {
   /**
    * Indication as to whether or not an account has direct or indirect related politically exposed persons
    */
-  directOrIndirectRelatedPeps?: boolean | undefined;
+  directOrIndirectRelatedPeps?: boolean | null | undefined;
   /**
    * Related Peps
    */
@@ -563,7 +563,7 @@ export type EnrollmentOtherAccounts = {
   /**
    * The owner has other accounts at Apex
    */
-  ownerHasOtherAccountsAtApex?: boolean | undefined;
+  ownerHasOtherAccountsAtApex?: boolean | null | undefined;
 };
 
 /**
@@ -591,7 +591,7 @@ export type EnrollmentForeignBondTradingDetails = {
   /**
    * Does the account anticipate trading in foreign bonds
    */
-  foreignBondTrading?: boolean | undefined;
+  foreignBondTrading?: boolean | null | undefined;
   /**
    * The foreign bond trading countries details. If yes, than please provide details
    */
@@ -615,7 +615,7 @@ export type EnrollmentLowPricedSecurities = {
   /**
    * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
    */
-  lowPricedSecurities?: boolean | undefined;
+  lowPricedSecurities?: boolean | null | undefined;
   /**
    * The percentage, by volume, of the account's trades which will involve low priced securities
    */
@@ -692,7 +692,7 @@ export type EnrollmentRelatedPepDetails = {
   /**
    * Indication as to whether or not an account has direct or indirect related politically exposed persons
    */
-  directOrIndirectRelatedPeps?: boolean | undefined;
+  directOrIndirectRelatedPeps?: boolean | null | undefined;
   /**
    * Related Peps
    */
@@ -821,7 +821,7 @@ export type EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts = {
   /**
    * The owner has other accounts at Apex
    */
-  ownerHasOtherAccountsAtApex?: boolean | undefined;
+  ownerHasOtherAccountsAtApex?: boolean | null | undefined;
 };
 
 /**
@@ -853,7 +853,7 @@ export type EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDet
     /**
      * Does the account anticipate trading in foreign bonds
      */
-    foreignBondTrading?: boolean | undefined;
+    foreignBondTrading?: boolean | null | undefined;
     /**
      * The foreign bond trading countries details. If yes, than please provide details
      */
@@ -879,7 +879,7 @@ export type EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities =
     /**
      * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
      */
-    lowPricedSecurities?: boolean | undefined;
+    lowPricedSecurities?: boolean | null | undefined;
     /**
      * The percentage, by volume, of the account's trades which will involve low priced securities
      */
@@ -963,7 +963,7 @@ export type EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails = {
   /**
    * Indication as to whether or not an account has direct or indirect related politically exposed persons
    */
-  directOrIndirectRelatedPeps?: boolean | undefined;
+  directOrIndirectRelatedPeps?: boolean | null | undefined;
   /**
    * Related Peps
    */
@@ -1074,25 +1074,25 @@ export type FuturesEnrollmentMetadata = {
   /**
    * Indicates whether the account is registered with the CFTC NFA
    */
-  ctfcNfaRegistered?: boolean | undefined;
+  ctfcNfaRegistered?: boolean | null | undefined;
   /**
    * Indicates whether the account owner is a member of any exchanges
    */
-  exchangeMember?: boolean | undefined;
+  exchangeMember?: boolean | null | undefined;
   /**
    * Indicates whether the futures account is owned or controlled by a FCM
    */
-  fcmOwnedOrControlled?: boolean | undefined;
+  fcmOwnedOrControlled?: boolean | null | undefined;
   /**
    * Indicates whether the funds in the futures account are owned by the account owner
    */
-  fundsOwnedByAccountOwner?: boolean | undefined;
+  fundsOwnedByAccountOwner?: boolean | null | undefined;
   /**
    * Indicates whether the account owner has prior experience trading futures
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  futuresExperience?: boolean | undefined;
+  futuresExperience?: boolean | null | undefined;
   /**
    * The primary investment objective for the futures account
    */
@@ -1104,23 +1104,23 @@ export type FuturesEnrollmentMetadata = {
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  investmentRetiredFunds?: boolean | undefined;
+  investmentRetiredFunds?: boolean | null | undefined;
   /**
    * Indicates whether the account owner has experience with various trading options and strategies
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  optionsExperience?: boolean | undefined;
+  optionsExperience?: boolean | null | undefined;
   /**
    * Indicates whether the account owner understands the risks associated with trading futures
    */
-  understandFuturesRisks?: boolean | undefined;
+  understandFuturesRisks?: boolean | null | undefined;
   /**
    * Indicates whether the account owner understands that losses can exceed deposited funds
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  understandLossBeyondFunds?: boolean | undefined;
+  understandLossBeyondFunds?: boolean | null | undefined;
 };
 
 /**
@@ -1273,7 +1273,7 @@ export type IraBeneficiaryEnrollmentMetadata = {
   /**
    * Indicates if the customer is the spouse of the decedent
    */
-  inheritorIsDecedentsSpouse?: boolean | undefined;
+  inheritorIsDecedentsSpouse?: boolean | null | undefined;
 };
 
 /**
@@ -1917,7 +1917,7 @@ export type EnrollmentLlcEnrollmentMetadataOtherAccounts = {
   /**
    * The owner has other accounts at Apex
    */
-  ownerHasOtherAccountsAtApex?: boolean | undefined;
+  ownerHasOtherAccountsAtApex?: boolean | null | undefined;
 };
 
 /**
@@ -1948,7 +1948,7 @@ export type EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails = {
   /**
    * Does the account anticipate trading in foreign bonds
    */
-  foreignBondTrading?: boolean | undefined;
+  foreignBondTrading?: boolean | null | undefined;
   /**
    * The foreign bond trading countries details. If yes, than please provide details
    */
@@ -1972,7 +1972,7 @@ export type EnrollmentLlcEnrollmentMetadataLowPricedSecurities = {
   /**
    * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
    */
-  lowPricedSecurities?: boolean | undefined;
+  lowPricedSecurities?: boolean | null | undefined;
   /**
    * The percentage, by volume, of the account's trades which will involve low priced securities
    */
@@ -2053,7 +2053,7 @@ export type EnrollmentLlcEnrollmentMetadataRelatedPepDetails = {
   /**
    * Indication as to whether or not an account has direct or indirect related politically exposed persons
    */
-  directOrIndirectRelatedPeps?: boolean | undefined;
+  directOrIndirectRelatedPeps?: boolean | null | undefined;
   /**
    * Related Peps
    */
@@ -2192,6 +2192,7 @@ export enum EnrollmentOperatingPurpose {
   Wash = "WASH",
   Settlement = "SETTLEMENT",
   TransferLocation = "TRANSFER_LOCATION",
+  ControlDepository = "CONTROL_DEPOSITORY",
 }
 /**
  * The purpose of the operating account.
@@ -2304,6 +2305,10 @@ export type OperatingEnrollmentMetadata = {
    */
   operatingPurpose?: EnrollmentOperatingPurposeOpen | undefined;
   /**
+   * Indicates whether the depository is foreign (true) or domestic (false). Used for CONTROL_DEPOSITORY operating purpose to determine FINRA COA code.
+   */
+  representsForeignEntity?: boolean | undefined;
+  /**
    * Optional subtitle for the operating purpose
    */
   subtitle?: string | undefined;
@@ -2385,6 +2390,335 @@ export type OrdersOptionsTradingEnrollmentMetadata = {
    * Total years of options trading experience
    */
   totalYearsOptionsTradingExperience?: number | undefined;
+};
+
+/**
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
+ */
+export enum EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan {
+  AutoEnrollDividendReinvestmentUnspecified =
+    "AUTO_ENROLL_DIVIDEND_REINVESTMENT_UNSPECIFIED",
+  DividendReinvestmentEnroll = "DIVIDEND_REINVESTMENT_ENROLL",
+  DividendReinvestmentDecline = "DIVIDEND_REINVESTMENT_DECLINE",
+}
+/**
+ * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
+ */
+export type EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlanOpen =
+  OpenEnum<
+    typeof EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan
+  >;
+
+/**
+ * The initial deposit amount in USD
+ */
+export type EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount = {
+  /**
+   * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+   */
+  value?: string | undefined;
+};
+
+/**
+ * The initial amount of money placed into the account by the customer upon or after the account's establishment.
+ */
+export type EnrollmentPartnershipEnrollmentMetadataDepositedFunds = {
+  /**
+   * The initial deposit amount in USD
+   */
+  initialDepositAmount?:
+    | EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount
+    | null
+    | undefined;
+  /**
+   * The source of the initial deposit
+   */
+  initialDepositSource?: string | undefined;
+};
+
+/**
+ * The client determined account risk rating of the entity customer
+ */
+export enum EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating {
+  DeterminedAccountRiskRatingUnspecified =
+    "DETERMINED_ACCOUNT_RISK_RATING_UNSPECIFIED",
+  Low = "LOW",
+  Medium = "MEDIUM",
+  High = "HIGH",
+}
+/**
+ * The client determined account risk rating of the entity customer
+ */
+export type EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRatingOpen =
+  OpenEnum<
+    typeof EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating
+  >;
+
+/**
+ * A customer-disclosed list of other Apex-held accounts owned by the Entity applicant at the time of this account's application; expressed as zero, one, or many account numbers
+ */
+export type EnrollmentPartnershipEnrollmentMetadataOtherAccounts = {
+  /**
+   * Other account names held at Apex
+   */
+  accountNames?: Array<string> | undefined;
+  /**
+   * Other account numbers held at Apex
+   */
+  accountNumbers?: Array<string> | undefined;
+  /**
+   * The owner has other accounts at Apex
+   */
+  ownerHasOtherAccountsAtApex?: boolean | null | undefined;
+};
+
+/**
+ * Disclosure of the account owner's financial relationships and source of brokerage funds; facilitates the creation of the overall customer risk profile
+ */
+export type EnrollmentPartnershipEnrollmentMetadataFinancialProfile = {
+  /**
+   * Bank names with whom the entity maintains a relationship with (e.g., accounts held with the bank)
+   */
+  bankingRelationships?: Array<string> | undefined;
+  /**
+   * A customer-disclosed list of other Apex-held accounts owned by the Entity applicant at the time of this account's application; expressed as zero, one, or many account numbers
+   */
+  otherAccounts?:
+    | EnrollmentPartnershipEnrollmentMetadataOtherAccounts
+    | null
+    | undefined;
+  /**
+   * The primary source of funds that will be deposited to this account
+   */
+  primarySourceOfDepositedFunds?: string | undefined;
+};
+
+/**
+ * The foreign bond trading countries details
+ */
+export type EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails = {
+  /**
+   * Does the account anticipate trading in foreign bonds
+   */
+  foreignBondTrading?: boolean | null | undefined;
+  /**
+   * The foreign bond trading countries details. If yes, than please provide details
+   */
+  foreignBondTradingDetail?: Array<ForeignBondTradingDetail> | undefined;
+};
+
+/**
+ * The percentage, by volume, of the account's trades which will involve low priced securities
+ */
+export type EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage =
+  {
+    /**
+     * The decimal value, as a string; Refer to [Google’s Decimal type protocol buffer](https://github.com/googleapis/googleapis/blob/40203ca1880849480bbff7b8715491060bbccdf1/google/type/decimal.proto#L33) for details
+     */
+    value?: string | undefined;
+  };
+
+/**
+ * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
+ */
+export type EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities = {
+  /**
+   * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
+   */
+  lowPricedSecurities?: boolean | null | undefined;
+  /**
+   * The percentage, by volume, of the account's trades which will involve low priced securities
+   */
+  lowPricedSecuritiesPercentage?:
+    | EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage
+    | null
+    | undefined;
+};
+
+/**
+ * The primary account activity type
+ */
+export enum EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType {
+  PrimaryAccountActivityTypeUnspecified =
+    "PRIMARY_ACCOUNT_ACTIVITY_TYPE_UNSPECIFIED",
+  ActiveTrading = "ACTIVE_TRADING",
+  ShortTermInvesting = "SHORT_TERM_INVESTING",
+  LongTermInvesting = "LONG_TERM_INVESTING",
+}
+/**
+ * The primary account activity type
+ */
+export type EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityTypeOpen =
+  OpenEnum<
+    typeof EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType
+  >;
+
+/**
+ * The frequency by which cash is anticipated to be withdrawn from the account
+ */
+export enum EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency {
+  WithdrawalFrequencyUnspecified = "WITHDRAWAL_FREQUENCY_UNSPECIFIED",
+  Frequent = "FREQUENT",
+  Occasional = "OCCASIONAL",
+  Rare = "RARE",
+}
+/**
+ * The frequency by which cash is anticipated to be withdrawn from the account
+ */
+export type EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequencyOpen =
+  OpenEnum<typeof EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency>;
+
+/**
+ * Details the customer's intended trading and banking-related activities at the time of account application; informs risk checks and forms a baseline for anomalous activity detection
+ */
+export type EnrollmentPartnershipEnrollmentMetadataPlannedActivity = {
+  /**
+   * The foreign bond trading countries details
+   */
+  foreignBondTradingDetails?:
+    | EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails
+    | null
+    | undefined;
+  /**
+   * The account anticipates trading in securities trading for less than $5 per share and are typically traded over-the-counter (OTC) or through pink sheets
+   */
+  lowPricedSecurities?:
+    | EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities
+    | null
+    | undefined;
+  /**
+   * The primary account activity type
+   */
+  primaryAccountActivityType?:
+    | EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityTypeOpen
+    | undefined;
+  /**
+   * The frequency by which cash is anticipated to be withdrawn from the account
+   */
+  withdrawalFrequency?:
+    | EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequencyOpen
+    | undefined;
+};
+
+/**
+ * Information about the related politically exposed persons
+ */
+export type EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails = {
+  /**
+   * Indication as to whether or not an account has direct or indirect related politically exposed persons
+   */
+  directOrIndirectRelatedPeps?: boolean | null | undefined;
+  /**
+   * Related Peps
+   */
+  relatedPeps?: Array<RelatedPep> | undefined;
+};
+
+/**
+ * Enrollment metadata for entity accounts
+ */
+export type EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata =
+  {
+    /**
+     * The initial amount of money placed into the account by the customer upon or after the account's establishment.
+     */
+    depositedFunds?:
+      | EnrollmentPartnershipEnrollmentMetadataDepositedFunds
+      | null
+      | undefined;
+    /**
+     * The client determined account risk rating of the entity customer
+     */
+    determinedAccountRiskRating?:
+      | EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRatingOpen
+      | undefined;
+    /**
+     * Disclosure of the account owner's financial relationships and source of brokerage funds; facilitates the creation of the overall customer risk profile
+     */
+    financialProfile?:
+      | EnrollmentPartnershipEnrollmentMetadataFinancialProfile
+      | null
+      | undefined;
+    /**
+     * Details the customer's intended trading and banking-related activities at the time of account application; informs risk checks and forms a baseline for anomalous activity detection
+     */
+    plannedActivity?:
+      | EnrollmentPartnershipEnrollmentMetadataPlannedActivity
+      | null
+      | undefined;
+    /**
+     * Information about the related politically exposed persons
+     */
+    relatedPepDetails?:
+      | EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails
+      | null
+      | undefined;
+    /**
+     * The scope of the business for the entity customer
+     */
+    scopeOfBusiness?: string | undefined;
+  };
+
+/**
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
+ */
+export enum EnrollmentPartnershipEnrollmentMetadataFdicCashSweep {
+  AutoEnrollFdicCashSweepUnspecified =
+    "AUTO_ENROLL_FDIC_CASH_SWEEP_UNSPECIFIED",
+  FdicCashSweepEnroll = "FDIC_CASH_SWEEP_ENROLL",
+  FdicCashSweepDecline = "FDIC_CASH_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
+ */
+export type EnrollmentPartnershipEnrollmentMetadataFdicCashSweepOpen = OpenEnum<
+  typeof EnrollmentPartnershipEnrollmentMetadataFdicCashSweep
+>;
+
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export enum EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep {
+  AutoEnrollMoneyMarketFundSweepUnspecified =
+    "AUTO_ENROLL_MONEY_MARKET_FUND_SWEEP_UNSPECIFIED",
+  MoneyMarketFundSweepEnroll = "MONEY_MARKET_FUND_SWEEP_ENROLL",
+  MoneyMarketFundSweepDecline = "MONEY_MARKET_FUND_SWEEP_DECLINE",
+}
+/**
+ * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+ */
+export type EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweepOpen =
+  OpenEnum<typeof EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep>;
+
+/**
+ * Metadata for the REGISTRATION_PARTNERSHIP enrollment type
+ */
+export type PartnershipEnrollmentMetadata = {
+  /**
+   * Option to auto-enroll in Dividend Reinvestment; defaults to DIVIDEND_REINVESTMENT_ENROLL
+   */
+  dividendReinvestmentPlan?:
+    | EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlanOpen
+    | undefined;
+  /**
+   * Enrollment metadata for entity accounts
+   */
+  eddAccountEnrollmentMetadata?:
+    | EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata
+    | null
+    | undefined;
+  /**
+   * Option to auto-enroll in FDIC cash sweep; defaults to FDIC_CASH_SWEEP_ENROLL
+   */
+  fdicCashSweep?:
+    | EnrollmentPartnershipEnrollmentMetadataFdicCashSweepOpen
+    | undefined;
+  /**
+   * Option to auto-enroll in Money Market Fund Sweep; defaults to MONEY_MARKET_FUND_SWEEP_ENROLL
+   */
+  moneyMarketFundSweep?:
+    | EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweepOpen
+    | undefined;
 };
 
 /**
@@ -2572,6 +2906,7 @@ export type TrustEnrollmentMetadata = {
 export enum EnrollmentType1 {
   EnrollmentTypeUnspecified = "ENROLLMENT_TYPE_UNSPECIFIED",
   RegistrationIndividual = "REGISTRATION_INDIVIDUAL",
+  LendingLimitedPurposeMargin = "LENDING_LIMITED_PURPOSE_MARGIN",
   LendingFullyPaidStockLoan = "LENDING_FULLY_PAID_STOCK_LOAN",
   BeneficiaryDesignation = "BENEFICIARY_DESIGNATION",
   RegistrationJointWros = "REGISTRATION_JOINT_WROS",
@@ -2773,6 +3108,13 @@ export type Enrollment = {
    */
   ordersOptionsTradingEnrollmentMetadata?:
     | OrdersOptionsTradingEnrollmentMetadata
+    | null
+    | undefined;
+  /**
+   * Metadata for the REGISTRATION_PARTNERSHIP enrollment type
+   */
+  partnershipEnrollmentMetadata?:
+    | PartnershipEnrollmentMetadata
     | null
     | undefined;
   /**
@@ -3121,7 +3463,7 @@ export const OtherAccounts$inboundSchema: z.ZodType<
 > = z.object({
   account_names: z.array(z.string()).optional(),
   account_numbers: z.array(z.string()).optional(),
-  owner_has_other_accounts_at_apex: z.boolean().optional(),
+  owner_has_other_accounts_at_apex: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_names": "accountNames",
@@ -3134,7 +3476,7 @@ export const OtherAccounts$inboundSchema: z.ZodType<
 export type OtherAccounts$Outbound = {
   account_names?: Array<string> | undefined;
   account_numbers?: Array<string> | undefined;
-  owner_has_other_accounts_at_apex?: boolean | undefined;
+  owner_has_other_accounts_at_apex?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -3145,7 +3487,7 @@ export const OtherAccounts$outboundSchema: z.ZodType<
 > = z.object({
   accountNames: z.array(z.string()).optional(),
   accountNumbers: z.array(z.string()).optional(),
-  ownerHasOtherAccountsAtApex: z.boolean().optional(),
+  ownerHasOtherAccountsAtApex: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountNames: "account_names",
@@ -3261,7 +3603,7 @@ export const ForeignBondTradingDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  foreign_bond_trading: z.boolean().optional(),
+  foreign_bond_trading: z.nullable(z.boolean()).optional(),
   foreign_bond_trading_detail: z.array(ForeignBondTradingDetail$inboundSchema)
     .optional(),
 }).transform((v) => {
@@ -3273,7 +3615,7 @@ export const ForeignBondTradingDetails$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ForeignBondTradingDetails$Outbound = {
-  foreign_bond_trading?: boolean | undefined;
+  foreign_bond_trading?: boolean | null | undefined;
   foreign_bond_trading_detail?:
     | Array<ForeignBondTradingDetail$Outbound>
     | undefined;
@@ -3285,7 +3627,7 @@ export const ForeignBondTradingDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ForeignBondTradingDetails
 > = z.object({
-  foreignBondTrading: z.boolean().optional(),
+  foreignBondTrading: z.nullable(z.boolean()).optional(),
   foreignBondTradingDetail: z.array(ForeignBondTradingDetail$outboundSchema)
     .optional(),
 }).transform((v) => {
@@ -3388,7 +3730,7 @@ export const LowPricedSecurities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  low_priced_securities: z.boolean().optional(),
+  low_priced_securities: z.nullable(z.boolean()).optional(),
   low_priced_securities_percentage: z.nullable(
     z.lazy(() => LowPricedSecuritiesPercentage$inboundSchema),
   ).optional(),
@@ -3401,7 +3743,7 @@ export const LowPricedSecurities$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LowPricedSecurities$Outbound = {
-  low_priced_securities?: boolean | undefined;
+  low_priced_securities?: boolean | null | undefined;
   low_priced_securities_percentage?:
     | LowPricedSecuritiesPercentage$Outbound
     | null
@@ -3414,7 +3756,7 @@ export const LowPricedSecurities$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LowPricedSecurities
 > = z.object({
-  lowPricedSecurities: z.boolean().optional(),
+  lowPricedSecurities: z.nullable(z.boolean()).optional(),
   lowPricedSecuritiesPercentage: z.nullable(
     z.lazy(() => LowPricedSecuritiesPercentage$outboundSchema),
   ).optional(),
@@ -3632,7 +3974,7 @@ export const RelatedPepDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  direct_or_indirect_related_peps: z.boolean().optional(),
+  direct_or_indirect_related_peps: z.nullable(z.boolean()).optional(),
   related_peps: z.array(RelatedPep$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -3643,7 +3985,7 @@ export const RelatedPepDetails$inboundSchema: z.ZodType<
 
 /** @internal */
 export type RelatedPepDetails$Outbound = {
-  direct_or_indirect_related_peps?: boolean | undefined;
+  direct_or_indirect_related_peps?: boolean | null | undefined;
   related_peps?: Array<RelatedPep$Outbound> | undefined;
 };
 
@@ -3653,7 +3995,7 @@ export const RelatedPepDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   RelatedPepDetails
 > = z.object({
-  directOrIndirectRelatedPeps: z.boolean().optional(),
+  directOrIndirectRelatedPeps: z.nullable(z.boolean()).optional(),
   relatedPeps: z.array(RelatedPep$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -4582,7 +4924,7 @@ export const EnrollmentOtherAccounts$inboundSchema: z.ZodType<
 > = z.object({
   account_names: z.array(z.string()).optional(),
   account_numbers: z.array(z.string()).optional(),
-  owner_has_other_accounts_at_apex: z.boolean().optional(),
+  owner_has_other_accounts_at_apex: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_names": "accountNames",
@@ -4595,7 +4937,7 @@ export const EnrollmentOtherAccounts$inboundSchema: z.ZodType<
 export type EnrollmentOtherAccounts$Outbound = {
   account_names?: Array<string> | undefined;
   account_numbers?: Array<string> | undefined;
-  owner_has_other_accounts_at_apex?: boolean | undefined;
+  owner_has_other_accounts_at_apex?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -4606,7 +4948,7 @@ export const EnrollmentOtherAccounts$outboundSchema: z.ZodType<
 > = z.object({
   accountNames: z.array(z.string()).optional(),
   accountNumbers: z.array(z.string()).optional(),
-  ownerHasOtherAccountsAtApex: z.boolean().optional(),
+  ownerHasOtherAccountsAtApex: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountNames: "account_names",
@@ -4728,7 +5070,7 @@ export const EnrollmentForeignBondTradingDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  foreign_bond_trading: z.boolean().optional(),
+  foreign_bond_trading: z.nullable(z.boolean()).optional(),
   foreign_bond_trading_detail: z.array(ForeignBondTradingDetail$inboundSchema)
     .optional(),
 }).transform((v) => {
@@ -4740,7 +5082,7 @@ export const EnrollmentForeignBondTradingDetails$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EnrollmentForeignBondTradingDetails$Outbound = {
-  foreign_bond_trading?: boolean | undefined;
+  foreign_bond_trading?: boolean | null | undefined;
   foreign_bond_trading_detail?:
     | Array<ForeignBondTradingDetail$Outbound>
     | undefined;
@@ -4752,7 +5094,7 @@ export const EnrollmentForeignBondTradingDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EnrollmentForeignBondTradingDetails
 > = z.object({
-  foreignBondTrading: z.boolean().optional(),
+  foreignBondTrading: z.nullable(z.boolean()).optional(),
   foreignBondTradingDetail: z.array(ForeignBondTradingDetail$outboundSchema)
     .optional(),
 }).transform((v) => {
@@ -4869,7 +5211,7 @@ export const EnrollmentLowPricedSecurities$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  low_priced_securities: z.boolean().optional(),
+  low_priced_securities: z.nullable(z.boolean()).optional(),
   low_priced_securities_percentage: z.nullable(
     z.lazy(() => EnrollmentLowPricedSecuritiesPercentage$inboundSchema),
   ).optional(),
@@ -4882,7 +5224,7 @@ export const EnrollmentLowPricedSecurities$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EnrollmentLowPricedSecurities$Outbound = {
-  low_priced_securities?: boolean | undefined;
+  low_priced_securities?: boolean | null | undefined;
   low_priced_securities_percentage?:
     | EnrollmentLowPricedSecuritiesPercentage$Outbound
     | null
@@ -4895,7 +5237,7 @@ export const EnrollmentLowPricedSecurities$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EnrollmentLowPricedSecurities
 > = z.object({
-  lowPricedSecurities: z.boolean().optional(),
+  lowPricedSecurities: z.nullable(z.boolean()).optional(),
   lowPricedSecuritiesPercentage: z.nullable(
     z.lazy(() => EnrollmentLowPricedSecuritiesPercentage$outboundSchema),
   ).optional(),
@@ -5104,7 +5446,7 @@ export const EnrollmentRelatedPepDetails$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  direct_or_indirect_related_peps: z.boolean().optional(),
+  direct_or_indirect_related_peps: z.nullable(z.boolean()).optional(),
   related_peps: z.array(RelatedPep$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -5115,7 +5457,7 @@ export const EnrollmentRelatedPepDetails$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EnrollmentRelatedPepDetails$Outbound = {
-  direct_or_indirect_related_peps?: boolean | undefined;
+  direct_or_indirect_related_peps?: boolean | null | undefined;
   related_peps?: Array<RelatedPep$Outbound> | undefined;
 };
 
@@ -5125,7 +5467,7 @@ export const EnrollmentRelatedPepDetails$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EnrollmentRelatedPepDetails
 > = z.object({
-  directOrIndirectRelatedPeps: z.boolean().optional(),
+  directOrIndirectRelatedPeps: z.nullable(z.boolean()).optional(),
   relatedPeps: z.array(RelatedPep$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -5623,7 +5965,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$inboun
   > = z.object({
     account_names: z.array(z.string()).optional(),
     account_numbers: z.array(z.string()).optional(),
-    owner_has_other_accounts_at_apex: z.boolean().optional(),
+    owner_has_other_accounts_at_apex: z.nullable(z.boolean()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "account_names": "accountNames",
@@ -5637,7 +5979,7 @@ export type EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$Outboun
   {
     account_names?: Array<string> | undefined;
     account_numbers?: Array<string> | undefined;
-    owner_has_other_accounts_at_apex?: boolean | undefined;
+    owner_has_other_accounts_at_apex?: boolean | null | undefined;
   };
 
 /** @internal */
@@ -5649,7 +5991,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataOtherAccounts$outbou
   > = z.object({
     accountNames: z.array(z.string()).optional(),
     accountNumbers: z.array(z.string()).optional(),
-    ownerHasOtherAccountsAtApex: z.boolean().optional(),
+    ownerHasOtherAccountsAtApex: z.nullable(z.boolean()).optional(),
   }).transform((v) => {
     return remap$(v, {
       accountNames: "account_names",
@@ -5802,7 +6144,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDe
     z.ZodTypeDef,
     unknown
   > = z.object({
-    foreign_bond_trading: z.boolean().optional(),
+    foreign_bond_trading: z.nullable(z.boolean()).optional(),
     foreign_bond_trading_detail: z.array(ForeignBondTradingDetail$inboundSchema)
       .optional(),
   }).transform((v) => {
@@ -5815,7 +6157,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDe
 /** @internal */
 export type EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails$Outbound =
   {
-    foreign_bond_trading?: boolean | undefined;
+    foreign_bond_trading?: boolean | null | undefined;
     foreign_bond_trading_detail?:
       | Array<ForeignBondTradingDetail$Outbound>
       | undefined;
@@ -5828,7 +6170,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDe
     z.ZodTypeDef,
     EnrollmentForeignJointAccountEnrollmentMetadataForeignBondTradingDetails
   > = z.object({
-    foreignBondTrading: z.boolean().optional(),
+    foreignBondTrading: z.nullable(z.boolean()).optional(),
     foreignBondTradingDetail: z.array(ForeignBondTradingDetail$outboundSchema)
       .optional(),
   }).transform((v) => {
@@ -5957,7 +6299,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$
     z.ZodTypeDef,
     unknown
   > = z.object({
-    low_priced_securities: z.boolean().optional(),
+    low_priced_securities: z.nullable(z.boolean()).optional(),
     low_priced_securities_percentage: z.nullable(
       z.lazy(() =>
         EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
@@ -5973,7 +6315,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$
 /** @internal */
 export type EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$Outbound =
   {
-    low_priced_securities?: boolean | undefined;
+    low_priced_securities?: boolean | null | undefined;
     low_priced_securities_percentage?:
       | EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound
       | null
@@ -5987,7 +6329,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities$
     z.ZodTypeDef,
     EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecurities
   > = z.object({
-    lowPricedSecurities: z.boolean().optional(),
+    lowPricedSecurities: z.nullable(z.boolean()).optional(),
     lowPricedSecuritiesPercentage: z.nullable(
       z.lazy(() =>
         EnrollmentForeignJointAccountEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
@@ -6250,7 +6592,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$in
     z.ZodTypeDef,
     unknown
   > = z.object({
-    direct_or_indirect_related_peps: z.boolean().optional(),
+    direct_or_indirect_related_peps: z.nullable(z.boolean()).optional(),
     related_peps: z.array(RelatedPep$inboundSchema).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -6262,7 +6604,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$in
 /** @internal */
 export type EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$Outbound =
   {
-    direct_or_indirect_related_peps?: boolean | undefined;
+    direct_or_indirect_related_peps?: boolean | null | undefined;
     related_peps?: Array<RelatedPep$Outbound> | undefined;
   };
 
@@ -6273,7 +6615,7 @@ export const EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails$ou
     z.ZodTypeDef,
     EnrollmentForeignJointAccountEnrollmentMetadataRelatedPepDetails
   > = z.object({
-    directOrIndirectRelatedPeps: z.boolean().optional(),
+    directOrIndirectRelatedPeps: z.nullable(z.boolean()).optional(),
     relatedPeps: z.array(RelatedPep$outboundSchema).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -6671,17 +7013,17 @@ export const FuturesEnrollmentMetadata$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ctfc_nfa_registered: z.boolean().optional(),
-  exchange_member: z.boolean().optional(),
-  fcm_owned_or_controlled: z.boolean().optional(),
-  funds_owned_by_account_owner: z.boolean().optional(),
-  futures_experience: z.boolean().optional(),
+  ctfc_nfa_registered: z.nullable(z.boolean()).optional(),
+  exchange_member: z.nullable(z.boolean()).optional(),
+  fcm_owned_or_controlled: z.nullable(z.boolean()).optional(),
+  funds_owned_by_account_owner: z.nullable(z.boolean()).optional(),
+  futures_experience: z.nullable(z.boolean()).optional(),
   futures_investment_objective:
     EnrollmentFuturesInvestmentObjective$inboundSchema.optional(),
-  investment_retired_funds: z.boolean().optional(),
-  options_experience: z.boolean().optional(),
-  understand_futures_risks: z.boolean().optional(),
-  understand_loss_beyond_funds: z.boolean().optional(),
+  investment_retired_funds: z.nullable(z.boolean()).optional(),
+  options_experience: z.nullable(z.boolean()).optional(),
+  understand_futures_risks: z.nullable(z.boolean()).optional(),
+  understand_loss_beyond_funds: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "ctfc_nfa_registered": "ctfcNfaRegistered",
@@ -6699,16 +7041,16 @@ export const FuturesEnrollmentMetadata$inboundSchema: z.ZodType<
 
 /** @internal */
 export type FuturesEnrollmentMetadata$Outbound = {
-  ctfc_nfa_registered?: boolean | undefined;
-  exchange_member?: boolean | undefined;
-  fcm_owned_or_controlled?: boolean | undefined;
-  funds_owned_by_account_owner?: boolean | undefined;
-  futures_experience?: boolean | undefined;
+  ctfc_nfa_registered?: boolean | null | undefined;
+  exchange_member?: boolean | null | undefined;
+  fcm_owned_or_controlled?: boolean | null | undefined;
+  funds_owned_by_account_owner?: boolean | null | undefined;
+  futures_experience?: boolean | null | undefined;
   futures_investment_objective?: string | undefined;
-  investment_retired_funds?: boolean | undefined;
-  options_experience?: boolean | undefined;
-  understand_futures_risks?: boolean | undefined;
-  understand_loss_beyond_funds?: boolean | undefined;
+  investment_retired_funds?: boolean | null | undefined;
+  options_experience?: boolean | null | undefined;
+  understand_futures_risks?: boolean | null | undefined;
+  understand_loss_beyond_funds?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -6717,17 +7059,17 @@ export const FuturesEnrollmentMetadata$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   FuturesEnrollmentMetadata
 > = z.object({
-  ctfcNfaRegistered: z.boolean().optional(),
-  exchangeMember: z.boolean().optional(),
-  fcmOwnedOrControlled: z.boolean().optional(),
-  fundsOwnedByAccountOwner: z.boolean().optional(),
-  futuresExperience: z.boolean().optional(),
+  ctfcNfaRegistered: z.nullable(z.boolean()).optional(),
+  exchangeMember: z.nullable(z.boolean()).optional(),
+  fcmOwnedOrControlled: z.nullable(z.boolean()).optional(),
+  fundsOwnedByAccountOwner: z.nullable(z.boolean()).optional(),
+  futuresExperience: z.nullable(z.boolean()).optional(),
   futuresInvestmentObjective:
     EnrollmentFuturesInvestmentObjective$outboundSchema.optional(),
-  investmentRetiredFunds: z.boolean().optional(),
-  optionsExperience: z.boolean().optional(),
-  understandFuturesRisks: z.boolean().optional(),
-  understandLossBeyondFunds: z.boolean().optional(),
+  investmentRetiredFunds: z.nullable(z.boolean()).optional(),
+  optionsExperience: z.nullable(z.boolean()).optional(),
+  understandFuturesRisks: z.nullable(z.boolean()).optional(),
+  understandLossBeyondFunds: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     ctfcNfaRegistered: "ctfc_nfa_registered",
@@ -7146,7 +7488,7 @@ export const IraBeneficiaryEnrollmentMetadata$inboundSchema: z.ZodType<
     z.lazy(() => InheritedFromOwnerDeathDate$inboundSchema),
   ).optional(),
   inherited_from_owner_name: z.string().optional(),
-  inheritor_is_decedents_spouse: z.boolean().optional(),
+  inheritor_is_decedents_spouse: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "dividend_reinvestment_plan": "dividendReinvestmentPlan",
@@ -7171,7 +7513,7 @@ export type IraBeneficiaryEnrollmentMetadata$Outbound = {
     | null
     | undefined;
   inherited_from_owner_name?: string | undefined;
-  inheritor_is_decedents_spouse?: boolean | undefined;
+  inheritor_is_decedents_spouse?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -7193,7 +7535,7 @@ export const IraBeneficiaryEnrollmentMetadata$outboundSchema: z.ZodType<
     z.lazy(() => InheritedFromOwnerDeathDate$outboundSchema),
   ).optional(),
   inheritedFromOwnerName: z.string().optional(),
-  inheritorIsDecedentsSpouse: z.boolean().optional(),
+  inheritorIsDecedentsSpouse: z.nullable(z.boolean()).optional(),
 }).transform((v) => {
   return remap$(v, {
     dividendReinvestmentPlan: "dividend_reinvestment_plan",
@@ -8978,7 +9320,7 @@ export const EnrollmentLlcEnrollmentMetadataOtherAccounts$inboundSchema:
   > = z.object({
     account_names: z.array(z.string()).optional(),
     account_numbers: z.array(z.string()).optional(),
-    owner_has_other_accounts_at_apex: z.boolean().optional(),
+    owner_has_other_accounts_at_apex: z.nullable(z.boolean()).optional(),
   }).transform((v) => {
     return remap$(v, {
       "account_names": "accountNames",
@@ -8991,7 +9333,7 @@ export const EnrollmentLlcEnrollmentMetadataOtherAccounts$inboundSchema:
 export type EnrollmentLlcEnrollmentMetadataOtherAccounts$Outbound = {
   account_names?: Array<string> | undefined;
   account_numbers?: Array<string> | undefined;
-  owner_has_other_accounts_at_apex?: boolean | undefined;
+  owner_has_other_accounts_at_apex?: boolean | null | undefined;
 };
 
 /** @internal */
@@ -9003,7 +9345,7 @@ export const EnrollmentLlcEnrollmentMetadataOtherAccounts$outboundSchema:
   > = z.object({
     accountNames: z.array(z.string()).optional(),
     accountNumbers: z.array(z.string()).optional(),
-    ownerHasOtherAccountsAtApex: z.boolean().optional(),
+    ownerHasOtherAccountsAtApex: z.nullable(z.boolean()).optional(),
   }).transform((v) => {
     return remap$(v, {
       accountNames: "account_names",
@@ -9154,7 +9496,7 @@ export const EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSch
     z.ZodTypeDef,
     unknown
   > = z.object({
-    foreign_bond_trading: z.boolean().optional(),
+    foreign_bond_trading: z.nullable(z.boolean()).optional(),
     foreign_bond_trading_detail: z.array(ForeignBondTradingDetail$inboundSchema)
       .optional(),
   }).transform((v) => {
@@ -9167,7 +9509,7 @@ export const EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$inboundSch
 /** @internal */
 export type EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$Outbound =
   {
-    foreign_bond_trading?: boolean | undefined;
+    foreign_bond_trading?: boolean | null | undefined;
     foreign_bond_trading_detail?:
       | Array<ForeignBondTradingDetail$Outbound>
       | undefined;
@@ -9180,7 +9522,7 @@ export const EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails$outboundSc
     z.ZodTypeDef,
     EnrollmentLlcEnrollmentMetadataForeignBondTradingDetails
   > = z.object({
-    foreignBondTrading: z.boolean().optional(),
+    foreignBondTrading: z.nullable(z.boolean()).optional(),
     foreignBondTradingDetail: z.array(ForeignBondTradingDetail$outboundSchema)
       .optional(),
   }).transform((v) => {
@@ -9305,7 +9647,7 @@ export const EnrollmentLlcEnrollmentMetadataLowPricedSecurities$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    low_priced_securities: z.boolean().optional(),
+    low_priced_securities: z.nullable(z.boolean()).optional(),
     low_priced_securities_percentage: z.nullable(
       z.lazy(() =>
         EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
@@ -9320,7 +9662,7 @@ export const EnrollmentLlcEnrollmentMetadataLowPricedSecurities$inboundSchema:
 
 /** @internal */
 export type EnrollmentLlcEnrollmentMetadataLowPricedSecurities$Outbound = {
-  low_priced_securities?: boolean | undefined;
+  low_priced_securities?: boolean | null | undefined;
   low_priced_securities_percentage?:
     | EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound
     | null
@@ -9334,7 +9676,7 @@ export const EnrollmentLlcEnrollmentMetadataLowPricedSecurities$outboundSchema:
     z.ZodTypeDef,
     EnrollmentLlcEnrollmentMetadataLowPricedSecurities
   > = z.object({
-    lowPricedSecurities: z.boolean().optional(),
+    lowPricedSecurities: z.nullable(z.boolean()).optional(),
     lowPricedSecuritiesPercentage: z.nullable(
       z.lazy(() =>
         EnrollmentLlcEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
@@ -9590,7 +9932,7 @@ export const EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    direct_or_indirect_related_peps: z.boolean().optional(),
+    direct_or_indirect_related_peps: z.nullable(z.boolean()).optional(),
     related_peps: z.array(RelatedPep$inboundSchema).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -9601,7 +9943,7 @@ export const EnrollmentLlcEnrollmentMetadataRelatedPepDetails$inboundSchema:
 
 /** @internal */
 export type EnrollmentLlcEnrollmentMetadataRelatedPepDetails$Outbound = {
-  direct_or_indirect_related_peps?: boolean | undefined;
+  direct_or_indirect_related_peps?: boolean | null | undefined;
   related_peps?: Array<RelatedPep$Outbound> | undefined;
 };
 
@@ -9612,7 +9954,7 @@ export const EnrollmentLlcEnrollmentMetadataRelatedPepDetails$outboundSchema:
     z.ZodTypeDef,
     EnrollmentLlcEnrollmentMetadataRelatedPepDetails
   > = z.object({
-    directOrIndirectRelatedPeps: z.boolean().optional(),
+    directOrIndirectRelatedPeps: z.nullable(z.boolean()).optional(),
     relatedPeps: z.array(RelatedPep$outboundSchema).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -10123,6 +10465,7 @@ export const OperatingEnrollmentMetadata$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   operating_purpose: EnrollmentOperatingPurpose$inboundSchema.optional(),
+  represents_foreign_entity: z.boolean().optional(),
   subtitle: z.string().optional(),
   tax_withholding_metadata: z.nullable(
     z.lazy(() => TaxWithholdingMetadata$inboundSchema),
@@ -10130,6 +10473,7 @@ export const OperatingEnrollmentMetadata$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "operating_purpose": "operatingPurpose",
+    "represents_foreign_entity": "representsForeignEntity",
     "tax_withholding_metadata": "taxWithholdingMetadata",
   });
 });
@@ -10137,6 +10481,7 @@ export const OperatingEnrollmentMetadata$inboundSchema: z.ZodType<
 /** @internal */
 export type OperatingEnrollmentMetadata$Outbound = {
   operating_purpose?: string | undefined;
+  represents_foreign_entity?: boolean | undefined;
   subtitle?: string | undefined;
   tax_withholding_metadata?: TaxWithholdingMetadata$Outbound | null | undefined;
 };
@@ -10148,6 +10493,7 @@ export const OperatingEnrollmentMetadata$outboundSchema: z.ZodType<
   OperatingEnrollmentMetadata
 > = z.object({
   operatingPurpose: EnrollmentOperatingPurpose$outboundSchema.optional(),
+  representsForeignEntity: z.boolean().optional(),
   subtitle: z.string().optional(),
   taxWithholdingMetadata: z.nullable(
     z.lazy(() => TaxWithholdingMetadata$outboundSchema),
@@ -10155,6 +10501,7 @@ export const OperatingEnrollmentMetadata$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     operatingPurpose: "operating_purpose",
+    representsForeignEntity: "represents_foreign_entity",
     taxWithholdingMetadata: "tax_withholding_metadata",
   });
 });
@@ -10422,6 +10769,1270 @@ export function ordersOptionsTradingEnrollmentMetadataFromJSON(
     (x) =>
       OrdersOptionsTradingEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'OrdersOptionsTradingEnrollmentMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlanOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlanOpen,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlanOpen
+  > = z.union([
+    z.nativeEnum(
+      EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan,
+    ),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$Outbound =
+  {
+    value?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataInitialDepositAmountToJSON(
+  enrollmentPartnershipEnrollmentMetadataInitialDepositAmount:
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$outboundSchema
+      .parse(enrollmentPartnershipEnrollmentMetadataInitialDepositAmount),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataInitialDepositAmountFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataDepositedFunds$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    initial_deposit_amount: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$inboundSchema
+      ),
+    ).optional(),
+    initial_deposit_source: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "initial_deposit_amount": "initialDepositAmount",
+      "initial_deposit_source": "initialDepositSource",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataDepositedFunds$Outbound = {
+  initial_deposit_amount?:
+    | EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$Outbound
+    | null
+    | undefined;
+  initial_deposit_source?: string | undefined;
+};
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataDepositedFunds$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds
+  > = z.object({
+    initialDepositAmount: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataInitialDepositAmount$outboundSchema
+      ),
+    ).optional(),
+    initialDepositSource: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      initialDepositAmount: "initial_deposit_amount",
+      initialDepositSource: "initial_deposit_source",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataDepositedFunds$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataDepositedFunds$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataDepositedFunds$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataDepositedFunds$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataDepositedFundsToJSON(
+  enrollmentPartnershipEnrollmentMetadataDepositedFunds:
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataDepositedFunds$outboundSchema.parse(
+      enrollmentPartnershipEnrollmentMetadataDepositedFunds,
+    ),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataDepositedFundsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataDepositedFunds,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataDepositedFunds$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataDepositedFunds' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRatingOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRatingOpen,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRatingOpen
+  > = z.union([
+    z.nativeEnum(
+      EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating,
+    ),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataOtherAccounts$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    account_names: z.array(z.string()).optional(),
+    account_numbers: z.array(z.string()).optional(),
+    owner_has_other_accounts_at_apex: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "account_names": "accountNames",
+      "account_numbers": "accountNumbers",
+      "owner_has_other_accounts_at_apex": "ownerHasOtherAccountsAtApex",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataOtherAccounts$Outbound = {
+  account_names?: Array<string> | undefined;
+  account_numbers?: Array<string> | undefined;
+  owner_has_other_accounts_at_apex?: boolean | null | undefined;
+};
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataOtherAccounts$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts
+  > = z.object({
+    accountNames: z.array(z.string()).optional(),
+    accountNumbers: z.array(z.string()).optional(),
+    ownerHasOtherAccountsAtApex: z.nullable(z.boolean()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      accountNames: "account_names",
+      accountNumbers: "account_numbers",
+      ownerHasOtherAccountsAtApex: "owner_has_other_accounts_at_apex",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataOtherAccounts$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataOtherAccounts$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataOtherAccounts$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataOtherAccounts$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataOtherAccountsToJSON(
+  enrollmentPartnershipEnrollmentMetadataOtherAccounts:
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataOtherAccounts$outboundSchema.parse(
+      enrollmentPartnershipEnrollmentMetadataOtherAccounts,
+    ),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataOtherAccountsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataOtherAccounts,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataOtherAccounts$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataOtherAccounts' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataFinancialProfile$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    banking_relationships: z.array(z.string()).optional(),
+    other_accounts: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataOtherAccounts$inboundSchema
+      ),
+    ).optional(),
+    primary_source_of_deposited_funds: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "banking_relationships": "bankingRelationships",
+      "other_accounts": "otherAccounts",
+      "primary_source_of_deposited_funds": "primarySourceOfDepositedFunds",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataFinancialProfile$Outbound = {
+  banking_relationships?: Array<string> | undefined;
+  other_accounts?:
+    | EnrollmentPartnershipEnrollmentMetadataOtherAccounts$Outbound
+    | null
+    | undefined;
+  primary_source_of_deposited_funds?: string | undefined;
+};
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataFinancialProfile$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile
+  > = z.object({
+    bankingRelationships: z.array(z.string()).optional(),
+    otherAccounts: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataOtherAccounts$outboundSchema
+      ),
+    ).optional(),
+    primarySourceOfDepositedFunds: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      bankingRelationships: "banking_relationships",
+      otherAccounts: "other_accounts",
+      primarySourceOfDepositedFunds: "primary_source_of_deposited_funds",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataFinancialProfile$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataFinancialProfile$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataFinancialProfile$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataFinancialProfile$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataFinancialProfileToJSON(
+  enrollmentPartnershipEnrollmentMetadataFinancialProfile:
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataFinancialProfile$outboundSchema
+      .parse(enrollmentPartnershipEnrollmentMetadataFinancialProfile),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataFinancialProfileFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataFinancialProfile,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataFinancialProfile$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataFinancialProfile' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    foreign_bond_trading: z.nullable(z.boolean()).optional(),
+    foreign_bond_trading_detail: z.array(ForeignBondTradingDetail$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "foreign_bond_trading": "foreignBondTrading",
+      "foreign_bond_trading_detail": "foreignBondTradingDetail",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$Outbound =
+  {
+    foreign_bond_trading?: boolean | null | undefined;
+    foreign_bond_trading_detail?:
+      | Array<ForeignBondTradingDetail$Outbound>
+      | undefined;
+  };
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails
+  > = z.object({
+    foreignBondTrading: z.nullable(z.boolean()).optional(),
+    foreignBondTradingDetail: z.array(ForeignBondTradingDetail$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      foreignBondTrading: "foreign_bond_trading",
+      foreignBondTradingDetail: "foreign_bond_trading_detail",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataForeignBondTradingDetailsToJSON(
+  enrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails:
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$outboundSchema
+      .parse(enrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataForeignBondTradingDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound =
+  {
+    value?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage
+  > = z.object({
+    value: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentageToJSON(
+  enrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage:
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
+      .parse(
+        enrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage,
+      ),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    low_priced_securities: z.nullable(z.boolean()).optional(),
+    low_priced_securities_percentage: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$inboundSchema
+      ),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "low_priced_securities": "lowPricedSecurities",
+      "low_priced_securities_percentage": "lowPricedSecuritiesPercentage",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$Outbound =
+  {
+    low_priced_securities?: boolean | null | undefined;
+    low_priced_securities_percentage?:
+      | EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$Outbound
+      | null
+      | undefined;
+  };
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities
+  > = z.object({
+    lowPricedSecurities: z.nullable(z.boolean()).optional(),
+    lowPricedSecuritiesPercentage: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesPercentage$outboundSchema
+      ),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      lowPricedSecurities: "low_priced_securities",
+      lowPricedSecuritiesPercentage: "low_priced_securities_percentage",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesToJSON(
+  enrollmentPartnershipEnrollmentMetadataLowPricedSecurities:
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$outboundSchema
+      .parse(enrollmentPartnershipEnrollmentMetadataLowPricedSecurities),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataLowPricedSecuritiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityTypeOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityTypeOpen,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityTypeOpen
+  > = z.union([
+    z.nativeEnum(
+      EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType,
+    ),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequencyOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequencyOpen,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequencyOpen
+  > = z.union([
+    z.nativeEnum(EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataPlannedActivity$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    foreign_bond_trading_details: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$inboundSchema
+      ),
+    ).optional(),
+    low_priced_securities: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$inboundSchema
+      ),
+    ).optional(),
+    primary_account_activity_type:
+      EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$inboundSchema
+        .optional(),
+    withdrawal_frequency:
+      EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$inboundSchema
+        .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "foreign_bond_trading_details": "foreignBondTradingDetails",
+      "low_priced_securities": "lowPricedSecurities",
+      "primary_account_activity_type": "primaryAccountActivityType",
+      "withdrawal_frequency": "withdrawalFrequency",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataPlannedActivity$Outbound = {
+  foreign_bond_trading_details?:
+    | EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$Outbound
+    | null
+    | undefined;
+  low_priced_securities?:
+    | EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$Outbound
+    | null
+    | undefined;
+  primary_account_activity_type?: string | undefined;
+  withdrawal_frequency?: string | undefined;
+};
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataPlannedActivity$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity
+  > = z.object({
+    foreignBondTradingDetails: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataForeignBondTradingDetails$outboundSchema
+      ),
+    ).optional(),
+    lowPricedSecurities: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataLowPricedSecurities$outboundSchema
+      ),
+    ).optional(),
+    primaryAccountActivityType:
+      EnrollmentPartnershipEnrollmentMetadataPrimaryAccountActivityType$outboundSchema
+        .optional(),
+    withdrawalFrequency:
+      EnrollmentPartnershipEnrollmentMetadataWithdrawalFrequency$outboundSchema
+        .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      foreignBondTradingDetails: "foreign_bond_trading_details",
+      lowPricedSecurities: "low_priced_securities",
+      primaryAccountActivityType: "primary_account_activity_type",
+      withdrawalFrequency: "withdrawal_frequency",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataPlannedActivity$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataPlannedActivity$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataPlannedActivity$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataPlannedActivity$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataPlannedActivityToJSON(
+  enrollmentPartnershipEnrollmentMetadataPlannedActivity:
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataPlannedActivity$outboundSchema.parse(
+      enrollmentPartnershipEnrollmentMetadataPlannedActivity,
+    ),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataPlannedActivityFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataPlannedActivity,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataPlannedActivity$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataPlannedActivity' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    direct_or_indirect_related_peps: z.nullable(z.boolean()).optional(),
+    related_peps: z.array(RelatedPep$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "direct_or_indirect_related_peps": "directOrIndirectRelatedPeps",
+      "related_peps": "relatedPeps",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$Outbound =
+  {
+    direct_or_indirect_related_peps?: boolean | null | undefined;
+    related_peps?: Array<RelatedPep$Outbound> | undefined;
+  };
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails
+  > = z.object({
+    directOrIndirectRelatedPeps: z.nullable(z.boolean()).optional(),
+    relatedPeps: z.array(RelatedPep$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      directOrIndirectRelatedPeps: "direct_or_indirect_related_peps",
+      relatedPeps: "related_peps",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataRelatedPepDetailsToJSON(
+  enrollmentPartnershipEnrollmentMetadataRelatedPepDetails:
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$outboundSchema
+      .parse(enrollmentPartnershipEnrollmentMetadataRelatedPepDetails),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataRelatedPepDetailsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    deposited_funds: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataDepositedFunds$inboundSchema
+      ),
+    ).optional(),
+    determined_account_risk_rating:
+      EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$inboundSchema
+        .optional(),
+    financial_profile: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataFinancialProfile$inboundSchema
+      ),
+    ).optional(),
+    planned_activity: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataPlannedActivity$inboundSchema
+      ),
+    ).optional(),
+    related_pep_details: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$inboundSchema
+      ),
+    ).optional(),
+    scope_of_business: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "deposited_funds": "depositedFunds",
+      "determined_account_risk_rating": "determinedAccountRiskRating",
+      "financial_profile": "financialProfile",
+      "planned_activity": "plannedActivity",
+      "related_pep_details": "relatedPepDetails",
+      "scope_of_business": "scopeOfBusiness",
+    });
+  });
+
+/** @internal */
+export type EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$Outbound =
+  {
+    deposited_funds?:
+      | EnrollmentPartnershipEnrollmentMetadataDepositedFunds$Outbound
+      | null
+      | undefined;
+    determined_account_risk_rating?: string | undefined;
+    financial_profile?:
+      | EnrollmentPartnershipEnrollmentMetadataFinancialProfile$Outbound
+      | null
+      | undefined;
+    planned_activity?:
+      | EnrollmentPartnershipEnrollmentMetadataPlannedActivity$Outbound
+      | null
+      | undefined;
+    related_pep_details?:
+      | EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$Outbound
+      | null
+      | undefined;
+    scope_of_business?: string | undefined;
+  };
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$Outbound,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata
+  > = z.object({
+    depositedFunds: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataDepositedFunds$outboundSchema
+      ),
+    ).optional(),
+    determinedAccountRiskRating:
+      EnrollmentPartnershipEnrollmentMetadataDeterminedAccountRiskRating$outboundSchema
+        .optional(),
+    financialProfile: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataFinancialProfile$outboundSchema
+      ),
+    ).optional(),
+    plannedActivity: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataPlannedActivity$outboundSchema
+      ),
+    ).optional(),
+    relatedPepDetails: z.nullable(
+      z.lazy(() =>
+        EnrollmentPartnershipEnrollmentMetadataRelatedPepDetails$outboundSchema
+      ),
+    ).optional(),
+    scopeOfBusiness: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      depositedFunds: "deposited_funds",
+      determinedAccountRiskRating: "determined_account_risk_rating",
+      financialProfile: "financial_profile",
+      plannedActivity: "planned_activity",
+      relatedPepDetails: "related_pep_details",
+      scopeOfBusiness: "scope_of_business",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$outboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$Outbound` instead. */
+  export type Outbound =
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$Outbound;
+}
+
+export function enrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadataToJSON(
+  enrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata:
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$outboundSchema
+      .parse(
+        enrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata,
+      ),
+  );
+}
+
+export function enrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataFdicCashSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EnrollmentPartnershipEnrollmentMetadataFdicCashSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataFdicCashSweepOpen,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataFdicCashSweepOpen
+  > = z.union([
+    z.nativeEnum(EnrollmentPartnershipEnrollmentMetadataFdicCashSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$outboundSchema;
+}
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$inboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$outboundSchema:
+  z.ZodType<
+    EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweepOpen,
+    z.ZodTypeDef,
+    EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweepOpen
+  > = z.union([
+    z.nativeEnum(EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$ {
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$inboundSchema` instead. */
+  export const inboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$inboundSchema;
+  /** @deprecated use `EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$outboundSchema` instead. */
+  export const outboundSchema =
+    EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$outboundSchema;
+}
+
+/** @internal */
+export const PartnershipEnrollmentMetadata$inboundSchema: z.ZodType<
+  PartnershipEnrollmentMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dividend_reinvestment_plan:
+    EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$inboundSchema
+      .optional(),
+  edd_account_enrollment_metadata: z.nullable(
+    z.lazy(() =>
+      EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$inboundSchema
+    ),
+  ).optional(),
+  fdic_cash_sweep:
+    EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$inboundSchema
+      .optional(),
+  money_market_fund_sweep:
+    EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$inboundSchema
+      .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "dividend_reinvestment_plan": "dividendReinvestmentPlan",
+    "edd_account_enrollment_metadata": "eddAccountEnrollmentMetadata",
+    "fdic_cash_sweep": "fdicCashSweep",
+    "money_market_fund_sweep": "moneyMarketFundSweep",
+  });
+});
+
+/** @internal */
+export type PartnershipEnrollmentMetadata$Outbound = {
+  dividend_reinvestment_plan?: string | undefined;
+  edd_account_enrollment_metadata?:
+    | EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$Outbound
+    | null
+    | undefined;
+  fdic_cash_sweep?: string | undefined;
+  money_market_fund_sweep?: string | undefined;
+};
+
+/** @internal */
+export const PartnershipEnrollmentMetadata$outboundSchema: z.ZodType<
+  PartnershipEnrollmentMetadata$Outbound,
+  z.ZodTypeDef,
+  PartnershipEnrollmentMetadata
+> = z.object({
+  dividendReinvestmentPlan:
+    EnrollmentPartnershipEnrollmentMetadataDividendReinvestmentPlan$outboundSchema
+      .optional(),
+  eddAccountEnrollmentMetadata: z.nullable(
+    z.lazy(() =>
+      EnrollmentPartnershipEnrollmentMetadataEddAccountEnrollmentMetadata$outboundSchema
+    ),
+  ).optional(),
+  fdicCashSweep:
+    EnrollmentPartnershipEnrollmentMetadataFdicCashSweep$outboundSchema
+      .optional(),
+  moneyMarketFundSweep:
+    EnrollmentPartnershipEnrollmentMetadataMoneyMarketFundSweep$outboundSchema
+      .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    dividendReinvestmentPlan: "dividend_reinvestment_plan",
+    eddAccountEnrollmentMetadata: "edd_account_enrollment_metadata",
+    fdicCashSweep: "fdic_cash_sweep",
+    moneyMarketFundSweep: "money_market_fund_sweep",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PartnershipEnrollmentMetadata$ {
+  /** @deprecated use `PartnershipEnrollmentMetadata$inboundSchema` instead. */
+  export const inboundSchema = PartnershipEnrollmentMetadata$inboundSchema;
+  /** @deprecated use `PartnershipEnrollmentMetadata$outboundSchema` instead. */
+  export const outboundSchema = PartnershipEnrollmentMetadata$outboundSchema;
+  /** @deprecated use `PartnershipEnrollmentMetadata$Outbound` instead. */
+  export type Outbound = PartnershipEnrollmentMetadata$Outbound;
+}
+
+export function partnershipEnrollmentMetadataToJSON(
+  partnershipEnrollmentMetadata: PartnershipEnrollmentMetadata,
+): string {
+  return JSON.stringify(
+    PartnershipEnrollmentMetadata$outboundSchema.parse(
+      partnershipEnrollmentMetadata,
+    ),
+  );
+}
+
+export function partnershipEnrollmentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<PartnershipEnrollmentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PartnershipEnrollmentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PartnershipEnrollmentMetadata' from JSON`,
   );
 }
 
@@ -11075,6 +12686,9 @@ export const Enrollment$inboundSchema: z.ZodType<
   orders_options_trading_enrollment_metadata: z.nullable(
     z.lazy(() => OrdersOptionsTradingEnrollmentMetadata$inboundSchema),
   ).optional(),
+  partnership_enrollment_metadata: z.nullable(
+    z.lazy(() => PartnershipEnrollmentMetadata$inboundSchema),
+  ).optional(),
   principal_approver_id: z.string().optional(),
   sole_proprietorship_enrollment_metadata: z.nullable(
     z.lazy(() => SoleProprietorshipEnrollmentMetadata$inboundSchema),
@@ -11126,6 +12740,7 @@ export const Enrollment$inboundSchema: z.ZodType<
     "operating_enrollment_metadata": "operatingEnrollmentMetadata",
     "orders_options_trading_enrollment_metadata":
       "ordersOptionsTradingEnrollmentMetadata",
+    "partnership_enrollment_metadata": "partnershipEnrollmentMetadata",
     "principal_approver_id": "principalApproverId",
     "sole_proprietorship_enrollment_metadata":
       "soleProprietorshipEnrollmentMetadata",
@@ -11228,6 +12843,10 @@ export type Enrollment$Outbound = {
     | OrdersOptionsTradingEnrollmentMetadata$Outbound
     | null
     | undefined;
+  partnership_enrollment_metadata?:
+    | PartnershipEnrollmentMetadata$Outbound
+    | null
+    | undefined;
   principal_approver_id?: string | undefined;
   sole_proprietorship_enrollment_metadata?:
     | SoleProprietorshipEnrollmentMetadata$Outbound
@@ -11328,6 +12947,9 @@ export const Enrollment$outboundSchema: z.ZodType<
   ordersOptionsTradingEnrollmentMetadata: z.nullable(
     z.lazy(() => OrdersOptionsTradingEnrollmentMetadata$outboundSchema),
   ).optional(),
+  partnershipEnrollmentMetadata: z.nullable(
+    z.lazy(() => PartnershipEnrollmentMetadata$outboundSchema),
+  ).optional(),
   principalApproverId: z.string().optional(),
   soleProprietorshipEnrollmentMetadata: z.nullable(
     z.lazy(() => SoleProprietorshipEnrollmentMetadata$outboundSchema),
@@ -11378,6 +13000,7 @@ export const Enrollment$outboundSchema: z.ZodType<
     operatingEnrollmentMetadata: "operating_enrollment_metadata",
     ordersOptionsTradingEnrollmentMetadata:
       "orders_options_trading_enrollment_metadata",
+    partnershipEnrollmentMetadata: "partnership_enrollment_metadata",
     principalApproverId: "principal_approver_id",
     soleProprietorshipEnrollmentMetadata:
       "sole_proprietorship_enrollment_metadata",

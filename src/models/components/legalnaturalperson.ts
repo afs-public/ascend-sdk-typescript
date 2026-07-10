@@ -260,7 +260,7 @@ export type ForeignIdentification = {
   /**
    * Denotes if the identification is a tax id or other
    */
-  ftin?: boolean | undefined;
+  ftin?: boolean | null | undefined;
   /**
    * Identification number
    */
@@ -447,7 +447,7 @@ export type NegativeNews = {
   /**
    * Indicates whether there is negative news against related parties
    */
-  negativeNewsAgainstRelatedParties?: boolean | undefined;
+  negativeNewsAgainstRelatedParties?: boolean | null | undefined;
   /**
    * Description of the negative news against related parties
    */
@@ -461,7 +461,7 @@ export type OtherSourcesOfWealth = {
   /**
    * Indicates whether the applicant has other sources of wealth.
    */
-  applicantHasOtherSourcesOfWealth?: boolean | undefined;
+  applicantHasOtherSourcesOfWealth?: boolean | null | undefined;
   /**
    * The applicant's other source of wealth description. If the applicant has no other sources of wealth, they must specify "N/A."
    */
@@ -812,7 +812,7 @@ export type TaxProfile = {
   /**
    * Whether treaty benefits are requested. Only applicable for W_8BEN and W_8BEN_E form types.
    */
-  treatyBenefitsRequested?: boolean | undefined;
+  treatyBenefitsRequested?: boolean | null | undefined;
   /**
    * United States Individual Taxpayer Identification Number (ITIN) status.
    */
@@ -1473,7 +1473,7 @@ export const ForeignIdentification$inboundSchema: z.ZodType<
 > = z.object({
   expiration_date: z.nullable(z.lazy(() => ExpirationDate$inboundSchema))
     .optional(),
-  ftin: z.boolean().optional(),
+  ftin: z.nullable(z.boolean()).optional(),
   identification_number: z.string().optional(),
   issue_date: z.nullable(z.lazy(() => IssueDate$inboundSchema)).optional(),
   issuing_region_code: z.string().optional(),
@@ -1490,7 +1490,7 @@ export const ForeignIdentification$inboundSchema: z.ZodType<
 /** @internal */
 export type ForeignIdentification$Outbound = {
   expiration_date?: ExpirationDate$Outbound | null | undefined;
-  ftin?: boolean | undefined;
+  ftin?: boolean | null | undefined;
   identification_number?: string | undefined;
   issue_date?: IssueDate$Outbound | null | undefined;
   issuing_region_code?: string | undefined;
@@ -1505,7 +1505,7 @@ export const ForeignIdentification$outboundSchema: z.ZodType<
 > = z.object({
   expirationDate: z.nullable(z.lazy(() => ExpirationDate$outboundSchema))
     .optional(),
-  ftin: z.boolean().optional(),
+  ftin: z.nullable(z.boolean()).optional(),
   identificationNumber: z.string().optional(),
   issueDate: z.nullable(z.lazy(() => IssueDate$outboundSchema)).optional(),
   issuingRegionCode: z.string().optional(),
@@ -2018,7 +2018,7 @@ export const NegativeNews$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  negative_news_against_related_parties: z.boolean().optional(),
+  negative_news_against_related_parties: z.nullable(z.boolean()).optional(),
   negative_news_against_related_parties_description: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -2031,7 +2031,7 @@ export const NegativeNews$inboundSchema: z.ZodType<
 
 /** @internal */
 export type NegativeNews$Outbound = {
-  negative_news_against_related_parties?: boolean | undefined;
+  negative_news_against_related_parties?: boolean | null | undefined;
   negative_news_against_related_parties_description?: string | undefined;
 };
 
@@ -2041,7 +2041,7 @@ export const NegativeNews$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NegativeNews
 > = z.object({
-  negativeNewsAgainstRelatedParties: z.boolean().optional(),
+  negativeNewsAgainstRelatedParties: z.nullable(z.boolean()).optional(),
   negativeNewsAgainstRelatedPartiesDescription: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -2084,7 +2084,7 @@ export const OtherSourcesOfWealth$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  applicant_has_other_sources_of_wealth: z.boolean().optional(),
+  applicant_has_other_sources_of_wealth: z.nullable(z.boolean()).optional(),
   other_sources_of_wealth: z.string().optional(),
   other_sources_of_wealth_verification: z.string().optional(),
 }).transform((v) => {
@@ -2097,7 +2097,7 @@ export const OtherSourcesOfWealth$inboundSchema: z.ZodType<
 
 /** @internal */
 export type OtherSourcesOfWealth$Outbound = {
-  applicant_has_other_sources_of_wealth?: boolean | undefined;
+  applicant_has_other_sources_of_wealth?: boolean | null | undefined;
   other_sources_of_wealth?: string | undefined;
   other_sources_of_wealth_verification?: string | undefined;
 };
@@ -2108,7 +2108,7 @@ export const OtherSourcesOfWealth$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OtherSourcesOfWealth
 > = z.object({
-  applicantHasOtherSourcesOfWealth: z.boolean().optional(),
+  applicantHasOtherSourcesOfWealth: z.nullable(z.boolean()).optional(),
   otherSourcesOfWealth: z.string().optional(),
   otherSourcesOfWealthVerification: z.string().optional(),
 }).transform((v) => {
@@ -2861,7 +2861,7 @@ export const TaxProfile$inboundSchema: z.ZodType<
   ).optional(),
   taxpayer_certification_state: TaxpayerCertificationState$inboundSchema
     .optional(),
-  treaty_benefits_requested: z.boolean().optional(),
+  treaty_benefits_requested: z.nullable(z.boolean()).optional(),
   us_tin_status: LegalNaturalPersonUsTinStatus$inboundSchema.optional(),
   withholding_state: LegalNaturalPersonWithholdingState$inboundSchema
     .optional(),
@@ -2891,7 +2891,7 @@ export type TaxProfile$Outbound = {
   reporting_eligibility?: string | undefined;
   tax_certification_date?: TaxCertificationDate$Outbound | null | undefined;
   taxpayer_certification_state?: string | undefined;
-  treaty_benefits_requested?: boolean | undefined;
+  treaty_benefits_requested?: boolean | null | undefined;
   us_tin_status?: string | undefined;
   withholding_state?: string | undefined;
 };
@@ -2915,7 +2915,7 @@ export const TaxProfile$outboundSchema: z.ZodType<
   ).optional(),
   taxpayerCertificationState: TaxpayerCertificationState$outboundSchema
     .optional(),
-  treatyBenefitsRequested: z.boolean().optional(),
+  treatyBenefitsRequested: z.nullable(z.boolean()).optional(),
   usTinStatus: LegalNaturalPersonUsTinStatus$outboundSchema.optional(),
   withholdingState: LegalNaturalPersonWithholdingState$outboundSchema
     .optional(),

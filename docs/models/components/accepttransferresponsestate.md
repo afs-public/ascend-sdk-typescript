@@ -29,4 +29,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `PendingBookkeeping`    | PENDING_BOOKKEEPING     |
 | `Completed`             | COMPLETED               |
 | `Purged`                | PURGED                  |
+| `PendingReviewMargins`  | PENDING_REVIEW_MARGINS  |
+| `PendingSubmission`     | PENDING_SUBMISSION      |
 | -                       | `Unrecognized<string>`  |

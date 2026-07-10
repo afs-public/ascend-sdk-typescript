@@ -151,6 +151,12 @@ import {
   OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema,
 } from "./ordersoptionstradingenrollmentmetadatacreate.js";
 import {
+  PartnershipEnrollmentMetadataCreate,
+  PartnershipEnrollmentMetadataCreate$inboundSchema,
+  PartnershipEnrollmentMetadataCreate$Outbound,
+  PartnershipEnrollmentMetadataCreate$outboundSchema,
+} from "./partnershipenrollmentmetadatacreate.js";
+import {
   SoleProprietorshipEnrollmentMetadataCreate,
   SoleProprietorshipEnrollmentMetadataCreate$inboundSchema,
   SoleProprietorshipEnrollmentMetadataCreate$Outbound,
@@ -192,6 +198,7 @@ export type EnrollmentCreateConsentMethodOpen = OpenEnum<
 export enum EnrollmentCreateType {
   EnrollmentTypeUnspecified = "ENROLLMENT_TYPE_UNSPECIFIED",
   RegistrationIndividual = "REGISTRATION_INDIVIDUAL",
+  LendingLimitedPurposeMargin = "LENDING_LIMITED_PURPOSE_MARGIN",
   LendingFullyPaidStockLoan = "LENDING_FULLY_PAID_STOCK_LOAN",
   BeneficiaryDesignation = "BENEFICIARY_DESIGNATION",
   RegistrationJointWros = "REGISTRATION_JOINT_WROS",
@@ -354,6 +361,12 @@ export type EnrollmentCreate = {
     | OrdersOptionsTradingEnrollmentMetadataCreate
     | undefined;
   /**
+   * Enrollment metadata for the PARTNERSHIP enrollment type
+   */
+  partnershipEnrollmentMetadata?:
+    | PartnershipEnrollmentMetadataCreate
+    | undefined;
+  /**
    * The ULID is associated with the approver of a given enrollment. The approver you create will contain the CRD Number issued to the person by FINRA. As an RIA, you should use the ULID associated with Apex's approver.
    */
   principalApproverId: string;
@@ -496,6 +509,8 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     .optional(),
   orders_options_trading_enrollment_metadata:
     OrdersOptionsTradingEnrollmentMetadataCreate$inboundSchema.optional(),
+  partnership_enrollment_metadata:
+    PartnershipEnrollmentMetadataCreate$inboundSchema.optional(),
   principal_approver_id: z.string(),
   sole_proprietorship_enrollment_metadata:
     SoleProprietorshipEnrollmentMetadataCreate$inboundSchema.optional(),
@@ -538,6 +553,7 @@ export const EnrollmentCreate$inboundSchema: z.ZodType<
     "operating_enrollment_metadata": "operatingEnrollmentMetadata",
     "orders_options_trading_enrollment_metadata":
       "ordersOptionsTradingEnrollmentMetadata",
+    "partnership_enrollment_metadata": "partnershipEnrollmentMetadata",
     "principal_approver_id": "principalApproverId",
     "sole_proprietorship_enrollment_metadata":
       "soleProprietorshipEnrollmentMetadata",
@@ -615,6 +631,9 @@ export type EnrollmentCreate$Outbound = {
   orders_options_trading_enrollment_metadata?:
     | OrdersOptionsTradingEnrollmentMetadataCreate$Outbound
     | undefined;
+  partnership_enrollment_metadata?:
+    | PartnershipEnrollmentMetadataCreate$Outbound
+    | undefined;
   principal_approver_id: string;
   sole_proprietorship_enrollment_metadata?:
     | SoleProprietorshipEnrollmentMetadataCreate$Outbound
@@ -681,6 +700,8 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     .optional(),
   ordersOptionsTradingEnrollmentMetadata:
     OrdersOptionsTradingEnrollmentMetadataCreate$outboundSchema.optional(),
+  partnershipEnrollmentMetadata:
+    PartnershipEnrollmentMetadataCreate$outboundSchema.optional(),
   principalApproverId: z.string(),
   soleProprietorshipEnrollmentMetadata:
     SoleProprietorshipEnrollmentMetadataCreate$outboundSchema.optional(),
@@ -723,6 +744,7 @@ export const EnrollmentCreate$outboundSchema: z.ZodType<
     operatingEnrollmentMetadata: "operating_enrollment_metadata",
     ordersOptionsTradingEnrollmentMetadata:
       "orders_options_trading_enrollment_metadata",
+    partnershipEnrollmentMetadata: "partnership_enrollment_metadata",
     principalApproverId: "principal_approver_id",
     soleProprietorshipEnrollmentMetadata:
       "sole_proprietorship_enrollment_metadata",
