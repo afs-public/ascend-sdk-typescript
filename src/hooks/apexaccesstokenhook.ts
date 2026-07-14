@@ -8,6 +8,24 @@ import { BeforeRequestContext, BeforeRequestHook } from "./types.js";
 
 const { sign } = jwt;
 
+/**
+ * Resolve the server base URL used for token generation.
+ * Prefer the configured SDK base URL so path prefixes are preserved.
+ * Fall back to the request origin only when no base URL is available.
+ */
+export function resolveServerBaseUrl(
+  baseURL: string | URL | null | undefined,
+  requestUrl: string
+): string {
+  if (baseURL) {
+    const url = typeof baseURL === "string" ? new URL(baseURL) : new URL(baseURL.toString());
+    // Normalize trailing slash so URL joining is consistent.
+    return url.toString().replace(/\/+$/, "");
+  }
+
+  return new URL(requestUrl).origin;
+}
+
 export class ApexAccessTokenHook implements BeforeRequestHook {
   private accessToken: string;
   private accessTokenExpiration: Date | undefined;
@@ -40,7 +58,9 @@ export class ApexAccessTokenHook implements BeforeRequestHook {
       throw new Error("apiKey is not defined");
     }
     if (customSec.serviceAccountCreds) {
-      const serverUrl = new URL(request.url).origin;
+      // Prefer the configured SDK base URL so path prefixes are preserved.
+      // Falling back to request URL origin would drop any base path.
+      const serverUrl = resolveServerBaseUrl(hookCtx.baseURL, request.url);
       const accessToken = await this.getAccessToken(
         serverUrl,
         customSec.apiKey,
@@ -93,7 +113,11 @@ export class ApexAccessTokenHook implements BeforeRequestHook {
     apiKey: string,
     jws: string
   ): Promise<Response> {
-    const url = `${serverURL}/iam/v1/serviceAccounts:generateAccessToken`;
+    const base = serverURL.endsWith("/") ? serverURL : `${serverURL}/`;
+    const url = new URL(
+      "iam/v1/serviceAccounts:generateAccessToken",
+      base
+    ).toString();
     // Prepare headers
     const headers = new Headers({
       "Content-Type": "application/json",
