@@ -34,8 +34,8 @@ import { Result } from "../types/fp.js";
  */
 export function ordersSetExtraReportingData(
   client: ApexascendCore,
-  setExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate,
+  tradingSetExtraReportingDataRequestCreate:
+    components.TradingSetExtraReportingDataRequestCreate,
   accountId: string,
   orderId: string,
   options?: RequestOptions,
@@ -55,7 +55,7 @@ export function ordersSetExtraReportingData(
 > {
   return new APIPromise($do(
     client,
-    setExtraReportingDataRequestCreate,
+    tradingSetExtraReportingDataRequestCreate,
     accountId,
     orderId,
     options,
@@ -64,8 +64,8 @@ export function ordersSetExtraReportingData(
 
 async function $do(
   client: ApexascendCore,
-  setExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate,
+  tradingSetExtraReportingDataRequestCreate:
+    components.TradingSetExtraReportingDataRequestCreate,
   accountId: string,
   orderId: string,
   options?: RequestOptions,
@@ -87,7 +87,8 @@ async function $do(
   ]
 > {
   const input: operations.OrderServiceSetExtraReportingDataRequest = {
-    setExtraReportingDataRequestCreate: setExtraReportingDataRequestCreate,
+    tradingSetExtraReportingDataRequestCreate:
+      tradingSetExtraReportingDataRequestCreate,
     accountId: accountId,
     orderId: orderId,
   };
@@ -104,9 +105,11 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.SetExtraReportingDataRequestCreate, {
-    explode: true,
-  });
+  const body = encodeJSON(
+    "body",
+    payload.TradingSetExtraReportingDataRequestCreate,
+    { explode: true },
+  );
 
   const pathParams = {
     account_id: encodeSimple("account_id", payload.account_id, {
