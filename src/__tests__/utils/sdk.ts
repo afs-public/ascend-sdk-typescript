@@ -1,4 +1,4 @@
-import { Apexascend } from "@apexfintechsolutions/ascend-sdk/sdk";
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 
 export function timeout(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));

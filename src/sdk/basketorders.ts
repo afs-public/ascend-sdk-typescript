@@ -189,15 +189,15 @@ export class BasketOrders extends ClientSDK {
    * Sets extra reporting data to an existing basket order. Any SetExtraReportingDataRequest must include the name of the order and the cancel_confirmed_time
    */
   async setExtraReportingData(
-    setExtraReportingDataRequestCreate:
-      components.SetExtraReportingDataRequestCreate,
+    basketTradingSetExtraReportingDataRequestCreate:
+      components.BasketTradingSetExtraReportingDataRequestCreate,
     correspondentId: string,
     basketId: string,
     options?: RequestOptions,
   ): Promise<operations.BasketOrdersServiceSetExtraReportingDataResponse> {
     return unwrapAsync(basketOrdersSetExtraReportingData(
       this,
-      setExtraReportingDataRequestCreate,
+      basketTradingSetExtraReportingDataRequestCreate,
       correspondentId,
       basketId,
       options,

@@ -67,6 +67,9 @@ export type BasketOrderCumulativeNotionalValue = {
  * Any reporting data provided by the SetExtraReportingData endpoint.
  */
 export type BasketOrderExtraReportingData = {
+  /**
+   * The time the client has confirmed a cancel confirmation in their own system
+   */
   cancelConfirmedTime?: Date | null | undefined;
 };
 

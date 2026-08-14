@@ -34,8 +34,8 @@ import { Result } from "../types/fp.js";
  */
 export function basketOrdersSetExtraReportingData(
   client: ApexascendCore,
-  setExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate,
+  basketTradingSetExtraReportingDataRequestCreate:
+    components.BasketTradingSetExtraReportingDataRequestCreate,
   correspondentId: string,
   basketId: string,
   options?: RequestOptions,
@@ -55,7 +55,7 @@ export function basketOrdersSetExtraReportingData(
 > {
   return new APIPromise($do(
     client,
-    setExtraReportingDataRequestCreate,
+    basketTradingSetExtraReportingDataRequestCreate,
     correspondentId,
     basketId,
     options,
@@ -64,8 +64,8 @@ export function basketOrdersSetExtraReportingData(
 
 async function $do(
   client: ApexascendCore,
-  setExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate,
+  basketTradingSetExtraReportingDataRequestCreate:
+    components.BasketTradingSetExtraReportingDataRequestCreate,
   correspondentId: string,
   basketId: string,
   options?: RequestOptions,
@@ -87,7 +87,8 @@ async function $do(
   ]
 > {
   const input: operations.BasketOrdersServiceSetExtraReportingDataRequest = {
-    setExtraReportingDataRequestCreate: setExtraReportingDataRequestCreate,
+    basketTradingSetExtraReportingDataRequestCreate:
+      basketTradingSetExtraReportingDataRequestCreate,
     correspondentId: correspondentId,
     basketId: basketId,
   };
@@ -103,9 +104,11 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.SetExtraReportingDataRequestCreate, {
-    explode: true,
-  });
+  const body = encodeJSON(
+    "body",
+    payload.BasketTradingSetExtraReportingDataRequestCreate,
+    { explode: true },
+  );
 
   const pathParams = {
     basket_id: encodeSimple("basket_id", payload.basket_id, {

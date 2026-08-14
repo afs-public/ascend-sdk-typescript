@@ -111,15 +111,15 @@ export class Orders extends ClientSDK {
    * Sets extra reporting data to an existing order. Any SetExtraReportingDataRequest must include the name of the order and the cancel_confirmed_time
    */
   async setExtraReportingData(
-    setExtraReportingDataRequestCreate:
-      components.SetExtraReportingDataRequestCreate,
+    tradingSetExtraReportingDataRequestCreate:
+      components.TradingSetExtraReportingDataRequestCreate,
     accountId: string,
     orderId: string,
     options?: RequestOptions,
   ): Promise<operations.OrderServiceSetExtraReportingDataResponse> {
     return unwrapAsync(ordersSetExtraReportingData(
       this,
-      setExtraReportingDataRequestCreate,
+      tradingSetExtraReportingDataRequestCreate,
       accountId,
       orderId,
       options,

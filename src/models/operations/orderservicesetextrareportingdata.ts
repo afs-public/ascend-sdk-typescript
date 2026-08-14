@@ -18,8 +18,8 @@ export type OrderServiceSetExtraReportingDataRequest = {
    * The order id.
    */
   orderId: string;
-  setExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate;
+  tradingSetExtraReportingDataRequestCreate:
+    components.TradingSetExtraReportingDataRequestCreate;
 };
 
 export type OrderServiceSetExtraReportingDataResponse = {
@@ -45,13 +45,14 @@ export const OrderServiceSetExtraReportingDataRequest$inboundSchema: z.ZodType<
 > = z.object({
   account_id: z.string(),
   order_id: z.string(),
-  SetExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate$inboundSchema,
+  TradingSetExtraReportingDataRequestCreate:
+    components.TradingSetExtraReportingDataRequestCreate$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "account_id": "accountId",
     "order_id": "orderId",
-    "SetExtraReportingDataRequestCreate": "setExtraReportingDataRequestCreate",
+    "TradingSetExtraReportingDataRequestCreate":
+      "tradingSetExtraReportingDataRequestCreate",
   });
 });
 
@@ -59,8 +60,8 @@ export const OrderServiceSetExtraReportingDataRequest$inboundSchema: z.ZodType<
 export type OrderServiceSetExtraReportingDataRequest$Outbound = {
   account_id: string;
   order_id: string;
-  SetExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate$Outbound;
+  TradingSetExtraReportingDataRequestCreate:
+    components.TradingSetExtraReportingDataRequestCreate$Outbound;
 };
 
 /** @internal */
@@ -71,13 +72,14 @@ export const OrderServiceSetExtraReportingDataRequest$outboundSchema: z.ZodType<
 > = z.object({
   accountId: z.string(),
   orderId: z.string(),
-  setExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate$outboundSchema,
+  tradingSetExtraReportingDataRequestCreate:
+    components.TradingSetExtraReportingDataRequestCreate$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     accountId: "account_id",
     orderId: "order_id",
-    setExtraReportingDataRequestCreate: "SetExtraReportingDataRequestCreate",
+    tradingSetExtraReportingDataRequestCreate:
+      "TradingSetExtraReportingDataRequestCreate",
   });
 });
 

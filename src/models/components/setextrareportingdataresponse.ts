@@ -69,6 +69,9 @@ export type SetExtraReportingDataResponseCumulativeNotionalValue = {
  * Any reporting data provided by the SetExtraReportingData endpoint.
  */
 export type SetExtraReportingDataResponseExtraReportingData = {
+  /**
+   * The time the client has confirmed a cancel confirmation in their own system
+   */
   cancelConfirmedTime?: Date | null | undefined;
 };
 

@@ -18,8 +18,8 @@ export type BasketOrdersServiceSetExtraReportingDataRequest = {
    * The basket id.
    */
   basketId: string;
-  setExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate;
+  basketTradingSetExtraReportingDataRequestCreate:
+    components.BasketTradingSetExtraReportingDataRequestCreate;
 };
 
 export type BasketOrdersServiceSetExtraReportingDataResponse = {
@@ -48,14 +48,14 @@ export const BasketOrdersServiceSetExtraReportingDataRequest$inboundSchema:
   > = z.object({
     correspondent_id: z.string(),
     basket_id: z.string(),
-    SetExtraReportingDataRequestCreate:
-      components.SetExtraReportingDataRequestCreate$inboundSchema,
+    BasketTradingSetExtraReportingDataRequestCreate:
+      components.BasketTradingSetExtraReportingDataRequestCreate$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "correspondent_id": "correspondentId",
       "basket_id": "basketId",
-      "SetExtraReportingDataRequestCreate":
-        "setExtraReportingDataRequestCreate",
+      "BasketTradingSetExtraReportingDataRequestCreate":
+        "basketTradingSetExtraReportingDataRequestCreate",
     });
   });
 
@@ -63,8 +63,8 @@ export const BasketOrdersServiceSetExtraReportingDataRequest$inboundSchema:
 export type BasketOrdersServiceSetExtraReportingDataRequest$Outbound = {
   correspondent_id: string;
   basket_id: string;
-  SetExtraReportingDataRequestCreate:
-    components.SetExtraReportingDataRequestCreate$Outbound;
+  BasketTradingSetExtraReportingDataRequestCreate:
+    components.BasketTradingSetExtraReportingDataRequestCreate$Outbound;
 };
 
 /** @internal */
@@ -76,13 +76,14 @@ export const BasketOrdersServiceSetExtraReportingDataRequest$outboundSchema:
   > = z.object({
     correspondentId: z.string(),
     basketId: z.string(),
-    setExtraReportingDataRequestCreate:
-      components.SetExtraReportingDataRequestCreate$outboundSchema,
+    basketTradingSetExtraReportingDataRequestCreate:
+      components.BasketTradingSetExtraReportingDataRequestCreate$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       correspondentId: "correspondent_id",
       basketId: "basket_id",
-      setExtraReportingDataRequestCreate: "SetExtraReportingDataRequestCreate",
+      basketTradingSetExtraReportingDataRequestCreate:
+        "BasketTradingSetExtraReportingDataRequestCreate",
     });
   });
 
