@@ -1,6 +1,6 @@
 {
   "name": "@apexfintechsolutions/ascend-sdk",
-  "version": "1.8.12",
+  "version": "1.8.13",
   "author": "Apex Fintech Solutions",
   "description": "Apex Ascend SDK",
   "homepage": "https://apexfintechsolutions.com",
@@ -49,8 +49,7 @@
     "tshy": "^2.0.0",
     "typescript": "6.0.3",
     "typescript-eslint": "^8.26.0",
-    "vitest": "3.2.6",
-    "vitest-qase-reporter": "^1.0.4"
+    "vitest": "3.2.6"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.0",

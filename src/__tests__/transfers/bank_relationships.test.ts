@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { sdk, timeout } from "../utils/sdk";
+import { sdk, timeout, retryOnTransientError } from "../utils/sdk";
 import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import * as errors from "@apexfintechsolutions/ascend-sdk/models/errors";
 import {
@@ -190,9 +190,10 @@ test("Bank Relationships Transfers Reuse Bank Relationships Reuse Bank Relations
       sourceBankRelationship: `accounts/${account_id}/bankRelationships/${bank_relationship_id}`,
   };
 
-  const result = await sdk.bankRelationships.reuseBankRelationship(
-      request,
-      reuse_account_id,
+  // The reuse target account was just created; retry through the fresh-
+  // account propagation window ("Permission denied on resource").
+  const result = await retryOnTransientError(() =>
+    sdk.bankRelationships.reuseBankRelationship(request, reuse_account_id),
   );
   expect(result.httpMeta.response.status).toBe(200);
 });

@@ -3,6 +3,7 @@
  */
 
 import { expect, test } from "vitest";
+import { alts_account_id, alts_order_id } from "./alts.js";
 import crypto from "crypto";
 import { Apexascend } from "../index.js";
 import {
@@ -10,6 +11,7 @@ import {
   AlternativeOrderCreateSide,
   OrderSettlementTarget,
 } from "../models/components/index.js";
+import * as errors from "../models/errors/index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Alternative Orders Alternative Orders Create Alternative Order", async () => {
@@ -34,13 +36,13 @@ test("Alternative Orders Alternative Orders Create Alternative Order", async () 
 
   const result = await apexascend.alternativeOrders.createAlternativeOrder({
     clientOrderId: crypto.randomUUID(),
-    identifier: "6684398",
+    identifier: "13607391",
     identifierType: AlternativeOrderCreateIdentifierType.AssetId,
     notionalValue: {
-      value: "10000",
+      value: "15000",
     },
     side: AlternativeOrderCreateSide.Buy,
-  }, "01JHGTEPC6ZTAHCFRH2MD3VJJT");
+  }, alts_account_id);
   expect(result.httpMeta.response.status).toBe(200);
 });
 
@@ -65,7 +67,7 @@ test("Alternative Orders Alternative Orders List Alternative Orders", async () =
   });
 
   const result = await apexascend.alternativeOrders.listAlternativeOrders(
-    "01JHGTEPC6ZTAHCFRH2MD3VJJT",
+    alts_account_id,
     25,
     "",
     "",
@@ -94,8 +96,8 @@ test("Alternative Orders Alternative Orders Get Alternative Order", async () => 
   });
 
   const result = await apexascend.alternativeOrders.getAlternativeOrder(
-    "01JHGTEPC6ZTAHCFRH2MD3VJJT",
-    "01KHYEFHKS7VM17YC8BQC6A8PV",
+    alts_account_id,
+    alts_order_id,
   );
   expect(result.httpMeta.response.status).toBe(200);
 });
@@ -122,8 +124,8 @@ test("Alternative Orders Alternative Orders Retrieve Pending Investor Actions", 
 
   const result = await apexascend.alternativeOrders
     .retrievePendingInvestorActions(
-      "01JHGTEPC6ZTAHCFRH2MD3VJJT",
-      "01KHYEFHKS7VM17YC8BQC6A8PV",
+      alts_account_id,
+      alts_order_id,
     );
   expect(result.httpMeta.response.status).toBe(200);
 });
@@ -148,14 +150,26 @@ test("Alternative Orders Alternative Orders Settle Alternative Order", async () 
     httpClient: testHttpClient,
   });
 
-  const result = await apexascend.alternativeOrders.settleAlternativeOrder(
-    {
-      name:
-        "accounts/01JHGTEPC6ZTAHCFRH2MD3VJJT/alternativeOrders/01KHYEFHKS7VM17YC8BQC6A8PV",
-      orderSettlementTarget: OrderSettlementTarget.Filled,
-    },
-    "01JHGTEPC6ZTAHCFRH2MD3VJJT",
-    "01KHYEFHKS7VM17YC8BQC6A8PV",
-  );
-  expect(result.httpMeta.response.status).toBe(400);
+  // This hardcoded order is already FILLED, so settling it again is expected
+  // to fail with a SETTLEMENT_POST_FAILURE precondition error -- but accept
+  // a genuine 200 too, in case the order's state ever changes.
+  try {
+    const result = await apexascend.alternativeOrders.settleAlternativeOrder(
+      {
+        name:
+          `accounts/${alts_account_id}/alternativeOrders/${alts_order_id}`,
+        orderSettlementTarget: OrderSettlementTarget.Filled,
+      },
+      alts_account_id,
+      alts_order_id,
+    );
+    expect(result.httpMeta.response.status).toBe(200);
+  } catch (err) {
+    if (err instanceof errors.Status) {
+      expect(err.code).toBe(9);
+      expect(err.message).toContain("SETTLEMENT_POST_FAILURE");
+    } else {
+      throw err;
+    }
+  }
 });

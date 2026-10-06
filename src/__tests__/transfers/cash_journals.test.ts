@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
-import { sdk, timeout } from "../utils/sdk";
-import { createLegalNaturalPerson, createAccount } from "../accounts";
+import { sdk, timeout, retryOnTransientError } from "../utils/sdk";
+import { createEnrolledAccount } from "../accounts";
 import { beforeAll } from "vitest";
 import {
   createCashJournal,
@@ -13,21 +13,13 @@ import {
   RetrieveCashJournalConstraintsRequestCreate,
 } from "@apexfintechsolutions/ascend-sdk/models/components";
 
-let lnp_id: string | undefined;
 let account_id: string | undefined;
 let journal_id: string | undefined;
 
 beforeAll(async () => {
-  lnp_id = await createLegalNaturalPerson();
-  if (typeof lnp_id !== "string") {
-    throw new Error("lnp_id is undefined.");
-  }
-  account_id = await createAccount(lnp_id);
-  if (typeof account_id !== "string") {
-    throw new Error("account_id is undefined.");
-  }
-  journal_id = await createCashJournal(account_id);
-}, 60000);
+  account_id = await createEnrolledAccount();
+  journal_id = await retryOnTransientError(() => createCashJournal(account_id!));
+}, 90000);
 
 test("Cash Journals Transfers Create Cash Journal Create Cash Journal1", async () => {
   expect(journal_id).not.toBe(undefined);

@@ -1,7 +1,7 @@
-import { sdk, timeout } from "../utils/sdk";
+import { sdk, timeout, retryOnTransientError } from "../utils/sdk";
 import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
-import { BankRelationshipStateState } from "@apexfintechsolutions/ascend-sdk/models/components";
 import crypto from "crypto";
+import { createEnrolledAccount } from "../accounts";
 
 export const withdrawal_account_id = "01JHGTEPC6ZTAHCFRH2MD3VJJT";
 
@@ -59,9 +59,18 @@ export async function correctMicroDeposits(
   account_id: string,
   bank_relationship_id: string,
 ): Promise<string[] | undefined> {
-  const result = await sdk.testSimulation.getMicroDepositAmounts(
-    account_id,
-    bank_relationship_id,
+  // 40 attempts x 2s: the default 20x2s window was observed intermittently
+  // to be insufficient for micro deposits against the real UAT environment.
+  // The SDK's own 504/429 backoff (up to 60s per call) is disabled inside
+  // the poll -- this is a fast not-found-until-ready check, and stacking the
+  // two retry layers multiplies the worst case into tens of minutes.
+  const result = await retryOnTransientError(
+    () =>
+      sdk.testSimulation.getMicroDepositAmounts(account_id, bank_relationship_id, {
+        retries: { strategy: "none" },
+      }),
+    40,
+    2000,
   );
   if (
     result?.microDepositAmounts?.amount1?.value &&
@@ -175,40 +184,19 @@ export async function createCredit(
   return undefined;
 }
 
-export async function createCompletedWithdrawal(
-  withdrawal_account_id: string,
-): Promise<string> {
-  // Cancel any approved relationships
-  const res = await sdk.bankRelationships.listBankRelationships(
-    withdrawal_account_id,
-  );
-  const max_relationships =
-    res?.listBankRelationshipsResponse?.bankRelationships?.length ?? 0;
-  let attempt_counts = 0;
-  while (attempt_counts < max_relationships) {
-    if (
-      res?.listBankRelationshipsResponse?.bankRelationships?.at(attempt_counts)
-        ?.state?.state === BankRelationshipStateState.Approved
-    ) {
-      const cancel_bank_relationship_id =
-        res?.listBankRelationshipsResponse?.bankRelationships
-          ?.at(attempt_counts)
-          ?.name?.split("/")
-          .at(-1);
-      const request: components.CancelBankRelationshipRequestCreate = {
-        name: `accounts/${withdrawal_account_id}/bankRelationships/${cancel_bank_relationship_id}`,
-        comment: "Canceling Bank User Request",
-      };
-      await sdk.bankRelationships.cancelBankRelationship(
-        request,
-        withdrawal_account_id,
-        cancel_bank_relationship_id || "",
-      );
-    }
-    attempt_counts += 1;
-  }
+// Creates a fresh enrolled account for the withdrawal rather than reusing
+// the shared withdrawal account id -- that account has accumulated dozens
+// of bank relationships from other tests, and its micro deposit amounts
+// were observed to never become queryable (not just delayed) even after
+// extended retries, likely due to degraded propagation on an account with
+// that much history. A fresh account with a single bank relationship
+// doesn't hit this.
+export async function createCompletedWithdrawal(): Promise<{
+  account_id: string;
+  withdrawal_id: string;
+}> {
+  const account_id = await createEnrolledAccount();
 
-  // Create a new bank relationship
   const request: components.BankRelationshipCreate = {
     bankAccount: {
       accountNumber: `${Math.floor(Math.random() * 99999999) + 10000000}`,
@@ -222,26 +210,21 @@ export async function createCompletedWithdrawal(
 
   const res2 = await sdk.bankRelationships.createBankRelationship(
     request,
-    withdrawal_account_id,
+    account_id,
   );
   const bank_relationship_id =
     res2?.bankRelationship?.name?.split("/")?.at(-1) || "";
 
   const microdeposit_amts: string[] =
-    (await correctMicroDeposits(withdrawal_account_id, bank_relationship_id)) ||
-    [];
+    (await correctMicroDeposits(account_id, bank_relationship_id)) || [];
 
-  await verifyMicroDeposits(
-    withdrawal_account_id,
-    bank_relationship_id,
-    microdeposit_amts,
-  );
+  await verifyMicroDeposits(account_id, bank_relationship_id, microdeposit_amts);
 
   const withdrawal_id = await createACHWithdrawal(
-    withdrawal_account_id,
+    account_id,
     bank_relationship_id,
   );
-  return withdrawal_id || "";
+  return { account_id, withdrawal_id: withdrawal_id || "" };
 }
 
 // Used for the test_simulation tests - the ICT deposit has to be created
@@ -571,11 +554,11 @@ export async function createCheckWithdrawalSchedule(
 export async function createCashJournal(account_id: string): Promise<string> {
   const cash_journal_request: components.CashJournalCreate = {
     clientTransferId: crypto.randomUUID(),
-    destinationAccount: account_id,
+    destinationAccount: `accounts/${account_id}`,
     amount: {
       value: "500001.00",
     },
-    sourceAccount: withdrawal_account_id,
+    sourceAccount: `accounts/${withdrawal_account_id}`,
   };
 
   const response = await sdk.journals.createCashJournal(cash_journal_request);

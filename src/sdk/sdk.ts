@@ -19,6 +19,7 @@ import { BasketOrders } from "./basketorders.js";
 import { BuyingPower } from "./buyingpower.js";
 import { CashBalances } from "./cashbalances.js";
 import { Checks } from "./checks.js";
+import { CostBasisService } from "./costbasisservice.js";
 import { DataRetrieval } from "./dataretrieval.js";
 import { EnrollmentsAndAgreements } from "./enrollmentsandagreements.js";
 import { FeesAndCredits } from "./feesandcredits.js";
@@ -267,5 +268,10 @@ export class Apexascend extends ClientSDK {
   private _optionInstructions?: OptionInstructions;
   get optionInstructions(): OptionInstructions {
     return (this._optionInstructions ??= new OptionInstructions(this._options));
+  }
+
+  private _costBasisService?: CostBasisService;
+  get costBasisService(): CostBasisService {
+    return (this._costBasisService ??= new CostBasisService(this._options));
   }
 }

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: 4c8f2212b727219781a18b2fcc74f8f0
-  docVersion: v1:20260814:uat:c54c9dbed75d
+  docChecksum: 4823f23e792e1f9b384b0a52cfe0385c
+  docVersion: v1:20261005:uat:400dff6391e1
   speakeasyVersion: 1.608.0
   generationVersion: 2.691.6
-  releaseVersion: 1.8.12
-  configChecksum: 3378469762d6142b08d9479db3c76ebe
+  releaseVersion: 1.8.13
+  configChecksum: cc6d90f18a6f816b25e11a55b41491e9
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -147,6 +147,14 @@ generatedFiles:
   - docs/models/components/achwithdrawalstatestate.md
   - docs/models/components/achwithdrawaltype.md
   - docs/models/components/acquisition.md
+  - docs/models/components/acquisitionadjustednetamount.md
+  - docs/models/components/acquisitionadjustednetpershareamount.md
+  - docs/models/components/acquisitioncommissionfeeamount.md
+  - docs/models/components/acquisitionexecutionpriceamount.md
+  - docs/models/components/acquisitionfxrateamount.md
+  - docs/models/components/acquisitionoriginalnetamount.md
+  - docs/models/components/acquisitionoriginaltradedate.md
+  - docs/models/components/acquisitiontruezeroindicator.md
   - docs/models/components/action.md
   - docs/models/components/activity.md
   - docs/models/components/activityacatspendingout.md
@@ -441,6 +449,7 @@ generatedFiles:
   - docs/models/components/availableenrollment.md
   - docs/models/components/availableliquidityamount.md
   - docs/models/components/availablerestriction.md
+  - docs/models/components/averagebasisindicator.md
   - docs/models/components/averageprice.md
   - docs/models/components/bankaccount.md
   - docs/models/components/bankaccountcreate.md
@@ -699,6 +708,8 @@ generatedFiles:
   - docs/models/components/checkwithdrawalscheduleupdate.md
   - docs/models/components/classification.md
   - docs/models/components/closeaccountrequestcreate.md
+  - docs/models/components/closedlot.md
+  - docs/models/components/closedlotquantity.md
   - docs/models/components/cnoticedate.md
   - docs/models/components/code.md
   - docs/models/components/commission.md
@@ -750,6 +761,7 @@ generatedFiles:
   - docs/models/components/couponfrequency.md
   - docs/models/components/couponrate.md
   - docs/models/components/coupontype.md
+  - docs/models/components/coveredlotindicator.md
   - docs/models/components/createddate.md
   - docs/models/components/createuploadlinkrequestcreate.md
   - docs/models/components/credit.md
@@ -806,6 +818,16 @@ generatedFiles:
   - docs/models/components/devicemetadatacreate.md
   - docs/models/components/devicetype.md
   - docs/models/components/direction.md
+  - docs/models/components/disallowedlossamount.md
+  - docs/models/components/disposaladjustednetamount.md
+  - docs/models/components/disposaladjustednetpershareamount.md
+  - docs/models/components/disposalcommissionfeeamount.md
+  - docs/models/components/disposalexecutionpriceamount.md
+  - docs/models/components/disposalfxrateamount.md
+  - docs/models/components/disposalmethod.md
+  - docs/models/components/disposaloriginalnetamount.md
+  - docs/models/components/disposalsettledate.md
+  - docs/models/components/disposaltradedate.md
   - docs/models/components/distributionconstraints.md
   - docs/models/components/distributionconstraintsdistributiontypeinfo.md
   - docs/models/components/distributionconstraintsdistributiontypeinfotype.md
@@ -831,6 +853,7 @@ generatedFiles:
   - docs/models/components/dowjonesdetails.md
   - docs/models/components/downloadalternativeinvestmentdocumentresponse.md
   - docs/models/components/drip.md
+  - docs/models/components/dripindicator.md
   - docs/models/components/duration.md
   - docs/models/components/eddaccountenrollmentmetadata.md
   - docs/models/components/eddaccountenrollmentmetadatacreate.md
@@ -1231,11 +1254,14 @@ generatedFiles:
   - docs/models/components/futuresenrollmentmetadata.md
   - docs/models/components/futuresenrollmentmetadatacreate.md
   - docs/models/components/futuresinvestmentobjective.md
+  - docs/models/components/gainlossamount.md
   - docs/models/components/generateserviceaccounttokenrequestcreate.md
   - docs/models/components/geolocation.md
   - docs/models/components/geolocationmechanism.md
+  - docs/models/components/giftindicator.md
   - docs/models/components/grossamount.md
   - docs/models/components/grosscreditamount.md
+  - docs/models/components/holdingstartdate.md
   - docs/models/components/httpcallback.md
   - docs/models/components/httpmetadata.md
   - docs/models/components/httppushcallbackcreate.md
@@ -1332,6 +1358,7 @@ generatedFiles:
   - docs/models/components/individualrecipientparty.md
   - docs/models/components/inheritedfromownerbirthdate.md
   - docs/models/components/inheritedfromownerdeathdate.md
+  - docs/models/components/inheritedindicator.md
   - docs/models/components/initialdepositamount.md
   - docs/models/components/institutioncreate.md
   - docs/models/components/interest.md
@@ -1536,6 +1563,7 @@ generatedFiles:
   - docs/models/components/localmarkettradedate.md
   - docs/models/components/locateictreportresponse.md
   - docs/models/components/locateictreportresponseprogram.md
+  - docs/models/components/longshortindicator.md
   - docs/models/components/lookupresult.md
   - docs/models/components/lot.md
   - docs/models/components/lotcreate.md
@@ -1570,6 +1598,7 @@ generatedFiles:
   - docs/models/components/money.md
   - docs/models/components/moneymarketfundsweep.md
   - docs/models/components/moneyness.md
+  - docs/models/components/multiplier.md
   - docs/models/components/mutualfund.md
   - docs/models/components/mutualfundtype.md
   - docs/models/components/nachanoccreate.md
@@ -1604,6 +1633,27 @@ generatedFiles:
   - docs/models/components/openbalanceamount.md
   - docs/models/components/openedonbehalfof.md
   - docs/models/components/openliquidityamount.md
+  - docs/models/components/openlot.md
+  - docs/models/components/openlotacquisitionadjustednetamount.md
+  - docs/models/components/openlotacquisitionadjustednetpershareamount.md
+  - docs/models/components/openlotacquisitioncommissionfeeamount.md
+  - docs/models/components/openlotacquisitionexecutionpriceamount.md
+  - docs/models/components/openlotacquisitionfxrateamount.md
+  - docs/models/components/openlotacquisitionoriginalnetamount.md
+  - docs/models/components/openlotacquisitionoriginaltradedate.md
+  - docs/models/components/openlotacquisitiontruezeroindicator.md
+  - docs/models/components/openlotaveragebasisindicator.md
+  - docs/models/components/openlotcoveredlotindicator.md
+  - docs/models/components/openlotdripindicator.md
+  - docs/models/components/openlotgiftindicator.md
+  - docs/models/components/openlotholdingstartdate.md
+  - docs/models/components/openlotinheritedindicator.md
+  - docs/models/components/openlotlongshortindicator.md
+  - docs/models/components/openlotmultiplier.md
+  - docs/models/components/openlotquantity.md
+  - docs/models/components/openlotreplacementshareindicator.md
+  - docs/models/components/openlotterm.md
+  - docs/models/components/openlotwashsaleadjustmentamount.md
   - docs/models/components/operatingenrollmentmetadata.md
   - docs/models/components/operatingenrollmentmetadatacreate.md
   - docs/models/components/operatingpurpose.md
@@ -1989,6 +2039,7 @@ generatedFiles:
   - docs/models/components/removeordersrequestcreate.md
   - docs/models/components/removeordersresponse.md
   - docs/models/components/removepartyrequestcreate.md
+  - docs/models/components/replacementshareindicator.md
   - docs/models/components/replacepartyrequestcreate.md
   - docs/models/components/reportingeligibility.md
   - docs/models/components/requiredminimumdistribution.md
@@ -2047,6 +2098,12 @@ generatedFiles:
   - docs/models/components/scheduleproperties.md
   - docs/models/components/schedulepropertiescreate.md
   - docs/models/components/searchcashjournalschedulesresponse.md
+  - docs/models/components/searchclosedlotsrequestcreate.md
+  - docs/models/components/searchclosedlotsrequestcreateidentifiertype.md
+  - docs/models/components/searchclosedlotsresponse.md
+  - docs/models/components/searchopenlotsrequestcreate.md
+  - docs/models/components/searchopenlotsrequestcreateidentifiertype.md
+  - docs/models/components/searchopenlotsresponse.md
   - docs/models/components/security.md
   - docs/models/components/selfieverified.md
   - docs/models/components/seriesdate.md
@@ -2137,6 +2194,7 @@ generatedFiles:
   - docs/models/components/temporaltaxyear.md
   - docs/models/components/tenderoffer.md
   - docs/models/components/tenderoffertype.md
+  - docs/models/components/term.md
   - docs/models/components/timehorizon.md
   - docs/models/components/timeinforce.md
   - docs/models/components/timeinforceexpirationdate.md
@@ -2266,6 +2324,7 @@ generatedFiles:
   - docs/models/components/virtualaccountnumberenrollmentmetadata.md
   - docs/models/components/virtualaccountnumberenrollmentmetadatacreate.md
   - docs/models/components/warrantexercise.md
+  - docs/models/components/washsaleadjustmentamount.md
   - docs/models/components/watchlistitem.md
   - docs/models/components/watchlistmatch.md
   - docs/models/components/watchlistmatchupdate.md
@@ -2624,6 +2683,10 @@ generatedFiles:
   - docs/models/operations/checkwithdrawalscheduleslistcheckwithdrawalschedulesresponse.md
   - docs/models/operations/checkwithdrawalschedulesupdatecheckwithdrawalschedulerequest.md
   - docs/models/operations/checkwithdrawalschedulesupdatecheckwithdrawalscheduleresponse.md
+  - docs/models/operations/costbasisservicesearchclosedlotsrequest.md
+  - docs/models/operations/costbasisservicesearchclosedlotsresponse.md
+  - docs/models/operations/costbasisservicesearchopenlotsrequest.md
+  - docs/models/operations/costbasisservicesearchopenlotsresponse.md
   - docs/models/operations/creditscancelcreditrequest.md
   - docs/models/operations/creditscancelcreditresponse.md
   - docs/models/operations/creditscreatecreditrequest.md
@@ -2827,6 +2890,7 @@ generatedFiles:
   - docs/sdks/buyingpower/README.md
   - docs/sdks/cashbalances/README.md
   - docs/sdks/checks/README.md
+  - docs/sdks/costbasisservice/README.md
   - docs/sdks/dataretrieval/README.md
   - docs/sdks/enrollmentsandagreements/README.md
   - docs/sdks/feesandcredits/README.md
@@ -2864,6 +2928,7 @@ generatedFiles:
   - src/__tests__/assets.test.ts
   - src/__tests__/assettradingconfig.test.ts
   - src/__tests__/checks.test.ts
+  - src/__tests__/costbasisservice.test.ts
   - src/__tests__/dataretrieval.test.ts
   - src/__tests__/files.ts
   - src/__tests__/investigations.test.ts
@@ -2951,6 +3016,8 @@ generatedFiles:
   - src/funcs/buyingPowerGetBuyingPower.ts
   - src/funcs/cashBalancesCalculateCashBalance.ts
   - src/funcs/checksGetCheckDeposit.ts
+  - src/funcs/costBasisServiceSearchClosedLots.ts
+  - src/funcs/costBasisServiceSearchOpenLots.ts
   - src/funcs/dataRetrievalListSnapshots.ts
   - src/funcs/enrollmentsAndAgreementsAccountsListAvailableEnrollmentsByAccountGroup.ts
   - src/funcs/enrollmentsAndAgreementsAffirmAgreements.ts
@@ -3243,6 +3310,7 @@ generatedFiles:
   - src/models/components/checkwithdrawalschedulecreate.ts
   - src/models/components/checkwithdrawalscheduleupdate.ts
   - src/models/components/closeaccountrequestcreate.ts
+  - src/models/components/closedlot.ts
   - src/models/components/commission.ts
   - src/models/components/commissioncreate.ts
   - src/models/components/completetraderequestcreate.ts
@@ -3454,6 +3522,7 @@ generatedFiles:
   - src/models/components/noncitizenresidencyupdate.ts
   - src/models/components/note.ts
   - src/models/components/notecreate.ts
+  - src/models/components/openlot.ts
   - src/models/components/operatingenrollmentmetadatacreate.ts
   - src/models/components/optiondeliverable.ts
   - src/models/components/optioninstruction.ts
@@ -3543,6 +3612,10 @@ generatedFiles:
   - src/models/components/scheduledretirementcontributioncreate.ts
   - src/models/components/schedulepropertiescreate.ts
   - src/models/components/searchcashjournalschedulesresponse.ts
+  - src/models/components/searchclosedlotsrequestcreate.ts
+  - src/models/components/searchclosedlotsresponse.ts
+  - src/models/components/searchopenlotsrequestcreate.ts
+  - src/models/components/searchopenlotsresponse.ts
   - src/models/components/security.ts
   - src/models/components/setaccountaccreditationtyperequestcreate.ts
   - src/models/components/setextrareportingdataresponse.ts
@@ -3750,6 +3823,8 @@ generatedFiles:
   - src/models/operations/checkwithdrawalschedulesgetcheckwithdrawalschedule.ts
   - src/models/operations/checkwithdrawalscheduleslistcheckwithdrawalschedules.ts
   - src/models/operations/checkwithdrawalschedulesupdatecheckwithdrawalschedule.ts
+  - src/models/operations/costbasisservicesearchclosedlots.ts
+  - src/models/operations/costbasisservicesearchopenlots.ts
   - src/models/operations/creditscancelcredit.ts
   - src/models/operations/creditscreatecredit.ts
   - src/models/operations/creditsgetcredit.ts
@@ -3859,6 +3934,7 @@ generatedFiles:
   - src/sdk/buyingpower.ts
   - src/sdk/cashbalances.ts
   - src/sdk/checks.ts
+  - src/sdk/costbasisservice.ts
   - src/sdk/dataretrieval.ts
   - src/sdk/enrollmentsandagreements.ts
   - src/sdk/feesandcredits.ts
@@ -7242,6 +7318,38 @@ examples:
           application/json: {}
         default:
           application/json: {}
+  CostBasisService_SearchClosedLots:
+    speakeasy-default-cost-basis-service-search-closed-lots:
+      parameters:
+        path:
+          account_id: "01J71HKJ1K1GX5C0EWZ4BCPACB"
+      requestBody:
+        application/json: {"parent": "accounts/01J71HKJ1K1GX5C0EWZ4BCPACB"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  CostBasisService_SearchOpenLots:
+    speakeasy-default-cost-basis-service-search-open-lots:
+      parameters:
+        path:
+          account_id: "01J71HKJ1K1GX5C0EWZ4BCPACB"
+      requestBody:
+        application/json: {"parent": "accounts/01J71HKJ1K1GX5C0EWZ4BCPACB"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests:
   Accounts_ListLegalNaturalPersons: "2025-08-11T18:04:23Z"
@@ -7282,3 +7390,5 @@ generatedTests:
   MarginsRealTime_GetAssetBuyingPower: "2026-04-27T12:22:30Z"
   CheckDeposits_ForceApproveCheckDeposit: "2026-04-27T12:22:30Z"
   OrderService_ListAccountOrders: "2026-04-27T12:22:30Z"
+  CostBasisService_SearchOpenLots: "2026-10-05T10:54:34Z"
+  CostBasisService_SearchClosedLots: "2026-10-05T10:54:34Z"
