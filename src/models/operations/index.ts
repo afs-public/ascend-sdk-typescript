@@ -143,6 +143,8 @@ export * from "./checkwithdrawalschedulescreatecheckwithdrawalschedule.js";
 export * from "./checkwithdrawalschedulesgetcheckwithdrawalschedule.js";
 export * from "./checkwithdrawalscheduleslistcheckwithdrawalschedules.js";
 export * from "./checkwithdrawalschedulesupdatecheckwithdrawalschedule.js";
+export * from "./costbasisservicesearchclosedlots.js";
+export * from "./costbasisservicesearchopenlots.js";
 export * from "./creditscancelcredit.js";
 export * from "./creditscreatecredit.js";
 export * from "./creditsgetcredit.js";

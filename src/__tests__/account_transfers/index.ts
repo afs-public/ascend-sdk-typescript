@@ -1,4 +1,4 @@
-import {sdk, timeout} from "../utils/sdk";
+import {sdk, timeout, retryOnTransientError} from "../utils/sdk";
 import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import crypto from "crypto";
 import {withdrawal_account_id} from "../transfers";
@@ -51,10 +51,14 @@ export async function create_account_transfer_id(
   if (!correspondentId) {
     throw new Error("CORRESPONDENT_ID is undefined or empty.");
   }
-  const result = await sdk.accountTransfers.createTransfer(
-    request,
-    correspondentId,
-    withdrawal_account_id,
+  // The funding credit created just before this posts asynchronously;
+  // until it lands the API rejects the transfer for insufficient cash.
+  const result = await retryOnTransientError(() =>
+    sdk.accountTransfers.createTransfer(
+      request,
+      correspondentId,
+      withdrawal_account_id,
+    ),
   );
   if (result?.acatsTransfer?.name) {
     return result.acatsTransfer.name.split("/").pop();

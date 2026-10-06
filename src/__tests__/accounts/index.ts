@@ -416,3 +416,37 @@ export async function affirmAgreement(
   };
   await sdk.enrollmentsAndAgreements.affirmAgreements(request, account_id);
 }
+
+// Creates an LNP, opens an account for it, enrolls it, affirms the
+// agreements, and waits for the account to reach OPEN. A new account can
+// take tens of seconds to open against the real UAT environment, and
+// downstream resources (micro deposits, transfers, orders) misbehave until
+// it does.
+export async function createEnrolledAccount(): Promise<string> {
+  const lnp_id = await createLegalNaturalPerson();
+  if (typeof lnp_id !== "string") {
+    throw new Error("lnp_id is undefined.");
+  }
+  const account_id = await createAccount(lnp_id);
+  if (typeof account_id !== "string") {
+    throw new Error("account_id is undefined.");
+  }
+  const enrollment_ids = await enrollAccount(account_id);
+  if (enrollment_ids === undefined) {
+    throw new Error("enrollment_ids is undefined.");
+  }
+  await affirmAgreement(account_id, enrollment_ids);
+  await waitForAccountOpen(account_id);
+  return account_id;
+}
+
+export async function waitForAccountOpen(account_id: string): Promise<void> {
+  for (let attempt = 1; attempt <= 20; attempt++) {
+    const result = await sdk.accountCreation.getAccount(account_id);
+    if (result?.account?.state === components.AccountState.Open) {
+      return;
+    }
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  }
+  throw new Error(`account ${account_id} never reached OPEN state`);
+}

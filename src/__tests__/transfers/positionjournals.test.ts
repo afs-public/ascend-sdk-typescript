@@ -1,6 +1,6 @@
 import { beforeAll, expect, test } from "vitest";
-import { sdk } from "../utils/sdk";
-import { createAccount, createLegalNaturalPerson } from "../accounts";
+import { sdk, retryOnTransientError } from "../utils/sdk";
+import { createEnrolledAccount } from "../accounts";
 import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
 import * as errors from "@apexfintechsolutions/ascend-sdk/models/errors";
 import crypto from "crypto";
@@ -10,23 +10,8 @@ let destination_account_id: string | undefined;
 let position_journal_id: string | undefined;
 
 beforeAll(async () => {
-  const source_lnp_id = await createLegalNaturalPerson();
-  if (typeof source_lnp_id !== "string") {
-    throw new Error("source_lnp_id is undefined.");
-  }
-  source_account_id = await createAccount(source_lnp_id);
-  if (typeof source_account_id !== "string") {
-    throw new Error("source_account_id is undefined.");
-  }
-
-  const destination_lnp_id = await createLegalNaturalPerson();
-  if (typeof destination_lnp_id !== "string") {
-    throw new Error("destination_lnp_id is undefined.");
-  }
-  destination_account_id = await createAccount(destination_lnp_id);
-  if (typeof destination_account_id !== "string") {
-    throw new Error("destination_account_id is undefined.");
-  }
+  source_account_id = await createEnrolledAccount();
+  destination_account_id = await createEnrolledAccount();
 }, 120000);
 
 test("Position Journals Create Position Journal", async () => {
@@ -50,7 +35,9 @@ test("Position Journals Create Position Journal", async () => {
     description: "Stock reward for testing",
   };
 
-  const result = await sdk.positionJournals.createPositionJournal(request);
+  const result = await retryOnTransientError(() =>
+    sdk.positionJournals.createPositionJournal(request),
+  );
   expect(result.httpMeta.response.status).toBe(200);
   expect(result.positionJournal).toBeDefined();
   expect(result.positionJournal?.name).toBeDefined();
@@ -58,7 +45,7 @@ test("Position Journals Create Position Journal", async () => {
   if (result.positionJournal?.name) {
     position_journal_id = result.positionJournal.name.split("/").at(-1);
   }
-});
+}, 60000);
 
 test("Position Journals Get Position Journal", async () => {
   if (position_journal_id === undefined) {
@@ -109,7 +96,9 @@ test("Test Simulation Force Approve Position Journal", async () => {
     description: "Stock reward for testing",
   };
 
-  const createResult = await sdk.positionJournals.createPositionJournal(createRequest);
+  const createResult = await retryOnTransientError(() =>
+    sdk.positionJournals.createPositionJournal(createRequest),
+  );
   expect(createResult.positionJournal).toBeDefined();
   expect(createResult.positionJournal?.name).toBeDefined();
 
@@ -132,10 +121,10 @@ test("Test Simulation Force Approve Position Journal", async () => {
     expect(status).toBeInstanceOf(errors.Status);
     if (status instanceof errors.Status) {
       expect(status.code).toBe(3);
-      expect(status.message.toLowerCase()).toContain("that does not need review");
+      expect(status.message.toLowerCase()).toContain("does not need review");
     }
   }
-});
+}, 60000);
 
 test("Test Simulation Force Reject Position Journal", async () => {
   if (source_account_id === undefined || destination_account_id === undefined) {
@@ -158,7 +147,9 @@ test("Test Simulation Force Reject Position Journal", async () => {
     description: "Stock reward for testing",
   };
 
-  const createResult = await sdk.positionJournals.createPositionJournal(createRequest);
+  const createResult = await retryOnTransientError(() =>
+    sdk.positionJournals.createPositionJournal(createRequest),
+  );
   expect(createResult.positionJournal).toBeDefined();
   expect(createResult.positionJournal?.name).toBeDefined();
 
@@ -184,4 +175,4 @@ test("Test Simulation Force Reject Position Journal", async () => {
       expect(status.code).toBe(3);
     }
   }
-});
+}, 60000);

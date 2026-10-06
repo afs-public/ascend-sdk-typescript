@@ -4,6 +4,7 @@
 
 import { expect, test } from "vitest";
 import { Apexascend } from "../index.js";
+import * as errors from "../models/errors/index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Test Simulation Check Deposits Force Approve Check Deposit", async () => {
@@ -26,14 +27,27 @@ test("Test Simulation Check Deposits Force Approve Check Deposit", async () => {
     httpClient: testHttpClient,
   });
 
-  const result = await apexascend.testSimulation.forceApproveCheckDeposit(
-    {
-      name: "accounts/01JHGTEPC6ZTAHCFRH2MD3VJJT/checkDeposits/20250811022796",
-    },
-    "01JHGTEPC6ZTAHCFRH2MD3VJJT",
-    "20250811022796",
-  );
-  expect(result.httpMeta.response.status).toBe(200);
+  // This hardcoded check deposit is already approved/completed, so
+  // force-approving it again is expected to fail with a "does not need
+  // review" precondition error -- but accept a genuine 200 too, in case
+  // the deposit's state ever changes.
+  try {
+    const result = await apexascend.testSimulation.forceApproveCheckDeposit(
+      {
+        name: "accounts/01JHGTEPC6ZTAHCFRH2MD3VJJT/checkDeposits/20250811022796",
+      },
+      "01JHGTEPC6ZTAHCFRH2MD3VJJT",
+      "20250811022796",
+    );
+    expect(result.httpMeta.response.status).toBe(200);
+  } catch (err) {
+    if (err instanceof errors.Status) {
+      expect(err.code).toBe(3);
+      expect(err.message.toLowerCase()).toContain("does not need review");
+    } else {
+      throw err;
+    }
+  }
 });
 
 test("Test Simulation Check Deposits Simulate Create Check Deposit", async () => {

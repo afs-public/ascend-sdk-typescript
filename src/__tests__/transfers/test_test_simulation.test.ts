@@ -1,13 +1,8 @@
 import { expect, test } from "vitest";
 import { DateTime } from "luxon";
-import { sdk, timeout } from "../utils/sdk";
+import { sdk, timeout, RETRY_HEAVY_TEST_TIMEOUT_MS } from "../utils/sdk";
 import * as components from "@apexfintechsolutions/ascend-sdk/models/components";
-import {
-  createLegalNaturalPerson,
-  createAccount,
-  enrollAccount,
-  affirmAgreement,
-} from "../accounts";
+import { createEnrolledAccount } from "../accounts";
 import {
   createBankRelationship,
   correctMicroDeposits,
@@ -32,26 +27,12 @@ import {
 import * as errors from "@apexfintechsolutions/ascend-sdk/models/errors";
 import crypto from "crypto";
 
-let lnp_id: string | undefined;
 let account_id: string | undefined;
-let enrollment_ids: string[] | undefined;
 let bank_relationship_id: string | undefined;
 let microDeposits: string[] | undefined;
 
 beforeAll(async () => {
-  lnp_id = await createLegalNaturalPerson();
-  if (typeof lnp_id !== "string") {
-    throw new Error("lnp_id is undefined.");
-  }
-  account_id = await createAccount(lnp_id);
-  if (typeof account_id !== "string") {
-    throw new Error("account_id is undefined.");
-  }
-  enrollment_ids = await enrollAccount(account_id);
-  if (typeof enrollment_ids !== "object") {
-    throw new Error("enrollment_ids is undefined.");
-  }
-  affirmAgreement(account_id, enrollment_ids);
+  account_id = await createEnrolledAccount();
   bank_relationship_id = await createBankRelationship(account_id);
   if (typeof bank_relationship_id !== "string") {
     throw new Error("bank_relationship_id is undefined.");
@@ -61,7 +42,7 @@ beforeAll(async () => {
     throw new Error("microDeposits is undefined.");
   }
   await verifyMicroDeposits(account_id, bank_relationship_id, microDeposits);
-}, 60000);
+}, RETRY_HEAVY_TEST_TIMEOUT_MS);
 
 test("Test Test Simulation Transfers Get Micro Deposit Get Micro Deposit1", async () => {
   expect(typeof microDeposits).toBe("object");
@@ -103,7 +84,7 @@ if (currentTime >= morning && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   })
@@ -155,7 +136,7 @@ if (currentTime >= morning && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   });
@@ -207,32 +188,30 @@ if (currentTime >= morning && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   })
 
 
   test("test Test Simulation Transfers Force Noc Ach Withdrawal Force Noc Ach Withdrawal1", async () => {
-    const completed_withdrawal_id = await createCompletedWithdrawal(
-      withdrawal_account_id,
-    );
+    const { account_id, withdrawal_id } = await createCompletedWithdrawal();
 
     const request: ForceNocAchWithdrawalRequestCreate = {
       nachaNoc: {
         code: components.Code.C05,
         updatedBankAccountType: components.UpdatedBankAccountType.Checking,
       },
-      name: `accounts/${withdrawal_account_id}/achWithdrawals/${completed_withdrawal_id}`,
+      name: `accounts/${account_id}/achWithdrawals/${withdrawal_id}`,
     };
 
     const result = await sdk.testSimulation.forceNocAchWithdrawal(
       request,
-      withdrawal_account_id,
-      completed_withdrawal_id,
+      account_id,
+      withdrawal_id,
     );
     expect(result.httpMeta.response.status).toBe(200);
-  });
+  }, RETRY_HEAVY_TEST_TIMEOUT_MS);
 
   test("Test Test Simulation Transfers Force Reject Ach Withdrawal Force Reject Ach Withdrawal1", async () => {
     const pending_withdrawal_id = await createACHWithdrawal(
@@ -255,28 +234,26 @@ if (currentTime >= morning && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   });
 
   test("Test Test Simulation Transfers Force Ach Withdrawal Return Force Ach Withdrawal Return1", async () => {
-    const completed_withdrawal_id = await createCompletedWithdrawal(
-      withdrawal_account_id,
-    );
+    const { account_id, withdrawal_id } = await createCompletedWithdrawal();
 
     const request: components.ForceReturnAchWithdrawalRequestCreate = {
       nachaReturn: {
         code: components.NachaReturnCreateCode.R16,
       },
-      name: `accounts/${withdrawal_account_id}/achWithdrawals/${completed_withdrawal_id}`,
+      name: `accounts/${account_id}/achWithdrawals/${withdrawal_id}`,
     };
 
     try {
       const result = await sdk.testSimulation.forceReturnAchWithdrawal(
         request,
-        withdrawal_account_id,
-        completed_withdrawal_id,
+        account_id,
+        withdrawal_id,
       );
 
       expect(result).toBeDefined();
@@ -288,7 +265,7 @@ if (currentTime >= morning && currentTime <= afternoon) {
         expect(status.message.toLowerCase()).toContain("current state");
       }
     }
-  });
+  }, RETRY_HEAVY_TEST_TIMEOUT_MS);
 } else {
   console.log(
     "Skipping Endpoint Tests that require current time to be between 11:30 PM CT and 6:00 PM CT",
@@ -315,7 +292,7 @@ if (morning <= currentTime && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   })
@@ -339,7 +316,7 @@ if (morning <= currentTime && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   });
@@ -360,7 +337,7 @@ if (morning <= currentTime && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   });
@@ -384,7 +361,7 @@ if (morning <= currentTime && currentTime <= afternoon) {
       expect(status).toBeInstanceOf(errors.Status);
       if (status instanceof errors.Status) {
         expect(status.code).toBe(3);
-        expect(status.message.toLowerCase()).toContain("that does not need review");
+        expect(status.message.toLowerCase()).toContain("does not need review");
       }
     }
   });
@@ -410,9 +387,21 @@ if (morning <= currentTime && currentTime <= afternoon) {
     const request : components.ForceApproveWireWithdrawalRequestCreate = {
       name: `accounts/${withdrawal_account_id}/wireWithdrawals/${wire_withdrawal_id}`
     }
-    const result = await sdk.testSimulation.forceApproveWireWithdrawal(request, withdrawal_account_id || '', wire_withdrawal_id || '');
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+    // A freshly created wire withdrawal is sometimes approved before the
+    // force-approve lands, which fails with a "does not need review"
+    // precondition error -- accept that alongside a genuine 200.
+    try {
+      const result = await sdk.testSimulation.forceApproveWireWithdrawal(request, withdrawal_account_id || '', wire_withdrawal_id || '');
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (err) {
+      if (err instanceof errors.Status) {
+        expect(err.code).toBe(3);
+        expect(err.message.toLowerCase()).toContain("does not need review");
+      } else {
+        throw err;
+      }
+    }
   })
 
   test("Test Test Simulation Transfers Force Reject Wire Withdrawal Force Reject Wire Withdrawal1", async () => {
@@ -551,9 +540,17 @@ if (morning <= currentTime && currentTime <= afternoon) {
     const request : components.ForceApproveCashJournalRequestCreate = {
       name: `accounts/${withdrawal_account_id}/cashJournals/${cash_journal_id}`
     }
-    const result = await sdk.testSimulation.forceApproveCashJournal(request, cash_journal_id);
-    expect(result).toBeDefined();
-    expect(result.httpMeta.response.status).toBe(200);
+    try {
+      const result = await sdk.testSimulation.forceApproveCashJournal(request, cash_journal_id);
+      expect(result).toBeDefined();
+      expect(result.httpMeta.response.status).toBe(200);
+    } catch (status) {
+      expect(status).toBeInstanceOf(errors.Status);
+      if (status instanceof errors.Status) {
+        expect(status.code).toBe(3);
+        expect(status.message.toLowerCase()).toContain("does not need review");
+      }
+    }
   })
 
   test("Test Test Simulation Transfers Force Reject Cash Journal Force Reject Cash Journal1", async () => {

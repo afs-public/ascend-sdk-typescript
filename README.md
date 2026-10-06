@@ -435,6 +435,11 @@ const sdk = new Apexascend({ httpClient });
 
 * [getCheckDeposit](docs/sdks/checks/README.md#getcheckdeposit) - Get Check Deposit
 
+### [costBasisService](docs/sdks/costbasisservice/README.md)
+
+* [searchClosedLots](docs/sdks/costbasisservice/README.md#searchclosedlots) - Search Closed Lots
+* [searchOpenLots](docs/sdks/costbasisservice/README.md#searchopenlots) - Search Open Lots
+
 ### [dataRetrieval](docs/sdks/dataretrieval/README.md)
 
 * [listSnapshots](docs/sdks/dataretrieval/README.md#listsnapshots) - List Snapshots
@@ -796,29 +801,5 @@ import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
 const sdk = new Apexascend({ debugLogger: console });
 ```
 <!-- End Debugging [debug] -->
-
-## Qase TestOps Integration
-
-Test results can be automatically reported to [Qase TestOps](https://app.qase.io/project/CDX) for centralized visibility.
-
-### Environment Variables
-
-| Variable | Description |
-| --- | --- |
-| `QASE_MODE` | Set to `testops` to enable reporting (default: off) |
-| `QASE_API_TOKEN` | Qase API token for authentication |
-| `QASE_PROJECT` | Qase project code (default: `CDX`) |
-
-### Running Tests with Qase Reporting
-
-```bash
-# Without Qase (default)
-npm test
-
-# With Qase reporting enabled
-QASE_MODE=testops QASE_API_TOKEN=<token> npm test
-```
-
-The vitest-qase-reporter is conditionally loaded only when `QASE_MODE=testops` is set.
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

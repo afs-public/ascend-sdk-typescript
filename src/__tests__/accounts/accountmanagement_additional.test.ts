@@ -80,7 +80,7 @@ test("Account Management Accounts Update Account Group Update Account Group1", a
     throw new Error("account_id is undefined.");
   }
   const request: components.UpdateAccountGroupRequestUpdate = {
-    accountGroupId: process.env["ACCOUNT_GROUP_ID"] ?? "",
+    accountGroupId: process.env["SECOND_ACCOUNT_GROUP_ID"] ?? "",
   };
   const result = await sdk.accountManagement.updateAccountGroup(
     request,

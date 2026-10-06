@@ -24,6 +24,13 @@ test("Data Retrieval Snapshots List Snapshots", async () => {
     httpClient: testHttpClient,
   });
 
-  const result = await apexascend.dataRetrieval.listSnapshots("", 25, "");
+  // An unfiltered list forces the service onto its slow GCS/BQ scan path,
+  // which exceeds the 55s gateway timeout (504) in UAT; a snapshot_type
+  // filter keeps it on the fast path (~3s).
+  const result = await apexascend.dataRetrieval.listSnapshots(
+    'snapshot_type=="daily_accounts"',
+    25,
+    "",
+  );
   expect(result.httpMeta.response.status).toBe(200);
 });

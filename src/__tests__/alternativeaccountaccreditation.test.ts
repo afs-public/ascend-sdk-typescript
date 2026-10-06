@@ -3,6 +3,7 @@
  */
 
 import { expect, test } from "vitest";
+import { alts_account_id } from "./alts.js";
 import { Apexascend } from "../index.js";
 import { SetAccountAccreditationTypeRequestCreateAccreditationType } from "../models/components/index.js";
 import { createTestHTTPClient } from "./testclient.js";
@@ -27,8 +28,16 @@ test("Alternative Account Accreditation Account Accreditation Get Account Accred
     httpClient: testHttpClient,
   });
 
+  // UAT data churn periodically wipes the accreditation resource, so set
+  // it before reading rather than depending on state from earlier runs.
+  await apexascend.alternativeAccountAccreditation.setAccountAccreditationType({
+    accreditationType:
+      SetAccountAccreditationTypeRequestCreateAccreditationType.NetWorthGt1M,
+    name: `accounts/${alts_account_id}/accreditation`,
+  }, alts_account_id);
+
   const result = await apexascend.alternativeAccountAccreditation
-    .getAccountAccreditation("01JHGTEPC6ZTAHCFRH2MD3VJJT");
+    .getAccountAccreditation(alts_account_id);
   expect(result.httpMeta.response.status).toBe(200);
 });
 
@@ -56,7 +65,7 @@ test("Alternative Account Accreditation Account Accreditation Set Account Accred
     .setAccountAccreditationType({
       accreditationType:
         SetAccountAccreditationTypeRequestCreateAccreditationType.NetWorthGt1M,
-      name: "accounts/01JHGTEPC6ZTAHCFRH2MD3VJJT/accreditation",
-    }, "01JHGTEPC6ZTAHCFRH2MD3VJJT");
+      name: `accounts/${alts_account_id}/accreditation`,
+    }, alts_account_id);
   expect(result.httpMeta.response.status).toBe(200);
 });

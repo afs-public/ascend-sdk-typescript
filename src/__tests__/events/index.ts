@@ -14,7 +14,7 @@ export async function create_subscriber_id(): Promise<string | undefined> {
   if (!correspondentId) {
     throw new Error("CORRESPONDENT_ID is undefined or empty.");
   }
-  let now = new Date();
+  const now = new Date();
 
   const request: components.PushSubscriptionCreate = {
     correspondentId: correspondentId,
@@ -36,25 +36,67 @@ export async function create_subscriber_id(): Promise<string | undefined> {
 
 export async function get_subscriber_id(): Promise<string | undefined> {
   const subscriptions_response = await sdk.subscriber.listPushSubscriptions();
-  if (subscriptions_response?.listPushSubscriptionsResponse?.pushSubscriptions?.length) {
-    return subscriptions_response?.listPushSubscriptionsResponse?.pushSubscriptions[0]?.subscriptionId as string;
+  const subscriptions =
+    subscriptions_response?.listPushSubscriptionsResponse?.pushSubscriptions ?? [];
+  if (!subscriptions.length) {
+    return undefined;
   }
-  return undefined;
+  // The first listed subscription can be a freshly created one with no
+  // delivery history (e.g. from a concurrently running suite's create
+  // test); prefer a subscription that already has deliveries.
+  for (const subscription of subscriptions) {
+    const subscriptionId = subscription?.subscriptionId;
+    if (!subscriptionId) {
+      continue;
+    }
+    if (await first_delivery_id(subscriptionId)) {
+      return subscriptionId;
+    }
+  }
+  return subscriptions[0]?.subscriptionId as string;
 }
 
 export async function get_delivery_id(): Promise<string | undefined> {
   const subscriber_id = await get_subscriber_id();
 
   if (typeof subscriber_id !== 'undefined') {
-    const result =
-      await sdk.subscriber.listPushSubscriptionDeliveries(subscriber_id);
-    if (
-      result?.listPushSubscriptionDeliveriesResponse?.pushSubscriptionDeliveries
-        ?.length
-    ) {
-      return result?.listPushSubscriptionDeliveriesResponse
-        ?.pushSubscriptionDeliveries[0]?.deliveryId;
+    return first_delivery_id(subscriber_id);
+  }
+  return undefined;
+}
+
+// Atomically picks a subscription that has deliveries together with its
+// first delivery id. Callers that read a delivery should re-pick through
+// this on failure: a concurrently running suite can delete the picked
+// subscription between the pick and the read.
+export async function get_subscription_delivery(): Promise<
+  { subscription_id: string; delivery_id: string } | undefined
+> {
+  const subscriptions_response = await sdk.subscriber.listPushSubscriptions();
+  const subscriptions =
+    subscriptions_response?.listPushSubscriptionsResponse?.pushSubscriptions ?? [];
+  for (const subscription of subscriptions) {
+    const subscription_id = subscription?.subscriptionId;
+    if (!subscription_id) {
+      continue;
+    }
+    try {
+      const delivery_id = await first_delivery_id(subscription_id);
+      if (delivery_id) {
+        return { subscription_id, delivery_id };
+      }
+    } catch {
+      continue;
     }
   }
   return undefined;
+}
+
+async function first_delivery_id(
+  subscription_id: string,
+): Promise<string | undefined> {
+  const result =
+    await sdk.subscriber.listPushSubscriptionDeliveries(subscription_id);
+  return result?.listPushSubscriptionDeliveriesResponse
+    ?.pushSubscriptionDeliveries?.[0]?.deliveryId;
 }
