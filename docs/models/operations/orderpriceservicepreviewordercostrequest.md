@@ -11,7 +11,7 @@ import {
 import { OrderPriceServicePreviewOrderCostRequest } from "@apexfintechsolutions/ascend-sdk/models/operations";
 
 let value: OrderPriceServicePreviewOrderCostRequest = {
-  accountId: "<id>",
+  accountId: "01HBRQ5BW6ZAY4BNWP4GWRD80X",
   orderCostPreviewRequestCreate: {
     assetType: OrderCostPreviewRequestCreateAssetType.FixedIncome,
     identifier: "037833100",
@@ -20,7 +20,7 @@ let value: OrderPriceServicePreviewOrderCostRequest = {
       price: {},
       type: LimitPriceCreateType.PricePerUnit,
     },
-    parent: "<value>",
+    parent: "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X",
     quantity: {},
   },
 };
@@ -28,7 +28,7 @@ let value: OrderPriceServicePreviewOrderCostRequest = {
 
 ## Fields
 
-| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `accountId`                                                                                          | *string*                                                                                             | :heavy_check_mark:                                                                                   | The account id.                                                                                      |
-| `orderCostPreviewRequestCreate`                                                                      | [components.OrderCostPreviewRequestCreate](../../models/components/ordercostpreviewrequestcreate.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `accountId`                                                                                          | *string*                                                                                             | :heavy_check_mark:                                                                                   | The account id.                                                                                      | 01HBRQ5BW6ZAY4BNWP4GWRD80X                                                                           |
+| `orderCostPreviewRequestCreate`                                                                      | [components.OrderCostPreviewRequestCreate](../../models/components/ordercostpreviewrequestcreate.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |                                                                                                      |

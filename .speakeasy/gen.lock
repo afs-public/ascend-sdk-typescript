@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fa349b1a-8c7e-4929-995c-4c41c1a097e6
 management:
-  docChecksum: 4823f23e792e1f9b384b0a52cfe0385c
-  docVersion: v1:20261005:uat:400dff6391e1
+  docChecksum: 70882cf5942133b64adb100535aa74e7
+  docVersion: v1:20261012:uat:fb5b9d92ca9a
   speakeasyVersion: 1.608.0
   generationVersion: 2.691.6
-  releaseVersion: 1.8.13
-  configChecksum: cc6d90f18a6f816b25e11a55b41491e9
+  releaseVersion: 1.8.14
+  configChecksum: a0d32963765037b8eb8776e484dcd63b
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -40,11 +40,19 @@ generatedFiles:
   - USAGE.md
   - docs/lib/utils/retryconfig.md
   - docs/models/components/acatsasset.md
+  - docs/models/components/acatsassetfailure.md
+  - docs/models/components/acatsassetfailurereason.md
   - docs/models/components/acatsassetposition.md
   - docs/models/components/acatsassetquantity.md
   - docs/models/components/acatsassettype.md
+  - docs/models/components/acatsholdingassettype.md
+  - docs/models/components/acatsineligibleholdingholding.md
+  - docs/models/components/acatsineligibleholdingholdingquantity.md
   - docs/models/components/acatspendingout.md
+  - docs/models/components/acatspreviewtransferexternalaccount.md
   - docs/models/components/acatstransfer.md
+  - docs/models/components/acatstransfercondition.md
+  - docs/models/components/acatstransferconditionreason.md
   - docs/models/components/acatstransferdirection.md
   - docs/models/components/acatstransferexternalaccount.md
   - docs/models/components/acatstransferstate.md
@@ -781,6 +789,9 @@ generatedFiles:
   - docs/models/components/custodialirarothenrollmentmetadatacreatefdiccashsweep.md
   - docs/models/components/customeridentification.md
   - docs/models/components/customeridentificationbirthdate.md
+  - docs/models/components/customeridentificationcreate.md
+  - docs/models/components/customeridentificationcreatechecktypes.md
+  - docs/models/components/customeridentificationidentitycreate.md
   - docs/models/components/customeridentificationlegaladdress.md
   - docs/models/components/customeridentificationresult.md
   - docs/models/components/customerprofile.md
@@ -1261,6 +1272,8 @@ generatedFiles:
   - docs/models/components/giftindicator.md
   - docs/models/components/grossamount.md
   - docs/models/components/grosscreditamount.md
+  - docs/models/components/holding.md
+  - docs/models/components/holdingquantity.md
   - docs/models/components/holdingstartdate.md
   - docs/models/components/httpcallback.md
   - docs/models/components/httpmetadata.md
@@ -1327,6 +1340,8 @@ generatedFiles:
   - docs/models/components/identifierupdatetype.md
   - docs/models/components/identity.md
   - docs/models/components/identityidentification.md
+  - docs/models/components/identityidentificationcreate.md
+  - docs/models/components/identityidentificationcreatetype.md
   - docs/models/components/identityidentificationtype.md
   - docs/models/components/identitylookup.md
   - docs/models/components/identitylookupbirthdate.md
@@ -1356,6 +1371,7 @@ generatedFiles:
   - docs/models/components/individualenrollmentmetadatacreatefdiccashsweep.md
   - docs/models/components/individualoriginatingparty.md
   - docs/models/components/individualrecipientparty.md
+  - docs/models/components/ineligibleholding.md
   - docs/models/components/inheritedfromownerbirthdate.md
   - docs/models/components/inheritedfromownerdeathdate.md
   - docs/models/components/inheritedindicator.md
@@ -1508,6 +1524,7 @@ generatedFiles:
   - docs/models/components/limitprice.md
   - docs/models/components/limitpricecreate.md
   - docs/models/components/limitpricecreatetype.md
+  - docs/models/components/linkcustomeridentificationrequestcreate.md
   - docs/models/components/linkdocumentsrequestcreate.md
   - docs/models/components/linkdocumentsresponse.md
   - docs/models/components/liquidation.md
@@ -1567,6 +1584,10 @@ generatedFiles:
   - docs/models/components/lookupresult.md
   - docs/models/components/lot.md
   - docs/models/components/lotcreate.md
+  - docs/models/components/lotmatchinginstruction.md
+  - docs/models/components/lotmatchinginstructioncreate.md
+  - docs/models/components/lotmatchinginstructionprice.md
+  - docs/models/components/lotmatchinginstructionquantity.md
   - docs/models/components/lotmoney.md
   - docs/models/components/lotprice.md
   - docs/models/components/lotquantity.md
@@ -1896,6 +1917,8 @@ generatedFiles:
   - docs/models/components/preipocompanyresearchdocumenttype.md
   - docs/models/components/preipocompanytype.md
   - docs/models/components/prevailingmarketprice.md
+  - docs/models/components/previewtransferrequestcreate.md
+  - docs/models/components/previewtransferresponse.md
   - docs/models/components/previousprocessdate.md
   - docs/models/components/previousyeardeadline.md
   - docs/models/components/price.md
@@ -2241,6 +2264,11 @@ generatedFiles:
   - docs/models/components/tradecreateside.md
   - docs/models/components/tradecreatesidemodifier.md
   - docs/models/components/tradedate.md
+  - docs/models/components/tradelot.md
+  - docs/models/components/tradelotmoney.md
+  - docs/models/components/tradelotmoneyprice.md
+  - docs/models/components/tradelotprice.md
+  - docs/models/components/tradelotquantity.md
   - docs/models/components/tradevaluemultiplier.md
   - docs/models/components/tradingexecutedprice.md
   - docs/models/components/tradingexecutedpricetype.md
@@ -2249,8 +2277,10 @@ generatedFiles:
   - docs/models/components/tradingfee.md
   - docs/models/components/tradingfeeamount.md
   - docs/models/components/tradingfeetype.md
+  - docs/models/components/tradinglotmatchinginstructiontradedate.md
   - docs/models/components/tradingsession.md
   - docs/models/components/tradingsetextrareportingdatarequestcreate.md
+  - docs/models/components/tradingtradelottradedate.md
   - docs/models/components/transfer.md
   - docs/models/components/transferaccountcreate.md
   - docs/models/components/transfercreate.md
@@ -2499,6 +2529,7 @@ generatedFiles:
   - docs/models/operations/accounttransfersgettransferresponse.md
   - docs/models/operations/accounttransferslisttransfersrequest.md
   - docs/models/operations/accounttransferslisttransfersresponse.md
+  - docs/models/operations/accounttransferspreviewtransferresponse.md
   - docs/models/operations/accounttransfersrejecttransferrequest.md
   - docs/models/operations/accounttransfersrejecttransferresponse.md
   - docs/models/operations/achdepositscancelachdepositrequest.md
@@ -2693,6 +2724,8 @@ generatedFiles:
   - docs/models/operations/creditscreatecreditresponse.md
   - docs/models/operations/creditsgetcreditrequest.md
   - docs/models/operations/creditsgetcreditresponse.md
+  - docs/models/operations/customeridentificationresultservicecreatecustomeridentificationrequest.md
+  - docs/models/operations/customeridentificationresultservicecreatecustomeridentificationresponse.md
   - docs/models/operations/customeridentificationresultservicegetcustomeridentificationqueryparamview.md
   - docs/models/operations/customeridentificationresultservicegetcustomeridentificationrequest.md
   - docs/models/operations/customeridentificationresultservicegetcustomeridentificationresponse.md
@@ -2738,6 +2771,8 @@ generatedFiles:
   - docs/models/operations/identitylookupserviceverifyidentitylookupresponse.md
   - docs/models/operations/investigationservicegetinvestigationrequest.md
   - docs/models/operations/investigationservicegetinvestigationresponse.md
+  - docs/models/operations/investigationservicelinkcustomeridentificationrequest.md
+  - docs/models/operations/investigationservicelinkcustomeridentificationresponse.md
   - docs/models/operations/investigationservicelinkdocumentsrequest.md
   - docs/models/operations/investigationservicelinkdocumentsresponse.md
   - docs/models/operations/investigationservicelistinvestigationsrequest.md
@@ -2969,6 +3004,7 @@ generatedFiles:
   - src/funcs/accountTransfersCreateTransfer.ts
   - src/funcs/accountTransfersGetTransfer.ts
   - src/funcs/accountTransfersListTransfers.ts
+  - src/funcs/accountTransfersPreviewTransfer.ts
   - src/funcs/accountTransfersRejectTransfer.ts
   - src/funcs/achTransfersCancelACHDeposit.ts
   - src/funcs/achTransfersCancelACHWithdrawal.ts
@@ -3043,10 +3079,12 @@ generatedFiles:
   - src/funcs/instantCashTransferICTGetICTDeposit.ts
   - src/funcs/instantCashTransferICTGetICTWithdrawal.ts
   - src/funcs/instantCashTransferICTLocateICTReport.ts
+  - src/funcs/investigationsCreateCustomerIdentification.ts
   - src/funcs/investigationsCreateIdentityLookup.ts
   - src/funcs/investigationsGetCustomerIdentification.ts
   - src/funcs/investigationsGetInvestigation.ts
   - src/funcs/investigationsGetWatchlistItem.ts
+  - src/funcs/investigationsLinkCustomerIdentification.ts
   - src/funcs/investigationsLinkDocuments.ts
   - src/funcs/investigationsListInvestigations.ts
   - src/funcs/investigationsUpdateInvestigation.ts
@@ -3198,7 +3236,14 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/models/components/acatsasset.ts
+  - src/models/components/acatsassetfailure.ts
+  - src/models/components/acatsassetfailurereason.ts
+  - src/models/components/acatsholdingassettype.ts
+  - src/models/components/acatsineligibleholdingholding.ts
+  - src/models/components/acatspreviewtransferexternalaccount.ts
   - src/models/components/acatstransfer.ts
+  - src/models/components/acatstransfercondition.ts
+  - src/models/components/acatstransferconditionreason.ts
   - src/models/components/accepttransferrequestcreate.ts
   - src/models/components/accepttransferresponse.ts
   - src/models/components/account.ts
@@ -3325,6 +3370,8 @@ generatedFiles:
   - src/models/components/custodialenrollmentmetadatacreate.ts
   - src/models/components/custodialirarothenrollmentmetadatacreate.ts
   - src/models/components/customeridentification.ts
+  - src/models/components/customeridentificationcreate.ts
+  - src/models/components/customeridentificationidentitycreate.ts
   - src/models/components/customeridentificationresult.ts
   - src/models/components/customerprofilecreate.ts
   - src/models/components/customerprofileupdate.ts
@@ -3401,6 +3448,7 @@ generatedFiles:
   - src/models/components/fpslenrollmentmetadatacreate.ts
   - src/models/components/futuresenrollmentmetadatacreate.ts
   - src/models/components/generateserviceaccounttokenrequestcreate.ts
+  - src/models/components/holding.ts
   - src/models/components/httpmetadata.ts
   - src/models/components/httppushcallbackcreate.ts
   - src/models/components/httppushcallbackupdate.ts
@@ -3418,6 +3466,7 @@ generatedFiles:
   - src/models/components/identifiercreate.ts
   - src/models/components/identifierupdate.ts
   - src/models/components/identityidentification.ts
+  - src/models/components/identityidentificationcreate.ts
   - src/models/components/identitylookup.ts
   - src/models/components/identitylookupcreate.ts
   - src/models/components/identityverificationresult.ts
@@ -3427,6 +3476,7 @@ generatedFiles:
   - src/models/components/immediatefamilymembercreate.ts
   - src/models/components/index.ts
   - src/models/components/individualenrollmentmetadatacreate.ts
+  - src/models/components/ineligibleholding.ts
   - src/models/components/institutioncreate.ts
   - src/models/components/interestedparty.ts
   - src/models/components/interestedpartycreate.ts
@@ -3459,6 +3509,7 @@ generatedFiles:
   - src/models/components/legalnaturalpersonupdate.ts
   - src/models/components/letterofintentcreate.ts
   - src/models/components/limitpricecreate.ts
+  - src/models/components/linkcustomeridentificationrequestcreate.ts
   - src/models/components/linkdocumentsrequestcreate.ts
   - src/models/components/linkdocumentsresponse.ts
   - src/models/components/listaccountordersresponse.ts
@@ -3507,6 +3558,8 @@ generatedFiles:
   - src/models/components/locateictreportresponse.ts
   - src/models/components/lot.ts
   - src/models/components/lotcreate.ts
+  - src/models/components/lotmatchinginstruction.ts
+  - src/models/components/lotmatchinginstructioncreate.ts
   - src/models/components/lowpricedsecuritiescreate.ts
   - src/models/components/markprice.ts
   - src/models/components/microdepositamounts.ts
@@ -3565,6 +3618,8 @@ generatedFiles:
   - src/models/components/preipocompanynewsevent.ts
   - src/models/components/preipocompanynewseventarticle.ts
   - src/models/components/preipocompanyresearchdocument.ts
+  - src/models/components/previewtransferrequestcreate.ts
+  - src/models/components/previewtransferresponse.ts
   - src/models/components/priceadjustmentcreate.ts
   - src/models/components/pushsubscription.ts
   - src/models/components/pushsubscriptioncreate.ts
@@ -3635,10 +3690,13 @@ generatedFiles:
   - src/models/components/tradeallocation.ts
   - src/models/components/tradeallocationcreate.ts
   - src/models/components/tradecreate.ts
+  - src/models/components/tradelot.ts
   - src/models/components/tradingexecutedprice.ts
   - src/models/components/tradingexecutions.ts
   - src/models/components/tradingfee.ts
+  - src/models/components/tradinglotmatchinginstructiontradedate.ts
   - src/models/components/tradingsetextrareportingdatarequestcreate.ts
+  - src/models/components/tradingtradelottradedate.ts
   - src/models/components/transferaccountcreate.ts
   - src/models/components/transfercreate.ts
   - src/models/components/transfersbeneficiarycreate.ts
@@ -3730,6 +3788,7 @@ generatedFiles:
   - src/models/operations/accounttransferscreatetransfer.ts
   - src/models/operations/accounttransfersgettransfer.ts
   - src/models/operations/accounttransferslisttransfers.ts
+  - src/models/operations/accounttransferspreviewtransfer.ts
   - src/models/operations/accounttransfersrejecttransfer.ts
   - src/models/operations/achdepositscancelachdeposit.ts
   - src/models/operations/achdepositschedulescancelachdepositschedule.ts
@@ -3828,6 +3887,7 @@ generatedFiles:
   - src/models/operations/creditscancelcredit.ts
   - src/models/operations/creditscreatecredit.ts
   - src/models/operations/creditsgetcredit.ts
+  - src/models/operations/customeridentificationresultservicecreatecustomeridentification.ts
   - src/models/operations/customeridentificationresultservicegetcustomeridentification.ts
   - src/models/operations/exerciseservicecanceloptioninstruction.ts
   - src/models/operations/exerciseservicecreateoptioninstruction.ts
@@ -3851,6 +3911,7 @@ generatedFiles:
   - src/models/operations/identitylookupserviceverifyidentitylookup.ts
   - src/models/operations/index.ts
   - src/models/operations/investigationservicegetinvestigation.ts
+  - src/models/operations/investigationservicelinkcustomeridentification.ts
   - src/models/operations/investigationservicelinkdocuments.ts
   - src/models/operations/investigationservicelistinvestigations.ts
   - src/models/operations/investigationserviceupdateinvestigation.ts
@@ -5868,7 +5929,7 @@ examples:
         path:
           account_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
       requestBody:
-        application/json: {"asset_type": "EQUITY", "client_order_id": "a6d5258b-6b23-478a-8145-98e79d60427a", "identifier": "SBUX", "identifier_type": "SYMBOL", "order_date": {}, "order_type": "MARKET", "side": "BUY", "time_in_force": "DAY"}
+        application/json: {"asset_type": "EQUITY", "client_order_id": "a6d5258b-6b23-478a-8145-98e79d60427a", "identifier": "SBUX", "identifier_type": "SYMBOL", "order_type": "MARKET", "side": "BUY", "time_in_force": "DAY"}
       responses:
         "200":
           application/json: {}
@@ -5914,9 +5975,9 @@ examples:
     speakeasy-default-order-price-service-preview-order-cost:
       parameters:
         path:
-          account_id: "<id>"
+          account_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
       requestBody:
-        application/json: {"asset_type": "FIXED_INCOME", "identifier": "037833100", "identifier_type": "CUSIP", "limit_price": {"price": {}, "type": "PRICE_PER_UNIT"}, "parent": "<value>", "quantity": {}}
+        application/json: {"asset_type": "FIXED_INCOME", "identifier": "037833100", "identifier_type": "CUSIP", "limit_price": {"price": {}, "type": "PRICE_PER_UNIT"}, "parent": "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X", "quantity": {}}
       responses:
         "200":
           application/json: {}
@@ -5930,9 +5991,9 @@ examples:
     speakeasy-default-order-price-service-retrieve-quote:
       parameters:
         path:
-          account_id: "<id>"
+          account_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
       requestBody:
-        application/json: {"asset_type": "FIXED_INCOME", "identifier": "037833100", "identifier_type": "CUSIP", "parent": "<value>"}
+        application/json: {"asset_type": "FIXED_INCOME", "identifier": "037833100", "identifier_type": "CUSIP", "parent": "accounts/01HBRQ5BW6ZAY4BNWP4GWRD80X"}
       responses:
         "200":
           application/json: {}
@@ -5946,9 +6007,9 @@ examples:
     speakeasy-default-order-price-service-retrieve-fixed-income-marks:
       parameters:
         path:
-          correspondent_id: "<id>"
+          correspondent_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
       requestBody:
-        application/json: {"parent": "<value>", "security_identifiers": [{"identifier": "US0378331005", "identifier_type": "ISIN"}, {"identifier": "38259P508", "identifier_type": "CUSIP"}]}
+        application/json: {"parent": "correspondents/01HBRQ5BW6ZAY4BNWP4GWRD80X", "security_identifiers": [{"identifier": "US0378331005", "identifier_type": "ISIN"}, {"identifier": "38259P508", "identifier_type": "CUSIP"}]}
       responses:
         "200":
           application/json: {}
@@ -6142,7 +6203,7 @@ examples:
           account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
           trade_id: "01FAKETRADEIDPROVIDEDFROMCREATETRADE"
       requestBody:
-        application/json: {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y", "price": {}, "quantity": {}}
+        application/json: {"execution_time": "2024-07-17T12:00:00.000Z", "external_id": "0H06HAP3A3Y", "price": {}, "quantity": {}}
       responses:
         "200":
           application/json: {}
@@ -6194,7 +6255,7 @@ examples:
           trade_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
           execution_id: "02G0XX2KDN3M9QKFKRE2HYSCMY"
       requestBody:
-        application/json: {"execution": {"execution_time": "2024-07-17T12:00:00Z", "external_id": "0H06HAP3A3Y", "price": {}, "quantity": {}}, "name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY"}
+        application/json: {"execution": {"execution_time": "2024-07-17T12:00:00.000Z", "external_id": "0H06HAP3A3Y", "price": {}, "quantity": {}}, "name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/trades/01J0XX2KDN3M9QKFKRE2HYSCQM/executions/02G0XX2KDN3M9QKFKRE2HYSCMY"}
       responses:
         "200":
           application/json: {}
@@ -6210,7 +6271,7 @@ examples:
         path:
           account_id: "01FAKEACCOUNT1TYKWEYRH8S2K"
       requestBody:
-        application/json: {"asset_type": "EQUITY", "broker_capacity": "AGENCY", "execution_time": "2024-07-17T12:00:00Z", "from_account_id": "01HASWB2DTMRT3DAM45P56J2H3", "identifier": "AAPL", "identifier_type": "SYMBOL", "price": {}, "quantity": {}, "source_application": "Trading-App", "to_account_id": "02HASWB2DTMRT3DAM45P56J2T2", "to_side": "BUY"}
+        application/json: {"asset_type": "EQUITY", "broker_capacity": "AGENCY", "execution_time": "2024-07-17T12:00:00.000Z", "from_account_id": "01HASWB2DTMRT3DAM45P56J2H3", "identifier": "AAPL", "identifier_type": "SYMBOL", "price": {}, "quantity": {}, "source_application": "Trading-App", "to_account_id": "02HASWB2DTMRT3DAM45P56J2T2", "to_side": "BUY"}
       responses:
         "200":
           application/json: {}
@@ -6259,7 +6320,7 @@ examples:
           account_id: "02HASWB2DTMRT3DAM45P56J2T2"
           tradeAllocation_id: "01J0XX2KDN3M9QKFKRE2HYSCQM"
       requestBody:
-        application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM", "request_id": "8a0d35c0-428c-439e-9b03-b611530fe06f", "trade_allocation": {"asset_type": "EQUITY", "broker_capacity": "AGENCY", "execution_time": "2024-07-17T12:00:00Z", "from_account_id": "01HASWB2DTMRT3DAM45P56J2H3", "identifier": "AAPL", "identifier_type": "SYMBOL", "price": {}, "quantity": {}, "source_application": "Trading-App", "to_account_id": "02HASWB2DTMRT3DAM45P56J2T2", "to_side": "BUY"}}
+        application/json: {"name": "accounts/02HASWB2DTMRT3DAM45P56J2T2/tradeAllocations/01J0XX2KDN3M9QKFKRE2HYSCQM", "request_id": "8a0d35c0-428c-439e-9b03-b611530fe06f", "trade_allocation": {"asset_type": "EQUITY", "broker_capacity": "AGENCY", "execution_time": "2024-07-17T12:00:00.000Z", "from_account_id": "01HASWB2DTMRT3DAM45P56J2H3", "identifier": "AAPL", "identifier_type": "SYMBOL", "price": {}, "quantity": {}, "source_application": "Trading-App", "to_account_id": "02HASWB2DTMRT3DAM45P56J2T2", "to_side": "BUY"}}
       responses:
         "200":
           application/json: {}
@@ -6858,7 +6919,7 @@ examples:
         path:
           account_id: "01HBRQ5BW6ZAY4BNWP4GWRD80X"
       requestBody:
-        application/json: {"broker_capacity": "AGENCY", "client_order_id": "a6d5258b-6b23-478a-8145-98e79d60427a", "currency_code": "USD", "legs": [], "limit_price": {}, "order_date": {}, "order_type": "LIMIT", "price_direction": "CREDIT", "quantity": {}, "time_in_force": "DAY"}
+        application/json: {"broker_capacity": "AGENCY", "client_order_id": "a6d5258b-6b23-478a-8145-98e79d60427a", "currency_code": "USD", "legs": [], "order_date": {}, "order_type": "LIMIT", "price_direction": "CREDIT", "quantity": {}, "time_in_force": "DAY"}
       responses:
         "200":
           application/json: {}
@@ -7341,6 +7402,51 @@ examples:
           account_id: "01J71HKJ1K1GX5C0EWZ4BCPACB"
       requestBody:
         application/json: {"parent": "accounts/01J71HKJ1K1GX5C0EWZ4BCPACB"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  InvestigationService_LinkCustomerIdentification:
+    speakeasy-default-investigation-service-link-customer-identification:
+      parameters:
+        path:
+          investigation_id: "01HEWVF4ZSNKYRP293J53ASJCJ"
+      requestBody:
+        application/json: {"customer_identification_id": "01HEWVF4ZSNKYRP293J53ASJCJ"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  CustomerIdentificationResultService_CreateCustomerIdentification:
+    speakeasy-default-customer-identification-result-service-create-customer-identification:
+      parameters:
+        path:
+          correspondent_id: "01HPMZZM6RKMVZA1JQ63RQKJRP"
+      requestBody:
+        application/json: {"check_types": ["DATABASE"]}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+        default:
+          application/json: {}
+  AccountTransfers_PreviewTransfer:
+    speakeasy-default-account-transfers-preview-transfer:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}

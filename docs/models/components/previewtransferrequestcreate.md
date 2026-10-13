@@ -1,0 +1,17 @@
+# PreviewTransferRequestCreate
+
+PreviewTransferRequest previews what an ACATS transfer of a linked account's holdings would look like.
+
+## Example Usage
+
+```typescript
+import { PreviewTransferRequestCreate } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+let value: PreviewTransferRequestCreate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                           | Type                                                                                                                                                                                                            | Required                                                                                                                                                                                                        | Description                                                                                                                                                                                                     | Example                                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `linkedAccount`                                                                                                                                                                                                 | *string*                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                              | Resource name of a linked account exposed by a Data Aggregator Connect connection. Obtain it from that connection's linked_accounts (List Connections / Get Connection in the Data Aggregator Connect section). | accounts/01HC3MAQ4DR9QN1V8MJ4CN1HMK/connections/01JD9V4M7X2K8N6PQR3TWY5ZBC/linkedAccounts/01JX7A2N4M8P0QR3TWY5ZBCVD6                                                                                            |

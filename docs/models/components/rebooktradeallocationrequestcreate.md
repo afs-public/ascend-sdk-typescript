@@ -20,7 +20,7 @@ let value: RebookTradeAllocationRequestCreate = {
   tradeAllocation: {
     assetType: TradeAllocationCreateAssetType.Equity,
     brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
-    executionTime: new Date("2024-07-17T12:00:00Z"),
+    executionTime: new Date("2024-07-17T12:00:00.000Z"),
     fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
     identifier: "AAPL",
     identifierType: TradeAllocationCreateIdentifierType.Symbol,

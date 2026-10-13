@@ -9,7 +9,7 @@ import { RebookExecutionRequestCreate } from "@apexfintechsolutions/ascend-sdk/m
 
 let value: RebookExecutionRequestCreate = {
   execution: {
-    executionTime: new Date("2024-07-17T12:00:00Z"),
+    executionTime: new Date("2024-07-17T12:00:00.000Z"),
     externalId: "0H06HAP3A3Y",
     price: {},
     quantity: {},

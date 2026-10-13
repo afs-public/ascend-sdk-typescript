@@ -594,7 +594,7 @@ const apexascend = new Apexascend({
 
 async function run() {
   const result = await apexascend.tradeBooking.createExecution({
-    executionTime: new Date("2024-07-17T12:00:00Z"),
+    executionTime: new Date("2024-07-17T12:00:00.000Z"),
     externalId: "0H06HAP3A3Y",
     price: {},
     quantity: {},
@@ -630,7 +630,7 @@ const apexascend = new ApexascendCore({
 
 async function run() {
   const res = await tradeBookingCreateExecution(apexascend, {
-    executionTime: new Date("2024-07-17T12:00:00Z"),
+    executionTime: new Date("2024-07-17T12:00:00.000Z"),
     externalId: "0H06HAP3A3Y",
     price: {},
     quantity: {},
@@ -883,7 +883,7 @@ const apexascend = new Apexascend({
 async function run() {
   const result = await apexascend.tradeBooking.rebookExecution({
     execution: {
-      executionTime: new Date("2024-07-17T12:00:00Z"),
+      executionTime: new Date("2024-07-17T12:00:00.000Z"),
       externalId: "0H06HAP3A3Y",
       price: {},
       quantity: {},
@@ -922,7 +922,7 @@ const apexascend = new ApexascendCore({
 async function run() {
   const res = await tradeBookingRebookExecution(apexascend, {
     execution: {
-      executionTime: new Date("2024-07-17T12:00:00Z"),
+      executionTime: new Date("2024-07-17T12:00:00.000Z"),
       externalId: "0H06HAP3A3Y",
       price: {},
       quantity: {},

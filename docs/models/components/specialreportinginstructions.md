@@ -42,4 +42,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `RoundUp`                                  | ROUND_UP                                   |
 | `CatParentAlgo`                            | CAT_PARENT_ALGO                            |
 | `CatParentGtc`                             | CAT_PARENT_GTC                             |
+| `ManualOrder`                              | MANUAL_ORDER                               |
 | -                                          | `Unrecognized<string>`                     |

@@ -41,6 +41,18 @@ export type InvestigationServiceListInvestigationsRequest = {
    *   - updated_at
    */
   orderBy?: string | undefined;
+  /**
+   * Include the total size of the collection specified by this query in the response (this may incur a performance penalty)
+   *
+   * @remarks
+   *
+   * **Field Dependencies:**
+   *
+   * When include_total_size is explicitly set to false, total_size in the response will be 0.
+   *
+   * Must be empty if `total_size` is `false`.
+   */
+  includeTotalSize?: boolean | undefined;
 };
 
 export type InvestigationServiceListInvestigationsResponse = {
@@ -68,11 +80,13 @@ export const InvestigationServiceListInvestigationsRequest$inboundSchema:
     page_token: z.string().optional(),
     filter: z.string().optional(),
     order_by: z.string().optional(),
+    include_total_size: z.boolean().optional(),
   }).transform((v) => {
     return remap$(v, {
       "page_size": "pageSize",
       "page_token": "pageToken",
       "order_by": "orderBy",
+      "include_total_size": "includeTotalSize",
     });
   });
 
@@ -82,6 +96,7 @@ export type InvestigationServiceListInvestigationsRequest$Outbound = {
   page_token?: string | undefined;
   filter?: string | undefined;
   order_by?: string | undefined;
+  include_total_size?: boolean | undefined;
 };
 
 /** @internal */
@@ -95,11 +110,13 @@ export const InvestigationServiceListInvestigationsRequest$outboundSchema:
     pageToken: z.string().optional(),
     filter: z.string().optional(),
     orderBy: z.string().optional(),
+    includeTotalSize: z.boolean().optional(),
   }).transform((v) => {
     return remap$(v, {
       pageSize: "page_size",
       pageToken: "page_token",
       orderBy: "order_by",
+      includeTotalSize: "include_total_size",
     });
   });
 

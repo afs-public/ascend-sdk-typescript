@@ -83,7 +83,7 @@ export type RebookTradeAllocationResponseCommissionAmount = {
 };
 
 /**
- * Gross amount is calculated by the Booking service by multiplying price and quantity and fixing it to 2 fractional precision. Optionally specifiable. If present, will override the gross_amount calculated above.
+ * Gross amount is calculated by the Booking service by multiplying price, quantity, and security_type specific multiplier and round half up to 2 decimal point. Requirement of 11 or less integral number and 2 or less fractional precision. Optionally specifiable for FIXED_INCOME trades. Not allowed for trades of other instrument types. If present, will override the gross_amount calculated above.
  */
 export type RebookTradeAllocationResponseGrossAmount = {
   /**
@@ -212,6 +212,7 @@ export enum RebookTradeAllocationResponseSideModifier {
   ShortCover = "SHORT_COVER",
   Open = "OPEN",
   Close = "CLOSE",
+  Cover = "COVER",
 }
 /**
  * Side modifier for the trade allocation.
@@ -268,6 +269,7 @@ export enum RebookTradeAllocationResponseSpecialInstructions {
   SuppressSecFee = "SUPPRESS_SEC_FEE",
   SuppressTafFee = "SUPPRESS_TAF_FEE",
   DividendReinvestment = "DIVIDEND_REINVESTMENT",
+  ReportMsrb = "REPORT_MSRB",
 }
 export type RebookTradeAllocationResponseSpecialInstructionsOpen = OpenEnum<
   typeof RebookTradeAllocationResponseSpecialInstructions
@@ -362,6 +364,10 @@ export type NewTradeAllocation = {
     | null
     | undefined;
   /**
+   * Executing broker of the trade allocation.
+   */
+  executingBroker?: string | undefined;
+  /**
    * Timestamp of when the trade allocation took place. If settlement_date is not provided, this field will be converted into Eastern Time and used to calculate settlement_date.
    */
   executionTime?: Date | null | undefined;
@@ -378,7 +384,7 @@ export type NewTradeAllocation = {
    */
   fromActivityId?: string | undefined;
   /**
-   * Gross amount is calculated by the Booking service by multiplying price and quantity and fixing it to 2 fractional precision. Optionally specifiable. If present, will override the gross_amount calculated above.
+   * Gross amount is calculated by the Booking service by multiplying price, quantity, and security_type specific multiplier and round half up to 2 decimal point. Requirement of 11 or less integral number and 2 or less fractional precision. Optionally specifiable for FIXED_INCOME trades. Not allowed for trades of other instrument types. If present, will override the gross_amount calculated above.
    */
   grossAmount?: RebookTradeAllocationResponseGrossAmount | null | undefined;
   /**
@@ -423,6 +429,10 @@ export type NewTradeAllocation = {
     | RebookTradeAllocationResponsePriceAdjustment
     | null
     | undefined;
+  /**
+   * RIA Trade Away indicator.
+   */
+  prime?: boolean | undefined;
   /**
    * Quantity with requirement of 12 or less integral number and 5 or less fractional precision.
    */
@@ -530,7 +540,7 @@ export type RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount
   };
 
 /**
- * Gross amount is calculated by the Booking service by multiplying price and quantity and fixing it to 2 fractional precision. Optionally specifiable. If present, will override the gross_amount calculated above.
+ * Gross amount is calculated by the Booking service by multiplying price, quantity, and security_type specific multiplier and round half up to 2 decimal point. Requirement of 11 or less integral number and 2 or less fractional precision. Optionally specifiable for FIXED_INCOME trades. Not allowed for trades of other instrument types. If present, will override the gross_amount calculated above.
  */
 export type RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount = {
   /**
@@ -665,6 +675,7 @@ export enum RebookTradeAllocationResponseOriginalTradeAllocationSideModifier {
   ShortCover = "SHORT_COVER",
   Open = "OPEN",
   Close = "CLOSE",
+  Cover = "COVER",
 }
 /**
  * Side modifier for the trade allocation.
@@ -722,6 +733,7 @@ export enum RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructi
   SuppressSecFee = "SUPPRESS_SEC_FEE",
   SuppressTafFee = "SUPPRESS_TAF_FEE",
   DividendReinvestment = "DIVIDEND_REINVESTMENT",
+  ReportMsrb = "REPORT_MSRB",
 }
 export type RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructionsOpen =
   OpenEnum<
@@ -820,6 +832,10 @@ export type OriginalTradeAllocation = {
     | null
     | undefined;
   /**
+   * Executing broker of the trade allocation.
+   */
+  executingBroker?: string | undefined;
+  /**
    * Timestamp of when the trade allocation took place. If settlement_date is not provided, this field will be converted into Eastern Time and used to calculate settlement_date.
    */
   executionTime?: Date | null | undefined;
@@ -836,7 +852,7 @@ export type OriginalTradeAllocation = {
    */
   fromActivityId?: string | undefined;
   /**
-   * Gross amount is calculated by the Booking service by multiplying price and quantity and fixing it to 2 fractional precision. Optionally specifiable. If present, will override the gross_amount calculated above.
+   * Gross amount is calculated by the Booking service by multiplying price, quantity, and security_type specific multiplier and round half up to 2 decimal point. Requirement of 11 or less integral number and 2 or less fractional precision. Optionally specifiable for FIXED_INCOME trades. Not allowed for trades of other instrument types. If present, will override the gross_amount calculated above.
    */
   grossAmount?:
     | RebookTradeAllocationResponseOriginalTradeAllocationGrossAmount
@@ -889,6 +905,10 @@ export type OriginalTradeAllocation = {
     | RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment
     | null
     | undefined;
+  /**
+   * RIA Trade Away indicator.
+   */
+  prime?: boolean | undefined;
   /**
    * Quantity with requirement of 12 or less integral number and 5 or less fractional precision.
    */
@@ -1921,6 +1941,7 @@ export const NewTradeAllocation$inboundSchema: z.ZodType<
   commission_amount: z.nullable(
     z.lazy(() => RebookTradeAllocationResponseCommissionAmount$inboundSchema),
   ).optional(),
+  executing_broker: z.string().optional(),
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -1948,6 +1969,7 @@ export const NewTradeAllocation$inboundSchema: z.ZodType<
   price_adjustment: z.nullable(
     z.lazy(() => RebookTradeAllocationResponsePriceAdjustment$inboundSchema),
   ).optional(),
+  prime: z.boolean().optional(),
   quantity: z.nullable(
     z.lazy(() => RebookTradeAllocationResponseQuantity$inboundSchema),
   ).optional(),
@@ -1975,6 +1997,7 @@ export const NewTradeAllocation$inboundSchema: z.ZodType<
     "broker_capacity": "brokerCapacity",
     "client_order_id": "clientOrderId",
     "commission_amount": "commissionAmount",
+    "executing_broker": "executingBroker",
     "execution_time": "executionTime",
     "from_account_id": "fromAccountId",
     "from_activity_id": "fromActivityId",
@@ -2011,6 +2034,7 @@ export type NewTradeAllocation$Outbound = {
     | RebookTradeAllocationResponseCommissionAmount$Outbound
     | null
     | undefined;
+  executing_broker?: string | undefined;
   execution_time?: string | null | undefined;
   fees?: Array<BookingFee$Outbound> | undefined;
   from_account_id?: string | undefined;
@@ -2034,6 +2058,7 @@ export type NewTradeAllocation$Outbound = {
     | RebookTradeAllocationResponsePriceAdjustment$Outbound
     | null
     | undefined;
+  prime?: boolean | undefined;
   quantity?: RebookTradeAllocationResponseQuantity$Outbound | null | undefined;
   settlement_date?:
     | RebookTradeAllocationResponseSettlementDate$Outbound
@@ -2070,6 +2095,7 @@ export const NewTradeAllocation$outboundSchema: z.ZodType<
   commissionAmount: z.nullable(
     z.lazy(() => RebookTradeAllocationResponseCommissionAmount$outboundSchema),
   ).optional(),
+  executingBroker: z.string().optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   fees: z.array(BookingFee$outboundSchema).optional(),
@@ -2096,6 +2122,7 @@ export const NewTradeAllocation$outboundSchema: z.ZodType<
   priceAdjustment: z.nullable(
     z.lazy(() => RebookTradeAllocationResponsePriceAdjustment$outboundSchema),
   ).optional(),
+  prime: z.boolean().optional(),
   quantity: z.nullable(
     z.lazy(() => RebookTradeAllocationResponseQuantity$outboundSchema),
   ).optional(),
@@ -2123,6 +2150,7 @@ export const NewTradeAllocation$outboundSchema: z.ZodType<
     brokerCapacity: "broker_capacity",
     clientOrderId: "client_order_id",
     commissionAmount: "commission_amount",
+    executingBroker: "executing_broker",
     executionTime: "execution_time",
     fromAccountId: "from_account_id",
     fromActivityId: "from_activity_id",
@@ -3199,6 +3227,7 @@ export const OriginalTradeAllocation$inboundSchema: z.ZodType<
       RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$inboundSchema
     ),
   ).optional(),
+  executing_broker: z.string().optional(),
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -3233,6 +3262,7 @@ export const OriginalTradeAllocation$inboundSchema: z.ZodType<
       RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$inboundSchema
     ),
   ).optional(),
+  prime: z.boolean().optional(),
   quantity: z.nullable(
     z.lazy(() =>
       RebookTradeAllocationResponseOriginalTradeAllocationQuantity$inboundSchema
@@ -3270,6 +3300,7 @@ export const OriginalTradeAllocation$inboundSchema: z.ZodType<
     "broker_capacity": "brokerCapacity",
     "client_order_id": "clientOrderId",
     "commission_amount": "commissionAmount",
+    "executing_broker": "executingBroker",
     "execution_time": "executionTime",
     "from_account_id": "fromAccountId",
     "from_activity_id": "fromActivityId",
@@ -3306,6 +3337,7 @@ export type OriginalTradeAllocation$Outbound = {
     | RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$Outbound
     | null
     | undefined;
+  executing_broker?: string | undefined;
   execution_time?: string | null | undefined;
   fees?: Array<BookingFee$Outbound> | undefined;
   from_account_id?: string | undefined;
@@ -3332,6 +3364,7 @@ export type OriginalTradeAllocation$Outbound = {
     | RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$Outbound
     | null
     | undefined;
+  prime?: boolean | undefined;
   quantity?:
     | RebookTradeAllocationResponseOriginalTradeAllocationQuantity$Outbound
     | null
@@ -3376,6 +3409,7 @@ export const OriginalTradeAllocation$outboundSchema: z.ZodType<
       RebookTradeAllocationResponseOriginalTradeAllocationCommissionAmount$outboundSchema
     ),
   ).optional(),
+  executingBroker: z.string().optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   fees: z.array(BookingFee$outboundSchema).optional(),
@@ -3409,6 +3443,7 @@ export const OriginalTradeAllocation$outboundSchema: z.ZodType<
       RebookTradeAllocationResponseOriginalTradeAllocationPriceAdjustment$outboundSchema
     ),
   ).optional(),
+  prime: z.boolean().optional(),
   quantity: z.nullable(
     z.lazy(() =>
       RebookTradeAllocationResponseOriginalTradeAllocationQuantity$outboundSchema
@@ -3447,6 +3482,7 @@ export const OriginalTradeAllocation$outboundSchema: z.ZodType<
     brokerCapacity: "broker_capacity",
     clientOrderId: "client_order_id",
     commissionAmount: "commission_amount",
+    executingBroker: "executing_broker",
     executionTime: "execution_time",
     fromAccountId: "from_account_id",
     fromActivityId: "from_activity_id",

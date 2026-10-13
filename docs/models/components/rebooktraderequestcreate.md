@@ -23,7 +23,7 @@ let value: RebookTradeRequestCreate = {
     clientOrderId: "00be5285-0623-4560-8c58-f05af2c56ba0",
     executions: [
       {
-        executionTime: new Date("2024-07-17T12:00:00Z"),
+        executionTime: new Date("2024-07-17T12:00:00.000Z"),
         externalId: "0H06HAP3A3Y",
         price: {},
         quantity: {},

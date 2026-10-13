@@ -49,6 +49,12 @@ import {
   LimitPriceCreate$outboundSchema,
 } from "./limitpricecreate.js";
 import {
+  LotMatchingInstructionCreate,
+  LotMatchingInstructionCreate$inboundSchema,
+  LotMatchingInstructionCreate$Outbound,
+  LotMatchingInstructionCreate$outboundSchema,
+} from "./lotmatchinginstructioncreate.js";
+import {
   RightsOfAccumulationCreate,
   RightsOfAccumulationCreate$inboundSchema,
   RightsOfAccumulationCreate$Outbound,
@@ -82,7 +88,7 @@ export enum AssetType {
 export type AssetTypeOpen = OpenEnum<typeof AssetType>;
 
 /**
- * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
+ * Defaults to "AGENCY" for all asset types except Fixed Income. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  If not specified, defaults to the capacity configured for  the correspondent by Apex. For Event Contracts: Only "AGENCY" is allowed.
  */
 export enum BrokerCapacity {
   BrokerCapacityUnspecified = "BROKER_CAPACITY_UNSPECIFIED",
@@ -90,7 +96,7 @@ export enum BrokerCapacity {
   Principal = "PRINCIPAL",
 }
 /**
- * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
+ * Defaults to "AGENCY" for all asset types except Fixed Income. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  If not specified, defaults to the capacity configured for  the correspondent by Apex. For Event Contracts: Only "AGENCY" is allowed.
  */
 export type BrokerCapacityOpen = OpenEnum<typeof BrokerCapacity>;
 
@@ -166,6 +172,7 @@ export enum SpecialReportingInstructions {
   RoundUp = "ROUND_UP",
   CatParentAlgo = "CAT_PARENT_ALGO",
   CatParentGtc = "CAT_PARENT_GTC",
+  ManualOrder = "MANUAL_ORDER",
 }
 export type SpecialReportingInstructionsOpen = OpenEnum<
   typeof SpecialReportingInstructions
@@ -215,7 +222,7 @@ export type OrderCreate = {
    */
   assetType: AssetTypeOpen;
   /**
-   * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
+   * Defaults to "AGENCY" for all asset types except Fixed Income. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  If not specified, defaults to the capacity configured for  the correspondent by Apex. For Event Contracts: Only "AGENCY" is allowed.
    */
   brokerCapacity?: BrokerCapacityOpen | undefined;
   /**
@@ -223,7 +230,7 @@ export type OrderCreate = {
    */
   clientOrderId: string;
   /**
-   * Required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+   * Required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed. When special_reporting_instructions includes MANUAL_ORDER, this is also reported to CAT as the time the order was manually received from the customer.
    */
   clientReceivedTime?: Date | null | undefined;
   /**
@@ -238,6 +245,10 @@ export type OrderCreate = {
    * Defaults to "USD". Only "USD" is supported. Full list of currency codes is defined at: https://en.wikipedia.org/wiki/ISO_4217
    */
   currencyCode?: string | undefined;
+  /**
+   * Request that the order be handled by a desk trader. Only available for Equity orders. When omitted, treated as false.
+   */
+  deskHandlingRequested?: boolean | undefined;
   /**
    * Fees that will be applied to this order. Only the BROKER_FEE type is supported.
    */
@@ -262,6 +273,10 @@ export type OrderCreate = {
    * A limit price definition
    */
   limitPrice?: LimitPriceCreate | undefined;
+  /**
+   * Tax lot matching instructions specifying which lots to sell. Maximum 100 instructions per order.
+   */
+  lotMatchingInstructions?: Array<LotMatchingInstructionCreate> | undefined;
   /**
    * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
    *
@@ -291,7 +306,7 @@ export type OrderCreate = {
    *
    *  Related types are [google.type.TimeOfDay][google.type.TimeOfDay] and `google.protobuf.Timestamp`.
    */
-  orderDate: DateCreate;
+  orderDate?: DateCreate | undefined;
   /**
    * The execution type of this order. For Equities: MARKET, LIMIT, STOP and MARKET_IF_TOUCHED are supported. For Mutual Funds: only MARKET is supported. For Fixed Income: only LIMIT is supported. For Event Contracts: only MARKET and LIMIT are supported.
    */
@@ -315,7 +330,7 @@ export type OrderCreate = {
    */
   side: SideOpen;
   /**
-   * Special Reporting Instructions to be applied to this order. Can include multiple Instructions. Only available for Equity, Mutual Fund, and Fixed Income orders.
+   * Special Reporting Instructions to be applied to this order. Can include up to 5 Instructions. Supported for Equity orders only; must be omitted for Mutual Fund, Fixed Income, and Event Contract orders. BROKER_DEALER_ORDER and FULLY_REGISTERED are not supported. CAT_PARENT_ALGO is only allowed on LIMIT orders; CAT_PARENT_GTC is only allowed on GOOD_TILL_DATE orders. MANUAL_ORDER marks the order as manually received from the customer for CAT reporting; client_received_time should then be set to the time the order was received.
    */
   specialReportingInstructions?:
     | Array<SpecialReportingInstructionsOpen>
@@ -610,15 +625,18 @@ export const OrderCreate$inboundSchema: z.ZodType<
   ).optional(),
   commission: CommissionCreate$inboundSchema.optional(),
   currency_code: z.string().optional(),
+  desk_handling_requested: z.boolean().optional(),
   fees: z.array(FeeCreate$inboundSchema).optional(),
   identifier: z.string(),
   identifier_issuing_region_code: z.string().optional(),
   identifier_type: OrderCreateIdentifierType$inboundSchema,
   letter_of_intent: LetterOfIntentCreate$inboundSchema.optional(),
   limit_price: LimitPriceCreate$inboundSchema.optional(),
+  lot_matching_instructions: z.array(LotMatchingInstructionCreate$inboundSchema)
+    .optional(),
   max_sell_quantity: DecimalCreate$inboundSchema.optional(),
   notional_value: DecimalCreate$inboundSchema.optional(),
-  order_date: DateCreate$inboundSchema,
+  order_date: DateCreate$inboundSchema.optional(),
   order_type: OrderType$inboundSchema,
   quantity: DecimalCreate$inboundSchema.optional(),
   rights_of_accumulation: RightsOfAccumulationCreate$inboundSchema.optional(),
@@ -638,10 +656,12 @@ export const OrderCreate$inboundSchema: z.ZodType<
     "client_received_time": "clientReceivedTime",
     "client_sent_time": "clientSentTime",
     "currency_code": "currencyCode",
+    "desk_handling_requested": "deskHandlingRequested",
     "identifier_issuing_region_code": "identifierIssuingRegionCode",
     "identifier_type": "identifierType",
     "letter_of_intent": "letterOfIntent",
     "limit_price": "limitPrice",
+    "lot_matching_instructions": "lotMatchingInstructions",
     "max_sell_quantity": "maxSellQuantity",
     "notional_value": "notionalValue",
     "order_date": "orderDate",
@@ -664,15 +684,19 @@ export type OrderCreate$Outbound = {
   client_sent_time?: string | null | undefined;
   commission?: CommissionCreate$Outbound | undefined;
   currency_code?: string | undefined;
+  desk_handling_requested?: boolean | undefined;
   fees?: Array<FeeCreate$Outbound> | undefined;
   identifier: string;
   identifier_issuing_region_code?: string | undefined;
   identifier_type: string;
   letter_of_intent?: LetterOfIntentCreate$Outbound | undefined;
   limit_price?: LimitPriceCreate$Outbound | undefined;
+  lot_matching_instructions?:
+    | Array<LotMatchingInstructionCreate$Outbound>
+    | undefined;
   max_sell_quantity?: DecimalCreate$Outbound | undefined;
   notional_value?: DecimalCreate$Outbound | undefined;
-  order_date: DateCreate$Outbound;
+  order_date?: DateCreate$Outbound | undefined;
   order_type: string;
   quantity?: DecimalCreate$Outbound | undefined;
   rights_of_accumulation?: RightsOfAccumulationCreate$Outbound | undefined;
@@ -699,15 +723,18 @@ export const OrderCreate$outboundSchema: z.ZodType<
     .optional(),
   commission: CommissionCreate$outboundSchema.optional(),
   currencyCode: z.string().optional(),
+  deskHandlingRequested: z.boolean().optional(),
   fees: z.array(FeeCreate$outboundSchema).optional(),
   identifier: z.string(),
   identifierIssuingRegionCode: z.string().optional(),
   identifierType: OrderCreateIdentifierType$outboundSchema,
   letterOfIntent: LetterOfIntentCreate$outboundSchema.optional(),
   limitPrice: LimitPriceCreate$outboundSchema.optional(),
+  lotMatchingInstructions: z.array(LotMatchingInstructionCreate$outboundSchema)
+    .optional(),
   maxSellQuantity: DecimalCreate$outboundSchema.optional(),
   notionalValue: DecimalCreate$outboundSchema.optional(),
-  orderDate: DateCreate$outboundSchema,
+  orderDate: DateCreate$outboundSchema.optional(),
   orderType: OrderType$outboundSchema,
   quantity: DecimalCreate$outboundSchema.optional(),
   rightsOfAccumulation: RightsOfAccumulationCreate$outboundSchema.optional(),
@@ -727,10 +754,12 @@ export const OrderCreate$outboundSchema: z.ZodType<
     clientReceivedTime: "client_received_time",
     clientSentTime: "client_sent_time",
     currencyCode: "currency_code",
+    deskHandlingRequested: "desk_handling_requested",
     identifierIssuingRegionCode: "identifier_issuing_region_code",
     identifierType: "identifier_type",
     letterOfIntent: "letter_of_intent",
     limitPrice: "limit_price",
+    lotMatchingInstructions: "lot_matching_instructions",
     maxSellQuantity: "max_sell_quantity",
     notionalValue: "notional_value",
     orderDate: "order_date",

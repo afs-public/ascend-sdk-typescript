@@ -34,7 +34,7 @@ export type OptionOrderLegAssetTypeOpen = OpenEnum<
 >;
 
 /**
- * The computed average price for this leg, which is a weighted average (by quantity) of the executed prices.
+ * The computed average price for this leg, which is a weighted average (by quantity) of the executed prices. Supports up to 8 decimal places.
  */
 export type AveragePrice = {
   /**
@@ -113,7 +113,7 @@ export type OptionOrderLeg = {
    */
   assetType?: OptionOrderLegAssetTypeOpen | undefined;
   /**
-   * The computed average price for this leg, which is a weighted average (by quantity) of the executed prices.
+   * The computed average price for this leg, which is a weighted average (by quantity) of the executed prices. Supports up to 8 decimal places.
    */
   averagePrice?: AveragePrice | null | undefined;
   /**

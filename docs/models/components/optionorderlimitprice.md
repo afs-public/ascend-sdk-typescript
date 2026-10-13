@@ -1,6 +1,10 @@
 # OptionOrderLimitPrice
 
-The limit price for this option order. For single-leg option orders, this is the price per contract which the filled order must match or beat. For multi-leg orders, this represents the amortized "price per unit" that must be matched or beat. (E.g. with a limit price of a $4 DEBIT, and an order with 2 legs that includes one leg buy 100 shares of SBX and another leg to sell 1 contract of SBX, then the fills will be guaranteed to result in no more than a $400--4 USD X 100 shares/contract--total debit against the ordering account.)
+**Field Dependencies:**
+
+Required if `order_type` is `LIMIT`.
+
+Otherwise, must be empty.
 
 ## Example Usage
 

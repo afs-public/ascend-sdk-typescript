@@ -83,7 +83,7 @@ export type TradeAllocationCommissionAmount = {
 };
 
 /**
- * Gross amount is calculated by the Booking service by multiplying price and quantity and fixing it to 2 fractional precision. Optionally specifiable. If present, will override the gross_amount calculated above.
+ * Gross amount is calculated by the Booking service by multiplying price, quantity, and security_type specific multiplier and round half up to 2 decimal point. Requirement of 11 or less integral number and 2 or less fractional precision. Optionally specifiable for FIXED_INCOME trades. Not allowed for trades of other instrument types. If present, will override the gross_amount calculated above.
  */
 export type TradeAllocationGrossAmount = {
   /**
@@ -210,6 +210,7 @@ export enum TradeAllocationSideModifier {
   ShortCover = "SHORT_COVER",
   Open = "OPEN",
   Close = "CLOSE",
+  Cover = "COVER",
 }
 /**
  * Side modifier for the trade allocation.
@@ -266,6 +267,7 @@ export enum TradeAllocationSpecialInstructions {
   SuppressSecFee = "SUPPRESS_SEC_FEE",
   SuppressTafFee = "SUPPRESS_TAF_FEE",
   DividendReinvestment = "DIVIDEND_REINVESTMENT",
+  ReportMsrb = "REPORT_MSRB",
 }
 export type TradeAllocationSpecialInstructionsOpen = OpenEnum<
   typeof TradeAllocationSpecialInstructions
@@ -353,6 +355,10 @@ export type TradeAllocation = {
    */
   commissionAmount?: TradeAllocationCommissionAmount | null | undefined;
   /**
+   * Executing broker of the trade allocation.
+   */
+  executingBroker?: string | undefined;
+  /**
    * Timestamp of when the trade allocation took place. If settlement_date is not provided, this field will be converted into Eastern Time and used to calculate settlement_date.
    */
   executionTime?: Date | null | undefined;
@@ -369,7 +375,7 @@ export type TradeAllocation = {
    */
   fromActivityId?: string | undefined;
   /**
-   * Gross amount is calculated by the Booking service by multiplying price and quantity and fixing it to 2 fractional precision. Optionally specifiable. If present, will override the gross_amount calculated above.
+   * Gross amount is calculated by the Booking service by multiplying price, quantity, and security_type specific multiplier and round half up to 2 decimal point. Requirement of 11 or less integral number and 2 or less fractional precision. Optionally specifiable for FIXED_INCOME trades. Not allowed for trades of other instrument types. If present, will override the gross_amount calculated above.
    */
   grossAmount?: TradeAllocationGrossAmount | null | undefined;
   /**
@@ -411,6 +417,10 @@ export type TradeAllocation = {
    * Price adjustment that will be applied to the net price of the security.
    */
   priceAdjustment?: TradeAllocationPriceAdjustment | null | undefined;
+  /**
+   * RIA Trade Away indicator.
+   */
+  prime?: boolean | undefined;
   /**
    * Quantity with requirement of 12 or less integral number and 5 or less fractional precision.
    */
@@ -1301,6 +1311,7 @@ export const TradeAllocation$inboundSchema: z.ZodType<
   commission_amount: z.nullable(
     z.lazy(() => TradeAllocationCommissionAmount$inboundSchema),
   ).optional(),
+  executing_broker: z.string().optional(),
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -1324,6 +1335,7 @@ export const TradeAllocation$inboundSchema: z.ZodType<
   price_adjustment: z.nullable(
     z.lazy(() => TradeAllocationPriceAdjustment$inboundSchema),
   ).optional(),
+  prime: z.boolean().optional(),
   quantity: z.nullable(z.lazy(() => TradeAllocationQuantity$inboundSchema))
     .optional(),
   settlement_date: z.nullable(
@@ -1349,6 +1361,7 @@ export const TradeAllocation$inboundSchema: z.ZodType<
     "broker_capacity": "brokerCapacity",
     "client_order_id": "clientOrderId",
     "commission_amount": "commissionAmount",
+    "executing_broker": "executingBroker",
     "execution_time": "executionTime",
     "from_account_id": "fromAccountId",
     "from_activity_id": "fromActivityId",
@@ -1385,6 +1398,7 @@ export type TradeAllocation$Outbound = {
     | TradeAllocationCommissionAmount$Outbound
     | null
     | undefined;
+  executing_broker?: string | undefined;
   execution_time?: string | null | undefined;
   fees?: Array<BookingFee$Outbound> | undefined;
   from_account_id?: string | undefined;
@@ -1402,6 +1416,7 @@ export type TradeAllocation$Outbound = {
     | undefined;
   price?: TradeAllocationPrice$Outbound | null | undefined;
   price_adjustment?: TradeAllocationPriceAdjustment$Outbound | null | undefined;
+  prime?: boolean | undefined;
   quantity?: TradeAllocationQuantity$Outbound | null | undefined;
   settlement_date?: TradeAllocationSettlementDate$Outbound | null | undefined;
   side_modifier?: string | undefined;
@@ -1432,6 +1447,7 @@ export const TradeAllocation$outboundSchema: z.ZodType<
   commissionAmount: z.nullable(
     z.lazy(() => TradeAllocationCommissionAmount$outboundSchema),
   ).optional(),
+  executingBroker: z.string().optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   fees: z.array(BookingFee$outboundSchema).optional(),
@@ -1454,6 +1470,7 @@ export const TradeAllocation$outboundSchema: z.ZodType<
   priceAdjustment: z.nullable(
     z.lazy(() => TradeAllocationPriceAdjustment$outboundSchema),
   ).optional(),
+  prime: z.boolean().optional(),
   quantity: z.nullable(z.lazy(() => TradeAllocationQuantity$outboundSchema))
     .optional(),
   settlementDate: z.nullable(
@@ -1479,6 +1496,7 @@ export const TradeAllocation$outboundSchema: z.ZodType<
     brokerCapacity: "broker_capacity",
     clientOrderId: "client_order_id",
     commissionAmount: "commission_amount",
+    executingBroker: "executing_broker",
     executionTime: "execution_time",
     fromAccountId: "from_account_id",
     fromActivityId: "from_activity_id",

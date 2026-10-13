@@ -28,7 +28,7 @@ test("Pre Ipo Funding Rounds Pre Ipo Company Funding Rounds List Pre Ipo Company
 
   const result = await apexascend.preIPOFundingRounds
     .listPreIpoCompanyFundingRounds(
-      "a6c63e95-fe8a-4703-a74a-f2a90c0a9c6d",
+      "74c41a5b-b5e0-4509-964f-ca2de584c052",
       25,
       "",
     );
@@ -57,7 +57,7 @@ test("Pre Ipo Funding Rounds Pre Ipo Company Funding Rounds Get Pre Ipo Company 
 
   const result = await apexascend.preIPOFundingRounds
     .getPreIpoCompanyFundingRound(
-      "a6c63e95-fe8a-4703-a74a-f2a90c0a9c6d",
+      "74c41a5b-b5e0-4509-964f-ca2de584c052",
       "019c6a2b-6801-7759-9e1d-3d5aaa64bc2a",
     );
   expect(result.httpMeta.response.status).toBe(200);

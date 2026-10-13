@@ -107,6 +107,7 @@ export enum TradeAllocationCreateSideModifier {
   ShortCover = "SHORT_COVER",
   Open = "OPEN",
   Close = "CLOSE",
+  Cover = "COVER",
 }
 /**
  * Side modifier for the trade allocation.
@@ -163,6 +164,7 @@ export enum TradeAllocationCreateSpecialInstructions {
   SuppressSecFee = "SUPPRESS_SEC_FEE",
   SuppressTafFee = "SUPPRESS_TAF_FEE",
   DividendReinvestment = "DIVIDEND_REINVESTMENT",
+  ReportMsrb = "REPORT_MSRB",
 }
 export type TradeAllocationCreateSpecialInstructionsOpen = OpenEnum<
   typeof TradeAllocationCreateSpecialInstructions
@@ -241,6 +243,10 @@ export type TradeAllocationCreate = {
    */
   commissionAmount?: DecimalCreate | undefined;
   /**
+   * Executing broker of the trade allocation.
+   */
+  executingBroker?: string | undefined;
+  /**
    * Timestamp of when the trade allocation took place. If settlement_date is not provided, this field will be converted into Eastern Time and used to calculate settlement_date.
    */
   executionTime: Date | null;
@@ -306,6 +312,10 @@ export type TradeAllocationCreate = {
    * Price adjustment that will be applied to the net price of the security.
    */
   priceAdjustment?: PriceAdjustmentCreate | undefined;
+  /**
+   * RIA Trade Away indicator.
+   */
+  prime?: boolean | undefined;
   /**
    * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
    *
@@ -598,6 +608,7 @@ export const TradeAllocationCreate$inboundSchema: z.ZodType<
   broker_capacity: TradeAllocationCreateBrokerCapacity$inboundSchema,
   client_order_id: z.string().optional(),
   commission_amount: DecimalCreate$inboundSchema.optional(),
+  executing_broker: z.string().optional(),
   execution_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
@@ -612,6 +623,7 @@ export const TradeAllocationCreate$inboundSchema: z.ZodType<
   prevailing_market_price: DecimalCreate$inboundSchema.optional(),
   price: DecimalCreate$inboundSchema,
   price_adjustment: PriceAdjustmentCreate$inboundSchema.optional(),
+  prime: z.boolean().optional(),
   quantity: DecimalCreate$inboundSchema,
   settlement_date: DateCreate$inboundSchema.optional(),
   side_modifier: TradeAllocationCreateSideModifier$inboundSchema.optional(),
@@ -631,6 +643,7 @@ export const TradeAllocationCreate$inboundSchema: z.ZodType<
     "broker_capacity": "brokerCapacity",
     "client_order_id": "clientOrderId",
     "commission_amount": "commissionAmount",
+    "executing_broker": "executingBroker",
     "execution_time": "executionTime",
     "from_account_id": "fromAccountId",
     "gross_amount": "grossAmount",
@@ -658,6 +671,7 @@ export type TradeAllocationCreate$Outbound = {
   broker_capacity: string;
   client_order_id?: string | undefined;
   commission_amount?: DecimalCreate$Outbound | undefined;
+  executing_broker?: string | undefined;
   execution_time: string | null;
   fees?: Array<BookingFeeCreate$Outbound> | undefined;
   from_account_id: string;
@@ -670,6 +684,7 @@ export type TradeAllocationCreate$Outbound = {
   prevailing_market_price?: DecimalCreate$Outbound | undefined;
   price: DecimalCreate$Outbound;
   price_adjustment?: PriceAdjustmentCreate$Outbound | undefined;
+  prime?: boolean | undefined;
   quantity: DecimalCreate$Outbound;
   settlement_date?: DateCreate$Outbound | undefined;
   side_modifier?: string | undefined;
@@ -693,6 +708,7 @@ export const TradeAllocationCreate$outboundSchema: z.ZodType<
   brokerCapacity: TradeAllocationCreateBrokerCapacity$outboundSchema,
   clientOrderId: z.string().optional(),
   commissionAmount: DecimalCreate$outboundSchema.optional(),
+  executingBroker: z.string().optional(),
   executionTime: z.nullable(z.date().transform(v => v.toISOString())),
   fees: z.array(BookingFeeCreate$outboundSchema).optional(),
   fromAccountId: z.string(),
@@ -705,6 +721,7 @@ export const TradeAllocationCreate$outboundSchema: z.ZodType<
   prevailingMarketPrice: DecimalCreate$outboundSchema.optional(),
   price: DecimalCreate$outboundSchema,
   priceAdjustment: PriceAdjustmentCreate$outboundSchema.optional(),
+  prime: z.boolean().optional(),
   quantity: DecimalCreate$outboundSchema,
   settlementDate: DateCreate$outboundSchema.optional(),
   sideModifier: TradeAllocationCreateSideModifier$outboundSchema.optional(),
@@ -724,6 +741,7 @@ export const TradeAllocationCreate$outboundSchema: z.ZodType<
     brokerCapacity: "broker_capacity",
     clientOrderId: "client_order_id",
     commissionAmount: "commission_amount",
+    executingBroker: "executing_broker",
     executionTime: "execution_time",
     fromAccountId: "from_account_id",
     grossAmount: "gross_amount",

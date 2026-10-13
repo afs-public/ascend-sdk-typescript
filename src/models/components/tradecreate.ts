@@ -124,6 +124,7 @@ export enum TradeCreateSideModifier {
   ShortCover = "SHORT_COVER",
   Open = "OPEN",
   Close = "CLOSE",
+  Cover = "COVER",
 }
 /**
  * Side modifier for the trade.
@@ -180,6 +181,7 @@ export enum SpecialInstructions {
   SuppressSecFee = "SUPPRESS_SEC_FEE",
   SuppressTafFee = "SUPPRESS_TAF_FEE",
   DividendReinvestment = "DIVIDEND_REINVESTMENT",
+  ReportMsrb = "REPORT_MSRB",
 }
 export type SpecialInstructionsOpen = OpenEnum<typeof SpecialInstructions>;
 
@@ -309,6 +311,10 @@ export type TradeCreate = {
    * Street-level order id, unique by day per broker.
    */
   orderId?: string | undefined;
+  /**
+   * RIA Trade Away indicator.
+   */
+  prime?: boolean | undefined;
   /**
    * Route type for the trade.
    */
@@ -657,6 +663,7 @@ export const TradeCreate$inboundSchema: z.ZodType<
   mic_code: z.string().optional(),
   open: z.boolean().optional(),
   order_id: z.string().optional(),
+  prime: z.boolean().optional(),
   route_type: RouteType$inboundSchema,
   settlement_date: DateCreate$inboundSchema.optional(),
   side: TradeCreateSide$inboundSchema,
@@ -708,6 +715,7 @@ export type TradeCreate$Outbound = {
   mic_code?: string | undefined;
   open?: boolean | undefined;
   order_id?: string | undefined;
+  prime?: boolean | undefined;
   route_type: string;
   settlement_date?: DateCreate$Outbound | undefined;
   side: string;
@@ -741,6 +749,7 @@ export const TradeCreate$outboundSchema: z.ZodType<
   micCode: z.string().optional(),
   open: z.boolean().optional(),
   orderId: z.string().optional(),
+  prime: z.boolean().optional(),
   routeType: RouteType$outboundSchema,
   settlementDate: DateCreate$outboundSchema.optional(),
   side: TradeCreateSide$outboundSchema,

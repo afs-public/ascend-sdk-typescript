@@ -31,4 +31,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Purged`                | PURGED                  |
 | `PendingReviewMargins`  | PENDING_REVIEW_MARGINS  |
 | `PendingSubmission`     | PENDING_SUBMISSION      |
+| `ResponseOverdue`       | RESPONSE_OVERDUE        |
+| `PendingCorrection`     | PENDING_CORRECTION      |
 | -                       | `Unrecognized<string>`  |

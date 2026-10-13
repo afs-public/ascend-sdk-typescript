@@ -10,6 +10,7 @@
 * [acceptTransfer](#accepttransfer) - Accept Transfer
 * [rejectTransfer](#rejecttransfer) - Reject Transfer
 * [getTransfer](#gettransfer) - Get Transfer
+* [previewTransfer](#previewtransfer) - Preview Transfer
 
 ## createTransfer
 
@@ -481,4 +482,91 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.Status    | 400, 403, 404    | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## previewTransfer
+
+Previews what an ACATS transfer of a linked account's holdings would look like: the holdings sorted into eligible and ineligible (with reasons), plus any transfer- or account-level conditions. The linked account comes from a Data Aggregator Connect connection (see [Create Connection](https://developer.apexclearing.com/apex-beta/v1-dev/reference/dacservice_createconnection)); ACATS resolves the holdings from it internally.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="AccountTransfers_PreviewTransfer" method="post" path="/acats/v1/transfers:preview" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.accountTransfers.previewTransfer({});
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { accountTransfersPreviewTransfer } from "@apexfintechsolutions/ascend-sdk/funcs/accountTransfersPreviewTransfer.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await accountTransfersPreviewTransfer(apexascend, {});
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("accountTransfersPreviewTransfer failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.PreviewTransferRequestCreate](../../models/components/previewtransferrequestcreate.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AccountTransfersPreviewTransferResponse](../../models/operations/accounttransferspreviewtransferresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500              | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
