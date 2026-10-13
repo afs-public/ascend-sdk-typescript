@@ -285,6 +285,7 @@ export enum DocumentInvestorDocumentDocumentType {
   FpslNegativeConsentForm = "FPSL_NEGATIVE_CONSENT_FORM",
   CrsForm = "CRS_FORM",
   FpslConfirmation = "FPSL_CONFIRMATION",
+  EventContractStatementDaily = "EVENT_CONTRACT_STATEMENT_DAILY",
 }
 /**
  * Describes the contents of a document and how it is used

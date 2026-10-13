@@ -62,4 +62,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `UnsupportedTradingSessionForAsset`                       | UNSUPPORTED_TRADING_SESSION_FOR_ASSET                     |
 | `UnsupportedOrderTypeForAsset`                            | UNSUPPORTED_ORDER_TYPE_FOR_ASSET                          |
 | `UnsupportedTimeInForceForAsset`                          | UNSUPPORTED_TIME_IN_FORCE_FOR_ASSET                       |
+| `UnsupportedBrokerCapacity`                               | UNSUPPORTED_BROKER_CAPACITY                               |
+| `AboveBrokerFeeMaximum`                                   | ABOVE_BROKER_FEE_MAXIMUM                                  |
 | -                                                         | `Unrecognized<string>`                                    |

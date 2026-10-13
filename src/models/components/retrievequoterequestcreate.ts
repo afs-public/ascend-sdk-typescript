@@ -33,7 +33,7 @@ export type RetrieveQuoteRequestCreateAssetTypeOpen = OpenEnum<
 >;
 
 /**
- * Capacity used in determining bid and ask prices. Defaults to "AGENCY" if no value specified.
+ * Capacity used in determining bid and ask prices. If not specified, defaults to the capacity configured for the correspondent by Apex.
  */
 export enum RetrieveQuoteRequestCreateBrokerCapacity {
   BrokerCapacityUnspecified = "BROKER_CAPACITY_UNSPECIFIED",
@@ -41,7 +41,7 @@ export enum RetrieveQuoteRequestCreateBrokerCapacity {
   Principal = "PRINCIPAL",
 }
 /**
- * Capacity used in determining bid and ask prices. Defaults to "AGENCY" if no value specified.
+ * Capacity used in determining bid and ask prices. If not specified, defaults to the capacity configured for the correspondent by Apex.
  */
 export type RetrieveQuoteRequestCreateBrokerCapacityOpen = OpenEnum<
   typeof RetrieveQuoteRequestCreateBrokerCapacity
@@ -71,7 +71,7 @@ export type RetrieveQuoteRequestCreate = {
    */
   assetType: RetrieveQuoteRequestCreateAssetTypeOpen;
   /**
-   * Capacity used in determining bid and ask prices. Defaults to "AGENCY" if no value specified.
+   * Capacity used in determining bid and ask prices. If not specified, defaults to the capacity configured for the correspondent by Apex.
    */
   brokerCapacity?: RetrieveQuoteRequestCreateBrokerCapacityOpen | undefined;
   /**

@@ -18,7 +18,6 @@ let value: OptionOrderServiceCreateOptionOrderRequest = {
     clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
     currencyCode: "USD",
     legs: [],
-    limitPrice: {},
     orderDate: {},
     orderType: OptionOrderCreateOrderType.Limit,
     priceDirection: PriceDirection.Credit,

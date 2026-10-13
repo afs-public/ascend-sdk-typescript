@@ -183,6 +183,8 @@ export enum RejectTransferResponseState {
   Purged = "PURGED",
   PendingReviewMargins = "PENDING_REVIEW_MARGINS",
   PendingSubmission = "PENDING_SUBMISSION",
+  ResponseOverdue = "RESPONSE_OVERDUE",
+  PendingCorrection = "PENDING_CORRECTION",
 }
 /**
  * The transfer state

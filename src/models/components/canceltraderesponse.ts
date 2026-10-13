@@ -160,6 +160,7 @@ export enum CancelTradeResponseSideModifier {
   ShortCover = "SHORT_COVER",
   Open = "OPEN",
   Close = "CLOSE",
+  Cover = "COVER",
 }
 /**
  * Side modifier for the trade.
@@ -216,6 +217,7 @@ export enum CancelTradeResponseSpecialInstructions {
   SuppressSecFee = "SUPPRESS_SEC_FEE",
   SuppressTafFee = "SUPPRESS_TAF_FEE",
   DividendReinvestment = "DIVIDEND_REINVESTMENT",
+  ReportMsrb = "REPORT_MSRB",
 }
 export type CancelTradeResponseSpecialInstructionsOpen = OpenEnum<
   typeof CancelTradeResponseSpecialInstructions
@@ -356,6 +358,14 @@ export type CancelTradeResponseTrade = {
    * Street-level order id, unique by day per broker.
    */
   orderId?: string | undefined;
+  /**
+   * The resource name of the API resource that originated this trade, for example the order that produced it. Set by the system; any value supplied by the caller is ignored. Lets a client walk a Ledger activity to its trade and on to the originating order using only originating_resource_name fields.
+   */
+  originatingResourceName?: string | undefined;
+  /**
+   * RIA Trade Away indicator.
+   */
+  prime?: boolean | undefined;
   /**
    * Route type for the trade.
    */
@@ -859,6 +869,8 @@ export const CancelTradeResponseTrade$inboundSchema: z.ZodType<
   name: z.string().optional(),
   open: z.boolean().optional(),
   order_id: z.string().optional(),
+  originating_resource_name: z.string().optional(),
+  prime: z.boolean().optional(),
   route_type: CancelTradeResponseRouteType$inboundSchema.optional(),
   settlement_date: z.nullable(
     z.lazy(() => CancelTradeResponseSettlementDate$inboundSchema),
@@ -888,6 +900,7 @@ export const CancelTradeResponseTrade$inboundSchema: z.ZodType<
     "lot_matching_instructions": "lotMatchingInstructions",
     "mic_code": "micCode",
     "order_id": "orderId",
+    "originating_resource_name": "originatingResourceName",
     "route_type": "routeType",
     "settlement_date": "settlementDate",
     "side_modifier": "sideModifier",
@@ -922,6 +935,8 @@ export type CancelTradeResponseTrade$Outbound = {
   name?: string | undefined;
   open?: boolean | undefined;
   order_id?: string | undefined;
+  originating_resource_name?: string | undefined;
+  prime?: boolean | undefined;
   route_type?: string | undefined;
   settlement_date?:
     | CancelTradeResponseSettlementDate$Outbound
@@ -963,6 +978,8 @@ export const CancelTradeResponseTrade$outboundSchema: z.ZodType<
   name: z.string().optional(),
   open: z.boolean().optional(),
   orderId: z.string().optional(),
+  originatingResourceName: z.string().optional(),
+  prime: z.boolean().optional(),
   routeType: CancelTradeResponseRouteType$outboundSchema.optional(),
   settlementDate: z.nullable(
     z.lazy(() => CancelTradeResponseSettlementDate$outboundSchema),
@@ -992,6 +1009,7 @@ export const CancelTradeResponseTrade$outboundSchema: z.ZodType<
     lotMatchingInstructions: "lot_matching_instructions",
     micCode: "mic_code",
     orderId: "order_id",
+    originatingResourceName: "originating_resource_name",
     routeType: "route_type",
     settlementDate: "settlement_date",
     sideModifier: "side_modifier",

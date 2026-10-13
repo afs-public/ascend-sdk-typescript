@@ -24,6 +24,12 @@ import {
   ExtraReportingDataCreate$Outbound,
   ExtraReportingDataCreate$outboundSchema,
 } from "./extrareportingdatacreate.js";
+import {
+  LotCreate,
+  LotCreate$inboundSchema,
+  LotCreate$Outbound,
+  LotCreate$outboundSchema,
+} from "./lotcreate.js";
 
 /**
  * The type of the asset in this order
@@ -143,6 +149,10 @@ export type BasketOrderCreate = {
    * The identifier type of the asset being ordered. For Equities: only SYMBOL is supported For Mutual Funds: only SYMBOL and CUSIP are supported
    */
   identifierType: BasketOrderCreateIdentifierTypeOpen;
+  /**
+   * Specifies instructions for how to match tax lots to the order. Only applicable for SELL orders. Maximum 100 instructions per order. Each instruction must include quantity. When id is specified, trade_date and price must not be specified. When id is not specified, trade_date is required and price is optional.
+   */
+  lotMatchingInstructions?: Array<LotCreate> | undefined;
   /**
    * A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal][] or Python's [decimal.Decimal][].
    *
@@ -405,6 +415,7 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
   extra_reporting_data: ExtraReportingDataCreate$inboundSchema.optional(),
   identifier: z.string(),
   identifier_type: BasketOrderCreateIdentifierType$inboundSchema,
+  lot_matching_instructions: z.array(LotCreate$inboundSchema).optional(),
   max_sell_quantity: DecimalCreate$inboundSchema.optional(),
   notional_value: DecimalCreate$inboundSchema.optional(),
   order_type: BasketOrderCreateOrderType$inboundSchema,
@@ -423,6 +434,7 @@ export const BasketOrderCreate$inboundSchema: z.ZodType<
     "currency_code": "currencyCode",
     "extra_reporting_data": "extraReportingData",
     "identifier_type": "identifierType",
+    "lot_matching_instructions": "lotMatchingInstructions",
     "max_sell_quantity": "maxSellQuantity",
     "notional_value": "notionalValue",
     "order_type": "orderType",
@@ -441,6 +453,7 @@ export type BasketOrderCreate$Outbound = {
   extra_reporting_data?: ExtraReportingDataCreate$Outbound | undefined;
   identifier: string;
   identifier_type: string;
+  lot_matching_instructions?: Array<LotCreate$Outbound> | undefined;
   max_sell_quantity?: DecimalCreate$Outbound | undefined;
   notional_value?: DecimalCreate$Outbound | undefined;
   order_type: string;
@@ -465,6 +478,7 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
   extraReportingData: ExtraReportingDataCreate$outboundSchema.optional(),
   identifier: z.string(),
   identifierType: BasketOrderCreateIdentifierType$outboundSchema,
+  lotMatchingInstructions: z.array(LotCreate$outboundSchema).optional(),
   maxSellQuantity: DecimalCreate$outboundSchema.optional(),
   notionalValue: DecimalCreate$outboundSchema.optional(),
   orderType: BasketOrderCreateOrderType$outboundSchema,
@@ -483,6 +497,7 @@ export const BasketOrderCreate$outboundSchema: z.ZodType<
     currencyCode: "currency_code",
     extraReportingData: "extra_reporting_data",
     identifierType: "identifier_type",
+    lotMatchingInstructions: "lot_matching_instructions",
     maxSellQuantity: "max_sell_quantity",
     notionalValue: "notional_value",
     orderType: "order_type",

@@ -18,4 +18,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------- | ---------------------- |
 | `OrderTypeUnspecified` | ORDER_TYPE_UNSPECIFIED |
 | `Limit`                | LIMIT                  |
+| `Market`               | MARKET                 |
 | -                      | `Unrecognized<string>` |

@@ -21,7 +21,7 @@ import {
 } from "./decimalcreate.js";
 
 /**
- * Deprecated; use the price field instead
+ * Deprecated: use the price field instead
  *
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
@@ -48,7 +48,7 @@ export type LotCreate = {
    */
   id?: string | undefined;
   /**
-   * Deprecated; use the price field instead
+   * Deprecated: use the price field instead
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */

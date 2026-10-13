@@ -6,6 +6,7 @@ import { accountTransfersAcceptTransfer } from "../funcs/accountTransfersAcceptT
 import { accountTransfersCreateTransfer } from "../funcs/accountTransfersCreateTransfer.js";
 import { accountTransfersGetTransfer } from "../funcs/accountTransfersGetTransfer.js";
 import { accountTransfersListTransfers } from "../funcs/accountTransfersListTransfers.js";
+import { accountTransfersPreviewTransfer } from "../funcs/accountTransfersPreviewTransfer.js";
 import { accountTransfersRejectTransfer } from "../funcs/accountTransfersRejectTransfer.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -122,6 +123,23 @@ export class AccountTransfers extends ClientSDK {
       correspondentId,
       accountId,
       transferId,
+      options,
+    ));
+  }
+
+  /**
+   * Preview Transfer
+   *
+   * @remarks
+   * Previews what an ACATS transfer of a linked account's holdings would look like: the holdings sorted into eligible and ineligible (with reasons), plus any transfer- or account-level conditions. The linked account comes from a Data Aggregator Connect connection (see [Create Connection](https://developer.apexclearing.com/apex-beta/v1-dev/reference/dacservice_createconnection)); ACATS resolves the holdings from it internally.
+   */
+  async previewTransfer(
+    request: components.PreviewTransferRequestCreate,
+    options?: RequestOptions,
+  ): Promise<operations.AccountTransfersPreviewTransferResponse> {
+    return unwrapAsync(accountTransfersPreviewTransfer(
+      this,
+      request,
       options,
     ));
   }

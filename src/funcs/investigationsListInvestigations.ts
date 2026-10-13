@@ -44,6 +44,7 @@ export function investigationsListInvestigations(
   pageToken?: string | undefined,
   filter?: string | undefined,
   orderBy?: string | undefined,
+  includeTotalSize?: boolean | undefined,
   options?: RequestOptions,
 ): APIPromise<
   PageIterator<
@@ -68,6 +69,7 @@ export function investigationsListInvestigations(
     pageToken,
     filter,
     orderBy,
+    includeTotalSize,
     options,
   ));
 }
@@ -78,6 +80,7 @@ async function $do(
   pageToken?: string | undefined,
   filter?: string | undefined,
   orderBy?: string | undefined,
+  includeTotalSize?: boolean | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -104,6 +107,7 @@ async function $do(
     pageToken: pageToken,
     filter: filter,
     orderBy: orderBy,
+    includeTotalSize: includeTotalSize,
   };
 
   const parsed = safeParse(
@@ -123,6 +127,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "filter": payload.filter,
+    "include_total_size": payload.include_total_size,
     "order_by": payload.order_by,
     "page_size": payload.page_size,
     "page_token": payload.page_token,
@@ -260,6 +265,7 @@ async function $do(
         nextCursor,
         filter,
         orderBy,
+        includeTotalSize,
         options,
       );
 

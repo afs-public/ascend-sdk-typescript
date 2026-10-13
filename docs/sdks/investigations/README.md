@@ -10,7 +10,9 @@
 * [listInvestigations](#listinvestigations) - List Investigations
 * [linkDocuments](#linkdocuments) - Link Documents
 * [getWatchlistItem](#getwatchlistitem) - Get Watchlist Item
+* [linkCustomerIdentification](#linkcustomeridentification) - Link Customer Identification to an Investigation
 * [getCustomerIdentification](#getcustomeridentification) - Get Identity Verification
+* [createCustomerIdentification](#createcustomeridentification) - Create Identity Verification
 * [createIdentityLookup](#createidentitylookup) - Create Identity Lookup
 * [verifyIdentityLookup](#verifyidentitylookup) - Verify Identity Lookup
 
@@ -268,6 +270,7 @@ run();
 | `pageToken`                                                                                                                                                                                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | The page token used to request a specific page of the search results                                                                                                                                                                                                                                                                                                                        |                                                                                                                                                                                                                                                                                                                                                                                             |
 | `filter`                                                                                                                                                                                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | A CEL string to filter results; See the [CEL Search](https://developer.apexclearing.com/apex-fintech-solutions/docs/cel-search) page in Guides for more information; Filter options include:<br/> ListInvestigationStatesResponse.investigation_states                                                                                                                                      | [object Object]                                                                                                                                                                                                                                                                                                                                                                             |
 | `orderBy`                                                                                                                                                                                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | The order in which investigations are listed. Only one field and direction can be specified. Supported fields (followed by 'asc' or 'desc'; 'asc' is default if left blank):<br/>  - investigation_request_state<br/>  - correspondent_id<br/>  - scope<br/>  - identity_verification<br/>  - watchlist_screen<br/>  - person.given_name<br/>  - person.family_name<br/>  - entity.legal_name<br/>  - created_at<br/>  - updated_at | [object Object]                                                                                                                                                                                                                                                                                                                                                                             |
+| `includeTotalSize`                                                                                                                                                                                                                                                                                                                                                                          | *boolean*                                                                                                                                                                                                                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | Include the total size of the collection specified by this query in the response (this may incur a performance penalty)<br/><br/>**Field Dependencies:**<br/><br/>When include_total_size is explicitly set to false, total_size in the response will be 0.<br/><br/>Must be empty if `total_size` is `false`.                                                                              |                                                                                                                                                                                                                                                                                                                                                                                             |
 | `options`                                                                                                                                                                                                                                                                                                                                                                                   | RequestOptions                                                                                                                                                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | Used to set various options for making HTTP requests.                                                                                                                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                                             |
 | `options.fetchOptions`                                                                                                                                                                                                                                                                                                                                                                      | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                             |
 | `options.retries`                                                                                                                                                                                                                                                                                                                                                                           | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                          | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -468,6 +471,98 @@ run();
 | errors.Status    | 500, 503         | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 
+## linkCustomerIdentification
+
+Use this endpoint to link a customer identification to an investigation Upon linking a CustomerIdentification, the Investigation.IdentityVerificationState will be re-evaluated based on the CustomerIdentification.Result The CustomerIdentification must exist, and CustomerIdentification.Result.completed must be true The CustomerIdentification.Identity.given_name must match the Investigation.Person.given_name The CustomerIdentification.Identity.family_name must match the Investigation.Person.family_name The CustomerIdentification.Identity.birth_date must match the Investigation.Person.birth_date If the above validations are not met, the service will return a FAILED_PRECONDITION error status with the incorrect fields
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="InvestigationService_LinkCustomerIdentification" method="post" path="/investigations/v1/investigations/{investigation_id}:linkCustomerIdentification" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.investigations.linkCustomerIdentification({
+    customerIdentificationId: "01HEWVF4ZSNKYRP293J53ASJCJ",
+  }, "01HEWVF4ZSNKYRP293J53ASJCJ");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { investigationsLinkCustomerIdentification } from "@apexfintechsolutions/ascend-sdk/funcs/investigationsLinkCustomerIdentification.js";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await investigationsLinkCustomerIdentification(apexascend, {
+    customerIdentificationId: "01HEWVF4ZSNKYRP293J53ASJCJ",
+  }, "01HEWVF4ZSNKYRP293J53ASJCJ");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsLinkCustomerIdentification failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `investigationId`                                                                                                                                                              | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The investigation id.                                                                                                                                                          | [object Object]                                                                                                                                                                |
+| `linkCustomerIdentificationRequestCreate`                                                                                                                                      | [components.LinkCustomerIdentificationRequestCreate](../../models/components/linkcustomeridentificationrequestcreate.md)                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.InvestigationServiceLinkCustomerIdentificationResponse](../../models/operations/investigationservicelinkcustomeridentificationresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
 ## getCustomerIdentification
 
 Gets a CustomerIdentification by CustomerIdentification ID.
@@ -554,6 +649,104 @@ run();
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
 | errors.Status    | 400, 403, 404    | application/json |
+| errors.Status    | 500, 503         | application/json |
+| errors.SDKError  | 4XX, 5XX         | \*/\*            |
+
+## createCustomerIdentification
+
+Request a new CustomerIdentificationCheck
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="CustomerIdentificationResultService_CreateCustomerIdentification" method="post" path="/cip/v1/correspondents/{correspondent_id}/customerIdentifications" -->
+```typescript
+import { Apexascend } from "@apexfintechsolutions/ascend-sdk";
+import { CustomerIdentificationCreateCheckTypes } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+const apexascend = new Apexascend({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const result = await apexascend.investigations.createCustomerIdentification({
+    checkTypes: [
+      CustomerIdentificationCreateCheckTypes.Database,
+    ],
+  }, "01HPMZZM6RKMVZA1JQ63RQKJRP");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ApexascendCore } from "@apexfintechsolutions/ascend-sdk/core.js";
+import { investigationsCreateCustomerIdentification } from "@apexfintechsolutions/ascend-sdk/funcs/investigationsCreateCustomerIdentification.js";
+import { CustomerIdentificationCreateCheckTypes } from "@apexfintechsolutions/ascend-sdk/models/components";
+
+// Use `ApexascendCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const apexascend = new ApexascendCore({
+  security: {
+    apiKey: "ABCDEFGHIJ0123456789abcdefghij0123456789",
+    serviceAccountCreds: {
+      privateKey: "-----BEGIN PRIVATE KEY--{OMITTED FOR BREVITY}",
+      name: "FinFirm",
+      organization: "correspondents/00000000-0000-0000-0000-000000000000",
+      type: "serviceAccount",
+    },
+  },
+});
+
+async function run() {
+  const res = await investigationsCreateCustomerIdentification(apexascend, {
+    checkTypes: [
+      CustomerIdentificationCreateCheckTypes.Database,
+    ],
+  }, "01HPMZZM6RKMVZA1JQ63RQKJRP");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("investigationsCreateCustomerIdentification failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `correspondentId`                                                                                                                                                              | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The correspondent id.                                                                                                                                                          | [object Object]                                                                                                                                                                |
+| `customerIdentificationCreate`                                                                                                                                                 | [components.CustomerIdentificationCreate](../../models/components/customeridentificationcreate.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[operations.CustomerIdentificationResultServiceCreateCustomerIdentificationResponse](../../models/operations/customeridentificationresultservicecreatecustomeridentificationresponse.md)\>**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| errors.Status    | 400, 403         | application/json |
 | errors.Status    | 500, 503         | application/json |
 | errors.SDKError  | 4XX, 5XX         | \*/\*            |
 

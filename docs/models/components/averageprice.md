@@ -1,6 +1,6 @@
 # AveragePrice
 
-The computed average price for this leg, which is a weighted average (by quantity) of the executed prices.
+The computed average price for this leg, which is a weighted average (by quantity) of the executed prices. Supports up to 8 decimal places.
 
 ## Example Usage
 

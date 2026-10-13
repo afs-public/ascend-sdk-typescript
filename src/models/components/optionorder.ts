@@ -106,11 +106,20 @@ export type CumulativeNotionalValueDirectionOpen = OpenEnum<
  * Post-cancel reporting data provided via the SetOptionExtraReportingData endpoint.
  */
 export type OptionOrderExtraReportingData = {
+  /**
+   * Correspondent-side timestamp when the cancellation was confirmed. Maps to CAT CANCEL_CONFIRM_TIME.
+   */
   cancelConfirmedTime?: Date | null | undefined;
 };
 
 /**
- * The limit price for this option order. For single-leg option orders, this is the price per contract which the filled order must match or beat. For multi-leg orders, this represents the amortized "price per unit" that must be matched or beat. (E.g. with a limit price of a $4 DEBIT, and an order with 2 legs that includes one leg buy 100 shares of SBX and another leg to sell 1 contract of SBX, then the fills will be guaranteed to result in no more than a $400--4 USD X 100 shares/contract--total debit against the ordering account.)
+ * **Field Dependencies:**
+ *
+ * @remarks
+ *
+ * Required if `order_type` is `LIMIT`.
+ *
+ * Otherwise, must be empty.
  */
 export type OptionOrderLimitPrice = {
   /**
@@ -212,6 +221,7 @@ export type OptionOrderOrderStatusOpen = OpenEnum<
 export enum OptionOrderOrderType {
   OrderTypeUnspecified = "ORDER_TYPE_UNSPECIFIED",
   Limit = "LIMIT",
+  Market = "MARKET",
 }
 /**
  * The execution type of this option order.
@@ -272,6 +282,7 @@ export enum OptionOrderSpecialReportingInstructions {
   RoundUp = "ROUND_UP",
   CatParentAlgo = "CAT_PARENT_ALGO",
   CatParentGtc = "CAT_PARENT_GTC",
+  ManualOrder = "MANUAL_ORDER",
 }
 export type OptionOrderSpecialReportingInstructionsOpen = OpenEnum<
   typeof OptionOrderSpecialReportingInstructions
@@ -308,7 +319,7 @@ export type OptionOrder = {
    */
   cancelInitiator?: OptionOrderCancelInitiatorOpen | undefined;
   /**
-   * Used to explain why an option order is canceled
+   * Used to explain why an option order is canceled. Unused: reserved for future use. This field is not currently populated.
    */
   cancelReason?: string | undefined;
   /**
@@ -328,7 +339,7 @@ export type OptionOrder = {
    */
   clientOrderId?: string | undefined;
   /**
-   * Required for any client who is having Apex do CAT reporting on their behalf.
+   * Required for any client who is having Apex do CAT reporting on their behalf. When special_reporting_instructions includes MANUAL_ORDER, this is also reported to CAT as the time the order was manually received from the customer.
    */
   clientReceivedTime?: Date | null | undefined;
   /**
@@ -373,7 +384,13 @@ export type OptionOrder = {
    */
   legs?: Array<OptionOrderLeg> | undefined;
   /**
-   * The limit price for this option order. For single-leg option orders, this is the price per contract which the filled order must match or beat. For multi-leg orders, this represents the amortized "price per unit" that must be matched or beat. (E.g. with a limit price of a $4 DEBIT, and an order with 2 legs that includes one leg buy 100 shares of SBX and another leg to sell 1 contract of SBX, then the fills will be guaranteed to result in no more than a $400--4 USD X 100 shares/contract--total debit against the ordering account.)
+   * **Field Dependencies:**
+   *
+   * @remarks
+   *
+   * Required if `order_type` is `LIMIT`.
+   *
+   * Otherwise, must be empty.
    */
   limitPrice?: OptionOrderLimitPrice | null | undefined;
   /**
@@ -409,7 +426,7 @@ export type OptionOrder = {
    */
   quantity?: OptionOrderQuantity | null | undefined;
   /**
-   * Special Reporting Instructions to be applied to this option order. Can include multiple Instructions.
+   * Special Reporting Instructions to be applied to this option order. Only CAT_PARENT_ALGO and MANUAL_ORDER are supported for option orders; any other value is rejected. CAT_PARENT_ALGO is only allowed on LIMIT orders. MANUAL_ORDER marks the order as manually received from the customer for CAT reporting; client_received_time should then be set to the time the order was received.
    */
   specialReportingInstructions?:
     | Array<OptionOrderSpecialReportingInstructionsOpen>

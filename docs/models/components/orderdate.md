@@ -1,6 +1,14 @@
 # OrderDate
 
-The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
+The date on which the order will go to the market.
+
+ When provided, the date must be either today or the next valid trading day (Eastern time):
+ - If today is not a valid trading day, specify the next valid market day.
+ - If the current time is after market close but before midnight Eastern, specify the next valid market day.
+ - Otherwise, specify the current Eastern trading day.
+
+ Required for all orders except event contract orders with a non-DAY time_in_force
+ (GTC, GTD, IOC, FOK). When omitted for those orders, defaults to the current Eastern trading day.
 
 ## Example Usage
 

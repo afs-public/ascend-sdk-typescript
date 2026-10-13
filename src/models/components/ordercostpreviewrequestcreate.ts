@@ -39,7 +39,7 @@ export type OrderCostPreviewRequestCreateAssetTypeOpen = OpenEnum<
 >;
 
 /**
- * Capacity used in determining the order cost. Defaults to "AGENCY" if no value specified.
+ * Capacity used in determining the order cost. If not specified, defaults to the capacity configured for the correspondent by Apex.
  */
 export enum OrderCostPreviewRequestCreateBrokerCapacity {
   BrokerCapacityUnspecified = "BROKER_CAPACITY_UNSPECIFIED",
@@ -47,7 +47,7 @@ export enum OrderCostPreviewRequestCreateBrokerCapacity {
   Principal = "PRINCIPAL",
 }
 /**
- * Capacity used in determining the order cost. Defaults to "AGENCY" if no value specified.
+ * Capacity used in determining the order cost. If not specified, defaults to the capacity configured for the correspondent by Apex.
  */
 export type OrderCostPreviewRequestCreateBrokerCapacityOpen = OpenEnum<
   typeof OrderCostPreviewRequestCreateBrokerCapacity
@@ -77,7 +77,7 @@ export type OrderCostPreviewRequestCreate = {
    */
   assetType: OrderCostPreviewRequestCreateAssetTypeOpen;
   /**
-   * Capacity used in determining the order cost. Defaults to "AGENCY" if no value specified.
+   * Capacity used in determining the order cost. If not specified, defaults to the capacity configured for the correspondent by Apex.
    */
   brokerCapacity?: OrderCostPreviewRequestCreateBrokerCapacityOpen | undefined;
   /**

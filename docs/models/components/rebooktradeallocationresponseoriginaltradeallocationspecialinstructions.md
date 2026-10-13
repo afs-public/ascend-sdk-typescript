@@ -8,7 +8,7 @@ import { RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructions
 let value:
   RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructions =
     RebookTradeAllocationResponseOriginalTradeAllocationSpecialInstructions
-      .ThirdMarket;
+      .SuppressMsrbTransmission;
 ```
 
 ## Values
@@ -64,4 +64,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `SuppressSecFee`                 | SUPPRESS_SEC_FEE                 |
 | `SuppressTafFee`                 | SUPPRESS_TAF_FEE                 |
 | `DividendReinvestment`           | DIVIDEND_REINVESTMENT            |
+| `ReportMsrb`                     | REPORT_MSRB                      |
 | -                                | `Unrecognized<string>`           |

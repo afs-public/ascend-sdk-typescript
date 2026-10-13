@@ -28,7 +28,7 @@ test("Pre Ipo Research Documents Pre Ipo Company Research Documents List Pre Ipo
 
   const result = await apexascend.preIPOResearchDocuments
     .listPreIpoCompanyResearchDocuments(
-      "a6c63e95-fe8a-4703-a74a-f2a90c0a9c6d",
+      "74c41a5b-b5e0-4509-964f-ca2de584c052",
       25,
       "",
       "",

@@ -13,6 +13,12 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  LotMatchingInstruction,
+  LotMatchingInstruction$inboundSchema,
+  LotMatchingInstruction$Outbound,
+  LotMatchingInstruction$outboundSchema,
+} from "./lotmatchinginstruction.js";
+import {
   TradingExecutedPrice,
   TradingExecutedPrice$inboundSchema,
   TradingExecutedPrice$Outbound,
@@ -52,7 +58,7 @@ export enum OrderAssetType {
 export type OrderAssetTypeOpen = OpenEnum<typeof OrderAssetType>;
 
 /**
- * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
+ * Defaults to "AGENCY" for all asset types except Fixed Income. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  If not specified, defaults to the capacity configured for  the correspondent by Apex. For Event Contracts: Only "AGENCY" is allowed.
  */
 export enum OrderBrokerCapacity {
   BrokerCapacityUnspecified = "BROKER_CAPACITY_UNSPECIFIED",
@@ -60,7 +66,7 @@ export enum OrderBrokerCapacity {
   Principal = "PRINCIPAL",
 }
 /**
- * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
+ * Defaults to "AGENCY" for all asset types except Fixed Income. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  If not specified, defaults to the capacity configured for  the correspondent by Apex. For Event Contracts: Only "AGENCY" is allowed.
  */
 export type OrderBrokerCapacityOpen = OpenEnum<typeof OrderBrokerCapacity>;
 
@@ -147,6 +153,9 @@ export type CumulativeNotionalValue = {
  * Any reporting data provided by the SetExtraReportingData endpoint.
  */
 export type ExtraReportingData = {
+  /**
+   * Correspondent-side timestamp when the cancellation was confirmed. Maps to CAT CANCEL_CONFIRM_TIME.
+   */
   cancelConfirmedTime?: Date | null | undefined;
 };
 
@@ -274,7 +283,17 @@ export type NotionalValue = {
 };
 
 /**
- * The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
+ * The date on which the order will go to the market.
+ *
+ * @remarks
+ *
+ *  When provided, the date must be either today or the next valid trading day (Eastern time):
+ *  - If today is not a valid trading day, specify the next valid market day.
+ *  - If the current time is after market close but before midnight Eastern, specify the next valid market day.
+ *  - Otherwise, specify the current Eastern trading day.
+ *
+ *  Required for all orders except event contract orders with a non-DAY time_in_force
+ *  (GTC, GTD, IOC, FOK). When omitted for those orders, defaults to the current Eastern trading day.
  */
 export type OrderDate = {
   /**
@@ -346,6 +365,8 @@ export enum OrderRejectedReason {
   UnsupportedTradingSessionForAsset = "UNSUPPORTED_TRADING_SESSION_FOR_ASSET",
   UnsupportedOrderTypeForAsset = "UNSUPPORTED_ORDER_TYPE_FOR_ASSET",
   UnsupportedTimeInForceForAsset = "UNSUPPORTED_TIME_IN_FORCE_FOR_ASSET",
+  UnsupportedBrokerCapacity = "UNSUPPORTED_BROKER_CAPACITY",
+  AboveBrokerFeeMaximum = "ABOVE_BROKER_FEE_MAXIMUM",
 }
 /**
  * When an order has the REJECTED status, this will be populated with a system code describing the rejection.
@@ -387,7 +408,7 @@ export enum OrderOrderType {
 export type OrderOrderTypeOpen = OpenEnum<typeof OrderOrderType>;
 
 /**
- * The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Can be up to 8 decimal places when asset_type = FIXED_INCOME. Will be absent if an order has no executions.
+ * The prevailing market price, calculated as a weighted average of the fills in this order, up to 8 decimal places. Will only be present for orders of Fixed Income assets. Will be absent if an order has no executions.
  */
 export type OrderPrevailingMarketPrice = {
   /**
@@ -397,7 +418,7 @@ export type OrderPrevailingMarketPrice = {
 };
 
 /**
- * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. For Event Contracts: Represents the number of contracts being ordered, and must be whole numbers for BUY orders or up to a maximum of 2 decimal places for SELL orders. Either a quantity or notional_value MUST be specified (but not both).
+ * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. For Event Contracts: Represents the number of contracts being ordered, and may be up to a maximum of 2 decimal places. Exactly one of quantity, notional_value, or full_position MUST be specified.
  */
 export type OrderQuantity = {
   /**
@@ -468,6 +489,7 @@ export enum OrderSpecialReportingInstructions {
   RoundUp = "ROUND_UP",
   CatParentAlgo = "CAT_PARENT_ALGO",
   CatParentGtc = "CAT_PARENT_GTC",
+  ManualOrder = "MANUAL_ORDER",
 }
 export type OrderSpecialReportingInstructionsOpen = OpenEnum<
   typeof OrderSpecialReportingInstructions
@@ -583,13 +605,16 @@ export type Order = {
    *
    * @remarks
    *
-   *  When asset_type = EQUITY or MUTUAL_FUND, there will be at most one value present, with a type of PRICE_PER_UNIT. This will have up to 4 decimal places for USD amounts less than $1, and a maximum of two for larger USD amounts.
-   *
-   *  When asset_type = FIXED_INCOME, there may be more than one value present which would have a type other than PRICE_PER_UNIT. Price values in PERCENTAGE_OF_PAR will have up to 8 decimal places of precision, and price values measured in yields will support up to 7 decimal places.
+   *  Returned values depend on asset_type:
+   *  - EQUITY: exactly one ExecutedPrice element of type PRICE_PER_UNIT in USD (up to 8 decimal places).
+   *  - MUTUAL_FUND: exactly one ExecutedPrice element of type PRICE_PER_UNIT in USD (up to 5 decimal places).
+   *  - FIXED_INCOME: may contain multiple elements with different types other than PRICE_PER_UNIT;
+   *   yield types (YIELD_TO_*) support up to 7 decimal places, other types support up to 8 decimal places.
+   *  - Other asset types: supports up to 5 decimal places.
    */
   averagePrices?: Array<TradingExecutedPrice> | undefined;
   /**
-   * Defaults to "AGENCY" if not specified, except for Fixed Income orders from RIA correspondents which default to "PRINCIPAL" when not specified. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  - RIA correspondents: Defaults to "PRINCIPAL" if not specified.  - Other correspondents: Defaults to "AGENCY" if not specified. For Event Contracts: Only "AGENCY" is allowed.
+   * Defaults to "AGENCY" for all asset types except Fixed Income. For Equities: Only "AGENCY" is allowed. For Mutual Funds: Only "AGENCY" is allowed. For Fixed Income: Either "AGENCY" or "PRINCIPAL" are allowed.  If not specified, defaults to the capacity configured for  the correspondent by Apex. For Event Contracts: Only "AGENCY" is allowed.
    */
   brokerCapacity?: OrderBrokerCapacityOpen | undefined;
   /**
@@ -617,7 +642,7 @@ export type Order = {
    */
   clientOrderId?: string | undefined;
   /**
-   * Required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed.
+   * Required for Equity Orders for any client who is having Apex do CAT reporting on their behalf. A value may be provided for non-Equity orders, and will be remembered, but valid timestamps will have no impact on how they are processed. When special_reporting_instructions includes MANUAL_ORDER, this is also reported to CAT as the time the order was manually received from the customer.
    */
   clientReceivedTime?: Date | null | undefined;
   /**
@@ -640,6 +665,10 @@ export type Order = {
    * Defaults to "USD". Only "USD" is supported. Full list of currency codes is defined at: https://en.wikipedia.org/wiki/ISO_4217
    */
   currencyCode?: string | undefined;
+  /**
+   * Request that the order be handled by a desk trader. Only available for Equity orders. When omitted, treated as false.
+   */
+  deskHandlingRequested?: boolean | undefined;
   /**
    * The execution-level details that compose this order
    */
@@ -681,6 +710,10 @@ export type Order = {
    */
   limitPrice?: LimitPrice | null | undefined;
   /**
+   * Tax lot matching instructions specifying which lots to sell. Maximum 100 instructions per order.
+   */
+  lotMatchingInstructions?: Array<LotMatchingInstruction> | undefined;
+  /**
    * The maximum number of shares to be sold for a notional SELL order of an Equity asset type. This field restricts the quantity to sell, even if the notional amount requires more shares to fulfill. REQUIRED if your account is not subject to Apex position checks, and PROHIBITED if your account is subject to Apex position checks. Refer to Position Check for details. When specified, must be greater than 0 and can't exceed 5 decimal places.
    */
   maxSellQuantity?: MaxSellQuantity | null | undefined;
@@ -697,7 +730,17 @@ export type Order = {
    */
   open?: boolean | undefined;
   /**
-   * The date on which the order will go to the market: must either be "today" or the next valid trading day. If the current day is not a valid trading day, then the next valid market day must be specified. If the current time is after market close, and before midnight Eastern, then the next valid market day must be specified. In all other cases, the current day, Eastern must be specified.
+   * The date on which the order will go to the market.
+   *
+   * @remarks
+   *
+   *  When provided, the date must be either today or the next valid trading day (Eastern time):
+   *  - If today is not a valid trading day, specify the next valid market day.
+   *  - If the current time is after market close but before midnight Eastern, specify the next valid market day.
+   *  - Otherwise, specify the current Eastern trading day.
+   *
+   *  Required for all orders except event contract orders with a non-DAY time_in_force
+   *  (GTC, GTD, IOC, FOK). When omitted for those orders, defaults to the current Eastern trading day.
    */
   orderDate?: OrderDate | null | undefined;
   /**
@@ -717,11 +760,11 @@ export type Order = {
    */
   orderType?: OrderOrderTypeOpen | undefined;
   /**
-   * The prevailing market price, calculated as a weighted average of the fills in this order, up to a maximum of 5 decimal places. Can be up to 8 decimal places when asset_type = FIXED_INCOME. Will be absent if an order has no executions.
+   * The prevailing market price, calculated as a weighted average of the fills in this order, up to 8 decimal places. Will only be present for orders of Fixed Income assets. Will be absent if an order has no executions.
    */
   prevailingMarketPrice?: OrderPrevailingMarketPrice | null | undefined;
   /**
-   * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. For Event Contracts: Represents the number of contracts being ordered, and must be whole numbers for BUY orders or up to a maximum of 2 decimal places for SELL orders. Either a quantity or notional_value MUST be specified (but not both).
+   * Numeric quantity of the order. For Equities: Represents the number of shares, must be greater than zero and may not exceed 5 decimal places. For Mutual Funds: Only supported for SELL orders. Represents the number of shares, up to a maximum of 3 decimal places. For Fixed Income: Represents the par (face-value) amount being ordered, and may not exceed two decimal places for USD-based currencies. For Event Contracts: Represents the number of contracts being ordered, and may be up to a maximum of 2 decimal places. Exactly one of quantity, notional_value, or full_position MUST be specified.
    */
   quantity?: OrderQuantity | null | undefined;
   /**
@@ -733,7 +776,7 @@ export type Order = {
    */
   side?: OrderSideOpen | undefined;
   /**
-   * Special Reporting Instructions to be applied to this order. Can include multiple Instructions. Only available for Equity, Mutual Fund, and Fixed Income orders.
+   * Special Reporting Instructions to be applied to this order. Can include up to 5 Instructions. Supported for Equity orders only; must be omitted for Mutual Fund, Fixed Income, and Event Contract orders. BROKER_DEALER_ORDER and FULLY_REGISTERED are not supported. CAT_PARENT_ALGO is only allowed on LIMIT orders; CAT_PARENT_GTC is only allowed on GOOD_TILL_DATE orders. MANUAL_ORDER marks the order as manually received from the customer for CAT reporting; client_received_time should then be set to the time the order was received.
    */
   specialReportingInstructions?:
     | Array<OrderSpecialReportingInstructionsOpen>
@@ -2359,6 +2402,7 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
       z.lazy(() => CumulativeNotionalValue$inboundSchema),
     ).optional(),
     currency_code: z.string().optional(),
+    desk_handling_requested: z.boolean().optional(),
     executions: z.array(TradingExecutions$inboundSchema).optional(),
     extra_reporting_data: z.nullable(
       z.lazy(() => ExtraReportingData$inboundSchema),
@@ -2375,6 +2419,8 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
     letter_of_intent: z.nullable(z.lazy(() => LetterOfIntent$inboundSchema))
       .optional(),
     limit_price: z.nullable(z.lazy(() => LimitPrice$inboundSchema)).optional(),
+    lot_matching_instructions: z.array(LotMatchingInstruction$inboundSchema)
+      .optional(),
     max_sell_quantity: z.nullable(z.lazy(() => MaxSellQuantity$inboundSchema))
       .optional(),
     name: z.string().optional(),
@@ -2421,6 +2467,7 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
       "create_time": "createTime",
       "cumulative_notional_value": "cumulativeNotionalValue",
       "currency_code": "currencyCode",
+      "desk_handling_requested": "deskHandlingRequested",
       "extra_reporting_data": "extraReportingData",
       "filled_quantity": "filledQuantity",
       "identifier_issuing_region_code": "identifierIssuingRegionCode",
@@ -2428,6 +2475,7 @@ export const Order$inboundSchema: z.ZodType<Order, z.ZodTypeDef, unknown> = z
       "last_update_time": "lastUpdateTime",
       "letter_of_intent": "letterOfIntent",
       "limit_price": "limitPrice",
+      "lot_matching_instructions": "lotMatchingInstructions",
       "max_sell_quantity": "maxSellQuantity",
       "notional_value": "notionalValue",
       "order_date": "orderDate",
@@ -2467,6 +2515,7 @@ export type Order$Outbound = {
     | null
     | undefined;
   currency_code?: string | undefined;
+  desk_handling_requested?: boolean | undefined;
   executions?: Array<TradingExecutions$Outbound> | undefined;
   extra_reporting_data?: ExtraReportingData$Outbound | null | undefined;
   fees?: Array<TradingFee$Outbound> | undefined;
@@ -2477,6 +2526,9 @@ export type Order$Outbound = {
   last_update_time?: string | null | undefined;
   letter_of_intent?: LetterOfIntent$Outbound | null | undefined;
   limit_price?: LimitPrice$Outbound | null | undefined;
+  lot_matching_instructions?:
+    | Array<LotMatchingInstruction$Outbound>
+    | undefined;
   max_sell_quantity?: MaxSellQuantity$Outbound | null | undefined;
   name?: string | undefined;
   notional_value?: NotionalValue$Outbound | null | undefined;
@@ -2533,6 +2585,7 @@ export const Order$outboundSchema: z.ZodType<
     z.lazy(() => CumulativeNotionalValue$outboundSchema),
   ).optional(),
   currencyCode: z.string().optional(),
+  deskHandlingRequested: z.boolean().optional(),
   executions: z.array(TradingExecutions$outboundSchema).optional(),
   extraReportingData: z.nullable(
     z.lazy(() => ExtraReportingData$outboundSchema),
@@ -2548,6 +2601,8 @@ export const Order$outboundSchema: z.ZodType<
   letterOfIntent: z.nullable(z.lazy(() => LetterOfIntent$outboundSchema))
     .optional(),
   limitPrice: z.nullable(z.lazy(() => LimitPrice$outboundSchema)).optional(),
+  lotMatchingInstructions: z.array(LotMatchingInstruction$outboundSchema)
+    .optional(),
   maxSellQuantity: z.nullable(z.lazy(() => MaxSellQuantity$outboundSchema))
     .optional(),
   name: z.string().optional(),
@@ -2594,6 +2649,7 @@ export const Order$outboundSchema: z.ZodType<
     createTime: "create_time",
     cumulativeNotionalValue: "cumulative_notional_value",
     currencyCode: "currency_code",
+    deskHandlingRequested: "desk_handling_requested",
     extraReportingData: "extra_reporting_data",
     filledQuantity: "filled_quantity",
     identifierIssuingRegionCode: "identifier_issuing_region_code",
@@ -2601,6 +2657,7 @@ export const Order$outboundSchema: z.ZodType<
     lastUpdateTime: "last_update_time",
     letterOfIntent: "letter_of_intent",
     limitPrice: "limit_price",
+    lotMatchingInstructions: "lot_matching_instructions",
     maxSellQuantity: "max_sell_quantity",
     notionalValue: "notional_value",
     orderDate: "order_date",

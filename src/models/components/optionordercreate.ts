@@ -58,6 +58,7 @@ export type OptionOrderCreateBrokerCapacityOpen = OpenEnum<
 export enum OptionOrderCreateOrderType {
   OrderTypeUnspecified = "ORDER_TYPE_UNSPECIFIED",
   Limit = "LIMIT",
+  Market = "MARKET",
 }
 /**
  * The execution type of this option order.
@@ -108,6 +109,7 @@ export enum OptionOrderCreateSpecialReportingInstructions {
   RoundUp = "ROUND_UP",
   CatParentAlgo = "CAT_PARENT_ALGO",
   CatParentGtc = "CAT_PARENT_GTC",
+  ManualOrder = "MANUAL_ORDER",
 }
 export type OptionOrderCreateSpecialReportingInstructionsOpen = OpenEnum<
   typeof OptionOrderCreateSpecialReportingInstructions
@@ -140,7 +142,7 @@ export type OptionOrderCreate = {
    */
   clientOrderId: string;
   /**
-   * Required for any client who is having Apex do CAT reporting on their behalf.
+   * Required for any client who is having Apex do CAT reporting on their behalf. When special_reporting_instructions includes MANUAL_ORDER, this is also reported to CAT as the time the order was manually received from the customer.
    */
   clientReceivedTime?: Date | null | undefined;
   /**
@@ -168,7 +170,7 @@ export type OptionOrderCreate = {
    *  https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html
    *  [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
    */
-  limitPrice: DecimalCreate;
+  limitPrice?: DecimalCreate | undefined;
   /**
    * Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following:
    *
@@ -198,7 +200,7 @@ export type OptionOrderCreate = {
    */
   quantity: DecimalCreate;
   /**
-   * Special Reporting Instructions to be applied to this option order. Can include multiple Instructions.
+   * Special Reporting Instructions to be applied to this option order. Only CAT_PARENT_ALGO and MANUAL_ORDER are supported for option orders; any other value is rejected. CAT_PARENT_ALGO is only allowed on LIMIT orders. MANUAL_ORDER marks the order as manually received from the customer for CAT reporting; client_received_time should then be set to the time the order was received.
    */
   specialReportingInstructions?:
     | Array<OptionOrderCreateSpecialReportingInstructionsOpen>
@@ -390,7 +392,7 @@ export const OptionOrderCreate$inboundSchema: z.ZodType<
   currency_code: z.string(),
   fees: z.array(FeeCreate$inboundSchema).optional(),
   legs: z.array(OptionOrderLegCreate$inboundSchema),
-  limit_price: DecimalCreate$inboundSchema,
+  limit_price: DecimalCreate$inboundSchema.optional(),
   order_date: DateCreate$inboundSchema,
   order_type: OptionOrderCreateOrderType$inboundSchema,
   price_direction: PriceDirection$inboundSchema,
@@ -424,7 +426,7 @@ export type OptionOrderCreate$Outbound = {
   currency_code: string;
   fees?: Array<FeeCreate$Outbound> | undefined;
   legs: Array<OptionOrderLegCreate$Outbound>;
-  limit_price: DecimalCreate$Outbound;
+  limit_price?: DecimalCreate$Outbound | undefined;
   order_date: DateCreate$Outbound;
   order_type: string;
   price_direction: string;
@@ -448,7 +450,7 @@ export const OptionOrderCreate$outboundSchema: z.ZodType<
   currencyCode: z.string(),
   fees: z.array(FeeCreate$outboundSchema).optional(),
   legs: z.array(OptionOrderLegCreate$outboundSchema),
-  limitPrice: DecimalCreate$outboundSchema,
+  limitPrice: DecimalCreate$outboundSchema.optional(),
   orderDate: DateCreate$outboundSchema,
   orderType: OptionOrderCreateOrderType$outboundSchema,
   priceDirection: PriceDirection$outboundSchema,

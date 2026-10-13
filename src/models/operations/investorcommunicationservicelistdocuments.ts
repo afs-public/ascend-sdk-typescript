@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InvestorCommunicationServiceListDocumentsRequest = {
   /**
-   * The maximum number of items to return; The service may return fewer than this value
+   * The maximum number of items to return; The service may return fewer than this value; If unspecified, zero, or negative, at most 20 items will be returned; The maximum allowed value is 200; if a larger value is requested, the page size will be overridden to 200
    */
   pageSize?: number | undefined;
   /**

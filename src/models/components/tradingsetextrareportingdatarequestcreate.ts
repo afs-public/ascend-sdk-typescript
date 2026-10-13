@@ -8,7 +8,13 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * The message to request setting extra reporting data on an existing order.
+ */
 export type TradingSetExtraReportingDataRequestCreate = {
+  /**
+   * Correspondent-side timestamp when the cancellation was confirmed. Maps to CAT CANCEL_CONFIRM_TIME.
+   */
   cancelConfirmedTime: Date | null;
   /**
    * Format: accounts/{account_id}/orders/{order_id}

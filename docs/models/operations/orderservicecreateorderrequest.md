@@ -13,7 +13,6 @@ let value: OrderServiceCreateOrderRequest = {
     clientOrderId: "a6d5258b-6b23-478a-8145-98e79d60427a",
     identifier: "SBUX",
     identifierType: OrderCreateIdentifierType.Symbol,
-    orderDate: {},
     orderType: OrderType.Market,
     side: Side.Buy,
     timeInForce: TimeInForce.Day,

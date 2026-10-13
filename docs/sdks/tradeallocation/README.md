@@ -44,7 +44,7 @@ async function run() {
   const result = await apexascend.tradeAllocation.createTradeAllocation({
     assetType: TradeAllocationCreateAssetType.Equity,
     brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
-    executionTime: new Date("2024-07-17T12:00:00Z"),
+    executionTime: new Date("2024-07-17T12:00:00.000Z"),
     fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
     identifier: "AAPL",
     identifierType: TradeAllocationCreateIdentifierType.Symbol,
@@ -93,7 +93,7 @@ async function run() {
   const res = await tradeAllocationCreateTradeAllocation(apexascend, {
     assetType: TradeAllocationCreateAssetType.Equity,
     brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
-    executionTime: new Date("2024-07-17T12:00:00Z"),
+    executionTime: new Date("2024-07-17T12:00:00.000Z"),
     fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
     identifier: "AAPL",
     identifierType: TradeAllocationCreateIdentifierType.Symbol,
@@ -359,7 +359,7 @@ async function run() {
     tradeAllocation: {
       assetType: TradeAllocationCreateAssetType.Equity,
       brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
-      executionTime: new Date("2024-07-17T12:00:00Z"),
+      executionTime: new Date("2024-07-17T12:00:00.000Z"),
       fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
       identifier: "AAPL",
       identifierType: TradeAllocationCreateIdentifierType.Symbol,
@@ -412,7 +412,7 @@ async function run() {
     tradeAllocation: {
       assetType: TradeAllocationCreateAssetType.Equity,
       brokerCapacity: TradeAllocationCreateBrokerCapacity.Agency,
-      executionTime: new Date("2024-07-17T12:00:00Z"),
+      executionTime: new Date("2024-07-17T12:00:00.000Z"),
       fromAccountId: "01HASWB2DTMRT3DAM45P56J2H3",
       identifier: "AAPL",
       identifierType: TradeAllocationCreateIdentifierType.Symbol,

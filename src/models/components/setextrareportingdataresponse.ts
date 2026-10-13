@@ -24,6 +24,12 @@ import {
   BasketTradingExecutions$Outbound,
   BasketTradingExecutions$outboundSchema,
 } from "./baskettradingexecutions.js";
+import {
+  TradeLot,
+  TradeLot$inboundSchema,
+  TradeLot$Outbound,
+  TradeLot$outboundSchema,
+} from "./tradelot.js";
 
 /**
  * The type of the asset in this order
@@ -346,6 +352,10 @@ export type SetExtraReportingDataResponseBasketOrder = {
    * Time of the last order update
    */
   lastUpdateTime?: Date | null | undefined;
+  /**
+   * Specifies instructions for how to match tax lots to the order. Only applicable for SELL orders. Maximum 100 instructions per order. Each instruction must include quantity. When id is specified, trade_date and price must not be specified. When id is not specified, trade_date is required and price is optional.
+   */
+  lotMatchingInstructions?: Array<TradeLot> | undefined;
   /**
    * The maximum number of shares to be sold if this is a notional SELL order of an Equity asset type. (Prohibited for other side or asset_type inputs.)
    *
@@ -1175,6 +1185,7 @@ export const SetExtraReportingDataResponseBasketOrder$inboundSchema: z.ZodType<
   last_update_time: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
+  lot_matching_instructions: z.array(TradeLot$inboundSchema).optional(),
   max_sell_quantity: z.nullable(
     z.lazy(() => SetExtraReportingDataResponseMaxSellQuantity$inboundSchema),
   ).optional(),
@@ -1215,6 +1226,7 @@ export const SetExtraReportingDataResponseBasketOrder$inboundSchema: z.ZodType<
     "filled_quantity": "filledQuantity",
     "identifier_type": "identifierType",
     "last_update_time": "lastUpdateTime",
+    "lot_matching_instructions": "lotMatchingInstructions",
     "max_sell_quantity": "maxSellQuantity",
     "notional_value": "notionalValue",
     "order_rejected_reason": "orderRejectedReason",
@@ -1255,6 +1267,7 @@ export type SetExtraReportingDataResponseBasketOrder$Outbound = {
   identifier?: string | undefined;
   identifier_type?: string | undefined;
   last_update_time?: string | null | undefined;
+  lot_matching_instructions?: Array<TradeLot$Outbound> | undefined;
   max_sell_quantity?:
     | SetExtraReportingDataResponseMaxSellQuantity$Outbound
     | null
@@ -1314,6 +1327,7 @@ export const SetExtraReportingDataResponseBasketOrder$outboundSchema: z.ZodType<
     .optional(),
   lastUpdateTime: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
+  lotMatchingInstructions: z.array(TradeLot$outboundSchema).optional(),
   maxSellQuantity: z.nullable(
     z.lazy(() => SetExtraReportingDataResponseMaxSellQuantity$outboundSchema),
   ).optional(),
@@ -1354,6 +1368,7 @@ export const SetExtraReportingDataResponseBasketOrder$outboundSchema: z.ZodType<
     filledQuantity: "filled_quantity",
     identifierType: "identifier_type",
     lastUpdateTime: "last_update_time",
+    lotMatchingInstructions: "lot_matching_instructions",
     maxSellQuantity: "max_sell_quantity",
     notionalValue: "notional_value",
     orderRejectedReason: "order_rejected_reason",
